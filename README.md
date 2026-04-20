@@ -55,5 +55,5 @@ Each line is a JSON object with a `_ts` timestamp. New responses are appended; t
 
 | Script | Purpose |
 |--------|---------|
-| `gen_stubs.py` | Generate `seed` stubs from `cache/s3inv/repo_metadata.jsonl` |
-| `gen_collection.py` | Generate a rich STAC Collection for one repo (gather + draft) |
+| `scripts/gen_stubs.py` | Generate `seed` stubs from `cache/s3inv/repo_metadata.jsonl` |
+| `scripts/gen_collection.py` | Generate a rich STAC Collection for one repo (gather + draft) |
