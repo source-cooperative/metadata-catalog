@@ -12,6 +12,12 @@ catalog/
 
 Most Source Coop products map 1:1 to a catalog entry. Some products contain multiple distinct datasets (e.g. `harvard-lil/gov-data` is an archive of ~300k data.gov datasets). These get decomposed into separate entries as we encounter them.
 
+## Identifiers
+
+Every entry carries `account_id` and `product_id` as the first two fields, matching the directory layout (`catalog/{account_id}/{product_id}.json`) and the upstream Source Coop API's own field names.
+
+Do **not** add a combined `id` field. An upstream STAC document's `id` (a free-form publisher-chosen tag like `ams` or `overture-maps`) may land in the entry via the `gather_stac.py` merge; that's a STAC property, not our identifier, and should not be relied on.
+
 ## Phases
 
 Every catalog entry has a `state` field tracking where it is in the curation pipeline:
