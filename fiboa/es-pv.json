@@ -1,23 +1,117 @@
 {
-  "id": "fiboa/es-pv",
-  "title": "Spain Basque Country Crop Fields",
-  "description": "SIGPAC, the geographic information system for the identification of agricultural plots, is the system that farmers and ranchers must use to apply for community aid related to the area. The reason for putting this system into effect was the result of a requirement imposed by the European Union on all Member States. Sigpac began to be used from February 1, 2005, together with the beginning of the 2005 community aid application period.\n\n",
-  "keywords": [
-    "basque",
-    "spain",
-    "sigpac",
-    "fiboa",
-    "field boundaries",
-    "geoparquet",
-    "vector",
-    "pmtiles"
+  "fiboa_version": "0.2.0",
+  "fiboa_extensions": [
+    "https://fiboa.github.io/crop-extension/v0.1.0/schema.yaml",
+    "https://fiboa.github.io/administrative-division-extension/v0.1.0/schema.yaml"
   ],
-  "created_at": "2024-12-24T22:27:47.638Z",
-  "updated_at": "2025-08-21T16:39:55.568Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": "open",
+  "type": "Collection",
+  "id": "es_pv",
+  "title": "Spain Basque Country Crop fields",
+  "description": "SIGPAC, the geographic information system for the identification of agricultural plots, is the system\n    that farmers and ranchers must use to apply for community aid related to the area. The reason for\n    putting this system into effect was the result of a requirement imposed by the European Union on\n    all Member States. Sigpac began to be used from February 1, 2005, together with the beginning of\n    the 2005 community aid application period.",
+  "license": "CC-BY-4.0",
+  "providers": [
+    {
+      "name": "Basque Government",
+      "url": "https://www.euskadi.eus/gobierno-vasco/inicio/",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "fiboa CLI",
+      "roles": [
+        "processor"
+      ],
+      "url": "https://pypi.org/project/fiboa-cli"
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/fiboa/es-pv/"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -3.450468751847184,
+          42.46666208396817,
+          -1.7271870391114859,
+          43.45579907089769
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2024-01-01T00:00:00Z",
+          "2024-01-01T00:00:00Z"
+        ]
+      ]
+    }
+  },
+  "links": [
+    {
+      "href": "https://data.source.coop/fiboa/es-pv/es_pv.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "rel": "pmtiles"
+    }
+  ],
+  "stac_version": "1.0.0",
+  "attribution": "Basque Government",
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/fiboa/es_pv/es_pv.parquet",
+      "title": "Field Boundaries",
+      "type": "application/vnd.apache.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "geometry",
+          "type": "binary"
+        },
+        {
+          "name": "id",
+          "type": "string"
+        },
+        {
+          "name": "determination_datetime",
+          "type": "timestamp[ms, tz=UTC]"
+        },
+        {
+          "name": "crop:code",
+          "type": "string"
+        },
+        {
+          "name": "crop:name",
+          "type": "string"
+        },
+        {
+          "name": "admin:country_code",
+          "type": "string"
+        },
+        {
+          "name": "crop:code_list",
+          "type": "string"
+        },
+        {
+          "name": "admin:subdivision_code",
+          "type": "string"
+        }
+      ],
+      "table:primary_geometry": "geometry",
+      "table:row_count": 562407
+    }
+  },
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json",
+    "https://stac-extensions.github.io/web-map-links/v1.2.0/schema.json"
+  ],
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -30,8 +124,14 @@
       "prefix": "fiboa/es-pv/"
     }
   },
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
   "file_count": 5,
-  "total_bytes": 203712406,
+  "visibility": "public",
+  "created_at": "2024-12-24T22:27:47.638Z",
+  "updated_at": "2025-08-21T16:39:55.568Z",
   "exts": {
     "parquet": 1,
     "pmtiles": 1,
@@ -39,9 +139,11 @@
     "json": 1,
     "txt": 1
   },
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  }
+  "featured": 0,
+  "data_mode": "open",
+  "disabled": false,
+  "total_bytes": 203712406,
+  "stac_key": "fiboa/es-pv/stac/collection.json",
+  "stac_last_modified": "2025-03-19 15:25:23-07:00",
+  "state": "gathered"
 }

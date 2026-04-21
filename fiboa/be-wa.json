@@ -1,16 +1,108 @@
 {
-  "id": "fiboa/be-wa",
-  "title": "Field boundaries for Walonia, Belgium",
-  "description": "The Crop Fields (PAA) covers land use in agricultural and forestry areas managed as part of the implementation of the\nCommon Agricultural Policy by the Paying Agency of Wallonia. The PAA represents the public, anonymous version of the agricultural plot. This data set is acquired through the Inspire Geoportal of the European Commission, No conditions apply to access and use. \n",
-  "keywords": [
-    "belgium wallonia fiboa field boundaries geoparquet vector pmtiles"
+  "fiboa_version": "0.2.0",
+  "fiboa_extensions": [],
+  "type": "Collection",
+  "id": "be_wa",
+  "title": "Belgium Wallonia: Parcellaire Agricole Anonyme",
+  "description": "The Crop Fields (PAA) covers land use in agricultural and forestry areas managed as part of the implementation of the\nCommon Agricultural Policy by the Paying Agency of Wallonia.\n\nThe PAA represents the public version of the agricultural plot. It therefore does not include personal information\nallowing the operator to be identified. It is provided on an annual basis. Data from a year of cultivation are made\navailable to the public during the following year.\n\nThe data is distributed in two ways: either at the source of the paying agency (more attributes\nbut no public distribution) or at the European Commission data portal (no limitations). We use the\nfree-licensed version for this converter.",
+  "license": "proprietary",
+  "providers": [
+    {
+      "name": "Inspire Geoportal of the European Commission",
+      "url": "https://inspire-geoportal.ec.europa.eu/srv/eng/catalog.search#/metadata/2a0d9be0-ac3d-443e-9db0-a7cfb0f128e2",
+      "roles": [
+        "host",
+        "processor"
+      ]
+    },
+    {
+      "name": "fiboa CLI",
+      "roles": [
+        "processor"
+      ],
+      "url": "https://pypi.org/project/fiboa-cli"
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/fiboa/be-wa/"
+    }
   ],
-  "created_at": "2024-11-10T09:44:04.278Z",
-  "updated_at": "2025-08-21T16:39:55.568Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": "open",
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          2.832560248361604,
+          49.37305006304422,
+          6.4677143415140534,
+          50.9655293634219
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2022-01-01T00:00:00Z",
+          "2022-01-01T00:00:00Z"
+        ]
+      ]
+    }
+  },
+  "links": [
+    {
+      "title": "No conditions apply to access and use. Distributed through Inspire guidelines",
+      "href": "https://inspire-geoportal.ec.europa.eu/srv/eng/catalog.search#/metadata/2a0d9be0-ac3d-443e-9db0-a7cfb0f128e2",
+      "type": "text/html",
+      "rel": "license"
+    },
+    {
+      "href": "https://data.source.coop/fiboa/be-wa/be_wa.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "rel": "pmtiles"
+    }
+  ],
+  "stac_version": "1.0.0",
+  "attribution": "",
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/fiboa/be-wa/be_wa.parquet",
+      "title": "Field Boundaries",
+      "type": "application/vnd.apache.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "geometry",
+          "type": "binary"
+        },
+        {
+          "name": "crop_name",
+          "type": "string"
+        },
+        {
+          "name": "crop_code",
+          "type": "string"
+        },
+        {
+          "name": "id",
+          "type": "string"
+        },
+        {
+          "name": "determination_datetime",
+          "type": "timestamp[ms, tz=UTC]"
+        }
+      ],
+      "table:primary_geometry": "geometry",
+      "table:row_count": 341968
+    }
+  },
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json",
+    "https://stac-extensions.github.io/web-map-links/v1.2.0/schema.json"
+  ],
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -23,8 +115,14 @@
       "prefix": "fiboa/be-wa/"
     }
   },
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
   "file_count": 5,
-  "total_bytes": 126239285,
+  "visibility": "public",
+  "created_at": "2024-11-10T09:44:04.278Z",
+  "updated_at": "2025-08-21T16:39:55.568Z",
   "exts": {
     "parquet": 1,
     "pmtiles": 1,
@@ -32,9 +130,11 @@
     "md": 1,
     "txt": 1
   },
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  }
+  "featured": 0,
+  "data_mode": "open",
+  "disabled": false,
+  "total_bytes": 126239285,
+  "stac_key": "fiboa/be-wa/stac/collection.json",
+  "stac_last_modified": "2025-03-19 15:25:36-07:00",
+  "state": "gathered"
 }

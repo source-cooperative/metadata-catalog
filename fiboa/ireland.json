@@ -1,16 +1,104 @@
 {
-  "id": "fiboa/ireland",
-  "title": "Ireland Crop Fields",
-  "description": "Ireland INSPIRE Geospatial aid application (GSAA) dataset. This data represents the outline shape of LPIS parcels as claimed under area based schemes. The dataset includes the crops claimed as part of the annual GSAA. Yearly information provided through the beneficiary declaration.\n",
-  "keywords": [
-    "ireland fiboa field boundarie geoparquet vector pmtiles"
+  "fiboa_version": "0.2.0",
+  "fiboa_extensions": [],
+  "type": "Collection",
+  "id": "ie",
+  "title": "Ireland INSPIRE Geospatial aid application (GSAA) dataset",
+  "description": "This data represents the outline shape of LPIS parcels as claimed under area based schemes. The dataset includes the crops claimed as part of the annual GSAA.\nYearly information provided through the beneficiary declaration.",
+  "license": "proprietary",
+  "providers": [
+    {
+      "name": "Ireland Department of Agriculture, Food and the Marine",
+      "url": "https://inspire.geohive.ie/geoportal/",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "fiboa CLI",
+      "roles": [
+        "processor"
+      ],
+      "url": "https://pypi.org/project/fiboa-cli"
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/fiboa/ireland/"
+    }
   ],
-  "created_at": "2024-11-09T23:57:54.203Z",
-  "updated_at": "2025-08-21T16:39:55.569Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": "open",
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -10.592261366302468,
+          51.42206473031654,
+          -5.994829351117395,
+          55.383634224421726
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2021-12-15T00:00:00Z",
+          "2021-12-15T00:00:00Z"
+        ]
+      ]
+    }
+  },
+  "links": [
+    {
+      "title": "This layer is published under the terms of the license Creative Commons Attribution 4.0 International (CC BY 4.0)",
+      "href": "https://creativecommons.org/licenses/by/4.0/",
+      "type": "text/html",
+      "rel": "license"
+    },
+    {
+      "href": "https://data.source.coop/fiboa/ireland/ireland.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "rel": "pmtiles"
+    }
+  ],
+  "stac_version": "1.0.0",
+  "attribution": "Ireland Department of Agriculture, Food and the Marine",
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/fiboa/ireland/ireland.parquet",
+      "title": "Field Boundaries",
+      "type": "application/vnd.apache.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "geometry",
+          "type": "binary"
+        },
+        {
+          "name": "crop_name",
+          "type": "string"
+        },
+        {
+          "name": "id",
+          "type": "string"
+        },
+        {
+          "name": "determination_datetime",
+          "type": "timestamp[ms, tz=UTC]"
+        }
+      ],
+      "table:primary_geometry": "geometry",
+      "table:row_count": 1027439
+    }
+  },
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json",
+    "https://stac-extensions.github.io/web-map-links/v1.2.0/schema.json"
+  ],
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -23,8 +111,14 @@
       "prefix": "fiboa/ireland/"
     }
   },
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
   "file_count": 5,
-  "total_bytes": 805463630,
+  "visibility": "public",
+  "created_at": "2024-11-09T23:57:54.203Z",
+  "updated_at": "2025-08-21T16:39:55.569Z",
   "exts": {
     "parquet": 1,
     "pmtiles": 1,
@@ -32,9 +126,11 @@
     "md": 1,
     "txt": 1
   },
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  }
+  "featured": 0,
+  "data_mode": "open",
+  "disabled": false,
+  "total_bytes": 805463630,
+  "stac_key": "fiboa/ireland/stac/collection.json",
+  "stac_last_modified": "2025-03-19 15:25:52-07:00",
+  "state": "gathered"
 }

@@ -1,21 +1,93 @@
 {
-  "id": "fiboa/sweden",
-  "title": "Field boundaries for Sweden",
-  "description": "Provides ca. 1.142.000 official field boundaries from the Sweden. It has been converted to fiboa from the 2023 export that was provided by Jordbruksverket (The Swedish Board of Agriculture).",
-  "keywords": [
-    "sweden",
-    "fiboa",
-    "field boundaries",
-    "vector",
-    "geoparquet",
-    "pmtiles"
+  "fiboa_version": "0.2.0",
+  "fiboa_extensions": [],
+  "type": "Collection",
+  "id": "se",
+  "title": "Swedish Crop Fields (Jordbruksskiften)",
+  "description": "A crop field (Jordbruksskift) is a contiguous area of land within a block where a farmer grows a crop or otherwise manages the land.\nTo receive compensation for agricultural support (EU support), farmers apply for support from the\nSwedish Agency for Agriculture via a SAM application. The data set contains parcels where the area\napplied for and the area decided on are the same. The data is published at the end of a year.",
+  "license": "CC-0",
+  "providers": [
+    {
+      "name": "Jordbruksverket (The Swedish Board of Agriculture)",
+      "url": "https://jordbruksverket.se/",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "fiboa CLI",
+      "roles": [
+        "processor"
+      ],
+      "url": "https://pypi.org/project/fiboa-cli"
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/fiboa/sweden/"
+    }
   ],
-  "created_at": "2024-11-08T21:01:11.308Z",
-  "updated_at": "2025-08-21T16:39:55.569Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": "open",
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          9.330066009624636,
+          55.17427113338901,
+          25.110648011758556,
+          68.53750490214179
+        ]
+      ]
+    }
+  },
+  "links": [
+    {
+      "href": "https://data.source.coop/fiboa/sweden/sweden.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "rel": "pmtiles"
+    }
+  ],
+  "attribution": "Finnish Food Authority",
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/fiboa/sweden/sweden.parquet",
+      "title": "Field Boundaries",
+      "type": "application/vnd.apache.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "geometry",
+          "type": "binary"
+        },
+        {
+          "name": "id",
+          "type": "string"
+        },
+        {
+          "name": "area",
+          "type": "float"
+        },
+        {
+          "name": "crop_code",
+          "type": "string"
+        },
+        {
+          "name": "crop_name",
+          "type": "string"
+        }
+      ],
+      "table:primary_geometry": "geometry",
+      "table:row_count": 1142785
+    }
+  },
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json",
+    "https://stac-extensions.github.io/web-map-links/v1.2.0/schema.json"
+  ],
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -28,8 +100,14 @@
       "prefix": "fiboa/sweden/"
     }
   },
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
   "file_count": 5,
-  "total_bytes": 502736951,
+  "visibility": "public",
+  "created_at": "2024-11-08T21:01:11.308Z",
+  "updated_at": "2025-08-21T16:39:55.569Z",
   "exts": {
     "parquet": 1,
     "pmtiles": 1,
@@ -37,9 +115,11 @@
     "json": 1,
     "txt": 1
   },
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  }
+  "featured": 0,
+  "data_mode": "open",
+  "disabled": false,
+  "total_bytes": 502736951,
+  "stac_key": "fiboa/sweden/stac/collection.json",
+  "stac_last_modified": "2025-03-19 15:25:22-07:00",
+  "state": "gathered"
 }

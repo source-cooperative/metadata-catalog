@@ -1,16 +1,107 @@
 {
-  "id": "fiboa/slovenia",
-  "title": "Crop fields for Slovenia",
-  "description": "The KRMS dataset includes CAP applications of the last year and discerns around 150 different crop categories.",
-  "keywords": [
-    "slovenia fiboa field boundaries krms gerk geoparquet vector pmtiles"
+  "fiboa_version": "0.2.0",
+  "fiboa_extensions": [],
+  "type": "Collection",
+  "id": "si",
+  "title": "Slovenia Crop Fields",
+  "description": "The Slovenian government provides slightly different, relevant open data sets called GERK, KMRS, RABA and EKRZ.\nThis converter uses the KRMS dataset, which includes CAP applications of the last year and discerns\naround 150 different crop categories.",
+  "license": "proprietary",
+  "providers": [
+    {
+      "name": "Ministry of Agriculture, Forestry and Food (Ministrstvo za kmetijstvo, gozdarstvo in prehrano)",
+      "url": "https://www.gov.si/drzavni-organi/ministrstva/ministrstvo-za-kmetijstvo-gozdarstvo-in-prehrano/",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "fiboa CLI",
+      "roles": [
+        "processor"
+      ],
+      "url": "https://pypi.org/project/fiboa-cli"
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/fiboa/slovenia/"
+    }
   ],
-  "created_at": "2024-11-12T12:29:49.763Z",
-  "updated_at": "2025-08-21T16:39:55.569Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": "open",
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          13.391407223909534,
+          45.41166432305473,
+          16.60796186754383,
+          46.86979599355252
+        ]
+      ]
+    }
+  },
+  "links": [
+    {
+      "title": "Javno dostopni podatki: Publicly available data",
+      "href": "https://rkg.gov.si/vstop/",
+      "type": "text/html",
+      "rel": "license"
+    },
+    {
+      "href": "https://data.source.coop/fiboa/slovenia/slovenia.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "rel": "pmtiles"
+    }
+  ],
+  "attribution": "",
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/fiboa/slovenia/slovenia.parquet",
+      "title": "Field Boundaries",
+      "type": "application/vnd.apache.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "geometry",
+          "type": "binary"
+        },
+        {
+          "name": "id",
+          "type": "string"
+        },
+        {
+          "name": "block_id",
+          "type": "uint64"
+        },
+        {
+          "name": "area",
+          "type": "float"
+        },
+        {
+          "name": "crop_code",
+          "type": "string"
+        },
+        {
+          "name": "crop_name",
+          "type": "string"
+        },
+        {
+          "name": "crop_name_en",
+          "type": "string"
+        }
+      ],
+      "table:primary_geometry": "geometry",
+      "table:row_count": 830856
+    }
+  },
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json",
+    "https://stac-extensions.github.io/web-map-links/v1.2.0/schema.json"
+  ],
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -23,8 +114,14 @@
       "prefix": "fiboa/slovenia/"
     }
   },
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
   "file_count": 5,
-  "total_bytes": 354590949,
+  "visibility": "public",
+  "created_at": "2024-11-12T12:29:49.763Z",
+  "updated_at": "2025-08-21T16:39:55.569Z",
   "exts": {
     "parquet": 1,
     "pmtiles": 1,
@@ -32,9 +129,11 @@
     "md": 1,
     "txt": 1
   },
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  }
+  "featured": 0,
+  "data_mode": "open",
+  "disabled": false,
+  "total_bytes": 354590949,
+  "stac_key": "fiboa/slovenia/stac/collection.json",
+  "stac_last_modified": "2025-03-19 15:25:38-07:00",
+  "state": "gathered"
 }

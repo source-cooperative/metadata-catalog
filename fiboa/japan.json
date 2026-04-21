@@ -1,23 +1,109 @@
 {
-  "id": "fiboa/japan",
-  "title": "Japan Fude Polygons",
-  "description": "Japanese Farmland Parcel Polygons (Fude Polygons in Japanese) represent parcel information of farmland.\nThe polygons are manually digitized data derived from aerial imagery, such as satellite images. Since no\non-site verification or similar procedures have been conducted, the data may not necessarily match the actual\ncurrent conditions. Fude Polygons are created for the purpose of roughly indicating the locations of farmland.\n\nOriginal data converted to fiboa from https://source.coop/repositories/pacificspatial/field-polygon-jp",
-  "keywords": [
-    "japan",
-    "fiboa",
-    "field boundaries",
-    "fude",
-    "geoparquet",
-    "vector",
-    "pmtiles",
-    "pacificspatial"
+  "fiboa_version": "0.2.0",
+  "fiboa_extensions": [],
+  "type": "Collection",
+  "id": "jp",
+  "title": "Japan Fude Parcels",
+  "description": "Japanese Farmland Parcel Polygons (Fude Polygons in Japanese) represent parcel information of farmland.\nThe polygons are manually digitized data derived from aerial imagery, such as satellite images. Since no\non-site verification or similar procedures have been conducted, the data may not necessarily match the actual\ncurrent conditions. Fude Polygons are created for the purpose of roughly indicating the locations of farmland.",
+  "license": "CC-BY-4.0",
+  "providers": [
+    {
+      "name": "Japanese Ministry of Agriculture, Forestry and Fisheries (MAFF, \u8fb2\u6797\u6c34\u7523\u7701)",
+      "url": "https://www.maff.go.jp/",
+      "roles": [
+        "licensor",
+        "producer"
+      ]
+    },
+    {
+      "name": "Hiroo Imaki, Pacific Spatial Solutions",
+      "url": "https://pacificspatial.com/",
+      "roles": [
+        "processor"
+      ]
+    },
+    {
+      "name": "fiboa CLI",
+      "roles": [
+        "processor"
+      ],
+      "url": "https://pypi.org/project/fiboa-cli"
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/fiboa/japan/"
+    }
   ],
-  "created_at": "2024-12-04T21:00:26.907Z",
-  "updated_at": "2025-08-21T16:39:55.569Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": "open",
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          122.946031194,
+          24.046770215,
+          145.802669174,
+          45.520014956
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2024-01-01T00:00:00Z",
+          "2024-01-01T00:00:00Z"
+        ]
+      ]
+    }
+  },
+  "links": [
+    {
+      "href": "https://data.source.coop/fiboa/japan/japan.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "rel": "pmtiles"
+    }
+  ],
+  "stac_version": "1.0.0",
+  "attribution": "Fude Polygon Data (2021-2024). Japanese Ministry of Agriculture, Forestry and Fisheries. Processed by Pacific Spatial Solutions, Inc",
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/fiboa/japan/japan.parquet",
+      "title": "Field Boundaries",
+      "type": "application/vnd.apache.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "geometry",
+          "type": "binary"
+        },
+        {
+          "name": "id",
+          "type": "string"
+        },
+        {
+          "name": "land_type_en",
+          "type": "string"
+        },
+        {
+          "name": "admin_local_code",
+          "type": "string"
+        },
+        {
+          "name": "determination_datetime",
+          "type": "timestamp[ms, tz=UTC]"
+        }
+      ],
+      "table:primary_geometry": "geometry",
+      "table:row_count": 29418076
+    }
+  },
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json",
+    "https://stac-extensions.github.io/web-map-links/v1.2.0/schema.json"
+  ],
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -30,8 +116,14 @@
       "prefix": "fiboa/japan/"
     }
   },
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
   "file_count": 5,
-  "total_bytes": 6730092461,
+  "visibility": "public",
+  "created_at": "2024-12-04T21:00:26.907Z",
+  "updated_at": "2025-08-21T16:39:55.569Z",
   "exts": {
     "parquet": 1,
     "pmtiles": 1,
@@ -39,9 +131,11 @@
     "md": 1,
     "txt": 1
   },
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  }
+  "featured": 0,
+  "data_mode": "open",
+  "disabled": false,
+  "total_bytes": 6730092461,
+  "stac_key": "fiboa/japan/stac/collection.json",
+  "stac_last_modified": "2025-03-19 15:25:51-07:00",
+  "state": "gathered"
 }

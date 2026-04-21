@@ -1,24 +1,126 @@
 {
-  "id": "fiboa/de-nds",
-  "title": "Field boundaries for Lower Saxony / Hamburg / Bremen, Germany",
-  "description": "Provides ca. 550,000 official field boundaries from the federal state of Lower Saxony in Germany, which also includes data for the federal city states Hamburg and Bremen.\nIt has been converted to a fiboa GeoParquet file from a Shapefile that was provided by the state.",
-  "keywords": [
-    "germany",
-    "nds",
-    "hamburg",
-    "bremen",
-    "fiboa",
-    "field boundaries",
-    "vector",
-    "geoparquet",
-    "pmtiles"
+  "fiboa_version": "0.2.0",
+  "fiboa_extensions": [
+    "https://fiboa.github.io/flik-extension/v0.1.0/schema.yaml"
   ],
-  "created_at": "2024-04-12T12:16:49.949547+00:00",
-  "updated_at": "2025-08-21T16:39:55.568Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": "open",
+  "stac_version": "1.0.0",
+  "type": "Collection",
+  "id": "de_nds",
+  "title": "Field boundaries for Lower Saxony, Germany",
+  "description": "A field block (German: \"Feldblock\") is a contiguous agricultural area surrounded by permanent boundaries, which is cultivated by one or more farmers with one or more crops, is fully or partially set aside or is fully or partially taken out of production.",
+  "license": "proprietary",
+  "providers": [
+    {
+      "name": "ML/SLA Niedersachsen",
+      "roles": [
+        "producer",
+        "licensor"
+      ],
+      "url": "https://sla.niedersachsen.de/landentwicklung/LEA/"
+    },
+    {
+      "name": "fiboa CLI",
+      "roles": [
+        "processor"
+      ],
+      "url": "https://pypi.org/project/fiboa-cli"
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://beta.source.coop/fiboa/de-nds/"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          6.6545841239,
+          51.2954150799,
+          11.59769814,
+          53.8941514415
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2024-01-31T00:00:00Z",
+          "2024-01-31T00:00:00Z"
+        ]
+      ]
+    }
+  },
+  "links": [
+    {
+      "href": "https://www.govdata.de/dl-de/by-2-0",
+      "title": "Data licence Germany - attribution - Version 2.0",
+      "type": "text/html",
+      "rel": "license"
+    },
+    {
+      "href": "https://data.source.coop/fiboa/de-nds/FB_NDS.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "rel": "pmtiles"
+    }
+  ],
+  "attribution": "\u00a9 ML/SLA Niedersachsen (2024), dl-de/by-2-0 (www.govdata.de/dl-de/by-2-0), Daten bearbeitet",
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/fiboa/de-nds/FB_NDS.parquet",
+      "title": "Field Boundaries",
+      "type": "application/vnd.apache.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "geometry",
+          "type": "binary"
+        },
+        {
+          "name": "id",
+          "type": "string"
+        },
+        {
+          "name": "flik",
+          "type": "string"
+        },
+        {
+          "name": "determination_datetime",
+          "type": "timestamp[ms, tz=UTC]"
+        },
+        {
+          "name": "ant_jahr",
+          "type": "int16"
+        },
+        {
+          "name": "bnk",
+          "type": "string"
+        },
+        {
+          "name": "bnk_txt",
+          "type": "string"
+        },
+        {
+          "name": "area",
+          "type": "float"
+        },
+        {
+          "name": "perimeter",
+          "type": "float"
+        }
+      ],
+      "table:primary_geometry": "geometry",
+      "table:row_count": 547196
+    }
+  },
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json",
+    "https://stac-extensions.github.io/web-map-links/v1.2.0/schema.json"
+  ],
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -31,8 +133,14 @@
       "prefix": "fiboa/de-nds/"
     }
   },
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
   "file_count": 6,
-  "total_bytes": 252171021,
+  "visibility": "public",
+  "created_at": "2024-04-12T12:16:49.949547+00:00",
+  "updated_at": "2025-08-21T16:39:55.568Z",
   "exts": {
     "parquet": 1,
     "pmtiles": 1,
@@ -40,9 +148,11 @@
     "txt": 2,
     "md": 1
   },
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  }
+  "featured": 0,
+  "data_mode": "open",
+  "disabled": false,
+  "total_bytes": 252171021,
+  "stac_key": "fiboa/de-nds/stac/collection.json",
+  "stac_last_modified": "2024-04-12 06:31:14-07:00",
+  "state": "gathered"
 }

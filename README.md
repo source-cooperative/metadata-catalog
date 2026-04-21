@@ -14,7 +14,7 @@ Most Source Coop products map 1:1 to a catalog entry. Some products contain mult
 
 ## Phases
 
-Every catalog entry has a `_state` field tracking where it is in the curation pipeline:
+Every catalog entry has a `state` field tracking where it is in the curation pipeline:
 
 | State | What happened | What's in the file |
 |-------|---------------|--------------------|
@@ -53,7 +53,10 @@ Each line is a JSON object with a `_ts` timestamp. New responses are appended; t
 
 ## Scripts
 
+Script names reinforce the state they produce: `gen_seeds.py` creates `state: "seed"` entries; `gather_*.py` scripts advance to `state: "gathered"`; future `draft_*.py` scripts will advance to `state: "drafted"`.
+
 | Script | Purpose |
 |--------|---------|
-| `scripts/gen_stubs.py` | Generate `seed` stubs from `cache/s3inv/repo_metadata.jsonl` |
+| `scripts/gen_seeds.py` | Create `state: "seed"` entries from `cache/s3inv/repo_metadata.jsonl` |
+| `scripts/gather_stac.py` | `seed` → `gathered` by pulling the upstream STAC catalog/collection/stac.parquet |
 | `scripts/gen_collection.py` | Generate a rich STAC Collection for one repo (gather + draft) |

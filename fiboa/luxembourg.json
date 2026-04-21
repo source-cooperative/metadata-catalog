@@ -1,16 +1,80 @@
 {
-  "id": "fiboa/luxembourg",
-  "title": "Luxembourg FLIK Parcels",
-  "description": "The Land Parcel Identification System (LPIS) is a reference database of the agriculture parcels used as a basis for area related payments to farmers in relation to the Common Agricultural Policy (CAP). These payments are (co)financed by the European Agricultural Guarantee Fund (\u2018EAGF\u2019) and the European Agricultural Fund for Rural Development (\u2018EAFRD\u2019).\nTo ensure that payments are regular, the CAP relies on the Integrated Administration and Control System (IACS), a set of comprehensive administrative and on the spot checks on subsidy applications, which is managed by the Member States. The Land Parcel Identification System (LPIS) is a key component of the IACS. It is an IT system based on ortho imagery (aerial or satellite photographs) which records all agricultural parcels in the Member States. It serves two main purposes: to clearly locate all eligible agricultural land contained within reference parcels and to calculate their maximum eligible area (MEA). The LPIS is used for cross checking during the administrative control procedures and as a basis for on the spot checks by the paying agency.\n",
-  "keywords": [
-    "luxembourg fiboa field flik boundaries geoparquet vector pmtiles"
+  "fiboa_version": "0.2.0",
+  "fiboa_extensions": [
+    "https://fiboa.github.io/flik-extension/v0.1.0/schema.yaml"
   ],
-  "created_at": "2024-11-10T22:44:24.211Z",
-  "updated_at": "2025-08-21T16:39:55.569Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": "open",
+  "type": "Collection",
+  "id": "lu",
+  "title": "Luxembourg FLIK Parcels",
+  "description": "The Land Parcel Identification System (LPIS) is a reference database of the agriculture parcels used as a basis for area related payments to farmers in relation to the Common Agricultural Policy (CAP). These payments are (co)financed by the European Agricultural Guarantee Fund (\u2018EAGF\u2019) and the European Agricultural Fund for Rural Development (\u2018EAFRD\u2019).\nTo ensure that payments are regular, the CAP relies on the Integrated Administration and Control System (IACS), a set of comprehensive administrative and on the spot checks on subsidy applications, which is managed by the Member States. The Land Parcel Identification System (LPIS) is a key component of the IACS. It is an IT system based on ortho imagery (aerial or satellite photographs) which records all agricultural parcels in the Member States. It serves two main purposes: to clearly locate all eligible agricultural land contained within reference parcels and to calculate their maximum eligible area (MEA). The LPIS is used for cross checking during the administrative control procedures and as a basis for on the spot checks by the paying agency.",
+  "license": "CC-BY-4.0",
+  "providers": [
+    {
+      "name": "Luxembourg ministry of Agriculture",
+      "url": "https://agriculture.public.lu/",
+      "roles": [
+        "licensor",
+        "distributor"
+      ]
+    },
+    {
+      "name": "fiboa CLI",
+      "roles": [
+        "processor"
+      ],
+      "url": "https://pypi.org/project/fiboa-cli"
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/fiboa/luxembourg/"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          5.736141650909274,
+          49.44872633968609,
+          6.533284021587814,
+          50.18226420224323
+        ]
+      ]
+    }
+  },
+  "links": [],
+  "attribution": "Luxembourg ministry of Agriculture",
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/fiboa/luxembourg/luxembourg.parquet",
+      "title": "Field Boundaries",
+      "type": "application/vnd.apache.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "geometry",
+          "type": "binary"
+        },
+        {
+          "name": "id",
+          "type": "string"
+        },
+        {
+          "name": "flik",
+          "type": "string"
+        }
+      ],
+      "table:primary_geometry": "geometry",
+      "table:row_count": 87997
+    }
+  },
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -23,8 +87,14 @@
       "prefix": "fiboa/luxembourg/"
     }
   },
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
   "file_count": 6,
-  "total_bytes": 39338756,
+  "visibility": "public",
+  "created_at": "2024-11-10T22:44:24.211Z",
+  "updated_at": "2025-08-21T16:39:55.569Z",
   "exts": {
     "parquet": 1,
     "pmtiles": 1,
@@ -32,9 +102,11 @@
     "md": 1,
     "txt": 1
   },
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  }
+  "featured": 0,
+  "data_mode": "open",
+  "disabled": false,
+  "total_bytes": 39338756,
+  "stac_key": "fiboa/luxembourg/collection.json",
+  "stac_last_modified": "2025-03-19 15:25:49-07:00",
+  "state": "gathered"
 }

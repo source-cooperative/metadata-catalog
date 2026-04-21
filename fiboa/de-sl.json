@@ -1,22 +1,104 @@
 {
-  "id": "fiboa/de-sl",
+  "fiboa_version": "0.2.0",
+  "fiboa_extensions": [
+    "https://fiboa.github.io/flik-extension/v0.1.0/schema.yaml"
+  ],
+  "stac_version": "1.0.0",
+  "type": "Collection",
+  "id": "de_sl",
   "title": "Field boundaries for Saarland, Germany",
   "description": "This dataset contains data transformed into the INSPIRE data model \u201cLand Use\u201d of the IACS areas applied for within the framework of agricultural land promotion (GIS application) from the Saarland.",
-  "keywords": [
-    "germany",
-    "sl",
-    "fiboa",
-    "field boundaries",
-    "geoparquet",
-    "vector",
-    "pmtiles"
+  "license": "cc-by-4.0",
+  "providers": [
+    {
+      "name": "Ministerium f\u00fcr Umwelt, Klima, Mobilit\u00e4t, Agrar und Verbraucherschutz",
+      "url": "https://geoportal.saarland.de",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "fiboa CLI",
+      "roles": [
+        "processor"
+      ],
+      "url": "https://pypi.org/project/fiboa-cli"
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://beta.source.coop/fiboa/de-sl/"
+    }
   ],
-  "created_at": "2024-11-05T23:36:33.923Z",
-  "updated_at": "2025-08-21T16:39:55.568Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": "open",
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          6.359213,
+          49.112315,
+          7.401565,
+          49.634716
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2024-01-01T00:00:00Z",
+          "2024-01-01T00:00:00Z"
+        ]
+      ]
+    }
+  },
+  "links": [
+    {
+      "href": "https://data.source.coop/fiboa/de-sl/de-sl.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "rel": "pmtiles"
+    }
+  ],
+  "attribution": "\u00a9 GDI-SL 2024",
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/fiboa/de-sl/de-sl.parquet",
+      "title": "Field Boundaries",
+      "type": "application/vnd.apache.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "geometry",
+          "type": "binary"
+        },
+        {
+          "name": "id",
+          "type": "string"
+        },
+        {
+          "name": "flik",
+          "type": "string"
+        },
+        {
+          "name": "area",
+          "type": "float"
+        },
+        {
+          "name": "name",
+          "type": "string"
+        }
+      ],
+      "table:primary_geometry": "geometry",
+      "table:row_count": 53366
+    }
+  },
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json",
+    "https://stac-extensions.github.io/web-map-links/v1.2.0/schema.json"
+  ],
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -29,8 +111,14 @@
       "prefix": "fiboa/de-sl/"
     }
   },
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
   "file_count": 5,
-  "total_bytes": 47455579,
+  "visibility": "public",
+  "created_at": "2024-11-05T23:36:33.923Z",
+  "updated_at": "2025-08-21T16:39:55.568Z",
   "exts": {
     "pmtiles": 1,
     "parquet": 1,
@@ -38,9 +126,11 @@
     "json": 1,
     "md": 1
   },
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  }
+  "featured": 0,
+  "data_mode": "open",
+  "disabled": false,
+  "total_bytes": 47455579,
+  "stac_key": "fiboa/de-sl/stac/collection.json",
+  "stac_last_modified": "2024-11-05 17:01:01-08:00",
+  "state": "gathered"
 }

@@ -1,21 +1,195 @@
 {
-  "id": "fiboa/croatia",
+  "fiboa_version": "0.2.0",
+  "fiboa_extensions": [],
+  "type": "Collection",
+  "id": "hr",
   "title": "Croatian Agricultural Spatial Data",
   "description": "This dataset contains spatial data related to agricultural land use in Croatia, including ARKOD parcel information,\nenvironmentally sensitive areas, High Nature Value Grasslands, protective buffer strips around watercourses, and vineyard\nclassifications. The data is crucial for managing agricultural activities, ensuring compliance with environmental regulations,\nand supporting sustainable land use practices.",
-  "keywords": [
-    "croatia",
-    "fiboa",
-    "field boundaries",
-    "geoparquet",
-    "vector",
-    "pmtiles"
+  "license": "proprietary",
+  "providers": [
+    {
+      "name": "Agencija za pla\u0107anja u poljoprivredi, ribarstvu i ruralnom razvoju",
+      "url": "https://www.apprrr.hr/prostorni-podaci-servisi/",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "fiboa CLI",
+      "roles": [
+        "processor"
+      ],
+      "url": "https://pypi.org/project/fiboa-cli"
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/fiboa/croatia/"
+    }
   ],
-  "created_at": "2024-11-14T12:57:19.933Z",
-  "updated_at": "2025-08-21T16:39:55.568Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": "open",
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          13.438328367540874,
+          42.38974862765103,
+          19.515815150519575,
+          46.495826678163446
+        ]
+      ]
+    }
+  },
+  "links": [
+    {
+      "title": "Prostorni podaci i servisi",
+      "href": "https://www.apprrr.hr/prostorni-podaci-servisi/",
+      "type": "text/html",
+      "rel": "license"
+    },
+    {
+      "href": "https://data.source.coop/fiboa/croatia/croatia.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "rel": "pmtiles"
+    }
+  ],
+  "attribution": "copyright \u00a9 2024. Agencija za pla\u0107anja u poljoprivredi, ribarstvu i ruralnom razvoju",
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/fiboa/croatia/croatia.parquet",
+      "title": "Field Boundaries",
+      "type": "application/vnd.apache.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "string"
+        },
+        {
+          "name": "crop_code",
+          "type": "int32"
+        },
+        {
+          "name": "crop_name",
+          "type": "string"
+        },
+        {
+          "name": "crop_name_en",
+          "type": "string"
+        },
+        {
+          "name": "area",
+          "type": "float"
+        },
+        {
+          "name": "geometry",
+          "type": "binary"
+        },
+        {
+          "name": "home_name",
+          "type": "string"
+        },
+        {
+          "name": "perimeter",
+          "type": "float"
+        },
+        {
+          "name": "slope",
+          "type": "double"
+        },
+        {
+          "name": "z_avg",
+          "type": "double"
+        },
+        {
+          "name": "eligibility_coef",
+          "type": "double"
+        },
+        {
+          "name": "mines_status",
+          "type": "string"
+        },
+        {
+          "name": "mines_year_removed",
+          "type": "int32"
+        },
+        {
+          "name": "water_protect_zone",
+          "type": "string"
+        },
+        {
+          "name": "natura2000",
+          "type": "double"
+        },
+        {
+          "name": "natura2000_ok",
+          "type": "string"
+        },
+        {
+          "name": "natura2000_pop",
+          "type": "double"
+        },
+        {
+          "name": "natura2000_povs",
+          "type": "double"
+        },
+        {
+          "name": "anc",
+          "type": "int32"
+        },
+        {
+          "name": "anc_area",
+          "type": "double"
+        },
+        {
+          "name": "rp",
+          "type": "int32"
+        },
+        {
+          "name": "sanitary_protection_zone",
+          "type": "string"
+        },
+        {
+          "name": "tvpv",
+          "type": "int32"
+        },
+        {
+          "name": "ot_nat",
+          "type": "int32"
+        },
+        {
+          "name": "ot_nat_area",
+          "type": "double"
+        },
+        {
+          "name": "irrigation",
+          "type": "int32"
+        },
+        {
+          "name": "irrigation_source",
+          "type": "int32"
+        },
+        {
+          "name": "irrigation_type",
+          "type": "int32"
+        },
+        {
+          "name": "jpaid",
+          "type": "string"
+        }
+      ],
+      "table:primary_geometry": "geometry",
+      "table:row_count": 1346655
+    }
+  },
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json",
+    "https://stac-extensions.github.io/web-map-links/v1.2.0/schema.json"
+  ],
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -28,8 +202,14 @@
       "prefix": "fiboa/croatia/"
     }
   },
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
   "file_count": 5,
-  "total_bytes": 481207473,
+  "visibility": "public",
+  "created_at": "2024-11-14T12:57:19.933Z",
+  "updated_at": "2025-08-21T16:39:55.568Z",
   "exts": {
     "parquet": 1,
     "pmtiles": 1,
@@ -37,9 +217,11 @@
     "md": 1,
     "txt": 1
   },
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  }
+  "featured": 0,
+  "data_mode": "open",
+  "disabled": false,
+  "total_bytes": 481207473,
+  "stac_key": "fiboa/croatia/stac/collection.json",
+  "stac_last_modified": "2025-03-19 15:25:40-07:00",
+  "state": "gathered"
 }

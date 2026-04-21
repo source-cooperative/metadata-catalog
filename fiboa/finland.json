@@ -1,21 +1,97 @@
 {
-  "id": "fiboa/finland",
+  "fiboa_version": "0.2.0",
+  "fiboa_extensions": [],
+  "type": "Collection",
+  "id": "fi",
   "title": "Finnish Crop Fields (Maatalousmaa)",
-  "description": "Field parcel register from the Finnish Food Authority",
-  "keywords": [
-    "finland",
-    "fiboa",
-    "field boundaries",
-    "geoparquet",
-    "vector",
-    "pmtiles"
+  "description": "\nThe Finnish Food Authority (FFA) since 2020 produces spatial data sets,\nmore specifically in this context the \"Field parcel register\" and \"Agricultural parcel containing spatial data\".\nA set called \"Agricultural land: arable land, permanent grassland or permanent crop (land use)\".\n",
+  "license": "CC-BY-4.0",
+  "providers": [
+    {
+      "name": "Finnish Food Authority",
+      "roles": [
+        "producer",
+        "licensor"
+      ],
+      "url": "https://www.ruokavirasto.fi/en/about-us/open-information/spatial-data-sets/"
+    },
+    {
+      "name": "fiboa CLI",
+      "roles": [
+        "processor"
+      ],
+      "url": "https://pypi.org/project/fiboa-cli"
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/fiboa/finland/"
+    }
   ],
-  "created_at": "2024-06-18T12:40:40.580878+00:00",
-  "updated_at": "2025-08-21T16:39:55.569Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": "open",
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          16.23255510557983,
+          59.6677095773865,
+          32.81781081278198,
+          69.99103510928764
+        ]
+      ]
+    }
+  },
+  "links": [
+    {
+      "href": "https://data.source.coop/fiboa/finland/finland.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "rel": "pmtiles"
+    }
+  ],
+  "attribution": "Finnish Food Authority",
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/fiboa/finland/finland.parquet",
+      "title": "Field Boundaries",
+      "type": "application/vnd.apache.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "geometry",
+          "type": "binary"
+        },
+        {
+          "name": "id",
+          "type": "string"
+        },
+        {
+          "name": "block_id",
+          "type": "int64"
+        },
+        {
+          "name": "area",
+          "type": "float"
+        },
+        {
+          "name": "crop_code",
+          "type": "string"
+        },
+        {
+          "name": "crop_name",
+          "type": "string"
+        }
+      ],
+      "table:primary_geometry": "geometry",
+      "table:row_count": 1086825
+    }
+  },
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json",
+    "https://stac-extensions.github.io/web-map-links/v1.2.0/schema.json"
+  ],
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -28,8 +104,14 @@
       "prefix": "fiboa/finland/"
     }
   },
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
   "file_count": 5,
-  "total_bytes": 558071512,
+  "visibility": "public",
+  "created_at": "2024-06-18T12:40:40.580878+00:00",
+  "updated_at": "2025-08-21T16:39:55.569Z",
   "exts": {
     "parquet": 1,
     "pmtiles": 1,
@@ -37,9 +119,11 @@
     "md": 1,
     "txt": 1
   },
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  }
+  "featured": 0,
+  "data_mode": "open",
+  "disabled": false,
+  "total_bytes": 558071512,
+  "stac_key": "fiboa/finland/stac/collection.json",
+  "stac_last_modified": "2025-03-19 15:25:46-07:00",
+  "state": "gathered"
 }

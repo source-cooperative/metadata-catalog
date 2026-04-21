@@ -1,22 +1,125 @@
 {
-  "id": "fiboa/es-cn",
-  "title": "Spain Canary Islands Crop fields",
-  "description": "The Canary Islands Crop Map is a cartographic dataset developed by the Department of Agriculture, Livestock,\nFisheries and Water of the Government of the Canary Islands, to understand the reality of the available\nagricultural surface of the Canary Islands. There are several crop maps for each of the islands, which allow us to see the temporal and spatial evolution of the cultivated areas of the islands in recent years. All this means that the Canary Islands Crop Map is a\ndata set for decision-making in present and future regional agricultural policy, as well as being a basic\nsource for the preservation of agricultural land in the field of territorial planning.",
-  "keywords": [
-    "canary islands",
-    "spain",
-    "fiboa",
-    "field boundaries",
-    "geoparquet",
-    "vector",
-    "pmtiles"
+  "fiboa_version": "0.2.0",
+  "fiboa_extensions": [
+    "https://fiboa.github.io/crop-extension/v0.1.0/schema.yaml",
+    "https://fiboa.github.io/administrative-division-extension/v0.1.0/schema.yaml"
   ],
-  "created_at": "2024-12-26T11:26:54.744Z",
-  "updated_at": "2025-08-21T16:39:55.568Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": "open",
+  "type": "Collection",
+  "id": "es_cn",
+  "title": "Spain Crop fields of Canary Islands",
+  "description": "The Canary Islands Crop Map is a cartographic dataset developed by the Department of Agriculture, Livestock,\n    Fisheries and Water of the Government of the Canary Islands, to understand the reality of the available\n    agricultural surface of the Canary Islands. This tool has been developed from 1998 to the present.\n\n    There are several crop maps for each of the islands, which allow us to see the temporal and spatial evolution\n    of the cultivated areas of the islands in recent years. All this means that the Canary Islands Crop Map is a\n    basic tool for decision-making in present and future regional agricultural policy, as well as being a basic\n    source for the preservation of agricultural land in the field of territorial planning.\n\n    The data of the Canary Islands Crop Map have been published on the open data portal of\n    the Government of the Canary Islands (https://datos.canarias.es/catalogos/general/dataset/mapa-de-cultivos-de-canarias)\n    and in datos gob (https://datos.gob.es/es/catalogo/a05003638-mapa-de-cultivos-de-canarias1),\n    this work having been addressed within the Strategic Plan for Innovation and Continuous Improvement\n    of the Ministry of Agriculture, Livestock and Fisheries.",
+  "license": "CC-BY-4.0",
+  "providers": [
+    {
+      "name": "Gobierno de Canarias - Consejer\u00eda de Agricultura, Ganader\u00eda, Pesca y Soberan\u00eda Alimentaria",
+      "url": "https://www.gobiernodecanarias.org/agpsa/",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "fiboa CLI",
+      "roles": [
+        "processor"
+      ],
+      "url": "https://pypi.org/project/fiboa-cli"
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/fiboa/es-cn/"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -18.19558742954595,
+          27.649471712695853,
+          -13.44565337373722,
+          29.276281686320164
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2018-09-07T00:00:00Z",
+          "2023-04-27T00:00:00Z"
+        ]
+      ]
+    }
+  },
+  "links": [
+    {
+      "href": "https://data.source.coop/fiboa/es-cn/es_cn.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "rel": "pmtiles"
+    }
+  ],
+  "stac_version": "1.0.0",
+  "attribution": "Gobierno de Canarias",
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/fiboa/es_cn/es_cn.parquet",
+      "title": "Field Boundaries",
+      "type": "application/vnd.apache.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "string"
+        },
+        {
+          "name": "geometry",
+          "type": "binary"
+        },
+        {
+          "name": "determination_datetime",
+          "type": "timestamp[ms, tz=UTC]"
+        },
+        {
+          "name": "admin_island",
+          "type": "string"
+        },
+        {
+          "name": "crop:code",
+          "type": "string"
+        },
+        {
+          "name": "crop:name",
+          "type": "string"
+        },
+        {
+          "name": "area",
+          "type": "float"
+        },
+        {
+          "name": "admin:country_code",
+          "type": "string"
+        },
+        {
+          "name": "admin:subdivision_code",
+          "type": "string"
+        },
+        {
+          "name": "crop:code_list",
+          "type": "string"
+        }
+      ],
+      "table:primary_geometry": "geometry",
+      "table:row_count": 466169
+    }
+  },
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json",
+    "https://stac-extensions.github.io/web-map-links/v1.2.0/schema.json"
+  ],
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -29,8 +132,14 @@
       "prefix": "fiboa/es-cn/"
     }
   },
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
   "file_count": 5,
-  "total_bytes": 179595005,
+  "visibility": "public",
+  "created_at": "2024-12-26T11:26:54.744Z",
+  "updated_at": "2025-08-21T16:39:55.568Z",
   "exts": {
     "parquet": 1,
     "pmtiles": 1,
@@ -38,9 +147,11 @@
     "json": 1,
     "md": 1
   },
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  }
+  "featured": 0,
+  "data_mode": "open",
+  "disabled": false,
+  "total_bytes": 179595005,
+  "stac_key": "fiboa/es-cn/stac/collection.json",
+  "stac_last_modified": "2025-03-19 15:25:32-07:00",
+  "state": "gathered"
 }

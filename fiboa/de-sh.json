@@ -1,22 +1,113 @@
 {
-  "id": "fiboa/de-sh",
-  "title": "Field Boundaries for Schleswig-Holstein (SH), Germany",
-  "description": "Provides ca. 200,000 official field boundaries from the federal state of Schleswig-Holstein (SH) in Germany.\nIt has been converted to a fiboa GeoParquet file from a GeoPackage that was provided by the state.",
-  "keywords": [
-    "germany",
-    "sh",
-    "fiboa",
-    "field boundaries",
-    "vector",
-    "geoparquet",
-    "pmtiles"
+  "fiboa_version": "0.2.0",
+  "fiboa_extensions": [
+    "https://fiboa.github.io/flik-extension/v0.1.0/schema.yaml"
   ],
-  "created_at": "2024-04-11T22:48:43.388199+00:00",
-  "updated_at": "2025-08-21T16:39:55.568Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": "open",
+  "stac_version": "1.0.0",
+  "type": "Collection",
+  "id": "de_sh",
+  "title": "Field boundaries for Schleswig-Holstein (SH), Germany",
+  "description": "A field block (German: \"Feldblock\") is a contiguous agricultural area surrounded by permanent boundaries, which is cultivated by one or more farmers with one or more crops, is fully or partially set aside or is fully or partially taken out of production.",
+  "license": "proprietary",
+  "providers": [
+    {
+      "name": "Land Schleswig-Holstein",
+      "roles": [
+        "producer",
+        "licensor"
+      ],
+      "url": "https://sh-mis.gdi-sh.de/catalog/#/datasets/iso/21f67269-780f-4f3c-8f66-03dde27acfe7"
+    },
+    {
+      "name": "fiboa CLI",
+      "roles": [
+        "processor"
+      ],
+      "url": "https://pypi.org/project/fiboa-cli"
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://beta.source.coop/fiboa/de-sh/"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          7.868514562,
+          53.3590675115,
+          11.3132037822,
+          55.0573747014
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2024-01-01T00:00:00Z",
+          "2024-01-01T00:00:00Z"
+        ]
+      ]
+    }
+  },
+  "links": [
+    {
+      "href": "https://www.govdata.de/dl-de/zero-2-0",
+      "title": "Data licence Germany - Zero - Version 2.0",
+      "type": "text/html",
+      "rel": "license"
+    },
+    {
+      "href": "https://data.source.coop/fiboa/de-sh/Feldbloecke_2024.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "rel": "pmtiles"
+    }
+  ],
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/fiboa/de-sh/Feldbloecke_2024.parquet",
+      "title": "Field Boundaries",
+      "type": "application/vnd.apache.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "geometry",
+          "type": "binary"
+        },
+        {
+          "name": "determination_datetime",
+          "type": "timestamp[ms, tz=UTC]"
+        },
+        {
+          "name": "flik",
+          "type": "string"
+        },
+        {
+          "name": "id",
+          "type": "string"
+        },
+        {
+          "name": "area",
+          "type": "float"
+        },
+        {
+          "name": "hbn",
+          "type": "string"
+        }
+      ],
+      "table:primary_geometry": "geometry",
+      "table:row_count": 197673
+    }
+  },
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json",
+    "https://stac-extensions.github.io/web-map-links/v1.2.0/schema.json"
+  ],
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -29,8 +120,14 @@
       "prefix": "fiboa/de-sh/"
     }
   },
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
   "file_count": 6,
-  "total_bytes": 87592908,
+  "visibility": "public",
+  "created_at": "2024-04-11T22:48:43.388199+00:00",
+  "updated_at": "2025-08-21T16:39:55.568Z",
   "exts": {
     "parquet": 1,
     "pmtiles": 1,
@@ -38,9 +135,11 @@
     "md": 1,
     "txt": 2
   },
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  }
+  "featured": 0,
+  "data_mode": "open",
+  "disabled": false,
+  "total_bytes": 87592908,
+  "stac_key": "fiboa/de-sh/stac/collection.json",
+  "stac_last_modified": "2024-04-12 05:56:10-07:00",
+  "state": "gathered"
 }

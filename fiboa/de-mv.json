@@ -1,22 +1,137 @@
 {
-  "id": "fiboa/de-mv",
+  "fiboa_version": "0.2.0",
+  "fiboa_extensions": [
+    "https://fiboa.github.io/flik-extension/v0.1.0/schema.yaml"
+  ],
+  "stac_version": "1.0.0",
+  "type": "Collection",
+  "id": "de_mv",
   "title": "Field boundaries for Mecklenburg-Western Pomerania, Germany",
   "description": "Field block register of the Ministry of Agriculture and Environment M-V",
-  "keywords": [
-    "germany",
-    "mv",
-    "fiboa",
-    "field boundaries",
-    "geoparquet",
-    "vector",
-    "pmtiles"
+  "license": "proprietary",
+  "providers": [
+    {
+      "name": "Ministerium f\u00fcr Landwirtschaft und Umwelt M-V",
+      "url": "https://www.geodaten-mv.de/dienste/feldblock_atom?type=dataset&id=f18122c4-2585-4c22-9c48-9e960e8dhd34",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "fiboa CLI",
+      "roles": [
+        "processor"
+      ],
+      "url": "https://pypi.org/project/fiboa-cli"
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://beta.source.coop/fiboa/de-mv/"
+    }
   ],
-  "created_at": "2024-11-05T17:32:47.874Z",
-  "updated_at": "2025-08-21T16:39:55.568Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": "open",
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          10.460376908101832,
+          53.08445100298004,
+          14.4142582147089,
+          54.692533429485856
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2024-01-01T00:00:00Z",
+          "2024-01-01T00:00:00Z"
+        ]
+      ]
+    }
+  },
+  "links": [
+    {
+      "title": "No restrictions apply",
+      "href": "https://www.geodaten-mv.de/dienste/feldblock_atom?type=dataset&id=f18122c4-2585-4c22-9c48-9e960e8dhd34",
+      "type": "text/html",
+      "rel": "license"
+    },
+    {
+      "href": "https://data.source.coop/fiboa/de-mv/de-mv.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "rel": "pmtiles"
+    }
+  ],
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/fiboa/de-mv/de-mv.parquet",
+      "title": "Field Boundaries",
+      "type": "application/vnd.apache.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "geometry",
+          "type": "binary"
+        },
+        {
+          "name": "id",
+          "type": "string"
+        },
+        {
+          "name": "flik",
+          "type": "string"
+        },
+        {
+          "name": "dgl_jahr",
+          "type": "int16"
+        },
+        {
+          "name": "bodennutzu",
+          "type": "string"
+        },
+        {
+          "name": "bez_kreis",
+          "type": "string"
+        },
+        {
+          "name": "area",
+          "type": "float"
+        },
+        {
+          "name": "perimeter",
+          "type": "float"
+        },
+        {
+          "name": "erwind",
+          "type": "string"
+        },
+        {
+          "name": "erwater",
+          "type": "string"
+        },
+        {
+          "name": "erwind_l",
+          "type": "string"
+        },
+        {
+          "name": "erwater_l",
+          "type": "string"
+        }
+      ],
+      "table:primary_geometry": "geometry",
+      "table:row_count": 70941
+    }
+  },
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json",
+    "https://stac-extensions.github.io/web-map-links/v1.2.0/schema.json"
+  ],
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -29,17 +144,25 @@
       "prefix": "fiboa/de-mv/"
     }
   },
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
   "file_count": 4,
-  "total_bytes": 150797073,
+  "visibility": "public",
+  "created_at": "2024-11-05T17:32:47.874Z",
+  "updated_at": "2025-08-21T16:39:55.568Z",
   "exts": {
     "parquet": 1,
     "pmtiles": 1,
     "json": 1,
     "md": 1
   },
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  }
+  "featured": 0,
+  "data_mode": "open",
+  "disabled": false,
+  "total_bytes": 150797073,
+  "stac_key": "fiboa/de-mv/stac/collection.json",
+  "stac_last_modified": "2024-11-05 16:38:19-08:00",
+  "state": "gathered"
 }

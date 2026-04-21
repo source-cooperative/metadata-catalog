@@ -1,19 +1,109 @@
 {
-  "id": "planet/eu-field-boundaries",
-  "title": "Agricultural Field Boundaries over EU",
-  "description": "A vector dataset of Field Boundaries, automatically delineated from Sentinel-2 satellite imagery from May-June 2022.",
-  "keywords": [
-    "field boundaries",
-    "satellite imagery",
-    "deep learning",
-    "geoparquet"
+  "fiboa_version": "0.2.0",
+  "fiboa_extensions": [
+    "https://fiboa.github.io/planet-extension/v0.1.0/schema.yaml"
   ],
-  "created_at": "2024-10-02T19:31:15.596408+00:00",
-  "updated_at": "2025-08-21T16:39:55.567Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": "open",
+  "type": "Collection",
+  "id": "planet_afb",
+  "title": "Field boundaries created by Planet's Automated Field Boundary detection algorithm",
+  "description": "These field boundaries are created by Planet Labs, using an automated process using satellite imagery. The algorithm\nworks on a monthly basis and is available for the entire globe. The data is provided in GeoPackage format.\nFor more information see the [field boundaries technical specification](https://planet.widen.net/s/5vq8w5wjvf/2403.08_mar-9444-field-boundaries-technical-specification-sheet-3)",
+  "license": "proprietary",
+  "providers": [
+    {
+      "name": "Planet Labs, PBC",
+      "url": "https://planet.com",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "fiboa CLI",
+      "roles": [
+        "processor"
+      ],
+      "url": "https://pypi.org/project/fiboa-cli"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -31.265913762282203,
+          27.66457969895491,
+          44.93886874485136,
+          71.18516591463035
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2022-06-01T00:00:00Z",
+          "2022-06-01T00:00:00Z"
+        ]
+      ]
+    }
+  },
+  "links": [
+    {
+      "title": "Proprietary License",
+      "href": "https://www.planet.com/licensing-information/",
+      "type": "text/html",
+      "rel": "license"
+    }
+  ],
+  "stac_version": "1.0.0",
+  "attribution": "\u00a9 2024 Planet Labs, PBC",
+  "assets": {
+    "data": {
+      "href": "fiboa_FB.geoparquet",
+      "title": "Field Boundaries",
+      "type": "application/vnd.apache.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "string"
+        },
+        {
+          "name": "area",
+          "type": "float"
+        },
+        {
+          "name": "geometry",
+          "type": "binary"
+        },
+        {
+          "name": "determination_datetime",
+          "type": "timestamp[ms, tz=UTC]"
+        },
+        {
+          "name": "planet:ca_ratio",
+          "type": "float"
+        },
+        {
+          "name": "planet:micd",
+          "type": "float"
+        },
+        {
+          "name": "planet:qa",
+          "type": "uint8"
+        },
+        {
+          "name": "determination_method",
+          "type": "string"
+        }
+      ],
+      "table:primary_geometry": "geometry",
+      "table:row_count": 51398853
+    }
+  },
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -26,8 +116,14 @@
       "prefix": "planet/eu-field-boundaries/"
     }
   },
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
   "file_count": 58,
-  "total_bytes": 61335613861,
+  "visibility": "public",
+  "created_at": "2024-10-02T19:31:15.596408+00:00",
+  "updated_at": "2025-08-21T16:39:55.567Z",
   "exts": {
     "parquet": 54,
     "pmtiles": 1,
@@ -35,9 +131,11 @@
     "json": 1,
     "md": 1
   },
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  }
+  "featured": 0,
+  "data_mode": "open",
+  "disabled": false,
+  "total_bytes": 61335613861,
+  "stac_key": "planet/eu-field-boundaries/collection.json",
+  "stac_last_modified": "2024-12-02 10:03:22-08:00",
+  "state": "gathered"
 }

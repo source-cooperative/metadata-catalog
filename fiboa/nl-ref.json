@@ -1,20 +1,101 @@
 {
-  "id": "fiboa/nl-ref",
-  "title": "Reference Field boundaries, The Netherlands",
-  "description": "Agricultural Parcel dataset as provided by the government",
-  "keywords": [
-    "netherlands",
-    "fiboa",
-    "field boundaries",
-    "geoparquet",
-    "vector"
+  "fiboa_version": "0.2.0",
+  "fiboa_extensions": [],
+  "type": "Collection",
+  "id": "nl",
+  "title": "Field boundaries for The Netherlands",
+  "description": "\nA field block (Dutch: \"Referentieperceel\"), formerly known as \"AAN\" (Agrarisch Areaal Nederland),\nis a contiguous agricultural area surrounded by permanent boundaries, which is cultivated by one or\nmore farmers with one or more crops, is fully or partially set aside or is fully or partially\ntaken out of production.\n\nThe following field block types exist:\n\n- Woods (Hout)\n- Agricultural area (Landbouwgrond)\n- Other (Overig)\n- Water (Water)\n\nWe filter on \"Agricultural area\" in this converter.\nFor crop data, look at BasisRegistratie gewasPercelen (BRP)\n",
+  "license": "CC0-1.0",
+  "providers": [
+    {
+      "name": "RVO / PDOK",
+      "roles": [
+        "producer",
+        "licensor"
+      ],
+      "url": "https://www.pdok.nl/introductie/-/article/referentiepercelen"
+    },
+    {
+      "name": "fiboa CLI",
+      "roles": [
+        "processor"
+      ],
+      "url": "https://pypi.org/project/fiboa-cli"
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/fiboa/nl-ref/"
+    }
   ],
-  "created_at": "2024-06-17T11:39:38.724713+00:00",
-  "updated_at": "2025-08-21T16:39:55.569Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": "open",
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          2.35417303,
+          50.71447164,
+          7.5553525,
+          55.66948102
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2023-06-15T00:00:00Z",
+          "2023-06-15T00:00:00Z"
+        ]
+      ]
+    }
+  },
+  "links": [
+    {
+      "href": "https://data.source.coop/fiboa/nl-ref/nl_ref.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "rel": "pmtiles"
+    }
+  ],
+  "stac_version": "1.0.0",
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/fiboa/nl_ref/nl_ref.parquet",
+      "title": "Field Boundaries",
+      "type": "application/vnd.apache.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "geometry",
+          "type": "binary"
+        },
+        {
+          "name": "id",
+          "type": "string"
+        },
+        {
+          "name": "area",
+          "type": "float"
+        },
+        {
+          "name": "source",
+          "type": "string"
+        },
+        {
+          "name": "determination_datetime",
+          "type": "timestamp[ms, tz=UTC]"
+        }
+      ],
+      "table:primary_geometry": "geometry",
+      "table:row_count": 549218
+    }
+  },
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json",
+    "https://stac-extensions.github.io/web-map-links/v1.2.0/schema.json"
+  ],
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -27,8 +108,14 @@
       "prefix": "fiboa/nl-ref/"
     }
   },
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
   "file_count": 5,
-  "total_bytes": 676164443,
+  "visibility": "public",
+  "created_at": "2024-06-17T11:39:38.724713+00:00",
+  "updated_at": "2025-08-21T16:39:55.569Z",
   "exts": {
     "parquet": 1,
     "pmtiles": 1,
@@ -36,9 +123,11 @@
     "md": 1,
     "txt": 1
   },
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  }
+  "featured": 0,
+  "data_mode": "open",
+  "disabled": false,
+  "total_bytes": 676164443,
+  "stac_key": "fiboa/nl-ref/stac/collection.json",
+  "stac_last_modified": "2025-03-19 15:25:41-07:00",
+  "state": "gathered"
 }
