@@ -16,7 +16,7 @@ Most Source Coop products map 1:1 to a catalog entry. Some products contain mult
 
 Every entry carries `account_id` and `product_id` as the first two fields, matching the directory layout (`catalog/{account_id}/{product_id}.json`) and the upstream Source Coop API's own field names.
 
-Do **not** add a combined `id` field. An upstream STAC document's `id` (a free-form publisher-chosen tag like `ams` or `overture-maps`) may land in the entry via the `gather_stac.py` merge; that's a STAC property, not our identifier, and should not be relied on.
+The STAC-required `id` field is set to `{account_id}/{product_id}` — globally unique across Source Cooperative. If an upstream STAC document had its own free-form `id` (like `ams` or `overture-maps`), it's preserved under `_upstream_stac_id` for traceability but is not our identifier. Because the decomposition convention (`{product}-{slug}.json`) folds any sub-dataset slug into `product_id`, every catalog entry represents exactly one Collection and the 2-part id suffices.
 
 ## Phases
 
