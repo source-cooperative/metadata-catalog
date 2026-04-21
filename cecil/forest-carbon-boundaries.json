@@ -2,11 +2,16 @@
   "account_id": "cecil",
   "product_id": "forest-carbon-boundaries",
   "title": "Forest Carbon Project Boundaries",
-  "description": "A global database providing geospatial boundaries for 575 nature-based carbon offset projects across 55 countries, including avoided deforestation, afforestation/reforestation, and improved forest management initiatives. Contains detailed project metadata to support verification and analysis of carbon offset efficacy.",
+  "description": "A global database of 575 nature-based carbon offset project boundaries across 55 countries, including avoided deforestation, afforestation/reforestation, and improved forest management projects. Boundaries were aggregated from carbon project registries and manual georeferencing with high accuracy validation (IoU score 0.98\u00b10.015).",
   "keywords": [
     "forest carbon",
-    "geoparquet",
-    "fiboa"
+    "carbon offsets",
+    "nature-based solutions",
+    "climate change mitigation",
+    "avoided deforestation",
+    "reforestation",
+    "forest management",
+    "project boundaries"
   ],
   "created_at": "2025-03-28T22:06:18.160Z",
   "updated_at": "2025-08-21T16:39:55.569Z",
@@ -32,7 +37,7 @@
     "parquet": 6,
     "md": 1
   },
-  "state": "gathered",
+  "state": "drafted",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
@@ -66,5 +71,91 @@
     "sha256": "a01ee399f97523c03e0de04cf1f3ce03b1dad6e57f8bdc693385fde36970ce56",
     "fetched_at": "2026-04-21T20:27:12+00:00",
     "text": "# A Global Database of Nature-Based Carbon Offset Project Boundaries\n\nProvides 575 global forest carbon project boundaries. The files in this repository have been converted to a fiboa GeoParquet file from a database originally published by Akshata Karnik, Jack B. Kilbride, Tristan R.H. Goodbody, Rachael Ross, Elias Ayrey.\n\n\n## Dataset Information\n- **Converted by:** Alex Logan\n- **Original Authors:** Akshata Karnik, Jack B. Kilbride, Tristan R.H. Goodbody, Rachael Ross, Elias Ayrey (Corresponding Author)\n- **Date:** June 5, 2024\n- **License:** CC-BY 4.0 See https://zenodo.org/records/11459391\n\n\n## Overview\n\nNature-based climate solutions (NBS) have become an important component of strategies aiming to reduce atmospheric CO2 and mitigate climate change impacts. Carbon offsets have emerged as one of the most widely implemented NBS strategies. However, these projects have also been criticized for exaggerating offsets. Verifying the efficacy of NBS-derived carbon offset is complicated by a lack of readily available geospatial boundary data.\n\nThe original database provided the Geospatial boundaries of 575 NBS projects distributed across 55 countries. Geospatial boundaries were aggregated using a combination of scraping data from carbon project registries (n=433, 75.3%) as well as manual georeferencing and digitization (n=127, 22.1%). Database entries include three varieties of carbon projects:\n- Avoided deforestation\n- Afforestation, reforestation and re-vegetation\n- Improved forest management\n\nAn accuracy assessment of the georeferencing and digitizing process indicated a high degree of accuracy (intersection over union score of 0.98 \u00b1 0.015).\n\n## Important Notes for Users\n\n- **Area Definitions:**\n  - **Project Area:** The geographical area where project participants implement activities to reduce deforestation\n  - **Project Accounting Area:** The geographical area used to calculate carbon credit issuance\n\n- This database does not represent a census of all nature-based carbon projects and does not contain all varieties of such projects\n\n- Users should verify that any georeferencing inaccuracies will not significantly impact their analyses\n\n- The boundaries included reflect data available in the registries at the time of access, with some projects regularly updating their information\n\n- We were unable to assess the accuracy of boundaries constructed from linear features or from developer-provided protocols\n\n## Database Schema\n\nEach record in the GeoPackages contains the following attributes:\n\n| Attribute | Description |\n|-----------|-------------|\n| **Project Name** | Name of the carbon project as given in the documentation |\n| **ProjectID** | Combination of registry abbreviation and project number |\n| **Registry Name** | Registry hosting project information (American Carbon Registry, BioCarbon Registry, Climate Action Reserve, EcoRegistry, Gold Standard, Verra) |\n| **Methodology** | Name of the methodology used for the project's implementation |\n| **Project Type** | Type of forestry carbon offset program (ARR, AD, IFM) |\n| **Country** | Country where the project is located |\n| **Project Developer Name** | Entity or individual organizing the carbon offset project (first name only if multiple) |\n| **Project Start Date** | Start date of the crediting period (mm/dd/yyyy) |\n| **Project End Date** | End date of the crediting period (mm/dd/yyyy) |\n| **Date of Entry** | Date when project information was added to the database (mm/dd/yyyy) |\n| **Processing Approach** | Method used to obtain boundary data (Official, Georeferenced, Linear, or Method) |\n| **PD Declined to Provide** | Whether the project developer declined to provide geometry information (Yes, No, N/A) |\n| **Geometry Type** | Type of geometry in the database (Point or Polygon) |\n| **Project Area** | WKT representation of the project implementation area |\n| **Project Accounting Area** | WKT representation of the area used to calculate carbon credits |\n| **Project Reference Region** | WKT representation of the area used for historical and current deforestation trends |\n| **Comment** | Notes about manual referencing or other relevant information |\n\n## Methodology: Manual Georeferencing & Digitization\n\nProject boundaries were manually georeferenced using QGIS (v3.32.2) through the following process:\n\n1. The map with the clearest boundary within the PDD was identified and overlaid on OpenStreetMap and Bing Satellite Imagery basemaps\n2. Each map was georeferenced with the basemap layers using at least 4 ground control points\n3. Geometries depicted on the georeferenced map were manually digitized\n4. Digitized geometries were consolidated into a single geospatial layer\n\n**Special Cases:**\n\n- **Linear Features (9 projects):** \n  - Linear geometries were buffered by 30m\n  - Holes were eliminated using the \"Delete Holes\" tool in QGIS\n  - An inverse buffer of 29m was applied to obtain the final polygon\n\n- **Protocol-Based (6 projects):**\n  - Project boundaries were recreated following steps in the PDD\n  - Used resources like ASTER Global Digital Elevation Model (GDEM) and Copernicus Global Land Cover (CGLC) dataset\n\n- **Point Geometries (42 projects):**\n  - For projects with insufficient boundary information\n  - General location and project type were identified\n  - Entered into database as point geometry"
+  },
+  "type": "Collection",
+  "stac_version": "1.0.0",
+  "license": "CC-BY-4.0",
+  "providers": [
+    {
+      "name": "Akshata Karnik, Jack B. Kilbride, Tristan R.H. Goodbody, Rachael Ross, Elias Ayrey",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Alex Logan",
+      "roles": [
+        "processor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/cecil/forest-carbon-boundaries"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -155.391488,
+          -43.754177,
+          152.810194,
+          62.769248
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/cecil/forest-carbon-boundaries/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/cecil/forest-carbon-boundaries",
+      "title": "Source Cooperative product page"
+    }
+  ],
+  "assets": {
+    "readme": {
+      "href": "https://data.source.coop/cecil/forest-carbon-boundaries/README.md",
+      "type": "text/markdown",
+      "title": "README",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "data": {
+      "href": "https://data.source.coop/cecil/forest-carbon-boundaries/",
+      "type": "application/x-parquet",
+      "title": "Dataset files (6 \u00d7 .parquet)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "_derived": {
+    "generator": "draft_collection.py",
+    "sources": {
+      "source_coop_api": true,
+      "readme": true,
+      "probe": true,
+      "ai": true
+    },
+    "sci_citation": "Karnik, A., Kilbride, J. B., Goodbody, T. R. H., Ross, R., & Ayrey, E. (2024). A Global Database of Nature-Based Carbon Offset Project Boundaries. Zenodo. https://zenodo.org/records/11459391",
+    "temporal_is_placeholder": true
   }
 }
