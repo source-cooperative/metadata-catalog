@@ -2,12 +2,14 @@
   "account_id": "kerner-lab",
   "product_id": "fields-of-the-world-croatia",
   "title": "Fields of The World: Field Boundaries for Croatia",
-  "description": "This dataset is a subset of the dataset obtained from the Agency for Payments in Agriculture, Fisheries, and Rural Development of Croatia.",
+  "description": "Field boundaries representing agricultural land parcels in Croatia, vectorized from orthophoto imagery and classified by land use type. Data originates from the ARKOD registry maintained by the Croatian Agency for Payments, with field boundaries valid for 2023.",
   "keywords": [
     "agriculture",
     "field boundaries",
-    "ftw",
-    "fieldsoftheworld"
+    "land use",
+    "agricultural parcels",
+    "crop classification",
+    "Croatia"
   ],
   "created_at": "2024-09-01T05:23:35.615325+00:00",
   "updated_at": "2025-08-21T16:39:55.568Z",
@@ -33,10 +35,124 @@
     "parquet": 1,
     "md": 1
   },
-  "state": "seed",
+  "state": "drafted",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "id": "kerner-lab/fields-of-the-world-croatia"
+  "id": "kerner-lab/fields-of-the-world-croatia",
+  "_readme": {
+    "path": "cache/readme/kerner-lab/fields-of-the-world-croatia.md",
+    "source_url": "https://data.source.coop/kerner-lab/fields-of-the-world-croatia/README.md",
+    "filename": "README.md",
+    "bytes": 2020,
+    "sha256": "853abd4124c3579abfeecbc953b86cfec8399f601941c38173e81a4ed6d7423a",
+    "fetched_at": "2026-04-22T02:05:11+00:00",
+    "text": "## Description\n\nThis dataset is adapted from the data published by Republic of Croatia, in the ARKOD system. ARKOD is a record of the use of agricultural land in the territory of the Republic of Croatia, which is maintained in digital graphic form by the Agency for Payments.\n\nARKOD plots represent uninterrupted areas of agricultural land cultivated by one farmer, classified according to the type of use of agricultural land from gievn Annex I of the Ordinance on records of use of agricultural land.\n\nProcess for registration of agricultural land - vectorization of ARKOD polygons is carried out by the method of photointerpretation of agricultural land on DOF bases on a scale of 1:5000 in branches of the Agency for Payments, statements of farmers on the use of agricultural land with proof of ownership or possession.\n\n_The field boundaries are valid for the year 2023_\n\n- **Original Data Provider:** [The Agency for Payments in Agriculture, Fisheries and Rural Development](https://www.apprrr.hr/prostorni-podaci-servisi/)\n- **Converted by:** Kerner Lab (ASU)\n- **License:** Open Data\n- **Projection:** EPSG:4326\n\n---\n\n## Columns\n\n| Property                         | Data Type |\n| -------------------------------- | --------- |\n| id                               | string    |\n| determination_datetime           | datetime  |\n| area                             | float     |\n| land_use_id                      | string    |\n| slope                            | float     |\n| average_height                   | float     |\n| eligibility_coef                 | float     |\n| mines_status                     | string    |\n| water_protect_zone               | string    |\n| restricted_surface               | string    |\n| restricted_surface_area          | float     |\n| vulnerable_areas                 | float     |\n| high_degree_natural_value_meadow | string    |\n| irrigation                       | int32     |\n| irrigation_source                | float     |\n| irrigation_type                  | float     |\n"
+  },
+  "_probe": {
+    "format": "parquet",
+    "sampling": "all",
+    "n_total": 1,
+    "n_probed": 1,
+    "n_errors": 0,
+    "probe_methods": [
+      "metadata"
+    ],
+    "bbox": [
+      16.5279565899699,
+      45.14426382162777,
+      18.478627915617604,
+      46.164874288766015
+    ],
+    "temporal": null,
+    "item_count": 157481,
+    "per_file_cache": "cache/probe/kerner-lab/fields-of-the-world-croatia.jsonl",
+    "ts": "2026-04-22T02:05:12+00:00"
+  },
+  "type": "Collection",
+  "stac_version": "1.0.0",
+  "license": "other",
+  "providers": [
+    {
+      "name": "Agency for Payments in Agriculture, Fisheries and Rural Development",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Kerner Lab (Arizona State University)",
+      "roles": [
+        "processor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/kerner-lab/fields-of-the-world-croatia"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          16.5279565899699,
+          45.14426382162777,
+          18.478627915617604,
+          46.164874288766015
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/kerner-lab/fields-of-the-world-croatia/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/kerner-lab/fields-of-the-world-croatia",
+      "title": "Source Cooperative product page"
+    }
+  ],
+  "assets": {
+    "readme": {
+      "href": "https://data.source.coop/kerner-lab/fields-of-the-world-croatia/README.md",
+      "type": "text/markdown",
+      "title": "README",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "data": {
+      "href": "https://data.source.coop/kerner-lab/fields-of-the-world-croatia/",
+      "type": "application/x-parquet",
+      "title": "Dataset files (1 \u00d7 .parquet)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "_derived": {
+    "generator": "draft_collection.py",
+    "sources": {
+      "source_coop_api": true,
+      "readme": true,
+      "probe": true,
+      "ai": true
+    },
+    "license_note": "Designated as 'Open Data' by the Republic of Croatia; specific SPDX license not specified",
+    "temporal_is_placeholder": true
+  }
 }

@@ -2,12 +2,15 @@
   "account_id": "kerner-lab",
   "product_id": "fields-of-the-world-slovenia",
   "title": "Fields of The World: Field Boundaries for Slovenia",
-  "description": "This dataset is a subset of the dataset from the Ministry of Agriculture, Forestry and Food and provided by Agency of the Republic of Slovenia for Agricultural Markets and Rural Development. The subset was created for inclusion in the Fieldscapes project.",
+  "description": "Annual Slovenian agricultural field boundary polygons for crops grown within farmer-managed blocks (GERK), captured each year since 2007. This 2021 dataset represents field boundaries and crop types as reported by farmers on the campaign closing date (May 31).",
   "keywords": [
     "agriculture",
     "field boundaries",
-    "ftw",
-    "fieldsoftheworld"
+    "crop types",
+    "Slovenia",
+    "land use",
+    "agricultural monitoring",
+    "GERK"
   ],
   "created_at": "2024-09-01T05:34:55.334938+00:00",
   "updated_at": "2025-08-21T16:39:55.568Z",
@@ -33,10 +36,130 @@
     "parquet": 1,
     "md": 1
   },
-  "state": "seed",
+  "state": "drafted",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "id": "kerner-lab/fields-of-the-world-slovenia"
+  "id": "kerner-lab/fields-of-the-world-slovenia",
+  "_readme": {
+    "path": "cache/readme/kerner-lab/fields-of-the-world-slovenia.md",
+    "source_url": "https://data.source.coop/kerner-lab/fields-of-the-world-slovenia/README.md",
+    "filename": "README.md",
+    "bytes": 1408,
+    "sha256": "0542caf253276111fa02dd01028e4edb3a9d4d22db3334cdd3a36efbb744a3f5",
+    "fetched_at": "2026-04-22T02:01:18+00:00",
+    "text": "## Description\n\nThis dataset is a subset of data obtained from the layer of agricultural plants of ollective applicationsby Agency of the Republic of Slovenia for Agricultural Markets and Rural Development.\nEvery year, farmers must draw crop polygons within the boundaries of their block/GERK. This has been the practice in Slovenia since 2007. The published data for the current year represent the situation on the last date of the campaign (31 May yyyy). Subsequent changes by farmers are not included.\n\n_The field boundaries are valid for the year 2021_\n\n- **Source Data Curator:** [EuroCrop](https://github.com/maja601/EuroCrops/wiki/Slovenia)\n- **Original Data Provider:** [Ministry of Agriculture, Forestry and Food - Agency of the Republic of Slovenia for Agricultural Markets and Rural Developmenty](https://metadata.vlaanderen.be/srv/dut/catalog.search#/metadata/d869db4a-73f4-470e-b5ca-a0f7cd3ab585)\n- **Converted by:** Kerner Lab (ASU)\n- **License:** CC-BY-4.0\n- **Projection:** EPSG:4326\n\n---\n\n## Columns\n\n| Property               | Data Type |\n| ---------------------- | --------- |\n| id                     | string    |\n| determination_datetime | datetime  |\n| area                   | float     |\n| GERK_polygon_id        | uint32    |\n| crop_type_code         | string    |\n| crop_type              | string    |\n| crop_name_translated   | string    |\n| HCAT_crop_name         | string    |\n"
+  },
+  "_probe": {
+    "format": "parquet",
+    "sampling": "all",
+    "n_total": 1,
+    "n_probed": 1,
+    "n_errors": 0,
+    "probe_methods": [
+      "metadata"
+    ],
+    "bbox": [
+      14.226763463001502,
+      45.73841818820164,
+      16.021732416716763,
+      46.6144518583327
+    ],
+    "temporal": null,
+    "item_count": 67488,
+    "per_file_cache": "cache/probe/kerner-lab/fields-of-the-world-slovenia.jsonl",
+    "ts": "2026-04-22T02:01:19+00:00"
+  },
+  "type": "Collection",
+  "stac_version": "1.0.0",
+  "license": "CC-BY-4.0",
+  "providers": [
+    {
+      "name": "Ministry of Agriculture, Forestry and Food - Agency of the Republic of Slovenia for Agricultural Markets and Rural Development",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "EuroCrop",
+      "roles": [
+        "processor"
+      ]
+    },
+    {
+      "name": "Kerner Lab (ASU)",
+      "roles": [
+        "processor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/kerner-lab/fields-of-the-world-slovenia"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          14.226763463001502,
+          45.73841818820164,
+          16.021732416716763,
+          46.6144518583327
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/kerner-lab/fields-of-the-world-slovenia/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/kerner-lab/fields-of-the-world-slovenia",
+      "title": "Source Cooperative product page"
+    }
+  ],
+  "assets": {
+    "readme": {
+      "href": "https://data.source.coop/kerner-lab/fields-of-the-world-slovenia/README.md",
+      "type": "text/markdown",
+      "title": "README",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "data": {
+      "href": "https://data.source.coop/kerner-lab/fields-of-the-world-slovenia/",
+      "type": "application/x-parquet",
+      "title": "Dataset files (1 \u00d7 .parquet)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "_derived": {
+    "generator": "draft_collection.py",
+    "sources": {
+      "source_coop_api": true,
+      "readme": true,
+      "probe": true,
+      "ai": true
+    },
+    "temporal_is_placeholder": true
+  }
 }

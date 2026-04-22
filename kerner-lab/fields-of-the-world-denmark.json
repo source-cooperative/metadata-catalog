@@ -2,12 +2,15 @@
   "account_id": "kerner-lab",
   "product_id": "fields-of-the-world-denmark",
   "title": "Fields of The World: Field Boundaries for Denmark",
-  "description": "This dataset is a subset of the dataset obtained from the Danish Agency for Agriculture. The subset was created for inclusion in the Fieldscapes project.",
+  "description": "The Danish Land Parcel Identification System (LPIS) maps agricultural land through field blocks\u2014geographically coherent units bounded by permanent landscape features. Covering approximately 2.8 million hectares with continuously updated boundaries, each field block record includes area, eligibility, and support classification attributes.",
   "keywords": [
     "agriculture",
+    "field blocks",
+    "LPIS",
     "field boundaries",
-    "ftw",
-    "fieldsoftheworld"
+    "land parcels",
+    "crop cultivation",
+    "Denmark"
   ],
   "created_at": "2024-09-01T05:24:32.888616+00:00",
   "updated_at": "2025-08-21T16:39:55.568Z",
@@ -33,10 +36,124 @@
     "parquet": 1,
     "md": 1
   },
-  "state": "seed",
+  "state": "drafted",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "id": "kerner-lab/fields-of-the-world-denmark"
+  "id": "kerner-lab/fields-of-the-world-denmark",
+  "_readme": {
+    "path": "cache/readme/kerner-lab/fields-of-the-world-denmark.md",
+    "source_url": "https://data.source.coop/kerner-lab/fields-of-the-world-denmark/README.md",
+    "filename": "README.md",
+    "bytes": 1726,
+    "sha256": "377258ed258564fd0fa0d57e217ae7de03e8fa899c56f9837b3249c352b88388",
+    "fetched_at": "2026-04-22T02:03:22+00:00",
+    "text": "## Description\n\nDanish Land Parcel Identification System (LPIS) data collection or (field blocks/ 'Markblokke') is managed by The Danish Agency for Agriculture.\n\nThe field block map is a digital field map, with agricultural areas gathered in field blocks. A field block is a geographically coherent unit consisting of agricultural land. The boundaries of the field blocks typically follow permanent divisions in the landscape. The map is used in the administration of cases linked to the geographical determination of cultivation areas, primarily by the EU's area-based support schemes. The field block map is continuously updated on the basis of orthophotos and reports from farmers and authorities. The field block map covers approx. 2.8 million hectares of agricultural land. Each field block is identified with a field block number, area, type. A field block means a continuous area on which one or more farmers grow one or more different crops. The map is updated every night with changes from case processing.\n\n_The field boundaries are valid for the year 2021_\n\n- **Original Data Provider:** [The Danish Agency for Agriculture](https://geodata-info.dk/srv/eng/catalog.search#/metadata/d91b2c99-d9b0-4e6d-b323-20ac80548186)\n- **Converted by:** Kerner Lab (ASU)\n- **License:** CC0-1.0\n- **Projection:** EPSG:4326\n\n---\n\n## Columns\n\n| Property               | Data Type |\n| ---------------------- | --------- |\n| id                     | string    |\n| determination_datetime | datetime  |\n| area                   | float     |\n| eligible_area          | float     |\n| ineligible_area        | float     |\n| deduction              | float     |\n| support_proc           | float     |\n| block_type             | string    |\n"
+  },
+  "_probe": {
+    "format": "parquet",
+    "sampling": "all",
+    "n_total": 1,
+    "n_probed": 1,
+    "n_errors": 0,
+    "probe_methods": [
+      "metadata"
+    ],
+    "bbox": [
+      8.73781099374147,
+      55.191713780070415,
+      10.417036295518416,
+      57.43297387303584
+    ],
+    "temporal": null,
+    "item_count": 37677,
+    "per_file_cache": "cache/probe/kerner-lab/fields-of-the-world-denmark.jsonl",
+    "ts": "2026-04-22T02:03:23+00:00"
+  },
+  "type": "Collection",
+  "stac_version": "1.0.0",
+  "license": "CC0-1.0",
+  "providers": [
+    {
+      "name": "The Danish Agency for Agriculture",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Kerner Lab (ASU)",
+      "roles": [
+        "processor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/kerner-lab/fields-of-the-world-denmark"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          8.73781099374147,
+          55.191713780070415,
+          10.417036295518416,
+          57.43297387303584
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/kerner-lab/fields-of-the-world-denmark/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/kerner-lab/fields-of-the-world-denmark",
+      "title": "Source Cooperative product page"
+    }
+  ],
+  "assets": {
+    "readme": {
+      "href": "https://data.source.coop/kerner-lab/fields-of-the-world-denmark/README.md",
+      "type": "text/markdown",
+      "title": "README",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "data": {
+      "href": "https://data.source.coop/kerner-lab/fields-of-the-world-denmark/",
+      "type": "application/x-parquet",
+      "title": "Dataset files (1 \u00d7 .parquet)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "_derived": {
+    "generator": "draft_collection.py",
+    "sources": {
+      "source_coop_api": true,
+      "readme": true,
+      "probe": true,
+      "ai": true
+    },
+    "temporal_is_placeholder": true
+  }
 }

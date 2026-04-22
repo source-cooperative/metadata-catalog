@@ -2,12 +2,15 @@
   "account_id": "kerner-lab",
   "product_id": "fields-of-the-world-luxembourg",
   "title": "Fields of The World: Field Boundaries for Luxembourg",
-  "description": "This dataset is a subset of the dataset obtained from the Agricultural Technical Services Administration. The subset was created for inclusion in the Fieldscapes project.",
+  "description": "Field boundaries from Luxembourg's FLIK land parcel identification system (LPIS), categorized by parcel type (agricultural, vineyard, ineligible, non-payable). Data available annually from 2016-2021, digitized since 2005 and continuously updated via aerial imagery.",
   "keywords": [
     "agriculture",
     "field boundaries",
-    "ftw",
-    "fieldsoftheworld"
+    "parcels",
+    "Luxembourg",
+    "land use",
+    "LPIS",
+    "aerial imagery"
   ],
   "created_at": "2024-09-01T05:30:57.733011+00:00",
   "updated_at": "2025-08-21T16:39:55.568Z",
@@ -33,10 +36,130 @@
     "parquet": 1,
     "md": 1
   },
-  "state": "seed",
+  "state": "drafted",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "id": "kerner-lab/fields-of-the-world-luxembourg"
+  "id": "kerner-lab/fields-of-the-world-luxembourg",
+  "_readme": {
+    "path": "cache/readme/kerner-lab/fields-of-the-world-luxembourg.md",
+    "source_url": "https://data.source.coop/kerner-lab/fields-of-the-world-luxembourg/README.md",
+    "filename": "README.md",
+    "bytes": 1547,
+    "sha256": "e7b496631c44f2f6e9d7fdd8b86c95bcc52e3ea305ae2ad85c74ee86beef8893",
+    "fetched_at": "2026-04-22T02:02:01+00:00",
+    "text": "## Description\n\nThis dataset is a subset of dataste form FLIK plot repository provided by Luxembourg's Land Parcel Identification System(LPIS).\nLPIS is managed by The Administration of Technical Agricultural Services (ASTA). The data is made available to the public on The Luxembourg Data Platform based on the Creative Commons 1.0 Universal (CC0 1.0) Public Domain Dedication.The plot-based parcel reference system (FLIK) in Luxembourg was digitally recorded for the first time in 2005 based on aerial photos. Since then, the system has been continuously revised via the latest aerial images.\n\nhe FLIK parcels are categorized into eligible agricultural parcels, eligible vineyard parcels, ineligible parcels, and non-payable objects. The data has been uploaded to geoDB and is available from 2016 to 2021 annually with updates expected annually on original curators site.\n\n_The field boundaries are valid for the year 2022_\n\n- **Original Data Provider:** [Administration of technical services for agriculture](https://data.public.lu/en/datasets/referentiel-des-parcelles-flik/#resourcese)\n- **Converted by:** Kerner Lab (ASU)\n- **License:** CC0-1.0\n- **Projection:** EPSG:4326\n\n---\n\n## Columns\n\n| Property               | Data Type |\n| ---------------------- | --------- |\n| id                     | string    |\n| determination_datetime | datetime  |\n| area                   | float     |\n| category               | string    |\n| commune_code           | string    |\n| section_code           | string    |\n| perimeter              | float     |\n"
+  },
+  "_probe": {
+    "format": "parquet",
+    "sampling": "all",
+    "n_total": 1,
+    "n_probed": 1,
+    "n_errors": 0,
+    "probe_methods": [
+      "metadata"
+    ],
+    "bbox": [
+      5.905081338806078,
+      49.517813134475375,
+      6.341084420919888,
+      49.961053945356774
+    ],
+    "temporal": null,
+    "item_count": 29018,
+    "per_file_cache": "cache/probe/kerner-lab/fields-of-the-world-luxembourg.jsonl",
+    "ts": "2026-04-22T02:02:03+00:00"
+  },
+  "type": "Collection",
+  "stac_version": "1.0.0",
+  "license": "CC0-1.0",
+  "providers": [
+    {
+      "name": "Administration of Technical Agricultural Services",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Kerner Lab",
+      "roles": [
+        "processor"
+      ]
+    },
+    {
+      "name": "Luxembourg Data Platform",
+      "roles": [
+        "host",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/kerner-lab/fields-of-the-world-luxembourg"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          5.905081338806078,
+          49.517813134475375,
+          6.341084420919888,
+          49.961053945356774
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/kerner-lab/fields-of-the-world-luxembourg/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/kerner-lab/fields-of-the-world-luxembourg",
+      "title": "Source Cooperative product page"
+    }
+  ],
+  "assets": {
+    "readme": {
+      "href": "https://data.source.coop/kerner-lab/fields-of-the-world-luxembourg/README.md",
+      "type": "text/markdown",
+      "title": "README",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "data": {
+      "href": "https://data.source.coop/kerner-lab/fields-of-the-world-luxembourg/",
+      "type": "application/x-parquet",
+      "title": "Dataset files (1 \u00d7 .parquet)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "_derived": {
+    "generator": "draft_collection.py",
+    "sources": {
+      "source_coop_api": true,
+      "readme": true,
+      "probe": true,
+      "ai": true
+    },
+    "temporal_is_placeholder": true
+  }
 }

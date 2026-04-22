@@ -2,12 +2,16 @@
   "account_id": "kerner-lab",
   "product_id": "fields-of-the-world-sweden",
   "title": "Fields of The World: Field Boundaries for Sweden",
-  "description": "This dataset is a subset of the dataset obtained from the Swedish Agency for Agriculture. The subset was created for inclusion in the Fieldscapes project.",
+  "description": "Swedish agricultural block inventory containing field boundaries and maximum eligible agricultural land according to EU definitions. Approximately 1.14 million blocks covering 3.2 million hectares, used by the Swedish Agency for Agriculture for administering farmer support. Field boundaries valid for 2021.",
   "keywords": [
     "agriculture",
     "field boundaries",
-    "ftw",
-    "fieldsoftheworld"
+    "agricultural blocks",
+    "land parcels",
+    "Sweden",
+    "arable land",
+    "pasture land",
+    "LPIS"
   ],
   "created_at": "2024-09-01T05:37:59.337153+00:00",
   "updated_at": "2025-08-21T16:39:55.568Z",
@@ -33,10 +37,124 @@
     "parquet": 1,
     "md": 1
   },
-  "state": "seed",
+  "state": "drafted",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "id": "kerner-lab/fields-of-the-world-sweden"
+  "id": "kerner-lab/fields-of-the-world-sweden",
+  "_readme": {
+    "path": "cache/readme/kerner-lab/fields-of-the-world-sweden.md",
+    "source_url": "https://data.source.coop/kerner-lab/fields-of-the-world-sweden/README.md",
+    "filename": "README.md",
+    "bytes": 2121,
+    "sha256": "a4f49eb100a0b1e92b44761886222806ac4bf24581a6fbd47d8848651f650cb7",
+    "fetched_at": "2026-04-22T02:04:02+00:00",
+    "text": "## Description\n\nThis dataset is a subset of the Swedish agricultural blocks original inventory. Agricultural block is a data set that contains information on maximum eligible agricultural land according to EU definitions. The agricultural blocks are used by the Swedish Agency for Agriculture to administer support to farmers, for example to check the area data in the farmers' applications and to inform the farmers about current data.\n\nSweden's Land Parcel Identification System (LPIS) data collection (also agricultural blocks/ 'jordbruksblock') is managed by the Swedish Board of Agriculture, and also made available on the INSPIRE Geoportal. The dataset does not contain all agricultural land in Sweden, but only the parts for which a farmer has applied for support at some point.\n\nA block is a polygon/surface that delimits an area of \u200b\u200bagricultural land. A block is delimited by fixed boundaries. Examples of fixed boundaries are roads, stone walls, forests and buildings.\n\nThe dataset Agricultural blocks contains approximately 1,143,000 blocks. Of these, approximately 891,000 are arable land blocks and approximately 252,000 pasture land blocks. The total area is 3.2 million hectares, of which 2.7 million hectares are arable land and 510,000 hectares are pasture land. The average area for the arable land blocks is 3.03 ha and for the pasture blocks the corresponding figure is 2.03 ha.\n\n_The field boundaries are valid for the year 2021_\n\n- **Original Data Provider:** [The Swedish Agency for Agriculture](https://www.geodata.se/geodataportalen/srv/swe/catalog.search;jsessionid=6C2D281619D69AC2356E1BD4C1923A3A#/metadata/df439ba5-014e-44ec-86cb-ddb9e5ba306c)\n- **Converted by:** Kerner Lab (ASU)\n- **License:** No restrictions on public access\n- **Projection:** EPSG:4326\n\n---\n\n## Columns\n\n| Property               | Data Type |\n| ---------------------- | --------- |\n| id                     | string    |\n| determination_datetime | datetime  |\n| area                   | float     |\n| land_cover_category    | string    |\n| land_cover_class       | string    |\n| region                 | string    |\n"
+  },
+  "_probe": {
+    "format": "parquet",
+    "sampling": "all",
+    "n_total": 1,
+    "n_probed": 1,
+    "n_errors": 0,
+    "probe_methods": [
+      "metadata"
+    ],
+    "bbox": [
+      13.066744878934752,
+      55.42231978012549,
+      17.347379810563748,
+      59.82289630807383
+    ],
+    "temporal": null,
+    "item_count": 39718,
+    "per_file_cache": "cache/probe/kerner-lab/fields-of-the-world-sweden.jsonl",
+    "ts": "2026-04-22T02:04:03+00:00"
+  },
+  "type": "Collection",
+  "stac_version": "1.0.0",
+  "license": "other",
+  "providers": [
+    {
+      "name": "Swedish Agency for Agriculture",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Kerner Lab",
+      "roles": [
+        "processor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/kerner-lab/fields-of-the-world-sweden"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          13.066744878934752,
+          55.42231978012549,
+          17.347379810563748,
+          59.82289630807383
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/kerner-lab/fields-of-the-world-sweden/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/kerner-lab/fields-of-the-world-sweden",
+      "title": "Source Cooperative product page"
+    }
+  ],
+  "assets": {
+    "readme": {
+      "href": "https://data.source.coop/kerner-lab/fields-of-the-world-sweden/README.md",
+      "type": "text/markdown",
+      "title": "README",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "data": {
+      "href": "https://data.source.coop/kerner-lab/fields-of-the-world-sweden/",
+      "type": "application/x-parquet",
+      "title": "Dataset files (1 \u00d7 .parquet)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "_derived": {
+    "generator": "draft_collection.py",
+    "sources": {
+      "source_coop_api": true,
+      "readme": true,
+      "probe": true,
+      "ai": true
+    },
+    "license_note": "No restrictions on public access, Swedish government data",
+    "temporal_is_placeholder": true
+  }
 }

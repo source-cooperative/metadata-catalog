@@ -2,12 +2,15 @@
   "account_id": "kerner-lab",
   "product_id": "fields-of-the-world-estonia",
   "title": "Fields of The World: Field Boundaries for Estonia",
-  "description": "This dataset is a subset obtained from the Agricultural Registers and Information Agency in EuroCrops. The subset was created for inclusion in the Fieldscapes project.",
+  "description": "Estonian agricultural field boundaries for 2021 from the INSPIRE GSAA (Geospatial Aid Application), originally provided by The Agricultural Registers and Information Agency (PRIA). The dataset includes field-level attributes such as land use classification, requested culture, and crop detection status.",
   "keywords": [
     "agriculture",
     "field boundaries",
-    "ftw",
-    "fieldsoftheworld"
+    "Estonia",
+    "GSAA",
+    "IACS",
+    "crop monitoring",
+    "land use"
   ],
   "created_at": "2024-09-01T05:25:00.920190+00:00",
   "updated_at": "2025-08-21T16:39:55.568Z",
@@ -33,10 +36,131 @@
     "parquet": 1,
     "md": 1
   },
-  "state": "seed",
+  "state": "drafted",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "id": "kerner-lab/fields-of-the-world-estonia"
+  "id": "kerner-lab/fields-of-the-world-estonia",
+  "_readme": {
+    "path": "cache/readme/kerner-lab/fields-of-the-world-estonia.md",
+    "source_url": "https://data.source.coop/kerner-lab/fields-of-the-world-estonia/README.md",
+    "filename": "README.md",
+    "bytes": 1458,
+    "sha256": "4eda476c545fc9d652ff78a4143d40bc758a69e6fdaa86f625d7cc5b1ec88e29",
+    "fetched_at": "2026-04-22T02:05:48+00:00",
+    "text": "## Description\n\nGeospatial Aid Application Estonia Agricultural parcels. The original dataset in obtained from the INSPIRE theme GSAA ( specifically Geospatial Aid Application Estonia Agricultural parcels) and download service provided by PRIA, through which the data layer Fields and Ecological Areas (GSAA) is made available. The data comes from the PRIA database.\n\nThis dataset is later on adapted by Eurocrops then its subset consumed by the fieldscapes project.\n\n_The field boundaries are valid for the year 2021_\n\n- **Source Data Provider:** [EuroCrop](https://zenodo.org/records/8229128/files/EE_2021.zip?download=1)\n- **Original Data Provider:** [The Agricultural Registers and Information Agency](https://inspire-geoportal.ec.europa.eu/srv/eng/catalog.search#/results?country=ee&view=IACSOverview&theme=none&iacs=gsaa&legislation=none&envdomain=none&basedomain=0)\n- **Converted by:** Kerner Lab (ASU)\n- **License:** CC-3.0\n- **Projection:** EPSG:4326\n\n---\n\n## Columns\n\n| Property                | Data Type |\n| ----------------------- | --------- |\n| id                      | string    |\n| determination_datetime  | datetime  |\n| area                    | float     |\n| requested_culture       | string    |\n| requested_land_use      | string    |\n| mowing_detection_status | string    |\n| mowing_detection_period | string    |\n| requested_support       | string    |\n| EC_trans_n              | string    |\n| EC_hcat_n               | string    |\n"
+  },
+  "_probe": {
+    "format": "parquet",
+    "sampling": "all",
+    "n_total": 1,
+    "n_probed": 1,
+    "n_errors": 0,
+    "probe_methods": [
+      "metadata"
+    ],
+    "bbox": [
+      24.7007465,
+      57.6345101,
+      27.3816514,
+      58.9531709
+    ],
+    "temporal": null,
+    "item_count": 26695,
+    "per_file_cache": "cache/probe/kerner-lab/fields-of-the-world-estonia.jsonl",
+    "ts": "2026-04-22T02:05:49+00:00"
+  },
+  "type": "Collection",
+  "stac_version": "1.0.0",
+  "license": "CC-BY-3.0",
+  "providers": [
+    {
+      "name": "The Agricultural Registers and Information Agency",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "EuroCrops",
+      "roles": [
+        "processor"
+      ]
+    },
+    {
+      "name": "Kerner Lab, Arizona State University",
+      "roles": [
+        "processor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/kerner-lab/fields-of-the-world-estonia"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          24.7007465,
+          57.6345101,
+          27.3816514,
+          58.9531709
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/kerner-lab/fields-of-the-world-estonia/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/kerner-lab/fields-of-the-world-estonia",
+      "title": "Source Cooperative product page"
+    }
+  ],
+  "assets": {
+    "readme": {
+      "href": "https://data.source.coop/kerner-lab/fields-of-the-world-estonia/README.md",
+      "type": "text/markdown",
+      "title": "README",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "data": {
+      "href": "https://data.source.coop/kerner-lab/fields-of-the-world-estonia/",
+      "type": "application/x-parquet",
+      "title": "Dataset files (1 \u00d7 .parquet)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "_derived": {
+    "generator": "draft_collection.py",
+    "sources": {
+      "source_coop_api": true,
+      "readme": true,
+      "probe": true,
+      "ai": true
+    },
+    "license_note": "Source notation 'CC-3.0' interpreted as CC-BY-3.0 (standard SPDX format)",
+    "temporal_is_placeholder": true
+  }
 }

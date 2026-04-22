@@ -2,12 +2,14 @@
   "account_id": "kerner-lab",
   "product_id": "fields-of-the-world-corsica",
   "title": "Fields of The World: Field Boundaries for Corsica",
-  "description": "This dataset is a subset of the dataset obtained from the Republique Francaise - Geoservices of France. The subset was created for inclusion in the Fieldscapes project.",
+  "description": "This dataset is an anonymized subset of France's RPG (Republicateur Parcelles Graphiques), a geographical reference database used for Common Agricultural Policy aid administration. It contains vector field boundaries and crop classifications for agricultural plots in Corsica.",
   "keywords": [
     "agriculture",
     "field boundaries",
-    "ftw",
-    "fieldsoftheworld"
+    "crops",
+    "France",
+    "land use",
+    "agricultural plots"
   ],
   "created_at": "2024-09-01T05:23:03.532080+00:00",
   "updated_at": "2025-08-21T16:39:55.568Z",
@@ -33,10 +35,124 @@
     "parquet": 1,
     "md": 1
   },
-  "state": "seed",
+  "state": "drafted",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "id": "kerner-lab/fields-of-the-world-corsica"
+  "id": "kerner-lab/fields-of-the-world-corsica",
+  "_readme": {
+    "path": "cache/readme/kerner-lab/fields-of-the-world-corsica.md",
+    "source_url": "https://data.source.coop/kerner-lab/fields-of-the-world-corsica/README.md",
+    "filename": "README.md",
+    "bytes": 1106,
+    "sha256": "25ac11e630faeabce0057f8d5294ed8036ecbef7766951348c31ae516222ebfa",
+    "fetched_at": "2026-04-22T01:59:27+00:00",
+    "text": "## Description\r\n\r\nThis dataset is a subset of the dataset obtained from the RPG Website, RPG is a geographical database used as a reference for the processing of aid from the common agricultural policy (CAP). The anonymized version distributed here as part of the public service for making reference data available contains graphic data for plots (basic land unit for farmers' declaration) with their main crop.\r\n\r\n\r\n- **Source Data Curator:** [Republique Francaise - Geoservices](https://geoservices.ign.fr/rpg)\r\n- **Source Data Provider:** [Republique Francaise - Geoservices](https://geoservices.ign.fr/rpg)\r\n- **Converted by:** Kerner Lab (ASU)\r\n- **License:** CC-BY-2.0\r\n- **Projection:** EPSG:4326\r\n- **Dataset Validity:** 2022\r\n\r\n\r\n--- \r\n\r\n## Attributes\r\n\r\n| Property                  | Data Type |\r\n| ------------------------- | --------- |\r\n| id                        | string    |\r\n| determination_datetime    | datetime  |\r\n| area                      | float     |\r\n| geometry                  | polygon   |\r\n| crop_id                   | int64     |\r\n| crop_name                 | string    |"
+  },
+  "_probe": {
+    "format": "parquet",
+    "sampling": "all",
+    "n_total": 1,
+    "n_probed": 1,
+    "n_errors": 0,
+    "probe_methods": [
+      "metadata"
+    ],
+    "bbox": [
+      8.684215733091785,
+      41.726866147253986,
+      9.55961872699482,
+      42.808624416493835
+    ],
+    "temporal": null,
+    "item_count": 5360,
+    "per_file_cache": "cache/probe/kerner-lab/fields-of-the-world-corsica.jsonl",
+    "ts": "2026-04-22T01:59:28+00:00"
+  },
+  "type": "Collection",
+  "stac_version": "1.0.0",
+  "license": "CC-BY-2.0",
+  "providers": [
+    {
+      "name": "R\u00e9publique Fran\u00e7aise - Geoservices",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Kerner Lab",
+      "roles": [
+        "processor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/kerner-lab/fields-of-the-world-corsica"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          8.684215733091785,
+          41.726866147253986,
+          9.55961872699482,
+          42.808624416493835
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/kerner-lab/fields-of-the-world-corsica/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/kerner-lab/fields-of-the-world-corsica",
+      "title": "Source Cooperative product page"
+    }
+  ],
+  "assets": {
+    "readme": {
+      "href": "https://data.source.coop/kerner-lab/fields-of-the-world-corsica/README.md",
+      "type": "text/markdown",
+      "title": "README",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "data": {
+      "href": "https://data.source.coop/kerner-lab/fields-of-the-world-corsica/",
+      "type": "application/x-parquet",
+      "title": "Dataset files (1 \u00d7 .parquet)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "_derived": {
+    "generator": "draft_collection.py",
+    "sources": {
+      "source_coop_api": true,
+      "readme": true,
+      "probe": true,
+      "ai": true
+    },
+    "temporal_is_placeholder": true
+  }
 }
