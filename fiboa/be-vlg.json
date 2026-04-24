@@ -1,15 +1,17 @@
 {
-  "account_id": "fiboa",
-  "product_id": "be-vlg",
-  "fiboa_version": "0.2.0",
-  "fiboa_extensions": [
-    "https://fiboa.github.io/administrative-division-extension/v0.1.0/schema.yaml"
-  ],
   "type": "Collection",
+  "stac_version": "1.1.0",
   "id": "fiboa/be-vlg",
   "title": "Field boundaries for Flanders, Belgium (2021)",
-  "description": "Since 2020, the Department of Agriculture and Fisheries has been publishing a more extensive set of data related to agricultural use plots (from the 2008 campaign).\n    From 2023, the downloadable dataset of agricultural use plots will also include the specialization given by the company (= company typology) and that is given to the plots of the company. Based on the typology, the companies are divided into 4 major specializations: arable farming, horticulture, livestock farming and mixed farms. The specialization of each company is calculated annually according to a European method and is based on the standard output of the various agricultural productions on the company. It is therefore an economic specialization and not a reflection of all agricultural production on the company.",
+  "description": "Official field boundaries for approximately 588,000 agricultural parcels in Flanders, Belgium, including parcel specialization typology. Converted to fiboa GeoParquet format from data provided by the Department of Agriculture and Fisheries, with specialization categories including arable farming, horticulture, livestock, and mixed farms.",
   "license": "proprietary",
+  "keywords": [
+    "field-boundaries",
+    "agriculture",
+    "land-parcels",
+    "land-use",
+    "arable-land"
+  ],
   "providers": [
     {
       "name": "Agentschap Landbouw & Zeevisserij (Government)",
@@ -32,6 +34,19 @@
         "host"
       ],
       "url": "https://data.source.coop/fiboa/be-vlg/"
+    },
+    {
+      "name": "Agentschap Landbouw & Zeevisserij",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Matthias Mohr",
+      "roles": [
+        "processor"
+      ]
     }
   ],
   "extent": {
@@ -44,17 +59,19 @@
           51.49545715218195
         ]
       ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
     }
   },
-  "links": [
-    {
-      "title": "Licentie modellicentie-gratis-hergebruik/v1.0",
-      "href": "https://data.vlaanderen.be/id/licentie/modellicentie-gratis-hergebruik/v1.0",
-      "type": "text/html",
-      "rel": "license"
-    }
-  ],
-  "attribution": "Bron: Dept. LV",
+  "summaries": {
+    "item_count": 3980413
+  },
   "assets": {
     "data": {
       "href": "https://data.source.coop/fiboa/be-vlg/be_vlg_2021.parquet",
@@ -97,21 +114,27 @@
       "table:row_count": 591904
     }
   },
-  "stac_extensions": [
-    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/fiboa/be-vlg/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/fiboa/be-vlg",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "title": "Licentie modellicentie-gratis-hergebruik/v1.0",
+      "href": "https://data.vlaanderen.be/id/licentie/modellicentie-gratis-hergebruik/v1.0",
+      "type": "text/html",
+      "rel": "license"
+    }
   ],
+  "product_id": "be-vlg",
+  "total_bytes": 719207262,
   "featured": 0,
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "data_mode": "open",
-  "exts": {
-    "parquet": 7,
-    "pmtiles": 1,
-    "json": 2,
-    "md": 1
-  },
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -124,14 +147,24 @@
       "prefix": "fiboa/be-vlg/"
     }
   },
-  "disabled": false,
-  "updated_at": "2025-08-21T16:39:55.568Z",
-  "total_bytes": 719207262,
   "file_count": 11,
+  "exts": {
+    "parquet": 7,
+    "pmtiles": 1,
+    "json": 2,
+    "md": 1
+  },
+  "account_id": "fiboa",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
   "visibility": "public",
+  "data_mode": "open",
+  "disabled": false,
   "created_at": "2024-08-13T16:54:22.660485+00:00",
-  "stac_key": "fiboa/be-vlg/collection.json",
-  "stac_last_modified": "2025-03-19 15:25:35-07:00",
-  "_state": "gathered",
-  "_upstream_stac_id": "be_vlg"
+  "updated_at": "2025-08-21T16:39:55.568Z",
+  "readme": "## README.md\n# Field boundaries for Flanders, Belgium\n\nProvides ca. 588.000 official field boundaries from Flanders in Belgium.\nIt has been converted to a fiboa GeoParquet file from a file that was provided by the Agentschap Landbouw & Zeevisserij.\n\n- **Source Data Provider:** [Agentschap Landbouw & Zeevisserij](https://landbouwcijfers.vlaanderen.be/open-geodata-landbouwgebruikspercelen)\n- **Converted by:** [Matthias Mohr](https://mohr.ws)\n- **License:** [Licentie modellicentie-gratis-hergebruik/v1.0](https://data.vlaanderen.be/id/licentie/modellicentie-gratis-hergebruik/v1.0)\n\n---\n\n- **[Download the data as fiboa GeoParquet](https://data.source.coop/fiboa/be-vlg/be_vlg.parquet)**\n- [STAC Browser](https://radiantearth.github.io/stac-browser/#/external/data.source.coop/fiboa/be-vlg/stac/collection.json)\n- [STAC Collection](https://data.source.coop/fiboa/be-vlg/stac/collection.json)\n- [PMTiles](https://data.source.coop/fiboa/be-vlg/be_vlg.pmtiles)\n\n## Lineage\n\n- Data downloaded on 2024-08-13 from https://www.landbouwvlaanderen.be/bestanden/gis/Landbouwgebruikspercelen_2023_-_Definitief_(extractie_28-03-2024)_GPKG.zip.\n- Converted to GeoParquet using [fiboa-cli](https://github.com/fiboa/cli), version 0.6.0.\n",
+  "_state": "drafted",
+  "cataloged_at": "2026-04-24T02:11:31+00:00"
 }
