@@ -1,6 +1,6 @@
 # Source Cooperative Data Catalog
 
-Each JSON file in this directory represents one meaningful dataset stewarded by Source Cooperative.
+Each JSON file here is one STAC Collection for one Source Cooperative dataset.
 
 ## Layout
 
@@ -8,36 +8,52 @@ Each JSON file in this directory represents one meaningful dataset stewarded by 
 catalog/
   {publisher}/{product}.json          # 1:1 product = dataset (common case)
   {publisher}/{product}-{slug}.json   # sub-dataset within a multi-dataset product
+  _keywords.jsonl                     # canonical keyword vocabulary
+  _synonyms.json                      # observed-keyword → canonical map
+  _log.jsonl                          # per-action pipeline log
 ```
 
 Most Source Coop products map 1:1 to a catalog entry. Some products contain multiple distinct datasets (e.g. `harvard-lil/gov-data` is an archive of ~300k data.gov datasets). These get decomposed into separate entries as we encounter them.
 
 ## Identifiers
 
-Every entry carries `account_id` and `product_id` as the first two fields, matching the directory layout (`catalog/{account_id}/{product_id}.json`) and the upstream Source Coop API's own field names.
+Every entry carries `account_id` and `product_id` as the first two project-specific fields, matching the directory layout. The STAC-required `id` field is set to `{account_id}/{product_id}` — globally unique across Source Cooperative.
 
-The STAC-required `id` field is set to `{account_id}/{product_id}` — globally unique across Source Cooperative. If an upstream STAC document had its own free-form `id` (like `ams` or `overture-maps`), it's preserved under `_upstream_stac_id` for traceability but is not our identifier. Because the decomposition convention (`{product}-{slug}.json`) folds any sub-dataset slug into `product_id`, every catalog entry represents exactly one Collection and the 2-part id suffices.
+## State funnel
 
-## Phases
+Every entry has a `_state` field tracking pipeline progress:
 
-Every catalog entry has a `state` field tracking where it is in the curation pipeline:
+| State | Written by | What's in the file |
+|-------|-----------|--------------------|
+| **seed** | `21-gen-seed` | Inventory aggregates (`file_count`, `total_bytes`, `exts`), API metadata (title, description, tags, mirrors, dates, visibility) |
+| **orphan** | `21-gen-seed` | Inventory aggregates only; the bucket has this repo but the source.coop API does not. Dead-end; dashboard counts these. |
+| **drafted** | `41-compose-collection` | Full STAC Collection assembled from cached README + probe + upstream STAC + AI synthesis |
+| **reviewed** | (manual) | Human-confirmed; never overwritten by automation |
 
-| State | What happened | What's in the file |
-|-------|---------------|--------------------|
-| **seed** | Created from S3 inventory + Source Coop API | `file_count`, `total_bytes`, `exts`, `title`, `description`, `keywords` (from API tags) |
-| **gathered** | Automated tools fetched all available structured data | + STAC extent (bbox, temporal), README text, file structure analysis |
-| **drafted** | AI synthesized gathered data into catalog-quality metadata | + cleaned description, license, providers, keywords, citation |
-| **reviewed** | A human confirmed or corrected the metadata | All fields verified; ready for publication |
+Locked states: `orphan`, `drafted`, `reviewed`. Gather and compose scripts refuse to clobber them. `--redraft` on compose bypasses `drafted` but not `reviewed` or `orphan`.
 
-Entries only move forward. If a script re-runs, it should not overwrite a file that's already at a later phase (e.g. don't clobber a `reviewed` entry with `gathered` output).
+Entries only move forward. If an early-stage script is re-run against a later-state entry, it logs a `locked` line and exits 0.
+
+## Gather caches (not in the entry)
+
+Raw inputs collected by the gather stage live under `cache/`, not in the catalog entry. `compose_collection` reads these when assembling the final STAC:
+
+```
+cache/readme/{pub}/{prod}/<filename>     # README bytes (directory per repo)
+cache/probe/{pub}/{prod}.jsonl           # probe summary (first line) + per-file
+cache/stac/{pub}/{prod}/…                # upstream STAC doc(s) mirrored from S3
+cache/ai/{pub}/{prod}.jsonl              # AI response cache (30-day TTL)
+```
+
+This keeps the catalog entries clean: `catalog.jsonl` is just `jq -c '.' catalog/*/*.json` with no strip step, because working data never landed in the entries in the first place. The top-level `readme` field (concatenated README text with path headers) is intentional — it supports full-text search over the compiled catalog.
 
 ## What counts as a separate dataset?
 
 A dataset warrants its own catalog entry when:
 
-- **Different provenance**: it comes from a different original source, producer, or collection method
-- **Independent extent**: it could meaningfully have its own spatial and/or temporal bounds
-- **Discoverable unit**: someone searching for data would expect to find it as a distinct result
+- **Different provenance**: different original source, producer, or collection method
+- **Independent extent**: could meaningfully have its own spatial and/or temporal bounds
+- **Discoverable unit**: someone searching for data would expect it as a distinct result
 
 This rubric is intentionally incomplete. We develop it case-by-case as we encounter ambiguous products. When in doubt, start with one entry per product and flag it for review.
 
@@ -47,22 +63,6 @@ This rubric is intentionally incomplete. We develop it case-by-case as we encoun
 |---------|-----------|--------|
 | `harvard-lil/gov-data` | ~300k data.gov archives in BagIt format | Not yet decomposed |
 
-## AI Response Cache
-
-AI-generated metadata is expensive. Cached responses live in:
-
-```
-cache/ai/{publisher}/{product}.jsonl
-```
-
-Each line is a JSON object with a `_ts` timestamp. New responses are appended; the latest response is always the last line (`tail -1`). The `--refresh` flag forces a new AI call and appends the result.
-
 ## Scripts
 
-Script names reinforce the state they produce: `gen_seeds.py` creates `state: "seed"` entries; `gather_*.py` scripts advance to `state: "gathered"`; future `draft_*.py` scripts will advance to `state: "drafted"`.
-
-| Script | Purpose |
-|--------|---------|
-| `scripts/gen_seeds.py` | Create `state: "seed"` entries from `cache/s3inv/repo_metadata.jsonl` |
-| `scripts/gather_stac.py` | `seed` → `gathered` by pulling the upstream STAC catalog/collection/stac.parquet |
-| `scripts/gen_collection.py` | Generate a rich STAC Collection for one repo (gather + draft) |
+See `/pipeline.dot` at the repo root for the dependency graph and `/README.md` for usage. Libraries live in `scripts/lib/` (not runnable); numbered scripts (`NN-name.py`) are the pipeline stages.
