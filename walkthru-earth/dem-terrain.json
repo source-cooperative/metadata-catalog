@@ -1,15 +1,95 @@
 {
-  "account_id": "walkthru-earth",
-  "product_id": "dem-terrain",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "walkthru-earth/dem-terrain",
   "title": "DEM-Terrain",
-  "description": "Global terrain data (elevation, slope, aspect) pre-computed on H3 hexagonal grids, stored as Parquet files for fast spatial queries.\r\nhttps://walkthru.earth/indices?section=terrain",
-  "keywords": [],
-  "created_at": "2026-03-01T13:23:09.349Z",
+  "description": "H3-indexed terrain derivatives computed from the GEDTM-30m global 30m resolution digital elevation model. Includes elevation, slope, aspect, terrain ruggedness index, and topographic position index across ten H3 resolutions with ~10.5 billion cells. Available in Apache Parquet format (v2: BIGINT H3 index; v1: legacy VARCHAR with geometry columns).",
+  "license": "CC-BY-4.0",
+  "keywords": [
+    "remote-sensing",
+    "dem",
+    "terrain-derivatives",
+    "elevation",
+    "h3-hexagons"
+  ],
+  "providers": [
+    {
+      "name": "OpenGeoHub",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "walkthru.earth",
+      "roles": [
+        "processor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/walkthru-earth/dem-terrain"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -179.9998627,
+          -62.0103111,
+          179.9998627,
+          83.6818924
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 10450894746
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/walkthru-earth/dem-terrain/",
+      "type": "application/x-parquet",
+      "title": "Dataset files (20 x .parquet)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/walkthru-earth/dem-terrain/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/walkthru-earth/dem-terrain",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "rel": "cite-as",
+      "href": "https://doi.org/10.5281/zenodo.14900181"
+    }
+  ],
+  "exts": {
+    "parquet": 20,
+    "tif": 1,
+    "md": 1
+  },
   "updated_at": "2026-03-11T14:08:35.121Z",
-  "visibility": "public",
   "disabled": false,
-  "featured": 0,
-  "data_mode": "open",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -22,17 +102,19 @@
       "prefix": "walkthru-earth/dem-terrain/"
     }
   },
-  "file_count": 22,
-  "total_bytes": 831443695303,
-  "exts": {
-    "parquet": 20,
-    "tif": 1,
-    "md": 1
-  },
-  "_state": "seed",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "id": "walkthru-earth/dem-terrain"
+  "file_count": 22,
+  "data_mode": "open",
+  "total_bytes": 831443695303,
+  "account_id": "walkthru-earth",
+  "product_id": "dem-terrain",
+  "created_at": "2026-03-01T13:23:09.349Z",
+  "featured": 0,
+  "visibility": "public",
+  "readme": "## README.md\n# Global DEM Terrain Derivatives\n\nH3-indexed terrain data from [GEDTM-30m](https://stac.openlandmap.org/gedtm-30m/collection.json) in Apache Parquet format. Ten H3 resolutions (1\u201310), one file per resolution, sorted by `h3_index`. Available in two versions: **v2 (recommended)** with BIGINT `h3_index` and no geometry columns, and **v1 (legacy)** with VARCHAR `h3_index` and [native Parquet 2.11+ GEOMETRY](https://github.com/apache/parquet-format/blob/master/Geospatial.md).\n\n| | |\n|---|---|\n| **Source** | GEDTM-30m (OpenGeoHub), 30m resolution, global land coverage |\n| **Format** | Apache Parquet \u2014 v2: BIGINT h3_index, no geometry; v1: VARCHAR h3_index, native GEOMETRY (DuckDB 1.5) |\n| **CRS** | EPSG:4326 (WGS 84) |\n| **License** | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) by [walkthru.earth](https://walkthru.earth/links) |\n| **Code** | [walkthru-earth/dem-terrain](https://github.com/walkthru-earth/dem-terrain) |\n\n## Quick Start\n\n### v2 (recommended)\n\n```sql\n-- DuckDB \u2014 no spatial extension needed for v2\nINSTALL h3 FROM community; LOAD h3;\nINSTALL httpfs; LOAD httpfs;\nSET s3_region = 'us-west-2';\n\nSELECT h3_index,\n       h3_cell_to_lat(h3_index) AS lat,\n       h3_cell_to_lng(h3_index) AS lng,\n       elev, slope, aspect\nFROM read_parquet('s3://us-west-2.opendata.source.coop/walkthru-earth/dem-terrain/v2/h3/h3_res=5/data.parquet')\nWHERE h3_index BETWEEN ? AND ?  -- row group statistics prune efficiently\nORDER BY elev DESC\nLIMIT 20;\n```\n\nFor deck.gl H3HexagonLayer (needs hex string):\n\n```sql\nSELECT h3_h3_to_string(h3_index) AS h3_hex, elev\nFROM read_parquet('s3://us-west-2.opendata.source.coop/walkthru-earth/dem-terrain/v2/h3/h3_res=5/data.parquet')\n```\n\n```python\n# Python (v2)\nimport duckdb\n\ncon = duckdb.connect()\ncon.install_extension(\"h3\", repository=\"community\"); con.load_extension(\"h3\")\nfor ext in (\"httpfs\",):\n    con.install_extension(ext); con.load_extension(ext)\ncon.sql(\"SET s3_region = 'us-west-2'\")\n\ndf = con.sql(\"\"\"\n    SELECT h3_index,\n           h3_cell_to_lat(h3_index) AS lat,\n           h3_cell_to_lng(h3_index) AS lng,\n           elev, slope, aspect, tri, tpi\n    FROM read_parquet(\n        's3://us-west-2.opendata.source.coop/walkthru-earth/dem-terrain/v2/h3/h3_res=5/data.parquet'\n    )\n    ORDER BY elev DESC\n    LIMIT 100\n\"\"\").fetchdf()\n```\n\n### v1 (legacy \u2014 requires `INSTALL spatial`)\n\n```sql\n-- DuckDB\nINSTALL spatial; LOAD spatial;\nINSTALL httpfs;  LOAD httpfs;\nSET s3_region = 'us-west-2';\n\nSELECT h3_index, elev, slope, aspect, tri, tpi\nFROM read_parquet('s3://us-west-2.opendata.source.coop/walkthru-earth/dem-terrain/v1/h3/h3_res=5/data.parquet')\nWHERE lat BETWEEN 35 AND 45\n  AND lon BETWEEN -10 AND 5\nORDER BY elev DESC\nLIMIT 20;\n```\n\n## Files\n\n### v2 (recommended)\n\n```\nwalkthru-earth/dem-terrain/\n  v2/h3/\n    h3_res=1/data.parquet       12 KB           223 cells\n    h3_res=2/data.parquet       57 KB         1,546 cells\n    h3_res=3/data.parquet      373 KB        10,851 cells\n    h3_res=4/data.parquet      2.5 MB        76,135 cells\n    h3_res=5/data.parquet       17 MB       533,062 cells\n    h3_res=6/data.parquet      115 MB     3,730,922 cells\n    h3_res=7/data.parquet      783 MB    26,115,785 cells\n    h3_res=8/data.parquet      5.3 GB   182,814,924 cells\n    h3_res=9/data.parquet     36.1 GB 1,279,700,961 cells\n    h3_res=10/data.parquet   244.7 GB 8,957,910,337 cells\n```\n\n### v1 (legacy)\n\n```\nwalkthru-earth/dem-terrain/\n  v1/h3/\n    h3_res=1/data.parquet  ...  h3_res=10/data.parquet\n```\n\nSame cell counts and resolutions as v2.\n\n**Total: 10,450,894,746 cells (~10.5 billion) in ~287 GB.** Compression: ZSTD level 3. Row groups: 1,000,000 rows.\n\n## Schema\n\n### v2 (recommended)\n\n| Column | Type | Unit | Description |\n|--------|------|------|-------------|\n| `h3_index` | BIGINT | \u2014 | H3 cell ID (int64). Sorted for delta encoding compression and range-based queries. |\n| `elev` | FLOAT | meters | Elevation above sea level |\n| `slope` | FLOAT | degrees | Terrain slope (0 = flat, 90 = cliff) |\n| `aspect` | FLOAT | degrees | Slope direction (0/360 = N, 90 = E, 180 = S, 270 = W) |\n| `tri` | FLOAT | meters | Terrain Ruggedness Index \u2014 mean abs. elevation diff to 8 neighbors |\n| `tpi` | FLOAT | meters | Topographic Position Index \u2014 elevation minus mean of 8 neighbors (+ridge, -valley) |\n\n`geometry`, `lat`, and `lon` columns are removed in v2 \u2014 derive them via the DuckDB h3 extension: `h3_cell_to_lat(h3_index)`, `h3_cell_to_lng(h3_index)`, `h3_cell_to_boundary_wkt(h3_index)`.\n\n### v1 (legacy)\n\n| Column | Type | Unit | Description |\n|--------|------|------|-------------|\n| `h3_index` | VARCHAR | \u2014 | H3 cell ID (hex string) |\n| `geometry` | GEOMETRY | \u2014 | Cell center point (native Parquet 2.11+ GEOMETRY, EPSG:4326) |\n| `lat` | FLOAT | degrees | Cell center latitude |\n| `lon` | FLOAT | degrees | Cell center longitude |\n| `elev` | FLOAT | meters | Elevation above sea level |\n| `slope` | FLOAT | degrees | Terrain slope (0 = flat, 90 = cliff) |\n| `aspect` | FLOAT | degrees | Slope direction (0/360 = N, 90 = E, 180 = S, 270 = W) |\n| `tri` | FLOAT | meters | Terrain Ruggedness Index \u2014 mean abs. elevation diff to 8 neighbors |\n| `tpi` | FLOAT | meters | Topographic Position Index \u2014 elevation minus mean of 8 neighbors (+ridge, -valley) |\n\n**Sample values** (res 5, Everest region):\n\n| h3_index | elev | slope | aspect | tri | tpi |\n|----------|------|-------|--------|-----|-----|\n| 853c0317fffffff | 6,879 m | 40.8\u00b0 | 134\u00b0 | 327 m | 52 m |\n| 853c03bbfffffff | 6,568 m | 23.0\u00b0 | 221\u00b0 | 223 m | 31 m |\n\n## How It Works\n\nTerrain derivatives are computed from the GEDTM-30m elevation raster:\n\n| Derivative | Method | Reference |\n|------------|--------|-----------|\n| **Slope** | `arctan(\u221a(dz/dx\u00b2 + dz/dy\u00b2))` via central differences, pixel sizes converted to meters using latitude-dependent scale | Horn (1981) |\n| **Aspect** | `atan2(-dz/dx, dz/dy)`, converted to 0\u2013360\u00b0 compass bearing | Horn (1981) |\n| **TRI** | Mean absolute elevation difference across 3\u00d73 neighborhood | Riley et al. (1999) |\n| **TPI** | Center pixel minus mean of 3\u00d73 neighborhood | Weiss (2001) |\n\nValues at H3 cell centers are obtained by **bilinear interpolation** from the raster grid (scipy `RegularGridInterpolator`).\n\nDEM is read at different resolutions depending on H3 level:\n\n| H3 Res | DEM Sampling | Rationale |\n|--------|-------------|-----------|\n| 1\u20135 | ~500 m | Cells are 8\u2013418 km; coarse DEM sufficient |\n| 6\u20137 | ~110 m | Cells are 1.2\u20133.2 km; finer detail needed |\n| 8\u201310 | ~30 m (native) | Cells are 66\u2013461 m; full resolution |\n\n## More Examples\n\n### v2 queries\n\n```sql\n-- Range query on sorted BIGINT h3_index \u2014 row group min/max statistics prune efficiently\nINSTALL h3 FROM community; LOAD h3;\nINSTALL httpfs; LOAD httpfs;\nSET s3_region = 'us-west-2';\n\nSELECT h3_index,\n       h3_cell_to_lat(h3_index) AS lat,\n       h3_cell_to_lng(h3_index) AS lng,\n       elev, slope\nFROM read_parquet('s3://us-west-2.opendata.source.coop/walkthru-earth/dem-terrain/v2/h3/h3_res=7/data.parquet')\nWHERE h3_index BETWEEN ? AND ?\nORDER BY elev DESC\nLIMIT 100;\n\n-- Query across all resolutions (Hive partitioning)\nSELECT h3_res, h3_index, elev\nFROM read_parquet(\n    's3://us-west-2.opendata.source.coop/walkthru-earth/dem-terrain/v2/h3/h3_res=*/data.parquet',\n    hive_partitioning = true\n)\nWHERE h3_res = 5\nORDER BY elev DESC\nLIMIT 20;\n\n-- DuckDB-WASM (browser) \u2014 use HTTPS URL\nSELECT h3_index,\n       h3_cell_to_lat(h3_index) AS lat,\n       h3_cell_to_lng(h3_index) AS lng,\n       elev, slope\nFROM read_parquet(\n    'https://data.source.coop/walkthru-earth/dem-terrain/v2/h3/h3_res=5/data.parquet'\n)\nORDER BY elev DESC\nLIMIT 100;\n```\n\n### v1 legacy queries (requires `INSTALL spatial`)\n\n```sql\n-- Spatial pushdown using native geometry bbox stats (no lat/lon filter needed)\nSELECT h3_index, elev, slope\nFROM read_parquet('s3://us-west-2.opendata.source.coop/walkthru-earth/dem-terrain/v1/h3/h3_res=7/data.parquet')\nWHERE geometry && ST_MakeEnvelope(86.5, 27.5, 87.5, 28.5);\n\n-- lat/lon filtering (v1 only \u2014 these columns exist in v1)\nSELECT *\nFROM read_parquet(\n    's3://us-west-2.opendata.source.coop/walkthru-earth/dem-terrain/v1/h3/h3_res=*/data.parquet',\n    hive_partitioning = true\n)\nWHERE h3_res = 5\n  AND lat BETWEEN 27 AND 29 AND lon BETWEEN 86 AND 88;\n```\n\n## Geometry Format\n\n**v2** drops the `geometry` column entirely. Coordinates are derivable from the BIGINT `h3_index` via the DuckDB h3 extension (`h3_cell_to_lat`, `h3_cell_to_lng`, `h3_cell_to_boundary_wkt`). This eliminates the need for `INSTALL spatial` and reduces file size.\n\n**v1** retains the `geometry` column, written with `GEOPARQUET_VERSION 'BOTH'`, providing dual compatibility:\n\n- **Native Parquet 2.11+ GEOMETRY logical type** \u2014 per-row-group bounding box statistics for spatial filter pushdown. Supported by DuckDB 1.5+, Apache Arrow (Rust), Apache Iceberg, GDAL 3.12+.\n- **GeoParquet 1.0 `geo` file-level metadata** \u2014 backwards compatibility with older tools (QGIS, pyarrow, GeoPandas).\n\n## Source\n\n[GEDTM-30m](https://stac.openlandmap.org/gedtm-30m/collection.json) \u2014 Global Ensemble Digital Terrain Model at 30m resolution. Cloud Optimized GeoTIFF, 1,440,010 \u00d7 600,010 px, Int32 (decimeters, scale 0.1), EPSG:4326, global land coverage 65\u00b0S\u201385\u00b0N.\n\n> Ho, Y., Grohmann, C. H., Lindsay, J., Reuter, H. I., Parente, L., Witjes, M., & Hengl, T. (2025). GEDTM30: global ensemble digital terrain model at 30 m and derived multiscale terrain variables. *PeerJ*, 13, e19673. [doi:10.7717/peerj.19673](https://doi.org/10.7717/peerj.19673)\n>\n> Dataset: [doi:10.5281/zenodo.14900181](https://doi.org/10.5281/zenodo.14900181)\n\n## License\n\nThis dataset is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) by [walkthru.earth](https://walkthru.earth/links). The source [GEDTM-30m](https://doi.org/10.5281/zenodo.14900181) is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) by [OpenGeoHub](https://opengeohub.org/).\n",
+  "_state": "drafted",
+  "cataloged_at": "2026-04-24T19:02:45+00:00"
 }

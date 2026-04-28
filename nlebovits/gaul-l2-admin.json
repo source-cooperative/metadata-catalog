@@ -1,15 +1,83 @@
 {
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "nlebovits/gaul-l2-admin",
+  "title": "GAUL L2 Admin Boundaries",
+  "description": "Global administrative boundaries at the district level (second administrative level) for all countries. Standardized through FAO's Global Administrative Unit Layers (GAUL) 2024 methodology with unified codes and consistent attributes.",
+  "license": "CC-BY-4.0",
+  "keywords": [
+    "administrative-boundaries",
+    "districts",
+    "subnational-units"
+  ],
+  "providers": [
+    {
+      "name": "FAO",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/nlebovits/gaul-l2-admin"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -180.0000054,
+          -89.9000015,
+          180.0,
+          83.6274185
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 579
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/nlebovits/gaul-l2-admin/",
+      "type": "application/x-parquet",
+      "title": "Dataset files (265 x .parquet)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/nlebovits/gaul-l2-admin/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/nlebovits/gaul-l2-admin",
+      "title": "Source Cooperative product page"
+    }
+  ],
+  "updated_at": "2025-10-24T17:04:55.629Z",
   "account_id": "nlebovits",
   "product_id": "gaul-l2-admin",
-  "title": "GAUL L2 Admin Boundaries",
-  "description": "Global national and sub-national administrative units from the FAO (2024). ",
-  "keywords": [],
+  "data_mode": "open",
   "created_at": "2025-10-24T17:04:55.628Z",
-  "updated_at": "2025-10-24T17:04:55.629Z",
+  "total_bytes": 509120291,
   "visibility": "public",
   "disabled": false,
-  "featured": 0,
-  "data_mode": "open",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -22,16 +90,17 @@
       "prefix": "nlebovits/gaul-l2-admin/"
     }
   },
-  "file_count": 266,
-  "total_bytes": 509120291,
   "exts": {
     "parquet": 265,
     "md": 1
   },
-  "_state": "seed",
+  "featured": 0,
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "id": "nlebovits/gaul-l2-admin"
+  "file_count": 266,
+  "readme": "## README.md\n## Administrative boundaries (level 2) - GAUL 2024\n\n\"The administrative boundaries dataset at level 2 (Sub-national level) is part of the Global Administrative Unit Layers (GAUL) dataset series which includes information on administrative units for all the countries in the world, providing a contribution to the standardization of the spatial dataset representing administrative units.\" ([FAO](https://data.apps.fao.org/catalog/dataset/global-administrative-unit-layers-gaul-2024))\n\nFor more information about the conversion or maintenance of this dataset, please contact nlebovits@pm.me.\n\n## Data Vintage and Lineage\nThe data were created on 2024-12-19. Data were converted to Parquet files and uploaded to Source.Coop on 2025-10-24.\n\nPer FAO:\n\n> The overall GAUL methodology consists in a) collecting the best available data from most reliable sources, b) assemble national datasets into a common dataset by matching international boundaries with a reference authoritative dataset, i.e. the UN 2018, c) standardizing attributes to a common table of attributes, d) generating codes using GAUL Coding System, e) applying a topology and f) fill the metadata for each country.\n>\n> The administrative boundaries at the level 2 dataset distinguishes Districts and equivalent. The GAUL maintains global layers with a unified coding system at country, first (e.g. departments), and second administrative levels (e.g. districts). The complete metadata reference for each country, along with the specific license or Terms of Use applicable at the country level, can be accessed here.\n\n\n## Data Format and Partitioning\n\nThe data are provided in parquet files partitioned by country, corresponding to the ISO codes. The original data were provided as a Shapefile.  \n\n## Schema\n\nEach row in the dataset represents a second-level administrative unit (district or equivalent) with the following columns:\n\n- `iso3_code` (STRING): ISO 3166-1 alpha-3 country code, e.g., TZA for Tanzania\n- `map_code` (STRING): Map code identifier\n- `gaul0_code` (INT64): GAUL country-level code\n- `gaul0_name` (STRING): Country name\n- `gaul1_code` (INT64): GAUL first-level administrative unit code (e.g., province/state)\n- `gaul1_name` (STRING): First-level administrative unit name\n- `gaul2_code` (INT64): GAUL second-level administrative unit code (district)\n- `gaul2_name` (STRING): Second-level administrative unit name\n- `continent` (STRING): Continent name\n- `disp_en` (STRING): Display name in English\n- `geometry` (BINARY): Polygon geometry encoded as WKB\n- `geometry_bbox` (STRUCT): Bounding box struct (xmin, ymin, xmax, ymax) for efficient spatial queries\n\n## Changelog\n\nCurrent version: 1.0\n\n**Version 1.0 (2025-10-24):**\n\n- Initial release!\n  - 45,523 second-level administrative units (districts) worldwide\n  - Converted from ESRI Shapefile to GeoParquet 1.1.0 with ZSTD compression and bbox metadata, partitioned by ISO3 code (country)\n\n## Citation:\n\nFAO. 2024. Global Administrative Unit Layers (GAUL). [Accessed on [DD Month YYYY]]. https://data.apps.fao.org/?lang=en. Licence: CC-BY-4.0\n\n## Dataset License\n\nThis work is made available under the Creative Commons Attribution-4.0 International license (CC BY 4.0).\n\nIMPORTANT \u2013 Read carefully the Terms of Use before using the digital data. By downloading the Global Administrative Unit Layers (GAUL) 2024 you agree to be bound by the terms and conditions contained in this document.\n",
+  "_state": "drafted",
+  "cataloged_at": "2026-04-24T18:53:00+00:00"
 }

@@ -1,15 +1,94 @@
 {
-  "account_id": "seerai",
-  "product_id": "hifld",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "seerai/hifld",
   "title": "HIFLD Archive",
-  "description": "An archived copy of most of Homeland Infrastructure Foundation-Level Data (HIFLD) from the decommissioned https://hifld-geoplatform.hub.arcgis.com/ page. The USG removed public access to this data portal on 8/25/2025. ",
-  "keywords": [],
-  "created_at": "2025-11-17T19:46:46.670Z",
-  "updated_at": "2025-12-10T15:36:01.493Z",
-  "visibility": "public",
+  "description": "An archive of the Homeland Infrastructure Foundation-Level Data (HIFLD) program, a U.S. government resource of infrastructure datasets including administrative boundaries, hydrography, transportation networks, and critical infrastructure layers. The archive preserves hundreds of datasets from the decommissioned HIFLD geoplatform in cloud-optimized Parquet format.",
+  "license": "CC-BY-4.0",
+  "keywords": [
+    "infrastructure",
+    "administrative-boundaries",
+    "hydrography",
+    "transportation",
+    "critical-infrastructure",
+    "facilities"
+  ],
+  "providers": [
+    {
+      "name": "Homeland Infrastructure Foundation-Level Data (HIFLD) Program",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "SeerAI, Inc.",
+      "roles": [
+        "processor",
+        "host",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/seerai/hifld"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -179.231086,
+          -14.6101858,
+          179.859681,
+          71.439786
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 4750759
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/seerai/hifld/",
+      "type": "application/x-parquet",
+      "title": "Dataset files (767 x .parquet)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/seerai/hifld/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/seerai/hifld",
+      "title": "Source Cooperative product page"
+    }
+  ],
   "disabled": false,
+  "product_id": "hifld",
+  "visibility": "public",
   "featured": 0,
-  "data_mode": "open",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -22,8 +101,7 @@
       "prefix": "seerai/hifld/"
     }
   },
-  "file_count": 1772,
-  "total_bytes": 21616086193,
+  "updated_at": "2025-12-10T15:36:01.493Z",
   "exts": {
     "parquet": 767,
     "crc": 327,
@@ -31,10 +109,12 @@
     "csv": 1,
     "txt": 1
   },
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "id": "seerai/hifld"
+  "data_mode": "open",
+  "total_bytes": 21616086193,
+  "file_count": 1772,
+  "account_id": "seerai",
+  "created_at": "2025-11-17T19:46:46.670Z",
+  "readme": "## README.md\n# Homeland Infrastructure Foundation-Level Data (HIFLD) Archive\n\nThe Homeland Infrastructure Foundation-Level Data (HIFLD) program was a trusted resource for infrastructure data across the U.S. It supported policy, emergency management, and research before being discontinued in August 2025. This archive preserves that resource.\n\nThe datasets were processed using SeerAI Boson, Databricks, and Apache Sedona and saved in the Parquet format for ease of access directly on cloud object storage. If a dataset included geometry, it was spatially sorted using geohash level 8, which was then removed from the dataset.\n\n## Dataset Directory Structure\nMany of the original datasets contained multiple collections, and each collection was archived as its own parquet file. To preserve some of the original structure, there is a nested folder hierarchy for datasets and files. Please see below for the structure.\n\n```\nHIFLD\n\u251c\u2500\u2500 README.md                                       -> This file\n\u251c\u2500\u2500 hifld-dataset-inventory.csv                     -> Inventory of all datasets, their descriptions, any parent dataset folder, bucket location, and URL to vector tile JSON\n\u251c\u2500\u2500 119th-congressional-districts                   -> Dataset parent folder\n\u2502   \u251c\u2500\u2500 README.md                                   -> Parent dataset README\n\u2502   \u251c\u2500\u2500 119th-congressional-districts               -> Dataset folder\n\u2502   \u2502   \u251c\u2500\u2500 119th-congressional-districts.parquet   -> Dataset parquet\n\u2502   \u2502   \u251c\u2500\u2500 README.md                               -> Dataset-specific README\n\u251c\u2500\u2500 3d-hydrography-program-3dhp-layers              -> Dataset parent folder\n\u2502   \u251c\u2500\u2500 README.md                                   -> Parent dataset README\n\u2502   \u251c\u2500\u2500 catchment                                   -> Dataset folder - corresponding to collection in original dataset\n\u2502   \u2502   \u251c\u2500\u2500 catchment.parquet                       -> Dataset parquet\n\u2502   \u2502   \u251c\u2500\u2500 README.md                               -> Dataset-specific README\n\u2502   \u251c\u2500\u2500 flowline                 \n\u2502   \u2502   \u251c\u2500\u2500 flowline.parquet               \n\u2502   \u2502   \u2514\u2500\u2500 README.md               \n\u2502   \u251c\u2500\u2500 ...     \n\u251c\u2500\u2500 ...\n```\n\n## License\nThe HIFLD archive provided by SeerAI is released under the Creative Commons Attribution 4.0 International (CC BY 4.0).\n\n## Citation\nSeerAI, Inc. (2025). HIFLD Archive. Retrieved from https://www.seer.ai/\n\n## Contact\nFor questions, issues, or feedback regarding this archive, please contact us at [contact@seerai.space](mailto:contact@seerai.space).\n",
+  "_state": "drafted",
+  "cataloged_at": "2026-04-24T19:10:55+00:00"
 }

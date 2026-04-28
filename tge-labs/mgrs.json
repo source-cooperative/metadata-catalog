@@ -1,15 +1,95 @@
 {
-  "account_id": "tge-labs",
-  "product_id": "mgrs",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "tge-labs/mgrs",
   "title": "Cloud Native MGRS",
-  "description": "Full(-ish) MGRS 1km grid. Data is downloaded data from https://earth-info.nga.mil/index.php?dir=coordsys&action=utm-1km-polyline-dloads (but 5 files were missing from their list). Goal is to make it easier to access - details in the readme.",
-  "keywords": [],
-  "created_at": "2025-10-13T11:15:41.661Z",
-  "updated_at": "2025-10-13T11:15:41.661Z",
+  "description": "A complete Military Grid Reference System (MGRS) 1-kilometer reference grid derived from National Geospatial-Intelligence Agency data, optimized in GeoParquet format. Contains over 305 million grid cells covering the global extent with standardized coordinate references for efficient spatial indexing.",
+  "license": "other",
+  "keywords": [
+    "mgrs",
+    "coordinate-system",
+    "grid-reference",
+    "utm-grid"
+  ],
+  "providers": [
+    {
+      "name": "National Geospatial-Intelligence Agency",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "TGE Labs",
+      "roles": [
+        "processor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/tge-labs/mgrs"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -180.0,
+          -80.0000001,
+          180.0000001,
+          84.0001926
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 710097665
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/tge-labs/mgrs/",
+      "type": "application/x-parquet",
+      "title": "Dataset files (771 x .parquet)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/tge-labs/mgrs/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/tge-labs/mgrs",
+      "title": "Source Cooperative product page"
+    }
+  ],
   "visibility": "public",
+  "created_at": "2025-10-13T11:15:41.661Z",
+  "product_id": "mgrs",
+  "exts": {
+    "parquet": 771,
+    "md": 1
+  },
+  "account_id": "tge-labs",
   "disabled": false,
-  "featured": 0,
   "data_mode": "open",
+  "updated_at": "2025-10-13T11:15:41.661Z",
+  "file_count": 772,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -22,16 +102,13 @@
       "prefix": "tge-labs/mgrs/"
     }
   },
-  "file_count": 772,
-  "total_bytes": 45622324162,
-  "exts": {
-    "parquet": 771,
-    "md": 1
-  },
-  "_state": "seed",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "id": "tge-labs/mgrs"
+  "total_bytes": 45622324162,
+  "featured": 0,
+  "readme": "## README.md\n## About\r\n\r\nThis project crawled the map download links at https://earth-info.nga.mil/index.php?dir=coordsys&action=utm-1km-polyline-dloads \r\nand put them into a GeoParquet files that follow the [Best Practices for Distributing GeoParquet](https://github.com/opengeospatial/geoparquet/blob/main/format-specs/distributing-geoparquet.md). The `full` directory contains the complete dataset as a single GeoParquet file. For now it just contains `mgrs_clean.parquet` which is all the \r\ndownload links that worked, but removing the ShapeLen, ShapeArea and area columns, as they weren't all that consistent.\r\n\r\n## \ud83d\udce6 Dataset Overview\r\n\r\n### **mgrs_clean.parquet**\r\n**Size:** 5.87 GB  \r\n**Compression:** ZSTD  \r\n**Rows:** 305,799,745  \r\n**Row Groups:** 2,483  \r\n**GeoParquet Version:** 1.0.0  \r\n**CRS:** EPSG:4326  \r\n**Bounding Box:** `[-180.000000, -80.000000, 180.000000, 84.000193]`\r\n\r\n#### Columns\r\n| Name        | Type   |\r\n|-------------|--------|\r\n| EASTING     | string |\r\n| NORTHING    | string |\r\n| kmSQ_ID     | string |\r\n| GZD         | string |\r\n| MGRS        | string |\r\n| MGRS_10km   | string |\r\n| geometry \ud83c\udf0d | binary |\r\n\r\n---\r\n\r\n### Partitioning Notes\r\n\r\nThe `partitioned/` directory currently includes **`gzd_partition/`**, containing ~700 partition files (one per GZD).  \r\nThese partitions:\r\n\r\n- originate from `mgrs_clean.parquet`\r\n- include **GeoParquet 1.1 bounding boxes** for faster spatial filtering\r\n- are intended to support future **VecOREL** extensions:\r\n  - administrative division references\r\n  - geometry metrics\r\n\r\n---\r\n\r\n## \ud83d\udce6 Sample Subset\r\n\r\n### **mgrs_10X.parquet**\r\n**Size:** 9.02 MB  \r\n**Compression:** ZSTD  \r\n**Rows:** 187,646  \r\n**Row Groups:** 1  \r\n**GeoParquet Version:** 1.1.0  \r\n**CRS:** EPSG:4326  \r\n**Bounding Box:** `[-180.000000, -80.000000, 180.000000, 84.000193]`\r\n\r\n#### Columns\r\n| Name        | Type |\r\n|------------|------|\r\n| EASTING     | string |\r\n| NORTHING    | string |\r\n| kmSQ_ID     | string |\r\n| GZD         | string |\r\n| MGRS        | string |\r\n| MGRS_10km   | string |\r\n| geometry \ud83c\udf0d | binary |\r\n| bbox | struct `<xmin: double, ymin: double, xmax: double, ymax: double>` |\r\n\r\n---\r\n\r\n\r\n\r\n## Usage\r\n\r\nThe best way to use these is to treat the partition as a full parquet dataset and query just what you need out of it. With DuckDB\r\nyou can do:\r\n\r\n```\r\nCREATE TABLE mgrs_grid AS (\r\n  SELECT * FROM read_parquet('s3://us-west-2.opendata.source.coop/tge-labs/mgrs/gzd_partition/*/*.parquet')\r\n           WHERE \"bbox\".xmin BETWEEN 11.14686 AND 14.853739\r\n           AND \"bbox\".ymin BETWEEN 50.49916 AND 54.37598);\r\n```\r\n\r\nAnd then you'll have the table locally. You can go straight to a parquet file with\r\n\r\n```\r\nCOPY (\r\n  SELECT * FROM read_parquet('s3://us-west-2.opendata.source.coop/tge-labs/mgrs/gzd_partition/*/*.parquet')\r\n           WHERE \"bbox\".xmin BETWEEN 11.14686 AND 14.853739\r\n           AND \"bbox\".ymin BETWEEN 50.49916 AND 54.37598)\r\n    TO 'my_mgrs_grid.parquet' (FORMAT PARQUET, COMPRESSION zstd, COMPRESSION_LEVEL 15);\r\n```\r\n\r\n\r\n",
+  "_state": "drafted",
+  "cataloged_at": "2026-04-24T19:06:37+00:00"
 }

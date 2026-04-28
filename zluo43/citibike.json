@@ -1,15 +1,83 @@
 {
-  "account_id": "zluo43",
-  "product_id": "citibike",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "zluo43/citibike",
   "title": "NYC Citi Bike",
-  "description": "New York City's official bike-sharing system. The dataset contains comprehensive information including bike station locations, pickup times, ride durations, and many others, making it an ideal resource for analyzing CitiBike ridership patterns across New York City.",
-  "keywords": [],
-  "created_at": "2024-10-09T00:46:23.812955+00:00",
-  "updated_at": "2025-08-21T16:39:55.567Z",
-  "visibility": "public",
+  "description": "New York City Citibike bike-sharing trip data converted to geoparquet format, partitioned by year and month. The dataset includes station locations, pickup times, ride durations, and ridership patterns. Original data inconsistencies have been standardized into two distinct schemas.",
+  "license": "proprietary",
+  "keywords": [
+    "bike-sharing",
+    "urban-mobility",
+    "trip-patterns",
+    "station-locations"
+  ],
+  "providers": [
+    {
+      "name": "Citibike",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Calvin Luo",
+      "roles": [
+        "processor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/zluo43/citibike"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -74.0253532,
+          40.6553998,
+          -73.878,
+          40.869
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 11020356
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/zluo43/citibike/",
+      "type": "application/x-parquet",
+      "title": "Dataset files (156 x .parquet)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/zluo43/citibike/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/zluo43/citibike",
+      "title": "Source Cooperative product page"
+    }
+  ],
   "disabled": false,
-  "featured": 0,
-  "data_mode": "open",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -22,16 +90,24 @@
       "prefix": "zluo43/citibike/"
     }
   },
-  "file_count": 157,
+  "data_mode": "open",
   "total_bytes": 14118894275,
-  "exts": {
-    "parquet": 156,
-    "md": 1
-  },
-  "_state": "seed",
+  "featured": 0,
+  "account_id": "zluo43",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "id": "zluo43/citibike"
+  "product_id": "citibike",
+  "updated_at": "2025-08-21T16:39:55.567Z",
+  "exts": {
+    "parquet": 156,
+    "md": 1
+  },
+  "visibility": "public",
+  "created_at": "2024-10-09T00:46:23.812955+00:00",
+  "file_count": 157,
+  "readme": "## README.md\n**Description**:\n\nThis dataset is a copy of the New York City Citibike data, which can be found here: https://citibikenyc.com/system-data, made available in the cloud-native geoparquet format partitioned by year and month.\n\nThe original data scehma exhibits inconsistencies across source files,particularly in data type definitions. \n\nThis dataset has been standardized and divided into twodistinct schemas ('new' and 'old') to best reflect the official Citibike data schema variations.\n\nSpecific data transformation steps are documented in my Medium blog post: https://medium.com/@calvinluozhengpei/  from-wall-street-to-central-park-decoding-nycs-citi-bike-patterns-part-1-3155569278cf\n\nFeel free to read and provide feedback on how to make the process more efficient!\n\n**Example Usage**: \n\n\nLoad data with Duckdb in Python:\n\n```\ncon = duckdb.connect(database = \":memory:\")\ncon.sql(\"\"\" \nSELECT * FROM read_parquet('s3://us-west-2.opendata.source.coop/zluo43/citibike/old_schema_combined_with_geom.parquet/**/*.parquet')\n\"\"\")\n\n```\n\nBasic EDA in Python:\n\n```\ndf=con.sql(\"\"\" \nSELECT * FROM read_parquet('s3://us-west-2.opendata.source.coop/zluo43/citibike/old_schema_combined_with_geom.parquet/**/*.parquet')\n\"\"\").df()\ndf.info()\n\n```\n",
+  "_state": "drafted",
+  "cataloged_at": "2026-04-24T19:02:00+00:00"
 }

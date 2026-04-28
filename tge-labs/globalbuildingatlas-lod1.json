@@ -1,15 +1,114 @@
 {
-  "account_id": "tge-labs",
-  "product_id": "globalbuildingatlas-lod1",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "tge-labs/globalbuildingatlas-lod1",
   "title": "GlobalBuildingAtlas LoD1",
-  "description": "Level of detail 1 (LoD1) data of buildings across the globe. Credit: https://mediatum.ub.tum.de/1782307",
-  "keywords": [],
-  "created_at": "2025-09-05T13:07:16.877Z",
-  "updated_at": "2025-09-07T16:39:55.567Z",
+  "description": "Global dataset of approximately 2.75 billion building footprints in Level of Detail 1 (LoD1) format, combining data from Google Open Buildings, OpenStreetMap, Microsoft Building Footprints, and new detections from deep learning analysis of Planet Labs satellite imagery. Includes building geometry, height information, and geographic coordinates.",
+  "license": "other",
+  "keywords": [
+    "remote-sensing",
+    "building-footprints",
+    "building-heights",
+    "urban-mapping",
+    "3d-models"
+  ],
+  "providers": [
+    {
+      "name": "Technical University of Munich (TUM)",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Google Open Buildings",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "OpenStreetMap",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Microsoft",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Planet Labs",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "3D Global Footprints",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/tge-labs/globalbuildingatlas-lod1"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -169.9534213,
+          5.6245741,
+          5.0004051,
+          68.8726526
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 29996077
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/tge-labs/globalbuildingatlas-lod1/",
+      "type": "application/x-parquet",
+      "title": "Dataset files (922 x .parquet)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/tge-labs/globalbuildingatlas-lod1/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/tge-labs/globalbuildingatlas-lod1",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "rel": "cite-as",
+      "href": "https://doi.org/10.14459/2025mp1782307"
+    }
+  ],
   "visibility": "public",
-  "disabled": false,
   "featured": 0,
-  "data_mode": "open",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -22,16 +121,23 @@
       "prefix": "tge-labs/globalbuildingatlas-lod1/"
     }
   },
-  "file_count": 923,
   "total_bytes": 224744152043,
+  "file_count": 923,
   "exts": {
     "parquet": 922,
     "md": 1
   },
-  "_state": "seed",
+  "data_mode": "open",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "id": "tge-labs/globalbuildingatlas-lod1"
+  "disabled": false,
+  "created_at": "2025-09-05T13:07:16.877Z",
+  "updated_at": "2025-09-07T16:39:55.567Z",
+  "product_id": "globalbuildingatlas-lod1",
+  "account_id": "tge-labs",
+  "readme": "## README.md\nThis repository contains the [GlobalBuildingAtlas](https://mediatum.ub.tum.de/1782307) (GBA) Level of Detail 1 (LoD1) building footprints dataset, converted from the original 922 GeoJSON files into Parquet format for improved performance and accessibility.\n\n## Dataset Overview\n\nThe GlobalBuildingAtlas LoD1 dataset contains building footprints for approximately 2.75 billion buildings worldwide. This represents the most comprehensive global building dataset available, covering nearly all inhabited areas on Earth.\n\nThe dataset combines multiple existing building footprint datasets with new footprints generated using open source deep learning models applied to Planet Labs satellite imagery.\n\nThis Parquet version was converted from the original 922 GeoJSON files (1.1 TB) to improve performance and accessibility. For detailed information about the conversion process and technical analysis, see [Mark Litwintschik's comprehensive blog post](https://tech.marksblogg.com/building-footprints-gba.html).\n\n## Data Format\n\nThe dataset is organized as Parquet files, each containing building footprint data with the following key attributes:\n\n- **Building footprints**: Vector polygons representing building outlines  \n- **Building heights**: Height information for each building  \n- **Geographic coordinates**: Precise location data  \n- **Metadata**: Additional building characteristics\n\n### Parquet Structure\n\nEach Parquet file contains:\n\n- Building geometry (polygons)  \n- Height attributes  \n- Spatial indexing for efficient querying  \n- Optimized columnar storage for fast analytics\n\n## Data Sources and Methodology\n\nThe dataset combines multiple building footprint sources:\n\n1. **Google Open Buildings (2023)**: 1.62 billion buildings  \n2. **OpenStreetMap (2025)**: 490 million buildings  \n3. **Microsoft Building Footprints (2024)**: 432 million buildings  \n4. **TUM Deep Learning (ours2)**: 135 million buildings from Planet Labs satellite imagery  \n5. **3D Global Footprints**: 68 million buildings from previous research\n\nThe TUM deep learning component uses open source computer vision models applied to Planet Labs satellite imagery. Planet Labs operates several constellations totaling hundreds of satellites in low Earth orbit, capturing images of the entire Earth's landmasses daily.\n\n## Data Limitations\n\n- **Temporal Accuracy**: No timestamps for AI-generated footprints  \n- **Data Conflicts**: Some footprints may conflict with newer OpenStreetMap data  \n- **Construction Areas**: Recent construction may not be captured  \n- **Validation**: Manual verification recommended for critical applications\n\n## Usage Recommendations\n\n- **Map Making**: Use as base layer with selective integration of newer OSM data  \n- **Construction Areas**: Prioritize latest OSM data for areas with recent development  \n- **Research**: Suitable for large-scale analysis and modeling  \n- **Applications**: Urban planning, disaster response, infrastructure analysis\n\n## Technical Specifications\n\n- **Coordinate System**: WGS84  \n- **File Format**: Parquet  \n- **Compression**: Optimized for fast querying  \n- **Spatial Indexing**: H3 and other spatial indices included  \n- **Total Size**: 210 GB (compressed from 1.1 TB original)\n\n## Data Quality Notes\n\nThe dataset combines multiple data sources as detailed above. The TUM deep learning component (ours2) represents new building footprints generated from Planet Labs satellite imagery, while the other sources provide existing building data from various organizations.\n\nFor areas with significant recent construction, consider using the latest OpenStreetMap data or Overture's building dataset, which prioritizes recent OSM updates.\n\n## Citation\n\nIf you use this Parquet version of the dataset hosted on Source Cooperative, please cite both the original dataset and this hosted version:\n\n**Original Dataset:**\n\n```\n@misc{1782307, \n  author = {Zhu, Xiao Xiang and Chen, Sining and Zhang, Fahong and Shi, Yilei and Wang, Yuanyuan}, \n  title = {{GlobalBuildingAtlas: An Open Global and Complete Dataset of Building Polygons, Heights and LoD1 3D Models}}, \n  type = {Dataset}, \n  year = {2025}, \n  type = {Forschungsdaten}, \n  abstract = {GlobalBuildingAtlas is a dataset providing global and complete coverage of building polygons (GBA.Polygon), heights (GBA.Height) and Level of Detail 1 (LoD1) 3D building models (GBA.LoD1). It is the first open dataset to offer high quality, consistent, and complete building data in 2D and 3D at the individual building level on a global scale. The dataset is delivered in tiles of 5 degree by 5 degree, with GBA.Polygon and GBA.LoD1 in GeoJSON format, and GBA.Height in GeoTiff format. Details see https://github.com/zhu-xlab/GlobalBuildingAtlas.}, \n  keywords = {Building Footprint; Building Height; 3D Building Models; Remote Sensing; Earth Observation; Deep Learning}, \n  doi = {10.14459/2025mp1782307}\n}\n```\n\n**Source Cooperative Hosted Version:**\n\n```\n@misc{globalbuildingatlas_lod1_parquet,\n  title = {{GlobalBuildingAtlas LoD1 (Parquet Format)}},\n  author = {Zhu, Xiao Xiang and Chen, Sining and Zhang, Fahong and Shi, Yilei and Wang, Yuanyuan and {Source Cooperative}},\n  year = {2025},\n  url = {https://source.coop/tge-labs/globalbuildingatlas-lod1},\n  note = {Parquet format conversion of GlobalBuildingAtlas LoD1 dataset, hosted by Source Cooperative}\n}\n```\n",
+  "_state": "drafted",
+  "cataloged_at": "2026-04-24T19:08:42+00:00"
 }

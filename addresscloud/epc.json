@@ -1,21 +1,84 @@
 {
-  "account_id": "addresscloud",
-  "product_id": "epc",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "addresscloud/epc",
   "title": "Energy Performance Certificate Ratings (Domestic) - England and Wales",
-  "description": "An EPC provides an indication of how much it will cost to heat and power a property, as well as how much CO2 it emits. It also includes recommendations of energy-efficient improvements, the cost of carrying them out, and the potential savings in pounds and pence that each one could generate.",
+  "description": "Energy Performance Certificates (EPCs) for domestic properties in England and Wales, converted to cloud-native geoparquet format. Each record contains energy efficiency ratings, inspection dates, potential energy savings, and property locations with UPRN identifiers and local authority attribution.",
+  "license": "OGL-3.0",
   "keywords": [
-    "property data",
-    "energy efficiency",
-    "vector",
-    "geoparquet",
-    "uk"
+    "energy-efficiency",
+    "property-ratings",
+    "domestic-buildings",
+    "building-performance",
+    "uk-property"
   ],
-  "created_at": "2023-10-03T20:46:06.861356+00:00",
-  "updated_at": "2025-08-21T16:39:55.569Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 1,
-  "data_mode": "open",
+  "providers": [
+    {
+      "name": "Open Data Communities",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "addresscloud",
+      "roles": [
+        "processor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/addresscloud/epc"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -3.5697778,
+          50.762496,
+          0.5423908,
+          54.9539128
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 426150
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/addresscloud/epc/",
+      "type": "application/x-parquet",
+      "title": "Dataset files (344 x .parquet)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/addresscloud/epc/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/addresscloud/epc",
+      "title": "Source Cooperative product page"
+    }
+  ],
+  "product_id": "epc",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -28,16 +91,24 @@
       "prefix": "addresscloud/epc/"
     }
   },
-  "file_count": 345,
-  "total_bytes": 302526450,
-  "exts": {
-    "parquet": 344,
-    "md": 1
-  },
-  "_state": "seed",
+  "data_mode": "open",
+  "updated_at": "2025-08-21T16:39:55.569Z",
+  "visibility": "public",
+  "account_id": "addresscloud",
+  "featured": 1,
+  "disabled": false,
+  "created_at": "2023-10-03T20:46:06.861356+00:00",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "id": "addresscloud/epc"
+  "exts": {
+    "parquet": 344,
+    "md": 1
+  },
+  "file_count": 345,
+  "total_bytes": 302526450,
+  "readme": "## README.md\n# Energy Performance Certificates (England and Wales)\n## Description\nThis dataset is a copy of the [Energy Performance Certificates](https://epc.opendatacommunities.org/) for England and Wales made available in a [cloud-native geospatial](https://cloudnativegeo.org) geoparquet format. The original dataset is distributed as a zipped collection CSVs, and is available for download from [here](https://epc.opendatacommunities.org/).\n\n## Accessing the Data\nThe data has been made available as admin-partitioned geoparquet.You can query the entire dataset using DuckDB like so.\n```bash\nduckdb -c \"Select count(*) from read_parquet('s3://us-west-2.opendata.source.coop/addresscloud/epc/geoparquet-local-authority/*.parquet');\" \n```\nAlternatively, you can use the aws cli to access the data directly from the S3 bucket:\n```bash\naws s3 --no-sign-request ls s3://us-west-2.opendata.source.coop/addresscloud/epc/\n```\nOr if you want the data for just one local authority then choose one from the browse section of this page.  \n\nThe geoparquet format is compliant with GDAL 3.5 onwards and readable in QGIS and many other platforms. See the [geoparquet website]() for more info on this  \n\n## Data extraction process\nThese steps should help you emulate the process of extracting the EPC The data source data exists [here](https://epc.opendatacommunities.org/). You will need to sign up. Once doing this you should find the data avaible to download as a ZIP.\nThis ZIP contains a directory for each local authortiy in England and Wales. I've created this script to extract just the certificates.csv from each directory.\n```bash\n#!/bin/bash\n# Zip file name in the current directory\nzip_file=\"all-domestic-certificates.zip\"\n# Loop through the zip file contents and extract certificates.csv\nunzip -l \"$zip_file\" | grep certificates.csv | while read -r line; do\nfile_name=$(echo \"$line\" | awk '{print $NF}')\nfolder_name=$(dirname \"$file_name\")\n# Extract the specific file and save it with the folder name as filename\nunzip -p \"$zip_file\" \"$file_name\" > \"epc_csv/${folder_name//\\//-}.csv\"\ndone\n```\n## Data conversion\nThe next steps involve using the DuckDB client to load the data, geocoding each row by joining to the [OS Open UPRN dataset](https://www.ordnancesurvey.co.uk/products/os-open-uprn) and then exporting the entire dataset to admin-partitioned parquet files. Then we'll need to convert these to geoparquet using gpq tool.\nThere are 347 CSVs totalling 23.4 GB in size. You can convert the data to parquet using various tools. Once you've done that the total combined file size of the Parquet files is only 3.7 GB.\nThe steps below\n```bash\n$ duckdb\n```\n```sql\ncreate or replace view epc_certs as select * from read_parquet('epc/*.parquet');\n```\n```sql\ncreate or replace view opuprn as select * from read_parquet('opuprn.parquet');\n```\n```sql\ncreate or replace view epc as\nselect epc_certs.*,\nopuprn.LATITUDE as lat,\nopuprn.LONGITUDE as lon\nfrom epc_certs\njoin opuprn ON epc_certs.uprn = opuprn.uprn::text;\n```\nOnce all the views have been created we can then export to partionied parquet files. The partition used here is the local authority name.\n```sql\ninstall spatial;\nload spatial;\nCOPY (Select UPRN as uprn,\nLOCAL_AUTHORITY as local_authority,\nLOCAL_AUTHORITY_LABEL as local_authority_label,\nCURRENT_ENERGY_RATING as current_energy_rating,\nPOTENTIAL_ENERGY_RATING as potential_rating,\nINSPECTION_DATE as inspection_date,\nST_AsText(ST_Point(lon::double,lat::double)) as geometry\nfrom epc)\nTO 'epc_partitioned' (FORMAT PARQUET, PARTITION_BY (LOCAL_AUTHORITY_LABEL));\n```\n## Converting to Geoparquet\nIt is currently not possible to export to geoparquet using DuckDB so to convert all the outputted parquet to geoparquet and remove the parquet files I created this script\n```bash\n#!/bin/bash\nshopt -s globstar\nfor d in ./**/*.parquet\ndo\ndir=\"${d%/*}\" # Strip the *.parquet pathname back to the containing directory\n#echo $dir\nparquet=\"${d##*/}\" # Strip the *.parquet pathname back to just the filename\nnew_name=$(echo \"$dir\" | tr ' ' _ |cut -d'=' -f2)\n#echo \"Converted $parquet to geoparquet\" >&2\n(\ncd \"$dir\" || exit\nfind . -type f -name \"*.parquet\" -size -100b -delete\nif [ -f $parquet ]\nthen\ngpq convert $parquet $new_name.parquet\nfi\n)\ndone\nfor d in ./**/*.parquet\ndo find . -type f -name \"data*\" -delete;\ndone\n```\n## Licence\nDate is licensed under the Open Government Licence v3.0. More details can be found [here](https://epc.opendatacommunities.org/docs/copyright).\n## Contact\nThis is an experimental dataset and I hope to add more attributes in the future. If you have any questions about the process you can contact me using matt@addresscloud.com",
+  "_state": "drafted",
+  "cataloged_at": "2026-04-24T18:50:33+00:00"
 }

@@ -1,19 +1,101 @@
 {
-  "account_id": "giswqs",
-  "product_id": "depressions",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "giswqs/depressions",
   "title": "National Surface Depressions",
-  "description": "A national dataset of depressions delineated from 10-m DEMs",
+  "description": "A national dataset of surface depressions delineated from 10-meter elevation data from the USGS 3D Elevation Program. The depressions were identified using level-set algorithms applied at the HU8 watershed scale and aggregated to HU2 scale. Two variants are provided: all depressions and non-floodplain depressions.",
+  "license": "other",
   "keywords": [
-    "vector",
-    "parquet",
-    "geoparquet",
-    "dem"
+    "surface-depressions",
+    "hydrology",
+    "topography",
+    "watershed",
+    "digital-elevation-model"
   ],
-  "created_at": "2023-11-15T23:30:12.743186+00:00",
-  "updated_at": "2025-08-21T16:39:55.568Z",
-  "visibility": "public",
+  "providers": [
+    {
+      "name": "USGS 3D Elevation Program",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "GISWQS",
+      "roles": [
+        "processor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/giswqs/depressions"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -2144420.0,
+          269949.9079774,
+          2283784.6746628,
+          3189680.0
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 14232375
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/giswqs/depressions/",
+      "type": "application/x-parquet",
+      "title": "Dataset files (4288 x .parquet)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/giswqs/depressions/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/giswqs/depressions",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "rel": "cite-as",
+      "href": "https://doi.org/10.1111/1752-1688.12689"
+    }
+  ],
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
   "disabled": false,
-  "featured": 0,
+  "updated_at": "2025-08-21T16:39:55.568Z",
+  "account_id": "giswqs",
+  "exts": {
+    "parquet": 4288,
+    "md": 1
+  },
+  "file_count": 4289,
+  "product_id": "depressions",
   "data_mode": "open",
   "mirrors": {
     "aws-opendata-us-west-2": {
@@ -27,16 +109,11 @@
       "prefix": "giswqs/depressions/"
     }
   },
-  "file_count": 4289,
   "total_bytes": 27639269257,
-  "exts": {
-    "parquet": 4288,
-    "md": 1
-  },
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "id": "giswqs/depressions"
+  "visibility": "public",
+  "featured": 0,
+  "created_at": "2023-11-15T23:30:12.743186+00:00",
+  "readme": "## README.md\n---\njupytext:\n  text_representation:\n    extension: .md\n    format_name: myst\n    format_version: 0.13\n    jupytext_version: 1.15.2\nkernelspec:\n  display_name: geo\n  language: python\n  name: python3\n---\n\n# National Surface Depressions\n\n[![image](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/opengeos/source-coop-readme/blob/main/depressions/README.ipynb)\n\n## Description\n\nThis dataset represents the extent and location of surface depressions derived from the 10-m resolution dataset from the 3D Elevation Program ([3DEP](https://www.usgs.gov/3d-elevation-program)). The levet-set algorithm available through the [lidar](https://lidar.gishub.org) Python package was used the process the DEM and delineate surface depressions at the HU8 watershed scale.\n\n## Reference\n\n- Wu, Q., Lane, C. R., Wang, L., Vanderhoof, M. K., Christensen, J. R., & Liu, H. (2019). Efficient Delineation of Nested Depression Hierarchy in Digital Elevation Models for Hydrological Analysis Using Level\u2010Set Method. JAWRA Journal of the American Water Resources Association , 55(2), 354-368. https://doi.org/10.1111/1752-1688.12689\n\n## Environment setup\n\nFirst, create a conda environment with the required packages:\n\n```bash\nconda create -n gdal python=3.11\nconda activate gdal\nconda install -c conda-forge mamba\nmamba install -c conda-forge libgdal-arrow-parquet gdal leafmap\npip install lonboard\n```\n\nIf you are using Google Colab, you can uncomment the following to install the packages and restart the runtime after installation.\n\n```{code-cell} ipython3\n# %pip install leafmap lonboard\n```\n\n## Data access\n\nThe dataset was derived from the 10-m resolution dataset from the 3D Elevation Program ([3DEP](https://www.usgs.gov/3d-elevation-program)) at HU8 watershed scale. The results were then merged at the HU2 watershed scale. Below is a map of the National Hydrography Dataset ([NHD](https://www.usgs.gov/media/images/watershed-boundary-dataset-structure-visualization)) watershed boundary structure.\n\n![](https://i.imgur.com/UFivxid.png)\n\nThe script below can be used to access the data using [DuckDB](https://duckdb.org). The script uses the [duckdb](https://duckdb.org) Python package.\n\n```{code-cell} ipython3\nimport duckdb\n\ncon = duckdb.connect()\ncon.install_extension(\"spatial\")\ncon.load_extension(\"spatial\")\n\nhu2 = \"06\"    # Change to the HU2 of your choice\nurl = f\"https://data.source.coop/giswqs/depressions/all_dep/HU2_{hu2}.parquet\"\ncon.sql(f\"SELECT * EXCLUDE geometry, ST_GeomFromWKB(geometry) as geometry FROM '{url}'\")\n```\n\nFind out the total number non-floodplain wetlands in the selected watershed:\n\n```{code-cell} ipython3\ncon.sql(f\"SELECT COUNT(*) FROM '{url}'\")\n```\n\nAlternatively, you can use the aws cli to access the data directly from the S3 bucket:\n\n```bash\naws s3 ls s3://us-west-2.opendata.source.coop/giswqs/depressions/all_dep/\n```\n\n## Data visualization\n\nTo visualize the data, you can use the [leafmap](https://leafmap.org) Python package with the [lonboard](https://github.com/developmentseed/lonboard) backend. The script below shows how to visualize the data.\n\n```{code-cell} ipython3\nimport leafmap\n\nhu2 = \"06\"    # Change to the HU2 of your choice\nurl = f\"https://data.source.coop/giswqs/depressions/all_dep/HU2_{hu2}.parquet\"\ngdf = leafmap.read_parquet(url, return_type='gdf', src_crs='EPSG:5070', dst_crs='EPSG:4326')\n# leafmap.view_vector(gdf, get_fill_color=[0, 0, 255, 128])\n```\n\n## Data analysis\n\nThe depression dataset has two variations: `all_dep` and `nfp_dep`. The `all_dep` dataset contains all depressions, while the `nfp` dataset contains non-floodplain depressions.\n\n### All depressions\n\nFind out the total number of surface depression in the contiguous United States (CONUS):\n\n```{code-cell} ipython3\ncon.sql(f\"\"\"\nSELECT COUNT(*) AS Count\nFROM 's3://us-west-2.opendata.source.coop/giswqs/depressions/all_dep/*.parquet'\n\"\"\")\n```\n\nCalculate some descriptive statistics of all surface depressions:\n\n```{code-cell} ipython3\ncon.sql(f\"\"\"\nSELECT sum(area) as total_area, median(area) AS median_area, median(volume) AS median_volume, median(avg_depth) AS median_depth\nFROM 's3://us-west-2.opendata.source.coop/giswqs/depressions/all_dep/*.parquet'\n\"\"\")\n```\n\n### Non-floodplain depressions\n\nFind out the total number non-floodplain depressions in the contiguous United States (CONUS):\n\n```{code-cell} ipython3\ncon.sql(f\"\"\"\nSELECT COUNT(*) AS Count\nFROM 's3://us-west-2.opendata.source.coop/giswqs/depressions/nfp_dep/*.parquet'\n\"\"\")\n```\n\nCalculate some descriptive statistics of non-floodplain surface depressions:\n\n```{code-cell} ipython3\ncon.sql(f\"\"\"\nSELECT sum(area) as total_area, median(area) AS median_area, median(volume) AS median_volume, median(avg_depth) AS median_depth\nFROM 's3://us-west-2.opendata.source.coop/giswqs/depressions/nfp_dep/*.parquet'\n\"\"\")\n```\n",
+  "_state": "drafted",
+  "cataloged_at": "2026-04-24T19:07:45+00:00"
 }

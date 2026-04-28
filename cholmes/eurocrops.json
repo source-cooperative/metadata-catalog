@@ -1,21 +1,106 @@
 {
-  "account_id": "cholmes",
-  "product_id": "eurocrops",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "cholmes/eurocrops",
   "title": "EuroCrops",
-  "description": "EuroCrops is a dataset collection combining all publicly available self-declared crop reporting datasets from countries of the European Union. This distribution of the dataset makes it available in cloud-native geospatial formats (GeoParquet, FlatGeobuf, PMTiles), and offers some transformations to align projections to more easily treat it as a single dataset",
+  "description": "EuroCrops compiles all publicly available self-declared crop reporting datasets from European Union member states into a single collection. The dataset provides crop type classifications at the field/parcel scale across the EU, distributed in multiple cloud-native geospatial formats (GeoParquet, FlatGeobuf, PMTiles) with harmonized crop attributes.",
+  "license": "CC-BY-4.0",
   "keywords": [
     "agriculture",
-    "vector",
-    "geoparquet",
-    "pmtiles",
-    "segmentation"
+    "crop-classification",
+    "field-boundaries",
+    "land-parcels"
   ],
-  "created_at": "2024-06-26T16:59:35+00:00",
-  "updated_at": "2025-08-21T16:39:55.567Z",
-  "visibility": "public",
+  "providers": [
+    {
+      "name": "Maja Schneider, Marco K\u00f6rner, Amelie Broszeit",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "EU Member States",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Chris Holmes",
+      "roles": [
+        "processor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/cholmes/eurocrops"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -591099.1085,
+          -1334388.4789,
+          915128.328,
+          7656803.306
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 68349819
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/cholmes/eurocrops/",
+      "type": "application/x-parquet",
+      "title": "Dataset files (33 x .parquet)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/cholmes/eurocrops/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/cholmes/eurocrops",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "rel": "cite-as",
+      "href": "https://doi.org/10.5281/zenodo.6866846"
+    }
+  ],
+  "product_id": "eurocrops",
   "disabled": false,
+  "visibility": "public",
+  "exts": {
+    "fgb": 17,
+    "parquet": 33,
+    "duckdb": 1,
+    "zip": 16,
+    "pmtiles": 1,
+    "md": 1
+  },
   "featured": 0,
-  "data_mode": "open",
+  "file_count": 69,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -28,20 +113,16 @@
       "prefix": "cholmes/eurocrops/"
     }
   },
-  "file_count": 69,
+  "created_at": "2024-06-26T16:59:35+00:00",
   "total_bytes": 65679141400,
-  "exts": {
-    "fgb": 17,
-    "parquet": 33,
-    "duckdb": 1,
-    "zip": 16,
-    "pmtiles": 1,
-    "md": 1
-  },
-  "_state": "seed",
+  "updated_at": "2025-08-21T16:39:55.567Z",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "id": "cholmes/eurocrops"
+  "data_mode": "open",
+  "account_id": "cholmes",
+  "readme": "## README.md\n# EuroCrops (Cloud-Native Geo distribution)\n\nThis dataset is a copy of the [EuroCrops](https://github.com/maja601/EuroCrops) dataset, offering the data in [cloud-native geospatial](https://cloudnativegeo.org) formats. The overview of the original dataset is:\n\n> EuroCrops is a dataset collection combining all publicly available self-declared crop reporting datasets from countries of the European Union. The project is funded by the German Space Agency at DLR on behalf of the Federal Ministry for Economic Affairs and Climate Action (BMWK). This work is licensed under a [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).\n\n> Right now EuroCrops only includes vector data, but stay tuned for a version that includes satellite imagery!\n\n> For any questions, please refer to our [FAQs](https://github.com/maja601/EuroCrops/wiki/FAQs) or use the Discussions/Issues to reach out to us. \n\nYou can read more details on the dataset itself on the main EuroCrops sites at https://github.com/maja601/EuroCrops and https://www.eurocrops.tum.de/\n\n## About the data formatting and structure\n\nThe original EuroCrops dataset is distributed as Shapefiles, one per country, and takes the original data from the country providers as is, enhancing it with 3-4 attributes that are consistent across all the country files. These data come in a variety of projections, since the source data was not consistent. The folder named [unprojected](https://beta.source.coop/cholmes/eurocrops/browse/unprojected) contains the original data structure in different formats.\n\nNote that a few France boundaries have points that are way outside of France, and the Romania boundaries seem to overlap each other. We'll work with the source provider to try to clean those up there, and will redistribute here when ready.\n\n### Modifications\n\nThere are several different data types in this repository. The first set have no changes to the original files, but puts them in some alternate formats ([GeoParquet](https://geoparquet.org) and [Flatgeobuf](https://flatgeobuf.org))\n\nThe second set projects all geometries into long / lat to make the data easy to work as a single dataset (about half the source files were already in that projection, the rest were country specific).\n\nThen third set of datasets also are all in long lat and additionally remove all the attributes except those that were made common across datasets by the Eurocrops project:\n\n| Attribute Name | Explanation                                                 |\n| -------------- | ----------------------------------------------------------- |\n| EC_trans_n     | The original crop name translated into English              |\n| EC_hcat_n      | The machine-readable HCAT name of the crop                  |\n| EC_hcat_c      | The 10-digit HCAT code indicating the hierarchy of the crop |\n\nThe NUTS3 attribute was not included as it was not consistently in the datasets. A future iteration of this dataset may try to add that or other country information in the data itself to be able to do parquet partitioning against it.\n\n## Access the data\n\nThe easiest way to visualize the data is with this [Felt map](https://felt.com/map/Eurocrops-DRrR1lxoQEqvmZBz6e9APPC), where you can see (almost) all the data visualized and styled. You can also directly access [this pmtiles](https://s3.us-west-2.amazonaws.com/us-west-2.opendata.source.coop/cholmes/eurocrops/eurocrops-all.pmtiles), and see it [shown with the PMTiles Viewer](https://protomaps.github.io/PMTiles/?url=https%3A%2F%2Fs3.us-west-2.amazonaws.com%2Fus-west-2.opendata.source.coop%2Fcholmes%2Feurocrops%2Feurocrops-all.pmtiles#map=2.36/41.89/31.42). These just contain the harmonized attributes, and are projected into the web mercator projection.\n\nThe original shapefiles are in the [unprojected/shapefiles](https://beta.source.coop/cholmes/eurocrops/browse/unprojected/shapefiles) directory, and you can find alternate formats in [unprojected/flatgeobuf](https://beta.source.coop/cholmes/eurocrops/browse/unprojected/flatgeobuf) and [unprojected/geoparquet](https://beta.source.coop/cholmes/eurocrops/browse/unprojected/geoparquet).\n\nThe [geoparquet-projected/](https://beta.source.coop/cholmes/eurocrops/browse/geoparquet-projected) folder has all the data projected to long / lat, but retains all the original fields. \n\nAnd then you can get the data as a [single Flatgeobuf file](https://data.source.coop/cholmes/eurocrops/eurocrops-harmonized-only.fgb) (10.8 gb) that is projected and only has the final harmonized fields. We're also making available a [DuckDB](https://duckdb.org) database to experiment with distributing it directly. The data likely will just show up as a blob that you'll have to parse in with the [spatial extension](https://duckdb.org/docs/extensions/spatial).\n\n## Dataset License\n\nThe data is licensed under [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).\n\n## Authors\n\n* Maja Schneider\n* Amelie Broszeit\n* Marco K\u00f6rner\n\n### Additional Processing\n\n* Chris Holmes\n\n## Citation & DOI\n\nFrom https://github.com/maja601/EuroCrops#reference\n\n**Disclaimer**: The official reference will follow soon. Please also reference the countries' dependent source in case you're using their data.\n\n```\n@Misc{schneider2022eurocrops21,\n author     = {Schneider, Maja and K{\\\"o}rner, Marco},\n title      = {EuroCrops},\n DOI        = {10.5281/zenodo.6866846},\n type       = {Dataset},\n publisher  = {Zenodo},\n year       = {2022}\n}\n```\n\nAdditional references:\n\n```\n@InProceedings{Schneider2022Challenges,\n  title     = {Challenges and Opportunities of Large Transnational Datasets: A Case Study on European Administrative Crop Data},\n  author    = {Schneider, Maja and Marchington, Christian and K{\\\"o}rner, Marco},\n  booktitle = {Workshop on Broadening Research Collaborations in ML (NeurIPS 2022)},\n  year      = {2022}\n}\n```\n\n```\n@InProceedings{Schneider2022Harnessing,\n  title         = {Harnessing Administrative Data Inventories to Create a Reliable Transnational Reference Database for Crop Type Monitoring},\n  author        = {Schneider, Maja and K{\\\"o}rner, Marco},\n  booktitle     = {IGARSS 2022-2022 IEEE International Geoscience and Remote Sensing Symposium},\n  pages         = {5385--5388},\n  year          = {2022},\n  organization  = {IEEE}\n}\n```\n\n```\n@InProceedings{Schneider2021EPE,\n  author        = {Schneider, Maja and Broszeit, Amelie and K{\\\"o}rner, Marco},\n  booktitle     = {Proceedings of the Conference on Big Data from Space (BiDS)},\n  title         = {{EuroCrops}: A Pan-European Dataset for Time Series Crop Type Classification},\n  editor        = {Soille, Pierre and Loekken, Sveinung and Albani, Sergio},\n  publisher     = {Publications Office of the European Union},\n  date          = {2021-05-18},\n  doi           = {10.2760/125905},\n  eprint        = {2106.08151},\n  eprintclass   = {eess.IV,cs.CV,cs.LG},\n  eprinttype    = {arxiv}\n}\n```\n\n```\n@Misc{Schneider2021TEC,\n  author       = {Schneider, Maja and K{\\\"o}rner, Marco},\n  date         = {2021-06-15},\n  title        = {{TinyEuroCrops}},\n  doi          = {10.14459/2021MP1615987},\n  organization = {Technical University of Munich (TUM)},\n  type         = {Dataset},\n  url          = {https://mediatum.ub.tum.de/1615987}\n}\n```",
+  "_state": "drafted",
+  "cataloged_at": "2026-04-24T19:01:34+00:00"
 }

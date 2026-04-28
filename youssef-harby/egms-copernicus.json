@@ -1,20 +1,91 @@
 {
-  "account_id": "youssef-harby",
-  "product_id": "egms-copernicus",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "youssef-harby/egms-copernicus",
   "title": "European Ground Motion Cloud Native Data",
-  "description": "This repository contains data converted from the original Copernicus European Ground Motion Service datasets. The source data was provided as zipped CSV files and has been transformed into cloud native geospatial formats.",
+  "description": "Ground deformation measurements for Europe derived from synthetic aperture radar data, provided by the Copernicus European Ground Motion Service. Data has been converted to cloud-native Parquet Geo and PMTiles formats for scalable analysis and web mapping.",
+  "license": "other",
   "keywords": [
-    "Copernicus",
-    "EU",
-    "EGMS",
-    "Cloud-Native"
+    "remote-sensing",
+    "ground-motion",
+    "deformation-monitoring",
+    "synthetic-aperture-radar"
+  ],
+  "providers": [
+    {
+      "name": "Copernicus European Ground Motion Service",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/youssef-harby/egms-copernicus"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          32.269313,
+          34.562027,
+          34.607737,
+          35.711882
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 136259661
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/youssef-harby/egms-copernicus/",
+      "type": "application/x-parquet",
+      "title": "Dataset files (48 x .parquet)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/youssef-harby/egms-copernicus/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/youssef-harby/egms-copernicus",
+      "title": "Source Cooperative product page"
+    }
   ],
   "created_at": "2025-02-28T14:26:48.789Z",
-  "updated_at": "2025-08-21T16:39:55.569Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": "open",
+  "exts": {
+    "parquet": 48,
+    "duckdb": 1,
+    "geojson": 1,
+    "pmtiles": 1,
+    "json": 1,
+    "md": 1
+  },
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "total_bytes": 73047334186,
+  "file_count": 53,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -27,20 +98,14 @@
       "prefix": "youssef-harby/egms-copernicus/"
     }
   },
-  "file_count": 53,
-  "total_bytes": 73047334186,
-  "exts": {
-    "parquet": 48,
-    "duckdb": 1,
-    "geojson": 1,
-    "pmtiles": 1,
-    "json": 1,
-    "md": 1
-  },
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "id": "youssef-harby/egms-copernicus"
+  "product_id": "egms-copernicus",
+  "disabled": false,
+  "visibility": "public",
+  "data_mode": "open",
+  "featured": 0,
+  "updated_at": "2025-08-21T16:39:55.569Z",
+  "account_id": "youssef-harby",
+  "readme": "## README.md\n# European Ground Motion Service Data Conversion\n\nThis repository contains data converted from the original Copernicus European Ground Motion Service datasets. The source data was provided as zipped CSV files and has been transformed into cloud native geospatial formats.\n\n## Data Sources\n\n- **Original Data**: [Copernicus European Ground Motion Service](https://land.copernicus.eu/en/products/european-ground-motion-service)\n- **Formats Provided**:\n  - **Parquet Geo** \u2013 Optimized for scalable geospatial analytics.\n  - **PMTiles** \u2013 Designed for efficient, cloud-native tile serving.\n\n## Conversion Process\n\n1. **Extraction**: Unzipping and parsing CSV files.\n2. **Transformation**: Converting CSV data into geospatial datasets.\n3. **Output**: Generating Parquet Geo files for analysis and PMTiles(with only pid and geom and filename) for mapping.\n\n## Usage\n\n- **Parquet Geo**: Use with cloud-based analytics platforms for fast querying.\nExample using DuckDB:\n```sql\nSELECT * FROM read_parquet('https://data.source.coop/youssef-harby/egms-copernicus/L2a/parquet/CY/EGMS_L2a_087_0205_IW2_VV_2019_2023_1.parquet') LIMIT 10;\n```\n- **PMTiles**: Serve directly to web maps or GIS applications for interactive visualization like [here](https://pmtiles.io/?url=https%3A%2F%2Fdata.source.coop%2Fyoussef-harby%2Fegms-copernicus%2FL2a%2Fpmtiles%2Fcy.pmtiles#map=9.36/34.9833/33.293).\n\n## License & Acknowledgements\n\nPlease refer to the original data license provided by Copernicus for usage terms. This conversion project builds on the high-quality datasets provided by the European Ground Motion Service.\n",
+  "_state": "drafted",
+  "cataloged_at": "2026-04-24T18:52:00+00:00"
 }

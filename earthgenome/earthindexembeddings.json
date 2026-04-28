@@ -1,19 +1,102 @@
 {
-  "account_id": "earthgenome",
-  "product_id": "earthindexembeddings",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "earthgenome/earthindexembeddings",
   "title": "Earth Index Embeddings",
-  "description": "Embeddings created by EarthGenome for the EarthIndex project",
+  "description": "Global-coverage machine learning embeddings derived from Sentinel-2 satellite temporal mosaics using the SoftCon Model. Each embedding is a 384-dimensional vector capturing Earth surface characteristics at specific UTM grid locations and time periods.",
+  "license": "CC-BY-4.0",
   "keywords": [
-    "Sentinel2",
+    "remote-sensing",
+    "sentinel-2",
     "embeddings",
-    "machine learning"
+    "earth-observation",
+    "machine-learning"
   ],
-  "created_at": "2025-03-31T15:34:21.380Z",
-  "updated_at": "2025-08-21T16:39:55.569Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
+  "providers": [
+    {
+      "name": "EarthGenome",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Zhu Labs",
+      "roles": [
+        "processor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/earthgenome/earthindexembeddings"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -179.1005068,
+          -45.2513328,
+          179.9264325,
+          70.3160172
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 2208150
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/earthgenome/earthindexembeddings/",
+      "type": "application/x-parquet",
+      "title": "Dataset files (17722 x .parquet)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/earthgenome/earthindexembeddings/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/earthgenome/earthindexembeddings",
+      "title": "Source Cooperative product page"
+    }
+  ],
+  "file_count": 17724,
+  "exts": {
+    "parquet": 17722,
+    "png": 1,
+    "md": 1
+  },
   "data_mode": "open",
+  "account_id": "earthgenome",
+  "featured": 0,
+  "total_bytes": 8457990361189,
+  "created_at": "2025-03-31T15:34:21.380Z",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "product_id": "earthindexembeddings",
+  "visibility": "public",
+  "updated_at": "2025-08-21T16:39:55.569Z",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -26,17 +109,8 @@
       "prefix": "earthgenome/earthindexembeddings/"
     }
   },
-  "file_count": 17724,
-  "total_bytes": 8457990361189,
-  "exts": {
-    "parquet": 17722,
-    "png": 1,
-    "md": 1
-  },
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "id": "earthgenome/earthindexembeddings"
+  "disabled": false,
+  "readme": "## README.md\n\n![EarthGenome](https://data.source.coop/earthgenome/earthindexembeddings/logo.png)\n# EarthIndex Embeddings from Sentinel2 Temporal Mosaics \n\n[![CC-4 license](https://img.shields.io/badge/License-CC--4-blue.svg)](https://creativecommons.org/licenses/by/4.0/)\n[![Sensor](https://img.shields.io/badge/Sensor%F0%9F%9B%B0%EF%B8%8F-Sentinel2-blue)](https://www.esa.int/Applications/Observing_the_Earth/Copernicus/Sentinel-2)\n[![Format](https://img.shields.io/badge/Format-GeoParquet%20%F0%9F%8C%8E%EF%B8%8F-blue)](https://geoparquet.org/)\n\nThis repository holds embeddings generated the entire globe for the given date ranges.\n\nThis data is licensed under the [creative commons 4.0](https://creativecommons.org/licenses/by/4.0/) international license which, in summary, only requires attribution.\n\n### Model\nThese embeddings are generated from the [SoftCon Model](https://github.com/zhu-xlab/softcon/tree/main) published by [Zhu Labs](https://www.asg.ed.tum.de/sipeo/home/)\n\n### Naming\nArtifacts are name according to their original UTM grid number, concatenated with the start and end dates.  For example `31TDF_2024-01-01_2025-01-01.parquet` will give you embeddings for Barcelona (31TDF) over the course of 2024.\n\n### Artifacts and Metadata\nAll assets are Geoparquet in EPSG:4626 projection with point geometries. The fields are as follows:\n- id: uint64\n- embedding: float[384]\n- geometry: Point in WKB\n\n\n### Contact\nUsing this? Want work together? Ping us @ info@earthgenome.org or info@earthindex.ai",
+  "_state": "drafted",
+  "cataloged_at": "2026-04-24T19:15:36+00:00"
 }

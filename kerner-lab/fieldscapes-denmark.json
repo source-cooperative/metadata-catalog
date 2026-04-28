@@ -1,19 +1,93 @@
 {
-  "account_id": "kerner-lab",
-  "product_id": "fieldscapes-denmark",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "kerner-lab/fieldscapes-denmark",
   "title": "Fieldscapes: Field Boundaries for Denmark",
-  "description": "This dataset is a subset of the dataset obtained from the Danish Agency for Agriculture. The subset was created for inclusion in the Fieldscapes project.",
+  "description": "Danish field boundaries from the Land Parcel Identification System (LPIS), representing approximately 2.8 million hectares of agricultural land organized into geographically coherent field blocks. Each field block includes attributes such as area, block type, and eligibility status for EU support schemes. Valid for 2021.",
+  "license": "CC0-1.0",
   "keywords": [
-    "fieldscapes",
+    "field-boundaries",
     "agriculture",
-    "field boundaries"
+    "lpis",
+    "land-parcels",
+    "land-use"
   ],
-  "created_at": "2024-06-10T19:47:06.413455+00:00",
-  "updated_at": "2025-08-21T16:39:55.568Z",
-  "visibility": "public",
-  "disabled": false,
+  "providers": [
+    {
+      "name": "The Danish Agency for Agriculture",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Kerner Lab (ASU)",
+      "roles": [
+        "processor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/kerner-lab/fieldscapes-denmark"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          8.737811,
+          55.1917138,
+          10.4170363,
+          57.4329739
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 37677
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/kerner-lab/fieldscapes-denmark/",
+      "type": "application/x-parquet",
+      "title": "Dataset files (1 x .parquet)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/kerner-lab/fieldscapes-denmark/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/kerner-lab/fieldscapes-denmark",
+      "title": "Source Cooperative product page"
+    }
+  ],
   "featured": 0,
-  "data_mode": "open",
+  "updated_at": "2025-08-21T16:39:55.568Z",
+  "total_bytes": 19873771,
+  "created_at": "2024-06-10T19:47:06.413455+00:00",
+  "product_id": "fieldscapes-denmark",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "file_count": 2,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -26,16 +100,15 @@
       "prefix": "kerner-lab/fieldscapes-denmark/"
     }
   },
-  "file_count": 2,
-  "total_bytes": 19873771,
   "exts": {
     "parquet": 1,
     "md": 1
   },
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "id": "kerner-lab/fieldscapes-denmark"
+  "account_id": "kerner-lab",
+  "disabled": false,
+  "data_mode": "open",
+  "visibility": "public",
+  "readme": "## README.md\n# Field boundaries for Denmark (FieldScapes)\n\nDanish Land Parcel Identification System (LPIS) data collection or (field blocks/ 'Markblokke') is managed by The Danish Agency for Agriculture.\n\nThe field block map is a digital field map, with agricultural areas gathered in field blocks. A field block is a geographically coherent unit consisting of agricultural land. The boundaries of the field blocks typically follow permanent divisions in the landscape. The map is used in the administration of cases linked to the geographical determination of cultivation areas, primarily by the EU's area-based support schemes. The field block map is continuously updated on the basis of orthophotos and reports from farmers and authorities. The field block map covers approx. 2.8 million hectares of agricultural land. Each field block is identified with a field block number, area, type. A field block means a continuous area on which one or more farmers grow one or more different crops. The map is updated every night with changes from case processing.\n\n_The field boundaries are valid for the year 2021_\n\n- **Original Data Provider:** [The Danish Agency for Agriculture](https://geodata-info.dk/srv/eng/catalog.search#/metadata/d91b2c99-d9b0-4e6d-b323-20ac80548186)\n- **Converted by:** Kerner Lab (ASU)\n- **License:** CC0-1.0\n- **Projection:** EPSG:4326\n\n---\n\n## Columns\n\n| Property               | Data Type |\n| ---------------------- | --------- |\n| id                     | string    |\n| determination_datetime | datetime  |\n| area                   | float     |\n| eligible_area          | float     |\n| ineligible_area        | float     |\n| deduction              | float     |\n| support_proc           | float     |\n| block_type             | string    |\n",
+  "_state": "drafted",
+  "cataloged_at": "2026-04-24T18:40:33+00:00"
 }

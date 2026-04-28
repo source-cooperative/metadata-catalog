@@ -1,15 +1,75 @@
 {
-  "account_id": "nlebovits",
-  "product_id": "microsoft-ml-road-detections",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "nlebovits/microsoft-ml-road-detections",
   "title": "Microsoft ML Road Detections",
-  "description": "This dataset provides Microsoft's ML road detections in Parquet format, including 54.2 million kilometers of roads detected across 235 countries worldwide.",
-  "keywords": [],
-  "created_at": "2025-10-20T20:26:43.578Z",
-  "updated_at": "2025-10-20T20:26:43.578Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": "open",
+  "description": "Global dataset of 54.2 million kilometers of roads detected using machine learning from Bing Maps imagery across 235 countries. Data are provided as GeoParquet linestring geometries with approximate road width estimates, partitioned by country.",
+  "license": "ODbL-1.0",
+  "keywords": [
+    "road-networks",
+    "transportation",
+    "remote-sensing"
+  ],
+  "providers": [
+    {
+      "name": "Microsoft",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/nlebovits/microsoft-ml-road-detections"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -70.0621963,
+          -34.8316386,
+          74.8278379,
+          60.5327571
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 5155928
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/nlebovits/microsoft-ml-road-detections/",
+      "type": "application/x-parquet",
+      "title": "Dataset files (235 x .parquet)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/nlebovits/microsoft-ml-road-detections/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/nlebovits/microsoft-ml-road-detections",
+      "title": "Source Cooperative product page"
+    }
+  ],
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -22,16 +82,25 @@
       "prefix": "nlebovits/microsoft-ml-road-detections/"
     }
   },
+  "visibility": "public",
   "file_count": 236,
-  "total_bytes": 11393116212,
   "exts": {
     "parquet": 235,
     "md": 1
   },
-  "_state": "seed",
+  "account_id": "nlebovits",
+  "data_mode": "open",
+  "product_id": "microsoft-ml-road-detections",
+  "updated_at": "2025-10-20T20:26:43.578Z",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "id": "nlebovits/microsoft-ml-road-detections"
+  "featured": 0,
+  "disabled": false,
+  "total_bytes": 11393116212,
+  "created_at": "2025-10-20T20:26:43.578Z",
+  "readme": "## README.md\n## Microsoft ML Road Detections\n\nThis dataset provides parquet versions of [Microsoft's ML road detections](https://github.com/microsoft/RoadDetections), mined from Bing Maps imagery. This accounts for 54.2 million kilometers of roads worldwide, mined from Bing Maps imagery in 235 countries worldwide (note that several east Asian countries such as China, Japan, and South Korea do not appear in the original Microsoft data).\n\nFor more information about the conversion or maintenance of this dataset, please contact nlebovits@pm.me.\n\n\n### Data Vintage\n\nPer Microsoft:\n\n> The vintage of the roads depends on the vintage of the underlying imagery. Because Bing \n> Imagery is a composite of multiple sources it is difficult to know the exact dates for \n> individual pieces of data. However data is up-to-date with freshest available imagery \n> from Microsoft Maps.\n\n\n### Data Format and Partitioning\n\nThe data are provided in parquet files partitioned by country, corresponding to the countries listed in the original Microsoft data. The original data are provided as zipped .tsv files containing GeoJSON data, totaling 67GB. Parquet compression brings the files down to under 10GB.\n\n\n### Schema\n\nEach row in the dataset provides information on a specific road with associated information on individual columns:\n\n- **country** (STRING): Alpha-3 country code, e.g., FRA\n- **width_meters** (FLOAT): Approximate width of the road in meters\n- **geometry_type** (STRING): Indicates type of geometry (should be LINESTRING)\n- **geometry** (GEOMETRY): Geometry type encoded as WKB\n- **bbox** (STRUCT): A bbox struct for efficient spatial queries\n\n\n### Changelog\n\n**Current version: 1.0**\n\n**Version 1.0** (2025-10-20):\n- Initial release!\n  - 54.2 million kilometers of roads worldwide across 235 countries via Microsoft ML road detections\n  - Using GeoParquet schema version 1.1.0\n  - Data is partitioned by country\n  - Data is available in Parquet format\n\n\n### Dataset License\n\nPer the terms of use listed by Microsoft, these data are freely available for download and use under the [Open Data Commons Open Database License (ODbL)](https://opendatacommons.org/licenses/odbl/). \n",
+  "_state": "drafted",
+  "cataloged_at": "2026-04-24T19:03:49+00:00"
 }

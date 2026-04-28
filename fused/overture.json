@@ -1,24 +1,95 @@
 {
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "fused/overture",
+  "title": "Overture Maps - Fused-partitioned",
+  "description": "Global vector dataset containing administrative boundaries, building footprints, land use classifications, points of interest, and transportation networks. Organized by theme and geo-partitioned in GeoParquet format adhering to the Overture Data Schema standard.",
+  "license": "other",
+  "keywords": [
+    "buildings",
+    "land-use",
+    "transportation",
+    "administrative-boundaries",
+    "points-of-interest",
+    "vector-data"
+  ],
+  "providers": [
+    {
+      "name": "Overture Maps",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Fused",
+      "roles": [
+        "processor",
+        "host"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/fused/overture"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -179.231086,
+          -1.998657,
+          -49.901625,
+          78.6946255
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 32191479
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/fused/overture/",
+      "type": "application/x-parquet",
+      "title": "Dataset files (24335 x .parquet)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/fused/overture/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/fused/overture",
+      "title": "Source Cooperative product page"
+    }
+  ],
+  "data_mode": "open",
+  "total_bytes": 11766735615676,
+  "exts": {
+    "parquet": 24335,
+    "png": 1,
+    "md": 1
+  },
+  "file_count": 24337,
   "account_id": "fused",
   "product_id": "overture",
-  "title": "Overture Maps - Fused-partitioned",
-  "description": "The Overture dataset, geo-partitioned with Fused for convenient access.",
-  "keywords": [
-    "overture",
-    "vector",
-    "building footprints",
-    "geoparquet",
-    "geospatial",
-    "land use",
-    "pois",
-    "transportation"
-  ],
-  "created_at": "2024-03-06T23:45:38.072516+00:00",
-  "updated_at": "2025-08-21T16:39:55.568Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 1,
-  "data_mode": "open",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -31,17 +102,16 @@
       "prefix": "fused/overture/"
     }
   },
-  "file_count": 24337,
-  "total_bytes": 11766735615676,
-  "exts": {
-    "parquet": 24335,
-    "png": 1,
-    "md": 1
-  },
-  "_state": "seed",
+  "updated_at": "2025-08-21T16:39:55.568Z",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "id": "fused/overture"
+  "disabled": false,
+  "created_at": "2024-03-06T23:45:38.072516+00:00",
+  "featured": 1,
+  "visibility": "public",
+  "readme": "## README.md\n# Overture - Fused-partitioned\n\n## Overview\n\nThis is the Overture dataset, geo-partitioned with Fused for convenient access. This dataset adheres to the\u00a0[Overture Data Schema](https://docs.overturemaps.org/).\n\n<img src=\"https://data.source.coop/fused/overture/docs/banner.png\" alt=\"Banner image showing London, UK\" width=\"100%\"/>\n\n## Quickstart\n\nAccess to this dataset is facilitated by the [Fused](https://www.fused.io/) platform. Browse the data on [Fused Workbench](https://www.fused.io/public/UDF_Overture_Maps_Example).\n\nTo access using Python, the [Overture Maps Example](https://github.com/fusedio/udfs/tree/main/public/Overture_Maps_Example) UDF shows an example of how to access the data using Fused: \n\n```python\nimport fused\n\nudf = fused.load(\n    \"https://github.com/fusedio/udfs/tree/main/public/Overture_Maps_Example\"\n)\n\ngdf = fused.run(udf, x=2622, y=6333, z=14)\ngdf.plot()\n```\n\nYou can query the data visually using our [notebook](https://github.com/fusedio/notebooks/blob/main/public/overture.ipynb). \n\n<a target=\"_blank\" href=\"https://colab.research.google.com/github/fusedio/notebooks/blob/main/public/overture.ipynb\">\n<img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/>\n</a>\n\n## Partitioning\n\nThis dataset is geospatially partitioned following Open GeoParquet standards, using Fused.\n\nFor technical reasons, the release is named `2024-11-13-0` in S3 (note the dash instead of a period at the end).\n\nUnder each release, the data is divided into themes: [admins](https://docs.overturemaps.org/themes/admins/), [base](https://docs.overturemaps.org/themes/base/), [buildings](https://docs.overturemaps.org/themes/buildings/building), [places](https://docs.overturemaps.org/themes/places/place), and [transportation](https://docs.overturemaps.org/themes/transportation/). Each theme contains one or more tables, which is a collection of GeoParquet files (`0.parquet`, `1.parquet`, etc.), Parquet metadata (`_metadata`), and Parquet sample (`_sample`).\n\nThe older release, 2024-03-12-alpha-0, has the following themes:\n\n- `theme=admins/type=administrative_boundary/` - Administrative boundaries such as country borders\n- `theme=base/type=land_use/` - Land use\n- `theme=base/type=water/` - Water boundaries\n- `theme=buildings/type=building/` - Building footprints. Because of the size of this table, it is further subdivided into multiple parts. There is no semantic meaning to these parts, they are subdivisions to help partitioning.\n    - `theme=buildings/type=building/part=0/`\n    - `theme=buildings/type=building/part=1/`\n    - `theme=buildings/type=building/part=2/`\n    - `theme=buildings/type=building/part=3/`\n    - `theme=buildings/type=building/part=4/`\n- `theme=places/type=place/` - Places (POIs) such as restaurants and other businesses.\n- `theme=transportation/type=connector/` - Points where transportation segments, below, are connected.\n- `theme=transportation/type=segment/` - Line strings of how human movement is organized, such as roads and walkways.\n\nThere are older releases, 2024-03-12-alpha-0 and 2024-02-15-alpha-0 that have slightly different folder structures, where types are named in camel-case. (E.g. administrativeBoundary, landUse.)\n\n## Original dataset\n\nThe original Overture datasets are downloadable from the [Overture website](https://overturemaps.org/download/). See the Overture\u00a0[GitHub repo](https://github.com/OvertureMaps/data)\u00a0for more information.\n\n\n",
+  "_state": "drafted",
+  "cataloged_at": "2026-04-24T19:16:19+00:00"
 }
