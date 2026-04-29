@@ -1,0 +1,124 @@
+{
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "agentmorris/lila-wildlife-nacti-unzipped",
+  "title": "North American Camera Trap Images",
+  "description": "North American Camera Trap Images (NACTI) is a collection of approximately 3.7 million camera trap images from five locations across the United States, with species-level labels for 28 animal categories (dominated by cattle, wild boar, and red deer) and bounding box annotations for 8,892 images. This unzipped variant stores individual JPEG images organized into four parts; metadata and annotations in COCO Camera Traps JSON format are distributed separately as zip downloads. The dataset supports training and evaluation of machine learning models for automated wildlife species classification.",
+  "license": "CDLA-Permissive-1.0",
+  "keywords": [
+    "camera-trap",
+    "wildlife",
+    "species-classification",
+    "computer-vision",
+    "ecology",
+    "north-america",
+    "biodiversity"
+  ],
+  "providers": [
+    {
+      "name": "LILA BC (Labeled Information Library of Alexandria: Biology and Conservation)",
+      "roles": [
+        "producer",
+        "licensor",
+        "host"
+      ]
+    },
+    {
+      "name": "USDA APHIS National Wildlife Research Center",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/agentmorris/lila-wildlife"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2010-01-01",
+          "2016-12-31"
+        ]
+      ]
+    }
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/agentmorris/lila-wildlife/nacti-unzipped/",
+      "title": "Dataset files (3382215 x .jpg)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/agentmorris/lila-wildlife/nacti-unzipped/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/agentmorris/lila-wildlife",
+      "title": "Parent Source Cooperative product page"
+    },
+    {
+      "rel": "cite-as",
+      "href": "https://doi.org/10.1111/2041-210X.13120"
+    }
+  ],
+  "account_id": "agentmorris",
+  "product_id": "lila-wildlife-nacti-unzipped",
+  "sci_citation": "Tabak MA, Norouzzadeh MS, Wolfson DW, Sweeney SJ, VerCauteren KC, Snow NP, Halseth JM, Di Salvo PA, Lewis JS, White MD, Teton B. Machine learning to classify animal species in camera trap images: Applications in ecology. Methods in Ecology and Evolution. 2019 Apr;10(4):585-90.",
+  "sci_doi": "10.1111/2041-210X.13120",
+  "mirrors": {
+    "aws-opendata-us-west-2": {
+      "storage_type": "s3",
+      "is_primary": true,
+      "connection_id": "aws-opendata-us-west-2",
+      "config": {
+        "region": "us-west-2",
+        "bucket": "aws-opendata-us-west-2"
+      },
+      "prefix": "agentmorris/lila-wildlife/nacti-unzipped/"
+    }
+  },
+  "file_count": 3382215,
+  "total_bytes": 1470663367248,
+  "exts": {
+    "jpg": 3382215
+  },
+  "visibility": "public",
+  "data_mode": "open",
+  "_state": "drafted",
+  "_decomposed_from": "agentmorris/lila-wildlife",
+  "_decompose_model": "sonnet",
+  "_decompose_prompt_version": 1,
+  "cataloged_at": "2026-04-29T02:29:24+00:00",
+  "_review": [
+    "Temporal extent derived from year patterns in image filenames in the metadata CSV (years 2010, 2014, 2015, 2016 appear); not stated explicitly in the README. Bounds are year-level only \u2014 actual start/end dates within those years are not known.",
+    "Inventory shows 3,382,215 JPEGs, but the README states approximately 3.7M images. The ~320K gap is unexplained \u2014 possible partial sync, deduplication, or images in the nacti/ zipped prefix that were not fully unzipped. Flag for verification.",
+    "Metadata CSV (downloaded separately from zip) shows studies CA, TAG (both in Lebec CA), CPW (San Juan Mountains CO), and FL (Archbold FL) \u2014 that is 3 distinct geographic locations, not five. README says 'five locations'; the discrepancy may reflect five camera trap deployments rather than five geographic areas.",
+    "469,356 rows in the metadata CSV have NULL study and location (CA-NN numbered filenames); these are likely the CA or TAG study images from California but lack explicit location assignment in the metadata. The five-location claim may include these as distinct sites.",
+    "NACTI is a known USDA APHIS NWRC dataset; second provider inferred from manuscript author affiliations, not stated explicitly in the README slice.",
+    "No .json, .csv, or other metadata files exist under the nacti-unzipped/ S3 prefix \u2014 only JPEGs. Annotations (COCO JSON, bbox file, CSV) are only available as separate zipped downloads under the nacti/ prefix.",
+    "No bbox derivable from README or metadata; spatial extent given as named regions only.",
+    "license: README links to cdla.io/permissive-1-0 (v1.0); described as 'Community Data License Agreement (permissive variant)'.",
+    "extent.spatial.bbox: omitted; named region: United States: Lebec, California; San Juan Mountains, Colorado; Archbold, Florida"
+  ]
+}

@@ -1,0 +1,135 @@
+{
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "agentmorris/lila-wildlife-lcmcvpr2019",
+  "title": "Chesapeake Land Cover",
+  "description": "Chesapeake Land Cover is a machine-learning benchmark dataset covering the Chesapeake Bay watershed, comprising 732 tiles (~6km x 7.5km each) across six states (DE, MD, NY, PA, VA, WV). Each tile provides seven co-registered 1m-resolution GeoTIFFs: NAIP aerial imagery (2011-2014), Chesapeake Conservancy six-class land cover labels, NLCD 2011 labels, Landsat 8 leaf-on/leaf-off composites, and Microsoft Bing building footprint masks. The dataset was created to support research into geographic generalization of land cover mapping models.",
+  "license": "ODbL-1.0",
+  "keywords": [
+    "land-cover",
+    "remote-sensing",
+    "aerial-imagery",
+    "machine-learning",
+    "chesapeake-bay",
+    "naip",
+    "landsat",
+    "building-footprints"
+  ],
+  "providers": [
+    {
+      "name": "Chesapeake Conservancy",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "USDA NAIP Program",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "USGS",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Microsoft",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Caleb Robinson (Microsoft AI for Good Research Lab)",
+      "roles": [
+        "processor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/agentmorris/lila-wildlife"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -80.8093,
+          36.5643,
+          -74.2529,
+          43.9974
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2011-01-01",
+          "2017-12-31"
+        ]
+      ]
+    }
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/agentmorris/lila-wildlife/lcmcvpr2019/",
+      "title": "Dataset files (5134 x .tif)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/agentmorris/lila-wildlife/lcmcvpr2019/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/agentmorris/lila-wildlife",
+      "title": "Parent Source Cooperative product page"
+    }
+  ],
+  "account_id": "agentmorris",
+  "product_id": "lila-wildlife-lcmcvpr2019",
+  "sci_citation": "Robinson C, Hou L, Malkin K, Soobitsky R, Czawlytko J, Dilkina B, Jojic N. Large Scale High-Resolution Land Cover Mapping with Multi-Resolution Data. Proceedings of the 2019 Conference on Computer Vision and Pattern Recognition (CVPR 2019).",
+  "mirrors": {
+    "aws-opendata-us-west-2": {
+      "storage_type": "s3",
+      "is_primary": true,
+      "connection_id": "aws-opendata-us-west-2",
+      "config": {
+        "region": "us-west-2",
+        "bucket": "aws-opendata-us-west-2"
+      },
+      "prefix": "agentmorris/lila-wildlife/lcmcvpr2019/"
+    }
+  },
+  "file_count": 5134,
+  "total_bytes": 886743537651,
+  "exts": {
+    "zip": 9,
+    "tif": 5124,
+    "geojson": 1
+  },
+  "visibility": "public",
+  "data_mode": "open",
+  "_state": "drafted",
+  "_decomposed_from": "agentmorris/lila-wildlife",
+  "_decompose_model": "sonnet",
+  "_decompose_prompt_version": 1,
+  "cataloged_at": "2026-04-29T02:29:26+00:00",
+  "_review": [
+    "License is compound: custom no-warranty disclaimer for CC land cover labels (not SPDX), public domain for NAIP/Landsat, ODbL-1.0 for building footprints. Assigned ODbL-1.0 as the most restrictive SPDX-expressible component; a human should verify whether the CC label disclaimer constitutes a more restrictive term.",
+    "sci_doi is null: the CVPR 2019 paper citation is given in the README but no DOI is explicitly stated. A DOI may exist for the CVPR paper but was not derivable from the README text alone.",
+    "temporal_extent start set to 2011 (NAIP 2011/2012 imagery and NLCD 2011 are the oldest inputs); end set to 2017 (Landsat composites use data through 2017). The README does not give explicit study-period dates as a range.",
+    "bbox derived from spatial_index.geojson (EPSG:3857 converted to WGS84); covers DE, MD, NY, PA, VA, WV portions of the Chesapeake Bay watershed.",
+    "license: Compound license: NAIP and Landsat imagery are public domain; Chesapeake Conservancy land cover labels have a custom no-warranty disclaimer (not a standard SPDX license); building footprints are ODbL-1.0. ODbL-1.0 is the most restrictive component and governs redistribution."
+  ]
+}
