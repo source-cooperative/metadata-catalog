@@ -1,17 +1,97 @@
 {
-  "account_id": "smartmaps",
-  "product_id": "next-ksj",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "smartmaps/next-ksj",
   "title": "\u56fd\u571f\u6570\u5024\u60c5\u5831\u30b5\u30f3\u30d7\u30eb",
-  "description": "https://github.com/gislab-mlit/next-ksj-formats \u3067\u516c\u958b\u3055\u308c\u3066\u3044\u308b\u30b5\u30f3\u30d7\u30eb\u30d5\u30a1\u30a4\u30eb\u306e\u30b3\u30d4\u30fc\u3067\u3059\u3002\nPMTiles \u5f62\u5f0f\u3068 FlatGeobuf \u5f62\u5f0f\u306e\u30d5\u30a1\u30a4\u30eb\u306e\u30b3\u30d4\u30fc\u3092\u7f6e\u3044\u3066\u3044\u307e\u3059\u3002",
+  "description": "Sample files from Japan's National Land Numerical Information (\u56fd\u571f\u6570\u5024\u60c5\u5831, KSJ) published by Japan's Ministry of Land, Infrastructure, Transport and Tourism (MLIT). Includes 2024 land price survey points, 2024 administrative boundary polygons, and 2006\u20132009 river line data covering Japan. Distributed in PMTiles and FlatGeobuf formats.",
   "keywords": [
-    "PMTiles FlatGeobuf"
+    "japan",
+    "administrative-boundaries",
+    "land-price",
+    "rivers",
+    "national-land-information",
+    "open-government-data"
   ],
-  "created_at": "2025-02-08T12:40:43.257Z",
-  "updated_at": "2025-08-21T16:39:55.567Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
+  "providers": [
+    {
+      "name": "Japan Ministry of Land, Infrastructure, Transport and Tourism (MLIT) GIS Lab",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/smartmaps/next-ksj"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          122.9326064,
+          20.4227464,
+          153.9866751,
+          45.5572434
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 436548
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/smartmaps/next-ksj/",
+      "type": "application/flatgeobuf",
+      "title": "Dataset files (3 x .fgb)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/smartmaps/next-ksj/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/smartmaps/next-ksj",
+      "title": "Source Cooperative product page"
+    }
+  ],
+  "total_bytes": 962342363,
   "data_mode": "open",
+  "featured": 0,
+  "visibility": "public",
+  "exts": {
+    "fgb": 3,
+    "pmtiles": 3,
+    "md": 1
+  },
+  "disabled": false,
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "product_id": "next-ksj",
+  "file_count": 7,
+  "created_at": "2025-02-08T12:40:43.257Z",
+  "account_id": "smartmaps",
+  "updated_at": "2025-08-21T16:39:55.567Z",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -24,17 +104,10 @@
       "prefix": "smartmaps/next-ksj/"
     }
   },
-  "file_count": 7,
-  "total_bytes": 962342363,
-  "exts": {
-    "fgb": 3,
-    "pmtiles": 3,
-    "md": 1
-  },
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "id": "smartmaps/next-ksj"
+  "readme": "## README.md\n# next-ksj\nhttps://github.com/gislab-mlit/next-ksj-formats \u3067\u516c\u958b\u3055\u308c\u3066\u3044\u308b\u30b5\u30f3\u30d7\u30eb\u30d5\u30a1\u30a4\u30eb\u306e\u30b3\u30d4\u30fc\u3067\u3059\u3002 \nPMTiles \u5f62\u5f0f\u3068 FlatGeobuf \u5f62\u5f0f\u306e\u30d5\u30a1\u30a4\u30eb\u306e\u30b3\u30d4\u30fc\u3092\u7f6e\u3044\u3066\u3044\u307e\u3059\u3002\n\n# pmtiles.io \u306b\u3088\u308b\u95b2\u89a7\n## L01-24_\u5730\u4fa1\u516c\u793a\u30c7\u30fc\u30bf_2024\u5e74(\u4ee4\u548c6\u5e74)\u7248\n- https://pmtiles.io/?url=https%3A%2F%2Fdata.source.coop%2Fsmartmaps%2Fnext-ksj%2FL01-24.pmtiles#map=11.64/35.6818/139.7465\n\n## N03-20240101_\u884c\u653f\u533a\u57df\u30c7\u30fc\u30bf_2024\u5e74(\u4ee4\u548c6\u5e74)\u7248 \uff08\u30dd\u30ea\u30b4\u30f3\uff09\n- https://pmtiles.io/?url=https%3A%2F%2Fdata.source.coop%2Fsmartmaps%2Fnext-ksj%2FN03-20240101.pmtiles#map=4.21/33.91/138.46\n\n## W05_\u6cb3\u5ddd\u30c7\u30fc\u30bf_2009\u5e74\u5ea6\uff5e2006\u5e74\u5ea6(\u5e73\u621021\u5e74\u5ea6\uff5e\u5e73\u621018\u5e74\u5ea6) \uff08\u30e9\u30a4\u30f3\uff09\n- https://pmtiles.io/?url=https%3A%2F%2Fdata.source.coop%2Fsmartmaps%2Fnext-ksj%2FW05-Stream.pmtiles#map=9.64/35.7108/139.8437\n\n# See Also\nhttps://github.com/gislab-mlit/next-ksj-formats/issues/18\n",
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-05-25T22:35:27+00:00"
 }
