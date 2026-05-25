@@ -1,19 +1,97 @@
 {
-  "account_id": "rsignell",
-  "product_id": "ncei-estuarine-bathymetry",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "rsignell/ncei-estuarine-bathymetry",
   "title": "NCEI Estuarine Bathymetry",
-  "description": "The National Ocean Service (NOS) Estuarine Bathymetric Digital Elevation Models are gridded bathymetry datasets interpolated from 150 years\u2019 worth of hydrographic survey data collected by the former NOS Special Projects Office. The initiative produced datasets for 70 estuaries in the conterminous United States with sufficient data coverage to support detailed bathymetric processing. Estuarine bathymetric data are available as gridded products with 30 meter spatial resolution.",
+  "description": "Gridded bathymetric Digital Elevation Models for 70 estuaries in the conterminous United States, produced by the NOAA National Ocean Service from 150 years of hydrographic survey data. Available as 30-meter resolution NetCDF files with accompanying XML metadata, covering major U.S. estuaries with sufficient historical survey data for detailed bathymetric processing.",
   "keywords": [
     "bathymetry",
     "topography",
-    "DEM"
+    "dem",
+    "estuaries",
+    "hydrography",
+    "coastal",
+    "netcdf"
   ],
-  "created_at": "2025-04-30T14:34:51.151Z",
+  "providers": [
+    {
+      "name": "NOAA National Ocean Service (NOS)",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "NOAA National Centers for Environmental Information (NCEI)",
+      "roles": [
+        "processor",
+        "host"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/rsignell/ncei-estuarine-bathymetry"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -124.2063923,
+          24.4,
+          -67.75,
+          48.4521678
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/rsignell/ncei-estuarine-bathymetry/",
+      "type": "application/x-netcdf",
+      "title": "Dataset files (71 x .nc)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/rsignell/ncei-estuarine-bathymetry/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/rsignell/ncei-estuarine-bathymetry",
+      "title": "Source Cooperative product page"
+    }
+  ],
+  "file_count": 201,
   "updated_at": "2025-08-21T16:39:55.568Z",
-  "visibility": "public",
-  "disabled": false,
+  "exts": {
+    "md": 1,
+    "sums": 1,
+    "": 57,
+    "nc": 71,
+    "xml": 71
+  },
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
   "featured": 0,
-  "data_mode": "open",
+  "product_id": "ncei-estuarine-bathymetry",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -26,20 +104,16 @@
       "prefix": "rsignell/ncei-estuarine-bathymetry/"
     }
   },
-  "file_count": 201,
+  "disabled": false,
   "total_bytes": 5264392383,
-  "exts": {
-    "md": 1,
-    "sums": 1,
-    "": 57,
-    "nc": 71,
-    "xml": 71
-  },
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "id": "rsignell/ncei-estuarine-bathymetry",
-  "cataloged_at": "2026-04-29T18:37:51+00:00"
+  "data_mode": "open",
+  "created_at": "2025-04-30T14:34:51.151Z",
+  "visibility": "public",
+  "account_id": "rsignell",
+  "readme": "## README.md\n# NOAA Estuarine Bathymetry DEMs\nThe National Ocean Service (NOS) Estuarine Bathymetric Digital Elevation Models are gridded bathymetry datasets interpolated from 150 years\u2019 worth of hydrographic survey data collected by the former NOS Special Projects Office. The initiative produced datasets for 70 estuaries in the conterminous United States with sufficient data coverage to support detailed bathymetric processing.\n\nEstuarine bathymetric data are available as gridded products with 30 meter spatial resolution as NetCDF files, along with XML metadata files.\n\n## Access Data\n### Stream Data\nHere's an example of how to explore the data interactively in a Jupyter Notebook using Python:\n``` python\nimport fsspec\nimport xarray as xr\nimport hvplot.xarray\n\nfs = fsspec.filesystem('s3', anon=True, endpoint_url='https://data.source.coop') \nfs.ls('rsignell/ncei-estuarine-bathymetry')\n\nds = xr.open_dataset(fs.open('rsignell/ncei-estuarine-bathymetry/Buzzards_Bay/buzzards_bay_m010_30m.nc'))\nds['Band1'].hvplot(x='x', y='y', crs='EPSG:26919', rasterize=True, tiles='OSM', cmap='viridis')\n```\n",
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-05-25T22:59:59+00:00"
 }
