@@ -63,6 +63,10 @@ This rubric is intentionally incomplete. We develop it case-by-case as we encoun
 |---------|-----------|--------|
 | `harvard-lil/gov-data` | ~300k data.gov archives in BagIt format | Not yet decomposed |
 
+## Publishing model
+
+These JSON files are the catalog's resting artifacts — work has been put into collecting, creating, cleaning, and verifying, but they're a best-effort record, not blessed by the data owner. We maintain `catalog/{publisher}/{product}.json` here; we do not push generated `collection.json` files back to the data buckets. At most, we offer a smaller version or backport to the repo owner, who uploads it themselves.
+
 ## Scripts
 
 See `/pipeline.dot` at the repo root for the dependency graph and `/README.md` for usage. Libraries live in `scripts/lib/` (not runnable); numbered scripts (`NN-name.py`) are the pipeline stages.
