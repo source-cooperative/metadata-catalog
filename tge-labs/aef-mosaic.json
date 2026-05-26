@@ -1,15 +1,93 @@
 {
-  "account_id": "tge-labs",
-  "product_id": "aef-mosaic",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "tge-labs/aef-mosaic",
   "title": "AlphaEarth Foundations GeoZarr Mosaic",
-  "description": "This product contains a global GeoZarr mosaic of the AlphaEarth Foundations annual Satellite Embedding dataset, from 2017 to 2025.",
-  "keywords": [],
-  "created_at": "2026-03-25T13:09:09.433Z",
+  "description": "A global mosaic of Google AlphaEarth Foundations Satellite Embeddings stored as a Zarr v3 array, covering 2017\u20132025 at approximately 10m resolution at the equator. Each pixel encodes a 64-dimensional learned embedding derived from satellite imagery, projected in EPSG:4326 and spanning \u00b183\u00b0 latitude. Annual time steps (9 years) enable temporal change detection and similarity search across the full globe.",
+  "license": "CC-BY-4.0",
+  "keywords": [
+    "remote-sensing",
+    "satellite-embeddings",
+    "foundation-model",
+    "global-coverage",
+    "time-series",
+    "machine-learning"
+  ],
+  "providers": [
+    {
+      "name": "Google",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Google DeepMind",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "tge-labs",
+      "roles": [
+        "processor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/tge-labs/aef-mosaic"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -180.0,
+          -83.3628035,
+          180.2213439,
+          83.6857053
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/tge-labs/aef-mosaic/",
+      "type": "application/vnd+zarr",
+      "title": "Dataset files (1 x .zarr)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/tge-labs/aef-mosaic/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/tge-labs/aef-mosaic",
+      "title": "Source Cooperative product page"
+    }
+  ],
   "updated_at": "2026-03-25T13:09:09.433Z",
-  "visibility": "public",
+  "created_at": "2026-03-25T13:09:09.433Z",
   "disabled": false,
-  "featured": 0,
-  "data_mode": "open",
+  "file_count": 1478221,
+  "visibility": "public",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -22,18 +100,21 @@
       "prefix": "tge-labs/aef-mosaic/"
     }
   },
-  "file_count": 1478221,
   "total_bytes": 552876348175738,
+  "account_id": "tge-labs",
+  "data_mode": "open",
+  "product_id": "aef-mosaic",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "featured": 0,
   "exts": {
     "": 1478205,
     "md": 1,
     "json": 15
   },
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "id": "tge-labs/aef-mosaic",
-  "cataloged_at": "2026-04-24T20:52:20+00:00"
+  "readme": "## README.md\n# AEF Mosaic\n\nA global mosaic of [Google AlphaEarth Foundations Satellite Embeddings](https://developers.google.com/earth-engine/datasets/catalog/projects_sat-io_open-datasets_AEF_AlphaEarthFoundationsSatelliteEmbedding), covering 2017-2025 at ~0.00009\u00b0 resolution. The dataset is projected in `EPSG:4326` with a fixed pixel size in degrees. This means that pixels cover ~10m on the ground at the equator, but less area at higher latitudes. For area-based analysis, consider reprojecting to an equal-area projection, [creating your own mosaic](https://github.com/geospatial-jeff/aef-mosaic) in a custom CRS, or using the [underlying COGs](https://source.coop/tge-labs/aef) which are already projected to UTM. This copy is not officially supported by Google.\n\nThis dataset implements the following Zarr conventions.  These Zarr conventions are not mature and may change.\n\n| Convention | Description |\n|------------|-------------|\n| [proj:](https://github.com/zarr-experimental/geo-proj/blob/v1/README.md) | Coordinate reference system information |\n| [spatial:](https://github.com/zarr-conventions/spatial/blob/v1/README.md) | Spatial coordinate and transform metadata |\n| [geoemb:](https://github.com/geo-embeddings/embeddings-zarr-convention/blob/add-convention/README.md) | Metadata for geo-embeddings |\n\n\n## License\n\nThis dataset is licensed under CC-BY 4.0 and requires the following attribution text: \"The AlphaEarth Foundations Satellite Embedding dataset is produced by Google and Google DeepMind.\"\n\n\n## Visualizations\n\n### RGB Composite\nPCA visualization of the embedding space projected to RGB:\n\n<img src=\"https://raw.githubusercontent.com/geospatial-jeff/aef-mosaic/main/images/rgb_composite.png\" width=\"80%\" alt=\"RGB Composite\">\n\n### RGB PCA (Zoomed)\nDetailed view showing embedding structure at higher resolution:\n\n<img src=\"https://raw.githubusercontent.com/geospatial-jeff/aef-mosaic/main/images/rgb_pca.png\" width=\"80%\" alt=\"RGB PCA\">\n\n### Cosine Similarity\nSimilarity search using a query embedding:\n\n<img src=\"https://raw.githubusercontent.com/geospatial-jeff/aef-mosaic/main/images/cosine_similarity.png\" width=\"80%\" alt=\"Cosine Similarity\">\n\n### Change Detection\nTemporal embedding differences highlighting landscape changes:\n\n<img src=\"https://raw.githubusercontent.com/geospatial-jeff/aef-mosaic/main/images/change_detection.png\" width=\"80%\" alt=\"Change Detection\">\n\n## Quick Start\n\n```python\nimport zarr\nimport numpy as np\n                                                                                                                            \nroot = zarr.open_group(                                                                                                       \n  \"s3://us-west-2.opendata.source.coop/tge-labs/aef-mosaic/\",                                                               \n  mode=\"r\",                                                                                                                 \n  storage_options={\"anon\": True}                                                                                            \n)                                                                                                                             \nembeddings = root[\"embeddings\"]\n\n# Access a spatial subset (year 0, all bands, y slice, x slice)\ndata = embeddings[0, :, 516000:516100, 832000:832100]\n\n# De-quantize to float32\ndata_float = ((data / 127.5) ** 2) * np.sign(data)\n```\n\n## Xarray\n\n```python\nimport xarray as xr\n\n\ndef fetch_point(ds, lat, lon, time=0):\n    \"\"\"Fetch AEF embedding for a single lat/lon point. Returns shape (64,).\"\"\"\n    return ds.isel(time=time).sel(x=lon, y=lat, method=\"nearest\")\n\n\ndef fetch_bbox(ds, bbox, time=0):\n    \"\"\"Fetch AEF embeddings for a bounding box. Returns shape (64, y, x).\"\"\"\n    minx, miny, maxx, maxy = bbox\n    return ds.isel(time=time).sel(x=slice(minx, maxx), y=slice(maxy, miny))\n\n\ndef main():\n    ds = xr.open_zarr(\n        \"s3://us-west-2.opendata.source.coop/tge-labs/aef-mosaic/\",\n        storage_options={\"anon\": True}\n    )\n\n    # Fetch embedding for a single point\n    lat, lon = 34.0522, -118.2437  # Los Angeles\n    point_data = fetch_point(ds, lat, lon).compute()\n    print(f\"Point shape: {point_data.embeddings.shape}\")\n\n    # Fetch embeddings for a bounding box\n    bbox = [-118.279668, 34.036242, -118.20862, 34.089643]\n    bbox_data = fetch_bbox(ds, bbox).compute()\n    print(f\"Bbox shape: {bbox_data.embeddings.shape}\")\n\n\nif __name__ == \"__main__\":\n    main()\n```\n\n## Zarr-python\n\n```python\nimport asyncio\nfrom affine import Affine\nfrom obstore.store import S3Store\nfrom zarr.storage import ObjectStore\nfrom zarr.api.asynchronous import open_group\n\n\nstore = S3Store(\n    \"us-west-2.opendata.source.coop\",\n    prefix=\"tge-labs/aef-mosaic/\",\n    region=\"us-west-2\",\n    skip_signature=True,\n)\nzarr_store = ObjectStore(store, read_only=True)\n\n\ndef latlon_to_rowcol(lat, lon, transform):\n    \"\"\"Convert lat/lon to row/col using the inverse transform.\"\"\"\n    inv = ~transform\n    col, row = inv * (lon, lat)\n    return int(row), int(col)\n\n\ndef bbox_to_slices(bbox, transform):\n    \"\"\"Convert a bounding box to row/col slices.\"\"\"\n    minx, miny, maxx, maxy = bbox\n    inv = ~transform\n    col1, row1 = inv * (minx, maxy)\n    col2, row2 = inv * (maxx, miny)\n    row_start, row_stop = int(min(row1, row2)), int(max(row1, row2)) + 1\n    col_start, col_stop = int(min(col1, col2)), int(max(col1, col2)) + 1\n    return slice(row_start, row_stop), slice(col_start, col_stop)\n\n\nasync def fetch_point(embeddings, transform, lat, lon, year=0):\n    \"\"\"Fetch AEF embedding for a single lat/lon point. Returns shape (64,).\"\"\"\n    row, col = latlon_to_rowcol(lat, lon, transform)\n    return await embeddings.getitem((year, slice(None), row, col))\n\n\nasync def fetch_bbox(embeddings, transform, bbox, year=0):\n    \"\"\"Fetch AEF embeddings for a bounding box. Returns shape (64, rows, cols).\"\"\"\n    row_slice, col_slice = bbox_to_slices(bbox, transform)\n    return await embeddings.getitem((year, slice(None), row_slice, col_slice))\n\n\nasync def main():\n    root = await open_group(store=zarr_store, mode=\"r\")\n    embeddings = await root.get(\"embeddings\")\n    transform = Affine(*root.metadata.attributes[\"spatial:transform\"])\n\n    # Fetch embedding for a single point\n    lat, lon = 34.0522, -118.2437  # Los Angeles\n    point_data = await fetch_point(embeddings, transform, lat, lon)\n    print(f\"Point shape: {point_data.shape}\")\n\n    # Fetch embeddings for a bounding box\n    bbox = [-118.279668, 34.036242, -118.20862, 34.089643]\n    bbox_data = await fetch_bbox(embeddings, transform, bbox)\n    print(f\"Bbox shape: {bbox_data.shape}\")\n\n\nif __name__ == \"__main__\":\n    asyncio.run(main())\n```\n\n\n## Dataset Details\n\n| Property | Value |\n|----------|-------|\n| **Location** | `s3://us-west-2.opendata.source.coop/tge-labs/aef-mosaic/` |\n| **Format** | Zarr v3 with sharding |\n| **Shape** | `(9, 64, 1859584, 4009984)` |\n| **Dimensions** | `(time, band, y, x)` |\n| **Years** | 2017-2025 (indices 0-8) |\n| **Bands** | 64 embedding dimensions |\n| **CRS** | EPSG:4326 |\n| **Bbox** | `[-180.0, -83.36, 180.22, 83.69]` |\n| **Resolution** | ~0.00009\u00b0 (~10m at equator) |\n| **Data Type** | int8 (quantized), nodata = -128 |\n| **Shard Size** | `(1, 64, 4096, 4096)` |\n| **Inner Chunk Size** | `(1, 64, 256, 256)` |\n\n\n## Source Code\n\nThe processing pipeline used to create this mosaic is available at:\nhttps://github.com/geospatial-jeff/aef-mosaic\n\n\n## Contact\n\nPlease send any comments, questions, or points of feedback to the [`#opening-aef`](https://cloudnativegeo.slack.com/archives/C09A8SV3WN5) CNG slack channel.",
+  "_state": "drafted",
+  "cataloged_at": "2026-05-25T23:56:42+00:00"
 }
