@@ -1,15 +1,102 @@
 {
-  "account_id": "earthgenome",
-  "product_id": "amazon-mining-watch",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "earthgenome/amazon-mining-watch",
   "title": "Amazon Mining Watch",
-  "description": "Amazon Mining Watch leverages artificial intelligence to map the impact of gold mining activities across all nine Amazonian countries. By analyzing historical and recent satellite imagery, AMW tracks the rapid expansion of legal and illegal mining in the world's largest rainforest. The platform provides journalists, activists, researchers, and policymakers with the pan-Amazonian data needed to understand the drivers and impacts of gold mining and drive actions to stop it.",
-  "keywords": [],
-  "created_at": "2026-01-23T18:28:57.186Z",
-  "updated_at": "2026-01-23T18:28:57.186Z",
+  "description": "Amazon Mining Watch is a dataset of automated machine-learning detections of artisanal gold mine scars derived from Sentinel-2 satellite imagery, covering all nine Amazonian countries. Detections are stored as cumulative GeoJSON polygons at yearly granularity from 2018\u20132024 and quarterly from Q2 2025. The dataset enables tracking of legal and illegal gold mining expansion across the Amazon rainforest.",
+  "license": "CC-BY-4.0",
+  "keywords": [
+    "gold-mining",
+    "amazon",
+    "illegal-mining",
+    "remote-sensing",
+    "machine-learning",
+    "environmental-monitoring",
+    "deforestation"
+  ],
+  "providers": [
+    {
+      "name": "EarthGenome / EarthIndex",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Earthrise Media",
+      "roles": [
+        "processor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/earthgenome/amazon-mining-watch"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -79.103866,
+          -18.3917729,
+          -44.173109,
+          9.1292323
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 80211
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/earthgenome/amazon-mining-watch/",
+      "type": "application/geo+json",
+      "title": "Dataset files (10 x .geojson)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/earthgenome/amazon-mining-watch/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/earthgenome/amazon-mining-watch",
+      "title": "Source Cooperative product page"
+    }
+  ],
+  "product_id": "amazon-mining-watch",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
   "visibility": "public",
-  "disabled": false,
-  "featured": 0,
+  "total_bytes": 213335844,
   "data_mode": "open",
+  "file_count": 13,
+  "disabled": false,
+  "exts": {
+    "geojson": 10,
+    "tif": 2,
+    "md": 1
+  },
+  "featured": 0,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -22,17 +109,13 @@
       "prefix": "earthgenome/amazon-mining-watch/"
     }
   },
-  "file_count": 13,
-  "total_bytes": 213335844,
-  "exts": {
-    "geojson": 10,
-    "tif": 2,
-    "md": 1
-  },
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "id": "earthgenome/amazon-mining-watch"
+  "account_id": "earthgenome",
+  "updated_at": "2026-01-23T18:28:57.186Z",
+  "created_at": "2026-01-23T18:28:57.186Z",
+  "readme": "## README.md\n\n![EarthGenome](https://data.source.coop/earthgenome/earthindexembeddings/logo.png)\n# Amazon Mining Watch \n\n[![CC-4 license](https://img.shields.io/badge/License-CC--4-blue.svg)](https://creativecommons.org/licenses/by/4.0/)\n[![Sensor](https://img.shields.io/badge/Sensor%F0%9F%9B%B0%EF%B8%8F-Sentinel2-blue)](https://www.esa.int/Applications/Observing_the_Earth/Copernicus/Sentinel-2)\n[![Format](https://img.shields.io/badge/Format-GeoJSON%20%F0%9F%8C%8E%EF%B8%8F-blue)](https://geojson.org/)\n\nThis repository contains automated detections of artisanal gold mine\nscars in Sentinel-2 satellite imagery.\n\nThe data is licensed under the [creative commons 4.0](https://creativecommons.org/licenses/by/4.0/) international license which, in summary, only requires attribution.\n\nCode, description of the machine-learning models that generated the\ndetections, and additional versions of this data are available at the\n[Amazon Mining Watch Github repository](https://github.com/earthrise-media/mining-detector).\n\n### Data \n\nData are presented yearly from 2018-2024 and quarterly starting from\nthe second quarter of 2025. Each file represents cumulative detections of mine scars\nbegining in 2018. Detections are made on overlapping 480m x 480m\npatches of the Earth's surface, merged into polygons where they overlap, and saved as\nGeoJSON. \n\n### Models\n\n- Beginning with the 2024 data year, the model is an ensemble of\n  classification heads trained atop embeddings from the [SSL4EO\n  ViT-DINO/S16 geospatial foundation model](github.com/zhu-xlab/SSL4EO-S12),\n  with ex-post-facto data cleaning by human review of satellite imagery.\n\n- Data years 2018-2023 use a legacy ensemble of end-to-end trained\n  convolutional neural networks.\n\n### Data notes\n\n- The break in models means that trends are not reliable from year\n  2023 to 2024. In particular, the newer models are significantly more\n  sensitive the the older, and the additional mining detected in\n  2024 is partly an artefact of the model shift.\n\n- The models producing this data are under active development. Data updates and\npixelwise segmentations of mining scars are expected in early 2026. \n\n### Contact\nUsing this? Want work together? Ping us @ info@earthgenome.org or info@earthindex.ai\n",
+  "_review": [
+    "providers: role [processor] for 'Earthrise Media' is an AI guess \u2014 Assumed processor: hosts the upstream mining-detector GitHub repo where the ML model code lives. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-05-26T18:34:37+00:00"
 }

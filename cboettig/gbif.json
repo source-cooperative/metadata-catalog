@@ -1,19 +1,1375 @@
 {
-  "account_id": "cboettig",
-  "product_id": "gbif",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
+  "id": "cboettig/gbif",
   "title": "H3-Indexed cloud-optimized snapshots of GBIF ",
-  "description": "Derived data products from GBIF snapshots. ",
+  "description": "Cloud-optimized GeoParquet snapshots of Global Biodiversity Information Facility (GBIF) occurrence records, extended with H3 hierarchical hexagonal spatial index keys at resolutions 0\u201310. The dataset covers over 3 billion biodiversity occurrences and is partitioned into ~430 GB of Parquet files to enable fast spatial aggregations at any H3 resolution using DuckDB.",
   "keywords": [
     "biodiversity",
+    "species-occurrences",
     "h3",
-    "geospatial",
-    "duckdb"
+    "spatial-index",
+    "remote-sensing",
+    "geoparquet",
+    "gbif"
   ],
+  "providers": [
+    {
+      "name": "Global Biodiversity Information Facility (GBIF)",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Carl Boettiger / boettiger-lab",
+      "roles": [
+        "processor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/cboettig/gbif"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 41237663
+  },
+  "assets": {
+    "data_0": {
+      "href": "https://data.source.coop/cboettig/gbif/2025-06/hex/h0=80f3fffffffffff/part/data_0.parquet",
+      "type": "application/x-parquet",
+      "title": "data_0.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "gbifid",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "datasetkey",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "occurrenceid",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "kingdom",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "phylum",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "class",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "order",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "family",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "genus",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "species",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "infraspecificepithet",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "taxonrank",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "scientificname",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "verbatimscientificname",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "verbatimscientificnameauthorship",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "countrycode",
+          "type": "VARCHAR",
+          "description": "[admin_code] ISO 3166-1 alpha-2 country code for the occurrence location"
+        },
+        {
+          "name": "locality",
+          "type": "VARCHAR",
+          "description": "[placename] Verbatim locality description for the occurrence"
+        },
+        {
+          "name": "stateprovince",
+          "type": "VARCHAR",
+          "description": "[placename] State or province name for the occurrence location"
+        },
+        {
+          "name": "occurrencestatus",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "individualcount",
+          "type": "INTEGER"
+        },
+        {
+          "name": "publishingorgkey",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "decimallatitude",
+          "type": "DOUBLE",
+          "description": "[latlon] WGS84 decimal latitude of the occurrence record"
+        },
+        {
+          "name": "decimallongitude",
+          "type": "DOUBLE",
+          "description": "[latlon] WGS84 decimal longitude of the occurrence record"
+        },
+        {
+          "name": "coordinateuncertaintyinmeters",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "coordinateprecision",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "elevation",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "elevationaccuracy",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "depth",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "depthaccuracy",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "eventdate",
+          "type": "TIMESTAMP"
+        },
+        {
+          "name": "day",
+          "type": "INTEGER"
+        },
+        {
+          "name": "month",
+          "type": "INTEGER"
+        },
+        {
+          "name": "year",
+          "type": "INTEGER"
+        },
+        {
+          "name": "taxonkey",
+          "type": "INTEGER"
+        },
+        {
+          "name": "specieskey",
+          "type": "INTEGER"
+        },
+        {
+          "name": "basisofrecord",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "institutioncode",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "collectioncode",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "catalognumber",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "recordnumber",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "identifiedby",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "dateidentified",
+          "type": "TIMESTAMP"
+        },
+        {
+          "name": "license",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "rightsholder",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "recordedby",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "typestatus",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "establishmentmeans",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "lastinterpreted",
+          "type": "TIMESTAMP"
+        },
+        {
+          "name": "mediatype",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "issue",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "h0",
+          "type": "VARCHAR",
+          "description": "[spatial_index] H3 hexagonal spatial index at resolution 0 (coarsest)"
+        },
+        {
+          "name": "h1",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 hexagonal spatial index at resolution 1"
+        },
+        {
+          "name": "h2",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 hexagonal spatial index at resolution 2"
+        },
+        {
+          "name": "h3",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 hexagonal spatial index at resolution 3"
+        },
+        {
+          "name": "h4",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 hexagonal spatial index at resolution 4"
+        },
+        {
+          "name": "h5",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 hexagonal spatial index at resolution 5"
+        },
+        {
+          "name": "h6",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 hexagonal spatial index at resolution 6"
+        },
+        {
+          "name": "h7",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 hexagonal spatial index at resolution 7"
+        },
+        {
+          "name": "h8",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 hexagonal spatial index at resolution 8"
+        },
+        {
+          "name": "h9",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 hexagonal spatial index at resolution 9"
+        },
+        {
+          "name": "h10",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 hexagonal spatial index at resolution 10 (finest available)"
+        }
+      ],
+      "table:row_count": 99830
+    },
+    "data_1": {
+      "href": "https://data.source.coop/cboettig/gbif/2025-06/hex/h0=8009fffffffffff/part/data_1.parquet",
+      "type": "application/x-parquet",
+      "title": "data_1.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "gbifid",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "datasetkey",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "occurrenceid",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "kingdom",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "phylum",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "class",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "order",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "family",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "genus",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "species",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "infraspecificepithet",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "taxonrank",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "scientificname",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "verbatimscientificname",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "verbatimscientificnameauthorship",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "countrycode",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "locality",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "stateprovince",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "occurrencestatus",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "individualcount",
+          "type": "INTEGER"
+        },
+        {
+          "name": "publishingorgkey",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "decimallatitude",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "decimallongitude",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "coordinateuncertaintyinmeters",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "coordinateprecision",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "elevation",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "elevationaccuracy",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "depth",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "depthaccuracy",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "eventdate",
+          "type": "TIMESTAMP"
+        },
+        {
+          "name": "day",
+          "type": "INTEGER"
+        },
+        {
+          "name": "month",
+          "type": "INTEGER"
+        },
+        {
+          "name": "year",
+          "type": "INTEGER"
+        },
+        {
+          "name": "taxonkey",
+          "type": "INTEGER"
+        },
+        {
+          "name": "specieskey",
+          "type": "INTEGER"
+        },
+        {
+          "name": "basisofrecord",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "institutioncode",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "collectioncode",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "catalognumber",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "recordnumber",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "identifiedby",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "dateidentified",
+          "type": "TIMESTAMP"
+        },
+        {
+          "name": "license",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "rightsholder",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "recordedby",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "typestatus",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "establishmentmeans",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "lastinterpreted",
+          "type": "TIMESTAMP"
+        },
+        {
+          "name": "mediatype",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "issue",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "h0",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "h1",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h2",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h3",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h4",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h5",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h6",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h7",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h8",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h9",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h10",
+          "type": "UBIGINT"
+        }
+      ],
+      "table:row_count": 8011776
+    },
+    "data_10": {
+      "href": "https://data.source.coop/cboettig/gbif/2025-06/hex/h0=8009fffffffffff/part/data_10.parquet",
+      "type": "application/x-parquet",
+      "title": "data_10.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "gbifid",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "datasetkey",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "occurrenceid",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "kingdom",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "phylum",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "class",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "order",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "family",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "genus",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "species",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "infraspecificepithet",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "taxonrank",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "scientificname",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "verbatimscientificname",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "verbatimscientificnameauthorship",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "countrycode",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "locality",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "stateprovince",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "occurrencestatus",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "individualcount",
+          "type": "INTEGER"
+        },
+        {
+          "name": "publishingorgkey",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "decimallatitude",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "decimallongitude",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "coordinateuncertaintyinmeters",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "coordinateprecision",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "elevation",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "elevationaccuracy",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "depth",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "depthaccuracy",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "eventdate",
+          "type": "TIMESTAMP"
+        },
+        {
+          "name": "day",
+          "type": "INTEGER"
+        },
+        {
+          "name": "month",
+          "type": "INTEGER"
+        },
+        {
+          "name": "year",
+          "type": "INTEGER"
+        },
+        {
+          "name": "taxonkey",
+          "type": "INTEGER"
+        },
+        {
+          "name": "specieskey",
+          "type": "INTEGER"
+        },
+        {
+          "name": "basisofrecord",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "institutioncode",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "collectioncode",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "catalognumber",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "recordnumber",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "identifiedby",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "dateidentified",
+          "type": "TIMESTAMP"
+        },
+        {
+          "name": "license",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "rightsholder",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "recordedby",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "typestatus",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "establishmentmeans",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "lastinterpreted",
+          "type": "TIMESTAMP"
+        },
+        {
+          "name": "mediatype",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "issue",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "h0",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "h1",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h2",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h3",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h4",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h5",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h6",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h7",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h8",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h9",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h10",
+          "type": "UBIGINT"
+        }
+      ],
+      "table:row_count": 8011776
+    },
+    "data_11": {
+      "href": "https://data.source.coop/cboettig/gbif/2025-06/hex/h0=8009fffffffffff/part/data_11.parquet",
+      "type": "application/x-parquet",
+      "title": "data_11.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "gbifid",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "datasetkey",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "occurrenceid",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "kingdom",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "phylum",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "class",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "order",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "family",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "genus",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "species",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "infraspecificepithet",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "taxonrank",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "scientificname",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "verbatimscientificname",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "verbatimscientificnameauthorship",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "countrycode",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "locality",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "stateprovince",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "occurrencestatus",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "individualcount",
+          "type": "INTEGER"
+        },
+        {
+          "name": "publishingorgkey",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "decimallatitude",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "decimallongitude",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "coordinateuncertaintyinmeters",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "coordinateprecision",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "elevation",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "elevationaccuracy",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "depth",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "depthaccuracy",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "eventdate",
+          "type": "TIMESTAMP"
+        },
+        {
+          "name": "day",
+          "type": "INTEGER"
+        },
+        {
+          "name": "month",
+          "type": "INTEGER"
+        },
+        {
+          "name": "year",
+          "type": "INTEGER"
+        },
+        {
+          "name": "taxonkey",
+          "type": "INTEGER"
+        },
+        {
+          "name": "specieskey",
+          "type": "INTEGER"
+        },
+        {
+          "name": "basisofrecord",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "institutioncode",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "collectioncode",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "catalognumber",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "recordnumber",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "identifiedby",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "dateidentified",
+          "type": "TIMESTAMP"
+        },
+        {
+          "name": "license",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "rightsholder",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "recordedby",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "typestatus",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "establishmentmeans",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "lastinterpreted",
+          "type": "TIMESTAMP"
+        },
+        {
+          "name": "mediatype",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "issue",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "h0",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "h1",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h2",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h3",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h4",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h5",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h6",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h7",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h8",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h9",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h10",
+          "type": "UBIGINT"
+        }
+      ],
+      "table:row_count": 8011776
+    },
+    "data_12": {
+      "href": "https://data.source.coop/cboettig/gbif/2025-06/hex/h0=8009fffffffffff/part/data_12.parquet",
+      "type": "application/x-parquet",
+      "title": "data_12.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "gbifid",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "datasetkey",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "occurrenceid",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "kingdom",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "phylum",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "class",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "order",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "family",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "genus",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "species",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "infraspecificepithet",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "taxonrank",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "scientificname",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "verbatimscientificname",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "verbatimscientificnameauthorship",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "countrycode",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "locality",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "stateprovince",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "occurrencestatus",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "individualcount",
+          "type": "INTEGER"
+        },
+        {
+          "name": "publishingorgkey",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "decimallatitude",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "decimallongitude",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "coordinateuncertaintyinmeters",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "coordinateprecision",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "elevation",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "elevationaccuracy",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "depth",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "depthaccuracy",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "eventdate",
+          "type": "TIMESTAMP"
+        },
+        {
+          "name": "day",
+          "type": "INTEGER"
+        },
+        {
+          "name": "month",
+          "type": "INTEGER"
+        },
+        {
+          "name": "year",
+          "type": "INTEGER"
+        },
+        {
+          "name": "taxonkey",
+          "type": "INTEGER"
+        },
+        {
+          "name": "specieskey",
+          "type": "INTEGER"
+        },
+        {
+          "name": "basisofrecord",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "institutioncode",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "collectioncode",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "catalognumber",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "recordnumber",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "identifiedby",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "dateidentified",
+          "type": "TIMESTAMP"
+        },
+        {
+          "name": "license",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "rightsholder",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "recordedby",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "typestatus",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "establishmentmeans",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "lastinterpreted",
+          "type": "TIMESTAMP"
+        },
+        {
+          "name": "mediatype",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "issue",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "h0",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "h1",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h2",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h3",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h4",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h5",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h6",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h7",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h8",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h9",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h10",
+          "type": "UBIGINT"
+        }
+      ],
+      "table:row_count": 8011776
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/cboettig/gbif/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/cboettig/gbif",
+      "title": "Source Cooperative product page"
+    }
+  ],
+  "product_id": "gbif",
+  "file_count": 420,
   "created_at": "2024-07-14T03:32:28.794985+00:00",
-  "updated_at": "2025-08-21T16:39:55.567Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
+  "total_bytes": 128587774605,
   "data_mode": "open",
   "mirrors": {
     "aws-opendata-us-west-2": {
@@ -27,16 +1383,25 @@
       "prefix": "cboettig/gbif/"
     }
   },
-  "file_count": 420,
-  "total_bytes": 128587774605,
+  "account_id": "cboettig",
   "exts": {
     "parquet": 419,
     "md": 1
   },
-  "_state": "seed",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "id": "cboettig/gbif"
+  "updated_at": "2025-08-21T16:39:55.567Z",
+  "visibility": "public",
+  "disabled": false,
+  "featured": 0,
+  "readme": "## README.md\n# H3 Georeferenced GBIF Snapshots\n\nThis repository contains snapshots from the [Global Biodiversity Information Facility](https://gbif.org), the world's largest registry of biodiversity occurrence data with over 3 billion occurrence records. \n\nUsing source.coop makes it possible to share modifications or enhancements based on this data that would be challenging to redistribute otherwise.  This repository demonstrates one such enhancement by extending the data with H3's heirarchical hexagonal spatial index keys.  \n\nThese snapshots are georeferenced into geoparquet format with [H3 spatial indexes](https://h3geo.org/) for [hex resolutions 0 - 11](https://h3geo.org/docs/core-library/restable#average-area-in-m2) using the [h3 extension](https://github.com/isaacbrodsky/h3-duckdb) for [duckdb](https://duckdb.org) ([script here](https://github.com/boettiger-lab/gbif-maps/blob/main/gbif_as_h3.py)).  Pre-processing can take over 24hrs of computational time.  The resulting snapshot is over **430 GB** in partitioned parquet. \n\nUsing duckdb and these additional h3 we can then rapidly compute spatial aggregations based on the GBIF across these 11 orders of magnitude.  Using the source-coop S3 interface, we can also stream the aggregated data back to source.coop to serve custom maps computed on the fly.  \n\n## Example maps\n\n- [All GBIF records, resolution 5](https://data.source.coop/cboettig/gbif/maps/gbif_3d.html)\n- [All Humpback Whale Occurrences, resolution 8](https://data.source.coop/cboettig/gbif/maps/gbif_3d_humpback_whale.html)\n\n# Citation\n\nGlobal Biodiversity Information Facility (GBIF) Species Occurrences was accessed on 2024-10-01. For more information on how to cite GBIF datasets, please refer to the GBIF [citation guidelines](https://www.gbif.org/citation-guidelines).\n\n",
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
+    "providers: role [processor] for 'Carl Boettiger / boettiger-lab' is an AI guess \u2014 Attributed as author of the H3-indexing processing script linked in the README; no explicit processor credit stated.. Verify before flipping to _state: reviewed.",
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [data_0.decimallatitude (latlon), data_0.decimallongitude (latlon), data_0.countrycode (admin_code), data_0.stateprovince (placename), data_0.locality (placename), data_0.h0 (spatial_index), data_0.h1 (spatial_index), data_0.h2 (spatial_index), data_0.h3 (spatial_index), data_0.h4 (spatial_index), data_0.h5 (spatial_index), data_0.h6 (spatial_index), data_0.h7 (spatial_index), data_0.h8 (spatial_index), data_0.h9 (spatial_index), data_0.h10 (spatial_index)]. Add bbox once a placename \u2192 bbox gazetteer is available."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-05-26T18:50:39+00:00"
 }

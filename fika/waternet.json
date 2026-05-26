@@ -1,21 +1,94 @@
 {
-  "account_id": "fika",
-  "product_id": "waternet",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "fika/waternet",
   "title": "WaterNet Global Waterways",
-  "description": "This is a new global dataset that predicts the locations of waterways around the world. This data was created by the Better Planet Laboratory in partnership with Bridges to Prosperity using an novel AI model called WaterNet that predicts the location of key waterways (rivers and streams), many of which were previously unmapped. The data produced by this model triples the extent of mapped waterways on a global scale.",
+  "description": "WaterNet is a global 20-meter resolution dataset of predicted waterway locations (rivers and streams), produced by the Better Planet Laboratory using a deep learning model trained on Sentinel-2 satellite imagery. It triples the extent of previously mapped waterways worldwide and is available as Cloud-Optimized GeoTIFFs (probability rasters) and geoparquet/PMTiles vector files with stream topology attributes including Strahler order, connectivity, and lake intersection flags.",
+  "license": "CC-BY-4.0",
   "keywords": [
-    "parquet",
-    "tiff",
-    "raster",
-    "vector",
-    "waterways"
+    "remote-sensing",
+    "waterways",
+    "hydrology",
+    "rivers",
+    "deep-learning",
+    "global"
   ],
-  "created_at": "2024-11-07T07:17:36.715Z",
-  "updated_at": "2025-08-21T16:39:55.567Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
+  "providers": [
+    {
+      "name": "Better Planet Laboratory",
+      "roles": [
+        "producer",
+        "processor"
+      ]
+    },
+    {
+      "name": "Bridges to Prosperity",
+      "roles": [
+        "licensor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/fika/waternet"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -179.999,
+          -24.6057814,
+          -123.6454528,
+          71.7638118
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/fika/waternet/",
+      "type": "image/tiff; application=geotiff",
+      "title": "Dataset files (1374 x .tif)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/fika/waternet/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/fika/waternet",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "rel": "cite-as",
+      "href": "https://doi.org/10.48550/arXiv.2412.00050"
+    }
+  ],
   "data_mode": "open",
+  "exts": {
+    "tif": 1374,
+    "pmtiles": 63,
+    "parquet": 62,
+    "geojson": 2,
+    "md": 1
+  },
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -28,19 +101,23 @@
       "prefix": "fika/waternet/"
     }
   },
-  "file_count": 1502,
+  "visibility": "public",
   "total_bytes": 538067736970,
-  "exts": {
-    "tif": 1374,
-    "pmtiles": 63,
-    "parquet": 62,
-    "geojson": 2,
-    "md": 1
-  },
-  "_state": "seed",
+  "account_id": "fika",
+  "file_count": 1502,
+  "disabled": false,
+  "created_at": "2024-11-07T07:17:36.715Z",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "id": "fika/waternet"
+  "product_id": "waternet",
+  "featured": 0,
+  "updated_at": "2025-08-21T16:39:55.567Z",
+  "readme": "## README.md\n# WaterNet Outputs and Code\n\n## Introduction\nThis data repository contains global raster and vector outputs for the WaterNet model at 20 meters, and it links the code for three python modules related to the generation of this data. This research was supported by [Bridges to Prosperity](https://bridgestoprosperity.org/) and conducted by [Better Planet Laborary](https://betterplanetlab.com/). If using this data please cite the original WaterNet paper:\n\n> Pierson, Matthew., and Mehrabi, Zia. 2024. Mapping waterways worldwide with deep learning. arXiv. https://doi.org/10.48550/arXiv.2412.00050\n\n## Technical Details\n**Projection:** All files use EPSG: 4326.\n\n## Raster Data\nA Live demo of the raster data can be found at [The Fika Map Website](https://map.fikamap.com/waternetraster#9.13/5.5938/35.6743/-10.9/25). A STAC catalog is coming soon!\n\n### Naming Convention\nThe raster outputs are in the raster folder. The file names follow the format `{xtile}_{ytile}.tif` and correspond to a zoom level 6 xyz map tile. A geojson file in the root directory named `waterway_model_outputs_20m_raster_overview.geojson` contains the bounding boxes for each raster file. The raster files are configured as COGs (Cloud-Optimized GeoTIFF) files.\n\n### Raster Data Types\n- Unsigned 8-bit integer datatype\n- 0 = low probability of waterway\n- 255 = high probability of waterway\n- Vectorization thresholds:\n  - < 255*0.1: not a waterway\n  - \\> 255*0.5: waterway\n\n### Known Issues\nThere are a few known issues with the raster product. These include lower accuracy of capturing swampy areas and deserts (although alternative feature weightings of the model can allow for better capture of swamps, and our vectorization process aims to resolve the issues in deserts). We also note higher noise in areas where it is difficult to create cloud free composites (coastal areas, near the equator); and future integration of SAR data may help alleviate these particularly on a near-real time deploy. There is also artifact in Greenland (missing cells) that we expect is due to Sentinel-2 feature inputs, for which further investigation and back fill is likely required.\n\n## Vector Data\n\nVector data has been made available as a series of geoparquet files as well as a set of pmtiles files. A geojson file in the root directory named `waterway_model_outputs_vector_overview.geojson` contains the bounding boxes for each parquet vector file. The individual geoparquet files are available in the vector folder and the pmtiles files are available in the pmtiles folder. There is also a joined pmtiles file named `waterway_model_outputs_20m_vector.pmtiles`. The pmtiles files offer live previews of the data if you click on an individual file. A live demo of the vector data can be found at [The Fika Map Website](https://map.fikamap.com/waternetvector).\n\n\n### Naming Convention\nFiles can be found in the vector folder and follow the naming format `{hydrobasins level 2 id}_{part}.parquet`. Files correspond to parts of hydrobasin level 2 basins, split due to 2.5 GB size limits. Files are configured as geoparquet files.\n\nThe vector outputs have the following naming convention `{hydrobasins level 2 id}_{part}.parquet`. The level 2 HydroBasins can be obtained from [their website](https://www.hydrosheds.org/products/hydrobasins). As the naming convention suggests, each file corresponds to part of a hydrobasin level 2 basin. This data set is also available on [Harvard Dataverse](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/YY2XMG) for Academic purposes. Since many of the files were larger than 2.5 GB, they were split into parts to satisfy the Harvard Dataverse individual file size limit.\n\n### Data Attributes\n\n| Column | Data Type | Description |\n|--------|-----------|-------------|\n| stream_id | int | Unique ID for the stream segment |\n| target_stream_id | int | Stream ID of the next adjacent downstream stream |\n| source_stream_ids | list(int) | List of IDs for all adjacent streams flowing into this stream |\n| stream_order | int | [Strahler stream order](https://en.wikipedia.org/wiki/Strahler_number) of this stream segment |\n| from_tdx | bool | True if stream segment appears in [TDX-Hydro](https://earth-info.nga.mil/index.php?dir=geosci&action=geosciences) |\n| tdx_stream_id | int | Corresponding streamID in [TDX-Hydro](https://earth-info.nga.mil/index.php?dir=geosci&action=geosciences) drainage basins dataset |\n| intersects_lake | bool | True if geometry intersects a lake in [HydroLakes v1.0 Dataset](https://gee-community-catalog.org/projects/hydrolakes/) |\n| length_m | float | Length of geometry computed using [pyproj.Geod.geometry_length](https://pyproj4.github.io/pyproj/stable/api/geod.html#pyproj.Geod.geometry_length) |\n| geometry | LineString | Geometry of the segment |\n\n### Known Issues\nVectorization of any large body of water (lakes, swamps, wide rivers, etc) can result in multiple geometries that should all be a single geometry. One method for identifying such artifacts are to search for streams of order 1 whose target streams are high in order. Since these artifacts often occur in lakes, we have included the column \"intersects_lake\" in the output, which indicates if the geometry intersects a lake in HydroLakes.\n\n## WaterNet Models and Code\nCode for model creation, training, and vectorization are linked in the GitHub Repositories below. Global inference code has not been included as the large amount of data required makes such an effort difficult to generalize across compute hardware.\n\n- [WaterNet](https://github.com/Better-Planet-Laboratory/WaterNet_vectorize)\n- [WaterNet Training and Evaluation](https://github.com/Better-Planet-Laboratory/WaterNet_training_and_evaluation)\n- [WaterNet Vectorization](https://github.com/Better-Planet-Laboratory/WaterNet_vectorize)\n\nThe research behind the models is detailed in the following papers:\n- [Mapping waterways worldwide with deep learning - https://doi.org/10.48550/arXiv.2412.00050](https://doi.org/10.48550/arXiv.2412.00050)\n- [Deep learning waterways for rural infrastructure development - https://doi.org/10.48550/arXiv.2411.13590](https://doi.org/10.48550/arXiv.2411.13590)\n\nThe data is also available in Harvard dataverse with a permanent DOI at https://doi.org/10.7910/DVN/YY2XMG\n\n## Acknowledgments\nThis research was funded by [Bridges to Prosperity](https://bridgestoprosperity.org/) and carried out by [Better Planet Laboratory](https://betterplanetlab.com/).\n\n## Data Sources\n- https://doi.org/10.5270/S2_-6eb6imz\n- https://doi.org/10.5270/ESA-c5d3d65\n- https://doi.org/10.22541/essoar.171629686.65893579/v1\n- https://doi.org/10.1029/2008eo100001\n\n## License:\nThis data is licensed under the [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/). Please cite the original WaterNet paper and Bridges to Prosperity if you use this data.",
+  "_review": [
+    "providers: role [licensor] for 'Bridges to Prosperity' is an AI guess \u2014 Funder of the research; the license requires citing them alongside the paper \u2014 assumed licensor/funder, not a standard producer role.. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-05-26T18:54:13+00:00"
 }

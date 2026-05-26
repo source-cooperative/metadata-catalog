@@ -1,17 +1,96 @@
 {
-  "account_id": "smartmaps",
-  "product_id": "mobility-gtfs-pmtiles",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "smartmaps/mobility-gtfs-pmtiles",
   "title": "Mobility Data GTFS PMTiles",
-  "description": "A single PMTiles file created from all active GTFS data from Mobility Database Catalog from Mobility Data. \nThis is a work in progress. Data will be updated. \nDownloading and conversion script is at https://github.com/optgeo/mmx-gtfs. ",
+  "description": "A global PMTiles vector tile file derived from all active GTFS (General Transit Feed Specification) feeds in the Mobility Database Catalog, maintained by Mobility Data. It consolidates public transit network data\u2014stops, routes, and shapes\u2014from transit agencies worldwide into a single tileset. The dataset is described as a work in progress with planned updates.",
   "keywords": [
-    "pmtiles gtfs"
+    "public-transit",
+    "gtfs",
+    "pmtiles",
+    "vector-tiles",
+    "transit-networks",
+    "mobility"
   ],
+  "providers": [
+    {
+      "name": "Mobility Data",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "optgeo",
+      "roles": [
+        "processor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/smartmaps/mobility-gtfs-pmtiles"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -158.22903,
+          -45.95109,
+          178.142688,
+          85.051129
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/smartmaps/mobility-gtfs-pmtiles/",
+      "type": "application/octet-stream",
+      "title": "Dataset files (1 x .pmtiles)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/smartmaps/mobility-gtfs-pmtiles/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/smartmaps/mobility-gtfs-pmtiles",
+      "title": "Source Cooperative product page"
+    }
+  ],
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "data_mode": "open",
+  "exts": {
+    "pmtiles": 1,
+    "md": 1
+  },
+  "visibility": "public",
+  "product_id": "mobility-gtfs-pmtiles",
+  "disabled": false,
   "created_at": "2024-04-28T04:13:42.012953+00:00",
   "updated_at": "2025-08-21T16:39:55.567Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": "open",
+  "total_bytes": 685198905,
+  "file_count": 2,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -24,16 +103,14 @@
       "prefix": "smartmaps/mobility-gtfs-pmtiles/"
     }
   },
-  "file_count": 2,
-  "total_bytes": 685198905,
-  "exts": {
-    "pmtiles": 1,
-    "md": 1
-  },
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "id": "smartmaps/mobility-gtfs-pmtiles"
+  "featured": 0,
+  "account_id": "smartmaps",
+  "readme": "## README.md\n# Mobility Data GTFS PMTiles\n\nA single PMTiles file created from all active GTFS data from Mobility Database Catalog from Mobility Data. \n\nThis is a work in progress. Data will be updated. \n\n## Demo\nhttps://protomaps.github.io/PMTiles/?url=https%3A%2F%2Fdata.source.coop%2Fsmartmaps%2Fmobility-gtfs-pmtiles%2Fmobility.pmtiles\n\n## Specifications\nDownloading and conversion script is at https://github.com/optgeo/mmx-gtfs. \n\n## See also\n- https://mobilitydatabase.org/\n\n",
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
+    "providers: role [producer] for 'Mobility Data' is an AI guess \u2014 Operates the Mobility Database Catalog that aggregates GTFS feeds; underlying feeds are from individual transit agencies not separately attributed in the README.. Verify before flipping to _state: reviewed.",
+    "providers: role [processor] for 'optgeo' is an AI guess \u2014 Assumed processor based on authorship of the mmx-gtfs download and conversion script linked in the README.. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-05-26T18:26:28+00:00"
 }

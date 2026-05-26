@@ -1,14 +1,509 @@
 {
-  "account_id": "clay",
-  "product_id": "lgnd-clay-v1-5-sentinel-2-l2a",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
+  "id": "clay/lgnd-clay-v1-5-sentinel-2-l2a",
   "title": "LGND Clay Embeddings - Sentinel2",
-  "description": "A global dataset of [Clay v1.5](https://madewithclay.org/) embeddings for Sentinel2.  Licensed under CC BY 4.0.",
-  "keywords": [],
-  "created_at": "2026-01-20T04:27:18.641Z",
-  "updated_at": "2026-01-27T18:56:36.855Z",
+  "description": "A global dataset of Clay v1.5 1024-dimensional float32 embeddings derived from Sentinel-2 L2A imagery, created by lgnd.ai. It covers approximately 99.9% of the globe across two time steps (June 2024 and June 2025), organized into scene-level and aggregated monthly products keyed to 2560-meter MajorTOM grid cells. Data are stored as hive-partitioned GeoParquet files totaling ~467 GB across ~127 million embeddings.",
+  "license": "CC-BY-4.0",
+  "keywords": [
+    "remote-sensing",
+    "sentinel-2",
+    "embeddings",
+    "machine-learning",
+    "time-series",
+    "earth-observation",
+    "geoparquet"
+  ],
+  "providers": [
+    {
+      "name": "lgnd.ai",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Made With Clay",
+      "roles": [
+        "processor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/clay/lgnd-clay-v1-5-sentinel-2-l2a"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2024-06-05T20:44:41.517000Z",
+          "2025-06-29T21:41:25.515000Z"
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 44303
+  },
+  "assets": {
+    "data_01c1fab1-0004-5b1c-0009-b72e01d3104e_222_0_0": {
+      "href": "https://data.source.coop/clay/lgnd-clay-v1-5-sentinel-2-l2a/aggregated/geohash_l2=20/year=2024/month=06/data_01c1fab1-0004-5b1c-0009-b72e01d3104e_222_0_0.parquet",
+      "type": "application/x-parquet",
+      "title": "data_01c1fab1-0004-5b1c-0009-b72e01d3104e_222_0_0.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "chips_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "cell_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "rasters_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "stac_item_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "collection",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "datetime",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "geohash_l2",
+          "type": "BIGINT",
+          "description": "[spatial_index] Level-2 geohash hive-partition key for the aggregated product"
+        },
+        {
+          "name": "embedding",
+          "type": "FLOAT[]"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)",
+          "description": "[geometry] Bounding box struct (xmin, ymin, xmax, ymax) for spatial lookup optimization"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:4326')",
+          "description": "[geometry] Polygon footprint of the chip in WGS84 (EPSG:4326)"
+        },
+        {
+          "name": "month",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "year",
+          "type": "BIGINT"
+        }
+      ],
+      "table:row_count": 1625
+    },
+    "data_01c1fab1-0004-5b1c-0009-b72e01d3104e_122_4_0": {
+      "href": "https://data.source.coop/clay/lgnd-clay-v1-5-sentinel-2-l2a/aggregated/geohash_l2=27/year=2025/month=06/data_01c1fab1-0004-5b1c-0009-b72e01d3104e_122_4_0.parquet",
+      "type": "application/x-parquet",
+      "title": "data_01c1fab1-0004-5b1c-0009-b72e01d3104e_122_4_0.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "chips_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "cell_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "rasters_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "stac_item_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "collection",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "datetime",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "geohash_l2",
+          "type": "BIGINT"
+        },
+        {
+          "name": "embedding",
+          "type": "FLOAT[]"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:4326')"
+        },
+        {
+          "name": "month",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "year",
+          "type": "BIGINT"
+        }
+      ],
+      "table:row_count": 9
+    },
+    "data_01c1fab1-0004-5b1c-0009-b72e01d3104e_022_0_0": {
+      "href": "https://data.source.coop/clay/lgnd-clay-v1-5-sentinel-2-l2a/aggregated/geohash_l2=2h/year=2025/month=06/data_01c1fab1-0004-5b1c-0009-b72e01d3104e_022_0_0.parquet",
+      "type": "application/x-parquet",
+      "title": "data_01c1fab1-0004-5b1c-0009-b72e01d3104e_022_0_0.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "chips_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "cell_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "rasters_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "stac_item_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "collection",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "datetime",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "geohash_l2",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "embedding",
+          "type": "FLOAT[]"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:4326')"
+        },
+        {
+          "name": "month",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "year",
+          "type": "BIGINT"
+        }
+      ],
+      "table:row_count": 8536
+    },
+    "data_01c1fab1-0004-5b20-0009-b72e01d10bc6_315_2_0": {
+      "href": "https://data.source.coop/clay/lgnd-clay-v1-5-sentinel-2-l2a/scene/gzd=9WX/year=2025/month=06/data_01c1fab1-0004-5b20-0009-b72e01d10bc6_315_2_0.parquet",
+      "type": "application/x-parquet",
+      "title": "data_01c1fab1-0004-5b20-0009-b72e01d10bc6_315_2_0.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "chips_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "cell_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "rasters_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "stac_item_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "collection",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "datetime",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "embedding",
+          "type": "FLOAT[]"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)",
+          "description": "[geometry] Bounding box struct (xmin, ymin, xmax, ymax) for spatial lookup optimization"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:4326')",
+          "description": "[geometry] Polygon footprint of the chip in WGS84 (EPSG:4326)"
+        },
+        {
+          "name": "gzd",
+          "type": "VARCHAR",
+          "description": "[spatial_index] MGRS Grid Zone Designator hive-partition key for the scene product"
+        },
+        {
+          "name": "month",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "year",
+          "type": "BIGINT"
+        }
+      ],
+      "table:row_count": 15242
+    },
+    "data_01c1fab1-0004-5b20-0009-b72e01d10bc6_215_2_0": {
+      "href": "https://data.source.coop/clay/lgnd-clay-v1-5-sentinel-2-l2a/scene/gzd=9XW/year=2024/month=06/data_01c1fab1-0004-5b20-0009-b72e01d10bc6_215_2_0.parquet",
+      "type": "application/x-parquet",
+      "title": "data_01c1fab1-0004-5b20-0009-b72e01d10bc6_215_2_0.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "chips_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "cell_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "rasters_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "stac_item_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "collection",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "datetime",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "embedding",
+          "type": "FLOAT[]"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:4326')"
+        },
+        {
+          "name": "gzd",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "month",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "year",
+          "type": "BIGINT"
+        }
+      ],
+      "table:row_count": 1748
+    },
+    "data_01c1fab1-0004-5b20-0009-b72e01d10bc6_315_4_0": {
+      "href": "https://data.source.coop/clay/lgnd-clay-v1-5-sentinel-2-l2a/scene/gzd=9XX/year=2025/month=06/data_01c1fab1-0004-5b20-0009-b72e01d10bc6_315_4_0.parquet",
+      "type": "application/x-parquet",
+      "title": "data_01c1fab1-0004-5b20-0009-b72e01d10bc6_315_4_0.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "chips_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "cell_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "rasters_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "stac_item_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "collection",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "datetime",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "embedding",
+          "type": "FLOAT[]"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:4326')"
+        },
+        {
+          "name": "gzd",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "month",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "year",
+          "type": "BIGINT"
+        }
+      ],
+      "table:row_count": 2954
+    },
+    "data_01c1fab1-0004-5b20-0009-b72e01d10bc6_015_2_0": {
+      "href": "https://data.source.coop/clay/lgnd-clay-v1-5-sentinel-2-l2a/scene/gzd=9XX/year=2024/month=06/data_01c1fab1-0004-5b20-0009-b72e01d10bc6_015_2_0.parquet",
+      "type": "application/x-parquet",
+      "title": "data_01c1fab1-0004-5b20-0009-b72e01d10bc6_015_2_0.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "chips_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "cell_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "rasters_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "stac_item_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "collection",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "datetime",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "embedding",
+          "type": "FLOAT[]"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:4326')"
+        },
+        {
+          "name": "gzd",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "month",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "year",
+          "type": "BIGINT"
+        }
+      ],
+      "table:row_count": 2182
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/clay/lgnd-clay-v1-5-sentinel-2-l2a/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/clay/lgnd-clay-v1-5-sentinel-2-l2a",
+      "title": "Source Cooperative product page"
+    }
+  ],
   "visibility": "public",
-  "disabled": false,
+  "exts": {
+    "parquet": 3404,
+    "md": 1
+  },
+  "updated_at": "2026-01-27T18:56:36.855Z",
   "featured": 0,
+  "file_count": 3405,
+  "disabled": false,
+  "account_id": "clay",
   "data_mode": "open",
   "mirrors": {
     "aws-opendata-us-west-2": {
@@ -22,16 +517,18 @@
       "prefix": "clay/lgnd-clay-v1-5-sentinel-2-l2a/"
     }
   },
-  "file_count": 3405,
+  "created_at": "2026-01-20T04:27:18.641Z",
   "total_bytes": 503199007603,
-  "exts": {
-    "parquet": 3404,
-    "md": 1
-  },
-  "_state": "seed",
+  "product_id": "lgnd-clay-v1-5-sentinel-2-l2a",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "id": "clay/lgnd-clay-v1-5-sentinel-2-l2a"
+  "readme": "## README.md\n# LGND Clay Embeddings - Sentinel2\n\nThis repository contains a global dataset of [Clay v1.5](https://madewithclay.org/) embeddings for Sentinel2, created by [lgnd.ai](https://lgnd.ai/).  Each embedding is a 1024-dimensional float32 vector associated with a 2560-meter MajorTOM grid cell.  All imagery was sourced from the [`sentinel-cogs`](https://registry.opendata.aws/sentinel-2-l2a-cogs/) bucket on AWS.\n\nThe dataset currently has near complete (~99.9%) global coverage across two time steps - June 2024 and June 2025, and is broken into two distinct products:\n- `scene` - embeddings for individual Sentinel2 scenes.\n- `aggregated` - an aggregation of scene-level embeddings into a normalized time series of embeddings.\n\n## Scene-Level Data\n\nThe scene-level product contains embeddings for each individual Sentinel-2 scene.  For each MGRS tile, we embed the minimum number of scenes required to provide maximum spatial coverage while minimizing cloud cover.  Some MGRS tiles only require one scene, while others require many more.  The embeddings are available in the `scene` directory partitioned by Grid Zone Designator (the first 3 digits of the MGRS tile), year, and month.  For example:\n\n```shell\n\u276f aws s3 ls s3://us-west-2.opendata.source.coop/clay/lgnd-clay-v1-5-sentinel-2-l2a/scene/gzd=11U/year=2024/month=06/ --summarize --human-readable\n\n2026-01-25 21:44:58  183.1 MiB data_01c1fab1-0004-5b20-0009-b72e01d10bc6_215_4_0.parquet\n2026-01-25 21:46:57  141.8 MiB data_01c1fab1-0004-5b20-0009-b72e01d10bc6_215_4_1.parquet\n\nTotal Objects: 2\n   Total Size: 324.9 MiB\n```\n\nThe scene-level product is best when analyzing individual Sentinel2 scenes, or when you need the highest possible temporal resolution.  This product contains ~77.9 million embeddings and takes up ~285GB on disk.\n\n## Aggregated Data\n\nThe aggregated product provides a normalized time series of embeddings per chip by selecting one representative embedding per month for each MajorTOM cell.  This helps remove redundancy from overlapping scene coverage at the border of MGRS tiles, normalizes observation frequency across regions with varying revisit rates, and simplifies time series analysis by providing consistent monthly snapshots.  The embeddings are available in the `aggregated` directory partitioned by geohash, year, and month.  For example:\n\n```shell\n~ \u276f aws s3 ls s3://us-west-2.opendata.source.coop/clay/lgnd-clay-v1-5-sentinel-2-l2a/aggregated/geohash_l2=9y/year=2025/month=06/ --summarize --human-readable\n\n2026-01-26 00:50:31  359.5 MiB data_01c1fab1-0004-5b1c-0009-b72e01d3104e_222_0_0.parquet\n\nTotal Objects: 1\n   Total Size: 359.5 MiB\n```\n\nThe aggregated product is easier to use than the scene-level product across large spatial extents, and is best for time series analysis or when constent temporal sampling is required.  This product contains  ~49.7 million embeddings and takes up ~182GB on disk.\n\n\n## Data Model\n\nBoth data products follow the same data model, described below:\n\n| Column | Type | Description |\n|--------|------|-------------|\n| `chips_id` | string | Spatio-temporally unique identifier for each embedding |\n| `cell_id` | string | Spatially unique identier for the MajorTOM cell |\n| `rasters_id` | string | Unique, internal LGND identifier for the source raster |\n| `stac_item_id` | string | STAC item ID of the source Sentinel-2 scene, from [Earth Search](https://element84.com/earth-search/) |\n| `collection` | string | STAC collection name (e.g., `sentinel-2-l2a`), also from Earth Search |\n| `datetime` | timestamp | Acquisition timestamp of the source imagery |\n| `embedding` | list[float32] | 1024-dimensional Clay v1.5 embedding vector |\n| `bbox` | struct | Bounding box with `xmin`, `ymin`, `xmax`, `ymax`, for geoparquet reader optimizations |\n| `geometry` | polygon (wkb) | Polygon geometry of the chip footprint |\n\n\n## Data Format\n\nBoth data products are provided as hive-partitioned geoparquet files, following [geoparquet best practices](https://geoparquet.io/concepts/best-practices/):\n- Geoparquet format version 1.1.\n- ZSTD compression (level 15).\n- ~128 MB row groups where possible.\n- Spatial-temporal partitioning.\n- Spatial ordering with a hilbert curve.\n- Bbox column with covering metadata for faster spatial lookups.\n\n## License\n\nThis product is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).\n\n\n## Known Issues\nThere are several known data quality issues:\n- There are a few small gaps in coverage due to missing remote sensing data or edge cases in our scene selection algorithm, we estimate this dataset is about ~99.7% complete.\n\n## Future work\nIn the coming months, the LGND team plans to fix these data gaps and push embeddings for more time steps beyond the two originally provided.",
+  "_review": [
+    "providers: role [processor] for 'Made With Clay' is an AI guess \u2014 Clay v1.5 is the foundation model used to generate the embeddings; named as model source, not explicitly as a dataset provider. Verify before flipping to _state: reviewed.",
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [data_01c1fab1-0004-5b1c-0009-b72e01d3104e_222_0_0.geometry (geometry), data_01c1fab1-0004-5b1c-0009-b72e01d3104e_222_0_0.bbox (geometry), data_01c1fab1-0004-5b1c-0009-b72e01d3104e_222_0_0.geohash_l2 (spatial_index), data_01c1fab1-0004-5b20-0009-b72e01d10bc6_315_2_0.geometry (geometry), data_01c1fab1-0004-5b20-0009-b72e01d10bc6_315_2_0.bbox (geometry), data_01c1fab1-0004-5b20-0009-b72e01d10bc6_315_2_0.gzd (spatial_index)]. Add bbox once a placename \u2192 bbox gazetteer is available."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-05-26T18:58:14+00:00"
 }

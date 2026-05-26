@@ -1,19 +1,82 @@
 {
-  "account_id": "cworthy",
-  "product_id": "oae-efficiency-atlas",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "cworthy/oae-efficiency-atlas",
   "title": "Ocean Carbon Dioxide Removal Atlas: Global Ocean Alkalinity Enhancement Efficiency Map",
-  "description": "Global ocean model data for Ocean Alkalinity Enhancement experiments, covering releases in different spatial locations and times of year.",
+  "description": "Model-based results from 2,760 simulated Ocean Alkalinity Enhancement (OAE) experiments using the Community Earth System Model (CESM), exploring the temporal and spatial impact of regional alkalinity addition on the global ocean biogeochemical carbon system across 690 ocean regions. The dataset includes ~497,000 monthly netCDF output files from perturbation and control simulations, globally-integrated OAE efficiency maps, and spatial polygon masks covering the entire global ocean.",
+  "license": "ODC-By-1.0",
   "keywords": [
-    "zarr",
-    "carbon dioxide removal",
+    "ocean-alkalinity-enhancement",
+    "carbon-dioxide-removal",
+    "ocean-biogeochemistry",
+    "climate-modeling",
+    "marine-carbon-cycle",
+    "cesm",
     "cdr"
   ],
+  "providers": [
+    {
+      "name": "C-Worthy",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/cworthy/oae-efficiency-atlas"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -180.0,
+          -90.0,
+          180.0,
+          90.0
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/cworthy/oae-efficiency-atlas/",
+      "type": "application/x-netcdf",
+      "title": "Dataset files (497250 x .nc)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/cworthy/oae-efficiency-atlas/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/cworthy/oae-efficiency-atlas",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "rel": "cite-as",
+      "href": "https://doi.org/10.1038/s41558-024-02179-9"
+    }
+  ],
   "created_at": "2023-10-30T17:48:27.840763+00:00",
-  "updated_at": "2025-08-21T16:39:55.569Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": "open",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -27,16 +90,27 @@
     }
   },
   "file_count": 497253,
-  "total_bytes": 56632948223589,
   "exts": {
     "nc": 497250,
     "txt": 1,
     "md": 2
   },
-  "_state": "seed",
+  "account_id": "cworthy",
+  "updated_at": "2025-08-21T16:39:55.569Z",
+  "disabled": false,
+  "product_id": "oae-efficiency-atlas",
+  "featured": 0,
+  "visibility": "public",
+  "data_mode": "open",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "id": "cworthy/oae-efficiency-atlas"
+  "total_bytes": 56632948223589,
+  "readme": "## README.md\n# Ocean Carbon Dioxide Removal Atlas: Global Ocean Alkalinity Enhancement Efficiency Map\n\n\n## Description\n\nThe files in this repository contain the model-based results from a large number of simulated Ocean Alkalinity Enhancement (OAE) experiments using the Community Earth System Model ([CESM](https://www.cesm.ucar.edu/models)).  These experiments are intended to explore the temporal and spatial impact of regionally confined alkalinity addition on the biogeochemical carbon system in the global ocean. To produce these model-based experiments, the CESM model was run in what is called a \u201cforced ocean sea ice\u201d configuration, wherein an independent dataset of historical atmospheric conditions (including the observed trend in atmospheric CO2) is used to drive the circulation and state of the CESM global ocean model. The details of these simulations are available in Zhou et al. (2024). This repository contains 1) a nearly 200 year \u201ccontrol\u201d integration that can be used for historical and physical context for the experiment including the impact of the observed anthropogenic trend in atmospheric CO2 on the ocean; and 2) A series of \u201cOAE perturbation experiments,\u201d which span a 15 period beginning in the model simulated year 1999; and the \u201ccounterfactual\u201d ocean state for these experiments, where there was no OAE perturbation to the biogeochemical system; 3) Globally-integrated OAE efficiencies for each point on the model\u2019s horizontal grid, defined as the cumulative integral in time of CO2 uptake from the atmosphere divided by the amount of alkalinity added to the ocean; 4) region-masks that indicate the location of the 690 regions of the global ocean from which alkalinity releases were simulated. \n\n\n## Structure\n\nThis repository contains:\n1. 496,800 netCDF files output from 2760 CESM simulations. Each simulated  OAE perturbation experiment represents the time-evolving outcome of injecting alkalinity into a particular region of the ocean (the \"polygon\") over a particular time period (the \"injection month\"), and integrating an ocean physical-biogeochemical model forwards for 15 years. These results are stored in the `data/experiments/` directory, following the pattern `{polygon_id}/{injection_month}/alk-forcing.{polygon_id}-{injection_year}-{injection_month}.pop.h.{year}-{month}.nc`. These files contain the globally complete set of biogeochemical variables that are impacted by the applied alkalinity perturbation. The data is saved as monthly averages, with one file per month, for a total of 180 files per 15 year simulation. The meaning of the identifiers are:\n    - `{polygon_id}` - the unique integer ID of each polygon, ranging from 000 to 690.\n    - `{injection_year}` - indicates the calendar year during which the alkalinity injection occurred. Presently all the data are from simulations beginning in 1999.\n    - `{injection_month}` - the calendar month during which the alkalinity injection occurred. One of 01, 04, 07, 10.\n    - `{year}` - the model year for which data is contained in this particular file. Model year 0347 corresponds to the calendar year 1999.\n    - `{month}` - the simulation calendar month for which data is contained in this particular file. Ranges from 01 to 12. Note that the time variable in these files contains values that correspond to the timestamp at the end of each month.\nThese netCDF files also contain variables representing the counterfactual condition for each of the OAE perturbation experiments. The counterfactual simulation is defined as the time-evolving biogeochemical state of the ocean in the absence of the alkalinity injection. These variables are stored using the same naming convention as above, but with a suffix `_ALT_CO2` (e.g. `\u2019ALK\u2019` contains the experimental values and `\u2019ALK_ALT_CO2\u2019` contains the counterfactual values). \n2. NetCDF files for the dataset from the control simulation. The control simulation is a so-called forced-ocean-sea-ice CESM integration from 1850 to 2021 and each of the OAE perturbation experiments was branched off this simulation in the year 1999. Since there is no feedback between alkalinity addition and the physical dynamics in the model, data from the control integration can be used to provide access to physical variables (e.g., ocean velocity, mixed layer depth, etc.) that were omitted from the experiments to save data volume. These are stored in various files under `data/control/*.nc`, with one file per data variable.\n3. Integrated efficiency curves in the file `data/OAE_efficiency_maps_alltime.nc`. These contain the globally-integrated OAE efficiencies for each point on the model\u2019s horizontal grid (rather than being defined for each spatial polygon). The efficiency curves are defined as the cumulative integral in time of CO2 uptake from the atmosphere divided by the amount of alkalinity added to the ocean. This file includes a variable `OAE_efficiency` defined over the dimensions `season`, `N_month`, `nlat`, and `nlon`. `season` is the month of the alkalinity release: ['January', 'April', 'July', 'October']; `N_month` is the number of months elapsed since the alkalinity release.\n4. Integrated efficiency curves in the file `data/oae_eff_curves_global.nc`. These contain the globally-integrated OAE efficiencies for each spatial polygon.\n5. Masks for the spatial locations of each polygon_id, stored in the single netCDF4 file `data/polygon_masks.nc`. All 690 polygons together tile the entire global ocean.\n\n## Future Plans\nWe eventually aim to make this entire dataset accessible as a single Zarr Store via virtual chunk reference files.\n\n\n## How to access\n\n\n### BROWSE raw netCDF files\n\nYou can find any particular netCDF file of interest by navigating through this repository after clicking `BROWSE` on the left. You can then click `DOWNLOAD` to download the file directly (this does not require AWS credentials).\n\n\n### ACCESS DATA and open specific netCDF files with xarray\n\nAfter signing in to Source Cooperative, you can click ACCESS DATA to generate temporary AWS credentials that will allow you to download the data via URL. \nYou can download the entire dataset (Not recommended due to size) following the \u201cUsage Examples\u201d provided. \nYou can also access specific files from a URL pointing to the bucket using [xarray](https://xarray.dev/) and [s3fs](https://s3fs.readthedocs.io/en/latest/), which you will need to have installed (e.g. from conda-forge). You will also need to have [h5netcdf](https://github.com/h5netcdf/h5netcdf) installed. You then need to run the following commands from an interactive python shell (e.g. in a [jupyter notebook](https://jupyter.org/)).\n\n\n```python\nimport xarray as xr\nimport s3fs\n\n\n!<copy/pasted temporary credentials>\n\nfs = s3fs.S3FileSystem(anon=True)\ndata_dir = 's3://us-west-2.opendata.source.coop/cworthy/oae-efficiency-atlas/data/'\ndata_file = experiments/{polygon_id}/{injection_month}/alk-forcing.{polygon_id}-{injection_year}-{injection_month}.pop.h.{year}-{month}.nc\ndata_url = data_dir + data_file\nds_data = xr.open_dataset(fs.open(data_url), engine='h5netcdf')\n```\n\n\n### Open entire dataset as Zarr with xarray\n_Note: Access as Zarr is coming soon!_\n\n\n## References\nThe generation of this data and analysis of the results is documented in the following publication; to cite this dataset please cite this paper:\nM. Zhou, M. Tyka, D. Ho, E. Yankovsky, S. Bachman, T. Nicholas, A. Karspeck, M. Long: Mapping the global variation in the efficiency of ocean alkalinity enhancement for carbon dioxide removal, 2024, Nature Climate Change, in press, doi: 10.1038/s41558-024-02179-9. [see preprint](https://www.researchsquare.com/article/rs-4124909/v1)\n\n\n## Contact Us\nWe are interested in how you are using this data! Please reach out to [data@cworthy.org](data@cworthy.org) with any questions. We\u2019d also appreciate information on your analysis goals and whether the data format and access patterns adequately support your use cases.\n\n\n## License\n[Open Data Commons Attribution License (ODC-By) v1.0](https://opendatacommons.org/licenses/by/1-0/) , packaged with the data in the `LICENSE.txt` file.\n\n\n",
+  "_review": [
+    "providers: role [producer, licensor] for 'C-Worthy' is an AI guess \u2014 Identified as producer from S3 path prefix 'cworthy/' and contact email data@cworthy.org; licensor inferred from README authorship and license packaging. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-05-26T19:07:25+00:00"
 }

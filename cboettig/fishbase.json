@@ -1,22 +1,726 @@
 {
-  "account_id": "cboettig",
-  "product_id": "fishbase",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
+  "id": "cboettig/fishbase",
   "title": "Parquet Snapshots of the FishBase Database",
-  "description": "Parquet snapshots of the fishbase database, https://fishbase.de",
+  "description": "Versioned parquet and CSV snapshots of the FishBase and SeaLifeBase MySQL backend databases, exported roughly annually and curated for programmatic access via the rOpenSci rfishbase package. The dataset comprises dozens of raw relational tables covering fish and marine species biology, taxonomy, ecology, abundance, and fisheries statistics. Data structure reflects the original MySQL schema and may require multi-table joins for common queries.",
+  "license": "CC-BY-NC-4.0",
   "keywords": [
-    "fishbase",
     "fish",
-    "ecology",
     "fisheries",
-    "noaa",
+    "ecology",
+    "marine-biology",
+    "biodiversity",
+    "species-database",
     "conservation"
   ],
-  "created_at": "2023-08-21T20:21:58.684954+00:00",
-  "updated_at": "2025-08-21T16:39:55.567Z",
-  "visibility": "public",
-  "disabled": false,
+  "providers": [
+    {
+      "name": "FishBase.org Team",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Carl Boettiger",
+      "roles": [
+        "processor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/cboettig/fishbase"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 608802
+  },
+  "assets": {
+    "abnorm": {
+      "href": "https://data.source.coop/cboettig/fishbase/fb/v19.04/parquet/abnorm.parquet",
+      "type": "application/x-parquet",
+      "title": "abnorm.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "AutoCtr",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Family",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Genus",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Species",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "CommonName",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "SpecCode",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "StockCode",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "LifeStage",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Location",
+          "type": "VARCHAR",
+          "description": "[placename] Named location where the abnormality or disease was observed"
+        },
+        {
+          "name": "Season",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "AbnormalityDisease",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Prevalence",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Stressor",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "LabField",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Concentration",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ABNORMRefNo",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "SecondRefNo",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Notes",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Entered",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "DateEntered",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "Modified",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "DateModified",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "Expert",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "DateChecked",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "TS",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        }
+      ],
+      "table:row_count": 656
+    },
+    "abnormref": {
+      "href": "https://data.source.coop/cboettig/fishbase/fb/v19.04/parquet/abnormref.parquet",
+      "type": "application/x-parquet",
+      "title": "abnormref.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "AutoCtr",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "RefNo",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "References",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Author",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Year",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Title",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Source",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FirstAuthor",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "TS",
+          "type": "BOOLEAN"
+        }
+      ],
+      "table:row_count": 175
+    },
+    "abundance": {
+      "href": "https://data.source.coop/cboettig/fishbase/fb/v19.04/parquet/abundance.parquet",
+      "type": "application/x-parquet",
+      "title": "abundance.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "AbundanceCode",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "StockCode",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "SpecCode",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "MainRef",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Locality",
+          "type": "VARCHAR",
+          "description": "[placename] Named locality where the abundance record was collected"
+        },
+        {
+          "name": "C_Code",
+          "type": "VARCHAR",
+          "description": "[admin_code] Country code for the abundance record location"
+        },
+        {
+          "name": "E_CODE",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Introduced",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Year_intro",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "LifeStage1",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Sex",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Lifestage2",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Sexual",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Asexual",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Abundance_Quan",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Abundance_QuanUnit",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Abundance_SemiQuan",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Abundance_SemiQuanUnit",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Abundance_Qual",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Depth",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "DepthUnit",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Year_Occur1",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Year_Occur2",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Date_Occur1",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Date_Occur2",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Seasonal",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Period",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "RecordType",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Method",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Remarks",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "InvasiveReport",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "InvasivenessDegree",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "ReportType",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "InvasiveRef",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "Entered",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "DateEntered",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Modified",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "DateModified",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Expert",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "DateChecked",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "TS",
+          "type": "BOOLEAN"
+        }
+      ],
+      "table:row_count": 3514
+    },
+    "abundancedelta": {
+      "href": "https://data.source.coop/cboettig/fishbase/fb/v19.04/parquet/abundancedelta.parquet",
+      "type": "application/x-parquet",
+      "title": "abundancedelta.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "A_DeltaCode",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "AbundanceCode",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "EcoChange1",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "EcoChange2",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "EcoChange3",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "EcoChange4",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "EcoChange_Ref",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "AbioChange1",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "AbioChange2",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "AbioChange3",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "AbioChange4",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "AbioChange_Ref",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "EcoHealth1",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "EcoHealth2",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "EcoHealth_Ref",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "HumanInterest1",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "HumanInterest2",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "HumanInterest_Ref",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "Remarks",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "AffectedType",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "AffectedGenus",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "AffectedSpecies",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "AffectedSpecCode",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "TS",
+          "type": "BOOLEAN"
+        }
+      ],
+      "table:row_count": 26
+    },
+    "acknowledge": {
+      "href": "https://data.source.coop/cboettig/fishbase/fb/v19.04/parquet/acknowledge.parquet",
+      "type": "application/x-parquet",
+      "title": "acknowledge.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "SpecCode",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Personnel",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "TS",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        }
+      ],
+      "table:row_count": 417472
+    },
+    "withoutpicture": {
+      "href": "https://data.source.coop/cboettig/fishbase/slb/v25.04/parquet/withoutpicture.parquet",
+      "type": "application/x-parquet",
+      "title": "withoutpicture.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "Class",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Order",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Family",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Genus",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Species",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "fbname",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "SpecCode",
+          "type": "INTEGER"
+        },
+        {
+          "name": "SortNo",
+          "type": "INTEGER"
+        }
+      ],
+      "table:row_count": 97035
+    },
+    "withphotos": {
+      "href": "https://data.source.coop/cboettig/fishbase/slb/v25.04/parquet/withphotos.parquet",
+      "type": "application/x-parquet",
+      "title": "withphotos.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "SpecCode",
+          "type": "INTEGER"
+        }
+      ],
+      "table:row_count": 4748
+    },
+    "wpicture": {
+      "href": "https://data.source.coop/cboettig/fishbase/slb/v25.04/parquet/wpicture.parquet",
+      "type": "application/x-parquet",
+      "title": "wpicture.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "SortNo",
+          "type": "INTEGER"
+        },
+        {
+          "name": "ClassNum",
+          "type": "INTEGER"
+        },
+        {
+          "name": "Class",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "OrdNum",
+          "type": "INTEGER"
+        },
+        {
+          "name": "Order",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FamCode",
+          "type": "INTEGER"
+        },
+        {
+          "name": "Family",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "SpecCode",
+          "type": "INTEGER"
+        },
+        {
+          "name": "Genus",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Species",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "fbname",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Author",
+          "type": "VARCHAR"
+        }
+      ],
+      "table:row_count": 680
+    },
+    "zweb_picturetype": {
+      "href": "https://data.source.coop/cboettig/fishbase/slb/v25.04/parquet/zweb_picturetype.parquet",
+      "type": "application/x-parquet",
+      "title": "zweb_picturetype.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "PictureType",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ranktype",
+          "type": "SMALLINT"
+        },
+        {
+          "name": "TS",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        }
+      ],
+      "table:row_count": 10
+    },
+    "zweb_speciesgroups": {
+      "href": "https://data.source.coop/cboettig/fishbase/slb/v25.04/parquet/zweb_speciesgroups.parquet",
+      "type": "application/x-parquet",
+      "title": "zweb_speciesgroups.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "DB",
+          "type": "TINYINT"
+        },
+        {
+          "name": "SpecCode",
+          "type": "INTEGER"
+        },
+        {
+          "name": "NonTaxGroup",
+          "type": "TINYINT"
+        }
+      ],
+      "table:row_count": 84486
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/cboettig/fishbase/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/cboettig/fishbase",
+      "title": "Source Cooperative product page"
+    }
+  ],
+  "file_count": 2860,
   "featured": 0,
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "product_id": "fishbase",
+  "total_bytes": 4065246054,
+  "updated_at": "2025-08-21T16:39:55.567Z",
   "data_mode": "open",
+  "disabled": false,
+  "exts": {
+    "parquet": 2141,
+    "md": 1,
+    "csv": 718
+  },
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -29,18 +733,14 @@
       "prefix": "cboettig/fishbase/"
     }
   },
-  "file_count": 2860,
-  "total_bytes": 4065246054,
-  "exts": {
-    "parquet": 2141,
-    "md": 1,
-    "csv": 718
-  },
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "id": "cboettig/fishbase",
-  "cataloged_at": "2026-04-29T18:35:20+00:00"
+  "visibility": "public",
+  "created_at": "2023-08-21T20:21:58.684954+00:00",
+  "account_id": "cboettig",
+  "readme": "## README.md\n---\nlicense: cc-by-nc-4.0\n---\n\n# Dataset Card for FishBase\n\n<!-- Provide a quick summary of the dataset. -->\n\nSnapshots of FishBase data tables used by the [rOpenSci package `rfishbase`](https://github.com/ropensci/rfishbase) and the FishBase API.\n\n## Dataset Details\n\n### Dataset Description\n\n<!-- Provide a longer summary of what this dataset is. -->\n\n\n- **Curated by:** Carl Boettiger\n- **License:** CC-BY-NC, FishBase.org Team\n\n### Dataset Sources \n\n<https://fishbase.org>, <https://sealifebase.org>, via exclusive export of backend MySQL databases.\n\n## Uses\n\n<!-- Address questions around how the dataset is intended to be used. -->\n\n### Direct Use\n\nThis data is provided to facilitate access to fishbase statistics through `rfishbase`.\nCuration has evolved over the past decade and now provides basically direct access to versioned snapshots of the fishbase backend data.\n\n\n### Out-of-Scope Use\n\nReuse of this data is not licensed for commerical applications. Developers should contact the FishBase team directly. See <https://fishbase.org> for details.\n\n## Dataset Structure\n\nData provided here are raw CSV and parquet exports from the MySQL database backend powering <https://fishbase.org> and its sister site, <https://sealifebase.org>.\nPlease note that there are many tables here which have evolved over decades and were not developed with the intent of ever supporting direct access by end users. \nThe data structure can be highly unintuitive and common tasks may require joins across multiple tables.  These files represent a snapshot in time as indicated\nby the version numbers (e.g. v24.07 is data snapshot dated to July of 2024).  \n\n## Dataset Creation\n\nDataset creation relies on ingesting a MySQL dump provided roughly annually from the FishBase team to this maintainer.  Current process imports this into\na MySQL (mariadb) server in docker, connects a the `duckdb` `mysql` extension and exports as parquet and csv, as shown in the `creation.py` script.\n\n\n\n### Source Data\n\nSee <https://fishbase.org> for details.\n\n\n",
+  "_review": [
+    "license: Licensed CC-BY-NC by the FishBase.org Team; commercial reuse requires contacting FishBase directly.",
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [abundance.Locality (placename), abundance.C_Code (admin_code), abnorm.Location (placename)]. Add bbox once a placename \u2192 bbox gazetteer is available."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-05-26T18:52:46+00:00"
 }

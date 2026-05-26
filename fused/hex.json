@@ -1,27 +1,495 @@
 {
-  "account_id": "fused",
-  "product_id": "hex",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
+  "id": "fused/hex",
   "title": "US Census and Crop Data Layers - Hex Fused-partitioned",
-  "description": "This contains 2 main datasets:\n- Population and housing in Parquet format, from US Census 2020). Available at Hex 8 and Hex 7 resolutions.\n- Land Use / Land Cover from USDA Crop Data Layer. Available for every 2nd year from 2012-2024 at Hex 8 and Hex 7 resolutions.",
+  "description": "Hex-indexed, re-partitioned Parquet versions of two US national datasets: the USDA Crop Data Layer (land use/land cover classifications for even years 2012\u20132024) and the US Census 2020 population and housing counts. Both are aggregated to H3 hex7 and hex8 spatial resolutions, enabling efficient tile-based spatial queries.",
   "keywords": [
+    "agriculture",
+    "crop-classification",
+    "land-use",
+    "remote-sensing",
     "h3",
     "census",
-    "us",
-    "population",
-    "hex",
-    "geospatial",
-    "parquet",
-    "cdl",
-    "lulc",
-    "land use",
-    "land cover"
+    "population"
   ],
-  "created_at": "2025-04-30T03:21:25.099Z",
-  "updated_at": "2025-08-21T16:39:55.568Z",
-  "visibility": "public",
-  "disabled": false,
+  "providers": [
+    {
+      "name": "USDA National Agricultural Statistics Service",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "US Census Bureau",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Fused",
+      "roles": [
+        "processor",
+        "host"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/fused/hex"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 639551242
+  },
+  "assets": {
+    "hex7_2012": {
+      "href": "https://data.source.coop/fused/hex/release_2025_04_beta/cdl/hex7_2012.parquet",
+      "type": "application/x-parquet",
+      "title": "hex7_2012.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "value",
+          "type": "BIGINT"
+        },
+        {
+          "name": "area",
+          "type": "INTEGER"
+        },
+        {
+          "name": "hex",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution-7 cell index"
+        }
+      ],
+      "table:row_count": 15465277
+    },
+    "hex7_2014": {
+      "href": "https://data.source.coop/fused/hex/release_2025_04_beta/cdl/hex7_2014.parquet",
+      "type": "application/x-parquet",
+      "title": "hex7_2014.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "value",
+          "type": "BIGINT"
+        },
+        {
+          "name": "area",
+          "type": "INTEGER"
+        },
+        {
+          "name": "hex",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution-7 cell index"
+        }
+      ],
+      "table:row_count": 16026867
+    },
+    "hex7_2016": {
+      "href": "https://data.source.coop/fused/hex/release_2025_04_beta/cdl/hex7_2016.parquet",
+      "type": "application/x-parquet",
+      "title": "hex7_2016.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "value",
+          "type": "BIGINT"
+        },
+        {
+          "name": "area",
+          "type": "INTEGER"
+        },
+        {
+          "name": "hex",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution-7 cell index"
+        }
+      ],
+      "table:row_count": 16233401
+    },
+    "hex7_2018": {
+      "href": "https://data.source.coop/fused/hex/release_2025_04_beta/cdl/hex7_2018.parquet",
+      "type": "application/x-parquet",
+      "title": "hex7_2018.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "value",
+          "type": "BIGINT"
+        },
+        {
+          "name": "area",
+          "type": "INTEGER"
+        },
+        {
+          "name": "hex",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution-7 cell index"
+        }
+      ],
+      "table:row_count": 17798505
+    },
+    "hex7_2020": {
+      "href": "https://data.source.coop/fused/hex/release_2025_04_beta/cdl/hex7_2020.parquet",
+      "type": "application/x-parquet",
+      "title": "hex7_2020.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "value",
+          "type": "BIGINT"
+        },
+        {
+          "name": "area",
+          "type": "INTEGER"
+        },
+        {
+          "name": "hex",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution-7 cell index"
+        }
+      ],
+      "table:row_count": 19615826
+    },
+    "hex7_2022": {
+      "href": "https://data.source.coop/fused/hex/release_2025_04_beta/cdl/hex7_2022.parquet",
+      "type": "application/x-parquet",
+      "title": "hex7_2022.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "value",
+          "type": "BIGINT"
+        },
+        {
+          "name": "area",
+          "type": "INTEGER"
+        },
+        {
+          "name": "hex",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution-7 cell index"
+        }
+      ],
+      "table:row_count": 20246970
+    },
+    "hex7_2024": {
+      "href": "https://data.source.coop/fused/hex/release_2025_04_beta/cdl/hex7_2024.parquet",
+      "type": "application/x-parquet",
+      "title": "hex7_2024.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "value",
+          "type": "BIGINT"
+        },
+        {
+          "name": "area",
+          "type": "INTEGER"
+        },
+        {
+          "name": "hex",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution-7 cell index"
+        }
+      ],
+      "table:row_count": 14290375
+    },
+    "hex8_2012": {
+      "href": "https://data.source.coop/fused/hex/release_2025_04_beta/cdl/hex8_2012.parquet",
+      "type": "application/x-parquet",
+      "title": "hex8_2012.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "value",
+          "type": "BIGINT"
+        },
+        {
+          "name": "area",
+          "type": "INTEGER"
+        },
+        {
+          "name": "hex",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution-8 cell index"
+        }
+      ],
+      "table:row_count": 66781832
+    },
+    "hex8_2014": {
+      "href": "https://data.source.coop/fused/hex/release_2025_04_beta/cdl/hex8_2014.parquet",
+      "type": "application/x-parquet",
+      "title": "hex8_2014.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "value",
+          "type": "BIGINT"
+        },
+        {
+          "name": "area",
+          "type": "INTEGER"
+        },
+        {
+          "name": "hex",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution-8 cell index"
+        }
+      ],
+      "table:row_count": 68752206
+    },
+    "hex8_2016": {
+      "href": "https://data.source.coop/fused/hex/release_2025_04_beta/cdl/hex8_2016.parquet",
+      "type": "application/x-parquet",
+      "title": "hex8_2016.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "value",
+          "type": "BIGINT"
+        },
+        {
+          "name": "area",
+          "type": "INTEGER"
+        },
+        {
+          "name": "hex",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution-8 cell index"
+        }
+      ],
+      "table:row_count": 69229549
+    },
+    "hex8_2018": {
+      "href": "https://data.source.coop/fused/hex/release_2025_04_beta/cdl/hex8_2018.parquet",
+      "type": "application/x-parquet",
+      "title": "hex8_2018.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "value",
+          "type": "BIGINT"
+        },
+        {
+          "name": "area",
+          "type": "INTEGER"
+        },
+        {
+          "name": "hex",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution-8 cell index"
+        }
+      ],
+      "table:row_count": 74433958
+    },
+    "hex8_2020": {
+      "href": "https://data.source.coop/fused/hex/release_2025_04_beta/cdl/hex8_2020.parquet",
+      "type": "application/x-parquet",
+      "title": "hex8_2020.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "value",
+          "type": "BIGINT"
+        },
+        {
+          "name": "area",
+          "type": "INTEGER"
+        },
+        {
+          "name": "hex",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution-8 cell index"
+        }
+      ],
+      "table:row_count": 81469581
+    },
+    "hex8_2022": {
+      "href": "https://data.source.coop/fused/hex/release_2025_04_beta/cdl/hex8_2022.parquet",
+      "type": "application/x-parquet",
+      "title": "hex8_2022.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "value",
+          "type": "BIGINT"
+        },
+        {
+          "name": "area",
+          "type": "INTEGER"
+        },
+        {
+          "name": "hex",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution-8 cell index"
+        }
+      ],
+      "table:row_count": 84376861
+    },
+    "hex8_2024": {
+      "href": "https://data.source.coop/fused/hex/release_2025_04_beta/cdl/hex8_2024.parquet",
+      "type": "application/x-parquet",
+      "title": "hex8_2024.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "value",
+          "type": "BIGINT"
+        },
+        {
+          "name": "area",
+          "type": "INTEGER"
+        },
+        {
+          "name": "hex",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution-8 cell index"
+        }
+      ],
+      "table:row_count": 58942739
+    },
+    "2020_partitioned_h7": {
+      "href": "https://data.source.coop/fused/hex/release_2025_04_beta/census/2020_partitioned_h7.parquet",
+      "type": "application/x-parquet",
+      "title": "2020_partitioned_h7.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "state",
+          "type": "VARCHAR",
+          "description": "[placename] US state name"
+        },
+        {
+          "name": "county",
+          "type": "VARCHAR",
+          "description": "[placename] US county name"
+        },
+        {
+          "name": "POP20",
+          "type": "INTEGER"
+        },
+        {
+          "name": "HOUSING20",
+          "type": "INTEGER"
+        },
+        {
+          "name": "hex",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution-7 cell index"
+        }
+      ],
+      "table:row_count": 2095296
+    },
+    "2020_partitioned_h8": {
+      "href": "https://data.source.coop/fused/hex/release_2025_04_beta/census/2020_partitioned_h8.parquet",
+      "type": "application/x-parquet",
+      "title": "2020_partitioned_h8.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "state",
+          "type": "VARCHAR",
+          "description": "[placename] US state name"
+        },
+        {
+          "name": "county",
+          "type": "VARCHAR",
+          "description": "[placename] US county name"
+        },
+        {
+          "name": "POP20",
+          "type": "INTEGER"
+        },
+        {
+          "name": "HOUSING20",
+          "type": "INTEGER"
+        },
+        {
+          "name": "hex",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution-8 cell index"
+        }
+      ],
+      "table:row_count": 13791999
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/fused/hex/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/fused/hex",
+      "title": "Source Cooperative product page"
+    }
+  ],
   "featured": 0,
-  "data_mode": "open",
+  "account_id": "fused",
+  "total_bytes": 3641827539,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -34,17 +502,28 @@
       "prefix": "fused/hex/"
     }
   },
-  "file_count": 18,
-  "total_bytes": 3641827539,
   "exts": {
     "parquet": 16,
     "png": 1,
     "md": 1
   },
-  "_state": "seed",
+  "disabled": false,
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "id": "fused/hex"
+  "product_id": "hex",
+  "file_count": 18,
+  "updated_at": "2025-08-21T16:39:55.568Z",
+  "data_mode": "open",
+  "created_at": "2025-04-30T03:21:25.099Z",
+  "visibility": "public",
+  "readme": "## README.md\n# Hex Fused-partitioned datasets\n\n## Overview\n\nThis repository contains re-paritioned and hex indexed version of:\n- Crop Data Layer (`fused/hex/release_2025_04_beta/cdl/`)\n- US Census data  (`fused/hex/release_2025_04_beta/census/`)\n\n<img src=\"https://data.source.coop/fused/hex/docs/banner.png\" alt=\"Banner image showing Census + CDL\" width=\"100%\"/>\n\n## Quickstart\n\n### Open Datasets in Fused\n\n**Explore parquet metadata**\n\nAccess to this dataset is facilitated by the [Fused](https://www.fused.io/) platform. Browse the data on [Fused Workbench](https://www.fused.io/workbench/catalog/CDL_from_source_coop-d6f88129-73e3-469b-8ac4-7793c2acbeed).\n\n**Query dataset directly**\n\n## Details\n\n[Fused](https://www.fused.io/) is providing these datasets as hex versions in both `hex7` and `hex8` resolutions.\n\nYou can explore the CDL data with one of our [public UDF](https://www.fused.io/workbench/catalog/CDL_from_source_coop-d6f88129-73e3-469b-8ac4-7793c2acbeed) at no cost. \n\n**Crop Data Layer**\n\n- Available for `[2012, 2014, 2016, 2018, 2020, 2022, 2024]`\n- Available in `hex7` and `hex8` resolutions\n\n**US Census Data**\n\n- Available for 2020\n- Available in `hex7` and `hex8` resolutions\n\n## Original Dataset\n\n**Crop Data Layer**\n\nData gathered from [the USDA CDL Download page](https://pdi.scinet.usda.gov/portal/apps/sites/#/cropcros/pages/download-data)\n\n**US Census Data**\n\nData gathered from [2020 TIGER/Line Shapefile dataset on census.gov](https://www.census.gov/geographies/mapping-files/time-series/geo/tiger-line-file.2020.html#list-tab-790442341)\n\n\n## Citation\n\nCropland Data Layer from [USDA CroplandCros](https://pdi.scinet.usda.gov/portal/apps/sites/#/cropcros):\n\n```\nUSDA National Agricultural Statistics Service Cropland Data Layer. 2025. Published crop-specific data layer [Online]. Available at https://croplandcros.scinet.usda.gov/ (accessed 2025; verified 2025). USDA-NASS, Washington, DC.\n```\n\nUS Census from [data.census.org](https://data.census.gov/):\n\n```\nU.S. Census Bureau, \"TIGER/Line Shapefiles\", <https://www.census.gov/geographies/mapping-files/time-series/geo/tiger-line-file.2020.html#list-tab-790442341>, accessed on April 29, 2025.\n```",
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
+    "providers: role [processor, host] for 'Fused' is an AI guess \u2014 Processor role stated (hex repartitioning); host inferred from data being published under the fused/ account on Source Cooperative. Verify before flipping to _state: reviewed.",
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [hex7_2012.hex (spatial_index), hex7_2014.hex (spatial_index), hex7_2016.hex (spatial_index), hex7_2018.hex (spatial_index), hex7_2020.hex (spatial_index), hex7_2022.hex (spatial_index), hex7_2024.hex (spatial_index), hex8_2012.hex (spatial_index), hex8_2014.hex (spatial_index), hex8_2016.hex (spatial_index), hex8_2018.hex (spatial_index), hex8_2020.hex (spatial_index), hex8_2022.hex (spatial_index), hex8_2024.hex (spatial_index), 2020_partitioned_h7.hex (spatial_index), 2020_partitioned_h7.state (placename), 2020_partitioned_h7.county (placename), 2020_partitioned_h8.hex (spatial_index), 2020_partitioned_h8.state (placename), 2020_partitioned_h8.county (placename)]. Add bbox once a placename \u2192 bbox gazetteer is available."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-05-26T18:32:43+00:00"
 }

@@ -1,15 +1,134 @@
 {
-  "account_id": "major-tom",
-  "product_id": "core",
-  "title": "Major TOM Elliot-Pretrain",
-  "description": "A unified multi-modal Earth Observation pre-training dataset combining Sentinel-2, Landsat 8/9, Copernicus DEM, and ESA WorldCover on a global 10 km grid. 250,000 tiles, TACO v3 format.",
-  "keywords": [],
-  "created_at": "2026-04-11T15:49:52.075Z",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "major-tom/core",
+  "title": "MajorTOM-Global Core",
+  "description": "MajorTOM Elliot-Pretrain is a unified multi-modal Earth Observation pre-training dataset combining Sentinel-2 L1C, Landsat 8/9 OLI-TIRS, Copernicus DEM GLO-30, and ESA WorldCover into co-registered tiles on a global 10 km grid. It contains 250,000 monotemporal tiles at harmonized resolutions, designed for fast pre-training of multi-modal AI/foundation models. The dataset follows the TACO v3 specification for AI-ready Earth Observation data.",
+  "license": "CC-BY-SA-4.0",
+  "keywords": [
+    "taco",
+    "majortom",
+    "sentinel-2",
+    "landsat",
+    "dem",
+    "worldcover",
+    "earth-observation",
+    "remote-sensing",
+    "global",
+    "foundation-model",
+    "elliot",
+    "land-use",
+    "elevation",
+    "multi-modal"
+  ],
+  "providers": [
+    {
+      "name": "Asterisk Labs",
+      "roles": [
+        "producer",
+        "processor"
+      ]
+    },
+    {
+      "name": "ESA \u03a6-lab",
+      "roles": [
+        "host"
+      ]
+    },
+    {
+      "name": "Image and Signal Processing Group (ISP), Universitat de Val\u00e8ncia",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "European Commission \u2013 Horizon Europe (ELLIOT, Grant 101214398)",
+      "roles": [
+        "funder",
+        "producer"
+      ]
+    },
+    {
+      "name": "Asterisk Labs",
+      "roles": [
+        "producer",
+        "processor"
+      ]
+    },
+    {
+      "name": "ESA Copernicus",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "USGS",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "ELLIOT Project (Horizon Europe)",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/major-tom/core"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -66.6331936,
+          -25.5125908,
+          6.5595831,
+          0.2722562
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/major-tom/core/",
+      "type": "image/tiff; application=geotiff",
+      "title": "Dataset files (1000000 x .tif)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/major-tom/core/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/major-tom/core",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "rel": "cite-as",
+      "href": "https://doi.org/10.1109/IGARSS53475.2024.10640760"
+    }
+  ],
   "updated_at": "2026-04-14T08:50:58.693Z",
-  "visibility": "public",
-  "disabled": false,
   "featured": 0,
-  "data_mode": "open",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -22,8 +141,16 @@
       "prefix": "major-tom/core/"
     }
   },
+  "account_id": "major-tom",
+  "disabled": false,
   "file_count": 1000010,
+  "data_mode": "open",
   "total_bytes": 1918559507243,
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "visibility": "public",
   "exts": {
     "parquet": 6,
     "tif": 1000000,
@@ -31,11 +158,14 @@
     "md": 2,
     "json": 1
   },
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "id": "major-tom/core",
-  "cataloged_at": "2026-04-29T18:37:09+00:00"
+  "created_at": "2026-04-11T15:49:52.075Z",
+  "product_id": "core",
+  "readme": "## README.md\n# Major TOM Elliot-Pretrain\n\n[![Source Cooperative](https://img.shields.io/badge/Source_Cooperative-majortom--core-blue)](https://source.coop/major-tom/core)\n[![TACO v3](https://img.shields.io/badge/format-TACO_v3-green)](https://github.com/asterisk-labs/taco/blob/main/spec/main.md)\n[![License](https://img.shields.io/badge/license-CC--BY--SA--4.0-orange)](https://creativecommons.org/licenses/by-sa/4.0/)\n\nMajorTOM Elliot-Pretrain is the first expansion of Major TOM focused on **fast pre-training** of multi-modal AI models on Major TOM data.\n* It's built on top of the original [MajorTOM](https://github.com/ESA-PhiLab/Major-TOM) global 10 km grid\n* The files come in 10.56 km footprints with harmonised resolution for faster access \n* It combines four modalities into a single collection where every tile contains co-registered optical, thermal, elevation, and land cover data\n\nThis dataset is designed to grow incrementally -- we start with 250,000 monotemporal tiles and are going to add time-series data in the near future. The dataset follows the [TACO v3 specification](https://github.com/asterisk-labs/taco/blob/main/spec/main.md), a format for organizing AI-ready Earth Observation datasets.\n\n| Modality | Source | Resolution | Bands |\n|----------|--------|------------|-------|\n| Sentinel-2 L1C | ESA Copernicus | 10 m | 13 spectral |\n| Landsat 8/9 OLI-TIRS | USGS | 30 m | 11 (9 OLI + 2 TIRS) |\n| Copernicus DEM GLO-30 | ESA / TanDEM-X | 30 m | 1 (elevation) |\n| ESA WorldCover | ESA | 10 m | 1 (land cover class) |\n\n## Quick Start\n\nPick a tile index and visualize all four modalities:\n\n```python\nimport numpy as np\nimport rasterio\nimport matplotlib.pyplot as plt\n\nBASE = \"https://data.source.coop/major-tom/core\"\nIDX = 42  # <- change this to explore different tiles\n\nMODS = [\"s2\", \"l8\", \"dem\", \"wc\"]\nfig, axes = plt.subplots(1, 4, figsize=(20, 5))\n\nfor j, mod in enumerate(MODS):\n    url = f\"/vsicurl/{BASE}/DATA/{IDX}/{mod}/data.tif\"\n    with rasterio.open(url) as src:\n        if mod in (\"s2\", \"l8\"):\n            rgb = src.read([4, 3, 2]).astype(np.float32)\n            axes[j].imshow(np.clip(rgb / 3000, 0, 1).transpose(1, 2, 0))\n        elif mod == \"dem\":\n            axes[j].imshow(src.read(1), cmap=\"terrain\")\n        else:\n            axes[j].imshow(src.read(1))\n    axes[j].set_title(mod)\n    axes[j].axis(\"off\")\n\nplt.tight_layout()\nplt.show()\n```\n\n## Reproducible Example\n\nA complete notebook with metadata queries, filtering, and a streaming PyTorch DataLoader with parallel fetching is available here:\n\n**[example.ipynb](https://data.source.coop/major-tom/core/example.ipynb)**\n\n## Dataset Structure\n\n```\nmajortom-core/\n|-- COLLECTION.json\n|-- METADATA/\n|   |-- collection.parquet\n|   |-- sample.parquet\n|   |-- sample__s2.parquet\n|   |-- sample__l8.parquet\n|   |-- sample__dem.parquet\n|   |-- sample__wc.parquet\n|-- DATA/\n    |-- {tile_id}/\n        |-- s2/data.tif\n        |-- l8/data.tif\n        |-- dem/data.tif\n        |-- wc/data.tif\n```\n\n## Citation\n\n```bibtex\n@inproceedings{francis2024majortom,\n  title={Major TOM: Expandable Datasets for Earth Observation},\n  author={Francis, Alistair and Czerkawski, Mikolaj},\n  booktitle={IGARSS 2024},\n  pages={2935--2940},\n  year={2024},\n  doi={10.1109/IGARSS53475.2024.10640760}\n}\n```\n\n## License\n\nCC-BY-SA-4.0\n\n## Acknowledgements\n\nMajorTOM-Core has been made possible thanks to [Asterisk Labs](https://asterisk.coop), the [ELLIOT](https://elliot-earth.eu) project (European Commission, Horizon Europe, Grant 101214398), and the [Image and Signal Processing Group (ISP)](https://isp.uv.es) at Universitat de Valencia.\n\n\n<div align=\"center\">\n  <a href=\"https://elliot-earth.eu\"><img src=\"https://data.source.coop/major-tom/index/images/elliot.png\" height=\"80\"></a>\n  &nbsp;&nbsp;&nbsp;&nbsp;\n  <a href=\"https://asterisk.coop\"><img src=\"https://data.source.coop/major-tom/index/images/asterisk.png\" height=\"80\"></a>\n  &nbsp;&nbsp;&nbsp;&nbsp;\n  <a href=\"https://isp.uv.es\"><img src=\"https://data.source.coop/major-tom/index/images/isp.png\" height=\"80\"></a>\n</div>",
+  "_review": [
+    "providers: role [producer] for 'ESA Copernicus' is an AI guess \u2014 Source of Sentinel-2 and WorldCover/DEM data; inferred as upstream data producer. Verify before flipping to _state: reviewed.",
+    "providers: role [producer] for 'USGS' is an AI guess \u2014 Source of Landsat 8/9 data; inferred as upstream data producer. Verify before flipping to _state: reviewed.",
+    "providers: role [producer] for 'ELLIOT Project (Horizon Europe)' is an AI guess \u2014 Funding and project context acknowledged; inferred contributor role. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-05-26T19:12:45+00:00"
 }

@@ -1,15 +1,98 @@
 {
-  "account_id": "pangeo",
-  "product_id": "example-tiff",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "pangeo/example-tiff",
   "title": "example-tiff",
-  "description": "Example TIFFs for testing I/O libraries",
-  "keywords": [],
-  "created_at": "2025-09-24T19:38:58.913Z",
-  "updated_at": "2025-09-24T19:38:58.913Z",
-  "visibility": "public",
+  "description": "A collection of 510 TIFF files spanning a wide range of compressions, tiling schemes, data types, and internal layouts, assembled from the GDAL autotest suite, Development Seed's geotiff-test-data repository, and third-party real-world files including Sentinel-2 imagery, sea-surface temperature, and digital elevation models. Maintained as a test corpus for the virtual-tiff project and any TIFF reading or parsing library.",
+  "keywords": [
+    "tiff",
+    "raster",
+    "cloud-optimized-geotiff",
+    "test-data",
+    "satellite-imagery",
+    "remote-sensing"
+  ],
+  "providers": [
+    {
+      "name": "OSGeo / GDAL",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Development Seed",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "virtual-tiff project",
+      "roles": [
+        "processor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/pangeo/example-tiff"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -180.0,
+          -90.0,
+          180.0,
+          90.0
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/pangeo/example-tiff/",
+      "type": "image/tiff; application=geotiff",
+      "title": "Dataset files (510 x .tif)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/pangeo/example-tiff/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/pangeo/example-tiff",
+      "title": "Source Cooperative product page"
+    }
+  ],
   "disabled": false,
-  "featured": 0,
   "data_mode": "open",
+  "total_bytes": 1604636551,
+  "account_id": "pangeo",
+  "updated_at": "2025-09-24T19:38:58.913Z",
+  "exts": {
+    "tif": 510,
+    "md": 1
+  },
+  "product_id": "example-tiff",
+  "visibility": "public",
+  "featured": 0,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -22,16 +105,19 @@
       "prefix": "pangeo/example-tiff/"
     }
   },
-  "file_count": 511,
-  "total_bytes": 1604636551,
-  "exts": {
-    "tif": 510,
-    "md": 1
-  },
-  "_state": "seed",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "id": "pangeo/example-tiff"
+  "file_count": 511,
+  "created_at": "2025-09-24T19:38:58.913Z",
+  "readme": "## README.md\n# TIFF test data\n\nA public collection of TIFF files covering a wide range of compressions, tiling schemes, data types, and internal layouts. The files are useful for testing any TIFF reading or parsing library and are maintained as part of the [virtual-tiff](https://github.com/virtual-zarr/virtual-tiff) project.\n\nLast updated: 2026-04-29\n\n## Sources and licenses\n\n### GDAL autotest (`gdal/`)\n\n501 files extracted from the GDAL [autotest](https://github.com/OSGeo/gdal/tree/master/autotest) directory.\n\n- **Source:** <https://github.com/OSGeo/gdal>\n- **License:** MIT/X \u2014 see [GDAL LICENSE.TXT](https://github.com/OSGeo/gdal/blob/master/LICENSE.TXT)\n- **Copyright:** Frank Warmerdam, Even Rouault, and contributors\n\n### External files (`github/`)\n\nFiles downloaded from third-party sources for testing a variety of TIFF encodings.\n\n| File | Source URL | License |\n|------|-----------|---------|\n| `20250331090000-JPL-L4_GHRSST-SSTfnd-MUR-GLOB-v02.0-fv04.1_analysed_sst.tif` | https://data.source.coop/ausantarctic/ghrsst-mur-v2/2025/03/31/20250331090000-JPL-L4_GHRSST-SSTfnd-MUR-GLOB-v02.0-fv04.1_analysed_sst.tif | Public domain (NASA JPL) |\n| `40613.tif` | https://cildata.crbs.ucsd.edu/media/images/40613/40613.tif | Public domain (UCSD / NCMIR) |\n| `B04.tif` | https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/33/U/WP/2025/6/S2C_33UWP_20250615_0_L2A/B04.tif | CC BY-SA 3.0 IGO (Copernicus Sentinel-2) |\n| `IBCSO_v2_ice-surface_cog.tif` | https://github.com/mdsumner/ibcso-cog/raw/main/IBCSO_v2_ice-surface_cog.tif | CC BY 4.0 (AWI / IBCSO) |\n| `SIG0_20250404T234439__VH_A091_E048N063T3_SA020M_V1M1R2_S1AIWGRDH_TUWIEN.tif` | https://data.eodc.eu/collections/SENTINEL1_SIG0_20M/V1M1R2/EQUI7_SA020M/E048N063T3/SIG0_20250404T234439__VH_A091_E048N063T3_SA020M_V1M1R2_S1AIWGRDH_TUWIEN.tif | CC BY 4.0 (Copernicus Sentinel) |\n| `TCI.tif` | https://e84-earth-search-sentinel-data.s3.us-west-2.amazonaws.com/sentinel-2-c1-l2a/55/G/EN/2025/3/S2C_T55GEN_20250324T000834_L2A/TCI.tif | CC BY-SA 3.0 IGO (Copernicus Sentinel-2) |\n| `rema_mosaic_1km_v2.0_filled_cop30_dem.tif` | https://github.com/mdsumner/rema-ovr/raw/refs/heads/main/rema_mosaic_1km_v2.0_filled_cop30_dem.tif | Public domain (REMA / Byrd Polar) |\n| `test_reference.tif` | https://gitlab.com/Richard.Scott1/raster-analysis-goals/-/raw/main/test_reference.tif?ref_type=heads&inline=false | Unknown |\n\n### geotiff-test-data (`geotiff-test-data/`)\n\n33 files from the [geotiff-test-data](https://github.com/developmentseed/geotiff-test-data) repository.\n\n- **Source:** <https://github.com/developmentseed/geotiff-test-data>\n- **License:** MIT (synthetic fixtures); see individual README files in real_data/ subdirectories for real-world data licenses\n- **Copyright:** Development Seed and contributors\n\n## Usage\n\nThese files are publicly hosted and can be used by any project. To download them with the virtual-tiff helper script:\n\n```bash\nuv run scripts/download_test_data.py\n```\n\n## Disclaimer\n\nThese files are redistributed solely for automated testing. Refer to each source for authoritative license terms.\n",
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
+    "providers: role [producer] for 'OSGeo / GDAL' is an AI guess \u2014 Source of the GDAL autotest files; role inferred from README attribution to the GDAL repository.. Verify before flipping to _state: reviewed.",
+    "providers: role [producer] for 'Development Seed' is an AI guess \u2014 Source of geotiff-test-data repository; role inferred from README attribution.. Verify before flipping to _state: reviewed.",
+    "providers: role [processor] for 'virtual-tiff project' is an AI guess \u2014 Assembled and maintains this collection from multiple upstream sources; role inferred from README.. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-05-26T18:47:07+00:00"
 }

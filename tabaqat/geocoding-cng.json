@@ -1,14 +1,637 @@
 {
-  "account_id": "tabaqat",
-  "product_id": "geocoding-cng",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
+  "id": "tabaqat/geocoding-cng",
   "title": "geocoding-cng",
-  "description": "",
-  "keywords": [],
-  "created_at": "2025-12-22T10:12:45.803Z",
-  "updated_at": "2025-12-22T10:12:45.803Z",
-  "visibility": "public",
+  "description": "A geocoding dataset for Saudi Arabia containing over 35,000 address-level records organized into H3 spatial index tiles, covering street addresses with full administrative hierarchy (district, governorate, region) in both Arabic and English. Includes companion polygon boundary layers for Saudi regions, governorates, and districts, plus a postcode index and a world countries reference layer.",
+  "keywords": [
+    "geocoding",
+    "addresses",
+    "saudi-arabia",
+    "administrative-boundaries",
+    "postcode",
+    "h3",
+    "arabic"
+  ],
+  "providers": [
+    {
+      "name": "CNG",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/tabaqat/geocoding-cng"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 35065
+  },
+  "assets": {
+    "postcode_index": {
+      "href": "https://data.source.coop/tabaqat/geocoding-cng/v0.1.0/postcode_index.parquet",
+      "type": "application/x-parquet",
+      "title": "postcode_index.parquet",
+      "roles": [
+        "metadata"
+      ],
+      "table:columns": [
+        {
+          "name": "postcode",
+          "type": "VARCHAR",
+          "description": "[zipcode] Saudi postal code used as lookup key for H3 tile list"
+        },
+        {
+          "name": "tiles",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "addr_count",
+          "type": "BIGINT"
+        },
+        {
+          "name": "region_ar",
+          "type": "VARCHAR",
+          "description": "[placename] Region name in Arabic"
+        },
+        {
+          "name": "region_en",
+          "type": "VARCHAR",
+          "description": "[placename] Region name in English"
+        }
+      ],
+      "table:row_count": 6499
+    },
+    "region_index": {
+      "href": "https://data.source.coop/tabaqat/geocoding-cng/v0.1.0/region_index.parquet",
+      "type": "application/x-parquet",
+      "title": "region_index.parquet",
+      "roles": [
+        "metadata"
+      ],
+      "table:columns": [
+        {
+          "name": "region_ar",
+          "type": "VARCHAR",
+          "description": "[placename] Region name in Arabic with bounding box"
+        },
+        {
+          "name": "addr_count",
+          "type": "INTEGER"
+        },
+        {
+          "name": "min_lon",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "max_lon",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "min_lat",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "max_lat",
+          "type": "DOUBLE"
+        }
+      ],
+      "table:row_count": 13
+    },
+    "sa_districts_simple": {
+      "href": "https://data.source.coop/tabaqat/geocoding-cng/v0.1.0/sa_districts_simple.parquet",
+      "type": "application/x-parquet",
+      "title": "sa_districts_simple.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "district_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name_ar",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name_en",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "city",
+          "type": "VARCHAR",
+          "description": "[placename] City the district belongs to"
+        },
+        {
+          "name": "region_ar",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "region_en",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "gov_ar",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "gov_en",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "centroid",
+          "type": "GEOMETRY('OGC:CRS84')",
+          "description": "[geometry] Centroid point of the district polygon"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')",
+          "description": "[geometry] Polygon boundary of the district"
+        }
+      ],
+      "table:row_count": 5478
+    },
+    "sa_governorates_simple": {
+      "href": "https://data.source.coop/tabaqat/geocoding-cng/v0.1.0/sa_governorates_simple.parquet",
+      "type": "application/x-parquet",
+      "title": "sa_governorates_simple.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "gov_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name_ar",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name_en",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "region_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "region_ar",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "region_en",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "district_count",
+          "type": "BIGINT"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')",
+          "description": "[geometry] Polygon boundary of the governorate"
+        },
+        {
+          "name": "centroid",
+          "type": "GEOMETRY('OGC:CRS84')",
+          "description": "[geometry] Centroid point of the governorate polygon"
+        }
+      ],
+      "table:row_count": 133
+    },
+    "sa_regions_simple": {
+      "href": "https://data.source.coop/tabaqat/geocoding-cng/v0.1.0/sa_regions_simple.parquet",
+      "type": "application/x-parquet",
+      "title": "sa_regions_simple.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "region_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name_ar",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name_en",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "centroid",
+          "type": "GEOMETRY('OGC:CRS84')",
+          "description": "[geometry] Centroid point of the region polygon"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')",
+          "description": "[geometry] Polygon boundary of the region"
+        }
+      ],
+      "table:row_count": 26
+    },
+    "8553ad1bfffffff": {
+      "href": "https://data.source.coop/tabaqat/geocoding-cng/v0.4.4/tiles/8553ad1bfffffff.parquet",
+      "type": "application/x-parquet",
+      "title": "8553ad1bfffffff.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "addr_id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "longitude",
+          "type": "DOUBLE",
+          "description": "[latlon] Address longitude (representative tile; same schema applies to all H3-named tiles)"
+        },
+        {
+          "name": "latitude",
+          "type": "DOUBLE",
+          "description": "[latlon] Address latitude"
+        },
+        {
+          "name": "number",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "street",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "postcode",
+          "type": "VARCHAR",
+          "description": "[zipcode] Postal code of the address"
+        },
+        {
+          "name": "district_ar",
+          "type": "VARCHAR",
+          "description": "[placename] District name in Arabic"
+        },
+        {
+          "name": "district_en",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "city",
+          "type": "VARCHAR",
+          "description": "[placename] City name"
+        },
+        {
+          "name": "gov_ar",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "gov_en",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "region_ar",
+          "type": "VARCHAR",
+          "description": "[placename] Region name in Arabic"
+        },
+        {
+          "name": "region_en",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "full_address_ar",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "full_address_en",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "h3_index",
+          "type": "VARCHAR",
+          "description": "[spatial_index] H3 cell index identifying the tile this address belongs to"
+        }
+      ],
+      "table:row_count": 153
+    },
+    "8553ad63fffffff": {
+      "href": "https://data.source.coop/tabaqat/geocoding-cng/v0.4.4/tiles/8553ad63fffffff.parquet",
+      "type": "application/x-parquet",
+      "title": "8553ad63fffffff.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "addr_id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "longitude",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "latitude",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "number",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "street",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "postcode",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "district_ar",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "district_en",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "city",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "gov_ar",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "gov_en",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "region_ar",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "region_en",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "full_address_ar",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "full_address_en",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "h3_index",
+          "type": "VARCHAR"
+        }
+      ],
+      "table:row_count": 12875
+    },
+    "8553ad67fffffff": {
+      "href": "https://data.source.coop/tabaqat/geocoding-cng/v0.4.4/tiles/8553ad67fffffff.parquet",
+      "type": "application/x-parquet",
+      "title": "8553ad67fffffff.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "addr_id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "longitude",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "latitude",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "number",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "street",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "postcode",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "district_ar",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "district_en",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "city",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "gov_ar",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "gov_en",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "region_ar",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "region_en",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "full_address_ar",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "full_address_en",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "h3_index",
+          "type": "VARCHAR"
+        }
+      ],
+      "table:row_count": 442
+    },
+    "8553ad6ffffffff": {
+      "href": "https://data.source.coop/tabaqat/geocoding-cng/v0.4.4/tiles/8553ad6ffffffff.parquet",
+      "type": "application/x-parquet",
+      "title": "8553ad6ffffffff.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "addr_id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "longitude",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "latitude",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "number",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "street",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "postcode",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "district_ar",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "district_en",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "city",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "gov_ar",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "gov_en",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "region_ar",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "region_en",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "full_address_ar",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "full_address_en",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "h3_index",
+          "type": "VARCHAR"
+        }
+      ],
+      "table:row_count": 9275
+    },
+    "world_countries_simple": {
+      "href": "https://data.source.coop/tabaqat/geocoding-cng/v0.4.4/world_countries_simple.parquet",
+      "type": "application/x-parquet",
+      "title": "world_countries_simple.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "iso_a3",
+          "type": "VARCHAR",
+          "description": "[admin_code] ISO 3166-1 alpha-3 country code"
+        },
+        {
+          "name": "iso_a2",
+          "type": "VARCHAR",
+          "description": "[admin_code] ISO 3166-1 alpha-2 country code"
+        },
+        {
+          "name": "name_en",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name_ar",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "continent",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')",
+          "description": "[geometry] Country polygon boundary"
+        }
+      ],
+      "table:row_count": 171
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/tabaqat/geocoding-cng/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/tabaqat/geocoding-cng",
+      "title": "Source Cooperative product page"
+    }
+  ],
   "disabled": false,
-  "featured": 0,
+  "exts": {
+    "parquet": 3631,
+    "": 2,
+    "md": 4,
+    "json": 1
+  },
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "account_id": "tabaqat",
+  "created_at": "2025-12-22T10:12:45.803Z",
   "data_mode": "open",
   "mirrors": {
     "aws-opendata-us-west-2": {
@@ -23,18 +646,16 @@
     }
   },
   "file_count": 3638,
+  "product_id": "geocoding-cng",
   "total_bytes": 819960198,
-  "exts": {
-    "parquet": 3631,
-    "": 2,
-    "md": 4,
-    "json": 1
-  },
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "id": "tabaqat/geocoding-cng",
-  "cataloged_at": "2026-04-29T18:38:09+00:00"
+  "visibility": "public",
+  "featured": 0,
+  "updated_at": "2025-12-22T10:12:45.803Z",
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
+    "providers: role [producer] for 'CNG' is an AI guess \u2014 Inferred as producer from the dataset title 'geocoding-cng'; no README or explicit attribution available.. Verify before flipping to _state: reviewed.",
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [postcode_index.postcode (zipcode), postcode_index.region_ar (placename), postcode_index.region_en (placename), region_index.region_ar (placename), sa_districts_simple.geometry (geometry), sa_districts_simple.centroid (geometry), sa_districts_simple.city (placename), sa_governorates_simple.geometry (geometry), sa_governorates_simple.centroid (geometry), sa_regions_simple.geometry (geometry), sa_regions_simple.centroid (geometry), 8553ad1bfffffff.longitude (latlon), 8553ad1bfffffff.latitude (latlon), 8553ad1bfffffff.postcode (zipcode), 8553ad1bfffffff.district_ar (placename), 8553ad1bfffffff.city (placename), 8553ad1bfffffff.region_ar (placename), 8553ad1bfffffff.h3_index (spatial_index), world_countries_simple.geometry (geometry), world_countries_simple.iso_a3 (admin_code), world_countries_simple.iso_a2 (admin_code)]. Add bbox once a placename \u2192 bbox gazetteer is available."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-05-26T18:51:31+00:00"
 }

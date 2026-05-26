@@ -1,15 +1,90 @@
 {
-  "account_id": "tge-labs",
-  "product_id": "aef",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "tge-labs/aef",
   "title": "AlphaEarth Foundations Satellite Embedding Dataset",
-  "description": "This product contains COG (Cloud-Optimized GeoTIFF) files that together contain the AlphaEarth Foundations annual Satellite Embedding dataset. It contains the annual embeddings for the years from 2017 to 2025, inclusive.",
-  "keywords": [],
-  "created_at": "2025-11-13T19:20:23.870Z",
-  "updated_at": "2026-03-22T16:12:21.400Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 1,
+  "description": "Annual satellite embeddings derived from Google's Earth Engine Satellite Embedding dataset (V1), covering 2017\u20132025. Each year's data is organized by UTM zone as 8192\u00d78192-pixel Cloud-Optimized GeoTIFFs with 64 embedding channels per pixel, encoding compact learned representations of the Earth's surface from satellite imagery. This copy was produced by tge-labs and is not officially supported by Google.",
+  "license": "CC-BY-4.0",
+  "keywords": [
+    "remote-sensing",
+    "satellite-embeddings",
+    "machine-learning",
+    "google-earth-engine",
+    "annual-time-series",
+    "cloud-optimized-geotiff",
+    "utm"
+  ],
+  "providers": [
+    {
+      "name": "Google / Google DeepMind",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "tge-labs",
+      "roles": [
+        "processor",
+        "host"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/tge-labs/aef"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -129.0,
+          -76.7572105,
+          -120.3147987,
+          47.3393863
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/tge-labs/aef/",
+      "type": "image/tiff; application=geotiff",
+      "title": "Dataset files (302466 x .tiff)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/tge-labs/aef/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/tge-labs/aef",
+      "title": "Source Cooperative product page"
+    }
+  ],
+  "account_id": "tge-labs",
   "data_mode": "open",
+  "file_count": 604926,
+  "disabled": false,
+  "created_at": "2025-11-13T19:20:23.870Z",
+  "featured": 1,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -22,7 +97,13 @@
       "prefix": "tge-labs/aef/"
     }
   },
-  "file_count": 604926,
+  "updated_at": "2026-03-22T16:12:21.400Z",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "product_id": "aef",
+  "visibility": "public",
   "total_bytes": 576593624417220,
   "exts": {
     "tiff": 302466,
@@ -33,10 +114,10 @@
     "txt": 1,
     "md": 1
   },
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "id": "tge-labs/aef"
+  "readme": "## README.md\n# AlphaEarth Foundations GCS data\n\nThis product contains COG (Cloud-Optimized GeoTIFF) files that together contain the AlphaEarth Foundations annual [Satellite Embedding dataset](https://developers.google.com/earth-engine/datasets/catalog/GOOGLE_SATELLITE_EMBEDDING_V1_ANNUAL). It contains the annual embeddings for the years from 2017 to 2025.  This copy is not officially supported by Google.\n\n\n#### **Warning**\nThe COGs in this dataset are \"bottom-up\" where the origin of the image is the bottom-left corner, the y-resolution is positive, and image blocks are ordered from bottom-left to top-right in the file.  A standard COG is \"top-down\" where the origin is the top-left corner, the y-resolution is negative, and image blocks are ordered from top-left to bottom-right. While some viewers like QGIS are smart enough to flip the images, accessing the data directly with most software (like GDAL) may cause errors.  We've provided a corresponding `.vrt` along with each `.tiff` file in the bucket which is responsible for correcting this mistake on-the-fly.  Please use the provided VRTs to access the data for any use cases that go beyond simple visualization.\n\n\n## License\n\nThis dataset is licensed under CC-BY 4.0 and requires the following attribution text: \"The AlphaEarth Foundations Satellite Embedding dataset is produced by Google and Google DeepMind.\"\n\n## Directory structure\n\nThey are divided into directories by year; each year's directory is divided into 120 subdirectories, one per UTM zone, whose names reflect the zone number and hemisphere (`N` or `S`).\n\nWithin each directory are a number of COG files. These files contain all the pixel data for that UTM zone.\n\n## File structure\n\nEach file is 8192x8192 pixels, with 64 channels. The magnitude of each pixel, after the de-quantization mapping has been applied (see below), has been normalized so that it has a Euclidean length of 1.\n\nThe files contain overview layers at 4096x4096 pixels, 2048x2048 pixels, and so on down to a 1x1 top-level overview layer. These overview layers are constructed so that each overview pixel is the mean of the highest-resolution pixels under that overview pixel, where the mean's magnitude has been normalized to have length 1.\n\nThe channels correspond, in order, to the `A00` through `A63` axes of the Satellite Embedding dataset. The COGs also contain this naming for the channels.\n\nEach pixel's value for each channel is a signed 8-bit integer. The way in which these values are mapped to the native values (in [-1, 1]) of the embeddings is described below.\n\nThe value -128 corresponds to a masked pixel. If it is present in one channel, it will be present in all channels. The COGs reflect this (i.e., they have the `NoData` value set to -128).\n\nThe name of each file also carries some information. For, example, consider the file named\n[https://source.coop/tge-labs/aef/v1/annual/2019/1S/x8qqwcsisbgygl2ry-0000008192-0000000000.tiff](https://source.coop/tge-labs/aef/v1/annual/2019/1S/x8qqwcsisbgygl2ry-0000008192-0000000000.tiff).\n\nAs described above, this file is part of the 2019 annual embedding, and is in UTM zone 1S (zone 1, southern hemisphere). The base filename, `x8qqwcsisbgygl2ry-0000008192-0000000000`, serves to link this file to the corresponding Earth Engine Satellite Embedding Image name. In this example, this file corresponds to a portion of the Earth Engine image `GOOGLE/SATELLITE_EMBEDDING/V1/ANNUAL/x8qqwcsisbgygl2ry`. The two decimal parts of the filename specify where this COG's values are relative to that Earth Engine Image, as an offset in Y followed by an offset in X. In this case, the COG's pixel origin is at (0, 8192) relative to the Earth Engine Image's origin.\n\nThis is because it was necessary to subdivide each Earth Engine Image (which are 16384x16384 pixels) so that the resulting COGs would not be too unwieldy.\n\n## De-quantization\n\nTo transform the raw signed 8-bit value (which will be between -127 and 127 inclusive - -128 is reserved as the \"no data\" value) in each channel of each pixel to the analysis-ready floating-point value (which will be between -1 and 1), the mapping to perform is\n\n- divide by 127.5\n- square\n- multiply by the sign of the original value\n\nThis would be expressed in NumPy as\n\n```python\n  # values is a NumPy array of raw pixel values\n  de_quantized_values = ((values / 127.5) ** 2) * np.sign(values)\n```\n\nIn Earth Engine, the corresponding operation would be\n\n```javascript\n  var de_quantized_values = values.divide(127.5).pow(2).multiply(values.signum());\n```\n\n\n## Manifest and index\n\nA list of the files in this dataset can be found in\n[https://source.coop/tge-labs/aef/v1/annual/manifest.txt](https://source.coop/tge-labs/aef/v1/annual/manifest.txt).\n\nAs it is not possible to determine from the file names what area of the world they cover, an index has also been provided, in three forms (GeoParquet, GeoPackage, and CSV) in the files\nhttps://source.coop/tge-labs/aef/v1/annual/aef_index.parquet,\nhttps://source.coop/tge-labs/aef/v1/annual/aef_index.gpkg, and\nhttps://source.coop/tge-labs/aef/v1/annual/aef_index.csv. This\nindex contains one entry for each file in the dataset. The information provided for each file is:\n\n- the geometry of the file, as a WGS84 (i.e., EPSG:4326) polygon. In the CSV form, this is in the column `WKT`. See below for details on how this geometry is computed.\n- `crs`: The CRS of the UTM zone this image belongs to, as an EPSG code, like `EPSG:32610`.\n- `year`: The year that the image covers.\n- `utm_zone`: The UTM zone of the image, like `10N`.\n- `utm_west`, `utm_south`, `utm_east`, `utm_north`: The UTM bounds of the raw pixel array. This does not reflect any geometry processing, and includes all pixels whether or not they are valid.\n- `wgs84_west`, `wgs84_south`, `wgs84_east`, `wgs84_north`: The min/max longitude and latitude of the WGS84 geometry.\n\n### Geometry processing\n\nThe pixel array is natively in some UTM zone, so in that UTM zone the bounding box of the pixel array is a simple rectangle. That bounding box is transformed into a polygon in WGS84. This polygon includes a number of extra points so that its edges closely follow the curved lines in WGS84 that the straight lines in UTM transform into. This polygon does not take into account the validity/invalidity of pixels in the image, just the bounds of the image's pixel array.\n\nThe polygon is then clipped to the minimum and maximum longitude of the image's UTM zone. In practice, this may cause it to not include a few valid pixels that hang over the edge of the UTM zone. Omitting these pixels from the index shouldn't cause any problems: some image from the neighboring UTM zone should cover that area.\n\nNote that clipping to the min/max longitude of the UTM zone means that no polygon crosses the antimeridian, which should make processing this file a little simpler.",
+  "_review": [
+    "providers: role [processor, host] for 'tge-labs' is an AI guess \u2014 README states this is an unofficial copy; tge-labs assumed to be the processor who converted to COG format and the host.. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-05-26T20:38:32+00:00"
 }

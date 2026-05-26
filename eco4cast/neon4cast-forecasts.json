@@ -1,21 +1,139 @@
 {
-  "account_id": "eco4cast",
-  "product_id": "neon4cast-forecasts",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
+  "id": "eco4cast/neon4cast-forecasts",
   "title": "Repository of all forecasts submitted to the Ecological Forecasting Initiative",
-  "description": "Partitioned parquet database of forecasts submitted to the Ecological Forecasting Initiative.  See dashboard at https://projects.ecoforecast.org/neon4cast-dashboard/",
+  "description": "A partitioned Parquet database of all forecasts submitted to the Ecological Forecasting Initiative's NEON Forecasting Challenge. It contains probabilistic ecological predictions across multiple themes (aquatics, terrestrial, phenology, etc.) from numerous research groups, partitioned by theme and model. The canonical source is data.ecoforecast.org; this copy is in development.",
   "keywords": [
     "ecology",
-    "forecast",
-    "environment",
-    "parquet",
-    "stac"
+    "ecological-forecasting",
+    "neon",
+    "forecasting",
+    "aquatics",
+    "time-series",
+    "environment"
   ],
-  "created_at": "2023-08-20T00:00:05.079739+00:00",
+  "providers": [
+    {
+      "name": "Ecological Forecasting Initiative",
+      "roles": [
+        "producer",
+        "host"
+      ]
+    },
+    {
+      "name": "NEON (National Ecological Observatory Network)",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/eco4cast/neon4cast-forecasts"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2021-10-04T00:00:00",
+          "2023-04-16"
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 1668
+  },
+  "assets": {
+    "part-0": {
+      "href": "https://data.source.coop/eco4cast/neon4cast-forecasts/parquet/ticks/model_id=top_3_weighted_average/reference_datetime=2021-09-27/date=2021-11-01/part-0.parquet",
+      "type": "application/x-parquet",
+      "title": "part-0.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "target_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "datetime",
+          "type": "TIMESTAMP"
+        },
+        {
+          "name": "parameter",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "variable",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "prediction",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "family",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "site_id",
+          "type": "VARCHAR",
+          "description": "[admin_code] NEON site identifier (4-letter code) indicating the ecological monitoring station the forecast targets"
+        },
+        {
+          "name": "model_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "date",
+          "type": "DATE"
+        },
+        {
+          "name": "reference_datetime",
+          "type": "DATE"
+        }
+      ],
+      "table:row_count": 270
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/eco4cast/neon4cast-forecasts/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/eco4cast/neon4cast-forecasts",
+      "title": "Source Cooperative product page"
+    }
+  ],
   "updated_at": "2025-08-21T16:39:55.567Z",
+  "total_bytes": 330083927543,
+  "exts": {
+    "parquet": 916532,
+    "md": 1
+  },
   "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": "open",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -28,16 +146,24 @@
       "prefix": "eco4cast/neon4cast-forecasts/"
     }
   },
-  "file_count": 916533,
-  "total_bytes": 330083927543,
-  "exts": {
-    "parquet": 916532,
-    "md": 1
-  },
-  "_state": "seed",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "id": "eco4cast/neon4cast-forecasts"
+  "account_id": "eco4cast",
+  "product_id": "neon4cast-forecasts",
+  "data_mode": "open",
+  "featured": 0,
+  "disabled": false,
+  "created_at": "2023-08-20T00:00:05.079739+00:00",
+  "file_count": 916533,
+  "readme": "## README.md\n# Forecasts submitted to the Ecological Forecasting Initiative's NEON Challenge\n\n***In development, experimental***\n\n*At this time, canonical sources are still hosted on* `data.ecoforecast.org`.\n\n\n## Resources\n\n- [STAC Catalog](https://radiantearth.github.io/stac-browser/#/external/raw.githubusercontent.com/eco4cast/neon4cast-catalog/main/stac/catalog.json)\n\n\n## Quickstart\n\nArrow provides an easy way to access remote parquet files from most languages widely used in data science.  Here we access all forecasts submitted to a particular theme. (Users looking to load only a single model should specify that on the path for faster access.  The STAC catalog can be used to explore available models).\n\n\nThe examples below show 'cloud-native' connections to the data -- 'lazy' connections that do not download the entire asset, but allow us to filter, subset, and operate directly on the remote data product.  \n\n### R Access\n\n```{r}\nlibrary(arrow)\nbase = \"s3://anonymous@us-west-2.opendata.source.coop\"\nrepo = \"eco4cast/neon4cast-forecasts\"\ntheme = \"aquatics\"\nuri = glue::glue(\"{base}/{repo}/parquet/{theme}?region=us-west-2\")\n\nopen_dataset(uri)\n\n```\n\n### Python Access\n\n\n```{python}\nimport pyarrow.dataset as ds\n\nbase = \"s3://anonymous@us-west-2.opendata.source.coop\"\nrepo = \"eco4cast/neon4cast-forecasts\"\ntheme = \"aquatics\"\nuri = f\"{base}/{repo}/parquet/{theme}?region=us-west-2\"\n\nds.dataset(uri, format=\"parquet\") \n```\n\n\n### duckdb\n\nAt this time, `duckdb` access substantially faster than `arrow`.\n\n\n### R + duckdb\n\nR users can get a dplyr-compatible lazy remote tibble as follows:\n\n```{r}\n# remotes::install_github(\"cboettig/duckdbfs\")\nlibrary(duckdbfs)\n\nbase = \"s3://anonymous@us-west-2.opendata.source.coop\"\nrepo = \"eco4cast/neon4cast-forecasts\"\ntheme = \"aquatics\"\nuri = glue::glue(\"{base}/{repo}/parquet/{theme}?region=us-west-2\")\n\ndf = open_dataset(uri)\n```\n\n### Python + duckdb\n\n[ibis](https://ibis-project.org/) provides a more Pythonic interface to SQL:\n\n```{python}\nimport ibis\ncon = ibis.duckdb.connect() \n\nbase = \"s3://us-west-2.opendata.source.coop\"\nrepo = \"eco4cast/neon4cast-forecasts\"\ntheme = \"aquatics\"\nuri = f\"{base}/{repo}/parquet/{theme}/**\"\n\ncon.raw_sql(f\"\"\"\nINSTALL httpfs;\nLOAD httpfs;\nSET s3_region='us-west-2';\n\"\"\")\n\ndb = con.read_parquet(uri)\n```\n\n",
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
+    "providers: role [producer, host] for 'Ecological Forecasting Initiative' is an AI guess \u2014 EFI runs the challenge and aggregates submitted forecasts at data.ecoforecast.org; treating them as producer and original host. Verify before flipping to _state: reviewed.",
+    "providers: role [producer] for 'NEON (National Ecological Observatory Network)' is an AI guess \u2014 NEON provides the observation sites and targets that forecasts are issued against; role inferred from challenge structure. Verify before flipping to _state: reviewed.",
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [part-0.site_id (admin_code)]. Add bbox once a placename \u2192 bbox gazetteer is available."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-05-26T19:02:25+00:00"
 }

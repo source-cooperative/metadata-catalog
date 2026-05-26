@@ -1,20 +1,87 @@
 {
-  "account_id": "clarkcga",
-  "product_id": "hls-multi-temporal-cloud-gap-imputation",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "clarkcga/hls-multi-temporal-cloud-gap-imputation",
   "title": "Multi-Temporal Cloud Gap Imputation With HLS Imagery Across CONUS",
-  "description": "This dataset contains temporal Harmonized Landsat-Sentinel imagery of diverse land covers across the Contiguous United States for the year 2022 along with binary cloud masks for the same area and year. This dataset's primary purpose is to train machine learning models for cloud gap imputation. The dataset contains 7,852 224x224x18 HLS scenes and 21,642 binary cloud masks of size 224x224.",
+  "description": "A machine learning benchmark dataset containing 7,852 multi-temporal Harmonized Landsat and Sentinel-2 (HLS) image chips and 21,642 binary cloud masks covering diverse land covers across the Contiguous United States (CONUS) for the year 2022. Each chip is a 224\u00d7224 pixel GeoTIFF at 30m resolution with 18 spectral bands (6 bands \u00d7 3 time steps). The dataset was created to support training and evaluation of cloud gap imputation models.",
+  "license": "CC-BY-4.0",
   "keywords": [
-    "hls",
+    "remote-sensing",
+    "land-use",
+    "cloud-masking",
     "multitemporal",
-    "cloud",
+    "harmonized-landsat-sentinel",
+    "machine-learning",
     "imputation"
   ],
-  "created_at": "2024-05-24T13:32:33.093152+00:00",
-  "updated_at": "2025-08-21T16:39:55.568Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": "open",
+  "providers": [
+    {
+      "name": "Clark University Center for Geospatial Analytics (CGA)",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "NASA",
+      "roles": [
+        "licensor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/clarkcga/hls-multi-temporal-cloud-gap-imputation"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -120.5289579,
+          26.0091125,
+          -97.5040969,
+          48.9847692
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/clarkcga/hls-multi-temporal-cloud-gap-imputation/",
+      "type": "image/tiff; application=geotiff",
+      "title": "Dataset files (29519 x .tif)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/clarkcga/hls-multi-temporal-cloud-gap-imputation/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/clarkcga/hls-multi-temporal-cloud-gap-imputation",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "rel": "cite-as",
+      "href": "https://doi.org/10.5281/zenodo.11281740"
+    }
+  ],
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -27,17 +94,29 @@
       "prefix": "clarkcga/hls-multi-temporal-cloud-gap-imputation/"
     }
   },
-  "file_count": 29522,
-  "total_bytes": 18142032137,
   "exts": {
     "tif": 29519,
     "csv": 2,
     "md": 1
   },
-  "_state": "seed",
+  "visibility": "public",
+  "product_id": "hls-multi-temporal-cloud-gap-imputation",
+  "account_id": "clarkcga",
+  "disabled": false,
+  "file_count": 29522,
+  "data_mode": "open",
+  "featured": 0,
+  "updated_at": "2025-08-21T16:39:55.568Z",
+  "total_bytes": 18142032137,
+  "created_at": "2024-05-24T13:32:33.093152+00:00",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "id": "clarkcga/hls-multi-temporal-cloud-gap-imputation"
+  "readme": "## README.md\n# Multi-Temporal Cloud Gap Imputation With HLS Data Across CONUS\n\n## Dataset Description\n\n### Dataset Summary\n\nThis dataset contains temporal Harmonized Landsat and Sentinel-2 (HLS) imagery of diverse land covers across the Contiguous United States (CONUS) for the year 2022 along with binary cloud masks for the same area and year.\n\n### Dataset Structure\n```\nhls-multi-temporal-cloud-gap-imputation/\n\u251c\u2500\u2500 chip_catalog.csv\n\u251c\u2500\u2500 cloud_catalog.csv\n\u251c\u2500\u2500 train/\n\u2502 \u251c\u2500\u2500 hls_chips/\n\u2502 \u251c\u2500\u2500 cloud_masks/\n\u251c\u2500\u2500 test/\n\u2502 \u251c\u2500\u2500 hls_chips/\n\u2502 \u251c\u2500\u2500 hls_chips_masked/\n```\n## Data Catalogs\nData catalogs containing metadata for both HLS scenes and cloud masks are provided. The catalog for HLS scenes is provided in `chip_catalog.csv` and the catalog for cloud masks is provided in `cloud_catalog.csv`.\n\n### Cloud Catalog\n\n`cloud_catalog.csv` contains the following columns:\n| Column |  Contains  |\n|---------|--------|\n| cloud_mask_id       |  'chip_XXX_YYY' corresponding to the file name  |\n| cloud_pct       |  ratio of cloudy pixels within the chip, ranges from 0.0 to 1.0 |\n| usage       |  'train' or 'validate' |\n| bin       |  which of 10 bins the cloud mask fall within, e.g. 0.1-0.2  |\n\n### HLS Chip Catalog\n\n`chip_catalog.csv` contains the following columns:\n| Column |  Contains  |\n|---------|--------|\n| chip_id       |  'chip_XXX_YYY' corresponding to the file name  |\n| chip_x       |  x coordinate of bounding box centroid |\n| chip_y       |  y coordinate of bounding box centroid   |\n| tile       |  HLS tile ID   |\n| valid_first       |  count of valid pixels in the first time step  |\n| valid_second       |  count of valid pixels in the second time step  |\n| valid_third       |  count of valid pixels in the thrid time step  |\n| bad_pct_first       |  percent of invalid pixels in the first time step |\n| bad_pct_second       |  percent of invalid pixels in the second time step   |\n| bad_pct_third       |  percent of invalid pixels in the third time step   |\n| first_image_date       |  date of first time step in `YYYY/mm/dd` |\n| second_image_date       |  date of second time step in `YYYY/mm/dd`  |\n| third_image_date       |  date of third time step in `YYYY/mm/dd`  |\n| bad_pct_max       |  maximum of invalid pixels in all time steps  |\n| na_count       |  count of pixels in all time steps with no data |\n| usage | 'train' or 'validate' |\n\nInvalid pixels are those which intersect with any QA mask.\n\n## Ground Truth HLS Scenes\nThe ground truth HLS scenes are stored in GeoTIFF format under `train/hls_chips/` and `test/hls_chips/`. Each GeoTIFF file covers a 224 x 224 pixel area at 30m spatial resolution. Each file contains 18 bands consisting of 6 spectral bands in 3 steps stacked together. The file name structure is `chip_XXX_YYY.tif` where `XXX` and `YYY` refer to row and column of a tile grid imposed on the Continental US. Since the dataset is sampled from this country-wide grid not all `XXX`s and `YYY`s are present in the dataset.\n\n## Masked HLS Scenes for Testing\nTesting scenes are pre-masked to ensure that all models are evaluated using the same test set. These scenes are stored in GeoTIFF format under `test/hls_chips`. The file name structure for masked scenes is `chip_XXX_YYY_masked.tif`. Each masked scene corresponds to the ground truth scene with the same value of `XXX_YYY` in the file name. For example, the file `test/hls_chips/chip_373_294.tif` is the ground truth for `test/hls_masked/chip_373_294_masked.tif`, with the latter having values of 0 at cloud-masked locations. Cloud masks are present in all possible combinations of time steps in equal proportion. Possible combinations given time steps t1, t2, and t3 are:\n\n- t1\n- t2\n- t3\n- t1, t2\n- t1, t3,\n- t2, t3,\n- t1, t2, t3\n\nSo, for example, 1/7th of test scenes are masked at ONLY t2, and 1/7th at t2 AND t3, etc. for each of the possible combinations.\n\nCloud masks for the test scenes range from 0.01% coverage to 100% coverage, and are equally sampled from 10 equally sized bins between 0-100%.\n\n## Cloud Masks\nThe training cloud masks are stored in GeoTIFF format under `train/cloud_masks/`. The file name structure for cloud masks is `chip_XXX_YYY_T_cmask.tif` where `XXX` and `YYY` refer to row and column of a tile grid imposed on the Continental US. `T` refers to the time step of each cloud mask and is meant only to distinguish cloud masks derived from the same location from each other. The intent for training is that these cloud masks are randomly paired with training HLS scenes in all time steps. The distribution of cloud mask coverage for the training set does not correspond to the distribution of cloud mask coverage for the validation set, as the distribution of the latter has been equalized. This may lead to higher validation accuracy if the user chooses not to equalize the training dataset - it is left to the user's discretion.\n\n## Band Order\nIn each HLS GeoTIFF the following bands are repeated for each of three observations throughout the year:\n| Channel |  Name  |  HLS   S30 Band number |\n|---------|--------|------------------------|\n| 1       |  Blue  |  B02                   |\n| 2       |  Green |  B03                   |\n| 3       |  Red   |  B04                   |\n| 4       |  NIR   |  B8A                   |\n| 5       |  SWIR 1  |  B11                   |\n| 6       |  SWIR 2  |  B12                   | \n\nMasks are a stored as a single-band binary image where 1 denotes the presence of the cloud mask and 0 denotes the absence of the cloud mask.\n\n## Dataset Creation\n\nCode used to generate HLS scenes and cloud masks is available [here](https://github.com/ClarkCGA/cloud-gap-filling-td). Code used to generate masked test scenes is available [here](https://github.com/ClarkCGA/gfm-gap-filling-baseline/blob/main/gfm-gap-filling-baseline/gap-filling-baseline/datasets/gapfill.py). `usage='validate'` was used along with default parameters when initializing the dataset using the `gapfill.py` code. Refer to [Seeing Through the Clouds: Cloud Gap Imputation with Prithvi Foundation Model](https://arxiv.org/abs/2404.19609) for further information about the creation and initial use of this dataset.\n\n### Chip Generation and Partitioning\nThree HLS scenes were selected between Mar and Sep 2022 with time difference between scenes varying between 1 and 200 days. After filtering for missing values and cloudy pixels, a total of 7,852 cloud-free chips evenly distributed across the CONUS were generated. This set was randomly partitioned into training (80%) and validation (20%) sets, resulting in 6,231 training chips and 1,621 validation chips.\n\n### Cloud Generation and Partitioning\nCloud masks were generated from the same region of CONUS using HLS cloud mask quality flag and exported as a binary layer of cloudy and non-cloudy pixels. This yielded 21,642 cloud masks, of which 1,600 were randomly selected and reserved for validation, resulting in 20,042 training cloud masks\n\n### License and Citation\nThis dataset is published under a CC-BY-4.0 license. If you find this dataset useful for your application, you can cite it as following:\n\n```\n@misc{hls-multi-temporal-cloud-gap-imputation,\n    author = {Godwin, Denys and Li, Hanxi (Steve) and Alemohammad, Hamed},\n    doi    = {https://doi.org/10.5281/zenodo.11281740},\n    title  = {{Multi-Temporal Cloud Gap Imputation With HLS Data Across CONUS}},\n    version = {1.0},\n    year   = {2024}\n}\n```\n### Contact\nFor any questions about the dataset, you can contact [Dr. Hamed Alemohammad](mailto:halemohammad@clarku.edu). \n\n\n### Funding\nThis dataset is generated with funding from a grant awarded to [Clark University Center for Geospatial Analytics (CGA)](https://www.clarku.edu/cga/) by NASA. ",
+  "_review": [
+    "providers: role [licensor] for 'NASA' is an AI guess \u2014 NASA provided funding via grant; not stated as licensor but listed as funder. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-05-26T18:56:35+00:00"
 }

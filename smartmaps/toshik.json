@@ -1,17 +1,85 @@
 {
-  "account_id": "smartmaps",
-  "product_id": "toshik",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "smartmaps/toshik",
   "title": "\u90fd\u5e02\u8a08\u753b\u6c7a\u5b9aPMTiles",
-  "description": "\u90fd\u5e02\u8a08\u753b\u6c7a\u5b9aGIS\u30c7\u30fc\u30bf\uff08\u56fd\u571f\u4ea4\u901a\u7701\uff09\u3092\u52a0\u5de5\u3057\u3066\u4f7f\u7528",
+  "description": "Urban planning decision GIS data from Japan's Ministry of Land, Infrastructure, Transport and Tourism (MLIT), covering 21 urban planning zone categories including land use zones (\u7528\u9014\u5730\u57df), urban planning areas, road networks, parks, and fire prevention districts. Derived from official MLIT sources and served as a single PMTiles vector tile file spanning the Japanese archipelago.",
   "keywords": [
+    "land-use",
+    "urban-planning",
+    "zoning",
+    "japan",
+    "city-planning",
     "pmtiles"
   ],
-  "created_at": "2024-05-08T09:31:59.407579+00:00",
-  "updated_at": "2025-08-21T16:39:55.567Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
+  "providers": [
+    {
+      "name": "Ministry of Land, Infrastructure, Transport and Tourism (MLIT), Japan",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "smartmaps",
+      "roles": [
+        "processor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/smartmaps/toshik"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          124.069039,
+          24.3288494,
+          145.0380182,
+          45.4498188
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/smartmaps/toshik/",
+      "type": "application/octet-stream",
+      "title": "Dataset files (1 x .pmtiles)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/smartmaps/toshik/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/smartmaps/toshik",
+      "title": "Source Cooperative product page"
+    }
+  ],
+  "account_id": "smartmaps",
   "data_mode": "open",
+  "disabled": false,
+  "product_id": "toshik",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -24,16 +92,25 @@
       "prefix": "smartmaps/toshik/"
     }
   },
-  "file_count": 2,
+  "featured": 0,
   "total_bytes": 159932781,
+  "file_count": 2,
+  "visibility": "public",
+  "created_at": "2024-05-08T09:31:59.407579+00:00",
   "exts": {
     "pmtiles": 1,
     "md": 1
   },
-  "_state": "seed",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "id": "smartmaps/toshik"
+  "updated_at": "2025-08-21T16:39:55.567Z",
+  "readme": "## README.md\n# tk\n\u90fd\u5e02\u8a08\u753b\u6c7a\u5b9aGIS\u30c7\u30fc\u30bf\uff08\u56fd\u571f\u4ea4\u901a\u7701\uff09\n\n## Demo\n- [PMTiles Viewer](https://protomaps.github.io/PMTiles/?url=https%3A%2F%2Fdata.source.coop%2Fsmartmaps%2Ftoshik%2Fa.pmtiles#map=6.92/35.722/138.52)\n\n## Source Specifications\nhttps://www.mlit.go.jp/toshi/tosiko/content/001609328.pdf\n\n## basic schema\n- code - YoutoID (youto), youtoID (tkbt), and kubunID unified.\n- name - \u540d\u79f0 and tokeiname unified.\n- date - \u6c7a\u5b9a\u65e5\n- status - \u6c7a\u5b9a\u533a\u5206\n- by - \u6c7a\u5b9a\u8005\n- no - \u544a\u793a\u756a\u53f7\n- city - citycode (5\u6841)\n\n## layers\n1. youto \u7528\u9014\u5730\u57df\n2. tokei \u90fd\u5e02\u8a08\u753b\u533a\u57df\n3. senbiki \u533a\u57df\u533a\u5206\n4. ritteki \u7acb\u5730\u9069\u6b63\u5316\u8a08\u753b\n5. douro \u90fd\u5e02\u8a08\u753b\u9053\u8def\n6. bouka \u9632\u706b\u6e96\u9632\u706b\n7. koudoti \u9ad8\u5ea6\u5730\u533a\n8. koudori \u9ad8\u5ea6\u5229\u7528\u5730\u533a\n9. tochiku \u571f\u5730\u533a\u753b\u6574\u7406\u4e8b\u696d\n10. chikukei \u5730\u533a\u8a08\u753b\n11. tkbt \u7279\u5225\u7528\u9014\u5730\u533a\n12. kouen \u516c\u5712\n13. tokureiyouseki \u7279\u4f8b\u5bb9\u7a4d\u7387\u9069\u7528\u5730\u533a\n14. kousoujyukyo \u9ad8\u5c64\u4f4f\u5c45\u8a98\u5c0e\u5730\u533a\n15. kyojyuchosei \u5c45\u4f4f\u8abf\u6574\u5730\u57df\n16. tokuteiyuudou \u7279\u5b9a\u7528\u9014\u8a98\u5c0e\u5730\u533a\n17. tokuteibouka \u7279\u5b9a\u9632\u706b\u8857\u533a\u6574\u5099\u5730\u533a\n18. rekifuu \u6b74\u53f2\u7684\u98a8\u571f\u4fdd\u5b58\u5730\u533a\u3001\u6b74\u53f2\u7684\u98a8\u571f\u7279\u5225\u4fdd\u5b58\u5730\u533a\n19. ryokukachiiki \u7dd1\u5316\u5730\u57df\n20. soubou \u822a\u7a7a\u6a5f\u9a12\u97f3\u969c\u5bb3\u9632\u6b62\u5730\u533a\u3001\u822a\u7a7a\u6a5f\u9a12\u97f3\u969c\u5bb3\u9632\u6b62\u7279\u5225\u5730\u533a\n21. fukkousaiseikyoten \u4e00\u56e3\u5730\u306e\u5fa9\u8208\u518d\u751f\u62e0\u70b9\u5e02\u8857\u5730\u5f62\u6210\u65bd\u8a2d\n\n## code list\n### youto\n- 1 \u7b2c\uff11\u7a2e\u4f4e\u5c64\u4f4f\u5c45\u5c02\u7528\u5730\u57df\n- 2 \u7b2c\uff12\u7a2e\u4f4e\u5c64\u4f4f\u5c45\u5c02\u7528\u5730\u57df\n- 3 \u7b2c\uff11\u7a2e\u4e2d\u9ad8\u5c64\u4f4f\u5c45\u5c02\u7528\u5730\u57df\n- 4 \u7b2c\uff12\u7a2e\u4e2d\u9ad8\u5c64\u4f4f\u5c45\u5c02\u7528\u5730\u57df\n- 5 \u7b2c\uff11\u7a2e\u4f4f\u5c45\u5730\u57df\n- 6 \u7b2c\uff12\u7a2e\u4f4f\u5c45\u5730\u57df\n- 7 \u6e96\u4f4f\u5c45\u5730\u57df\n- 8 \u7530\u5712\u4f4f\u5c45\u5730\u57df\n- 9 \u8fd1\u96a3\u5546\u696d\u5730\u57df\n- 10 \u5546\u696d\u5730\u57df\n- 11 \u6e96\u5de5\u696d\u5730\u57df\n- 12 \u5de5\u696d\u5730\u57df\n- 13 \u5de5\u696d\u5c02\u7528\u5730\u57df\n\n### senbiki\n- 22 \u5e02\u8857\u5316\u533a\u57df\n- 23 \u5e02\u8857\u5316\u8abf\u6574\u533a\u57df\n\n### ritteki\n- 31 \u5c45\u4f4f\u8a98\u5c0e\u533a\u57df\n- 32 \u90fd\u5e02\u6a5f\u80fd\u8a98\u5c0e\u533a\u57df\n\n### douro\n- 3011 \u9053\u8def\n- 3023 \u5e83\u5834\n\n### bouka\n- 24 \u9632\u706b\u5730\u57df\n- 25 \u6e96\u9632\u706b\u5730\u57df\n\n### tkbt\n- 1 \u7279\u5225\u5de5\u696d\u5730\u533a\n- 2 \u6587\u6559\u5730\u533a\n- 3 \u5c0f\u58f2\u5e97\u8217\u5730\u533a\n- 4 \u4e8b\u52d9\u6240\u5730\u533a\n- 5 \u539a\u751f\u5730\u533a\n- 6 \u5a2f\u697d\u30ec\u30af\u30ea\u30a8\u30fc\u30b7\u30e7\u30f3\u5730\u533a\n- 7 \u89b3\u5149\u5730\u533a\n- 8 \u7279\u5225\u696d\u52d9\u5730\u533a\n- 9 \u4e2d\u9ad8\u5c64\u968e\u4f4f\u5c45\u5c02\u7528\u5730\u533a\n- 10 \u5546\u696d\u5c02\u7528\u5730\u533a\n- 11 \u7814\u7a76\u958b\u767a\u5730\u533a\n\n### kouen\n- 3021 \u516c\u5712\n- 3022 \u7dd1\u5730\n- 3024 \u5893\u5712\n\n### soubou\n- 40 \u822a\u7a7a\u6a5f\u9a12\u97f3\u969c\u5bb3\u9632\u6b62\u5730\u533a\n- 41 \u822a\u7a7a\u6a5f\u9a12\u97f3\u969c\u5bb3\u9632\u6b62\u7279\u5225\u5730\u533a\n\n## attribution\n[\u90fd\u5e02\u8a08\u753b\u6c7a\u5b9aGIS\u30c7\u30fc\u30bf\uff08\u56fd\u571f\u4ea4\u901a\u7701\uff09](https://www.mlit.go.jp/toshi/tosiko/toshi_tosiko_tk_000087.html)\u3092\u52a0\u5de5\u3057\u3066\u4f7f\u7528\n\n## Data repository\n[Source Cooperative smartmaps/toshik](https://beta.source.coop/repositories/smartmaps/toshik)\n",
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
+    "providers: role [processor] for 'smartmaps' is an AI guess \u2014 Inferred as processor from attribution stating MLIT data was processed (\u52a0\u5de5\u3057\u3066\u4f7f\u7528); smartmaps publishes the converted PMTiles.. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-05-26T18:27:47+00:00"
 }

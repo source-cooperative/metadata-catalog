@@ -1,19 +1,97 @@
 {
-  "account_id": "vizzuality",
-  "product_id": "hfp-100",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "vizzuality/hfp-100",
   "title": "Global 100m Terrestrial Human Footprint (HFP-100) v1.2",
-  "description": "The Human Footprint (HFP) is used to monitor changing anthropogenic pressures on nature on a yearly cadence based on land cover change, population density, nighttime lights, roads, railways, and navigable rivers. This dataset updates previous version of the Human Footprint with a higher resolution and more recent time-series. Includes global maps at a 100m resolution.",
+  "description": "Global 100m resolution raster maps of the Terrestrial Human Footprint (HFP-100) for 2017\u20132021, quantifying cumulative anthropogenic pressure on land surfaces. Pressure layers include built environments, croplands, pasture, population density, nighttime lights, roads, railways, and navigable waterways, combined into a standardized 0\u201350 score. Produced annually to monitor changing human impacts on terrestrial ecosystems worldwide.",
+  "license": "CC-BY-4.0",
   "keywords": [
-    "human footprint",
+    "land-use",
+    "remote-sensing",
+    "human-footprint",
     "biodiversity",
-    "land use"
+    "anthropogenic-pressure",
+    "population-density",
+    "land-cover"
   ],
-  "created_at": "2023-12-15T12:55:27.889194+00:00",
-  "updated_at": "2025-08-21T16:39:55.568Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": "open",
+  "providers": [
+    {
+      "name": "Impact Observatory",
+      "roles": [
+        "producer",
+        "processor"
+      ]
+    },
+    {
+      "name": "Gassert et al. / study authors",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Microsoft",
+      "roles": [
+        "processor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/vizzuality/hfp-100"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -158.2384567,
+          -85.0008119,
+          158.2388719,
+          85.0
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/vizzuality/hfp-100/",
+      "type": "image/tiff; application=geotiff",
+      "title": "Dataset files (5 x .tif)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/vizzuality/hfp-100/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/vizzuality/hfp-100",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "rel": "cite-as",
+      "href": "https://doi.org/10.3389/frsen.2023.1130896"
+    }
+  ],
+  "exts": {
+    "tif": 5,
+    "md": 1
+  },
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -26,16 +104,26 @@
       "prefix": "vizzuality/hfp-100/"
     }
   },
-  "file_count": 6,
+  "data_mode": "open",
   "total_bytes": 70394843544,
-  "exts": {
-    "tif": 5,
-    "md": 1
-  },
-  "_state": "seed",
+  "account_id": "vizzuality",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "id": "vizzuality/hfp-100"
+  "created_at": "2023-12-15T12:55:27.889194+00:00",
+  "updated_at": "2025-08-21T16:39:55.568Z",
+  "visibility": "public",
+  "file_count": 6,
+  "product_id": "hfp-100",
+  "featured": 0,
+  "disabled": false,
+  "readme": "## README.md\n# Global 100m Terrestrial Human Footprint (HFP-100) v1.2\n\nThis repository contains the global results for the Human Footprint 100m product for 2017, 2018, 2019, 2020 and 2021. The Human Footprint (HFP) is used to monitor changing anthropogenic pressures on a yearly cadence based on land cover change, population density, nighttime lights, roads, railways, and navigable rivers. \n\nThis version 1.2 includes the years 2017-2021 based on land cover from the Esri/Impact Observatory 10m Annual Land Use Land Cover (9-class) dataset. Version 1 of this dataset covering the years 2015-2020 can be found at https://datadryad.org/stash/dataset/doi:10.5061/dryad.ttdz08m1f.\n\nThis dataset was created by combining data on human pressures across the period 2017-2021 to map: 1) Land cover change (built environments, crop lands, and pasture lands), 2) population density, 3) electric infrastructure, 4) roadways, 5) railways, and 6) navigable waterways. Each pressure layer is assigned a score relative to its level of human pressure, then computed into a standardized scale of 0-50 as the sum of all pressure layers. Pressures are not mutually exclusive, rather the co-occurrence of pressures is intended to identify the greatest levels of human impact. The majority of layers cover the complete time period of 2017-2021, however pressures from pasture, roads, and railways are treated as static due to limitations in the input datasets.\n\nOverall methodology is based on the following:\n - B. A. Williams, O. Venter, J. R. Allan, S. C. Atkinson, J. A. Rehbein, M. Ward, M. Di Marco, H. S. Grantham, J. Ervin, S. J. Goetz, A. J. Hansen, P. Jantz, R. Pillay, S. Rodr\u00edguez-Buritic\u00e1, C. Supples, A. L. S. Virnig, J. E. M. Watson, Change in Terrestrial Human Footprint Drives Continued Loss of Intact Ecosystems. One Earth. 3, 371\u2013382 (2020).\n - E. W. Sanderson, M. Jaiteh, M. A. Levy, K. H. Redford, A. V. Wannebo, G. Woolmer, The Human Footprint and the Last of the Wild: The human footprint is a global map of human influence on the land surface, which suggests that human beings are stewards of nature, whether we like it or not. BioScience. 52, 891\u2013904 (2002).\n - O. Venter, E. W. Sanderson, A. Magrach, J. R. Allan, J. Beher, K. R. Jones, H. P. Possingham, W. F. Laurance, P. Wood, B. M. Fekete, M. A. Levy, J. E. M. Watson, Global terrestrial Human Footprint maps for 1993 and 2009. Sci. Data. 3, 160067 (2016).\n\nPlease see the following publication for more information: Gassert F., Venter O., Watson J.E.M., Brumby S.P., Mazzariello J.C., Atkinson S.C. and Hyde S., An Operational Approach to Near Real Time Global High Resolution Mapping of the Terrestrial Human Footprint. Front. Remote Sens. 4:1130896 doi: 10.3389/frsen.2023.1130896 (2023). https://www.frontiersin.org/articles/10.3389/frsen.2023.1130896/full\n\n## Data information\n\nHFP scores range from 0 to 50, with 0 representing virtually no human pressure and 50 representing severe human pressure on the environment. The data available here is multiplied by 1000 and converted to uint16 data type to reduce file sizes such that a value of 50000 corresponds to a score of 50. No data regions are coded as 65535. \n\n## Code/Software\n\nData was produced using open source Python scripts and processed in the Microsoft Planetary Computer infrastructure. Scripts used to produce this data are available at https://gitlab.com/impactobservatory/dwi-humanfootprint.\n\n## Suggested Citation\n\nF. Gassert, O. Venter, J. E.M. Watson, S.P. Brumby, J.C. Mazzariello, S.C. Atkinson, S. Hyde. 2023: \"Global 100m Terrestrial Human Footprint (HFP-100) v1.2\"\n\n## License\n\nCreative Commons CC-BY-4.0\n\n## Disclosure\n\nFunding provided by Microsoft.",
+  "_review": [
+    "providers: role [producer, processor] for 'Impact Observatory' is an AI guess \u2014 Named as source of input land cover data and code repository host; assumed processor role based on GitLab repo under impactobservatory. Verify before flipping to _state: reviewed.",
+    "providers: role [producer] for 'Gassert et al. / study authors' is an AI guess \u2014 Corresponding authors of the methodology publication; assumed producers of the HFP-100 dataset. Verify before flipping to _state: reviewed.",
+    "providers: role [processor] for 'Microsoft' is an AI guess \u2014 Provided Planetary Computer infrastructure for processing; funding disclosed but no explicit role label given. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-05-26T18:33:55+00:00"
 }

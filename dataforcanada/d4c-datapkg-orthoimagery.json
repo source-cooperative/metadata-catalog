@@ -1,15 +1,139 @@
 {
-  "account_id": "dataforcanada",
-  "product_id": "d4c-datapkg-orthoimagery",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "dataforcanada/d4c-datapkg-orthoimagery",
   "title": "Data for Canada - Orthoimagery Data Packages",
-  "description": "This repository provides systems-ready orthoimagery data for Canada, optimized for direct use in cloud-native geospatial applications and analysis pipelines. By standardizing diverse aerial and satellite imagery sources, it offers developers a consistent, high-performance visual baseline without the need for complex pre-processing.\r\n\r\nMore information available at https://github.com/dataforcanada/d4c-datapkg-orthoimagery/\r\n",
-  "keywords": [],
-  "created_at": "2026-02-20T16:16:23.518Z",
-  "updated_at": "2026-02-27T22:33:49.960Z",
+  "description": "A collection of high-resolution orthoimagery datasets covering Canadian cities and provinces, standardized into cloud-native formats (PMTiles, GeoTIFF) for direct use in geospatial applications. Source data originates from municipal and federal providers at resolutions ranging from 7.5 cm to 30 m, spanning years 2019\u20132025. The collection converts proprietary aerial imagery formats (ECW, MrSID) into open, web-optimized tile packages.",
+  "keywords": [
+    "remote-sensing",
+    "orthoimagery",
+    "aerial-photography",
+    "canada",
+    "pmtiles",
+    "cloud-native",
+    "land-use"
+  ],
+  "providers": [
+    {
+      "name": "Data for Canada",
+      "roles": [
+        "processor",
+        "host"
+      ]
+    },
+    {
+      "name": "City of Winnipeg",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "City of Edmonton",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "City of Red Deer",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "City of Burnaby",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "City of Vancouver",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "City of Whitehorse",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Province of Ontario",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Natural Resources Canada (NRCan)",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Versatiles",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/dataforcanada/d4c-datapkg-orthoimagery"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -113.7145921,
+          46.5186453,
+          -72.1718417,
+          53.5437454
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/dataforcanada/d4c-datapkg-orthoimagery/",
+      "type": "image/tiff; application=geotiff",
+      "title": "Dataset files (59425 x .tif)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/dataforcanada/d4c-datapkg-orthoimagery/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/dataforcanada/d4c-datapkg-orthoimagery",
+      "title": "Source Cooperative product page"
+    }
+  ],
   "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": "open",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -22,8 +146,13 @@
       "prefix": "dataforcanada/d4c-datapkg-orthoimagery/"
     }
   },
+  "data_mode": "open",
   "file_count": 63804,
   "total_bytes": 11678798770401,
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
   "exts": {
     "parquet": 2,
     "ecw": 152,
@@ -37,11 +166,25 @@
     "pmtiles": 10,
     "md": 1
   },
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "id": "dataforcanada/d4c-datapkg-orthoimagery",
-  "cataloged_at": "2026-04-29T18:35:39+00:00"
+  "disabled": false,
+  "created_at": "2026-02-20T16:16:23.518Z",
+  "featured": 0,
+  "updated_at": "2026-02-27T22:33:49.960Z",
+  "account_id": "dataforcanada",
+  "product_id": "d4c-datapkg-orthoimagery",
+  "readme": "## README.md\n# d4c-datapkg-orthoimagery\n\nLook through our [d4c-datapkg-orthoimagery](https://github.com/dataforcanada/d4c-datapkg-orthoimagery) repo for the datasets that are currently being processed and datasets being acquired.\n\n## Development Environment\n\nAlthough we prioritize open-source tools, we currently use [MapTiler Engine Pro](https://www.maptiler.com/engine/pricing) because it outperforms available open-source alternatives for this specific workflow.\n\n## Specifications of Tile Packages\n\nThe specifications for the tile packages are defined in this code.\n\n```bash\n#!/bin/bash\nPROJECT_DIR=\"~/Documents/Personal/Projects/dataforcanada/d4c-datapkg-orthoimagery\"\nDATASET_ID=\"ca-mb_winnipeg-2024A00054611040_orthoimagery_2024_075mm\"\nDATA_DIR=\"${PROJECT_DIR}/data\"\nDATA_INPUT_DIR=\"${DATA_DIR}/input/${DATASET_ID}\"\nDATA_OUTPUT_DIR=\"${DATA_DIR}/output/${DATASET_ID}\"\n\nMBTILES_OUTPUT_FILE=\"${DATA_OUTPUT_DIR}/${DATASET_ID}.mbtiles\"\nPMTILES_OUTPUT_FILE=\"${DATA_OUTPUT_DIR}/${DATASET_ID}.pmtiles\"\n\n# Define arguments in an array\nARGS=(\n  -progress\n  -name \"City of Winnipeg Orthoimagery for 2024 / Ortho-imagerie de la Ville de Winnipeg de 2024\"\n  -description \"Orthoimagery 7.5cm resolution. / Ortho-imagerie \u00e0 r\u00e9solution de 7,5 cm.\"\n  -attribution \"Source: data.winnipeg.ca / Source: data.winnipeg.ca\"\n  -srs_epsg\n  -mbtiles_compatible\n  -wo \"NUM_THREADS=ALL_CPUS\"\n  -wo \"USE_OPENCL=TRUE\"\n  -sparse\n  -scale 2.000000\n  -work_dir ~/tmp/maptiler_engine\n  -f webp32\n  -webp_quality 85\n  -webp_lossy\n  -webp_preset photo\n  -resampling cubic\n  -overviews_resampling average\n  -o \"${MBTILES_OUTPUT_FILE}\"\n  $DATA_INPUT_DIR/*.ecw\n)\n\n# Run the command with the array\nmaptiler-engine \"${ARGS[@]}\"\n\npmtiles convert --tmpdir=~/tmp/pmtiles ${MBTILES_OUTPUT_FILE} ${PMTILES_OUTPUT_FILE}\n```\n\n## Download and Preview\n\nHere is a table of some of the datasets created from the current process.\n\n| Place | ISO | Year | Provider | Dataset ID & Preview | PMTiles |\n| --- | --- | --- | --- | --- | --- |\n| Canada | CA | 2025 | Versatiles | [ca_versatiles-2021A000011124_d4c-datapkg-orthoimagery_2025-08-10](https://source.coop/dataforcanada/d4c-datapkg-orthoimagery/processed/ca_versatiles-2021A000011124_d4c-datapkg-orthoimagery_2025-08-10.pmtiles) | [Download](https://source.coop/dataforcanada/d4c-datapkg-orthoimagery/processed/ca_versatiles-2021A000011124_d4c-datapkg-orthoimagery_2025-08-10.pmtiles) |\n| Canada | CA | 2020 | NRCan | [ca_nrcan-2021A000011124_d4c-datapkg-orthoimagery_2020_30m_v0.1.0-beta](https://source.coop/dataforcanada/d4c-datapkg-orthoimagery/processed/ca_nrcan-2021A000011124_d4c-datapkg-orthoimagery_2020_30m_v0.1.0-beta.pmtiles) | [Download](https://source.coop/dataforcanada/d4c-datapkg-orthoimagery/processed/ca_nrcan-2021A000011124_d4c-datapkg-orthoimagery_2020_30m_v0.1.0-beta.pmtiles) |\n| Edmonton | CA-AB | 2023 | Edmonton | [ca-ab_edmonton-2023A00054811061_d4c-datapkg-orthoimagery_2023_075mm_v0.1.0-beta](https://source.coop/dataforcanada/d4c-datapkg-orthoimagery/processed/ca-ab_edmonton-2023A00054811061_d4c-datapkg-orthoimagery_2023_075mm_v0.1.0-beta.pmtiles) | [Download](https://source.coop/dataforcanada/d4c-datapkg-orthoimagery/processed/ca-ab_edmonton-2023A00054811061_d4c-datapkg-orthoimagery_2023_075mm_v0.1.0-beta.pmtiles) |\n| Red Deer | CA-AB | 2024 | Red Deer | [ca-ab_red-deer-2024A00054808011_d4c-datapkg-orthoimagery_2024_075mm_v0.1.0-beta](https://source.coop/dataforcanada/d4c-datapkg-orthoimagery/processed/ca-ab_red-deer-2024A00054808011_d4c-datapkg-orthoimagery_2024_075mm_v0.1.0-beta.pmtiles) | [Download](https://source.coop/dataforcanada/d4c-datapkg-orthoimagery/processed/ca-ab_red-deer-2024A00054808011_d4c-datapkg-orthoimagery_2024_075mm_v0.1.0-beta.pmtiles) |\n| Red Deer | CA-AB | 2025 | Red Deer | [ca-ab_red-deer-2025A00054808011_d4c-datapkg-orthoimagery_2025_075mm_v0.1.0-beta](https://source.coop/dataforcanada/d4c-datapkg-orthoimagery/processed/ca-ab_red-deer-2025A00054808011_d4c-datapkg-orthoimagery_2025_075mm_v0.1.0-beta.pmtiles) | [Download](https://source.coop/dataforcanada/d4c-datapkg-orthoimagery/processed/ca-ab_red-deer-2025A00054808011_d4c-datapkg-orthoimagery_2025_075mm_v0.1.0-beta.pmtiles) |\n| Burnaby | CA-BC | 2020 | Burnaby | [ca-bc_burnaby-2020A00055915025_d4c-datapkg-orthoimagery_2020_075mm_v0.1.0-beta](https://source.coop/dataforcanada/d4c-datapkg-orthoimagery/processed/ca-bc_burnaby-2020A00055915025_d4c-datapkg-orthoimagery_2020_075mm_v0.1.0-beta.pmtiles) | [Download](https://source.coop/dataforcanada/d4c-datapkg-orthoimagery/processed/ca-bc_burnaby-2020A00055915025_d4c-datapkg-orthoimagery_2020_075mm_v0.1.0-beta.pmtiles) |\n| Vancouver | CA-BC | 2022 | Vancouver | [ca-bc_vancouver-2022A00055915022_d4c-datapkg-orthoimagery_2022_075mm_v0.1.0-beta](https://source.coop/dataforcanada/d4c-datapkg-orthoimagery/processed/ca-bc_vancouver-2022A00055915022_d4c-datapkg-orthoimagery_2022_075mm_v0.1.0-beta.pmtiles) | [Download](https://source.coop/dataforcanada/d4c-datapkg-orthoimagery/processed/ca-bc_vancouver-2022A00055915022_d4c-datapkg-orthoimagery_2022_075mm_v0.1.0-beta.pmtiles) |\n| Winnipeg | CA-MB | 2024 | Winnipeg | [ca-mb_winnipeg-2024A00054611040_d4c-datapkg-orthoimagery_2024_075mm_v0.1.0-beta](https://source.coop/dataforcanada/d4c-datapkg-orthoimagery/processed/ca-mb_winnipeg-2024A00054611040_d4c-datapkg-orthoimagery_2024_075mm_v0.1.0-beta.pmtiles) | [Download](https://source.coop/dataforcanada/d4c-datapkg-orthoimagery/processed/ca-mb_winnipeg-2024A00054611040_d4c-datapkg-orthoimagery_2024_075mm_v0.1.0-beta.pmtiles) |\n| Whitehorse | CA-YT | 2019 | Whitehorse | [ca-yt_whitehorse-2019A000556001009_d4c-datapkg-orthoimagery_2019_200mm_v0.1.0-beta](https://source.coop/dataforcanada/d4c-datapkg-orthoimagery/processed/ca-yt_whitehorse-2019A000556001009_d4c-datapkg-orthoimagery_2019_200mm_v0.1.0-beta.pmtiles) | [Download](https://source.coop/dataforcanada/d4c-datapkg-orthoimagery/processed/ca-yt_whitehorse-2019A000556001009_d4c-datapkg-orthoimagery_2019_200mm_v0.1.0-beta.pmtiles) |\n| Ontario | CA-ON | 2024 | Province of Ontario | [ca-on_province_of_ontario-2024A000235_drape_eastern_ontario_orthoimagery_2024_16cm_v0.1.0-beta](https://source.coop/dataforcanada/d4c-datapkg-orthoimagery/processed/ca-on_province_of_ontario-2024A000235_drape_eastern_ontario_orthoimagery_2024_16cm_v0.1.0-beta.pmtiles) | [Download](https://source.coop/dataforcanada/d4c-datapkg-orthoimagery/processed/ca-on_province_of_ontario-2024A000235_drape_eastern_ontario_orthoimagery_2024_16cm_v0.1.0-beta.pmtiles) |\n\n## The Plan\n\nThe objective is to standardize the source datasets used by Data for Canada processes. For instance, Vancouver\u2019s orthoimagery is currently distributed in proprietary formats (MrSID and ECW) that require specialized drivers. We are currently evaluating open alternatives, such as [Cloud Optimized GeoTIFFs](https://cogeo.org/), while ensuring that the conversion process preserves full visual fidelity. Future iterations will also explore the integration of multispectral data.\n",
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
+    "providers: role [producer, licensor] for 'City of Winnipeg' is an AI guess \u2014 Listed as source provider for Winnipeg imagery; licensor assumed from municipal open data norms. Verify before flipping to _state: reviewed.",
+    "providers: role [producer, licensor] for 'City of Edmonton' is an AI guess \u2014 Listed as source provider for Edmonton imagery; licensor assumed from municipal open data norms. Verify before flipping to _state: reviewed.",
+    "providers: role [producer, licensor] for 'City of Red Deer' is an AI guess \u2014 Listed as source provider for Red Deer imagery; licensor assumed from municipal open data norms. Verify before flipping to _state: reviewed.",
+    "providers: role [producer, licensor] for 'City of Burnaby' is an AI guess \u2014 Listed as source provider for Burnaby imagery; licensor assumed from municipal open data norms. Verify before flipping to _state: reviewed.",
+    "providers: role [producer, licensor] for 'City of Vancouver' is an AI guess \u2014 Listed as source provider for Vancouver imagery; licensor assumed from municipal open data norms. Verify before flipping to _state: reviewed.",
+    "providers: role [producer, licensor] for 'City of Whitehorse' is an AI guess \u2014 Listed as source provider for Whitehorse imagery; licensor assumed from municipal open data norms. Verify before flipping to _state: reviewed.",
+    "providers: role [producer, licensor] for 'Province of Ontario' is an AI guess \u2014 Listed as source provider for Ontario imagery; licensor assumed from provincial open data norms. Verify before flipping to _state: reviewed.",
+    "providers: role [producer, licensor] for 'Natural Resources Canada (NRCan)' is an AI guess \u2014 Listed as provider for national-scale 30m imagery; licensor assumed from federal open data norms. Verify before flipping to _state: reviewed.",
+    "providers: role [producer] for 'Versatiles' is an AI guess \u2014 Listed as provider for 2025 Canada-wide dataset; exact role unclear from README. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-05-26T19:02:52+00:00"
 }

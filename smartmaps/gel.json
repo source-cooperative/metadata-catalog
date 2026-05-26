@@ -1,17 +1,90 @@
 {
-  "account_id": "smartmaps",
-  "product_id": "gel",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "smartmaps/gel",
   "title": "Smart Maps Global Elevation Tiles",
-  "description": "WEBP elevation tiles, with mapbox pixel packing, packaged in PMTiles. \nSource data are NASADEM and Global Map data.\nPleese see https://qiita.com/T-ubu/items/c7bb5697b51f245ef163 for technical details. \nObservable demo is https://observablehq.com/d/652ef8ca26776146. ",
+  "description": "Global RGB elevation tiles derived from NASADEM (zoom levels 6\u201312) and Global Map/ISCGM data (zoom levels 2\u20135), packaged as a single PMTiles file using Mapbox RGB pixel-packing (WebP). The dataset covers nearly the entire globe and is released as open data to reduce copyright constraints on terrain visualization. Produced under the UN Smart Maps Group of the UN Open GIS Initiative.",
+  "license": "CC0-1.0",
   "keywords": [
-    "pmtiles"
+    "elevation",
+    "terrain",
+    "digital-elevation-model",
+    "pmtiles",
+    "remote-sensing",
+    "global-coverage",
+    "raster-tiles"
   ],
-  "created_at": "2024-04-06T00:31:10.749389+00:00",
-  "updated_at": "2025-08-21T16:39:55.567Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 1,
-  "data_mode": "open",
+  "providers": [
+    {
+      "name": "NASA / USGS (NASADEM)",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "ISCGM / National Geospatial Information Authorities (Global Map)",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "UN Smart Maps Group / UN Open GIS Initiative",
+      "roles": [
+        "processor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/smartmaps/gel"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -180.0,
+          -90.0,
+          180.0,
+          90.0
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/smartmaps/gel/",
+      "type": "application/octet-stream",
+      "title": "Dataset files (1 x .pmtiles)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/smartmaps/gel/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/smartmaps/gel",
+      "title": "Source Cooperative product page"
+    }
+  ],
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -24,16 +97,28 @@
       "prefix": "smartmaps/gel/"
     }
   },
-  "file_count": 2,
+  "featured": 1,
   "total_bytes": 195962956133,
-  "exts": {
-    "pmtiles": 1,
-    "md": 1
-  },
-  "_state": "seed",
+  "created_at": "2024-04-06T00:31:10.749389+00:00",
+  "account_id": "smartmaps",
+  "disabled": false,
+  "updated_at": "2025-08-21T16:39:55.567Z",
+  "visibility": "public",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "id": "smartmaps/gel"
+  "file_count": 2,
+  "product_id": "gel",
+  "data_mode": "open",
+  "exts": {
+    "pmtiles": 1,
+    "md": 1
+  },
+  "readme": "## README.md\n## Overview\n\nThis dataset is RGB elevation tiles of the world converted from open data namely NASADEM (zoom level: 6-12) and Global Map data (zoom level: 2-5). Although we can find RGB elevation tiles dataset easily, sometimes it is difficult to use it because of the copyright. We made these RGB elevation tiles as open data to reduce constraints in the importation of geographical data and make the imported data flexible and effectively usable anywhere. This work is done under the UN Smart Maps Group of UN Open GIS Initiative.\n\n## Demo: See it in action\n\n- [A demo on Observable](https://observablehq.com/d/652ef8ca26776146)\u00a0for a quick overview of the dataset.\n- [A fullscreen website](https://optgeo.github.io/glob/) with hash URL enabled.\n\n## Original datasets\n\n- NASADEM\n\nNASADEM is based on SRTM and complemented by ASTER G-DEM and ALOS 30 meter DEM. It has 1 arc second spatial resolutions (about 30 meters).\n\nhttps://lpdaac.usgs.gov/products/nasadem_hgtv001/\n\n- Global Map (ISCGM)\n\nGlobal Map is fundamental digital geospatial information covering the whole land of the globe. Global Map data were developed under the cooperation of National Geospatial Information Authorities (NGIAs) of respective countries and regions. ISCGM served as the secretariat until the project concluded in 2017.\n\nhttps://globalmaps.github.io/\n\n## Data\n\nFormat: PMTiles\n\nZoom level: 6 to 12\n\nSpatial Extent:\n- ZL 2-5 Global (around 85\u00b0N to 85\u00b0S, 180\u00b0W to 180\u00b0E)\n- ZL 6-12 Global (60\u00b0N to 56\u00b0S, 180\u00b0W to 180\u00b0E)\n\nSize: 182.5 GB (The number of file: 1)\n\nConvert Date: 2022 October\n\nURL: https://data.source.coop/smartmaps/gel/gel.pmtiles\n\n## Dataset License\n\nCC0(No Rights Reserved)\n\nhttps://creativecommons.org/public-domain/cc0/\n\n## Reference\n\n- Technical Detail\n\n*https://qiita.com/T-ubu/items/c7bb5697b51f245ef163*\n\n*https://qiita.com/T-ubu/items/ced8423e0ebeda8c9244*\n\n- UN Smart Maps Group website (on GitHub Pages)\n\nhttps://github.com/UNopenGIS/7\n\n- UN Open GIS Initiative website\n\nhttp://unopengis.org/unopengis/main/main.php\n",
+  "_review": [
+    "providers: role [processor] for 'UN Smart Maps Group / UN Open GIS Initiative' is an AI guess \u2014 README credits this group with converting the source DEMs to RGB PMTiles; assumed processor role.. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-05-26T18:30:57+00:00"
 }

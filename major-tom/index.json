@@ -1,15 +1,793 @@
 {
-  "account_id": "major-tom",
-  "product_id": "index",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
+  "id": "major-tom/index",
   "title": "Index",
-  "description": "Global metadata catalog for the MajorTOM 10 km grid. Over 5 million tiles enriched with terrain, climate, soil, socioeconomic, and administrative attributes. GeoParquet format.",
-  "keywords": [],
+  "description": "The Major TOM Index is a global metadata catalog covering over 5 million 10 km tiles aligned to the Sentinel-2 MGRS grid at 10 m resolution. Each tile is enriched with terrain, climate, soil, socioeconomic, and administrative attributes derived from public Earth Engine datasets. Five GeoParquet files provide the complete global grid, land-only subsets, sensor-linked records for Sentinel-2 and Landsat 8/9 with Google Earth Engine image IDs, and a curated ELLIOT subset with split assignments for Earth observation foundation model research.",
+  "license": "CC-BY-4.0",
+  "keywords": [
+    "remote-sensing",
+    "earth-observation",
+    "sentinel-2",
+    "landsat",
+    "satellite-imagery",
+    "foundation-models",
+    "geoparquet",
+    "global-coverage"
+  ],
+  "providers": [
+    {
+      "name": "ESA PhiLab",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Asterisk Labs",
+      "roles": [
+        "processor"
+      ]
+    },
+    {
+      "name": "Image and Signal Processing Group (ISP), Universitat de Val\u00e8ncia",
+      "roles": [
+        "processor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/major-tom/index"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 12904264
+  },
+  "assets": {
+    "elliot": {
+      "href": "https://data.source.coop/major-tom/index/elliot.parquet",
+      "type": "application/x-parquet",
+      "title": "elliot.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "majortom:code_100km",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "majortom:code_1000km",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "majortom:crs",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "majortom:mgrs_tile",
+          "type": "VARCHAR",
+          "description": "[admin_code] Sentinel-2 MGRS tile code"
+        },
+        {
+          "name": "majortom:mgrs_n",
+          "type": "UTINYINT"
+        },
+        {
+          "name": "majortom:mgrs_candidates",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "majortom:footprint_pct",
+          "type": "FLOAT"
+        },
+        {
+          "name": "majortom:geotransform",
+          "type": "INTEGER[]"
+        },
+        {
+          "name": "majortom:geotransform_raw",
+          "type": "DOUBLE[]"
+        },
+        {
+          "name": "terrain:elevation",
+          "type": "FLOAT"
+        },
+        {
+          "name": "socio:cisi",
+          "type": "FLOAT"
+        },
+        {
+          "name": "climate:precipitation",
+          "type": "FLOAT"
+        },
+        {
+          "name": "climate:temperature",
+          "type": "FLOAT"
+        },
+        {
+          "name": "soil:clay",
+          "type": "FLOAT"
+        },
+        {
+          "name": "soil:sand",
+          "type": "FLOAT"
+        },
+        {
+          "name": "soil:carbon",
+          "type": "FLOAT"
+        },
+        {
+          "name": "soil:bulk_density",
+          "type": "FLOAT"
+        },
+        {
+          "name": "soil:ph",
+          "type": "FLOAT"
+        },
+        {
+          "name": "socio:gdp",
+          "type": "FLOAT"
+        },
+        {
+          "name": "socio:human_modification",
+          "type": "FLOAT"
+        },
+        {
+          "name": "socio:population",
+          "type": "FLOAT"
+        },
+        {
+          "name": "admin:country",
+          "type": "VARCHAR",
+          "description": "[placename] Country name"
+        },
+        {
+          "name": "admin:state",
+          "type": "VARCHAR",
+          "description": "[placename] State or province name"
+        },
+        {
+          "name": "admin:district",
+          "type": "VARCHAR",
+          "description": "[placename] District or county name"
+        },
+        {
+          "name": "split",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY",
+          "description": "[geometry] WKB tile footprint geometry for spatial queries"
+        }
+      ],
+      "table:row_count": 279166
+    },
+    "global": {
+      "href": "https://data.source.coop/major-tom/index/global.parquet",
+      "type": "application/x-parquet",
+      "title": "global.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "majortom:code_100km",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "majortom:code_1000km",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "majortom:crs",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "majortom:mgrs_tile",
+          "type": "VARCHAR",
+          "description": "[admin_code] Sentinel-2 MGRS tile code"
+        },
+        {
+          "name": "majortom:mgrs_n",
+          "type": "UTINYINT"
+        },
+        {
+          "name": "majortom:mgrs_candidates",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "majortom:footprint_pct",
+          "type": "FLOAT"
+        },
+        {
+          "name": "majortom:geotransform",
+          "type": "INTEGER[]"
+        },
+        {
+          "name": "majortom:geotransform_raw",
+          "type": "DOUBLE[]"
+        },
+        {
+          "name": "terrain:elevation",
+          "type": "FLOAT"
+        },
+        {
+          "name": "socio:cisi",
+          "type": "FLOAT"
+        },
+        {
+          "name": "climate:precipitation",
+          "type": "FLOAT"
+        },
+        {
+          "name": "climate:temperature",
+          "type": "FLOAT"
+        },
+        {
+          "name": "soil:clay",
+          "type": "FLOAT"
+        },
+        {
+          "name": "soil:sand",
+          "type": "FLOAT"
+        },
+        {
+          "name": "soil:carbon",
+          "type": "FLOAT"
+        },
+        {
+          "name": "soil:bulk_density",
+          "type": "FLOAT"
+        },
+        {
+          "name": "soil:ph",
+          "type": "FLOAT"
+        },
+        {
+          "name": "socio:gdp",
+          "type": "FLOAT"
+        },
+        {
+          "name": "socio:human_modification",
+          "type": "FLOAT"
+        },
+        {
+          "name": "socio:population",
+          "type": "FLOAT"
+        },
+        {
+          "name": "admin:country",
+          "type": "VARCHAR",
+          "description": "[placename] Country name"
+        },
+        {
+          "name": "admin:state",
+          "type": "VARCHAR",
+          "description": "[placename] State or province name"
+        },
+        {
+          "name": "admin:district",
+          "type": "VARCHAR",
+          "description": "[placename] District or county name"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY",
+          "description": "[geometry] WKB tile footprint geometry for spatial queries"
+        }
+      ],
+      "table:row_count": 5055204
+    },
+    "land": {
+      "href": "https://data.source.coop/major-tom/index/land.parquet",
+      "type": "application/x-parquet",
+      "title": "land.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "majortom:code_100km",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "majortom:code_1000km",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "majortom:crs",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "majortom:mgrs_tile",
+          "type": "VARCHAR",
+          "description": "[admin_code] Sentinel-2 MGRS tile code"
+        },
+        {
+          "name": "majortom:mgrs_n",
+          "type": "UTINYINT"
+        },
+        {
+          "name": "majortom:mgrs_candidates",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "majortom:footprint_pct",
+          "type": "FLOAT"
+        },
+        {
+          "name": "majortom:geotransform",
+          "type": "INTEGER[]"
+        },
+        {
+          "name": "majortom:geotransform_raw",
+          "type": "DOUBLE[]"
+        },
+        {
+          "name": "terrain:elevation",
+          "type": "FLOAT"
+        },
+        {
+          "name": "socio:cisi",
+          "type": "FLOAT"
+        },
+        {
+          "name": "climate:precipitation",
+          "type": "FLOAT"
+        },
+        {
+          "name": "climate:temperature",
+          "type": "FLOAT"
+        },
+        {
+          "name": "soil:clay",
+          "type": "FLOAT"
+        },
+        {
+          "name": "soil:sand",
+          "type": "FLOAT"
+        },
+        {
+          "name": "soil:carbon",
+          "type": "FLOAT"
+        },
+        {
+          "name": "soil:bulk_density",
+          "type": "FLOAT"
+        },
+        {
+          "name": "soil:ph",
+          "type": "FLOAT"
+        },
+        {
+          "name": "socio:gdp",
+          "type": "FLOAT"
+        },
+        {
+          "name": "socio:human_modification",
+          "type": "FLOAT"
+        },
+        {
+          "name": "socio:population",
+          "type": "FLOAT"
+        },
+        {
+          "name": "admin:country",
+          "type": "VARCHAR",
+          "description": "[placename] Country name"
+        },
+        {
+          "name": "admin:state",
+          "type": "VARCHAR",
+          "description": "[placename] State or province name"
+        },
+        {
+          "name": "admin:district",
+          "type": "VARCHAR",
+          "description": "[placename] District or county name"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY",
+          "description": "[geometry] WKB tile footprint geometry for spatial queries"
+        }
+      ],
+      "table:row_count": 2767104
+    },
+    "land_l8": {
+      "href": "https://data.source.coop/major-tom/index/land_l8.parquet",
+      "type": "application/x-parquet",
+      "title": "land_l8.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "majortom:code_100km",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "majortom:code_1000km",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "stac:crs",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "stac:geotransform",
+          "type": "BIGINT[]"
+        },
+        {
+          "name": "stac:tensor_shape",
+          "type": "INTEGER[]"
+        },
+        {
+          "name": "stac:time_start",
+          "type": "BIGINT"
+        },
+        {
+          "name": "stac:time_end",
+          "type": "BIGINT"
+        },
+        {
+          "name": "l8:id_gee",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "l8:product_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "l8:spacecraft",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "l8:collection_number",
+          "type": "UTINYINT"
+        },
+        {
+          "name": "l8:collection_category",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "l8:processing_software",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "l8:wrs_path",
+          "type": "USMALLINT"
+        },
+        {
+          "name": "l8:wrs_row",
+          "type": "USMALLINT"
+        },
+        {
+          "name": "l8:cloud_cover",
+          "type": "FLOAT"
+        },
+        {
+          "name": "l8:sun_azimuth",
+          "type": "FLOAT"
+        },
+        {
+          "name": "l8:sun_elevation",
+          "type": "FLOAT"
+        },
+        {
+          "name": "l8:earth_sun_distance",
+          "type": "FLOAT"
+        },
+        {
+          "name": "l8:image_quality_oli",
+          "type": "UTINYINT"
+        },
+        {
+          "name": "l8:roll_angle",
+          "type": "FLOAT"
+        },
+        {
+          "name": "terrain:elevation",
+          "type": "FLOAT"
+        },
+        {
+          "name": "climate:precipitation",
+          "type": "FLOAT"
+        },
+        {
+          "name": "climate:temperature",
+          "type": "FLOAT"
+        },
+        {
+          "name": "soil:clay",
+          "type": "FLOAT"
+        },
+        {
+          "name": "soil:sand",
+          "type": "FLOAT"
+        },
+        {
+          "name": "soil:carbon",
+          "type": "FLOAT"
+        },
+        {
+          "name": "soil:bulk_density",
+          "type": "FLOAT"
+        },
+        {
+          "name": "soil:ph",
+          "type": "FLOAT"
+        },
+        {
+          "name": "socio:gdp",
+          "type": "FLOAT"
+        },
+        {
+          "name": "socio:population",
+          "type": "FLOAT"
+        },
+        {
+          "name": "socio:human_modification",
+          "type": "FLOAT"
+        },
+        {
+          "name": "socio:cisi",
+          "type": "FLOAT"
+        },
+        {
+          "name": "admin:country",
+          "type": "VARCHAR",
+          "description": "[placename] Country name"
+        },
+        {
+          "name": "admin:state",
+          "type": "VARCHAR",
+          "description": "[placename] State or province name"
+        },
+        {
+          "name": "admin:district",
+          "type": "VARCHAR",
+          "description": "[placename] District or county name"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY",
+          "description": "[geometry] WKB tile footprint geometry for spatial queries"
+        }
+      ],
+      "table:row_count": 2255537
+    },
+    "land_s2": {
+      "href": "https://data.source.coop/major-tom/index/land_s2.parquet",
+      "type": "application/x-parquet",
+      "title": "land_s2.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "majortom:code_100km",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "majortom:code_1000km",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "stac:crs",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "stac:geotransform",
+          "type": "BIGINT[]"
+        },
+        {
+          "name": "stac:tensor_shape",
+          "type": "INTEGER[]"
+        },
+        {
+          "name": "stac:time_start",
+          "type": "BIGINT"
+        },
+        {
+          "name": "stac:time_end",
+          "type": "BIGINT"
+        },
+        {
+          "name": "s2:id_gee",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "s2:product_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "s2:spacecraft",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "s2:processing_baseline",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "s2:orbit_number",
+          "type": "USMALLINT"
+        },
+        {
+          "name": "s2:mean_solar_azimuth",
+          "type": "FLOAT"
+        },
+        {
+          "name": "s2:mean_solar_zenith",
+          "type": "FLOAT"
+        },
+        {
+          "name": "s2:mean_view_azimuth",
+          "type": "FLOAT"
+        },
+        {
+          "name": "s2:mean_view_zenith",
+          "type": "FLOAT"
+        },
+        {
+          "name": "s2:reflectance_conversion",
+          "type": "FLOAT"
+        },
+        {
+          "name": "terrain:elevation",
+          "type": "FLOAT"
+        },
+        {
+          "name": "climate:precipitation",
+          "type": "FLOAT"
+        },
+        {
+          "name": "climate:temperature",
+          "type": "FLOAT"
+        },
+        {
+          "name": "soil:clay",
+          "type": "FLOAT"
+        },
+        {
+          "name": "soil:sand",
+          "type": "FLOAT"
+        },
+        {
+          "name": "soil:carbon",
+          "type": "FLOAT"
+        },
+        {
+          "name": "soil:bulk_density",
+          "type": "FLOAT"
+        },
+        {
+          "name": "soil:ph",
+          "type": "FLOAT"
+        },
+        {
+          "name": "socio:gdp",
+          "type": "FLOAT"
+        },
+        {
+          "name": "socio:population",
+          "type": "FLOAT"
+        },
+        {
+          "name": "socio:human_modification",
+          "type": "FLOAT"
+        },
+        {
+          "name": "socio:cisi",
+          "type": "FLOAT"
+        },
+        {
+          "name": "admin:country",
+          "type": "VARCHAR",
+          "description": "[placename] Country name"
+        },
+        {
+          "name": "admin:state",
+          "type": "VARCHAR",
+          "description": "[placename] State or province name"
+        },
+        {
+          "name": "admin:district",
+          "type": "VARCHAR",
+          "description": "[placename] District or county name"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY",
+          "description": "[geometry] WKB tile footprint geometry for spatial queries"
+        }
+      ],
+      "table:row_count": 2547253
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/major-tom/index/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/major-tom/index",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "rel": "cite-as",
+      "href": "https://doi.org/10.1109/IGARSS53475.2024.10640760"
+    }
+  ],
+  "total_bytes": 498659385,
+  "featured": 0,
+  "exts": {
+    "parquet": 5,
+    "ds_store": 1,
+    "md": 2,
+    "png": 3
+  },
+  "disabled": false,
+  "visibility": "public",
+  "data_mode": "open",
+  "file_count": 11,
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
   "created_at": "2026-04-10T11:50:32.691Z",
   "updated_at": "2026-04-11T19:47:25.241Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": "open",
+  "product_id": "index",
+  "account_id": "major-tom",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -22,19 +800,12 @@
       "prefix": "major-tom/index/"
     }
   },
-  "file_count": 11,
-  "total_bytes": 498659385,
-  "exts": {
-    "parquet": 5,
-    "ds_store": 1,
-    "md": 2,
-    "png": 3
-  },
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "id": "major-tom/index",
-  "cataloged_at": "2026-04-29T18:37:12+00:00"
+  "readme": "## README.md\n# Index\n\n[![Source Cooperative](https://img.shields.io/badge/Source_Cooperative-majortom--index-blue)](https://source.coop/major-tom/index)\n[![License](https://img.shields.io/badge/license-CC--BY--4.0-orange)](https://creativecommons.org/licenses/by/4.0/)\n\nThe Major TOM Index is a global metadata catalog for the [Major TOM](https://github.com/ESA-PhiLab/Major-TOM) grid at 10 km resolution. It provides a single entry point to discover, filter, and select tiles across sensors, locations, and time without downloading any imagery.\n\nThe index covers over 5 million tiles spanning the entire Earth. Each tile corresponds to a 1056 \u00d7 1056 px patch (10.56 \u00d7 10.56 km) aligned to Sentinel-2 MGRS tiles at 10 m resolution. Every tile is enriched with terrain, climate, soil, socioeconomic, and administrative attributes derived from public Earth Engine datasets.\n\n**What can you do with this index?**\n\n- **Find tiles by location.** Filter by country, state, MGRS tile code, or bounding box using the GeoParquet geometry column.\n- **Select tiles by environmental criteria.** Want arid, high-elevation tiles? Filter by `climate:precipitation < 200` and `terrain:elevation > 3000`.\n- **Stratify sampling for training sets.** Use the enrichment columns to build geographically and environmentally balanced splits for foundation model pretraining.\n- **Link to imagery.** The `land_s2` and `land_l8` files include sensor-specific image IDs (`s2:id_gee`, `l8:id_gee`) that point directly to the source products in Google Earth Engine.\n- **Use the ELLIOT splits.** The `elliot.parquet` file provides pre-built monotemporal and temporal splits designed for multi-sensor, multi-temporal EO research.\n\nAll files are self-contained GeoParquet with ZSTD compression, sorted by `majortom:code_1000km` \u2192 `majortom:code_100km` \u2192 `id` for efficient spatial predicate pushdown.\n\n## Schema\n\nColumns are organized into namespaces. Each namespace groups related attributes.\n\n### Grid (`majortom:`)\n\nTile identity and spatial reference within the Major TOM grid system.\n\n| Column | Type | Description |\n|--------|------|-------------|\n| `id` | string | Unique tile identifier (e.g. `MT10_770U_395R`). |\n| `majortom:code_100km` | string | Parent 100 km grid cell. Used for spatial grouping. |\n| `majortom:code_1000km` | string | Parent 1000 km grid cell. Used for coarse-level partitioning. |\n| `majortom:crs` | string | Native UTM CRS of the tile (e.g. `EPSG:32647`). |\n| `majortom:mgrs_tile` | string | MGRS tile code (e.g. `47WNS`). Links to Sentinel-2 tiling grid. |\n| `majortom:mgrs_n` | uint8 | Number of overlapping MGRS tiles (1 after deduplication). |\n| `majortom:mgrs_candidates` | list\\<string\\> | All candidate MGRS tiles before deduplication. |\n| `majortom:footprint_pct` | float | Percentage of tile covered by the assigned MGRS tile. |\n| `majortom:geotransform` | list\\<int32\\> | Snapped affine geotransform [originX, scaleX, shearX, originY, shearY, scaleY]. |\n| `majortom:geotransform_raw` | list\\<double\\> | Original (unsnapped) affine geotransform. |\n\n### STAC (`stac:`)\n\nSpatial and temporal reference following STAC conventions. Present in `land_s2` and `land_l8` only, where it replaces the `majortom:` grid columns.\n\n| Column | Type | Description |\n|--------|------|-------------|\n| `stac:crs` | string | Coordinate reference system. |\n| `stac:geotransform` | list\\<int64\\> | Affine geotransform for the image patch. |\n| `stac:tensor_shape` | list\\<int32\\> | Shape of the image tensor [bands, height, width]. |\n| `stac:time_start` | int64 | Acquisition start time (Unix timestamp). |\n| `stac:time_end` | int64 | Acquisition end time (Unix timestamp). |\n\n### Sentinel-2 (`s2:`)\n\nSensor metadata for the assigned Sentinel-2 image. Present in `land_s2` only.\n\n| Column | Type | Description |\n|--------|------|-------------|\n| `s2:id_gee` | string | Google Earth Engine image ID. Use this to fetch the actual imagery. |\n| `s2:product_id` | string | ESA product identifier. |\n| `s2:spacecraft` | string | Spacecraft name (Sentinel-2A or Sentinel-2B). |\n| `s2:processing_baseline` | string | Processing baseline version. |\n| `s2:orbit_number` | uint16 | Relative orbit number. |\n| `s2:mean_solar_azimuth` | float | Mean solar azimuth angle, averaged across all bands and detectors (degrees). |\n| `s2:mean_solar_zenith` | float | Mean solar zenith angle, averaged across all bands and detectors (degrees). |\n| `s2:mean_view_azimuth` | float | Mean viewing azimuth angle from band B8 (degrees). |\n| `s2:mean_view_zenith` | float | Mean viewing zenith angle from band B8 (degrees). |\n| `s2:reflectance_conversion` | float | Reflectance conversion factor (U correction). |\n\n> **Note on solar vs viewing angles.** The sun has a single position relative to the scene, so ESA provides one solar azimuth and one solar zenith averaged across all bands. Viewing angles are different: Sentinel-2 uses a pushbroom sensor where each spectral band has its own detector array in the focal plane, each observing from a slightly different angle. That is why GEE provides per-band viewing angles (`MEAN_INCIDENCE_*_ANGLE_B1` through `_B12`). We use band B8 (NIR, 10 m) as the reference because it is at native 10 m resolution and sits near the center of the focal plane, making it a representative proxy for the viewing geometry of the 10 m and 20 m bands.\n\n### Landsat 8/9 (`l8:`)\n\nSensor metadata for the assigned Landsat image. Present in `land_l8` only.\n\n| Column | Type | Description |\n|--------|------|-------------|\n| `l8:id_gee` | string | Google Earth Engine image ID. Use this to fetch the actual imagery. |\n| `l8:product_id` | string | USGS product identifier. |\n| `l8:spacecraft` | string | Spacecraft name (Landsat 8 or Landsat 9). |\n| `l8:collection_number` | uint8 | USGS Collection number. |\n| `l8:collection_category` | string | Collection category (T1, T2, RT). |\n| `l8:processing_software` | string | Processing software version. |\n| `l8:wrs_path` | uint16 | WRS-2 path number. |\n| `l8:wrs_row` | uint16 | WRS-2 row number. |\n| `l8:cloud_cover` | float | Scene cloud cover percentage. |\n| `l8:sun_azimuth` | float | Sun azimuth angle (degrees). |\n| `l8:sun_elevation` | float | Sun elevation angle (degrees). |\n| `l8:earth_sun_distance` | float | Earth-Sun distance (astronomical units). |\n| `l8:image_quality_oli` | uint8 | OLI image quality score. |\n| `l8:roll_angle` | float | Spacecraft roll angle (degrees). |\n\n### Terrain (`terrain:`)\n\n| Column | Type | Range | Description |\n|--------|------|-------|-------------|\n| `terrain:elevation` | float | ~-420 to 8,849 (m) | Mean elevation in meters from the [Copernicus GLO-30 DEM](https://gee-community-catalog.org/projects/glo30/), a 30 m resolution Digital Surface Model derived from TanDEM-X radar satellite data (2011 to 2015). Includes buildings, infrastructure, and vegetation. Uses the EGM2008 vertical datum. |\n\n### Climate (`climate:`)\n\n| Column | Type | Range | Description |\n|--------|------|-------|-------------|\n| `climate:precipitation` | float | 0+ (mm/year) | Mean annual precipitation estimated from [GPM](https://gpm.nasa.gov/) (Global Precipitation Measurement) satellite data, aggregated as a long-term annual mean. |\n| `climate:temperature` | float | ~-40 to 50 (\u00b0C) | Mean annual land surface temperature estimated from [MODIS LST](https://developers.google.com/earth-engine/datasets/catalog/MODIS_061_MOD11A1) satellite data, aggregated as a long-term annual mean. |\n\n### Soil (`soil:`)\n\nSurface-layer soil properties from the [OpenLandMap](https://openlandmap.org/) dataset, derived from machine learning predictions on global soil survey data at 250 m resolution.\n\n| Column | Type | Range | Description |\n|--------|------|-------|-------------|\n| `soil:clay` | float | 0 to 100 (%) | Clay content weight fraction at 0 cm depth. [Source](https://developers.google.com/earth-engine/datasets/catalog/OpenLandMap_SOL_SOL_CLAY-WFRACTION_USDA-3A1A1A_M_v02). |\n| `soil:sand` | float | 0 to 100 (%) | Sand content weight fraction at 0 cm depth. [Source](https://developers.google.com/earth-engine/datasets/catalog/OpenLandMap_SOL_SOL_SAND-WFRACTION_USDA-3A1A1A_M_v02). |\n| `soil:carbon` | float | 0+ (g/kg) | Soil organic carbon content at 0 cm depth. [Source](https://developers.google.com/earth-engine/datasets/catalog/OpenLandMap_SOL_SOL_ORGANIC-CARBON_USDA-6A1C_M_v02). |\n| `soil:bulk_density` | float | 0+ (kg/m\u00b3) | Fine-earth bulk density at 0 cm depth. [Source](https://developers.google.com/earth-engine/datasets/catalog/OpenLandMap_SOL_SOL_BULKDENS-FINEEARTH_USDA-4A1H_M_v02). |\n| `soil:ph` | float | ~3 to 10 | Soil pH in water at 0 cm depth. [Source](https://developers.google.com/earth-engine/datasets/catalog/OpenLandMap_SOL_SOL_PH-H2O_USDA-4C1A2A_M_v02). |\n\n### Socioeconomic (`socio:`)\n\n| Column | Type | Range | Description |\n|--------|------|-------|-------------|\n| `socio:gdp` | float | 0+ (USD) | GDP per capita at purchasing power parity (PPP, constant 2021 USD) for the year 2022. From the [Kummu et al. (2025)](https://doi.org/10.1038/s41597-025-04487-x) gridded dataset, downscaled to admin-2 level (43,501 units) at 5 arc-min resolution. [GEE catalog](https://gee-community-catalog.org/projects/gridded_gdp_hdi/). |\n| `socio:population` | float | 0+ (people) | Estimated number of people per grid cell from the Meta [High Resolution Settlement Layer](https://dataforgood.facebook.com/dfg/tools/high-resolution-population-density-maps) (HRSL). Uses satellite imagery and census data at ~30 m resolution. |\n| `socio:human_modification` | float | 0.0 to 1.0 | Cumulative degree of human modification of terrestrial ecosystems from the [Global Human Modification v3](https://doi.org/10.1038/s41597-025-04892-2) (Theobald et al. 2025). Combines the spatial footprint and intensity of 13 stressors across five categories: settlement, agriculture, transportation, mining/energy, and electrical infrastructure. 0 = no modification, 1 = fully modified. 300 m resolution. [GEE catalog](https://gee-community-catalog.org/projects/ghm-v3/). |\n| `socio:cisi` | float | 0.0 to 1.0 | [Critical Infrastructure Spatial Index](https://doi.org/10.1038/s41597-022-01218-4) (Nirandjan et al. 2022). Aggregates OpenStreetMap data on 39 types of critical infrastructure across seven systems: transportation, energy, telecommunication, waste, water, education, and health. 0 = no infrastructure, 1 = highest density. 0.10\u00b0 resolution. [GEE catalog](https://gee-community-catalog.org/projects/cisi/). |\n\n### Administrative (`admin:`)\n\nHuman-readable administrative boundary names resolved from rasterized boundary datasets.\n\n| Column | Type | Description |\n|--------|------|-------------|\n| `admin:country` | string | Country name. Tiles over ocean/lakes are labeled `Ocean/Sea/Lakes`. |\n| `admin:state` | string | State or province name. |\n| `admin:district` | string | District or county name. |\n\n### Other\n\n| Column | Type | Description |\n|--------|------|-------------|\n| `geometry` | binary (WKB) | Tile geometry. All files include GeoParquet metadata for spatial queries. |\n| `split` | string | ELLIOT split assignment: `monotemporal` or `temporal`. Present in `elliot.parquet` only. |\n\n## Files\n\n| File | Rows | Columns | Size | Description |\n|------|-----:|--------:|-----:|-------------|\n| `global.parquet` | 5,055,204 | 26 | 146 MB | Every 10 km tile on Earth. The complete grid with all enrichment columns. |\n| `land.parquet` | 2,767,104 | 26 | 91 MB | Tiles covered by land-observing sensors (Sentinel-2 and Landsat). Same schema as global. |\n| `land_s2.parquet` | 2,547,253 | 34 | 127 MB | Land tiles with a Sentinel-2 image assigned. Adds `stac:` and `s2:` sensor metadata. |\n| `land_l8.parquet` | 2,255,537 | 38 | 97 MB | Land tiles with a Landsat 8/9 image assigned. Adds `stac:` and `l8:` sensor metadata. |\n| `elliot.parquet` | 279,166 | 27 | 14 MB | ELLIOT subset with monotemporal and temporal split assignments. Same enrichment as global plus `split` column. |\n\n### Namespace availability per file\n\n| Namespace | global | land | land_s2 | land_l8 | elliot |\n|-----------|:------:|:----:|:-------:|:-------:|:------:|\n| `majortom:` | \u2713 | \u2713 | | | \u2713 |\n| `stac:` | | | \u2713 | \u2713 | |\n| `s2:` | | | \u2713 | | |\n| `l8:` | | | | \u2713 | |\n| `terrain:` | \u2713 | \u2713 | \u2713 | \u2713 | \u2713 |\n| `climate:` | \u2713 | \u2713 | \u2713 | \u2713 | \u2713 |\n| `soil:` | \u2713 | \u2713 | \u2713 | \u2713 | \u2713 |\n| `socio:` | \u2713 | \u2713 | \u2713 | \u2713 | \u2713 |\n| `admin:` | \u2713 | \u2713 | \u2713 | \u2713 | \u2713 |\n| `split` | | | | | \u2713 |\n| `geometry` | \u2713 | \u2713 | \u2713 | \u2713 | \u2713 |\n\n## Quick Start\n\n### DuckDB\n\n```python\nimport duckdb\n\nduckdb.sql(\"\"\"\nINSTALL spatial;\nINSTALL httpfs;\nLOAD spatial;\nLOAD httpfs;\n\nSELECT \"admin:country\", COUNT(*) as n_tiles\nFROM 'https://data.source.coop/major-tom/index/land_s2.parquet'\nWHERE \"admin:country\" IN ('Peru', 'Brazil', 'Colombia', 'Chile', 'Argentina')\nGROUP BY \"admin:country\"\nORDER BY n_tiles DESC;\n\"\"\").show()\n```\n\n### Pandas\n\n```python\nimport pandas as pd\nimport requests\nfrom io import BytesIO\n\nBASE = \"https://data.source.coop/major-tom/index\"\n\n# Load land tiles with Sentinel-2 metadata\nr = requests.get(f\"{BASE}/land_s2.parquet\")\ndf = pd.read_parquet(BytesIO(r.content))\n\n# Filter by country\nperu = df[df[\"admin:country\"] == \"Peru\"]\nprint(f\"Peru: {len(peru):,} tiles\")\n\n# Get ELLIOT splits\nr = requests.get(f\"{BASE}/elliot.parquet\")\nelliot = pd.read_parquet(BytesIO(r.content))\nprint(elliot[\"split\"].value_counts())\n```\n\n## ELLIOT Splits\n\nThe `elliot.parquet` file contains 279,166 tiles selected for the [ELLIOT project](https://elliot-ai.eu/) multi-temporal dataset extension. Tile locations were sampled using hierarchical spherical k-means (530 \u00d7 528 = 279,840 clusters) over [AlphaEarth Foundation](https://source.coop/asterisklabs/alphaearth) embeddings to ensure global environmental diversity.\n\nThe `split` column defines two subsets:\n\n- **Monotemporal** (250,000 tiles). One cloud-free image per sensor per location. Designed for tasks where spatial coverage matters more than temporal depth: land cover classification, feature extraction, or pretraining foundation models on diverse global scenes.\n\n- **Temporal** (29,166 tiles). Multiple observations per location across time. Designed for tasks that require temporal context: change detection, phenology tracking, seasonal compositing, or training models that learn from multi-temporal sequences. This subset is further divided into monthly cadence (12,500 tiles \u00d7 12 timesteps) and five-daily cadence (16,666 tiles \u00d7 6 timesteps).\n\n## Citation\n\n```bibtex\n@inproceedings{Francis2024MajorTOM,\n    author    = {Francis, Alistair and Czerkawski, Mikolaj},\n    title     = {Major TOM: Expandable Datasets for Earth Observation},\n    booktitle = {IGARSS 2024 - IEEE International Geoscience and Remote Sensing Symposium},\n    year      = {2024},\n    pages     = {2935--2940},\n    doi       = {10.1109/IGARSS53475.2024.10640760}\n}\n```\n\n## License\n\nCC-BY-4.0\n\n## Acknowledgements\n\nThe Major TOM Index has been made possible thanks to [Asterisk Labs](https://asterisk.coop), the [ELLIOT](https://elliot-earth.eu) project (European Commission, Horizon Europe, Grant 101214398), and the [Image and Signal Processing Group (ISP)](https://isp.uv.es) at Universitat de Val\u00e8ncia.\n\n<div align=\"center\">\n  <a href=\"https://elliot-earth.eu\"><img src=\"https://data.source.coop/major-tom/index/images/elliot.png\" height=\"80\"></a>\n  &nbsp;&nbsp;&nbsp;&nbsp;\n  <a href=\"https://asterisk.coop\"><img src=\"https://data.source.coop/major-tom/index/images/asterisk.png\" height=\"80\"></a>\n  &nbsp;&nbsp;&nbsp;&nbsp;\n  <a href=\"https://isp.uv.es\"><img src=\"https://data.source.coop/major-tom/index/images/isp.png\" height=\"80\"></a>\n</div>",
+  "_review": [
+    "providers: role [processor] for 'Asterisk Labs' is an AI guess \u2014 Acknowledged as contributor in README; specific processing role not described.. Verify before flipping to _state: reviewed.",
+    "providers: role [processor] for 'Image and Signal Processing Group (ISP), Universitat de Val\u00e8ncia' is an AI guess \u2014 Acknowledged as contributor in README; specific processing role not described.. Verify before flipping to _state: reviewed.",
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [global.geometry (geometry), global.admin:country (placename), global.admin:state (placename), global.admin:district (placename), global.majortom:mgrs_tile (admin_code), land.geometry (geometry), land.admin:country (placename), land.admin:state (placename), land.admin:district (placename), land.majortom:mgrs_tile (admin_code), land_s2.geometry (geometry), land_s2.admin:country (placename), land_s2.admin:state (placename), land_s2.admin:district (placename), land_l8.geometry (geometry), land_l8.admin:country (placename), land_l8.admin:state (placename), land_l8.admin:district (placename), elliot.geometry (geometry), elliot.admin:country (placename), elliot.admin:state (placename), elliot.admin:district (placename), elliot.majortom:mgrs_tile (admin_code)]. Add bbox once a placename \u2192 bbox gazetteer is available."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-05-26T18:39:43+00:00"
 }

@@ -1,25 +1,159 @@
 {
-  "account_id": "eco4cast",
-  "product_id": "neon4cast-scores",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
+  "id": "eco4cast/neon4cast-scores",
   "title": "Ecological Forecasting Initiative Scored Forecast Database",
-  "description": "A partitioned parquet database of forecasts, observations, and probablistic skill scores for forecasts submitted to the Ecological Forecasting Initiative",
+  "description": "A partitioned Parquet database of ecological forecasts, observations, and probabilistic skill scores submitted to the Ecological Forecasting Initiative (EFI). Covers multiple ecological domains including aquatics, terrestrial ecosystems, beetles, and ticks, with data collected at NEON sites. Each record includes forecast distributions (mean, median, quantiles) and scoring metrics (CRPS, log score) for evaluating forecast accuracy.",
   "keywords": [
     "ecology",
-    "forecasts",
-    "parquet",
+    "forecasting",
     "timeseries",
+    "neon",
     "aquatics",
     "terrestrial",
-    "beetles",
-    "ticks",
-    "neon"
+    "biodiversity"
   ],
-  "created_at": "2023-08-20T00:45:39.253495+00:00",
-  "updated_at": "2025-08-21T16:39:55.567Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": "open",
+  "providers": [
+    {
+      "name": "Ecological Forecasting Initiative",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/eco4cast/neon4cast-scores"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2021-10-04T00:00:00",
+          "2023-04-16"
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 150
+  },
+  "assets": {
+    "part-0": {
+      "href": "https://data.source.coop/eco4cast/neon4cast-scores/parquet/ticks/model_id=top_3_weighted_average/date=2021-11-01/part-0.parquet",
+      "type": "application/x-parquet",
+      "title": "part-0.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "reference_datetime",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "site_id",
+          "type": "VARCHAR",
+          "description": "[placename] NEON site identifier indicating the ecological monitoring location"
+        },
+        {
+          "name": "datetime",
+          "type": "TIMESTAMP"
+        },
+        {
+          "name": "family",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "variable",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "observation",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "crps",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "logs",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "mean",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "median",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "sd",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "quantile97.5",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "quantile02.5",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "quantile90",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "quantile10",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "date",
+          "type": "DATE"
+        },
+        {
+          "name": "model_id",
+          "type": "VARCHAR"
+        }
+      ],
+      "table:row_count": 9
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/eco4cast/neon4cast-scores/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/eco4cast/neon4cast-scores",
+      "title": "Source Cooperative product page"
+    }
+  ],
+  "file_count": 38265,
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -32,15 +166,23 @@
       "prefix": "eco4cast/neon4cast-scores/"
     }
   },
-  "file_count": 38265,
-  "total_bytes": 7744486847,
   "exts": {
     "parquet": 38265
   },
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "id": "eco4cast/neon4cast-scores"
+  "disabled": false,
+  "total_bytes": 7744486847,
+  "data_mode": "open",
+  "product_id": "neon4cast-scores",
+  "featured": 0,
+  "account_id": "eco4cast",
+  "visibility": "public",
+  "created_at": "2023-08-20T00:45:39.253495+00:00",
+  "updated_at": "2025-08-21T16:39:55.567Z",
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
+    "providers: role [producer, licensor] for 'Ecological Forecasting Initiative' is an AI guess \u2014 Assumed producer and licensor as the named initiative behind the forecast database; not explicitly stated in README.. Verify before flipping to _state: reviewed.",
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [part-0.site_id (placename)]. Add bbox once a placename \u2192 bbox gazetteer is available."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-05-26T18:56:14+00:00"
 }

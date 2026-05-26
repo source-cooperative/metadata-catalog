@@ -1,21 +1,98 @@
 {
-  "account_id": "earthgenome",
-  "product_id": "sentinel2-temporal-mosaics",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "earthgenome/sentinel2-temporal-mosaics",
   "title": "Sentinel 2 Cloud Free Temporal Mosaics",
-  "description": "This repository holds a large (and growing!) collection of cloudless Senitnel 2 data. All bands (except B10 as this was generated from L2A) are available at their original native resolution.\n",
+  "description": "A large and growing collection of cloud-free Sentinel-2 temporal mosaics covering all spectral bands except B10, generated from L2A data at native resolution. Assets are Cloud-Optimized GeoTIFFs in Web Mercator projection, named by UTM grid tile and composite date range. Each asset includes provenance metadata tracking contributing source scenes and estimated good-pixel percentage.",
+  "license": "CC-BY-4.0",
   "keywords": [
-    "sentinel2",
-    "geospatial",
-    "raster",
-    "global",
+    "remote-sensing",
+    "sentinel-2",
+    "satellite-imagery",
+    "cloud-free",
+    "temporal-mosaic",
+    "multispectral",
     "cog"
   ],
-  "created_at": "2024-04-08T16:34:55.640381+00:00",
-  "updated_at": "2025-08-21T16:39:55.569Z",
-  "visibility": "public",
-  "disabled": false,
+  "providers": [
+    {
+      "name": "Earth Genome",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "ESA / Copernicus",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/earthgenome/sentinel2-temporal-mosaics"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          135.0,
+          -85.0511288,
+          180.0,
+          67.6426763
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/earthgenome/sentinel2-temporal-mosaics/",
+      "type": "image/tiff; application=geotiff",
+      "title": "Dataset files (576453 x .tif)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/earthgenome/sentinel2-temporal-mosaics/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/earthgenome/sentinel2-temporal-mosaics",
+      "title": "Source Cooperative product page"
+    }
+  ],
+  "total_bytes": 76336547594032,
   "featured": 0,
+  "disabled": false,
+  "exts": {
+    "tif": 576453,
+    "gz": 1,
+    "md": 1
+  },
+  "created_at": "2024-04-08T16:34:55.640381+00:00",
   "data_mode": "open",
+  "product_id": "sentinel2-temporal-mosaics",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -28,17 +105,14 @@
       "prefix": "earthgenome/sentinel2-temporal-mosaics/"
     }
   },
+  "updated_at": "2025-08-21T16:39:55.569Z",
+  "visibility": "public",
+  "account_id": "earthgenome",
   "file_count": 576455,
-  "total_bytes": 76336547594032,
-  "exts": {
-    "tif": 576453,
-    "gz": 1,
-    "md": 1
-  },
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "id": "earthgenome/sentinel2-temporal-mosaics"
+  "readme": "## README.md\n\n![EarthGenome](https://assets-global.website-files.com/642c1e823b4d441963f3fe5e/6604748ad5ef1e8e7c26dde2_Earth%20Genome%20Logo%20(Original).svg)\n# Sentinel 2 Cloud Free Temporal Mosaics \n\n[![CC-4 license](https://img.shields.io/badge/License-CC--4-blue.svg)](https://creativecommons.org/licenses/by/4.0/)\n[![Sensor](https://img.shields.io/badge/Sensor%F0%9F%9B%B0%EF%B8%8F-Sentinel2-blue)](https://www.esa.int/Applications/Observing_the_Earth/Copernicus/Sentinel-2) \n[![Format](https://img.shields.io/badge/Format-COG%20%E2%9A%99%EF%B8%8F-purple)](https://www.cogeo.org/)\n\nThis repository holds a large (and growing!) collection of cloudless Senitnel 2 data.  All bands (except B10 as this was generated from L2A) are available at their original native resolution. \n\nThis data is licensed under the [creative commons 4.0](https://creativecommons.org/licenses/by/4.0/) international license which, in summary, only requires attribution. \n\n### Resources   \n- Earth Genome [STAC](https://stac.earthgenome.org) instance for searching this collection\n- [STAC Browser](https://browser.stac.earthgenome.org/collections/sentinel2-temporal-mosaics), human friendly interface\n- [Tile Cache, levels 0-8 (2.5gb)](https://data.source.coop/earthgenome/sentinel2-temporal-mosaics/cache.tar.gz) - if you wanted to set up a tile server, this archive has tile levels 0-8 pre-tiled.  \n\n### Naming\nArtifacts are name accoring to their original UTM grid number, concatonated with the start and end dates.  For example `31TDF_2023-01-01_2024-01-01` will give you Barcelona (31TDF) over the course of 2023. \n\n### Artifacts and Metadata\nAll assets are COG encoded GeoTiffs in Web Mercator (EPSG:3857) projection. Besides the item id itself, the STAC catalog has the original UTM infornmation so you can calculate and then reproject to the original EPSG code, if needed. \n\nThe STAC assets also have 2 properties to help better understand the provience and quality of the images: \n- `good_pxl_pct` is a the estimated percentage of \"good\" (non masked) pixels\n- `generated_from` is an array of references to the Sentinel L2A assets which contributed to this asset\n\n\n### Contact\nUsing this? Want work together? Ping us @ info@earthgenome.org\n",
+  "_review": [
+    "providers: role [producer] for 'ESA / Copernicus' is an AI guess \u2014 ESA/Copernicus produces the underlying Sentinel-2 L2A source imagery; role inferred from data lineage, not stated in this README.. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-05-26T19:13:18+00:00"
 }

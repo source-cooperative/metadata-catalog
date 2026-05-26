@@ -1,15 +1,794 @@
 {
-  "account_id": "cboettig",
-  "product_id": "taxadb",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
+  "id": "cboettig/taxadb",
   "title": "Taxonomic names",
-  "description": "Taxonomic naming authorities from various providers including Catalogue of Life (COL), Global Biodiversity Information Facility (GBIF), International Union for Conservation of Nature (IUCN), and the National Center for Biotechnology Information (NCBI)",
-  "keywords": [],
-  "created_at": "2025-12-19T17:41:50.509Z",
-  "updated_at": "2025-12-19T17:41:50.509Z",
+  "description": "A consolidated dataset of taxonomic naming authorities drawn from multiple biodiversity databases, including Catalogue of Life (COL), GBIF, IUCN, ITIS, NCBI, and Open Tree of Life (OTT). Each record links scientific names, vernacular (common) names, taxonomic rank, and taxonomic status across the full Linnaean hierarchy (kingdom through infraspecific epithet). The dataset contains over 27 million records distributed across 9 Parquet files in both Darwin Core and simplified common-name formats.",
+  "keywords": [
+    "taxonomy",
+    "biodiversity",
+    "species-names",
+    "nomenclature",
+    "taxonomic-classification",
+    "vernacular-names"
+  ],
+  "providers": [
+    {
+      "name": "Catalogue of Life (COL)",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Global Biodiversity Information Facility (GBIF)",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "International Union for Conservation of Nature (IUCN)",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "National Center for Biotechnology Information (NCBI)",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Integrated Taxonomic Information System (ITIS)",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Open Tree of Life Taxonomy (OTT)",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/cboettig/taxadb"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 27355015
+  },
+  "assets": {
+    "common_col_part_0": {
+      "href": "https://data.source.coop/cboettig/taxadb/2026/common_col_part_0.parquet",
+      "type": "application/x-parquet",
+      "title": "common_col_part_0.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "taxonID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "language",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "vernacularName",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "acceptedNameUsageID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "scientificName",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "taxonomicStatus",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "taxonRank",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "kingdom",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "phylum",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "class",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "order",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "family",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "genus",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "specificEpithet",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "infraspecificEpithet",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "cultivarEpithet",
+          "type": "VARCHAR"
+        }
+      ],
+      "table:row_count": 126395
+    },
+    "common_gbif_part_0": {
+      "href": "https://data.source.coop/cboettig/taxadb/2026/common_gbif_part_0.parquet",
+      "type": "application/x-parquet",
+      "title": "common_gbif_part_0.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "taxonID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "vernacularName",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "language",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "country",
+          "type": "VARCHAR",
+          "description": "[placename] Country name associated with a vernacular name usage in GBIF"
+        },
+        {
+          "name": "countryCode",
+          "type": "VARCHAR",
+          "description": "[admin_code] ISO 3166-1 alpha-2 country code associated with a vernacular name usage in GBIF"
+        },
+        {
+          "name": "sex",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "lifeStage",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "source",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "scientificName",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "taxonRank",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "taxonomicStatus",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "acceptedNameUsageID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "kingdom",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "phylum",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "class",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "order",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "family",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "genus",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "specificEpithet",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "infraspecificEpithet",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "parentNameUsageID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "originalNameUsageID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "scientificNameAuthorship",
+          "type": "VARCHAR"
+        }
+      ],
+      "table:row_count": 369944
+    },
+    "common_itis_part_0": {
+      "href": "https://data.source.coop/cboettig/taxadb/2026/common_itis_part_0.parquet",
+      "type": "application/x-parquet",
+      "title": "common_itis_part_0.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "vernacularName",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "language",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "update_date",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "acceptedNameUsageID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "taxonID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "scientificName",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "taxonRank",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "taxonomicStatus",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "kingdom",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "phylum",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "class",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "order",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "family",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "genus",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "specificEpithet",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "infraspecificEpithet",
+          "type": "VARCHAR"
+        }
+      ],
+      "table:row_count": 338400
+    },
+    "common_ncbi_part_0": {
+      "href": "https://data.source.coop/cboettig/taxadb/2026/common_ncbi_part_0.parquet",
+      "type": "application/x-parquet",
+      "title": "common_ncbi_part_0.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "vernacularName",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "scientificName",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "taxonRank",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "taxonID",
+          "type": "INTEGER"
+        },
+        {
+          "name": "acceptedNameUsageID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "taxonomicStatus",
+          "type": "VARCHAR"
+        }
+      ],
+      "table:row_count": 2210230
+    },
+    "dwc_col_part_0": {
+      "href": "https://data.source.coop/cboettig/taxadb/2026/dwc_col_part_0.parquet",
+      "type": "application/x-parquet",
+      "title": "dwc_col_part_0.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "taxonID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "acceptedNameUsageID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "scientificName",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "taxonomicStatus",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "taxonRank",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "kingdom",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "phylum",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "class",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "order",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "family",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "genus",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "specificEpithet",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "infraspecificEpithet",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "cultivarEpithet",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "datasetID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "namePublishedIn",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "nameAccordingTo",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "taxonRemarks",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "nomenclaturalStatus",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "nomenclaturalCode",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "parentNameUsageID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "originalNameUsageID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "dcterms:references",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "language",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "vernacularName",
+          "type": "VARCHAR"
+        }
+      ],
+      "table:row_count": 5302873
+    },
+    "dwc_gbif_part_0": {
+      "href": "https://data.source.coop/cboettig/taxadb/2026/dwc_gbif_part_0.parquet",
+      "type": "application/x-parquet",
+      "title": "dwc_gbif_part_0.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "taxonID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "scientificName",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "taxonRank",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "taxonomicStatus",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "acceptedNameUsageID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "kingdom",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "phylum",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "class",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "order",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "family",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "genus",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "specificEpithet",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "infraspecificEpithet",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "parentNameUsageID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "originalNameUsageID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "scientificNameAuthorship",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "vernacularName",
+          "type": "VARCHAR"
+        }
+      ],
+      "table:row_count": 7446477
+    },
+    "dwc_itis_part_0": {
+      "href": "https://data.source.coop/cboettig/taxadb/2026/dwc_itis_part_0.parquet",
+      "type": "application/x-parquet",
+      "title": "dwc_itis_part_0.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "taxonID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "scientificName",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "taxonRank",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "acceptedNameUsageID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "taxonomicStatus",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "update_date",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "kingdom",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "phylum",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "class",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "order",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "family",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "genus",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "specificEpithet",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "infraspecificEpithet",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "vernacularName",
+          "type": "VARCHAR"
+        }
+      ],
+      "table:row_count": 982299
+    },
+    "dwc_ncbi_part_0": {
+      "href": "https://data.source.coop/cboettig/taxadb/2026/dwc_ncbi_part_0.parquet",
+      "type": "application/x-parquet",
+      "title": "dwc_ncbi_part_0.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "taxonID",
+          "type": "INTEGER"
+        },
+        {
+          "name": "scientificName",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "taxonRank",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "taxonomicStatus",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "acceptedNameUsageID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "kingdom",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "phylum",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "class",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "order",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "family",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "genus",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "specificEpithet",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "vernacularName",
+          "type": "VARCHAR"
+        }
+      ],
+      "table:row_count": 3822452
+    },
+    "dwc_ott_part_0": {
+      "href": "https://data.source.coop/cboettig/taxadb/2026/dwc_ott_part_0.parquet",
+      "type": "application/x-parquet",
+      "title": "dwc_ott_part_0.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "taxonID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "scientificName",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "taxonRank",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "acceptedNameUsageID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "taxonomicStatus",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "kingdom",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "phylum",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "class",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "order",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "family",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "genus",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "specificEpithet",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "infraspecificEpithet",
+          "type": "VARCHAR"
+        }
+      ],
+      "table:row_count": 6755945
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/cboettig/taxadb/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/cboettig/taxadb",
+      "title": "Source Cooperative product page"
+    }
+  ],
+  "product_id": "taxadb",
   "visibility": "public",
   "disabled": false,
+  "account_id": "cboettig",
+  "exts": {
+    "parquet": 9
+  },
+  "file_count": 9,
   "featured": 0,
-  "data_mode": "open",
+  "total_bytes": 1206887869,
+  "created_at": "2025-12-19T17:41:50.509Z",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -22,15 +801,15 @@
       "prefix": "cboettig/taxadb/"
     }
   },
-  "file_count": 9,
-  "total_bytes": 1206887869,
-  "exts": {
-    "parquet": 9
-  },
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "id": "cboettig/taxadb"
+  "data_mode": "open",
+  "updated_at": "2025-12-19T17:41:50.509Z",
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
+    "providers: role [producer] for 'International Union for Conservation of Nature (IUCN)' is an AI guess \u2014 Listed in API description as a source but no IUCN-specific asset is visible in the file listing.. Verify before flipping to _state: reviewed.",
+    "providers: role [producer] for 'Integrated Taxonomic Information System (ITIS)' is an AI guess \u2014 Inferred as producer from asset names (common_itis, dwc_itis); not explicitly named in the API description.. Verify before flipping to _state: reviewed.",
+    "providers: role [producer] for 'Open Tree of Life Taxonomy (OTT)' is an AI guess \u2014 Inferred as producer from asset name (dwc_ott); not explicitly named in the API description.. Verify before flipping to _state: reviewed.",
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [common_gbif_part_0.country (placename), common_gbif_part_0.countryCode (admin_code)]. Add bbox once a placename \u2192 bbox gazetteer is available."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-05-26T18:31:36+00:00"
 }

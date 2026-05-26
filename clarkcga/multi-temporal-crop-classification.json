@@ -1,21 +1,105 @@
 {
-  "account_id": "clarkcga",
-  "product_id": "multi-temporal-crop-classification",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "clarkcga/multi-temporal-crop-classification",
   "title": "Multi-Temporal Crop Classification with HLS Imagery across CONUS ",
-  "description": "This dataset contains temporal Harmonized Landsat-Sentinel (HLS) imagery of diverse crop type and land cover classes across the Contiguous United States (CONUS) for the year 2022. The target labels are derived from USDA's Crop Data Layer (CDL). It's primary purpose is for training segmentation geospatial machine learning models. It includes 3,854 chips of 224 x 224 pixel area at 30m spatial resolution.",
+  "description": "Multi-temporal Harmonized Landsat-Sentinel (HLS) imagery dataset covering 3,854 chips across the Contiguous United States for 2022, each chip containing 18 spectral bands (6 bands \u00d7 3 seasonal time steps) at 30m resolution over a 224\u00d7224 pixel area. Pixel-level labels are derived from USDA's Crop Data Layer (CDL) across 13 land cover and crop type classes. Intended for training geospatial image segmentation machine learning models.",
+  "license": "CC-BY-4.0",
   "keywords": [
-    "crop type",
-    "land cover",
-    "segmentation",
-    "hls",
-    "agriculture"
+    "agriculture",
+    "crop-classification",
+    "land-use",
+    "remote-sensing",
+    "multi-temporal",
+    "machine-learning",
+    "harmonized-landsat-sentinel"
   ],
-  "created_at": "2023-08-10T21:02:04.413380+00:00",
-  "updated_at": "2025-08-21T16:39:55.568Z",
+  "providers": [
+    {
+      "name": "Clark University Center for Geospatial Analytics (CGA)",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "USDA National Agricultural Statistics Service (NASS)",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/clarkcga/multi-temporal-crop-classification"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -122.6898946,
+          26.0091125,
+          -97.3720259,
+          48.9704327
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/clarkcga/multi-temporal-crop-classification/",
+      "type": "image/tiff; application=geotiff",
+      "title": "Dataset files (7708 x .tif)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/clarkcga/multi-temporal-crop-classification/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/clarkcga/multi-temporal-crop-classification",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "rel": "cite-as",
+      "href": "https://doi.org/10.57967/hf/0955"
+    }
+  ],
   "visibility": "public",
-  "disabled": false,
-  "featured": 1,
+  "updated_at": "2025-08-21T16:39:55.568Z",
+  "total_bytes": 7169642942,
   "data_mode": "open",
+  "exts": {
+    "tif": 7708,
+    "txt": 2,
+    "md": 1
+  },
+  "account_id": "clarkcga",
+  "featured": 1,
+  "disabled": false,
+  "created_at": "2023-08-10T21:02:04.413380+00:00",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "file_count": 7711,
+  "product_id": "multi-temporal-crop-classification",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -28,17 +112,10 @@
       "prefix": "clarkcga/multi-temporal-crop-classification/"
     }
   },
-  "file_count": 7711,
-  "total_bytes": 7169642942,
-  "exts": {
-    "tif": 7708,
-    "txt": 2,
-    "md": 1
-  },
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "id": "clarkcga/multi-temporal-crop-classification"
+  "readme": "## README.md\n# Multi-Temporal Crop Classification with HLS Imagery across CONUS \n\n## Dataset Description\n\n### Dataset Summary\n\nThis dataset contains temporal Harmonized Landsat-Sentinel imagery of diverse land cover and crop type classes across the Contiguous United States for the year 2022. The target labels are derived from USDA's Crop Data Layer (CDL). It's primary purpose is for training segmentation geospatial machine learning models.\n\n### Dataset Structure\n\n## HLS Scenes\nEach GeoTIFF file located under `hls/` covers a 224 x 224 pixel area at 30m spatial resolution. Each input satellite file contains 18 bands including 6 spectral bands for three time steps stacked together. The file name structure is `chip_XXX_YYY_merged.tif` where `XXX` and `YYY` refer to row and column of a tile grid we imposed on the CDL data layer. Since the dataset is sampled from this country-wide grid not all `XXX`s and `YYY`s are present in the dataset. So you need to load the `train_data.txt` and `validation_data.txt` to get the list of all chips in the dataset. \n\n## CDL Labels\nEach GeoTIFF file located under `masks/` covers the same area as the corresponding HLS chips and contains one band with the target classes for each pixel. The file name structure is `chip_XXX_YYY.mask.tif`. \n\n## Band Order\nIn each HLS input GeoTIFF the following bands are repeated three times for three observations throughout the growing season:\n| Channel |  Name  |  HLS   S30 Band number |\n|---------|--------|------------------------|\n| 1       |  Blue  |  B02                   |\n| 2       |  Green |  B03                   |\n| 3       |  Red   |  B04                   |\n| 4       |  NIR   |  B8A                   |\n| 5       |  SW 1  |  B11                   |\n| 6       |  SW 2  |  B12                   | \n\nMasks are a single band with the following values:  \n| Value    | Class Name            |\n|----------|-----------------------|\n| 0        |  No Data              |\n| 1        |  Natural Vegetation   |\n| 2        |  Forest               |\n| 3        |  Corn                 |\n| 4        |  Soybeans             |\n| 5        |  Wetlands             |\n| 6        |  Developed/Barren     |\n| 7        |  Open Water           |\n| 8        |  Winter Wheat         |\n| 9        |  Alfalfa              |\n| 10       |  Fallow/Idle Cropland |\n| 11       |  Cotton               |\n| 12       |  Sorghum              |\n| 13       |  Other                |\n\n\n\n## Data Splits\nThe 3,854 chips have been randomly split into training (80%) and validation (20%) with corresponding ids recorded in cvs files `train_data.txt` and `validation_data.txt`.\n\n## Dataset Creation\n### Query and Scene Selection\nFirst, a set of 5,000 chips was defined based on samples from the USDA CDL to ensure a representative sampling across the CONUS. Next, for each chip, the corresponding HLS S30 scenes between March and September 2022 were queried, and scenes with low cloud cover were retrieved. Then, three scenes are selected among the low cloudy scenes to ensure a scene from early in the season, one in the middle, and one toward the end. The three final scenes were then reprojected to CDL's projection grid (`EPSG:5070`) using bilinear interpolation. \n\n### Chip Generation\nIn the final step, the three scenes for each chip were clipped to the bounding box of the chip, and 18 spectral bands were stacked together. In addition, a quality control was applied to each chip using the `Fmask` layer of the HLS dataset. Any chip containing clouds, cloud shadow, adjacent to cloud or missing values were discarded. This resulted in 3,854 chips.\n\n### License and Citation\nThis dataset is published under a CC-BY-4.0 license. If you find this dataset useful for your application, you can cite it as following:\n\n```\n@misc{hls-multi-temporal-crop-classification,\n    author = {Cecil, Michael and Kordi, Fatemeh and Li, Hanxi (Steve) and Khallaghi, Sam and Alemohammad, Hamed},\n    doi    = {10.57967/hf/0955},\n    month  = aug,\n    title  = {{HLS Multi Temporal Crop Classification}},\n    year   = {2023}\n}\n```\n### Contact\nFor any questions about the dataset, you can contact [Dr. Hamed Alemohammad](mailto:halemohammad@clarku.edu). \n\n\n### Funding\nThis dataset is generated with funding from a grant awarded to [Clark University Center for Geospatial Analytics (CGA)](https://github.com/ClarkCGA) by NASA. ",
+  "_review": [
+    "providers: role [producer] for 'USDA National Agricultural Statistics Service (NASS)' is an AI guess \u2014 Produces the Crop Data Layer (CDL) used as pixel-level label source; not stated as co-producer of this derived dataset. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-05-26T18:53:29+00:00"
 }

@@ -1,18 +1,86 @@
 {
-  "account_id": "smartmaps",
-  "product_id": "ngs",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "smartmaps/ngs",
   "title": "Smart Maps LiDAR 3D Tiles from Open Nagasaki",
-  "description": "UN Smart Maps Group has created a single 3D Tiles dataset from all LiDAR data from [Open Nagasaki](https://opennagasaki.nerc.or.jp/). \nDemo site: https://observablehq.com/d/c4d563b1731f286f. This is still a work in progress. ",
+  "description": "A 3D Tiles point cloud dataset assembled by the UN Smart Maps Group from all publicly available LiDAR data published through Open Nagasaki (opennagasaki.nerc.or.jp). The dataset covers the Nagasaki prefecture region of Japan and is served in the .pnts (3D Tiles Point Cloud) format, comprising over 1.7 million tiles totalling approximately 232 GB.",
   "keywords": [
-    "3d tiles",
-    "lidar"
+    "lidar",
+    "3d-tiles",
+    "point-cloud",
+    "nagasaki",
+    "japan",
+    "open-data"
   ],
-  "created_at": "2024-04-14T02:17:30.136565+00:00",
-  "updated_at": "2025-08-21T16:39:55.567Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": "open",
+  "providers": [
+    {
+      "name": "Open Nagasaki (NERC)",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "UN Smart Maps Group",
+      "roles": [
+        "processor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/smartmaps/ngs"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          128.5731525,
+          32.5463203,
+          130.4106676,
+          34.7300882
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/smartmaps/ngs/",
+      "type": "application/octet-stream",
+      "title": "Dataset files (1715716 x .pnts)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/smartmaps/ngs/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/smartmaps/ngs",
+      "title": "Source Cooperative product page"
+    }
+  ],
+  "exts": {
+    "pnts": 1715716,
+    "": 2,
+    "json": 3675
+  },
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -26,17 +94,23 @@
     }
   },
   "file_count": 1719393,
-  "total_bytes": 232010061056,
-  "exts": {
-    "pnts": 1715716,
-    "": 2,
-    "json": 3675
-  },
-  "_state": "seed",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "id": "smartmaps/ngs",
-  "cataloged_at": "2026-04-29T18:38:01+00:00"
+  "data_mode": "open",
+  "visibility": "public",
+  "account_id": "smartmaps",
+  "updated_at": "2025-08-21T16:39:55.567Z",
+  "product_id": "ngs",
+  "total_bytes": 232010061056,
+  "created_at": "2024-04-14T02:17:30.136565+00:00",
+  "featured": 0,
+  "disabled": false,
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
+    "providers: role [producer, licensor] for 'Open Nagasaki (NERC)' is an AI guess \u2014 Original LiDAR data source; licensor assumed as the originating open-data portal. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-05-26T19:03:21+00:00"
 }

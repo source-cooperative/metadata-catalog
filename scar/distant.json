@@ -1,20 +1,111 @@
 {
-  "account_id": "scar",
-  "product_id": "distant",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "scar/distant",
   "title": "SCAR DistAnt Ecological Model Output Repository",
-  "description": "This repository provides access to a collection of ecological model outputs (species distribution and similar models) from Antarctica and the Southern Ocean.\n",
+  "description": "A collection of ecological model outputs \u2014 primarily species distribution models \u2014 for Antarctica and the Southern Ocean, compiled by the SCAR Expert Group on Biodiversity Informatics. Outputs are provided as cloud-optimized GeoTIFFs (one file per species, with multiple bands where uncertainty estimates or multiple output variables are included), each retained in its original coordinate reference system and spatial resolution. The collection covers circumpolar and regional domains across the Antarctic continent and Southern Ocean.",
+  "license": "CC-BY-4.0",
   "keywords": [
     "antarctica",
-    "southern ocean",
-    "species distribution model",
-    "bioregionalisation"
+    "southern-ocean",
+    "species-distribution-model",
+    "remote-sensing",
+    "biodiversity",
+    "ecology",
+    "marine"
   ],
-  "created_at": "2024-04-03T01:24:54.806165+00:00",
+  "providers": [
+    {
+      "name": "SCAR Expert Group on Biodiversity Informatics",
+      "roles": [
+        "processor",
+        "host"
+      ]
+    },
+    {
+      "name": "Royal Belgian Institute of Natural Sciences (ADVANCE / RBINS)",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Australian Antarctic Division",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/scar/distant"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -180.5,
+          -90.05,
+          180.5,
+          -32.75
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/scar/distant/",
+      "type": "image/tiff; application=geotiff",
+      "title": "Dataset files (418 x .tif)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/scar/distant/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/scar/distant",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "rel": "cite-as",
+      "href": "https://doi.org/10.5281/zenodo.10910075"
+    }
+  ],
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "featured": 0,
+  "file_count": 424,
+  "total_bytes": 1873393834,
   "updated_at": "2025-08-21T16:39:55.569Z",
   "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": "open",
+  "created_at": "2024-04-03T01:24:54.806165+00:00",
+  "exts": {
+    "md": 1,
+    "gitattributes": 1,
+    "csv": 1,
+    "tif": 418,
+    "xml": 3
+  },
+  "product_id": "distant",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -27,20 +118,16 @@
       "prefix": "scar/distant/"
     }
   },
-  "file_count": 424,
-  "total_bytes": 1873393834,
-  "exts": {
-    "md": 1,
-    "gitattributes": 1,
-    "csv": 1,
-    "tif": 418,
-    "xml": 3
-  },
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "id": "scar/distant",
-  "cataloged_at": "2026-04-29T18:37:55+00:00"
+  "account_id": "scar",
+  "disabled": false,
+  "data_mode": "open",
+  "readme": "## README.md\n# DistAnt\n\n## Overview\n\nThis repository provides access to a collection\nof ecological model outputs (species distribution and similar models)\nfrom Antarctica and the Southern Ocean.\nIt is a project of the SCAR [Expert Group on\nBiodiversity Informatics](https://scar.org/science/egabi/home/) in\nconjunction with\n[ADVANCE](https://www.belspo.be/belspo/impuls/project_en.stm#ADVANCE)\n(Royal Belgian Institute of Natural Sciences) and the Integrated Digital\nEast Antarctica program at the [Australian Antarctic\nDivision](https://www.antarctica.gov.au/science/).\n\n**Please note:** the inclusion of a layer in this collection is not an\nendorsement of its quality or suitability for your intended purpose.\nUsers should consult the associated publication for details on the\nsource data and modelling processes. We encourage users to contact the\noriginal publication authors to discuss their intended use of these\nlayers.\n\nModel outputs are provided as cloud-optimized geotiffs (COGs), with\ngenerally one file per species. The COG will have multiple bands if the\noriginal model predictions include uncertainty estimates or multiple\nmodel output variables. Each output has been kept on its original\ncoordinate reference system (map projection) and spatial resolution.\n\n### Citing\n\nThe layers in this collection have been re-released under their original\nlicense where applicable, or a CC-BY licence otherwise. Please cite when\nusing, and also cite the original data sources used. For example:\n\n> Kovacs J (2020) A model of my favourite Southern Ocean species. *Journal of Southern Ocean Stuff* **123**:1-10. Data obtained from the SCAR DistAnt Ecological Model Output Repository, 10.5281/zenodo.10910075\n\nIndividual data sources might have varying licence conditions: consult\nthe `licence` field for details.\n\n## Contribute data\n\nIf you have generated some model outputs that would be suitable for this\ncollection, or are aware of some that we haven\u2019t yet included, please\n[open an issue and let us\nknow](https://github.com/SCAR/distant/issues/new/choose).\n\nThe focus for this repository --- at least initially --- is on circumpolar\nlayers that encompass the whole Southern Ocean or whole Antarctic\ncontinent. However, regional outputs that cover smaller domains will be\nconsidered, particularly if they relate to a taxon or output variable for\nwhich there is no circumpolar output.\n\n## Project contributors\n\n  - Charlie Plasman, Anton Van de Putte (Royal Belgian Institute of\n    Natural Sciences, Universit\u00e9 Libre de Bruxelles)\n  - Salom\u00e9 Fabri-Ruiz (Institut Fran\u00e7ais de Recherche pour\n    l\u2019Exploitation de la Mer)\n  - Jennifer Freer, Huw Griffiths (British Antarctic Survey)\n  - David Green, Benjamin Viola, Briannyn Woods (Institute for Marine\n    and Antarctic Studies)\n  - Jean-Olivier Irisson (Institut de la Mer de Villefranche)\n  - Lucas Kr\u00fcger (Instituto Ant\u00e1rtico Chileno)\n  - Benjamin Merkel (Norwegian Polar Institute)\n  - Matt Pinkerton (National Institute of Water and Atmospheric\n    Research)\n  - Ryan Reisinger (University of Southampton)\n  - Giovanni Testa, Andrea Pi\u00f1ones (Centro de Investigaci\u00f3n en Din\u00e1mica\n    de Ecosistemas Marinos de Altas Latitudes)\n  - Anik\u00f3 T\u00f3th (University of New South Wales)\n  - Jos\u00e9 Xavier (University of Coimbra, British Antarctic Survey)\n  - Ben Raymond, Aleks Terauds (Australian Antarctic Division)\n\n## Contents\n\nThe `metadata.csv` file provides a table of minimal metadata that describes the\nlayers in the collection. This metadata is intended to be sufficient for\nusers to find potential layers of interest, and make an initial\nevaluation of their high-level characteristics such as taxonomic\ndetails, spatial coverage and resolution, and model output types. Our\nmetadata is NOT intended to provide a comprehensive description of each\nlayer: users are referred to the original publication for that level of\ndetail (see the layer\u2019s `reference` entry).\n",
+  "_review": [
+    "license: Layers are re-released under their original license where applicable, or CC-BY otherwise; individual items may have varying conditions \u2014 consult the 'licence' field in metadata.csv.",
+    "providers: role [processor, host] for 'SCAR Expert Group on Biodiversity Informatics' is an AI guess \u2014 Compiles and republishes model outputs from multiple original authors; acts as aggregator/processor rather than primary producer.. Verify before flipping to _state: reviewed.",
+    "providers: role [producer] for 'Royal Belgian Institute of Natural Sciences (ADVANCE / RBINS)' is an AI guess \u2014 Listed as a project partner and contributor; assumed co-producer of some model outputs.. Verify before flipping to _state: reviewed.",
+    "providers: role [producer] for 'Australian Antarctic Division' is an AI guess \u2014 Listed as a project partner via the Integrated Digital East Antarctica program; assumed co-producer of some model outputs.. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-05-26T18:42:38+00:00"
 }

@@ -1,17 +1,91 @@
 {
-  "account_id": "tabaqat",
-  "product_id": "roads-overture-pmtiles",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "tabaqat/roads-overture-pmtiles",
   "title": "Overture Maps - Roads Dataset (PMTiles) - Riyadh, Saudi Arabia",
-  "description": "This repository includes geospatial dataset of Roads in PMTiles Format For Riyadh Region, Saudi Arabia derived from Overture Maps, last updated on 12 February 2024. \n\n\n# You can navigate to @tabaqat to explore our repositories.",
+  "description": "Road network dataset for the Riyadh region of Saudi Arabia, containing 423,735 road features derived from Overture Maps (which sources from OpenStreetMap). The data is provided in PMTiles format, a cloud-native single-file archive suitable for tiled map visualization.",
   "keywords": [
-    "#overturemaps #roads #pmtiles #cng #osm #tabaqat #saudiarabia"
+    "roads",
+    "transportation",
+    "openstreetmap",
+    "overture-maps",
+    "pmtiles",
+    "cloud-native-geospatial",
+    "saudi-arabia"
   ],
-  "created_at": "2024-12-18T11:57:48.436Z",
-  "updated_at": "2025-08-21T16:39:55.567Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": "open",
+  "providers": [
+    {
+      "name": "OpenStreetMap",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Overture Maps Foundation",
+      "roles": [
+        "processor"
+      ]
+    },
+    {
+      "name": "Tabaqat",
+      "roles": [
+        "processor",
+        "host"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/tabaqat/roads-overture-pmtiles"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          41.723061,
+          19.448654,
+          48.124561,
+          27.698329
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/tabaqat/roads-overture-pmtiles/",
+      "type": "application/octet-stream",
+      "title": "Dataset files (1 x .pmtiles)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/tabaqat/roads-overture-pmtiles/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/tabaqat/roads-overture-pmtiles",
+      "title": "Source Cooperative product page"
+    }
+  ],
+  "product_id": "roads-overture-pmtiles",
+  "total_bytes": 268572244,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -24,16 +98,29 @@
       "prefix": "tabaqat/roads-overture-pmtiles/"
     }
   },
-  "file_count": 2,
-  "total_bytes": 268572244,
-  "exts": {
-    "pmtiles": 1,
-    "md": 1
-  },
-  "_state": "seed",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "id": "tabaqat/roads-overture-pmtiles"
+  "featured": 0,
+  "created_at": "2024-12-18T11:57:48.436Z",
+  "updated_at": "2025-08-21T16:39:55.567Z",
+  "exts": {
+    "pmtiles": 1,
+    "md": 1
+  },
+  "disabled": false,
+  "visibility": "public",
+  "file_count": 2,
+  "account_id": "tabaqat",
+  "data_mode": "open",
+  "readme": "## README.md\n\n# Overture Maps - Roads Dataset (PMTiles) - Riyadh, Saudi Arabia\n\n![Riyadh AOIs](https://i.imgur.com/Y8eQTP1.png)\n\n# Overview\nThis dataset includes Overture Maps Roads Data which is retrieved from Open Street Maps Corporation. \nIt contains 423,735 Roads Features for Riyadh Region, Saudi Arabia. Last Updated On 12 February 2024. \nThe dataset was derived from Overture Maps By https://tabaqat.net/ in PMTiles Format which is one of Cloud Native Geospatial Formats.\n\n# Observe it in use\nYou can use https://pmtiles.io/ to get a quick overview to see it in action through shared URL provided here https://data.source.coop/tabaqat/riyadh-overture-pmtiles/riyadh_riyadh_roads.pmtiles at specified zoom extent.\n\n# Files and Structure\n- `riyadh_roads.pmtiles` - PMTiles File of Riyadh Roads Dataset.\n- `README.md` - This file, explaining the repository.\n\n# Data Sources: \n  This dataset was compiled by Overture Maps using data from Open Street Maps corporation.\n\n# Data Formats:\nthe data is provided in this format: \n- PMTiles is a single-file archive format for tiled data, usually used for visualization. As an \u201carchive format\u201d, PMTiles is similar to a ZIP file: \nit contains the contents of many individual files inside of one PMTiles file. you can explore more information about PMTiles, from here https://guide.cloudnativegeo.org/pmtiles/intro.html.\n\n# Data Access: \nGenerating PMTiles From Vector Geospatial Data is explained in our blog post https://tabaqat-wagtail.tabaqat.net/en/resources/blogs/generating-pmtiles-from-vector-geospatial-data-using-tippecanoe-and-go-pmtiles-tools/.\n\n# Data Upload Process\nData Upload Process Steps are explained in our blog post https://blogs.tabaqat.net/en/unlocking-spatial-insights-a-guide-to-uploading-geoparquet-files-onto-source-cooperative-platform-for-enhanced-data-collaboration/ \n\n# Schema: \nThis dataset adheres to Overture Maps Schema of Places theme explained here https://docs.overturemaps.org/schema/concepts/by-theme/transportation/roads/\n\n# Contact \nFor further details about the dataset or the processing steps, you can contact us via https://platform.tabaqat.net/contact-us",
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
+    "providers: role [producer, licensor] for 'OpenStreetMap' is an AI guess \u2014 OSM is the ultimate data source; licensor role assumed based on OSM's ODbL governing derived datasets. Verify before flipping to _state: reviewed.",
+    "providers: role [processor] for 'Overture Maps Foundation' is an AI guess \u2014 Described as compiler of OSM data into the Overture Maps schema; processor role inferred. Verify before flipping to _state: reviewed.",
+    "providers: role [processor, host] for 'Tabaqat' is an AI guess \u2014 Derived the PMTiles file from Overture Maps data and uploaded to Source Cooperative; host role inferred from their platform presence. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-05-26T18:25:15+00:00"
 }

@@ -1,19 +1,102 @@
 {
-  "account_id": "protomaps",
-  "product_id": "openstreetmap",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "protomaps/openstreetmap",
   "title": "OpenStreetMap Open Data Products",
-  "description": "Distributions of OpenStreetMap vector geodata in cloud-native formats.",
+  "description": "Cloud-native vector tile distributions of OpenStreetMap and Natural Earth geodata in PMTiles format, covering Web Mercator zoom levels 0\u201315. Data is organized into thematic layers (water, buildings, landuse, etc.) and mirrored daily from Protomaps builds. These are lossy transformations of OSM planet data intended for basemap rendering.",
+  "license": "ODbL-1.0",
   "keywords": [
     "openstreetmap",
-    "vector",
-    "pmtiles"
+    "vector-tiles",
+    "pmtiles",
+    "basemap",
+    "land-use",
+    "buildings",
+    "natural-earth"
   ],
-  "created_at": "2023-08-09T12:33:30.507684+00:00",
-  "updated_at": "2025-08-21T16:39:55.567Z",
-  "visibility": "public",
+  "providers": [
+    {
+      "name": "OpenStreetMap contributors",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Natural Earth",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Protomaps",
+      "roles": [
+        "processor",
+        "host"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/protomaps/openstreetmap"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -180.0,
+          -90.0,
+          180.0,
+          90.0
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/protomaps/openstreetmap/",
+      "type": "application/octet-stream",
+      "title": "Dataset files (4 x .pmtiles)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/protomaps/openstreetmap/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/protomaps/openstreetmap",
+      "title": "Source Cooperative product page"
+    }
+  ],
+  "total_bytes": 488741792776,
   "disabled": false,
+  "visibility": "public",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "account_id": "protomaps",
+  "created_at": "2023-08-09T12:33:30.507684+00:00",
+  "file_count": 5,
   "featured": 1,
-  "data_mode": "open",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -26,16 +109,17 @@
       "prefix": "protomaps/openstreetmap/"
     }
   },
-  "file_count": 5,
-  "total_bytes": 488741792776,
+  "updated_at": "2025-08-21T16:39:55.567Z",
+  "data_mode": "open",
   "exts": {
     "pmtiles": 4,
     "md": 1
   },
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "id": "protomaps/openstreetmap"
+  "product_id": "openstreetmap",
+  "readme": "## README.md\n\n# OpenStreetMap\n\nDistributions of OpenStreetMap vector geodata in cloud-native formats.\n\nThese datasets are \"lossy\" transformations of open source vector data from [planet.openstreetmap.org](planet.openstreetmap.org) and [Natural Earth](http://naturalearthdata.com).\nIncludes a subset of OSM features at Web Mercator zoom levels 0-15, organized into themes like `water`, `buildings` and `landuse`. The included features are documented at [Protomaps Basemap Layers](https://docs.protomaps.com/basemaps/layers).\n\n## Tiles\n\n`tiles/v3.pmtiles`: Latest basemap version. Mirrored daily from [maps.protomaps.com/builds](https://maps.protomaps.com/builds).\n\n`tiles/v2/`: Version 2 of basemaps.\n\n* Files can be viewed directly in Source Viewers.\n* source.coop URLs can be viewed directly in the [PMTiles Viewer](https://protomaps.github.io/PMTiles/).\n* Extract a spatial subset from the source.coop URL using the [pmtiles cli](https://docs.protomaps.com/pmtiles/cli#extract).\n\n## Limitations\n\nLimitations\n\n* We don't recommend cross-origin hotlinking directly to source.coop URLs.\n* Data reflects OpenStreetMap as of that day. \n\n## License\n\nData products are Produced Works of the [Open Database License (ODbL)](https://opendatacommons.org/licenses/odbl/1-0/).\n\n",
+  "_review": [
+    "providers: role [processor, host] for 'Protomaps' is an AI guess \u2014 Assumed processor/host based on daily mirror from maps.protomaps.com/builds; README does not explicitly state roles.. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-05-26T18:40:42+00:00"
 }
