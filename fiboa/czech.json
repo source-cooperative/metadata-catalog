@@ -1,13 +1,23 @@
 {
-  "account_id": "fiboa",
-  "product_id": "czech",
-  "fiboa_version": "0.2.0",
-  "fiboa_extensions": [],
   "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
   "id": "fiboa/czech",
   "title": "Field boundaries for Czech",
-  "description": "The cropfields of Czech (Plodina)",
+  "description": "Official field boundary dataset for the Czech Republic containing 426,584 agricultural parcels sourced from the Czech Ministry of Agriculture (Ministr Zem\u011bd\u011blstv\u00ed) LPIS system. Each record includes crop code, crop name, field area, and determination date. Released under the EU INSPIRE directive and converted to fiboa GeoParquet format.",
   "license": "CC-0",
+  "keywords": [
+    "field-boundaries",
+    "agriculture",
+    "crop-classification",
+    "lpis",
+    "land-parcels",
+    "arable-land",
+    "land-use",
+    "fiboa"
+  ],
   "providers": [
     {
       "name": "Czech Ministry of Agriculture (Ministr Zem\u011bd\u011blstv\u00ed)",
@@ -30,6 +40,19 @@
         "host"
       ],
       "url": "https://source.coop/fiboa/czech/"
+    },
+    {
+      "name": "Czech Ministry of Agriculture (Ministr Zem\u011bd\u011blstv\u00ed)",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Ivor Bosloper",
+      "roles": [
+        "processor"
+      ]
     }
   ],
   "extent": {
@@ -52,14 +75,9 @@
       ]
     }
   },
-  "links": [
-    {
-      "href": "https://data.source.coop/fiboa/czech/czech.pmtiles",
-      "type": "application/vnd.pmtiles",
-      "rel": "pmtiles"
-    }
-  ],
-  "stac_version": "1.0.0",
+  "summaries": {
+    "item_count": 426584
+  },
   "assets": {
     "data": {
       "href": "https://data.source.coop/fiboa/czech/czech.parquet",
@@ -102,23 +120,30 @@
       "table:row_count": 426584
     }
   },
-  "stac_extensions": [
-    "https://stac-extensions.github.io/table/v1.2.0/schema.json",
-    "https://stac-extensions.github.io/web-map-links/v1.2.0/schema.json"
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/fiboa/czech/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/fiboa/czech",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "href": "https://data.source.coop/fiboa/czech/czech.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "rel": "pmtiles"
+    }
   ],
-  "featured": 0,
+  "updated_at": "2025-08-21T16:39:55.568Z",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "data_mode": "open",
-  "exts": {
-    "parquet": 1,
-    "pmtiles": 1,
-    "json": 1,
-    "md": 1,
-    "txt": 1
-  },
+  "featured": 0,
+  "file_count": 5,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -131,14 +156,22 @@
       "prefix": "fiboa/czech/"
     }
   },
-  "disabled": false,
-  "updated_at": "2025-08-21T16:39:55.568Z",
-  "total_bytes": 458175113,
-  "file_count": 5,
   "visibility": "public",
+  "total_bytes": 458175113,
+  "data_mode": "open",
+  "disabled": false,
+  "product_id": "czech",
+  "exts": {
+    "md": 1,
+    "parquet": 1,
+    "txt": 1,
+    "pmtiles": 1,
+    "json": 1
+  },
+  "account_id": "fiboa",
   "created_at": "2024-11-15T15:34:31.021Z",
-  "stac_key": "fiboa/czech/stac/collection.json",
-  "stac_last_modified": "2025-03-19 15:25:33-07:00",
-  "_state": "gathered",
-  "_upstream_stac_id": "cz"
+  "readme": "## README.md\n# Field boundaries for Czech\n\nProvides 426584 official field boundaries from Czech.\nIt has been converted to a fiboa GeoParquet file from data obtained from Czech Ministry of Agriculture (Ministr Zem\u011bd\u011blstv\u00ed).\n\n- **Source Data Provider:** [Czech Ministry of Agriculture (Ministr Zem\u011bd\u011blstv\u00ed)](https://mze.gov.cz/public/portal/mze/farmar/LPIS)\n- **Converted by:** Ivor Bosloper\n- **License:** CC-0 (Publicly distributed as part of the Inspire directive)\n- **Projection:** EPSG:5514 or EPSG:4258\n\n---\n\n- [Download the data as fiboa GeoParquet](https://data.source.coop/fiboa/czech/czech.parquet)\n- [STAC Browser](https://radiantearth.github.io/stac-browser/#/external/data.source.coop/fiboa/czech/stac/collection.json)\n- [STAC Collection](https://data.source.coop/fiboa/czech/stac/collection.json)\n- [PMTiles](https://data.source.coop/fiboa/czech/czech.pmtiles)\n\n## Columns\n\n| Property               | **Data Type** | Description |\n|------------------------|---------------|-------------|\n| id                     | string        |             |\n| block_id               | string        |             |\n| crop_code              | string        |             |\n| crop_name              | string        |             |\n| area                   | float         |             |\n| determination_datetime | timestamp     |             |\n\n## Lineage\n\n- Data downloaded on 2024-11-15 from https://mze.gov.cz/public/app/eagriapp/Files/geoprostor_zadosti23_2024-08-01_202409261243_epsg4258.zip.\n- Converted to GeoParquet using [fiboa-cli](https://github.com/fiboa/cli), version 0.8.0\n",
+  "_state": "drafted",
+  "cataloged_at": "2026-05-27T01:23:26+00:00",
+  "_source_format": "stac"
 }

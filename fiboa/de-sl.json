@@ -1,16 +1,19 @@
 {
-  "account_id": "fiboa",
-  "product_id": "de-sl",
-  "fiboa_version": "0.2.0",
-  "fiboa_extensions": [
-    "https://fiboa.github.io/flik-extension/v0.1.0/schema.yaml"
-  ],
-  "stac_version": "1.0.0",
   "type": "Collection",
+  "stac_version": "1.1.0",
   "id": "fiboa/de-sl",
   "title": "Field boundaries for Saarland, Germany",
-  "description": "This dataset contains data transformed into the INSPIRE data model \u201cLand Use\u201d of the IACS areas applied for within the framework of agricultural land promotion (GIS application) from the Saarland.",
+  "description": "Approximately 50,000 official agricultural field boundaries for the German federal state of Saarland (SL), sourced from the state's WFS instance and transformed to conform to the INSPIRE \"Land Use\" data model for IACS subsidy-application areas. Published as a fiboa-compliant GeoParquet file.",
   "license": "cc-by-4.0",
+  "keywords": [
+    "field-boundaries",
+    "agriculture",
+    "land-parcels",
+    "lpis",
+    "land-use",
+    "germany",
+    "fiboa"
+  ],
   "providers": [
     {
       "name": "Ministerium f\u00fcr Umwelt, Klima, Mobilit\u00e4t, Agrar und Verbraucherschutz",
@@ -33,6 +36,19 @@
         "host"
       ],
       "url": "https://beta.source.coop/fiboa/de-sl/"
+    },
+    {
+      "name": "Ministerium f\u00fcr Umwelt, Klima, Mobilit\u00e4t, Agrar und Verbraucherschutz",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Matthias Mohr",
+      "roles": [
+        "processor"
+      ]
     }
   ],
   "extent": {
@@ -55,14 +71,6 @@
       ]
     }
   },
-  "links": [
-    {
-      "href": "https://data.source.coop/fiboa/de-sl/de-sl.pmtiles",
-      "type": "application/vnd.pmtiles",
-      "rel": "pmtiles"
-    }
-  ],
-  "attribution": "\u00a9 GDI-SL 2024",
   "assets": {
     "data": {
       "href": "https://data.source.coop/fiboa/de-sl/de-sl.parquet",
@@ -97,22 +105,43 @@
       "table:row_count": 53366
     }
   },
-  "stac_extensions": [
-    "https://stac-extensions.github.io/table/v1.2.0/schema.json",
-    "https://stac-extensions.github.io/web-map-links/v1.2.0/schema.json"
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/fiboa/de-sl/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/fiboa/de-sl",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "href": "https://data.source.coop/fiboa/de-sl/de-sl.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "rel": "pmtiles"
+    }
   ],
+  "updated_at": "2025-08-21T16:39:55.568Z",
+  "account_id": "fiboa",
+  "visibility": "public",
+  "total_bytes": 47455579,
+  "disabled": false,
   "featured": 0,
+  "file_count": 5,
+  "data_mode": "open",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "data_mode": "open",
+  "product_id": "de-sl",
+  "created_at": "2024-11-05T23:36:33.923Z",
   "exts": {
-    "pmtiles": 1,
-    "parquet": 1,
     "txt": 1,
+    "pmtiles": 1,
+    "md": 1,
     "json": 1,
-    "md": 1
+    "parquet": 1
   },
   "mirrors": {
     "aws-opendata-us-west-2": {
@@ -126,14 +155,8 @@
       "prefix": "fiboa/de-sl/"
     }
   },
-  "disabled": false,
-  "updated_at": "2025-08-21T16:39:55.568Z",
-  "total_bytes": 47455579,
-  "file_count": 5,
-  "visibility": "public",
-  "created_at": "2024-11-05T23:36:33.923Z",
-  "stac_key": "fiboa/de-sl/stac/collection.json",
-  "stac_last_modified": "2024-11-05 17:01:01-08:00",
-  "_state": "gathered",
-  "_upstream_stac_id": "de_sl"
+  "readme": "## README.md\n# Field boundaries for Saarland (SL), Germany\n\nProvides ca. 50.000 official field boundaries from the federal state of Saarland (SL) in Germany.\nIt has been converted to a fiboa GeoParquet file from multiple files that were provided by the state.\n\n- **Source Data Provider:** [Ministerium f\u00fcr Umwelt, Klima, Mobilit\u00e4t, Agrar und Verbraucherschutz](https://geoportal.saarland.de)\n- **Converted by:** [Matthias Mohr](https://mohr.ws)\n- **License:** CC-BY-4.0\n\n---\n\n- **[Download the data as fiboa GeoParquet](https://data.source.coop/fiboa/de-sl/de-sl.parquet)**\n- [STAC Browser](https://radiantearth.github.io/stac-browser/#/external/data.source.coop/fiboa/de-sl/stac/collection.json)\n- [STAC Collection](https://data.source.coop/fiboa/de-sl/stac/collection.json)\n- [PMTiles](https://data.source.coop/fiboa/de-th/de-sl.pmtiles)\n\n## Lineage\n\n- Data downloaded on 2024-11-05 from 15 files received from the WFS instance of the state.\n- Converted to GeoParquet using [fiboa-cli](https://github.com/fiboa/cli), version 0.7.0.\n",
+  "_state": "drafted",
+  "cataloged_at": "2026-05-27T01:15:33+00:00",
+  "_source_format": "stac"
 }

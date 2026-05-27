@@ -1,140 +1,15 @@
 {
   "account_id": "fiboa",
   "product_id": "data",
-  "stac_version": "1.1.0",
-  "stac_extensions": [
-    "https://stac-extensions.github.io/processing/v1.2.0/schema.json",
-    "https://stac-extensions.github.io/table/v1.2.0/schema.json",
-    "https://stac-extensions.github.io/web-map-links/v1.2.0/schema.json"
-  ],
-  "type": "Collection",
-  "id": "fiboa/data",
-  "title": "Field boundaries for Austria (2025)",
-  "description": "**Crop Field boundaries for Austria - INVEKOS Schl\u00e4ge \u00d6sterreich 2025.**\n\nThis layer includes all field uses recorded by the applicants, which serve as the basis for the funding process. A field\nis a contiguous area of a piece of land that is cultivated for a growing season with only one crop (field use type) and\nuniform management requirements or as a landscape element type in accordance with Annex 1 of the regulation of the responsible\nFederal Ministry with horizontal rules for the area of the Common Agricultural Policy (Horizontal CAP Regulation)\nStF: BGBl. II No. 100/2015 or is simply maintained in good agricultural and ecological condition in accordance with\nArt. 94 of Regulation (EU) No. 1306/2013 and is digitized in the GIS as a polygon or as a point.",
-  "license": "CC-BY-4.0",
-  "extent": {
-    "spatial": {
-      "bbox": [
-        [
-          9.405290334050287,
-          46.345878031124734,
-          17.232237933779267,
-          48.96562897393914
-        ]
-      ]
-    },
-    "temporal": {
-      "interval": [
-        [
-          "2022-09-30T13:46:14Z",
-          "2025-06-13T12:18:13Z"
-        ]
-      ]
-    }
-  },
-  "assets": {
-    "data": {
-      "roles": [
-        "data"
-      ],
-      "href": "https://data.source.coop/fiboa/data/at/at-2025.parquet",
-      "processing:software": {
-        "fiboa-cli": "0.20.1",
-        "vecorel-cli": "0.2.3"
-      },
-      "type": "application/vnd.apache.parquet",
-      "table:columns": [
-        {
-          "name": "hcat:code",
-          "type": "uint32"
-        },
-        {
-          "name": "metrics:area",
-          "type": "float"
-        },
-        {
-          "name": "hcat:name",
-          "type": "string"
-        },
-        {
-          "name": "geometry",
-          "type": "binary"
-        },
-        {
-          "name": "id",
-          "type": "string"
-        },
-        {
-          "name": "collection",
-          "type": "string"
-        },
-        {
-          "name": "crop:name",
-          "type": "string"
-        },
-        {
-          "name": "hcat:name_en",
-          "type": "string"
-        },
-        {
-          "name": "determination:datetime",
-          "type": "timestamp[ms, tz=UTC]"
-        },
-        {
-          "name": "crop:code",
-          "type": "string"
-        },
-        {
-          "name": "bbox",
-          "type": "struct<xmin: double, ymin: double, xmax: double, ymax: double>"
-        }
-      ],
-      "table:primary_geometry": "geometry",
-      "table:row_count": 2944405
-    }
-  },
-  "links": [
-    {
-      "href": "https://data.source.coop/fiboa/data/at/at-2025.pmtiles",
-      "type": "application/vnd.pmtiles",
-      "rel": "pmtiles"
-    }
-  ],
-  "providers": [
-    {
-      "name": "Agrarmarkt Austria",
-      "roles": [
-        "producer",
-        "licensor"
-      ],
-      "url": "https://geometadatensuche.inspire.gv.at/metadatensuche/inspire/api/records/9db8a0c3-e92a-4df4-9d55-8210e326a7ed"
-    }
-  ],
-  "fiboa_version": "0.3.0",
-  "vecorel_version": "0.1.0",
-  "vecorel_extensions": {
-    "at": [
-      "https://vecorel.org/administrative-division-extension/v0.1.0/schema.yaml",
-      "https://vecorel.org/specification/v0.1.0/schema.yaml",
-      "https://fiboa.org/hcat-extension/v0.3.0/schema.yaml",
-      "https://fiboa.org/crop-extension/v0.2.0/schema.yaml",
-      "https://fiboa.org/specification/v0.3.0/schema.yaml"
-    ]
-  },
+  "title": "Fiboa datasets",
+  "description": "A combined repository for fiboa 0.3.0+ datasets",
+  "keywords": [],
+  "created_at": "2025-10-03T09:16:01.587Z",
+  "updated_at": "2025-10-03T09:16:01.587Z",
+  "visibility": "public",
+  "disabled": false,
   "featured": 0,
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
   "data_mode": "open",
-  "exts": {
-    "parquet": 37,
-    "pmtiles": 36,
-    "txt": 29,
-    "json": 30,
-    "md": 29,
-    "md~": 3
-  },
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -147,14 +22,20 @@
       "prefix": "fiboa/data/"
     }
   },
-  "disabled": false,
-  "updated_at": "2025-10-03T09:16:01.587Z",
-  "total_bytes": 30118103539,
   "file_count": 164,
-  "visibility": "public",
-  "created_at": "2025-10-03T09:16:01.587Z",
-  "stac_key": "fiboa/data/at/stac/collection.json",
-  "stac_last_modified": "2025-11-28 08:35:00-08:00",
-  "_state": "gathered",
-  "_upstream_stac_id": "at"
+  "total_bytes": 30118103539,
+  "exts": {
+    "md": 29,
+    "parquet": 37,
+    "pmtiles": 36,
+    "md~": 3,
+    "txt": 29,
+    "json": 30
+  },
+  "_state": "seed",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "cataloged_at": "2026-05-27T01:09:16+00:00"
 }

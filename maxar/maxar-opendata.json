@@ -1,15 +1,203 @@
 {
-  "account_id": "maxar",
-  "product_id": "maxar-opendata",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
+  "id": "maxar/maxar-opendata",
   "title": "Maxar Open Data Program (ARD)",
-  "description": "Pre and post event high-resolution satellite imagery in support of emergency planning, risk assessment, monitoring of staging areas and emergency response, damage assessment, and recovery. These images are generated using the Maxar ARD pipeline, tiled on an organized grid in analysis-ready cloud-optimized formats. This repository is a mirror of https://registry.opendata.aws/maxar-open-data/index.html",
-  "keywords": [],
+  "description": "Pre- and post-event high-resolution satellite imagery from Maxar's Open Data Program, covering global disaster events captured between 2010 and 2023. Imagery is generated using the Maxar ARD pipeline and tiled on an organized grid in analysis-ready, cloud-optimized formats. This repository mirrors the STAC catalog as GeoParquet for evaluation.",
+  "keywords": [
+    "satellite-imagery",
+    "remote-sensing",
+    "disaster-response",
+    "emergency-management",
+    "damage-assessment",
+    "ard"
+  ],
+  "providers": [
+    {
+      "name": "Maxar Technologies",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Amazon Web Services",
+      "roles": [
+        "host"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/maxar/maxar-opendata"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2010-06-01T08:46:57Z",
+          "2023-08-15T19:09:19Z"
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 14979
+  },
+  "assets": {
+    "maxar-opendata": {
+      "href": "https://data.source.coop/maxar/maxar-opendata/maxar-opendata.parquet",
+      "type": "application/x-parquet",
+      "title": "maxar-opendata.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "type",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "stac_version",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "stac_extensions",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:4326')",
+          "description": "[geometry] Footprint of each satellite image tile in EPSG:4326"
+        },
+        {
+          "name": "bbox",
+          "type": "DOUBLE[]"
+        },
+        {
+          "name": "links",
+          "type": "STRUCT(href VARCHAR, rel VARCHAR, \"type\" VARCHAR)[]"
+        },
+        {
+          "name": "assets",
+          "type": "STRUCT(\"data-mask\" STRUCT(href VARCHAR, roles VARCHAR[], title VARCHAR, \"type\" VARCHAR), ms_analytic STRUCT(\"eo:bands\" STRUCT(common_name VARCHAR, description VARCHAR, \"name\" VARCHAR)[], href VARCHAR, \"proj:bbox\" DOUBLE[], \"proj:shape\" BIGINT[], \"proj:transform\" DOUBLE[], roles VARCHAR[], title VARCHAR, \"type\" VARCHAR), pan_analytic STRUCT(\"eo:bands\" STRUCT(description VARCHAR, \"name\" VARCHAR)[], href VARCHAR, \"proj:bbox\" DOUBLE[], \"proj:shape\" BIGINT[], \"proj:transform\" DOUBLE[], roles VARCHAR[], title VARCHAR, \"type\" VARCHAR), visual STRUCT(\"eo:bands\" STRUCT(common_name VARCHAR, description VARCHAR, \"name\" VARCHAR)[], href VARCHAR, \"proj:bbox\" DOUBLE[], \"proj:shape\" BIGINT[], \"proj:transform\" DOUBLE[], roles VARCHAR[], title VARCHAR, \"type\" VARCHAR))"
+        },
+        {
+          "name": "collection",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "datetime",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "platform",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "gsd",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "ard_metadata_version",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "catalog_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "utm_zone",
+          "type": "BIGINT"
+        },
+        {
+          "name": "quadkey",
+          "type": "VARCHAR",
+          "description": "[spatial_index] Quadkey tile identifier for the ARD tiling grid"
+        },
+        {
+          "name": "view:off_nadir",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "view:azimuth",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "view:incidence_angle",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "view:sun_azimuth",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "view:sun_elevation",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "proj:epsg",
+          "type": "BIGINT"
+        },
+        {
+          "name": "grid:code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "tile:data_area",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "tile:clouds_area",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "tile:clouds_percent",
+          "type": "BIGINT"
+        }
+      ],
+      "table:row_count": 14979
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/maxar/maxar-opendata/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/maxar/maxar-opendata",
+      "title": "Source Cooperative product page"
+    }
+  ],
   "created_at": "2023-08-16T14:39:08.866866+00:00",
-  "updated_at": "2025-08-21T16:39:55.568Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": "open",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "file_count": 3,
+  "total_bytes": 4957722,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -22,17 +210,24 @@
       "prefix": "maxar/maxar-opendata/"
     }
   },
-  "file_count": 3,
-  "total_bytes": 4957722,
+  "disabled": false,
+  "account_id": "maxar",
   "exts": {
     "parquet": 1,
     "pmtiles": 1,
     "md": 1
   },
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "id": "maxar/maxar-opendata"
+  "data_mode": "open",
+  "visibility": "public",
+  "product_id": "maxar-opendata",
+  "featured": 0,
+  "updated_at": "2025-08-21T16:39:55.568Z",
+  "readme": "## README.md\n# Maxar Open Data Program Images (ARD Format)\n\nPre and post event high-resolution satellite imagery in support of emergency planning, risk assessment, monitoring of staging areas and emergency response, damage assessment, and recovery. These images are generated using the Maxar ARD pipeline, tiled on an organized grid in analysis-ready cloud-optimized formats.\n\nData is currently stored in the Amazon S3 bucket `arn:aws:s3:::maxar-opendata` in `us-east-1`.\n\nA copy of the STAC catalog in GeoParquet format is mirrored here for evaluation.\n\nSee also:\n\nhttps://registry.opendata.aws/maxar-open-data/\nhttps://www.maxar.com/open-data\n\n",
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
+    "providers: role [host] for 'Amazon Web Services' is an AI guess \u2014 Hosts the primary maxar-opendata S3 bucket; role inferred from registry.opendata.aws listing. Verify before flipping to _state: reviewed.",
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [maxar-opendata.geometry (geometry), maxar-opendata.quadkey (spatial_index)]. Add bbox once a placename \u2192 bbox gazetteer is available."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-05-27T01:14:56+00:00"
 }

@@ -1,16 +1,21 @@
 {
-  "account_id": "fiboa",
-  "product_id": "es-cb",
-  "fiboa_version": "0.2.0",
-  "fiboa_extensions": [
-    "https://fiboa.github.io/crop-extension/v0.1.0/schema.yaml",
-    "https://fiboa.github.io/administrative-division-extension/v0.1.0/schema.yaml"
-  ],
   "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
   "id": "fiboa/es-cb",
   "title": "Spain Cantabria Crop fields",
-  "description": "SIGPAC Crop fields of Spain - Cantabria",
+  "description": "Official field boundaries for the Cantabria region of Spain, sourced from Gobierno de Cantabria's SIGPAC system. Contains 820 field polygons with crop classification and administrative codes, converted to fiboa GeoParquet format in EPSG:4326.",
   "license": "CC-BY-NC-4.0",
+  "keywords": [
+    "field-boundaries",
+    "agriculture",
+    "crop-classification",
+    "lpis",
+    "land-parcels",
+    "spain"
+  ],
   "providers": [
     {
       "name": "",
@@ -33,6 +38,19 @@
         "host"
       ],
       "url": "https://source.coop/fiboa/es-cb/"
+    },
+    {
+      "name": "Gobierno de Cantabria",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Ivor Bosloper",
+      "roles": [
+        "processor"
+      ]
     }
   ],
   "extent": {
@@ -45,16 +63,19 @@
           43.513152978504806
         ]
       ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
     }
   },
-  "links": [
-    {
-      "href": "https://data.source.coop/fiboa/es-cb/es_cb.pmtiles",
-      "type": "application/vnd.pmtiles",
-      "rel": "pmtiles"
-    }
-  ],
-  "attribution": "\u00a9Government of Cantabria. Free information available at https://mapas.cantabria.es",
+  "summaries": {
+    "item_count": 1213451
+  },
   "assets": {
     "data": {
       "href": "https://data.source.coop/fiboa/es_cb/es_cb.parquet",
@@ -109,23 +130,25 @@
       "table:row_count": 605149
     }
   },
-  "stac_extensions": [
-    "https://stac-extensions.github.io/table/v1.2.0/schema.json",
-    "https://stac-extensions.github.io/web-map-links/v1.2.0/schema.json"
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/fiboa/es-cb/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/fiboa/es-cb",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "href": "https://data.source.coop/fiboa/es-cb/es_cb.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "rel": "pmtiles"
+    }
   ],
-  "featured": 0,
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "data_mode": "open",
-  "exts": {
-    "parquet": 2,
-    "pmtiles": 1,
-    "json": 1,
-    "md": 1,
-    "txt": 1
-  },
+  "created_at": "2024-12-29T10:30:04.640Z",
+  "file_count": 6,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -138,14 +161,27 @@
       "prefix": "fiboa/es-cb/"
     }
   },
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
   "disabled": false,
-  "updated_at": "2025-08-21T16:39:55.568Z",
+  "account_id": "fiboa",
   "total_bytes": 551072324,
-  "file_count": 6,
+  "data_mode": "open",
+  "featured": 0,
+  "product_id": "es-cb",
+  "updated_at": "2025-08-21T16:39:55.568Z",
   "visibility": "public",
-  "created_at": "2024-12-29T10:30:04.640Z",
-  "stac_key": "fiboa/es-cb/stac/collection.json",
-  "stac_last_modified": "2025-03-19 15:25:50-07:00",
-  "_state": "gathered",
-  "_upstream_stac_id": "es_cb"
+  "exts": {
+    "json": 1,
+    "parquet": 2,
+    "pmtiles": 1,
+    "txt": 1,
+    "md": 1
+  },
+  "readme": "## README.md\n# Field boundaries for Spain Cantabria\n\nProvides 820 official field boundaries from Spain Cantabria.\nIt has been converted to a fiboa GeoParquet file from data obtained from Gobierno de Cantabria.\n\n- **Source Data Provider:** [Gobierno de Cantabria](https://mapas.cantabria.es/)\n- **Converted by:** Ivor Bosloper\n- **License:** CC-BY-NC-4.0 (a non-free license, for non-commerical usage)\n- **Projection:** EPSG:4326\n\n---\n\n- [Download the data as fiboa GeoParquet](https://data.source.coop/fiboa/es-cb/es_cb.parquet)\n- [STAC Browser](https://radiantearth.github.io/stac-browser/#/external/data.source.coop/fiboa/es-cb/stac/collection.json)\n- [STAC Collection](https://data.source.coop/fiboa/es-cb/stac/collection.json)\n- [PMTiles](https://data.source.coop/fiboa/es-cb/es_cb.pmtiles)\n\n## Columns\n\n| Property                | **Data Type** | Description |\n|-------------------------|---------------|-------------|\n| id                      | string        |             |\n| admin_province_code     | string        |             |\n| admin_municipality_code | string        |             |\n| crop:code               | string        |             |\n| crop:name               | string        |             |\n| crop:name_en            | string        |             |\n| admin:country_code      | string        |             |\n| crop:code_list          | string        |             |\n| admin:subdivision_code  | string        |             |\n\n## Lineage\n\n- Data downloaded on 2024-12-29 from:\n  - REST\n- Converted to GeoParquet using [fiboa-cli](https://github.com/fiboa/cli), version 0.8.0\n",
+  "_state": "drafted",
+  "cataloged_at": "2026-05-27T01:26:04+00:00",
+  "_source_format": "unknown"
 }

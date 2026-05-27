@@ -1,20 +1,191 @@
 {
-  "account_id": "pacificspatial",
-  "product_id": "vegetation-jp",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
+  "id": "pacificspatial/vegetation-jp",
   "title": "Japanese Vegetation Map (1/25,000)",
-  "description": "This data is based on the Natural Environment Conservation Basic Survey conducted by the Ministry of the Environment's Biodiversity Center. The spatial scale of this data set is in 1/25,000. Original data was prepared as a series of Shapefile and publially avaiable for your download (http://gis.biodic.go.jp/webgis/sc-025.html?kind=vg67). We downloaded and merged all shapefile while fixing various schema anomality. We also translated categorical descriptions into English using ChatGPT4o. ",
+  "description": "The most detailed vegetation map covering all of Japan at 1:25,000 scale, based on the Natural Environment Conservation Basic Survey conducted by Japan's Ministry of the Environment Biodiversity Center. Original shapefiles divided by standard mesh areas were downloaded, merged into a single GeoParquet file, schema anomalies corrected, and adjacent cross-mesh polygons unified. Categorical attribute values were translated from Japanese to English using ChatGPT-4o.",
+  "license": "CC-BY-4.0",
   "keywords": [
     "vegetation",
     "japan",
-    "land cover",
-    ""
+    "land-cover",
+    "biodiversity",
+    "natural-environment",
+    "vegetation-classification"
   ],
-  "created_at": "2024-08-22T05:02:24.349165+00:00",
-  "updated_at": "2025-08-21T16:39:55.567Z",
+  "providers": [
+    {
+      "name": "Biodiversity Center, Ministry of the Environment (Japan)",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Pacific Spatial Solutions Inc.",
+      "roles": [
+        "processor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/pacificspatial/vegetation-jp"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 4940015
+  },
+  "assets": {
+    "jp_vegetation25000_en": {
+      "href": "https://data.source.coop/pacificspatial/vegetation-jp/parquet/jp_vegetation25000_en.parquet",
+      "type": "application/x-parquet",
+      "title": "jp_vegetation25000_en.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "org_no",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "mesh2_c",
+          "type": "VARCHAR",
+          "description": "[spatial_index] Japanese standard 2nd-level mesh code identifying source tile"
+        },
+        {
+          "name": "surv_year",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "zukaku_no",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "filename",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "dai_c",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "dai_n",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "dia_en",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "chu_c",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "chu_n",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "chu_en",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "sai_c",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "sai_n",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "sai_en",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "hanrei_c",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "hanrei_n",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "hanrei_en",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "shoku_c",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "shoku_n",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "shoku_en",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "GEOM",
+          "type": "GEOMETRY('EPSG:4326')",
+          "description": "[geometry] Polygon geometry of vegetation areas, EPSG:4326"
+        }
+      ],
+      "table:row_count": 4940015
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/pacificspatial/vegetation-jp/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/pacificspatial/vegetation-jp",
+      "title": "Source Cooperative product page"
+    }
+  ],
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "account_id": "pacificspatial",
+  "data_mode": "open",
+  "featured": 0,
+  "total_bytes": 6665983192,
+  "exts": {
+    "parquet": 1,
+    "md": 1
+  },
   "visibility": "public",
   "disabled": false,
-  "featured": 0,
-  "data_mode": "open",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -27,16 +198,14 @@
       "prefix": "pacificspatial/vegetation-jp/"
     }
   },
+  "created_at": "2024-08-22T05:02:24.349165+00:00",
+  "updated_at": "2025-08-21T16:39:55.567Z",
   "file_count": 2,
-  "total_bytes": 6665983192,
-  "exts": {
-    "parquet": 1,
-    "md": 1
-  },
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "id": "pacificspatial/vegetation-jp"
+  "product_id": "vegetation-jp",
+  "readme": "## README.md\n# Japanese Vegetation Map (1/25,000)\r\n\r\nThis is the most detailed vegetation map covering all of Japan. The Ministry of the Environment has been conducting the Natural Environment Conservation Basic Survey. The vegetation survey is a part of this extensive nationwide natural environment survey (http://gis.biodic.go.jp/webgis/sc-043.html).\r\n\r\nThe original data was prepared as shapefile and was divided into Japanese standard mesh areas. We downloaded all data files and merged into one GeoParquet file. During this merging process, we fixed a data schema anomaly. We also merged adjacent polygons from different mesh areas based on their attribute values.\r\n\r\nAll descriptive attribute values were in Japanese. So we extracted all unique attribute values and translated into English. We used ChatGPT4o for this translation. We cannot guarantee the translation accuracy, so please use these English descriptions at your own risk.\r\n\r\n## Data attribution (en):\r\n1/25,000 scale vegetation maps (Biodiversity Center, Ministry of the Environment) were download and processed by Pacific Spatial Solutions inc. ([Vegetation map data download site](http://gis.biodic.go.jp/webgis/sc-025.html?kind=vg67))\r\n\r\n## \u30c7\u30fc\u30bf\u306e\u51fa\u5178\u8a18\u8f09 (ja)\uff1a\r\n1/25,000\u690d\u751f\u56f3 \u5168\u770c\u5206GIS\u30c7\u30fc\u30bf(\u74b0\u5883\u7701\u751f\u7269\u591a\u69d8\u6027\u30bb\u30f3\u30bf\u30fc)\u3092\u4f7f\u7528\u3057\u3001Pacific Spatial Solutions \u682a\u5f0f\u4f1a\u793e\u304c\u4f5c\u6210\u30fb\u52a0\u5de5\u3057\u305f\u3082\u306e\u3067\u3042\u308b\u3002([\u690d\u751f\u8abf\u67fb(1/2.5\u4e07) \u90fd\u9053\u5e9c\u770c\u5225\u4e00\u89a7](http://gis.biodic.go.jp/webgis/sc-025.html?kind=vg67))\r\n\r\n\r\n## Terms of data usage (en):\r\nThis data can be used in accordance with the [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/legalcode.ja) (CC BY). When using the data, please indicate the attribution. For more detailed data usage terms, please visit the [Biodiversity Center website](https://www.biodic.go.jp/copyright/index.html).\r\n\r\n## \u30c7\u30fc\u30bf\u306e\u5229\u7528\u6761\u4ef6 (ja)\uff1a\r\n\u672c\u30c7\u30fc\u30bf\u306f\u3001[\u30af\u30ea\u30a8\u30a4\u30c6\u30a3\u30d6\u30fb\u30b3\u30e2\u30f3\u30ba\u30fb\u30e9\u30a4\u30bb\u30f3\u30b9\u306e\u8868\u793a4.0 \u56fd\u969b](https://creativecommons.org/licenses/by/4.0/legalcode.ja) (CC BY) \u306b\u5f93\u3044\u5229\u7528\u3059\u308b\u3053\u3068\u304c\u3067\u304d\u307e\u3059\u3002\u30c7\u30fc\u30bf\u3092\u5229\u7528\u3059\u308b\u969b\u306f\u3001\u51fa\u5178\u3092\u3054\u8a18\u8f09\u304f\u3060\u3055\u3044\u3002\u3088\u308a\u8a73\u3057\u3044\u30c7\u30fc\u30bf\u306e\u5229\u7528\u898f\u7d04\u306f[\u751f\u7269\u591a\u69d8\u6027\u30bb\u30f3\u30bf\u30fc\u306e\u30b5\u30a4\u30c8](https://www.biodic.go.jp/copyright/index.html)\u3067\u5fa1\u89a7\u304f\u3060\u3055\u3044\u3002\r\n\r\n# Data descriptions\r\n\r\n| field name | description en   | description ja |\r\n| ---------- | ---------------- | -------------- |\r\n| org_no     | legend number in the vegetation map | \u690d\u751f\u56f3\u5185\u306b\u8a18\u8f09\u3055\u308c\u3066\u3044\u308b\u51e1\u4f8b\u756a\u53f7 |\r\n| mesh2_c    | 2nd mesh code    | \u65e7\u56f3\u90ed\u306e\u4e8c\u6b21\u30e1\u30c3\u30b7\u30e5\u30b3\u30fc\u30c9 |\r\n| surv_year  | Survey year      | \u690d\u751f\u8abf\u67fb\u3092\u5b9f\u65bd\u3057\u305f\u5e74\u6b21\uff08\u897f\u66a64\u6841\uff09 |\r\n| zukaku_no  | Legend number within each data | \u690d\u751f\u56f3\u306e\u56f3\u90ed\u5185\u3067\u4f7f\u7528\u3055\u308c\u3066\u3044\u308b\u51e1\u4f8b\u306e\u901a\u3057\u756a\u53f7 |\r\n| filename   | Original shapefile name | \u30aa\u30ea\u30b8\u30ca\u30eb\u306eShapefile\u540d |\r\n| chu_c      | Medium level vegetation code | \u690d\u751f\u4e2d\u533a\u5206\u306e\u30b3\u30fc\u30c9 |\r\n| chu_n      | Medium level vegetation name in ja | \u690d\u751f\u4e2d\u533a\u5206\u306e\u65e5\u672c\u8a9e\u540d\u79f0 |\r\n| chu_en     | Medium level vegetation name in en | \u690d\u751f\u4e2d\u533a\u5206\u306e\u82f1\u8a9e\u540d\u79f0 |\r\n| dai_c      | High level vegetation code | \u690d\u751f\u5927\u533a\u5206\u306e\u30b3\u30fc\u30c9 |\r\n| dai_n      | High level vegetation name in ja | \u690d\u751f\u5927\u533a\u5206\u65e5\u672c\u8a9e\u540d\u79f0 |\r\n| dai_en     | High level vegetation name in en | \u690d\u751f\u5927\u533a\u5206\u306e\u82f1\u8a9e\u540d\u79f0 |\r\n| hanrei_c   | Integrated legend code | \u7d71\u4e00\u51e1\u4f8b\u540d\u30b3\u30fc\u30c9 |\r\n| hanrei_n   | Integrated legend name in ja | \u7d71\u4e00\u51e1\u4f8b\u65e5\u672c\u8a9e\u540d |\r\n| hanrei_en  | Integrated legend name in en | \u7d71\u4e00\u51e1\u4f8b\u82f1\u8a9e\u540d |\r\n| sai_c      | Fine level vegetation code | \u690d\u751f\u7d30\u533a\u5206\u306e\u30b3\u30fc\u30c9 |\r\n| sai_n      | Fine level vegetaion name in ja | \u690d\u751f\u7d30\u533a\u5206\u306e\u65e5\u672c\u8a9e\u540d\u79f0 |\r\n| sai_en     | Fine level vegeation name in en | \u690d\u751f\u7d30\u533a\u5206\u306e\u82f1\u8a9e\u540d\u79f0 |\r\n| shoku_c    | Vegetation group code | \u690d\u751f\u533a\u5206\u306e\u30b3\u30fc\u30c9 |\r\n| shoku_n    | Vegetation group name in ja | \u690d\u751f\u533a\u5206\u306e\u65e5\u672c\u8a9e\u540d\u79f0 |\r\n| shoku_en   | Vegetation group name in en | \u690d\u751f\u533a\u5206\u306e\u82f1\u8a9e\u540d\u79f0\u3000|\r\n\r\n\r\n",
+  "_review": [
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [jp_vegetation25000_en.GEOM (geometry), jp_vegetation25000_en.mesh2_c (spatial_index)]. Add bbox once a placename \u2192 bbox gazetteer is available."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-05-27T01:17:27+00:00"
 }

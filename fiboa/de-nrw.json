@@ -1,17 +1,22 @@
 {
-  "account_id": "fiboa",
-  "product_id": "de-nrw",
-  "fiboa_version": "0.2.0",
-  "fiboa_extensions": [
-    "https://fiboa.github.io/inspire-extension/v0.2.0/schema.yaml",
-    "https://fiboa.github.io/flik-extension/v0.1.0/schema.yaml"
-  ],
-  "stac_version": "1.0.0",
   "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
   "id": "fiboa/de-nrw",
   "title": "Field boundaries for North Rhine-Westphalia (NRW), Germany",
-  "description": "A field block (German: \"Feldblock\") is a contiguous agricultural area surrounded by permanent boundaries, which is cultivated by one or more farmers with one or more crops, is fully or partially set aside or is fully or partially taken out of production. Field blocks are classified separately according to the main land uses of arable land, grassland, permanent crops, 2nd pillar and other. Since 2005, field blocks in NRW have represented the area reference within the framework of the Integrated Administration and Control System (IACS) for EU agricultural subsidies.",
+  "description": "Approximately 400,000 official agricultural field boundaries for the German federal state of North Rhine-Westphalia (NRW), sourced from Land Nordrhein-Westfalen and converted to fiboa GeoParquet format. Each record includes an INSPIRE-compliant identifier, FLIK field-block code, land use category (arable, grassland, permanent crops, etc.), and area in hectares. Data reflects the 2023 state survey.",
   "license": "proprietary",
+  "keywords": [
+    "field-boundaries",
+    "agriculture",
+    "land-use",
+    "land-parcels",
+    "lpis",
+    "arable-land",
+    "germany"
+  ],
   "providers": [
     {
       "name": "Land Nordrhein-Westfalen / Open.NRW",
@@ -34,6 +39,19 @@
         "host"
       ],
       "url": "https://beta.source.coop/fiboa/de-nrw/"
+    },
+    {
+      "name": "Land Nordrhein-Westfalen / Open.NRW",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Matthias Mohr",
+      "roles": [
+        "processor"
+      ]
     }
   ],
   "extent": {
@@ -56,19 +74,9 @@
       ]
     }
   },
-  "links": [
-    {
-      "href": "https://www.govdata.de/dl-de/by-2-0",
-      "title": "Data licence Germany - attribution - Version 2.0",
-      "type": "text/html",
-      "rel": "license"
-    },
-    {
-      "href": "https://data.source.coop/fiboa/de-nrw/LFK-AKTI.pmtiles",
-      "type": "application/vnd.pmtiles",
-      "rel": "pmtiles"
-    }
-  ],
+  "summaries": {
+    "item_count": 399725
+  },
   "assets": {
     "data": {
       "href": "https://data.source.coop/fiboa/de-nrw/LFK-AKTI_EPSG25832.parquet",
@@ -115,23 +123,33 @@
       "table:row_count": 399725
     }
   },
-  "stac_extensions": [
-    "https://stac-extensions.github.io/table/v1.2.0/schema.json",
-    "https://stac-extensions.github.io/web-map-links/v1.2.0/schema.json"
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/fiboa/de-nrw/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/fiboa/de-nrw",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "href": "https://www.govdata.de/dl-de/by-2-0",
+      "title": "Data licence Germany - attribution - Version 2.0",
+      "type": "text/html",
+      "rel": "license"
+    },
+    {
+      "href": "https://data.source.coop/fiboa/de-nrw/LFK-AKTI.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "rel": "pmtiles"
+    }
   ],
-  "featured": 0,
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "data_mode": "open",
-  "exts": {
-    "parquet": 1,
-    "pmtiles": 1,
-    "json": 1,
-    "txt": 2,
-    "md": 1
-  },
+  "file_count": 6,
+  "visibility": "public",
+  "total_bytes": 273933553,
+  "created_at": "2024-04-02T00:06:50.242306+00:00",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -144,14 +162,25 @@
       "prefix": "fiboa/de-nrw/"
     }
   },
-  "disabled": false,
+  "exts": {
+    "parquet": 1,
+    "md": 1,
+    "pmtiles": 1,
+    "txt": 2,
+    "json": 1
+  },
+  "data_mode": "open",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "product_id": "de-nrw",
   "updated_at": "2025-08-21T16:39:55.568Z",
-  "total_bytes": 273933553,
-  "file_count": 6,
-  "visibility": "public",
-  "created_at": "2024-04-02T00:06:50.242306+00:00",
-  "stac_key": "fiboa/de-nrw/stac/collection.json",
-  "stac_last_modified": "2024-04-12 05:10:02-07:00",
-  "_state": "gathered",
-  "_upstream_stac_id": "de_nrw"
+  "featured": 0,
+  "account_id": "fiboa",
+  "disabled": false,
+  "readme": "## README.md\n# Field boundaries for North Rhine-Westphalia (NRW), Germany\r\n\r\nProvides ca. 400.000 official field boundaries from the federal state of North Rhine-Westphalia (NRW) in Germany.\r\nIt has been converted to a fiboa GeoParquet file from a shapefile that was provided by the state.\r\n\r\n- **Source Data Provider:** [Land Nordrhein-Westfalen / Open.NRW](https://www.opengeodata.nrw.de/produkte/umwelt_klima/bodennutzung/landwirtschaft/)\r\n- **Converted by:** [Matthias Mohr](https://mohr.ws)\r\n- **License:** [Data licence Germany \u2013 attribution \u2013 Version 2.0](https://www.govdata.de/dl-de/by-2-0)\r\n- **Projection:** EPSG:25832 (UTM 32N)\r\n\r\n---\r\n\r\n- **[Download the data as fiboa GeoParquet](https://data.source.coop/fiboa/de-nrw/LFK-AKTI_EPSG25832.parquet)**\r\n- [STAC Browser](https://radiantearth.github.io/stac-browser/#/external/data.source.coop/fiboa/de-nrw/stac/collection.json)\r\n- [STAC Collection](https://data.source.coop/fiboa/de-nrw/stac/collection.json)\r\n- [PMTiles](https://data.source.coop/fiboa/de-nrw/LFK-AKTI.pmtiles)\r\n\r\n## Columns\r\n\r\n| Property               | Data Type | Description                                                  |\r\n| ---------------------- | --------- | ------------------------------------------------------------ |\r\n| id                     | string    | Numerical internal identifier                                |\r\n| inspire:id             | string    | INSPIRE-compliant identifier. Example: `https://geodaten.nrw.de/id/inspire-lc-dgl/landcoverunit/6467974` |\r\n| flik                   | string    | Area identifier for field blocks. Example: `DENWLI0552020444` |\r\n| determination_datetime | datetime  | Valid since the given date.                                  |\r\n| nutz_code              | string    | Category of land use. A = Arable land, G = Permanent grassland, S = Other land, F = Eligible in the 2nd pillar, K = Permanent Crops |\r\n| nutz_txt               | string    | Textual representation of nutz_code in German (`Ackerland`, `Dauergr\u00fcnland`, `Sonstige Fl\u00e4chen`, `F\u00f6rderf\u00e4hig 2. S\u00e4ule`,  `Dauerkultur`) |\r\n| area                   | number    | Area in ha                                                   |\r\n\r\n## Lineage \r\n\r\n- Data downloaded on 2024-04-12 from https://www.opengeodata.nrw.de/produkte/umwelt_klima/bodennutzung/landwirtschaft/LFK-AKTI_EPSG25832_Shape.zip.\r\n- Converted to GeoParquet using [fiboa-cli](https://github.com/fiboa/cli), version 0.3.2-dev.\r\n",
+  "_state": "drafted",
+  "cataloged_at": "2026-05-27T01:22:53+00:00",
+  "_source_format": "stac"
 }

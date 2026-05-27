@@ -1,13 +1,22 @@
 {
-  "account_id": "fiboa",
-  "product_id": "switzerland",
-  "fiboa_version": "0.2.0",
-  "fiboa_extensions": [],
   "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
   "id": "fiboa/switzerland",
   "title": "Field boundaries for Switzerland",
-  "description": "The cropfields of Switzerland (Nutzungsfl\u00e4chen) are published per administrative subdivision called Canton.",
+  "description": "Official agricultural field boundaries (Nutzungsfl\u00e4chen) for Switzerland, covering 1,322,299 parcels across 17 open-data Cantons. Includes crop type, area, and canton-level administrative attribution. Published in fiboa GeoParquet format, converted from data by the Conference of Cantonal Geoinformation and Cadastral Offices (KGK-CGC).",
   "license": "proprietary",
+  "keywords": [
+    "field-boundaries",
+    "agriculture",
+    "crop-classification",
+    "land-use",
+    "lpis",
+    "land-parcels",
+    "switzerland"
+  ],
   "providers": [
     {
       "name": "Konferenz der kantonalen Geoinformations- und Katasterstellen",
@@ -30,6 +39,19 @@
         "host"
       ],
       "url": "https://source.coop/fiboa/switzerland/"
+    },
+    {
+      "name": "Konferenz der kantonalen Geoinformations- und Katasterstellen (KGK-CGC)",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Ivor Bosloper",
+      "roles": [
+        "processor"
+      ]
     }
   ],
   "extent": {
@@ -52,20 +74,9 @@
       ]
     }
   },
-  "links": [
-    {
-      "title": "opendata.swiss terms of use",
-      "href": "https://opendata.swiss/en/terms-of-use",
-      "type": "text/html",
-      "rel": "license"
-    },
-    {
-      "href": "https://data.source.coop/fiboa/switzerland/switzerland.pmtiles",
-      "type": "application/vnd.pmtiles",
-      "rel": "pmtiles"
-    }
-  ],
-  "stac_version": "1.0.0",
+  "summaries": {
+    "item_count": 1159957
+  },
   "assets": {
     "data": {
       "href": "https://data.source.coop/fiboa/switzerland/switzerland.parquet",
@@ -104,23 +115,45 @@
       "table:row_count": 1159957
     }
   },
-  "stac_extensions": [
-    "https://stac-extensions.github.io/table/v1.2.0/schema.json",
-    "https://stac-extensions.github.io/web-map-links/v1.2.0/schema.json"
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/fiboa/switzerland/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/fiboa/switzerland",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "title": "opendata.swiss terms of use",
+      "href": "https://opendata.swiss/en/terms-of-use",
+      "type": "text/html",
+      "rel": "license"
+    },
+    {
+      "href": "https://data.source.coop/fiboa/switzerland/switzerland.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "rel": "pmtiles"
+    }
   ],
-  "featured": 0,
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "data_mode": "open",
   "exts": {
     "parquet": 1,
-    "pmtiles": 1,
-    "txt": 2,
     "json": 1,
-    "md": 1
+    "txt": 2,
+    "md": 1,
+    "pmtiles": 1
   },
+  "visibility": "public",
+  "updated_at": "2025-08-21T16:39:55.569Z",
+  "created_at": "2024-11-12T23:11:59.125Z",
+  "total_bytes": 445271034,
+  "file_count": 6,
+  "featured": 0,
+  "data_mode": "open",
+  "account_id": "fiboa",
+  "disabled": false,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -133,14 +166,13 @@
       "prefix": "fiboa/switzerland/"
     }
   },
-  "disabled": false,
-  "updated_at": "2025-08-21T16:39:55.569Z",
-  "total_bytes": 445271034,
-  "file_count": 6,
-  "visibility": "public",
-  "created_at": "2024-11-12T23:11:59.125Z",
-  "stac_key": "fiboa/switzerland/stac/collection.json",
-  "stac_last_modified": "2025-03-19 15:25:30-07:00",
-  "_state": "gathered",
-  "_upstream_stac_id": "ch"
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "product_id": "switzerland",
+  "readme": "## README.md\n# Field boundaries for Switzerland\n\nProvides 1322299 official field boundaries from Switzerland.\nIt has been converted to a fiboa GeoParquet file from data obtained from Konferenz der kantonalen Geoinformations- und Katasterstellen.\n\n- **Source Data Provider:** [Konferenz der kantonalen Geoinformations- und Katasterstellen](https://www.kgk-cgc.ch/)\n- **Converted by:** Ivor Bosloper\n- **License:** Open-BY (https://opendata.swiss/de/terms-of-use)\n- **Projection:** EPSG:2056\n\n---\n\n- [Download the data as fiboa GeoParquet](https://source.coop/fiboa/switzerland/switzerland.parquet)\n- [STAC Browser](https://radiantearth.github.io/stac-browser/#/external/data.source.coop/fiboa/switzerland/stac/collection.json)\n- [STAC Collection](https://data.source.coop/fiboa/switzerland/stac/collection.json)\n- [PMTiles](https://data.source.coop/fiboa/switzerland/switzerland.pmtiles)\n\n## Columns\n\n| Property                    | **Data Type** | Description        |\n|-----------------------------|---------------|--------------------|\n| id                          | string        | Identifier         |\n| area                        | float         | Area in ha         |\n| administrative_area_level_1 | string        | Canton             |\n| crop_name                   | string        | Crop name (German) |\n| determination_datetime      | timestamp     |                    |\n\n## Lineage\n\n- Data downloaded on 2024-11-13 from manually downloaded file .\n- Converted to GeoParquet using [fiboa-cli](https://github.com/fiboa/cli), version 0.7.0\n",
+  "_state": "drafted",
+  "cataloged_at": "2026-05-27T01:25:11+00:00",
+  "_source_format": "stac"
 }

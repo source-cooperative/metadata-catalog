@@ -1,16 +1,22 @@
 {
-  "account_id": "fiboa",
-  "product_id": "de-sh",
-  "fiboa_version": "0.2.0",
-  "fiboa_extensions": [
-    "https://fiboa.github.io/flik-extension/v0.1.0/schema.yaml"
-  ],
-  "stac_version": "1.0.0",
   "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
   "id": "fiboa/de-sh",
   "title": "Field boundaries for Schleswig-Holstein (SH), Germany",
-  "description": "A field block (German: \"Feldblock\") is a contiguous agricultural area surrounded by permanent boundaries, which is cultivated by one or more farmers with one or more crops, is fully or partially set aside or is fully or partially taken out of production.",
+  "description": "Approximately 200,000 official agricultural field block boundaries for the German federal state of Schleswig-Holstein, sourced from the state's open geodata catalog. Each record includes a FLIK identifier, area in hectares, determination date, and a main land-use category (HBN) covering arable land, permanent crops, grassland, and non-agricultural areas. Distributed as fiboa-compliant GeoParquet and PMTiles.",
   "license": "proprietary",
+  "keywords": [
+    "field-boundaries",
+    "agriculture",
+    "land-use",
+    "lpis",
+    "land-parcels",
+    "arable-land",
+    "germany"
+  ],
   "providers": [
     {
       "name": "Land Schleswig-Holstein",
@@ -33,6 +39,19 @@
         "host"
       ],
       "url": "https://beta.source.coop/fiboa/de-sh/"
+    },
+    {
+      "name": "Land Schleswig-Holstein",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Matthias Mohr",
+      "roles": [
+        "processor"
+      ]
     }
   ],
   "extent": {
@@ -55,19 +74,9 @@
       ]
     }
   },
-  "links": [
-    {
-      "href": "https://www.govdata.de/dl-de/zero-2-0",
-      "title": "Data licence Germany - Zero - Version 2.0",
-      "type": "text/html",
-      "rel": "license"
-    },
-    {
-      "href": "https://data.source.coop/fiboa/de-sh/Feldbloecke_2024.pmtiles",
-      "type": "application/vnd.pmtiles",
-      "rel": "pmtiles"
-    }
-  ],
+  "summaries": {
+    "item_count": 197673
+  },
   "assets": {
     "data": {
       "href": "https://data.source.coop/fiboa/de-sh/Feldbloecke_2024.parquet",
@@ -106,22 +115,46 @@
       "table:row_count": 197673
     }
   },
-  "stac_extensions": [
-    "https://stac-extensions.github.io/table/v1.2.0/schema.json",
-    "https://stac-extensions.github.io/web-map-links/v1.2.0/schema.json"
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/fiboa/de-sh/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/fiboa/de-sh",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "href": "https://www.govdata.de/dl-de/zero-2-0",
+      "title": "Data licence Germany - Zero - Version 2.0",
+      "type": "text/html",
+      "rel": "license"
+    },
+    {
+      "href": "https://data.source.coop/fiboa/de-sh/Feldbloecke_2024.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "rel": "pmtiles"
+    }
   ],
-  "featured": 0,
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
+  "account_id": "fiboa",
   "data_mode": "open",
+  "created_at": "2024-04-11T22:48:43.388199+00:00",
   "exts": {
     "parquet": 1,
     "pmtiles": 1,
     "json": 1,
     "md": 1,
     "txt": 2
+  },
+  "visibility": "public",
+  "updated_at": "2025-08-21T16:39:55.568Z",
+  "file_count": 6,
+  "featured": 0,
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
   },
   "mirrors": {
     "aws-opendata-us-west-2": {
@@ -136,13 +169,10 @@
     }
   },
   "disabled": false,
-  "updated_at": "2025-08-21T16:39:55.568Z",
+  "product_id": "de-sh",
   "total_bytes": 87592908,
-  "file_count": 6,
-  "visibility": "public",
-  "created_at": "2024-04-11T22:48:43.388199+00:00",
-  "stac_key": "fiboa/de-sh/stac/collection.json",
-  "stac_last_modified": "2024-04-12 05:56:10-07:00",
-  "_state": "gathered",
-  "_upstream_stac_id": "de_sh"
+  "readme": "## README.md\n# Field boundaries for Schleswig-Holstein (SH), Germany\r\n\r\nProvides ca. 200.000 official field boundaries from the federal state of Schleswig-Holstein (SH) in Germany.\r\nIt has been converted to a fiboa GeoParquet file from a GeoPackage that was provided by the state.\r\n\r\n- **Source Data Provider:** [Land Schleswig-Holstein](https://sh-mis.gdi-sh.de/catalog/?lang=en#/datasets/iso/21f67269-780f-4f3c-8f66-03dde27acfe7)\r\n- **Converted by:** [Matthias Mohr](https://mohr.ws)\r\n- **License:** [Deutschland \u2013 Zero \u2013 Version 2.0](https://www.govdata.de/dl-de/zero-2-0)\r\n- **Projection:** EPSG:4647 - ETRS89 / UTM zone 32N\r\n\r\n---\r\n\r\n- **[Download the data as fiboa GeoParquet](https://data.source.coop/fiboa/de-sh/Feldbloecke_2024.parquet)**\r\n- [STAC Browser](https://radiantearth.github.io/stac-browser/#/external/data.source.coop/fiboa/de-sh/stac/collection.json)\r\n- [STAC Collection](https://data.source.coop/fiboa/de-sh/stac/collection.json)\r\n- [PMTiles](https://data.source.coop/fiboa/de-sh/Feldbloecke_2024.pmtiles)\r\n\r\n## Columns\r\n\r\n| Property               | Data Type | Description                                                  |\r\n| ---------------------- | --------- | ------------------------------------------------------------ |\r\n| id                     | string    | Area identifier for field blocks, same as `flik`. Example: `DENWLI0552020444` |\r\n| flik                   | string    | Area identifier for field blocks, same as `id`.              |\r\n| area                   | float     | Area in ha                                                   |\r\n| determination_datetime | datetime  | Valid since the given date.                                  |\r\n| hbn                    | string    | Category of main land use (see below)                        |\r\n\r\nValues for `HBN`:\r\n\r\n- `Ackerland` (arable land)\r\n- `Dauerkultur` (permanent crops)\r\n- `Dauergr\u00fcnland` (permanent grassland)\r\n- `Nicht landwirtschaftliche f\u00f6rderf\u00e4hige Fl\u00e4chen` (Areas not eligible for agricultural subsidies)\r\n- `Sonstige nicht ldw. genutzte Fl\u00e4chen` (Other non-agricultural land)\r\n\r\n## Lineage \r\n\r\n- Data downloaded on 2024-04-12 from https://service.gdi-sh.de/SH_OpenGBD/feeds/Atom_SH_Feldblockfinder_OpenGBD/data/Feldbloecke_2024_GPKG.zip.\r\n- Converted to GeoParquet using [fiboa-cli](https://github.com/fiboa/cli), version 0.3.2-dev.\r\n",
+  "_state": "drafted",
+  "cataloged_at": "2026-05-27T01:18:11+00:00",
+  "_source_format": "stac"
 }

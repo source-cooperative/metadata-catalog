@@ -1,15 +1,22 @@
 {
-  "account_id": "fiboa",
-  "product_id": "latvia",
-  "fiboa_version": "0.2.0",
-  "fiboa_extensions": [
-    "https://fiboa.github.io/crop-extension/v0.1.0/schema.yaml"
-  ],
   "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
   "id": "fiboa/latvia",
   "title": "Latvia Lauki Parcels",
-  "description": "Latvia offers parcel data on a [public map, available to any user](https://www.lad.gov.lv/lv/lauku-registra-dati).\n\nThe land register is a geographic information system (GIS) that gathers information about agricultural land that is\neligible for state and European Union support from direct support scheme payments or environmental,\nclimate and rural landscape improvement payments.\n\nThe GIS of the field register contains a database of field blocks with interconnected spatial cartographic\ndata and information of attributes subordinate to them: geographic attachment, identification numbers\nand area information.\n\nRelevant datasets are; Country blocks (Lauku Bloki), Fields (Lauki) and Landscape elements.",
+  "description": "Official field boundary dataset for Latvia containing 420,863 parcels sourced from the Rural Support Service Republic of Latvia (Lauku atbalsta dienests) for the 2024 reference year. Parcels include crop classification codes and names, converted to fiboa-compliant GeoParquet format projected in EPSG:3059.",
   "license": "CC-BY-SA-4.0",
+  "keywords": [
+    "field-boundaries",
+    "agriculture",
+    "land-parcels",
+    "crop-classification",
+    "lpis",
+    "latvia",
+    "fiboa"
+  ],
   "providers": [
     {
       "name": "Rural Support Service Republic of Latvia (Lauku atbalsta dienests)",
@@ -32,6 +39,19 @@
         "host"
       ],
       "url": "https://source.coop/fiboa/latvia/"
+    },
+    {
+      "name": "Rural Support Service Republic of Latvia (Lauku atbalsta dienests)",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Ivor Bosloper",
+      "roles": [
+        "processor"
+      ]
     }
   ],
   "extent": {
@@ -54,15 +74,9 @@
       ]
     }
   },
-  "links": [
-    {
-      "href": "https://data.source.coop/fiboa/latvia/latvia.pmtiles",
-      "type": "application/vnd.pmtiles",
-      "rel": "pmtiles"
-    }
-  ],
-  "stac_version": "1.0.0",
-  "attribution": "Lauku atbalsta dienests",
+  "summaries": {
+    "item_count": 420863
+  },
   "assets": {
     "data": {
       "href": "https://data.source.coop/fiboa/latvia/latvia.parquet",
@@ -113,23 +127,24 @@
       "table:row_count": 420863
     }
   },
-  "stac_extensions": [
-    "https://stac-extensions.github.io/table/v1.2.0/schema.json",
-    "https://stac-extensions.github.io/web-map-links/v1.2.0/schema.json"
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/fiboa/latvia/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/fiboa/latvia",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "href": "https://data.source.coop/fiboa/latvia/latvia.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "rel": "pmtiles"
+    }
   ],
-  "featured": 0,
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "data_mode": "open",
-  "exts": {
-    "parquet": 1,
-    "pmtiles": 1,
-    "json": 1,
-    "md": 1,
-    "txt": 1
-  },
+  "account_id": "fiboa",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -143,13 +158,27 @@
     }
   },
   "disabled": false,
-  "updated_at": "2025-08-21T16:39:55.569Z",
-  "total_bytes": 684425143,
-  "file_count": 5,
   "visibility": "public",
+  "file_count": 5,
+  "product_id": "latvia",
+  "total_bytes": 684425143,
+  "data_mode": "open",
+  "updated_at": "2025-08-21T16:39:55.569Z",
+  "featured": 0,
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
   "created_at": "2024-12-03T14:32:46.052Z",
-  "stac_key": "fiboa/latvia/stac/collection.json",
-  "stac_last_modified": "2025-03-19 15:25:29-07:00",
-  "_state": "gathered",
-  "_upstream_stac_id": "lv"
+  "exts": {
+    "parquet": 1,
+    "md": 1,
+    "json": 1,
+    "pmtiles": 1,
+    "txt": 1
+  },
+  "readme": "## README.md\n# Field boundaries for Latvia\n\nProvides 420863 official field boundaries from Latvia.\nIt has been converted to a fiboa GeoParquet file from data obtained from Rural Support \nSurvice Republic of Latvia (Lauku atbalsta dienests).\n\n- **Source Data Provider:** [Rural Support Survice Republic of Latvia (Lauku atbalsta dienests)](https://www.lad.gov.lv/lv/lauku-registra-dati)\n- **Converted by:** Ivor Bosloper\n- **License:** CC-BY-SA-4.0\n- **Projection:** EPSG:3059\n\n---\n\n- [Download the data as fiboa GeoParquet](https://data.source.coop/fiboa/latvia/latvia.parquet)\n- [STAC Browser](https://radiantearth.github.io/stac-browser/#/external/data.source.coop/fiboa/latvia/stac/collection.json)\n- [STAC Collection](https://data.source.coop/fiboa/latvia/stac/collection.json)\n- [PMTiles](https://data.source.coop/fiboa/latvia/latvia.pmtiles)\n\n## Columns\n\n| Property               | **Data Type** | Description |\n|------------------------|---------------|-------------|\n| id                     | string        |             |\n| parcel_id              | uint64        |             |\n| determination_datetime | timestamp     |             |\n| area                   | float         |             |\n| crop:code_list         | string        |             |\n| crop:code              | string        |             |\n| crop:name              | string        |             |\n| crop:name_en           | string        |             |\n\n## Lineage\n\n- Data downloaded on 2024-12-03 from https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer .\n- Converted to GeoParquet using [fiboa-cli](https://github.com/fiboa/cli), version 0.8.0\n",
+  "_state": "drafted",
+  "cataloged_at": "2026-05-27T01:25:49+00:00",
+  "_source_format": "stac"
 }

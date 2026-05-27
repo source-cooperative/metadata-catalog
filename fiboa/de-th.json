@@ -1,16 +1,23 @@
 {
-  "account_id": "fiboa",
-  "product_id": "de-th",
-  "fiboa_version": "0.2.0",
-  "fiboa_extensions": [
-    "https://fiboa.github.io/flik-extension/v0.1.0/schema.yaml"
-  ],
-  "stac_version": "1.0.0",
   "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
   "id": "fiboa/de-th",
   "title": "Field boundaries for Thuringia, Germany",
-  "description": "For use in the application procedure of the Integrated Administration and Control System (IACS), digital data layers are required that represent the current situation of agricultural use with the required accuracy. The field block is a contiguous agricultural area of one or more farmers surrounded by permanent boundaries. The field block thus contains information on the geographical location of the outer boundaries of the agricultural area. Reference parcels are uniquely numbered throughout Germany (Feldblockident - FBI). They also have a field block size (maximum eligible area) and a land use category.\n\nThe following field block types exist:\n\n- Utilized agricultural area (UAA)\n- Landscape elements (LE)\n- Special use areas (SF)\n- Forest areas (FF)\n\nThe field blocks are classified separately according to the main land uses of arable land (`AL`), grassland (`GL`), permanent crops (`DA`, `OB`, `WB`), including agroforestry systems with an approved utilization concept and according to the BNK for no \"agricultural land\" (`NW`, `EF` and `PK`) and others.\n\nLandscape elements (LE) are considered part of the eligible agricultural area under defined conditions. In Thuringia, these permanent conditional features are designated as a separate field block (FB) and are therefore part of the Thuringian area reference system (field block reference). They must have a clear reference to an UAA (agricultural land), i.e. they are located within an arable, permanent grassland or permanent crop area or border directly on it.\n\nTo produce the DGK-Lw, (official) orthophotos from the Thuringian Land Registry and Surveying Administration (TLBG) and orthophotos from the TLLLR's own aerial surveys are interpreted. The origin of this image data is 50% of the state area each year, so that up-to-date image data is available for the entire Thuringian state area every year.",
+  "description": "Approximately 100,000 official agricultural field boundaries for the German federal state of Thuringia (TH), sourced from state authorities and published as fiboa-compliant GeoParquet. Each boundary includes FLIK parcel identifiers, area measurements, and administrative attributes.",
   "license": "proprietary",
+  "keywords": [
+    "field-boundaries",
+    "agriculture",
+    "land-parcels",
+    "lpis",
+    "arable-land",
+    "land-use",
+    "germany",
+    "fiboa"
+  ],
   "providers": [
     {
       "name": "Th\u00fcringer Landesamt f\u00fcr Landwirtschaft und L\u00e4ndlichen Raum",
@@ -33,6 +40,19 @@
         "host"
       ],
       "url": "https://beta.source.coop/fiboa/de-th/"
+    },
+    {
+      "name": "Th\u00fcringer Landesamt f\u00fcr Landwirtschaft und L\u00e4ndlichen Raum",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Matthias Mohr",
+      "roles": [
+        "processor"
+      ]
     }
   ],
   "extent": {
@@ -55,20 +75,9 @@
       ]
     }
   },
-  "links": [
-    {
-      "href": "https://www.govdata.de/dl-de/by-2-0",
-      "title": "Data licence Germany - attribution - Version 2.0",
-      "type": "text/html",
-      "rel": "license"
-    },
-    {
-      "href": "https://data.source.coop/fiboa/de-th/de-th.pmtiles",
-      "type": "application/vnd.pmtiles",
-      "rel": "pmtiles"
-    }
-  ],
-  "attribution": "\u00a9 GDI-Th",
+  "summaries": {
+    "item_count": 101216
+  },
   "assets": {
     "data": {
       "href": "https://data.source.coop/fiboa/de-th/de-th.parquet",
@@ -135,23 +144,35 @@
       "table:row_count": 101216
     }
   },
-  "stac_extensions": [
-    "https://stac-extensions.github.io/table/v1.2.0/schema.json",
-    "https://stac-extensions.github.io/web-map-links/v1.2.0/schema.json"
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/fiboa/de-th/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/fiboa/de-th",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "href": "https://www.govdata.de/dl-de/by-2-0",
+      "title": "Data licence Germany - attribution - Version 2.0",
+      "type": "text/html",
+      "rel": "license"
+    },
+    {
+      "href": "https://data.source.coop/fiboa/de-th/de-th.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "rel": "pmtiles"
+    }
   ],
+  "updated_at": "2025-08-21T16:39:55.568Z",
+  "product_id": "de-th",
+  "file_count": 6,
+  "total_bytes": 179677252,
+  "disabled": false,
   "featured": 0,
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "data_mode": "open",
-  "exts": {
-    "parquet": 1,
-    "pmtiles": 1,
-    "json": 1,
-    "txt": 2,
-    "md": 1
-  },
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -164,14 +185,23 @@
       "prefix": "fiboa/de-th/"
     }
   },
-  "disabled": false,
-  "updated_at": "2025-08-21T16:39:55.568Z",
-  "total_bytes": 179677252,
-  "file_count": 6,
-  "visibility": "public",
   "created_at": "2024-08-13T15:28:43.571209+00:00",
-  "stac_key": "fiboa/de-th/stac/collection.json",
-  "stac_last_modified": "2024-08-13 08:40:55-07:00",
-  "_state": "gathered",
-  "_upstream_stac_id": "de_th"
+  "visibility": "public",
+  "account_id": "fiboa",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "exts": {
+    "md": 1,
+    "txt": 2,
+    "parquet": 1,
+    "json": 1,
+    "pmtiles": 1
+  },
+  "data_mode": "open",
+  "readme": "## README.md\n# Field boundaries for Thuringia (TH), Germany\n\nProvides ca. 100.000 official field boundaries from the federal state of Thuringia (TH) in Germany.\nIt has been converted to a fiboa GeoParquet file from a file that was provided by the state.\n\n- **Source Data Provider:** [Th\u00fcringer Landesamt f\u00fcr Landwirtschaft und L\u00e4ndlichen Raum](https://geomis.geoportal-th.de/geonetwork/srv/ger/catalog.search#/metadata/D872F2D6-60BC-11D6-B67D-00E0290F5BA0)\n- **Converted by:** [Matthias Mohr](https://mohr.ws)\n- **License:** [Germany - attribution - Version 2.0](https://www.govdata.de/dl-de/by-2-0)\n\n---\n\n- **[Download the data as fiboa GeoParquet](https://data.source.coop/fiboa/de-th/de-th.parquet)**\n- [STAC Browser](https://radiantearth.github.io/stac-browser/#/external/data.source.coop/fiboa/de-th/stac/collection.json)\n- [STAC Collection](https://data.source.coop/fiboa/de-th/stac/collection.json)\n- [PMTiles](https://data.source.coop/fiboa/de-th/de-th.pmtiles)\n\n## Lineage\n\n- Data downloaded on 2024-08-13 from https://www.geoproxy.geoportal-th.de/download-service/opendata/agrar/DGK_Thue.zip.\n- Converted to GeoParquet using [fiboa-cli](https://github.com/fiboa/cli), version 0.6.0.\n",
+  "_state": "drafted",
+  "cataloged_at": "2026-05-27T01:21:25+00:00",
+  "_source_format": "stac"
 }

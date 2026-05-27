@@ -1,124 +1,23 @@
 {
   "account_id": "fiboa",
   "product_id": "nl-crop",
-  "fiboa_version": "0.2.0",
-  "fiboa_extensions": [],
-  "type": "Collection",
-  "id": "fiboa/nl-crop",
-  "title": "BRP Crop Field Boundaries for The Netherlands (CAP-based)",
-  "description": "\n\"BasisRegistratiePercelen\" (BRP) combines the location of\nagricultural plots with the crop grown. The data set\nis published by RVO (Netherlands Enterprise Agency). The boundaries of the agricultural plots\nare based within the reference parcels (formerly known as AAN). A user an agricultural plot\nannually has to register his crop fields with crops (for the Common Agricultural Policy scheme).\nA dataset is generated for each year with reference date May 15.\nA view service and a download service are available for the most recent BRP crop plots.\n\n<https://service.pdok.nl/rvo/brpgewaspercelen/atom/v1_0/index.xml>\n\nData is currently available for the years 2009 to 2023.\n",
-  "license": "CC0-1.0",
-  "providers": [
-    {
-      "name": "RVO / PDOK",
-      "roles": [
-        "producer",
-        "licensor"
-      ],
-      "url": "https://www.pdok.nl/introductie/-/article/basisregistratie-gewaspercelen-brp-"
-    },
-    {
-      "name": "fiboa CLI",
-      "roles": [
-        "processor"
-      ],
-      "url": "https://pypi.org/project/fiboa-cli"
-    },
-    {
-      "name": "Source Cooperative",
-      "roles": [
-        "host"
-      ],
-      "url": "https://source.coop/fiboa/nl-crop/"
-    }
+  "title": "Crop fields for The Netherlands",
+  "description": "Provides the official agricultural reference field boundaries of The Netherlands.\n",
+  "keywords": [
+    "netherlands",
+    "fiboa",
+    "field boundaries",
+    "brp",
+    "geoparquet",
+    "vector",
+    "pmtiles"
   ],
-  "extent": {
-    "spatial": {
-      "bbox": [
-        [
-          2.35417303,
-          50.71447164,
-          7.5553525,
-          55.66948102
-        ]
-      ]
-    },
-    "temporal": {
-      "interval": [
-        [
-          "2023-05-15T00:00:00Z",
-          "2023-05-15T00:00:00Z"
-        ]
-      ]
-    }
-  },
-  "links": [
-    {
-      "href": "https://data.source.coop/fiboa/nl-crop/nl_crop.pmtiles",
-      "type": "application/vnd.pmtiles",
-      "rel": "pmtiles"
-    }
-  ],
-  "stac_version": "1.0.0",
-  "assets": {
-    "data": {
-      "href": "https://data.source.coop/fiboa/nl-crop/nl_crop.parquet",
-      "title": "Field Boundaries",
-      "type": "application/vnd.apache.parquet",
-      "roles": [
-        "data"
-      ],
-      "table:columns": [
-        {
-          "name": "geometry",
-          "type": "binary"
-        },
-        {
-          "name": "id",
-          "type": "string"
-        },
-        {
-          "name": "area",
-          "type": "float"
-        },
-        {
-          "name": "category",
-          "type": "string"
-        },
-        {
-          "name": "crop_code",
-          "type": "string"
-        },
-        {
-          "name": "crop_name",
-          "type": "string"
-        },
-        {
-          "name": "determination_datetime",
-          "type": "timestamp[ms, tz=UTC]"
-        }
-      ],
-      "table:primary_geometry": "geometry",
-      "table:row_count": 1350739
-    }
-  },
-  "stac_extensions": [
-    "https://stac-extensions.github.io/table/v1.2.0/schema.json",
-    "https://stac-extensions.github.io/web-map-links/v1.2.0/schema.json"
-  ],
+  "created_at": "2024-06-18T11:07:23.268692+00:00",
+  "updated_at": "2025-08-21T16:39:55.569Z",
+  "visibility": "public",
+  "disabled": false,
   "featured": 0,
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
   "data_mode": "open",
-  "exts": {
-    "parquet": 1,
-    "pmtiles": 1,
-    "json": 1,
-    "md": 1,
-    "txt": 1
-  },
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -131,14 +30,19 @@
       "prefix": "fiboa/nl-crop/"
     }
   },
-  "disabled": false,
-  "updated_at": "2025-08-21T16:39:55.569Z",
-  "total_bytes": 1977469538,
   "file_count": 5,
-  "visibility": "public",
-  "created_at": "2024-06-18T11:07:23.268692+00:00",
-  "stac_key": "fiboa/nl-crop/stac/collection.json",
-  "stac_last_modified": "2025-03-19 15:25:40-07:00",
-  "_state": "gathered",
-  "_upstream_stac_id": "nl_crop"
+  "total_bytes": 1977469538,
+  "exts": {
+    "parquet": 1,
+    "md": 1,
+    "pmtiles": 1,
+    "json": 1,
+    "txt": 1
+  },
+  "_state": "seed",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "cataloged_at": "2026-05-27T01:09:39+00:00"
 }

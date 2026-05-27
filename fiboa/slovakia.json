@@ -1,13 +1,23 @@
 {
-  "account_id": "fiboa",
-  "product_id": "slovakia",
-  "fiboa_version": "0.2.0",
-  "fiboa_extensions": [],
   "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
   "id": "fiboa/slovakia",
   "title": "Slowakia Agricultural Land Idenfitication System",
-  "description": "Syst\u00e9m identifik\u00e1cie po\u013enohospod\u00e1rskych pozemkov (LPIS)\n\nLPIS is an agricultural land identification system. It represents the vector boundaries of agricultural land\nand carries information about the unique code, acreage, culture/land use, etc., which is used as a reference\nfor farmers' applications, for administrative and cross-checks, on-site checks and also checks using remote\nsensing methods.\n\nDataset Hranice u\u017e\u00edvania contains the use declared by applicants for direct support.",
+  "description": "Official agricultural field boundaries for Slovakia, comprising 274,467 parcels from the Land Parcel Information System (LPIS) sourced via the National Open Data Catalog. Each record includes crop name, crop group, municipality, and field area. Data has been converted to fiboa GeoParquet format in EPSG:5514 projection.",
   "license": "CC-0",
+  "keywords": [
+    "field-boundaries",
+    "lpis",
+    "land-parcels",
+    "agriculture",
+    "crop-classification",
+    "arable-land",
+    "land-use",
+    "slovakia"
+  ],
   "providers": [
     {
       "name": "National catalog of open data",
@@ -30,6 +40,19 @@
         "host"
       ],
       "url": "https://source.coop/fiboa/slovakia/"
+    },
+    {
+      "name": "National Open Data Catalog (N\u00e1rodn\u00e9ho katal\u00f3gu otvoren\u00fdch d\u00e1t)",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Ivor Bosloper",
+      "roles": [
+        "processor"
+      ]
     }
   ],
   "extent": {
@@ -42,15 +65,19 @@
           49.69904863446951
         ]
       ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
     }
   },
-  "links": [
-    {
-      "href": "https://data.source.coop/fiboa/slovakia/slovakia.pmtiles",
-      "type": "application/vnd.pmtiles",
-      "rel": "pmtiles"
-    }
-  ],
+  "summaries": {
+    "item_count": 274467
+  },
   "assets": {
     "data": {
       "href": "https://data.source.coop/fiboa/slovakia/slovakia.parquet",
@@ -89,23 +116,38 @@
       "table:row_count": 274467
     }
   },
-  "stac_extensions": [
-    "https://stac-extensions.github.io/table/v1.2.0/schema.json",
-    "https://stac-extensions.github.io/web-map-links/v1.2.0/schema.json"
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/fiboa/slovakia/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/fiboa/slovakia",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "href": "https://data.source.coop/fiboa/slovakia/slovakia.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "rel": "pmtiles"
+    }
   ],
   "featured": 0,
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
+  "created_at": "2024-11-14T21:27:59.962Z",
+  "account_id": "fiboa",
+  "total_bytes": 468151817,
   "data_mode": "open",
+  "file_count": 5,
+  "visibility": "public",
   "exts": {
     "parquet": 1,
-    "pmtiles": 1,
-    "json": 1,
     "md": 1,
-    "txt": 1
+    "txt": 1,
+    "pmtiles": 1,
+    "json": 1
   },
+  "updated_at": "2025-08-21T16:39:55.569Z",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -119,13 +161,13 @@
     }
   },
   "disabled": false,
-  "updated_at": "2025-08-21T16:39:55.569Z",
-  "total_bytes": 468151817,
-  "file_count": 5,
-  "visibility": "public",
-  "created_at": "2024-11-14T21:27:59.962Z",
-  "stac_key": "fiboa/slovakia/stac/collection.json",
-  "stac_last_modified": "2025-03-19 15:25:20-07:00",
-  "_state": "gathered",
-  "_upstream_stac_id": "sk"
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "product_id": "slovakia",
+  "readme": "## README.md\n# Field boundaries for Slovakia\n\nProvides 274467 official field boundaries from Slovakia.\nIt has been converted to a fiboa GeoParquet file from data obtained from National Open Data Catalog (N\u00e1rodn\u00e9ho katal\u00f3gu otvoren\u00fdch d\u00e1t).\n\n- **Source Data Provider:** [National Open Data Catalog (N\u00e1rodn\u00e9ho katal\u00f3gu otvoren\u00fdch d\u00e1t)](https://data.slovensko.sk/)\n- **Converted by:** Ivor Bosloper\n- **License:** Open data\n- **Projection:** EPSG:5514\n\n---\n\n- [Download the data as fiboa GeoParquet](https://data.source.coop/fiboa/slovakia/slovakia.parquet)\n- [STAC Browser](https://radiantearth.github.io/stac-browser/#/external/data.source.coop/fiboa/slovakia/stac/collection.json)\n- [STAC Collection](https://data.source.coop/fiboa/slovakia/stac/collection.json)\n- [PMTiles](https://data.source.coop/fiboa/slovakia/slovakia.pmtiles)\n\n## Columns\n\n| Property     | **Data Type** | Description |\n|--------------|---------------|-------------|\n| id           | string        |             |\n| crop_name    | string        |             |\n| crop_group   | string        |             |\n| municipality | string        |             |\n| area         | float         |             |\n\n## Lineage\n\n- Data downloaded on 2024-11-14 from https://data.slovensko.sk/download?id=e39ad227-1899-4cff-b7c8-734f90aa0b59&blocksize=0 .\n- Converted to GeoParquet using [fiboa-cli](https://github.com/fiboa/cli), version 0.8.0\n",
+  "_state": "drafted",
+  "cataloged_at": "2026-05-27T01:23:57+00:00",
+  "_source_format": "unknown"
 }

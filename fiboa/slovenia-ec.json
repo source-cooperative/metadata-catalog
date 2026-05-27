@@ -1,13 +1,23 @@
 {
-  "account_id": "fiboa",
-  "product_id": "slovenia-ec",
-  "fiboa_version": "0.2.0",
-  "fiboa_extensions": [],
   "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
   "id": "fiboa/slovenia-ec",
   "title": "Field boundaries for Slovenia from EuroCrops (2021)",
-  "description": "\nThis dataset contains the field boundaries for all of Slovenia in 2021. The data was collected by the Slovenian government and harmonized\nby the EuroCrops project and is available on Zenodo.\n\nEuroCrops is a dataset collection combining all publicly available self-declared crop reporting datasets from countries of the European Union.\nThe project is funded by the German Space Agency at DLR on behalf of the Federal Ministry for Economic Affairs and Climate Action (BMWK).\nThe work is licensed under a [Creative Commons Attribution-ShareAlike 4.0 International License][https://creativecommons.org/licenses/by-sa/4.0/].\n\nThe project developed a new **Hierarchical Crop and Agriculture Taxonomy (HCAT)** that harmonises all declared crops across the European Union.\nIn the data you'll find this as additional attributes:\n\n- `EC_trans_n`: The original crop name translated into English\n- `EC_hcat_n`: The machine-readable HCAT name of the crop\n- `EC_hcat_c`: The 10-digit HCAT code indicating the hierarchy of the crop\n- `EC_nuts3`: The Nomenclature of Territorial Units for Statistics 3 (NUTS3) region, an approximate assignment of a crop parcel to a region\n\nDisclaimer: The Nomenclature of Territorial Units for Statistics 3 (NUTS3) region, which we added by hand, is just an approximate assignment of a\ncrop parcel to a region. It might happen that a parcel is not correctly allocated to the right region or country. The NUTS3 attribute is only meant\nto be an aid for a meaningful spatial division of the dataset into training, validation, and test sets.\n",
+  "description": "Approximately 800,000 official agricultural field boundaries for Slovenia for the year 2021, sourced from the Slovenian government via EuroCrops and converted to fiboa GeoParquet format. Includes harmonized European crop classification values (HCAT codes and names) alongside native Slovenian crop type attributes and GERK parcel identifiers.",
   "license": "CC-BY-SA-4.0",
+  "keywords": [
+    "field-boundaries",
+    "agriculture",
+    "crop-classification",
+    "land-parcels",
+    "lpis",
+    "slovenia",
+    "arable-land",
+    "land-use"
+  ],
   "providers": [
     {
       "name": "EuroCrops",
@@ -30,6 +40,25 @@
         "host"
       ],
       "url": "https://beta.source.coop/fiboa/slovenia-ec/"
+    },
+    {
+      "name": "Slovenian Ministry of Agriculture, Forestry and Food (MAFF)",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "EuroCrops",
+      "roles": [
+        "processor"
+      ]
+    },
+    {
+      "name": "Daniel Nwaeze",
+      "roles": [
+        "processor"
+      ]
     }
   ],
   "extent": {
@@ -42,17 +71,19 @@
           46.87424125552635
         ]
       ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
     }
   },
-  "links": [
-    {
-      "href": "https://data.source.coop/fiboa/slovenia-ec/data/slovenia_eurocrops_2021.pmtiles",
-      "type": "application/vnd.pmtiles",
-      "rel": "pmtiles"
-    }
-  ],
-  "stac_version": "1.0.0",
-  "attribution": "Ministrstvo za kmetijstvo, gozdarstvo in prehrano",
+  "summaries": {
+    "item_count": 828161
+  },
   "assets": {
     "data": {
       "href": "https://data.source.coop/fiboa/slovenia-ec/data/slovenia_eurocrops_2021_fiboa.parquet",
@@ -115,21 +146,43 @@
       "table:row_count": 828161
     }
   },
-  "stac_extensions": [
-    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/fiboa/slovenia-ec/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/fiboa/slovenia-ec",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "href": "https://data.source.coop/fiboa/slovenia-ec/data/slovenia_eurocrops_2021.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "rel": "pmtiles"
+    }
   ],
+  "data_mode": "open",
+  "visibility": "public",
+  "account_id": "fiboa",
   "featured": 0,
+  "updated_at": "2025-08-21T16:39:55.569Z",
+  "created_at": "2024-06-03T14:42:46.663992+00:00",
+  "total_bytes": 393327344,
+  "exts": {
+    "parquet": 1,
+    "json": 1,
+    "pmtiles": 1,
+    "md": 1
+  },
+  "file_count": 4,
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "data_mode": "open",
-  "exts": {
-    "parquet": 1,
-    "pmtiles": 1,
-    "json": 1,
-    "md": 1
-  },
+  "product_id": "slovenia-ec",
+  "disabled": false,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -142,14 +195,11 @@
       "prefix": "fiboa/slovenia-ec/"
     }
   },
-  "disabled": false,
-  "updated_at": "2025-08-21T16:39:55.569Z",
-  "total_bytes": 393327344,
-  "file_count": 4,
-  "visibility": "public",
-  "created_at": "2024-06-03T14:42:46.663992+00:00",
-  "stac_key": "fiboa/slovenia-ec/stac/collection.json",
-  "stac_last_modified": "2024-07-02 08:27:57-07:00",
-  "_state": "gathered",
-  "_upstream_stac_id": "ec_si"
+  "readme": "## README.md\n# Field boundaries for Slovenia\r\n\r\nProvides ca. 800,000 official field boundaries of Slovenia for 2021. It has been converted to a fiboa GeoParquet file from the EuroCrops Shapefile that provides crop classification values that are harmonized across Europe. The data was provided to EuroCrops under an open license from the Slovenian government.\r\n\r\n- **Source Data Provider:** [EuroCrops](https://github.com/maja601/EuroCrops/wiki/Slovenia)\r\n- **Converted by:** [Daniel Nwaeze](https://www.linkedin.com/in/daniel-nwaeze/)\r\n- **License:** CC-BY-4.0\r\n- **Projection:** Slovenia 1996 / Slovene National Grid\r\n\r\n---\r\n\r\n- **[Download the data as fiboa GeoParquet](https://data.source.coop/fiboa/slovenia-ec/data/slovenia_eurocrops_2021_fiboa.parquet)**\r\n- [STAC Browser](https://radiantearth.github.io/stac-browser/#/external/data.source.coop/fiboa/slovenia-ec/stac/collection.json)\r\n- [STAC Collection](https://data.source.coop/fiboa/slovenia-ec/stac/collection.json)\r\n- [PMTiles](https://data.source.coop/fiboa/slovenia-ec/data/slovenia_eurocrops_2021.pmtiles)\r\n\r\n## Columns\r\n\r\n| Property        | Data Type   | Description                                                                 |\r\n|-----------------|-------------|-----------------------------------------------------------------------------|\r\n| id            | string     | Numerical identifier                           |\r\n| area          |   float    | Area in hectares                               |\r\n| gerk_pid      |   uint64   | GERK polygon identification number             |\r\n| crop_type_class | string  | Crop type classification                        |\r\n| rastlina      |  string   | Crop type in slovenian language                 |\r\n| crop_lat_e    | string   |   Crop type in latin or english language         |\r\n| color         | string   | Color (hex), used for display by Ministry of Agriculture, Forestry and Food (MAFF)    |\r\n| EC_trans_n    | string  | The original crop name translated into English  |\r\n|   EC_hcat_n   | string | The machine-readable HCAT name of the crop        |\r\n|   EC_hcat_c   | uint32 | The 10-digit HCAT code indicating the hierarchy of the crop  |\r\n|   EC_NUTS3   | string | The Nomenclature of Territorial Units for Statistics 3 (NUTS3) region, an approximate assignment of a crop parcel to a region  |\r\n\r\n## Lineage \r\n\r\n- Data downloaded on 2024-06-10 from https://zenodo.org/records/10118572/files/SI_2021.zip?download=1.\r\n- Converted to GeoParquet using [fiboa-cli](https://github.com/fiboa/cli), version 0.5.0-dev.\r\n",
+  "_review": [
+    "providers: role [processor] for 'EuroCrops' is an AI guess \u2014 EuroCrops harmonized and redistributed the data; assumed processor role as the README does not explicitly label it. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-05-27T01:20:53+00:00",
+  "_source_format": "stac"
 }

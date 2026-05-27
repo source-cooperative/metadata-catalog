@@ -1,15 +1,21 @@
 {
-  "account_id": "fiboa",
-  "product_id": "ec-lv",
-  "fiboa_version": "0.2.0",
-  "fiboa_extensions": [
-    "https://fiboa.github.io/hcat-extension/v0.1.0/schema.yaml"
-  ],
   "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
   "id": "fiboa/ec-lv",
   "title": "Field boundaries for Latvia from EuroCrops (2021)",
-  "description": "\nThis dataset contains the field boundaries for all of Latvia in 2021. The data was collected by the Latvian government and harmonized\nby the EuroCrops project and is available on Zenodo.\n\nEuroCrops is a dataset collection combining all publicly available self-declared crop reporting datasets from countries of the European Union.\nThe project is funded by the German Space Agency at DLR on behalf of the Federal Ministry for Economic Affairs and Climate Action (BMWK).\nThe work is licensed under a [Creative Commons Attribution-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-sa/4.0/).\n\nThe project developed a new **Hierarchical Crop and Agriculture Taxonomy (HCAT)** that harmonises all declared crops across the European Union.\nIn the data you'll find this as additional attributes:\n\n- `EC_trans_n`: The original crop name translated into English\n- `EC_hcat_n`: The machine-readable HCAT name of the crop\n- `EC_hcat_c`: The 10-digit HCAT code indicating the hierarchy of the crop\n",
+  "description": "Official field boundaries for Latvia (2021), covering approximately 430,000 parcels. Derived from Latvian government data via the EuroCrops project, converted to fiboa GeoParquet with harmonized crop classification values using the HCAT extension.",
   "license": "CC-BY-4.0",
+  "keywords": [
+    "field-boundaries",
+    "agriculture",
+    "crop-classification",
+    "lpis",
+    "land-parcels",
+    "remote-sensing"
+  ],
   "providers": [
     {
       "name": "EuroCrops",
@@ -32,6 +38,25 @@
         "host"
       ],
       "url": "https://beta.source.coop/fiboa/ec_lv/"
+    },
+    {
+      "name": "Latvian Government",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "EuroCrops",
+      "roles": [
+        "processor"
+      ]
+    },
+    {
+      "name": "Eddie Choi",
+      "roles": [
+        "processor"
+      ]
     }
   ],
   "extent": {
@@ -54,15 +79,9 @@
       ]
     }
   },
-  "links": [
-    {
-      "href": "https://data.source.coop/fiboa/ec-lv/ec_lv.pmtiles",
-      "type": "application/vnd.pmtiles",
-      "rel": "pmtiles"
-    }
-  ],
-  "stac_version": "1.0.0",
-  "attribution": "Lauku atbalsta dienests",
+  "summaries": {
+    "item_count": 432188
+  },
   "assets": {
     "data": {
       "href": "ec_lv.parquet",
@@ -125,21 +144,38 @@
       "table:row_count": 432188
     }
   },
-  "stac_extensions": [
-    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/fiboa/ec-lv/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/fiboa/ec-lv",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "href": "https://data.source.coop/fiboa/ec-lv/ec_lv.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "rel": "pmtiles"
+    }
   ],
-  "featured": 0,
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "data_mode": "open",
   "exts": {
     "parquet": 1,
+    "md": 1,
     "pmtiles": 1,
-    "json": 1,
-    "md": 1
+    "ds_store": 1,
+    "json": 1
   },
+  "product_id": "ec-lv",
+  "created_at": "2024-07-19T14:58:24.120172+00:00",
+  "total_bytes": 864939014,
+  "visibility": "public",
+  "featured": 0,
+  "file_count": 5,
+  "data_mode": "open",
+  "updated_at": "2025-08-21T16:39:55.568Z",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -152,14 +188,18 @@
       "prefix": "fiboa/ec-lv/"
     }
   },
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
   "disabled": false,
-  "updated_at": "2025-08-21T16:39:55.568Z",
-  "total_bytes": 864932866,
-  "file_count": 4,
-  "visibility": "public",
-  "created_at": "2024-07-19T14:58:24.120172+00:00",
-  "stac_key": "fiboa/ec-lv/stac/collection.json",
-  "stac_last_modified": "2024-08-13 08:19:41-07:00",
-  "_state": "gathered",
-  "_upstream_stac_id": "ec_lv"
+  "account_id": "fiboa",
+  "readme": "## README.md\n# Field Boundaries for Latvia\n\nProvides around 430,000 official field boundaries of Lativa for the year 2021. It has been converted to a fiboa GeoParquet file from the Eurocrops Shapefile that provides crop classification values that are harmonized across Europe. The data was provided to Eurocrops under an open license from the Latvian government.\n- **Source Data Provider**: [Eurocrops](https://github.com/maja601/EuroCrops/wiki/Latvia)\n- **Converted by**: Eddie Choi\n- **License**: CC-BY-4.0\n- **Projection**: EPSG:3059\n\n---\n\n- **[Download the data as fiboa GeoParquet](https://data.source.coop/fiboa/ec-lv/ec_lv.parquet)**\n- [STAC Browser](https://radiantearth.github.io/stac-browser/#/external/data.source.coop/fiboa/ec-lv/stac/collection.json)\n- [STAC Collection](https://data.source.coop/fiboa/ec-lv/stac/collection.json)\n- [PMTiles](https://data.source.coop/fiboa/ec-lv/ec_lv.pmtiles)\n\n## Columns\n\n| Property               | Data Type | Description                                                  |\n| ---------------------- | --------- | ------------------------------------------------------------ |\n| id                     | string    | Identifier |\n| determination_datetime | datetime  | Valid since the given date. |\n| area                   | float     | Area in ha |\n| year                   | uint16    | Year of when the data was collected. |\n| parcel_id              | uint64    | Identifcation number of each parcel |\n| crop_id                | uint16    | Crop type identifier |\n| subsidy_type           | string    | Subsidy type |\n| EC_NUTS3               | string    | The Nomenclature of Territorial Units for Statistics 3 (NUTS3) region |\n| ec:translated_name     | string    | Part of the [HCAT extension](https://github.com/fiboa/hcat-extension0); the original crop name translated to English. |\n| ec:hcat_name           | string    | Part of the [HCAT extension](https://github.com/fiboa/hcat-extension0); the machine-readable HCAT name of the crop |\n| ec:hcat_code           | uint32    | Part of the [HCAT extension](https://github.com/fiboa/hcat-extension0); the 10-digit HCAT code indicating the hierarchy of the crop |\n\n## Lineage \n\n- Data downloaded on 2024-06-16 from  https://zenodo.org/records/8229128/files/LV_2021.zip?download=1.\n- Converted to GeoParquet using [fiboa-cli](https://github.com/fiboa/cli), version 0.5.0-dev.",
+  "_review": [
+    "providers: role [processor] for 'EuroCrops' is an AI guess \u2014 EuroCrops harmonized and redistributed the data; assumed processor role as the README credits them as source data provider. Verify before flipping to _state: reviewed.",
+    "providers: role [processor] for 'Eddie Choi' is an AI guess \u2014 Listed as converter to fiboa GeoParquet format; assumed processor role. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-05-27T01:28:18+00:00",
+  "_source_format": "stac"
 }

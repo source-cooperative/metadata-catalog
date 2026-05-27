@@ -1,16 +1,24 @@
 {
-  "account_id": "fiboa",
-  "product_id": "es-md",
-  "fiboa_version": "0.2.0",
-  "fiboa_extensions": [
-    "https://fiboa.github.io/crop-extension/v0.1.0/schema.yaml",
-    "https://fiboa.github.io/administrative-division-extension/v0.1.0/schema.yaml"
-  ],
   "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
   "id": "fiboa/es-md",
   "title": "Spain Madrid Crop fields",
-  "description": "SIGPAC is the Agricultural Parcel Identification System implemented throughout the European Union for the application of CAP (Common Agricultural Policy) aid to farmers and ranchers.",
+  "description": "Official field boundaries for Spain's Comunidad de Madrid region, derived from the SIGPAC Agricultural Parcel Identification System. Contains 631,861 parcels with crop classification codes and names, converted to fiboa-compliant GeoParquet format. Covers the Madrid autonomous community in ETRS89 geographic coordinates (EPSG:4258).",
   "license": "CC-0",
+  "keywords": [
+    "field-boundaries",
+    "agriculture",
+    "crop-classification",
+    "land-use",
+    "lpis",
+    "land-parcels",
+    "spain",
+    "sigpac",
+    "madrid"
+  ],
   "providers": [
     {
       "name": "Comunidad de Madrid",
@@ -33,6 +41,19 @@
         "host"
       ],
       "url": "https://source.coop/fiboa/es-md/"
+    },
+    {
+      "name": "Comunidad de Madrid",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Ivor Bosloper",
+      "roles": [
+        "processor"
+      ]
     }
   ],
   "extent": {
@@ -55,14 +76,9 @@
       ]
     }
   },
-  "links": [
-    {
-      "href": "https://data.source.coop/fiboa/es-md/es_md.pmtiles",
-      "type": "application/vnd.pmtiles",
-      "rel": "pmtiles"
-    }
-  ],
-  "stac_version": "1.0.0",
+  "summaries": {
+    "item_count": 631861
+  },
   "assets": {
     "data": {
       "href": "https://data.source.coop/fiboa/es_md/es_md.parquet",
@@ -117,24 +133,42 @@
       "table:row_count": 631861
     }
   },
-  "stac_extensions": [
-    "https://stac-extensions.github.io/table/v1.2.0/schema.json",
-    "https://stac-extensions.github.io/web-map-links/v1.2.0/schema.json"
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/fiboa/es-md/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/fiboa/es-md",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "href": "https://data.source.coop/fiboa/es-md/es_md.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "rel": "pmtiles"
+    }
   ],
+  "product_id": "es-md",
   "featured": 0,
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
+  "disabled": false,
+  "updated_at": "2025-08-21T16:39:55.568Z",
   "data_mode": "open",
   "exts": {
     "parquet": 1,
     "pmtiles": 1,
-    "pdf": 1,
-    "json": 1,
     "md": 1,
+    "json": 1,
+    "pdf": 1,
     "txt": 1
   },
+  "file_count": 6,
+  "created_at": "2024-12-29T13:02:12.361Z",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -147,14 +181,11 @@
       "prefix": "fiboa/es-md/"
     }
   },
-  "disabled": false,
-  "updated_at": "2025-08-21T16:39:55.568Z",
-  "total_bytes": 356342865,
-  "file_count": 6,
   "visibility": "public",
-  "created_at": "2024-12-29T13:02:12.361Z",
-  "stac_key": "fiboa/es-md/stac/collection.json",
-  "stac_last_modified": "2025-03-19 15:25:39-07:00",
-  "_state": "gathered",
-  "_upstream_stac_id": "es_md"
+  "total_bytes": 356342865,
+  "account_id": "fiboa",
+  "readme": "## README.md\n# Field boundaries for Spain Comunidad de Madrid\n\nProvides 631861 official field boundaries from Spain Comunidad de Madrid.\nIt has been converted to a fiboa GeoParquet file from data obtained from Comunidad de Madrid.\n\n- **Source Data Provider:** [Comunidad de Madrid](https://www.comunidad.madrid/)\n- **Converted by:** Ivor Bosloper\n- **License:** [No Limitations to public access](https://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/noLimitations) as documented at source https://idem.comunidad.madrid/catalogocartografia/srv/spa/catalog.search#/metadata/spacm_sigpac\n- **Projection:** EPSG:4258 (ETRS89 geographic coordinates))\n\n---\n\n- [Download the data as fiboa GeoParquet](https://data.source.coop/fiboa/es-md/es_md.parquet)\n- [STAC Browser](https://radiantearth.github.io/stac-browser/#/external/data.source.coop/fiboa/es-md/stac/collection.json)\n- [STAC Collection](https://data.source.coop/fiboa/es-md/stac/collection.json)\n- [PMTiles](https://data.source.coop/fiboa/es-md/es_md.pmtiles)\n\n## Columns\n\n| Property               | **Data Type** | Description |\n|------------------------|---------------|-------------|\n| id                     | string        |             |\n| determination_datetime | timestamp     |             |\n| crop:code              | string        |             |\n| crop:name              | string        |             |\n| crop:name_en           | string        |             |\n| area                   | float         |             |\n| admin:country_code     | string        |             |\n| crop:code_list         | string        |             |\n| admin:subdivision_code | string        |             |\n\n## Lineage\n\n- Data downloaded on 2024-12-29 from:\n  - https://idem.comunidad.madrid/recursos_cat_geo/Catalogo/recursos/UsoDelSuelo/spacm_sigpac.cm.zip\n- Converted to GeoParquet using [fiboa-cli](https://github.com/fiboa/cli), version 0.8.0\n",
+  "_state": "drafted",
+  "cataloged_at": "2026-05-27T01:24:44+00:00",
+  "_source_format": "stac"
 }

@@ -1,13 +1,22 @@
 {
-  "account_id": "fiboa",
-  "product_id": "slovenia",
-  "fiboa_version": "0.2.0",
-  "fiboa_extensions": [],
   "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
   "id": "fiboa/slovenia",
   "title": "Slovenia Crop Fields",
-  "description": "The Slovenian government provides slightly different, relevant open data sets called GERK, KMRS, RABA and EKRZ.\nThis converter uses the KRMS dataset, which includes CAP applications of the last year and discerns\naround 150 different crop categories.",
+  "description": "Official field boundaries dataset for Slovenia containing 830,856 agricultural parcels with crop classification data sourced from the KMRS 2023 dataset published by Slovenia's Ministry of Agriculture, Forestry and Food. The dataset covers Common Agricultural Policy (CAP) applications and distinguishes approximately 150 crop categories. Distributed as fiboa-compliant GeoParquet and PMTiles in the Slovenian national projection (EPSG:3794).",
   "license": "proprietary",
+  "keywords": [
+    "field-boundaries",
+    "agriculture",
+    "crop-classification",
+    "land-parcels",
+    "lpis",
+    "arable-land",
+    "land-use"
+  ],
   "providers": [
     {
       "name": "Ministry of Agriculture, Forestry and Food (Ministrstvo za kmetijstvo, gozdarstvo in prehrano)",
@@ -30,6 +39,19 @@
         "host"
       ],
       "url": "https://source.coop/fiboa/slovenia/"
+    },
+    {
+      "name": "Ministry of Agriculture, Forestry and Food (Ministrstvo za kmetijstvo, gozdarstvo in prehrano)",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Ivor Bosloper",
+      "roles": [
+        "processor"
+      ]
     }
   ],
   "extent": {
@@ -42,22 +64,19 @@
           46.86979599355252
         ]
       ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
     }
   },
-  "links": [
-    {
-      "title": "Javno dostopni podatki: Publicly available data",
-      "href": "https://rkg.gov.si/vstop/",
-      "type": "text/html",
-      "rel": "license"
-    },
-    {
-      "href": "https://data.source.coop/fiboa/slovenia/slovenia.pmtiles",
-      "type": "application/vnd.pmtiles",
-      "rel": "pmtiles"
-    }
-  ],
-  "attribution": "",
+  "summaries": {
+    "item_count": 830856
+  },
   "assets": {
     "data": {
       "href": "https://data.source.coop/fiboa/slovenia/slovenia.parquet",
@@ -100,23 +119,39 @@
       "table:row_count": 830856
     }
   },
-  "stac_extensions": [
-    "https://stac-extensions.github.io/table/v1.2.0/schema.json",
-    "https://stac-extensions.github.io/web-map-links/v1.2.0/schema.json"
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/fiboa/slovenia/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/fiboa/slovenia",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "title": "Javno dostopni podatki: Publicly available data",
+      "href": "https://rkg.gov.si/vstop/",
+      "type": "text/html",
+      "rel": "license"
+    },
+    {
+      "href": "https://data.source.coop/fiboa/slovenia/slovenia.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "rel": "pmtiles"
+    }
   ],
-  "featured": 0,
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
   "data_mode": "open",
-  "exts": {
-    "parquet": 1,
-    "pmtiles": 1,
-    "json": 1,
-    "md": 1,
-    "txt": 1
-  },
+  "disabled": false,
+  "product_id": "slovenia",
+  "visibility": "public",
+  "file_count": 5,
+  "created_at": "2024-11-12T12:29:49.763Z",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -129,14 +164,19 @@
       "prefix": "fiboa/slovenia/"
     }
   },
-  "disabled": false,
-  "updated_at": "2025-08-21T16:39:55.569Z",
+  "account_id": "fiboa",
+  "exts": {
+    "parquet": 1,
+    "txt": 1,
+    "pmtiles": 1,
+    "md": 1,
+    "json": 1
+  },
+  "featured": 0,
   "total_bytes": 354590949,
-  "file_count": 5,
-  "visibility": "public",
-  "created_at": "2024-11-12T12:29:49.763Z",
-  "stac_key": "fiboa/slovenia/stac/collection.json",
-  "stac_last_modified": "2025-03-19 15:25:38-07:00",
-  "_state": "gathered",
-  "_upstream_stac_id": "si"
+  "updated_at": "2025-08-21T16:39:55.569Z",
+  "readme": "## README.md\n# Field boundaries for Slovenia\n\nProvides 830856 official field boundaries from Slovenia.\nIt has been converted to a fiboa GeoParquet file from data obtained from Ministry of Agriculture, Forestry and Food  (Ministrstvo za kmetijstvo, gozdarstvo in prehrano).\n\n- **Source Data Provider:** [Ministry of Agriculture, Forestry and Food  (Ministrstvo za kmetijstvo, gozdarstvo in prehrano)](https://www.gov.si/drzavni-organi/ministrstva/ministrstvo-za-kmetijstvo-gozdarstvo-in-prehrano/)\n- **Converted by:** Ivor Bosloper\n- **License:** https://rkg.gov.si/vstop/ \"Javno dostopni podatki\" (Publicly available data)\n- **Projection:** EPSG:3794\n\n---\n\n- [Download the data as fiboa GeoParquet](https://data.source.coop/fiboa/slovenia/slovenia.parquet)\n- [STAC Browser](https://radiantearth.github.io/stac-browser/#/external/data.source.coop/fiboa/slovenia/stac/collection.json)\n- [STAC Collection](https://data.source.coop/fiboa/slovenia/stac/collection.json)\n- [PMTiles](https://data.source.coop/fiboa/slovenia/slovenia.pmtiles)\n\n## Columns\n\n| Property     | **Data Type** | Description                   |\n|--------------|---------------|-------------------------------|\n| id           | string        | Field Identifier              |\n| block_id     | string        | Field block identifier (GERK) |\n| area         | float         | Area                          |\n| crop_code    | string        | Crop code                     |\n| crop_name    | string        | Crop name in Slovenian        |\n| crop_name_en | string        | Crop name in English          |\n\n## Lineage\n\n- Data downloaded on 2024-11-12 from https://rkg.gov.si/razno/portal_analysis/KMRS_2023.rar .\n- Converted to GeoParquet using [fiboa-cli](https://github.com/fiboa/cli), version 0.7.0\n",
+  "_state": "drafted",
+  "cataloged_at": "2026-05-27T01:22:11+00:00",
+  "_source_format": "unknown"
 }

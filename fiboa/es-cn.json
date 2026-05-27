@@ -1,16 +1,23 @@
 {
-  "account_id": "fiboa",
-  "product_id": "es-cn",
-  "fiboa_version": "0.2.0",
-  "fiboa_extensions": [
-    "https://fiboa.github.io/crop-extension/v0.1.0/schema.yaml",
-    "https://fiboa.github.io/administrative-division-extension/v0.1.0/schema.yaml"
-  ],
   "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
   "id": "fiboa/es-cn",
   "title": "Spain Crop fields of Canary Islands",
-  "description": "The Canary Islands Crop Map is a cartographic dataset developed by the Department of Agriculture, Livestock,\n    Fisheries and Water of the Government of the Canary Islands, to understand the reality of the available\n    agricultural surface of the Canary Islands. This tool has been developed from 1998 to the present.\n\n    There are several crop maps for each of the islands, which allow us to see the temporal and spatial evolution\n    of the cultivated areas of the islands in recent years. All this means that the Canary Islands Crop Map is a\n    basic tool for decision-making in present and future regional agricultural policy, as well as being a basic\n    source for the preservation of agricultural land in the field of territorial planning.\n\n    The data of the Canary Islands Crop Map have been published on the open data portal of\n    the Government of the Canary Islands (https://datos.canarias.es/catalogos/general/dataset/mapa-de-cultivos-de-canarias)\n    and in datos gob (https://datos.gob.es/es/catalogo/a05003638-mapa-de-cultivos-de-canarias1),\n    this work having been addressed within the Strategic Plan for Innovation and Continuous Improvement\n    of the Ministry of Agriculture, Livestock and Fisheries.",
+  "description": "Official field boundaries for the Canary Islands (Spain), covering 466,169 agricultural parcels derived from the Canary Islands Crop Map. The dataset includes crop type, island, and administrative codes, and has been converted to fiboa GeoParquet format from data published by the Government of the Canary Islands.",
   "license": "CC-BY-4.0",
+  "keywords": [
+    "field-boundaries",
+    "agriculture",
+    "crop-classification",
+    "land-use",
+    "lpis",
+    "land-parcels",
+    "canary-islands",
+    "spain"
+  ],
   "providers": [
     {
       "name": "Gobierno de Canarias - Consejer\u00eda de Agricultura, Ganader\u00eda, Pesca y Soberan\u00eda Alimentaria",
@@ -33,6 +40,19 @@
         "host"
       ],
       "url": "https://source.coop/fiboa/es-cn/"
+    },
+    {
+      "name": "Gobierno de Canarias - Consejer\u00eda de Agricultura, Ganader\u00eda, Pesca y Soberan\u00eda Alimentaria",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Ivor Bosloper",
+      "roles": [
+        "processor"
+      ]
     }
   ],
   "extent": {
@@ -55,15 +75,9 @@
       ]
     }
   },
-  "links": [
-    {
-      "href": "https://data.source.coop/fiboa/es-cn/es_cn.pmtiles",
-      "type": "application/vnd.pmtiles",
-      "rel": "pmtiles"
-    }
-  ],
-  "stac_version": "1.0.0",
-  "attribution": "Gobierno de Canarias",
+  "summaries": {
+    "item_count": 466169
+  },
   "assets": {
     "data": {
       "href": "https://data.source.coop/fiboa/es_cn/es_cn.parquet",
@@ -118,22 +132,36 @@
       "table:row_count": 466169
     }
   },
-  "stac_extensions": [
-    "https://stac-extensions.github.io/table/v1.2.0/schema.json",
-    "https://stac-extensions.github.io/web-map-links/v1.2.0/schema.json"
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/fiboa/es-cn/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/fiboa/es-cn",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "href": "https://data.source.coop/fiboa/es-cn/es_cn.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "rel": "pmtiles"
+    }
   ],
+  "data_mode": "open",
   "featured": 0,
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "data_mode": "open",
+  "created_at": "2024-12-26T11:26:54.744Z",
   "exts": {
     "parquet": 1,
-    "pmtiles": 1,
     "txt": 1,
-    "json": 1,
-    "md": 1
+    "md": 1,
+    "pmtiles": 1,
+    "json": 1
   },
   "mirrors": {
     "aws-opendata-us-west-2": {
@@ -147,14 +175,15 @@
       "prefix": "fiboa/es-cn/"
     }
   },
-  "disabled": false,
-  "updated_at": "2025-08-21T16:39:55.568Z",
-  "total_bytes": 179595005,
+  "product_id": "es-cn",
+  "account_id": "fiboa",
   "file_count": 5,
+  "disabled": false,
   "visibility": "public",
-  "created_at": "2024-12-26T11:26:54.744Z",
-  "stac_key": "fiboa/es-cn/stac/collection.json",
-  "stac_last_modified": "2025-03-19 15:25:32-07:00",
-  "_state": "gathered",
-  "_upstream_stac_id": "es_cn"
+  "total_bytes": 179595005,
+  "updated_at": "2025-08-21T16:39:55.568Z",
+  "readme": "## README.md\n# Field boundaries for Spain Canary Islands\n\nProvides 466169 official field boundaries from Spain Canary Islands.\nIt has been converted to a fiboa GeoParquet file from data obtained from Gobierno de Canarias - Consejer\u00eda de Agricultura, Ganader\u00eda, Pesca y Soberan\u00eda Alimentaria.\n\n- **Source Data Provider:** [Gobierno de Canarias - Consejer\u00eda de Agricultura, Ganader\u00eda, Pesca y Soberan\u00eda Alimentaria](https://www.gobiernodecanarias.org/agpsa/)\n- **Converted by:** Ivor Bosloper\n- **License:** CC-BY-4.0\n- **Projection:** EPSG:32628\n\n---\n\n- [Download the data as fiboa GeoParquet](https://data.source.coop/fiboa/es-cn/es_cn.parquet)\n- [STAC Browser](https://radiantearth.github.io/stac-browser/#/external/data.source.coop/fiboa/es-cn/stac/collection.json)\n- [STAC Collection](https://data.source.coop/fiboa/es-cn/stac/collection.json)\n- [PMTiles](https://data.source.coop/fiboa/es-cn/es_cn.pmtiles)\n\n## Columns\n\n| Property               | **Data Type** | Description |\n|------------------------|---------------|-------------|\n| id                     | string        | identifier  |\n| determination_datetime | timestamp     |             |\n| admin_island           | string        | Island      |\n| crop:code              | string        | crop code   |\n| crop:name              | string        | crop name   |\n| area                   | float         | area in ha  |\n| admin:country_code     | string        | ES          |\n| admin:subdivision_code | string        | CB          |\n| crop:code_list         | string        |             |\n\n## Lineage\n\n- Data downloaded on 2024-12-26 from:\n  - https://opendata.sitcan.es/upload/medio-rural/gobcan_mapa-cultivos_lz_shp.zip\n  - https://opendata.sitcan.es/upload/medio-rural/gobcan_mapa-cultivos_eh_shp.zip\n  - https://opendata.sitcan.es/upload/medio-rural/gobcan_mapa-cultivos_lp_shp.zip\n  - https://opendata.sitcan.es/upload/medio-rural/gobcan_mapa-cultivos_lg_shp.zip\n  - https://opendata.sitcan.es/upload/medio-rural/gobcan_mapa-cultivos_tf_shp.zip\n  - https://opendata.sitcan.es/upload/medio-rural/gobcan_mapa-cultivos_gc_shp.zip\n  - https://opendata.sitcan.es/upload/medio-rural/gobcan_mapa-cultivos_fv_shp.zip\n- Converted to GeoParquet using [fiboa-cli](https://github.com/fiboa/cli), version 0.8.0\n",
+  "_state": "drafted",
+  "cataloged_at": "2026-05-27T01:19:41+00:00",
+  "_source_format": "stac"
 }

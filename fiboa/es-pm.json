@@ -1,16 +1,23 @@
 {
-  "account_id": "fiboa",
-  "product_id": "es-pm",
-  "fiboa_version": "0.2.0",
-  "fiboa_extensions": [
-    "https://fiboa.github.io/crop-extension/v0.1.0/schema.yaml",
-    "https://fiboa.github.io/administrative-division-extension/v0.1.0/schema.yaml"
-  ],
   "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
   "id": "fiboa/es-pm",
   "title": "Spain Balearic Islands Crop fields",
-  "description": "SIGPAC Crop fields of Spain - Balearic Islands",
+  "description": "Official agricultural field boundaries for Spain's Balearic Islands, derived from the SIGPAC (Geographic Information System of the Common Agricultural Policy) dataset published by the Govern de les Illes Balears. Contains 1,256 field parcels with crop classification, administrative codes, and geometry, converted to fiboa GeoParquet format at EPSG:4326.",
   "license": "CC-BY-4.0",
+  "keywords": [
+    "field-boundaries",
+    "agriculture",
+    "crop-classification",
+    "lpis",
+    "land-parcels",
+    "spain",
+    "balearic-islands",
+    "sigpac"
+  ],
   "providers": [
     {
       "name": "Govern de les Illes Balears",
@@ -33,6 +40,19 @@
         "host"
       ],
       "url": "https://source.coop/fiboa/es-pm/"
+    },
+    {
+      "name": "Govern de les Illes Balears",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Ivor Bosloper",
+      "roles": [
+        "processor"
+      ]
     }
   ],
   "extent": {
@@ -55,15 +75,9 @@
       ]
     }
   },
-  "links": [
-    {
-      "href": "https://data.source.coop/fiboa/es-pm/es_pm.pmtiles",
-      "type": "application/vnd.pmtiles",
-      "rel": "pmtiles"
-    }
-  ],
-  "stac_version": "1.0.0",
-  "attribution": "Govern de les Illes Balears",
+  "summaries": {
+    "item_count": 1451074
+  },
   "assets": {
     "data": {
       "href": "https://data.source.coop/fiboa/es_pm/es_pm.parquet",
@@ -126,22 +140,31 @@
       "table:row_count": 394623
     }
   },
-  "stac_extensions": [
-    "https://stac-extensions.github.io/table/v1.2.0/schema.json",
-    "https://stac-extensions.github.io/web-map-links/v1.2.0/schema.json"
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/fiboa/es-pm/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/fiboa/es-pm",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "href": "https://data.source.coop/fiboa/es-pm/es_pm.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "rel": "pmtiles"
+    }
   ],
-  "featured": 0,
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "data_mode": "open",
+  "account_id": "fiboa",
+  "updated_at": "2025-08-21T16:39:55.568Z",
   "exts": {
     "parquet": 3,
     "pmtiles": 1,
     "json": 1,
-    "md": 1,
-    "txt": 1
+    "txt": 1,
+    "md": 1
   },
   "mirrors": {
     "aws-opendata-us-west-2": {
@@ -155,14 +178,20 @@
       "prefix": "fiboa/es-pm/"
     }
   },
-  "disabled": false,
-  "updated_at": "2025-08-21T16:39:55.568Z",
-  "total_bytes": 611979788,
-  "file_count": 7,
+  "product_id": "es-pm",
   "visibility": "public",
+  "data_mode": "open",
+  "featured": 0,
+  "total_bytes": 611979788,
+  "disabled": false,
   "created_at": "2024-12-26T00:05:02.443Z",
-  "stac_key": "fiboa/es-pm/stac/collection.json",
-  "stac_last_modified": "2025-03-19 15:25:24-07:00",
-  "_state": "gathered",
-  "_upstream_stac_id": "es_ib"
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "file_count": 7,
+  "readme": "## README.md\n# Field boundaries for Spain Balearic Islands\n\nProvides 1256 official field boundaries from Spain Balearic Islands.\nIt has been converted to a fiboa GeoParquet file from data obtained from Govern de les Illes Balears.\n\n- **Source Data Provider:** [Govern de les Illes Balears](https://www.caib.es/webgoib/)\n- **Converted by:** Ivor Bosloper\n- **License:** CC-BY-4.0 ( http://www.opendefinition.org/licenses/cc-by )\n- **Projection:** EPSG:4326\n\n---\n\n- [Download the data as fiboa GeoParquet](https://data.source.coop/fiboa/es-pm/es_pm.parquet)\n- [STAC Browser](https://radiantearth.github.io/stac-browser/#/external/data.source.coop/fiboa/es-pm/stac/collection.json)\n- [STAC Collection](https://data.source.coop/fiboa/es-pm/stac/collection.json)\n- [PMTiles](https://data.source.coop/fiboa/es-pm/es_pm.pmtiles)\n\n## Columns\n\n| Property                | **Data Type** | Description |\n|-------------------------|---------------|-------------|\n| id                      | string        |             |\n| admin_province_code     | string        |             |\n| admin_municipality_code | string        |             |\n| area                    | float         |             |\n| crop:code               | string        |             |\n| crop:name               | string        |             |\n| crop:name_en            | string        |             |\n| determination_datetime  | timestamp     |             |\n| admin:country_code      | string        |             |\n| crop:code_list          | string        |             |\n| admin:subdivision_code  | string        |             |\n\n## Lineage\n\n- Data downloaded on 2024-12-26 from:\n  - https://ideib.caib.es/geoserveis/rest/services/public/GOIB_SIGPAC_IB/MapServer/0/query?where=OBJECTID+%3E+0&&outFields=*&returnGeometry=true&f=geojson\n- Converted to GeoParquet using [fiboa-cli](https://github.com/fiboa/cli), version 0.8.0\n",
+  "_state": "drafted",
+  "cataloged_at": "2026-05-27T01:28:36+00:00",
+  "_source_format": "stac"
 }

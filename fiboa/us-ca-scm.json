@@ -1,15 +1,21 @@
 {
-  "account_id": "fiboa",
-  "product_id": "us-ca-scm",
-  "fiboa_version": "0.2.0",
-  "fiboa_extensions": [
-    "https://fiboa.github.io/crop-extension/v0.1.0/schema.yaml"
-  ],
   "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
   "id": "fiboa/us-ca-scm",
   "title": "California Statewide Crop Mapping",
-  "description": "For many years, the California Department of Water Resources (DWR) has collected land use data throughout the state\nand used this information to develop water use estimates for statewide and regional planning efforts, including water\nuse projections, water use efficiency evaluation, groundwater model development, and water transfers. These data are\nessential for regional analysis and decision making, which has become increasingly important as DWR and other state agencies\nseek to address resource management issues, regulatory compliance issues, environmental impacts, ecosystem services,\nurban and economic development, and other issues.",
+  "description": "Official field boundaries for 438,790 agricultural parcels across California, derived from the California Department of Water Resources Statewide Crop Mapping program. The dataset includes crop type codes and names for the 2022 provisional survey year, distributed as a fiboa-compliant GeoParquet file.",
   "license": "CC-0",
+  "keywords": [
+    "field-boundaries",
+    "agriculture",
+    "crop-classification",
+    "land-use",
+    "california",
+    "water-resources"
+  ],
   "providers": [
     {
       "name": "California Department of Water Resources",
@@ -32,6 +38,19 @@
         "host"
       ],
       "url": "https://source.coop/fiboa/us-ca-scm/"
+    },
+    {
+      "name": "California Department of Water Resources",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Ivor Bosloper",
+      "roles": [
+        "processor"
+      ]
     }
   ],
   "extent": {
@@ -54,14 +73,9 @@
       ]
     }
   },
-  "links": [
-    {
-      "href": "https://data.source.coop/fiboa/us-ca-scm/us_ca_scm.pmtiles",
-      "type": "application/vnd.pmtiles",
-      "rel": "pmtiles"
-    }
-  ],
-  "stac_version": "1.0.0",
+  "summaries": {
+    "item_count": 438790
+  },
   "assets": {
     "data": {
       "href": "https://data.source.coop/fiboa/us-ca-scm/us_ca_scm.parquet",
@@ -104,23 +118,34 @@
       "table:row_count": 438790
     }
   },
-  "stac_extensions": [
-    "https://stac-extensions.github.io/table/v1.2.0/schema.json",
-    "https://stac-extensions.github.io/web-map-links/v1.2.0/schema.json"
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/fiboa/us-ca-scm/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/fiboa/us-ca-scm",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "href": "https://data.source.coop/fiboa/us-ca-scm/us_ca_scm.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "rel": "pmtiles"
+    }
   ],
-  "featured": 0,
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "data_mode": "open",
   "exts": {
     "parquet": 1,
+    "txt": 1,
     "pmtiles": 1,
-    "json": 1,
     "md": 1,
-    "txt": 1
+    "json": 1
   },
+  "visibility": "public",
+  "disabled": false,
+  "product_id": "us-ca-scm",
+  "total_bytes": 201592612,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -133,14 +158,18 @@
       "prefix": "fiboa/us-ca-scm/"
     }
   },
-  "disabled": false,
-  "updated_at": "2025-08-21T16:39:55.569Z",
-  "total_bytes": 201592612,
   "file_count": 5,
-  "visibility": "public",
+  "featured": 0,
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "updated_at": "2025-08-21T16:39:55.569Z",
   "created_at": "2024-11-22T17:05:08.793Z",
-  "stac_key": "fiboa/us-ca-scm/stac/collection.json",
-  "stac_last_modified": "2025-03-19 15:25:26-07:00",
-  "_state": "gathered",
-  "_upstream_stac_id": "us_ca_scm"
+  "account_id": "fiboa",
+  "data_mode": "open",
+  "readme": "## README.md\n# Field boundaries for CA SCM\n\nProvides 438790 official field boundaries from CA SCM.\nIt has been converted to a fiboa GeoParquet file from data obtained from California Department of Water Resources.\n\n- **Source Data Provider:** [California Department of Water Resources](https://water.ca.gov/)\n- **Converted by:** Ivor Bosloper\n- **License:** CC-0\n- **Projection:** EPSG:4269 (NAD83)\n\n---\n\n- [Download the data as fiboa GeoParquet](https://data.source.coop/fiboa/us-ca-scm/us_ca_scm.parquet)\n- [STAC Browser](https://radiantearth.github.io/stac-browser/#/external/data.source.coop/fiboa/us-ca-scm/stac/collection.json)\n- [STAC Collection](https://data.source.coop/fiboa/us-ca-scm/stac/collection.json)\n- [PMTiles](https://data.source.coop/fiboa/us-ca-scm/us_ca_scm.pmtiles)\n\n## Columns\n\n| Property               | **Data Type** | Description                          |\n|------------------------|---------------|--------------------------------------|\n| id                     | string        | Identifier                           |\n| crop:code              | string        | Crop code from original dataset      |\n| crop:name              | string        | Crop name from original dataset      |\n| admin_level_2          | string        | Country                              |\n| determination_datetime | timestamp     |                                      |\n| crop:code_list         | string        | Crop code list from original dataset |\n\n## Lineage\n\n- Data downloaded on 2024-11-22 from https://data.cnra.ca.gov/dataset/6c3d65e3-35bb-49e1-a51e-49d5a2cf09a9/resource/f38d3f6f-dcf1-4553-9f07-4f381d494320/download/i15_crop_mapping_2022_provisional_gdb.zip .\n- Converted to GeoParquet using [fiboa-cli](https://github.com/fiboa/cli), version 0.8.0\n",
+  "_state": "drafted",
+  "cataloged_at": "2026-05-27T01:20:10+00:00",
+  "_source_format": "stac"
 }

@@ -1,13 +1,21 @@
 {
-  "account_id": "fiboa",
-  "product_id": "nl-ref",
-  "fiboa_version": "0.2.0",
-  "fiboa_extensions": [],
   "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
   "id": "fiboa/nl-ref",
   "title": "Field boundaries for The Netherlands",
-  "description": "\nA field block (Dutch: \"Referentieperceel\"), formerly known as \"AAN\" (Agrarisch Areaal Nederland),\nis a contiguous agricultural area surrounded by permanent boundaries, which is cultivated by one or\nmore farmers with one or more crops, is fully or partially set aside or is fully or partially\ntaken out of production.\n\nThe following field block types exist:\n\n- Woods (Hout)\n- Agricultural area (Landbouwgrond)\n- Other (Overig)\n- Water (Water)\n\nWe filter on \"Agricultural area\" in this converter.\nFor crop data, look at BasisRegistratie gewasPercelen (BRP)\n",
+  "description": "Official agricultural reference field boundaries for The Netherlands, sourced from Rijksdienst voor Ondernemers (RVO) via PDOK. Contains 549,218 parcels with geometry, area, source method, and determination date. Distributed as fiboa-compliant GeoParquet.",
   "license": "CC0-1.0",
+  "keywords": [
+    "field-boundaries",
+    "agriculture",
+    "land-parcels",
+    "lpis",
+    "netherlands",
+    "geoparquet"
+  ],
   "providers": [
     {
       "name": "RVO / PDOK",
@@ -30,6 +38,19 @@
         "host"
       ],
       "url": "https://source.coop/fiboa/nl-ref/"
+    },
+    {
+      "name": "Rijksdienst voor Ondernemers (RVO) / PDOK",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Ivor Bosloper",
+      "roles": [
+        "processor"
+      ]
     }
   ],
   "extent": {
@@ -52,14 +73,9 @@
       ]
     }
   },
-  "links": [
-    {
-      "href": "https://data.source.coop/fiboa/nl-ref/nl_ref.pmtiles",
-      "type": "application/vnd.pmtiles",
-      "rel": "pmtiles"
-    }
-  ],
-  "stac_version": "1.0.0",
+  "summaries": {
+    "item_count": 549218
+  },
   "assets": {
     "data": {
       "href": "https://data.source.coop/fiboa/nl_ref/nl_ref.parquet",
@@ -94,23 +110,27 @@
       "table:row_count": 549218
     }
   },
-  "stac_extensions": [
-    "https://stac-extensions.github.io/table/v1.2.0/schema.json",
-    "https://stac-extensions.github.io/web-map-links/v1.2.0/schema.json"
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/fiboa/nl-ref/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/fiboa/nl-ref",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "href": "https://data.source.coop/fiboa/nl-ref/nl_ref.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "rel": "pmtiles"
+    }
   ],
+  "product_id": "nl-ref",
+  "total_bytes": 676164443,
   "featured": 0,
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
   "data_mode": "open",
-  "exts": {
-    "parquet": 1,
-    "pmtiles": 1,
-    "json": 1,
-    "md": 1,
-    "txt": 1
-  },
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -123,14 +143,25 @@
       "prefix": "fiboa/nl-ref/"
     }
   },
-  "disabled": false,
-  "updated_at": "2025-08-21T16:39:55.569Z",
-  "total_bytes": 676164443,
-  "file_count": 5,
   "visibility": "public",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "exts": {
+    "parquet": 1,
+    "json": 1,
+    "md": 1,
+    "txt": 1,
+    "pmtiles": 1
+  },
   "created_at": "2024-06-17T11:39:38.724713+00:00",
-  "stac_key": "fiboa/nl-ref/stac/collection.json",
-  "stac_last_modified": "2025-03-19 15:25:41-07:00",
-  "_state": "gathered",
-  "_upstream_stac_id": "nl"
+  "file_count": 5,
+  "updated_at": "2025-08-21T16:39:55.569Z",
+  "account_id": "fiboa",
+  "disabled": false,
+  "readme": "## README.md\n# Field boundaries for The Netherlands\n\nProvides the official agricultural reference field boundaries of The Netherlands.\nIt has been converted to a fiboa GeoParquet file from a geopackage that was provided by the state.\n\n- **Source Data Provider:** [Rijksdienst voor Ondernemers / PDOK](https://www.pdok.nl/introductie/-/article/referentiepercelen)\n- **Converted by:** Ivor Bosloper\n- **Homepage:** https://www.pdok.nl/introductie/-/article/referentiepercelen\n\n---\n\n- [Download the data as fiboa GeoParquet](https://data.source.coop/fiboa/nl-ref/nl_ref.parquet)\n- [STAC Browser](https://radiantearth.github.io/stac-browser/#/external/data.source.coop/fiboa/nl-ref/stac/collection.json)\n- [STAC Collection](https://data.source.coop/fiboa/nl-ref/stac/collection.json)\n- [PMTiles](https://data.source.coop/fiboa/nl-ref/nl_ref.pmtiles)\n\n\n### Columns\n\nThe Reference Parcel dataset has the following properties:\n\n| Property               | **Data Type** | Description                                |\n|------------------------|---------------|--------------------------------------------|\n| id                     | integer       | Identifier                                 |\n| area                   | string        | Source (digital source, e.g. aerial photo) |\n| source                 | string        | aerial photo or other                      |\n| determination_datetime | datetime      |                                            |\n\n## Lineage\n\n- Data downloaded on 2024-06-12 from https://service.pdok.nl/rvo/referentiepercelen/atom/downloads/referentiepercelen.gpkg\n- Converted to GeoParquet using [fiboa-cli](https://github.com/fiboa/cli), version 0.4.0\n",
+  "_state": "drafted",
+  "cataloged_at": "2026-05-27T01:25:20+00:00",
+  "_source_format": "stac"
 }
