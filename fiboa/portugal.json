@@ -1,22 +1,161 @@
 {
-  "account_id": "fiboa",
-  "product_id": "portugal",
-  "title": "Field boundaries for Portugal",
-  "description": "Open field boundaries (identifica\u00e7\u00e3o de parcelas) from Portugal",
-  "keywords": [
-    "portugal",
-    "fiboa",
-    "field boundaries",
-    "geoparquet",
-    "vector",
-    "pmtiles"
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
   ],
-  "created_at": "2024-08-13T16:04:48.844677+00:00",
-  "updated_at": "2025-08-21T16:39:55.569Z",
-  "visibility": "public",
+  "id": "fiboa/portugal",
+  "title": "Field boundaries for Portugal",
+  "description": "Official field boundary dataset (identifica\u00e7\u00e3o de parcelas) for mainland Portugal (Continente) containing approximately 4.8 million agricultural parcels from 2023. Sourced from the Instituto de Financiamento da Agricultura e Pescas (IFAP) and converted to fiboa-compliant GeoParquet format. Includes crop classification codes and names alongside parcel geometry, area, and perimeter.",
+  "license": "proprietary",
+  "keywords": [
+    "field-boundaries",
+    "agriculture",
+    "lpis",
+    "land-parcels",
+    "crop-classification",
+    "arable-land",
+    "land-use",
+    "portugal"
+  ],
+  "providers": [
+    {
+      "name": "IPAP - Instituto de Financiamento da Agricultura e Pescas",
+      "url": "https://www.ifap.pt/isip/ows/",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "fiboa CLI",
+      "roles": [
+        "processor"
+      ],
+      "url": "https://pypi.org/project/fiboa-cli"
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://beta.source.coop/fiboa/portugal/"
+    },
+    {
+      "name": "IFAP - Instituto de Financiamento da Agricultura e Pescas",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Matthias Mohr",
+      "roles": [
+        "processor"
+      ]
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -9.551854922295218,
+          36.991827533373424,
+          -6.173148404290481,
+          42.134449847013244
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2023-01-01T00:00:00Z",
+          "2023-12-31T23:59:59Z"
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 4804494
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/fiboa/portugal/Continente.parquet",
+      "title": "Field Boundaries",
+      "type": "application/vnd.apache.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "geometry",
+          "type": "binary"
+        },
+        {
+          "name": "id",
+          "type": "string"
+        },
+        {
+          "name": "block_id",
+          "type": "int64"
+        },
+        {
+          "name": "crop_code",
+          "type": "string"
+        },
+        {
+          "name": "crop_name",
+          "type": "string"
+        },
+        {
+          "name": "area",
+          "type": "float"
+        },
+        {
+          "name": "perimeter",
+          "type": "float"
+        }
+      ],
+      "table:primary_geometry": "geometry",
+      "table:row_count": 4804494
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/fiboa/portugal/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/fiboa/portugal",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "title": "No conditions apply",
+      "href": "https://inspire.ec.europa.eu/metadata-codelist/ConditionsApplyingToAccessAndUse/noConditionsApply",
+      "type": "text/html",
+      "rel": "license"
+    },
+    {
+      "href": "https://data.source.coop/fiboa/portugal/Continente.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "rel": "pmtiles"
+    }
+  ],
+  "exts": {
+    "parquet": 1,
+    "pmtiles": 1,
+    "json": 1,
+    "md": 1
+  },
+  "product_id": "portugal",
   "disabled": false,
-  "featured": 0,
+  "file_count": 4,
+  "visibility": "public",
+  "account_id": "fiboa",
   "data_mode": "open",
+  "featured": 0,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -29,18 +168,15 @@
       "prefix": "fiboa/portugal/"
     }
   },
-  "file_count": 4,
+  "created_at": "2024-08-13T16:04:48.844677+00:00",
+  "updated_at": "2025-08-21T16:39:55.569Z",
   "total_bytes": 2449803934,
-  "exts": {
-    "parquet": 1,
-    "pmtiles": 1,
-    "json": 1,
-    "md": 1
-  },
-  "_state": "seed",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "cataloged_at": "2026-05-27T01:09:41+00:00"
+  "readme": "## README.md\n# Field boundaries for Portugal\n\nOpen field boundaries (identifica\u00e7\u00e3o de parcelas) from Portugal in 2023.\nProvides ca. 4.8 million official field boundaries from the Instituto de Financiamento da Agricultura e Pescas in Portugal.\nIt has been converted to a fiboa-compliant GeoParquet file.\n\n- **Source Data Provider:** [IPAP - Instituto de Financiamento da Agricultura e Pescas](https://www.ifap.pt/isip/ows/)\n- **Converted by:** [Matthias Mohr](https://mohr.ws)\n- **License:** [No conditions apply](https://inspire.ec.europa.eu/metadata-codelist/ConditionsApplyingToAccessAndUse/noConditionsApply)\n\n---\n\n- **[Download the data as fiboa GeoParquet](https://data.source.coop/fiboa/portugal/Continente.parquet)**\n- [STAC Browser](https://radiantearth.github.io/stac-browser/#/external/data.source.coop/fiboa/portugal/stac/collection.json)\n- [STAC Collection](https://data.source.coop/fiboa/portugal/stac/collection.json)\n- [PMTiles](https://data.source.coop/fiboa/portugal/Continente.pmtiles)\n\n## Lineage\n\n- Data downloaded on 2024-08-13 from https://www.ifap.pt/isip/ows/resources/2023/Continente.gpkg.\n- Converted to GeoParquet using [fiboa-cli](https://github.com/fiboa/cli), version 0.6.0.\n",
+  "_state": "drafted",
+  "cataloged_at": "2026-05-27T01:28:46+00:00",
+  "_source_format": "unknown"
 }

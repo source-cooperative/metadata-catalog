@@ -1,17 +1,101 @@
 {
-  "account_id": "earthgenome",
-  "product_id": "earthindeximagery",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "earthgenome/earthindeximagery",
   "title": "Earth Index Imagery",
-  "description": "Earth Index Imagery",
+  "description": "Global collection of cloudless Sentinel-2 yearly imagery mosaics, covering all spectral bands except B10 at their native resolution. Assets are Cloud-Optimized GeoTIFFs (COGs) in Web Mercator (EPSG:3857) projection, organized by UTM grid tile and annual date range. Each asset includes quality metadata (good pixel percentage) and provenance references to the contributing Sentinel-2 L2A scenes.",
+  "license": "CC-BY-4.0",
   "keywords": [
-    "Sentinel2 mosaics cloud-free global cog raster"
+    "remote-sensing",
+    "satellite-imagery",
+    "sentinel-2",
+    "cloud-free",
+    "multispectral",
+    "mosaics"
   ],
-  "created_at": "2025-04-01T16:10:26.849Z",
-  "updated_at": "2025-08-21T16:39:55.569Z",
-  "visibility": "public",
-  "disabled": false,
+  "providers": [
+    {
+      "name": "Earth Genome",
+      "roles": [
+        "producer",
+        "processor"
+      ]
+    },
+    {
+      "name": "European Space Agency (ESA)",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/earthgenome/earthindeximagery"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -178.59375,
+          -44.5904672,
+          180.0,
+          67.8755413
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/earthgenome/earthindeximagery/",
+      "type": "image/tiff; application=geotiff",
+      "title": "Dataset files (1045277 x .tif)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/earthgenome/earthindeximagery/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/earthgenome/earthindeximagery",
+      "title": "Source Cooperative product page"
+    }
+  ],
   "featured": 0,
+  "total_bytes": 171247621619981,
+  "account_id": "earthgenome",
+  "visibility": "public",
+  "file_count": 1045279,
   "data_mode": "open",
+  "disabled": false,
+  "updated_at": "2025-08-21T16:39:55.569Z",
+  "created_at": "2025-04-01T16:10:26.849Z",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "exts": {
+    "tif": 1045277,
+    "md": 1,
+    "xml": 1
+  },
+  "product_id": "earthindeximagery",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -24,17 +108,11 @@
       "prefix": "earthgenome/earthindeximagery/"
     }
   },
-  "file_count": 1045279,
-  "total_bytes": 171247621619981,
-  "exts": {
-    "tif": 1045277,
-    "md": 1,
-    "xml": 1
-  },
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "id": "earthgenome/earthindeximagery"
+  "readme": "## README.md\n\n![EarthGenome](https://data.source.coop/earthgenome/earthindexembeddings/logo.png)\n# Earth Index yearly imagery mosaics\n\n[![CC-4 license](https://img.shields.io/badge/License-CC--4-blue.svg)](https://creativecommons.org/licenses/by/4.0/)\n[![Sensor](https://img.shields.io/badge/Sensor%F0%9F%9B%B0%EF%B8%8F-Sentinel2-blue)](https://www.esa.int/Applications/Observing_the_Earth/Copernicus/Sentinel-2)\n[![Format](https://img.shields.io/badge/Format-COG%20%E2%9A%99%EF%B8%8F-purple)](https://www.cogeo.org/)\n\nThis repository holds a large (and growing!) collection of cloudless Senitnel 2 data. All bands (except B10 as this was generated from L2A) are available at their original native resolution.\n\nThis data is licensed under the creative commons 4.0 international license which, in summary, only requires attribution.\n\nYou can read more about how this was created [here](https://medium.com/earthrisemedia/earth-index-imagery-v2-40674f18b4d2).\n\n### Resources\n- [Earth Genome STAC](https://stac.earthgenome.org/collections/sentinel2-yearly-mosaics) instance for searching this collection\n- [STAC Browser](https://browser.stac.earthgenome.org/collections/sentinel2-yearly-mosaics), human friendly interface\n\n### Naming\nArtifacts are name according to their original UTM grid number, concatenated with the start and end dates.  For example the `31TDF_2024-01-01_2025-01-01/` directory will give you bands over for Barcelona (31TDF) over the course of 2024.\n\n### Artifacts and Metadata\nAll assets are COG encoded GeoTiffs in Web Mercator (EPSG:3857) projection. Besides the item id itself, the STAC catalog has the original UTM infornmation so you can calculate and then reproject to the original EPSG code, if needed.\n\nThe STAC assets also have 2 properties to help better understand the provience and quality of the images:\n\n- `good_pxl_pct` is a the estimated percentage of \"good\" (non masked) pixels\n- `generated_from` is an array of references to the Sentinel L2A assets which contributed to this asset\n\n\n### Contact\nUsing this? Want work together? Ping us @ info@earthgenome.org or info@earthindex.ai",
+  "_review": [
+    "providers: role [producer, processor] for 'Earth Genome' is an AI guess \u2014 Credited as dataset owner/publisher; README contact and STAC catalog are earthgenome.org, but the processing pipeline is described under the Earth Index brand. Verify before flipping to _state: reviewed.",
+    "providers: role [producer] for 'European Space Agency (ESA)' is an AI guess \u2014 Sentinel-2 L2A imagery is the upstream source; ESA is not explicitly named as provider in the README but is the originating satellite operator. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-05-27T01:52:04+00:00"
 }

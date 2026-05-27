@@ -1,24 +1,158 @@
 {
-  "account_id": "fiboa",
-  "product_id": "es-cm",
-  "title": "Spain Castilla-La Mancha Crop fields",
-  "description": "SIGPAC is a Geographic Information System dedicated to the control of agricultural aid under the CAP (Common Agricultural Policy). This tool is mandatory for the management of community aid, and is the identification basis for any type of aid related to the surface area.\n",
-  "keywords": [
-    "castillalamancha",
-    "spain",
-    "sigpac",
-    "fiboa",
-    "field boundaries",
-    "geoparquet",
-    "vector",
-    "pmtiles"
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
   ],
-  "created_at": "2024-12-30T08:46:41.078Z",
-  "updated_at": "2025-08-21T16:39:55.568Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": "open",
+  "id": "fiboa/es-cm",
+  "title": "Spain Castilla-La Mancha Crop fields",
+  "description": "Official field boundaries for the Castilla-La Mancha region of Spain, derived from the SIGPAC geographic information system used to administer EU Common Agricultural Policy (CAP) aid. The dataset covers 6,453,236 parcels and includes crop classification codes and administrative codes at province and municipality level. Data is distributed as fiboa-compliant GeoParquet.",
+  "license": "CC-BY-SA-4.0",
+  "keywords": [
+    "field-boundaries",
+    "agriculture",
+    "crop-classification",
+    "lpis",
+    "land-parcels",
+    "land-use",
+    "spain",
+    "sigpac"
+  ],
+  "providers": [
+    {
+      "name": "Unidad de Cartograf\u00eda. Secretar\u00eda General. Consejer\u00eda de Agricultura , Ganader\u00eda y Desarrollo Rural.",
+      "url": "https://datosabiertos.castillalamancha.es/",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "fiboa CLI",
+      "roles": [
+        "processor"
+      ],
+      "url": "https://pypi.org/project/fiboa-cli"
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/fiboa/es-cm/"
+    },
+    {
+      "name": "Castilla-La Mancha (Datos Abiertos)",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Ivor Bosloper",
+      "roles": [
+        "processor"
+      ]
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -5.406109899806412,
+          38.022098123673935,
+          -0.9165472147926754,
+          41.32617957899581
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 6453236
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/fiboa/es_cm/es_cm.parquet",
+      "title": "Field Boundaries",
+      "type": "application/vnd.apache.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "string"
+        },
+        {
+          "name": "geometry",
+          "type": "binary"
+        },
+        {
+          "name": "admin_province_code",
+          "type": "string"
+        },
+        {
+          "name": "admin_municipality_code",
+          "type": "string"
+        },
+        {
+          "name": "area",
+          "type": "float"
+        },
+        {
+          "name": "crop:code",
+          "type": "string"
+        },
+        {
+          "name": "crop:name",
+          "type": "string"
+        },
+        {
+          "name": "crop:name_en",
+          "type": "string"
+        },
+        {
+          "name": "admin:country_code",
+          "type": "string"
+        },
+        {
+          "name": "crop:code_list",
+          "type": "string"
+        },
+        {
+          "name": "admin:subdivision_code",
+          "type": "string"
+        }
+      ],
+      "table:primary_geometry": "geometry",
+      "table:row_count": 6453236
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/fiboa/es-cm/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/fiboa/es-cm",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "href": "https://data.source.coop/fiboa/es-cm/es_cm.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "rel": "pmtiles"
+    }
+  ],
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -31,8 +165,20 @@
       "prefix": "fiboa/es-cm/"
     }
   },
+  "featured": 0,
   "file_count": 5,
+  "product_id": "es-cm",
   "total_bytes": 3421721048,
+  "visibility": "public",
+  "disabled": false,
+  "created_at": "2024-12-30T08:46:41.078Z",
+  "updated_at": "2025-08-21T16:39:55.568Z",
+  "data_mode": "open",
+  "account_id": "fiboa",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
   "exts": {
     "parquet": 1,
     "txt": 1,
@@ -40,10 +186,8 @@
     "json": 1,
     "pmtiles": 1
   },
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "cataloged_at": "2026-05-27T01:09:27+00:00"
+  "readme": "## README.md\n# Field boundaries for Spain \n\nProvides 6453236 official field boundaries from Spain .\nIt has been converted to a fiboa GeoParquet file from data obtained from Castilla-la-Mancha.\n\n- **Source Data Provider:** [Castilla-la-Mancha](https://datosabiertos.castillalamancha.es/dataset/sistema-de-informaci%C3%B3n-geogr%C3%A1fica-de-parcelas-agr%C3%ADcolas-de-castilla-la-mancha-sigpac)\n- **Converted by:** Ivor Bosloper\n- **License:** CC-BY-SA-4.0 (see https://datosabiertos.castillalamancha.es/dataset/sistema-de-informaci%C3%B3n-geogr%C3%A1fica-de-parcelas-agr%C3%ADcolas-de-castilla-la-mancha-sigpac)\n- **Projection:** EPSG:25830\n\n---\n\n- [Download the data as fiboa GeoParquet](https://data.source.coop/fiboa/es-cm/es_cm.parquet)\n- [STAC Browser](https://radiantearth.github.io/stac-browser/#/external/data.source.coop/fiboa/es-cm/stac/collection.json)\n- [STAC Collection](https://data.source.coop/fiboa/es-cm/stac/collection.json)\n- [PMTiles](https://data.source.coop/fiboa/es-cm/es_cm.pmtiles)\n\n## Columns\n\n| Property                | **Data Type** | Description |\n|-------------------------|---------------|-------------|\n| id                      | string        |             |\n| admin_province_code     | string        |             |\n| admin_municipality_code | string        |             |\n| area                    | float         |             |\n| crop:code               | string        |             |\n| crop:name               | string        |             |\n| crop:name_en            | string        |             |\n| admin:country_code      | string        |             |\n| crop:code_list          | string        |             |\n| admin:subdivision_code  | string        |             |\n\n## Lineage\n\n- Data downloaded on 2024-12-30 from:\n  - REST\n- Converted to GeoParquet using [fiboa-cli](https://github.com/fiboa/cli), version 0.8.0\n",
+  "_state": "drafted",
+  "cataloged_at": "2026-05-27T01:32:12+00:00",
+  "_source_format": "unknown"
 }

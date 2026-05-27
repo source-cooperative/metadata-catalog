@@ -1,21 +1,171 @@
 {
-  "account_id": "fiboa",
-  "product_id": "france-ec",
-  "title": "Field Boundaries for France, provided by Eurocrops",
-  "description": "Provides ca. 9,500,000 official field boundaries of France for 2018. It has been converted to a fiboa GeoParquet file from the Eurocrops Shapefile that provides crop classification values that are harmonized across Europe. The data was provided to Eurocrops under an open license from the French government.",
-  "keywords": [
-    "france",
-    "fiboa",
-    "field boundaries",
-    "geoparquet",
-    "vector"
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
   ],
-  "created_at": "2024-05-06T04:07:28.924329+00:00",
-  "updated_at": "2025-08-21T16:39:55.569Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
+  "id": "fiboa/france-ec",
+  "title": "Field boundaries for France from Eurocrops (2018)",
+  "description": "Approximately 9.5 million official agricultural field boundaries for France (2018), converted to fiboa GeoParquet format from the Eurocrops Shapefile. Includes harmonized European crop classification codes (EC_hcat_n, EC_trans_n) derived from the original French government LPIS data.",
+  "license": "CC-BY-SA-4.0",
+  "keywords": [
+    "field-boundaries",
+    "agriculture",
+    "crop-classification",
+    "lpis",
+    "land-parcels",
+    "arable-land",
+    "land-use",
+    "france"
+  ],
+  "providers": [
+    {
+      "name": "Eurocrops",
+      "roles": [
+        "producer",
+        "licensor"
+      ],
+      "url": "https://github.com/maja601/EuroCrops/wiki/France"
+    },
+    {
+      "name": "fiboa CLI",
+      "roles": [
+        "processor"
+      ],
+      "url": "https://pypi.org/project/fiboa-cli"
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://beta.source.coop/fiboa/france-ec/"
+    },
+    {
+      "name": "French Government",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Eurocrops",
+      "roles": [
+        "processor"
+      ]
+    },
+    {
+      "name": "Chris Holmes",
+      "roles": [
+        "processor"
+      ]
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -5.1422,
+          41.3641,
+          9.5616,
+          51.0902
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2018-01-15T00:00:00Z",
+          "2018-01-15T00:00:00Z"
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 19035756
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/fiboa/france-ec/france_eurocrops_2018_fiboa.parquet",
+      "title": "Field Boundaries",
+      "type": "application/vnd.apache.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "geometry",
+          "type": "binary"
+        },
+        {
+          "name": "id",
+          "type": "string"
+        },
+        {
+          "name": "area",
+          "type": "float"
+        },
+        {
+          "name": "code_culture",
+          "type": "string"
+        },
+        {
+          "name": "code_group",
+          "type": "uint16"
+        },
+        {
+          "name": "EC_trans_n",
+          "type": "string"
+        },
+        {
+          "name": "EC_hcat_n",
+          "type": "string"
+        },
+        {
+          "name": "EC_hcat_c",
+          "type": "uint32"
+        },
+        {
+          "name": "determination_datetime",
+          "type": "timestamp[ms, tz=UTC]"
+        }
+      ],
+      "table:primary_geometry": "geometry",
+      "table:row_count": 9517878
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/fiboa/france-ec/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/fiboa/france-ec",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "href": "https://data.source.coop/fiboa/france-ec/france_eurocrops_2018.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "rel": "pmtiles"
+    },
+    {
+      "rel": "cite-as",
+      "href": "https://doi.org/10.5281/zenodo.8229128"
+    }
+  ],
+  "account_id": "fiboa",
   "data_mode": "open",
+  "file_count": 5,
+  "total_bytes": 6472321836,
+  "product_id": "france-ec",
+  "visibility": "public",
+  "featured": 0,
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -28,18 +178,20 @@
       "prefix": "fiboa/france-ec/"
     }
   },
-  "file_count": 5,
-  "total_bytes": 6472321836,
   "exts": {
     "parquet": 2,
     "pmtiles": 1,
     "md": 1,
     "json": 1
   },
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "cataloged_at": "2026-05-27T01:09:35+00:00"
+  "updated_at": "2025-08-21T16:39:55.569Z",
+  "created_at": "2024-05-06T04:07:28.924329+00:00",
+  "disabled": false,
+  "readme": "## README.md\n# Field boundaries for France\r\n\r\nProvides ca. 9,500,000 official field boundaries of France for 2018. It has been converted to a fiboa GeoParquet file from the Eurocrops Shapefile that provides crop classification values that are harmonized across Europe. The data was provided to Eurocrops under an open license from the French government.\r\n\r\n- **Source Data Provider:** [Eurcrops](https://github.com/maja601/EuroCrops/wiki/France)\r\n- **Converted by:** [Chris Holmes](https://tgengine.org/)\r\n- **License:** CC-BY-4.0\r\n- **Projection:** IGNF:LAMB93 (RGF93 Lambert 93)\r\n\r\n---\r\n\r\n- **[Download the data as fiboa GeoParquet](https://data.source.coop/fiboa/france-ec/france_eurocrops_2018_fiboa.parquet)**\r\n- [STAC Browser](https://radiantearth.github.io/stac-browser/#/external/data.source.coop/fiboa/france-ec/stac/collection.json)\r\n- [STAC Collection](https://data.source.coop/fiboa/france-ec/stac/collection.json)\r\n- [PMTiles](https://data.source.coop/fiboa/france-ec/france_eurocrops_2018.pmtiles)\r\n\r\n## Columns\r\n\r\n| Property               | Data Type | Description                                                  |\r\n| ---------------------- | --------- | ------------------------------------------------------------ |\r\n| id                     | string    | Identifier                                         |\r\n| determination_datetime | datetime  | Valid since the given date.                                  |\r\n| area                   | float     | Area in ha                                                   |\r\n                                            |\r\n\r\nTODO: Finish columns\r\n\r\n## Lineage \r\n\r\n- Data downloaded on 2024-05-03 from https://zenodo.org/records/8229128/files/FR_2018.zip.\r\n- Converted to GeoParquet using [fiboa-cli](https://github.com/fiboa/cli), version 0.3.9-dev.\r\n",
+  "_review": [
+    "providers: role [processor] for 'Eurocrops' is an AI guess \u2014 Eurocrops harmonized and redistributed the French government data; treated as processor since the French government is the original licensor.. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-05-27T01:34:47+00:00",
+  "_source_format": "stac"
 }

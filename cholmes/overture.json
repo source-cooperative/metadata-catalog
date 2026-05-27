@@ -1,20 +1,820 @@
 {
-  "account_id": "cholmes",
-  "product_id": "overture",
-  "title": "Overture Open Buildings",
-  "description": "Overture provides several open datasets. This was an experimental re-distribution of their buildings dataset release from mid-2023 transformed into with 'Cloud-Native Geospatial' formats (PMTiles, GeoParquet). They now release all data in those formats, so please use https://docs.overturemaps.org/release/latest/ to get the data.",
-  "keywords": [
-    "building footprints",
-    "vector",
-    "geoparquet",
-    "pmtiles"
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
   ],
-  "created_at": "2023-07-28T18:02:15+00:00",
+  "id": "cholmes/overture",
+  "title": "Overture Maps Data",
+  "description": "Global building footprints and points-of-interest (places/POIs) from Overture Maps, redistributed in cloud-native GeoParquet and PMTiles formats partitioned by country and quadkey. The building dataset covers ~2.8 million items across the globe; the places dataset covers worldwide POIs. Originally an experimental mid-2023 redistribution; Overture now releases data natively in these formats.",
+  "keywords": [
+    "building-footprints",
+    "points-of-interest",
+    "geoparquet",
+    "pmtiles",
+    "cloud-native-geospatial",
+    "overture-maps",
+    "quadkey"
+  ],
+  "providers": [
+    {
+      "name": "Overture Maps Foundation",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Chris Holmes",
+      "roles": [
+        "processor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/cholmes/overture"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 2828430
+  },
+  "assets": {
+    "AD": {
+      "href": "https://data.source.coop/cholmes/overture/geoparquet-country-quad-2/AD.parquet",
+      "type": "application/x-parquet",
+      "title": "AD.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "updatetime",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "version",
+          "type": "INTEGER"
+        },
+        {
+          "name": "names",
+          "type": "STRUCT(key_value STRUCT(\"key\" VARCHAR, \"value\" STRUCT(list STRUCT(key_value STRUCT(\"key\" VARCHAR, \"value\" VARCHAR)[])[]))[])"
+        },
+        {
+          "name": "level",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "height",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "numfloors",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "class",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "sources",
+          "type": "STRUCT(list STRUCT(key_value STRUCT(\"key\" VARCHAR, \"value\" VARCHAR)[])[])"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(maxx DOUBLE, maxy DOUBLE, minx DOUBLE, miny DOUBLE)",
+          "description": "[geometry] Bounding box struct (minx, miny, maxx, maxy) for the feature"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:4326')",
+          "description": "[geometry] Building footprint polygon geometry in EPSG:4326"
+        },
+        {
+          "name": "quadkey",
+          "type": "VARCHAR",
+          "description": "[spatial_index] Quadkey tile index used for spatial partitioning"
+        },
+        {
+          "name": "country_iso",
+          "type": "VARCHAR",
+          "description": "[admin_code] ISO 3166-1 alpha-2 country code"
+        }
+      ],
+      "table:row_count": 5747
+    },
+    "AE": {
+      "href": "https://data.source.coop/cholmes/overture/geoparquet-country-quad-2/AE.parquet",
+      "type": "application/x-parquet",
+      "title": "AE.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "updatetime",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "version",
+          "type": "INTEGER"
+        },
+        {
+          "name": "names",
+          "type": "STRUCT(key_value STRUCT(\"key\" VARCHAR, \"value\" STRUCT(list STRUCT(key_value STRUCT(\"key\" VARCHAR, \"value\" VARCHAR)[])[]))[])"
+        },
+        {
+          "name": "level",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "height",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "numfloors",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "class",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "sources",
+          "type": "STRUCT(list STRUCT(key_value STRUCT(\"key\" VARCHAR, \"value\" VARCHAR)[])[])"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(maxx DOUBLE, maxy DOUBLE, minx DOUBLE, miny DOUBLE)"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:4326')"
+        },
+        {
+          "name": "quadkey",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "country_iso",
+          "type": "VARCHAR"
+        }
+      ],
+      "table:row_count": 580701
+    },
+    "AF": {
+      "href": "https://data.source.coop/cholmes/overture/geoparquet-country-quad-2/AF.parquet",
+      "type": "application/x-parquet",
+      "title": "AF.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "updatetime",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "version",
+          "type": "INTEGER"
+        },
+        {
+          "name": "names",
+          "type": "STRUCT(key_value STRUCT(\"key\" VARCHAR, \"value\" STRUCT(list STRUCT(key_value STRUCT(\"key\" VARCHAR, \"value\" VARCHAR)[])[]))[])"
+        },
+        {
+          "name": "level",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "height",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "numfloors",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "class",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "sources",
+          "type": "STRUCT(list STRUCT(key_value STRUCT(\"key\" VARCHAR, \"value\" VARCHAR)[])[])"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(maxx DOUBLE, maxy DOUBLE, minx DOUBLE, miny DOUBLE)"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:4326')"
+        },
+        {
+          "name": "quadkey",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "country_iso",
+          "type": "VARCHAR"
+        }
+      ],
+      "table:row_count": 1647557
+    },
+    "AG": {
+      "href": "https://data.source.coop/cholmes/overture/geoparquet-country-quad-2/AG.parquet",
+      "type": "application/x-parquet",
+      "title": "AG.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "updatetime",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "version",
+          "type": "INTEGER"
+        },
+        {
+          "name": "names",
+          "type": "STRUCT(key_value STRUCT(\"key\" VARCHAR, \"value\" STRUCT(list STRUCT(key_value STRUCT(\"key\" VARCHAR, \"value\" VARCHAR)[])[]))[])"
+        },
+        {
+          "name": "level",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "height",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "numfloors",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "class",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "sources",
+          "type": "STRUCT(list STRUCT(key_value STRUCT(\"key\" VARCHAR, \"value\" VARCHAR)[])[])"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(maxx DOUBLE, maxy DOUBLE, minx DOUBLE, miny DOUBLE)"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:4326')"
+        },
+        {
+          "name": "quadkey",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "country_iso",
+          "type": "VARCHAR"
+        }
+      ],
+      "table:row_count": 44127
+    },
+    "AI": {
+      "href": "https://data.source.coop/cholmes/overture/geoparquet-country-quad-2/AI.parquet",
+      "type": "application/x-parquet",
+      "title": "AI.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "updatetime",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "version",
+          "type": "INTEGER"
+        },
+        {
+          "name": "names",
+          "type": "STRUCT(key_value STRUCT(\"key\" VARCHAR, \"value\" STRUCT(list STRUCT(key_value STRUCT(\"key\" VARCHAR, \"value\" VARCHAR)[])[]))[])"
+        },
+        {
+          "name": "level",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "height",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "numfloors",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "class",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "sources",
+          "type": "STRUCT(list STRUCT(key_value STRUCT(\"key\" VARCHAR, \"value\" VARCHAR)[])[])"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(maxx DOUBLE, maxy DOUBLE, minx DOUBLE, miny DOUBLE)"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:4326')"
+        },
+        {
+          "name": "quadkey",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "country_iso",
+          "type": "VARCHAR"
+        }
+      ],
+      "table:row_count": 10467
+    },
+    "YE": {
+      "href": "https://data.source.coop/cholmes/overture/places-geoparquet-country/YE.parquet",
+      "type": "application/x-parquet",
+      "title": "YE.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "updatetime",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "version",
+          "type": "INTEGER"
+        },
+        {
+          "name": "names",
+          "type": "STRUCT(key_value STRUCT(\"key\" VARCHAR, \"value\" STRUCT(list STRUCT(key_value STRUCT(\"key\" VARCHAR, \"value\" VARCHAR)[])[]))[])"
+        },
+        {
+          "name": "categories",
+          "type": "STRUCT(alternate STRUCT(list VARCHAR[]), main VARCHAR)"
+        },
+        {
+          "name": "confidence",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "websites",
+          "type": "STRUCT(list VARCHAR[])"
+        },
+        {
+          "name": "socials",
+          "type": "STRUCT(list VARCHAR[])"
+        },
+        {
+          "name": "emails",
+          "type": "INTEGER"
+        },
+        {
+          "name": "phones",
+          "type": "STRUCT(list VARCHAR[])"
+        },
+        {
+          "name": "brand",
+          "type": "STRUCT(\"names\" STRUCT(key_value STRUCT(\"key\" VARCHAR, \"value\" STRUCT(list STRUCT(key_value STRUCT(\"key\" VARCHAR, \"value\" VARCHAR)[])[]))[]), wikidata INTEGER)"
+        },
+        {
+          "name": "addresses",
+          "type": "STRUCT(list STRUCT(key_value STRUCT(\"key\" VARCHAR, \"value\" VARCHAR)[])[])"
+        },
+        {
+          "name": "sources",
+          "type": "STRUCT(list STRUCT(key_value STRUCT(\"key\" VARCHAR, \"value\" VARCHAR)[])[])"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(maxx DOUBLE, maxy DOUBLE, minx DOUBLE, miny DOUBLE)",
+          "description": "[geometry] Bounding box struct (minx, miny, maxx, maxy) for the feature"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:4326')",
+          "description": "[geometry] Place/POI point geometry in EPSG:4326"
+        },
+        {
+          "name": "quadkey",
+          "type": "VARCHAR",
+          "description": "[spatial_index] Quadkey tile index used for spatial partitioning"
+        },
+        {
+          "name": "country_iso",
+          "type": "VARCHAR",
+          "description": "[admin_code] ISO 3166-1 alpha-2 country code"
+        }
+      ],
+      "table:row_count": 6272
+    },
+    "YT": {
+      "href": "https://data.source.coop/cholmes/overture/places-geoparquet-country/YT.parquet",
+      "type": "application/x-parquet",
+      "title": "YT.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "updatetime",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "version",
+          "type": "INTEGER"
+        },
+        {
+          "name": "names",
+          "type": "STRUCT(key_value STRUCT(\"key\" VARCHAR, \"value\" STRUCT(list STRUCT(key_value STRUCT(\"key\" VARCHAR, \"value\" VARCHAR)[])[]))[])"
+        },
+        {
+          "name": "categories",
+          "type": "STRUCT(alternate STRUCT(list VARCHAR[]), main VARCHAR)"
+        },
+        {
+          "name": "confidence",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "websites",
+          "type": "STRUCT(list VARCHAR[])"
+        },
+        {
+          "name": "socials",
+          "type": "STRUCT(list VARCHAR[])"
+        },
+        {
+          "name": "emails",
+          "type": "INTEGER"
+        },
+        {
+          "name": "phones",
+          "type": "STRUCT(list VARCHAR[])"
+        },
+        {
+          "name": "brand",
+          "type": "STRUCT(\"names\" STRUCT(key_value STRUCT(\"key\" VARCHAR, \"value\" STRUCT(list STRUCT(key_value STRUCT(\"key\" VARCHAR, \"value\" VARCHAR)[])[]))[]), wikidata INTEGER)"
+        },
+        {
+          "name": "addresses",
+          "type": "STRUCT(list STRUCT(key_value STRUCT(\"key\" VARCHAR, \"value\" VARCHAR)[])[])"
+        },
+        {
+          "name": "sources",
+          "type": "STRUCT(list STRUCT(key_value STRUCT(\"key\" VARCHAR, \"value\" VARCHAR)[])[])"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(maxx DOUBLE, maxy DOUBLE, minx DOUBLE, miny DOUBLE)"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:4326')"
+        },
+        {
+          "name": "quadkey",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "country_iso",
+          "type": "VARCHAR"
+        }
+      ],
+      "table:row_count": 1535
+    },
+    "ZA": {
+      "href": "https://data.source.coop/cholmes/overture/places-geoparquet-country/ZA.parquet",
+      "type": "application/x-parquet",
+      "title": "ZA.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "updatetime",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "version",
+          "type": "INTEGER"
+        },
+        {
+          "name": "names",
+          "type": "STRUCT(key_value STRUCT(\"key\" VARCHAR, \"value\" STRUCT(list STRUCT(key_value STRUCT(\"key\" VARCHAR, \"value\" VARCHAR)[])[]))[])"
+        },
+        {
+          "name": "categories",
+          "type": "STRUCT(alternate STRUCT(list VARCHAR[]), main VARCHAR)"
+        },
+        {
+          "name": "confidence",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "websites",
+          "type": "STRUCT(list VARCHAR[])"
+        },
+        {
+          "name": "socials",
+          "type": "STRUCT(list VARCHAR[])"
+        },
+        {
+          "name": "emails",
+          "type": "INTEGER"
+        },
+        {
+          "name": "phones",
+          "type": "STRUCT(list VARCHAR[])"
+        },
+        {
+          "name": "brand",
+          "type": "STRUCT(\"names\" STRUCT(key_value STRUCT(\"key\" VARCHAR, \"value\" STRUCT(list STRUCT(key_value STRUCT(\"key\" VARCHAR, \"value\" VARCHAR)[])[]))[]), wikidata INTEGER)"
+        },
+        {
+          "name": "addresses",
+          "type": "STRUCT(list STRUCT(key_value STRUCT(\"key\" VARCHAR, \"value\" VARCHAR)[])[])"
+        },
+        {
+          "name": "sources",
+          "type": "STRUCT(list STRUCT(key_value STRUCT(\"key\" VARCHAR, \"value\" VARCHAR)[])[])"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(maxx DOUBLE, maxy DOUBLE, minx DOUBLE, miny DOUBLE)"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:4326')"
+        },
+        {
+          "name": "quadkey",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "country_iso",
+          "type": "VARCHAR"
+        }
+      ],
+      "table:row_count": 496836
+    },
+    "ZM": {
+      "href": "https://data.source.coop/cholmes/overture/places-geoparquet-country/ZM.parquet",
+      "type": "application/x-parquet",
+      "title": "ZM.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "updatetime",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "version",
+          "type": "INTEGER"
+        },
+        {
+          "name": "names",
+          "type": "STRUCT(key_value STRUCT(\"key\" VARCHAR, \"value\" STRUCT(list STRUCT(key_value STRUCT(\"key\" VARCHAR, \"value\" VARCHAR)[])[]))[])"
+        },
+        {
+          "name": "categories",
+          "type": "STRUCT(alternate STRUCT(list VARCHAR[]), main VARCHAR)"
+        },
+        {
+          "name": "confidence",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "websites",
+          "type": "STRUCT(list VARCHAR[])"
+        },
+        {
+          "name": "socials",
+          "type": "STRUCT(list VARCHAR[])"
+        },
+        {
+          "name": "emails",
+          "type": "INTEGER"
+        },
+        {
+          "name": "phones",
+          "type": "STRUCT(list VARCHAR[])"
+        },
+        {
+          "name": "brand",
+          "type": "STRUCT(\"names\" STRUCT(key_value STRUCT(\"key\" VARCHAR, \"value\" STRUCT(list STRUCT(key_value STRUCT(\"key\" VARCHAR, \"value\" VARCHAR)[])[]))[]), wikidata INTEGER)"
+        },
+        {
+          "name": "addresses",
+          "type": "STRUCT(list STRUCT(key_value STRUCT(\"key\" VARCHAR, \"value\" VARCHAR)[])[])"
+        },
+        {
+          "name": "sources",
+          "type": "STRUCT(list STRUCT(key_value STRUCT(\"key\" VARCHAR, \"value\" VARCHAR)[])[])"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(maxx DOUBLE, maxy DOUBLE, minx DOUBLE, miny DOUBLE)"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:4326')"
+        },
+        {
+          "name": "quadkey",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "country_iso",
+          "type": "VARCHAR"
+        }
+      ],
+      "table:row_count": 17290
+    },
+    "ZW": {
+      "href": "https://data.source.coop/cholmes/overture/places-geoparquet-country/ZW.parquet",
+      "type": "application/x-parquet",
+      "title": "ZW.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "updatetime",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "version",
+          "type": "INTEGER"
+        },
+        {
+          "name": "names",
+          "type": "STRUCT(key_value STRUCT(\"key\" VARCHAR, \"value\" STRUCT(list STRUCT(key_value STRUCT(\"key\" VARCHAR, \"value\" VARCHAR)[])[]))[])"
+        },
+        {
+          "name": "categories",
+          "type": "STRUCT(alternate STRUCT(list VARCHAR[]), main VARCHAR)"
+        },
+        {
+          "name": "confidence",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "websites",
+          "type": "STRUCT(list VARCHAR[])"
+        },
+        {
+          "name": "socials",
+          "type": "STRUCT(list VARCHAR[])"
+        },
+        {
+          "name": "emails",
+          "type": "INTEGER"
+        },
+        {
+          "name": "phones",
+          "type": "STRUCT(list VARCHAR[])"
+        },
+        {
+          "name": "brand",
+          "type": "STRUCT(\"names\" STRUCT(key_value STRUCT(\"key\" VARCHAR, \"value\" STRUCT(list STRUCT(key_value STRUCT(\"key\" VARCHAR, \"value\" VARCHAR)[])[]))[]), wikidata INTEGER)"
+        },
+        {
+          "name": "addresses",
+          "type": "STRUCT(list STRUCT(key_value STRUCT(\"key\" VARCHAR, \"value\" VARCHAR)[])[])"
+        },
+        {
+          "name": "sources",
+          "type": "STRUCT(list STRUCT(key_value STRUCT(\"key\" VARCHAR, \"value\" VARCHAR)[])[])"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(maxx DOUBLE, maxy DOUBLE, minx DOUBLE, miny DOUBLE)"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:4326')"
+        },
+        {
+          "name": "quadkey",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "country_iso",
+          "type": "VARCHAR"
+        }
+      ],
+      "table:row_count": 17898
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/cholmes/overture/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/cholmes/overture",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "rel": "child",
+      "href": "./geoparquet-country-quad-2/collection.json",
+      "type": "application/json"
+    }
+  ],
+  "exts": {
+    "parquet": 1504,
+    "json": 5,
+    "duckdb": 1,
+    "": 6,
+    "pmtiles": 1,
+    "md": 1
+  },
+  "product_id": "overture",
   "updated_at": "2025-08-21T16:39:55.567Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
   "data_mode": "open",
+  "featured": 0,
+  "total_bytes": 779067503925,
+  "account_id": "cholmes",
+  "visibility": "public",
+  "created_at": "2023-07-28T18:02:15+00:00",
+  "disabled": false,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -27,20 +827,18 @@
       "prefix": "cholmes/overture/"
     }
   },
-  "file_count": 1518,
-  "total_bytes": 779067503925,
-  "exts": {
-    "parquet": 1504,
-    "json": 5,
-    "duckdb": 1,
-    "": 6,
-    "pmtiles": 1,
-    "md": 1
-  },
-  "_state": "seed",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "cataloged_at": "2026-05-27T01:09:10+00:00"
+  "file_count": 1518,
+  "readme": "## README.md\n# Overture Buildings & Places (Cloud-Native Geo experiments)\n\nThis data is currently just a set of experiments using the new [overture maps](https://overturemaps.org/). See their\n[github repo](https://github.com/OvertureMaps/data) for more info. My hope is that this can try out some better ways\nto distribute the data, and to build an ecosystem of tools and data distributions on top of the core.\n\nThere are two main folders that I recommend starting with:\n\n* [geoparquet-country-quad/](https://beta.source.coop/cholmes/overture/geoparquet-country-quad) is the Overture Building dataset, repartitioned by country, split by quadkey when larger than ~2 gigs, distributed as GeoParquet with row size group of 20,000.\n* [places-geoparquet-country/](https://beta.source.coop/cholmes/overture/places-geoparquet-country) is the Overture Places (POI's) dataset, repartitioned by country. There was no need to split by quadkey as the whole dataset is only ~3 gigabytes.\n\nThere's also a PMTiles of the buildings dataset in the [root directory](https://beta.source.coop/cholmes/overture). You can check it out at https://observablehq.com/d/2dd90b64498c3864. I do not have a PMTiles up of the places dataset, but you can get one from https://r2-public.protomaps.com/protomaps-sample-datasets/overture-pois.pmtiles, and view that PMTiles at https://bdon.github.io/overture-tiles/places.html. I\n\nIf you just want to use Overture data those are the two to focus on. The other folders are a number of experiments and interim processing steps.\n\n* [geoparquet-refined/](https://beta.source.coop/cholmes/overture/browse/geoparquet-refined) is the same files as the original but turned into Geoparquet, with columns added for iso_country and quadkey, and data ordered by quadkey.\n* [duckdb/](https://beta.source.coop/cholmes/overture/duckdb) contains a single DuckDB database. It's pretty easy to make this yourself, it is just all the data in geoparquet refined, loaded up into a DuckDB. I'm not sure if distributing DuckDB databases directly is useful. But the file is definitely useful to partition data in different ways.\n* [geoparquet-country-quad-2](https://beta.source.coop/cholmes/overture/geoparquet-country-quad-2) I recommend ignoring. It's some alternate partitioning, and the dataset is incomplete. But until I get a set of different repartitioned datasets I'll keep it.\n \n",
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
+    "providers: role [processor] for 'Chris Holmes' is an AI guess \u2014 Identified as the redistribution author (account 'cholmes') who repartitioned and reformatted the data into GeoParquet/PMTiles.. Verify before flipping to _state: reviewed.",
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [AD.geometry (geometry), AD.quadkey (spatial_index), AD.country_iso (admin_code), AD.bbox (geometry), YE.geometry (geometry), YE.quadkey (spatial_index), YE.country_iso (admin_code), YE.bbox (geometry)]. Add bbox once a placename \u2192 bbox gazetteer is available."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-05-27T01:45:09+00:00",
+  "_source_format": "stac"
 }

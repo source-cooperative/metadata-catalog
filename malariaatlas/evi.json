@@ -1,20 +1,99 @@
 {
-  "account_id": "malariaatlas",
-  "product_id": "evi",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "malariaatlas/evi",
   "title": "Enhanced Vegetation Index",
-  "description": "Gapfilled Enhanced Vegetation Index derived from MCD43D62, MCD43D63 and MCD43D64 v6.1 products.",
+  "description": "Gap-filled Enhanced Vegetation Index (EVI) derived from MODIS MCD43D62, MCD43D63, and MCD43D64 v6.1 products at 8-daily, monthly, annual, and synoptic temporal resolutions. EVI is computed using the Huete et al. (2002) formula and gap-filled via the Weiss et al. (2014) method to remove cloud-cover artifacts. Outputs are available at ~1km and ~5km spatial resolutions as GeoTIFF rasters with temporal and spatial summary statistics.",
   "keywords": [
+    "remote-sensing",
     "vegetation",
     "modis",
+    "land-use",
     "raster",
-    "gapfilled"
+    "time-series",
+    "evi"
   ],
-  "created_at": "2024-11-07T23:44:13.043Z",
-  "updated_at": "2026-04-10T03:47:12.762Z",
+  "providers": [
+    {
+      "name": "NASA LP DAAC",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/malariaatlas/evi"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -180.0,
+          -90.0,
+          180.0,
+          90.0
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/malariaatlas/evi/",
+      "type": "image/tiff; application=geotiff",
+      "title": "Dataset files (9324 x .tif)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/malariaatlas/evi/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/malariaatlas/evi",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "rel": "child",
+      "href": "./modis-evi-v061/collection.json",
+      "type": "application/json",
+      "title": "Enhanced Vegetation Index"
+    },
+    {
+      "rel": "cite-as",
+      "href": "https://doi.org/10.1016/S0034-4257(02)00096-2"
+    }
+  ],
   "visibility": "public",
-  "disabled": false,
-  "featured": 0,
+  "account_id": "malariaatlas",
+  "total_bytes": 2400222246938,
+  "updated_at": "2026-04-10T03:47:12.762Z",
+  "exts": {
+    "json": 12,
+    "md": 1,
+    "txt": 1,
+    "tif": 9324
+  },
+  "created_at": "2024-11-07T23:44:13.043Z",
   "data_mode": "open",
+  "featured": 0,
+  "disabled": false,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -27,18 +106,18 @@
       "prefix": "malariaatlas/evi/"
     }
   },
-  "file_count": 9338,
-  "total_bytes": 2400222246938,
-  "exts": {
-    "json": 12,
-    "md": 1,
-    "txt": 1,
-    "tif": 9324
-  },
-  "_state": "seed",
+  "product_id": "evi",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "cataloged_at": "2026-05-27T01:09:49+00:00"
+  "file_count": 9338,
+  "readme": "## README.md\nThe Enhanced Vegetation Index is derived from the MODIS [MCD43D62](https://lpdaac.usgs.gov/products/mcd43d62v061/), [MCD43D63](https://lpdaac.usgs.gov/products/mcd43d63v061/) and [MCD43D64](https://lpdaac.usgs.gov/products/mcd43d64v061/) v6.1 products. EVI is first calculated on the datasets using the formula from [Huete et al (2002)](https://doi.org/10.1016/S0034-4257(02)00096-2) and then the outputs are gap-filled using the approach outlined in [Weiss et al (2014)](https://www.sciencedirect.com/science/article/pii/S0924271614002512?via%3Dihub) to eliminate missing data caused by factors such as cloud cover.\n\nThe gap-filled 8-daily ~1km outputs are then aggregated temporally and spatially to produce monthly and annual ~5km products.  \n\nDirectories are structured in the following way: `EVI_v061/{Resolution}/{TemporalSummary}`\n\nAnd under that, filenames are structured by:  \n8-daily: `EVI_v061.{Year}.{JulianDay}.Data.{Resolution}.{SpatialSummary}.tif`  \nMonthly: `EVI_v061.{Year}.{Month}.{TemporalSummary}.{Resolution}.{SpatialSummary}.tif`  \nAnnual: `EVI_v061.{Year}.Annual.{TemporalSummary}.{Resolution}.{SpatialSummary}.tif`  \nSynoptic: `EVI_v061.Synoptic.{Month-or-Overall}.{TemporalSummary}.{Resolution}.{SpatialSummary}.tif`   \n\n`Resolution` in this dataset is either `1km` or `5km`\n\nStandard values for `TemporalSummary` are: `min`, `max`, `range`, `mean`, `SD`, `count`. In addition there are:\n- `Data`: this indicated that no temporal aggregation has occurred\n- `Balanced-mean`: This is specific to overall synoptic data, it represents the mean of the 12 monthly synoptic mean datasets as opposed to the overall mean of the (e.g. daily) data. This gives a weighting to help correct for seasonal bias that could otherwise be present in areas where data are more often missing at certain times of year.  \n\nStandard values for `SpatialSummary` are: `min`, `max`, `range`, `sum`, `mean`, `SD`, `count`. In addition:\n- `Data`: this indicates that no spatial aggregation has occurred\n\n",
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
+    "providers: role [producer] for 'NASA LP DAAC' is an AI guess \u2014 LP DAAC distributes the source MODIS MCD43D products; assumed producer of underlying data. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-05-27T01:45:26+00:00",
+  "_source_format": "stac"
 }

@@ -1,24 +1,160 @@
 {
-  "account_id": "fiboa",
-  "product_id": "japan",
-  "title": "Japan Fude Polygons",
-  "description": "Japanese Farmland Parcel Polygons (Fude Polygons in Japanese) represent parcel information of farmland.\nThe polygons are manually digitized data derived from aerial imagery, such as satellite images. Since no\non-site verification or similar procedures have been conducted, the data may not necessarily match the actual\ncurrent conditions. Fude Polygons are created for the purpose of roughly indicating the locations of farmland.\n\nOriginal data converted to fiboa from https://source.coop/repositories/pacificspatial/field-polygon-jp",
-  "keywords": [
-    "japan",
-    "fiboa",
-    "field boundaries",
-    "fude",
-    "geoparquet",
-    "vector",
-    "pmtiles",
-    "pacificspatial"
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
   ],
-  "created_at": "2024-12-04T21:00:26.907Z",
+  "id": "fiboa/japan",
+  "title": "Japan Fude Parcels",
+  "description": "Official farmland parcel polygons (Fude Polygons) for Japan, covering 29.4 million field boundaries derived from manually digitized aerial and satellite imagery. Published by the Japanese Ministry of Agriculture, Forestry and Fisheries (MAFF) for fiscal years 2021\u20132024 and converted to fiboa GeoParquet format. Polygons indicate approximate farmland locations and have not undergone on-site verification.",
+  "license": "CC-BY-4.0",
+  "keywords": [
+    "field-boundaries",
+    "agriculture",
+    "land-parcels",
+    "lpis",
+    "crop-classification",
+    "land-use",
+    "remote-sensing"
+  ],
+  "providers": [
+    {
+      "name": "Japanese Ministry of Agriculture, Forestry and Fisheries (MAFF, \u8fb2\u6797\u6c34\u7523\u7701)",
+      "url": "https://www.maff.go.jp/",
+      "roles": [
+        "licensor",
+        "producer"
+      ]
+    },
+    {
+      "name": "Hiroo Imaki, Pacific Spatial Solutions",
+      "url": "https://pacificspatial.com/",
+      "roles": [
+        "processor"
+      ]
+    },
+    {
+      "name": "fiboa CLI",
+      "roles": [
+        "processor"
+      ],
+      "url": "https://pypi.org/project/fiboa-cli"
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/fiboa/japan/"
+    },
+    {
+      "name": "Japanese Ministry of Agriculture, Forestry and Fisheries (MAFF)",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Pacific Spatial Solutions, Inc.",
+      "roles": [
+        "processor"
+      ]
+    },
+    {
+      "name": "Ivor Bosloper",
+      "roles": [
+        "processor"
+      ]
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          122.946031194,
+          24.046770215,
+          145.802669174,
+          45.520014956
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2024-01-01T00:00:00Z",
+          "2024-01-01T00:00:00Z"
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 29418076
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/fiboa/japan/japan.parquet",
+      "title": "Field Boundaries",
+      "type": "application/vnd.apache.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "geometry",
+          "type": "binary"
+        },
+        {
+          "name": "id",
+          "type": "string"
+        },
+        {
+          "name": "land_type_en",
+          "type": "string"
+        },
+        {
+          "name": "admin_local_code",
+          "type": "string"
+        },
+        {
+          "name": "determination_datetime",
+          "type": "timestamp[ms, tz=UTC]"
+        }
+      ],
+      "table:primary_geometry": "geometry",
+      "table:row_count": 29418076
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/fiboa/japan/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/fiboa/japan",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "href": "https://data.source.coop/fiboa/japan/japan.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "rel": "pmtiles"
+    }
+  ],
+  "total_bytes": 6730092461,
   "updated_at": "2025-08-21T16:39:55.569Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
   "data_mode": "open",
+  "exts": {
+    "parquet": 1,
+    "pmtiles": 1,
+    "txt": 1,
+    "md": 1,
+    "json": 1
+  },
+  "file_count": 5,
+  "account_id": "fiboa",
+  "visibility": "public",
+  "product_id": "japan",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -31,19 +167,18 @@
       "prefix": "fiboa/japan/"
     }
   },
-  "file_count": 5,
-  "total_bytes": 6730092461,
-  "exts": {
-    "parquet": 1,
-    "pmtiles": 1,
-    "txt": 1,
-    "md": 1,
-    "json": 1
-  },
-  "_state": "seed",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "cataloged_at": "2026-05-27T01:09:36+00:00"
+  "featured": 0,
+  "created_at": "2024-12-04T21:00:26.907Z",
+  "disabled": false,
+  "readme": "## README.md\n# Field boundaries for Japan\n\nOriginal data converted to fiboa from https://source.coop/repositories/pacificspatial/field-polygon-jp\n\nProvides 29418076 official field boundaries from Japan.\nIt has been converted to a fiboa GeoParquet file from data obtained from \nJapanese Ministry of Agriculture, Forestry and Fisheries (MAFF, \u8fb2\u6797\u6c34\u7523\u7701).\n\nJapanese Farmland Parcel Polygons (Fude Polygons in Japanese) represent parcel information of farmland. \nThe polygons are manually digitized data derived from aerial imagery, such as satellite images. \nSince no on-site verification or similar procedures have been conducted, the data may not necessarily \nmatch the actual current conditions. Fude Polygons are created for the purpose of roughly indicating \nthe locations of farmland.\n\n- **Source Data Provider:** [Japanese Ministry of Agriculture, Forestry and Fisheries (MAFF, \u8fb2\u6797\u6c34\u7523\u7701)](https://www.maff.go.jp/)\n- **Converted by:** Ivor Bosloper\n- **License:** CC-BY\n- **Attribution:** Fude Polygon Data (published for the fiscal years 2021, 2022, 2023, and 2024) provided by the Ministry of Agriculture, Forestry and Fisheries, processed by Pacific Spatial Solutions, Inc.\n- **Projection:** EPSG:6668\n\n---\n\n- [Download the data as fiboa GeoParquet](https://data.source.coop/fiboa/japan/japan.parquet)\n- [STAC Browser](https://radiantearth.github.io/stac-browser/#/external/data.source.coop/fiboa/japan/stac/collection.json)\n- [STAC Collection](https://data.source.coop/fiboa/japan/stac/collection.json)\n- [PMTiles](https://data.source.coop/fiboa/japan/japan.pmtiles)\n\n## Columns\n\n| Property               | **Data Type** | Description |\n|------------------------|---------------|-------------|\n| id                     | string        |             |\n| land_type_en           | string        |             |\n| admin_local_code       | string        |             |\n| determination_datetime | timestamp     |             |\n\n## Lineage\n\n- Data downloaded on 2024-12-04 from https://data.source.coop/pacificspatial/field-polygon-jp/parquet/jp_field_polygons_2024.parquet .\n- Converted to GeoParquet using [fiboa-cli](https://github.com/fiboa/cli), version 0.8.0\n",
+  "_review": [
+    "providers: role [processor] for 'Pacific Spatial Solutions, Inc.' is an AI guess \u2014 Attribution credits Pacific Spatial Solutions with processing; role inferred from attribution text. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-05-27T01:35:02+00:00",
+  "_source_format": "stac"
 }

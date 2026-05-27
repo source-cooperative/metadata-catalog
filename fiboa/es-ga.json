@@ -1,25 +1,175 @@
 {
-  "account_id": "fiboa",
-  "product_id": "es-ga",
-  "title": "Gallicia SIXPAC Crop Fields",
-  "description": "The Geographic Information System for Agricultural Plots (SIXPAC) is an official reference database for the \nidentification of agricultural plots, which is mandatory in Spain for making applications for direct CAP aid that \nrequire declaring surface areas.\n\nThe purpose of SIXPAC is to provide information to farmers applying for these aid schemes, so that they can indicate \nthe location of the farm surfaces that may be eligible for subsidies, as well as to facilitate the submission of\nrequests for changes to data relating to land uses contained in the system.\n",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
+  "id": "fiboa/es-ga",
+  "title": "Spain Galicia Crop fields",
+  "description": "Official field boundaries for the Galicia region of Spain, sourced from the SIXPAC Geographic Information System for Agricultural Plots. Contains 4,963,127 parcels with crop classification and administrative codes, converted to fiboa GeoParquet format. SIXPAC is the mandatory EU Common Agricultural Policy (CAP) reference database for identifying agricultural plots eligible for direct aid subsidies.",
+  "license": "CC-BY-4.0",
   "keywords": [
-    "galicia",
-    "spain",
-    "sigpac",
-    "sixpac",
-    "fiboa",
-    "field boundaries",
-    "geoparquet",
-    "vector",
-    "pmtiles"
+    "field-boundaries",
+    "agriculture",
+    "crop-classification",
+    "lpis",
+    "land-parcels",
+    "land-use",
+    "arable-land"
+  ],
+  "providers": [
+    {
+      "name": "Virtual Office for Rural Environment",
+      "url": "https://ovmediorural.xunta.gal/es/consultas-publicas/sixpac",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "fiboa CLI",
+      "roles": [
+        "processor"
+      ],
+      "url": "https://pypi.org/project/fiboa-cli"
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/fiboa/es-ga/"
+    },
+    {
+      "name": "Xunta de Galicia - Oficina Virtual del Medio Rural",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Ivor Bosloper",
+      "roles": [
+        "processor"
+      ]
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -9.293154171488618,
+          41.80741815120018,
+          -6.736396848091039,
+          43.78663774439935
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 4963127
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/fiboa/es_ga/es_ga.parquet",
+      "title": "Field Boundaries",
+      "type": "application/vnd.apache.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "string"
+        },
+        {
+          "name": "geometry",
+          "type": "binary"
+        },
+        {
+          "name": "admin_province_code",
+          "type": "string"
+        },
+        {
+          "name": "admin_municipality_code",
+          "type": "string"
+        },
+        {
+          "name": "area",
+          "type": "float"
+        },
+        {
+          "name": "crop:code",
+          "type": "string"
+        },
+        {
+          "name": "crop:name",
+          "type": "string"
+        },
+        {
+          "name": "crop:name_en",
+          "type": "string"
+        },
+        {
+          "name": "admin:country_code",
+          "type": "string"
+        },
+        {
+          "name": "crop:code_list",
+          "type": "string"
+        },
+        {
+          "name": "admin:subdivision_code",
+          "type": "string"
+        }
+      ],
+      "table:primary_geometry": "geometry",
+      "table:row_count": 4963127
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/fiboa/es-ga/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/fiboa/es-ga",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "href": "https://data.source.coop/fiboa/es-ga/es_ga.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "rel": "pmtiles"
+    }
   ],
   "created_at": "2024-12-29T14:49:27.812Z",
-  "updated_at": "2025-08-21T16:39:55.568Z",
+  "exts": {
+    "parquet": 1,
+    "json": 1,
+    "pmtiles": 1,
+    "md": 1,
+    "txt": 1
+  },
+  "featured": 0,
   "visibility": "public",
   "disabled": false,
-  "featured": 0,
   "data_mode": "open",
+  "file_count": 5,
+  "updated_at": "2025-08-21T16:39:55.568Z",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -32,19 +182,11 @@
       "prefix": "fiboa/es-ga/"
     }
   },
-  "file_count": 5,
   "total_bytes": 1828707326,
-  "exts": {
-    "parquet": 1,
-    "json": 1,
-    "pmtiles": 1,
-    "md": 1,
-    "txt": 1
-  },
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "cataloged_at": "2026-05-27T01:09:29+00:00"
+  "product_id": "es-ga",
+  "account_id": "fiboa",
+  "readme": "## README.md\n# Field boundaries for Spain Galicia\n\nProvides 4963127 official field boundaries from Spain Galicia\nIt has been converted to a fiboa GeoParquet file from data obtained from Xunta de Galicia - Oficina Virtual del Medio Rural.\n\n- **Source Data Provider:** [Xunta de Galicia - Oficina Virtual del Medio Rural](https://ovmediorural.xunta.gal/es/consultas-publicas/sixpac)\n- **Converted by:** Ivor Bosloper\n- **License:** CC-BY-4.0 (See https://mapas.xunta.gal/gl/aviso-legal , https://medioambiente.xunta.gal/seccion-organizacion/c/CMAOT_Instituto_Estudos_Territorio?content=Direccion_Xeral_Sostibilidade_Paisaxe/Informacion_publica/seccion.html&std=pgcix_2022_2025.html)\n- **Projection:** EPSG:25829\n\n---\n\n- [Download the data as fiboa GeoParquet](https://data.source.coop/fiboa/es-ga/es_ga.parquet)\n- [STAC Browser](https://radiantearth.github.io/stac-browser/#/external/data.source.coop/fiboa/es-ga/stac/collection.json)\n- [STAC Collection](https://data.source.coop/fiboa/es-ga/stac/collection.json)\n- [PMTiles](https://data.source.coop/fiboa/es-ga/es_ga.pmtiles)\n\n## Columns\n\n| Property                | **Data Type** | Description |\n|-------------------------|---------------|-------------|\n| id                      | string        |             |\n| admin_province_code     | string        |             |\n| admin_municipality_code | string        |             |\n| area                    | float         |             |\n| crop:code               | string        |             |\n| crop:name               | string        |             |\n| crop:name_en            | string        |             |\n| admin:country_code      | string        |             |\n| crop:code_list          | string        |             |\n| admin:subdivision_code  | string        |             |\n\n## Lineage\n\n- Data downloaded on 2024-12-29 from:\n  - REST\n- Converted to GeoParquet using [fiboa-cli](https://github.com/fiboa/cli), version 0.8.0\n",
+  "_state": "drafted",
+  "cataloged_at": "2026-05-27T01:28:59+00:00",
+  "_source_format": "unknown"
 }

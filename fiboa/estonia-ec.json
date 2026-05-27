@@ -1,22 +1,192 @@
 {
-  "account_id": "fiboa",
-  "product_id": "estonia-ec",
-  "title": "Field Boundaries for Estonia, provided by Eurocrops",
-  "description": "Geospatial Aid Application Estonia Agricultural parcels.\nThe original dataset is provided by ARIB and obtained from the INSPIRE theme GSAA (specifically Geospaial Aid Application Estonia Agricultural parcels) through which the data layer Fields and Eco Areas (GSAA) is made available.\nThe data comes from ARIB's database of agricultural parcels. It has been converted to a fiboa GeoParquet file from the EuroCrops Shapefile that provides crop classification values. The data was provided to EuroCrops under an open license.",
-  "keywords": [
-    "estonia",
-    "fiboa",
-    "field boundaries",
-    "geoparquet",
-    "vector",
-    "pmtiles"
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
   ],
-  "created_at": "2024-05-27T14:29:36.893645+00:00",
-  "updated_at": "2025-08-21T16:39:55.569Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": "open",
+  "id": "fiboa/estonia-ec",
+  "title": "Field boundaries for Estonia - Eurocrops 2021",
+  "description": "Agricultural field boundary parcels for Estonia (2021), sourced from ARIB's GSAA database via the EuroCrops project. The dataset covers approximately 352,000 parcels and includes crop classification values using the HCAT taxonomy alongside land-use and applicant metadata. A geometry-repaired variant (buffer(0) fix for self-intersecting polygons) is provided alongside the original.",
+  "license": "CC-BY-SA-4.0",
+  "keywords": [
+    "field-boundaries",
+    "agriculture",
+    "crop-classification",
+    "land-parcels",
+    "land-use",
+    "lpis",
+    "estonia",
+    "eurocrops"
+  ],
+  "providers": [
+    {
+      "name": "P\u00f5llumajanduse Registrite ja Informatsiooni Amet",
+      "url": "http://data.europa.eu/88u/dataset/pria-pollud",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "EuroCrops",
+      "url": "https://github.com/maja601/EuroCrops",
+      "roles": [
+        "processor"
+      ]
+    },
+    {
+      "name": "fiboa CLI",
+      "roles": [
+        "processor"
+      ],
+      "url": "https://pypi.org/project/fiboa-cli"
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/fiboa/ec_ee/"
+    },
+    {
+      "name": "P\u00f5llumajanduse Registrite ja Informatsiooni Amet (ARIB)",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "EuroCrops",
+      "roles": [
+        "processor"
+      ]
+    },
+    {
+      "name": "Kyle Rasch",
+      "roles": [
+        "processor"
+      ]
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          21.77699576,
+          57.51650496,
+          28.15816912,
+          59.64521891
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2021-01-01T00:00:00Z",
+          "2021-01-01T00:00:00Z"
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 352128
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/fiboa/estonia-ec/data/ec_ee.parquet",
+      "title": "Field Boundaries",
+      "type": "application/vnd.apache.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "geometry",
+          "type": "binary"
+        },
+        {
+          "name": "id",
+          "type": "string"
+        },
+        {
+          "name": "determination_datetime",
+          "type": "timestamp[ms, tz=UTC]"
+        },
+        {
+          "name": "area",
+          "type": "float"
+        },
+        {
+          "name": "taotletud_kultuur",
+          "type": "string"
+        },
+        {
+          "name": "taotletud_maakasutus",
+          "type": "string"
+        },
+        {
+          "name": "taotletud_toetus",
+          "type": "string"
+        },
+        {
+          "name": "niitmise_tuvastamise_staatus",
+          "type": "string"
+        },
+        {
+          "name": "niitmise_tuvast_ajavahemik",
+          "type": "string"
+        },
+        {
+          "name": "viimase_muutmise_aeg",
+          "type": "string"
+        },
+        {
+          "name": "taotleja_nimi",
+          "type": "string"
+        },
+        {
+          "name": "taotleja_registrikood",
+          "type": "string"
+        },
+        {
+          "name": "ec:translated_name",
+          "type": "string"
+        },
+        {
+          "name": "ec:hcat_name",
+          "type": "string"
+        },
+        {
+          "name": "ec:hcat_code",
+          "type": "uint32"
+        }
+      ],
+      "table:primary_geometry": "geometry",
+      "table:row_count": 176064
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/fiboa/estonia-ec/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/fiboa/estonia-ec",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "href": "https://data.source.coop/fiboa/estonia-ec/data/ec_ee.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "rel": "pmtiles"
+    }
+  ],
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "total_bytes": 1438686242,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -29,18 +199,26 @@
       "prefix": "fiboa/estonia-ec/"
     }
   },
-  "file_count": 6,
-  "total_bytes": 1438686242,
   "exts": {
     "parquet": 2,
     "md": 1,
     "json": 2,
     "pmtiles": 1
   },
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "cataloged_at": "2026-05-27T01:09:33+00:00"
+  "account_id": "fiboa",
+  "disabled": false,
+  "file_count": 6,
+  "updated_at": "2025-08-21T16:39:55.569Z",
+  "created_at": "2024-05-27T14:29:36.893645+00:00",
+  "data_mode": "open",
+  "product_id": "estonia-ec",
+  "visibility": "public",
+  "featured": 0,
+  "readme": "## README.md\n# Field boundaries for Estonia\r\n\r\nGeospatial Aid Application Estonia Agricultural parcels.\r\nThe original dataset is provided by ARIB and obtained from the INSPIRE theme GSAA (specifically Geospaial Aid Application Estonia Agricultural parcels) through which the data layer Fields and Eco Areas (GSAA) is made available.\r\nThe data comes from ARIB's database of agricultural parcels. It has been converted to a fiboa GeoParquet file from the EuroCrops Shapefile that provides crop classification values. The data was provided to EuroCrops under an open license.\r\n\r\nOriginal dataset failed validation due to self intersecting polygons in the geometry. A 'fixed' version of the dataset, using the geopandas buffer(0) method, has been uploaded as well and is named ec_ee_revised.parquet. \r\n\r\n- **Source Data Provider:** [P\u00f5llumajanduse Registrite ja Informatsiooni Amet]\r\n- **Converted by:** [Kyle Rasch]\r\n- **License:** CC-BY-SA-3.0\r\n- **Projection:** Estonia 2021 \r\n\r\n---\r\n\r\n- **[Download the data as fiboa GeoParquet](https://data.source.coop/fiboa/estonia-ec/data/ec_ee.parquet)**\r\n- [STAC Browser](https://radiantearth.github.io/stac-browser/#/external/data.source.coop/fiboa/estonia-ec/stac/collection.json)\r\n- [STAC Collection](https://data.source.coop/fiboa/estonia-ec/stac/collection.json)\r\n- [PMTiles](https://data.source.coop/fiboa/estonia-ec/data/ec_ee.pmtiles)\r\n\r\n## Columns\r\n\r\n| Property                     | Data Type  | Description                                                 |\r\n|------------------------------|------------|-------------------------------------------------------------|\r\n| pollu_id                     | string     | Numerical identifier                                        |\r\n| pindala_ha                   | float      | Area in hectares                                            |\r\n| taotlusaas                   | uint64     | Year                                                        |\r\n| taotletud_kultuur            | string     | Requested crop culture                                      |\r\n| taotletud_maakasutus         | string     | Requested land use                                          |\r\n| taotletud_toetus             | string     | Requested support                                           |\r\n| niitmise_tuvastamise_staatus | string     | Mowing detection status                                     |\r\n| niitmise_tuvast_ajavahemik   | string     | Mowing detection period                                     |\r\n| viimase_muutmise_aeg         | string     | Last edit time (date-date)                                  |\r\n| taotleja_nimi                | string     | Name of applicant                                           |\r\n| taotleja_registrikood        | string     | Applicant's registration code                               |\r\n| EC_trans_n                   | string     | The original crop name translated into English              |\r\n| EC_hcat_n                    | string     | The machine-readable HCAT name of the crop                  |\r\n| EC_hcat_c                    | uint32     | The 10-digit HCAT code indicating the hierarchy of the crop |\r\n\r\n## Lineage \r\n\r\n- Data downloaded on 2024-11-05 from https://zenodo.org/records/8229128/files/EE_2021.zip?download=1).\r\n- Converted to GeoParquet using [fiboa-cli](https://github.com/fiboa/cli), version 0.5.0-dev.\r\n",
+  "_review": [
+    "providers: role [processor] for 'EuroCrops' is an AI guess \u2014 Provided the source Shapefile with HCAT crop classification values; assumed processor role.. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-05-27T01:30:23+00:00",
+  "_source_format": "stac"
 }

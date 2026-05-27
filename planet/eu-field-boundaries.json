@@ -1,20 +1,170 @@
 {
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
+  "id": "planet/eu-field-boundaries",
+  "title": "Field boundaries created by Planet's Automated Field Boundary detection algorithm",
+  "description": "A pan-European vector dataset of agricultural field boundaries automatically delineated from Copernicus Sentinel-2 satellite imagery acquired in May\u2013June 2022, covering approximately 54 country-level GeoParquet files with over 154 million field polygons. Each polygon represents a spatially homogeneous agricultural parcel and includes quality metrics from Planet's automated field boundary detection algorithm.",
+  "license": "proprietary",
+  "keywords": [
+    "field-boundaries",
+    "agriculture",
+    "remote-sensing",
+    "arable-land",
+    "land-use",
+    "land-parcels",
+    "deep-learning",
+    "sentinel-2"
+  ],
+  "providers": [
+    {
+      "name": "Planet Labs, PBC",
+      "url": "https://planet.com",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "fiboa CLI",
+      "roles": [
+        "processor"
+      ],
+      "url": "https://pypi.org/project/fiboa-cli"
+    },
+    {
+      "name": "Sinergise",
+      "roles": [
+        "producer",
+        "processor"
+      ]
+    },
+    {
+      "name": "Planet",
+      "roles": [
+        "processor",
+        "licensor"
+      ]
+    },
+    {
+      "name": "European Union / Horizon Europe",
+      "roles": [
+        "licensor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/planet/eu-field-boundaries"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -31.265913762282203,
+          27.66457969895491,
+          44.93886874485136,
+          71.18516591463035
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2022-06-01T00:00:00Z",
+          "2022-06-01T00:00:00Z"
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 154199900
+  },
+  "assets": {
+    "data": {
+      "href": "fiboa_FB.geoparquet",
+      "title": "Field Boundaries",
+      "type": "application/vnd.apache.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "string"
+        },
+        {
+          "name": "area",
+          "type": "float"
+        },
+        {
+          "name": "geometry",
+          "type": "binary"
+        },
+        {
+          "name": "determination_datetime",
+          "type": "timestamp[ms, tz=UTC]"
+        },
+        {
+          "name": "planet:ca_ratio",
+          "type": "float"
+        },
+        {
+          "name": "planet:micd",
+          "type": "float"
+        },
+        {
+          "name": "planet:qa",
+          "type": "uint8"
+        },
+        {
+          "name": "determination_method",
+          "type": "string"
+        }
+      ],
+      "table:primary_geometry": "geometry",
+      "table:row_count": 51398853
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/planet/eu-field-boundaries/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/planet/eu-field-boundaries",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "title": "Proprietary License",
+      "href": "https://www.planet.com/licensing-information/",
+      "type": "text/html",
+      "rel": "license"
+    }
+  ],
+  "featured": 0,
+  "file_count": 58,
+  "data_mode": "open",
+  "created_at": "2024-10-02T19:31:15.596408+00:00",
+  "total_bytes": 61335613861,
+  "disabled": false,
   "account_id": "planet",
   "product_id": "eu-field-boundaries",
-  "title": "Agricultural Field Boundaries over EU",
-  "description": "A vector dataset of Field Boundaries, automatically delineated from Sentinel-2 satellite imagery from May-June 2022.",
-  "keywords": [
-    "field boundaries",
-    "satellite imagery",
-    "deep learning",
-    "geoparquet"
-  ],
-  "created_at": "2024-10-02T19:31:15.596408+00:00",
-  "updated_at": "2025-08-21T16:39:55.567Z",
   "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": "open",
+  "exts": {
+    "parquet": 54,
+    "png": 1,
+    "pmtiles": 1,
+    "json": 1,
+    "md": 1
+  },
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -27,19 +177,16 @@
       "prefix": "planet/eu-field-boundaries/"
     }
   },
-  "file_count": 58,
-  "total_bytes": 61335613861,
-  "exts": {
-    "parquet": 54,
-    "png": 1,
-    "pmtiles": 1,
-    "json": 1,
-    "md": 1
-  },
-  "_state": "seed",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "cataloged_at": "2026-05-27T01:09:55+00:00"
+  "updated_at": "2025-08-21T16:39:55.567Z",
+  "readme": "## README.md\n# EU field boundaries\n_A vector dataset of Field Boundaries, automatically delineated from Sentinel-2 satellite imagery from May-June 2022._\n\n\nAutomatic field delineation refers to the process of automatically tracing the boundaries of agricultural parcels from satellite or aerial imagery. We consider an agricultural parcel as a spatially homogeneous land unit used for agricultural purposes, where a single crop is grown. The result of the FD is a set of closed vector polygons marking the extent of each agricultural parcel. Such polygons are the input to a multitude of applications, ranging from the management of agricultural resources, such as the Area Monitoring for the Common Agricultural Policy, to precision farming, to the estimation of damages to crop yield due to natural (e.g. drought, floods), and human-made disasters (e.g. war). Automatic estimation of parcels with high fidelity in a timely manner allows therefore to characterize the changes of agricultural landscapes due to anthropogenic activities, agricultural practices, and climate change consequences.\n\n<img src=\"https://data.source.coop/planet/eu-field-boundaries/eu-fb.png\" alt=\"AOI of the dataset\" width=\"100%\"/>\n\nThe dataset was created using Copernicus Sentinel-2 data for May 2022, provided by [@sinergise](https://sinergise.com).\n\n## Dataset License\n\n[CreativeCommons BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)\n\n## Links\n  * [Fiboa](https://github.com/fiboa/data-survey/blob/main/data/Planet.md) dataset description\n  * Automatic Field Delineation [Blog post](https://medium.com/sentinel-hub/automatic-field-delineation-new-release-1c2938399f0)\n\n## Authors\n  \n  [Sinergise](https://www.sinergise.com)\n  * Matej Batic\n  * Devis Peressutti\n  * Nejc Vesel\n  * Sara Verbic\n  * Matic Lubej\n  * Nika Oman Kadunc\n  \n  [Planet](https://planet.com)\n  * Chris Holmes\n\n\n\n## Acknowledgements\n\nThis work has received funding from the European Union's Horizon Europe research and innovation programme under grant agreement No. 101059548.\n\nFor more info about the project, see [OpenEarthMonitor](https://earthmonitor.org).",
+  "_review": [
+    "providers: role [licensor] for 'European Union / Horizon Europe' is an AI guess \u2014 Funder via grant No. 101059548 (OpenEarthMonitor); assumed licensor role is uncertain \u2014 they funded the work but may not hold IP. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-05-27T01:41:27+00:00",
+  "_source_format": "stac"
 }

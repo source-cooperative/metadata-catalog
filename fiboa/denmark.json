@@ -1,17 +1,159 @@
 {
-  "account_id": "fiboa",
-  "product_id": "denmark",
-  "title": "Denmark Crop Fields (Marker)",
-  "description": "Cropfields of Denmark",
-  "keywords": [
-    "denmark\nfiboa\nfield boundaries\ngeoparquet\nvector\npmtiles"
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
   ],
-  "created_at": "2024-08-21T22:40:01.085596+00:00",
+  "id": "fiboa/denmark",
+  "title": "Denmark Crop Fields (Marker)",
+  "description": "Crop field (Marker) polygons for Denmark published by the Danish Ministry of Food, Agriculture and Fisheries, with records available from 2005 onwards. Each feature represents a single field boundary with an associated crop code and Danish-language crop name. Distributed as fiboa-compliant GeoParquet and PMTiles.",
+  "license": "CC-0",
+  "keywords": [
+    "agriculture",
+    "field-boundaries",
+    "crop-classification",
+    "lpis",
+    "land-parcels",
+    "arable-land",
+    "land-use",
+    "denmark"
+  ],
+  "providers": [
+    {
+      "name": "Ministry of Food, Agriculture and Fisheries of Denmark",
+      "url": "https://fvm.dk/",
+      "roles": [
+        "licensor"
+      ]
+    },
+    {
+      "name": "Danish Agricultural Agency",
+      "url": "https://lbst.dk/",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "fiboa CLI",
+      "roles": [
+        "processor"
+      ],
+      "url": "https://pypi.org/project/fiboa-cli"
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/fiboa/denmark/"
+    },
+    {
+      "name": "Danish Ministry of Food, Agriculture and Fisheries",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Ivor Bosloper",
+      "roles": [
+        "processor"
+      ]
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          8.02765145891927,
+          54.44421901416275,
+          15.573199436854463,
+          57.75163614760113
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 610180
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/fiboa/denmark/denmark.parquet",
+      "title": "Field Boundaries",
+      "type": "application/vnd.apache.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "geometry",
+          "type": "binary"
+        },
+        {
+          "name": "id",
+          "type": "string"
+        },
+        {
+          "name": "area",
+          "type": "float"
+        },
+        {
+          "name": "crop_code",
+          "type": "string"
+        },
+        {
+          "name": "crop_name",
+          "type": "string"
+        }
+      ],
+      "table:primary_geometry": "geometry",
+      "table:row_count": 610180
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/fiboa/denmark/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/fiboa/denmark",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "href": "https://data.source.coop/fiboa/denmark/denmark.pmtiles",
+      "type": "application/vnd.pmtiles",
+      "rel": "pmtiles"
+    }
+  ],
   "updated_at": "2025-08-21T16:39:55.568Z",
-  "visibility": "public",
-  "disabled": false,
   "featured": 0,
-  "data_mode": "open",
+  "exts": {
+    "parquet": 1,
+    "txt": 1,
+    "pmtiles": 1,
+    "json": 1,
+    "md": 1
+  },
+  "disabled": false,
+  "product_id": "denmark",
+  "account_id": "fiboa",
+  "total_bytes": 570062307,
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "created_at": "2024-08-21T22:40:01.085596+00:00",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -24,19 +166,11 @@
       "prefix": "fiboa/denmark/"
     }
   },
+  "data_mode": "open",
   "file_count": 5,
-  "total_bytes": 570062307,
-  "exts": {
-    "parquet": 1,
-    "txt": 1,
-    "pmtiles": 1,
-    "json": 1,
-    "md": 1
-  },
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "cataloged_at": "2026-05-27T01:09:23+00:00"
+  "visibility": "public",
+  "readme": "## README.md\n# Denmark Crop Fields (Marker)\n\n- **Source Data Provider:** The Danish Ministry of Food, Agriculture and Fisheries\n- **Converted by:** Ivor Bosloper\n- **Homepage:** https://landbrugsgeodata.fvm.dk/\n\nThe Danish Ministry of Food, Agriculture and Fisheries publishes \nthe open data \"Marker\" containing Crop Fields.\n\nCrop field data is available from 2005 onwards and is typically published as\n\"preliminary data\" from the start of a year (updated monthly). Field blocks are available \nbefore the year starts, starting from 2008.\n\n---\n\n- [Download the data as fiboa GeoParquet](https://data.source.coop/fiboa/denmark/denmark.parquet)\n- [STAC Browser](https://radiantearth.github.io/stac-browser/#/external/data.source.coop/fiboa/denmark/stac/collection.json)\n- [STAC Collection](https://data.source.coop/fiboa/denmark/stac/collection.json)\n- [PMTiles](https://data.source.coop/fiboa/denmark/denmark.pmtiles)\n\n\n### Columns\n\nThe Crop Field dataset has the following properties:\n\n| Property   | **Data Type** | Description               |\n|------------|---------------|---------------------------|\n| id         | string        | Identifier                |\n| area       | float         | Surface Area              |\n| crop_code  | string        | Crop code                 |\n| crop_name  | string        | Crop description (Danish) |\n\n## Lineage\n\n- Data downloaded on 2024-08-22 from https://landbrugsgeodata.fvm.dk/Download/Marker/Marker_2023.zip\n- Converted to GeoParquet using [fiboa-cli](https://github.com/fiboa/cli), version 0.6.0\n",
+  "_state": "drafted",
+  "cataloged_at": "2026-05-27T01:33:29+00:00",
+  "_source_format": "unknown"
 }
