@@ -1,15 +1,102 @@
 {
-  "account_id": "ybyra-br",
-  "product_id": "secondary-forest",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "ybyra-br/secondary-forest",
   "title": "Secondary Forest Brazil \u2014 YbYr\u00e1-BR v8.1 (from MapBiomas Collection 10.1, 1986\u20132024)",
-  "description": "Annual maps of secondary forest dynamics for Brazil (1986\u20132024), derived from \r\nMapBiomas Collection 10.1 land-use and land-cover data using Google Earth Engine.\r\n\r\nProducer: YBYR\u00c1-BR Project \r\nFunding: CNPq (Process 401741/2023-0)\r\nLicense: CC-BY-4.0\r\n\r\nPlease cite:\r\nSilva Junior et al. (2020). Benchmark maps of 33 years of secondary forest age \r\nfor Brazil. Scientific Data. https://doi.org/10.1038/s41597-020-00600-4",
-  "keywords": [],
-  "created_at": "2026-04-21T15:00:51.260Z",
-  "updated_at": "2026-04-28T15:53:21.948Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
+  "description": "Annual maps of secondary forest dynamics in Brazil (1986\u20132024) derived from MapBiomas Collection 10.1 land-use and land-cover data processed in Google Earth Engine at 30 m resolution. Four products are provided: age (years of continuous secondary forest since last disturbance), extent (binary presence/absence), increment (new forest pixels per year), and loss (cleared pixels per year), covering Forest Formation and Flooded Forest classes.",
+  "license": "CC-BY-4.0",
+  "keywords": [
+    "remote-sensing",
+    "land-use",
+    "land-cover",
+    "secondary-forest",
+    "forest-dynamics",
+    "deforestation",
+    "brazil"
+  ],
+  "providers": [
+    {
+      "name": "YBYR\u00c1-BR Project",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "MapBiomas",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/ybyra-br/secondary-forest"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -73.983001,
+          -33.7512324,
+          -28.8429275,
+          5.2713141
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/ybyra-br/secondary-forest/",
+      "type": "image/tiff; application=geotiff",
+      "title": "Dataset files (155 x .tif)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/ybyra-br/secondary-forest/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/ybyra-br/secondary-forest",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "rel": "cite-as",
+      "href": "https://doi.org/10.1038/s41597-020-00600-4"
+    }
+  ],
+  "exts": {
+    "tif": 155,
+    "md": 1
+  },
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "file_count": 156,
   "data_mode": "open",
+  "account_id": "ybyra-br",
+  "disabled": false,
+  "created_at": "2026-04-21T15:00:51.260Z",
+  "visibility": "public",
+  "updated_at": "2026-04-28T15:53:21.948Z",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -22,17 +109,13 @@
       "prefix": "ybyra-br/secondary-forest/"
     }
   },
-  "file_count": 156,
   "total_bytes": 26599159149,
-  "exts": {
-    "tif": 155,
-    "md": 1
-  },
-  "store_format": null,
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "cataloged_at": "2026-05-29T20:25:15+00:00"
+  "featured": 0,
+  "product_id": "secondary-forest",
+  "readme": "## README.md\n# Brazilian Secondary Forest Dynamics (1986\u20132024)\n\nAnnual maps of increment, extent, age, and loss of secondary forests in Brazil, derived from MapBiomas Collection 10.1 land-use and land-cover data using Google Earth Engine. The **Forest Formation** and **Flooded Forest** classes are included.\n\n## Products\n\n| Product | Description | Period |\n|:---|:---|:---:|\n| **Age** | Years of continuous secondary forest since last disturbance | 1986\u20132024 |\n| **Extent** | Binary presence/absence of secondary forest | 1986\u20132024 |\n| **Increment** | New secondary forest pixels per year | 1986\u20132024 |\n| **Loss** | Secondary forest pixels cleared per year | 1987\u20132024 |\n\n## Technical Specifications\n\n| Parameter | Value |\n|:---|:---:|\n| Spatial resolution | 30 m |\n| CRS | EPSG:4326 (WGS84) |\n| Format | Cloud-Optimized GeoTIFF (COG) |\n| Input data | MapBiomas Collection 10.1 |\n| Forest classes | Forest Formation, Flooded Forest |\n| Version | v8.1 |\n\n## GEE Assets\n\nMulti-band assets (one band per year, named `classification_YYYY`) are publicly available:\n\n```javascript\nvar age       = ee.Image('users/ybyrabr/public/secondary_forest_age_collection10_1_v8_1');\nvar extent    = ee.Image('users/ybyrabr/public/secondary_forest_extent_collection10_1_v8_1');\nvar increment = ee.Image('users/ybyrabr/public/secondary_forest_increment_collection10_1_v8_1');\nvar loss      = ee.Image('users/ybyrabr/public/secondary_forest_loss_collection10_1_v8_1');\n```\n\n## Code & STAC\n\n- **GitHub:** https://github.com/celsohlsj/gee_brazil_sv\n- **STAC Catalog:** https://celsohlsj.github.io/ybyrastac/\n\n## Citation\n\n```bibtex\n@article{silvajunior2020,\n  author  = {Silva-Junior, Celso H. L. and Heinrich, Viola H. A. and Freire, Ana T. G.\n             and Broggio, Igor S. and Rosan, Thais M. and Doblas, Juan and Anderson,\n             Liana O. and Rousseau, Guillaume X. and Shimabukuro, Yosio E. and\n             Silva, Carlos A. and House, Joanna I. and Arag\u00e3o, Luiz E. O. C.},\n  title   = {Benchmark maps of 33 years of secondary forest age for {Brazil}},\n  journal = {Scientific Data},\n  year    = {2020},\n  doi     = {10.1038/s41597-020-00600-4}\n}\n```\n\n## Funding & License\n\nProduced by the **YBYR\u00c1-BR Project**, funded by CNPq (Process 401741/2023-0).\nLicensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).\n",
+  "_review": [
+    "providers: role [producer] for 'MapBiomas' is an AI guess \u2014 Produced the Collection 10.1 LULC input data; role inferred from README attribution as upstream data source, not explicitly stated.. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-06-04T01:09:25+00:00"
 }

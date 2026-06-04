@@ -6,7 +6,7 @@
   ],
   "id": "dataforcanada/d4c-datapkg-environment-climate-health",
   "title": "Data for Canada - Environment, Climate, and Health Data Packages",
-  "description": "Time-series measurements from a network of low-cost environmental monitoring stations in Canada, capturing air quality metrics (PM1, PM2.5, PM10 particulate matter, particle size distributions, and gas concentrations) alongside meteorological conditions (temperature, pressure, humidity, light). Companion health assets record system telemetry (CPU load, memory, disk, WiFi signal, battery, clock sync) for each station, supporting quality-control filtering based on device operational status.",
+  "description": "Time-series air quality and meteorological measurements from a network of low-cost IoT environmental monitoring stations across Canada. Each station records particulate matter (PM1, PM2.5, PM10), particle size distributions, gas concentrations (oxidised, reducing, NH3), temperature, pressure, humidity, and light intensity. Companion health assets capture per-station device telemetry (CPU load, memory, WiFi signal, battery) to support quality-control filtering based on operational status.",
   "keywords": [
     "air-quality",
     "particulate-matter",
@@ -52,13 +52,13 @@
     }
   },
   "summaries": {
-    "item_count": 952
+    "item_count": 334
   },
   "assets": {
-    "health_0000": {
-      "href": "https://data.source.coop/dataforcanada/d4c-datapkg-environment-climate-health/archive/opensensor.space/enviroplus-health/station=019d97ff-3220-74fc-8923-f9fb69e2273d/year=2026/month=04/day=18/health_0000.parquet",
+    "health_0945": {
+      "href": "https://data.source.coop/dataforcanada/d4c-datapkg-environment-climate-health/archive/opensensor.space/enviroplus-health/station=019d97ff-3220-74fc-8923-f9fb69e2273d/year=2026/month=04/day=20/health_0945.parquet",
       "type": "application/x-parquet",
-      "title": "health_0000.parquet",
+      "title": "health_0945.parquet",
       "roles": [
         "data"
       ],
@@ -162,19 +162,19 @@
         {
           "name": "station",
           "type": "VARCHAR",
-          "description": "[placename] Monitoring station identifier"
+          "description": "[placename] Monitoring station name/identifier encoding geographic deployment location; present in all health assets"
         },
         {
           "name": "year",
           "type": "BIGINT"
         }
       ],
-      "table:row_count": 15
+      "table:row_count": 14
     },
-    "health_1315": {
-      "href": "https://data.source.coop/dataforcanada/d4c-datapkg-environment-climate-health/archive/opensensor.space/enviroplus-health/station=019d97ff-3220-74fc-8923-f9fb69e2273d/year=2026/month=04/day=18/health_1315.parquet",
+    "health_2000": {
+      "href": "https://data.source.coop/dataforcanada/d4c-datapkg-environment-climate-health/archive/opensensor.space/enviroplus-health/station=019d97ff-3220-74fc-8923-f9fb69e2273d/year=2026/month=04/day=21/health_2000.parquet",
       "type": "application/x-parquet",
-      "title": "health_1315.parquet",
+      "title": "health_2000.parquet",
       "roles": [
         "data"
       ],
@@ -277,124 +277,7 @@
         },
         {
           "name": "station",
-          "type": "VARCHAR",
-          "description": "[placename] Monitoring station identifier"
-        },
-        {
-          "name": "year",
-          "type": "BIGINT"
-        }
-      ],
-      "table:row_count": 11
-    },
-    "health_1330": {
-      "href": "https://data.source.coop/dataforcanada/d4c-datapkg-environment-climate-health/archive/opensensor.space/enviroplus-health/station=019d97ff-3220-74fc-8923-f9fb69e2273d/year=2026/month=04/day=18/health_1330.parquet",
-      "type": "application/x-parquet",
-      "title": "health_1330.parquet",
-      "roles": [
-        "data"
-      ],
-      "table:columns": [
-        {
-          "name": "timestamp",
-          "type": "TIMESTAMP WITH TIME ZONE"
-        },
-        {
-          "name": "cpu_temp_c",
-          "type": "DOUBLE"
-        },
-        {
-          "name": "cpu_load_1min",
-          "type": "DOUBLE"
-        },
-        {
-          "name": "cpu_load_5min",
-          "type": "DOUBLE"
-        },
-        {
-          "name": "cpu_load_15min",
-          "type": "DOUBLE"
-        },
-        {
-          "name": "memory_total_mb",
-          "type": "DOUBLE"
-        },
-        {
-          "name": "memory_available_mb",
-          "type": "DOUBLE"
-        },
-        {
-          "name": "memory_percent_used",
-          "type": "DOUBLE"
-        },
-        {
-          "name": "disk_total_gb",
-          "type": "DOUBLE"
-        },
-        {
-          "name": "disk_free_gb",
-          "type": "DOUBLE"
-        },
-        {
-          "name": "disk_percent_used",
-          "type": "DOUBLE"
-        },
-        {
-          "name": "wifi_ssid",
           "type": "VARCHAR"
-        },
-        {
-          "name": "wifi_signal_dbm",
-          "type": "BIGINT"
-        },
-        {
-          "name": "wifi_quality_percent",
-          "type": "DOUBLE"
-        },
-        {
-          "name": "ip_address",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "clock_synced",
-          "type": "BOOLEAN"
-        },
-        {
-          "name": "ntp_offset_ms",
-          "type": "DOUBLE"
-        },
-        {
-          "name": "uptime_seconds",
-          "type": "DOUBLE"
-        },
-        {
-          "name": "power_source",
-          "type": "INTEGER"
-        },
-        {
-          "name": "battery_percent",
-          "type": "INTEGER"
-        },
-        {
-          "name": "cpu_voltage_v",
-          "type": "DOUBLE"
-        },
-        {
-          "name": "throttled_hex",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "day",
-          "type": "BIGINT"
-        },
-        {
-          "name": "month",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "station",
-          "type": "VARCHAR",
-          "description": "[placename] Monitoring station identifier"
         },
         {
           "name": "year",
@@ -403,10 +286,125 @@
       ],
       "table:row_count": 8
     },
-    "health_1345": {
-      "href": "https://data.source.coop/dataforcanada/d4c-datapkg-environment-climate-health/archive/opensensor.space/enviroplus-health/station=019d97ff-3220-74fc-8923-f9fb69e2273d/year=2026/month=04/day=18/health_1345.parquet",
+    "health_0015": {
+      "href": "https://data.source.coop/dataforcanada/d4c-datapkg-environment-climate-health/archive/opensensor.space/enviroplus-health/station=019d97ff-3220-74fc-8923-f9fb69e2273d/year=2026/month=05/day=04/health_0015.parquet",
       "type": "application/x-parquet",
-      "title": "health_1345.parquet",
+      "title": "health_0015.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "timestamp",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "cpu_temp_c",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "cpu_load_1min",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "cpu_load_5min",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "cpu_load_15min",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "memory_total_mb",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "memory_available_mb",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "memory_percent_used",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "disk_total_gb",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "disk_free_gb",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "disk_percent_used",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "wifi_ssid",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "wifi_signal_dbm",
+          "type": "BIGINT"
+        },
+        {
+          "name": "wifi_quality_percent",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "ip_address",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "clock_synced",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "ntp_offset_ms",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "uptime_seconds",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "power_source",
+          "type": "INTEGER"
+        },
+        {
+          "name": "battery_percent",
+          "type": "INTEGER"
+        },
+        {
+          "name": "cpu_voltage_v",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "throttled_hex",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "day",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "month",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "station",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "year",
+          "type": "BIGINT"
+        }
+      ],
+      "table:row_count": 15
+    },
+    "health_2145": {
+      "href": "https://data.source.coop/dataforcanada/d4c-datapkg-environment-climate-health/archive/opensensor.space/enviroplus-health/station=019d97ff-3220-74fc-8923-f9fb69e2273d/year=2026/month=04/day=25/health_2145.parquet",
+      "type": "application/x-parquet",
+      "title": "health_2145.parquet",
       "roles": [
         "data"
       ],
@@ -509,20 +507,19 @@
         },
         {
           "name": "station",
-          "type": "VARCHAR",
-          "description": "[placename] Monitoring station identifier"
+          "type": "VARCHAR"
         },
         {
           "name": "year",
           "type": "BIGINT"
         }
       ],
-      "table:row_count": 15
+      "table:row_count": 14
     },
-    "health_1400": {
-      "href": "https://data.source.coop/dataforcanada/d4c-datapkg-environment-climate-health/archive/opensensor.space/enviroplus-health/station=019d97ff-3220-74fc-8923-f9fb69e2273d/year=2026/month=04/day=18/health_1400.parquet",
+    "health_1715": {
+      "href": "https://data.source.coop/dataforcanada/d4c-datapkg-environment-climate-health/archive/opensensor.space/enviroplus-health/station=019d97ff-3220-74fc-8923-f9fb69e2273d/year=2026/month=04/day=27/health_1715.parquet",
       "type": "application/x-parquet",
-      "title": "health_1400.parquet",
+      "title": "health_1715.parquet",
       "roles": [
         "data"
       ],
@@ -625,8 +622,7 @@
         },
         {
           "name": "station",
-          "type": "VARCHAR",
-          "description": "[placename] Monitoring station identifier"
+          "type": "VARCHAR"
         },
         {
           "name": "year",
@@ -635,10 +631,10 @@
       ],
       "table:row_count": 15
     },
-    "data_0345": {
-      "href": "https://data.source.coop/dataforcanada/d4c-datapkg-environment-climate-health/archive/opensensor.space/enviroplus/station=019d97ff-3220-74fc-8923-f9fb69e2273d/year=2026/month=04/day=26/data_0345.parquet",
+    "health_2200": {
+      "href": "https://data.source.coop/dataforcanada/d4c-datapkg-environment-climate-health/archive/opensensor.space/enviroplus-health/station=019d97ff-3220-74fc-8923-f9fb69e2273d/year=2026/month=04/day=28/health_2200.parquet",
       "type": "application/x-parquet",
-      "title": "data_0345.parquet",
+      "title": "health_2200.parquet",
       "roles": [
         "data"
       ],
@@ -648,80 +644,88 @@
           "type": "TIMESTAMP WITH TIME ZONE"
         },
         {
-          "name": "temperature",
-          "type": "FLOAT"
+          "name": "cpu_temp_c",
+          "type": "DOUBLE"
         },
         {
-          "name": "raw_temperature",
-          "type": "FLOAT"
+          "name": "cpu_load_1min",
+          "type": "DOUBLE"
         },
         {
-          "name": "pressure",
-          "type": "FLOAT"
+          "name": "cpu_load_5min",
+          "type": "DOUBLE"
         },
         {
-          "name": "humidity",
-          "type": "FLOAT"
+          "name": "cpu_load_15min",
+          "type": "DOUBLE"
         },
         {
-          "name": "raw_humidity",
-          "type": "FLOAT"
+          "name": "memory_total_mb",
+          "type": "DOUBLE"
         },
         {
-          "name": "oxidised",
-          "type": "FLOAT"
+          "name": "memory_available_mb",
+          "type": "DOUBLE"
         },
         {
-          "name": "reducing",
-          "type": "FLOAT"
+          "name": "memory_percent_used",
+          "type": "DOUBLE"
         },
         {
-          "name": "nh3",
-          "type": "FLOAT"
+          "name": "disk_total_gb",
+          "type": "DOUBLE"
         },
         {
-          "name": "lux",
-          "type": "FLOAT"
+          "name": "disk_free_gb",
+          "type": "DOUBLE"
         },
         {
-          "name": "proximity",
-          "type": "FLOAT"
+          "name": "disk_percent_used",
+          "type": "DOUBLE"
         },
         {
-          "name": "pm1",
-          "type": "FLOAT"
+          "name": "wifi_ssid",
+          "type": "INTEGER"
         },
         {
-          "name": "pm25",
-          "type": "FLOAT"
+          "name": "wifi_signal_dbm",
+          "type": "INTEGER"
         },
         {
-          "name": "pm10",
-          "type": "FLOAT"
+          "name": "wifi_quality_percent",
+          "type": "INTEGER"
         },
         {
-          "name": "particles_03um",
-          "type": "FLOAT"
+          "name": "ip_address",
+          "type": "INTEGER"
         },
         {
-          "name": "particles_05um",
-          "type": "FLOAT"
+          "name": "clock_synced",
+          "type": "BOOLEAN"
         },
         {
-          "name": "particles_10um",
-          "type": "FLOAT"
+          "name": "ntp_offset_ms",
+          "type": "INTEGER"
         },
         {
-          "name": "particles_25um",
-          "type": "FLOAT"
+          "name": "uptime_seconds",
+          "type": "DOUBLE"
         },
         {
-          "name": "particles_50um",
-          "type": "FLOAT"
+          "name": "power_source",
+          "type": "INTEGER"
         },
         {
-          "name": "particles_100um",
-          "type": "FLOAT"
+          "name": "battery_percent",
+          "type": "INTEGER"
+        },
+        {
+          "name": "cpu_voltage_v",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "throttled_hex",
+          "type": "VARCHAR"
         },
         {
           "name": "day",
@@ -733,20 +737,19 @@
         },
         {
           "name": "station",
-          "type": "VARCHAR",
-          "description": "[placename] Monitoring station identifier"
+          "type": "VARCHAR"
         },
         {
           "name": "year",
           "type": "BIGINT"
         }
       ],
-      "table:row_count": 177
+      "table:row_count": 14
     },
-    "data_0400": {
-      "href": "https://data.source.coop/dataforcanada/d4c-datapkg-environment-climate-health/archive/opensensor.space/enviroplus/station=019d97ff-3220-74fc-8923-f9fb69e2273d/year=2026/month=04/day=26/data_0400.parquet",
+    "health_1730": {
+      "href": "https://data.source.coop/dataforcanada/d4c-datapkg-environment-climate-health/archive/opensensor.space/enviroplus-health/station=019d97ff-3220-74fc-8923-f9fb69e2273d/year=2026/month=04/day=29/health_1730.parquet",
       "type": "application/x-parquet",
-      "title": "data_0400.parquet",
+      "title": "health_1730.parquet",
       "roles": [
         "data"
       ],
@@ -756,80 +759,88 @@
           "type": "TIMESTAMP WITH TIME ZONE"
         },
         {
-          "name": "temperature",
-          "type": "FLOAT"
+          "name": "cpu_temp_c",
+          "type": "DOUBLE"
         },
         {
-          "name": "raw_temperature",
-          "type": "FLOAT"
+          "name": "cpu_load_1min",
+          "type": "DOUBLE"
         },
         {
-          "name": "pressure",
-          "type": "FLOAT"
+          "name": "cpu_load_5min",
+          "type": "DOUBLE"
         },
         {
-          "name": "humidity",
-          "type": "FLOAT"
+          "name": "cpu_load_15min",
+          "type": "DOUBLE"
         },
         {
-          "name": "raw_humidity",
-          "type": "FLOAT"
+          "name": "memory_total_mb",
+          "type": "DOUBLE"
         },
         {
-          "name": "oxidised",
-          "type": "FLOAT"
+          "name": "memory_available_mb",
+          "type": "DOUBLE"
         },
         {
-          "name": "reducing",
-          "type": "FLOAT"
+          "name": "memory_percent_used",
+          "type": "DOUBLE"
         },
         {
-          "name": "nh3",
-          "type": "FLOAT"
+          "name": "disk_total_gb",
+          "type": "DOUBLE"
         },
         {
-          "name": "lux",
-          "type": "FLOAT"
+          "name": "disk_free_gb",
+          "type": "DOUBLE"
         },
         {
-          "name": "proximity",
-          "type": "FLOAT"
+          "name": "disk_percent_used",
+          "type": "DOUBLE"
         },
         {
-          "name": "pm1",
-          "type": "FLOAT"
+          "name": "wifi_ssid",
+          "type": "INTEGER"
         },
         {
-          "name": "pm25",
-          "type": "FLOAT"
+          "name": "wifi_signal_dbm",
+          "type": "INTEGER"
         },
         {
-          "name": "pm10",
-          "type": "FLOAT"
+          "name": "wifi_quality_percent",
+          "type": "INTEGER"
         },
         {
-          "name": "particles_03um",
-          "type": "FLOAT"
+          "name": "ip_address",
+          "type": "INTEGER"
         },
         {
-          "name": "particles_05um",
-          "type": "FLOAT"
+          "name": "clock_synced",
+          "type": "BOOLEAN"
         },
         {
-          "name": "particles_10um",
-          "type": "FLOAT"
+          "name": "ntp_offset_ms",
+          "type": "INTEGER"
         },
         {
-          "name": "particles_25um",
-          "type": "FLOAT"
+          "name": "uptime_seconds",
+          "type": "DOUBLE"
         },
         {
-          "name": "particles_50um",
-          "type": "FLOAT"
+          "name": "power_source",
+          "type": "INTEGER"
         },
         {
-          "name": "particles_100um",
-          "type": "FLOAT"
+          "name": "battery_percent",
+          "type": "INTEGER"
+        },
+        {
+          "name": "cpu_voltage_v",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "throttled_hex",
+          "type": "VARCHAR"
         },
         {
           "name": "day",
@@ -841,20 +852,19 @@
         },
         {
           "name": "station",
-          "type": "VARCHAR",
-          "description": "[placename] Monitoring station identifier"
+          "type": "VARCHAR"
         },
         {
           "name": "year",
           "type": "BIGINT"
         }
       ],
-      "table:row_count": 178
+      "table:row_count": 3
     },
-    "data_0415": {
-      "href": "https://data.source.coop/dataforcanada/d4c-datapkg-environment-climate-health/archive/opensensor.space/enviroplus/station=019d97ff-3220-74fc-8923-f9fb69e2273d/year=2026/month=04/day=26/data_0415.parquet",
+    "health_2100": {
+      "href": "https://data.source.coop/dataforcanada/d4c-datapkg-environment-climate-health/archive/opensensor.space/enviroplus-health/station=019d97ff-3220-74fc-8923-f9fb69e2273d/year=2026/month=05/day=01/health_2100.parquet",
       "type": "application/x-parquet",
-      "title": "data_0415.parquet",
+      "title": "health_2100.parquet",
       "roles": [
         "data"
       ],
@@ -864,84 +874,92 @@
           "type": "TIMESTAMP WITH TIME ZONE"
         },
         {
-          "name": "temperature",
-          "type": "FLOAT"
+          "name": "cpu_temp_c",
+          "type": "DOUBLE"
         },
         {
-          "name": "raw_temperature",
-          "type": "FLOAT"
+          "name": "cpu_load_1min",
+          "type": "DOUBLE"
         },
         {
-          "name": "pressure",
-          "type": "FLOAT"
+          "name": "cpu_load_5min",
+          "type": "DOUBLE"
         },
         {
-          "name": "humidity",
-          "type": "FLOAT"
+          "name": "cpu_load_15min",
+          "type": "DOUBLE"
         },
         {
-          "name": "raw_humidity",
-          "type": "FLOAT"
+          "name": "memory_total_mb",
+          "type": "DOUBLE"
         },
         {
-          "name": "oxidised",
-          "type": "FLOAT"
+          "name": "memory_available_mb",
+          "type": "DOUBLE"
         },
         {
-          "name": "reducing",
-          "type": "FLOAT"
+          "name": "memory_percent_used",
+          "type": "DOUBLE"
         },
         {
-          "name": "nh3",
-          "type": "FLOAT"
+          "name": "disk_total_gb",
+          "type": "DOUBLE"
         },
         {
-          "name": "lux",
-          "type": "FLOAT"
+          "name": "disk_free_gb",
+          "type": "DOUBLE"
         },
         {
-          "name": "proximity",
-          "type": "FLOAT"
+          "name": "disk_percent_used",
+          "type": "DOUBLE"
         },
         {
-          "name": "pm1",
-          "type": "FLOAT"
+          "name": "wifi_ssid",
+          "type": "VARCHAR"
         },
         {
-          "name": "pm25",
-          "type": "FLOAT"
+          "name": "wifi_signal_dbm",
+          "type": "BIGINT"
         },
         {
-          "name": "pm10",
-          "type": "FLOAT"
+          "name": "wifi_quality_percent",
+          "type": "DOUBLE"
         },
         {
-          "name": "particles_03um",
-          "type": "FLOAT"
+          "name": "ip_address",
+          "type": "VARCHAR"
         },
         {
-          "name": "particles_05um",
-          "type": "FLOAT"
+          "name": "clock_synced",
+          "type": "BOOLEAN"
         },
         {
-          "name": "particles_10um",
-          "type": "FLOAT"
+          "name": "ntp_offset_ms",
+          "type": "DOUBLE"
         },
         {
-          "name": "particles_25um",
-          "type": "FLOAT"
+          "name": "uptime_seconds",
+          "type": "DOUBLE"
         },
         {
-          "name": "particles_50um",
-          "type": "FLOAT"
+          "name": "power_source",
+          "type": "INTEGER"
         },
         {
-          "name": "particles_100um",
-          "type": "FLOAT"
+          "name": "battery_percent",
+          "type": "INTEGER"
+        },
+        {
+          "name": "cpu_voltage_v",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "throttled_hex",
+          "type": "VARCHAR"
         },
         {
           "name": "day",
-          "type": "BIGINT"
+          "type": "VARCHAR"
         },
         {
           "name": "month",
@@ -949,20 +967,19 @@
         },
         {
           "name": "station",
-          "type": "VARCHAR",
-          "description": "[placename] Monitoring station identifier"
+          "type": "VARCHAR"
         },
         {
           "name": "year",
           "type": "BIGINT"
         }
       ],
-      "table:row_count": 178
+      "table:row_count": 15
     },
-    "data_0430": {
-      "href": "https://data.source.coop/dataforcanada/d4c-datapkg-environment-climate-health/archive/opensensor.space/enviroplus/station=019d97ff-3220-74fc-8923-f9fb69e2273d/year=2026/month=04/day=26/data_0430.parquet",
+    "health_1015": {
+      "href": "https://data.source.coop/dataforcanada/d4c-datapkg-environment-climate-health/archive/opensensor.space/enviroplus-health/station=019d97ff-3220-74fc-8923-f9fb69e2273d/year=2026/month=05/day=02/health_1015.parquet",
       "type": "application/x-parquet",
-      "title": "data_0430.parquet",
+      "title": "health_1015.parquet",
       "roles": [
         "data"
       ],
@@ -972,84 +989,92 @@
           "type": "TIMESTAMP WITH TIME ZONE"
         },
         {
-          "name": "temperature",
-          "type": "FLOAT"
+          "name": "cpu_temp_c",
+          "type": "DOUBLE"
         },
         {
-          "name": "raw_temperature",
-          "type": "FLOAT"
+          "name": "cpu_load_1min",
+          "type": "DOUBLE"
         },
         {
-          "name": "pressure",
-          "type": "FLOAT"
+          "name": "cpu_load_5min",
+          "type": "DOUBLE"
         },
         {
-          "name": "humidity",
-          "type": "FLOAT"
+          "name": "cpu_load_15min",
+          "type": "DOUBLE"
         },
         {
-          "name": "raw_humidity",
-          "type": "FLOAT"
+          "name": "memory_total_mb",
+          "type": "DOUBLE"
         },
         {
-          "name": "oxidised",
-          "type": "FLOAT"
+          "name": "memory_available_mb",
+          "type": "DOUBLE"
         },
         {
-          "name": "reducing",
-          "type": "FLOAT"
+          "name": "memory_percent_used",
+          "type": "DOUBLE"
         },
         {
-          "name": "nh3",
-          "type": "FLOAT"
+          "name": "disk_total_gb",
+          "type": "DOUBLE"
         },
         {
-          "name": "lux",
-          "type": "FLOAT"
+          "name": "disk_free_gb",
+          "type": "DOUBLE"
         },
         {
-          "name": "proximity",
-          "type": "FLOAT"
+          "name": "disk_percent_used",
+          "type": "DOUBLE"
         },
         {
-          "name": "pm1",
-          "type": "FLOAT"
+          "name": "wifi_ssid",
+          "type": "VARCHAR"
         },
         {
-          "name": "pm25",
-          "type": "FLOAT"
+          "name": "wifi_signal_dbm",
+          "type": "BIGINT"
         },
         {
-          "name": "pm10",
-          "type": "FLOAT"
+          "name": "wifi_quality_percent",
+          "type": "DOUBLE"
         },
         {
-          "name": "particles_03um",
-          "type": "FLOAT"
+          "name": "ip_address",
+          "type": "VARCHAR"
         },
         {
-          "name": "particles_05um",
-          "type": "FLOAT"
+          "name": "clock_synced",
+          "type": "BOOLEAN"
         },
         {
-          "name": "particles_10um",
-          "type": "FLOAT"
+          "name": "ntp_offset_ms",
+          "type": "DOUBLE"
         },
         {
-          "name": "particles_25um",
-          "type": "FLOAT"
+          "name": "uptime_seconds",
+          "type": "DOUBLE"
         },
         {
-          "name": "particles_50um",
-          "type": "FLOAT"
+          "name": "power_source",
+          "type": "INTEGER"
         },
         {
-          "name": "particles_100um",
-          "type": "FLOAT"
+          "name": "battery_percent",
+          "type": "INTEGER"
+        },
+        {
+          "name": "cpu_voltage_v",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "throttled_hex",
+          "type": "VARCHAR"
         },
         {
           "name": "day",
-          "type": "BIGINT"
+          "type": "VARCHAR"
         },
         {
           "name": "month",
@@ -1057,20 +1082,1514 @@
         },
         {
           "name": "station",
-          "type": "VARCHAR",
-          "description": "[placename] Monitoring station identifier"
+          "type": "VARCHAR"
         },
         {
           "name": "year",
           "type": "BIGINT"
         }
       ],
-      "table:row_count": 177
+      "table:row_count": 14
     },
-    "data_0445": {
-      "href": "https://data.source.coop/dataforcanada/d4c-datapkg-environment-climate-health/archive/opensensor.space/enviroplus/station=019d97ff-3220-74fc-8923-f9fb69e2273d/year=2026/month=04/day=26/data_0445.parquet",
+    "health_0345": {
+      "href": "https://data.source.coop/dataforcanada/d4c-datapkg-environment-climate-health/archive/opensensor.space/enviroplus-health/station=019d97ff-3220-74fc-8923-f9fb69e2273d/year=2026/month=05/day=05/health_0345.parquet",
       "type": "application/x-parquet",
-      "title": "data_0445.parquet",
+      "title": "health_0345.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "timestamp",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "cpu_temp_c",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "cpu_load_1min",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "cpu_load_5min",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "cpu_load_15min",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "memory_total_mb",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "memory_available_mb",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "memory_percent_used",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "disk_total_gb",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "disk_free_gb",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "disk_percent_used",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "wifi_ssid",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "wifi_signal_dbm",
+          "type": "BIGINT"
+        },
+        {
+          "name": "wifi_quality_percent",
+          "type": "BIGINT"
+        },
+        {
+          "name": "ip_address",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "clock_synced",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "ntp_offset_ms",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "uptime_seconds",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "power_source",
+          "type": "INTEGER"
+        },
+        {
+          "name": "battery_percent",
+          "type": "INTEGER"
+        },
+        {
+          "name": "cpu_voltage_v",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "throttled_hex",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "day",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "month",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "station",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "year",
+          "type": "BIGINT"
+        }
+      ],
+      "table:row_count": 15
+    },
+    "health_1745": {
+      "href": "https://data.source.coop/dataforcanada/d4c-datapkg-environment-climate-health/archive/opensensor.space/enviroplus-health/station=019d97ff-3220-74fc-8923-f9fb69e2273d/year=2026/month=05/day=06/health_1745.parquet",
+      "type": "application/x-parquet",
+      "title": "health_1745.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "timestamp",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "cpu_temp_c",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "cpu_load_1min",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "cpu_load_5min",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "cpu_load_15min",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "memory_total_mb",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "memory_available_mb",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "memory_percent_used",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "disk_total_gb",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "disk_free_gb",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "disk_percent_used",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "wifi_ssid",
+          "type": "INTEGER"
+        },
+        {
+          "name": "wifi_signal_dbm",
+          "type": "INTEGER"
+        },
+        {
+          "name": "wifi_quality_percent",
+          "type": "INTEGER"
+        },
+        {
+          "name": "ip_address",
+          "type": "INTEGER"
+        },
+        {
+          "name": "clock_synced",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "ntp_offset_ms",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "uptime_seconds",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "power_source",
+          "type": "INTEGER"
+        },
+        {
+          "name": "battery_percent",
+          "type": "INTEGER"
+        },
+        {
+          "name": "cpu_voltage_v",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "throttled_hex",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "day",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "month",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "station",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "year",
+          "type": "BIGINT"
+        }
+      ],
+      "table:row_count": 14
+    },
+    "health_0200": {
+      "href": "https://data.source.coop/dataforcanada/d4c-datapkg-environment-climate-health/archive/opensensor.space/enviroplus-health/station=019d97ff-3220-74fc-8923-f9fb69e2273d/year=2026/month=05/day=07/health_0200.parquet",
+      "type": "application/x-parquet",
+      "title": "health_0200.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "timestamp",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "cpu_temp_c",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "cpu_load_1min",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "cpu_load_5min",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "cpu_load_15min",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "memory_total_mb",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "memory_available_mb",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "memory_percent_used",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "disk_total_gb",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "disk_free_gb",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "disk_percent_used",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "wifi_ssid",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "wifi_signal_dbm",
+          "type": "BIGINT"
+        },
+        {
+          "name": "wifi_quality_percent",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "ip_address",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "clock_synced",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "ntp_offset_ms",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "uptime_seconds",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "power_source",
+          "type": "INTEGER"
+        },
+        {
+          "name": "battery_percent",
+          "type": "INTEGER"
+        },
+        {
+          "name": "cpu_voltage_v",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "throttled_hex",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "day",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "month",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "station",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "year",
+          "type": "BIGINT"
+        }
+      ],
+      "table:row_count": 15
+    },
+    "health_0915": {
+      "href": "https://data.source.coop/dataforcanada/d4c-datapkg-environment-climate-health/archive/opensensor.space/enviroplus-health/station=019d97ff-3220-74fc-8923-f9fb69e2273d/year=2026/month=05/day=08/health_0915.parquet",
+      "type": "application/x-parquet",
+      "title": "health_0915.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "timestamp",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "cpu_temp_c",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "cpu_load_1min",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "cpu_load_5min",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "cpu_load_15min",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "memory_total_mb",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "memory_available_mb",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "memory_percent_used",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "disk_total_gb",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "disk_free_gb",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "disk_percent_used",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "wifi_ssid",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "wifi_signal_dbm",
+          "type": "BIGINT"
+        },
+        {
+          "name": "wifi_quality_percent",
+          "type": "BIGINT"
+        },
+        {
+          "name": "ip_address",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "clock_synced",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "ntp_offset_ms",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "uptime_seconds",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "power_source",
+          "type": "INTEGER"
+        },
+        {
+          "name": "battery_percent",
+          "type": "INTEGER"
+        },
+        {
+          "name": "cpu_voltage_v",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "throttled_hex",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "day",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "month",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "station",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "year",
+          "type": "BIGINT"
+        }
+      ],
+      "table:row_count": 15
+    },
+    "health_0315": {
+      "href": "https://data.source.coop/dataforcanada/d4c-datapkg-environment-climate-health/archive/opensensor.space/enviroplus-health/station=019d97ff-3220-74fc-8923-f9fb69e2273d/year=2026/month=05/day=09/health_0315.parquet",
+      "type": "application/x-parquet",
+      "title": "health_0315.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "timestamp",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "cpu_temp_c",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "cpu_load_1min",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "cpu_load_5min",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "cpu_load_15min",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "memory_total_mb",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "memory_available_mb",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "memory_percent_used",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "disk_total_gb",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "disk_free_gb",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "disk_percent_used",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "wifi_ssid",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "wifi_signal_dbm",
+          "type": "BIGINT"
+        },
+        {
+          "name": "wifi_quality_percent",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "ip_address",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "clock_synced",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "ntp_offset_ms",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "uptime_seconds",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "power_source",
+          "type": "INTEGER"
+        },
+        {
+          "name": "battery_percent",
+          "type": "INTEGER"
+        },
+        {
+          "name": "cpu_voltage_v",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "throttled_hex",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "day",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "month",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "station",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "year",
+          "type": "BIGINT"
+        }
+      ],
+      "table:row_count": 15
+    },
+    "health_0730": {
+      "href": "https://data.source.coop/dataforcanada/d4c-datapkg-environment-climate-health/archive/opensensor.space/enviroplus-health/station=019d97ff-3220-74fc-8923-f9fb69e2273d/year=2026/month=05/day=11/health_0730.parquet",
+      "type": "application/x-parquet",
+      "title": "health_0730.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "timestamp",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "cpu_temp_c",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "cpu_load_1min",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "cpu_load_5min",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "cpu_load_15min",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "memory_total_mb",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "memory_available_mb",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "memory_percent_used",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "disk_total_gb",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "disk_free_gb",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "disk_percent_used",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "wifi_ssid",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "wifi_signal_dbm",
+          "type": "BIGINT"
+        },
+        {
+          "name": "wifi_quality_percent",
+          "type": "BIGINT"
+        },
+        {
+          "name": "ip_address",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "clock_synced",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "ntp_offset_ms",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "uptime_seconds",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "power_source",
+          "type": "INTEGER"
+        },
+        {
+          "name": "battery_percent",
+          "type": "INTEGER"
+        },
+        {
+          "name": "cpu_voltage_v",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "throttled_hex",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "day",
+          "type": "BIGINT"
+        },
+        {
+          "name": "month",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "station",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "year",
+          "type": "BIGINT"
+        }
+      ],
+      "table:row_count": 14
+    },
+    "health_0115": {
+      "href": "https://data.source.coop/dataforcanada/d4c-datapkg-environment-climate-health/archive/opensensor.space/enviroplus-health/station=019d97ff-3220-74fc-8923-f9fb69e2273d/year=2026/month=05/day=13/health_0115.parquet",
+      "type": "application/x-parquet",
+      "title": "health_0115.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "timestamp",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "cpu_temp_c",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "cpu_load_1min",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "cpu_load_5min",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "cpu_load_15min",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "memory_total_mb",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "memory_available_mb",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "memory_percent_used",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "disk_total_gb",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "disk_free_gb",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "disk_percent_used",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "wifi_ssid",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "wifi_signal_dbm",
+          "type": "BIGINT"
+        },
+        {
+          "name": "wifi_quality_percent",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "ip_address",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "clock_synced",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "ntp_offset_ms",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "uptime_seconds",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "power_source",
+          "type": "INTEGER"
+        },
+        {
+          "name": "battery_percent",
+          "type": "INTEGER"
+        },
+        {
+          "name": "cpu_voltage_v",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "throttled_hex",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "day",
+          "type": "BIGINT"
+        },
+        {
+          "name": "month",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "station",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "year",
+          "type": "BIGINT"
+        }
+      ],
+      "table:row_count": 14
+    },
+    "health_0130": {
+      "href": "https://data.source.coop/dataforcanada/d4c-datapkg-environment-climate-health/archive/opensensor.space/enviroplus-health/station=019d97ff-3220-74fc-8923-f9fb69e2273d/year=2026/month=05/day=14/health_0130.parquet",
+      "type": "application/x-parquet",
+      "title": "health_0130.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "timestamp",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "cpu_temp_c",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "cpu_load_1min",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "cpu_load_5min",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "cpu_load_15min",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "memory_total_mb",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "memory_available_mb",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "memory_percent_used",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "disk_total_gb",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "disk_free_gb",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "disk_percent_used",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "wifi_ssid",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "wifi_signal_dbm",
+          "type": "BIGINT"
+        },
+        {
+          "name": "wifi_quality_percent",
+          "type": "BIGINT"
+        },
+        {
+          "name": "ip_address",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "clock_synced",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "ntp_offset_ms",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "uptime_seconds",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "power_source",
+          "type": "INTEGER"
+        },
+        {
+          "name": "battery_percent",
+          "type": "INTEGER"
+        },
+        {
+          "name": "cpu_voltage_v",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "throttled_hex",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "day",
+          "type": "BIGINT"
+        },
+        {
+          "name": "month",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "station",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "year",
+          "type": "BIGINT"
+        }
+      ],
+      "table:row_count": 14
+    },
+    "health_1945": {
+      "href": "https://data.source.coop/dataforcanada/d4c-datapkg-environment-climate-health/archive/opensensor.space/enviroplus-health/station=019d97ff-3220-74fc-8923-f9fb69e2273d/year=2026/month=05/day=15/health_1945.parquet",
+      "type": "application/x-parquet",
+      "title": "health_1945.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "timestamp",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "cpu_temp_c",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "cpu_load_1min",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "cpu_load_5min",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "cpu_load_15min",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "memory_total_mb",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "memory_available_mb",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "memory_percent_used",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "disk_total_gb",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "disk_free_gb",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "disk_percent_used",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "wifi_ssid",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "wifi_signal_dbm",
+          "type": "BIGINT"
+        },
+        {
+          "name": "wifi_quality_percent",
+          "type": "BIGINT"
+        },
+        {
+          "name": "ip_address",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "clock_synced",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "ntp_offset_ms",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "uptime_seconds",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "power_source",
+          "type": "INTEGER"
+        },
+        {
+          "name": "battery_percent",
+          "type": "INTEGER"
+        },
+        {
+          "name": "cpu_voltage_v",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "throttled_hex",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "day",
+          "type": "BIGINT"
+        },
+        {
+          "name": "month",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "station",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "year",
+          "type": "BIGINT"
+        }
+      ],
+      "table:row_count": 5
+    },
+    "health_0430": {
+      "href": "https://data.source.coop/dataforcanada/d4c-datapkg-environment-climate-health/archive/opensensor.space/enviroplus-health/station=019d97ff-3220-74fc-8923-f9fb69e2273d/year=2026/month=05/day=16/health_0430.parquet",
+      "type": "application/x-parquet",
+      "title": "health_0430.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "timestamp",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "cpu_temp_c",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "cpu_load_1min",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "cpu_load_5min",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "cpu_load_15min",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "memory_total_mb",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "memory_available_mb",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "memory_percent_used",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "disk_total_gb",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "disk_free_gb",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "disk_percent_used",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "wifi_ssid",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "wifi_signal_dbm",
+          "type": "BIGINT"
+        },
+        {
+          "name": "wifi_quality_percent",
+          "type": "BIGINT"
+        },
+        {
+          "name": "ip_address",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "clock_synced",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "ntp_offset_ms",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "uptime_seconds",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "power_source",
+          "type": "INTEGER"
+        },
+        {
+          "name": "battery_percent",
+          "type": "INTEGER"
+        },
+        {
+          "name": "cpu_voltage_v",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "throttled_hex",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "day",
+          "type": "BIGINT"
+        },
+        {
+          "name": "month",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "station",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "year",
+          "type": "BIGINT"
+        }
+      ],
+      "table:row_count": 14
+    },
+    "health_0745": {
+      "href": "https://data.source.coop/dataforcanada/d4c-datapkg-environment-climate-health/archive/opensensor.space/enviroplus-health/station=019d97ff-3220-74fc-8923-f9fb69e2273d/year=2026/month=05/day=17/health_0745.parquet",
+      "type": "application/x-parquet",
+      "title": "health_0745.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "timestamp",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "cpu_temp_c",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "cpu_load_1min",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "cpu_load_5min",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "cpu_load_15min",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "memory_total_mb",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "memory_available_mb",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "memory_percent_used",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "disk_total_gb",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "disk_free_gb",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "disk_percent_used",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "wifi_ssid",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "wifi_signal_dbm",
+          "type": "BIGINT"
+        },
+        {
+          "name": "wifi_quality_percent",
+          "type": "BIGINT"
+        },
+        {
+          "name": "ip_address",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "clock_synced",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "ntp_offset_ms",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "uptime_seconds",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "power_source",
+          "type": "INTEGER"
+        },
+        {
+          "name": "battery_percent",
+          "type": "INTEGER"
+        },
+        {
+          "name": "cpu_voltage_v",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "throttled_hex",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "day",
+          "type": "BIGINT"
+        },
+        {
+          "name": "month",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "station",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "year",
+          "type": "BIGINT"
+        }
+      ],
+      "table:row_count": 14
+    },
+    "health_0245": {
+      "href": "https://data.source.coop/dataforcanada/d4c-datapkg-environment-climate-health/archive/opensensor.space/enviroplus-health/station=019d97ff-3220-74fc-8923-f9fb69e2273d/year=2026/month=05/day=19/health_0245.parquet",
+      "type": "application/x-parquet",
+      "title": "health_0245.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "timestamp",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "cpu_temp_c",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "cpu_load_1min",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "cpu_load_5min",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "cpu_load_15min",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "memory_total_mb",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "memory_available_mb",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "memory_percent_used",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "disk_total_gb",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "disk_free_gb",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "disk_percent_used",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "wifi_ssid",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "wifi_signal_dbm",
+          "type": "BIGINT"
+        },
+        {
+          "name": "wifi_quality_percent",
+          "type": "BIGINT"
+        },
+        {
+          "name": "ip_address",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "clock_synced",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "ntp_offset_ms",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "uptime_seconds",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "power_source",
+          "type": "INTEGER"
+        },
+        {
+          "name": "battery_percent",
+          "type": "INTEGER"
+        },
+        {
+          "name": "cpu_voltage_v",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "throttled_hex",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "day",
+          "type": "BIGINT"
+        },
+        {
+          "name": "month",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "station",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "year",
+          "type": "BIGINT"
+        }
+      ],
+      "table:row_count": 15
+    },
+    "health_2345": {
+      "href": "https://data.source.coop/dataforcanada/d4c-datapkg-environment-climate-health/archive/opensensor.space/enviroplus-health/station=019d97ff-3220-74fc-8923-f9fb69e2273d/year=2026/month=05/day=22/health_2345.parquet",
+      "type": "application/x-parquet",
+      "title": "health_2345.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "timestamp",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "cpu_temp_c",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "cpu_load_1min",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "cpu_load_5min",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "cpu_load_15min",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "memory_total_mb",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "memory_available_mb",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "memory_percent_used",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "disk_total_gb",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "disk_free_gb",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "disk_percent_used",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "wifi_ssid",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "wifi_signal_dbm",
+          "type": "BIGINT"
+        },
+        {
+          "name": "wifi_quality_percent",
+          "type": "BIGINT"
+        },
+        {
+          "name": "ip_address",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "clock_synced",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "ntp_offset_ms",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "uptime_seconds",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "power_source",
+          "type": "INTEGER"
+        },
+        {
+          "name": "battery_percent",
+          "type": "INTEGER"
+        },
+        {
+          "name": "cpu_voltage_v",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "throttled_hex",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "day",
+          "type": "BIGINT"
+        },
+        {
+          "name": "month",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "station",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "year",
+          "type": "BIGINT"
+        }
+      ],
+      "table:row_count": 15
+    },
+    "data_1833": {
+      "href": "https://data.source.coop/dataforcanada/d4c-datapkg-environment-climate-health/archive/opensensor.space/enviroplus/station=019d97ff-3220-74fc-8923-f9fb69e2273d/year=2026/month=04/day=18/data_1833.parquet",
+      "type": "application/x-parquet",
+      "title": "data_1833.parquet",
       "roles": [
         "data"
       ],
@@ -1166,14 +2685,656 @@
         {
           "name": "station",
           "type": "VARCHAR",
-          "description": "[placename] Monitoring station identifier"
+          "description": "[placename] Monitoring station name/identifier encoding geographic deployment location; present in all data assets"
         },
         {
           "name": "year",
           "type": "BIGINT"
         }
       ],
-      "table:row_count": 178
+      "table:row_count": 1
+    },
+    "data_1630": {
+      "href": "https://data.source.coop/dataforcanada/d4c-datapkg-environment-climate-health/archive/opensensor.space/enviroplus/station=019d97ff-3220-74fc-8923-f9fb69e2273d/year=2026/month=04/day=23/data_1630.parquet",
+      "type": "application/x-parquet",
+      "title": "data_1630.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "timestamp",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "temperature",
+          "type": "FLOAT"
+        },
+        {
+          "name": "raw_temperature",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pressure",
+          "type": "FLOAT"
+        },
+        {
+          "name": "humidity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "raw_humidity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "oxidised",
+          "type": "FLOAT"
+        },
+        {
+          "name": "reducing",
+          "type": "FLOAT"
+        },
+        {
+          "name": "nh3",
+          "type": "FLOAT"
+        },
+        {
+          "name": "lux",
+          "type": "FLOAT"
+        },
+        {
+          "name": "proximity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm1",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm25",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm10",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_03um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_05um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_10um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_25um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_50um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_100um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "day",
+          "type": "BIGINT"
+        },
+        {
+          "name": "month",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "station",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "year",
+          "type": "BIGINT"
+        }
+      ],
+      "table:row_count": 1
+    },
+    "data_1715": {
+      "href": "https://data.source.coop/dataforcanada/d4c-datapkg-environment-climate-health/archive/opensensor.space/enviroplus/station=019d97ff-3220-74fc-8923-f9fb69e2273d/year=2026/month=04/day=26/data_1715.parquet",
+      "type": "application/x-parquet",
+      "title": "data_1715.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "timestamp",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "temperature",
+          "type": "FLOAT"
+        },
+        {
+          "name": "raw_temperature",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pressure",
+          "type": "FLOAT"
+        },
+        {
+          "name": "humidity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "raw_humidity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "oxidised",
+          "type": "FLOAT"
+        },
+        {
+          "name": "reducing",
+          "type": "FLOAT"
+        },
+        {
+          "name": "nh3",
+          "type": "FLOAT"
+        },
+        {
+          "name": "lux",
+          "type": "FLOAT"
+        },
+        {
+          "name": "proximity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm1",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm25",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm10",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_03um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_05um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_10um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_25um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_50um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_100um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "day",
+          "type": "BIGINT"
+        },
+        {
+          "name": "month",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "station",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "year",
+          "type": "BIGINT"
+        }
+      ],
+      "table:row_count": 8
+    },
+    "data_2016": {
+      "href": "https://data.source.coop/dataforcanada/d4c-datapkg-environment-climate-health/archive/opensensor.space/enviroplus/station=019d97ff-3220-74fc-8923-f9fb69e2273d/year=2026/month=04/day=30/data_2016.parquet",
+      "type": "application/x-parquet",
+      "title": "data_2016.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "timestamp",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "temperature",
+          "type": "FLOAT"
+        },
+        {
+          "name": "raw_temperature",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pressure",
+          "type": "FLOAT"
+        },
+        {
+          "name": "humidity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "raw_humidity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "oxidised",
+          "type": "FLOAT"
+        },
+        {
+          "name": "reducing",
+          "type": "FLOAT"
+        },
+        {
+          "name": "nh3",
+          "type": "FLOAT"
+        },
+        {
+          "name": "lux",
+          "type": "FLOAT"
+        },
+        {
+          "name": "proximity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm1",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm25",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm10",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_03um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_05um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_10um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_25um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_50um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_100um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "day",
+          "type": "BIGINT"
+        },
+        {
+          "name": "month",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "station",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "year",
+          "type": "BIGINT"
+        }
+      ],
+      "table:row_count": 1
+    },
+    "data_2115": {
+      "href": "https://data.source.coop/dataforcanada/d4c-datapkg-environment-climate-health/archive/opensensor.space/enviroplus/station=019d97ff-3220-74fc-8923-f9fb69e2273d/year=2026/month=05/day=03/data_2115.parquet",
+      "type": "application/x-parquet",
+      "title": "data_2115.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "timestamp",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "temperature",
+          "type": "FLOAT"
+        },
+        {
+          "name": "raw_temperature",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pressure",
+          "type": "FLOAT"
+        },
+        {
+          "name": "humidity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "raw_humidity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "oxidised",
+          "type": "FLOAT"
+        },
+        {
+          "name": "reducing",
+          "type": "FLOAT"
+        },
+        {
+          "name": "nh3",
+          "type": "FLOAT"
+        },
+        {
+          "name": "lux",
+          "type": "FLOAT"
+        },
+        {
+          "name": "proximity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm1",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm25",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm10",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_03um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_05um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_10um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_25um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_50um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_100um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "day",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "month",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "station",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "year",
+          "type": "BIGINT"
+        }
+      ],
+      "table:row_count": 18
+    },
+    "data_0130": {
+      "href": "https://data.source.coop/dataforcanada/d4c-datapkg-environment-climate-health/archive/opensensor.space/enviroplus/station=019d97ff-3220-74fc-8923-f9fb69e2273d/year=2026/month=05/day=10/data_0130.parquet",
+      "type": "application/x-parquet",
+      "title": "data_0130.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "timestamp",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "temperature",
+          "type": "FLOAT"
+        },
+        {
+          "name": "raw_temperature",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pressure",
+          "type": "FLOAT"
+        },
+        {
+          "name": "humidity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "raw_humidity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "oxidised",
+          "type": "FLOAT"
+        },
+        {
+          "name": "reducing",
+          "type": "FLOAT"
+        },
+        {
+          "name": "nh3",
+          "type": "FLOAT"
+        },
+        {
+          "name": "lux",
+          "type": "FLOAT"
+        },
+        {
+          "name": "proximity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm1",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm25",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm10",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_03um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_05um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_10um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_25um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_50um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_100um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "day",
+          "type": "BIGINT"
+        },
+        {
+          "name": "month",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "station",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "year",
+          "type": "BIGINT"
+        }
+      ],
+      "table:row_count": 2
+    },
+    "data_1801": {
+      "href": "https://data.source.coop/dataforcanada/d4c-datapkg-environment-climate-health/archive/opensensor.space/enviroplus/station=019d97ff-3220-74fc-8923-f9fb69e2273d/year=2026/month=05/day=12/data_1801.parquet",
+      "type": "application/x-parquet",
+      "title": "data_1801.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "timestamp",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "temperature",
+          "type": "FLOAT"
+        },
+        {
+          "name": "raw_temperature",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pressure",
+          "type": "FLOAT"
+        },
+        {
+          "name": "humidity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "raw_humidity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "oxidised",
+          "type": "FLOAT"
+        },
+        {
+          "name": "reducing",
+          "type": "FLOAT"
+        },
+        {
+          "name": "nh3",
+          "type": "FLOAT"
+        },
+        {
+          "name": "lux",
+          "type": "FLOAT"
+        },
+        {
+          "name": "proximity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm1",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm25",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm10",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_03um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_05um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_10um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_25um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_50um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_100um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "day",
+          "type": "BIGINT"
+        },
+        {
+          "name": "month",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "station",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "year",
+          "type": "BIGINT"
+        }
+      ],
+      "table:row_count": 1
     }
   },
   "links": [
@@ -1188,17 +3349,20 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "account_id": "dataforcanada",
-  "data_mode": "open",
+  "visibility": "public",
   "disabled": false,
-  "product_id": "d4c-datapkg-environment-climate-health",
-  "total_bytes": 14776106,
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
+  "account_id": "dataforcanada",
+  "exts": {
+    "parquet": 1470
+  },
+  "product_id": "d4c-datapkg-environment-climate-health",
+  "data_mode": "open",
   "created_at": "2026-02-26T11:35:12.789Z",
-  "file_count": 1470,
+  "updated_at": "2026-02-27T22:33:33.990Z",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -1212,16 +3376,12 @@
     }
   },
   "featured": 0,
-  "exts": {
-    "parquet": 1470
-  },
-  "visibility": "public",
-  "updated_at": "2026-02-27T22:33:33.990Z",
+  "total_bytes": 14776106,
+  "file_count": 1470,
   "_review": [
     "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
-    "providers: role [producer] for 'Data for Canada' is an AI guess \u2014 Inferred as producer from API title; no explicit provider attribution in README. Verify before flipping to _state: reviewed.",
-    "extent.spatial.bbox: omitted; spatial reference is categorical via [health_0000.station (placename), health_1315.station (placename), health_1330.station (placename), health_1345.station (placename), health_1400.station (placename), data_0345.station (placename), data_0400.station (placename), data_0415.station (placename), data_0430.station (placename), data_0445.station (placename)]. Add bbox once a placename \u2192 bbox gazetteer is available."
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [data_1833.station (placename), health_0945.station (placename)]. Add bbox once a placename \u2192 bbox gazetteer is available."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-05-26T18:42:17+00:00"
+  "cataloged_at": "2026-06-04T02:02:21+00:00"
 }

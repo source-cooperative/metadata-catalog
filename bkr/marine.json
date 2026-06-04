@@ -1,15 +1,87 @@
 {
-  "account_id": "bkr",
-  "product_id": "marine",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "bkr/marine",
   "title": "Copernicus Marine Wave and Ocean Products",
-  "description": "A set of Copernicus Marine wave and ocean reanalysis and analysis at native resolution, in Icechunk format. Some values were rescaled to float16 to save space, if the conversion resulted in minimal change to the values.",
-  "keywords": [],
+  "description": "A global collection of Copernicus Marine Service wave and ocean reanalysis and near-real-time analysis products at native model resolution, stored in Icechunk format. Temporal coverage spans 1980 to 2026 with near-global spatial extent. Select variables were rescaled to float16 to reduce storage footprint with minimal loss of precision.",
+  "keywords": [
+    "oceanography",
+    "reanalysis",
+    "wave-modeling",
+    "copernicus-marine",
+    "sea-state",
+    "ocean-analysis"
+  ],
+  "providers": [
+    {
+      "name": "Copernicus Marine Service (CMEMS)",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/bkr/marine"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -179.8333282,
+          -89.8000031,
+          -179.6000061,
+          90.0
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "1980-01-01T00:00:00",
+          "2026-01-01T18:00:00"
+        ]
+      ]
+    }
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/bkr/marine/",
+      "type": "application/octet-stream",
+      "title": "Dataset files (3 x .icechunk)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/bkr/marine/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/bkr/marine",
+      "title": "Source Cooperative product page"
+    }
+  ],
+  "account_id": "bkr",
   "created_at": "2026-01-17T09:06:09.257Z",
-  "updated_at": "2026-01-17T09:06:09.257Z",
-  "visibility": "public",
-  "disabled": false,
   "featured": 0,
+  "disabled": false,
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
   "data_mode": "open",
+  "product_id": "marine",
+  "file_count": 3952152,
+  "total_bytes": 12094786719221,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -22,18 +94,16 @@
       "prefix": "bkr/marine/"
     }
   },
-  "file_count": 3952152,
-  "total_bytes": 12094786719221,
   "exts": {
     "": 3952149,
     "json": 3
   },
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "id": "bkr/marine",
-  "cataloged_at": "2026-05-29T20:23:26+00:00",
-  "store_format": "icechunk"
+  "updated_at": "2026-01-17T09:06:09.257Z",
+  "visibility": "public",
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
+    "providers: role [producer, licensor] for 'Copernicus Marine Service (CMEMS)' is an AI guess \u2014 CMEMS is the named source of these products; licensor role inferred from standard Copernicus Marine Service open-data terms, not explicitly stated here.. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-06-04T01:39:52+00:00"
 }

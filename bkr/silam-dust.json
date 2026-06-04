@@ -1,34 +1,74 @@
 {
-  "account_id": "bkr",
-  "product_id": "silam-dust",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "bkr/silam-dust",
   "title": "SILAM Global Dust Model Forecasts",
-  "description": "Finnish SILAM Global Dust Model Forecasts, in Zarr format, at a 0.1 degree resolution. Additionally includes the FMI aerosol AWS forecast in Icechunk.",
+  "description": "Global atmospheric dust model forecasts produced by the Finnish Meteorological Institute (FMI) using the SILAM (System for Integrated modeLling of Atmospheric coMposition) model, stored in Zarr format at 0.1-degree spatial resolution with global coverage. Also includes FMI aerosol AWS forecast data in Icechunk format.",
   "keywords": [
     "aerosols",
     "dust",
-    "nwp",
-    "forecast"
+    "forecast",
+    "numerical-weather-prediction",
+    "atmospheric-modeling",
+    "atmosphere"
   ],
-  "created_at": "2024-04-19T11:07:33.429399+00:00",
-  "updated_at": "2025-08-21T16:39:55.568Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": "open",
-  "mirrors": {
-    "aws-opendata-us-west-2": {
-      "storage_type": "s3",
-      "is_primary": true,
-      "connection_id": "aws-opendata-us-west-2",
-      "config": {
-        "region": "us-west-2",
-        "bucket": "aws-opendata-us-west-2"
-      },
-      "prefix": "bkr/silam-dust/"
+  "providers": [
+    {
+      "name": "Finnish Meteorological Institute (FMI)",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/bkr/silam-dust"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -179.9499969,
+          -88.8499985,
+          179.9499969,
+          88.8499985
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
     }
   },
-  "file_count": 13289839,
-  "total_bytes": 16249183431154,
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/bkr/silam-dust/",
+      "type": "application/vnd+zarr",
+      "title": "Dataset files (3 x .zarr)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/bkr/silam-dust/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/bkr/silam-dust",
+      "title": "Source Cooperative product page"
+    }
+  ],
   "exts": {
     "": 1159427,
     "0": 1031043,
@@ -56,12 +96,35 @@
     "zgroup": 1,
     "zmetadata": 1
   },
-  "_state": "seed",
+  "product_id": "silam-dust",
+  "updated_at": "2025-08-21T16:39:55.568Z",
+  "file_count": 13289839,
+  "visibility": "public",
+  "created_at": "2024-04-19T11:07:33.429399+00:00",
+  "total_bytes": 16249183431154,
+  "data_mode": "open",
+  "mirrors": {
+    "aws-opendata-us-west-2": {
+      "storage_type": "s3",
+      "is_primary": true,
+      "connection_id": "aws-opendata-us-west-2",
+      "config": {
+        "region": "us-west-2",
+        "bucket": "aws-opendata-us-west-2"
+      },
+      "prefix": "bkr/silam-dust/"
+    }
+  },
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "id": "bkr/silam-dust",
-  "cataloged_at": "2026-05-29T20:23:44+00:00",
-  "store_format": "zarr"
+  "featured": 0,
+  "account_id": "bkr",
+  "disabled": false,
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-06-04T01:40:53+00:00"
 }

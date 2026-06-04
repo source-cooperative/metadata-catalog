@@ -3,14 +3,14 @@
   "stac_version": "1.1.0",
   "id": "alexgleith/gebco-2024",
   "title": "General Bathymetric Chart of the Oceans (GEBCO) from 2024",
-  "description": "GEBCO_2024 is a global terrain model covering both ocean and land, providing elevation data in meters at a 15 arc-second interval grid. It includes a Type Identifier (TID) Grid indicating source data types, and incorporates under-ice topography/bathymetry for Greenland and Antarctica. Note: this dataset has been superseded by a multi-year version at ausantarctic/gebco.",
+  "description": "GEBCO_2024 is a global terrain model covering both ocean and land, providing elevation data in meters at a 15 arc-second interval grid. It includes a Type Identifier (TID) Grid indicating the types of source data, and incorporates under-ice topography and bathymetry for Greenland and Antarctica. This 2024 release has since been superseded by a multi-year version.",
   "keywords": [
     "bathymetry",
     "ocean",
     "elevation",
     "terrain",
-    "remote-sensing",
-    "land-use"
+    "topography",
+    "remote-sensing"
   ],
   "providers": [
     {
@@ -77,16 +77,10 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "created_at": "2025-03-03T03:12:08.417Z",
-  "updated_at": "2025-08-21T16:39:55.568Z",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "account_id": "alexgleith",
-  "product_id": "gebco-2024",
   "featured": 1,
-  "file_count": 3,
+  "data_mode": "open",
+  "visibility": "public",
+  "created_at": "2025-03-03T03:12:08.417Z",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -99,20 +93,24 @@
       "prefix": "alexgleith/gebco-2024/"
     }
   },
-  "data_mode": "open",
-  "total_bytes": 4598601700,
-  "visibility": "public",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "account_id": "alexgleith",
+  "file_count": 3,
+  "updated_at": "2025-08-21T16:39:55.568Z",
   "exts": {
     "tif": 1,
     "json": 1,
     "md": 1
   },
   "disabled": false,
-  "readme": "## README.md\n# GEBCO 2024\n\n## IMPORTANT NOTE\n\nThis has been replaced by a multi-year version of the same.\n\nSee: [ausantarctic/gebco](https://source.coop/ausantarctic/gebco)\n\n---\n\n## Original docs below\n\nData originally accessed from the\n[GEBCO website](https://www.gebco.net/data_and_products/gridded_bathymetry_data/).\n\nGEBCO\u2019s current gridded bathymetric data set, the GEBCO_2024 Grid, is a global terrain model for ocean and land, providing elevation data, in meters, on a 15 arc-second interval grid. It is accompanied by a Type Identifier (TID) Grid that gives information on the types of source data that the GEBCO_2024 Grid is based on.\n\nThis release includes a version of the grid with under-ice topography/bathymetry information for Greenland and Antarctica.\n\nFind out information about [terms of use and attribution here](https://www.gebco.net/data_and_products/gridded_bathymetry_data/#a1).\n\n## Access data\n\n### Stream data\n\nThe cloud optimised geotiff can be used directly in QGIS or\nother applications using this URL:\n`https://data.source.coop/alexgleith/gebco-2024/GEBCO_2024`.\n\n### Example to load as Xarray\n\n```python\nfrom odc.stac import load\nfrom pystac import Item\n\n# Bounding box around Tasmania\nbbox = [140.0, -45.0, 150.0, -35.0]\n\n# Get the item as a PySTAC Item\nitem = Item.from_file(\n    \"https://data.source.coop/alexgleith/gebco-2024/GEBCO_2024.stac-item.json\"\n)\n\n# Load using odc.stac.load\ndata = load(\n    [item],\n    bbox=bbox,\n    chunks={\"latitude\": 1024, \"longitude\": 1024},\n)\n\n# Plot an interactive map\ndata.elevation.odc.explore(vmin=-3000, vmax=3000, cmap=\"terrain\")\n```\n\n### Downloading\n\nWhile the idea of cloud native data formats is to not download, you can\ndownload this data using this following URL:\n`https://s3.us-west-2.amazonaws.com/us-west-2.opendata.source.coop/alexgleith/gebco-2024/GEBCO_2024.tif`\n",
+  "total_bytes": 4598601700,
+  "product_id": "gebco-2024",
   "_review": [
-    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
-    "providers: role [processor, host] for 'alexgleith' is an AI guess \u2014 Assumed processor/host based on being the Source Cooperative account that published the COG-converted dataset.. Verify before flipping to _state: reviewed."
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-05-26T18:30:19+00:00"
+  "cataloged_at": "2026-06-04T02:17:50+00:00"
 }

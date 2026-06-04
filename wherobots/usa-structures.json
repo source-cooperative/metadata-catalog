@@ -1,16 +1,21 @@
 {
   "type": "Collection",
   "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
   "id": "wherobots/usa-structures",
   "title": "US Structures from Oak Ridge National Laboratory",
-  "description": "Comprehensive geospatial database of over 125 million building structures across the U.S. and its territories, capturing every structure larger than 450 square feet. Developed by Oak Ridge National Laboratory using satellite and aerial imagery processed through advanced geospatial science, high-performance computing, and artificial intelligence techniques.",
+  "description": "A comprehensive geospatial database of over 125 million building structures across the United States and its territories, covering every structure larger than 450 square feet. Developed by Oak Ridge National Laboratory using satellite and aerial imagery processed with high-performance computing and artificial intelligence. Each record includes building footprint geometry, occupancy classification, property address attributes, physical dimensions (height, floor area), elevation data, and source imagery metadata.",
   "license": "other",
   "keywords": [
-    "buildings",
     "remote-sensing",
-    "infrastructure",
     "land-use",
-    "emergency-response"
+    "buildings",
+    "building-footprints",
+    "infrastructure",
+    "emergency-response",
+    "occupancy-classification"
   ],
   "providers": [
     {
@@ -32,10 +37,10 @@
     "spatial": {
       "bbox": [
         [
-          -176.675065,
-          -14.3632028,
-          146.0618296,
-          71.3334422
+          null,
+          null,
+          null,
+          null
         ]
       ]
     },
@@ -52,13 +57,1288 @@
     "item_count": 67330788
   },
   "assets": {
-    "data": {
-      "href": "https://data.source.coop/wherobots/usa-structures/",
+    "part-00000-170892fe-0fe0-43c1-999d-f0911ce43365-c000.zstd": {
+      "href": "https://data.source.coop/wherobots/usa-structures/geoparquet/part-00000-170892fe-0fe0-43c1-999d-f0911ce43365-c000.zstd.parquet",
       "type": "application/x-parquet",
-      "title": "Dataset files (292 x .parquet)",
+      "title": "part-00000-170892fe-0fe0-43c1-999d-f0911ce43365-c000.zstd.parquet",
       "roles": [
         "data"
-      ]
+      ],
+      "table:columns": [
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:4326')",
+          "description": "[geometry] Building footprint polygon in EPSG:4326"
+        },
+        {
+          "name": "BUILD_ID",
+          "type": "INTEGER"
+        },
+        {
+          "name": "OCC_CLS",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PRIM_OCC",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "SEC_OCC",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PROP_ADDR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PROP_CITY",
+          "type": "VARCHAR",
+          "description": "[placename] Property city name"
+        },
+        {
+          "name": "PROP_ST",
+          "type": "VARCHAR",
+          "description": "[admin_code] Property state abbreviation"
+        },
+        {
+          "name": "PROP_ZIP",
+          "type": "VARCHAR",
+          "description": "[zipcode] Property ZIP code"
+        },
+        {
+          "name": "OUTBLDG",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "HEIGHT",
+          "type": "FLOAT"
+        },
+        {
+          "name": "SQMETERS",
+          "type": "FLOAT"
+        },
+        {
+          "name": "SQFEET",
+          "type": "FLOAT"
+        },
+        {
+          "name": "H_ADJ_ELEV",
+          "type": "FLOAT"
+        },
+        {
+          "name": "L_ADJ_ELEV",
+          "type": "FLOAT"
+        },
+        {
+          "name": "FIPS",
+          "type": "VARCHAR",
+          "description": "[admin_code] FIPS county code"
+        },
+        {
+          "name": "CENSUSCODE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PROD_DATE",
+          "type": "TIMESTAMP"
+        },
+        {
+          "name": "SOURCE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "USNG",
+          "type": "VARCHAR",
+          "description": "[spatial_index] US National Grid coordinate"
+        },
+        {
+          "name": "LONGITUDE",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "LATITUDE",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "IMAGE_NAME",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "IMAGE_DATE",
+          "type": "TIMESTAMP"
+        },
+        {
+          "name": "VAL_METHOD",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "REMARKS",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "UUID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        },
+        {
+          "name": "geohash",
+          "type": "VARCHAR",
+          "description": "[spatial_index] Geohash spatial index"
+        }
+      ],
+      "table:row_count": 12965123
+    },
+    "part-00001-170892fe-0fe0-43c1-999d-f0911ce43365-c000.zstd": {
+      "href": "https://data.source.coop/wherobots/usa-structures/geoparquet/part-00001-170892fe-0fe0-43c1-999d-f0911ce43365-c000.zstd.parquet",
+      "type": "application/x-parquet",
+      "title": "part-00001-170892fe-0fe0-43c1-999d-f0911ce43365-c000.zstd.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:4326')"
+        },
+        {
+          "name": "BUILD_ID",
+          "type": "INTEGER"
+        },
+        {
+          "name": "OCC_CLS",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PRIM_OCC",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "SEC_OCC",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PROP_ADDR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PROP_CITY",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PROP_ST",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PROP_ZIP",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "OUTBLDG",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "HEIGHT",
+          "type": "FLOAT"
+        },
+        {
+          "name": "SQMETERS",
+          "type": "FLOAT"
+        },
+        {
+          "name": "SQFEET",
+          "type": "FLOAT"
+        },
+        {
+          "name": "H_ADJ_ELEV",
+          "type": "FLOAT"
+        },
+        {
+          "name": "L_ADJ_ELEV",
+          "type": "FLOAT"
+        },
+        {
+          "name": "FIPS",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "CENSUSCODE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PROD_DATE",
+          "type": "TIMESTAMP"
+        },
+        {
+          "name": "SOURCE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "USNG",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "LONGITUDE",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "LATITUDE",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "IMAGE_NAME",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "IMAGE_DATE",
+          "type": "TIMESTAMP"
+        },
+        {
+          "name": "VAL_METHOD",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "REMARKS",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "UUID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        },
+        {
+          "name": "geohash",
+          "type": "VARCHAR"
+        }
+      ],
+      "table:row_count": 13310819
+    },
+    "part-00002-170892fe-0fe0-43c1-999d-f0911ce43365-c000.zstd": {
+      "href": "https://data.source.coop/wherobots/usa-structures/geoparquet/part-00002-170892fe-0fe0-43c1-999d-f0911ce43365-c000.zstd.parquet",
+      "type": "application/x-parquet",
+      "title": "part-00002-170892fe-0fe0-43c1-999d-f0911ce43365-c000.zstd.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:4326')"
+        },
+        {
+          "name": "BUILD_ID",
+          "type": "INTEGER"
+        },
+        {
+          "name": "OCC_CLS",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PRIM_OCC",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "SEC_OCC",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PROP_ADDR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PROP_CITY",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PROP_ST",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PROP_ZIP",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "OUTBLDG",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "HEIGHT",
+          "type": "FLOAT"
+        },
+        {
+          "name": "SQMETERS",
+          "type": "FLOAT"
+        },
+        {
+          "name": "SQFEET",
+          "type": "FLOAT"
+        },
+        {
+          "name": "H_ADJ_ELEV",
+          "type": "FLOAT"
+        },
+        {
+          "name": "L_ADJ_ELEV",
+          "type": "FLOAT"
+        },
+        {
+          "name": "FIPS",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "CENSUSCODE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PROD_DATE",
+          "type": "TIMESTAMP"
+        },
+        {
+          "name": "SOURCE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "USNG",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "LONGITUDE",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "LATITUDE",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "IMAGE_NAME",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "IMAGE_DATE",
+          "type": "TIMESTAMP"
+        },
+        {
+          "name": "VAL_METHOD",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "REMARKS",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "UUID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        },
+        {
+          "name": "geohash",
+          "type": "VARCHAR"
+        }
+      ],
+      "table:row_count": 13463483
+    },
+    "part-00003-170892fe-0fe0-43c1-999d-f0911ce43365-c000.zstd": {
+      "href": "https://data.source.coop/wherobots/usa-structures/geoparquet/part-00003-170892fe-0fe0-43c1-999d-f0911ce43365-c000.zstd.parquet",
+      "type": "application/x-parquet",
+      "title": "part-00003-170892fe-0fe0-43c1-999d-f0911ce43365-c000.zstd.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:4326')"
+        },
+        {
+          "name": "BUILD_ID",
+          "type": "INTEGER"
+        },
+        {
+          "name": "OCC_CLS",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PRIM_OCC",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "SEC_OCC",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PROP_ADDR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PROP_CITY",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PROP_ST",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PROP_ZIP",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "OUTBLDG",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "HEIGHT",
+          "type": "FLOAT"
+        },
+        {
+          "name": "SQMETERS",
+          "type": "FLOAT"
+        },
+        {
+          "name": "SQFEET",
+          "type": "FLOAT"
+        },
+        {
+          "name": "H_ADJ_ELEV",
+          "type": "FLOAT"
+        },
+        {
+          "name": "L_ADJ_ELEV",
+          "type": "FLOAT"
+        },
+        {
+          "name": "FIPS",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "CENSUSCODE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PROD_DATE",
+          "type": "TIMESTAMP"
+        },
+        {
+          "name": "SOURCE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "USNG",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "LONGITUDE",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "LATITUDE",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "IMAGE_NAME",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "IMAGE_DATE",
+          "type": "TIMESTAMP"
+        },
+        {
+          "name": "VAL_METHOD",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "REMARKS",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "UUID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        },
+        {
+          "name": "geohash",
+          "type": "VARCHAR"
+        }
+      ],
+      "table:row_count": 13054232
+    },
+    "part-00004-170892fe-0fe0-43c1-999d-f0911ce43365-c000.zstd": {
+      "href": "https://data.source.coop/wherobots/usa-structures/geoparquet/part-00004-170892fe-0fe0-43c1-999d-f0911ce43365-c000.zstd.parquet",
+      "type": "application/x-parquet",
+      "title": "part-00004-170892fe-0fe0-43c1-999d-f0911ce43365-c000.zstd.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:4326')"
+        },
+        {
+          "name": "BUILD_ID",
+          "type": "INTEGER"
+        },
+        {
+          "name": "OCC_CLS",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PRIM_OCC",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "SEC_OCC",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PROP_ADDR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PROP_CITY",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PROP_ST",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PROP_ZIP",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "OUTBLDG",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "HEIGHT",
+          "type": "FLOAT"
+        },
+        {
+          "name": "SQMETERS",
+          "type": "FLOAT"
+        },
+        {
+          "name": "SQFEET",
+          "type": "FLOAT"
+        },
+        {
+          "name": "H_ADJ_ELEV",
+          "type": "FLOAT"
+        },
+        {
+          "name": "L_ADJ_ELEV",
+          "type": "FLOAT"
+        },
+        {
+          "name": "FIPS",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "CENSUSCODE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PROD_DATE",
+          "type": "TIMESTAMP"
+        },
+        {
+          "name": "SOURCE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "USNG",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "LONGITUDE",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "LATITUDE",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "IMAGE_NAME",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "IMAGE_DATE",
+          "type": "TIMESTAMP"
+        },
+        {
+          "name": "VAL_METHOD",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "REMARKS",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "UUID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        },
+        {
+          "name": "geohash",
+          "type": "VARCHAR"
+        }
+      ],
+      "table:row_count": 13073270
+    },
+    "00277-943-f0a517dc-8e28-4492-af0b-ffc528441908-0-00001": {
+      "href": "https://data.source.coop/wherobots/usa-structures/iceberg/data/00277-943-f0a517dc-8e28-4492-af0b-ffc528441908-0-00001.parquet",
+      "type": "application/x-parquet",
+      "title": "00277-943-f0a517dc-8e28-4492-af0b-ffc528441908-0-00001.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "BUILD_ID",
+          "type": "INTEGER"
+        },
+        {
+          "name": "OCC_CLS",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PRIM_OCC",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "SEC_OCC",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PROP_ADDR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PROP_CITY",
+          "type": "VARCHAR",
+          "description": "[placename] Property city name"
+        },
+        {
+          "name": "PROP_ST",
+          "type": "VARCHAR",
+          "description": "[admin_code] Property state abbreviation"
+        },
+        {
+          "name": "PROP_ZIP",
+          "type": "VARCHAR",
+          "description": "[zipcode] Property ZIP code"
+        },
+        {
+          "name": "OUTBLDG",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "HEIGHT",
+          "type": "FLOAT"
+        },
+        {
+          "name": "SQMETERS",
+          "type": "FLOAT"
+        },
+        {
+          "name": "SQFEET",
+          "type": "FLOAT"
+        },
+        {
+          "name": "H_ADJ_ELEV",
+          "type": "FLOAT"
+        },
+        {
+          "name": "L_ADJ_ELEV",
+          "type": "FLOAT"
+        },
+        {
+          "name": "FIPS",
+          "type": "VARCHAR",
+          "description": "[admin_code] FIPS county code"
+        },
+        {
+          "name": "CENSUSCODE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PROD_DATE",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "SOURCE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "USNG",
+          "type": "VARCHAR",
+          "description": "[spatial_index] US National Grid coordinate"
+        },
+        {
+          "name": "LONGITUDE",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "LATITUDE",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "IMAGE_NAME",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "IMAGE_DATE",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "VAL_METHOD",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "REMARKS",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "UUID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Shape_Length",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Shape_Area",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "geom",
+          "type": "GEOMETRY('OGC:CRS84')",
+          "description": "[geometry] Building footprint polygon in OGC:CRS84"
+        }
+      ],
+      "table:row_count": 398963
+    },
+    "00278-944-f0a517dc-8e28-4492-af0b-ffc528441908-0-00001": {
+      "href": "https://data.source.coop/wherobots/usa-structures/iceberg/data/00278-944-f0a517dc-8e28-4492-af0b-ffc528441908-0-00001.parquet",
+      "type": "application/x-parquet",
+      "title": "00278-944-f0a517dc-8e28-4492-af0b-ffc528441908-0-00001.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "BUILD_ID",
+          "type": "INTEGER"
+        },
+        {
+          "name": "OCC_CLS",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PRIM_OCC",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "SEC_OCC",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PROP_ADDR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PROP_CITY",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PROP_ST",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PROP_ZIP",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "OUTBLDG",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "HEIGHT",
+          "type": "FLOAT"
+        },
+        {
+          "name": "SQMETERS",
+          "type": "FLOAT"
+        },
+        {
+          "name": "SQFEET",
+          "type": "FLOAT"
+        },
+        {
+          "name": "H_ADJ_ELEV",
+          "type": "FLOAT"
+        },
+        {
+          "name": "L_ADJ_ELEV",
+          "type": "FLOAT"
+        },
+        {
+          "name": "FIPS",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "CENSUSCODE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PROD_DATE",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "SOURCE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "USNG",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "LONGITUDE",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "LATITUDE",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "IMAGE_NAME",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "IMAGE_DATE",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "VAL_METHOD",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "REMARKS",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "UUID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Shape_Length",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Shape_Area",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "geom",
+          "type": "GEOMETRY('OGC:CRS84')"
+        }
+      ],
+      "table:row_count": 355886
+    },
+    "00279-945-f0a517dc-8e28-4492-af0b-ffc528441908-0-00001": {
+      "href": "https://data.source.coop/wherobots/usa-structures/iceberg/data/00279-945-f0a517dc-8e28-4492-af0b-ffc528441908-0-00001.parquet",
+      "type": "application/x-parquet",
+      "title": "00279-945-f0a517dc-8e28-4492-af0b-ffc528441908-0-00001.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "BUILD_ID",
+          "type": "INTEGER"
+        },
+        {
+          "name": "OCC_CLS",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PRIM_OCC",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "SEC_OCC",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PROP_ADDR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PROP_CITY",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PROP_ST",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PROP_ZIP",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "OUTBLDG",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "HEIGHT",
+          "type": "FLOAT"
+        },
+        {
+          "name": "SQMETERS",
+          "type": "FLOAT"
+        },
+        {
+          "name": "SQFEET",
+          "type": "FLOAT"
+        },
+        {
+          "name": "H_ADJ_ELEV",
+          "type": "FLOAT"
+        },
+        {
+          "name": "L_ADJ_ELEV",
+          "type": "FLOAT"
+        },
+        {
+          "name": "FIPS",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "CENSUSCODE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PROD_DATE",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "SOURCE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "USNG",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "LONGITUDE",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "LATITUDE",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "IMAGE_NAME",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "IMAGE_DATE",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "VAL_METHOD",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "REMARKS",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "UUID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Shape_Length",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Shape_Area",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "geom",
+          "type": "GEOMETRY('OGC:CRS84')"
+        }
+      ],
+      "table:row_count": 336997
+    },
+    "00280-946-f0a517dc-8e28-4492-af0b-ffc528441908-0-00001": {
+      "href": "https://data.source.coop/wherobots/usa-structures/iceberg/data/00280-946-f0a517dc-8e28-4492-af0b-ffc528441908-0-00001.parquet",
+      "type": "application/x-parquet",
+      "title": "00280-946-f0a517dc-8e28-4492-af0b-ffc528441908-0-00001.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "BUILD_ID",
+          "type": "INTEGER"
+        },
+        {
+          "name": "OCC_CLS",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PRIM_OCC",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "SEC_OCC",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PROP_ADDR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PROP_CITY",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PROP_ST",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PROP_ZIP",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "OUTBLDG",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "HEIGHT",
+          "type": "FLOAT"
+        },
+        {
+          "name": "SQMETERS",
+          "type": "FLOAT"
+        },
+        {
+          "name": "SQFEET",
+          "type": "FLOAT"
+        },
+        {
+          "name": "H_ADJ_ELEV",
+          "type": "FLOAT"
+        },
+        {
+          "name": "L_ADJ_ELEV",
+          "type": "FLOAT"
+        },
+        {
+          "name": "FIPS",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "CENSUSCODE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PROD_DATE",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "SOURCE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "USNG",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "LONGITUDE",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "LATITUDE",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "IMAGE_NAME",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "IMAGE_DATE",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "VAL_METHOD",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "REMARKS",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "UUID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Shape_Length",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Shape_Area",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "geom",
+          "type": "GEOMETRY('OGC:CRS84')"
+        }
+      ],
+      "table:row_count": 259659
+    },
+    "00281-947-f0a517dc-8e28-4492-af0b-ffc528441908-0-00001": {
+      "href": "https://data.source.coop/wherobots/usa-structures/iceberg/data/00281-947-f0a517dc-8e28-4492-af0b-ffc528441908-0-00001.parquet",
+      "type": "application/x-parquet",
+      "title": "00281-947-f0a517dc-8e28-4492-af0b-ffc528441908-0-00001.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "BUILD_ID",
+          "type": "INTEGER"
+        },
+        {
+          "name": "OCC_CLS",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PRIM_OCC",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "SEC_OCC",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PROP_ADDR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PROP_CITY",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PROP_ST",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PROP_ZIP",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "OUTBLDG",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "HEIGHT",
+          "type": "FLOAT"
+        },
+        {
+          "name": "SQMETERS",
+          "type": "FLOAT"
+        },
+        {
+          "name": "SQFEET",
+          "type": "FLOAT"
+        },
+        {
+          "name": "H_ADJ_ELEV",
+          "type": "FLOAT"
+        },
+        {
+          "name": "L_ADJ_ELEV",
+          "type": "FLOAT"
+        },
+        {
+          "name": "FIPS",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "CENSUSCODE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PROD_DATE",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "SOURCE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "USNG",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "LONGITUDE",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "LATITUDE",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "IMAGE_NAME",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "IMAGE_DATE",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "VAL_METHOD",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "REMARKS",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "UUID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Shape_Length",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Shape_Area",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "geom",
+          "type": "GEOMETRY('OGC:CRS84')"
+        }
+      ],
+      "table:row_count": 112356
     }
   },
   "links": [
@@ -73,14 +1353,17 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "product_id": "usa-structures",
-  "updated_at": "2025-08-21T16:39:55.568Z",
-  "account_id": "wherobots",
-  "visibility": "public",
-  "created_at": "2024-11-13T00:41:14.513Z",
-  "file_count": 298,
   "featured": 0,
+  "exts": {
+    "pmtiles": 1,
+    "parquet": 292,
+    "avro": 2,
+    "md": 2,
+    "json": 1
+  },
   "data_mode": "open",
+  "updated_at": "2025-08-21T16:39:55.568Z",
+  "visibility": "public",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -93,20 +1376,19 @@
       "prefix": "wherobots/usa-structures/"
     }
   },
+  "product_id": "usa-structures",
+  "account_id": "wherobots",
+  "disabled": false,
+  "created_at": "2024-11-13T00:41:14.513Z",
+  "total_bytes": 122486328289,
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "total_bytes": 122486328289,
-  "disabled": false,
-  "exts": {
-    "pmtiles": 1,
-    "parquet": 292,
-    "avro": 2,
-    "md": 2,
-    "json": 1
-  },
-  "readme": "## README.md\n# USA Structures Dataset\n\nThe **USA Structures Dataset** provides a comprehensive geospatial database of over 125 million building structures across the U.S. and its territories, capturing every structure larger than 450 square feet. Developed by Oak Ridge National Laboratory (ORNL) through the integration of advanced geospatial science, high-performance computing, and AI, this dataset processes over 1.1 petabytes of imagery. It serves as a valuable resource across various fields, supporting tasks from urban planning to emergency response with detailed location-based data. Its precise, accessible structure facilitates cross-agency collaboration, making it an essential tool for federal, local, state, tribal, and territorial organizations. The dataset accelerates tasks like damage assessments and recovery operations, aiding communities in recovering from disasters efficiently.\n\nSpecial thank you to [Mark Litwintschik](https://www.linkedin.com/feed/update/urn:li:activity:7132210177289650176/?updateEntityUrn=urn%3Ali%3Afs_feedUpdate%3A%28V2%2Curn%3Ali%3Aactivity%3A7132210177289650176%29) and his [original post](https://tech.marksblogg.com/ornl-fema-buildings.html) that outlined the initial ETL process.\n\n---\n\n## Quickstart Guide\n\nAccess to this dataset is available in **GeoParquet**, **Wherobots Havasu (Iceberg)**, and **PMTiles**. \n\n### GeoParquet\n\nYou can access the GeoParquet data directly as partitioned GeoParquet files. These are partitioned by the primary occupancy which includes:\n\n- Education\n- Residential\n- Government\n- Utility and Misc\n- Industrial\n- Agriculture\n- Unclassified\n- Assembly\n- Commercial\n\nThese files are located in `/geoparquet`.\n\n**Example code**\n\n```python\ndf = sedona.read.format(\"geoparquet\").load(YOUR_S3_SOURCE_COOP_URI + 'geoparquet/OCC_CLS=Residential/*.parquet)\ndf.printSchema()\n```\n\n### Wherobots Havasu\n\nHavasu is a spatial table format built on top of Apache Iceberg. WherobotsDB can save its in-memory geometry and raster tables to the Havasu table format and store them on AWS S3, or any other cloud file systems or object stores.\n\nHavasu supports ACID transactions, schema evolution, and time travel on spatial data including geometries and rasters. Havasu stores spatial data in Apache Parquet format on cloud storage, which is very cost effective and highly decoupled with computation.\n\nTo use these files first copy the files to an S3 bucket of your choosing. You can get access to a bucket by signing up for a Wherobots account [here](https://cloud.wherobots.com/auth/register).\n\nOnce you have done that you can add a new spatial catalog using [these instructions](https://docs.wherobots.com/latest/develop/storage-management/s3-storage-integration/?h=catalog#spatial-catalog).\n\nIf you are using your own S3 bucket please refer to [these instructions](https://docs.wherobots.com/latest/develop/storage-management/s3-storage-integration/).\n\n## PMTiles\n\nYou can use the PMTiles URL in any application or tool that supports PMTiles such as Felt, leafmap, MapLibre, and the [PM Tiles Viewer](https://pmtiles.io/)",
+  "file_count": 298,
+  "_review": [
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [part-00000-170892fe-0fe0-43c1-999d-f0911ce43365-c000.zstd.geometry (geometry), part-00000-170892fe-0fe0-43c1-999d-f0911ce43365-c000.zstd.LATITUDE/LONGITUDE (latlon), part-00000-170892fe-0fe0-43c1-999d-f0911ce43365-c000.zstd.PROP_CITY (placename), part-00000-170892fe-0fe0-43c1-999d-f0911ce43365-c000.zstd.PROP_ST (admin_code), part-00000-170892fe-0fe0-43c1-999d-f0911ce43365-c000.zstd.PROP_ZIP (zipcode), part-00000-170892fe-0fe0-43c1-999d-f0911ce43365-c000.zstd.FIPS (admin_code), part-00000-170892fe-0fe0-43c1-999d-f0911ce43365-c000.zstd.geohash (spatial_index), part-00000-170892fe-0fe0-43c1-999d-f0911ce43365-c000.zstd.USNG (spatial_index), 00277-943-f0a517dc-8e28-4492-af0b-ffc528441908-0-00001.geom (geometry), 00277-943-f0a517dc-8e28-4492-af0b-ffc528441908-0-00001.LATITUDE/LONGITUDE (latlon), 00277-943-f0a517dc-8e28-4492-af0b-ffc528441908-0-00001.PROP_CITY (placename), 00277-943-f0a517dc-8e28-4492-af0b-ffc528441908-0-00001.PROP_ST (admin_code), 00277-943-f0a517dc-8e28-4492-af0b-ffc528441908-0-00001.PROP_ZIP (zipcode), 00277-943-f0a517dc-8e28-4492-af0b-ffc528441908-0-00001.FIPS (admin_code), 00277-943-f0a517dc-8e28-4492-af0b-ffc528441908-0-00001.geohash (spatial_index), 00277-943-f0a517dc-8e28-4492-af0b-ffc528441908-0-00001.USNG (spatial_index)]. Add bbox once a placename \u2192 bbox gazetteer is available."
+  ],
   "_state": "drafted",
-  "cataloged_at": "2026-04-24T19:04:54+00:00"
+  "cataloged_at": "2026-06-04T02:15:48+00:00"
 }

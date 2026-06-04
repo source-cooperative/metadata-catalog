@@ -1,15 +1,94 @@
 {
-  "account_id": "bkr",
-  "product_id": "ifs",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "bkr/ifs",
   "title": "IFS Analysis",
-  "description": "IFS Analysis including a subset from the NCAR archive https://gdex.ucar.edu/datasets/d113001/ ",
-  "keywords": [],
-  "created_at": "2025-11-14T15:58:59.059Z",
-  "updated_at": "2026-01-08T12:38:34.544Z",
-  "visibility": "public",
-  "disabled": false,
+  "description": "Global atmospheric analysis fields from the ECMWF Integrated Forecasting System (IFS), including a subset sourced from the NCAR/UCAR GDEX archive. Coverage spans from January 2016 through May 2026 at global extent, stored in icechunk format across nearly one million files totalling ~33 TB.",
+  "keywords": [
+    "meteorology",
+    "numerical-weather-prediction",
+    "atmospheric-analysis",
+    "ecmwf",
+    "weather-reanalysis",
+    "global-coverage"
+  ],
+  "providers": [
+    {
+      "name": "European Centre for Medium-Range Weather Forecasts (ECMWF)",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "NCAR/UCAR GDEX",
+      "roles": [
+        "host"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/bkr/ifs"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -180.0,
+          -90.0,
+          179.9296875,
+          90.0
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2016-01-01T00:00:00",
+          "2026-05-07T18:00:00"
+        ]
+      ]
+    }
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/bkr/ifs/",
+      "type": "application/octet-stream",
+      "title": "Dataset files (4 x .icechunk)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/bkr/ifs/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/bkr/ifs",
+      "title": "Source Cooperative product page"
+    }
+  ],
+  "exts": {
+    "": 932687,
+    "json": 4
+  },
+  "product_id": "ifs",
+  "file_count": 932691,
   "featured": 0,
   "data_mode": "open",
+  "disabled": false,
+  "visibility": "public",
+  "created_at": "2025-11-14T15:58:59.059Z",
+  "total_bytes": 36317092810567,
+  "updated_at": "2026-01-08T12:38:34.544Z",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -22,18 +101,16 @@
       "prefix": "bkr/ifs/"
     }
   },
-  "file_count": 932691,
-  "total_bytes": 36317092810567,
-  "exts": {
-    "": 932687,
-    "json": 4
-  },
-  "_state": "seed",
+  "account_id": "bkr",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "id": "bkr/ifs",
-  "cataloged_at": "2026-05-29T20:23:18+00:00",
-  "store_format": "icechunk"
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
+    "providers: role [producer, licensor] for 'European Centre for Medium-Range Weather Forecasts (ECMWF)' is an AI guess \u2014 IFS is ECMWF's operational model; assumed producer and licensor, not explicitly stated in context.. Verify before flipping to _state: reviewed.",
+    "providers: role [host] for 'NCAR/UCAR GDEX' is an AI guess \u2014 Referenced as the upstream archive source (gdex.ucar.edu/datasets/d113001/); assumed host/distributor of the archived subset.. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-06-04T01:37:16+00:00"
 }

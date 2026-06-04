@@ -1,24 +1,92 @@
 {
-  "account_id": "bkr",
-  "product_id": "geos",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "bkr/geos",
   "title": "GEOS Atmosphere Composition Analysis",
-  "description": "GEOS-CF High temporal resolution analysis, in Icechunk. 15-minutely, 0.25 degree resolution products. This is the analysis product, available from 2018-Present, with a 1 day delay. More information is available: https://gmao.gsfc.nasa.gov/weather_prediction/GEOS-CF/.",
+  "description": "GEOS-CF (Goddard Earth Observing System Composition Forecast) high-temporal-resolution atmospheric composition analysis from NASA GMAO. Provides global 15-minute interval gridded data at 0.25-degree resolution covering aerosols and atmospheric trace gases. The analysis product spans 2018 to present with approximately a one-day latency, stored in Icechunk/Zarr format.",
   "keywords": [
     "aerosol",
-    "geos",
-    "zarr",
-    "icechunk",
+    "atmospheric-composition",
     "climate",
     "weather",
     "forecasting",
-    "analysis"
+    "remote-sensing"
   ],
-  "created_at": "2025-06-29T11:40:41.128Z",
-  "updated_at": "2025-08-21T16:39:55.567Z",
-  "visibility": "public",
-  "disabled": false,
+  "providers": [
+    {
+      "name": "NASA Goddard Modeling and Assimilation Office (GMAO)",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/bkr/geos"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -180.0,
+          -90.0,
+          179.75,
+          90.0
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2018-01-01T00:00:00",
+          "2026-06-01T23:45:00"
+        ]
+      ]
+    }
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/bkr/geos/",
+      "type": "application/octet-stream",
+      "title": "Dataset files (2 x .icechunk)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/bkr/geos/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/bkr/geos",
+      "title": "Source Cooperative product page"
+    }
+  ],
+  "account_id": "bkr",
+  "total_bytes": 38864545454942,
   "featured": 0,
+  "disabled": false,
+  "product_id": "geos",
+  "updated_at": "2025-08-21T16:39:55.567Z",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "exts": {
+    "": 22433166,
+    "json": 2
+  },
   "data_mode": "open",
+  "visibility": "public",
+  "file_count": 22433168,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -31,18 +99,11 @@
       "prefix": "bkr/geos/"
     }
   },
-  "file_count": 22433168,
-  "total_bytes": 38864545454942,
-  "exts": {
-    "": 22433166,
-    "json": 2
-  },
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "id": "bkr/geos",
-  "cataloged_at": "2026-05-29T20:23:07+00:00",
-  "store_format": "icechunk"
+  "created_at": "2025-06-29T11:40:41.128Z",
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
+    "providers: role [producer, licensor] for 'NASA Goddard Modeling and Assimilation Office (GMAO)' is an AI guess \u2014 GMAO is the operational producer of GEOS-CF; licensor role assumed as originating NASA center, but no explicit license terms are stated anywhere in the provided context.. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-06-04T01:40:26+00:00"
 }

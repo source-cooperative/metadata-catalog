@@ -1,23 +1,88 @@
 {
-  "account_id": "bkr",
-  "product_id": "polar",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "bkr/polar",
   "title": "Polar-Orbiting Satellite Imagery",
-  "description": "This contains data from the JPSS and MetOp satellites in Icechunk format. The data has been converted with Satpy, and is updated as time allows. The archives are very incomplete, but the goal is to continually expand them.",
+  "description": "Polar-orbiting satellite imagery from the JPSS (Joint Polar Satellite System) and MetOp satellite series, stored in Icechunk format. Data was converted from original instrument output using Satpy and covers weather, climate, and environmental observation use cases. The archive is continually expanding but is noted as incomplete.",
   "keywords": [
+    "satellite-imagery",
+    "polar-orbiting",
     "jpss",
     "metop",
-    "satellite",
-    "imagery",
     "weather",
     "climate",
     "forecasting"
   ],
-  "created_at": "2025-07-10T09:57:25.116Z",
-  "updated_at": "2025-08-21T16:39:55.568Z",
+  "providers": [
+    {
+      "name": "NOAA / NASA (JPSS Program)",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "EUMETSAT (MetOp)",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/bkr/polar"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -180.0,
+          -90.0,
+          180.0,
+          90.0
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/bkr/polar/",
+      "type": "application/octet-stream",
+      "title": "Dataset files (6 x .icechunk)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/bkr/polar/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/bkr/polar",
+      "title": "Source Cooperative product page"
+    }
+  ],
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
   "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": "open",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -30,18 +95,24 @@
       "prefix": "bkr/polar/"
     }
   },
-  "file_count": 1309665,
-  "total_bytes": 10904711767158,
+  "featured": 0,
+  "created_at": "2025-07-10T09:57:25.116Z",
+  "product_id": "polar",
+  "data_mode": "open",
+  "account_id": "bkr",
+  "updated_at": "2025-08-21T16:39:55.568Z",
   "exts": {
     "": 1309659,
     "json": 6
   },
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "id": "bkr/polar",
-  "cataloged_at": "2026-05-29T20:23:40+00:00",
-  "store_format": "icechunk"
+  "disabled": false,
+  "total_bytes": 10904711767158,
+  "file_count": 1309665,
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
+    "providers: role [producer, licensor] for 'NOAA / NASA (JPSS Program)' is an AI guess \u2014 JPSS is a joint NOAA/NASA program; producer and licensor roles assumed as the originating government agencies for the raw instrument data. Verify before flipping to _state: reviewed.",
+    "providers: role [producer, licensor] for 'EUMETSAT (MetOp)' is an AI guess \u2014 MetOp is an EUMETSAT/ESA series; producer and licensor roles assumed as the originating agency for raw data. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-06-04T01:33:16+00:00"
 }

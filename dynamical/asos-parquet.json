@@ -1,18 +1,21 @@
 {
   "type": "Collection",
   "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
   "id": "dynamical/asos-parquet",
   "title": "Global Airport Weather GeoParquet (1940-present)",
-  "description": "Historical and near-real-time METAR observations from global Automated Surface Observing System (ASOS) and Automated Weather Observing System (AWOS) airports. Contains decoded meteorological fields including temperature, dewpoint, precipitation, wind, visibility, and pressure in imperial and metric units, with embedded station metadata and geographic coordinates.",
+  "description": "Historical and near-real-time surface weather observations from global ASOS and AWOS airport stations, spanning 1940 to present with approximately 1.8 billion records. Each row captures a decoded METAR report including temperature, dewpoint, wind speed and direction, precipitation, visibility, and atmospheric pressure in both imperial and metric units. Station name, elevation, and point geometry are embedded in each record.",
   "license": "CC-BY-NC-SA-4.0",
   "keywords": [
     "weather",
-    "asos",
     "metar",
-    "airport-observations",
-    "surface-weather",
-    "hourly-observations",
-    "time-series"
+    "surface-observations",
+    "climatology",
+    "aviation-weather",
+    "time-series",
+    "airport-stations"
   ],
   "providers": [
     {
@@ -39,10 +42,10 @@
     "spatial": {
       "bbox": [
         [
-          -177.3756,
-          -46.8831,
-          177.5667,
-          82.5178
+          null,
+          null,
+          null,
+          null
         ]
       ]
     },
@@ -56,16 +59,134 @@
     }
   },
   "summaries": {
-    "item_count": 1744899131
+    "item_count": 1776304016
   },
   "assets": {
     "data": {
-      "href": "https://data.source.coop/dynamical/asos-parquet/",
+      "href": "https://data.source.coop/dynamical/asos-parquet/year=2026/data.parquet",
       "type": "application/x-parquet",
-      "title": "Dataset files (87 x .parquet)",
+      "title": "data.parquet",
       "roles": [
         "data"
-      ]
+      ],
+      "table:columns": [
+        {
+          "name": "station",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "valid",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "longitude",
+          "type": "DOUBLE",
+          "description": "[latlon] Station longitude in decimal degrees (WGS84)"
+        },
+        {
+          "name": "latitude",
+          "type": "DOUBLE",
+          "description": "[latlon] Station latitude in decimal degrees (WGS84)"
+        },
+        {
+          "name": "tmpf",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "tmpc",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "dwpf",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "dwpc",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "relh",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "drct",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "sknt",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "gust",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "alti",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "mslp",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "vsby",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "p01i",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "p01m",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "state",
+          "type": "VARCHAR",
+          "description": "[placename] US state or equivalent sub-national region name"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:4326')",
+          "description": "[geometry] Point geometry of the station encoded as EPSG:4326"
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "elevation",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "country",
+          "type": "VARCHAR",
+          "description": "[placename] Country name of the station"
+        },
+        {
+          "name": "county",
+          "type": "VARCHAR",
+          "description": "[placename] County or equivalent administrative subdivision"
+        },
+        {
+          "name": "wfo",
+          "type": "VARCHAR",
+          "description": "[admin_code] NOAA Weather Forecast Office identifier code for the responsible forecast area"
+        },
+        {
+          "name": "tzname",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        },
+        {
+          "name": "year",
+          "type": "BIGINT"
+        }
+      ],
+      "table:row_count": 24878756
     }
   },
   "links": [
@@ -80,20 +201,6 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "updated_at": "2026-02-09T17:07:41.515Z",
-  "disabled": false,
-  "created_at": "2026-02-05T18:50:19.484Z",
-  "file_count": 87,
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "account_id": "dynamical",
-  "exts": {
-    "parquet": 87
-  },
-  "data_mode": "open",
-  "featured": 0,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -106,9 +213,26 @@
       "prefix": "dynamical/asos-parquet/"
     }
   },
-  "product_id": "asos-parquet",
+  "data_mode": "open",
+  "updated_at": "2026-02-09T17:07:41.515Z",
   "visibility": "public",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "featured": 0,
   "total_bytes": 19981605835,
+  "product_id": "asos-parquet",
+  "created_at": "2026-02-05T18:50:19.484Z",
+  "file_count": 87,
+  "exts": {
+    "parquet": 87
+  },
+  "account_id": "dynamical",
+  "disabled": false,
+  "_review": [
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [data.latitude (latlon), data.longitude (latlon), data.geometry (geometry), data.state (placename), data.country (placename), data.county (placename), data.wfo (admin_code)]. Add bbox once a placename \u2192 bbox gazetteer is available."
+  ],
   "_state": "drafted",
-  "cataloged_at": "2026-04-24T18:59:57+00:00"
+  "cataloged_at": "2026-06-04T02:01:11+00:00"
 }

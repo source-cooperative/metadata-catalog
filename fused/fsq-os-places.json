@@ -1,15 +1,20 @@
 {
   "type": "Collection",
   "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
   "id": "fused/fsq-os-places",
   "title": "Foursquare Open Source Places - Fused-partitioned",
-  "description": "Foursquare Open Source Places dataset containing over 100 million global points of interest. Data is geospatially partitioned following Open GeoParquet standards for efficient querying and analysis.",
+  "description": "Foursquare Open Source Places is a global points-of-interest dataset containing over 100 million venues and businesses worldwide. Each record includes name, address, contact details, social media handles, and hierarchical category labels, geospatially partitioned in GeoParquet format for efficient spatial querying.",
   "license": "Apache-2.0",
   "keywords": [
     "poi",
     "places-of-interest",
     "businesses",
-    "venues"
+    "venues",
+    "global-coverage",
+    "address-data"
   ],
   "providers": [
     {
@@ -37,10 +42,10 @@
     "spatial": {
       "bbox": [
         [
-          -176.4757919,
-          -80.3568547,
-          179.09387,
-          85.04439
+          null,
+          null,
+          null,
+          null
         ]
       ]
     },
@@ -57,13 +62,1123 @@
     "item_count": 10333408
   },
   "assets": {
-    "data": {
-      "href": "https://data.source.coop/fused/fsq-os-places/",
+    "0": {
+      "href": "https://data.source.coop/fused/fsq-os-places/2024-11-19/places/0.parquet",
       "type": "application/x-parquet",
-      "title": "Dataset files (326 x .parquet)",
+      "title": "0.parquet",
       "roles": [
         "data"
-      ]
+      ],
+      "table:columns": [
+        {
+          "name": "fsq_place_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "latitude",
+          "type": "DOUBLE",
+          "description": "[latlon] Latitude of the place"
+        },
+        {
+          "name": "longitude",
+          "type": "DOUBLE",
+          "description": "[latlon] Longitude of the place"
+        },
+        {
+          "name": "address",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "locality",
+          "type": "VARCHAR",
+          "description": "[placename] City or locality name"
+        },
+        {
+          "name": "region",
+          "type": "VARCHAR",
+          "description": "[placename] State or region name"
+        },
+        {
+          "name": "postcode",
+          "type": "VARCHAR",
+          "description": "[zipcode] Postal or ZIP code"
+        },
+        {
+          "name": "admin_region",
+          "type": "VARCHAR",
+          "description": "[admin_code] Administrative region identifier"
+        },
+        {
+          "name": "post_town",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "po_box",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "country",
+          "type": "VARCHAR",
+          "description": "[placename] Country name"
+        },
+        {
+          "name": "date_created",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "date_refreshed",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "date_closed",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "tel",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "website",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "email",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "facebook_id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "instagram",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "twitter",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "fsq_category_ids",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "fsq_category_labels",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:4326')",
+          "description": "[geometry] Point geometry in EPSG:4326"
+        }
+      ],
+      "table:row_count": 111406
+    },
+    "1": {
+      "href": "https://data.source.coop/fused/fsq-os-places/2024-11-19/places/1.parquet",
+      "type": "application/x-parquet",
+      "title": "1.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "fsq_place_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "latitude",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "longitude",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "address",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "locality",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "region",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "postcode",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "admin_region",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "post_town",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "po_box",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "country",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "date_created",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "date_refreshed",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "date_closed",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "tel",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "website",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "email",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "facebook_id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "instagram",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "twitter",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "fsq_category_ids",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "fsq_category_labels",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:4326')"
+        }
+      ],
+      "table:row_count": 1175366
+    },
+    "10": {
+      "href": "https://data.source.coop/fused/fsq-os-places/2024-11-19/places/10.parquet",
+      "type": "application/x-parquet",
+      "title": "10.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "fsq_place_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "latitude",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "longitude",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "address",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "locality",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "region",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "postcode",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "admin_region",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "post_town",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "po_box",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "country",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "date_created",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "date_refreshed",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "date_closed",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "tel",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "website",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "email",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "facebook_id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "instagram",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "twitter",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "fsq_category_ids",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "fsq_category_labels",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:4326')"
+        }
+      ],
+      "table:row_count": 1106524
+    },
+    "11": {
+      "href": "https://data.source.coop/fused/fsq-os-places/2024-11-19/places/11.parquet",
+      "type": "application/x-parquet",
+      "title": "11.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "fsq_place_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "latitude",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "longitude",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "address",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "locality",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "region",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "postcode",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "admin_region",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "post_town",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "po_box",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "country",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "date_created",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "date_refreshed",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "date_closed",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "tel",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "website",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "email",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "facebook_id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "instagram",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "twitter",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "fsq_category_ids",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "fsq_category_labels",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:4326')"
+        }
+      ],
+      "table:row_count": 291447
+    },
+    "12": {
+      "href": "https://data.source.coop/fused/fsq-os-places/2024-11-19/places/12.parquet",
+      "type": "application/x-parquet",
+      "title": "12.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "fsq_place_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "latitude",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "longitude",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "address",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "locality",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "region",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "postcode",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "admin_region",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "post_town",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "po_box",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "country",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "date_created",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "date_refreshed",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "date_closed",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "tel",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "website",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "email",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "facebook_id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "instagram",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "twitter",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "fsq_category_ids",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "fsq_category_labels",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:4326')"
+        }
+      ],
+      "table:row_count": 2563420
+    },
+    "78": {
+      "href": "https://data.source.coop/fused/fsq-os-places/2025-02-06/places/78.parquet",
+      "type": "application/x-parquet",
+      "title": "78.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "fsq_place_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "latitude",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "longitude",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "address",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "locality",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "region",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "postcode",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "admin_region",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "post_town",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "po_box",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "country",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "date_created",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "date_refreshed",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "date_closed",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "tel",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "website",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "email",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "facebook_id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "instagram",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "twitter",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "fsq_category_ids",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "fsq_category_labels",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "placemaker_url",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:4326')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 163606
+    },
+    "79": {
+      "href": "https://data.source.coop/fused/fsq-os-places/2025-02-06/places/79.parquet",
+      "type": "application/x-parquet",
+      "title": "79.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "fsq_place_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "latitude",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "longitude",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "address",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "locality",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "region",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "postcode",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "admin_region",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "post_town",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "po_box",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "country",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "date_created",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "date_refreshed",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "date_closed",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "tel",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "website",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "email",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "facebook_id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "instagram",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "twitter",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "fsq_category_ids",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "fsq_category_labels",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "placemaker_url",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:4326')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 1664245
+    },
+    "8": {
+      "href": "https://data.source.coop/fused/fsq-os-places/2025-02-06/places/8.parquet",
+      "type": "application/x-parquet",
+      "title": "8.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "fsq_place_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "latitude",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "longitude",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "address",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "locality",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "region",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "postcode",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "admin_region",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "post_town",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "po_box",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "country",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "date_created",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "date_refreshed",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "date_closed",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "tel",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "website",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "email",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "facebook_id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "instagram",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "twitter",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "fsq_category_ids",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "fsq_category_labels",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "placemaker_url",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:4326')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 1583803
+    },
+    "80": {
+      "href": "https://data.source.coop/fused/fsq-os-places/2025-02-06/places/80.parquet",
+      "type": "application/x-parquet",
+      "title": "80.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "fsq_place_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "latitude",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "longitude",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "address",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "locality",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "region",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "postcode",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "admin_region",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "post_town",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "po_box",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "country",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "date_created",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "date_refreshed",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "date_closed",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "tel",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "website",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "email",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "facebook_id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "instagram",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "twitter",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "fsq_category_ids",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "fsq_category_labels",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "placemaker_url",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:4326')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 1001501
+    },
+    "9": {
+      "href": "https://data.source.coop/fused/fsq-os-places/2025-02-06/places/9.parquet",
+      "type": "application/x-parquet",
+      "title": "9.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "fsq_place_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "latitude",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "longitude",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "address",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "locality",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "region",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "postcode",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "admin_region",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "post_town",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "po_box",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "country",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "date_created",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "date_refreshed",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "date_closed",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "tel",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "website",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "email",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "facebook_id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "instagram",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "twitter",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "fsq_category_ids",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "fsq_category_labels",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "placemaker_url",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:4326')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 672090
     }
   },
   "links": [
@@ -78,7 +1193,7 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "updated_at": "2025-08-21T16:39:55.568Z",
+  "visibility": "public",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -91,24 +1206,26 @@
       "prefix": "fused/fsq-os-places/"
     }
   },
-  "file_count": 327,
+  "created_at": "2024-11-20T16:31:05.535Z",
+  "featured": 0,
+  "updated_at": "2025-08-21T16:39:55.568Z",
+  "disabled": false,
+  "total_bytes": 60172236647,
   "exts": {
     "parquet": 326,
     "md": 1
   },
-  "created_at": "2024-11-20T16:31:05.535Z",
-  "account_id": "fused",
-  "featured": 0,
-  "visibility": "public",
-  "product_id": "fsq-os-places",
+  "file_count": 327,
   "data_mode": "open",
-  "total_bytes": 60172236647,
-  "disabled": false,
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "readme": "## README.md\n[Foursquare Open Sources Place](https://opensource.foursquare.com/os-places/), with more than 100 million global places of interest.\n\nThis dataset is geospatially partitioned following Open GeoParquet standards, using [Fused](https://www.fused.io/).\n\n# License\n\nCopyright 2024 Foursquare Labs, Inc. All rights reserved.\nLicensed under the Apache License, Version 2.0 (the \"License\"); you may not use this file except in compliance with the License.\nYou may obtain a copy of the License at: http://www.apache.org/licenses/LICENSE-2.0\nUnless required by applicable law or agreed to in writing, software distributed under the License is distributed on an \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\nSee the License for the specific language governing permissions and limitations under the License.\n",
+  "account_id": "fused",
+  "product_id": "fsq-os-places",
+  "_review": [
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [0.latitude (latlon), 0.longitude (latlon), 0.locality (placename), 0.region (placename), 0.postcode (zipcode), 0.admin_region (admin_code), 0.country (placename), 0.geometry (geometry)]. Add bbox once a placename \u2192 bbox gazetteer is available."
+  ],
   "_state": "drafted",
-  "cataloged_at": "2026-04-24T19:04:15+00:00"
+  "cataloged_at": "2026-06-04T01:59:05+00:00"
 }

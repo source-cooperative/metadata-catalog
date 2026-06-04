@@ -3,15 +3,14 @@
   "stac_version": "1.1.0",
   "id": "malariaatlas/tcw",
   "title": "Tasselled Cap Wetness",
-  "description": "Global raster dataset of Tasselled Cap Wetness (TCW) derived from MODIS MCD43D62\u2013MCD43D68 v6.1 surface reflectance products, available at 1 km and 5 km spatial resolution. TCW values are computed using the Lobser & Cohen (2007) spectral transformation and gap-filled following Weiss et al. (2014) to remove cloud and missing-data artefacts. Temporal coverage spans 8-daily, monthly, annual, and synoptic summaries with multiple statistical aggregations (min, max, mean, SD, range, count).",
+  "description": "Global raster dataset of Tasselled Cap Wetness (TCW) derived from MODIS MCD43D62\u2013MCD43D68 v6.1 surface reflectance products at 1 km and 5 km spatial resolution. TCW values are computed using the Lobser & Cohen (2007) spectral transformation and gap-filled following Weiss et al. (2014) to remove cloud and missing-data artefacts. Temporal coverage spans 8-daily, monthly, annual, and synoptic summaries with multiple statistical aggregations (min, max, mean, SD, range, count).",
   "keywords": [
     "remote-sensing",
     "modis",
     "tasselled-cap",
     "wetness",
     "vegetation",
-    "raster",
-    "gap-filling"
+    "raster"
   ],
   "providers": [
     {
@@ -58,7 +57,7 @@
     "data": {
       "href": "https://data.source.coop/malariaatlas/tcw/",
       "type": "image/tiff; application=geotiff",
-      "title": "Dataset files (9324 x .tif)",
+      "title": "Dataset files (9891 x .tif)",
       "roles": [
         "data"
       ]
@@ -74,24 +73,27 @@
       "rel": "via",
       "href": "https://source.coop/malariaatlas/tcw",
       "title": "Source Cooperative product page"
-    },
-    {
-      "rel": "child",
-      "href": "./modis-tcw-v061/collection.json",
-      "type": "application/json",
-      "title": "Tasselled Cap Brightness"
     }
   ],
+  "product_id": "tcw",
+  "updated_at": "2026-04-10T03:47:05.710Z",
   "account_id": "malariaatlas",
   "total_bytes": 2554964446429,
-  "product_id": "tcw",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "created_at": "2024-11-07T23:48:00.041Z",
   "exts": {
     "md": 1,
     "tif": 9324,
     "json": 12,
     "txt": 1
   },
-  "created_at": "2024-11-07T23:48:00.041Z",
+  "disabled": false,
+  "file_count": 9338,
+  "featured": 0,
+  "data_mode": "open",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -105,22 +107,9 @@
     }
   },
   "visibility": "public",
-  "data_mode": "open",
-  "disabled": false,
-  "updated_at": "2026-04-10T03:47:05.710Z",
-  "featured": 0,
-  "file_count": 9338,
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "readme": "## README.md\nTasselled Cap Wetness is derived from the MODIS [MCD43D62](https://lpdaac.usgs.gov/products/mcd43d62v061/), [MCD43D63](https://lpdaac.usgs.gov/products/mcd43d63v061/), [MCD43D64](https://lpdaac.usgs.gov/products/mcd43d64v061/), [MCD43D65](https://lpdaac.usgs.gov/products/mcd43d65v061/), [MCD43D66](https://lpdaac.usgs.gov/products/mcd43d66v061/), [MCD43D67](https://lpdaac.usgs.gov/products/mcd43d67v061/) and [MCD43D68](https://lpdaac.usgs.gov/products/mcd43d68v061/) v6.1 products. TCW is first calculated on the datasets using the formula from [Lobser & Cohen (2007)](https://doi.org/10.1080/01431160701253303) and then the outputs are gap-filled using the approach outlined in [Weiss et al (2014)](https://doi.org/10.1016/j.isprsjprs.2014.10.001) to eliminate missing data caused by factors such as cloud cover.\n\nDirectories are structured in the following way: `TCW_v061/{Resolution}/{TemporalSummary}`\n\nAnd under that, filenames are structured by:  \n8-daily: `TCW_v061.{Year}.{JulianDay}.Data.{Resolution}.{SpatialSummary}.tif`  \nMonthly: `TCW_v061.{Year}.{Month}.{TemporalSummary}.{Resolution}.{SpatialSummary}.tif`  \nAnnual: `TCW_v061.{Year}.Annual.{TemporalSummary}.{Resolution}.{SpatialSummary}.tif`  \nSynoptic: `TCW_v061.Synoptic.{Month-or-Overall}.{TemporalSummary}.{Resolution}.{SpatialSummary}.tif`   \n\n`Resolution` in this dataset is either `1km` or `5km`\n\nStandard values for `TemporalSummary` are: `min`, `max`, `range`, `mean`, `SD`, `count`. In addition there are:\n- `Data`: this indicated that no temporal aggregation has occurred\n- `Balanced-mean`: This is specific to overall synoptic data, it represents the mean of the 12 monthly synoptic mean datasets as opposed to the overall mean of the (e.g. daily) data. This gives a weighting to help correct for seasonal bias that could otherwise be present in areas where data are more often missing at certain times of year.  \n\nStandard values for `SpatialSummary` are: `min`, `max`, `range`, `sum`, `mean`, `SD`, `count`. In addition:\n- `Data`: this indicates that no spatial aggregation has occurred\n\n",
   "_review": [
-    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
-    "providers: role [producer] for 'NASA LP DAAC' is an AI guess \u2014 MODIS MCD43D source products are distributed by NASA's Land Processes DAAC; producer role inferred from product citations in README.. Verify before flipping to _state: reviewed.",
-    "providers: role [processor] for 'Malaria Atlas Project' is an AI guess \u2014 TCW computation and gap-filling attributed to the dataset publisher; role inferred from catalog account (malariaatlas) and processing description in README.. Verify before flipping to _state: reviewed."
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-05-27T01:47:15+00:00",
-  "_source_format": "stac"
+  "cataloged_at": "2026-06-04T01:47:46+00:00"
 }

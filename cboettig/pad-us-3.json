@@ -1,35 +1,88 @@
 {
-  "account_id": "cboettig",
-  "product_id": "pad-us-3",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "cboettig/pad-us-3",
   "title": "United States Protected Areas Database (PAD-US) 3.0",
-  "description": "U.S. Geological Survey (USGS) Gap Analysis Project (GAP), 2022, Protected Areas Database of the United States (PAD-US) 3.0: U.S. Geological Survey data release, https://doi.org/10.5066/P9Q9LQ4B.",
+  "description": "The Protected Areas Database of the United States (PAD-US) 3.0 is a national inventory of protected lands compiled by the USGS Gap Analysis Project. This processed version is subset to the continental US and restricted to Fee and Easement feature classes plus tribal Proclamation boundaries, serialized to GeoParquet and PMTiles formats for efficient remote access. It covers approximately 883,000 polygon features representing federally, state, locally, and tribally managed protected areas.",
+  "license": "PDDL-1.0",
   "keywords": [
-    "biodiversity",
+    "protected-areas",
     "conservation",
-    "protected areas",
-    "united states",
-    "vector"
+    "biodiversity",
+    "land-management",
+    "united-states"
   ],
-  "created_at": "2024-02-08T20:18:15.849303+00:00",
-  "updated_at": "2025-08-21T16:39:55.567Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": "open",
-  "mirrors": {
-    "aws-opendata-us-west-2": {
-      "storage_type": "s3",
-      "is_primary": true,
-      "connection_id": "aws-opendata-us-west-2",
-      "config": {
-        "region": "us-west-2",
-        "bucket": "aws-opendata-us-west-2"
-      },
-      "prefix": "cboettig/pad-us-3/"
+  "providers": [
+    {
+      "name": "U.S. Geological Survey (USGS) Gap Analysis Project (GAP)",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "boettiger-lab (Carl Boettiger)",
+      "roles": [
+        "processor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/cboettig/pad-us-3"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          140.5892865,
+          -30.2258584,
+          -15.0687062,
+          87.3237065
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
     }
   },
-  "file_count": 152,
-  "total_bytes": 21868920570,
+  "summaries": {
+    "item_count": 883218
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/cboettig/pad-us-3/",
+      "type": "application/octet-stream",
+      "title": "Dataset files (1 x .filegdb)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/cboettig/pad-us-3/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/cboettig/pad-us-3",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "rel": "cite-as",
+      "href": "https://doi.org/10.5066/P9Q9LQ4B"
+    }
+  ],
   "exts": {
     "parquet": 16,
     "atx": 19,
@@ -55,12 +108,36 @@
     "lyr": 4,
     "html": 3
   },
-  "_state": "seed",
+  "created_at": "2024-02-08T20:18:15.849303+00:00",
+  "account_id": "cboettig",
+  "data_mode": "open",
+  "product_id": "pad-us-3",
+  "updated_at": "2025-08-21T16:39:55.567Z",
+  "file_count": 152,
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "id": "cboettig/pad-us-3",
-  "cataloged_at": "2026-05-28T03:21:30+00:00",
-  "store_format": "filegdb"
+  "mirrors": {
+    "aws-opendata-us-west-2": {
+      "storage_type": "s3",
+      "is_primary": true,
+      "connection_id": "aws-opendata-us-west-2",
+      "config": {
+        "region": "us-west-2",
+        "bucket": "aws-opendata-us-west-2"
+      },
+      "prefix": "cboettig/pad-us-3/"
+    }
+  },
+  "total_bytes": 21868920570,
+  "visibility": "public",
+  "disabled": false,
+  "featured": 0,
+  "readme": "## README.md\n---\nlicense: pddl\n---\n\n\n\n# United States Protected Areas Database\n\n> U.S. Geological Survey (USGS) Gap Analysis Project (GAP), 2022, Protected Areas Database of the United States (PAD-US) 3.0: U.S. Geological Survey data release, https://doi.org/10.5066/P9Q9LQ4B.\n\n\nThe PAD database classifications are complex and include overlapping and apparently duplicate polygons. For instance, national park boundaries can be found are listed in Proclamation feature class and also in Fee class (showing internal holes within boundaries). The processed PAD data layers here have been subset to the continental US (matching availability in MOBI data), and restricted to feature classes of \"Fee\" and \"Easements\", except for tribal boundaries which are taken from the \"Proclamations.\"  See [ProtectedLands.net](https://www.protectedlands.net/pad-us-data-structure-attributes/) for a more detailed discussion of the data structure and classification involved in PAD.  Code for reproducing this processing can be found at [https://github.com/boettiger-lab/pad-us-3](https://github.com/boettiger-lab/pad-us-3)\n\nUSGS PAD-v3 is distributed as an ESRI Geodatabase.  After subsetting the data and labelling according to the additional classification listed above based\non manager type indicated in the data, core attributes are serialized into [PMTiles](https://docs.protomaps.com/pmtiles/) and [Geoparquet](https://geoparquet.org/)\nformats hosted on [source.coop](https://beta.source.coop/repositories/cboettig/pad-us-3/description/).  PMTiles allows for rapid rendering of vector objects\nat the appropriate zoom level in an interactive map from remote servers.  Geoparquet provides a high-performance serialization that can be efficiently queried directly from\nremote https addresses without download using software such as [duckdb](https://duckdb.org), widely available in python, R, and other languages.\n\n\n## Contents Overview\n\n- `PADUS3` contains files extracted from the orginal zip archive and associated geodatabase distributed by the USGS.\n- `pad-us3-combined.parquet` contains a geoparquet version of the geodatabase protected areas layer\n- `pad-us3-combined.fgb` contains a FlatGeobuff version of the geodatabase protected areas layer\n\n\nPMTiles are computed with GDAL 3.8.4 up to max zoom 10 as follows:\n\n```\nogr2ogr -dsco MAX_SIZE=90000000 -dsco MAX_FEATURES=50000000 -dsco MAXZOOM=10 public.pmtiles public_protected.fgb\n```\n\n## Examples\n\n\nExamples are generated with the `map.py` script.\n\n[Dark map - full page](https://data.source.coop/cboettig/pad-us-3/protected-areas-dark.html)\n\n",
+  "_review": [
+    "license: Open Data Commons Public Domain Dedication and License (ODC PDDL); README frontmatter specifies 'pddl'."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-06-04T01:08:34+00:00"
 }

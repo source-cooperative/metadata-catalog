@@ -1,20 +1,88 @@
 {
-  "account_id": "bkr",
-  "product_id": "imerg",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "bkr/imerg",
   "title": "GPM IMERG Early and Final Half-Hourly Precipitation Datasets",
-  "description": "This contains two Zarrs, comprising of the GPM IMERG Half Hourly Early, and Final precipitation products. The time frame is from 2000-01-01 to present. The dataest is in the process of being generated, so might be incomplete. ",
+  "description": "Global Precipitation Measurement (GPM) Integrated Multi-satellitE Retrievals (IMERG) Early and Final Half-Hourly precipitation products, stored as Zarr arrays with global coverage. The dataset spans from 2000-01-01 to present at 30-minute temporal resolution. Early run provides near-real-time estimates; Final run is a research-quality, latency-adjusted product.",
   "keywords": [
-    "zarr",
     "precipitation",
     "gpm",
-    "imerg"
+    "imerg",
+    "remote-sensing",
+    "zarr",
+    "climate",
+    "satellite-rainfall"
   ],
-  "created_at": "2024-11-30T11:22:29.804Z",
-  "updated_at": "2025-08-21T16:39:55.567Z",
-  "visibility": "public",
+  "providers": [
+    {
+      "name": "NASA Goddard Space Flight Center",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "JAXA",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/bkr/imerg"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -179.9499969,
+          -89.9499969,
+          179.9499969,
+          89.9499969
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2000-01-01T00:00:00",
+          "2026-12-31T00:00:00"
+        ]
+      ]
+    }
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/bkr/imerg/",
+      "type": "application/vnd+zarr",
+      "title": "Dataset files (3 x .zarr)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/bkr/imerg/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/bkr/imerg",
+      "title": "Source Cooperative product page"
+    }
+  ],
+  "exts": {
+    "": 3466215,
+    "json": 25
+  },
   "disabled": false,
-  "featured": 0,
-  "data_mode": "open",
+  "account_id": "bkr",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -27,18 +95,22 @@
       "prefix": "bkr/imerg/"
     }
   },
+  "updated_at": "2025-08-21T16:39:55.567Z",
+  "visibility": "public",
+  "data_mode": "open",
   "file_count": 3466240,
-  "total_bytes": 3951738415739,
-  "exts": {
-    "": 3466215,
-    "json": 25
-  },
-  "_state": "seed",
+  "featured": 0,
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "id": "bkr/imerg",
-  "cataloged_at": "2026-05-29T20:23:21+00:00",
-  "store_format": "zarr"
+  "product_id": "imerg",
+  "created_at": "2024-11-30T11:22:29.804Z",
+  "total_bytes": 3951738415739,
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
+    "providers: role [producer] for 'JAXA' is an AI guess \u2014 JAXA is the co-lead agency on the GPM mission and contributes the core satellite; producer role inferred from mission structure, not stated in context.. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-06-04T01:36:08+00:00"
 }

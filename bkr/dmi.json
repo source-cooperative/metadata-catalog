@@ -1,15 +1,85 @@
 {
-  "account_id": "bkr",
-  "product_id": "dmi",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "bkr/dmi",
   "title": "Nordic Regional NWP Models",
-  "description": "Danish regional 2km atmospheric forecast, HARMONIE, for Greenland and Iceland areas. Public archives go back 48 hours, so this archives the first 3 model forecast steps to have an hourly, 2km analysis. This also includes the 2.5km MEPS forecast in a similar manner. All in Icechunk.",
-  "keywords": [],
+  "description": "Hourly 2 km atmospheric analysis and forecast archive derived from the Danish HARMONIE regional NWP model (covering Greenland and Iceland) and the 2.5 km MEPS model (covering Nordic regions). The dataset archives the first three forecast steps of each model run to produce an effective hourly analysis, spanning from late 2023 to present. All data are stored in Icechunk format.",
+  "keywords": [
+    "numerical-weather-prediction",
+    "atmospheric-forecasting",
+    "harmonie",
+    "meps",
+    "arctic",
+    "icechunk",
+    "meteorology"
+  ],
+  "providers": [
+    {
+      "name": "Danish Meteorological Institute (DMI)",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "MET Norway / Nordic NWP consortium",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/bkr/dmi"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -161.525,
+          -26.0,
+          171.5,
+          86.0798636
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2023-11-27T00:00:00",
+          "2026-06-03T14:00:00"
+        ]
+      ]
+    }
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/bkr/dmi/",
+      "type": "application/octet-stream",
+      "title": "Dataset files (15 x .icechunk)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/bkr/dmi/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/bkr/dmi",
+      "title": "Source Cooperative product page"
+    }
+  ],
+  "account_id": "bkr",
+  "data_mode": "open",
   "created_at": "2026-03-30T11:19:37.620Z",
   "updated_at": "2026-04-01T08:00:55.021Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": "open",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -22,8 +92,16 @@
       "prefix": "bkr/dmi/"
     }
   },
+  "featured": 0,
+  "disabled": false,
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "visibility": "public",
   "file_count": 2279318,
   "total_bytes": 7571443658244,
+  "product_id": "dmi",
   "exts": {
     "": 2278041,
     "json": 12,
@@ -76,12 +154,11 @@
     "j02mns3w8359s56m4220": 1,
     "sgqy9shzk2wmmn053x9g": 1
   },
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "id": "bkr/dmi",
-  "cataloged_at": "2026-05-29T20:22:50+00:00",
-  "store_format": "icechunk"
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
+    "providers: role [producer] for 'Danish Meteorological Institute (DMI)' is an AI guess \u2014 Assumed producer of the HARMONIE Greenland/Iceland model; not explicitly stated in README. Verify before flipping to _state: reviewed.",
+    "providers: role [producer] for 'MET Norway / Nordic NWP consortium' is an AI guess \u2014 Assumed producer of the MEPS model; not explicitly stated in README. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-06-04T01:37:54+00:00"
 }

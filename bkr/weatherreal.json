@@ -1,33 +1,89 @@
 {
-  "account_id": "bkr",
-  "product_id": "weatherreal",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "bkr/weatherreal",
   "title": "WeatherReal-filtered NOAA Integrated Surface Dataset",
-  "description": "This is the ISD data, filtered as in the WeatherReal dataset paper. They have been converted to Zarr.",
+  "description": "NOAA Integrated Surface Dataset (ISD) weather station observations filtered according to the WeatherReal dataset methodology and converted to Zarr format. Covers global surface meteorological station data spanning 1901 to 2025, including temperature, precipitation, and other surface weather variables.",
   "keywords": [
     "climate",
     "weather",
-    "zarr"
+    "zarr",
+    "meteorology",
+    "surface-observations",
+    "noaa"
   ],
-  "created_at": "2025-06-05T16:40:38.912Z",
-  "updated_at": "2025-08-21T16:39:55.568Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": "open",
-  "mirrors": {
-    "aws-opendata-us-west-2": {
-      "storage_type": "s3",
-      "is_primary": true,
-      "connection_id": "aws-opendata-us-west-2",
-      "config": {
-        "region": "us-west-2",
-        "bucket": "aws-opendata-us-west-2"
-      },
-      "prefix": "bkr/weatherreal/"
+  "providers": [
+    {
+      "name": "NOAA National Centers for Environmental Information",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "WeatherReal",
+      "roles": [
+        "processor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/bkr/weatherreal"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -139.128006,
+          -90.0,
+          160.4170074,
+          83.6500015
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "1901-01-01T06:00:00",
+          "2025-02-09T05:00:00"
+        ]
+      ]
     }
   },
-  "file_count": 2642741,
-  "total_bytes": 399211182818,
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/bkr/weatherreal/",
+      "type": "application/vnd+zarr",
+      "title": "Dataset files (11 x .zarr)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/bkr/weatherreal/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/bkr/weatherreal",
+      "title": "Source Cooperative product page"
+    }
+  ],
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "account_id": "bkr",
+  "updated_at": "2025-08-21T16:39:55.568Z",
+  "data_mode": "open",
+  "visibility": "public",
   "exts": {
     "": 1329507,
     "nc": 498,
@@ -80,12 +136,29 @@
     "_1580": 90,
     "_1587": 90
   },
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
+  "featured": 0,
+  "file_count": 2642741,
+  "total_bytes": 399211182818,
+  "mirrors": {
+    "aws-opendata-us-west-2": {
+      "storage_type": "s3",
+      "is_primary": true,
+      "connection_id": "aws-opendata-us-west-2",
+      "config": {
+        "region": "us-west-2",
+        "bucket": "aws-opendata-us-west-2"
+      },
+      "prefix": "bkr/weatherreal/"
+    }
   },
-  "id": "bkr/weatherreal",
-  "cataloged_at": "2026-05-28T04:18:31+00:00",
-  "store_format": "zarr"
+  "disabled": false,
+  "product_id": "weatherreal",
+  "created_at": "2025-06-05T16:40:38.912Z",
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
+    "providers: role [producer, licensor] for 'NOAA National Centers for Environmental Information' is an AI guess \u2014 NOAA is the originating agency for ISD; licensor role assumed from standard NOAA open data policy. Verify before flipping to _state: reviewed.",
+    "providers: role [processor] for 'WeatherReal' is an AI guess \u2014 Assumed processor role based on the filtering methodology described as 'filtered as in the WeatherReal dataset paper'. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-06-04T01:30:51+00:00"
 }

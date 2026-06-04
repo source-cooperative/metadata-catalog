@@ -1,23 +1,84 @@
 {
-  "account_id": "bkr",
-  "product_id": "nsrdb",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "bkr/nsrdb",
   "title": "Cloud-Optimized NREL National Solar Radiation Database",
-  "description": "This contains international data listed here (https://nsrdb.nrel.gov/data-sets/international-data) in Icechunk format. The first location available is the India data, as it is the smallest. Plans include reprocessing the full set of hourly/minutely data available here: https://data.openei.org/s3_viewer?bucket=nrel-pds-nsrdb\n\nThe data has been chunked to optimize reading the full spatial area at single timesteps. If you want to read a single point across time, it might be easier to use the NSRDB's API to access the individual points, or rechunk the data here.",
+  "description": "International solar radiation data from the NREL National Solar Radiation Database (NSRDB), reformatted into Icechunk/Zarr format and optimized for reading full spatial extents at single timesteps. The initial release covers India; the full dataset spans hourly and sub-hourly satellite-derived solar resource variables globally. Intended for photovoltaic modeling and climate/weather applications.",
   "keywords": [
-    "icechunk",
-    "pv",
-    "solar",
+    "solar-radiation",
+    "photovoltaic",
     "climate",
     "weather",
-    "satellite",
-    "zarr"
+    "remote-sensing",
+    "zarr",
+    "icechunk"
   ],
-  "created_at": "2025-05-30T13:31:41.003Z",
-  "updated_at": "2025-08-21T16:39:55.567Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": "open",
+  "providers": [
+    {
+      "name": "National Renewable Energy Laboratory (NREL)",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "OpenEI",
+      "roles": [
+        "host"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/bkr/nsrdb"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -180.0,
+          -90.0,
+          180.0,
+          90.0
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/bkr/nsrdb/",
+      "type": "application/octet-stream",
+      "title": "Dataset files (2 x .icechunk)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/bkr/nsrdb/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/bkr/nsrdb",
+      "title": "Source Cooperative product page"
+    }
+  ],
+  "total_bytes": 636882742215,
+  "product_id": "nsrdb",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -30,18 +91,26 @@
       "prefix": "bkr/nsrdb/"
     }
   },
-  "file_count": 2413638,
-  "total_bytes": 636882742215,
+  "disabled": false,
   "exts": {
     "": 2413636,
     "json": 2
   },
-  "_state": "seed",
+  "visibility": "public",
+  "featured": 0,
+  "created_at": "2025-05-30T13:31:41.003Z",
+  "data_mode": "open",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "id": "bkr/nsrdb",
-  "cataloged_at": "2026-05-29T20:23:35+00:00",
-  "store_format": "icechunk"
+  "account_id": "bkr",
+  "updated_at": "2025-08-21T16:39:55.567Z",
+  "file_count": 2413638,
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
+    "providers: role [host] for 'OpenEI' is an AI guess \u2014 OpenEI S3 bucket (nrel-pds-nsrdb) cited as upstream source; assumed host/distributor of original files. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-06-04T01:31:16+00:00"
 }

@@ -1,15 +1,286 @@
 {
-  "account_id": "nlebovits",
-  "product_id": "censo-argentino",
-  "title": "Argentina National Census Data",
-  "description": "Population and Housing Census by INDEC (1991, 2001, 2010, 2022)",
-  "keywords": [],
-  "created_at": "2025-11-21T22:40:49.494Z",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
+  "id": "nlebovits/censo-argentino",
+  "title": "Argentina Census Catalog",
+  "description": "Argentina National Population and Housing Census data at the census-tract (radio censal) level, covering four census years: 1991, 2001, 2010, and 2022. Tabular microdata from INDEC is joined with standardized GeoParquet tract geometries reprojected to EPSG:4326, enabling spatial analysis of demographic and housing variables across provinces and departments.",
+  "license": "CC-BY-4.0",
+  "keywords": [
+    "census",
+    "population",
+    "housing",
+    "demographics",
+    "argentina",
+    "radios-censales",
+    "indec"
+  ],
+  "providers": [
+    {
+      "name": "Instituto Nacional de Estad\u00edstica y Censos (INDEC)",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Rodriguez, Gonzalo Martin; de Grande, Pablo Ernesto (CONICET)",
+      "roles": [
+        "processor"
+      ]
+    },
+    {
+      "name": "Nissim Lebovits",
+      "roles": [
+        "processor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/nlebovits/censo-argentino"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 106648426
+  },
+  "assets": {
+    "census-data": {
+      "href": "https://data.source.coop/nlebovits/censo-argentino/2022/census-data.parquet",
+      "type": "application/x-parquet",
+      "title": "census-data.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id_geo",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "prov_code",
+          "type": "BIGINT",
+          "description": "[admin_code] Numeric province code"
+        },
+        {
+          "name": "valor_provincia",
+          "type": "VARCHAR",
+          "description": "[admin_code] Province identifier code string"
+        },
+        {
+          "name": "etiqueta_provincia",
+          "type": "VARCHAR",
+          "description": "[placename] Province name label"
+        },
+        {
+          "name": "valor_departamento",
+          "type": "VARCHAR",
+          "description": "[admin_code] Department identifier code string"
+        },
+        {
+          "name": "etiqueta_departamento",
+          "type": "VARCHAR",
+          "description": "[placename] Department (municipio) name label"
+        },
+        {
+          "name": "valor_fraccion",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "etiqueta_fraccion",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "valor_radio",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "etiqueta_radio",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "codigo_variable",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "valor_categoria",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "etiqueta_categoria",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "conteo",
+          "type": "INTEGER"
+        }
+      ],
+      "table:row_count": 30738416
+    },
+    "metadata": {
+      "href": "https://data.source.coop/nlebovits/censo-argentino/2022/metadata.parquet",
+      "type": "application/x-parquet",
+      "title": "metadata.parquet",
+      "roles": [
+        "metadata"
+      ],
+      "table:columns": [
+        {
+          "name": "valor_categoria",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "etiqueta_categoria",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "codigo_variable",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "nombre_variable",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "etiqueta_variable",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "entidad",
+          "type": "VARCHAR"
+        }
+      ],
+      "table:row_count": 82229
+    },
+    "radios": {
+      "href": "https://data.source.coop/nlebovits/censo-argentino/2022/radios.parquet",
+      "type": "application/x-parquet",
+      "title": "radios.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "COD_2022",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PROV",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "DEPTO",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FRACC",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "RADIO",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "OBS2022",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "VIV_TOT_P",
+          "type": "INTEGER"
+        },
+        {
+          "name": "POB_TOT_P",
+          "type": "INTEGER"
+        },
+        {
+          "name": "REDATAM",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')",
+          "description": "[geometry] Census tract polygon geometry in OGC:CRS84 (2010 and 2022 collections)"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 66502
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/nlebovits/censo-argentino/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/nlebovits/censo-argentino",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "rel": "child",
+      "href": "./2010/collection.json"
+    },
+    {
+      "rel": "child",
+      "href": "./2022/collection.json"
+    },
+    {
+      "rel": "child",
+      "href": "./2001/collection.json"
+    },
+    {
+      "rel": "child",
+      "href": "./1991/collection.json"
+    }
+  ],
+  "file_count": 35,
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
   "updated_at": "2026-04-28T10:29:17.433Z",
-  "visibility": "public",
+  "exts": {
+    "parquet": 12,
+    "json": 12,
+    "md": 5,
+    "pmtiles": 4,
+    "png": 2
+  },
   "disabled": false,
-  "featured": 0,
+  "created_at": "2025-11-21T22:40:49.494Z",
+  "product_id": "censo-argentino",
+  "account_id": "nlebovits",
+  "visibility": "public",
   "data_mode": "open",
+  "featured": 0,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -22,20 +293,13 @@
       "prefix": "nlebovits/censo-argentino/"
     }
   },
-  "file_count": 35,
   "total_bytes": 649449691,
-  "exts": {
-    "parquet": 12,
-    "json": 12,
-    "md": 5,
-    "pmtiles": 4,
-    "png": 2
-  },
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "cataloged_at": "2026-05-29T20:24:48+00:00",
-  "store_format": null
+  "readme": "## README.md\n# Argentina Census Catalog\n\n![argentina](https://img.shields.io/badge/argentina-blue) ![census](https://img.shields.io/badge/census-blue) ![population](https://img.shields.io/badge/population-blue) ![housing](https://img.shields.io/badge/housing-blue) ![demographics](https://img.shields.io/badge/demographics-blue) ![radios-censales](https://img.shields.io/badge/radios--censales-blue) ![geoparquet](https://img.shields.io/badge/geoparquet-blue) ![indec](https://img.shields.io/badge/indec-blue) ![conicet](https://img.shields.io/badge/conicet-blue)\n\nArgentina National Census Data - Population and Housing Census by INDEC (1991, 2001, 2010, 2022)\n\n## Collections\n\n### [1991](./1991/)\n\nCollection: 1991\n\n### [2001](./2001/)\n\nCollection: 2001\n\n### [2010](./2010/)\n\nCollection: 2010\n\n### [2022](./2022/)\n\nCollection: 2022\n\n## Coverage\n\n**Spatial Extent**\n\n- West: -74.0004, South: -89.0000, East: -26.2521, North: -21.7808\n\n## Source\n\n[https://www.indec.gob.ar/indec/web/Institucional-Indec-BasesDeDatos-6](https://www.indec.gob.ar/indec/web/Institucional-Indec-BasesDeDatos-6)\n\n## Processing Notes\n\nCensus data from INDEC (Instituto Nacional de Estad\u00edstica y Censos).\nCensus tract geometries from Rodriguez & de Grande (CONICET), reprojected to EPSG:4326.\nProcessing code: https://github.com/nlebovits/ciut-redatam\n\n\n## Citation\n\nCensus data: Instituto Nacional de Estad\u00edstica y Censos (INDEC). Censo Nacional de Poblaci\u00f3n, Hogares y Viviendas. Buenos Aires, Argentina.\nGeographic data: Rodriguez, Gonzalo Martin; de Grande, Pablo Ernesto (2022): Cartograf\u00eda de radios censales de Argentina corregidos, completados y estandarizados de 1991, 2001, 2010 y 2022. CONICET. https://ri.conicet.gov.ar/handle/11336/149711\n\n\n## Attribution\n\nINDEC / Rodriguez & de Grande (CONICET) / Nissim Lebovits\n\n## License\n\n[CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/)\n\n## Contact\n\nNissim Lebovits <nlebovits@pm.me>\n\n---\n\n*Generated by [Portolan](https://github.com/portolan-sdi/portolan-cli) from STAC metadata and .portolan/metadata.yaml*\n",
+  "_review": [
+    "providers: role [processor] for 'Rodriguez, Gonzalo Martin; de Grande, Pablo Ernesto (CONICET)' is an AI guess \u2014 Provided corrected and standardized census tract cartographies; treated as processor since INDEC is the primary census producer. Verify before flipping to _state: reviewed.",
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [radios.geom (geometry), radios.geometry (geometry), census-data.etiqueta_provincia (placename), census-data.etiqueta_departamento (placename), census-data.prov_code (admin_code), census-data.valor_provincia (admin_code), census-data.valor_departamento (admin_code)]. Add bbox once a placename \u2192 bbox gazetteer is available."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-06-04T01:05:36+00:00",
+  "_source_format": "stac"
 }

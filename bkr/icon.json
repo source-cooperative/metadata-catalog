@@ -1,29 +1,86 @@
 {
-  "account_id": "bkr",
-  "product_id": "icon",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "bkr/icon",
   "title": "DWD ICON",
-  "description": "Archive of the DWD ICON Global and ICON ART Global models. Most historical data of the global model is a mirror of the OCF ICON Global archive, while the ART and ensemble model data is new.",
-  "keywords": [],
-  "created_at": "2025-10-28T11:35:51.836Z",
-  "updated_at": "2025-10-28T11:35:51.836Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": "open",
-  "mirrors": {
-    "aws-opendata-us-west-2": {
-      "storage_type": "s3",
-      "is_primary": true,
-      "connection_id": "aws-opendata-us-west-2",
-      "config": {
-        "region": "us-west-2",
-        "bucket": "aws-opendata-us-west-2"
-      },
-      "prefix": "bkr/icon/"
+  "description": "Archive of global numerical weather prediction output from Germany's national meteorological service (DWD), covering the ICON Global and ICON ART Global (Aerosol and Reactive Trace gases) models. Historical global model data is primarily mirrored from the OCF ICON Global archive, with additional ART chemistry and ensemble model runs. Data is stored in GRIB2 format with global spatial coverage.",
+  "keywords": [
+    "numerical-weather-prediction",
+    "weather-forecasting",
+    "atmospheric-modeling",
+    "ensemble-forecast",
+    "aerosol",
+    "grib2",
+    "remote-sensing"
+  ],
+  "providers": [
+    {
+      "name": "Deutscher Wetterdienst (DWD)",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Open Climate Fix (OCF)",
+      "roles": [
+        "processor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/bkr/icon"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -180.0,
+          -89.9131012,
+          179.9453125,
+          89.9150238
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2026-04-18T00:00:00",
+          "2026-05-14T13:55:00"
+        ]
+      ]
     }
   },
-  "file_count": 169839638,
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/bkr/icon/",
+      "type": "application/octet-stream",
+      "title": "Dataset files (6 x .icechunk)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/bkr/icon/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/bkr/icon",
+      "title": "Source Cooperative product page"
+    }
+  ],
+  "visibility": "public",
   "total_bytes": 291122841063533,
+  "account_id": "bkr",
+  "created_at": "2025-10-28T11:35:51.836Z",
   "exts": {
     "grib2": 154967266,
     "html": 11948092,
@@ -76,12 +133,33 @@
     "j3jeskmqkfjj09rk3yf0": 1,
     "km2s4yerhmc857qr36yg": 1
   },
-  "_state": "seed",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "id": "bkr/icon",
-  "cataloged_at": "2026-05-29T20:23:16+00:00",
-  "store_format": null
+  "file_count": 169839638,
+  "data_mode": "open",
+  "mirrors": {
+    "aws-opendata-us-west-2": {
+      "storage_type": "s3",
+      "is_primary": true,
+      "connection_id": "aws-opendata-us-west-2",
+      "config": {
+        "region": "us-west-2",
+        "bucket": "aws-opendata-us-west-2"
+      },
+      "prefix": "bkr/icon/"
+    }
+  },
+  "product_id": "icon",
+  "disabled": false,
+  "featured": 0,
+  "updated_at": "2025-10-28T11:35:51.836Z",
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
+    "providers: role [producer, licensor] for 'Deutscher Wetterdienst (DWD)' is an AI guess \u2014 DWD is the originating model center; licensor role assumed as German national met service but not stated in README. Verify before flipping to _state: reviewed.",
+    "providers: role [processor] for 'Open Climate Fix (OCF)' is an AI guess \u2014 OCF ICON Global archive is described as the source mirror for most historical data; processor role inferred. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-06-04T01:43:59+00:00"
 }

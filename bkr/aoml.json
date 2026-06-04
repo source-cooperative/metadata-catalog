@@ -1,23 +1,76 @@
 {
-  "account_id": "bkr",
-  "product_id": "aoml",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "bkr/aoml",
   "title": "AOML Ocean GTS Observations",
-  "description": "This repo is all available ocean observations from AOML in the flattened GTS stream, converted to Icechunk as one large store, from 2012-01-01 to 2025-06-30. ",
+  "description": "All available ocean observations from NOAA's Atlantic Oceanographic and Meteorological Laboratory (AOML) sourced from the WMO Global Telecommunication System (GTS) flattened stream, spanning 2012-01-01 to 2025-06-30. The dataset has been converted to Icechunk format as a single large Zarr-compatible chunked store with global spatial coverage.",
   "keywords": [
+    "ocean-observations",
+    "oceanography",
+    "gts",
     "climate",
     "weather",
-    "forecasting",
-    "observations",
-    "zarr",
     "icechunk",
-    "ocean"
+    "zarr",
+    "noaa"
   ],
-  "created_at": "2025-07-07T21:48:25.900Z",
-  "updated_at": "2025-08-21T16:39:55.567Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": "open",
+  "providers": [
+    {
+      "name": "NOAA Atlantic Oceanographic and Meteorological Laboratory (AOML)",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/bkr/aoml"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -180.0,
+          -90.0,
+          179.8999939,
+          1.7e+38
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "1970-01-01T00:00:00",
+          "2026-02-26T07:00:00"
+        ]
+      ]
+    }
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/bkr/aoml/",
+      "type": "application/octet-stream",
+      "title": "Dataset files (26 x .icechunk)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/bkr/aoml/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/bkr/aoml",
+      "title": "Source Cooperative product page"
+    }
+  ],
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -30,18 +83,28 @@
       "prefix": "bkr/aoml/"
     }
   },
-  "file_count": 462093,
-  "total_bytes": 55656280493,
+  "disabled": false,
+  "account_id": "bkr",
   "exts": {
     "": 462067,
     "json": 26
   },
-  "_state": "seed",
+  "featured": 0,
+  "updated_at": "2025-08-21T16:39:55.567Z",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "id": "bkr/aoml",
-  "cataloged_at": "2026-05-29T20:22:43+00:00",
-  "store_format": "icechunk"
+  "created_at": "2025-07-07T21:48:25.900Z",
+  "visibility": "public",
+  "data_mode": "open",
+  "total_bytes": 55656280493,
+  "product_id": "aoml",
+  "file_count": 462093,
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
+    "providers: role [producer] for 'NOAA Atlantic Oceanographic and Meteorological Laboratory (AOML)' is an AI guess \u2014 Identified as producer from 'AOML' in dataset title and description; licensor role not stated. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-06-04T01:26:49+00:00"
 }

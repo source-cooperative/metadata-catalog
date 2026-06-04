@@ -1,34 +1,97 @@
 {
-  "account_id": "cboettig",
-  "product_id": "justice40",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "cboettig/justice40",
   "title": "Climate and Economic Justice Screening Tool (cloud-native formats)",
-  "description": "The Justice40 initiative and CEJST were announced in the Executive Order on Tackling the Climate Crisis at Home and Abroad in January 2021. The CEJST includes interactive maps and an initial draft scorecard which federal agencies can use to prioritize historically overburdened and underserved communities for benefits in their programs. https://screeningtool.geoplatform.gov/, https://github.com/usds/justice40-tool",
+  "description": "The Climate and Economic Justice Screening Tool (CEJST) identifies U.S. census tracts considered disadvantaged based on climate, energy, health, housing, legacy pollution, transportation, water, and workforce burden indicators. Mandated by the January 2021 Executive Order on Tackling the Climate Crisis, it is used by federal agencies to prioritize historically overburdened and underserved communities for program benefits. This repository republishes the data in cloud-native PMTiles and GeoParquet formats for streaming analysis and interactive mapping.",
   "keywords": [
+    "environmental-justice",
     "climate",
-    "justice",
-    "pmtiles",
-    "geoparquet"
+    "disadvantaged-communities",
+    "census-tracts",
+    "federal-policy",
+    "equity",
+    "land-use"
   ],
-  "created_at": "2024-04-25T03:51:13.676893+00:00",
-  "updated_at": "2025-08-21T16:39:55.567Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": "open",
-  "mirrors": {
-    "aws-opendata-us-west-2": {
-      "storage_type": "s3",
-      "is_primary": true,
-      "connection_id": "aws-opendata-us-west-2",
-      "config": {
-        "region": "us-west-2",
-        "bucket": "aws-opendata-us-west-2"
-      },
-      "prefix": "cboettig/justice40/"
+  "providers": [
+    {
+      "name": "U.S. Digital Service / Council on Environmental Quality",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Carl Boettiger (cboettig)",
+      "roles": [
+        "processor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/cboettig/justice40"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          143.0451809,
+          -24.6816814,
+          -19.1178861,
+          82.8678788
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
     }
   },
+  "summaries": {
+    "item_count": 74045
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/cboettig/justice40/",
+      "type": "application/octet-stream",
+      "title": "Dataset files (1 x .filegdb)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/cboettig/justice40/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/cboettig/justice40",
+      "title": "Source Cooperative product page"
+    }
+  ],
   "file_count": 54,
+  "disabled": false,
+  "data_mode": "open",
+  "product_id": "justice40",
+  "featured": 0,
+  "updated_at": "2025-08-21T16:39:55.567Z",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
   "total_bytes": 937788100,
+  "account_id": "cboettig",
   "exts": {
     "parquet": 1,
     "atx": 17,
@@ -43,12 +106,25 @@
     "md": 1,
     "gdbtablx": 9
   },
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
+  "mirrors": {
+    "aws-opendata-us-west-2": {
+      "storage_type": "s3",
+      "is_primary": true,
+      "connection_id": "aws-opendata-us-west-2",
+      "config": {
+        "region": "us-west-2",
+        "bucket": "aws-opendata-us-west-2"
+      },
+      "prefix": "cboettig/justice40/"
+    }
   },
-  "id": "cboettig/justice40",
-  "cataloged_at": "2026-05-28T03:21:29+00:00",
-  "store_format": "filegdb"
+  "visibility": "public",
+  "created_at": "2024-04-25T03:51:13.676893+00:00",
+  "readme": "## README.md\n# Climate and Economic Justice Screening Tool\n\n\nThe official tool is hosted at https://screeningtool.geoplatform.gov\n\nThis source.coop repository provides access to this data as PMTiles and geoparquet.  PMTiles provides static vector tiles enabling many popular client-side libraries to quickly and easily render interactive maps involving very large vector datasets. The Geoparquet format is optimized for cloud-based (i.e. streaming) analysis workflows without the need to download and store the data.\n\n## Using PMTiles\n\n[example map](https://data.source.coop/cboettig/justice40/justice40.html)\n\nSee [map.py](https://data.source.coop/cboettig/justice40/map.py) for soruce code\n\n## Using geoparquet\n \n```python\nimport ibis # pip install ibis-framework\nfrom ibis import _\n\nsummary = (ibis\n    .read_parquet(\"https://data.source.coop/cboettig/justice40/disadvantaged-communities.parquet\")\n    .group_by(_.StateName)\n    .agg(fraction_disadvantaged = (_.Disadvan * _.SHAPE_Area).sum() / _.SHAPE_Area.sum())\n    .order_by(ibis.desc(_.fraction_disadvantaged))\n    .to_pandas()\n)\n\nsummary\n```",
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
+    "providers: role [processor] for 'Carl Boettiger (cboettig)' is an AI guess \u2014 Inferred as processor: converted original FileGDB to cloud-native PMTiles and GeoParquet for this repository. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-06-04T01:03:54+00:00"
 }

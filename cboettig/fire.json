@@ -1,20 +1,101 @@
 {
-  "account_id": "cboettig",
-  "product_id": "fire",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "cboettig/fire",
   "title": "Wildfire Boundary Polygons from USGS and CalFire in cloud native formats",
-  "description": "Cloud Native serializations of publicly available fire data from USGS and Calfire. Calfire data includes controlled burn treatments. Data through 2022",
+  "description": "Snapshots of fire polygon boundaries from USGS Monitoring Trends in Burn Severity (MTBS) and the California Department of Forestry and Fire Protection (CalFire), including burned area extents and controlled burn treatments through 2022. Also includes Wildfire Hazard Potential raster data for the contiguous United States at 270-m resolution. Distributed in cloud-native formats including PMTiles and GeoParquet.",
   "keywords": [
+    "wildfire",
+    "fire-perimeters",
+    "burned-area",
+    "wildfire-hazard",
     "pmtiles",
-    "fire",
-    "parquet",
-    "united states"
+    "cloud-native",
+    "united-states"
   ],
-  "created_at": "2024-03-19T17:13:53.608378+00:00",
+  "providers": [
+    {
+      "name": "USGS Monitoring Trends in Burn Severity (MTBS)",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "California Department of Forestry and Fire Protection (CalFire)",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "USDA Forest Service Research Data Archive",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "cboettig",
+      "roles": [
+        "processor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/cboettig/fire"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -124.5364653,
+          32.4220161,
+          -113.4489091,
+          42.6846036
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 31425
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/cboettig/fire/",
+      "type": "application/octet-stream",
+      "title": "Dataset files (1 x .filegdb)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/cboettig/fire/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/cboettig/fire",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "rel": "cite-as",
+      "href": "https://doi.org/10.2737/RDS-2015-0047-4"
+    }
+  ],
   "updated_at": "2025-08-21T16:39:55.567Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": "open",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -27,8 +108,16 @@
       "prefix": "cboettig/fire/"
     }
   },
-  "file_count": 96,
+  "data_mode": "open",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "account_id": "cboettig",
   "total_bytes": 2404844456,
+  "created_at": "2024-03-19T17:13:53.608378+00:00",
+  "product_id": "fire",
+  "file_count": 96,
   "exts": {
     "parquet": 3,
     "ipynb": 1,
@@ -57,12 +146,15 @@
     "prj": 1,
     "html": 1
   },
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "id": "cboettig/fire",
-  "cataloged_at": "2026-05-28T03:21:29+00:00",
-  "store_format": "filegdb"
+  "visibility": "public",
+  "featured": 0,
+  "disabled": false,
+  "readme": "## README.md\n# fire \n\nSnapshots of fire polygons data from multiple sources.  Cloud-optimized formats include PMTiles and (Geo)Parquet serializations.\n\n## USGS MTBS Fire perimiters:\n\n- Original shapefiles for burned area extent downloaded from: https://edcintl.cr.usgs.gov/downloads/sciweb1/shared/MTBS_Fire/data/composite_data/burned_area_extent_shapefile/mtbs_perimeter_data.zip\n\n## Calfire \n\n- Original geodatabase file up to year 2022 downloaded from: https://www.fire.ca.gov/what-we-do/fire-resource-assessment-program/gis-mapping-and-data-analytics\n\nPMTiles created using gdal 3.8.4 via\n\n```\nogr2ogr -dsco MAX_SIZE=50000000 -dsco MAX_FEATURES=20000000 calfire-2022.pmtiles CALFIRE/fire22_1.gdb\n```\n\n[Example map](https://data.source.coop/cboettig/fire/fire-pmtiles.html) created using [map.py](https://data.source.coop/cboettig/fire/map.py)\n\n## Wildfire Hazard Potential\n\n> Dillon, Gregory K. 2023. Wildfire Hazard Potential for the United States (270-m), version 2023. 4th Edition. Fort Collins, CO: Forest Service Research Data Archive. https://doi.org/10.2737/RDS-2015-0047-4\n\n\n\n",
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
+    "providers: role [producer] for 'USDA Forest Service Research Data Archive' is an AI guess \u2014 Cited as publisher of the Wildfire Hazard Potential dataset (DOI 10.2737/RDS-2015-0047-4); assumed producer role. Verify before flipping to _state: reviewed.",
+    "providers: role [processor] for 'cboettig' is an AI guess \u2014 Source Cooperative account that produced the cloud-native PMTiles and GeoParquet serializations from original source files. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-06-04T01:06:14+00:00"
 }

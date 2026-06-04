@@ -1,17 +1,21 @@
 {
   "type": "Collection",
   "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
   "id": "fused/overture",
   "title": "Overture Maps - Fused-partitioned",
-  "description": "Global vector dataset containing administrative boundaries, building footprints, land use classifications, points of interest, and transportation networks. Organized by theme and geo-partitioned in GeoParquet format adhering to the Overture Data Schema standard.",
+  "description": "Global vector dataset from Overture Maps Foundation containing administrative boundaries, building footprints, land use classifications, points of interest, and transportation networks. Organized by theme and geo-partitioned in GeoParquet format adhering to the Overture Data Schema standard. Covers the full global extent across multiple geographic scales and feature types.",
   "license": "other",
   "keywords": [
-    "buildings",
     "land-use",
-    "transportation",
+    "building-footprints",
     "administrative-boundaries",
+    "transportation",
     "points-of-interest",
-    "vector-data"
+    "vector-data",
+    "open-map-data"
   ],
   "providers": [
     {
@@ -39,10 +43,10 @@
     "spatial": {
       "bbox": [
         [
-          -179.231086,
-          -1.998657,
-          -49.901625,
-          78.6946255
+          null,
+          null,
+          null,
+          null
         ]
       ]
     },
@@ -56,16 +60,1481 @@
     }
   },
   "summaries": {
-    "item_count": 32191479
+    "item_count": 419403
   },
   "assets": {
-    "data": {
-      "href": "https://data.source.coop/fused/overture/",
+    "64": {
+      "href": "https://data.source.coop/fused/overture/2024-02-15-alpha-0/theme=admins/type=administrativeBoundary/64.parquet",
       "type": "application/x-parquet",
-      "title": "Dataset files (24335 x .parquet)",
+      "title": "64.parquet",
       "roles": [
         "data"
-      ]
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:4326')",
+          "description": "[geometry] WGS84 geometry for locality/administrative place features"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(minx DOUBLE, maxx DOUBLE, miny DOUBLE, maxy DOUBLE)"
+        },
+        {
+          "name": "subType",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "localityType",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "names",
+          "type": "STRUCT(\"primary\" VARCHAR, common MAP(VARCHAR, VARCHAR), rules STRUCT(variant VARCHAR, \"language\" VARCHAR, \"value\" VARCHAR, \"at\" DOUBLE[], side VARCHAR)[])"
+        },
+        {
+          "name": "wikidata",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "contextId",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "population",
+          "type": "INTEGER"
+        },
+        {
+          "name": "adminLevel",
+          "type": "INTEGER"
+        },
+        {
+          "name": "isoCountryCodeAlpha2",
+          "type": "VARCHAR",
+          "description": "[admin_code] ISO 3166-1 alpha-2 country code"
+        },
+        {
+          "name": "isoSubCountryCode",
+          "type": "VARCHAR",
+          "description": "[admin_code] ISO 3166-2 sub-country (state/province) code"
+        },
+        {
+          "name": "defaultLanguage",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "drivingSide",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "version",
+          "type": "INTEGER"
+        },
+        {
+          "name": "updateTime",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "sources",
+          "type": "STRUCT(property VARCHAR, dataset VARCHAR, recordId VARCHAR, confidence DOUBLE)[]"
+        },
+        {
+          "name": "isMaritime",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "geopolDisplay",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "localityId",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "theme",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "type",
+          "type": "VARCHAR"
+        }
+      ],
+      "table:row_count": 342
+    },
+    "0": {
+      "href": "https://data.source.coop/fused/overture/2025-09-24-0/theme=buildings/type=building/part=1/0.parquet",
+      "type": "application/x-parquet",
+      "title": "0.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:4326')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin FLOAT, xmax FLOAT, ymin FLOAT, ymax FLOAT)"
+        },
+        {
+          "name": "version",
+          "type": "INTEGER"
+        },
+        {
+          "name": "sources",
+          "type": "STRUCT(property VARCHAR, dataset VARCHAR, license VARCHAR, record_id VARCHAR, update_time VARCHAR, confidence DOUBLE, \"between\" DOUBLE[])[]"
+        },
+        {
+          "name": "level",
+          "type": "INTEGER"
+        },
+        {
+          "name": "subtype",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "class",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "height",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "names",
+          "type": "STRUCT(\"primary\" VARCHAR, common MAP(VARCHAR, VARCHAR), rules STRUCT(variant VARCHAR, \"language\" VARCHAR, perspectives STRUCT(\"mode\" VARCHAR, countries VARCHAR[]), \"value\" VARCHAR, \"between\" DOUBLE[], side VARCHAR)[])"
+        },
+        {
+          "name": "has_parts",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "is_underground",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "num_floors",
+          "type": "INTEGER"
+        },
+        {
+          "name": "num_floors_underground",
+          "type": "INTEGER"
+        },
+        {
+          "name": "min_height",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "min_floor",
+          "type": "INTEGER"
+        },
+        {
+          "name": "facade_color",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "facade_material",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "roof_material",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "roof_shape",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "roof_direction",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "roof_orientation",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "roof_color",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "roof_height",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "part",
+          "type": "BIGINT"
+        },
+        {
+          "name": "theme",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "type",
+          "type": "VARCHAR"
+        }
+      ],
+      "table:row_count": 18
+    },
+    "73": {
+      "href": "https://data.source.coop/fused/overture/2024-02-15-alpha-0/theme=buildings/type=building/part=0/73.parquet",
+      "type": "application/x-parquet",
+      "title": "73.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:4326')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(minx DOUBLE, maxx DOUBLE, miny DOUBLE, maxy DOUBLE)"
+        },
+        {
+          "name": "names",
+          "type": "STRUCT(\"primary\" VARCHAR, common MAP(VARCHAR, VARCHAR), rules STRUCT(variant VARCHAR, \"language\" VARCHAR, \"value\" VARCHAR, \"at\" DOUBLE[], side VARCHAR)[])"
+        },
+        {
+          "name": "version",
+          "type": "INTEGER"
+        },
+        {
+          "name": "updateTime",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "sources",
+          "type": "STRUCT(property VARCHAR, dataset VARCHAR, recordId VARCHAR, confidence DOUBLE)[]"
+        },
+        {
+          "name": "class",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "hasParts",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "height",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "numFloors",
+          "type": "INTEGER"
+        },
+        {
+          "name": "facadeColor",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "facadeMaterial",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "roofMaterial",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "roofShape",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "roofDirection",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "roofOrientation",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "roofColor",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "eaveHeight",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "level",
+          "type": "INTEGER"
+        },
+        {
+          "name": "part",
+          "type": "BIGINT"
+        },
+        {
+          "name": "theme",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "type",
+          "type": "VARCHAR"
+        }
+      ],
+      "table:row_count": 171192
+    },
+    "65": {
+      "href": "https://data.source.coop/fused/overture/2024-10-23-0/theme=base/type=land/65.parquet",
+      "type": "application/x-parquet",
+      "title": "65.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:4326')",
+          "description": "[geometry] WGS84 geometry for administrative division features"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin FLOAT, xmax FLOAT, ymin FLOAT, ymax FLOAT)"
+        },
+        {
+          "name": "version",
+          "type": "INTEGER"
+        },
+        {
+          "name": "sources",
+          "type": "STRUCT(property VARCHAR, dataset VARCHAR, record_id VARCHAR, update_time VARCHAR, confidence DOUBLE)[]"
+        },
+        {
+          "name": "subtype",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "class",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "surface",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "names",
+          "type": "STRUCT(\"primary\" VARCHAR, common MAP(VARCHAR, VARCHAR), rules STRUCT(variant VARCHAR, \"language\" VARCHAR, \"value\" VARCHAR, \"between\" DOUBLE[], side VARCHAR)[])"
+        },
+        {
+          "name": "level",
+          "type": "INTEGER"
+        },
+        {
+          "name": "source_tags",
+          "type": "MAP(VARCHAR, VARCHAR)"
+        },
+        {
+          "name": "wikidata",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "elevation",
+          "type": "INTEGER"
+        },
+        {
+          "name": "theme",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "type",
+          "type": "VARCHAR"
+        }
+      ],
+      "table:row_count": 37687
+    },
+    "61": {
+      "href": "https://data.source.coop/fused/overture/2024-03-12-alpha-0/theme=buildings/type=building/part=4/61.parquet",
+      "type": "application/x-parquet",
+      "title": "61.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:4326')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(minx DOUBLE, maxx DOUBLE, miny DOUBLE, maxy DOUBLE)"
+        },
+        {
+          "name": "version",
+          "type": "INTEGER"
+        },
+        {
+          "name": "update_time",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "sources",
+          "type": "STRUCT(property VARCHAR, dataset VARCHAR, record_id VARCHAR, confidence DOUBLE)[]"
+        },
+        {
+          "name": "names",
+          "type": "STRUCT(\"primary\" VARCHAR, common MAP(VARCHAR, VARCHAR), rules STRUCT(variant VARCHAR, \"language\" VARCHAR, \"value\" VARCHAR, \"at\" DOUBLE[], side VARCHAR)[])"
+        },
+        {
+          "name": "class",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "level",
+          "type": "INTEGER"
+        },
+        {
+          "name": "has_parts",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "height",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "num_floors",
+          "type": "INTEGER"
+        },
+        {
+          "name": "facade_color",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "facade_material",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "roof_material",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "roof_shape",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "roof_direction",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "roof_orientation",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "roof_color",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "eave_height",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "part",
+          "type": "BIGINT"
+        },
+        {
+          "name": "theme",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "type",
+          "type": "VARCHAR"
+        }
+      ],
+      "table:row_count": 20851
+    },
+    "20": {
+      "href": "https://data.source.coop/fused/overture/2024-08-20-0/theme=transportation/type=connector/20.parquet",
+      "type": "application/x-parquet",
+      "title": "20.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:4326')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin FLOAT, xmax FLOAT, ymin FLOAT, ymax FLOAT)"
+        },
+        {
+          "name": "version",
+          "type": "INTEGER"
+        },
+        {
+          "name": "sources",
+          "type": "STRUCT(property VARCHAR, dataset VARCHAR, record_id VARCHAR, update_time VARCHAR, confidence DOUBLE)[]"
+        },
+        {
+          "name": "theme",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "type",
+          "type": "VARCHAR"
+        }
+      ],
+      "table:row_count": 1470
+    },
+    "69": {
+      "href": "https://data.source.coop/fused/overture/2024-10-23-0/theme=addresses/type=address/69.parquet",
+      "type": "application/x-parquet",
+      "title": "69.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:4326')",
+          "description": "[geometry] WGS84 point geometry for address features"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin FLOAT, xmax FLOAT, ymin FLOAT, ymax FLOAT)"
+        },
+        {
+          "name": "country",
+          "type": "VARCHAR",
+          "description": "[admin_code] Country code in address records"
+        },
+        {
+          "name": "postcode",
+          "type": "VARCHAR",
+          "description": "[zipcode] Postal/ZIP code for address records"
+        },
+        {
+          "name": "street",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "number",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "unit",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "address_levels",
+          "type": "STRUCT(\"value\" VARCHAR)[]"
+        },
+        {
+          "name": "version",
+          "type": "INTEGER"
+        },
+        {
+          "name": "sources",
+          "type": "STRUCT(property VARCHAR, dataset VARCHAR, record_id VARCHAR, update_time VARCHAR, confidence DOUBLE)[]"
+        },
+        {
+          "name": "theme",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "type",
+          "type": "VARCHAR"
+        }
+      ],
+      "table:row_count": 2499
+    },
+    "84": {
+      "href": "https://data.source.coop/fused/overture/2024-10-23-0/theme=base/type=land_cover/84.parquet",
+      "type": "application/x-parquet",
+      "title": "84.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:4326')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin FLOAT, xmax FLOAT, ymin FLOAT, ymax FLOAT)"
+        },
+        {
+          "name": "version",
+          "type": "INTEGER"
+        },
+        {
+          "name": "sources",
+          "type": "STRUCT(property VARCHAR, dataset VARCHAR, record_id VARCHAR, update_time VARCHAR, confidence DOUBLE)[]"
+        },
+        {
+          "name": "subtype",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "cartography",
+          "type": "STRUCT(min_zoom INTEGER, max_zoom INTEGER, sort_key INTEGER)"
+        },
+        {
+          "name": "theme",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "type",
+          "type": "VARCHAR"
+        }
+      ],
+      "table:row_count": 0
+    },
+    "50": {
+      "href": "https://data.source.coop/fused/overture/2024-12-18-0/theme=divisions/type=division_area/50.parquet",
+      "type": "application/x-parquet",
+      "title": "50.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:4326')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin FLOAT, xmax FLOAT, ymin FLOAT, ymax FLOAT)"
+        },
+        {
+          "name": "country",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "version",
+          "type": "INTEGER"
+        },
+        {
+          "name": "sources",
+          "type": "STRUCT(property VARCHAR, dataset VARCHAR, record_id VARCHAR, update_time VARCHAR, confidence DOUBLE)[]"
+        },
+        {
+          "name": "subtype",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "class",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "names",
+          "type": "STRUCT(\"primary\" VARCHAR, common MAP(VARCHAR, VARCHAR), rules STRUCT(variant VARCHAR, \"language\" VARCHAR, \"value\" VARCHAR, \"between\" DOUBLE[], side VARCHAR)[])"
+        },
+        {
+          "name": "region",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "division_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "theme",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "type",
+          "type": "VARCHAR"
+        }
+      ],
+      "table:row_count": 2141
+    },
+    "67": {
+      "href": "https://data.source.coop/fused/overture/2025-01-22-0/theme=buildings/type=building/part=2/67.parquet",
+      "type": "application/x-parquet",
+      "title": "67.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:4326')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin FLOAT, xmax FLOAT, ymin FLOAT, ymax FLOAT)"
+        },
+        {
+          "name": "version",
+          "type": "INTEGER"
+        },
+        {
+          "name": "sources",
+          "type": "STRUCT(property VARCHAR, dataset VARCHAR, record_id VARCHAR, update_time VARCHAR, confidence DOUBLE)[]"
+        },
+        {
+          "name": "level",
+          "type": "INTEGER"
+        },
+        {
+          "name": "subtype",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "class",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "height",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "names",
+          "type": "STRUCT(\"primary\" VARCHAR, common MAP(VARCHAR, VARCHAR), rules STRUCT(variant VARCHAR, \"language\" VARCHAR, \"value\" VARCHAR, \"between\" DOUBLE[], side VARCHAR)[])"
+        },
+        {
+          "name": "has_parts",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "is_underground",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "num_floors",
+          "type": "INTEGER"
+        },
+        {
+          "name": "num_floors_underground",
+          "type": "INTEGER"
+        },
+        {
+          "name": "min_height",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "min_floor",
+          "type": "INTEGER"
+        },
+        {
+          "name": "facade_color",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "facade_material",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "roof_material",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "roof_shape",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "roof_direction",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "roof_orientation",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "roof_color",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "roof_height",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "part",
+          "type": "BIGINT"
+        },
+        {
+          "name": "theme",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "type",
+          "type": "VARCHAR"
+        }
+      ],
+      "table:row_count": 7147
+    },
+    "75": {
+      "href": "https://data.source.coop/fused/overture/2025-05-21-0/theme=divisions/type=division/75.parquet",
+      "type": "application/x-parquet",
+      "title": "75.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:4326')",
+          "description": "[geometry] WGS84 geometry for division/place records with hierarchy"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin FLOAT, xmax FLOAT, ymin FLOAT, ymax FLOAT)"
+        },
+        {
+          "name": "country",
+          "type": "VARCHAR",
+          "description": "[admin_code] Country code for division records"
+        },
+        {
+          "name": "version",
+          "type": "INTEGER"
+        },
+        {
+          "name": "sources",
+          "type": "STRUCT(property VARCHAR, dataset VARCHAR, record_id VARCHAR, update_time VARCHAR, confidence DOUBLE)[]"
+        },
+        {
+          "name": "cartography",
+          "type": "STRUCT(prominence INTEGER, min_zoom INTEGER, max_zoom INTEGER, sort_key INTEGER)"
+        },
+        {
+          "name": "subtype",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "class",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "names",
+          "type": "STRUCT(\"primary\" VARCHAR, common MAP(VARCHAR, VARCHAR), rules STRUCT(variant VARCHAR, \"language\" VARCHAR, \"value\" VARCHAR, \"between\" DOUBLE[], side VARCHAR)[])"
+        },
+        {
+          "name": "wikidata",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "region",
+          "type": "VARCHAR",
+          "description": "[admin_code] Region/state code for division records"
+        },
+        {
+          "name": "perspectives",
+          "type": "STRUCT(\"mode\" VARCHAR, countries VARCHAR[])"
+        },
+        {
+          "name": "local_type",
+          "type": "MAP(VARCHAR, VARCHAR)"
+        },
+        {
+          "name": "hierarchies",
+          "type": "STRUCT(division_id VARCHAR, subtype VARCHAR, \"name\" VARCHAR)[][]"
+        },
+        {
+          "name": "parent_division_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "norms",
+          "type": "STRUCT(driving_side VARCHAR)"
+        },
+        {
+          "name": "population",
+          "type": "INTEGER"
+        },
+        {
+          "name": "capital_division_ids",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "capital_of_divisions",
+          "type": "STRUCT(division_id VARCHAR, subtype VARCHAR)[]"
+        },
+        {
+          "name": "theme",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "type",
+          "type": "VARCHAR"
+        }
+      ],
+      "table:row_count": 9760
+    },
+    "28": {
+      "href": "https://data.source.coop/fused/overture/2025-06-25-0/theme=base/type=water/28.parquet",
+      "type": "application/x-parquet",
+      "title": "28.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:4326')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin FLOAT, xmax FLOAT, ymin FLOAT, ymax FLOAT)"
+        },
+        {
+          "name": "version",
+          "type": "INTEGER"
+        },
+        {
+          "name": "sources",
+          "type": "STRUCT(property VARCHAR, dataset VARCHAR, record_id VARCHAR, update_time VARCHAR, confidence DOUBLE, \"between\" DOUBLE[])[]"
+        },
+        {
+          "name": "level",
+          "type": "INTEGER"
+        },
+        {
+          "name": "subtype",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "class",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "names",
+          "type": "STRUCT(\"primary\" VARCHAR, common MAP(VARCHAR, VARCHAR), rules STRUCT(variant VARCHAR, \"language\" VARCHAR, perspectives STRUCT(\"mode\" VARCHAR, countries VARCHAR[]), \"value\" VARCHAR, \"between\" DOUBLE[], side VARCHAR)[])"
+        },
+        {
+          "name": "source_tags",
+          "type": "MAP(VARCHAR, VARCHAR)"
+        },
+        {
+          "name": "wikidata",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "is_salt",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "is_intermittent",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "theme",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "type",
+          "type": "VARCHAR"
+        }
+      ],
+      "table:row_count": 30204
+    },
+    "5": {
+      "href": "https://data.source.coop/fused/overture/2025-09-24-0/theme=transportation/type=segment/5.parquet",
+      "type": "application/x-parquet",
+      "title": "5.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:4326')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin FLOAT, xmax FLOAT, ymin FLOAT, ymax FLOAT)"
+        },
+        {
+          "name": "version",
+          "type": "INTEGER"
+        },
+        {
+          "name": "sources",
+          "type": "STRUCT(property VARCHAR, dataset VARCHAR, license VARCHAR, record_id VARCHAR, update_time VARCHAR, confidence DOUBLE, \"between\" DOUBLE[])[]"
+        },
+        {
+          "name": "subtype",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "class",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "names",
+          "type": "STRUCT(\"primary\" VARCHAR, common MAP(VARCHAR, VARCHAR), rules STRUCT(variant VARCHAR, \"language\" VARCHAR, perspectives STRUCT(\"mode\" VARCHAR, countries VARCHAR[]), \"value\" VARCHAR, \"between\" DOUBLE[], side VARCHAR)[])"
+        },
+        {
+          "name": "connectors",
+          "type": "STRUCT(connector_id VARCHAR, \"at\" DOUBLE)[]"
+        },
+        {
+          "name": "routes",
+          "type": "STRUCT(\"name\" VARCHAR, network VARCHAR, \"ref\" VARCHAR, symbol VARCHAR, wikidata VARCHAR, \"between\" DOUBLE[])[]"
+        },
+        {
+          "name": "subclass_rules",
+          "type": "STRUCT(\"value\" VARCHAR, \"between\" DOUBLE[])[]"
+        },
+        {
+          "name": "access_restrictions",
+          "type": "STRUCT(access_type VARCHAR, \"when\" STRUCT(during VARCHAR, heading VARCHAR, \"using\" VARCHAR[], recognized VARCHAR[], \"mode\" VARCHAR[], vehicle STRUCT(dimension VARCHAR, comparison VARCHAR, \"value\" DOUBLE, unit VARCHAR)[]), \"between\" DOUBLE[])[]"
+        },
+        {
+          "name": "level_rules",
+          "type": "STRUCT(\"value\" INTEGER, \"between\" DOUBLE[])[]"
+        },
+        {
+          "name": "destinations",
+          "type": "STRUCT(labels STRUCT(\"value\" VARCHAR, \"type\" VARCHAR)[], symbols VARCHAR[], from_connector_id VARCHAR, to_segment_id VARCHAR, to_connector_id VARCHAR, \"when\" STRUCT(heading VARCHAR), final_heading VARCHAR)[]"
+        },
+        {
+          "name": "prohibited_transitions",
+          "type": "STRUCT(\"sequence\" STRUCT(connector_id VARCHAR, segment_id VARCHAR)[], final_heading VARCHAR, \"when\" STRUCT(heading VARCHAR, during VARCHAR, \"using\" VARCHAR[], recognized VARCHAR[], \"mode\" VARCHAR[], vehicle STRUCT(dimension VARCHAR, comparison VARCHAR, \"value\" DOUBLE, unit VARCHAR)[]), \"between\" DOUBLE[])[]"
+        },
+        {
+          "name": "road_surface",
+          "type": "STRUCT(\"value\" VARCHAR, \"between\" DOUBLE[])[]"
+        },
+        {
+          "name": "road_flags",
+          "type": "STRUCT(\"values\" VARCHAR[], \"between\" DOUBLE[])[]"
+        },
+        {
+          "name": "speed_limits",
+          "type": "STRUCT(min_speed STRUCT(\"value\" INTEGER, unit VARCHAR), max_speed STRUCT(\"value\" INTEGER, unit VARCHAR), is_max_speed_variable BOOLEAN, \"when\" STRUCT(during VARCHAR, heading VARCHAR, \"using\" VARCHAR[], recognized VARCHAR[], \"mode\" VARCHAR[], vehicle STRUCT(dimension VARCHAR, comparison VARCHAR, \"value\" DOUBLE, unit VARCHAR)[]), \"between\" DOUBLE[])[]"
+        },
+        {
+          "name": "width_rules",
+          "type": "STRUCT(\"value\" DOUBLE, \"between\" DOUBLE[])[]"
+        },
+        {
+          "name": "subclass",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "rail_flags",
+          "type": "STRUCT(\"values\" VARCHAR[], \"between\" DOUBLE[])[]"
+        },
+        {
+          "name": "theme",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "type",
+          "type": "VARCHAR"
+        }
+      ],
+      "table:row_count": 173
+    },
+    "21": {
+      "href": "https://data.source.coop/fused/overture/2026-03-18-0/theme=base/type=bathymetry/21.parquet",
+      "type": "application/x-parquet",
+      "title": "21.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "depth",
+          "type": "INTEGER"
+        },
+        {
+          "name": "cartography",
+          "type": "STRUCT(prominence INTEGER, min_zoom INTEGER, max_zoom INTEGER, sort_key INTEGER)"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:4326')"
+        },
+        {
+          "name": "sources",
+          "type": "STRUCT(property VARCHAR, dataset VARCHAR, license VARCHAR, record_id VARCHAR, update_time VARCHAR, confidence DOUBLE, \"between\" DOUBLE[])[]"
+        },
+        {
+          "name": "version",
+          "type": "INTEGER"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, xmax DOUBLE, ymin DOUBLE, ymax DOUBLE)"
+        },
+        {
+          "name": "theme",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "type",
+          "type": "VARCHAR"
+        }
+      ],
+      "table:row_count": 243
+    },
+    "36": {
+      "href": "https://data.source.coop/fused/overture/2026-03-18-0/theme=buildings/type=building/part=3/36.parquet",
+      "type": "application/x-parquet",
+      "title": "36.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "names",
+          "type": "STRUCT(\"primary\" VARCHAR, common MAP(VARCHAR, VARCHAR), rules STRUCT(variant VARCHAR, \"language\" VARCHAR, perspectives STRUCT(\"mode\" VARCHAR, countries VARCHAR[]), \"value\" VARCHAR, \"between\" DOUBLE[], side VARCHAR)[])"
+        },
+        {
+          "name": "sources",
+          "type": "STRUCT(property VARCHAR, dataset VARCHAR, license VARCHAR, record_id VARCHAR, update_time VARCHAR, confidence DOUBLE, \"between\" DOUBLE[])[]"
+        },
+        {
+          "name": "level",
+          "type": "INTEGER"
+        },
+        {
+          "name": "height",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "min_height",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "is_underground",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "num_floors",
+          "type": "INTEGER"
+        },
+        {
+          "name": "num_floors_underground",
+          "type": "INTEGER"
+        },
+        {
+          "name": "min_floor",
+          "type": "INTEGER"
+        },
+        {
+          "name": "subtype",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "class",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "facade_color",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "facade_material",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "roof_material",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "roof_shape",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "roof_direction",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "roof_orientation",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "roof_color",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "roof_height",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:4326')"
+        },
+        {
+          "name": "has_parts",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "version",
+          "type": "INTEGER"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, xmax DOUBLE, ymin DOUBLE, ymax DOUBLE)"
+        },
+        {
+          "name": "part",
+          "type": "BIGINT"
+        },
+        {
+          "name": "theme",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "type",
+          "type": "VARCHAR"
+        }
+      ],
+      "table:row_count": 15349
+    },
+    "17": {
+      "href": "https://data.source.coop/fused/overture/2026-03-18-0/theme=buildings/type=building/part=5/17.parquet",
+      "type": "application/x-parquet",
+      "title": "17.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "names",
+          "type": "STRUCT(\"primary\" VARCHAR, common MAP(VARCHAR, VARCHAR), rules STRUCT(variant VARCHAR, \"language\" VARCHAR, perspectives STRUCT(\"mode\" VARCHAR, countries VARCHAR[]), \"value\" VARCHAR, \"between\" DOUBLE[], side VARCHAR)[])"
+        },
+        {
+          "name": "sources",
+          "type": "STRUCT(property VARCHAR, dataset VARCHAR, license VARCHAR, record_id VARCHAR, update_time VARCHAR, confidence DOUBLE, \"between\" DOUBLE[])[]"
+        },
+        {
+          "name": "level",
+          "type": "INTEGER"
+        },
+        {
+          "name": "height",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "min_height",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "is_underground",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "num_floors",
+          "type": "INTEGER"
+        },
+        {
+          "name": "num_floors_underground",
+          "type": "INTEGER"
+        },
+        {
+          "name": "min_floor",
+          "type": "INTEGER"
+        },
+        {
+          "name": "subtype",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "class",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "facade_color",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "facade_material",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "roof_material",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "roof_shape",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "roof_direction",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "roof_orientation",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "roof_color",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "roof_height",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:4326')"
+        },
+        {
+          "name": "has_parts",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "version",
+          "type": "INTEGER"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, xmax DOUBLE, ymin DOUBLE, ymax DOUBLE)"
+        },
+        {
+          "name": "part",
+          "type": "BIGINT"
+        },
+        {
+          "name": "theme",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "type",
+          "type": "VARCHAR"
+        }
+      ],
+      "table:row_count": 20302
+    },
+    "24": {
+      "href": "https://data.source.coop/fused/overture/2026-03-18-0/theme=divisions/type=division_boundary/24.parquet",
+      "type": "application/x-parquet",
+      "title": "24.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:4326')"
+        },
+        {
+          "name": "division_ids",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "subtype",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "admin_level",
+          "type": "INTEGER"
+        },
+        {
+          "name": "class",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "sources",
+          "type": "STRUCT(property VARCHAR, dataset VARCHAR, license VARCHAR, record_id VARCHAR, update_time VARCHAR, confidence DOUBLE, \"between\" DOUBLE[])[]"
+        },
+        {
+          "name": "perspectives",
+          "type": "STRUCT(\"mode\" VARCHAR, countries VARCHAR[])"
+        },
+        {
+          "name": "is_disputed",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "is_land",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "is_territorial",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "country",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "region",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "version",
+          "type": "INTEGER"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, xmax DOUBLE, ymin DOUBLE, ymax DOUBLE)"
+        },
+        {
+          "name": "theme",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "type",
+          "type": "VARCHAR"
+        }
+      ],
+      "table:row_count": 2
     }
   },
   "links": [
@@ -81,15 +1550,21 @@
     }
   ],
   "data_mode": "open",
+  "disabled": false,
   "total_bytes": 11766735615676,
+  "file_count": 24337,
+  "visibility": "public",
+  "created_at": "2024-03-06T23:45:38.072516+00:00",
   "exts": {
     "parquet": 24335,
     "png": 1,
     "md": 1
   },
-  "file_count": 24337,
-  "account_id": "fused",
-  "product_id": "overture",
+  "featured": 1,
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -103,15 +1578,11 @@
     }
   },
   "updated_at": "2025-08-21T16:39:55.568Z",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "disabled": false,
-  "created_at": "2024-03-06T23:45:38.072516+00:00",
-  "featured": 1,
-  "visibility": "public",
-  "readme": "## README.md\n# Overture - Fused-partitioned\n\n## Overview\n\nThis is the Overture dataset, geo-partitioned with Fused for convenient access. This dataset adheres to the\u00a0[Overture Data Schema](https://docs.overturemaps.org/).\n\n<img src=\"https://data.source.coop/fused/overture/docs/banner.png\" alt=\"Banner image showing London, UK\" width=\"100%\"/>\n\n## Quickstart\n\nAccess to this dataset is facilitated by the [Fused](https://www.fused.io/) platform. Browse the data on [Fused Workbench](https://www.fused.io/public/UDF_Overture_Maps_Example).\n\nTo access using Python, the [Overture Maps Example](https://github.com/fusedio/udfs/tree/main/public/Overture_Maps_Example) UDF shows an example of how to access the data using Fused: \n\n```python\nimport fused\n\nudf = fused.load(\n    \"https://github.com/fusedio/udfs/tree/main/public/Overture_Maps_Example\"\n)\n\ngdf = fused.run(udf, x=2622, y=6333, z=14)\ngdf.plot()\n```\n\nYou can query the data visually using our [notebook](https://github.com/fusedio/notebooks/blob/main/public/overture.ipynb). \n\n<a target=\"_blank\" href=\"https://colab.research.google.com/github/fusedio/notebooks/blob/main/public/overture.ipynb\">\n<img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/>\n</a>\n\n## Partitioning\n\nThis dataset is geospatially partitioned following Open GeoParquet standards, using Fused.\n\nFor technical reasons, the release is named `2024-11-13-0` in S3 (note the dash instead of a period at the end).\n\nUnder each release, the data is divided into themes: [admins](https://docs.overturemaps.org/themes/admins/), [base](https://docs.overturemaps.org/themes/base/), [buildings](https://docs.overturemaps.org/themes/buildings/building), [places](https://docs.overturemaps.org/themes/places/place), and [transportation](https://docs.overturemaps.org/themes/transportation/). Each theme contains one or more tables, which is a collection of GeoParquet files (`0.parquet`, `1.parquet`, etc.), Parquet metadata (`_metadata`), and Parquet sample (`_sample`).\n\nThe older release, 2024-03-12-alpha-0, has the following themes:\n\n- `theme=admins/type=administrative_boundary/` - Administrative boundaries such as country borders\n- `theme=base/type=land_use/` - Land use\n- `theme=base/type=water/` - Water boundaries\n- `theme=buildings/type=building/` - Building footprints. Because of the size of this table, it is further subdivided into multiple parts. There is no semantic meaning to these parts, they are subdivisions to help partitioning.\n    - `theme=buildings/type=building/part=0/`\n    - `theme=buildings/type=building/part=1/`\n    - `theme=buildings/type=building/part=2/`\n    - `theme=buildings/type=building/part=3/`\n    - `theme=buildings/type=building/part=4/`\n- `theme=places/type=place/` - Places (POIs) such as restaurants and other businesses.\n- `theme=transportation/type=connector/` - Points where transportation segments, below, are connected.\n- `theme=transportation/type=segment/` - Line strings of how human movement is organized, such as roads and walkways.\n\nThere are older releases, 2024-03-12-alpha-0 and 2024-02-15-alpha-0 that have slightly different folder structures, where types are named in camel-case. (E.g. administrativeBoundary, landUse.)\n\n## Original dataset\n\nThe original Overture datasets are downloadable from the [Overture website](https://overturemaps.org/download/). See the Overture\u00a0[GitHub repo](https://github.com/OvertureMaps/data)\u00a0for more information.\n\n\n",
+  "product_id": "overture",
+  "account_id": "fused",
+  "_review": [
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [64.geometry (geometry), 64.isoCountryCodeAlpha2 (admin_code), 64.isoSubCountryCode (admin_code), 65.geometry (geometry), 65.iso_country_code_alpha_2 (admin_code), 65.iso_sub_country_code (admin_code), 69.geometry (geometry), 69.postcode (zipcode), 69.country (admin_code), 75.geometry (geometry), 75.country (admin_code), 75.region (admin_code)]. Add bbox once a placename \u2192 bbox gazetteer is available."
+  ],
   "_state": "drafted",
-  "cataloged_at": "2026-04-24T19:16:19+00:00"
+  "cataloged_at": "2026-06-04T01:45:51+00:00"
 }

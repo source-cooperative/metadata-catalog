@@ -1,15 +1,89 @@
 {
-  "account_id": "bkr",
-  "product_id": "metoffice",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "bkr/metoffice",
   "title": "MetOffice Global 10km and UK 2km Deterministic Analysis",
-  "description": "This contains data from the 2 year rolling archive of MetOffice 10km global deterministic model and 2km UK model analysis. The global model also contains 5 hours of forecast outputs, so both have hourly resolution for the full time period. Both start from 2024-01-01 and continue to the near-present. The data is in Icechunk format for easy access.",
-  "keywords": [],
-  "created_at": "2026-01-08T14:54:44.009Z",
-  "updated_at": "2026-01-16T08:21:06.677Z",
-  "visibility": "public",
+  "description": "A 2-year rolling archive of the UK Met Office's global 10 km and UK 2 km deterministic model analyses, with hourly temporal resolution from 2024-01-01 to near-present. The global model additionally includes 5 hours of forecast outputs. Data is stored in Icechunk format for cloud-native array access.",
+  "keywords": [
+    "numerical-weather-prediction",
+    "meteorology",
+    "weather-analysis",
+    "deterministic-model",
+    "atmospheric-modeling",
+    "icechunk",
+    "global-coverage"
+  ],
+  "providers": [
+    {
+      "name": "Met Office",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/bkr/metoffice"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -180.0,
+          -89.953125,
+          179.9296875,
+          89.953125
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2024-11-14T06:00:00",
+          "2026-03-30T12:00:00"
+        ]
+      ]
+    }
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/bkr/metoffice/",
+      "type": "application/octet-stream",
+      "title": "Dataset files (7 x .icechunk)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/bkr/metoffice/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/bkr/metoffice",
+      "title": "Source Cooperative product page"
+    }
+  ],
+  "account_id": "bkr",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
   "disabled": false,
   "featured": 0,
+  "exts": {
+    "": 2437416,
+    "json": 8
+  },
   "data_mode": "open",
+  "created_at": "2026-01-08T14:54:44.009Z",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -22,18 +96,15 @@
       "prefix": "bkr/metoffice/"
     }
   },
-  "file_count": 2437424,
   "total_bytes": 12210533722289,
-  "exts": {
-    "": 2437416,
-    "json": 8
-  },
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "id": "bkr/metoffice",
-  "cataloged_at": "2026-05-29T20:23:31+00:00",
-  "store_format": "icechunk"
+  "product_id": "metoffice",
+  "updated_at": "2026-01-16T08:21:06.677Z",
+  "visibility": "public",
+  "file_count": 2437424,
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
+    "providers: role [producer, licensor] for 'Met Office' is an AI guess \u2014 Met Office is the originating model center; licensor assumed as no explicit license or third-party host is stated. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-06-04T01:39:07+00:00"
 }

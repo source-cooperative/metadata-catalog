@@ -1,20 +1,93 @@
 {
-  "account_id": "bkr",
-  "product_id": "gmgi",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "bkr/gmgi",
   "title": "Global Mosaic of Geostationary Images",
-  "description": "This is the Global Mosaic of Geostationary Images, converted to Zarr v3. It is a mosaic of multiple geostationary weather satellites, on an hourly cadence. This is a unified version of the Hugging Face dataset [here](https://huggingface.co/datasets/jacobbieker/global-mosaic-of-geostationary-images) with some extensions.",
+  "description": "A global mosaic of imagery from multiple geostationary weather satellites, assembled at hourly cadence and stored in Zarr v3 / IceChunk format. Covers latitudes from approximately -73\u00b0 to +73\u00b0 and spans from July 2021 onward. Extended from a Hugging Face dataset originally produced by jacobbieker.",
   "keywords": [
-    "satellite imagery",
+    "remote-sensing",
+    "satellite-imagery",
     "geostationary",
-    "global",
-    "zarr"
+    "weather",
+    "zarr",
+    "meteorology",
+    "global-coverage"
   ],
-  "created_at": "2024-11-20T10:03:04.198Z",
-  "updated_at": "2025-08-21T16:39:55.567Z",
-  "visibility": "public",
+  "providers": [
+    {
+      "name": "jacobbieker",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/bkr/gmgi"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -179.6403351,
+          -72.7367706,
+          179.9003754,
+          72.7154083
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2021-07-13T00:00:00",
+          "2026-05-02T10:00:00"
+        ]
+      ]
+    }
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/bkr/gmgi/",
+      "type": "application/octet-stream",
+      "title": "Dataset files (3 x .icechunk)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/bkr/gmgi/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/bkr/gmgi",
+      "title": "Source Cooperative product page"
+    }
+  ],
   "disabled": false,
-  "featured": 0,
   "data_mode": "open",
+  "updated_at": "2025-08-21T16:39:55.567Z",
+  "file_count": 12668080,
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "created_at": "2024-11-20T10:03:04.198Z",
+  "featured": 0,
+  "product_id": "gmgi",
+  "account_id": "bkr",
+  "visibility": "public",
+  "exts": {
+    "": 12668077,
+    "json": 3
+  },
+  "total_bytes": 3865426836994,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -27,18 +100,10 @@
       "prefix": "bkr/gmgi/"
     }
   },
-  "file_count": 12668080,
-  "total_bytes": 3865426836994,
-  "exts": {
-    "": 12668077,
-    "json": 3
-  },
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "id": "bkr/gmgi",
-  "cataloged_at": "2026-05-29T20:23:14+00:00",
-  "store_format": "icechunk"
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
+    "providers: role [producer] for 'jacobbieker' is an AI guess \u2014 Credited as author of the originating Hugging Face dataset; assumed producer. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-06-04T01:38:31+00:00"
 }

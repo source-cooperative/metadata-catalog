@@ -1,15 +1,21 @@
 {
   "type": "Collection",
   "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
   "id": "walkthru-earth/opensensor-space",
   "title": "OpenSensor.Space",
-  "description": "High-resolution environmental and weather data collected by an edge-to-cloud IoT monitoring system using Raspberry Pi and Enviro+ sensors, streamed continuously to cloud storage in Parquet format.",
+  "description": "Continuous time-series environmental and weather sensor readings collected by an edge-to-cloud IoT monitoring network using Raspberry Pi devices with Enviro+ sensors in the Cairo/Nile Delta region of Egypt. Each record captures temperature, pressure, humidity, ambient light, gas concentrations (oxidised, reducing, NH3), and particulate matter at multiple size bins (PM1, PM2.5, PM10, and sub-micron particle counts), partitioned by station and date. A companion asset provides a spatial suitability analysis for air quality monitoring station placement.",
   "license": "proprietary",
   "keywords": [
     "weather",
     "environmental-monitoring",
     "iot",
-    "time-series"
+    "time-series",
+    "air-quality",
+    "particulate-matter",
+    "sensor-network"
   ],
   "providers": [
     {
@@ -31,10 +37,10 @@
     "spatial": {
       "bbox": [
         [
-          30.370783,
-          29.750265,
-          31.839662,
-          30.394885
+          null,
+          null,
+          null,
+          null
         ]
       ]
     },
@@ -48,16 +54,3363 @@
     }
   },
   "summaries": {
-    "item_count": 65
+    "item_count": 285567
   },
   "assets": {
-    "data": {
-      "href": "https://data.source.coop/walkthru-earth/opensensor-space/",
+    "data_0": {
+      "href": "https://data.source.coop/walkthru-earth/opensensor-space/enviroplus/station=0195ae3c-43e0-7624-8c5c-7424adbcc30d/year=2025/month=9/day=9/data_0.parquet",
       "type": "application/x-parquet",
-      "title": "Dataset files (50959 x .parquet)",
+      "title": "data_0.parquet",
       "roles": [
         "data"
-      ]
+      ],
+      "table:columns": [
+        {
+          "name": "timestamp",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "temperature",
+          "type": "FLOAT"
+        },
+        {
+          "name": "raw_temperature",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pressure",
+          "type": "FLOAT"
+        },
+        {
+          "name": "humidity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "oxidised",
+          "type": "FLOAT"
+        },
+        {
+          "name": "reducing",
+          "type": "FLOAT"
+        },
+        {
+          "name": "nh3",
+          "type": "FLOAT"
+        },
+        {
+          "name": "lux",
+          "type": "FLOAT"
+        },
+        {
+          "name": "proximity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm1",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm25",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm10",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_03um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_05um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_10um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_25um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_50um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_100um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "day",
+          "type": "BIGINT"
+        },
+        {
+          "name": "month",
+          "type": "BIGINT"
+        },
+        {
+          "name": "station",
+          "type": "VARCHAR",
+          "description": "[placename] Named identifier for the sensor deployment location; present across all data_* assets"
+        },
+        {
+          "name": "year",
+          "type": "BIGINT"
+        }
+      ],
+      "table:row_count": 194
+    },
+    "data_0315": {
+      "href": "https://data.source.coop/walkthru-earth/opensensor-space/enviroplus/station=0195ae3c-43e0-7624-8c5c-7424adbcc30d/year=2025/month=11/day=29/data_0315.parquet",
+      "type": "application/x-parquet",
+      "title": "data_0315.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "timestamp",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "temperature",
+          "type": "FLOAT"
+        },
+        {
+          "name": "raw_temperature",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pressure",
+          "type": "FLOAT"
+        },
+        {
+          "name": "humidity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "raw_humidity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "oxidised",
+          "type": "FLOAT"
+        },
+        {
+          "name": "reducing",
+          "type": "FLOAT"
+        },
+        {
+          "name": "nh3",
+          "type": "FLOAT"
+        },
+        {
+          "name": "lux",
+          "type": "FLOAT"
+        },
+        {
+          "name": "proximity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm1",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm25",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm10",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_03um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_05um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_10um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_25um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_50um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_100um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "day",
+          "type": "BIGINT"
+        },
+        {
+          "name": "month",
+          "type": "BIGINT"
+        },
+        {
+          "name": "station",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "year",
+          "type": "BIGINT"
+        }
+      ],
+      "table:row_count": 1
+    },
+    "data_0917": {
+      "href": "https://data.source.coop/walkthru-earth/opensensor-space/enviroplus/station=0195ae3c-43e0-7624-8c5c-7424adbcc30d/year=2025/month=12/day=01/data_0917.parquet",
+      "type": "application/x-parquet",
+      "title": "data_0917.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "timestamp",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "temperature",
+          "type": "FLOAT"
+        },
+        {
+          "name": "raw_temperature",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pressure",
+          "type": "FLOAT"
+        },
+        {
+          "name": "humidity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "raw_humidity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "oxidised",
+          "type": "FLOAT"
+        },
+        {
+          "name": "reducing",
+          "type": "FLOAT"
+        },
+        {
+          "name": "nh3",
+          "type": "FLOAT"
+        },
+        {
+          "name": "lux",
+          "type": "FLOAT"
+        },
+        {
+          "name": "proximity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm1",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm25",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm10",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_03um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_05um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_10um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_25um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_50um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_100um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "day",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "month",
+          "type": "BIGINT"
+        },
+        {
+          "name": "station",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "year",
+          "type": "BIGINT"
+        }
+      ],
+      "table:row_count": 1
+    },
+    "data_1853": {
+      "href": "https://data.source.coop/walkthru-earth/opensensor-space/enviroplus/station=0195ae3c-43e0-7624-8c5c-7424adbcc30d/year=2026/month=01/day=05/data_1853.parquet",
+      "type": "application/x-parquet",
+      "title": "data_1853.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "timestamp",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "temperature",
+          "type": "FLOAT"
+        },
+        {
+          "name": "raw_temperature",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pressure",
+          "type": "FLOAT"
+        },
+        {
+          "name": "humidity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "raw_humidity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "oxidised",
+          "type": "FLOAT"
+        },
+        {
+          "name": "reducing",
+          "type": "FLOAT"
+        },
+        {
+          "name": "nh3",
+          "type": "FLOAT"
+        },
+        {
+          "name": "lux",
+          "type": "FLOAT"
+        },
+        {
+          "name": "proximity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm1",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm25",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm10",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_03um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_05um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_10um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_25um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_50um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_100um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "day",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "month",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "station",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "year",
+          "type": "BIGINT"
+        }
+      ],
+      "table:row_count": 1
+    },
+    "data_0600": {
+      "href": "https://data.source.coop/walkthru-earth/opensensor-space/enviroplus/station=0195ae3c-43e0-7624-8c5c-7424adbcc30d/year=2026/month=01/day=07/data_0600.parquet",
+      "type": "application/x-parquet",
+      "title": "data_0600.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "timestamp",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "temperature",
+          "type": "FLOAT"
+        },
+        {
+          "name": "raw_temperature",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pressure",
+          "type": "FLOAT"
+        },
+        {
+          "name": "humidity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "raw_humidity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "oxidised",
+          "type": "FLOAT"
+        },
+        {
+          "name": "reducing",
+          "type": "FLOAT"
+        },
+        {
+          "name": "nh3",
+          "type": "FLOAT"
+        },
+        {
+          "name": "lux",
+          "type": "FLOAT"
+        },
+        {
+          "name": "proximity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm1",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm25",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm10",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_03um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_05um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_10um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_25um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_50um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_100um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "day",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "month",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "station",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "year",
+          "type": "BIGINT"
+        }
+      ],
+      "table:row_count": 1
+    },
+    "data_0135": {
+      "href": "https://data.source.coop/walkthru-earth/opensensor-space/enviroplus/station=0195ae3c-43e0-7624-8c5c-7424adbcc30d/year=2026/month=01/day=09/data_0135.parquet",
+      "type": "application/x-parquet",
+      "title": "data_0135.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "timestamp",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "temperature",
+          "type": "FLOAT"
+        },
+        {
+          "name": "raw_temperature",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pressure",
+          "type": "FLOAT"
+        },
+        {
+          "name": "humidity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "raw_humidity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "oxidised",
+          "type": "FLOAT"
+        },
+        {
+          "name": "reducing",
+          "type": "FLOAT"
+        },
+        {
+          "name": "nh3",
+          "type": "FLOAT"
+        },
+        {
+          "name": "lux",
+          "type": "FLOAT"
+        },
+        {
+          "name": "proximity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm1",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm25",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm10",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_03um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_05um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_10um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_25um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_50um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_100um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "day",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "month",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "station",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "year",
+          "type": "BIGINT"
+        }
+      ],
+      "table:row_count": 1
+    },
+    "data_2053": {
+      "href": "https://data.source.coop/walkthru-earth/opensensor-space/enviroplus/station=0195ae3c-43e0-7624-8c5c-7424adbcc30d/year=2026/month=01/day=15/data_2053.parquet",
+      "type": "application/x-parquet",
+      "title": "data_2053.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "timestamp",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "temperature",
+          "type": "FLOAT"
+        },
+        {
+          "name": "raw_temperature",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pressure",
+          "type": "FLOAT"
+        },
+        {
+          "name": "humidity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "raw_humidity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "oxidised",
+          "type": "FLOAT"
+        },
+        {
+          "name": "reducing",
+          "type": "FLOAT"
+        },
+        {
+          "name": "nh3",
+          "type": "FLOAT"
+        },
+        {
+          "name": "lux",
+          "type": "FLOAT"
+        },
+        {
+          "name": "proximity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm1",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm25",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm10",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_03um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_05um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_10um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_25um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_50um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_100um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "day",
+          "type": "BIGINT"
+        },
+        {
+          "name": "month",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "station",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "year",
+          "type": "BIGINT"
+        }
+      ],
+      "table:row_count": 1
+    },
+    "data_1623": {
+      "href": "https://data.source.coop/walkthru-earth/opensensor-space/enviroplus/station=0195ae3c-43e0-7624-8c5c-7424adbcc30d/year=2026/month=01/day=18/data_1623.parquet",
+      "type": "application/x-parquet",
+      "title": "data_1623.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "timestamp",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "temperature",
+          "type": "FLOAT"
+        },
+        {
+          "name": "raw_temperature",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pressure",
+          "type": "FLOAT"
+        },
+        {
+          "name": "humidity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "raw_humidity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "oxidised",
+          "type": "FLOAT"
+        },
+        {
+          "name": "reducing",
+          "type": "FLOAT"
+        },
+        {
+          "name": "nh3",
+          "type": "FLOAT"
+        },
+        {
+          "name": "lux",
+          "type": "FLOAT"
+        },
+        {
+          "name": "proximity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm1",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm25",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm10",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_03um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_05um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_10um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_25um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_50um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_100um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "day",
+          "type": "BIGINT"
+        },
+        {
+          "name": "month",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "station",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "year",
+          "type": "BIGINT"
+        }
+      ],
+      "table:row_count": 1
+    },
+    "data_0715": {
+      "href": "https://data.source.coop/walkthru-earth/opensensor-space/enviroplus/station=0195ae3c-43e0-7624-8c5c-7424adbcc30d/year=2026/month=01/day=20/data_0715.parquet",
+      "type": "application/x-parquet",
+      "title": "data_0715.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "timestamp",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "temperature",
+          "type": "FLOAT"
+        },
+        {
+          "name": "raw_temperature",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pressure",
+          "type": "FLOAT"
+        },
+        {
+          "name": "humidity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "raw_humidity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "oxidised",
+          "type": "FLOAT"
+        },
+        {
+          "name": "reducing",
+          "type": "FLOAT"
+        },
+        {
+          "name": "nh3",
+          "type": "FLOAT"
+        },
+        {
+          "name": "lux",
+          "type": "FLOAT"
+        },
+        {
+          "name": "proximity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm1",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm25",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm10",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_03um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_05um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_10um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_25um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_50um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_100um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "day",
+          "type": "BIGINT"
+        },
+        {
+          "name": "month",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "station",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "year",
+          "type": "BIGINT"
+        }
+      ],
+      "table:row_count": 1
+    },
+    "data_1140": {
+      "href": "https://data.source.coop/walkthru-earth/opensensor-space/enviroplus/station=0195ae3c-43e0-7624-8c5c-7424adbcc30d/year=2026/month=01/day=21/data_1140.parquet",
+      "type": "application/x-parquet",
+      "title": "data_1140.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "timestamp",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "temperature",
+          "type": "FLOAT"
+        },
+        {
+          "name": "raw_temperature",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pressure",
+          "type": "FLOAT"
+        },
+        {
+          "name": "humidity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "raw_humidity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "oxidised",
+          "type": "FLOAT"
+        },
+        {
+          "name": "reducing",
+          "type": "FLOAT"
+        },
+        {
+          "name": "nh3",
+          "type": "FLOAT"
+        },
+        {
+          "name": "lux",
+          "type": "FLOAT"
+        },
+        {
+          "name": "proximity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm1",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm25",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm10",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_03um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_05um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_10um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_25um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_50um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_100um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "day",
+          "type": "BIGINT"
+        },
+        {
+          "name": "month",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "station",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "year",
+          "type": "BIGINT"
+        }
+      ],
+      "table:row_count": 1
+    },
+    "data_1001": {
+      "href": "https://data.source.coop/walkthru-earth/opensensor-space/enviroplus/station=0195ae3c-43e0-7624-8c5c-7424adbcc30d/year=2026/month=01/day=23/data_1001.parquet",
+      "type": "application/x-parquet",
+      "title": "data_1001.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "timestamp",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "temperature",
+          "type": "FLOAT"
+        },
+        {
+          "name": "raw_temperature",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pressure",
+          "type": "FLOAT"
+        },
+        {
+          "name": "humidity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "raw_humidity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "oxidised",
+          "type": "FLOAT"
+        },
+        {
+          "name": "reducing",
+          "type": "FLOAT"
+        },
+        {
+          "name": "nh3",
+          "type": "FLOAT"
+        },
+        {
+          "name": "lux",
+          "type": "FLOAT"
+        },
+        {
+          "name": "proximity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm1",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm25",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm10",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_03um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_05um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_10um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_25um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_50um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_100um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "day",
+          "type": "BIGINT"
+        },
+        {
+          "name": "month",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "station",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "year",
+          "type": "BIGINT"
+        }
+      ],
+      "table:row_count": 1
+    },
+    "data_0024": {
+      "href": "https://data.source.coop/walkthru-earth/opensensor-space/enviroplus/station=0195ae3c-43e0-7624-8c5c-7424adbcc30d/year=2026/month=01/day=24/data_0024.parquet",
+      "type": "application/x-parquet",
+      "title": "data_0024.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "timestamp",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "temperature",
+          "type": "FLOAT"
+        },
+        {
+          "name": "raw_temperature",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pressure",
+          "type": "FLOAT"
+        },
+        {
+          "name": "humidity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "raw_humidity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "oxidised",
+          "type": "FLOAT"
+        },
+        {
+          "name": "reducing",
+          "type": "FLOAT"
+        },
+        {
+          "name": "nh3",
+          "type": "FLOAT"
+        },
+        {
+          "name": "lux",
+          "type": "FLOAT"
+        },
+        {
+          "name": "proximity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm1",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm25",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm10",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_03um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_05um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_10um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_25um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_50um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_100um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "day",
+          "type": "BIGINT"
+        },
+        {
+          "name": "month",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "station",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "year",
+          "type": "BIGINT"
+        }
+      ],
+      "table:row_count": 1
+    },
+    "data_0020": {
+      "href": "https://data.source.coop/walkthru-earth/opensensor-space/enviroplus/station=0195ae3c-43e0-7624-8c5c-7424adbcc30d/year=2026/month=01/day=25/data_0020.parquet",
+      "type": "application/x-parquet",
+      "title": "data_0020.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "timestamp",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "temperature",
+          "type": "FLOAT"
+        },
+        {
+          "name": "raw_temperature",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pressure",
+          "type": "FLOAT"
+        },
+        {
+          "name": "humidity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "raw_humidity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "oxidised",
+          "type": "FLOAT"
+        },
+        {
+          "name": "reducing",
+          "type": "FLOAT"
+        },
+        {
+          "name": "nh3",
+          "type": "FLOAT"
+        },
+        {
+          "name": "lux",
+          "type": "FLOAT"
+        },
+        {
+          "name": "proximity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm1",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm25",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm10",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_03um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_05um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_10um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_25um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_50um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_100um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "day",
+          "type": "BIGINT"
+        },
+        {
+          "name": "month",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "station",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "year",
+          "type": "BIGINT"
+        }
+      ],
+      "table:row_count": 1
+    },
+    "data_2226": {
+      "href": "https://data.source.coop/walkthru-earth/opensensor-space/enviroplus/station=0195ae3c-43e0-7624-8c5c-7424adbcc30d/year=2026/month=01/day=27/data_2226.parquet",
+      "type": "application/x-parquet",
+      "title": "data_2226.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "timestamp",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "temperature",
+          "type": "FLOAT"
+        },
+        {
+          "name": "raw_temperature",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pressure",
+          "type": "FLOAT"
+        },
+        {
+          "name": "humidity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "raw_humidity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "oxidised",
+          "type": "FLOAT"
+        },
+        {
+          "name": "reducing",
+          "type": "FLOAT"
+        },
+        {
+          "name": "nh3",
+          "type": "FLOAT"
+        },
+        {
+          "name": "lux",
+          "type": "FLOAT"
+        },
+        {
+          "name": "proximity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm1",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm25",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm10",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_03um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_05um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_10um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_25um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_50um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_100um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "day",
+          "type": "BIGINT"
+        },
+        {
+          "name": "month",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "station",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "year",
+          "type": "BIGINT"
+        }
+      ],
+      "table:row_count": 1
+    },
+    "data_2115": {
+      "href": "https://data.source.coop/walkthru-earth/opensensor-space/enviroplus/station=0195ae3c-43e0-7624-8c5c-7424adbcc30d/year=2026/month=02/day=02/data_2115.parquet",
+      "type": "application/x-parquet",
+      "title": "data_2115.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "timestamp",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "temperature",
+          "type": "FLOAT"
+        },
+        {
+          "name": "raw_temperature",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pressure",
+          "type": "FLOAT"
+        },
+        {
+          "name": "humidity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "raw_humidity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "oxidised",
+          "type": "FLOAT"
+        },
+        {
+          "name": "reducing",
+          "type": "FLOAT"
+        },
+        {
+          "name": "nh3",
+          "type": "FLOAT"
+        },
+        {
+          "name": "lux",
+          "type": "FLOAT"
+        },
+        {
+          "name": "proximity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm1",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm25",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm10",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_03um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_05um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_10um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_25um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_50um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_100um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "day",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "month",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "station",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "year",
+          "type": "BIGINT"
+        }
+      ],
+      "table:row_count": 1
+    },
+    "data_1926": {
+      "href": "https://data.source.coop/walkthru-earth/opensensor-space/enviroplus/station=0195ae3c-43e0-7624-8c5c-7424adbcc30d/year=2026/month=02/day=03/data_1926.parquet",
+      "type": "application/x-parquet",
+      "title": "data_1926.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "timestamp",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "temperature",
+          "type": "FLOAT"
+        },
+        {
+          "name": "raw_temperature",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pressure",
+          "type": "FLOAT"
+        },
+        {
+          "name": "humidity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "raw_humidity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "oxidised",
+          "type": "FLOAT"
+        },
+        {
+          "name": "reducing",
+          "type": "FLOAT"
+        },
+        {
+          "name": "nh3",
+          "type": "FLOAT"
+        },
+        {
+          "name": "lux",
+          "type": "FLOAT"
+        },
+        {
+          "name": "proximity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm1",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm25",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm10",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_03um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_05um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_10um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_25um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_50um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_100um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "day",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "month",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "station",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "year",
+          "type": "BIGINT"
+        }
+      ],
+      "table:row_count": 1
+    },
+    "data_0901": {
+      "href": "https://data.source.coop/walkthru-earth/opensensor-space/enviroplus/station=0195ae3c-43e0-7624-8c5c-7424adbcc30d/year=2026/month=02/day=04/data_0901.parquet",
+      "type": "application/x-parquet",
+      "title": "data_0901.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "timestamp",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "temperature",
+          "type": "FLOAT"
+        },
+        {
+          "name": "raw_temperature",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pressure",
+          "type": "FLOAT"
+        },
+        {
+          "name": "humidity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "raw_humidity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "oxidised",
+          "type": "FLOAT"
+        },
+        {
+          "name": "reducing",
+          "type": "FLOAT"
+        },
+        {
+          "name": "nh3",
+          "type": "FLOAT"
+        },
+        {
+          "name": "lux",
+          "type": "FLOAT"
+        },
+        {
+          "name": "proximity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm1",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm25",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm10",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_03um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_05um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_10um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_25um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_50um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_100um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "day",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "month",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "station",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "year",
+          "type": "BIGINT"
+        }
+      ],
+      "table:row_count": 1
+    },
+    "data_1215": {
+      "href": "https://data.source.coop/walkthru-earth/opensensor-space/enviroplus/station=0195ae3c-43e0-7624-8c5c-7424adbcc30d/year=2026/month=02/day=26/data_1215.parquet",
+      "type": "application/x-parquet",
+      "title": "data_1215.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "timestamp",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "temperature",
+          "type": "FLOAT"
+        },
+        {
+          "name": "raw_temperature",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pressure",
+          "type": "FLOAT"
+        },
+        {
+          "name": "humidity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "raw_humidity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "oxidised",
+          "type": "FLOAT"
+        },
+        {
+          "name": "reducing",
+          "type": "FLOAT"
+        },
+        {
+          "name": "nh3",
+          "type": "FLOAT"
+        },
+        {
+          "name": "lux",
+          "type": "FLOAT"
+        },
+        {
+          "name": "proximity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm1",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm25",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm10",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_03um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_05um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_10um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_25um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_50um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_100um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "day",
+          "type": "BIGINT"
+        },
+        {
+          "name": "month",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "station",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "year",
+          "type": "BIGINT"
+        }
+      ],
+      "table:row_count": 1
+    },
+    "data_1528": {
+      "href": "https://data.source.coop/walkthru-earth/opensensor-space/enviroplus/station=0195ae3c-43e0-7624-8c5c-7424adbcc30d/year=2026/month=02/day=28/data_1528.parquet",
+      "type": "application/x-parquet",
+      "title": "data_1528.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "timestamp",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "temperature",
+          "type": "FLOAT"
+        },
+        {
+          "name": "raw_temperature",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pressure",
+          "type": "FLOAT"
+        },
+        {
+          "name": "humidity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "raw_humidity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "oxidised",
+          "type": "FLOAT"
+        },
+        {
+          "name": "reducing",
+          "type": "FLOAT"
+        },
+        {
+          "name": "nh3",
+          "type": "FLOAT"
+        },
+        {
+          "name": "lux",
+          "type": "FLOAT"
+        },
+        {
+          "name": "proximity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm1",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm25",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm10",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_03um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_05um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_10um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_25um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_50um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_100um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "day",
+          "type": "BIGINT"
+        },
+        {
+          "name": "month",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "station",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "year",
+          "type": "BIGINT"
+        }
+      ],
+      "table:row_count": 1
+    },
+    "data_1006": {
+      "href": "https://data.source.coop/walkthru-earth/opensensor-space/enviroplus/station=0195ae3c-43e0-7624-8c5c-7424adbcc30d/year=2026/month=03/day=08/data_1006.parquet",
+      "type": "application/x-parquet",
+      "title": "data_1006.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "timestamp",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "temperature",
+          "type": "FLOAT"
+        },
+        {
+          "name": "raw_temperature",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pressure",
+          "type": "FLOAT"
+        },
+        {
+          "name": "humidity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "raw_humidity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "oxidised",
+          "type": "FLOAT"
+        },
+        {
+          "name": "reducing",
+          "type": "FLOAT"
+        },
+        {
+          "name": "nh3",
+          "type": "FLOAT"
+        },
+        {
+          "name": "lux",
+          "type": "FLOAT"
+        },
+        {
+          "name": "proximity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm1",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm25",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm10",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_03um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_05um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_10um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_25um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_50um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_100um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "day",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "month",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "station",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "year",
+          "type": "BIGINT"
+        }
+      ],
+      "table:row_count": 1
+    },
+    "data_2141": {
+      "href": "https://data.source.coop/walkthru-earth/opensensor-space/enviroplus/station=0195ae3c-43e0-7624-8c5c-7424adbcc30d/year=2026/month=03/day=11/data_2141.parquet",
+      "type": "application/x-parquet",
+      "title": "data_2141.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "timestamp",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "temperature",
+          "type": "FLOAT"
+        },
+        {
+          "name": "raw_temperature",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pressure",
+          "type": "FLOAT"
+        },
+        {
+          "name": "humidity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "raw_humidity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "oxidised",
+          "type": "FLOAT"
+        },
+        {
+          "name": "reducing",
+          "type": "FLOAT"
+        },
+        {
+          "name": "nh3",
+          "type": "FLOAT"
+        },
+        {
+          "name": "lux",
+          "type": "FLOAT"
+        },
+        {
+          "name": "proximity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm1",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm25",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm10",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_03um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_05um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_10um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_25um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_50um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_100um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "day",
+          "type": "BIGINT"
+        },
+        {
+          "name": "month",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "station",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "year",
+          "type": "BIGINT"
+        }
+      ],
+      "table:row_count": 1
+    },
+    "data_0039": {
+      "href": "https://data.source.coop/walkthru-earth/opensensor-space/enviroplus/station=0195ae3c-43e0-7624-8c5c-7424adbcc30d/year=2026/month=03/day=13/data_0039.parquet",
+      "type": "application/x-parquet",
+      "title": "data_0039.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "timestamp",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "temperature",
+          "type": "FLOAT"
+        },
+        {
+          "name": "raw_temperature",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pressure",
+          "type": "FLOAT"
+        },
+        {
+          "name": "humidity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "raw_humidity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "oxidised",
+          "type": "FLOAT"
+        },
+        {
+          "name": "reducing",
+          "type": "FLOAT"
+        },
+        {
+          "name": "nh3",
+          "type": "FLOAT"
+        },
+        {
+          "name": "lux",
+          "type": "FLOAT"
+        },
+        {
+          "name": "proximity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm1",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm25",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm10",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_03um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_05um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_10um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_25um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_50um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_100um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "day",
+          "type": "BIGINT"
+        },
+        {
+          "name": "month",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "station",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "year",
+          "type": "BIGINT"
+        }
+      ],
+      "table:row_count": 1
+    },
+    "data_1403": {
+      "href": "https://data.source.coop/walkthru-earth/opensensor-space/enviroplus/station=0195ae3c-43e0-7624-8c5c-7424adbcc30d/year=2026/month=03/day=17/data_1403.parquet",
+      "type": "application/x-parquet",
+      "title": "data_1403.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "timestamp",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "temperature",
+          "type": "FLOAT"
+        },
+        {
+          "name": "raw_temperature",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pressure",
+          "type": "FLOAT"
+        },
+        {
+          "name": "humidity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "raw_humidity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "oxidised",
+          "type": "FLOAT"
+        },
+        {
+          "name": "reducing",
+          "type": "FLOAT"
+        },
+        {
+          "name": "nh3",
+          "type": "FLOAT"
+        },
+        {
+          "name": "lux",
+          "type": "FLOAT"
+        },
+        {
+          "name": "proximity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm1",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm25",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm10",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_03um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_05um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_10um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_25um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_50um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_100um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "day",
+          "type": "BIGINT"
+        },
+        {
+          "name": "month",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "station",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "year",
+          "type": "BIGINT"
+        }
+      ],
+      "table:row_count": 1
+    },
+    "data_0833": {
+      "href": "https://data.source.coop/walkthru-earth/opensensor-space/enviroplus/station=0195ae3c-43e0-7624-8c5c-7424adbcc30d/year=2026/month=03/day=19/data_0833.parquet",
+      "type": "application/x-parquet",
+      "title": "data_0833.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "timestamp",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "temperature",
+          "type": "FLOAT"
+        },
+        {
+          "name": "raw_temperature",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pressure",
+          "type": "FLOAT"
+        },
+        {
+          "name": "humidity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "raw_humidity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "oxidised",
+          "type": "FLOAT"
+        },
+        {
+          "name": "reducing",
+          "type": "FLOAT"
+        },
+        {
+          "name": "nh3",
+          "type": "FLOAT"
+        },
+        {
+          "name": "lux",
+          "type": "FLOAT"
+        },
+        {
+          "name": "proximity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm1",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm25",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm10",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_03um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_05um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_10um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_25um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_50um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_100um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "day",
+          "type": "BIGINT"
+        },
+        {
+          "name": "month",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "station",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "year",
+          "type": "BIGINT"
+        }
+      ],
+      "table:row_count": 1
+    },
+    "data_1845": {
+      "href": "https://data.source.coop/walkthru-earth/opensensor-space/enviroplus/station=0195ae3c-43e0-7624-8c5c-7424adbcc30d/year=2026/month=03/day=30/data_1845.parquet",
+      "type": "application/x-parquet",
+      "title": "data_1845.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "timestamp",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "temperature",
+          "type": "FLOAT"
+        },
+        {
+          "name": "raw_temperature",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pressure",
+          "type": "FLOAT"
+        },
+        {
+          "name": "humidity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "raw_humidity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "oxidised",
+          "type": "FLOAT"
+        },
+        {
+          "name": "reducing",
+          "type": "FLOAT"
+        },
+        {
+          "name": "nh3",
+          "type": "FLOAT"
+        },
+        {
+          "name": "lux",
+          "type": "FLOAT"
+        },
+        {
+          "name": "proximity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm1",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm25",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm10",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_03um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_05um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_10um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_25um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_50um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_100um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "day",
+          "type": "BIGINT"
+        },
+        {
+          "name": "month",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "station",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "year",
+          "type": "BIGINT"
+        }
+      ],
+      "table:row_count": 1
+    },
+    "data_1224": {
+      "href": "https://data.source.coop/walkthru-earth/opensensor-space/enviroplus/station=0195ae3c-43e0-7624-8c5c-7424adbcc30d/year=2026/month=04/day=12/data_1224.parquet",
+      "type": "application/x-parquet",
+      "title": "data_1224.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "timestamp",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "temperature",
+          "type": "FLOAT"
+        },
+        {
+          "name": "raw_temperature",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pressure",
+          "type": "FLOAT"
+        },
+        {
+          "name": "humidity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "raw_humidity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "oxidised",
+          "type": "FLOAT"
+        },
+        {
+          "name": "reducing",
+          "type": "FLOAT"
+        },
+        {
+          "name": "nh3",
+          "type": "FLOAT"
+        },
+        {
+          "name": "lux",
+          "type": "FLOAT"
+        },
+        {
+          "name": "proximity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm1",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm25",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm10",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_03um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_05um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_10um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_25um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_50um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_100um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "day",
+          "type": "BIGINT"
+        },
+        {
+          "name": "month",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "station",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "year",
+          "type": "BIGINT"
+        }
+      ],
+      "table:row_count": 1
+    },
+    "data_2057": {
+      "href": "https://data.source.coop/walkthru-earth/opensensor-space/enviroplus/station=0195ae3c-43e0-7624-8c5c-7424adbcc30d/year=2026/month=04/day=14/data_2057.parquet",
+      "type": "application/x-parquet",
+      "title": "data_2057.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "timestamp",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "temperature",
+          "type": "FLOAT"
+        },
+        {
+          "name": "raw_temperature",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pressure",
+          "type": "FLOAT"
+        },
+        {
+          "name": "humidity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "raw_humidity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "oxidised",
+          "type": "FLOAT"
+        },
+        {
+          "name": "reducing",
+          "type": "FLOAT"
+        },
+        {
+          "name": "nh3",
+          "type": "FLOAT"
+        },
+        {
+          "name": "lux",
+          "type": "FLOAT"
+        },
+        {
+          "name": "proximity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm1",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm25",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm10",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_03um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_05um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_10um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_25um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_50um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_100um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "day",
+          "type": "BIGINT"
+        },
+        {
+          "name": "month",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "station",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "year",
+          "type": "BIGINT"
+        }
+      ],
+      "table:row_count": 1
+    },
+    "data_1201": {
+      "href": "https://data.source.coop/walkthru-earth/opensensor-space/enviroplus/station=0195ae3c-43e0-7624-8c5c-7424adbcc30d/year=2026/month=04/day=16/data_1201.parquet",
+      "type": "application/x-parquet",
+      "title": "data_1201.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "timestamp",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "temperature",
+          "type": "FLOAT"
+        },
+        {
+          "name": "raw_temperature",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pressure",
+          "type": "FLOAT"
+        },
+        {
+          "name": "humidity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "raw_humidity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "oxidised",
+          "type": "FLOAT"
+        },
+        {
+          "name": "reducing",
+          "type": "FLOAT"
+        },
+        {
+          "name": "nh3",
+          "type": "FLOAT"
+        },
+        {
+          "name": "lux",
+          "type": "FLOAT"
+        },
+        {
+          "name": "proximity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm1",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm25",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm10",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_03um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_05um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_10um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_25um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_50um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_100um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "day",
+          "type": "BIGINT"
+        },
+        {
+          "name": "month",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "station",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "year",
+          "type": "BIGINT"
+        }
+      ],
+      "table:row_count": 1
+    },
+    "data_1512": {
+      "href": "https://data.source.coop/walkthru-earth/opensensor-space/enviroplus/station=0195ae3c-43e0-7624-8c5c-7424adbcc30d/year=2026/month=04/day=22/data_1512.parquet",
+      "type": "application/x-parquet",
+      "title": "data_1512.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "timestamp",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "temperature",
+          "type": "FLOAT"
+        },
+        {
+          "name": "raw_temperature",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pressure",
+          "type": "FLOAT"
+        },
+        {
+          "name": "humidity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "raw_humidity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "oxidised",
+          "type": "FLOAT"
+        },
+        {
+          "name": "reducing",
+          "type": "FLOAT"
+        },
+        {
+          "name": "nh3",
+          "type": "FLOAT"
+        },
+        {
+          "name": "lux",
+          "type": "FLOAT"
+        },
+        {
+          "name": "proximity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm1",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm25",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm10",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_03um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_05um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_10um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_25um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_50um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_100um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "day",
+          "type": "BIGINT"
+        },
+        {
+          "name": "month",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "station",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "year",
+          "type": "BIGINT"
+        }
+      ],
+      "table:row_count": 1
+    },
+    "data_1958": {
+      "href": "https://data.source.coop/walkthru-earth/opensensor-space/enviroplus/station=0195ae3c-43e0-7624-8c5c-7424adbcc30d/year=2026/month=05/day=06/data_1958.parquet",
+      "type": "application/x-parquet",
+      "title": "data_1958.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "timestamp",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "temperature",
+          "type": "FLOAT"
+        },
+        {
+          "name": "raw_temperature",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pressure",
+          "type": "FLOAT"
+        },
+        {
+          "name": "humidity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "raw_humidity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "oxidised",
+          "type": "FLOAT"
+        },
+        {
+          "name": "reducing",
+          "type": "FLOAT"
+        },
+        {
+          "name": "nh3",
+          "type": "FLOAT"
+        },
+        {
+          "name": "lux",
+          "type": "FLOAT"
+        },
+        {
+          "name": "proximity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm1",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm25",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm10",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_03um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_05um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_10um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_25um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_50um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_100um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "day",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "month",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "station",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "year",
+          "type": "BIGINT"
+        }
+      ],
+      "table:row_count": 1
+    },
+    "data_0417": {
+      "href": "https://data.source.coop/walkthru-earth/opensensor-space/enviroplus/station=019ab390-f291-7a30-bca8-381286e4c2aa/year=2026/month=03/day=31/data_0417.parquet",
+      "type": "application/x-parquet",
+      "title": "data_0417.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "timestamp",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "temperature",
+          "type": "FLOAT"
+        },
+        {
+          "name": "raw_temperature",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pressure",
+          "type": "FLOAT"
+        },
+        {
+          "name": "humidity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "raw_humidity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "oxidised",
+          "type": "FLOAT"
+        },
+        {
+          "name": "reducing",
+          "type": "FLOAT"
+        },
+        {
+          "name": "nh3",
+          "type": "FLOAT"
+        },
+        {
+          "name": "lux",
+          "type": "FLOAT"
+        },
+        {
+          "name": "proximity",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm1",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm25",
+          "type": "FLOAT"
+        },
+        {
+          "name": "pm10",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_03um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_05um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_10um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_25um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_50um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "particles_100um",
+          "type": "FLOAT"
+        },
+        {
+          "name": "day",
+          "type": "BIGINT"
+        },
+        {
+          "name": "month",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "station",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "year",
+          "type": "BIGINT"
+        }
+      ],
+      "table:row_count": 1
+    },
+    "suitability_analysis_of_aq": {
+      "href": "https://data.source.coop/walkthru-earth/opensensor-space/share/suitability_analysis_of_aq.parquet",
+      "type": "application/x-parquet",
+      "title": "suitability_analysis_of_aq.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "name",
+          "type": "VARCHAR",
+          "description": "[placename] Named site or location for each suitability analysis point"
+        },
+        {
+          "name": "type",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "priority",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "nearest_existing",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "distance_km",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "source",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geom",
+          "type": "GEOMETRY('OGC:CRS84')",
+          "description": "[geometry] OGC:CRS84 geometry for candidate or existing air quality monitoring station locations"
+        }
+      ],
+      "table:row_count": 65
     }
   },
   "links": [
@@ -72,17 +3425,13 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "account_id": "walkthru-earth",
-  "featured": 0,
-  "data_mode": "open",
-  "created_at": "2025-11-24T18:13:45.589Z",
-  "product_id": "opensensor-space",
-  "total_bytes": 1123459382,
-  "updated_at": "2025-11-24T18:13:45.589Z",
-  "exts": {
-    "parquet": 50959
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
   },
   "visibility": "public",
+  "featured": 0,
+  "file_count": 50959,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -95,12 +3444,19 @@
       "prefix": "walkthru-earth/opensensor-space/"
     }
   },
-  "file_count": 50959,
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
+  "account_id": "walkthru-earth",
   "disabled": false,
+  "total_bytes": 1123459382,
+  "data_mode": "open",
+  "product_id": "opensensor-space",
+  "updated_at": "2025-11-24T18:13:45.589Z",
+  "created_at": "2025-11-24T18:13:45.589Z",
+  "exts": {
+    "parquet": 50959
+  },
+  "_review": [
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [data_0.station (placename), suitability_analysis_of_aq.geom (geometry), suitability_analysis_of_aq.name (placename)]. Add bbox once a placename \u2192 bbox gazetteer is available."
+  ],
   "_state": "drafted",
-  "cataloged_at": "2026-04-24T19:11:31+00:00"
+  "cataloged_at": "2026-06-04T01:58:45+00:00"
 }
