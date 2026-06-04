@@ -6,7 +6,7 @@
   ],
   "id": "fiboa/data",
   "title": "Field boundaries for Austria (2025)",
-  "description": "A combined repository of agricultural field boundary datasets conforming to the fiboa 0.3.0+ specification, covering approximately 65 million georeferenced field polygons across 25+ countries in Europe, South America, North America, and beyond. Each national or regional asset includes field polygon geometries with harmonized crop type codes (HCAT), crop names, and area metrics derived from LPIS and other official agricultural cadastral systems. Coverage spans Austria, Belgium, Brazil, Bulgaria, Switzerland, Czech Republic, Denmark, Germany, Estonia, Finland, France, Croatia, Ireland, Lithuania, Latvia, the Netherlands, Portugal, Romania, Sweden, Slovenia, Slovakia, the UK, and the US.",
+  "description": "Agricultural field boundary polygons for Austria (reference year 2025) conforming to the fiboa 0.3.0+ specification, derived from official LPIS (Land Parcel Information System) data. Contains field polygon geometries with harmonized crop type codes (HCAT), native and English crop names, and area metrics for agricultural parcels.",
   "license": "CC-BY-4.0",
   "keywords": [
     "field-boundaries",
@@ -52,84 +52,2274 @@
     "spatial": {
       "bbox": [
         [
-          9.405290334050287,
-          46.345878031124734,
-          17.232237933779267,
-          48.96562897393914
+          null,
+          null,
+          null,
+          null
         ]
       ]
     },
     "temporal": {
       "interval": [
         [
-          "2022-09-30T13:46:14Z",
-          "2025-06-13T12:18:13Z"
+          null,
+          null
         ]
       ]
     }
   },
   "summaries": {
-    "item_count": 65255810
+    "item_count": 94424834
   },
   "assets": {
-    "data": {
+    "at-2025": {
+      "href": "https://data.source.coop/fiboa/data/at/at-2025.parquet",
+      "type": "application/x-parquet",
+      "title": "at-2025.parquet",
       "roles": [
         "data"
       ],
-      "href": "https://data.source.coop/fiboa/data/at/at-2025.parquet",
-      "processing:software": {
-        "fiboa-cli": "0.20.1",
-        "vecorel-cli": "0.2.3"
-      },
-      "type": "application/vnd.apache.parquet",
       "table:columns": [
         {
           "name": "hcat:code",
-          "type": "uint32"
+          "type": "UINTEGER"
         },
         {
           "name": "metrics:area",
-          "type": "float"
+          "type": "FLOAT"
         },
         {
           "name": "hcat:name",
-          "type": "string"
+          "type": "VARCHAR"
         },
         {
           "name": "geometry",
-          "type": "binary"
+          "type": "GEOMETRY('EPSG:31287')",
+          "description": "[geometry] Field polygon geometry in EPSG:31287 (Austrian Federal Datum / MGI)"
         },
         {
           "name": "id",
-          "type": "string"
+          "type": "VARCHAR"
         },
         {
           "name": "collection",
-          "type": "string"
+          "type": "VARCHAR"
         },
         {
           "name": "crop:name",
-          "type": "string"
+          "type": "VARCHAR"
         },
         {
           "name": "hcat:name_en",
-          "type": "string"
+          "type": "VARCHAR"
         },
         {
           "name": "determination:datetime",
-          "type": "timestamp[ms, tz=UTC]"
+          "type": "TIMESTAMP WITH TIME ZONE"
         },
         {
           "name": "crop:code",
-          "type": "string"
+          "type": "VARCHAR"
         },
         {
           "name": "bbox",
-          "type": "struct<xmin: double, ymin: double, xmax: double, ymax: double>"
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
         }
       ],
-      "table:primary_geometry": "geometry",
       "table:row_count": 2944405
+    },
+    "be_vlg-2023": {
+      "href": "https://data.source.coop/fiboa/data/be_vlg/be_vlg-2023.parquet",
+      "type": "application/x-parquet",
+      "title": "be_vlg-2023.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "typology",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "hcat:name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "crop:code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "hcat:name_en",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "collection",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "crop:name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "metrics:area",
+          "type": "FLOAT"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:31370')",
+          "description": "[geometry] Field polygon geometry in EPSG:31370 (Belgian Lambert 72)"
+        },
+        {
+          "name": "hcat:code",
+          "type": "UINTEGER"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 100
+    },
+    "be_vlg-2024": {
+      "href": "https://data.source.coop/fiboa/data/be_vlg/be_vlg-2024.parquet",
+      "type": "application/x-parquet",
+      "title": "be_vlg-2024.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "crop:code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "hcat:name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "hcat:name_en",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "source",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "crop:name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "hcat:code",
+          "type": "UINTEGER"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:31370')",
+          "description": "[geometry] Field polygon geometry in EPSG:31370 (Belgian Lambert 72)"
+        },
+        {
+          "name": "metrics:area",
+          "type": "FLOAT"
+        },
+        {
+          "name": "typology",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "collection",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 589898
+    },
+    "be_vlg-2025": {
+      "href": "https://data.source.coop/fiboa/data/be_vlg/be_vlg-2025.parquet",
+      "type": "application/x-parquet",
+      "title": "be_vlg-2025.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "hcat:code",
+          "type": "UINTEGER"
+        },
+        {
+          "name": "hcat:name_en",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "crop:name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "metrics:area",
+          "type": "FLOAT"
+        },
+        {
+          "name": "hcat:name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "typology",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:31370')",
+          "description": "[geometry] Field polygon geometry in EPSG:31370 (Belgian Lambert 72)"
+        },
+        {
+          "name": "collection",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "crop:code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 594732
+    },
+    "be_wal": {
+      "href": "https://data.source.coop/fiboa/data/be_wal/be_wal.parquet",
+      "type": "application/x-parquet",
+      "title": "be_wal.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "crop:code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "hcat:name_en",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "crop:name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:3035')",
+          "description": "[geometry] Field polygon geometry in EPSG:3035 (ETRS89-LAEA)"
+        },
+        {
+          "name": "hcat:code",
+          "type": "UINTEGER"
+        },
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "hcat:name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "collection",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 341968
+    },
+    "bg": {
+      "href": "https://data.source.coop/fiboa/data/bg/bg.parquet",
+      "type": "application/x-parquet",
+      "title": "bg.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "crop:name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:32635')",
+          "description": "[geometry] Field polygon geometry in EPSG:32635 (UTM zone 35N)"
+        },
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "crop:code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "collection",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "metrics:area",
+          "type": "FLOAT"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 180186
+    },
+    "br_ba_lem": {
+      "href": "https://data.source.coop/fiboa/data/br_ba_lem/br_ba_lem.parquet",
+      "type": "application/x-parquet",
+      "title": "br_ba_lem.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "2020-09",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "2020-04",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "2020-02",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "2019-10",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "2019-11",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "2020-03",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "2019-12",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "2020-06",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "collection",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "2020-01",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "2020-07",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "2020-08",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "2020-05",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:4326')",
+          "description": "[geometry] Field polygon geometry in EPSG:4326 (WGS 84)"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 1964
+    },
+    "br_conab": {
+      "href": "https://data.source.coop/fiboa/data/br_conab/br_conab.parquet",
+      "type": "application/x-parquet",
+      "title": "br_conab.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:4674')",
+          "description": "[geometry] Field polygon geometry in EPSG:4674 (SIRGAS 2000)"
+        },
+        {
+          "name": "admin_municipality_code",
+          "type": "VARCHAR",
+          "description": "[admin_code] Brazilian municipality code"
+        },
+        {
+          "name": "admin_municipality_name",
+          "type": "VARCHAR",
+          "description": "[placename] Brazilian municipality name"
+        },
+        {
+          "name": "collection",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "metrics:area",
+          "type": "FLOAT"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 465691
+    },
+    "ch": {
+      "href": "https://data.source.coop/fiboa/data/ch/ch.parquet",
+      "type": "application/x-parquet",
+      "title": "ch.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "collection",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "admin:subdivision_code",
+          "type": "VARCHAR",
+          "description": "[admin_code] Swiss canton or subdivision code"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:2056')",
+          "description": "[geometry] Field polygon geometry in EPSG:2056 (Swiss LV95)"
+        },
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "crop:name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "hcat:name_en",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "hcat:name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "determination:datetime",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "hcat:code",
+          "type": "UINTEGER"
+        },
+        {
+          "name": "metrics:area",
+          "type": "FLOAT"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 1159957
+    },
+    "ch_2023": {
+      "href": "https://data.source.coop/fiboa/data/ch/ch_2023.parquet",
+      "type": "application/x-parquet",
+      "title": "ch_2023.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:2056')",
+          "description": "[geometry] Field polygon geometry in EPSG:2056 (Swiss LV95)"
+        },
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "metrics:area",
+          "type": "FLOAT"
+        },
+        {
+          "name": "administrative_area_level_1",
+          "type": "VARCHAR",
+          "description": "[placename] Swiss administrative area (canton) name"
+        },
+        {
+          "name": "crop_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "determination_datetime",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 1159957
+    },
+    "cz": {
+      "href": "https://data.source.coop/fiboa/data/cz/cz.parquet",
+      "type": "application/x-parquet",
+      "title": "cz.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "hcat:name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "metrics:area",
+          "type": "FLOAT"
+        },
+        {
+          "name": "hcat:name_en",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "block_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "crop:name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:4258')",
+          "description": "[geometry] Field polygon geometry in EPSG:4258 (ETRS89)"
+        },
+        {
+          "name": "crop:code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "hcat:code",
+          "type": "UINTEGER"
+        },
+        {
+          "name": "determination:datetime",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "collection",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 426584
+    },
+    "de_bb": {
+      "href": "https://data.source.coop/fiboa/data/de_bb/de_bb.parquet",
+      "type": "application/x-parquet",
+      "title": "de_bb.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "farmer_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "hcat:code",
+          "type": "UINTEGER"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:25833')",
+          "description": "[geometry] Field polygon geometry in EPSG:25833 (UTM zone 33N)"
+        },
+        {
+          "name": "hcat:name_en",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "crop:code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "crop:name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "collection",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "determination:datetime",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "metrics:area",
+          "type": "FLOAT"
+        },
+        {
+          "name": "hcat:name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 290130
+    },
+    "de_by": {
+      "href": "https://data.source.coop/fiboa/data/de_by/de_by.parquet",
+      "type": "application/x-parquet",
+      "title": "de_by.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "hcat:code",
+          "type": "UINTEGER"
+        },
+        {
+          "name": "crop:code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:25832')",
+          "description": "[geometry] Field polygon geometry in EPSG:25832 (UTM zone 32N)"
+        },
+        {
+          "name": "hcat:name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "collection",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "determination:datetime",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "crop:name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 1296105
+    },
+    "de_mv": {
+      "href": "https://data.source.coop/fiboa/data/de_mv/de_mv.parquet",
+      "type": "application/x-parquet",
+      "title": "de_mv.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "flik",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "collection",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "erwind_l",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "metrics:perimeter",
+          "type": "FLOAT"
+        },
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "crop:code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "dgl_jahr",
+          "type": "SMALLINT"
+        },
+        {
+          "name": "bez_kreis",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "erwater",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "erwater_l",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "erwind",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "metrics:area",
+          "type": "FLOAT"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:25833')",
+          "description": "[geometry] Field polygon geometry in EPSG:25833 (UTM zone 33N)"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 20000
+    },
+    "de_nds-2025": {
+      "href": "https://data.source.coop/fiboa/data/de_nds/de_nds-2025.parquet",
+      "type": "application/x-parquet",
+      "title": "de_nds-2025.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "metrics:area",
+          "type": "FLOAT"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:25832')",
+          "description": "[geometry] Field polygon geometry in EPSG:25832 (UTM zone 32N)"
+        },
+        {
+          "name": "crop:code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "collection",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "flik",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "subfield_id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "hcat:name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "hcat:name_en",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "hcat:code",
+          "type": "UINTEGER"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 880805
+    },
+    "de_nrw": {
+      "href": "https://data.source.coop/fiboa/data/de_nrw/de_nrw.parquet",
+      "type": "application/x-parquet",
+      "title": "de_nrw.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "metrics:area",
+          "type": "FLOAT"
+        },
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "collection",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "hcat:name_en",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "crop:name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "crop:code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "flik",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:25832')",
+          "description": "[geometry] Field polygon geometry in EPSG:25832 (UTM zone 32N)"
+        },
+        {
+          "name": "hcat:code",
+          "type": "UINTEGER"
+        },
+        {
+          "name": "determination:datetime",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "hcat:name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 749151
+    },
+    "dk-2024": {
+      "href": "https://data.source.coop/fiboa/data/dk/dk-2024.parquet",
+      "type": "application/x-parquet",
+      "title": "dk-2024.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "hcat:name_en",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "hcat:code",
+          "type": "UINTEGER"
+        },
+        {
+          "name": "crop:name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "collection",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "hcat:name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "metrics:area",
+          "type": "FLOAT"
+        },
+        {
+          "name": "crop:code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:25832')",
+          "description": "[geometry] Field polygon geometry in EPSG:25832 (UTM zone 32N)"
+        },
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 617941
+    },
+    "ec_ro": {
+      "href": "https://data.source.coop/fiboa/data/ec_ro/ec_ro.parquet",
+      "type": "application/x-parquet",
+      "title": "ec_ro.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "hcat:name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "hcat:name_en",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "collection",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "hcat:code",
+          "type": "UINTEGER"
+        },
+        {
+          "name": "crop:name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:32635')",
+          "description": "[geometry] Field polygon geometry in EPSG:32635 (UTM zone 35N)"
+        },
+        {
+          "name": "source",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "metrics:area",
+          "type": "FLOAT"
+        },
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "crop:code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 259862
+    },
+    "ee-2024": {
+      "href": "https://data.source.coop/fiboa/data/ee/ee-2024.parquet",
+      "type": "application/x-parquet",
+      "title": "ee-2024.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "crop:name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "hcat:code",
+          "type": "UINTEGER"
+        },
+        {
+          "name": "hcat:name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:3301')",
+          "description": "[geometry] Field polygon geometry in EPSG:3301 (Estonian Coordinate System 1997)"
+        },
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "hcat:name_en",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "metrics:area",
+          "type": "FLOAT"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 166508
+    },
+    "es-2025": {
+      "href": "https://data.source.coop/fiboa/data/es/es-2025.parquet",
+      "type": "application/x-parquet",
+      "title": "es-2025.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:4258')",
+          "description": "[geometry] Field polygon geometry in EPSG:4258 (ETRS89)"
+        },
+        {
+          "name": "metrics:area",
+          "type": "FLOAT"
+        },
+        {
+          "name": "hcat:code",
+          "type": "UINTEGER"
+        },
+        {
+          "name": "crop:code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "hcat:name_en",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "collection",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "irrigation_system",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "hcat:name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 17857146
+    },
+    "es-2025_11": {
+      "href": "https://data.source.coop/fiboa/data/es/es-2025_11.parquet",
+      "type": "application/x-parquet",
+      "title": "es-2025_11.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "collection",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "crop:code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "metrics:area",
+          "type": "FLOAT"
+        },
+        {
+          "name": "irrigation_system",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "hcat:name_en",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "hcat:name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:4258')",
+          "description": "[geometry] Field polygon geometry in EPSG:4258 (ETRS89)"
+        },
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "hcat:code",
+          "type": "UINTEGER"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 167215
+    },
+    "fi": {
+      "href": "https://data.source.coop/fiboa/data/fi/fi.parquet",
+      "type": "application/x-parquet",
+      "title": "fi.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "block_id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "collection",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "hcat:name_en",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "hcat:name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "metrics:area",
+          "type": "FLOAT"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:3067')",
+          "description": "[geometry] Field polygon geometry in EPSG:3067 (ETRS89 / TM35FIN)"
+        },
+        {
+          "name": "hcat:code",
+          "type": "UINTEGER"
+        },
+        {
+          "name": "crop:name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "crop:code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 1006588
+    },
+    "fr-2021": {
+      "href": "https://data.source.coop/fiboa/data/fr/fr-2021.parquet",
+      "type": "application/x-parquet",
+      "title": "fr-2021.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "crop:code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "metrics:area",
+          "type": "FLOAT"
+        },
+        {
+          "name": "group_code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "hcat:name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "hcat:code",
+          "type": "UINTEGER"
+        },
+        {
+          "name": "hcat:name_en",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:2154')",
+          "description": "[geometry] Field polygon geometry in EPSG:2154 (RGF93 / Lambert-93)"
+        },
+        {
+          "name": "collection",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 9848558
+    },
+    "fr-2022": {
+      "href": "https://data.source.coop/fiboa/data/fr/fr-2022.parquet",
+      "type": "application/x-parquet",
+      "title": "fr-2022.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "crop:code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "hcat:name_en",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "hcat:code",
+          "type": "UINTEGER"
+        },
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "hcat:name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "metrics:area",
+          "type": "FLOAT"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:2154')",
+          "description": "[geometry] Field polygon geometry in EPSG:2154 (RGF93 / Lambert-93)"
+        },
+        {
+          "name": "group_code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "collection",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 9888801
+    },
+    "fr-2023": {
+      "href": "https://data.source.coop/fiboa/data/fr/fr-2023.parquet",
+      "type": "application/x-parquet",
+      "title": "fr-2023.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "group_code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "hcat:name_en",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "metrics:area",
+          "type": "FLOAT"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:2154')",
+          "description": "[geometry] Field polygon geometry in EPSG:2154 (RGF93 / Lambert-93)"
+        },
+        {
+          "name": "crop:code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "collection",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "hcat:name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "hcat:code",
+          "type": "UINTEGER"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 9788919
+    },
+    "fr-2024": {
+      "href": "https://data.source.coop/fiboa/data/fr/fr-2024.parquet",
+      "type": "application/x-parquet",
+      "title": "fr-2024.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "hcat:code",
+          "type": "UINTEGER"
+        },
+        {
+          "name": "group_code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "hcat:name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "hcat:name_en",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "collection",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "crop:code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:2154')",
+          "description": "[geometry] Field polygon geometry in EPSG:2154 (RGF93 / Lambert-93)"
+        },
+        {
+          "name": "metrics:area",
+          "type": "FLOAT"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 9678595
+    },
+    "hr": {
+      "href": "https://data.source.coop/fiboa/data/hr/hr.parquet",
+      "type": "application/x-parquet",
+      "title": "hr.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "irrigation_source",
+          "type": "INTEGER"
+        },
+        {
+          "name": "metrics:area",
+          "type": "FLOAT"
+        },
+        {
+          "name": "sanitary_protection_zone",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:3765')",
+          "description": "[geometry] Field polygon geometry in EPSG:3765 (HTRS96 / Croatia TM)"
+        },
+        {
+          "name": "metrics:perimeter",
+          "type": "FLOAT"
+        },
+        {
+          "name": "irrigation_type",
+          "type": "INTEGER"
+        },
+        {
+          "name": "collection",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ot_nat_area",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "crop:code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "hcat:name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "natura2000",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "hcat:name_en",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "irrigation",
+          "type": "INTEGER"
+        },
+        {
+          "name": "slope",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "height",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "hcat:code",
+          "type": "UINTEGER"
+        },
+        {
+          "name": "jpaid",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ot_nat",
+          "type": "INTEGER"
+        },
+        {
+          "name": "eligibility_coef",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "anc_area",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "water_protect_zone",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "anc",
+          "type": "INTEGER"
+        },
+        {
+          "name": "home_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "rp",
+          "type": "INTEGER"
+        },
+        {
+          "name": "tvpv",
+          "type": "INTEGER"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 1315950
+    },
+    "ie-2024": {
+      "href": "https://data.source.coop/fiboa/data/ie/ie-2024.parquet",
+      "type": "application/x-parquet",
+      "title": "ie-2024.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:4258')",
+          "description": "[geometry] Field polygon geometry in EPSG:4258 (ETRS89)"
+        },
+        {
+          "name": "hcat:name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "crop:name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "hcat:code",
+          "type": "UINTEGER"
+        },
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "collection",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "crop:code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 1123135
+    },
+    "jecam": {
+      "href": "https://data.source.coop/fiboa/data/jecam/jecam.parquet",
+      "type": "application/x-parquet",
+      "title": "jecam.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "collection",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:4326')",
+          "description": "[geometry] Field polygon geometry in EPSG:4326 (WGS 84)"
+        },
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "irrigated",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "admin:country_code",
+          "type": "VARCHAR",
+          "description": "[admin_code] ISO country code for the JECAM benchmark site"
+        },
+        {
+          "name": "determination:datetime",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "crop:name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "metrics:area",
+          "type": "FLOAT"
+        },
+        {
+          "name": "crop:code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "site_name",
+          "type": "VARCHAR",
+          "description": "[placename] Named JECAM benchmark site location"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 31989
+    },
+    "lt": {
+      "href": "https://data.source.coop/fiboa/data/lt/lt.parquet",
+      "type": "application/x-parquet",
+      "title": "lt.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "hcat:name_en",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "hcat:code",
+          "type": "UINTEGER"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:3035')",
+          "description": "[geometry] Field polygon geometry in EPSG:3035 (ETRS89-LAEA)"
+        },
+        {
+          "name": "crop:name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "metrics:area",
+          "type": "FLOAT"
+        },
+        {
+          "name": "hcat:name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 1213522
+    },
+    "lv": {
+      "href": "https://data.source.coop/fiboa/data/lv/lv.parquet",
+      "type": "application/x-parquet",
+      "title": "lv.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "hcat:name_en",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "collection",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "hcat:name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "metrics:area",
+          "type": "FLOAT"
+        },
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "parcel_id",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "determination:datetime",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:3059')",
+          "description": "[geometry] Field polygon geometry in EPSG:3059 (LKS92 / Latvia TM)"
+        },
+        {
+          "name": "crop:code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "crop:name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "hcat:code",
+          "type": "UINTEGER"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 416323
+    },
+    "nl-2025": {
+      "href": "https://data.source.coop/fiboa/data/nl/nl-2025.parquet",
+      "type": "application/x-parquet",
+      "title": "nl-2025.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "crop:name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "crop:code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "coverage",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "hcat:code",
+          "type": "UINTEGER"
+        },
+        {
+          "name": "hcat:name_en",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:28992')",
+          "description": "[geometry] Field polygon geometry in EPSG:28992 (Amersfoort / RD New)"
+        },
+        {
+          "name": "metrics:area",
+          "type": "FLOAT"
+        },
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "collection",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "hcat:name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 1297461
+    },
+    "pt-2023": {
+      "href": "https://data.source.coop/fiboa/data/pt/pt-2023.parquet",
+      "type": "application/x-parquet",
+      "title": "pt-2023.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "metrics:perimeter",
+          "type": "FLOAT"
+        },
+        {
+          "name": "crop:name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "crop:code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "collection",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "metrics:area",
+          "type": "FLOAT"
+        },
+        {
+          "name": "hcat:name_en",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "hcat:code",
+          "type": "UINTEGER"
+        },
+        {
+          "name": "block_id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:3763')",
+          "description": "[geometry] Field polygon geometry in EPSG:3763 (ETRS89 / Portugal TM06)"
+        },
+        {
+          "name": "hcat:name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 4805469
+    },
+    "se-2024": {
+      "href": "https://data.source.coop/fiboa/data/se/se-2024.parquet",
+      "type": "application/x-parquet",
+      "title": "se-2024.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:3006')",
+          "description": "[geometry] Field polygon geometry in EPSG:3006 (SWEREF99 TM)"
+        },
+        {
+          "name": "hcat:code",
+          "type": "UINTEGER"
+        },
+        {
+          "name": "hcat:name_en",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "hcat:name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "collection",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "crop:code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "metrics:area",
+          "type": "FLOAT"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 1146499
+    },
+    "se": {
+      "href": "https://data.source.coop/fiboa/data/se/se.parquet",
+      "type": "application/x-parquet",
+      "title": "se.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "crop:code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:3006')",
+          "description": "[geometry] Field polygon geometry in EPSG:3006 (SWEREF99 TM)"
+        },
+        {
+          "name": "collection",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "hcat:name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "hcat:code",
+          "type": "UINTEGER"
+        },
+        {
+          "name": "hcat:name_en",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "metrics:area",
+          "type": "FLOAT"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 1142785
+    },
+    "si-2024": {
+      "href": "https://data.source.coop/fiboa/data/si/si-2024.parquet",
+      "type": "application/x-parquet",
+      "title": "si-2024.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "crop:code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "hcat:name_en",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "hcat:name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "hcat:code",
+          "type": "UINTEGER"
+        },
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:3794')",
+          "description": "[geometry] Field polygon geometry in EPSG:3794 (Slovenia 1996 / Slovene National Grid)"
+        },
+        {
+          "name": "collection",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "crop:name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "metrics:area",
+          "type": "FLOAT"
+        },
+        {
+          "name": "crop:name_en",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "block_id",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 809044
+    },
+    "si": {
+      "href": "https://data.source.coop/fiboa/data/si/si.parquet",
+      "type": "application/x-parquet",
+      "title": "si.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "crop:name_en",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "hcat:code",
+          "type": "UINTEGER"
+        },
+        {
+          "name": "hcat:name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "crop:name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "hcat:name_en",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "crop:code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "collection",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "metrics:area",
+          "type": "FLOAT"
+        },
+        {
+          "name": "block_id",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:3794')",
+          "description": "[geometry] Field polygon geometry in EPSG:3794 (Slovenia 1996 / Slovene National Grid)"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 830856
+    },
+    "sk": {
+      "href": "https://data.source.coop/fiboa/data/sk/sk.parquet",
+      "type": "application/x-parquet",
+      "title": "sk.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "crop_group",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "hcat:code",
+          "type": "UINTEGER"
+        },
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "crop:name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "hcat:name_en",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "metrics:area",
+          "type": "FLOAT"
+        },
+        {
+          "name": "hcat:name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "collection",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:5514')",
+          "description": "[geometry] Field polygon geometry in EPSG:5514 (S-JTSK / Krovak East North)"
+        },
+        {
+          "name": "municipality",
+          "type": "VARCHAR",
+          "description": "[placename] Slovak municipality name"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 274467
+    },
+    "ukfields": {
+      "href": "https://data.source.coop/fiboa/data/uk/ukfields.parquet",
+      "type": "application/x-parquet",
+      "title": "ukfields.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "area",
+          "type": "FLOAT"
+        },
+        {
+          "name": "perimeter",
+          "type": "FLOAT"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:27700')",
+          "description": "[geometry] Field polygon geometry in EPSG:27700 (British National Grid)"
+        },
+        {
+          "name": "determination_method",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "determination_datetime",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        }
+      ],
+      "table:row_count": 1665637
+    },
+    "us_ca_scm-2023": {
+      "href": "https://data.source.coop/fiboa/data/us_ca_scm/us_ca_scm-2023.parquet",
+      "type": "application/x-parquet",
+      "title": "us_ca_scm-2023.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "collection",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:4269')",
+          "description": "[geometry] Field polygon geometry in EPSG:4269 (NAD83)"
+        },
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "admin_level_2",
+          "type": "VARCHAR",
+          "description": "[placename] US county name (administrative level 2)"
+        },
+        {
+          "name": "crop:code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "crop:name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "hcat:name_en",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "hcat:name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "hcat:code",
+          "type": "UINTEGER"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 447219
+    },
+    "us_usda_cropland-2024": {
+      "href": "https://data.source.coop/fiboa/data/us_usda_cropland/us_usda_cropland-2024.parquet",
+      "type": "application/x-parquet",
+      "title": "us_usda_cropland-2024.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "hcat:code",
+          "type": "UINTEGER"
+        },
+        {
+          "name": "hcat:name_en",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "administrative_area_level_2",
+          "type": "VARCHAR",
+          "description": "[placename] US county name (administrative level 2)"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('{\"$schema\":\"https://proj.org/schemas/v0.7/projjson.schema.json\",\"type\":\"ProjectedCRS\",\"name\":\"Albers_Conic_Equal_Area\",\"base_crs\":{\"type\":\"GeographicCRS\",\"name\":\"NAD83\",\"datum\":{\"type\":\"GeodeticReferenceFrame\",\"name\":\"North American Datum 1983\",\"ellipsoid\":{\"name\":\"GRS 1980\",\"semi_major_axis\":6378137,\"inverse_flattening\":298.257222101},\"id\":{\"authority\":\"EPSG\",\"code\":6269}},\"coordinate_system\":{\"subtype\":\"ellipsoidal\",\"axis\":[{\"name\":\"Longitude\",\"abbreviation\":\"lon\",\"direction\":\"east\",\"unit\":{\"type\":\"AngularUnit\",\"name\":\"Degree\",\"conversion_factor\":0.0174532925199433}},{\"name\":\"Latitude\",\"abbreviation\":\"lat\",\"direction\":\"north\",\"unit\":{\"type\":\"AngularUnit\",\"name\":\"Degree\",\"conversion_factor\":0.0174532925199433}}]}},\"conversion\":{\"name\":\"unnamed\",\"method\":{\"name\":\"Albers Equal Area\",\"id\":{\"authority\":\"EPSG\",\"code\":9822}},\"parameters\":[{\"name\":\"Latitude of false origin\",\"value\":23,\"unit\":{\"type\":\"AngularUnit\",\"name\":\"Degree\",\"conversion_factor\":0.0174532925199433},\"id\":{\"authority\":\"EPSG\",\"code\":8821}},{\"name\":\"Longitude of false origin\",\"value\":-96,\"unit\":{\"type\":\"AngularUnit\",\"name\":\"Degree\",\"conversion_factor\":0.0174532925199433},\"id\":{\"authority\":\"EPSG\",\"code\":8822}},{\"name\":\"Latitude of 1st standard parallel\",\"value\":29.5,\"unit\":{\"type\":\"AngularUnit\",\"name\":\"Degree\",\"conversion_factor\":0.0174532925199433},\"id\":{\"authority\":\"EPSG\",\"code\":8823}},{\"name\":\"Latitude of 2nd standard parallel\",\"value\":45.5,\"unit\":{\"type\":\"AngularUnit\",\"name\":\"Degree\",\"conversion_factor\":0.0174532925199433},\"id\":{\"authority\":\"EPSG\",\"code\":8824}},{\"name\":\"Easting at false origin\",\"value\":0,\"unit\":\"metre\",\"id\":{\"authority\":\"EPSG\",\"code\":8826}},{\"name\":\"Northing at false origin\",\"value\":0,\"unit\":\"metre\",\"id\":{\"authority\":\"EPSG\",\"code\":8827}}]},\"coordinate_system\":{\"subtype\":\"Cartesian\",\"axis\":[{\"name\":\"Easting\",\"abbreviation\":\"\",\"direction\":\"east\",\"unit\":\"metre\"},{\"name\":\"Northing\",\"abbreviation\":\"\",\"direction\":\"north\",\"unit\":\"metre\"}]}}')",
+          "description": "[geometry] Field polygon geometry in custom Albers Equal Area (NAD83) CRS"
+        },
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "crop:name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "hcat:name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "collection",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 7522712
     }
   },
   "links": [
@@ -142,14 +2332,11 @@
       "rel": "via",
       "href": "https://source.coop/fiboa/data",
       "title": "Source Cooperative product page"
-    },
-    {
-      "href": "https://data.source.coop/fiboa/data/at/at-2025.pmtiles",
-      "type": "application/vnd.pmtiles",
-      "rel": "pmtiles"
     }
   ],
   "file_count": 164,
+  "account_id": "fiboa",
+  "created_at": "2025-10-03T09:16:01.587Z",
   "exts": {
     "md": 29,
     "parquet": 37,
@@ -158,16 +2345,15 @@
     "txt": 29,
     "json": 30
   },
-  "updated_at": "2025-10-03T09:16:01.587Z",
+  "data_mode": "open",
+  "featured": 0,
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "total_bytes": 30118103539,
-  "visibility": "public",
-  "created_at": "2025-10-03T09:16:01.587Z",
-  "featured": 0,
+  "updated_at": "2025-10-03T09:16:01.587Z",
   "product_id": "data",
+  "disabled": false,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -180,13 +2366,11 @@
       "prefix": "fiboa/data/"
     }
   },
-  "account_id": "fiboa",
-  "disabled": false,
-  "data_mode": "open",
+  "total_bytes": 30118103539,
+  "visibility": "public",
   "_review": [
-    "providers: role [producer, licensor] for 'National agricultural agencies (various)' is an AI guess \u2014 Original field boundary data sourced from national LPIS programs and agricultural ministries across multiple countries; individual agencies not named in dataset metadata.. Verify before flipping to _state: reviewed."
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [at-2025.geometry (geometry), be_vlg-2023.geometry (geometry), be_vlg-2024.geometry (geometry), be_vlg-2025.geometry (geometry), be_wal.geometry (geometry), bg.geometry (geometry), br_ba_lem.geometry (geometry), br_conab.geometry (geometry), br_conab.admin_municipality_code (admin_code), br_conab.admin_municipality_name (placename), ch.geometry (geometry), ch.admin:subdivision_code (admin_code), ch_2023.geometry (geometry), ch_2023.administrative_area_level_1 (placename), cz.geometry (geometry), de_bb.geometry (geometry), de_by.geometry (geometry), de_mv.geometry (geometry), de_nds-2025.geometry (geometry), de_nrw.geometry (geometry), dk-2024.geometry (geometry), ec_ro.geometry (geometry), ee-2024.geometry (geometry), es-2025.geometry (geometry), es-2025_11.geometry (geometry), fi.geometry (geometry), fr-2021.geometry (geometry), fr-2022.geometry (geometry), fr-2023.geometry (geometry), fr-2024.geometry (geometry), hr.geometry (geometry), ie-2024.geometry (geometry), jecam.geometry (geometry), jecam.admin:country_code (admin_code), jecam.site_name (placename), lt.geometry (geometry), lv.geometry (geometry), nl-2025.geometry (geometry), pt-2023.geometry (geometry), se-2024.geometry (geometry), se.geometry (geometry), si-2024.geometry (geometry), si.geometry (geometry), sk.geometry (geometry), sk.municipality (placename), ukfields.geometry (geometry), us_ca_scm-2023.geometry (geometry), us_ca_scm-2023.admin_level_2 (placename), us_usda_cropland-2024.geometry (geometry), us_usda_cropland-2024.administrative_area_level_2 (placename)]. Add bbox once a placename \u2192 bbox gazetteer is available."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-05-27T01:44:03+00:00",
-  "_source_format": "stac"
+  "cataloged_at": "2026-06-04T23:18:30+00:00"
 }

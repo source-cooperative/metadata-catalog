@@ -6,7 +6,7 @@
   ],
   "id": "fused/overture",
   "title": "Overture Maps - Fused-partitioned",
-  "description": "Global vector dataset from Overture Maps Foundation containing administrative boundaries, building footprints, land use classifications, points of interest, and transportation networks. Organized by theme and geo-partitioned in GeoParquet format adhering to the Overture Data Schema standard. Covers the full global extent across multiple geographic scales and feature types.",
+  "description": "Global vector dataset from the Overture Maps Foundation containing administrative boundaries, building footprints, land use classifications, points of interest, and transportation networks. Data is organized by theme and geo-partitioned across ~24,000 GeoParquet files adhering to the Overture Data Schema standard. Covers the full global extent from -180 to 180 longitude across multiple geographic scales and feature types.",
   "license": "other",
   "keywords": [
     "land-use",
@@ -14,8 +14,8 @@
     "administrative-boundaries",
     "transportation",
     "points-of-interest",
-    "vector-data",
-    "open-map-data"
+    "open-map-data",
+    "vector-data"
   ],
   "providers": [
     {
@@ -77,8 +77,7 @@
         },
         {
           "name": "geometry",
-          "type": "GEOMETRY('EPSG:4326')",
-          "description": "[geometry] WGS84 geometry for locality/administrative place features"
+          "type": "GEOMETRY('EPSG:4326')"
         },
         {
           "name": "bbox",
@@ -114,13 +113,11 @@
         },
         {
           "name": "isoCountryCodeAlpha2",
-          "type": "VARCHAR",
-          "description": "[admin_code] ISO 3166-1 alpha-2 country code"
+          "type": "VARCHAR"
         },
         {
           "name": "isoSubCountryCode",
-          "type": "VARCHAR",
-          "description": "[admin_code] ISO 3166-2 sub-country (state/province) code"
+          "type": "VARCHAR"
         },
         {
           "name": "defaultLanguage",
@@ -401,8 +398,7 @@
         },
         {
           "name": "geometry",
-          "type": "GEOMETRY('EPSG:4326')",
-          "description": "[geometry] WGS84 geometry for administrative division features"
+          "type": "GEOMETRY('EPSG:4326')"
         },
         {
           "name": "bbox",
@@ -615,8 +611,7 @@
         },
         {
           "name": "geometry",
-          "type": "GEOMETRY('EPSG:4326')",
-          "description": "[geometry] WGS84 point geometry for address features"
+          "type": "GEOMETRY('EPSG:4326')"
         },
         {
           "name": "bbox",
@@ -624,13 +619,11 @@
         },
         {
           "name": "country",
-          "type": "VARCHAR",
-          "description": "[admin_code] Country code in address records"
+          "type": "VARCHAR"
         },
         {
           "name": "postcode",
-          "type": "VARCHAR",
-          "description": "[zipcode] Postal/ZIP code for address records"
+          "type": "VARCHAR"
         },
         {
           "name": "street",
@@ -910,8 +903,7 @@
         },
         {
           "name": "geometry",
-          "type": "GEOMETRY('EPSG:4326')",
-          "description": "[geometry] WGS84 geometry for division/place records with hierarchy"
+          "type": "GEOMETRY('EPSG:4326')"
         },
         {
           "name": "bbox",
@@ -919,8 +911,7 @@
         },
         {
           "name": "country",
-          "type": "VARCHAR",
-          "description": "[admin_code] Country code for division records"
+          "type": "VARCHAR"
         },
         {
           "name": "version",
@@ -952,8 +943,7 @@
         },
         {
           "name": "region",
-          "type": "VARCHAR",
-          "description": "[admin_code] Region/state code for division records"
+          "type": "VARCHAR"
         },
         {
           "name": "perspectives",
@@ -1549,22 +1539,9 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "data_mode": "open",
-  "disabled": false,
-  "total_bytes": 11766735615676,
-  "file_count": 24337,
-  "visibility": "public",
   "created_at": "2024-03-06T23:45:38.072516+00:00",
-  "exts": {
-    "parquet": 24335,
-    "png": 1,
-    "md": 1
-  },
+  "product_id": "overture",
   "featured": 1,
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -1577,12 +1554,25 @@
       "prefix": "fused/overture/"
     }
   },
+  "exts": {
+    "parquet": 24335,
+    "png": 1,
+    "md": 1
+  },
+  "visibility": "public",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "file_count": 24337,
   "updated_at": "2025-08-21T16:39:55.568Z",
-  "product_id": "overture",
+  "total_bytes": 11766735615676,
+  "data_mode": "open",
+  "disabled": false,
   "account_id": "fused",
   "_review": [
-    "extent.spatial.bbox: omitted; spatial reference is categorical via [64.geometry (geometry), 64.isoCountryCodeAlpha2 (admin_code), 64.isoSubCountryCode (admin_code), 65.geometry (geometry), 65.iso_country_code_alpha_2 (admin_code), 65.iso_sub_country_code (admin_code), 69.geometry (geometry), 69.postcode (zipcode), 69.country (admin_code), 75.geometry (geometry), 75.country (admin_code), 75.region (admin_code)]. Add bbox once a placename \u2192 bbox gazetteer is available."
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [divisions.geometry (geometry), divisions.iso_country_code_alpha_2 (admin_code), divisions.iso_sub_country_code (admin_code), places.geometry (geometry), buildings.geometry (geometry), transportation.geometry (geometry), addresses.geometry (geometry), addresses.postcode (zipcode), addresses.country (admin_code), places.region (admin_code)]. Add bbox once a placename \u2192 bbox gazetteer is available."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-06-04T01:45:51+00:00"
+  "cataloged_at": "2026-06-04T23:09:08+00:00"
 }

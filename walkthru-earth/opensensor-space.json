@@ -6,16 +6,16 @@
   ],
   "id": "walkthru-earth/opensensor-space",
   "title": "OpenSensor.Space",
-  "description": "Continuous time-series environmental and weather sensor readings collected by an edge-to-cloud IoT monitoring network using Raspberry Pi devices with Enviro+ sensors in the Cairo/Nile Delta region of Egypt. Each record captures temperature, pressure, humidity, ambient light, gas concentrations (oxidised, reducing, NH3), and particulate matter at multiple size bins (PM1, PM2.5, PM10, and sub-micron particle counts), partitioned by station and date. A companion asset provides a spatial suitability analysis for air quality monitoring station placement.",
+  "description": "Continuous time-series environmental and weather readings from an IoT monitoring network in the Cairo/Nile Delta region of Egypt, collected via Raspberry Pi devices with Enviro+ sensors. Each record includes temperature, pressure, humidity, gas concentrations (oxidised, reducing, NH3), ambient light, and particulate matter at multiple size fractions (PM1, PM2.5, PM10), partitioned by station and date. A companion asset provides a geospatial suitability analysis for air quality monitoring station placement.",
   "license": "proprietary",
   "keywords": [
-    "weather",
+    "air-quality",
     "environmental-monitoring",
     "iot",
     "time-series",
-    "air-quality",
     "particulate-matter",
-    "sensor-network"
+    "sensor-network",
+    "weather"
   ],
   "providers": [
     {
@@ -152,7 +152,7 @@
         {
           "name": "station",
           "type": "VARCHAR",
-          "description": "[placename] Named identifier for the sensor deployment location; present across all data_* assets"
+          "description": "[placename] Named monitoring station identifier; each station is a fixed geographic location in the Cairo/Nile Delta network"
         },
         {
           "name": "year",
@@ -3382,7 +3382,7 @@
         {
           "name": "name",
           "type": "VARCHAR",
-          "description": "[placename] Named site or location for each suitability analysis point"
+          "description": "[placename] Name of the candidate air quality monitoring station location"
         },
         {
           "name": "type",
@@ -3394,7 +3394,8 @@
         },
         {
           "name": "nearest_existing",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[placename] Name of the nearest existing monitoring station to each candidate site"
         },
         {
           "name": "distance_km",
@@ -3407,7 +3408,7 @@
         {
           "name": "geom",
           "type": "GEOMETRY('OGC:CRS84')",
-          "description": "[geometry] OGC:CRS84 geometry for candidate or existing air quality monitoring station locations"
+          "description": "[geometry] OGC:CRS84 geometry for candidate and existing air quality monitoring station locations"
         }
       ],
       "table:row_count": 65
@@ -3425,13 +3426,17 @@
       "title": "Source Cooperative product page"
     }
   ],
+  "updated_at": "2025-11-24T18:13:45.589Z",
+  "created_at": "2025-11-24T18:13:45.589Z",
+  "featured": 0,
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "visibility": "public",
-  "featured": 0,
+  "account_id": "walkthru-earth",
+  "product_id": "opensensor-space",
   "file_count": 50959,
+  "data_mode": "open",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -3444,19 +3449,15 @@
       "prefix": "walkthru-earth/opensensor-space/"
     }
   },
-  "account_id": "walkthru-earth",
-  "disabled": false,
   "total_bytes": 1123459382,
-  "data_mode": "open",
-  "product_id": "opensensor-space",
-  "updated_at": "2025-11-24T18:13:45.589Z",
-  "created_at": "2025-11-24T18:13:45.589Z",
+  "visibility": "public",
+  "disabled": false,
   "exts": {
     "parquet": 50959
   },
   "_review": [
-    "extent.spatial.bbox: omitted; spatial reference is categorical via [data_0.station (placename), suitability_analysis_of_aq.geom (geometry), suitability_analysis_of_aq.name (placename)]. Add bbox once a placename \u2192 bbox gazetteer is available."
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [data_0.station (placename), suitability_analysis_of_aq.name (placename), suitability_analysis_of_aq.nearest_existing (placename), suitability_analysis_of_aq.geom (geometry)]. Add bbox once a placename \u2192 bbox gazetteer is available."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-06-04T01:58:45+00:00"
+  "cataloged_at": "2026-06-04T23:21:44+00:00"
 }

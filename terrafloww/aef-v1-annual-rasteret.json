@@ -6,7 +6,7 @@
   ],
   "id": "terrafloww/aef-v1-annual-rasteret",
   "title": "AEF-v1 embeddings Rasteret Collection",
-  "description": "A global index of AlphaEarth Foundation (AEF-v1) satellite embeddings produced by Google and Google DeepMind, covering near-global extent from 2018 to 2024. The dataset is stored as partitioned Parquet files serving as a Rasteret metadata collection, with each record pointing to Cloud Optimized GeoTIFF tiles containing 64-band embedding vectors organized by UTM zone and year.",
+  "description": "A global index of AlphaEarth Foundation (AEF-v1) satellite embeddings produced by Google and Google DeepMind, covering near-global land area from 2018 to 2024. The dataset consists of partitioned Parquet files forming a Rasteret metadata collection, where each record references Cloud Optimized GeoTIFF tiles containing 64-band embedding vectors organized by UTM zone and year.",
   "license": "CC-BY-SA-4.0",
   "keywords": [
     "remote-sensing",
@@ -87,7 +87,7 @@
         {
           "name": "geometry",
           "type": "GEOMETRY('OGC:CRS84')",
-          "description": "[geometry] OGC:CRS84 polygon footprint of each embedding tile"
+          "description": "[geometry] OGC:CRS84 polygon geometry of each embedding tile footprint"
         },
         {
           "name": "datetime",
@@ -99,8 +99,7 @@
         },
         {
           "name": "bbox",
-          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)",
-          "description": "[geometry] Bounding box struct (xmin/ymin/xmax/ymax) in geographic coordinates"
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
         },
         {
           "name": "proj:epsg",
@@ -2471,7 +2470,7 @@
       "type": "application/x-parquet",
       "title": "index.parquet",
       "roles": [
-        "data"
+        "metadata"
       ],
       "table:columns": [
         {
@@ -2500,18 +2499,16 @@
         },
         {
           "name": "bbox_utm",
-          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)",
-          "description": "[geometry] Bounding box in native UTM projection coordinates"
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
         },
         {
           "name": "bbox",
-          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)",
-          "description": "[geometry] Bounding box struct (xmin/ymin/xmax/ymax) in geographic coordinates"
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
         },
         {
           "name": "geom",
           "type": "GEOMETRY('OGC:CRS84')",
-          "description": "[geometry] OGC:CRS84 polygon geometry in the spatial index"
+          "description": "[geometry] OGC:CRS84 geometry of indexed embedding tile"
         },
         {
           "name": "location",
@@ -2525,7 +2522,7 @@
       "type": "application/x-parquet",
       "title": "index_pre_source_part_20260413T081008Z.parquet",
       "roles": [
-        "data"
+        "metadata"
       ],
       "table:columns": [
         {
@@ -2558,7 +2555,8 @@
         },
         {
           "name": "geom",
-          "type": "GEOMETRY('OGC:CRS84')"
+          "type": "GEOMETRY('OGC:CRS84')",
+          "description": "[geometry] OGC:CRS84 geometry of indexed embedding tile (prior index version)"
         },
         {
           "name": "location",
@@ -2580,6 +2578,7 @@
       "title": "Source Cooperative product page"
     }
   ],
+  "featured": 0,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -2592,27 +2591,26 @@
       "prefix": "terrafloww/aef-v1-annual-rasteret/"
     }
   },
-  "updated_at": "2026-03-08T10:29:00.741Z",
-  "exts": {
-    "parquet": 9,
-    "md": 1
-  },
-  "file_count": 10,
-  "visibility": "public",
-  "disabled": false,
-  "data_mode": "open",
   "total_bytes": 8539351825,
+  "account_id": "terrafloww",
+  "product_id": "aef-v1-annual-rasteret",
+  "visibility": "public",
+  "created_at": "2026-03-08T10:27:46.837Z",
+  "data_mode": "open",
+  "disabled": false,
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "created_at": "2026-03-08T10:27:46.837Z",
-  "account_id": "terrafloww",
-  "featured": 0,
-  "product_id": "aef-v1-annual-rasteret",
+  "file_count": 10,
+  "exts": {
+    "parquet": 9,
+    "md": 1
+  },
+  "updated_at": "2026-03-08T10:29:00.741Z",
   "_review": [
-    "extent.spatial.bbox: omitted; spatial reference is categorical via [part-00000.geometry (geometry), part-00000.bbox (geometry), index.geom (geometry), index.bbox (geometry), index.bbox_utm (geometry)]. Add bbox once a placename \u2192 bbox gazetteer is available."
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [part-00000.geometry (geometry), index.geom (geometry), index_pre_source_part_20260413T081008Z.geom (geometry)]. Add bbox once a placename \u2192 bbox gazetteer is available."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-06-04T02:04:58+00:00"
+  "cataloged_at": "2026-06-04T23:27:44+00:00"
 }

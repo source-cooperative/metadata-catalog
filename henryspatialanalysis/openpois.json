@@ -6,7 +6,7 @@
   ],
   "id": "henryspatialanalysis/openpois",
   "title": "OpenPOIs",
-  "description": "OpenPOIs is a unified, open dataset of over 4.5 million points of interest (POIs) across the United States, produced by conflating OpenStreetMap and Overture Maps sources. Each POI carries model-estimated confidence scores, harmonized category labels, and source-level diagnostics. Data are distributed as hive-partitioned Parquet files and PMTiles archives, versioned by release date.",
+  "description": "OpenPOIs is a unified dataset of over 4.5 million points of interest across the United States, produced by conflating OpenStreetMap and Overture Maps sources. Each POI carries model-estimated confidence scores, harmonized category labels, and source-level diagnostics. Data are distributed as hive-partitioned Parquet files and PMTiles archives, versioned by release date.",
   "license": "ODbL-1.0",
   "keywords": [
     "points-of-interest",
@@ -103,7 +103,7 @@
         {
           "name": "addr:state",
           "type": "VARCHAR",
-          "description": "[admin_code] State abbreviation from OSM address tags (OSM-detail assets only)"
+          "description": "[admin_code] State identifier from OSM address tags (OSM-detail assets only)"
         },
         {
           "name": "check_date:opening_hours",
@@ -152,7 +152,7 @@
         {
           "name": "geometry",
           "type": "GEOMETRY('EPSG:4326')",
-          "description": "[geometry] Point geometry in EPSG:4326 (present in all Parquet assets)"
+          "description": "[geometry] Point geometry in EPSG:4326, present in all asset types"
         },
         {
           "name": "addr:housename",
@@ -237,7 +237,7 @@
         {
           "name": "addr:postcode",
           "type": "VARCHAR",
-          "description": "[zipcode] Postal/ZIP code from OSM address tags (OSM-detail assets only)"
+          "description": "[zipcode] Postal code from OSM address tags (OSM-detail assets only)"
         },
         {
           "name": "shop",
@@ -364,7 +364,7 @@
         {
           "name": "geohash",
           "type": "VARCHAR",
-          "description": "[spatial_index] Geohash used for hive partitioning (present in all Parquet assets)"
+          "description": "[spatial_index] Geohash spatial index used for hive partitioning and proximity queries"
         },
         {
           "name": "__index_level_0__",
@@ -394,20 +394,12 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "visibility": "public",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
+  "exts": {
+    "parquet": 202,
+    "": 1,
+    "pmtiles": 4,
+    "md": 3
   },
-  "account_id": "henryspatialanalysis",
-  "total_bytes": 10856973068,
-  "created_at": "2026-04-23T17:57:16.237Z",
-  "disabled": false,
-  "file_count": 210,
-  "featured": 0,
-  "data_mode": "open",
-  "product_id": "openpois",
-  "updated_at": "2026-04-24T00:38:20.784Z",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -420,15 +412,23 @@
       "prefix": "henryspatialanalysis/openpois/"
     }
   },
-  "exts": {
-    "parquet": 202,
-    "": 1,
-    "pmtiles": 4,
-    "md": 3
+  "created_at": "2026-04-23T17:57:16.237Z",
+  "visibility": "public",
+  "account_id": "henryspatialanalysis",
+  "featured": 0,
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
   },
+  "data_mode": "open",
+  "disabled": false,
+  "file_count": 210,
+  "product_id": "openpois",
+  "updated_at": "2026-04-24T00:38:20.784Z",
+  "total_bytes": 10856973068,
   "_review": [
     "extent.spatial.bbox: omitted; spatial reference is categorical via [part-0.geometry (geometry), part-0.geohash (spatial_index), part-0.addr:city (placename), part-0.addr:state (admin_code), part-0.addr:postcode (zipcode), part-0.addr:country (admin_code)]. Add bbox once a placename \u2192 bbox gazetteer is available."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-06-04T01:56:18+00:00"
+  "cataloged_at": "2026-06-04T23:19:31+00:00"
 }

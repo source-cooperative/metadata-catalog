@@ -6,7 +6,7 @@
   ],
   "id": "walkthru-earth/indices",
   "title": "Walkthru-Indices",
-  "description": "A suite of global planetary indices unifying building density, population projections (2025\u20132100), weather forecasts, and terrain metrics on an H3 hexagonal grid at multiple resolutions. Each index shares a common h3_index key enabling single-query cross-dataset joins. Source data includes GEDTM-30m elevation, Global Building Atlas (2.75 billion polygons), WorldPop SSP scenarios, and NOAA AI-NWP forecasts, stored as Parquet with ZSTD compression.",
+  "description": "A suite of global planetary indices on an H3 hexagonal grid, integrating building density, population projections (2025\u20132100), weather forecasts, and terrain metrics at multiple resolutions. Source data includes GEDTM-30m elevation, Global Building Atlas (2.75 billion building polygons), WorldPop SSP scenarios, and NOAA AI-NWP forecasts, stored as Parquet with ZSTD compression. All indices share a common h3_index key enabling cross-dataset joins.",
   "license": "CC-BY-4.0",
   "keywords": [
     "urban-metrics",
@@ -62,7 +62,7 @@
       "type": "application/x-parquet",
       "title": "city_index.parquet",
       "roles": [
-        "data"
+        "metadata"
       ],
       "table:columns": [
         {
@@ -73,7 +73,7 @@
         {
           "name": "region",
           "type": "VARCHAR",
-          "description": "[placename] Sub-national region or state name"
+          "description": "[placename] Sub-national region or state"
         },
         {
           "name": "city",
@@ -82,8 +82,7 @@
         },
         {
           "name": "tiles",
-          "type": "VARCHAR[]",
-          "description": "[spatial_index] Array of H3 tile indices covering the city extent"
+          "type": "VARCHAR[]"
         },
         {
           "name": "addr_count",
@@ -107,7 +106,7 @@
         {
           "name": "region",
           "type": "VARCHAR",
-          "description": "[placename] Sub-national region name"
+          "description": "[placename] Sub-national region or state"
         },
         {
           "name": "city",
@@ -125,27 +124,27 @@
         {
           "name": "bbox_min_lon_e6",
           "type": "INTEGER",
-          "description": "[latlon] Bounding box min longitude as integer microdegrees (\u00f71e6 for degrees)"
+          "description": "[latlon] Bounding box min longitude in microdegrees (\u00f71e6 for decimal degrees)"
         },
         {
           "name": "bbox_max_lon_e6",
           "type": "INTEGER",
-          "description": "[latlon] Bounding box max longitude as integer microdegrees"
+          "description": "[latlon] Bounding box max longitude in microdegrees"
         },
         {
           "name": "bbox_min_lat_e6",
           "type": "INTEGER",
-          "description": "[latlon] Bounding box min latitude as integer microdegrees"
+          "description": "[latlon] Bounding box min latitude in microdegrees"
         },
         {
           "name": "bbox_max_lat_e6",
           "type": "INTEGER",
-          "description": "[latlon] Bounding box max latitude as integer microdegrees"
+          "description": "[latlon] Bounding box max latitude in microdegrees"
         },
         {
           "name": "country",
           "type": "VARCHAR",
-          "description": "[placename] Country name (same column present in all country-code assets)"
+          "description": "[placename] Country name (same pattern for AU, BE, BR assets)"
         },
         {
           "name": "release",
@@ -318,7 +317,7 @@
         {
           "name": "h3_index",
           "type": "BIGINT",
-          "description": "[spatial_index] H3 hexagonal grid cell index at the asset's resolution"
+          "description": "[spatial_index] H3 hexagonal grid cell index encoding location at a given resolution"
         },
         {
           "name": "timestamp",
@@ -445,7 +444,7 @@
     }
   ],
   "account_id": "walkthru-earth",
-  "featured": 0,
+  "disabled": false,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -458,18 +457,7 @@
       "prefix": "walkthru-earth/indices/"
     }
   },
-  "disabled": false,
   "updated_at": "2026-03-03T20:52:49.694Z",
-  "created_at": "2026-03-01T08:47:38.976Z",
-  "file_count": 124186,
-  "visibility": "public",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "product_id": "indices",
-  "data_mode": "open",
-  "total_bytes": 429735080897,
   "exts": {
     "parquet": 124176,
     "": 2,
@@ -477,9 +465,20 @@
     "json": 3,
     "md": 4
   },
+  "product_id": "indices",
+  "total_bytes": 429735080897,
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "featured": 0,
+  "created_at": "2026-03-01T08:47:38.976Z",
+  "visibility": "public",
+  "data_mode": "open",
+  "file_count": 124186,
   "_review": [
-    "extent.spatial.bbox: omitted; spatial reference is categorical via [city_index.country (placename), city_index.region (placename), city_index.city (placename), city_index.tiles (spatial_index), AT.country (placename), AT.region (placename), AT.city (placename), AT.bbox_min_lon_e6 (latlon), AT.bbox_max_lon_e6 (latlon), AT.bbox_min_lat_e6 (latlon), AT.bbox_max_lat_e6 (latlon), data.h3_index (spatial_index)]. Add bbox once a placename \u2192 bbox gazetteer is available."
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [city_index.country (placename), city_index.region (placename), city_index.city (placename), AT.country (placename), AT.region (placename), AT.city (placename), AT.bbox_min_lon_e6 (latlon), AT.bbox_max_lon_e6 (latlon), AT.bbox_min_lat_e6 (latlon), AT.bbox_max_lat_e6 (latlon), data.h3_index (spatial_index)]. Add bbox once a placename \u2192 bbox gazetteer is available."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-06-04T01:50:11+00:00"
+  "cataloged_at": "2026-06-04T23:12:59+00:00"
 }

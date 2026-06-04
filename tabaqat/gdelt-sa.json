@@ -169,7 +169,7 @@
         {
           "name": "Actor1Geo_FullName",
           "type": "VARCHAR",
-          "description": "[placename] Full place name of Actor 1's geographic reference"
+          "description": "[placename] Full place name for Actor1 geographic location"
         },
         {
           "name": "Actor1Geo_CountryCode",
@@ -177,15 +177,18 @@
         },
         {
           "name": "Actor1Geo_ADM1Code",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[admin_code] ADM1 administrative region code for Actor1 location"
         },
         {
           "name": "Actor1Geo_Lat",
-          "type": "DOUBLE"
+          "type": "DOUBLE",
+          "description": "[latlon] Latitude of Actor1 geographic location"
         },
         {
           "name": "Actor1Geo_Long",
-          "type": "DOUBLE"
+          "type": "DOUBLE",
+          "description": "[latlon] Longitude of Actor1 geographic location"
         },
         {
           "name": "Actor2Geo_Type",
@@ -194,7 +197,7 @@
         {
           "name": "Actor2Geo_FullName",
           "type": "VARCHAR",
-          "description": "[placename] Full place name of Actor 2's geographic reference"
+          "description": "[placename] Full place name for Actor2 geographic location"
         },
         {
           "name": "Actor2Geo_CountryCode",
@@ -202,15 +205,18 @@
         },
         {
           "name": "Actor2Geo_ADM1Code",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[admin_code] ADM1 administrative region code for Actor2 location"
         },
         {
           "name": "Actor2Geo_Lat",
-          "type": "DOUBLE"
+          "type": "DOUBLE",
+          "description": "[latlon] Latitude of Actor2 geographic location"
         },
         {
           "name": "Actor2Geo_Long",
-          "type": "DOUBLE"
+          "type": "DOUBLE",
+          "description": "[latlon] Longitude of Actor2 geographic location"
         },
         {
           "name": "ActionGeo_Type",
@@ -219,25 +225,26 @@
         {
           "name": "ActionGeo_FullName",
           "type": "VARCHAR",
-          "description": "[placename] Full place name of the primary action location"
+          "description": "[placename] Full place name for the action/event location"
         },
         {
           "name": "ActionGeo_CountryCode",
-          "type": "VARCHAR",
-          "description": "[admin_code] FIPS country code for the action location"
+          "type": "VARCHAR"
         },
         {
           "name": "ActionGeo_ADM1Code",
           "type": "VARCHAR",
-          "description": "[admin_code] FIPS admin1 (province/state) code for the action location"
+          "description": "[admin_code] ADM1 administrative region code for action location"
         },
         {
           "name": "ActionGeo_Lat",
-          "type": "DOUBLE"
+          "type": "DOUBLE",
+          "description": "[latlon] Latitude of the action/event geographic location"
         },
         {
           "name": "ActionGeo_Long",
-          "type": "DOUBLE"
+          "type": "DOUBLE",
+          "description": "[latlon] Longitude of the action/event geographic location"
         },
         {
           "name": "DATEADDED",
@@ -266,7 +273,7 @@
         {
           "name": "NearestCity",
           "type": "VARCHAR",
-          "description": "[placename] Pipeline-enriched nearest city name to action coordinates via Haversine matching"
+          "description": "[placename] Pipeline-added nearest city name matched to ActionGeo coordinates by Haversine distance"
         },
         {
           "name": "CityPopulation",
@@ -283,7 +290,7 @@
         {
           "name": "Actor1_NearestCity",
           "type": "VARCHAR",
-          "description": "[placename] Pipeline-enriched nearest city name to Actor 1 coordinates"
+          "description": "[placename] Pipeline-added nearest city matched to Actor1 coordinates"
         },
         {
           "name": "Actor1_CityPopulation",
@@ -300,7 +307,7 @@
         {
           "name": "Actor2_NearestCity",
           "type": "VARCHAR",
-          "description": "[placename] Pipeline-enriched nearest city name to Actor 2 coordinates"
+          "description": "[placename] Pipeline-added nearest city matched to Actor2 coordinates"
         },
         {
           "name": "Actor2_CityPopulation",
@@ -2833,6 +2840,21 @@
       "title": "Source Cooperative product page"
     }
   ],
+  "product_id": "gdelt-sa",
+  "visibility": "public",
+  "account_id": "tabaqat",
+  "disabled": false,
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "total_bytes": 35526039,
+  "exts": {
+    "parquet": 115,
+    "md": 1
+  },
+  "data_mode": "open",
+  "updated_at": "2026-02-08T21:54:32.446Z",
   "file_count": 116,
   "mirrors": {
     "aws-opendata-us-west-2": {
@@ -2846,27 +2868,12 @@
       "prefix": "tabaqat/gdelt-sa/"
     }
   },
-  "data_mode": "open",
-  "disabled": false,
-  "account_id": "tabaqat",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "created_at": "2026-01-28T18:30:02.503Z",
-  "product_id": "gdelt-sa",
-  "visibility": "public",
-  "exts": {
-    "parquet": 115,
-    "md": 1
-  },
-  "total_bytes": 35526039,
   "featured": 0,
-  "updated_at": "2026-02-08T21:54:32.446Z",
+  "created_at": "2026-01-28T18:30:02.503Z",
   "_review": [
     "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
-    "extent.spatial.bbox: omitted; spatial reference is categorical via [2026_01_01.ActionGeo_Lat, ActionGeo_Long (latlon), 2026_01_01.ActionGeo_FullName (placename), 2026_01_01.ActionGeo_CountryCode (admin_code), 2026_01_01.ActionGeo_ADM1Code (admin_code), 2026_01_01.Actor1Geo_Lat, Actor1Geo_Long (latlon), 2026_01_01.Actor1Geo_FullName (placename), 2026_01_01.Actor2Geo_Lat, Actor2Geo_Long (latlon), 2026_01_01.Actor2Geo_FullName (placename), 2026_01_01.NearestCity (placename), 2026_01_01.Actor1_NearestCity (placename), 2026_01_01.Actor2_NearestCity (placename)]. Add bbox once a placename \u2192 bbox gazetteer is available."
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [2026_01_01.Actor1Geo_Lat (latlon), 2026_01_01.Actor1Geo_Long (latlon), 2026_01_01.Actor1Geo_FullName (placename), 2026_01_01.Actor1Geo_ADM1Code (admin_code), 2026_01_01.Actor2Geo_Lat (latlon), 2026_01_01.Actor2Geo_Long (latlon), 2026_01_01.Actor2Geo_FullName (placename), 2026_01_01.Actor2Geo_ADM1Code (admin_code), 2026_01_01.ActionGeo_Lat (latlon), 2026_01_01.ActionGeo_Long (latlon), 2026_01_01.ActionGeo_FullName (placename), 2026_01_01.ActionGeo_ADM1Code (admin_code), 2026_01_01.NearestCity (placename), 2026_01_01.Actor1_NearestCity (placename), 2026_01_01.Actor2_NearestCity (placename)]. Add bbox once a placename \u2192 bbox gazetteer is available."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-06-04T02:10:20+00:00"
+  "cataloged_at": "2026-06-04T23:32:32+00:00"
 }

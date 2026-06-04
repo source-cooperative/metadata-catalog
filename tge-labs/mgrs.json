@@ -6,7 +6,7 @@
   ],
   "id": "tge-labs/mgrs",
   "title": "Cloud Native MGRS",
-  "description": "A complete Military Grid Reference System (MGRS) 1-kilometer reference grid derived from National Geospatial-Intelligence Agency (NGA) data, stored in GeoParquet format. Contains over 305 million grid cells covering the global extent (-80\u00b0 to 84\u00b0 latitude) with standardized MGRS coordinate references for spatial indexing and analysis.",
+  "description": "A complete Military Grid Reference System (MGRS) 1-kilometer reference grid derived from National Geospatial-Intelligence Agency (NGA) data, stored in GeoParquet format. Contains over 305 million grid cells covering the global extent from -80\u00b0 to 84\u00b0 latitude, with standardized MGRS coordinate references including Grid Zone Designators and 10-kilometer tile identifiers for spatial indexing and analysis.",
   "license": "other",
   "keywords": [
     "mgrs",
@@ -85,22 +85,22 @@
         {
           "name": "GZD",
           "type": "VARCHAR",
-          "description": "[spatial_index] MGRS Grid Zone Designator"
+          "description": "[spatial_index] Grid Zone Designator \u2014 top-level MGRS zone identifier"
         },
         {
           "name": "MGRS",
           "type": "VARCHAR",
-          "description": "[spatial_index] Full MGRS 1km grid cell identifier"
+          "description": "[spatial_index] Full MGRS coordinate string identifying the 1km grid cell"
         },
         {
           "name": "MGRS_10km",
           "type": "VARCHAR",
-          "description": "[spatial_index] MGRS 10km grid zone identifier"
+          "description": "[spatial_index] 10-kilometer MGRS tile identifier containing this cell"
         },
         {
           "name": "geometry",
           "type": "GEOMETRY('OGC:CRS84')",
-          "description": "[geometry] Grid cell polygon geometry in OGC:CRS84 (WGS84)"
+          "description": "[geometry] OGC CRS84 polygon geometry for each 1km MGRS grid cell"
         }
       ],
       "table:row_count": 305799745
@@ -131,8 +131,7 @@
         },
         {
           "name": "MGRS",
-          "type": "VARCHAR",
-          "description": "[spatial_index] Full MGRS 1km grid cell identifier"
+          "type": "VARCHAR"
         },
         {
           "name": "MGRS_10km",
@@ -140,8 +139,7 @@
         },
         {
           "name": "geometry",
-          "type": "GEOMETRY",
-          "description": "[geometry] Grid cell polygon geometry (GeoParquet 2.0 encoding)"
+          "type": "GEOMETRY"
         }
       ],
       "table:row_count": 305799745
@@ -503,10 +501,13 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
+  "visibility": "public",
+  "exts": {
+    "parquet": 771,
+    "md": 1
   },
+  "file_count": 772,
+  "account_id": "tge-labs",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -519,23 +520,20 @@
       "prefix": "tge-labs/mgrs/"
     }
   },
-  "total_bytes": 45622324162,
-  "visibility": "public",
-  "exts": {
-    "parquet": 771,
-    "md": 1
-  },
   "featured": 0,
   "disabled": false,
-  "updated_at": "2025-10-13T11:15:41.661Z",
-  "data_mode": "open",
   "product_id": "mgrs",
-  "file_count": 772,
   "created_at": "2025-10-13T11:15:41.661Z",
-  "account_id": "tge-labs",
+  "data_mode": "open",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "total_bytes": 45622324162,
+  "updated_at": "2025-10-13T11:15:41.661Z",
   "_review": [
-    "extent.spatial.bbox: omitted; spatial reference is categorical via [mgrs_clean.geometry (geometry), mgrs_clean.MGRS (spatial_index), mgrs_clean.MGRS_10km (spatial_index), mgrs_clean.GZD (spatial_index), mgrs_clean_gp20.geometry (geometry), mgrs_clean_gp20.MGRS (spatial_index)]. Add bbox once a placename \u2192 bbox gazetteer is available."
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [mgrs_clean.geometry (geometry), mgrs_clean.MGRS (spatial_index), mgrs_clean.GZD (spatial_index), mgrs_clean.MGRS_10km (spatial_index)]. Add bbox once a placename \u2192 bbox gazetteer is available."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-06-04T02:12:44+00:00"
+  "cataloged_at": "2026-06-04T23:35:15+00:00"
 }

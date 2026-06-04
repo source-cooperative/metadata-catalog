@@ -9,13 +9,14 @@
   "description": "An archive of the Homeland Infrastructure Foundation-Level Data (HIFLD) program, preserving hundreds of U.S. government infrastructure datasets from the decommissioned HIFLD geoplatform. Layers span administrative boundaries, hydrography, transportation networks, critical infrastructure facilities, wildfire perimeters, and maritime wrecks across the United States and territories. All datasets are converted to cloud-optimized Parquet format.",
   "license": "CC-BY-4.0",
   "keywords": [
-    "infrastructure",
     "critical-infrastructure",
     "administrative-boundaries",
     "hydrography",
     "transportation",
-    "facilities",
-    "homeland-security"
+    "wildfire",
+    "maritime",
+    "homeland-security",
+    "united-states"
   ],
   "providers": [
     {
@@ -98,11 +99,13 @@
         },
         {
           "name": "CENTLAT",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[latlon] Centroid latitude of administrative unit"
         },
         {
           "name": "CENTLON",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[latlon] Centroid longitude of administrative unit"
         },
         {
           "name": "FUNCSTAT",
@@ -110,8 +113,7 @@
         },
         {
           "name": "GEOID",
-          "type": "VARCHAR",
-          "description": "[admin_code] TIGER/Census geographic identifier (FIPS-based)"
+          "type": "VARCHAR"
         },
         {
           "name": "HU100",
@@ -119,11 +121,13 @@
         },
         {
           "name": "INTPTLAT",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[latlon] Interior point latitude of administrative unit"
         },
         {
           "name": "INTPTLON",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[latlon] Interior point longitude of administrative unit"
         },
         {
           "name": "LSADC",
@@ -152,7 +156,7 @@
         {
           "name": "STATE",
           "type": "VARCHAR",
-          "description": "[admin_code] State FIPS code"
+          "description": "[admin_code] U.S. state FIPS code"
         },
         {
           "name": "STGEOMETRY",
@@ -161,7 +165,7 @@
         {
           "name": "geometry",
           "type": "GEOMETRY",
-          "description": "[geometry] Polygon or point geometry for the feature"
+          "description": "[geometry] Administrative boundary polygon geometry"
         },
         {
           "name": "bbox",
@@ -381,7 +385,7 @@
         {
           "name": "geometry",
           "type": "GEOMETRY",
-          "description": "[geometry] Flowpath or hydrographic network geometry"
+          "description": "[geometry] Hydrographic flowpath line geometry"
         },
         {
           "name": "bbox",
@@ -405,7 +409,7 @@
         {
           "name": "geometry",
           "type": "GEOMETRY",
-          "description": "[geometry] Feature geometry"
+          "description": "[geometry] Hydrographic feature geometry"
         },
         {
           "name": "properties",
@@ -437,7 +441,7 @@
         {
           "name": "geometry",
           "type": "GEOMETRY",
-          "description": "[geometry] Feature geometry"
+          "description": "[geometry] Hydrographic feature geometry"
         },
         {
           "name": "properties",
@@ -505,7 +509,7 @@
         {
           "name": "geometry",
           "type": "GEOMETRY",
-          "description": "[geometry] Watershed unit or hydrographic boundary geometry"
+          "description": "[geometry] Hydrographic unit boundary geometry"
         },
         {
           "name": "bbox",
@@ -732,11 +736,13 @@
         },
         {
           "name": "attr_InitialLatitude",
-          "type": "DOUBLE"
+          "type": "DOUBLE",
+          "description": "[latlon] Fire ignition point latitude"
         },
         {
           "name": "attr_InitialLongitude",
-          "type": "DOUBLE"
+          "type": "DOUBLE",
+          "description": "[latlon] Fire ignition point longitude"
         },
         {
           "name": "attr_InitialResponseAcres",
@@ -808,13 +814,12 @@
         },
         {
           "name": "attr_POOCity",
-          "type": "VARCHAR",
-          "description": "[placename] City of the point of origin"
+          "type": "VARCHAR"
         },
         {
           "name": "attr_POOCounty",
           "type": "VARCHAR",
-          "description": "[placename] County of the point of origin"
+          "description": "[placename] Point of origin county name"
         },
         {
           "name": "attr_POODispatchCenterID",
@@ -823,7 +828,7 @@
         {
           "name": "attr_POOFips",
           "type": "VARCHAR",
-          "description": "[admin_code] FIPS code of the point-of-origin county"
+          "description": "[admin_code] Point of origin FIPS county code"
         },
         {
           "name": "attr_POOJurisdictUnitParentUnit",
@@ -884,7 +889,7 @@
         {
           "name": "attr_POOState",
           "type": "VARCHAR",
-          "description": "[admin_code] State code of the point of origin"
+          "description": "[admin_code] Point of origin U.S. state code"
         },
         {
           "name": "attr_PercentContained",
@@ -1089,7 +1094,7 @@
         {
           "name": "geometry",
           "type": "GEOMETRY",
-          "description": "[geometry] Maritime wreck or obstruction geometry"
+          "description": "[geometry] Maritime wreck location geometry"
         },
         {
           "name": "bbox",
@@ -1145,7 +1150,7 @@
         {
           "name": "geometry",
           "type": "GEOMETRY",
-          "description": "[geometry] Maritime wreck point geometry"
+          "description": "[geometry] Maritime wreck location geometry"
         },
         {
           "name": "bbox",
@@ -1217,7 +1222,7 @@
         {
           "name": "geometry",
           "type": "GEOMETRY",
-          "description": "[geometry] Maritime wreck or obstruction geometry"
+          "description": "[geometry] Maritime wreck location geometry"
         },
         {
           "name": "bbox",
@@ -1240,25 +1245,6 @@
     }
   ],
   "file_count": 1772,
-  "exts": {
-    "parquet": 767,
-    "crc": 327,
-    "md": 676,
-    "csv": 1,
-    "txt": 1
-  },
-  "data_mode": "open",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "visibility": "public",
-  "account_id": "seerai",
-  "featured": 0,
-  "created_at": "2025-11-17T19:46:46.670Z",
-  "total_bytes": 21616086193,
-  "disabled": false,
-  "updated_at": "2025-12-10T15:36:01.493Z",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -1272,9 +1258,28 @@
     }
   },
   "product_id": "hifld",
+  "visibility": "public",
+  "disabled": false,
+  "total_bytes": 21616086193,
+  "featured": 0,
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "account_id": "seerai",
+  "created_at": "2025-11-17T19:46:46.670Z",
+  "updated_at": "2025-12-10T15:36:01.493Z",
+  "data_mode": "open",
+  "exts": {
+    "parquet": 767,
+    "crc": 327,
+    "md": 676,
+    "csv": 1,
+    "txt": 1
+  },
   "_review": [
-    "extent.spatial.bbox: omitted; spatial reference is categorical via [part-00000-tid-8588272384404631725-31022501-b700-4a62-bfe3-ed5034e65e86-119-1-c000.zstd.geometry (geometry), part-00000-tid-8588272384404631725-31022501-b700-4a62-bfe3-ed5034e65e86-119-1-c000.zstd.CENTLAT / CENTLON (latlon), part-00000-tid-8588272384404631725-31022501-b700-4a62-bfe3-ed5034e65e86-119-1-c000.zstd.INTPTLAT / INTPTLON (latlon), part-00000-tid-8588272384404631725-31022501-b700-4a62-bfe3-ed5034e65e86-119-1-c000.zstd.GEOID (admin_code), part-00000-tid-8588272384404631725-31022501-b700-4a62-bfe3-ed5034e65e86-119-1-c000.zstd.STATE (admin_code), part-00000-tid-6597041377908076625-d95b3dfb-f104-46f8-936f-65d49b4787c8-146-1-c000.zstd.geometry (geometry), part-00000-tid-3799322240472764299-b70c72c1-315f-40f7-b7a1-519c5f6c1190-2-1-c000.zstd.geometry (geometry), part-00000-f60deb54-a330-4f2f-95df-e68e484be100-c000.zstd.geometry (geometry), part-00000-f60deb54-a330-4f2f-95df-e68e484be100-c000.zstd.bpd_metadata.county (placename), part-00000-f60deb54-a330-4f2f-95df-e68e484be100-c000.zstd.bpd_metadata.state (admin_code), part-00001-f60deb54-a330-4f2f-95df-e68e484be100-c000.zstd.geometry (geometry), part-00001-f60deb54-a330-4f2f-95df-e68e484be100-c000.zstd.bpd_metadata.county (placename), part-00001-f60deb54-a330-4f2f-95df-e68e484be100-c000.zstd.bpd_metadata.state (admin_code), part-00000-tid-5435833471479413682-bb2d0ab4-e22d-42f7-950e-173ac4637fa4-2-1-c000.zstd.geometry (geometry), part-00000-tid-2217420635308410744-6d1def9c-035a-40f2-b9aa-46eabe8fc7df-443-1-c000.zstd.geometry (geometry), part-00000-tid-2217420635308410744-6d1def9c-035a-40f2-b9aa-46eabe8fc7df-443-1-c000.zstd.attr_InitialLatitude / attr_InitialLongitude (latlon), part-00000-tid-2217420635308410744-6d1def9c-035a-40f2-b9aa-46eabe8fc7df-443-1-c000.zstd.attr_POOCity (placename), part-00000-tid-2217420635308410744-6d1def9c-035a-40f2-b9aa-46eabe8fc7df-443-1-c000.zstd.attr_POOCounty (placename), part-00000-tid-2217420635308410744-6d1def9c-035a-40f2-b9aa-46eabe8fc7df-443-1-c000.zstd.attr_POOState (admin_code), part-00000-tid-2217420635308410744-6d1def9c-035a-40f2-b9aa-46eabe8fc7df-443-1-c000.zstd.attr_POOFips (admin_code), part-00000-tid-4429176584677834965-cf2092f2-303e-475b-941f-71e859c4cd42-743-1-c000.zstd.geometry (geometry), part-00000-tid-5293630524682870527-a52413bb-be9f-4a0a-ae40-26742ea4ddac-471-1-c000.zstd.geometry (geometry), part-00000-tid-5864735293272243764-037d1b42-7d5e-4d88-85bd-d256009bcc36-550-1-c000.zstd.geometry (geometry)]. Add bbox once a placename \u2192 bbox gazetteer is available."
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [part-00000-tid-8588272384404631725-31022501-b700-4a62-bfe3-ed5034e65e86-119-1-c000.zstd.geometry (geometry), part-00000-tid-8588272384404631725-31022501-b700-4a62-bfe3-ed5034e65e86-119-1-c000.zstd.CENTLAT (latlon), part-00000-tid-8588272384404631725-31022501-b700-4a62-bfe3-ed5034e65e86-119-1-c000.zstd.CENTLON (latlon), part-00000-tid-8588272384404631725-31022501-b700-4a62-bfe3-ed5034e65e86-119-1-c000.zstd.INTPTLAT (latlon), part-00000-tid-8588272384404631725-31022501-b700-4a62-bfe3-ed5034e65e86-119-1-c000.zstd.INTPTLON (latlon), part-00000-tid-8588272384404631725-31022501-b700-4a62-bfe3-ed5034e65e86-119-1-c000.zstd.STATE (admin_code), part-00000-tid-6597041377908076625-d95b3dfb-f104-46f8-936f-65d49b4787c8-146-1-c000.zstd.geometry (geometry), part-00000-tid-3799322240472764299-b70c72c1-315f-40f7-b7a1-519c5f6c1190-2-1-c000.zstd.geometry (geometry), part-00000-f60deb54-a330-4f2f-95df-e68e484be100-c000.zstd.geometry (geometry), part-00001-f60deb54-a330-4f2f-95df-e68e484be100-c000.zstd.geometry (geometry), part-00000-tid-5435833471479413682-bb2d0ab4-e22d-42f7-950e-173ac4637fa4-2-1-c000.zstd.geometry (geometry), part-00000-tid-2217420635308410744-6d1def9c-035a-40f2-b9aa-46eabe8fc7df-443-1-c000.zstd.geometry (geometry), part-00000-tid-2217420635308410744-6d1def9c-035a-40f2-b9aa-46eabe8fc7df-443-1-c000.zstd.attr_InitialLatitude (latlon), part-00000-tid-2217420635308410744-6d1def9c-035a-40f2-b9aa-46eabe8fc7df-443-1-c000.zstd.attr_InitialLongitude (latlon), part-00000-tid-2217420635308410744-6d1def9c-035a-40f2-b9aa-46eabe8fc7df-443-1-c000.zstd.attr_POOState (admin_code), part-00000-tid-2217420635308410744-6d1def9c-035a-40f2-b9aa-46eabe8fc7df-443-1-c000.zstd.attr_POOCounty (placename), part-00000-tid-2217420635308410744-6d1def9c-035a-40f2-b9aa-46eabe8fc7df-443-1-c000.zstd.attr_POOFips (admin_code), part-00000-tid-4429176584677834965-cf2092f2-303e-475b-941f-71e859c4cd42-743-1-c000.zstd.geometry (geometry), part-00000-tid-5293630524682870527-a52413bb-be9f-4a0a-ae40-26742ea4ddac-471-1-c000.zstd.geometry (geometry), part-00000-tid-5864735293272243764-037d1b42-7d5e-4d88-85bd-d256009bcc36-550-1-c000.zstd.geometry (geometry)]. Add bbox once a placename \u2192 bbox gazetteer is available."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-06-04T02:14:29+00:00"
+  "cataloged_at": "2026-06-04T23:37:00+00:00"
 }

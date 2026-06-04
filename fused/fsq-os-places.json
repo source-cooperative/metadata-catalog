@@ -6,15 +6,16 @@
   ],
   "id": "fused/fsq-os-places",
   "title": "Foursquare Open Source Places - Fused-partitioned",
-  "description": "Foursquare Open Source Places is a global points-of-interest dataset containing over 100 million venues and businesses worldwide. Each record includes name, address, contact details, social media handles, and hierarchical category labels, geospatially partitioned in GeoParquet format for efficient spatial querying.",
+  "description": "Foursquare Open Source Places is a global points-of-interest dataset containing over 100 million venues and businesses worldwide. Each record includes name, address, contact details, social media handles, and hierarchical category labels. The dataset is distributed in GeoParquet format, spatially partitioned for efficient spatial querying.",
   "license": "Apache-2.0",
   "keywords": [
     "poi",
     "places-of-interest",
     "businesses",
     "venues",
+    "address-data",
     "global-coverage",
-    "address-data"
+    "land-use"
   ],
   "providers": [
     {
@@ -81,12 +82,12 @@
         {
           "name": "latitude",
           "type": "DOUBLE",
-          "description": "[latlon] Latitude of the place"
+          "description": "[latlon] Latitude coordinate of the place"
         },
         {
           "name": "longitude",
           "type": "DOUBLE",
-          "description": "[latlon] Longitude of the place"
+          "description": "[latlon] Longitude coordinate of the place"
         },
         {
           "name": "address",
@@ -100,7 +101,7 @@
         {
           "name": "region",
           "type": "VARCHAR",
-          "description": "[placename] State or region name"
+          "description": "[placename] Region or state name"
         },
         {
           "name": "postcode",
@@ -123,7 +124,7 @@
         {
           "name": "country",
           "type": "VARCHAR",
-          "description": "[placename] Country name"
+          "description": "[admin_code] Country code or name"
         },
         {
           "name": "date_created",
@@ -1193,7 +1194,6 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "visibility": "public",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -1206,26 +1206,27 @@
       "prefix": "fused/fsq-os-places/"
     }
   },
-  "created_at": "2024-11-20T16:31:05.535Z",
-  "featured": 0,
-  "updated_at": "2025-08-21T16:39:55.568Z",
+  "data_mode": "open",
   "disabled": false,
-  "total_bytes": 60172236647,
+  "file_count": 327,
+  "updated_at": "2025-08-21T16:39:55.568Z",
+  "visibility": "public",
   "exts": {
     "parquet": 326,
     "md": 1
   },
-  "file_count": 327,
-  "data_mode": "open",
+  "product_id": "fsq-os-places",
+  "created_at": "2024-11-20T16:31:05.535Z",
+  "featured": 0,
+  "account_id": "fused",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "account_id": "fused",
-  "product_id": "fsq-os-places",
+  "total_bytes": 60172236647,
   "_review": [
-    "extent.spatial.bbox: omitted; spatial reference is categorical via [0.latitude (latlon), 0.longitude (latlon), 0.locality (placename), 0.region (placename), 0.postcode (zipcode), 0.admin_region (admin_code), 0.country (placename), 0.geometry (geometry)]. Add bbox once a placename \u2192 bbox gazetteer is available."
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [0.latitude (latlon), 0.longitude (latlon), 0.locality (placename), 0.region (placename), 0.postcode (zipcode), 0.admin_region (admin_code), 0.country (admin_code), 0.geometry (geometry)]. Add bbox once a placename \u2192 bbox gazetteer is available."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-06-04T01:59:05+00:00"
+  "cataloged_at": "2026-06-04T23:22:04+00:00"
 }
