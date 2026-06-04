@@ -1,7 +1,6 @@
 {
-  "type": "Collection",
-  "stac_version": "1.1.0",
-  "id": "agentmorris/lila-wildlife-wild-me",
+  "account_id": "agentmorris",
+  "product_id": "lila-wildlife-wild-me",
   "title": "Whale Shark ID",
   "description": "A dataset related to the identification of individual whale sharks (Rhincodon typus), likely containing imagery, encounter records, or pattern-matching data used for photo-identification of this species. No README is present; description is inferred from the title alone.",
   "keywords": [
@@ -12,64 +11,12 @@
     "individual-identification",
     "ocean"
   ],
-  "providers": [
-    {
-      "name": "Source Cooperative",
-      "roles": [
-        "host"
-      ],
-      "url": "https://source.coop/agentmorris/lila-wildlife-wild-me"
-    }
-  ],
-  "extent": {
-    "spatial": {
-      "bbox": [
-        [
-          -180.0,
-          -90.0,
-          180.0,
-          90.0
-        ]
-      ]
-    },
-    "temporal": {
-      "interval": [
-        [
-          null,
-          null
-        ]
-      ]
-    }
-  },
-  "assets": {
-    "data": {
-      "href": "https://data.source.coop/agentmorris/lila-wildlife-wild-me/",
-      "type": "application/octet-stream",
-      "title": "Dataset files",
-      "roles": [
-        "data"
-      ]
-    }
-  },
-  "links": [
-    {
-      "rel": "self",
-      "href": "https://source.coop/agentmorris/lila-wildlife-wild-me/collection.json",
-      "type": "application/json"
-    },
-    {
-      "rel": "via",
-      "href": "https://source.coop/agentmorris/lila-wildlife-wild-me",
-      "title": "Source Cooperative product page"
-    }
-  ],
-  "data_mode": "open",
+  "created_at": null,
+  "updated_at": null,
+  "visibility": "public",
+  "disabled": false,
   "featured": 0,
-  "exts": {
-    "gz": 5,
-    "zip": 1
-  },
-  "file_count": 6,
+  "data_mode": "open",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -82,19 +29,18 @@
       "prefix": "agentmorris/lila-wildlife/wild-me/"
     }
   },
-  "_decomposed_from": "agentmorris/lila-wildlife",
-  "disabled": false,
+  "file_count": 6,
+  "total_bytes": 29618090061,
+  "exts": {
+    "zip": 1,
+    "gz": 5
+  },
+  "store_format": null,
+  "_state": "seed",
   "_source": {
-    "decomposed_readme": true,
+    "source_coop_api": true,
     "s3_inventory": true
   },
-  "account_id": "agentmorris",
-  "total_bytes": 29618090061,
-  "visibility": "public",
-  "product_id": "lila-wildlife-wild-me",
-  "_review": [
-    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed."
-  ],
-  "_state": "drafted",
-  "cataloged_at": "2026-06-04T22:57:47+00:00"
+  "cataloged_at": "2026-06-04T23:59:16+00:00",
+  "readme": "# Whale Shark ID\n\n### Whale Shark ID\n\n#### S3 base\n\n`s3://us-west-2.opendata.source.coop/agentmorris/lila-wildlife/wild-me/whaleshark.coco.tar.gz`\n\n#### Overview\n\nThis data set contains images of whale sharks (*Rhincodon typus*) with bounding boxes and individual animal identifications. This dataset represents a collaborative effort based on the data collection and population modeling efforts conducted at Ningaloo Marine Park in Western Australia from 1995-2008. Photos (7888) and metadata from 2441 whale shark encounters were collected from 464 individual contributors, especially from the original research of Brad Norman and from members of the local whale shark tourism industry who sight these animals annually from April-June. Images were annotated with bounding boxes around each visible whale shark and viewpoints were labeled (e.g., left, right, etc.). A total of 543 individual whale sharks were identified by their unique spot patterning using first computer-assisted spot pattern recognition ([Arzoumanian et al.](https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/j.1365-2664.2005.01117.x)) and then manual review and confirmation. A total of 7,693 named sightings were exported.\n\n#### Data format\n\nThe dataset is released in the [Microsoft COCO](https://cocodataset.org/) format and therefore uses flat image folders with associated YAML metadata files. We have collapsed the entire dataset into a single \"train\" label and have left \"val\" and \"test\" empty; we do this as an invitation to researchers to experiment with their own novel approaches for dealing with the unbalanced and chaotic distribution on the number of sightings per individual. All of the images in the dataset have been resized to have a maximum dimension of 3,000 pixels. The metadata for all animal sightings is defined by an axis-aligned bounding box and includes information on the rotation of the box (theta), the viewpoint of the animal, a species (category) ID, a source image ID, an individual string ID name, and other miscellaneous values. The temporal ordering of the images, and an anonymized ID for the original photographer, can be determined from the metadata for each image.\n\n#### Citation, license, and contact information\n\nFor research or press contact, please direct all correspondence to Wild Me at [info@wildme.org](mailto:info@wildme.org). [Wild Me](https://www.wildme.org) is a registered 501(c)(3) not-for-profit based in Portland, Oregon, USA and brings state-of-the-art computer vision tools to ecology researchers working around the globe on wildlife conservation.\n\nThis dataset is released under the [Community Data License Agreement (permissive variant)](https://cdla.io/permissive-1-0/).\n\nIf you use this dataset in published work, please cite as:\n\nHolmberg J, Norman B, Arzoumanian Z. [Estimating population size, structure, and residency time for whale sharks *Rhincodon typus* through collaborative photo-identification](https://www.int-res.com/abstracts/esr/v7/n1/p39-53/). Endangered Species Research. 2009 Apr 8;7(1):39-53.\n\n#### Downloading the data\n\nData download link:\n\n[Images and metadata](https://storage.googleapis.com/public-datasets-lila/wild-me/whaleshark.coco.tar.gz) (GCP link) (6GB)  \n\n[Images and metadata](https://lilawildlife.blob.core.windows.net/lila-wildlife/wild-me/whaleshark.coco.tar.gz) (Azure link) (6GB)  \n\n[Images and metadata](http://us-west-2.opendata.source.coop.s3.amazonaws.com/agentmorris/lila-wildlife/wild-me/whaleshark.coco.tar.gz) (AWS link) (6GB)\n\nHaving trouble downloading? Check out our [FAQ](http://lila.science/faq#downloadtips).\n\n![](http://lila.science/wp-content/uploads/2020/08/whaleshark_w_logo_650.png)\n\n\n\n### Great Zebra and Giraffe Count and ID\n\n#### S3 base\n\n`s3://us-west-2.opendata.source.coop/agentmorris/lila-wildlife/wild-me/gzgc.coco.tar.gz`\n\n#### Overview\n\nThis dataset contains images of plains zebra (*Equus quagga*) and Masai giraffe (*Giraffa tippelskirchi*) with bounding boxes and individual animal identifications. Images are taken from a two-day census of Nairobi National Park, located just south of the airport in Nairobi, Kenya. The \u201cGreat Zebra and Giraffe Count\u201d (GZGC) photographic census was organized on February 28th and March 1st 2015 and had the participation of 27 different teams of citizen scientists and 55 total photographers. Only images containing either zebras or giraffes were included in this dataset, for a total of 4,948 images. All images are labeled with bounding boxes around the individual animals for which there is ID metadata, meaning some images contain missing boxes and are not intended to be used for object detection training or testing. Viewpoints for all animal annotations were also added. All ID assignments were completed using the HotSpotter algorithm ([Crall et al. 2013](http://cs.rpi.edu/hotspotter/crall-hotspotter-wacv-2013.pdf)) by visually matching the stripes and spots as seen on the body of the animal. A total of 2,056 combined names are released for 6,286 individual zebra and 639 giraffe sightings. This dataset presents as a challenging comparison compared to the [whale shark dataset](http://lila.science/datasets/whale-shark-id) since it contains a significantly higher number of animals that are only seen once during the survey.\n\n#### Data format\n\nThe dataset is released in the [Microsoft COCO](https://cocodataset.org/) .json format. We have collapsed the entire dataset into a single \"train\" label and have left \"val\" and \"test\" empty; we do this as an invitation to researchers to experiment with their own novel approaches for dealing with the unbalanced and chaotic distribution on the number of sightings per individual. All of the images in the dataset have been resized to have a maximum dimension of 3,000 pixels. The metadata for all animal sightings is defined by an axis-aligned bounding box and includes information on the rotation of the box (theta), the viewpoint of the animal, a species (category) ID, a source image ID, an individual string ID name, and other miscellaneous values. The temporal ordering of the images, and an anonymized ID for the original photographer, can be determined from the metadata for each image.\n\n#### Citation, license, and contact information\n\nFor research or press contact, please direct all correspondence to Wild Me at [info@wildme.org](mailto:info@wildme.org). [Wild Me](https://www.wildme.org) is a registered 501(c)(3) not-for-profit based in Portland, Oregon, USA and brings state-of-the-art computer vision tools to ecology researchers working around the globe on wildlife conservation.\n\nThis dataset is released under the [Community Data License Agreement (permissive variant)](https://cdla.io/permissive-1-0/).\n\nIf you use this dataset in published work, please cite as:\n\nParham J, Crall J, Stewart C, Berger-Wolf T, Rubenstein DI. [Animal population censusing at scale with citizen science and photographic identification](https://oar.princeton.edu/jspui/handle/88435/pr1s791). In AAAI Spring Symposium-Technical Report 2017 Jan 1.\n\n#### Downloading the data\n\nData download links:\n\n[Images and metadata](https://storage.googleapis.com/public-datasets-lila/wild-me/gzgc.coco.tar.gz) (GCP link) 10GB)  \n\n[Images and metadata](https://lilawildlife.blob.core.windows.net/lila-wildlife/wild-me/gzgc.coco.tar.gz) (Azure link) (10GB)  \n\n[Images and metadata](http://us-west-2.opendata.source.coop.s3.amazonaws.com/agentmorris/lila-wildlife/wild-me/gzgc.coco.tar.gz) (AWS link) (10GB)\n\nHaving trouble downloading? Check out our [FAQ](http://lila.science/faq#downloadtips).\n\n![](http://lila.science/wp-content/uploads/2020/08/zebra_w_logo_650.png)\n\n\n\n### Leopard ID 2022\n\n#### S3 base\n\n`s3://us-west-2.opendata.source.coop/agentmorris/lila-wildlife/wild-me/leopard.coco.tar.gz`\n\n#### Overview\n\nThis data set contains images of African leopards (*Panthera pardus*) with bounding boxes and individual animal identifications. This dataset represents a collaborative effort based on the data collection and population modeling efforts conducted by Botswana Predator Conservation Trust and Kasim Rafiq from 2011-2022. Photos (6,795) and metadata from various leopard encounters were collected. Images were annotated with bounding boxes around each visible leopard and viewpoints were labeled (e.g., left, right, etc.). A total of 430 individual leopard were identified by their unique spot patterning using first computer-assisted spot pattern recognition and then manual review and confirmation. A total of 6,805 named sightings were exported.\n\n#### Data format\n\nThe dataset is released in the [Microsoft COCO](https://cocodataset.org/) .json format. We have collapsed the entire dataset into a single \u201ctrain\u201d label and have left \u201cval\u201d and \u201ctest\u201d empty; we do this as an invitation to researchers to experiment with their own novel approaches for dealing with the unbalanced and chaotic distribution on the number of sightings per individual. All of the images in the dataset have been resized to have a maximum dimension of 2,400 pixels. The metadata for all animal sightings is defined by an axis-aligned bounding box and includes information on the rotation of the box (theta), the viewpoint of the animal, a species (category) ID, a source image ID, an individual string ID name, and other miscellaneous values. The temporal ordering of the images can be determined from the metadata for each image.\n\n#### Citation, license, and contact information\n\nFor research or press contact, please direct all correspondence to Wild Me at [info@wildme.org](mailto:info@wildme.org). [Wild Me](https://www.wildme.org) is a registered 501(c)(3) not-for-profit based in Portland, Oregon, USA and brings state-of-the-art computer vision tools to ecology researchers working around the globe on wildlife conservation.\n\nThis dataset is released under the [Community Data License Agreement (permissive variant)](https://cdla.io/permissive-1-0/).\n\nFor research or press contact, please direct all correspondence to Wild Me at [info@wildme.org](mailto:info@wildme.org). [Wild Me](https://www.wildme.org) is a registered 501(c)(3) not-for-profit based in Portland, Oregon, USA and brings state-of-the-art computer vision tools to ecology researchers working around the globe on wildlife conservation.\n\nThis dataset is released under the [Community Data License Agreement (permissive variant)](https://cdla.io/permissive-1-0/).\n\nIf you use this dataset in published work, please cite as:\n\nBotswana Predator Conservation Trust (2022). Panthera pardus CSV custom export. Retrieved from [African Carnivore Wildbook](https://africancarnivore.wildbook.org) 2022-04-28.\n\n#### Downloading the data\n\nData download links:\n\n* [Download from GCP](https://storage.googleapis.com/public-datasets-lila/wild-me/leopard.coco.tar.gz) (8GB)\n* [Download from AWS](http://us-west-2.opendata.source.coop.s3.amazonaws.com/agentmorris/lila-wildlife/wild-me/leopard.coco.tar.gz) (8GB)\n* [Download from Azure](https://lilawildlife.blob.core.windows.net/lila-wildlife/wild-me/leopard.coco.tar.gz) (8GB)\n\nHaving trouble downloading? Check out our [FAQ](http://lila.science/faq#downloadtips).\n\n![](http://lila.science/wp-content/uploads/2022/05/leopard-thumb.jpg)\n\n\n\n### Hyena ID 2022\n\n#### S3 base\n\n`s3://us-west-2.opendata.source.coop/agentmorris/lila-wildlife/wild-me/hyena.coco.tar.gz`\n\n#### Overview\n\nThis data set contains images of spotted hyena (*Crocuta crocuta*) with bounding boxes and individual animal identifications. This dataset represents a collaborative effort based on the data collection and population modeling efforts conducted by the Botswana Predator Conservation Trust. Photos (3,104) and metadata from various hyena encounters were collected. Images were annotated with bounding boxes around each visible hyena and viewpoints were labeled (e.g., left, right, etc.). A total of 256 individual spotted hyena were identified by their unique spot patterning using first computer-assisted spot pattern recognition and then manual review and confirmation. A total of 3,129 named sightings were exported.\n\n#### Data format\n\nThe dataset is released in the [Microsoft COCO](https://cocodataset.org/) .json format. We have collapsed the entire dataset into a single \u201ctrain\u201d label and have left \u201cval\u201d and \u201ctest\u201d empty; we do this as an invitation to researchers to experiment with their own novel approaches for dealing with the unbalanced and chaotic distribution on the number of sightings per individual. All of the images in the dataset have been resized to have a maximum dimension of 2,400 pixels. The metadata for all animal sightings is defined by an axis-aligned bounding box and includes information on the rotation of the box (theta), the viewpoint of the animal, a species (category) ID, a source image ID, an individual string ID name, and other miscellaneous values. The temporal ordering of the images can be determined from the metadata for each image.\n\n#### Citation, license, and contact information\n\nFor research or press contact, please direct all correspondence to Wild Me at [info@wildme.org](mailto:info@wildme.org). [Wild Me](https://www.wildme.org) is a registered 501(c)(3) not-for-profit based in Portland, Oregon, USA and brings state-of-the-art computer vision tools to ecology researchers working around the globe on wildlife conservation.\n\nThis dataset is released under the [Community Data License Agreement (permissive variant)](https://cdla.io/permissive-1-0/).\n\nIf you use this dataset in published work, please cite as:\n\nBotswana Predator Conservation Trust (2022). Panthera pardus CSV custom export. Retrieved from [African Carnivore Wildbook](https://africancarnivore.wildbook.org) 2022-04-28.\n\n#### Downloading the data\n\nData download links:\n\n* [Download from GCP](https://storage.googleapis.com/public-datasets-lila/wild-me/hyena.coco.tar.gz) (3GB)\n* [Download from AWS](http://us-west-2.opendata.source.coop.s3.amazonaws.com/agentmorris/lila-wildlife/wild-me/hyena.coco.tar.gz) (3GB)\n* [Download from Azure](https://lilawildlife.blob.core.windows.net/lila-wildlife/wild-me/hyena.coco.tar.gz) (3GB)\n\nHaving trouble downloading? Check out our [FAQ](http://lila.science/faq#downloadtips).\n\n![](http://lila.science/wp-content/uploads/2022/05/hyena-thumb.jpg)\n\n\n\n### Beluga ID 2022\n\n#### S3 base\n\n`s3://us-west-2.opendata.source.coop/agentmorris/lila-wildlife/wild-me/beluga.coco.tar.gz`\n\n#### Overview\n\nThis data set contains Beluga whales (*Delphinapterus leucas*) with pre-cropped images and individual animal identifications. This dataset represents a collaborative effort based on the data collection and population modeling efforts conducted in the Cook Inlet off the cost of Alaska from 2016-2019. The photos (5,902) and metadata from 1,617 unique encounters (within 1 hour) were collected from boat-based cameras and a camera looking down from above on an aerial drone. Images are annotated with full-image bounding boxes and viewpoints were labeled (top, left, right). A total of 788 individual Beluga whales were identified by hand by trained experts using scarring patterns and other visual markings. This dataset is being released in tandem with the \"[Where's Whale-do?](https://www.drivendata.org/competitions/96/beluga-whales/page/478/)\" ID competition hosted by DrivenData and is identical to the public training set used in that competition.\n\n#### Data format\n\nThe training dataset is released in the [Microsoft COCO](https://cocodataset.org/) .json format. We have collapsed the entire dataset into a single \u201ctrain\u201d label and have left \u201cval\u201d and \u201ctest\u201d empty; we do this as an invitation to researchers to experiment with their own novel approaches for dealing with the unbalanced and chaotic distribution on the number of sightings per individual. All of the images in the dataset have been resized to have a maximum dimension of 1,200 pixels. The metadata for all animal sightings is defined by an axis-aligned bounding box and includes information on the viewpoint of the animal, a species (category) ID, a source image ID, an individual string ID name, and other miscellaneous values. The temporal ordering of the images can be determined from the metadata for each image.\n\nTest data was added later, after the competition, and is thus in a different format. Contact the dataset owner for questions about the test data.\n\n#### Citation, license, and contact information\n\nFor research or press contact, please direct all correspondence to Wild Me at [info@wildme.org](mailto:info@wildme.org). [Wild Me](https://www.wildme.org) is a registered 501(c)(3) not-for-profit based in Portland, Oregon, USA and brings state-of-the-art computer vision tools to ecology researchers working around the globe on wildlife conservation.\n\nThis dataset is released under the [Community Data License Agreement (permissive variant)](https://cdla.io/permissive-1-0/).\n\n#### Downloading the data\n\nData download links for the *train* split:\n\n* [Download the train split from GCP](https://storage.googleapis.com/public-datasets-lila/wild-me/beluga.coco.tar.gz) (563MB)\n* [Download the train split from AWS](http://us-west-2.opendata.source.coop.s3.amazonaws.com/agentmorris/lila-wildlife/wild-me/beluga.coco.tar.gz) (563MB)\n* [Download the train split from Azure](https://lilawildlife.blob.core.windows.net/lila-wildlife/wild-me/beluga.coco.tar.gz) (563MB)\n\nData download links for the *test* split:\n\n* [Download the test split from GCP](https://storage.googleapis.com/public-datasets-lila/wild-me/beluga-id-test.zip) (117MB)\n* [Download the test split from AWS](http://us-west-2.opendata.source.coop.s3.amazonaws.com/agentmorris/lila-wildlife/wild-me/beluga-id-test.zip) (117MB)\n* [Download the test split from Azure](https://lilawildlife.blob.core.windows.net/lila-wildlife/wild-me/beluga-id-test.zip) (117MB)\n\nHaving trouble downloading? Check out our [FAQ](http://lila.science/faq#downloadtips).\n\n![](http://lila.science/wp-content/uploads/2022/05/beluga-thumb.jpg)\n\n"
 }

@@ -1,10 +1,6 @@
 {
-  "type": "Collection",
-  "stac_version": "1.1.0",
-  "stac_extensions": [
-    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
-  ],
-  "id": "agentmorris/lila-wildlife-aerial-birds-west-africa",
+  "account_id": "agentmorris",
+  "product_id": "lila-wildlife-aerial-birds-west-africa",
   "title": "Aerial Seabirds West Africa",
   "description": "Aerial survey dataset of seabird detections along the West African coast, comprising labeled observations of six species: Caspian tern, Royal tern, Gray-headed gull, Slender-billed gull, Great cormorant, and Great white pelican. Assets include aerial imagery (GeoTIFF and JPEG), georeferenced vector data (GeoPackage), and CSV annotation files with per-detection species labels and confidence flags.",
   "keywords": [
@@ -16,116 +12,11 @@
     "bird-classification",
     "object-detection"
   ],
-  "providers": [
-    {
-      "name": "Source Cooperative",
-      "roles": [
-        "host"
-      ],
-      "url": "https://source.coop/agentmorris/lila-wildlife-aerial-birds-west-africa"
-    }
-  ],
-  "extent": {
-    "spatial": {
-      "bbox": [
-        [
-          null,
-          null,
-          null,
-          null
-        ]
-      ]
-    },
-    "temporal": {
-      "interval": [
-        [
-          null,
-          null
-        ]
-      ]
-    }
-  },
-  "summaries": {
-    "item_count": 21517,
-    "column1": [
-      "(unknown)",
-      "Caspian tern",
-      "Gray headed gull",
-      "Great cormorant",
-      "Great white Pelican",
-      "Royal tern",
-      "Slender-billed gull",
-      "label"
-    ],
-    "column2": [
-      "NA",
-      "TRUE",
-      "True",
-      "unsure"
-    ]
-  },
-  "assets": {
-    "labels_birds_full": {
-      "href": "https://data.source.coop/agentmorris/lila-wildlife/aerial-birds-west-africa/labels_birds_full.csv",
-      "type": "text/csv",
-      "title": "labels_birds_full.csv",
-      "roles": [
-        "data"
-      ],
-      "table:columns": [
-        {
-          "name": "column0",
-          "type": "BIGINT"
-        },
-        {
-          "name": "column1",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "column2",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "column3",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "column4",
-          "type": "VARCHAR"
-        }
-      ],
-      "table:row_count": 21517
-    }
-  },
-  "links": [
-    {
-      "rel": "self",
-      "href": "https://source.coop/agentmorris/lila-wildlife-aerial-birds-west-africa/collection.json",
-      "type": "application/json"
-    },
-    {
-      "rel": "via",
-      "href": "https://source.coop/agentmorris/lila-wildlife-aerial-birds-west-africa",
-      "title": "Source Cooperative product page"
-    }
-  ],
-  "account_id": "agentmorris",
-  "total_bytes": 2391717566,
-  "exts": {
-    "gpkg-shm": 1,
-    "tif": 1,
-    "csv": 2,
-    "jpg": 1,
-    "gpkg": 1
-  },
-  "disabled": false,
-  "_source": {
-    "decomposed_readme": true,
-    "s3_inventory": true
-  },
-  "_decomposed_from": "agentmorris/lila-wildlife",
-  "product_id": "lila-wildlife-aerial-birds-west-africa",
+  "created_at": null,
+  "updated_at": null,
   "visibility": "public",
+  "disabled": false,
+  "featured": 0,
   "data_mode": "open",
   "mirrors": {
     "aws-opendata-us-west-2": {
@@ -140,11 +31,20 @@
     }
   },
   "file_count": 6,
-  "featured": 0,
-  "_review": [
-    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
-    "extent.spatial.bbox: omitted; probe found no spatial dimension and AI did not flag any column as geographic."
-  ],
-  "_state": "drafted",
-  "cataloged_at": "2026-06-04T22:56:54+00:00"
+  "total_bytes": 2391717566,
+  "exts": {
+    "csv": 2,
+    "gpkg": 1,
+    "gpkg-shm": 1,
+    "jpg": 1,
+    "tif": 1
+  },
+  "store_format": null,
+  "_state": "seed",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "cataloged_at": "2026-06-04T23:59:15+00:00",
+  "readme": "# Aerial Seabirds West Africa\n\n### Aerial Seabirds West Africa\n\n#### S3 base\n\n`s3://us-west-2.opendata.source.coop/agentmorris/lila-wildlife/aerial-birds-west-africa`\n\n#### Overview\n\nThis dataset contains high-resolution aerial RGB imagery obtained from a census of breeding seabirds in West Africa in 2019. The data was collected as part of a census of breeding seabirds along the West African coast where UAVs were used to map colonies.\n\nThe dataset consists of an orthomosaic covering a sandy island with colonies of the focal species breeding royal terns (*Thalasseus maximus albididorsalis*), Caspian terns (*Hydroprogne caspia*) and gray-headed gulls (*Chroicocephalus cirrocephalus*). The orthomosaic also contains great cormorants (*Phalacrocorax carbo*), great white pelicans (*Pelecanus onocrotalus*), slender-billed gulls (*Chroicocephalus genei*), and a number of birds that could not be identified. The individual birds are identified with point annotations, totaling 21,516 annotations.\n\nThe data were used to develop a detector using deep Convolutional Neural Networks (CNNs). The description of the model and the results are in a paper that is currently under review (see below). In the paper we focused on three focal species and the other species are lumped and labeled \"unknown\". The data provided here is the fully annotated test data set and the set as it was used in the paper.\n\n#### Citation\n\nIf you use this data set, please cite the associated manuscript:\n\nKellenberger B, Veen T, Folmer E, Tuia D. [21,000 birds in 4.5 h: efficient large\u2010scale seabird detection with machine learning](https://zslpublications.onlinelibrary.wiley.com/doi/10.1002/rse2.200). Remote Sensing in Ecology and Conservation. 2021.\n\n#### Data format\n\nThe dataset consists of:\n\n1. The orthomosaic is a RGB GeoTIFF with ground resolution ~1 cm. The coordinate reference system is WGS 84 / UTM zone 28N; to avoid possible abuse of the data and disturbance of the breeding site, the spatial reference is changed by translating the file to origin (0,0). The internal spatial reference remains intact so that the distances and sizes of the birds are correct. (seabirds_rgb.tif)\n2. A .csv file with (translated) point coordinates and the labels of all species. (labels_birds_full.csv)\n3. A .csv file with point coordinates and the labels of the target species that were used in the paper. (labels_birds_paper.csv)\n\n#### Download links\n\n**GCP download links**\n\n[Orthomosaic (.tif)](https://storage.googleapis.com/public-datasets-lila/aerial-birds-west-africa/seabirds_rgb.tif) (2.2GB)  \n\n[Annotated points (all) (.csv)](https://storage.googleapis.com/public-datasets-lila/aerial-birds-west-africa/labels_birds_full.csv) (1.3MB)  \n\n[Annotated points (paper subset) (.csv)](https://storage.googleapis.com/public-datasets-lila/aerial-birds-west-africa/labels_birds_paper.csv) (1.3MB)  \n\n[GeoPackage (.gpkg)](https://storage.googleapis.com/public-datasets-lila/aerial-birds-west-africa/birds.gpkg) (5.3MB)\n\n**Azure download links**\n\n[Orthomosaic (.tif)](https://lilawildlife.blob.core.windows.net/lila-wildlife/aerial-birds-west-africa/seabirds_rgb.tif) (2.2GB)  \n\n[Annotated points (all) (.csv)](https://lilawildlife.blob.core.windows.net/lila-wildlife/aerial-birds-west-africa/labels_birds_full.csv) (1.3MB)  \n\n[Annotated points (paper subset) (.csv)](https://lilawildlife.blob.core.windows.net/lila-wildlife/aerial-birds-west-africa/labels_birds_paper.csv) (1.3MB)  \n\n[GeoPackage (.gpkg)](https://lilawildlife.blob.core.windows.net/lila-wildlife/aerial-birds-west-africa/birds.gpkg) (5.3MB)\n\n**AWS download links**\n\n[Orthomosaic (.tif)](http://us-west-2.opendata.source.coop.s3.amazonaws.com/agentmorris/lila-wildlife/aerial-birds-west-africa/seabirds_rgb.tif) (2.2GB)  \n\n[Annotated points (all) (.csv)](http://us-west-2.opendata.source.coop.s3.amazonaws.com/agentmorris/lila-wildlife/aerial-birds-west-africa/labels_birds_full.csv) (1.3MB)  \n\n[Annotated points (paper subset) (.csv)](http://us-west-2.opendata.source.coop.s3.amazonaws.com/agentmorris/lila-wildlife/aerial-birds-west-africa/labels_birds_paper.csv) (1.3MB)  \n\n[GeoPackage (.gpkg)](http://us-west-2.opendata.source.coop.s3.amazonaws.com/agentmorris/lila-wildlife/aerial-birds-west-africa/birds.gpkg) (5.3MB)\n\nHaving trouble downloading? Check out our [FAQ](http://lila.science/faq#downloadtips).\n\n#### Contact information\n\nFor questions about this dataset, contact [Eelke Folmer](mailto:eelke@aeria.ai).\n\n#### License\n\nImage and annotations are released under the [Community Data License Agreement (permissive variant)](https://cdla.io/permissive-1-0/).\n\n![](http://lila.science/wp-content/uploads/2020/12/aerial_seabirds_west_africa_thumb.jpg)\n\n"
 }

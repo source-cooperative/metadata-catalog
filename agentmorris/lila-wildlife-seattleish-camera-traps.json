@@ -1,7 +1,6 @@
 {
-  "type": "Collection",
-  "stac_version": "1.1.0",
-  "id": "agentmorris/lila-wildlife-seattleish-camera-traps",
+  "account_id": "agentmorris",
+  "product_id": "lila-wildlife-seattleish-camera-traps",
   "title": "Seattle(ish) Camera Traps",
   "description": "A collection of camera trap images and videos captured in the Seattle metropolitan area, containing approximately 20,000 still images and 4,400 video clips across JPG, AVI, and MP4 formats. Camera trap datasets of this type are used for wildlife detection, behavior monitoring, and species occurrence studies.",
   "keywords": [
@@ -12,80 +11,10 @@
     "video",
     "imagery"
   ],
-  "providers": [
-    {
-      "name": "Unknown",
-      "roles": [
-        "producer"
-      ]
-    },
-    {
-      "name": "Source Cooperative",
-      "roles": [
-        "host"
-      ],
-      "url": "https://source.coop/agentmorris/lila-wildlife-seattleish-camera-traps"
-    }
-  ],
-  "extent": {
-    "spatial": {
-      "bbox": [
-        [
-          -180.0,
-          -90.0,
-          180.0,
-          90.0
-        ]
-      ]
-    },
-    "temporal": {
-      "interval": [
-        [
-          null,
-          null
-        ]
-      ]
-    }
-  },
-  "assets": {
-    "data": {
-      "href": "https://data.source.coop/agentmorris/lila-wildlife-seattleish-camera-traps/",
-      "type": "application/octet-stream",
-      "title": "Dataset files",
-      "roles": [
-        "data"
-      ]
-    }
-  },
-  "links": [
-    {
-      "rel": "self",
-      "href": "https://source.coop/agentmorris/lila-wildlife-seattleish-camera-traps/collection.json",
-      "type": "application/json"
-    },
-    {
-      "rel": "via",
-      "href": "https://source.coop/agentmorris/lila-wildlife-seattleish-camera-traps",
-      "title": "Source Cooperative product page"
-    }
-  ],
-  "product_id": "lila-wildlife-seattleish-camera-traps",
-  "disabled": false,
+  "created_at": null,
+  "updated_at": null,
   "visibility": "public",
-  "exts": {
-    "avi": 3361,
-    "mp4": 1103,
-    "zip": 2,
-    "jpg": 20292
-  },
-  "total_bytes": 321225281702,
-  "_source": {
-    "decomposed_readme": true,
-    "s3_inventory": true
-  },
-  "file_count": 24758,
-  "account_id": "agentmorris",
-  "_decomposed_from": "agentmorris/lila-wildlife",
+  "disabled": false,
   "featured": 0,
   "data_mode": "open",
   "mirrors": {
@@ -100,10 +29,20 @@
       "prefix": "agentmorris/lila-wildlife/seattleish-camera-traps/"
     }
   },
-  "_review": [
-    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
-    "providers: role [producer] for 'Unknown' is an AI guess \u2014 No README present; original data provider cannot be determined.. Verify before flipping to _state: reviewed."
-  ],
-  "_state": "drafted",
-  "cataloged_at": "2026-06-04T23:00:39+00:00"
+  "file_count": 24758,
+  "total_bytes": 321225281702,
+  "exts": {
+    "zip": 2,
+    "mp4": 1103,
+    "avi": 3361,
+    "jpg": 20292
+  },
+  "store_format": null,
+  "_state": "seed",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "cataloged_at": "2026-06-04T23:59:15+00:00",
+  "readme": "# Seattle(ish) Camera Traps\n\n### Seattle(ish) Camera Traps\n\n#### S3 base\n\n`s3://us-west-2.opendata.source.coop/agentmorris/lila-wildlife/seattleish-camera-traps`\n\n#### Overview\n\nI'm breaking the fourth wall right from the start here: this dataset comes from my house, and is intended to fill some specific gaps in public camera trap data that are difficult to fill from \"real\" camera trap data. In particular, the following things are important to developing and testing AI models for camera traps, but are largely missing from public camera trap data (at least as of December 2024):\n\n* **Images of humans** (which are excluded from all public sources I'm aware of, including LILA, because consent is complicated when it comes to camera traps)\n* **Images from consumer-grade camera traps** (because the intersection between \"people who curate large datasets for public release\" and \"people who are content to entrust their data collection to a $50 camera from Amazon that stops working in a light fog\" is... small). But these cameras are increasingly common, and they're different (they generally provide lower image quality than research-grade cameras, and are consequently more difficult for AI).\n* **Video, especially intact, full-size videos** (as opposed to sequences of frames sampled from videos, or videos reduced to thumbnail size) (because camera trap video is still a growing phenomenon)\n\nSo, as something between \"a test data set\", \"a random hobby project\", and \u201can attempt to make [stone soup](https://en.wikipedia.org/wiki/Stone_Soup)\u201d, I'm releasing this dataset containing ~20k images (in ~6.7k sequences) and ~4.5k videos from my yard in the Seattle area. Images and videos containing any people other than me have been removed, which is why I don't use the label \"human\", I use the label \"dan\" (although AFAIK I am human). Audio has been removed from all the videos. The most common labels are \"empty\" (16,779 instances), \"dan\" (2,484 instances), \"coyote\" (1,566 instances), \"squirrel\" (1,340 instances), and \"dog\" (638 instances).\n\nSpeaking of which, is this all just a really complicated excuse to post pictures of my dog on the Internet? Maybe. Maybe it is.\n\nGiven that there is just one human in the data, this dataset is unlikely to be useful for training models for recognizing humans, but I hope it's useful for basic infrastructure testing... i.e., does my code do something reasonable when humans are present in images/video? That kind of basic testing has historically been surprisingly difficult.\n\nAnd speaking of stone soup... if we do want to get to a more diverse collection of human images, it would be great if other camera trap folks were interested in contributing! If *we* are the subjects, we can consent to being included, and we can help unlock this important aspect of training data that has historically been very difficult to get into the public domain (for good reason). In other words, I'd like to see this dataset grow from \"Seattle-ish Camera Traps\" to \"Camera Trappers in Camera Traps\". If you have data that you're interested in contributing, [email me](mailto:agentmorris@gmail.com)!\n\n#### About dates and times in this data set\n\nThe absolute dates and times are totally meaningless in this dataset... I suspect this is also a common feature in consumer-grade camera traps, where it's much less likely that anyone bothers to set the time/date correctly. However, the top-level \"check date\" folders are meaningful (so you could, for example, ask whether more animals visited my neighborhood during COVID), and the times/dates within a \"check date\" folder are meaningful in a relative sense, so the division of images into sequences should be reliable.\n\n#### Citation, license, and contact information\n\nFor questions about this data set, contact [Dan Morris](mailto:agentmorris@gmail.com).\n\nThis data set is released under the [Community Data License Agreement (permissive variant)](https://cdla.io/permissive-1-0/).\n\n#### Data format\n\nAnnotations (including species tags and unique location identifiers) are provided in [COCO Camera Traps](https://lila.science/coco-camera-traps) format.\n\nFor information about mapping this dataset's categories to a common taxonomy, see [this page](https://lila.science/taxonomy-mapping-for-camera-trap-data-sets/).\n\n#### Downloading the data\n\nMetadata is available [here](https://storage.googleapis.com/public-datasets-lila/seattleish-camera-traps/seattleish_camera_traps.json.zip).\n\nImages are available in a [zipfile](https://storage.googleapis.com/public-datasets-lila/seattleish-camera-traps/seattleish_camera_traps.zip) (150GB), and unzipped images are available in the following cloud storage folders:\n\n* gs://public-datasets-lila/seattleish-camera-traps (GCP)\n* s3://us-west-2.opendata.source.coop/agentmorris/lila-wildlife/seattleish-camera-traps (AWS)\n* https://lilawildlife.blob.core.windows.net/lila-wildlife/seattleish-camera-traps (Azure)\n\nWe recommend downloading images (the whole folder, or a subset of the folder) using [gsutil](https://cloud.google.com/storage/docs/gsutil) (for GCP), [aws s3](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/index.html) (for AWS), or [AzCopy](https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10) (for Azure). For more information about using gsutil, aws s3, or AzCopy, check out our [guidelines for accessing images without using giant zipfiles](http://lila.science/image-access).\n\nIf you prefer to download individual images via http, you can. For example, the thumbnail below appears in the metadata as:\n\ncamera_trap_images/2023.04.26/location-06/dan_and_dog/IMG_0010.JPG\n\nThis image can be downloaded directly from any of the following URLs (one for each cloud):\n\nhttps://storage.googleapis.com/public-datasets-lila/seattleish-camera-traps/camera_trap_images/2023.04.26/location-06/dan_and_dog/IMG_0010.JPG\n\nhttp://us-west-2.opendata.source.coop.s3.amazonaws.com/agentmorris/lila-wildlife/seattleish-camera-traps/camera_trap_images/2023.04.26/location-06/dan_and_dog/IMG_0010.JPG\n\nhttps://lilawildlife.blob.core.windows.net/lila-wildlife/seattleish-camera-traps/camera_trap_images/2023.04.26/location-06/dan_and_dog/IMG_0010.JPG\n\nHaving trouble downloading? Check out our [FAQ](https://lila.science/faq#downloadtips).\n\n#### Other useful links\n\nInformation about mapping camera trap datasets to a common taxonomy is available [here](https://lila.science/taxonomy-mapping-for-camera-trap-data-sets/).\n\n![golden retriever in the snow in a camera trap image](http://lila.science/wp-content/uploads/2024/12/camera_trap_images2023.04.26location-06dan_and_dogimg_0010_gt-700.jpg)\n\n"
 }

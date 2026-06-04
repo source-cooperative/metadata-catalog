@@ -1,7 +1,6 @@
 {
-  "type": "Collection",
-  "stac_version": "1.1.0",
-  "id": "agentmorris/lila-wildlife-wni-giraffes",
+  "account_id": "agentmorris",
+  "product_id": "lila-wildlife-wni-giraffes",
   "title": "WNI Giraffes",
   "description": "A dataset titled 'WNI Giraffes' consisting of two ZIP archives totalling approximately 200 GB. No further description is available \u2014 the dataset has no README.",
   "keywords": [
@@ -9,58 +8,11 @@
     "wildlife",
     "mammals"
   ],
-  "providers": [
-    {
-      "name": "Source Cooperative",
-      "roles": [
-        "host"
-      ],
-      "url": "https://source.coop/agentmorris/lila-wildlife-wni-giraffes"
-    }
-  ],
-  "extent": {
-    "spatial": {
-      "bbox": [
-        [
-          -180.0,
-          -90.0,
-          180.0,
-          90.0
-        ]
-      ]
-    },
-    "temporal": {
-      "interval": [
-        [
-          null,
-          null
-        ]
-      ]
-    }
-  },
-  "assets": {
-    "data": {
-      "href": "https://data.source.coop/agentmorris/lila-wildlife-wni-giraffes/",
-      "type": "application/octet-stream",
-      "title": "Dataset files",
-      "roles": [
-        "data"
-      ]
-    }
-  },
-  "links": [
-    {
-      "rel": "self",
-      "href": "https://source.coop/agentmorris/lila-wildlife-wni-giraffes/collection.json",
-      "type": "application/json"
-    },
-    {
-      "rel": "via",
-      "href": "https://source.coop/agentmorris/lila-wildlife-wni-giraffes",
-      "title": "Source Cooperative product page"
-    }
-  ],
+  "created_at": null,
+  "updated_at": null,
   "visibility": "public",
+  "disabled": false,
+  "featured": 0,
   "data_mode": "open",
   "mirrors": {
     "aws-opendata-us-west-2": {
@@ -74,23 +26,17 @@
       "prefix": "agentmorris/lila-wildlife/wni-giraffes/"
     }
   },
-  "featured": 0,
-  "_decomposed_from": "agentmorris/lila-wildlife",
+  "file_count": 2,
+  "total_bytes": 200733182565,
   "exts": {
     "zip": 2
   },
-  "total_bytes": 200733182565,
-  "file_count": 2,
+  "store_format": null,
+  "_state": "seed",
   "_source": {
-    "decomposed_readme": true,
+    "source_coop_api": true,
     "s3_inventory": true
   },
-  "disabled": false,
-  "product_id": "lila-wildlife-wni-giraffes",
-  "account_id": "agentmorris",
-  "_review": [
-    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed."
-  ],
-  "_state": "drafted",
-  "cataloged_at": "2026-06-04T22:56:22+00:00"
+  "cataloged_at": "2026-06-04T23:59:16+00:00",
+  "readme": "# WNI Giraffes\n\n### WNI Giraffes\n\n#### S3 base\n\n`s3://us-west-2.opendata.source.coop/agentmorris/lila-wildlife/wni-giraffes`\n\n#### Overview\n\nMasai giraffes are endangered from illegal killing and habitat loss. As part of the world's largest giraffe conservation science project, the [Wild Nature Institute](http://wildnatureinstitute.org/) has identified thousands of individual Masai giraffes in Tanzania by their unique and unchanging coat patterns. Photogrammetry allows researchers to also track these giraffes' heights and sizes over time from images, by combining keypoint annotations with laser rangefinder data that indicates the distance between the camera and the giraffe.\n\nThis dataset contains 29,806 images of giraffes, annotated with keypoints representing four canonical measurement points: the top of the ossicones (horns), the top of the head, the indentation where the neck meets the chest, and the bottom front of the front hoof. Annotations were created by citizen-science volunteers on [Zooniverse](http://zooniverse.org). Around 40,000 images were annotated in total; this dataset excludes images that were annotated by fewer than five volunteers, and also excludes a test set that can be used in the future to validate algorithms developed based on this dataset to automate keypoint identification.\n\n#### Data format\n\nAnnotations are provided in a .json file, structured as:\n\n```\n\n \n\t\"info\": [metadata about the data set (version, etc.)],\n\t\"annotations\": [list of annotations]\n \n\nannotation \n \n\t\"filename\": str,\n\t\"id\": int,\n\t\"collection\": str (always \"train\"),\n\t\"keypoints\": \n          \n                'too': [list of keypoints],\n                'toh': [list of keypoints],\n                'ni':  [list of keypoints],\n                'fbh': [list of keypoints]\n         \n \n\nkeypoint \n \n\t\"median_x\": float,\n\t\"median_y\": float,\n        \"x\": [],\n        \"y\": []\n \n\n```\nKeypoint identifiers have the following interpretations, which are also documented in *info['tool_names']*:\n\n* *too*: top of ossicones\n* *toh*: top of head\n* *ni*: neck indent\n* *fbh*: front bottom hoof\n\n*x* and *y* contain the raw annotations provided by individual annotators; *median_x* and *median_y* are the medians of those values when at least three annotations are present for a specific keypoint. When fewer than three annotations are present for a specific keypoint, *median_x* and *median_y* are empty.\n\nNot all keypoints are visible in all images; some images may contain as few as one annotated keypoint (for example, if only the chest of the giraffe is visible).\n\nSample Python code to read this dataset and plot keypoints (e.g. to produce the thumbnail image at the bottom of this page) is available [here](https://github.com/agentmorris/MegaDetector/blob/master/data_management/importers/plot_wni_giraffes.py).\n\n#### Citation, license, and contact information\n\nFor questions about this dataset, contact Derek Lee ([derek@wildnatureinstitute.org](mailto:derek@wildnatureinstitute.org)) at the Wild Nature Institute.\n\nThis dataset is released under the [Community Data License Agreement (permissive variant)](https://cdla.io/permissive-1-0/).\n\n#### Downloading the data\n\n[Download images from GCP](https://storage.googleapis.com/public-datasets-lila/wni-giraffes/wni_giraffes_train_images.zip) (196GB)  \n\n[Download annotations from GCP](https://storage.googleapis.com/public-datasets-lila/wni-giraffes/wni_giraffes_train.zip) (8MB)  \n\n[Download images from AWS](http://us-west-2.opendata.source.coop.s3.amazonaws.com/agentmorris/lila-wildlife/wni-giraffes/wni_giraffes_train_images.zip) (196GB)  \n\n[Download annotations from AWS](http://us-west-2.opendata.source.coop.s3.amazonaws.com/agentmorris/lila-wildlife/wni-giraffes/wni_giraffes_train.zip) (8MB)  \n\n[Download images from Azure](https://lilawildlife.blob.core.windows.net/lila-wildlife/wni-giraffes/wni_giraffes_train_images.zip) (196GB)  \n\n[Download annotations from Azure](https://lilawildlife.blob.core.windows.net/lila-wildlife/wni-giraffes/wni_giraffes_train.zip) (8MB)\n\nHaving trouble downloading? Check out our [FAQ](http://lila.science/faq#downloadtips).\n\n![](http://lila.science/wp-content/uploads/2021/01/wni-giraffes-thumb.jpg)\n\n"
 }

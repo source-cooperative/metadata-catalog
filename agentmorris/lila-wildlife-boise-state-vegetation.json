@@ -1,7 +1,6 @@
 {
-  "type": "Collection",
-  "stac_version": "1.1.0",
-  "id": "agentmorris/lila-wildlife-boise-state-vegetation",
+  "account_id": "agentmorris",
+  "product_id": "lila-wildlife-boise-state-vegetation",
   "title": "Forest Canopy Height in Mexican Ecosystems",
   "description": "Raster dataset of forest canopy height across Mexican ecosystems, covering a geographic extent spanning central to southeastern Mexico. Contains 1,105 GeoTIFF files totaling approximately 62 GB.",
   "keywords": [
@@ -12,80 +11,12 @@
     "land-use",
     "vegetation"
   ],
-  "providers": [
-    {
-      "name": "Unknown",
-      "roles": [
-        "producer"
-      ]
-    },
-    {
-      "name": "Source Cooperative",
-      "roles": [
-        "host"
-      ],
-      "url": "https://source.coop/agentmorris/lila-wildlife-boise-state-vegetation"
-    }
-  ],
-  "extent": {
-    "spatial": {
-      "bbox": [
-        [
-          -103.3521052,
-          19.3212326,
-          -89.7539034,
-          21.7638906
-        ]
-      ]
-    },
-    "temporal": {
-      "interval": [
-        [
-          null,
-          null
-        ]
-      ]
-    }
-  },
-  "assets": {
-    "data": {
-      "href": "https://data.source.coop/agentmorris/lila-wildlife-boise-state-vegetation/",
-      "type": "image/tiff; application=geotiff",
-      "title": "Dataset files (1105 x .tif)",
-      "roles": [
-        "data"
-      ]
-    }
-  },
-  "links": [
-    {
-      "rel": "self",
-      "href": "https://source.coop/agentmorris/lila-wildlife-boise-state-vegetation/collection.json",
-      "type": "application/json"
-    },
-    {
-      "rel": "via",
-      "href": "https://source.coop/agentmorris/lila-wildlife-boise-state-vegetation",
-      "title": "Source Cooperative product page"
-    }
-  ],
-  "_source": {
-    "decomposed_readme": true,
-    "s3_inventory": true
-  },
+  "created_at": null,
+  "updated_at": null,
   "visibility": "public",
-  "exts": {
-    "tif": 1105,
-    "zip": 1,
-    "txt": 1
-  },
-  "_decomposed_from": "agentmorris/lila-wildlife",
   "disabled": false,
-  "product_id": "lila-wildlife-boise-state-vegetation",
-  "total_bytes": 62888252482,
   "featured": 0,
   "data_mode": "open",
-  "account_id": "agentmorris",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -99,10 +30,18 @@
     }
   },
   "file_count": 1107,
-  "_review": [
-    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
-    "providers: role [producer] for 'Unknown' is an AI guess \u2014 No README present; producer inferred as unknown from title alone. Verify before flipping to _state: reviewed."
-  ],
-  "_state": "drafted",
-  "cataloged_at": "2026-06-04T22:58:10+00:00"
+  "total_bytes": 62888252482,
+  "exts": {
+    "tif": 1105,
+    "zip": 1,
+    "txt": 1
+  },
+  "store_format": null,
+  "_state": "seed",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "cataloged_at": "2026-06-04T23:59:15+00:00",
+  "readme": "# Forest Canopy Height in Mexican Ecosystems\n\n### Forest Canopy Height in Mexican Ecosystems\n\n#### S3 base\n\n`s3://us-west-2.opendata.source.coop/agentmorris/lila-wildlife/boise-state-vegetation`\n\n#### Overview\n\nAirborne light detection and ranging (lidar) data have great potential to map vegetation structure at a fine resolution, including estimating carbon stocks, canopy closure, and tree height. While airborne-lidar-derived vegetation structural measurements could play an important role in ecological restoration monitoring, these data are limited to only a tiny fraction of the Earth\u2019s surface. Data fusion to combine high-resolution lidar data with medium resolution satellite data (such as Landsat imagery) represents one way to extend the spatial and temporal reach of airborne data.\n\nThis data set includes 1,105 aerial images captured over Mexico as part of the NASA [G-LiHT](https://gliht.gsfc.nasa.gov/about/) program, along with lidar-derived canopy height values and Landsat-derived vegetation indices for 499,925 sample points within those images.\n\nThe associated [open-source repo](https://github.com/jmrmcode/Lidar-Landsat-data-fusion) provides tools required to replicate this sampling methodology.\n\n#### Data format\n\nG-LiHT images are in GeoTIFF format.\n\nAnnotations are provided in a .csv file with 499925 rows, each representing one sample, and 12 columns:\n\n* *EVI*: Landsat-derived [enhanced vegetation index](https://www.usgs.gov/core-science-systems/nli/landsat/landsat-enhanced-vegetation-index?qt-science_support_page_related_con=0#qt-science_support_page_related_con)\n* *NVDI*: Landsat-derived [normalized difference vegetation index](https://www.usgs.gov/core-science-systems/nli/landsat/landsat-normalized-difference-vegetation-index?qt-science_support_page_related_con=0#)\n* *NDWI*: Landsat-derived [normalized difference water index](https://en.wikipedia.org/wiki/Normalized_difference_water_index)\n* *NBR*: Landsat-derived [normalized burn ratio](https://www.usgs.gov/core-science-systems/nli/landsat/landsat-normalized-burn-ratio)\n* *CanopyHeig*: lidar-derived canopy height in meters\n* *Ecoregion*: Ecoregion label, e.g. \"Tropical and Subtropical Coniferous Forests\"\n* *ID_G_LiTH_*: G-LiHT ID image; corresponds to the filenames in the \"Images\" folder\n* *ID_Landsat*: Unique ID for each Landsat pixel\n* *X*: longitude\n* *Y*: latitude\n* *Vegetation*: vegetation type extracted from the [Mexican National Institute of Statistics and Geography](https://www.inegi.org.mx/app/mapas/default.html?t=0150011000000000&ag=00) (INEGI), e.g. \"AGRICULTURA DE TEMPORAL ANUAL\"\n* *field_1*: field identifier (a unique row identifier)\n\n#### Citation\n\nIf you use these data in a publication or report, please use the following citation:\n\nRequena-Mullor JM, Caughlin TT. Lidar-derived canopy height data and Landsat-derived vegetation indices for the G-LiHT NASA acquisitions in Mexico. Dataset.\n\n#### Contact information\n\nFor questions about this data set, contact Juan Miguel Requena Mullor ([juanmimullor@gmail.com](mailto:juanmimullor@gmail.com)).\n\n#### License\n\nG-LiHT images are released according to [NASA's Data and Information Policy](https://www.earthdata.nasa.gov/engage/open-data-services-and-software/data-and-information-policy).\n\nThe .csv file containing canopy height and vegetation information is released under the [Community Data License Agreement (permissive variant)](https://cdla.io/permissive-1-0/).\n\n#### Download links\n\n[Metadata](https://storage.googleapis.com/public-datasets-lila/boise-state-vegetation/boise_state_vegetation.csv.zip) (GCP link, 21MB)  \n\n[Metadata](https://lilawildlife.blob.core.windows.net/lila-wildlife/boise-state-vegetation/boise_state_vegetation.csv.zip) (Azure link, 21MB)  \n\n[Metadata](http://us-west-2.opendata.source.coop.s3.amazonaws.com/agentmorris/lila-wildlife/boise-state-vegetation/boise_state_vegetation.csv.zip) (AWS link, 21MB)\n\nImages (62.9GB) are available in the following cloud storage folders; see LILA's [direct image access guide](https://lila.science/image-access) for download instructions.\n\n* gs://public-datasets-lila/boise-state-vegetation/tifImages (GCP)\n* s3://us-west-2.opendata.source.coop/agentmorris/lila-wildlife/boise-state-vegetation/tifImages (AWS)\n* https://lilawildlife.blob.core.windows.net/lila-wildlife/boise-state-vegetation/tifImages (Azure)\n\nHaving trouble downloading? Check out our [FAQ](http://lila.science/faq#downloadtips).\n\n![](http://lila.science/wp-content/uploads/2024/02/boise-state-vegetation-700.png)\n\n"
 }

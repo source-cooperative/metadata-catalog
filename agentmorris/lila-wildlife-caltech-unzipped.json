@@ -1,7 +1,6 @@
 {
-  "type": "Collection",
-  "stac_version": "1.1.0",
-  "id": "agentmorris/lila-wildlife-caltech-unzipped",
+  "account_id": "agentmorris",
+  "product_id": "lila-wildlife-caltech-unzipped",
   "title": "Caltech Camera Traps",
   "description": "A large collection of 244,584 camera trap photographs assembled by the California Institute of Technology for wildlife research and computer vision benchmarking. The images support development and evaluation of automated animal detection and classification algorithms in real-world field conditions.",
   "keywords": [
@@ -11,67 +10,12 @@
     "computer-vision",
     "ecology"
   ],
-  "providers": [
-    {
-      "name": "California Institute of Technology (Caltech)",
-      "roles": [
-        "producer"
-      ]
-    },
-    {
-      "name": "Source Cooperative",
-      "roles": [
-        "host"
-      ],
-      "url": "https://source.coop/agentmorris/lila-wildlife-caltech-unzipped"
-    }
-  ],
-  "extent": {
-    "spatial": {
-      "bbox": [
-        [
-          -180.0,
-          -90.0,
-          180.0,
-          90.0
-        ]
-      ]
-    },
-    "temporal": {
-      "interval": [
-        [
-          null,
-          null
-        ]
-      ]
-    }
-  },
-  "assets": {
-    "data": {
-      "href": "https://data.source.coop/agentmorris/lila-wildlife-caltech-unzipped/",
-      "type": "application/octet-stream",
-      "title": "Dataset files",
-      "roles": [
-        "data"
-      ]
-    }
-  },
-  "links": [
-    {
-      "rel": "self",
-      "href": "https://source.coop/agentmorris/lila-wildlife-caltech-unzipped/collection.json",
-      "type": "application/json"
-    },
-    {
-      "rel": "via",
-      "href": "https://source.coop/agentmorris/lila-wildlife-caltech-unzipped",
-      "title": "Source Cooperative product page"
-    }
-  ],
+  "created_at": null,
+  "updated_at": null,
+  "visibility": "public",
   "disabled": false,
-  "_decomposed_from": "agentmorris/lila-wildlife",
-  "total_bytes": 112353089403,
-  "product_id": "lila-wildlife-caltech-unzipped",
+  "featured": 0,
+  "data_mode": "open",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -84,22 +28,17 @@
       "prefix": "agentmorris/lila-wildlife/caltech-unzipped/"
     }
   },
-  "_source": {
-    "decomposed_readme": true,
-    "s3_inventory": true
-  },
-  "featured": 0,
-  "account_id": "agentmorris",
   "file_count": 244584,
-  "visibility": "public",
+  "total_bytes": 112353089403,
   "exts": {
     "jpg": 244584
   },
-  "data_mode": "open",
-  "_review": [
-    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
-    "providers: role [producer] for 'California Institute of Technology (Caltech)' is an AI guess \u2014 Identified as producer based on dataset title; no README to confirm.. Verify before flipping to _state: reviewed."
-  ],
-  "_state": "drafted",
-  "cataloged_at": "2026-06-04T23:01:32+00:00"
+  "store_format": null,
+  "_state": "seed",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "cataloged_at": "2026-06-04T23:59:15+00:00",
+  "readme": "# Caltech Camera Traps\n\n### Caltech Camera Traps\n\n#### S3 base\n\n`s3://us-west-2.opendata.source.coop/agentmorris/lila-wildlife/caltech-unzipped`\n\n#### Overview\n\nThis data set contains 243,100 images from 140 camera locations in the Southwestern United States, with labels for 21 animal categories (plus empty), primarily at the species level (for example, the most common labels are opossum, raccoon, and coyote), and approximately 66,000 bounding box annotations. Approximately 70% of images are labeled as empty.\n\nMore information about this data set is available [here](https://beerys.github.io/CaltechCameraTraps/).\n\n#### Citation, license, and contact information\n\nIf you use this data set, please cite the associated manuscript:\n\nSara Beery, Grant Van Horn, Pietro Perona. Recognition in Terra Incognita. Proceedings of the 15th European Conference on Computer Vision (ECCV 2018). ([bibtex](http://lila.science/wp-content/uploads/2018/11/BeeryHP18.bib))\n\nThis data set is released under the [Community Data License Agreement (permissive variant)](https://cdla.io/permissive-1-0/).\n\nFor questions about this data set, contact [caltechcameratraps@gmail.com](mailto:caltechcameratraps@gmail.com).\n\n#### Data format\n\nAnnotations are provided in [COCO Camera Traps](https://github.com/agentmorris/MegaDetector/blob/main/megadetector/data_management/README.md#coco-camera-traps-format) .json format.\n\nWe have also divided locations (i.e., cameras) into training and validation splits to allow for consistent benchmarking on this data set. The file describing this split specifies a train/val split for all locations in the data set, and also provides the train/val split used in the ECCV paper listed above. The \"eccv_train\" split here corresponds to the \"train\" locations and all \"cis\" locations in the ECCV paper; the \"eccv_val\" split here corresponds to all \"trans\" locations in the ECCV paper.\n\nFor information about mapping this dataset's categories to a common taxonomy, see [this page](https://lila.science/taxonomy-mapping-for-camera-trap-data-sets/).\n\n#### Downloading the data\n\nImages are available in the following cloud storage folders:\n\n* gs://public-datasets-lila/caltech-unzipped/cct_images (GCP)\n* s3://us-west-2.opendata.source.coop/agentmorris/lila-wildlife/caltech-unzipped/cct_images (AWS)\n* https://lilawildlife.blob.core.windows.net/lila-wildlife/caltech-unzipped/cct_images (Azure)\n\nA link to a zipfile is also provided below, but - whether you want the whole data set, a specific folder, or a subset of the data (e.g. images for one species) - we recommend checking out our [guidelines for accessing images without using giant zipfiles](http://lila.science/image-access).\n\n* Images (105GB) ([GCP link](https://storage.googleapis.com/public-datasets-lila/caltechcameratraps/cct_images.tar.gz)) ([Azure link](https://lilawildlife.blob.core.windows.net/lila-wildlife/caltechcameratraps/cct_images.tar.gz)) ([AWS link](http://us-west-2.opendata.source.coop.s3.amazonaws.com/agentmorris/lila-wildlife/caltechcameratraps/cct_images.tar.gz))\n\nMetadata download links:\n\n* [Image-level annotations](https://storage.googleapis.com/public-datasets-lila/caltechcameratraps/labels/caltech_camera_traps.json.zip) (9MB)\n* [Bounding box annotations](https://storage.googleapis.com/public-datasets-lila/caltechcameratraps/labels/caltech_bboxes_20200316.json) (35MB)\n* [Recommended train/val splits](https://storage.googleapis.com/public-datasets-lila/caltechcameratraps/CaltechCameraTrapsSplits_v0.json) (4KB)\n\nHaving trouble downloading? Check out our [FAQ](http://lila.science/faq#downloadtips).\n\n#### CCT20 Benchmark subset\n\nThe initial publication of this data set in [Beery et al. 2018](https://openaccess.thecvf.com/content_ECCV_2018/html/Beery_Recognition_in_Terra_ECCV_2018_paper.html) proposed a specific subset of Caltech Camera Traps data for benchmarking. Images in this benchmark dataset (CCT20) have been downsized to a maximum of 1024 pixels on a side.\n\nThe CCT20 benchmark set is available here:\n\n[Benchmark images](https://storage.googleapis.com/public-datasets-lila/caltechcameratraps/eccv_18_all_images_sm.tar.gz) (6GB)  \n\n[Metadata files for train/val/cis/trans splits](https://storage.googleapis.com/public-datasets-lila/caltechcameratraps/eccv_18_annotations.tar.gz) (3MB)  \n\n#### Other useful links\n\n[MegaDetector](https://github.com/agentmorris/MegaDetector/blob/main/megadetector.md) results for all camera trap datasets on LILA are available [here](https://lila.science/megadetector-results-for-camera-trap-datasets/).\n\nInformation about mapping camera trap datasets to a common taxonomy is available [here](https://lila.science/taxonomy-mapping-for-camera-trap-data-sets/).\n\n![](http://lila.science/wp-content/uploads/2018/10/CaltechCameraTraps_web.jpg)\n\n"
 }
