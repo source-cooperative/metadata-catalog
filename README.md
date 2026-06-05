@@ -47,6 +47,10 @@ cache/ai/{pub}/{prod}.jsonl              # AI response cache (30-day TTL)
 
 This keeps the catalog entries clean: `catalog.jsonl` is just `jq -c '.' catalog/*/*.json` with no strip step, because working data never landed in the entries in the first place. The top-level `readme` field (concatenated README text with path headers) is intentional — it supports full-text search over the compiled catalog.
 
+## Entries describe, they don't enumerate
+
+A catalog entry describes the dataset; it never manifests every file or item in it (that scales to millions and belongs in the source's own `collection.json`). Compose keeps only semantic upstream links and drops `item`/`child` enumeration — we point at the source via `self`/`via` — and stores a partitioned table's `table:columns` once at the collection level (`41:dedup_asset_columns`), keeping per-asset only the schemas that genuinely differ.
+
 ## What counts as a separate dataset?
 
 A dataset warrants its own catalog entry when:
