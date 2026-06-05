@@ -103,7 +103,7 @@
         {
           "name": "addr:state",
           "type": "VARCHAR",
-          "description": "[admin_code] US state abbreviation from OSM address tags"
+          "description": "[placename] State name from OSM address tags (OSM-schema assets only)"
         },
         {
           "name": "check_date:opening_hours",
@@ -152,7 +152,7 @@
         {
           "name": "geometry",
           "type": "GEOMETRY('EPSG:4326')",
-          "description": "[geometry] Point geometry in EPSG:4326 (WGS 84)"
+          "description": "[geometry] Point geometry in EPSG:4326"
         },
         {
           "name": "addr:housename",
@@ -237,7 +237,7 @@
         {
           "name": "addr:postcode",
           "type": "VARCHAR",
-          "description": "[zipcode] Postal/ZIP code from OSM address tags"
+          "description": "[zipcode] Postal code from OSM address tags (OSM-schema assets only)"
         },
         {
           "name": "shop",
@@ -310,7 +310,7 @@
         {
           "name": "addr:country",
           "type": "VARCHAR",
-          "description": "[admin_code] Country code from OSM address tags"
+          "description": "[admin_code] Country code from OSM address tags (OSM-schema assets only)"
         },
         {
           "name": "emergency",
@@ -319,7 +319,7 @@
         {
           "name": "addr:city",
           "type": "VARCHAR",
-          "description": "[placename] City name from OSM address tags"
+          "description": "[placename] City name from OSM address tags (OSM-schema assets only)"
         },
         {
           "name": "healthcare",
@@ -394,6 +394,9 @@
       "title": "Source Cooperative product page"
     }
   ],
+  "account_id": "henryspatialanalysis",
+  "product_id": "openpois",
+  "visibility": "public",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -406,29 +409,26 @@
       "prefix": "henryspatialanalysis/openpois/"
     }
   },
-  "visibility": "public",
+  "data_mode": "open",
+  "featured": 0,
   "updated_at": "2026-04-24T00:38:20.784Z",
+  "created_at": "2026-04-23T17:57:16.237Z",
+  "disabled": false,
+  "total_bytes": 10856973068,
   "exts": {
     "parquet": 202,
     "": 1,
     "pmtiles": 4,
     "md": 3
   },
-  "data_mode": "open",
-  "featured": 0,
-  "created_at": "2026-04-23T17:57:16.237Z",
-  "account_id": "henryspatialanalysis",
-  "disabled": false,
-  "product_id": "openpois",
+  "file_count": 210,
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "total_bytes": 10856973068,
-  "file_count": 210,
   "_review": [
-    "extent.spatial.bbox: omitted; spatial reference is categorical via [part-0.geometry (geometry), part-0.geohash (spatial_index), part-0.addr:state (admin_code), part-0.addr:city (placename), part-0.addr:postcode (zipcode), part-0.addr:country (admin_code)]. Add bbox once a placename \u2192 bbox gazetteer is available."
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [part-0.geometry (geometry), part-0.geohash (spatial_index), part-0.addr:city (placename), part-0.addr:state (placename), part-0.addr:postcode (zipcode), part-0.addr:country (admin_code)]. Add bbox once a placename \u2192 bbox gazetteer is available."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-06-05T00:28:44+00:00"
+  "cataloged_at": "2026-06-05T02:35:45+00:00"
 }

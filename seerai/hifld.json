@@ -165,7 +165,7 @@
         {
           "name": "geometry",
           "type": "GEOMETRY",
-          "description": "[geometry] Feature geometry"
+          "description": "[geometry] Feature geometry (administrative/congressional district boundaries)"
         },
         {
           "name": "bbox",
@@ -225,7 +225,7 @@
         {
           "name": "geometry",
           "type": "GEOMETRY",
-          "description": "[geometry] Hydrography feature geometry"
+          "description": "[geometry] Feature geometry (hydrography)"
         },
         {
           "name": "bbox",
@@ -385,7 +385,7 @@
         {
           "name": "geometry",
           "type": "GEOMETRY",
-          "description": "[geometry] Flowpath geometry"
+          "description": "[geometry] Feature geometry (flowpath/stream network)"
         },
         {
           "name": "bbox",
@@ -509,7 +509,7 @@
         {
           "name": "geometry",
           "type": "GEOMETRY",
-          "description": "[geometry] Hydrographic unit boundary geometry"
+          "description": "[geometry] Feature geometry (watershed boundary)"
         },
         {
           "name": "bbox",
@@ -737,12 +737,12 @@
         {
           "name": "attr_InitialLatitude",
           "type": "DOUBLE",
-          "description": "[latlon] Wildfire ignition point latitude"
+          "description": "[latlon] Latitude at initial fire discovery"
         },
         {
           "name": "attr_InitialLongitude",
           "type": "DOUBLE",
-          "description": "[latlon] Wildfire ignition point longitude"
+          "description": "[latlon] Longitude at initial fire discovery"
         },
         {
           "name": "attr_InitialResponseAcres",
@@ -814,13 +814,11 @@
         },
         {
           "name": "attr_POOCity",
-          "type": "VARCHAR",
-          "description": "[placename] Point-of-origin city name"
+          "type": "VARCHAR"
         },
         {
           "name": "attr_POOCounty",
-          "type": "VARCHAR",
-          "description": "[placename] Point-of-origin county name"
+          "type": "VARCHAR"
         },
         {
           "name": "attr_POODispatchCenterID",
@@ -889,7 +887,7 @@
         {
           "name": "attr_POOState",
           "type": "VARCHAR",
-          "description": "[admin_code] Point-of-origin state code"
+          "description": "[admin_code] State of fire point of origin"
         },
         {
           "name": "attr_PercentContained",
@@ -1014,7 +1012,7 @@
         {
           "name": "geometry",
           "type": "GEOMETRY",
-          "description": "[geometry] Wildfire perimeter geometry"
+          "description": "[geometry] Wildfire perimeter polygon geometry"
         },
         {
           "name": "bbox",
@@ -1244,17 +1242,6 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "exts": {
-    "parquet": 767,
-    "crc": 327,
-    "md": 676,
-    "csv": 1,
-    "txt": 1
-  },
-  "disabled": false,
-  "visibility": "public",
-  "updated_at": "2025-12-10T15:36:01.493Z",
-  "created_at": "2025-11-17T19:46:46.670Z",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -1267,19 +1254,30 @@
       "prefix": "seerai/hifld/"
     }
   },
-  "total_bytes": 21616086193,
-  "data_mode": "open",
-  "product_id": "hifld",
   "featured": 0,
-  "account_id": "seerai",
+  "disabled": false,
+  "product_id": "hifld",
+  "exts": {
+    "parquet": 767,
+    "crc": 327,
+    "md": 676,
+    "csv": 1,
+    "txt": 1
+  },
+  "visibility": "public",
+  "created_at": "2025-11-17T19:46:46.670Z",
+  "file_count": 1772,
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "file_count": 1772,
+  "total_bytes": 21616086193,
+  "data_mode": "open",
+  "account_id": "seerai",
+  "updated_at": "2025-12-10T15:36:01.493Z",
   "_review": [
-    "extent.spatial.bbox: omitted; spatial reference is categorical via [part-00000-tid-8588272384404631725-31022501-b700-4a62-bfe3-ed5034e65e86-119-1-c000.zstd.geometry (geometry), part-00000-tid-8588272384404631725-31022501-b700-4a62-bfe3-ed5034e65e86-119-1-c000.zstd.CENTLAT (latlon), part-00000-tid-8588272384404631725-31022501-b700-4a62-bfe3-ed5034e65e86-119-1-c000.zstd.CENTLON (latlon), part-00000-tid-8588272384404631725-31022501-b700-4a62-bfe3-ed5034e65e86-119-1-c000.zstd.INTPTLAT (latlon), part-00000-tid-8588272384404631725-31022501-b700-4a62-bfe3-ed5034e65e86-119-1-c000.zstd.INTPTLON (latlon), part-00000-tid-8588272384404631725-31022501-b700-4a62-bfe3-ed5034e65e86-119-1-c000.zstd.STATE (admin_code), part-00000-tid-6597041377908076625-d95b3dfb-f104-46f8-936f-65d49b4787c8-146-1-c000.zstd.geometry (geometry), part-00000-tid-3799322240472764299-b70c72c1-315f-40f7-b7a1-519c5f6c1190-2-1-c000.zstd.geometry (geometry), part-00000-f60deb54-a330-4f2f-95df-e68e484be100-c000.zstd.geometry (geometry), part-00001-f60deb54-a330-4f2f-95df-e68e484be100-c000.zstd.geometry (geometry), part-00000-tid-5435833471479413682-bb2d0ab4-e22d-42f7-950e-173ac4637fa4-2-1-c000.zstd.geometry (geometry), part-00000-tid-2217420635308410744-6d1def9c-035a-40f2-b9aa-46eabe8fc7df-443-1-c000.zstd.geometry (geometry), part-00000-tid-2217420635308410744-6d1def9c-035a-40f2-b9aa-46eabe8fc7df-443-1-c000.zstd.attr_InitialLatitude (latlon), part-00000-tid-2217420635308410744-6d1def9c-035a-40f2-b9aa-46eabe8fc7df-443-1-c000.zstd.attr_InitialLongitude (latlon), part-00000-tid-2217420635308410744-6d1def9c-035a-40f2-b9aa-46eabe8fc7df-443-1-c000.zstd.attr_POOState (admin_code), part-00000-tid-2217420635308410744-6d1def9c-035a-40f2-b9aa-46eabe8fc7df-443-1-c000.zstd.attr_POOCounty (placename), part-00000-tid-2217420635308410744-6d1def9c-035a-40f2-b9aa-46eabe8fc7df-443-1-c000.zstd.attr_POOCity (placename), part-00000-tid-4429176584677834965-cf2092f2-303e-475b-941f-71e859c4cd42-743-1-c000.zstd.geometry (geometry), part-00000-tid-5293630524682870527-a52413bb-be9f-4a0a-ae40-26742ea4ddac-471-1-c000.zstd.geometry (geometry), part-00000-tid-5864735293272243764-037d1b42-7d5e-4d88-85bd-d256009bcc36-550-1-c000.zstd.geometry (geometry)]. Add bbox once a placename \u2192 bbox gazetteer is available."
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [part-00000-tid-8588272384404631725-31022501-b700-4a62-bfe3-ed5034e65e86-119-1-c000.zstd.geometry (geometry), part-00000-tid-8588272384404631725-31022501-b700-4a62-bfe3-ed5034e65e86-119-1-c000.zstd.CENTLAT (latlon), part-00000-tid-8588272384404631725-31022501-b700-4a62-bfe3-ed5034e65e86-119-1-c000.zstd.CENTLON (latlon), part-00000-tid-8588272384404631725-31022501-b700-4a62-bfe3-ed5034e65e86-119-1-c000.zstd.INTPTLAT (latlon), part-00000-tid-8588272384404631725-31022501-b700-4a62-bfe3-ed5034e65e86-119-1-c000.zstd.INTPTLON (latlon), part-00000-tid-8588272384404631725-31022501-b700-4a62-bfe3-ed5034e65e86-119-1-c000.zstd.STATE (admin_code), part-00000-tid-6597041377908076625-d95b3dfb-f104-46f8-936f-65d49b4787c8-146-1-c000.zstd.geometry (geometry), part-00000-tid-3799322240472764299-b70c72c1-315f-40f7-b7a1-519c5f6c1190-2-1-c000.zstd.geometry (geometry), part-00000-f60deb54-a330-4f2f-95df-e68e484be100-c000.zstd.geometry (geometry), part-00001-f60deb54-a330-4f2f-95df-e68e484be100-c000.zstd.geometry (geometry), part-00000-tid-5435833471479413682-bb2d0ab4-e22d-42f7-950e-173ac4637fa4-2-1-c000.zstd.geometry (geometry), part-00000-tid-2217420635308410744-6d1def9c-035a-40f2-b9aa-46eabe8fc7df-443-1-c000.zstd.geometry (geometry), part-00000-tid-2217420635308410744-6d1def9c-035a-40f2-b9aa-46eabe8fc7df-443-1-c000.zstd.attr_InitialLatitude (latlon), part-00000-tid-2217420635308410744-6d1def9c-035a-40f2-b9aa-46eabe8fc7df-443-1-c000.zstd.attr_InitialLongitude (latlon), part-00000-tid-2217420635308410744-6d1def9c-035a-40f2-b9aa-46eabe8fc7df-443-1-c000.zstd.attr_POOState (admin_code), part-00000-tid-4429176584677834965-cf2092f2-303e-475b-941f-71e859c4cd42-743-1-c000.zstd.geometry (geometry), part-00000-tid-5293630524682870527-a52413bb-be9f-4a0a-ae40-26742ea4ddac-471-1-c000.zstd.geometry (geometry), part-00000-tid-5864735293272243764-037d1b42-7d5e-4d88-85bd-d256009bcc36-550-1-c000.zstd.geometry (geometry)]. Add bbox once a placename \u2192 bbox gazetteer is available."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-06-05T00:45:03+00:00"
+  "cataloged_at": "2026-06-05T02:52:54+00:00"
 }

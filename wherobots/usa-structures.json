@@ -6,7 +6,7 @@
   ],
   "id": "wherobots/usa-structures",
   "title": "US Structures from Oak Ridge National Laboratory",
-  "description": "A comprehensive geospatial database of over 125 million building structures across the United States and its territories, covering every structure larger than 450 square feet. Produced by Oak Ridge National Laboratory from satellite and aerial imagery processed with AI and high-performance computing. Each record includes building footprint geometry, occupancy classification, property address, physical dimensions (height, floor area), and elevation data.",
+  "description": "A comprehensive geospatial database of over 125 million building structures across the United States and its territories, covering every structure larger than 450 square feet. Produced by Oak Ridge National Laboratory from satellite and aerial imagery using AI and high-performance computing. Each record includes building footprint geometry, occupancy classification, property address, physical dimensions (height, floor area), and elevation data.",
   "license": "other",
   "keywords": [
     "remote-sensing",
@@ -98,7 +98,7 @@
         {
           "name": "PROP_ST",
           "type": "VARCHAR",
-          "description": "[admin_code] Property state abbreviation"
+          "description": "[admin_code] Property state code"
         },
         {
           "name": "PROP_ZIP",
@@ -136,8 +136,7 @@
         },
         {
           "name": "CENSUSCODE",
-          "type": "VARCHAR",
-          "description": "[admin_code] Census geographic code"
+          "type": "VARCHAR"
         },
         {
           "name": "PROD_DATE",
@@ -149,17 +148,17 @@
         },
         {
           "name": "USNG",
-          "type": "VARCHAR",
-          "description": "[spatial_index] US National Grid cell reference"
+          "type": "VARCHAR"
         },
         {
           "name": "LONGITUDE",
           "type": "DOUBLE",
-          "description": "[latlon] Centroid longitude; paired with LATITUDE"
+          "description": "[latlon] Centroid longitude"
         },
         {
           "name": "LATITUDE",
-          "type": "DOUBLE"
+          "type": "DOUBLE",
+          "description": "[latlon] Centroid latitude"
         },
         {
           "name": "IMAGE_NAME",
@@ -731,15 +730,18 @@
         },
         {
           "name": "PROP_CITY",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[placename] Property city name"
         },
         {
           "name": "PROP_ST",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[admin_code] Property state code"
         },
         {
           "name": "PROP_ZIP",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[zipcode] Property ZIP code"
         },
         {
           "name": "OUTBLDG",
@@ -767,7 +769,8 @@
         },
         {
           "name": "FIPS",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[admin_code] FIPS county code"
         },
         {
           "name": "CENSUSCODE",
@@ -787,11 +790,13 @@
         },
         {
           "name": "LONGITUDE",
-          "type": "DOUBLE"
+          "type": "DOUBLE",
+          "description": "[latlon] Centroid longitude"
         },
         {
           "name": "LATITUDE",
-          "type": "DOUBLE"
+          "type": "DOUBLE",
+          "description": "[latlon] Centroid latitude"
         },
         {
           "name": "IMAGE_NAME",
@@ -1350,7 +1355,27 @@
       "title": "Source Cooperative product page"
     }
   ],
+  "file_count": 298,
+  "total_bytes": 122486328289,
+  "created_at": "2024-11-13T00:41:14.513Z",
+  "product_id": "usa-structures",
+  "account_id": "wherobots",
+  "updated_at": "2025-08-21T16:39:55.568Z",
+  "visibility": "public",
+  "disabled": false,
   "data_mode": "open",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "featured": 0,
+  "exts": {
+    "pmtiles": 1,
+    "parquet": 292,
+    "avro": 2,
+    "md": 2,
+    "json": 1
+  },
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -1363,29 +1388,9 @@
       "prefix": "wherobots/usa-structures/"
     }
   },
-  "file_count": 298,
-  "featured": 0,
-  "visibility": "public",
-  "exts": {
-    "pmtiles": 1,
-    "parquet": 292,
-    "avro": 2,
-    "md": 2,
-    "json": 1
-  },
-  "total_bytes": 122486328289,
-  "disabled": false,
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "created_at": "2024-11-13T00:41:14.513Z",
-  "updated_at": "2025-08-21T16:39:55.568Z",
-  "account_id": "wherobots",
-  "product_id": "usa-structures",
   "_review": [
-    "extent.spatial.bbox: omitted; spatial reference is categorical via [part-00000-170892fe-0fe0-43c1-999d-f0911ce43365-c000.zstd.geometry (geometry), part-00000-170892fe-0fe0-43c1-999d-f0911ce43365-c000.zstd.LONGITUDE (latlon), part-00000-170892fe-0fe0-43c1-999d-f0911ce43365-c000.zstd.PROP_CITY (placename), part-00000-170892fe-0fe0-43c1-999d-f0911ce43365-c000.zstd.PROP_ST (admin_code), part-00000-170892fe-0fe0-43c1-999d-f0911ce43365-c000.zstd.PROP_ZIP (zipcode), part-00000-170892fe-0fe0-43c1-999d-f0911ce43365-c000.zstd.FIPS (admin_code), part-00000-170892fe-0fe0-43c1-999d-f0911ce43365-c000.zstd.CENSUSCODE (admin_code), part-00000-170892fe-0fe0-43c1-999d-f0911ce43365-c000.zstd.USNG (spatial_index), part-00000-170892fe-0fe0-43c1-999d-f0911ce43365-c000.zstd.geohash (spatial_index), 00277-943-f0a517dc-8e28-4492-af0b-ffc528441908-0-00001.geom (geometry)]. Add bbox once a placename \u2192 bbox gazetteer is available."
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [part-00000-170892fe-0fe0-43c1-999d-f0911ce43365-c000.zstd.geometry (geometry), part-00000-170892fe-0fe0-43c1-999d-f0911ce43365-c000.zstd.LONGITUDE (latlon), part-00000-170892fe-0fe0-43c1-999d-f0911ce43365-c000.zstd.LATITUDE (latlon), part-00000-170892fe-0fe0-43c1-999d-f0911ce43365-c000.zstd.PROP_CITY (placename), part-00000-170892fe-0fe0-43c1-999d-f0911ce43365-c000.zstd.PROP_ST (admin_code), part-00000-170892fe-0fe0-43c1-999d-f0911ce43365-c000.zstd.PROP_ZIP (zipcode), part-00000-170892fe-0fe0-43c1-999d-f0911ce43365-c000.zstd.FIPS (admin_code), part-00000-170892fe-0fe0-43c1-999d-f0911ce43365-c000.zstd.geohash (spatial_index), 00277-943-f0a517dc-8e28-4492-af0b-ffc528441908-0-00001.geom (geometry), 00277-943-f0a517dc-8e28-4492-af0b-ffc528441908-0-00001.LONGITUDE (latlon), 00277-943-f0a517dc-8e28-4492-af0b-ffc528441908-0-00001.LATITUDE (latlon), 00277-943-f0a517dc-8e28-4492-af0b-ffc528441908-0-00001.PROP_CITY (placename), 00277-943-f0a517dc-8e28-4492-af0b-ffc528441908-0-00001.PROP_ST (admin_code), 00277-943-f0a517dc-8e28-4492-af0b-ffc528441908-0-00001.PROP_ZIP (zipcode), 00277-943-f0a517dc-8e28-4492-af0b-ffc528441908-0-00001.FIPS (admin_code)]. Add bbox once a placename \u2192 bbox gazetteer is available."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-06-05T00:45:58+00:00"
+  "cataloged_at": "2026-06-05T02:53:23+00:00"
 }

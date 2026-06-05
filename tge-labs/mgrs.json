@@ -6,7 +6,7 @@
   ],
   "id": "tge-labs/mgrs",
   "title": "Cloud Native MGRS",
-  "description": "A complete Military Grid Reference System (MGRS) 1-kilometer reference grid derived from National Geospatial-Intelligence Agency (NGA) data, stored in GeoParquet format. Contains over 305 million grid cells covering the global extent from -80\u00b0 to 84\u00b0 latitude. Each cell includes standardized MGRS coordinate references, Grid Zone Designators, and 10-kilometer tile identifiers.",
+  "description": "A complete Military Grid Reference System (MGRS) 1-kilometer reference grid derived from National Geospatial-Intelligence Agency (NGA) data, stored in cloud-native GeoParquet format. Contains over 305 million grid cells covering the global extent from -80\u00b0 to 84\u00b0 latitude, with each cell encoded as a polygon geometry alongside standardized MGRS codes, Grid Zone Designators, and 10-kilometer tile identifiers.",
   "license": "other",
   "keywords": [
     "mgrs",
@@ -14,8 +14,8 @@
     "grid-reference",
     "utm-grid",
     "spatial-index",
-    "geoparquet",
-    "remote-sensing"
+    "remote-sensing",
+    "geoparquet"
   ],
   "providers": [
     {
@@ -86,22 +86,22 @@
         {
           "name": "GZD",
           "type": "VARCHAR",
-          "description": "[admin_code] MGRS Grid Zone Designator"
+          "description": "[spatial_index] Grid Zone Designator \u2014 6\u00b0\u00d78\u00b0 UTM zone band identifier"
         },
         {
           "name": "MGRS",
           "type": "VARCHAR",
-          "description": "[spatial_index] Full MGRS coordinate reference string for the grid cell"
+          "description": "[spatial_index] Full MGRS coordinate reference string identifying each grid cell"
         },
         {
           "name": "MGRS_10km",
           "type": "VARCHAR",
-          "description": "[spatial_index] 10-kilometer MGRS tile identifier for spatial indexing"
+          "description": "[spatial_index] 10-kilometer tile identifier within the GZD"
         },
         {
           "name": "geometry",
           "type": "GEOMETRY('OGC:CRS84')",
-          "description": "[geometry] OGC:CRS84 polygon geometry for each 1km MGRS grid cell"
+          "description": "[geometry] Polygon geometry of each 1 km\u00b2 MGRS grid cell in OGC:CRS84"
         }
       ],
       "table:row_count": 305799745
@@ -128,19 +128,23 @@
         },
         {
           "name": "GZD",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[spatial_index] Grid Zone Designator \u2014 6\u00b0\u00d78\u00b0 UTM zone band identifier"
         },
         {
           "name": "MGRS",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[spatial_index] Full MGRS coordinate reference string identifying each grid cell"
         },
         {
           "name": "MGRS_10km",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[spatial_index] 10-kilometer tile identifier within the GZD"
         },
         {
           "name": "geometry",
-          "type": "GEOMETRY"
+          "type": "GEOMETRY",
+          "description": "[geometry] Polygon geometry of each 1 km\u00b2 MGRS grid cell"
         }
       ],
       "table:row_count": 305799745
@@ -167,19 +171,23 @@
         },
         {
           "name": "GZD",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[spatial_index] Grid Zone Designator"
         },
         {
           "name": "MGRS",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[spatial_index] Full MGRS coordinate reference string"
         },
         {
           "name": "MGRS_10km",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[spatial_index] 10-kilometer tile identifier within the GZD"
         },
         {
           "name": "geometry",
-          "type": "GEOMETRY('OGC:CRS84')"
+          "type": "GEOMETRY('OGC:CRS84')",
+          "description": "[geometry] Polygon geometry for GZD-partitioned tile (same schema as mgrs_clean)"
         },
         {
           "name": "bbox",
@@ -503,22 +511,20 @@
     }
   ],
   "account_id": "tge-labs",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "updated_at": "2025-10-13T11:15:41.661Z",
-  "disabled": false,
-  "total_bytes": 45622324162,
+  "created_at": "2025-10-13T11:15:41.661Z",
   "exts": {
     "parquet": 771,
     "md": 1
   },
-  "featured": 0,
-  "file_count": 772,
+  "visibility": "public",
   "data_mode": "open",
-  "created_at": "2025-10-13T11:15:41.661Z",
-  "product_id": "mgrs",
+  "disabled": false,
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "total_bytes": 45622324162,
+  "file_count": 772,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -531,10 +537,12 @@
       "prefix": "tge-labs/mgrs/"
     }
   },
-  "visibility": "public",
+  "featured": 0,
+  "updated_at": "2025-10-13T11:15:41.661Z",
+  "product_id": "mgrs",
   "_review": [
-    "extent.spatial.bbox: omitted; spatial reference is categorical via [mgrs_clean.geometry (geometry), mgrs_clean.MGRS (spatial_index), mgrs_clean.MGRS_10km (spatial_index), mgrs_clean.GZD (admin_code)]. Add bbox once a placename \u2192 bbox gazetteer is available."
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [mgrs_clean.geometry (geometry), mgrs_clean.MGRS (spatial_index), mgrs_clean.GZD (spatial_index), mgrs_clean.MGRS_10km (spatial_index), mgrs_clean_gp20.geometry (geometry), mgrs_clean_gp20.MGRS (spatial_index), mgrs_clean_gp20.GZD (spatial_index), mgrs_clean_gp20.MGRS_10km (spatial_index), mgrs_01L.geometry (geometry), mgrs_01L.MGRS (spatial_index), mgrs_01L.GZD (spatial_index), mgrs_01L.MGRS_10km (spatial_index)]. Add bbox once a placename \u2192 bbox gazetteer is available."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-06-05T00:43:24+00:00"
+  "cataloged_at": "2026-06-05T02:51:27+00:00"
 }

@@ -6,7 +6,7 @@
   ],
   "id": "terrafloww/aef-v1-annual-rasteret",
   "title": "AEF-v1 embeddings Rasteret Collection",
-  "description": "Global index of AlphaEarth Foundation (AEF-v1) satellite embeddings produced by Google and Google DeepMind, covering near-global land area from 2018 to 2024. The dataset consists of partitioned Parquet files forming a Rasteret metadata collection, where each record references Cloud Optimized GeoTIFF tiles containing 64-band embedding vectors organized by UTM zone and year.",
+  "description": "Global collection of AlphaEarth Foundation (AEF-v1) satellite embedding vectors produced by Google and Google DeepMind, covering near-global land area from 2018 to 2024. Each record in this partitioned Parquet Rasteret collection references Cloud Optimized GeoTIFF tiles containing 64-band embedding vectors, organized by UTM zone and year.",
   "license": "CC-BY-SA-4.0",
   "keywords": [
     "remote-sensing",
@@ -87,7 +87,7 @@
         {
           "name": "geometry",
           "type": "GEOMETRY('OGC:CRS84')",
-          "description": "[geometry] OGC:CRS84 geometry of each embedding tile footprint"
+          "description": "[geometry] Tile footprint polygon in OGC CRS84 (WGS84 geographic)"
         },
         {
           "name": "datetime",
@@ -100,7 +100,7 @@
         {
           "name": "bbox",
           "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)",
-          "description": "[geometry] Bounding box struct (xmin/ymin/xmax/ymax) of each tile"
+          "description": "[geometry] Bounding box struct (xmin/ymin/xmax/ymax) in WGS84"
         },
         {
           "name": "proj:epsg",
@@ -2496,22 +2496,23 @@
         },
         {
           "name": "utm_zone",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[admin_code] UTM zone identifier used as the tile's projected CRS"
         },
         {
           "name": "bbox_utm",
           "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)",
-          "description": "[geometry] UTM-projected bounding box of indexed tile"
+          "description": "[geometry] Bounding box struct in the tile's native UTM projection"
         },
         {
           "name": "bbox",
           "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)",
-          "description": "[geometry] Bounding box of indexed tile in WGS84"
+          "description": "[geometry] Bounding box struct (xmin/ymin/xmax/ymax) in WGS84"
         },
         {
           "name": "geom",
           "type": "GEOMETRY('OGC:CRS84')",
-          "description": "[geometry] OGC:CRS84 geometry for spatial index lookup"
+          "description": "[geometry] Tile footprint polygon in OGC CRS84 (WGS84 geographic)"
         },
         {
           "name": "location",
@@ -2581,23 +2582,23 @@
     }
   ],
   "created_at": "2026-03-08T10:27:46.837Z",
-  "file_count": 10,
-  "data_mode": "open",
-  "account_id": "terrafloww",
-  "updated_at": "2026-03-08T10:29:00.741Z",
-  "featured": 0,
-  "total_bytes": 8539351825,
-  "product_id": "aef-v1-annual-rasteret",
-  "visibility": "public",
   "disabled": false,
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
+  "file_count": 10,
   "exts": {
     "parquet": 9,
     "md": 1
   },
+  "updated_at": "2026-03-08T10:29:00.741Z",
+  "visibility": "public",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "total_bytes": 8539351825,
+  "account_id": "terrafloww",
+  "data_mode": "open",
+  "product_id": "aef-v1-annual-rasteret",
+  "featured": 0,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -2611,8 +2612,8 @@
     }
   },
   "_review": [
-    "extent.spatial.bbox: omitted; spatial reference is categorical via [part-00000.geometry (geometry), part-00000.bbox (geometry), index.geom (geometry), index.bbox (geometry), index.bbox_utm (geometry)]. Add bbox once a placename \u2192 bbox gazetteer is available."
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [part-00000.geometry (geometry), part-00000.bbox (geometry), index.geom (geometry), index.bbox (geometry), index.bbox_utm (geometry), index.utm_zone (admin_code)]. Add bbox once a placename \u2192 bbox gazetteer is available."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-06-05T00:36:13+00:00"
+  "cataloged_at": "2026-06-05T02:43:17+00:00"
 }
