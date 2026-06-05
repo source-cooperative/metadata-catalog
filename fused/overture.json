@@ -6,12 +6,12 @@
   ],
   "id": "fused/overture",
   "title": "Overture Maps - Fused-partitioned",
-  "description": "Global vector dataset from the Overture Maps Foundation containing administrative boundaries, building footprints, land use classifications, points of interest, and transportation networks. Data is organized by theme and geo-partitioned across ~24,000 GeoParquet files adhering to the Overture Data Schema standard. Covers the full global extent from -180 to 180 longitude across multiple geographic scales and feature types.",
+  "description": "Global vector dataset from the Overture Maps Foundation containing administrative boundaries, building footprints, land use classifications, points of interest, and transportation networks. Data spans the full global extent and is geo-partitioned across approximately 24,000 GeoParquet files adhering to the Overture Data Schema standard. Themes include places, divisions, buildings, addresses, transportation segments, and base features such as water bodies.",
   "license": "other",
   "keywords": [
     "land-use",
-    "building-footprints",
     "administrative-boundaries",
+    "building-footprints",
     "transportation",
     "points-of-interest",
     "open-map-data",
@@ -1539,7 +1539,6 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "created_at": "2024-03-06T23:45:38.072516+00:00",
   "product_id": "overture",
   "featured": 1,
   "mirrors": {
@@ -1554,25 +1553,26 @@
       "prefix": "fused/overture/"
     }
   },
+  "visibility": "public",
+  "data_mode": "open",
+  "account_id": "fused",
+  "created_at": "2024-03-06T23:45:38.072516+00:00",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "disabled": false,
   "exts": {
     "parquet": 24335,
     "png": 1,
     "md": 1
   },
-  "visibility": "public",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "file_count": 24337,
   "updated_at": "2025-08-21T16:39:55.568Z",
+  "file_count": 24337,
   "total_bytes": 11766735615676,
-  "data_mode": "open",
-  "disabled": false,
-  "account_id": "fused",
   "_review": [
-    "extent.spatial.bbox: omitted; spatial reference is categorical via [divisions.geometry (geometry), divisions.iso_country_code_alpha_2 (admin_code), divisions.iso_sub_country_code (admin_code), places.geometry (geometry), buildings.geometry (geometry), transportation.geometry (geometry), addresses.geometry (geometry), addresses.postcode (zipcode), addresses.country (admin_code), places.region (admin_code)]. Add bbox once a placename \u2192 bbox gazetteer is available."
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [*.geometry (geometry), *.bbox (geometry), divisions-locality.isoCountryCodeAlpha2 (admin_code), divisions-locality.isoSubCountryCode (admin_code), addresses.postcode (zipcode), addresses.country (admin_code), divisions-boundary.iso_country_code_alpha_2 (admin_code), divisions-boundary.iso_sub_country_code (admin_code)]. Add bbox once a placename \u2192 bbox gazetteer is available."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-06-04T23:09:08+00:00"
+  "cataloged_at": "2026-06-05T00:19:16+00:00"
 }

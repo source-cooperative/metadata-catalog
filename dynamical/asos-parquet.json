@@ -6,7 +6,7 @@
   ],
   "id": "dynamical/asos-parquet",
   "title": "Global Airport Weather GeoParquet (1940-present)",
-  "description": "Historical and near-real-time surface weather observations from global ASOS and AWOS airport stations, spanning 1940 to present with approximately 1.8 billion records. Each record represents a single decoded METAR report capturing temperature, dewpoint, wind speed and direction, precipitation, visibility, and atmospheric pressure in both imperial and metric units. Station name, elevation, and point geometry are embedded in each record.",
+  "description": "Historical and near-real-time surface weather observations from global ASOS and AWOS airport stations spanning 1940 to present, comprising approximately 1.8 billion decoded METAR reports. Each record captures temperature, dewpoint, wind speed and direction, precipitation, visibility, and atmospheric pressure in both imperial and metric units, with station point geometry embedded per record. Files are partitioned by year and stored as GeoParquet.",
   "license": "CC-BY-NC-SA-4.0",
   "keywords": [
     "weather",
@@ -59,7 +59,7 @@
     }
   },
   "summaries": {
-    "item_count": 1776588802
+    "item_count": 1776605592
   },
   "assets": {
     "data": {
@@ -81,12 +81,12 @@
         {
           "name": "longitude",
           "type": "DOUBLE",
-          "description": "[latlon] Decimal longitude of the airport station"
+          "description": "[latlon] Station longitude in decimal degrees (EPSG:4326)"
         },
         {
           "name": "latitude",
           "type": "DOUBLE",
-          "description": "[latlon] Decimal latitude of the airport station"
+          "description": "[latlon] Station latitude in decimal degrees (EPSG:4326)"
         },
         {
           "name": "tmpf",
@@ -143,17 +143,16 @@
         {
           "name": "state",
           "type": "VARCHAR",
-          "description": "[admin_code] State or province code of the station"
+          "description": "[admin_code] US state abbreviation for the station location"
         },
         {
           "name": "geometry",
           "type": "GEOMETRY('EPSG:4326')",
-          "description": "[geometry] WGS84 point geometry of the station (EPSG:4326)"
+          "description": "[geometry] Station point geometry (EPSG:4326)"
         },
         {
           "name": "name",
-          "type": "VARCHAR",
-          "description": "[placename] Station name, typically the airport name"
+          "type": "VARCHAR"
         },
         {
           "name": "elevation",
@@ -162,12 +161,12 @@
         {
           "name": "country",
           "type": "VARCHAR",
-          "description": "[placename] Country where the station is located"
+          "description": "[placename] Country name of the station"
         },
         {
           "name": "county",
           "type": "VARCHAR",
-          "description": "[placename] County of the station (primarily US stations)"
+          "description": "[placename] County name of the station"
         },
         {
           "name": "wfo",
@@ -186,7 +185,7 @@
           "type": "BIGINT"
         }
       ],
-      "table:row_count": 25023091
+      "table:row_count": 25029544
     }
   },
   "links": [
@@ -201,19 +200,9 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "exts": {
-    "parquet": 87
-  },
   "featured": 0,
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "created_at": "2026-02-05T18:50:19.484Z",
-  "data_mode": "open",
-  "updated_at": "2026-02-09T17:07:41.515Z",
+  "account_id": "dynamical",
   "product_id": "asos-parquet",
-  "disabled": false,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -226,13 +215,23 @@
       "prefix": "dynamical/asos-parquet/"
     }
   },
-  "visibility": "public",
+  "exts": {
+    "parquet": 87
+  },
+  "updated_at": "2026-02-09T17:07:41.515Z",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
   "file_count": 87,
+  "created_at": "2026-02-05T18:50:19.484Z",
+  "visibility": "public",
+  "disabled": false,
   "total_bytes": 19981605835,
-  "account_id": "dynamical",
+  "data_mode": "open",
   "_review": [
-    "extent.spatial.bbox: omitted; spatial reference is categorical via [data.latitude (latlon), data.longitude (latlon), data.geometry (geometry), data.country (placename), data.state (admin_code), data.county (placename), data.name (placename)]. Add bbox once a placename \u2192 bbox gazetteer is available."
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [data.longitude (latlon), data.latitude (latlon), data.geometry (geometry), data.state (admin_code), data.country (placename), data.county (placename)]. Add bbox once a placename \u2192 bbox gazetteer is available."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-06-04T23:24:21+00:00"
+  "cataloged_at": "2026-06-05T00:33:00+00:00"
 }

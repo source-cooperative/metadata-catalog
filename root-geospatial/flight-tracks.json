@@ -6,14 +6,15 @@
   ],
   "id": "root-geospatial/flight-tracks",
   "title": "Flight Tracks",
-  "description": "Historic aircraft flight tracks derived from Automatic Dependent Surveillance\u2013Broadcast (ADS-B) position reports captured by a network of ground receivers across the contiguous United States. Each record represents a single flight as a GIS linestring geometry with associated ICAO identifier, aircraft type, altitude above ground level at start and end, and timestamps. Data is partitioned into daily Parquet files spanning 2023\u20132026.",
+  "description": "Historic aircraft flight tracks over the contiguous United States derived from ADS-B (Automatic Dependent Surveillance\u2013Broadcast) position reports captured by a network of ground receivers. Each record represents a single flight as a GIS linestring geometry with ICAO identifier, aircraft type, altitude above ground level at departure and arrival, and start/end timestamps. Data is partitioned into daily Parquet files spanning 2023\u20132026.",
   "license": "ODbL-1.0",
   "keywords": [
     "aviation",
     "flight-tracking",
     "ads-b",
     "aircraft-tracking",
-    "aeronautical"
+    "aeronautical",
+    "trajectories"
   ],
   "providers": [
     {
@@ -77,7 +78,7 @@
         {
           "name": "geometry",
           "type": "STRUCT(x DOUBLE, y DOUBLE)[]",
-          "description": "[geometry] Flight path as array of (x, y) coordinate structs forming a linestring"
+          "description": "[geometry] Array of (x, y) coordinate pairs forming the flight track linestring"
         },
         {
           "name": "icao",
@@ -122,7 +123,7 @@
         {
           "name": "quadkey_z8",
           "type": "VARCHAR",
-          "description": "[spatial_index] Quadkey spatial index at zoom level 8 for the flight track"
+          "description": "[spatial_index] Quadkey at zoom level 8 used for spatial partitioning of flight tracks"
         },
         {
           "name": "year",
@@ -141,8 +142,7 @@
       "table:columns": [
         {
           "name": "geometry",
-          "type": "STRUCT(x DOUBLE, y DOUBLE)[]",
-          "description": "[geometry] Flight path as array of (x, y) coordinate structs forming a linestring"
+          "type": "STRUCT(x DOUBLE, y DOUBLE)[]"
         },
         {
           "name": "icao",
@@ -186,8 +186,7 @@
         },
         {
           "name": "quadkey_z8",
-          "type": "VARCHAR",
-          "description": "[spatial_index] Quadkey spatial index at zoom level 8 for the flight track"
+          "type": "VARCHAR"
         },
         {
           "name": "year",
@@ -206,8 +205,7 @@
       "table:columns": [
         {
           "name": "geometry",
-          "type": "STRUCT(x DOUBLE, y DOUBLE)[]",
-          "description": "[geometry] Flight path as array of (x, y) coordinate structs forming a linestring"
+          "type": "STRUCT(x DOUBLE, y DOUBLE)[]"
         },
         {
           "name": "icao",
@@ -251,8 +249,7 @@
         },
         {
           "name": "quadkey_z8",
-          "type": "VARCHAR",
-          "description": "[spatial_index] Quadkey spatial index at zoom level 8 for the flight track"
+          "type": "VARCHAR"
         },
         {
           "name": "year",
@@ -271,8 +268,7 @@
       "table:columns": [
         {
           "name": "geometry",
-          "type": "STRUCT(x DOUBLE, y DOUBLE)[]",
-          "description": "[geometry] Flight path as array of (x, y) coordinate structs forming a linestring"
+          "type": "STRUCT(x DOUBLE, y DOUBLE)[]"
         },
         {
           "name": "icao",
@@ -316,8 +312,7 @@
         },
         {
           "name": "quadkey_z8",
-          "type": "VARCHAR",
-          "description": "[spatial_index] Quadkey spatial index at zoom level 8 for the flight track"
+          "type": "VARCHAR"
         },
         {
           "name": "year",
@@ -336,8 +331,7 @@
       "table:columns": [
         {
           "name": "geometry",
-          "type": "STRUCT(x DOUBLE, y DOUBLE)[]",
-          "description": "[geometry] Flight path as array of (x, y) coordinate structs forming a linestring"
+          "type": "STRUCT(x DOUBLE, y DOUBLE)[]"
         },
         {
           "name": "icao",
@@ -381,8 +375,7 @@
         },
         {
           "name": "quadkey_z8",
-          "type": "VARCHAR",
-          "description": "[spatial_index] Quadkey spatial index at zoom level 8 for the flight track"
+          "type": "VARCHAR"
         },
         {
           "name": "year",
@@ -401,8 +394,7 @@
       "table:columns": [
         {
           "name": "geometry",
-          "type": "STRUCT(x DOUBLE, y DOUBLE)[]",
-          "description": "[geometry] Flight path as array of (x, y) coordinate structs forming a linestring"
+          "type": "STRUCT(x DOUBLE, y DOUBLE)[]"
         },
         {
           "name": "icao",
@@ -446,8 +438,7 @@
         },
         {
           "name": "quadkey_z8",
-          "type": "VARCHAR",
-          "description": "[spatial_index] Quadkey spatial index at zoom level 8 for the flight track"
+          "type": "VARCHAR"
         },
         {
           "name": "year",
@@ -466,8 +457,7 @@
       "table:columns": [
         {
           "name": "geometry",
-          "type": "STRUCT(x DOUBLE, y DOUBLE)[]",
-          "description": "[geometry] Flight path as array of (x, y) coordinate structs forming a linestring"
+          "type": "STRUCT(x DOUBLE, y DOUBLE)[]"
         },
         {
           "name": "icao",
@@ -511,8 +501,7 @@
         },
         {
           "name": "quadkey_z8",
-          "type": "VARCHAR",
-          "description": "[spatial_index] Quadkey spatial index at zoom level 8 for the flight track"
+          "type": "VARCHAR"
         },
         {
           "name": "year",
@@ -531,8 +520,7 @@
       "table:columns": [
         {
           "name": "geometry",
-          "type": "STRUCT(x DOUBLE, y DOUBLE)[]",
-          "description": "[geometry] Flight path as array of (x, y) coordinate structs forming a linestring"
+          "type": "STRUCT(x DOUBLE, y DOUBLE)[]"
         },
         {
           "name": "icao",
@@ -576,8 +564,7 @@
         },
         {
           "name": "quadkey_z8",
-          "type": "VARCHAR",
-          "description": "[spatial_index] Quadkey spatial index at zoom level 8 for the flight track"
+          "type": "VARCHAR"
         },
         {
           "name": "year",
@@ -596,8 +583,7 @@
       "table:columns": [
         {
           "name": "geometry",
-          "type": "STRUCT(x DOUBLE, y DOUBLE)[]",
-          "description": "[geometry] Flight path as array of (x, y) coordinate structs forming a linestring"
+          "type": "STRUCT(x DOUBLE, y DOUBLE)[]"
         },
         {
           "name": "icao",
@@ -641,8 +627,7 @@
         },
         {
           "name": "quadkey_z8",
-          "type": "VARCHAR",
-          "description": "[spatial_index] Quadkey spatial index at zoom level 8 for the flight track"
+          "type": "VARCHAR"
         },
         {
           "name": "year",
@@ -661,8 +646,7 @@
       "table:columns": [
         {
           "name": "geometry",
-          "type": "STRUCT(x DOUBLE, y DOUBLE)[]",
-          "description": "[geometry] Flight path as array of (x, y) coordinate structs forming a linestring"
+          "type": "STRUCT(x DOUBLE, y DOUBLE)[]"
         },
         {
           "name": "icao",
@@ -706,8 +690,7 @@
         },
         {
           "name": "quadkey_z8",
-          "type": "VARCHAR",
-          "description": "[spatial_index] Quadkey spatial index at zoom level 8 for the flight track"
+          "type": "VARCHAR"
         },
         {
           "name": "year",
@@ -726,8 +709,7 @@
       "table:columns": [
         {
           "name": "geometry",
-          "type": "STRUCT(x DOUBLE, y DOUBLE)[]",
-          "description": "[geometry] Flight path as array of (x, y) coordinate structs forming a linestring"
+          "type": "STRUCT(x DOUBLE, y DOUBLE)[]"
         },
         {
           "name": "icao",
@@ -771,8 +753,7 @@
         },
         {
           "name": "quadkey_z8",
-          "type": "VARCHAR",
-          "description": "[spatial_index] Quadkey spatial index at zoom level 8 for the flight track"
+          "type": "VARCHAR"
         },
         {
           "name": "year",
@@ -791,8 +772,7 @@
       "table:columns": [
         {
           "name": "geometry",
-          "type": "STRUCT(x DOUBLE, y DOUBLE)[]",
-          "description": "[geometry] Flight path as array of (x, y) coordinate structs forming a linestring"
+          "type": "STRUCT(x DOUBLE, y DOUBLE)[]"
         },
         {
           "name": "icao",
@@ -836,8 +816,7 @@
         },
         {
           "name": "quadkey_z8",
-          "type": "VARCHAR",
-          "description": "[spatial_index] Quadkey spatial index at zoom level 8 for the flight track"
+          "type": "VARCHAR"
         },
         {
           "name": "year",
@@ -856,8 +835,7 @@
       "table:columns": [
         {
           "name": "geometry",
-          "type": "STRUCT(x DOUBLE, y DOUBLE)[]",
-          "description": "[geometry] Flight path as array of (x, y) coordinate structs forming a linestring"
+          "type": "STRUCT(x DOUBLE, y DOUBLE)[]"
         },
         {
           "name": "icao",
@@ -901,8 +879,7 @@
         },
         {
           "name": "quadkey_z8",
-          "type": "VARCHAR",
-          "description": "[spatial_index] Quadkey spatial index at zoom level 8 for the flight track"
+          "type": "VARCHAR"
         },
         {
           "name": "year",
@@ -921,8 +898,7 @@
       "table:columns": [
         {
           "name": "geometry",
-          "type": "STRUCT(x DOUBLE, y DOUBLE)[]",
-          "description": "[geometry] Flight path as array of (x, y) coordinate structs forming a linestring"
+          "type": "STRUCT(x DOUBLE, y DOUBLE)[]"
         },
         {
           "name": "icao",
@@ -966,8 +942,7 @@
         },
         {
           "name": "quadkey_z8",
-          "type": "VARCHAR",
-          "description": "[spatial_index] Quadkey spatial index at zoom level 8 for the flight track"
+          "type": "VARCHAR"
         },
         {
           "name": "year",
@@ -986,8 +961,7 @@
       "table:columns": [
         {
           "name": "geometry",
-          "type": "STRUCT(x DOUBLE, y DOUBLE)[]",
-          "description": "[geometry] Flight path as array of (x, y) coordinate structs forming a linestring"
+          "type": "STRUCT(x DOUBLE, y DOUBLE)[]"
         },
         {
           "name": "icao",
@@ -1031,8 +1005,7 @@
         },
         {
           "name": "quadkey_z8",
-          "type": "VARCHAR",
-          "description": "[spatial_index] Quadkey spatial index at zoom level 8 for the flight track"
+          "type": "VARCHAR"
         },
         {
           "name": "year",
@@ -1051,8 +1024,7 @@
       "table:columns": [
         {
           "name": "geometry",
-          "type": "STRUCT(x DOUBLE, y DOUBLE)[]",
-          "description": "[geometry] Flight path as array of (x, y) coordinate structs forming a linestring"
+          "type": "STRUCT(x DOUBLE, y DOUBLE)[]"
         },
         {
           "name": "icao",
@@ -1096,8 +1068,7 @@
         },
         {
           "name": "quadkey_z8",
-          "type": "VARCHAR",
-          "description": "[spatial_index] Quadkey spatial index at zoom level 8 for the flight track"
+          "type": "VARCHAR"
         },
         {
           "name": "year",
@@ -1116,8 +1087,7 @@
       "table:columns": [
         {
           "name": "geometry",
-          "type": "STRUCT(x DOUBLE, y DOUBLE)[]",
-          "description": "[geometry] Flight path as array of (x, y) coordinate structs forming a linestring"
+          "type": "STRUCT(x DOUBLE, y DOUBLE)[]"
         },
         {
           "name": "icao",
@@ -1161,8 +1131,7 @@
         },
         {
           "name": "quadkey_z8",
-          "type": "VARCHAR",
-          "description": "[spatial_index] Quadkey spatial index at zoom level 8 for the flight track"
+          "type": "VARCHAR"
         },
         {
           "name": "year",
@@ -1181,8 +1150,7 @@
       "table:columns": [
         {
           "name": "geometry",
-          "type": "STRUCT(x DOUBLE, y DOUBLE)[]",
-          "description": "[geometry] Flight path as array of (x, y) coordinate structs forming a linestring"
+          "type": "STRUCT(x DOUBLE, y DOUBLE)[]"
         },
         {
           "name": "icao",
@@ -1226,8 +1194,7 @@
         },
         {
           "name": "quadkey_z8",
-          "type": "VARCHAR",
-          "description": "[spatial_index] Quadkey spatial index at zoom level 8 for the flight track"
+          "type": "VARCHAR"
         },
         {
           "name": "year",
@@ -1246,8 +1213,7 @@
       "table:columns": [
         {
           "name": "geometry",
-          "type": "STRUCT(x DOUBLE, y DOUBLE)[]",
-          "description": "[geometry] Flight path as array of (x, y) coordinate structs forming a linestring"
+          "type": "STRUCT(x DOUBLE, y DOUBLE)[]"
         },
         {
           "name": "icao",
@@ -1291,8 +1257,7 @@
         },
         {
           "name": "quadkey_z8",
-          "type": "VARCHAR",
-          "description": "[spatial_index] Quadkey spatial index at zoom level 8 for the flight track"
+          "type": "VARCHAR"
         },
         {
           "name": "year",
@@ -1311,8 +1276,7 @@
       "table:columns": [
         {
           "name": "geometry",
-          "type": "STRUCT(x DOUBLE, y DOUBLE)[]",
-          "description": "[geometry] Flight path as array of (x, y) coordinate structs forming a linestring"
+          "type": "STRUCT(x DOUBLE, y DOUBLE)[]"
         },
         {
           "name": "icao",
@@ -1356,8 +1320,7 @@
         },
         {
           "name": "quadkey_z8",
-          "type": "VARCHAR",
-          "description": "[spatial_index] Quadkey spatial index at zoom level 8 for the flight track"
+          "type": "VARCHAR"
         },
         {
           "name": "year",
@@ -1376,8 +1339,7 @@
       "table:columns": [
         {
           "name": "geometry",
-          "type": "STRUCT(x DOUBLE, y DOUBLE)[]",
-          "description": "[geometry] Flight path as array of (x, y) coordinate structs forming a linestring"
+          "type": "STRUCT(x DOUBLE, y DOUBLE)[]"
         },
         {
           "name": "icao",
@@ -1421,8 +1383,7 @@
         },
         {
           "name": "quadkey_z8",
-          "type": "VARCHAR",
-          "description": "[spatial_index] Quadkey spatial index at zoom level 8 for the flight track"
+          "type": "VARCHAR"
         },
         {
           "name": "year",
@@ -1441,8 +1402,7 @@
       "table:columns": [
         {
           "name": "geometry",
-          "type": "STRUCT(x DOUBLE, y DOUBLE)[]",
-          "description": "[geometry] Flight path as array of (x, y) coordinate structs forming a linestring"
+          "type": "STRUCT(x DOUBLE, y DOUBLE)[]"
         },
         {
           "name": "icao",
@@ -1486,8 +1446,7 @@
         },
         {
           "name": "quadkey_z8",
-          "type": "VARCHAR",
-          "description": "[spatial_index] Quadkey spatial index at zoom level 8 for the flight track"
+          "type": "VARCHAR"
         },
         {
           "name": "year",
@@ -1506,8 +1465,7 @@
       "table:columns": [
         {
           "name": "geometry",
-          "type": "STRUCT(x DOUBLE, y DOUBLE)[]",
-          "description": "[geometry] Flight path as array of (x, y) coordinate structs forming a linestring"
+          "type": "STRUCT(x DOUBLE, y DOUBLE)[]"
         },
         {
           "name": "icao",
@@ -1551,8 +1509,7 @@
         },
         {
           "name": "quadkey_z8",
-          "type": "VARCHAR",
-          "description": "[spatial_index] Quadkey spatial index at zoom level 8 for the flight track"
+          "type": "VARCHAR"
         },
         {
           "name": "year",
@@ -1571,8 +1528,7 @@
       "table:columns": [
         {
           "name": "geometry",
-          "type": "STRUCT(x DOUBLE, y DOUBLE)[]",
-          "description": "[geometry] Flight path as array of (x, y) coordinate structs forming a linestring"
+          "type": "STRUCT(x DOUBLE, y DOUBLE)[]"
         },
         {
           "name": "icao",
@@ -1616,8 +1572,7 @@
         },
         {
           "name": "quadkey_z8",
-          "type": "VARCHAR",
-          "description": "[spatial_index] Quadkey spatial index at zoom level 8 for the flight track"
+          "type": "VARCHAR"
         },
         {
           "name": "year",
@@ -1636,8 +1591,7 @@
       "table:columns": [
         {
           "name": "geometry",
-          "type": "STRUCT(x DOUBLE, y DOUBLE)[]",
-          "description": "[geometry] Flight path as array of (x, y) coordinate structs forming a linestring"
+          "type": "STRUCT(x DOUBLE, y DOUBLE)[]"
         },
         {
           "name": "icao",
@@ -1681,8 +1635,7 @@
         },
         {
           "name": "quadkey_z8",
-          "type": "VARCHAR",
-          "description": "[spatial_index] Quadkey spatial index at zoom level 8 for the flight track"
+          "type": "VARCHAR"
         },
         {
           "name": "year",
@@ -1701,8 +1654,7 @@
       "table:columns": [
         {
           "name": "geometry",
-          "type": "STRUCT(x DOUBLE, y DOUBLE)[]",
-          "description": "[geometry] Flight path as array of (x, y) coordinate structs forming a linestring"
+          "type": "STRUCT(x DOUBLE, y DOUBLE)[]"
         },
         {
           "name": "icao",
@@ -1746,8 +1698,7 @@
         },
         {
           "name": "quadkey_z8",
-          "type": "VARCHAR",
-          "description": "[spatial_index] Quadkey spatial index at zoom level 8 for the flight track"
+          "type": "VARCHAR"
         },
         {
           "name": "year",
@@ -1766,8 +1717,7 @@
       "table:columns": [
         {
           "name": "geometry",
-          "type": "STRUCT(x DOUBLE, y DOUBLE)[]",
-          "description": "[geometry] Flight path as array of (x, y) coordinate structs forming a linestring"
+          "type": "STRUCT(x DOUBLE, y DOUBLE)[]"
         },
         {
           "name": "icao",
@@ -1811,8 +1761,7 @@
         },
         {
           "name": "quadkey_z8",
-          "type": "VARCHAR",
-          "description": "[spatial_index] Quadkey spatial index at zoom level 8 for the flight track"
+          "type": "VARCHAR"
         },
         {
           "name": "year",
@@ -1831,8 +1780,7 @@
       "table:columns": [
         {
           "name": "geometry",
-          "type": "STRUCT(x DOUBLE, y DOUBLE)[]",
-          "description": "[geometry] Flight path as array of (x, y) coordinate structs forming a linestring"
+          "type": "STRUCT(x DOUBLE, y DOUBLE)[]"
         },
         {
           "name": "icao",
@@ -1876,8 +1824,7 @@
         },
         {
           "name": "quadkey_z8",
-          "type": "VARCHAR",
-          "description": "[spatial_index] Quadkey spatial index at zoom level 8 for the flight track"
+          "type": "VARCHAR"
         },
         {
           "name": "year",
@@ -1896,8 +1843,7 @@
       "table:columns": [
         {
           "name": "geometry",
-          "type": "STRUCT(x DOUBLE, y DOUBLE)[]",
-          "description": "[geometry] Flight path as array of (x, y) coordinate structs forming a linestring"
+          "type": "STRUCT(x DOUBLE, y DOUBLE)[]"
         },
         {
           "name": "icao",
@@ -1941,8 +1887,7 @@
         },
         {
           "name": "quadkey_z8",
-          "type": "VARCHAR",
-          "description": "[spatial_index] Quadkey spatial index at zoom level 8 for the flight track"
+          "type": "VARCHAR"
         },
         {
           "name": "year",
@@ -1961,8 +1906,7 @@
       "table:columns": [
         {
           "name": "geometry",
-          "type": "STRUCT(x DOUBLE, y DOUBLE)[]",
-          "description": "[geometry] Flight path as array of (x, y) coordinate structs forming a linestring"
+          "type": "STRUCT(x DOUBLE, y DOUBLE)[]"
         },
         {
           "name": "icao",
@@ -2006,8 +1950,7 @@
         },
         {
           "name": "quadkey_z8",
-          "type": "VARCHAR",
-          "description": "[spatial_index] Quadkey spatial index at zoom level 8 for the flight track"
+          "type": "VARCHAR"
         },
         {
           "name": "year",
@@ -2026,8 +1969,7 @@
       "table:columns": [
         {
           "name": "geometry",
-          "type": "STRUCT(x DOUBLE, y DOUBLE)[]",
-          "description": "[geometry] Flight path as array of (x, y) coordinate structs forming a linestring"
+          "type": "STRUCT(x DOUBLE, y DOUBLE)[]"
         },
         {
           "name": "icao",
@@ -2071,8 +2013,7 @@
         },
         {
           "name": "quadkey_z8",
-          "type": "VARCHAR",
-          "description": "[spatial_index] Quadkey spatial index at zoom level 8 for the flight track"
+          "type": "VARCHAR"
         },
         {
           "name": "year",
@@ -2094,15 +2035,27 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "updated_at": "2025-09-03T16:39:55.567Z",
+  "created_at": "2025-09-03T21:24:19.165799+00:00",
+  "featured": 0,
+  "total_bytes": 1332545965066,
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
   "file_count": 732918,
+  "product_id": "flight-tracks",
   "disabled": false,
   "account_id": "root-geospatial",
   "visibility": "public",
-  "created_at": "2025-09-03T21:24:19.165799+00:00",
-  "product_id": "flight-tracks",
-  "total_bytes": 1332545965066,
-  "featured": 0,
+  "data_mode": "open",
+  "updated_at": "2025-09-03T16:39:55.567Z",
+  "exts": {
+    "parquet": 732911,
+    "png": 1,
+    "txt": 1,
+    "md": 2,
+    "py": 3
+  },
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -2115,21 +2068,9 @@
       "prefix": "root-geospatial/flight-tracks/"
     }
   },
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "data_mode": "open",
-  "exts": {
-    "parquet": 732911,
-    "png": 1,
-    "txt": 1,
-    "md": 2,
-    "py": 3
-  },
   "_review": [
-    "extent.spatial.bbox: omitted; spatial reference is categorical via [flights-2023-04-06.geometry (geometry), flights-2023-04-06.quadkey_z8 (spatial_index), flights-2023-04-12.geometry (geometry), flights-2023-04-12.quadkey_z8 (spatial_index), flights-2023-07-03.geometry (geometry), flights-2023-07-03.quadkey_z8 (spatial_index), flights-2023-07-16.geometry (geometry), flights-2023-07-16.quadkey_z8 (spatial_index), flights-2023-08-24.geometry (geometry), flights-2023-08-24.quadkey_z8 (spatial_index), flights-2023-09-26.geometry (geometry), flights-2023-09-26.quadkey_z8 (spatial_index), flights-2023-10-25.geometry (geometry), flights-2023-10-25.quadkey_z8 (spatial_index), flights-2023-11-20.geometry (geometry), flights-2023-11-20.quadkey_z8 (spatial_index), flights-2023-12-27.geometry (geometry), flights-2023-12-27.quadkey_z8 (spatial_index), flights-2024-01-13.geometry (geometry), flights-2024-01-13.quadkey_z8 (spatial_index), flights-2024-01-17.geometry (geometry), flights-2024-01-17.quadkey_z8 (spatial_index), flights-2024-01-22.geometry (geometry), flights-2024-01-22.quadkey_z8 (spatial_index), flights-2024-07-31.geometry (geometry), flights-2024-07-31.quadkey_z8 (spatial_index), flights-2024-08-10.geometry (geometry), flights-2024-08-10.quadkey_z8 (spatial_index), flights-2024-08-15.geometry (geometry), flights-2024-08-15.quadkey_z8 (spatial_index), flights-2024-09-18.geometry (geometry), flights-2024-09-18.quadkey_z8 (spatial_index), flights-2024-10-01.geometry (geometry), flights-2024-10-01.quadkey_z8 (spatial_index), flights-2024-10-04.geometry (geometry), flights-2024-10-04.quadkey_z8 (spatial_index), flights-2024-10-30.geometry (geometry), flights-2024-10-30.quadkey_z8 (spatial_index), flights-2024-11-11.geometry (geometry), flights-2024-11-11.quadkey_z8 (spatial_index), flights-2024-12-09.geometry (geometry), flights-2024-12-09.quadkey_z8 (spatial_index), flights-2024-12-23.geometry (geometry), flights-2024-12-23.quadkey_z8 (spatial_index), flights-2025-03-21.geometry (geometry), flights-2025-03-21.quadkey_z8 (spatial_index), flights-2025-03-29.geometry (geometry), flights-2025-03-29.quadkey_z8 (spatial_index), flights-2025-04-19.geometry (geometry), flights-2025-04-19.quadkey_z8 (spatial_index), flights-2025-04-28.geometry (geometry), flights-2025-04-28.quadkey_z8 (spatial_index), flights-2025-06-05.geometry (geometry), flights-2025-06-05.quadkey_z8 (spatial_index), flights-2025-08-08.geometry (geometry), flights-2025-08-08.quadkey_z8 (spatial_index), flights-2025-09-14.geometry (geometry), flights-2025-09-14.quadkey_z8 (spatial_index), flights-2025-10-07.geometry (geometry), flights-2025-10-07.quadkey_z8 (spatial_index), flights-2026-01-02.geometry (geometry), flights-2026-01-02.quadkey_z8 (spatial_index)]. Add bbox once a placename \u2192 bbox gazetteer is available."
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [flights-2023-09-26.geometry (geometry), flights-2023-09-26.quadkey_z8 (spatial_index)]. Add bbox once a placename \u2192 bbox gazetteer is available."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-06-04T23:14:39+00:00"
+  "cataloged_at": "2026-06-05T00:24:14+00:00"
 }

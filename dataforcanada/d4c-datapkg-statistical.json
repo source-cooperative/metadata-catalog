@@ -6,16 +6,16 @@
   ],
   "id": "dataforcanada/d4c-datapkg-statistical",
   "title": "Data for Canada - Statistical Data Packages",
-  "description": "Statistical data packages from Statistics Canada's 2021 Census covering all of Canada, including agricultural census data (crop production, livestock counts, farm finances, land use, and farm operator demographics) and health workforce demographic tables. Data is aggregated across multiple administrative geographic levels\u2014agricultural regions, census divisions, consolidated subdivisions, and aggregate dissemination areas\u2014and delivered in cloud-native formats (Parquet, PMTiles, GeoJSON, FlatGeobuf).",
+  "description": "Statistical data packages derived from Statistics Canada's 2021 Census of Agriculture and 2021 Population Census, covering all of Canada. Includes agricultural census data on crop production, livestock counts, farm finances, land use, and farm operator demographics, as well as health workforce demographic tables. Data is aggregated to agricultural regions, census divisions, consolidated subdivisions, and aggregate dissemination areas, and delivered in cloud-native formats (Parquet, PMTiles, FlatGeobuf).",
   "license": "proprietary",
   "keywords": [
     "agriculture",
     "crop-classification",
     "land-use",
     "arable-land",
+    "livestock",
     "census",
     "canada",
-    "livestock",
     "health-workforce"
   ],
   "providers": [
@@ -158,12 +158,13 @@
         },
         {
           "name": "ada_dguid",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[admin_code] Statistics Canada DGUID for the aggregate dissemination area"
         },
         {
           "name": "geom",
           "type": "GEOMETRY('OGC:CRS84')",
-          "description": "[geometry] Cartographic boundary polygon for aggregate dissemination area (OGC:CRS84)"
+          "description": "[geometry] OGC:CRS84 polygon geometry for aggregate dissemination areas (cartographic boundary)"
         },
         {
           "name": "geom_bbox",
@@ -234,7 +235,8 @@
         },
         {
           "name": "pr_iso_code",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[admin_code] ISO province/territory code"
         },
         {
           "name": "car_dguid",
@@ -278,12 +280,13 @@
         },
         {
           "name": "ada_dguid",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[admin_code] Statistics Canada DGUID for the aggregate dissemination area"
         },
         {
           "name": "geom",
           "type": "GEOMETRY('OGC:CRS84')",
-          "description": "[geometry] Digital boundary polygon for aggregate dissemination area (OGC:CRS84)"
+          "description": "[geometry] OGC:CRS84 polygon geometry for aggregate dissemination areas (digital boundary)"
         },
         {
           "name": "geom_bbox",
@@ -303,7 +306,7 @@
         {
           "name": "car_dguid",
           "type": "VARCHAR",
-          "description": "[admin_code] Statistics Canada DGUID for Canadian Agricultural Region"
+          "description": "[admin_code] Statistics Canada DGUID for the census agricultural region"
         },
         {
           "name": "directny",
@@ -3339,7 +3342,7 @@
         {
           "name": "ccs_dguid",
           "type": "VARCHAR",
-          "description": "[admin_code] Statistics Canada DGUID for Census Consolidated Subdivision"
+          "description": "[admin_code] Statistics Canada DGUID for the census consolidated subdivision"
         },
         {
           "name": "directny",
@@ -6375,7 +6378,7 @@
         {
           "name": "cd_dguid",
           "type": "VARCHAR",
-          "description": "[admin_code] Statistics Canada DGUID for Census Division"
+          "description": "[admin_code] Statistics Canada DGUID for the census division"
         },
         {
           "name": "directny",
@@ -9423,12 +9426,12 @@
         {
           "name": "GEO",
           "type": "VARCHAR",
-          "description": "[placename] Geographic area name for health workforce table"
+          "description": "[placename] Geographic name of the reporting area"
         },
         {
           "name": "DGUID",
           "type": "VARCHAR",
-          "description": "[admin_code] Statistics Canada DGUID for geographic area"
+          "description": "[admin_code] Statistics Canada DGUID for the geographic reporting unit"
         },
         {
           "name": "Health occupations (52)",
@@ -9496,12 +9499,12 @@
         {
           "name": "GEO",
           "type": "VARCHAR",
-          "description": "[placename] Geographic area name for health workforce immigration table"
+          "description": "[placename] Geographic name of the reporting area"
         },
         {
           "name": "DGUID",
           "type": "VARCHAR",
-          "description": "[admin_code] Statistics Canada DGUID for geographic area"
+          "description": "[admin_code] Statistics Canada DGUID for the geographic reporting unit"
         },
         {
           "name": "First official language spoken (5)",
@@ -9577,12 +9580,12 @@
         {
           "name": "GEO",
           "type": "VARCHAR",
-          "description": "[placename] Geographic area name for health workforce education table"
+          "description": "[placename] Geographic name of the reporting area"
         },
         {
           "name": "DGUID",
           "type": "VARCHAR",
-          "description": "[admin_code] Statistics Canada DGUID for geographic area"
+          "description": "[admin_code] Statistics Canada DGUID for the geographic reporting unit"
         },
         {
           "name": "First official language spoken (5)",
@@ -9986,12 +9989,12 @@
         {
           "name": "GEO",
           "type": "VARCHAR",
-          "description": "[placename] Geographic area name for health workforce language-at-work table"
+          "description": "[placename] Geographic name of the reporting area"
         },
         {
           "name": "DGUID",
           "type": "VARCHAR",
-          "description": "[admin_code] Statistics Canada DGUID for geographic area"
+          "description": "[admin_code] Statistics Canada DGUID for the geographic reporting unit"
         },
         {
           "name": "First official language spoken (5)",
@@ -10083,12 +10086,12 @@
         {
           "name": "GEO",
           "type": "VARCHAR",
-          "description": "[placename] Geographic area name for health workforce official language table"
+          "description": "[placename] Geographic name of the reporting area"
         },
         {
           "name": "DGUID",
           "type": "VARCHAR",
-          "description": "[admin_code] Statistics Canada DGUID for geographic area"
+          "description": "[admin_code] Statistics Canada DGUID for the geographic reporting unit"
         },
         {
           "name": "First official language spoken (5)",
@@ -10151,19 +10154,10 @@
     }
   ],
   "total_bytes": 101408176485,
-  "featured": 0,
+  "created_at": "2026-02-20T13:13:51.106Z",
   "disabled": false,
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
   "data_mode": "open",
   "product_id": "d4c-datapkg-statistical",
-  "created_at": "2026-02-20T13:13:51.106Z",
-  "account_id": "dataforcanada",
-  "visibility": "public",
-  "file_count": 15847,
-  "updated_at": "2026-02-27T22:34:07.463Z",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -10176,15 +10170,24 @@
       "prefix": "dataforcanada/d4c-datapkg-statistical/"
     }
   },
+  "file_count": 15847,
+  "visibility": "public",
+  "account_id": "dataforcanada",
+  "updated_at": "2026-02-27T22:34:07.463Z",
+  "featured": 0,
   "exts": {
     "pmtiles": 18,
     "parquet": 7935,
     "json": 7891,
     "fgb": 3
   },
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
   "_review": [
-    "extent.spatial.bbox: omitted; spatial reference is categorical via [ca_statcan_2021A000011124_d4c-datapkg-statistical_aggregate_dissemination_areas_cartographic_2021_v0.1.0-beta.geom (geometry), ca_statcan_2021A000011124_d4c-datapkg-statistical_aggregate_dissemination_areas_digital_2021_v0.1.0-beta.geom (geometry), ca_statcan_2021A000011124_d4c-datapkg-statistical_aggregate_dissemination_areas_cartographic_2021_v0.1.0-beta.pr_iso_code (admin_code), ca_statcan_2021A000011124_d4c-datapkg-statistical_census_ag_census_agricultural_regions_2021_v0.1.0-beta.car_dguid (admin_code), ca_statcan_2021A000011124_d4c-datapkg-statistical_census_ag_census_consolidated_subdivisions_2021_v0.1.0-beta.ccs_dguid (admin_code), ca_statcan_2021A000011124_d4c-datapkg-statistical_census_ag_census_divisions_2021_v0.1.0-beta.cd_dguid (admin_code), 98100659.GEO (placename), 98100659.DGUID (admin_code), 98100660.GEO (placename), 98100660.DGUID (admin_code), 98100661.GEO (placename), 98100661.DGUID (admin_code), 98100662.GEO (placename), 98100662.DGUID (admin_code), 98100663.GEO (placename), 98100663.DGUID (admin_code)]. Add bbox once a placename \u2192 bbox gazetteer is available."
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [ca_statcan_2021A000011124_d4c-datapkg-statistical_aggregate_dissemination_areas_cartographic_2021_v0.1.0-beta.geom (geometry), ca_statcan_2021A000011124_d4c-datapkg-statistical_aggregate_dissemination_areas_cartographic_2021_v0.1.0-beta.ada_dguid (admin_code), ca_statcan_2021A000011124_d4c-datapkg-statistical_aggregate_dissemination_areas_cartographic_2021_v0.1.0-beta.pr_iso_code (admin_code), ca_statcan_2021A000011124_d4c-datapkg-statistical_aggregate_dissemination_areas_digital_2021_v0.1.0-beta.geom (geometry), ca_statcan_2021A000011124_d4c-datapkg-statistical_aggregate_dissemination_areas_digital_2021_v0.1.0-beta.ada_dguid (admin_code), ca_statcan_2021A000011124_d4c-datapkg-statistical_aggregate_dissemination_areas_digital_2021_v0.1.0-beta.pr_iso_code (admin_code), ca_statcan_2021A000011124_d4c-datapkg-statistical_census_ag_census_agricultural_regions_2021_v0.1.0-beta.car_dguid (admin_code), ca_statcan_2021A000011124_d4c-datapkg-statistical_census_ag_census_consolidated_subdivisions_2021_v0.1.0-beta.ccs_dguid (admin_code), ca_statcan_2021A000011124_d4c-datapkg-statistical_census_ag_census_divisions_2021_v0.1.0-beta.cd_dguid (admin_code), 98100659.GEO (placename), 98100659.DGUID (admin_code), 98100660.GEO (placename), 98100660.DGUID (admin_code), 98100661.GEO (placename), 98100661.DGUID (admin_code), 98100662.GEO (placename), 98100662.DGUID (admin_code), 98100663.GEO (placename), 98100663.DGUID (admin_code)]. Add bbox once a placename \u2192 bbox gazetteer is available."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-06-04T23:33:51+00:00"
+  "cataloged_at": "2026-06-05T00:42:23+00:00"
 }

@@ -11,7 +11,9 @@
     "address-registry",
     "road-network",
     "canada",
-    "statistics-canada"
+    "statistics-canada",
+    "census-geography",
+    "national-address-register"
   ],
   "providers": [
     {
@@ -123,7 +125,7 @@
         {
           "name": "pr_iso_code",
           "type": "VARCHAR",
-          "description": "[admin_code] ISO code for the Canadian province or territory"
+          "description": "[admin_code] ISO 3166-2 province/territory code"
         },
         {
           "name": "car_dguid",
@@ -227,7 +229,8 @@
         },
         {
           "name": "da_dguid",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[admin_code] StatCan Dissemination Area DGUID (geographic unique identifier)"
         },
         {
           "name": "db_dguid",
@@ -276,12 +279,12 @@
         {
           "name": "mail_postal_code",
           "type": "VARCHAR",
-          "description": "[zipcode] Canadian postal code for the address"
+          "description": "[zipcode] Canadian postal code associated with the mailing address"
         },
         {
           "name": "mail_municipality_name",
           "type": "VARCHAR",
-          "description": "[placename] Municipality name for the mailing address"
+          "description": "[placename] Municipality name associated with the mailing address"
         },
         {
           "name": "bu_n_civic_add",
@@ -314,7 +317,7 @@
         {
           "name": "geom",
           "type": "GEOMETRY('OGC:CRS84')",
-          "description": "[geometry] Point geometry of the address in OGC CRS84"
+          "description": "[geometry] Point geometry of the address in OGC CRS84 (WGS84 lon/lat)"
         },
         {
           "name": "geom_bbox",
@@ -386,7 +389,7 @@
         {
           "name": "pr_iso_code",
           "type": "VARCHAR",
-          "description": "[admin_code] ISO code for the Canadian province or territory"
+          "description": "[admin_code] ISO 3166-2 province/territory code"
         },
         {
           "name": "car_dguid",
@@ -490,7 +493,8 @@
         },
         {
           "name": "da_dguid",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[admin_code] StatCan Dissemination Area DGUID (geographic unique identifier)"
         },
         {
           "name": "db_dguid",
@@ -539,12 +543,12 @@
         {
           "name": "mail_postal_code",
           "type": "VARCHAR",
-          "description": "[zipcode] Canadian postal code for the address"
+          "description": "[zipcode] Canadian postal code associated with the mailing address"
         },
         {
           "name": "mail_municipality_name",
           "type": "VARCHAR",
-          "description": "[placename] Municipality name for the mailing address"
+          "description": "[placename] Municipality name associated with the mailing address"
         },
         {
           "name": "bu_n_civic_add",
@@ -577,7 +581,7 @@
         {
           "name": "geom",
           "type": "GEOMETRY('OGC:CRS84')",
-          "description": "[geometry] Point geometry of the address in OGC CRS84"
+          "description": "[geometry] Point geometry of the address in OGC CRS84 (WGS84 lon/lat)"
         },
         {
           "name": "geom_bbox",
@@ -649,7 +653,7 @@
         {
           "name": "pr_iso_code",
           "type": "VARCHAR",
-          "description": "[admin_code] ISO code for the Canadian province or territory"
+          "description": "[admin_code] ISO 3166-2 province/territory code"
         },
         {
           "name": "car_dguid",
@@ -753,7 +757,8 @@
         },
         {
           "name": "da_dguid",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[admin_code] StatCan Dissemination Area DGUID (geographic unique identifier)"
         },
         {
           "name": "db_dguid",
@@ -802,12 +807,12 @@
         {
           "name": "mail_postal_code",
           "type": "VARCHAR",
-          "description": "[zipcode] Canadian postal code for the address"
+          "description": "[zipcode] Canadian postal code associated with the mailing address"
         },
         {
           "name": "mail_municipality_name",
           "type": "VARCHAR",
-          "description": "[placename] Municipality name for the mailing address"
+          "description": "[placename] Municipality name associated with the mailing address"
         },
         {
           "name": "bu_n_civic_add",
@@ -840,7 +845,7 @@
         {
           "name": "geom",
           "type": "GEOMETRY('OGC:CRS84')",
-          "description": "[geometry] Point geometry of the address in OGC CRS84"
+          "description": "[geometry] Point geometry of the address in OGC CRS84 (WGS84 lon/lat)"
         },
         {
           "name": "geom_bbox",
@@ -928,12 +933,12 @@
         {
           "name": "pr_iso_code_left",
           "type": "VARCHAR",
-          "description": "[admin_code] ISO province/territory code on the left side of the road segment"
+          "description": "[admin_code] ISO 3166-2 province/territory code for left side of road segment"
         },
         {
           "name": "pr_iso_code_right",
           "type": "VARCHAR",
-          "description": "[admin_code] ISO province/territory code on the right side of the road segment"
+          "description": "[admin_code] ISO 3166-2 province/territory code for right side of road segment"
         },
         {
           "name": "car_dguid_left",
@@ -1057,7 +1062,8 @@
         },
         {
           "name": "csd_name_left",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[placename] Census subdivision name for left side of road segment"
         },
         {
           "name": "csd_name_right",
@@ -1130,7 +1136,7 @@
         {
           "name": "geom",
           "type": "GEOMETRY('OGC:CRS84')",
-          "description": "[geometry] Line geometry of the road segment in OGC CRS84"
+          "description": "[geometry] Line geometry of the road segment in OGC CRS84 (WGS84 lon/lat)"
         },
         {
           "name": "geom_bbox",
@@ -1152,8 +1158,7 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "account_id": "dataforcanada",
-  "visibility": "public",
+  "updated_at": "2026-02-27T22:33:13.903Z",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -1166,27 +1171,28 @@
       "prefix": "dataforcanada/d4c-datapkg-foundation/"
     }
   },
+  "product_id": "d4c-datapkg-foundation",
+  "created_at": "2026-02-22T00:28:58.731Z",
   "file_count": 11,
   "exts": {
     "parquet": 4,
     "fgb": 3,
     "pmtiles": 4
   },
-  "featured": 0,
   "disabled": false,
-  "updated_at": "2026-02-27T22:33:13.903Z",
+  "visibility": "public",
+  "total_bytes": 34267781298,
+  "data_mode": "open",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "created_at": "2026-02-22T00:28:58.731Z",
-  "product_id": "d4c-datapkg-foundation",
-  "total_bytes": 34267781298,
-  "data_mode": "open",
+  "account_id": "dataforcanada",
+  "featured": 0,
   "_review": [
     "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
-    "extent.spatial.bbox: omitted; spatial reference is categorical via [ca_statcan_2021A000011124_d4c-datapkg-foundation_national_address_register_2024-06_v0.1.0-beta.geom (geometry), ca_statcan_2021A000011124_d4c-datapkg-foundation_national_address_register_2024-06_v0.1.0-beta.mail_postal_code (zipcode), ca_statcan_2021A000011124_d4c-datapkg-foundation_national_address_register_2024-06_v0.1.0-beta.pr_iso_code (admin_code), ca_statcan_2021A000011124_d4c-datapkg-foundation_national_address_register_2024-06_v0.1.0-beta.mail_municipality_name (placename), ca_statcan_2021A000011124_d4c-datapkg-foundation_national_address_register_2024-12_v0.1.0-beta.geom (geometry), ca_statcan_2021A000011124_d4c-datapkg-foundation_national_address_register_2024-12_v0.1.0-beta.mail_postal_code (zipcode), ca_statcan_2021A000011124_d4c-datapkg-foundation_national_address_register_2024-12_v0.1.0-beta.pr_iso_code (admin_code), ca_statcan_2021A000011124_d4c-datapkg-foundation_national_address_register_2024-12_v0.1.0-beta.mail_municipality_name (placename), ca_statcan_2021A000011124_d4c-datapkg-foundation_national_address_register_2025-07_v0.1.0-beta.geom (geometry), ca_statcan_2021A000011124_d4c-datapkg-foundation_national_address_register_2025-07_v0.1.0-beta.mail_postal_code (zipcode), ca_statcan_2021A000011124_d4c-datapkg-foundation_national_address_register_2025-07_v0.1.0-beta.pr_iso_code (admin_code), ca_statcan_2021A000011124_d4c-datapkg-foundation_national_address_register_2025-07_v0.1.0-beta.mail_municipality_name (placename), ca_statcan_2021A000011124_d4c-datapkg-foundation_road_network_2021_v0.1.0-beta.geom (geometry), ca_statcan_2021A000011124_d4c-datapkg-foundation_road_network_2021_v0.1.0-beta.pr_iso_code_left (admin_code), ca_statcan_2021A000011124_d4c-datapkg-foundation_road_network_2021_v0.1.0-beta.pr_iso_code_right (admin_code)]. Add bbox once a placename \u2192 bbox gazetteer is available."
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [ca_statcan_2021A000011124_d4c-datapkg-foundation_national_address_register_2024-06_v0.1.0-beta.geom (geometry), ca_statcan_2021A000011124_d4c-datapkg-foundation_national_address_register_2024-06_v0.1.0-beta.mail_postal_code (zipcode), ca_statcan_2021A000011124_d4c-datapkg-foundation_national_address_register_2024-06_v0.1.0-beta.pr_iso_code (admin_code), ca_statcan_2021A000011124_d4c-datapkg-foundation_national_address_register_2024-06_v0.1.0-beta.da_dguid (admin_code), ca_statcan_2021A000011124_d4c-datapkg-foundation_national_address_register_2024-06_v0.1.0-beta.mail_municipality_name (placename), ca_statcan_2021A000011124_d4c-datapkg-foundation_national_address_register_2024-12_v0.1.0-beta.geom (geometry), ca_statcan_2021A000011124_d4c-datapkg-foundation_national_address_register_2024-12_v0.1.0-beta.mail_postal_code (zipcode), ca_statcan_2021A000011124_d4c-datapkg-foundation_national_address_register_2024-12_v0.1.0-beta.pr_iso_code (admin_code), ca_statcan_2021A000011124_d4c-datapkg-foundation_national_address_register_2024-12_v0.1.0-beta.da_dguid (admin_code), ca_statcan_2021A000011124_d4c-datapkg-foundation_national_address_register_2024-12_v0.1.0-beta.mail_municipality_name (placename), ca_statcan_2021A000011124_d4c-datapkg-foundation_national_address_register_2025-07_v0.1.0-beta.geom (geometry), ca_statcan_2021A000011124_d4c-datapkg-foundation_national_address_register_2025-07_v0.1.0-beta.mail_postal_code (zipcode), ca_statcan_2021A000011124_d4c-datapkg-foundation_national_address_register_2025-07_v0.1.0-beta.pr_iso_code (admin_code), ca_statcan_2021A000011124_d4c-datapkg-foundation_national_address_register_2025-07_v0.1.0-beta.da_dguid (admin_code), ca_statcan_2021A000011124_d4c-datapkg-foundation_national_address_register_2025-07_v0.1.0-beta.mail_municipality_name (placename), ca_statcan_2021A000011124_d4c-datapkg-foundation_road_network_2021_v0.1.0-beta.geom (geometry), ca_statcan_2021A000011124_d4c-datapkg-foundation_road_network_2021_v0.1.0-beta.pr_iso_code_left (admin_code), ca_statcan_2021A000011124_d4c-datapkg-foundation_road_network_2021_v0.1.0-beta.pr_iso_code_right (admin_code), ca_statcan_2021A000011124_d4c-datapkg-foundation_road_network_2021_v0.1.0-beta.csd_name_left (placename)]. Add bbox once a placename \u2192 bbox gazetteer is available."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-06-04T23:39:18+00:00"
+  "cataloged_at": "2026-06-05T00:47:03+00:00"
 }

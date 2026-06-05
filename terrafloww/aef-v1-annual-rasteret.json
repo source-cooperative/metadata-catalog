@@ -6,7 +6,7 @@
   ],
   "id": "terrafloww/aef-v1-annual-rasteret",
   "title": "AEF-v1 embeddings Rasteret Collection",
-  "description": "A global index of AlphaEarth Foundation (AEF-v1) satellite embeddings produced by Google and Google DeepMind, covering near-global land area from 2018 to 2024. The dataset consists of partitioned Parquet files forming a Rasteret metadata collection, where each record references Cloud Optimized GeoTIFF tiles containing 64-band embedding vectors organized by UTM zone and year.",
+  "description": "Global index of AlphaEarth Foundation (AEF-v1) satellite embeddings produced by Google and Google DeepMind, covering near-global land area from 2018 to 2024. The dataset consists of partitioned Parquet files forming a Rasteret metadata collection, where each record references Cloud Optimized GeoTIFF tiles containing 64-band embedding vectors organized by UTM zone and year.",
   "license": "CC-BY-SA-4.0",
   "keywords": [
     "remote-sensing",
@@ -87,7 +87,7 @@
         {
           "name": "geometry",
           "type": "GEOMETRY('OGC:CRS84')",
-          "description": "[geometry] OGC:CRS84 polygon geometry of each embedding tile footprint"
+          "description": "[geometry] OGC:CRS84 geometry of each embedding tile footprint"
         },
         {
           "name": "datetime",
@@ -99,7 +99,8 @@
         },
         {
           "name": "bbox",
-          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)",
+          "description": "[geometry] Bounding box struct (xmin/ymin/xmax/ymax) of each tile"
         },
         {
           "name": "proj:epsg",
@@ -2499,16 +2500,18 @@
         },
         {
           "name": "bbox_utm",
-          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)",
+          "description": "[geometry] UTM-projected bounding box of indexed tile"
         },
         {
           "name": "bbox",
-          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)",
+          "description": "[geometry] Bounding box of indexed tile in WGS84"
         },
         {
           "name": "geom",
           "type": "GEOMETRY('OGC:CRS84')",
-          "description": "[geometry] OGC:CRS84 geometry of indexed embedding tile"
+          "description": "[geometry] OGC:CRS84 geometry for spatial index lookup"
         },
         {
           "name": "location",
@@ -2555,8 +2558,7 @@
         },
         {
           "name": "geom",
-          "type": "GEOMETRY('OGC:CRS84')",
-          "description": "[geometry] OGC:CRS84 geometry of indexed embedding tile (prior index version)"
+          "type": "GEOMETRY('OGC:CRS84')"
         },
         {
           "name": "location",
@@ -2578,7 +2580,24 @@
       "title": "Source Cooperative product page"
     }
   ],
+  "created_at": "2026-03-08T10:27:46.837Z",
+  "file_count": 10,
+  "data_mode": "open",
+  "account_id": "terrafloww",
+  "updated_at": "2026-03-08T10:29:00.741Z",
   "featured": 0,
+  "total_bytes": 8539351825,
+  "product_id": "aef-v1-annual-rasteret",
+  "visibility": "public",
+  "disabled": false,
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "exts": {
+    "parquet": 9,
+    "md": 1
+  },
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -2591,26 +2610,9 @@
       "prefix": "terrafloww/aef-v1-annual-rasteret/"
     }
   },
-  "total_bytes": 8539351825,
-  "account_id": "terrafloww",
-  "product_id": "aef-v1-annual-rasteret",
-  "visibility": "public",
-  "created_at": "2026-03-08T10:27:46.837Z",
-  "data_mode": "open",
-  "disabled": false,
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "file_count": 10,
-  "exts": {
-    "parquet": 9,
-    "md": 1
-  },
-  "updated_at": "2026-03-08T10:29:00.741Z",
   "_review": [
-    "extent.spatial.bbox: omitted; spatial reference is categorical via [part-00000.geometry (geometry), index.geom (geometry), index_pre_source_part_20260413T081008Z.geom (geometry)]. Add bbox once a placename \u2192 bbox gazetteer is available."
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [part-00000.geometry (geometry), part-00000.bbox (geometry), index.geom (geometry), index.bbox (geometry), index.bbox_utm (geometry)]. Add bbox once a placename \u2192 bbox gazetteer is available."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-06-04T23:27:44+00:00"
+  "cataloged_at": "2026-06-05T00:36:13+00:00"
 }
