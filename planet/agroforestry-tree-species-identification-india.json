@@ -1,15 +1,852 @@
 {
-  "account_id": "planet",
-  "product_id": "agroforestry-tree-species-identification-india",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
+  "id": "planet/agroforestry-tree-species-identification-india",
   "title": "Agroforestry Tree Species Identification (India, Multimodal)",
-  "description": "This open dataset supports individual tree species identification in agroforestry settings using multimodal remote-sensing and tree-level metadata. Each example corresponds to a single tree and links across SkySat RGB crops, Sentinel-1 time series, Sentinel-2 time series, PlanetScope time series, species labels, and derived species-classification vectors. The release contains 23,156 tree examples. Raw Google Street View imagery is not redistributed; panorama IDs and related metadata are retained to support reproducible workflows where users have appropriate API access and rights. Manifests and metadata files are included to support reliable joins across modalities and data splits.",
-  "keywords": [],
-  "created_at": "2026-05-07T21:25:02.417Z",
+  "description": "A multimodal tree species identification dataset covering 23,156 individual trees in agroforestry settings across Karnataka and Rajasthan, India. Each example links tree-level metadata and species labels with SkySat RGB crops, Sentinel-1 time series, Sentinel-2 time series, PlanetScope time series, and derived species-classification vectors. Raw Google Street View imagery is not redistributed; panorama IDs are retained to support reproducible workflows for users with appropriate API access.",
+  "license": "CC-BY-NC-4.0",
+  "keywords": [
+    "remote-sensing",
+    "agriculture",
+    "agroforestry",
+    "tree-species",
+    "india",
+    "multimodal"
+  ],
+  "providers": [
+    {
+      "name": "Planet Labs",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "ESA / Copernicus",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Google",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/planet/agroforestry-tree-species-identification-india"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2025-05-21T00:00:00Z",
+          "2025-12-07T07:20:22.636595Z"
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 146851,
+    "source": [
+      "Ajmer",
+      "Alwar",
+      "Ballari",
+      "Balotra",
+      "Barmer",
+      "Bengaluru South",
+      "Bharatpur",
+      "Bhilwara",
+      "Bikaner",
+      "Bundi",
+      "Chikkaballapura",
+      "Chitradurga",
+      "Chittorgarh",
+      "Churu",
+      "Dakshina Kannada",
+      "Dausa",
+      "Davanagere",
+      "Deeg",
+      "Dharwad",
+      "Gadag",
+      "Hanumangarh",
+      "Hassan",
+      "Jaipur",
+      "Jaisalmer",
+      "Jalore",
+      "Jhunjhunu",
+      "Jodhpur",
+      "Karauli",
+      "Kolar",
+      "Koppal",
+      "Kota",
+      "Kotputli-Behror",
+      "Mandya",
+      "Nagaur",
+      "Pali",
+      "Phalodi",
+      "Pratapgarh",
+      "Raichur",
+      "Sawai Madhopur",
+      "Shimoga",
+      "Sikar",
+      "Tonk",
+      "Tumakuru",
+      "Udaipur",
+      "Udupi",
+      "Uttara Kannada",
+      "Vijayanagara"
+    ],
+    "detection_method": [
+      "optimized_single_distributed_stratified"
+    ],
+    "state": [
+      "Karnataka",
+      "Rajasthan"
+    ],
+    "label_status": [
+      "labeled",
+      "no_tree",
+      "unlabeled"
+    ],
+    "gsv_date": [
+      "2017-12",
+      "2022-07",
+      "2022-08",
+      "2022-09",
+      "2022-10",
+      "2022-11",
+      "2022-12",
+      "2023-01",
+      "2023-02",
+      "2023-03",
+      "2023-04",
+      "2023-05",
+      "2023-06",
+      "2023-07",
+      "2023-08",
+      "2023-09",
+      "2023-10",
+      "2023-11",
+      "2023-12",
+      "2024-01",
+      "2024-02",
+      "2024-03",
+      "2024-04",
+      "2024-05",
+      "2024-06",
+      "2024-07",
+      "2024-08",
+      "2024-12",
+      "2025-01",
+      "2025-03",
+      "2025-05",
+      "2025-06"
+    ],
+    "sentinel_pixel_direction": [
+      "center",
+      "east",
+      "north",
+      "northeast",
+      "northwest",
+      "south",
+      "southeast",
+      "southwest",
+      "west"
+    ],
+    "tree_species_prediction": [
+      "unknown"
+    ]
+  },
+  "assets": {
+    ".": {
+      "href": "https://data.source.coop/planet/agroforestry-tree-species-identification-india/",
+      "type": "text/csv",
+      "title": ".",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "lat",
+          "type": "DOUBLE",
+          "description": "[latlon] Latitude of the sample/location point"
+        },
+        {
+          "name": "lon",
+          "type": "DOUBLE",
+          "description": "[latlon] Longitude of the sample/location point"
+        },
+        {
+          "name": "source",
+          "type": "VARCHAR",
+          "description": "[placename] City or district name for the sample location (e.g. Ajmer, Ballari)"
+        },
+        {
+          "name": "location_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "timestamp",
+          "type": "TIMESTAMP"
+        },
+        {
+          "name": "gsv_lat",
+          "type": "DOUBLE",
+          "description": "[latlon] Latitude of the Google Street View capture point"
+        },
+        {
+          "name": "gsv_lon",
+          "type": "DOUBLE",
+          "description": "[latlon] Longitude of the Google Street View capture point"
+        },
+        {
+          "name": "gsv_date",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "gsv_pano_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "tree_cover_percent",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "sentinel_date",
+          "type": "DATE"
+        },
+        {
+          "name": "detection_windows",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "tree_count",
+          "type": "BIGINT"
+        },
+        {
+          "name": "detection_method",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "state",
+          "type": "VARCHAR",
+          "description": "[placename] Indian state name: Karnataka or Rajasthan"
+        },
+        {
+          "name": "labeled_trees",
+          "type": "BIGINT"
+        },
+        {
+          "name": "species_list",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "tree_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "species_label",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "label_status",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "tree_lat",
+          "type": "DOUBLE",
+          "description": "[latlon] Latitude of the individual tree"
+        },
+        {
+          "name": "tree_lon",
+          "type": "DOUBLE",
+          "description": "[latlon] Longitude of the individual tree"
+        },
+        {
+          "name": "heading",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "distance",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "has_gsv",
+          "type": "BIGINT"
+        },
+        {
+          "name": "has_skysat",
+          "type": "BIGINT"
+        },
+        {
+          "name": "has_s1",
+          "type": "BIGINT"
+        },
+        {
+          "name": "has_s2",
+          "type": "BIGINT"
+        },
+        {
+          "name": "has_planetscope",
+          "type": "BIGINT"
+        },
+        {
+          "name": "modality_count",
+          "type": "BIGINT"
+        },
+        {
+          "name": "original_lat",
+          "type": "DOUBLE",
+          "description": "[latlon] Original detection latitude before any snapping or adjustment"
+        },
+        {
+          "name": "original_lon",
+          "type": "DOUBLE",
+          "description": "[latlon] Original detection longitude before any snapping or adjustment"
+        },
+        {
+          "name": "sentinel_pixel_direction",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "tree_bbox",
+          "type": "VARCHAR",
+          "description": "[geometry] Bounding box of the tree crown"
+        },
+        {
+          "name": "tree_height_estimate",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "tree_crown_diameter",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "tree_species_prediction",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "tree_confidence",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "species_all",
+          "type": "VARCHAR"
+        }
+      ],
+      "description": "3 files sampled for this table"
+    },
+    "manifest": {
+      "href": "https://data.source.coop/planet/agroforestry-tree-species-identification-india/manifest/",
+      "type": "text/csv",
+      "title": "manifest",
+      "roles": [
+        "metadata"
+      ],
+      "table:columns": [
+        {
+          "name": "tree_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "pixel_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "species_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "label_source",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "tree_lat",
+          "type": "DOUBLE",
+          "description": "[latlon] Latitude of the individual tree in the release manifest"
+        },
+        {
+          "name": "tree_lon",
+          "type": "DOUBLE",
+          "description": "[latlon] Longitude of the individual tree in the release manifest"
+        },
+        {
+          "name": "bbox_west",
+          "type": "DOUBLE",
+          "description": "[geometry] Western edge of tree bounding box (combined with bbox_south/east/north)"
+        },
+        {
+          "name": "bbox_south",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "bbox_east",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "bbox_north",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "region",
+          "type": "VARCHAR",
+          "description": "[placename] Named region or district associated with the tree"
+        },
+        {
+          "name": "source",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "_src_file",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "source_batches",
+          "type": "BIGINT"
+        },
+        {
+          "name": "rows_scanned",
+          "type": "BIGINT"
+        },
+        {
+          "name": "rows_kept",
+          "type": "BIGINT"
+        },
+        {
+          "name": "covered_publication_pids",
+          "type": "BIGINT"
+        },
+        {
+          "name": "publication_pids",
+          "type": "BIGINT"
+        },
+        {
+          "name": "missing_publication_pids",
+          "type": "BIGINT"
+        },
+        {
+          "name": "shards_uploaded",
+          "type": "BIGINT"
+        }
+      ],
+      "description": "3 files sampled for this table"
+    },
+    "species_classification_vectors_5full/data_splits": {
+      "href": "https://data.source.coop/planet/agroforestry-tree-species-identification-india/species_classification_vectors_5full/data_splits/",
+      "type": "text/csv",
+      "title": "species_classification_vectors_5full/data_splits",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "tree_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "location_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "source",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "original_lat",
+          "type": "DOUBLE",
+          "description": "[latlon] Original detection latitude"
+        },
+        {
+          "name": "original_lon",
+          "type": "DOUBLE",
+          "description": "[latlon] Original detection longitude"
+        },
+        {
+          "name": "gsv_lat",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "gsv_lon",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "gsv_date",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "gsv_pano_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "sentinel_date",
+          "type": "DATE"
+        },
+        {
+          "name": "sentinel_pixel_direction",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "tree_lat",
+          "type": "DOUBLE",
+          "description": "[latlon] Latitude of the individual tree"
+        },
+        {
+          "name": "tree_lon",
+          "type": "DOUBLE",
+          "description": "[latlon] Longitude of the individual tree"
+        },
+        {
+          "name": "tree_bbox",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "tree_height_estimate",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "tree_crown_diameter",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "tree_species_prediction",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "tree_confidence",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "heading",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "distance",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "image_path",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "image_filename",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "timestamp",
+          "type": "TIMESTAMP"
+        },
+        {
+          "name": "species_id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "species_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "has_species_label",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "pixel_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "species_vector",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "species_vector_str",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ndvi_mean",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "ndvi_std",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "evi_mean",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "evi_std",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "reci_mean",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "ndre_mean",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "nbr_mean",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "num_observations",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "has_sentinel_data",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "has_skysat",
+          "type": "BOOLEAN"
+        }
+      ],
+      "description": "2 files sampled for this table"
+    },
+    "species_classification_vectors_5full/metadata": {
+      "href": "https://data.source.coop/planet/agroforestry-tree-species-identification-india/species_classification_vectors_5full/metadata/",
+      "type": "text/csv",
+      "title": "species_classification_vectors_5full/metadata",
+      "roles": [
+        "metadata"
+      ],
+      "table:columns": [
+        {
+          "name": "pixel_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "species_vector",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "species_vector_str",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "species_multi_hot_vector",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "species_count",
+          "type": "BIGINT"
+        },
+        {
+          "name": "tree_count",
+          "type": "BIGINT"
+        },
+        {
+          "name": "pixel_tree_count",
+          "type": "BIGINT"
+        },
+        {
+          "name": "split_membership",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "species_id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "species_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "has_species_label",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "original_lat",
+          "type": "DOUBLE",
+          "description": "[latlon] Original detection latitude"
+        },
+        {
+          "name": "original_lon",
+          "type": "DOUBLE",
+          "description": "[latlon] Original detection longitude"
+        },
+        {
+          "name": "gsv_lat",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "gsv_lon",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "tree_lat",
+          "type": "DOUBLE",
+          "description": "[latlon] Latitude of the individual tree"
+        },
+        {
+          "name": "tree_lon",
+          "type": "DOUBLE",
+          "description": "[latlon] Longitude of the individual tree"
+        },
+        {
+          "name": "sentinel_date",
+          "type": "DATE"
+        },
+        {
+          "name": "sentinel_pixel_direction",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ndvi_mean",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "ndvi_std",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "evi_mean",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "evi_std",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "reci_mean",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "ndre_mean",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "nbr_mean",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "num_observations",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "has_sentinel_data",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "has_skysat",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "tree_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "location_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "source",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "gsv_date",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "gsv_pano_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "tree_bbox",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "tree_height_estimate",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "tree_crown_diameter",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "tree_species_prediction",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "tree_confidence",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "heading",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "distance",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "image_path",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "image_filename",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "timestamp",
+          "type": "TIMESTAMP"
+        },
+        {
+          "name": "_split",
+          "type": "VARCHAR"
+        }
+      ],
+      "description": "2 files sampled for this table"
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/planet/agroforestry-tree-species-identification-india/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/planet/agroforestry-tree-species-identification-india",
+      "title": "Source Cooperative product page"
+    }
+  ],
+  "product_id": "agroforestry-tree-species-identification-india",
   "updated_at": "2026-05-08T18:41:38.414Z",
   "visibility": "public",
-  "disabled": false,
+  "created_at": "2026-05-07T21:25:02.417Z",
   "featured": 0,
+  "account_id": "planet",
+  "file_count": 93049,
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
   "data_mode": "open",
+  "exts": {
+    "csv": 69784,
+    "jpg": 23256,
+    "json": 7,
+    "txt": 1,
+    "md": 1
+  },
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -22,20 +859,15 @@
       "prefix": "planet/agroforestry-tree-species-identification-india/"
     }
   },
-  "file_count": 93049,
+  "disabled": false,
   "total_bytes": 5461186722,
-  "exts": {
-    "csv": 69784,
-    "jpg": 23256,
-    "json": 7,
-    "txt": 1,
-    "md": 1
-  },
-  "store_format": null,
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "cataloged_at": "2026-05-29T20:24:54+00:00"
+  "readme": "## README.md\n# Species Identification Dataset\n\nThis release contains a no-GSV multimodal tree species identification dataset organized around individual trees.\n\nRaw Google Street View images are not redistributed. Panorama IDs and related metadata are retained, and code is released separately to repopulate GSV imagery from those panorama IDs where users have appropriate API access and rights.\n\n## Contents\n\n- `tree_metadata.csv`: sanitized tree-level metadata.\n- `gsv_pano_ids.csv`: tree-level mapping to GSV panorama IDs and related capture/geometry fields.\n- `all_metadata.json`: sanitized nested metadata.\n- `instances_default.json`: annotation export.\n- `all_locations.csv`, `dataset_summary.json`, `dataset_and_labels_context.txt`: dataset context files.\n- `skysat_crops/`: one canonical RGB JPEG per example.\n- `sentinel1_pixel_timeseries/pixel_data/`: Sentinel-1 tree time series, one CSV per example.\n- `sentinel2_pixel_timeseries/pixel_data/`: Sentinel-2 tree time series, one CSV per example.\n- `planetscope_pixel_timeseries/pixel_data/`: PlanetScope tree time series, one CSV per example.\n- `species_classification_vectors_5full/`: full-modality species vector outputs.\n- `manifest/`: release manifests and audit files.\n- `sample_100/`: small reviewer-inspection sample with 100 complete examples across modalities.\n\n## Counts\n\n- Examples: 23,156 individual trees.\n- Raw Google Street View images included: no.\n- Modalities included: SkySat RGB crops, Sentinel-1 time series, Sentinel-2 time series, PlanetScope time series, and derived species-classification vectors.\n\n## Reproducibility\n\nThe release can be used without raw GSV images using the released remote-sensing modalities, labels, metadata, and vectors. Users who have appropriate API access and rights can use the retained panorama IDs with separately released code to repopulate GSV images through the provider-approved access path.\n\n## License\n\nThis dataset release is licensed under [Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)](https://creativecommons.org/licenses/by-nc/4.0/).\n\nUpstream and optional sources remain subject to their own terms: for example, Google Street View / Maps Platform rules if you fetch imagery from panorama IDs, Copernicus Sentinel and Planet policies for underlying satellite products, and any provider-specific restrictions noted in `croissant.json` provenance. The CC BY-NC license applies to this curated release as a whole; it does not override third-party licenses for data you obtain separately from those providers.\n",
+  "_review": [
+    "providers: role [producer] for 'Planet Labs' is an AI guess \u2014 Provider of SkySat and PlanetScope satellite imagery used as upstream source modalities; README lists them as an upstream source subject to their own terms, not as an explicit dataset producer.. Verify before flipping to _state: reviewed.",
+    "providers: role [producer] for 'ESA / Copernicus' is an AI guess \u2014 Provider of Sentinel-1 and Sentinel-2 imagery used as upstream source modalities; README lists Copernicus Sentinel as an upstream source, not an explicit dataset producer.. Verify before flipping to _state: reviewed.",
+    "providers: role [producer] for 'Google' is an AI guess \u2014 Provider of Street View panoramas (panorama IDs retained but imagery not redistributed); README lists Google Street View / Maps Platform as an upstream source subject to its own terms.. Verify before flipping to _state: reviewed.",
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [..lat (latlon), ..lon (latlon), ..tree_lat (latlon), ..tree_lon (latlon), ..gsv_lat (latlon), ..gsv_lon (latlon), ..original_lat (latlon), ..original_lon (latlon), ..source (placename), ..state (placename), ..tree_bbox (geometry), manifest.tree_lat (latlon), manifest.tree_lon (latlon), manifest.bbox_west (geometry), manifest.region (placename), species_classification_vectors_5full/data_splits.tree_lat (latlon), species_classification_vectors_5full/data_splits.tree_lon (latlon), species_classification_vectors_5full/data_splits.original_lat (latlon), species_classification_vectors_5full/data_splits.original_lon (latlon), species_classification_vectors_5full/metadata.tree_lat (latlon), species_classification_vectors_5full/metadata.tree_lon (latlon), species_classification_vectors_5full/metadata.original_lat (latlon), species_classification_vectors_5full/metadata.original_lon (latlon)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-06-10T01:49:46+00:00"
 }

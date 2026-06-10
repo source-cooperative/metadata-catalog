@@ -1,22 +1,290 @@
 {
-  "account_id": "ecovoice",
-  "product_id": "canada-natural-gas-imports-exports",
-  "title": "Canada Natural Gas - Imports and Exports",
-  "description": "This repository contains historical data on Canada's natural gas production, exports, and imports, regulated by the Canada Energy Regulator, covering activities from 1985 to present.",
-  "keywords": [
-    "canada",
-    "natural gas",
-    "imports",
-    "exports",
-    "cer",
-    "neb"
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
   ],
-  "created_at": "2024-08-18T19:59:25.981174+00:00",
-  "updated_at": "2025-08-21T16:39:55.568Z",
+  "id": "ecovoice/canada-natural-gas-imports-exports",
+  "title": "Canada Natural Gas - Imports and Exports",
+  "description": "Monthly and annual records of Canada's natural gas imports and exports by border crossing port, collected by the Canada Energy Regulator (CER) from holders of export and import authorizations. The dataset covers approximately 40 ports connecting Canada to the United States from 1985 to present, reporting volumes, values, and prices in both Canadian and US units.",
+  "keywords": [
+    "natural-gas",
+    "energy-trade",
+    "imports-exports",
+    "canada",
+    "energy-regulation",
+    "commodity-trade"
+  ],
+  "providers": [
+    {
+      "name": "Canada Energy Regulator (CER)",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/ecovoice/canada-natural-gas-imports-exports"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "1985-01-01T00:00:00Z",
+          "2024-01-06T00:00:00Z"
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 14891,
+    "Flow": [
+      "Exports",
+      "Imports"
+    ],
+    "Port": [
+      "Aden",
+      "Brunswick",
+      "Cardston",
+      "Cardston/Emerson/Niagara Falls",
+      "Chippawa",
+      "Cornwall",
+      "Corunna",
+      "Courtright",
+      "Coutts",
+      "East Hereford",
+      "Elmore",
+      "Emerson",
+      "Emerson/Monchy",
+      "Fort Frances",
+      "Highwater",
+      "Huntingdon",
+      "Huntingdon/Kingsgate",
+      "Iroquois",
+      "Kingsgate",
+      "Kitimat",
+      "Loomis",
+      "Monchy",
+      "Napierville",
+      "Niagara Falls",
+      "North Portal",
+      "Ojibway (Windsor)",
+      "Philipsburg",
+      "Rainy River",
+      "Reagan Field",
+      "Sarnia",
+      "Sarnia/Blue Water",
+      "Sarnia/Sault Ste. Marie",
+      "Sault Ste Marie",
+      "Sierra",
+      "Sprague",
+      "St Clair",
+      "St Stephen",
+      "Total",
+      "Willow Creek",
+      "Windsor (Ojibway)"
+    ],
+    "Region": [
+      "East",
+      "MidWest",
+      "Total",
+      "West"
+    ],
+    "Month": [
+      "April",
+      "August",
+      "December",
+      "February",
+      "January",
+      "July",
+      "June",
+      "March",
+      "May",
+      "November",
+      "October",
+      "September"
+    ]
+  },
+  "assets": {
+    "natural-gas-exports-and-imports-annual": {
+      "href": "https://data.source.coop/ecovoice/canada-natural-gas-imports-exports/natural-gas-exports-and-imports-annual.csv",
+      "type": "text/csv",
+      "title": "natural-gas-exports-and-imports-annual.csv",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "Year",
+          "type": "BIGINT"
+        },
+        {
+          "name": "Flow",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Port",
+          "type": "VARCHAR",
+          "description": "[placename] Named border crossing port through which natural gas imports or exports flow between Canada and the US"
+        },
+        {
+          "name": "Region",
+          "type": "VARCHAR",
+          "description": "[placename] Broad Canadian geographic region (East, MidWest, West) aggregating multiple ports"
+        },
+        {
+          "name": "Volume (10^3 m3)",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Volume (MCF)",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Value (CN$)",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Value (US$)",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Price (CN$/GJ)",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Price (US$/MMBTU)",
+          "type": "VARCHAR"
+        }
+      ],
+      "table:row_count": 1291
+    },
+    "natural-gas-exports-and-imports-data-dictionary": {
+      "href": "https://data.source.coop/ecovoice/canada-natural-gas-imports-exports/natural-gas-exports-and-imports-data-dictionary.csv",
+      "type": "text/csv",
+      "title": "natural-gas-exports-and-imports-data-dictionary.csv",
+      "roles": [
+        "metadata"
+      ],
+      "table:columns": [
+        {
+          "name": "Period",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "01/01/1985 to most recently available",
+          "type": "VARCHAR"
+        }
+      ],
+      "table:row_count": 15
+    },
+    "natural-gas-exports-and-imports-monthly": {
+      "href": "https://data.source.coop/ecovoice/canada-natural-gas-imports-exports/natural-gas-exports-and-imports-monthly.csv",
+      "type": "text/csv",
+      "title": "natural-gas-exports-and-imports-monthly.csv",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "Period",
+          "type": "DATE"
+        },
+        {
+          "name": "Year",
+          "type": "BIGINT"
+        },
+        {
+          "name": "Month",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Flow",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Port",
+          "type": "VARCHAR",
+          "description": "[placename] Named border crossing port through which natural gas imports or exports flow between Canada and the US"
+        },
+        {
+          "name": "Region",
+          "type": "VARCHAR",
+          "description": "[placename] Broad Canadian geographic region (East, MidWest, West) aggregating multiple ports"
+        },
+        {
+          "name": "Volume (10^3 m3)",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Volume (MCF)",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Value (CN$)",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Value (US$)",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Price (CN$/GJ)",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Price (US$/MMBTU)",
+          "type": "VARCHAR"
+        }
+      ],
+      "table:row_count": 13585
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/ecovoice/canada-natural-gas-imports-exports/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/ecovoice/canada-natural-gas-imports-exports",
+      "title": "Source Cooperative product page"
+    }
+  ],
+  "account_id": "ecovoice",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
   "visibility": "public",
-  "disabled": false,
+  "file_count": 4,
   "featured": 0,
   "data_mode": "open",
+  "disabled": false,
+  "exts": {
+    "csv": 3,
+    "md": 1
+  },
+  "created_at": "2024-08-18T19:59:25.981174+00:00",
+  "updated_at": "2025-08-21T16:39:55.568Z",
+  "product_id": "canada-natural-gas-imports-exports",
+  "total_bytes": 1969872,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -29,16 +297,12 @@
       "prefix": "ecovoice/canada-natural-gas-imports-exports/"
     }
   },
-  "file_count": 4,
-  "total_bytes": 1969872,
-  "exts": {
-    "csv": 3,
-    "md": 1
-  },
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "id": "ecovoice/canada-natural-gas-imports-exports"
+  "readme": "## README.md\n# canada_natural_gas_imports_exports\nCanada is the world\u2019s fifth largest producer of natural gas and accounts for around five per cent of global production. Natural gas production in Canada is predominantly from the Western Canadian Sedimentary Basin in British Columbia, Alberta, and Saskatchewan. Canadian natural gas supply currently exceeds domestic consumption. Canada\u2019s natural gas markets are heavily integrated with those of the United States and Canada exports its surplus natural gas to the U.S., while importing smaller amounts from the U.S. into Central Canada. The Canada Energy Regulator regulates the export and import of natural gas. Orders or licenses are required to export or import natural gas to and from Canada. Holders of these authorizations report monthly on their activities to the CER. Import and export activities are available by Port from 1985 to present. Data is delayed by approximately 2 months.",
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
+    "providers: role [producer, licensor] for 'Canada Energy Regulator (CER)' is an AI guess \u2014 CER is explicitly stated as the regulatory body that collects and publishes this data; licensor role assumed as the authoritative government publishing body, but no explicit license is stated in the README.. Verify before flipping to _state: reviewed.",
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [natural-gas-exports-and-imports-annual.Port (placename), natural-gas-exports-and-imports-annual.Region (placename), natural-gas-exports-and-imports-monthly.Port (placename), natural-gas-exports-and-imports-monthly.Region (placename)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-06-10T01:35:27+00:00"
 }
