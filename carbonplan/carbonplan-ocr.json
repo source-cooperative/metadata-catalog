@@ -3,7 +3,7 @@
   "stac_version": "1.1.0",
   "id": "carbonplan/carbonplan-ocr",
   "title": "Open Climate Risk",
-  "description": "Building-level wildfire and climate risk assessment dataset for the continental United States, produced by CarbonPlan's Open Climate Risk project. Contains tensor (raster) outputs stored as Icechunk stores derived from USFS wildfire hazard models, alongside Hive-partitioned Geoparquet vector outputs with building footprints, Census administrative boundaries, and computed risk metrics. Data covers both pipeline inputs (USFS hazard rasters, Overture Maps buildings, Census TIGER/Line) and versioned outputs at building, block, tract, and county scales.",
+  "description": "Building-level wildfire and climate risk assessment dataset for the continental United States, produced by CarbonPlan's Open Climate Risk project. Combines USFS wildfire hazard raster inputs (stored as Icechunk/TIFF) with vector data from Overture Maps buildings and Census TIGER/Line to compute risk metrics at building, Census block, tract, and county scales. Outputs include Hive-partitioned Geoparquet, PMTiles, GPKG, and CSV files.",
   "license": "CC-BY-4.0",
   "keywords": [
     "wildfire-risk",
@@ -12,7 +12,8 @@
     "land-use",
     "building-footprints",
     "hazard-modeling",
-    "risk-assessment"
+    "risk-assessment",
+    "census"
   ],
   "providers": [
     {
@@ -90,25 +91,7 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "account_id": "carbonplan",
-  "data_mode": "open",
   "featured": 0,
-  "file_count": 7856,
-  "disabled": false,
-  "created_at": "2025-11-03T16:14:02.070Z",
-  "exts": {
-    "tif": 29,
-    "parquet": 7800,
-    "geojson": 5,
-    "pmtiles": 3,
-    "csv": 5,
-    "txt": 2,
-    "md": 2,
-    "json": 10
-  },
-  "updated_at": "2026-01-28T00:04:07.622Z",
-  "visibility": "public",
-  "product_id": "carbonplan-ocr",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -121,12 +104,30 @@
       "prefix": "carbonplan/carbonplan-ocr/"
     }
   },
+  "account_id": "carbonplan",
+  "product_id": "carbonplan-ocr",
+  "file_count": 7856,
+  "updated_at": "2026-01-28T00:04:07.622Z",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
+  "created_at": "2025-11-03T16:14:02.070Z",
+  "data_mode": "open",
   "total_bytes": 273955244765,
+  "exts": {
+    "tif": 29,
+    "parquet": 7800,
+    "geojson": 5,
+    "pmtiles": 3,
+    "csv": 5,
+    "txt": 2,
+    "md": 2,
+    "json": 10
+  },
+  "disabled": false,
+  "visibility": "public",
   "readme": "## README.md\n# Open Climate Risk\n\nThis Source Cooperative repository contains data products for the [Open Climate Risk](https://carbonplan.org/research/climate-risk) project. These data were used to build a scalable pipeline for calculating climate risk assessments at building-level resolution across the continental United States. Wildfire risk was calculated through a distributed processing system that can run locally or on cloud infrastructure. Technical documentation can be found [here](https://docs.carbonplan.org/ocr).\n\n## Working with the data\nDocumentation for working with the raster and vector data can be found [here](https://docs.carbonplan.org/ocr/en/latest/how-to/work-with-data.html).\n\n## Data Formats\n\n**Tensor** \n- Our raw input data consisted of either Zarr or TIFF files. We processed it into rechunked Icechunk stores. \n- Our n-dimensional output data is stored as a single Icechunk store. \n\n**Vector**\n- Our raw input data was either GPKG or Geoparquet. All the vector pipeline inputs were converted to Geoparquet.\n- Our output vector data is stored in multiple formats. See [our documentation on data access](https://docs.carbonplan.org/ocr/en/latest/access-data.html) for more details.\n    - Hive-partitioned (state/county) Geoparquet file for risk sampled buildings across CONUS. \n    - PMTiles layers for buildings, Census blocks, Census Tracts and counties.\n    - Summary statistics files in GPKG and CSV\n\n## Data structure\n\nThe data is split into `inputs` and `outputs,` where `inputs` are raw and processed data for the pipeline, and `outputs` are versioned dataset outputs.\n\n```bash\n\u251c\u2500\u2500 input\n\u2502   \u2514\u2500\u2500 fire-risk\n\u2502       \u251c\u2500\u2500 tensor\n\u2502       \u2502   \u251c\u2500\u2500 USFS (Icechunk & TIFF)\n\u2502       \u2502   \u2502   \u251c\u2500\u2500 dillon-et-al-2023 \n\u2502       \u2502   \u2502   \u251c\u2500\u2500 riley-et-al-2025 \n\u2502       \u2502   \u2502   \u2514\u2500\u2500 scott-et-al-2024 \n\u2502       \u2502   \u2514\u2500\u2500 conus404-ffwi (Icechunk)\n\u2502       \u2514\u2500\u2500 vector\n\u2502           \u251c\u2500\u2500 census-tiger (Geoparquet)\n\u2502           \u2502   \u251c\u2500\u2500 LICENSE.txt (CC BY 4.0) \n\u2502           \u2502   \u251c\u2500\u2500 blocks \n\u2502           \u2502   \u251c\u2500\u2500 counties\n\u2502           \u2502   \u2514\u2500\u2500 tracts\n\u2502           \u2514\u2500\u2500 overture-maps (Geoparquet)\n\u2502                \u2514\u2500\u2500 LICENSE.txt (ODbL)\n\u2514\u2500\u2500 output\n    \u2514\u2500\u2500 fire-risk\n        \u251c\u2500\u2500 tensor (Icechunk)\n        \u2502   \u251c\u2500\u2500 LICENSE.txt (CC BY 4.0)\n        \u2502   \u251c\u2500\u2500 NOTICE.txt\n        \u2502   \u2514\u2500\u2500 production\n        \u2514\u2500\u2500 vector (Geoparquet, PMTiles, GPKG, csv)\n            \u251c\u2500\u2500 LICENSE.txt (ODbL)\n            \u251c\u2500\u2500 NOTICE.txt\n            \u2514\u2500\u2500 production\n\n```\n\n## Data Sources\n\nThe tensor outputs rely on data from [K Riley et al. 2025](https://doi.org/10.2737/RDS-2025-0006), [J Scott et al. 2024](https://doi.org/10.2737/RDS-2020-0016-2), and [R Rasmussen et al. 2023](https://doi.org/10.1175/BAMS-D-21-0326.1). The vector outputs additionally incorporate data from the [Overture Maps Foundation buildings dataset](https://docs.overturemaps.org/guides/buildings/) and [Census TIGER/Line](https://www.census.gov/geographies/mapping-files/time-series/geo/tiger-line-file.html). Read more about our data sources [here](https://docs.carbonplan.org/ocr/en/latest/reference/data-sources.html). \n\n\n## Terms of use\n\nBy viewing Open Climate Risk data, you agree to CarbonPlan\u2019s [Terms of Use](https://carbonplan.org/terms) and [Privacy Policy](https://carbonplan.org/privacy).\n\nThis work contains information from the Overture Maps buildings database, which is made available here under the [Open Database License](https://opendatacommons.org/licenses/odbl) (ODbL).\n\nLicenses for tensor ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0)) and vector ([ODbL](https://opendatacommons.org/licenses/odbl/1-0)) data are packaged with the data in colocated LICENSE.txt files.",
   "_state": "drafted",
-  "cataloged_at": "2026-06-10T02:06:18+00:00"
+  "cataloged_at": "2026-06-10T08:07:12+00:00"
 }

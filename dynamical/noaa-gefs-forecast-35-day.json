@@ -3,15 +3,14 @@
   "stac_version": "1.1.0",
   "id": "dynamical/noaa-gefs-forecast-35-day",
   "title": "NOAA GEFS forecast, 35 day",
-  "description": "Archive of NOAA Global Ensemble Forecast System (GEFS) weather forecasts initialized daily at 00 UTC from 2020-10-01 to present, covering the global domain at 0.25\u20130.5 degree resolution with 35-day lead times. Each forecast run includes 31 ensemble members across atmospheric variables\u2014temperature, precipitation, wind, humidity, pressure, and radiation\u2014at 3\u20136 hourly time steps. The data is stored in cloud-optimized Zarr format and curated by dynamical.org.",
+  "description": "Archive of NOAA Global Ensemble Forecast System (GEFS) weather forecasts initialized daily at 00 UTC from 2020-10-01 to present, covering the global domain at 0.25\u20130.5 degree resolution with forecast lead times up to 35 days. Each forecast run includes 31 ensemble members and provides atmospheric variables including temperature, precipitation, wind, humidity, pressure, and radiation at 3\u20136 hourly time steps. Data is stored in cloud-optimized Zarr format and curated by dynamical.org.",
   "keywords": [
     "weather-forecast",
     "ensemble-forecast",
     "numerical-weather-prediction",
     "atmosphere",
     "precipitation",
-    "noaa",
-    "zarr"
+    "noaa"
   ],
   "providers": [
     {
@@ -50,7 +49,7 @@
       "interval": [
         [
           "2020-10-01T00:00:00",
-          "2026-07-14T00:00:00"
+          "2026-07-15T00:00:00"
         ]
       ]
     }
@@ -77,6 +76,8 @@
       "title": "Source Cooperative product page"
     }
   ],
+  "visibility": "public",
+  "product_id": "noaa-gefs-forecast-35-day",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -89,29 +90,27 @@
       "prefix": "dynamical/noaa-gefs-forecast-35-day/"
     }
   },
-  "account_id": "dynamical",
-  "created_at": "2025-02-25T20:53:05.529Z",
-  "file_count": 390618,
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "updated_at": "2025-08-21T16:39:55.568Z",
-  "product_id": "noaa-gefs-forecast-35-day",
-  "data_mode": "open",
   "total_bytes": 162842256053962,
-  "featured": 0,
   "exts": {
     "": 390536,
     "json": 81,
     "md": 1
   },
-  "visibility": "public",
+  "created_at": "2025-02-25T20:53:05.529Z",
+  "featured": 0,
+  "updated_at": "2025-08-21T16:39:55.568Z",
+  "account_id": "dynamical",
+  "file_count": 390618,
+  "data_mode": "open",
   "disabled": false,
   "readme": "## README.md\n# NOAA GEFS forecast, 35 day - dynamical.org zarr\n\nView the latest documentation at https://dynamical.org/catalog/noaa-gefs-forecast-35-day/.\n\n| | |\n| - | - |\n| **Spatial domain**      | Global                                                                  |\n| **Spatial resolution**  | 0-240 hours: 0.25 degrees (\\~20km), 243-840 hours: 0.5 degrees (\\~40km) |\n| **Time domain**         | Forecasts initialized 2020-10-01 00:00:00 UTC to Present                |\n| **Time resolution**     | Forecasts initialized every 24 hours.                                   |\n| **Forecast domain**     | Forecast lead time 0-840 hours (0-35 days) ahead                        |\n| **Forecast resolution** | Forecast step 0-240 hours: 3 hourly, 243-840 hours: 6 hourly            |\n\n### Data Access\n\n```\nhttps://data.dynamical.org/noaa/gefs/forecast/latest.zarr?email=optional@email.com\n```\n\n*Email optional. Providing your email as a query param helps us understand usage and impact to keep dynamical.org supported for the long-term. For catalog updates follow [here](https://dynamical.org/updates).*\n\n### Description\n\nThe Global Ensemble Forecast System (GEFS) is a National Oceanic and Atmospheric Administration (NOAA) National Centers for Environmental Prediction (NCEP) weather forecast model. GEFS creates 31 separate forecasts (ensemble members) to describe the range of forecast uncertainty.\n\nThis dataset is an archive of past and present GEFS forecasts. Forecasts are identified by an initialization time (`init_time`) denoting the start time of the model run as well as by the `ensemble_member`. Each forecast has a 3-hourly forecast step along the `lead_time` dimension. This dataset contains only the 00 hour UTC initialization times which produce the full-length, 35-day forecast.\n\nThe data values in this dataset have been rounded in their binary floating point representation to improve compression. See [Kl\u00f6wer et al. 2021](https://www.nature.com/articles/s43588-021-00156-2) for more information on this approach.\n\nStorage for this dataset is generously provided by [Source Cooperative](https://source.coop/), a [Radiant Earth](https://radiant.earth/) initiative.\n\n## Dimensions\n\n| Dimension            | Min                 | Max              | Units                    |\n| -------------------- | ------------------- | ---------------- | ------------------------ |\n| **init\\_time**       | 2020-10-01T00:00:00 | Present          | seconds since 1970-01-01 |\n| **ensemble\\_member** | 0                   | 30               | realization              |\n| **lead\\_time**       | 0 days 00:00:00     | 35 days 00:00:00 | seconds                  |\n| **latitude**         | -90                 | 90               | degrees\\_north           |\n| **longitude**        | -180                | 179.75           | degrees\\_east            |\n\n## Variables\n\n| Variable                                         | Units               | Dimensions                                               |\n|--------------------------------------------------|---------------------|---------------------------------------------------------|\n| **categorical_freezing_rain_surface**            | 0=no; 1=yes         | init_time \u00d7 ensemble_member \u00d7 lead_time \u00d7 latitude \u00d7 longitude |\n| **categorical_freezing_rain_surface_avg**        | 0=no; 1=yes         | init_time \u00d7 lead_time \u00d7 latitude \u00d7 longitude           |\n| **categorical_ice_pellets_surface**              | 0=no; 1=yes         | init_time \u00d7 ensemble_member \u00d7 lead_time \u00d7 latitude \u00d7 longitude |\n| **categorical_ice_pellets_surface_avg**          | 0=no; 1=yes         | init_time \u00d7 lead_time \u00d7 latitude \u00d7 longitude           |\n| **categorical_rain_surface**                     | 0=no; 1=yes         | init_time \u00d7 ensemble_member \u00d7 lead_time \u00d7 latitude \u00d7 longitude |\n| **categorical_rain_surface_avg**                 | 0=no; 1=yes         | init_time \u00d7 lead_time \u00d7 latitude \u00d7 longitude           |\n| **categorical_snow_surface**                     | 0=no; 1=yes         | init_time \u00d7 ensemble_member \u00d7 lead_time \u00d7 latitude \u00d7 longitude |\n| **categorical_snow_surface_avg**                 | 0=no; 1=yes         | init_time \u00d7 lead_time \u00d7 latitude \u00d7 longitude           |\n| **downward_long_wave_radiation_flux_surface**    | W/(m^2)             | init_time \u00d7 ensemble_member \u00d7 lead_time \u00d7 latitude \u00d7 longitude |\n| **downward_long_wave_radiation_flux_surface_avg**| W/(m^2)             | init_time \u00d7 lead_time \u00d7 latitude \u00d7 longitude           |\n| **downward_short_wave_radiation_flux_surface**   | W/(m^2)             | init_time \u00d7 ensemble_member \u00d7 lead_time \u00d7 latitude \u00d7 longitude |\n| **downward_short_wave_radiation_flux_surface_avg**| W/(m^2)             | init_time \u00d7 lead_time \u00d7 latitude \u00d7 longitude           |\n| **expected_forecast_length**                     | seconds             | init_time                                              |\n| **geopotential_height_cloud_ceiling**            | gpm                 | init_time \u00d7 ensemble_member \u00d7 lead_time \u00d7 latitude \u00d7 longitude |\n| **ingested_forecast_length**                     | seconds             | init_time \u00d7 ensemble_member                           |\n| **maximum_temperature_2m**                       | C                   | init_time \u00d7 ensemble_member \u00d7 lead_time \u00d7 latitude \u00d7 longitude |\n| **maximum_temperature_2m_avg**                   | C                   | init_time \u00d7 lead_time \u00d7 latitude \u00d7 longitude           |\n| **minimum_temperature_2m**                       | C                   | init_time \u00d7 ensemble_member \u00d7 lead_time \u00d7 latitude \u00d7 longitude |\n| **minimum_temperature_2m_avg**                   | C                   | init_time \u00d7 lead_time \u00d7 latitude \u00d7 longitude           |\n| **percent_frozen_precipitation_surface**         | %                   | init_time \u00d7 ensemble_member \u00d7 lead_time \u00d7 latitude \u00d7 longitude |\n| **precipitable_water_atmosphere**                | kg/(m^2)            | init_time \u00d7 ensemble_member \u00d7 lead_time \u00d7 latitude \u00d7 longitude |\n| **precipitable_water_atmosphere_avg**            | kg/(m^2)            | init_time \u00d7 lead_time \u00d7 latitude \u00d7 longitude           |\n| **precipitation_surface**                        | kg/(m^2)            | init_time \u00d7 ensemble_member \u00d7 lead_time \u00d7 latitude \u00d7 longitude |\n| **precipitation_surface_avg**                    | kg/(m^2)            | init_time \u00d7 lead_time \u00d7 latitude \u00d7 longitude           |\n| **pressure_reduced_to_mean_sea_level**           | Pa                  | init_time \u00d7 ensemble_member \u00d7 lead_time \u00d7 latitude \u00d7 longitude |\n| **pressure_reduced_to_mean_sea_level_avg**       | Pa                  | init_time \u00d7 lead_time \u00d7 latitude \u00d7 longitude           |\n| **pressure_surface**                             | Pa                  | init_time \u00d7 ensemble_member \u00d7 lead_time \u00d7 latitude \u00d7 longitude |\n| **pressure_surface_avg**                         | Pa                  | init_time \u00d7 lead_time \u00d7 latitude \u00d7 longitude           |\n| **relative_humidity_2m**                         | %                   | init_time \u00d7 ensemble_member \u00d7 lead_time \u00d7 latitude \u00d7 longitude |\n| **relative_humidity_2m_avg**                     | %                   | init_time \u00d7 lead_time \u00d7 latitude \u00d7 longitude           |\n| **temperature_2m**                               | C                   | init_time \u00d7 ensemble_member \u00d7 lead_time \u00d7 latitude \u00d7 longitude |\n| **temperature_2m_avg**                           | C                   | init_time \u00d7 lead_time \u00d7 latitude \u00d7 longitude           |\n| **total_cloud_cover_atmosphere**                 | %                   | init_time \u00d7 ensemble_member \u00d7 lead_time \u00d7 latitude \u00d7 longitude |\n| **total_cloud_cover_atmosphere_avg**             | %                   | init_time \u00d7 lead_time \u00d7 latitude \u00d7 longitude           |\n| **valid_time**                                   | seconds since 1970-01-01 | init_time \u00d7 lead_time                              |\n| **wind_u_100m**                                  | m/s                 | init_time \u00d7 ensemble_member \u00d7 lead_time \u00d7 latitude \u00d7 longitude |\n| **wind_u_10m**                                   | m/s                 | init_time \u00d7 ensemble_member \u00d7 lead_time \u00d7 latitude \u00d7 longitude |\n| **wind_u_10m_avg**                               | m/s                 | init_time \u00d7 lead_time \u00d7 latitude \u00d7 longitude           |\n| **wind_v_100m**                                  | m/s                 | init_time \u00d7 ensemble_member \u00d7 lead_time \u00d7 latitude \u00d7 longitude |\n| **wind_v_10m**                                   | m/s                 | init_time \u00d7 ensemble_member \u00d7 lead_time \u00d7 latitude \u00d7 longitude |\n| **wind_v_10m_avg**                               | m/s                 | init_time \u00d7 lead_time \u00d7 latitude \u00d7 longitude           |\n\n\nDon't see what you're looking for? Let us know at [feedback@dynamical.org](mailto\\:feedback@dynamical.org).\n\n## Examples\n\n[Open notebook in GitHub](https://github.com/dynamical-org/notebooks/blob/main/noaa-gefs-forecast-35-day.ipynb)\n\n[Open notebook in Colab](https://colab.research.google.com/github/dynamical-org/notebooks/blob/main/noaa-gefs-forecast-35-day.ipynb)\n\n```python\nimport xarray as xr\n\nds = xr.open_zarr(\"https://data.dynamical.org/noaa/gefs/forecast-35-day/latest.zarr?email=optional@email.com\")\nds['temperature_2m'].sel(init_time=\"2025-01-01T00\", latitude=0, longitude=0).max().compute()\n```\n",
   "_review": [
     "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-06-10T02:03:00+00:00"
+  "cataloged_at": "2026-06-10T08:01:39+00:00"
 }

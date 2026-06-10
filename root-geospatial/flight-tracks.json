@@ -6,7 +6,7 @@
   ],
   "id": "root-geospatial/flight-tracks",
   "title": "Flight Tracks",
-  "description": "Historic aircraft flight tracks over the contiguous United States derived from ADS-B (Automatic Dependent Surveillance\u2013Broadcast) position reports captured by ground receiver networks. Each record represents a single flight as a GIS linestring geometry, with ICAO identifier, aircraft type, altitude above ground level at departure and arrival, and start/end timestamps. Data is partitioned into daily Parquet files spanning 2023\u20132026.",
+  "description": "Historic aircraft flight tracks over the contiguous United States (CONUS), derived from ADS-B (Automatic Dependent Surveillance\u2013Broadcast) position reports captured by ground receiver networks. Each record is a GIS linestring geometry representing a single flight track segment, attributed with ICAO hex ID, aircraft type, start/end timestamps, and height above ground level (AGL) computed using a USGS 3DEP digital elevation model. Data is stored as hive-partitioned GeoParquet files indexed by quadkey, year, month, and day.",
   "license": "ODbL-1.0",
   "keywords": [
     "aviation",
@@ -14,7 +14,8 @@
     "ads-b",
     "aircraft-tracking",
     "trajectories",
-    "aeronautical"
+    "geoparquet",
+    "remote-sensing"
   ],
   "providers": [
     {
@@ -78,7 +79,7 @@
         {
           "name": "geometry",
           "type": "STRUCT(x DOUBLE, y DOUBLE)[]",
-          "description": "[geometry] Flight path as an array of (x, y) coordinate structs forming a linestring"
+          "description": "[geometry] 2D linestring in GeoArrow format (EPSG:4326) representing a single flight track segment in direction of travel"
         },
         {
           "name": "icao",
@@ -123,7 +124,7 @@
         {
           "name": "quadkey_z8",
           "type": "VARCHAR",
-          "description": "[spatial_index] Quadkey tile index at zoom level 8 for spatial partitioning"
+          "description": "[spatial_index] Zoom-level-8 quadkey in spherical mercator (EPSG:3857) used for hive partitioning"
         },
         {
           "name": "year",
@@ -138,60 +139,6 @@
       "title": "flights-2024-10-04.parquet",
       "roles": [
         "data"
-      ],
-      "table:columns": [
-        {
-          "name": "geometry",
-          "type": "STRUCT(x DOUBLE, y DOUBLE)[]"
-        },
-        {
-          "name": "icao",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "r",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "aircraft_type",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "desc",
-          "type": "INTEGER"
-        },
-        {
-          "name": "start_t",
-          "type": "TIMESTAMP_NS"
-        },
-        {
-          "name": "end_t",
-          "type": "TIMESTAMP WITH TIME ZONE"
-        },
-        {
-          "name": "start_height_agl_ft",
-          "type": "INTEGER"
-        },
-        {
-          "name": "end_height_agl_ft",
-          "type": "INTEGER"
-        },
-        {
-          "name": "day",
-          "type": "BIGINT"
-        },
-        {
-          "name": "month",
-          "type": "BIGINT"
-        },
-        {
-          "name": "quadkey_z8",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "year",
-          "type": "BIGINT"
-        }
       ],
       "table:row_count": 1
     },
@@ -390,60 +337,6 @@
       "title": "flights-2024-08-10.parquet",
       "roles": [
         "data"
-      ],
-      "table:columns": [
-        {
-          "name": "geometry",
-          "type": "STRUCT(x DOUBLE, y DOUBLE)[]"
-        },
-        {
-          "name": "icao",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "r",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "aircraft_type",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "desc",
-          "type": "INTEGER"
-        },
-        {
-          "name": "start_t",
-          "type": "TIMESTAMP_NS"
-        },
-        {
-          "name": "end_t",
-          "type": "TIMESTAMP WITH TIME ZONE"
-        },
-        {
-          "name": "start_height_agl_ft",
-          "type": "INTEGER"
-        },
-        {
-          "name": "end_height_agl_ft",
-          "type": "INTEGER"
-        },
-        {
-          "name": "day",
-          "type": "BIGINT"
-        },
-        {
-          "name": "month",
-          "type": "BIGINT"
-        },
-        {
-          "name": "quadkey_z8",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "year",
-          "type": "BIGINT"
-        }
       ],
       "table:row_count": 1
     },
@@ -706,60 +599,6 @@
       "roles": [
         "data"
       ],
-      "table:columns": [
-        {
-          "name": "geometry",
-          "type": "STRUCT(x DOUBLE, y DOUBLE)[]"
-        },
-        {
-          "name": "icao",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "r",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "aircraft_type",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "desc",
-          "type": "INTEGER"
-        },
-        {
-          "name": "start_t",
-          "type": "TIMESTAMP_NS"
-        },
-        {
-          "name": "end_t",
-          "type": "TIMESTAMP WITH TIME ZONE"
-        },
-        {
-          "name": "start_height_agl_ft",
-          "type": "INTEGER"
-        },
-        {
-          "name": "end_height_agl_ft",
-          "type": "INTEGER"
-        },
-        {
-          "name": "day",
-          "type": "BIGINT"
-        },
-        {
-          "name": "month",
-          "type": "BIGINT"
-        },
-        {
-          "name": "quadkey_z8",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "year",
-          "type": "BIGINT"
-        }
-      ],
       "table:row_count": 1
     },
     "flights-2023-12-27": {
@@ -958,60 +797,6 @@
       "roles": [
         "data"
       ],
-      "table:columns": [
-        {
-          "name": "geometry",
-          "type": "STRUCT(x DOUBLE, y DOUBLE)[]"
-        },
-        {
-          "name": "icao",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "r",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "aircraft_type",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "desc",
-          "type": "INTEGER"
-        },
-        {
-          "name": "start_t",
-          "type": "TIMESTAMP_NS"
-        },
-        {
-          "name": "end_t",
-          "type": "TIMESTAMP WITH TIME ZONE"
-        },
-        {
-          "name": "start_height_agl_ft",
-          "type": "INTEGER"
-        },
-        {
-          "name": "end_height_agl_ft",
-          "type": "INTEGER"
-        },
-        {
-          "name": "day",
-          "type": "BIGINT"
-        },
-        {
-          "name": "month",
-          "type": "BIGINT"
-        },
-        {
-          "name": "quadkey_z8",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "year",
-          "type": "BIGINT"
-        }
-      ],
       "table:row_count": 1
     },
     "flights-2023-04-12": {
@@ -1084,60 +869,6 @@
       "roles": [
         "data"
       ],
-      "table:columns": [
-        {
-          "name": "geometry",
-          "type": "STRUCT(x DOUBLE, y DOUBLE)[]"
-        },
-        {
-          "name": "icao",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "r",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "aircraft_type",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "desc",
-          "type": "INTEGER"
-        },
-        {
-          "name": "start_t",
-          "type": "TIMESTAMP_NS"
-        },
-        {
-          "name": "end_t",
-          "type": "TIMESTAMP WITH TIME ZONE"
-        },
-        {
-          "name": "start_height_agl_ft",
-          "type": "INTEGER"
-        },
-        {
-          "name": "end_height_agl_ft",
-          "type": "INTEGER"
-        },
-        {
-          "name": "day",
-          "type": "BIGINT"
-        },
-        {
-          "name": "month",
-          "type": "BIGINT"
-        },
-        {
-          "name": "quadkey_z8",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "year",
-          "type": "BIGINT"
-        }
-      ],
       "table:row_count": 1
     },
     "flights-2023-10-25": {
@@ -1146,60 +877,6 @@
       "title": "flights-2023-10-25.parquet",
       "roles": [
         "data"
-      ],
-      "table:columns": [
-        {
-          "name": "geometry",
-          "type": "STRUCT(x DOUBLE, y DOUBLE)[]"
-        },
-        {
-          "name": "icao",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "r",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "aircraft_type",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "desc",
-          "type": "INTEGER"
-        },
-        {
-          "name": "start_t",
-          "type": "TIMESTAMP_NS"
-        },
-        {
-          "name": "end_t",
-          "type": "TIMESTAMP WITH TIME ZONE"
-        },
-        {
-          "name": "start_height_agl_ft",
-          "type": "INTEGER"
-        },
-        {
-          "name": "end_height_agl_ft",
-          "type": "INTEGER"
-        },
-        {
-          "name": "day",
-          "type": "BIGINT"
-        },
-        {
-          "name": "month",
-          "type": "BIGINT"
-        },
-        {
-          "name": "quadkey_z8",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "year",
-          "type": "BIGINT"
-        }
       ],
       "table:row_count": 1
     },
@@ -1210,60 +887,6 @@
       "roles": [
         "data"
       ],
-      "table:columns": [
-        {
-          "name": "geometry",
-          "type": "STRUCT(x DOUBLE, y DOUBLE)[]"
-        },
-        {
-          "name": "icao",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "r",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "aircraft_type",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "desc",
-          "type": "INTEGER"
-        },
-        {
-          "name": "start_t",
-          "type": "TIMESTAMP_NS"
-        },
-        {
-          "name": "end_t",
-          "type": "TIMESTAMP WITH TIME ZONE"
-        },
-        {
-          "name": "start_height_agl_ft",
-          "type": "INTEGER"
-        },
-        {
-          "name": "end_height_agl_ft",
-          "type": "INTEGER"
-        },
-        {
-          "name": "day",
-          "type": "BIGINT"
-        },
-        {
-          "name": "month",
-          "type": "BIGINT"
-        },
-        {
-          "name": "quadkey_z8",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "year",
-          "type": "BIGINT"
-        }
-      ],
       "table:row_count": 1
     },
     "flights-2025-04-19": {
@@ -1272,60 +895,6 @@
       "title": "flights-2025-04-19.parquet",
       "roles": [
         "data"
-      ],
-      "table:columns": [
-        {
-          "name": "geometry",
-          "type": "STRUCT(x DOUBLE, y DOUBLE)[]"
-        },
-        {
-          "name": "icao",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "r",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "aircraft_type",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "desc",
-          "type": "INTEGER"
-        },
-        {
-          "name": "start_t",
-          "type": "TIMESTAMP_NS"
-        },
-        {
-          "name": "end_t",
-          "type": "TIMESTAMP WITH TIME ZONE"
-        },
-        {
-          "name": "start_height_agl_ft",
-          "type": "INTEGER"
-        },
-        {
-          "name": "end_height_agl_ft",
-          "type": "INTEGER"
-        },
-        {
-          "name": "day",
-          "type": "BIGINT"
-        },
-        {
-          "name": "month",
-          "type": "BIGINT"
-        },
-        {
-          "name": "quadkey_z8",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "year",
-          "type": "BIGINT"
-        }
       ],
       "table:row_count": 1
     },
@@ -1336,60 +905,6 @@
       "roles": [
         "data"
       ],
-      "table:columns": [
-        {
-          "name": "geometry",
-          "type": "STRUCT(x DOUBLE, y DOUBLE)[]"
-        },
-        {
-          "name": "icao",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "r",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "aircraft_type",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "desc",
-          "type": "INTEGER"
-        },
-        {
-          "name": "start_t",
-          "type": "TIMESTAMP_NS"
-        },
-        {
-          "name": "end_t",
-          "type": "TIMESTAMP WITH TIME ZONE"
-        },
-        {
-          "name": "start_height_agl_ft",
-          "type": "INTEGER"
-        },
-        {
-          "name": "end_height_agl_ft",
-          "type": "INTEGER"
-        },
-        {
-          "name": "day",
-          "type": "BIGINT"
-        },
-        {
-          "name": "month",
-          "type": "BIGINT"
-        },
-        {
-          "name": "quadkey_z8",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "year",
-          "type": "BIGINT"
-        }
-      ],
       "table:row_count": 1
     },
     "flights-2024-10-01": {
@@ -1398,60 +913,6 @@
       "title": "flights-2024-10-01.parquet",
       "roles": [
         "data"
-      ],
-      "table:columns": [
-        {
-          "name": "geometry",
-          "type": "STRUCT(x DOUBLE, y DOUBLE)[]"
-        },
-        {
-          "name": "icao",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "r",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "aircraft_type",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "desc",
-          "type": "INTEGER"
-        },
-        {
-          "name": "start_t",
-          "type": "TIMESTAMP_NS"
-        },
-        {
-          "name": "end_t",
-          "type": "TIMESTAMP WITH TIME ZONE"
-        },
-        {
-          "name": "start_height_agl_ft",
-          "type": "INTEGER"
-        },
-        {
-          "name": "end_height_agl_ft",
-          "type": "INTEGER"
-        },
-        {
-          "name": "day",
-          "type": "BIGINT"
-        },
-        {
-          "name": "month",
-          "type": "BIGINT"
-        },
-        {
-          "name": "quadkey_z8",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "year",
-          "type": "BIGINT"
-        }
       ],
       "table:row_count": 1
     },
@@ -1462,60 +923,6 @@
       "roles": [
         "data"
       ],
-      "table:columns": [
-        {
-          "name": "geometry",
-          "type": "STRUCT(x DOUBLE, y DOUBLE)[]"
-        },
-        {
-          "name": "icao",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "r",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "aircraft_type",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "desc",
-          "type": "INTEGER"
-        },
-        {
-          "name": "start_t",
-          "type": "TIMESTAMP_NS"
-        },
-        {
-          "name": "end_t",
-          "type": "TIMESTAMP WITH TIME ZONE"
-        },
-        {
-          "name": "start_height_agl_ft",
-          "type": "INTEGER"
-        },
-        {
-          "name": "end_height_agl_ft",
-          "type": "INTEGER"
-        },
-        {
-          "name": "day",
-          "type": "BIGINT"
-        },
-        {
-          "name": "month",
-          "type": "BIGINT"
-        },
-        {
-          "name": "quadkey_z8",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "year",
-          "type": "BIGINT"
-        }
-      ],
       "table:row_count": 1
     },
     "flights-2025-04-28": {
@@ -1525,60 +932,6 @@
       "roles": [
         "data"
       ],
-      "table:columns": [
-        {
-          "name": "geometry",
-          "type": "STRUCT(x DOUBLE, y DOUBLE)[]"
-        },
-        {
-          "name": "icao",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "r",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "aircraft_type",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "desc",
-          "type": "INTEGER"
-        },
-        {
-          "name": "start_t",
-          "type": "TIMESTAMP_NS"
-        },
-        {
-          "name": "end_t",
-          "type": "TIMESTAMP WITH TIME ZONE"
-        },
-        {
-          "name": "start_height_agl_ft",
-          "type": "INTEGER"
-        },
-        {
-          "name": "end_height_agl_ft",
-          "type": "INTEGER"
-        },
-        {
-          "name": "day",
-          "type": "BIGINT"
-        },
-        {
-          "name": "month",
-          "type": "BIGINT"
-        },
-        {
-          "name": "quadkey_z8",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "year",
-          "type": "BIGINT"
-        }
-      ],
       "table:row_count": 1
     },
     "flights-2024-07-31": {
@@ -1587,60 +940,6 @@
       "title": "flights-2024-07-31.parquet",
       "roles": [
         "data"
-      ],
-      "table:columns": [
-        {
-          "name": "geometry",
-          "type": "STRUCT(x DOUBLE, y DOUBLE)[]"
-        },
-        {
-          "name": "icao",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "r",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "aircraft_type",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "desc",
-          "type": "INTEGER"
-        },
-        {
-          "name": "start_t",
-          "type": "TIMESTAMP_NS"
-        },
-        {
-          "name": "end_t",
-          "type": "TIMESTAMP WITH TIME ZONE"
-        },
-        {
-          "name": "start_height_agl_ft",
-          "type": "INTEGER"
-        },
-        {
-          "name": "end_height_agl_ft",
-          "type": "INTEGER"
-        },
-        {
-          "name": "day",
-          "type": "BIGINT"
-        },
-        {
-          "name": "month",
-          "type": "BIGINT"
-        },
-        {
-          "name": "quadkey_z8",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "year",
-          "type": "BIGINT"
-        }
       ],
       "table:row_count": 1
     },
@@ -1777,60 +1076,6 @@
       "roles": [
         "data"
       ],
-      "table:columns": [
-        {
-          "name": "geometry",
-          "type": "STRUCT(x DOUBLE, y DOUBLE)[]"
-        },
-        {
-          "name": "icao",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "r",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "aircraft_type",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "desc",
-          "type": "INTEGER"
-        },
-        {
-          "name": "start_t",
-          "type": "TIMESTAMP_NS"
-        },
-        {
-          "name": "end_t",
-          "type": "TIMESTAMP WITH TIME ZONE"
-        },
-        {
-          "name": "start_height_agl_ft",
-          "type": "INTEGER"
-        },
-        {
-          "name": "end_height_agl_ft",
-          "type": "INTEGER"
-        },
-        {
-          "name": "day",
-          "type": "BIGINT"
-        },
-        {
-          "name": "month",
-          "type": "BIGINT"
-        },
-        {
-          "name": "quadkey_z8",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "year",
-          "type": "BIGINT"
-        }
-      ],
       "table:row_count": 1
     },
     "flights-2025-09-14": {
@@ -1903,60 +1148,6 @@
       "roles": [
         "data"
       ],
-      "table:columns": [
-        {
-          "name": "geometry",
-          "type": "STRUCT(x DOUBLE, y DOUBLE)[]"
-        },
-        {
-          "name": "icao",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "r",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "aircraft_type",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "desc",
-          "type": "INTEGER"
-        },
-        {
-          "name": "start_t",
-          "type": "TIMESTAMP_NS"
-        },
-        {
-          "name": "end_t",
-          "type": "TIMESTAMP WITH TIME ZONE"
-        },
-        {
-          "name": "start_height_agl_ft",
-          "type": "INTEGER"
-        },
-        {
-          "name": "end_height_agl_ft",
-          "type": "INTEGER"
-        },
-        {
-          "name": "day",
-          "type": "BIGINT"
-        },
-        {
-          "name": "month",
-          "type": "BIGINT"
-        },
-        {
-          "name": "quadkey_z8",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "year",
-          "type": "BIGINT"
-        }
-      ],
       "table:row_count": 1
     },
     "flights-2023-04-06": {
@@ -1966,63 +1157,63 @@
       "roles": [
         "data"
       ],
-      "table:columns": [
-        {
-          "name": "geometry",
-          "type": "STRUCT(x DOUBLE, y DOUBLE)[]"
-        },
-        {
-          "name": "icao",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "r",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "aircraft_type",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "desc",
-          "type": "INTEGER"
-        },
-        {
-          "name": "start_t",
-          "type": "TIMESTAMP_NS"
-        },
-        {
-          "name": "end_t",
-          "type": "TIMESTAMP WITH TIME ZONE"
-        },
-        {
-          "name": "start_height_agl_ft",
-          "type": "INTEGER"
-        },
-        {
-          "name": "end_height_agl_ft",
-          "type": "INTEGER"
-        },
-        {
-          "name": "day",
-          "type": "BIGINT"
-        },
-        {
-          "name": "month",
-          "type": "BIGINT"
-        },
-        {
-          "name": "quadkey_z8",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "year",
-          "type": "BIGINT"
-        }
-      ],
       "table:row_count": 1
     }
   },
+  "table:columns": [
+    {
+      "name": "geometry",
+      "type": "STRUCT(x DOUBLE, y DOUBLE)[]"
+    },
+    {
+      "name": "icao",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "r",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "aircraft_type",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "desc",
+      "type": "INTEGER"
+    },
+    {
+      "name": "start_t",
+      "type": "TIMESTAMP_NS"
+    },
+    {
+      "name": "end_t",
+      "type": "TIMESTAMP WITH TIME ZONE"
+    },
+    {
+      "name": "start_height_agl_ft",
+      "type": "INTEGER"
+    },
+    {
+      "name": "end_height_agl_ft",
+      "type": "INTEGER"
+    },
+    {
+      "name": "day",
+      "type": "BIGINT"
+    },
+    {
+      "name": "month",
+      "type": "BIGINT"
+    },
+    {
+      "name": "quadkey_z8",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "year",
+      "type": "BIGINT"
+    }
+  ],
   "links": [
     {
       "rel": "self",
@@ -2035,15 +1226,8 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
   "product_id": "flight-tracks",
-  "featured": 0,
-  "created_at": "2025-09-03T21:24:19.165799+00:00",
-  "disabled": false,
-  "visibility": "public",
+  "account_id": "root-geospatial",
   "exts": {
     "parquet": 732911,
     "png": 1,
@@ -2051,10 +1235,17 @@
     "md": 2,
     "py": 3
   },
-  "updated_at": "2025-09-03T16:39:55.567Z",
-  "total_bytes": 1332545965066,
-  "account_id": "root-geospatial",
   "file_count": 732918,
+  "created_at": "2025-09-03T21:24:19.165799+00:00",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "visibility": "public",
+  "total_bytes": 1332545965066,
+  "featured": 0,
+  "updated_at": "2025-09-03T16:39:55.567Z",
+  "data_mode": "open",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -2067,10 +1258,11 @@
       "prefix": "root-geospatial/flight-tracks/"
     }
   },
-  "data_mode": "open",
+  "disabled": false,
+  "readme": "## README.md\n# AeroWhere Flight Tracks\n## Description\nThe AeroWhere Flight Tracks database captures historic aircraft flight tracks as GIS linestring geometries, attributed with height above ground level (AGL) and other identifying information about the flight (timestamp, ICAO, aircraft type, etc.). The currently available data is limited to the contiguous United States (CONUS) and includes flights spanning the time period noted in the accompanying [Date Range](https://data.source.coop/root-geospatial/flight-tracks/DATE-RANGE.md) file.\n\nThe flight tracks are derived from Automatic Dependent Surveillance\u2013Broadcast (ADS-B) position traces, captured by a network of ground receivers, collected and made available via [ADS-B LOL historical data archive](https://www.adsb.lol/docs/open-data/historical/) (see [Source Data](#source-data) for more information).\n\nThe source ADS-B files have been parsed into GIS format by connecting ADS-B positions of each unique aircraft in chronological order. Gaps between consecutive locations \u2265 30 km were not connected to limit uncertainty about aircraft positioning in spans of this size. Altitudes were converted to height above ground through the use of a digital elevation model (DEM) (see [Source Data](#source-data)). Only a select set of attributes from the source ADS-B files are currently included in the flight tracks dataset (see [Schema](#schema)).\n\n[![AeroWhere Flight Tracks Screenshot](https://data.source.coop/root-geospatial/flight-tracks/docs/banner.png \"AeroWhere Flight Tracks Viewer\")](https://aerowhere.com/flight-tracks?lat=40.7178&lng=-74.0952&zoom=10.00&date=2023-11-27)\n\n## Data Format\n### GeoParquet\nThe data are provided as a hive-partitioned GeoParquet dataset. The GeoParquet files follow the specification for GeoParquet v1.1.0 and geometries are encoded as 2-D linestrings in GeoArrow format.\n\nEach geometry represents a single segment of a flight track. Geometries are encoded in the direction of travel of the flight track (i.e., first vertex is the start of the segment, last vertex is the end of the segment). All geometries are in the EPSG:4326 coordinate reference system.\n\n### Partitioning\nThe dataset uses hive partitioning to split the dataset into files of reasonable size to enable faster acess. The partitioning scheme is intended to be spatiotemporal, first splitting by year, month, and day. The structure is:\n\n`quadkey_z8={quadkey}/year={year}/month={month}/day={day}/flights-{year}-{MONTH}-{DAY}.parquet`\n\nwhere:\n- `quadkey` is the zoom level 8 tile quadkey in the spherical mercator EPSG:3857 grid\n- `year` is the 4-digit year of the partition (e.g., `2025`)\n- `month` is the month of the partition *without* zero padding (i.e., `1`, `2`, ..., `12`)\n- `MONTH` is the month of the partition *with* zero padding (i.e., `01`, `02`, ..., `12`)\n- `day` is the day of the partition  *without* zero padding (i.e., `1`, `2`, ..., `31`)\n- `DAY` is the day of the partition  *with* zero padding (i.e., `01`, `02`, ..., `31`)\n\n> **Important** \\\n> The tile based partitioning is based on spatial intersection between flight tracks and the tiles. As a result, a single flight track may occur across multiple partitions if it overlaps multiple tiles. For certain uses cases, this means you may need to deduplicate records. This can be done using the `end_t` (or `start_t`) and `icao` fields as a compound identifier for unique flight segments (see [Data Access Examples](#data-access-examples-python)). Note that this also means that the data for a single partition will not strictly adhere to the tile bounds (i.e., the data won't be clipped exactly to the tile edges).\n\n### Schema\nEach partition uses the following schema:\n- `geometry` (list[struct(x, y)]): 2D linestring geometry representing a single segment of a flight track.\n- `icao` (string): Hex ID of the aircraft\n- `r` (string): Aircraft registration\n- `aircraft_type` (string): Aircraft type\n- `desc` (string): Aircraft type description\n- `start_t` (timestamp[ns]): Timestamp (in UTC) for the start (first vertex) of the segment.\n- `end_t` (timestamp[ns, tz=UTC]): Timestamp (in UTC) for the end (last vertex) of the segment.\n- `start_height_agl_ft` (int32): Height above ground level in feet for the start (first vertex) of the segment. Derived from altitude reported in ADS-B and ground elevation from DEM.\n- `end_height_agl_ft` (int32): Height above ground level in feet for the end (last vertex) of the segment. Derived from altitude reported in ADS-B and ground elevation from DEM.\n\n## Data Access Examples (Python)\nRequired dependencies:\n- geopandas: https://geopandas.org/en/stable/\n- pyarrow: https://arrow.apache.org/docs/python/index.html\n- morecantile: https://developmentseed.org/morecantile/\n\n### Access partitions with a loop\n```python\nimport geopandas  as gpd\nimport pandas as pd\n\nquadkeys = [\"02310101\", \"02310103\"]\nyear = 2023\nmonth = 11\nstart_day = 15\nend_day = 16\n\nbase_url = \"s3://us-west-2.opendata.source.coop/root-geospatial/flight-tracks\"\npart_dfs = []\nfor quadkey in quadkeys:\n    for day in range(start_day, end_day + 1):\n        full_url = (\n            f\"{base_url}/quadkey_z8={quadkey}/year={year}/month={month}/day={day}/\"\n        )\n        part_df = gpd.read_parquet(full_url)\n        part_dfs.append(part_df)\n\ndf = pd.concat(part_dfs, ignore_index=True)\n\n# remove duplicates where lines overlap multiple tiles\ndf.drop_duplicates(subset=[\"icao\", \"end_t\"], inplace=True)\n\n```\n\n### Access partitions with hive filters (slower but more flexible)\n```python\nimport geopandas  as gpd\nimport pyarrow as pa\nimport pyarrow.dataset as ds\n\n# Set schema to ensure quadkeys are treated as string, not int\nschema = pa.schema([\n    (\"quadkey_z8\", pa.string()),\n    (\"year\", pa.int32()),\n    (\"month\", pa.int8()),\n    (\"day\", pa.int8())\n])\n\nquadkeys = [\"02310101\", \"02310103\"]\nyear = 2023\nmonth = 11\nstart_day = 15\nend_day = 16\n\ndf = gpd.read_parquet(\n    \"s3://us-west-2.opendata.source.coop/root-geospatial/flight-tracks/\",\n    filters=[\n        (\"quadkey_z8\", \"in\", quadkeys),\n        (\"year\", \"==\", year),\n        (\"month\", \"==\", month),\n        (\"day\", \">=\", start_day),\n        (\"day\", \"<=\", end_day)],\n    partitioning=ds.HivePartitioning(schema=schema)\n)\n\n# remove duplicates where lines overlap multiple tiles\ndf.drop_duplicates(subset=[\"icao\", \"end_t\"], inplace=True)\n\n```\n\n### Finding quadkeys covering a bounding box\n```python\nimport morecantile\n\n# bbox in format: xmin, ymin, xmax, ymax\nbbox = [-104.7943, 39.7867, -104.3485, 40.0569]\n\ntms = morecantile.tms.get(\"WebMercatorQuad\")\ntiles_gen = tms.tiles(*bbox, zooms=[8])\nquadkeys = [tms.quadkey(t) for t in tiles_gen]\nprint(quadkeys)\n\n```\n\n## Limitations\nThe currently available data is limited to the contiguous United States (CONUS) and includes flights spanning the time period noted in the accompanying [Date Range](https://data.source.coop/root-geospatial/flight-tracks/DATE-RANGE.md) file.\n\nBecause the dataset is based on a network of ADS-B ground receivers, flight tracks may be incomplete or missing for any given location and date. Complete coverage of all real-world flights is not guaranteed.\n\n## Citation and Attribution\nIf you are the author of a publication or research report that uses these data, please include the following citation:\n\nRoot Geospatial LLC. 2025. \"AeroWhere Flight Tracks: Historical Flight Tracks Dataset\". Source Cooperative, https://source.coop/root-geospatial/flight-tracks. Accesed [ACCESS DATE].\n\nFor use in web maps, please include the following attribution:\n[\u00a9 AeroWhere by Root Geospatial](https://rootgeo.com/).\n\n## Data Viewer and Exports\nA data viewer with functionality for exporting small subset of the data is available at https://aerowhere.com/flight-tracks.\n\n## Source Data\nFlight tracks positions and attributes are derived from ADS-B.lol Historical Data: https://www.adsb.lol/docs/open-data/historical/.\n\nAttributes indicating height AGL values are derived from a combination of the altitude values provided in the ADS-B.LOL files and a USGS 3DEP program 1 arc-second DEM (https://www.usgs.gov/3d-elevation-program/about-3dep-products-services).\n\n## Licensing\nThis data is made available under the Open Database License (ODbL) v1.0.\nThe full license text is included in the file [LICENSE.txt](https://data.source.coop/root-geospatial/flight-tracks/LICENSE.txt) and can also be found at http://opendatacommons.org/licenses/odbl/1.0/.\n",
   "_review": [
-    "extent.spatial.bbox: omitted; spatial reference is categorical via [flights-2023-09-26.geometry (geometry), flights-2023-09-26.quadkey_z8 (spatial_index)]. Add bbox once a placename \u2192 bbox gazetteer is available."
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [flights-2023-09-26.geometry (geometry), flights-2023-09-26.quadkey_z8 (spatial_index)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-06-05T02:31:21+00:00"
+  "cataloged_at": "2026-06-10T08:16:50+00:00"
 }
