@@ -3,14 +3,15 @@
   "stac_version": "1.1.0",
   "id": "malariaatlas/tcb",
   "title": "Tasselled Cap Brightness",
-  "description": "Global Tasselled Cap Brightness (TCB) index derived from MODIS MCD43D v6.1 BRDF/Albedo products at 1 km and 5 km spatial resolution. TCB values are computed using the Lobser & Cohen (2007) spectral transformation formula and gap-filled via the Weiss et al. (2014) method to remove cloud and missing-data artefacts. Composites are available at 8-daily, monthly, annual, and synoptic temporal resolutions, each accompanied by summary statistics (min, max, mean, SD, range, count).",
+  "description": "Global Tasselled Cap Brightness (TCB) index derived from seven MODIS MCD43D v6.1 BRDF/Albedo products at 1 km and 5 km spatial resolution. TCB values are computed using the Lobser & Cohen (2007) spectral transformation formula and gap-filled via the Weiss et al. (2014) method to remove cloud and missing-data artefacts. Composites are available at 8-daily, monthly, annual, and synoptic temporal resolutions, each accompanied by summary statistics (min, max, mean, SD, range, count).",
   "keywords": [
     "remote-sensing",
     "modis",
-    "spectral-indices",
-    "land-surface",
     "land-cover",
-    "time-series"
+    "time-series",
+    "global-coverage",
+    "earth-observation",
+    "spectral-indices"
   ],
   "providers": [
     {
@@ -69,6 +70,18 @@
       "title": "Source Cooperative product page"
     }
   ],
+  "data_mode": "open",
+  "file_count": 9338,
+  "total_bytes": 2516901727605,
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "disabled": false,
+  "visibility": "public",
+  "created_at": "2024-11-07T23:46:45.526Z",
+  "updated_at": "2026-04-10T03:47:32.694Z",
+  "product_id": "tcb",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -81,30 +94,18 @@
       "prefix": "malariaatlas/tcb/"
     }
   },
-  "created_at": "2024-11-07T23:46:45.526Z",
-  "visibility": "public",
-  "disabled": false,
-  "file_count": 9338,
-  "product_id": "tcb",
-  "updated_at": "2026-04-10T03:47:32.694Z",
-  "total_bytes": 2516901727605,
-  "account_id": "malariaatlas",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "featured": 0,
   "exts": {
     "txt": 1,
     "tif": 9324,
     "json": 12,
     "md": 1
   },
-  "data_mode": "open",
+  "account_id": "malariaatlas",
+  "featured": 0,
   "readme": "## README.md\nTasselled Cap Brightness is derived from the MODIS [MCD43D62](https://lpdaac.usgs.gov/products/mcd43d62v061/), [MCD43D63](https://lpdaac.usgs.gov/products/mcd43d63v061/), [MCD43D64](https://lpdaac.usgs.gov/products/mcd43d64v061/), [MCD43D65](https://lpdaac.usgs.gov/products/mcd43d65v061/), [MCD43D66](https://lpdaac.usgs.gov/products/mcd43d66v061/), [MCD43D67](https://lpdaac.usgs.gov/products/mcd43d67v061/) and [MCD43D68](https://lpdaac.usgs.gov/products/mcd43d68v061/) v6.1 products. TCB is first calculated on the datasets using the formula from [Lobser & Cohen (2007)](https://doi.org/10.1080/01431160701253303) and then the outputs are gap-filled using the approach outlined in [Weiss et al (2014)](https://doi.org/10.1016/j.isprsjprs.2014.10.001) to eliminate missing data caused by factors such as cloud cover.\n\nDirectories are structured in the following way: `TCB_v061/{Resolution}/{TemporalSummary}`\n\nAnd under that, filenames are structured by:  \n8-daily: `TCB_v061.{Year}.{JulianDay}.Data.{Resolution}.{SpatialSummary}.tif`  \nMonthly: `TCB_v061.{Year}.{Month}.{TemporalSummary}.{Resolution}.{SpatialSummary}.tif`  \nAnnual: `TCB_v061.{Year}.Annual.{TemporalSummary}.{Resolution}.{SpatialSummary}.tif`  \nSynoptic: `TCB_v061.Synoptic.{Month-or-Overall}.{TemporalSummary}.{Resolution}.{SpatialSummary}.tif`   \n\n`Resolution` in this dataset is either `1km` or `5km`\n\nStandard values for `TemporalSummary` are: `min`, `max`, `range`, `mean`, `SD`, `count`. In addition there are:\n- `Data`: this indicated that no temporal aggregation has occurred\n- `Balanced-mean`: This is specific to overall synoptic data, it represents the mean of the 12 monthly synoptic mean datasets as opposed to the overall mean of the (e.g. daily) data. This gives a weighting to help correct for seasonal bias that could otherwise be present in areas where data are more often missing at certain times of year.  \n\nStandard values for `SpatialSummary` are: `min`, `max`, `range`, `sum`, `mean`, `SD`, `count`. In addition:\n- `Data`: this indicates that no spatial aggregation has occurred\n\n",
   "_review": [
     "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-06-11T10:23:26+00:00"
+  "cataloged_at": "2026-06-12T10:18:18+00:00"
 }
