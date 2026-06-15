@@ -3,11 +3,11 @@
   "stac_version": "1.1.0",
   "id": "malariaatlas/lst",
   "title": "Land Surface Temperature",
-  "description": "Daytime and nighttime Land Surface Temperature (LST) derived from MODIS MOD11A2 v6.1 ~1 km 8-daily composites, converted to degrees Celsius and gap-filled using the Weiss et al. (2014) method to remove cloud-cover artifacts. Gap-filled 8-daily ~1 km outputs are further aggregated temporally and spatially into monthly and annual ~5 km global raster products. Three variables are provided: daytime LST, nighttime LST, and the diurnal temperature difference.",
+  "description": "Daytime and nighttime Land Surface Temperature (LST) derived from the ~1 km MODIS MOD11A2 v6.1 8-daily composites, converted to degrees Celsius and gap-filled to remove cloud-cover artifacts using the Weiss et al. (2014) method. Products are available at ~1 km resolution (8-daily) and ~5 km resolution (monthly and annual aggregates), with three variables: daytime LST, nighttime LST, and the diurnal temperature difference. Global coverage is provided as cloud-optimized GeoTIFF rasters organized by variable, resolution, and temporal summary.",
   "keywords": [
     "land-surface-temperature",
-    "remote-sensing",
     "modis",
+    "remote-sensing",
     "earth-observation",
     "climate",
     "time-series",
@@ -76,11 +76,22 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "featured": 0,
-  "created_at": "2024-11-04T07:26:54.545Z",
-  "product_id": "lst",
-  "account_id": "malariaatlas",
+  "total_bytes": 4877578149124,
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "exts": {
+    "txt": 1,
+    "tif": 27446,
+    "json": 34,
+    "md": 1
+  },
   "updated_at": "2026-04-10T03:47:18.436Z",
+  "created_at": "2024-11-04T07:26:54.545Z",
+  "featured": 0,
+  "product_id": "lst",
+  "data_mode": "open",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -93,25 +104,14 @@
       "prefix": "malariaatlas/lst/"
     }
   },
-  "visibility": "public",
-  "exts": {
-    "txt": 1,
-    "tif": 27446,
-    "json": 34,
-    "md": 1
-  },
-  "data_mode": "open",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "total_bytes": 4877578149124,
   "file_count": 27482,
+  "visibility": "public",
   "disabled": false,
+  "account_id": "malariaatlas",
   "readme": "## README.md\nDaytime and Nighttime Land Surface Temperature (LST) are derived from the ~1km MODIS [MOD11A2 v6.1](https://lpdaac.usgs.gov/products/mod11a2v061/) products. The 8-daily composites are converted to degrees Celsius and then gap-filled using the approach outlined in [Weiss et al (2014)](https://doi.org/10.1016/j.isprsjprs.2014.10.001) to eliminate missing data caused by factors such as cloud cover.  \n\nThe gap-filled 8-daily ~1km outputs are then aggregated temporally and spatially to produce monthly and annual ~5km products.\n\nDirectories are structured in the following way: `{VariableName}/{Resolution}/{TemporalSummary}`\n\nAnd under that, filenames are structured by:  \n8-daily: `{VariableName}.{Year}.{JulianDay}.Data.{Resolution}.{SpatialSummary}.tif`  \nMonthly: `{VariableName}.{Year}.{Month}.{TemporalSummary}.{Resolution}.{SpatialSummary}.tif`  \nAnnual: `{VariableName}.{Year}.Annual.{TemporalSummary}.{Resolution}.{SpatialSummary}.tif`  \nSynoptic: `{VariableName}.Synoptic.{Month-or-Overall}.{TemporalSummary}.{Resolution}.{SpatialSummary}.tif`   \n\n`VariableName` options in this dataset are:\n- `LST_Day_v061`: daytime Land Surface Temperature\n- `LST_Night_v061`: nighttime Land Surface Temperature\n- `LST_DiurnalDifference_v061`: difference between daytime and nighttime LSTs\n\n`Resolution` in this dataset is either `1km` or `5km`\n\nStandard values for `TemporalSummary` are: `min`, `max`, `range`, `mean`, `SD`, `count`. In addition there are:\n- `Data`: this indicated that no temporal aggregation has occurred\n- `Balanced-mean`: This is specific to overall synoptic data, it represents the mean of the 12 monthly synoptic mean datasets as opposed to the overall mean of the (e.g. daily) data. This gives a weighting to help correct for seasonal bias that could otherwise be present in areas where data are more often missing at certain times of year.  \n\nStandard values for `SpatialSummary` are: `min`, `max`, `range`, `sum`, `mean`, `SD`, `count`. In addition:\n- `Data`: this indicates that no spatial aggregation has occurred",
   "_review": [
     "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-06-14T10:00:46+00:00"
+  "cataloged_at": "2026-06-15T11:07:39+00:00"
 }
