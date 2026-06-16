@@ -1,6 +1,6 @@
 # Source Cooperative catalog — status
 
-_Updated 2026-06-15 11:20 UTC by the nightly pipeline._
+_Updated 2026-06-16 10:47 UTC by the nightly pipeline._
 
 **261 datasets cataloged**  ·  **31 queued for next run**  ·  last run handled **25**
 
