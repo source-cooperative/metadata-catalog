@@ -3,7 +3,7 @@
   "stac_version": "1.1.0",
   "id": "dynamical/ecmwf-ifs-grib",
   "title": "ECMWF IFS ENS Weather Model Historical Archive",
-  "description": "Archive of ECMWF IFS ENS (Integrated Forecasting System Ensemble) historical weather forecast data in GRIB Edition 1 format at 0.25-degree global resolution. Covers approximately 2,946 forecast initialization dates from 2016-03-08 through 2024-04-01, bridging the gap between ECMWF's tape-backed MARS archive and the public S3 open-data bucket. Includes 51 ensemble members (1 control + 50 perturbed) with surface meteorological variables and 500 hPa geopotential at forecast steps out to 360 hours.",
+  "description": "Archive of ECMWF IFS ENS (Integrated Forecasting System Ensemble) historical weather forecast data in GRIB Edition 1 format at 0.25-degree global resolution. Covers approximately 2,946 forecast initialization dates from 2016-03-08 through 2024-04-01, bridging the gap between ECMWF's tape-backed MARS archive and the public S3 open-data bucket. Each date provides 51 ensemble members (1 control + 50 perturbed) with surface meteorological variables and 500 hPa geopotential at forecast steps out to 360 hours.",
   "license": "CC-BY-4.0",
   "keywords": [
     "numerical-weather-prediction",
@@ -80,19 +80,24 @@
     }
   ],
   "featured": 0,
-  "file_count": 5897,
-  "visibility": "public",
-  "updated_at": "2026-03-30T19:26:35.212Z",
-  "data_mode": "open",
-  "created_at": "2026-02-17T16:31:25.424Z",
-  "product_id": "ecmwf-ifs-grib",
-  "account_id": "dynamical",
   "disabled": false,
+  "created_at": "2026-02-17T16:31:25.424Z",
+  "updated_at": "2026-03-30T19:26:35.212Z",
+  "file_count": 7839,
   "exts": {
-    "md": 1,
-    "idx": 2948,
-    "grib": 2948
+    "grib": 3919,
+    "idx": 3919,
+    "md": 1
   },
+  "data_mode": "open",
+  "account_id": "dynamical",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "visibility": "public",
+  "product_id": "ecmwf-ifs-grib",
+  "total_bytes": 64944838766075,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -105,15 +110,11 @@
       "prefix": "dynamical/ecmwf-ifs-grib/"
     }
   },
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "total_bytes": 21073874879997,
   "readme": "## README.md\n## ECMWF IFS ENS Forecast Archive\n\nArchives of ensemble weather forecast data from the [European Centre for Medium-Range Weather\nForecasts](https://www.ecmwf.int/) (ECMWF).\n\nECMWF's public open data bucket (`ecmwf-forecasts`) only provides data from April 2024 onward.\nEarlier data is stored in ECMWF's [MARS](https://www.ecmwf.int/en/forecasts/access-forecasts/access-archive-datasets)\n(Meteorological Archival and Retrieval System), a tape-backed archive that requires careful request\noptimization and authenticated API access.\n\nThis tool retrieves IFS ENS (Ensemble) forecast data from MARS and stages it as GRIB files in S3,\ncovering the period from 2016-03-08 (IFS cycle 41r2, when ENS resolution increased to 18km)\nthrough 2024-04-01 (when S3 open data begins). The staged GRIBs can then be processed by the\n[reformatters](https://github.com/dynamical-org/reformatters) into cloud-optimized Icechunk Zarr\nformat, available at [dynamical.org](https://dynamical.org).\n\nThe files are in GRIB Edition 1 format at 0.25 degree resolution. Each date produces four GRIB\nfiles:\n\n| File | Description | Approx Size |\n|------|-------------|-------------|\n| `pf_sfc_a.grib` | Perturbed forecast, surface, members 1-25, all steps | ~53 GB |\n| `pf_sfc_b.grib` | Perturbed forecast, surface, members 26-50, all steps | ~53 GB |\n| `cf_sfc.grib` | Control forecast, surface, all steps | ~2.1 GB |\n| `all_pl.grib` | All members, geopotential at 500 hPa, all steps | ~9 GB |\n\nSurface variables: `sp`, `2t`, `10u`, `10v`, `100u`, `100v`, `tp`, `strd`, `ssrd`, `msl`, `2d`,\n`ptype`. Pressure level variable: `z` (geopotential) at 500 hPa. Forecast steps: 3-hourly 0-144h\nand 6-hourly 150-360h (85 steps total). Ensemble members: 0 (control) + 1-50 (perturbed).\n\nEach date totals approximately 103 GB of GRIB data. The full archive (2,946 dates) is approximately\n304 TB.\n\nThe directory structure in S3 is:\n\n`{s3_prefix}/{YYYY-MM-DD}/{request_type}.grib`\n\nFor example: `dynamical/ecmwf-ifs-grib/ecmwf-ifs-ens/2023-07-01/pf_sfc_a.grib`\n\nThe staging tool is fully resumable, tracking state in a local SQLite database. It uses ECMWF's\nasynchronous MARS API, submitting requests and polling for completion. MARS requests are optimized\nto maximize data per tape read: all parameters and forecast steps are requested together (same tape\nper date), splitting only by ensemble member count (to stay under MARS's 75 GB retrieval limit) and\nby level type (`sfc` vs `pl`).\n\nThe code is [available on GitHub](https://github.com/dynamical-org/ecmwf-ifs-backfill). The compute\nto retrieve the files is provided by [dynamical.org](https://dynamical.org/).\n\n*Data license*: ECMWF data is available under the [Creative Commons BY 4.0](https://creativecommons.org/licenses/by/4.0/)\nlicense, provided the source is acknowledged.\n",
   "_review": [
     "extent.temporal: ['2016-03-08T00:00:00', '2024-03-31T00:00:00'] (probe sample) widened to ['2016-03-08T00:00:00', '2024-04-01T00:00:00Z'] using README-stated coverage ['2016-03-08', '2024-04-01']."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-06-17T10:13:25+00:00"
+  "cataloged_at": "2026-06-17T17:59:56+00:00",
+  "store_format": null
 }

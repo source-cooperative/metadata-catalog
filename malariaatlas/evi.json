@@ -3,7 +3,7 @@
   "stac_version": "1.1.0",
   "id": "malariaatlas/evi",
   "title": "Enhanced Vegetation Index",
-  "description": "Gap-filled Enhanced Vegetation Index (EVI) raster dataset derived from MODIS MCD43D62, MCD43D63, and MCD43D64 v6.1 products at approximately 1 km and 5 km spatial resolution. EVI values are computed using the Huete et al. (2002) formula with cloud-cover gaps eliminated via the Weiss et al. (2014) interpolation method. Products are distributed as GeoTIFFs across 8-daily, monthly, annual, and synoptic temporal aggregations, each accompanied by multiple spatial and temporal summary statistics.",
+  "description": "Gap-filled Enhanced Vegetation Index (EVI) raster dataset derived from MODIS MCD43D62, MCD43D63, and MCD43D64 v6.1 surface reflectance products at approximately 1 km and 5 km spatial resolution. EVI values are computed using the Huete et al. (2002) formula, with cloud-cover and missing-data gaps eliminated via the Weiss et al. (2014) interpolation method. Products are distributed as GeoTIFFs across 8-daily, monthly, annual, and synoptic temporal aggregations, each accompanied by multiple spatial and temporal summary statistics.",
   "keywords": [
     "remote-sensing",
     "modis",
@@ -71,15 +71,8 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "file_count": 9338,
-  "data_mode": "open",
-  "disabled": false,
-  "exts": {
-    "json": 12,
-    "md": 1,
-    "txt": 1,
-    "tif": 9324
-  },
+  "featured": 0,
+  "file_count": 9905,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -92,21 +85,29 @@
       "prefix": "malariaatlas/evi/"
     }
   },
-  "total_bytes": 2400222246938,
   "created_at": "2024-11-07T23:44:13.043Z",
-  "featured": 0,
-  "product_id": "evi",
+  "exts": {
+    "tif": 9891,
+    "json": 12,
+    "txt": 1,
+    "md": 1
+  },
+  "total_bytes": 2551357946934,
+  "account_id": "malariaatlas",
+  "visibility": "public",
+  "updated_at": "2026-04-10T03:47:12.762Z",
+  "disabled": false,
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "account_id": "malariaatlas",
-  "updated_at": "2026-04-10T03:47:12.762Z",
-  "visibility": "public",
+  "product_id": "evi",
+  "data_mode": "open",
   "readme": "## README.md\nThe Enhanced Vegetation Index is derived from the MODIS [MCD43D62](https://lpdaac.usgs.gov/products/mcd43d62v061/), [MCD43D63](https://lpdaac.usgs.gov/products/mcd43d63v061/) and [MCD43D64](https://lpdaac.usgs.gov/products/mcd43d64v061/) v6.1 products. EVI is first calculated on the datasets using the formula from [Huete et al (2002)](https://doi.org/10.1016/S0034-4257(02)00096-2) and then the outputs are gap-filled using the approach outlined in [Weiss et al (2014)](https://www.sciencedirect.com/science/article/pii/S0924271614002512?via%3Dihub) to eliminate missing data caused by factors such as cloud cover.\n\nThe gap-filled 8-daily ~1km outputs are then aggregated temporally and spatially to produce monthly and annual ~5km products.  \n\nDirectories are structured in the following way: `EVI_v061/{Resolution}/{TemporalSummary}`\n\nAnd under that, filenames are structured by:  \n8-daily: `EVI_v061.{Year}.{JulianDay}.Data.{Resolution}.{SpatialSummary}.tif`  \nMonthly: `EVI_v061.{Year}.{Month}.{TemporalSummary}.{Resolution}.{SpatialSummary}.tif`  \nAnnual: `EVI_v061.{Year}.Annual.{TemporalSummary}.{Resolution}.{SpatialSummary}.tif`  \nSynoptic: `EVI_v061.Synoptic.{Month-or-Overall}.{TemporalSummary}.{Resolution}.{SpatialSummary}.tif`   \n\n`Resolution` in this dataset is either `1km` or `5km`\n\nStandard values for `TemporalSummary` are: `min`, `max`, `range`, `mean`, `SD`, `count`. In addition there are:\n- `Data`: this indicated that no temporal aggregation has occurred\n- `Balanced-mean`: This is specific to overall synoptic data, it represents the mean of the 12 monthly synoptic mean datasets as opposed to the overall mean of the (e.g. daily) data. This gives a weighting to help correct for seasonal bias that could otherwise be present in areas where data are more often missing at certain times of year.  \n\nStandard values for `SpatialSummary` are: `min`, `max`, `range`, `sum`, `mean`, `SD`, `count`. In addition:\n- `Data`: this indicates that no spatial aggregation has occurred\n\n",
   "_review": [
     "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-06-17T10:40:26+00:00"
+  "cataloged_at": "2026-06-17T18:35:47+00:00",
+  "store_format": null
 }
