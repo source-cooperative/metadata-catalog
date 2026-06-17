@@ -1,6 +1,6 @@
 # Source Cooperative catalog — status
 
-_Updated 2026-06-17 10:43 UTC by the nightly pipeline._
+_Updated 2026-06-17 18:39 UTC by the nightly pipeline._
 
 **261 datasets cataloged**  ·  **31 queued for next run**  ·  last run handled **25**
 
@@ -9,8 +9,21 @@ _Updated 2026-06-17 10:43 UTC by the nightly pipeline._
 | outcome                       | count |
 | ----------------------------- | ----: |
 | ✅ drafted                     |    20 |
-| ⏭️ incomplete (gap)           |     5 |
-| ⚠️ probe failed (issue filed) |     0 |
+| ⏭️ incomplete (gap)           |     2 |
+| ⚠️ probe failed (issue filed) |     3 |
+
+Failed: bkr/cams, cboettig/obis, dynamical/dwd-icon-eu-forecast-5-day — see [open probe-failure issues](https://github.com/source-cooperative/metadata-catalog/issues?q=is%3Aissue+is%3Aopen+label%3Aprobe-failure).
+
+## Needs a prober (no_probe)
+
+| format   | datasets                   |
+| -------- | -------------------------- |
+| .fcb     | 2 datasets                 |
+| .fgb     | smartmaps/next-ksj         |
+| .geojson | geovibes/geometries        |
+| .nc      | 2 datasets                 |
+| .pmtiles | 4 datasets                 |
+| .shp     | cboettig/habitat-corridors |
 
 | group                   | agg count | agg bytes | count |    bytes |
 | ----------------------- | --------: | --------: | ----: | -------: |
@@ -36,4 +49,4 @@ _Updated 2026-06-17 10:43 UTC by the nightly pipeline._
 | --------- | ------------------------------------------------ | ----: | -------: |
 | ghosts    | catalog entry, no S3 data                        |    43 |  29.7 TB |
 | stowaways | S3 data, no source.coop product                  |    39 | 923.7 TB |
-| stale     | catalog bytes ≠ S3 (fixed by `make process-all`) |    64 |   1.8 PB |
+| stale     | catalog bytes ≠ S3 (fixed by `make process-all`) |    44 |   1.0 PB |
