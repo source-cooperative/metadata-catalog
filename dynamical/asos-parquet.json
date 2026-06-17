@@ -10,11 +10,12 @@
   "license": "CC-BY-NC-SA-4.0",
   "keywords": [
     "weather",
-    "metar",
-    "climatology",
-    "aviation-weather",
+    "meteorology",
     "time-series",
-    "airport-stations"
+    "geoparquet",
+    "atmospheric-data",
+    "climate",
+    "aviation-weather"
   ],
   "providers": [
     {
@@ -51,20 +52,20 @@
     "temporal": {
       "interval": [
         [
-          null,
-          null
+          "1940-01-01T00:00:00Z",
+          "2026-01-01T00:00:00Z"
         ]
       ]
     }
   },
   "summaries": {
-    "item_count": 1776632346
+    "item_count": 1780713866
   },
   "assets": {
     "data": {
-      "href": "https://data.source.coop/dynamical/asos-parquet/year=2026/data.parquet",
+      "href": "https://data.source.coop/dynamical/asos-parquet/year=2026/",
       "type": "application/x-parquet",
-      "title": "data.parquet",
+      "title": "data",
       "roles": [
         "data"
       ],
@@ -142,12 +143,12 @@
         {
           "name": "state",
           "type": "VARCHAR",
-          "description": "[admin_code] US state abbreviation or equivalent sub-national admin code"
+          "description": "[admin_code] State or sub-national administrative code for the station location"
         },
         {
           "name": "geometry",
           "type": "GEOMETRY('EPSG:4326')",
-          "description": "[geometry] Station point geometry encoded as EPSG:4326"
+          "description": "[geometry] Station point geometry encoded as WKB (EPSG:4326)"
         },
         {
           "name": "name",
@@ -160,12 +161,12 @@
         {
           "name": "country",
           "type": "VARCHAR",
-          "description": "[placename] Country name for the station location"
+          "description": "[placename] Country name or code of the station"
         },
         {
           "name": "county",
           "type": "VARCHAR",
-          "description": "[placename] County or sub-national administrative area name"
+          "description": "[placename] County or local administrative area name of the station"
         },
         {
           "name": "wfo",
@@ -184,7 +185,7 @@
           "type": "BIGINT"
         }
       ],
-      "table:row_count": 25042921
+      "description": "88 files sampled for this table"
     }
   },
   "links": [
@@ -199,10 +200,16 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "total_bytes": 19981605835,
-  "file_count": 87,
+  "file_count": 88,
+  "total_bytes": 20089167924,
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "visibility": "public",
+  "featured": 0,
   "data_mode": "open",
-  "product_id": "asos-parquet",
+  "created_at": "2026-02-05T18:50:19.484Z",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -215,22 +222,18 @@
       "prefix": "dynamical/asos-parquet/"
     }
   },
-  "updated_at": "2026-02-09T17:07:41.515Z",
   "disabled": false,
-  "featured": 0,
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
+  "product_id": "asos-parquet",
+  "updated_at": "2026-02-09T17:07:41.515Z",
+  "exts": {
+    "parquet": 88
   },
   "account_id": "dynamical",
-  "exts": {
-    "parquet": 87
-  },
-  "created_at": "2026-02-05T18:50:19.484Z",
-  "visibility": "public",
   "_review": [
-    "extent.spatial.bbox: omitted; spatial reference is categorical via [data.longitude (latlon), data.latitude (latlon), data.geometry (geometry), data.state (admin_code), data.country (placename), data.county (placename)]. Add bbox once a placename \u2192 bbox gazetteer is available."
+    "extent.temporal: None (probe sample) widened to ['1940-01-01T00:00:00Z', '2026-01-01T00:00:00Z'] using README-stated coverage ['1940', '2026'].",
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [data.longitude (latlon), data.latitude (latlon), data.geometry (geometry), data.state (admin_code), data.country (placename), data.county (placename)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-06-05T02:39:45+00:00"
+  "cataloged_at": "2026-06-17T19:27:46+00:00",
+  "store_format": null
 }

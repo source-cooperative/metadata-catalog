@@ -3,15 +3,16 @@
   "stac_version": "1.1.0",
   "id": "mapterhorn/mapterhorn",
   "title": "Mapterhorn",
-  "description": "Global collection of terrain tiles in PMTiles format covering the full Web Mercator projection extent. Encodes digital elevation model (DEM) data in Terrarium format for use in hillshading and 3D terrain rendering in interactive web maps. Source elevation data is drawn from multiple open-data providers.",
+  "description": "Mapterhorn is a global collection of terrain tiles in PMTiles format covering the full Web Mercator projection extent. Elevation data is encoded in Terrarium format, enabling hillshading and 3D terrain rendering in interactive web maps. Source elevation data is compiled from multiple open-data providers.",
   "keywords": [
-    "topography",
-    "elevation",
     "digital-elevation-model",
-    "hillshade",
+    "elevation",
+    "topography",
     "pmtiles",
-    "web-mapping",
-    "remote-sensing"
+    "global-coverage",
+    "remote-sensing",
+    "hillshade",
+    "web-mapping"
   ],
   "providers": [
     {
@@ -72,23 +73,10 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "visibility": "public",
-  "exts": {
-    "tar": 132,
-    "md": 1,
-    "pmtiles": 457,
-    "json": 2
-  },
-  "updated_at": "2025-11-19T12:36:36.104Z",
-  "created_at": "2025-11-19T12:36:36.104Z",
-  "account_id": "mapterhorn",
   "disabled": false,
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "file_count": 592,
-  "data_mode": "open",
+  "created_at": "2025-11-19T12:36:36.104Z",
+  "file_count": 593,
+  "featured": 0,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -101,12 +89,27 @@
       "prefix": "mapterhorn/mapterhorn/"
     }
   },
-  "total_bytes": 26662447200272,
+  "visibility": "public",
+  "updated_at": "2025-11-19T12:36:36.104Z",
+  "exts": {
+    "pmtiles": 458,
+    "tar": 132,
+    "json": 2,
+    "md": 1
+  },
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
   "product_id": "mapterhorn",
-  "featured": 0,
+  "data_mode": "open",
+  "account_id": "mapterhorn",
+  "total_bytes": 26692442757268,
+  "readme": "## README.md\n# Mapterhorn\n\nPublic terrain tiles for interactive web map visualizations\n\nhttps://mapterhorn.com/\n\n## Bulk Download\n\nFor a full list of PMTiles download URLs in JSON format see https://s3.us-west-2.amazonaws.com/us-west-2.opendata.source.coop/mapterhorn/mapterhorn/download_urls.json.\n\n## License and Attribution\n\nMapterhorn uses the open-data sources listed on https://mapterhorn.com/attribution\n\nFor a full list in JSON format see https://s3.us-west-2.amazonaws.com/us-west-2.opendata.source.coop/mapterhorn/mapterhorn/attribution.json.\n\n## Example: MapLibre GL JS\n\nLive demo: https://output.jsbin.com/qamarorima/\n\n```html\n<!DOCTYPE html>\n<html lang='en'>\n\n<head>\n    <meta charset=\"utf-8\" />\n    <script src=\"https://unpkg.com/maplibre-gl@5.6.0/dist/maplibre-gl.js\"></script>\n    <link href=\"https://unpkg.com/maplibre-gl@5.6.0/dist/maplibre-gl.css\" rel=\"stylesheet\" />\n    <script src=\"https://unpkg.com/pmtiles@4.3.0/dist/pmtiles.js\"></script>\n    <meta name=\"viewport\" content=\"initial-scale=1,maximum-scale=1,user-scalable=no\" />\n    <style>\n        body {\n            margin: 0;\n            padding: 0;\n        }\n\n        #map {\n            position: absolute;\n            top: 0;\n            bottom: 0;\n            width: 100%;\n        }\n    </style>\n</head>\n\n<body>\n    <div id=\"map\"></div>\n    <script type=\"text/javascript\">\n\n        const protocol = new pmtiles.Protocol({ metadata: true, errorOnMissingTile: true });\n        maplibregl.addProtocol('mapterhorn', async (params, abortController) => {\n            const [z, x, y] = params.url.replace('mapterhorn://', '').split('/').map(Number);\n            const name = z <= 12 ? 'planet' : `6-${x >> (z - 6)}-${y >> (z - 6)}`;\n            const url = `pmtiles://https://s3.us-west-2.amazonaws.com/us-west-2.opendata.source.coop/mapterhorn/mapterhorn/${name}.pmtiles/${z}/${x}/${y}.webp`;\n            const response = await protocol.tile({ ...params, url }, abortController);\n            if (response['data'] === null) throw new Error(`Tile z=${z} x=${x} y=${y} not found.`);\n            return response;\n        });\n\n        const map = new maplibregl.Map({\n            container: 'map',\n            hash: 'map',\n            style: {\n                version: 8,\n                sources: {\n                    hillshadeSource: {\n                        type: 'raster-dem',\n                        tiles: ['mapterhorn://{z}/{x}/{y}'],\n                        encoding: 'terrarium',\n                        tileSize: 512,\n                        attribution: '<a href=\"https://mapterhorn.com/attribution\">\u00a9 Mapterhorn</a>'\n                    },\n                },\n                layers: [\n                    {\n                        id: 'hillshade',\n                        type: 'hillshade',\n                        source: 'hillshadeSource',\n                    },\n                ],\n            },\n        });\n    </script>\n</body>\n\n</html>\n```\n\n",
   "_review": [
     "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-06-05T02:31:32+00:00"
+  "cataloged_at": "2026-06-17T19:07:46+00:00",
+  "store_format": null
 }

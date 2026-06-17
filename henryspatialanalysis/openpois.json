@@ -6,16 +6,17 @@
   ],
   "id": "henryspatialanalysis/openpois",
   "title": "OpenPOIs",
-  "description": "OpenPOIs is a unified dataset of over 4.5 million points of interest across the United States, produced by conflating OpenStreetMap and Overture Maps sources. Each POI carries model-estimated confidence scores, harmonized category labels, and source-level diagnostics linking back to OSM and Overture identifiers. Data are distributed as hive-partitioned Parquet files and PMTiles archives, versioned by release date.",
+  "description": "OpenPOIs is a unified dataset of over 4.5 million points of interest across the United States, built by conflating OpenStreetMap and Overture Maps sources. Each POI includes model-estimated confidence scores (probability the POI currently exists), harmonized category labels, and source-level diagnostics linking back to OSM and Overture identifiers. Data are distributed as hive-partitioned Parquet files and PMTiles archives, versioned by release date.",
   "license": "ODbL-1.0",
   "keywords": [
     "points-of-interest",
     "openstreetmap",
     "administrative-boundaries",
+    "pmtiles",
+    "geoparquet",
     "conflation",
     "venue-data",
-    "confidence-scoring",
-    "pmtiles"
+    "machine-learning"
   ],
   "providers": [
     {
@@ -71,10 +72,111 @@
     "item_count": 4536404
   },
   "assets": {
-    "part-0": {
-      "href": "https://data.source.coop/henryspatialanalysis/openpois/latest/osm-parquet/primary_tag=tourism/part-0.parquet",
+    "2026-04-23-v0/conflated-parquet": {
+      "href": "https://data.source.coop/henryspatialanalysis/openpois/2026-04-23-v0/conflated-parquet/shared_label=/",
       "type": "application/x-parquet",
-      "title": "part-0.parquet",
+      "title": "2026-04-23-v0/conflated-parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "unified_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "source",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "osm_id",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "osm_type",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "overture_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "brand",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "conf_mean",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "conf_lower",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "conf_upper",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "match_score",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "match_distance_m",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "osm_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "overture_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "osm_brand",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "overture_brand",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "osm_conf_mean",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "overture_confidence",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:4326')",
+          "description": "[geometry] WKB point geometry in EPSG:4326"
+        },
+        {
+          "name": "geohash",
+          "type": "VARCHAR",
+          "description": "[spatial_index] Geohash spatial index for the POI location"
+        },
+        {
+          "name": "__index_level_0__",
+          "type": "BIGINT"
+        },
+        {
+          "name": "shared_label",
+          "type": "VARCHAR"
+        }
+      ],
+      "description": "3 files sampled for this table"
+    },
+    "latest/osm-parquet": {
+      "href": "https://data.source.coop/henryspatialanalysis/openpois/latest/osm-parquet/primary_tag=historic/",
+      "type": "application/x-parquet",
+      "title": "latest/osm-parquet",
       "roles": [
         "data"
       ],
@@ -102,7 +204,7 @@
         {
           "name": "addr:state",
           "type": "VARCHAR",
-          "description": "[placename] State name from OSM address tags (OSM-schema assets only)"
+          "description": "[placename] State name or abbreviation from OSM address tags"
         },
         {
           "name": "check_date:opening_hours",
@@ -151,7 +253,7 @@
         {
           "name": "geometry",
           "type": "GEOMETRY('EPSG:4326')",
-          "description": "[geometry] Point geometry in EPSG:4326"
+          "description": "[geometry] WKB point geometry in EPSG:4326"
         },
         {
           "name": "addr:housename",
@@ -236,7 +338,7 @@
         {
           "name": "addr:postcode",
           "type": "VARCHAR",
-          "description": "[zipcode] Postal code from OSM address tags (OSM-schema assets only)"
+          "description": "[zipcode] Postal/ZIP code from OSM address tags"
         },
         {
           "name": "shop",
@@ -309,7 +411,7 @@
         {
           "name": "addr:country",
           "type": "VARCHAR",
-          "description": "[admin_code] Country code from OSM address tags (OSM-schema assets only)"
+          "description": "[admin_code] Country code from OSM address tags"
         },
         {
           "name": "emergency",
@@ -318,7 +420,7 @@
         {
           "name": "addr:city",
           "type": "VARCHAR",
-          "description": "[placename] City name from OSM address tags (OSM-schema assets only)"
+          "description": "[placename] City name from OSM address tags"
         },
         {
           "name": "healthcare",
@@ -363,7 +465,7 @@
         {
           "name": "geohash",
           "type": "VARCHAR",
-          "description": "[spatial_index] Geohash spatial index used for hive partitioning"
+          "description": "[spatial_index] Geohash spatial index for the POI location"
         },
         {
           "name": "__index_level_0__",
@@ -378,7 +480,7 @@
           "type": "VARCHAR"
         }
       ],
-      "table:row_count": 383356
+      "description": "5 files sampled for this table"
     }
   },
   "links": [
@@ -393,9 +495,12 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "account_id": "henryspatialanalysis",
-  "product_id": "openpois",
-  "visibility": "public",
+  "created_at": "2026-04-23T17:57:16.237Z",
+  "total_bytes": 20946831195,
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -408,26 +513,25 @@
       "prefix": "henryspatialanalysis/openpois/"
     }
   },
+  "product_id": "openpois",
+  "account_id": "henryspatialanalysis",
+  "disabled": false,
   "data_mode": "open",
   "featured": 0,
-  "updated_at": "2026-04-24T00:38:20.784Z",
-  "created_at": "2026-04-23T17:57:16.237Z",
-  "disabled": false,
-  "total_bytes": 10856973068,
   "exts": {
-    "parquet": 202,
-    "": 1,
-    "pmtiles": 4,
-    "md": 3
+    "parquet": 303,
+    "pmtiles": 6,
+    "md": 5,
+    "": 1
   },
-  "file_count": 210,
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
+  "file_count": 315,
+  "visibility": "public",
+  "updated_at": "2026-04-24T00:38:20.784Z",
+  "readme": "## README.md\n# OpenPOIs\n\nA unified, open dataset for points of interest across the United States. Built from [OpenStreetMap](https://www.openstreetmap.org) and\n[Overture Maps](https://overturemaps.org), with per-POI confidence scores\nproduced by the OpenPOIs turnover model.\n\n- \ud83c\udf10 **Interactive map:** <https://openpois.org/>\n- \ud83d\udcbb **Source code:** <https://github.com/henryspatialanalysis/openpois>\n- \ud83d\udcd8 **Data license:** [Open Database License v.1.0](./LICENSE). For more details, see the [Open Data Commons](https://opendatacommons.org/licenses/odbl/1-0/).\n\n## Repository layout\n\nEach refresh writes a new versioned folder. Inside every version:\n\n```\n<YYYY-MM-DD-vN>/\n\u251c\u2500\u2500 README.md                     # version metadata (OSM date, Overture release, model)\n\u251c\u2500\u2500 osm-parquet/                  # OSM-only snapshot, hive-partitioned by primary_tag\n\u251c\u2500\u2500 osm-pmtiles/osm.pmtiles       # OSM snapshot as a single PMTiles archive\n\u251c\u2500\u2500 conflated-parquet/            # OSM \u00d7 Overture conflated snapshot, hive-partitioned by shared_label\n\u2514\u2500\u2500 conflated-pmtiles/conflated.pmtiles\n```\n\n`latest/` is a server-side mirror of the most recently published version \u2014\nuse it for live demos and tutorials, and pin a dated folder\n(e.g. `2026-04-23-v0/`) when you need a stable, reproducible reference.\n\nBrowse all versions at\n<https://source.coop/henryspatialanalysis/openpois>.\n\n## What's in the conflated dataset\n\nOne row per real-world POI after matching OpenStreetMap features against\nOverture Maps places. Key columns:\n\n| Column | Description |\n|---|---|\n| `unified_id` | Stable ID for the conflated POI |\n| `source` | `osm`, `overture`, or `both` |\n| `osm_id`, `osm_type` | Source OSM feature (when present) |\n| `overture_id` | Source Overture ID (when present) |\n| `name`, `brand` | Preferred display names |\n| `shared_label` | Harmonised category across the two source taxonomies |\n| `conf_mean` | Model-estimated probability the POI currently exists (1 = exists, 0 = incorrect or stale) |\n| `conf_lower`, `conf_upper` | 90% uncertainty interval for confidence score |\n| `match_score`, `match_distance_m` | Diagnostics for the OSM \u00d7 Overture link |\n| `geometry` | WKB point (EPSG:4326) |\n\nThe `osm-parquet/` files contain the same OSM rows before conflation. This data retains the original OSM tags.\n\n## Quickstart\n\nRead directly from Source Cooperative's S3 mirror (no authentication):\n\n- **pyarrow / GeoPandas** use `pyarrow.fs.S3FileSystem(anonymous=True)` and a\n  bucket-qualified path (no scheme prefix).\n- **DuckDB** uses an `s3://` URL plus an anonymous `SECRET` so its glob\n  expansion works over the bucket listing.\n\nEvery example uses `VERSION = \"latest\"`; swap in a dated folder (e.g.\n`\"2026-04-23-v0\"`) when you need a reproducible pin.\n\n### Python: pyarrow\n\n```python\nimport pyarrow.dataset as ds\nimport pyarrow.fs as pafs\n\nBASE = \"us-west-2.opendata.source.coop/henryspatialanalysis/openpois\"\nVERSION = \"latest\"   # or pin a specific dated folder, e.g. \"2026-04-23-v0\"\n\nfs = pafs.S3FileSystem(anonymous = True, region = \"us-west-2\")\npois = ds.dataset(\n    f\"{BASE}/{VERSION}/conflated-parquet/\",\n    filesystem = fs,\n    format = \"parquet\",\n    partitioning = \"hive\",\n)\nprint(pois.schema)\nprint(f\"{pois.count_rows():,} POIs\")\n```\n\n### Python: DuckDB\n\n```python\nimport duckdb\n\nBASE = \"s3://us-west-2.opendata.source.coop/henryspatialanalysis/openpois\"\nVERSION = \"latest\"   # or pin a specific dated folder, e.g. \"2026-04-23-v0\"\n\ncon = duckdb.connect()\ncon.execute(\"INSTALL httpfs; LOAD httpfs;\")\ncon.execute(\"\"\"\n    CREATE OR REPLACE SECRET srccoop (\n        TYPE s3, PROVIDER config,\n        REGION 'us-west-2', URL_STYLE 'path',\n        KEY_ID '', SECRET ''\n    );\n\"\"\")\ndf = con.execute(f\"\"\"\n    SELECT shared_label, COUNT(*) AS n\n    FROM read_parquet('{BASE}/{VERSION}/conflated-parquet/**/*.parquet',\n                      hive_partitioning = true)\n    GROUP BY shared_label\n    ORDER BY n DESC\n    LIMIT 20\n\"\"\").df()\nprint(df)\n```\n\n### Python: GeoPandas\n\n```python\nimport geopandas as gpd\nimport pyarrow.fs as pafs\n\nBASE = \"us-west-2.opendata.source.coop/henryspatialanalysis/openpois\"\nVERSION = \"latest\"   # or pin a specific dated folder, e.g. \"2026-04-23-v0\"\n\nfs = pafs.S3FileSystem(anonymous = True, region = \"us-west-2\")\n# conflated-parquet is hive-partitioned by shared_label.\ngdf = gpd.read_parquet(\n    f\"{BASE}/{VERSION}/conflated-parquet/shared_label=Cafe/part-0.parquet\",\n    filesystem = fs,\n)\nprint(gdf.head())\n```\n\n### Browser / vector-tile map\n\nThe `*-pmtiles/*.pmtiles` archives can be loaded directly by any PMTiles\nclient (MapLibre + `pmtiles://`, OpenLayers + `ol-pmtiles`, etc.). See\n`site/` in the GitHub repo for a working example.\n\nThe snippet below is a self-contained HTML page that renders the conflated\nPMTiles over MapLibre, coloured by the model's `conf_mean`. Save it as\n`openpois.html` and open it in a browser \u2014 no build step, no server needed.\nPMTiles are authored at zoom 14, so zoom in past z14 to see points.\n\n```html\n<!doctype html>\n<meta charset=\"utf-8\" />\n<title>OpenPOIs \u2014 conflated</title>\n<link href=\"https://unpkg.com/maplibre-gl@4/dist/maplibre-gl.css\" rel=\"stylesheet\" />\n<style>html, body, #map { height: 100%; margin: 0; }</style>\n<div id=\"map\"></div>\n<script src=\"https://unpkg.com/maplibre-gl@4/dist/maplibre-gl.js\"></script>\n<script src=\"https://unpkg.com/pmtiles@3/dist/pmtiles.js\"></script>\n<script>\n  const BASE = \"https://data.source.coop/henryspatialanalysis/openpois\";\n  const VERSION = \"latest\";   // or pin a specific dated folder, e.g. \"2026-04-23-v0\"\n\n  const protocol = new pmtiles.Protocol();\n  maplibregl.addProtocol(\"pmtiles\", protocol.tile);\n\n  const map = new maplibregl.Map({\n    container: \"map\",\n    style: \"https://tiles.openfreemap.org/styles/positron\",\n    center: [-73.9855, 40.758],   // Times Square\n    zoom: 16,\n  });\n\n  map.on(\"load\", () => {\n    map.addSource(\"openpois\", {\n      type: \"vector\",\n      url: `pmtiles://${BASE}/${VERSION}/conflated-pmtiles/conflated.pmtiles`,\n      minzoom: 14,\n    });\n    map.addLayer({\n      id: \"openpois-points\",\n      type: \"circle\",\n      source: \"openpois\",\n      \"source-layer\": \"conflated_pois\",   // set by publish.pmtiles.conflated_layer_name\n      paint: {\n        \"circle-radius\": 4,\n        \"circle-stroke-width\": 1,\n        \"circle-stroke-color\": \"#ffffff\",\n        // Red when stale (conf_mean \u2248 0), green when fresh (\u2248 1).\n        \"circle-color\": [\n          \"interpolate\", [\"linear\"], [\"get\", \"conf_mean\"],\n          0.0, \"#d73027\",\n          0.3, \"#fee08b\",\n          0.7, \"#1a9850\",\n        ],\n      },\n    });\n    map.on(\"click\", \"openpois-points\", (e) => {\n      const p = e.features[0].properties;\n      new maplibregl.Popup()\n        .setLngLat(e.lngLat)\n        .setHTML(\n          `<b>${p.name ?? \"(no name)\"}</b><br>` +\n          `${p.shared_label} \u00b7 source=${p.source}<br>` +\n          `conf_mean = ${Number(p.conf_mean).toFixed(3)}`\n        )\n        .addTo(map);\n    });\n  });\n</script>\n```\n\n\n## License & attribution\n\nThe OpenPOIs dataset is released under the [Open Database License (ODbL) v.1.0](./LICENSE). Any public use must credit OpenStreetMap contributors, the Overture Maps Foundation, and OpenPOIs. Any derivative database must be shared under the same license. See <https://www.openstreetmap.org/copyright> and <https://docs.overturemaps.org/attribution/> for upstream attribution\nrequirements.\n\n## Citation\n\nIf you use this data in research, please cite:\n\n> Henry Spatial Analysis (2026). *OpenPOIs: a unified, confidence-scored\n> dataset of U.S. points of interest.* <https://openpois.henryspatialanalysis.com>\n\n## Contact\n\nQuestions, bug reports, and contributions welcome via <https://github.com/henryspatialanalysis/openpois/issues>.\n",
   "_review": [
-    "extent.spatial.bbox: omitted; spatial reference is categorical via [part-0.geometry (geometry), part-0.geohash (spatial_index), part-0.addr:city (placename), part-0.addr:state (placename), part-0.addr:postcode (zipcode), part-0.addr:country (admin_code)]. Add bbox once a placename \u2192 bbox gazetteer is available."
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [2026-04-23-v0/conflated-parquet.geometry (geometry), 2026-04-23-v0/conflated-parquet.geohash (spatial_index), latest/osm-parquet.geometry (geometry), latest/osm-parquet.geohash (spatial_index), latest/osm-parquet.addr:city (placename), latest/osm-parquet.addr:state (placename), latest/osm-parquet.addr:postcode (zipcode), latest/osm-parquet.addr:country (admin_code)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-06-05T02:35:45+00:00"
+  "cataloged_at": "2026-06-17T19:16:32+00:00",
+  "store_format": null
 }
