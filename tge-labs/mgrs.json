@@ -6,15 +6,16 @@
   ],
   "id": "tge-labs/mgrs",
   "title": "Cloud Native MGRS",
-  "description": "A complete Military Grid Reference System (MGRS) 1-kilometer reference grid derived from National Geospatial-Intelligence Agency (NGA) data, stored in cloud-native GeoParquet format. Contains over 305 million grid cells covering the global extent from -80\u00b0 to 84\u00b0 latitude, with each cell encoded as a polygon geometry alongside standardized MGRS codes, Grid Zone Designators, and 10-kilometer tile identifiers.",
+  "description": "A complete Military Grid Reference System (MGRS) 1-kilometer reference grid derived from National Geospatial-Intelligence Agency (NGA) source data, converted to cloud-native GeoParquet format. Contains over 305 million polygon grid cells spanning global extent from -80\u00b0 to 84\u00b0 latitude, each encoded with MGRS codes, Grid Zone Designators, and 10-kilometer tile identifiers. Data is available as a single file and as ~700 GZD-partitioned files for efficient spatial querying.",
   "license": "other",
   "keywords": [
+    "geoparquet",
+    "global-coverage",
+    "remote-sensing",
     "mgrs",
     "coordinate-system",
-    "grid-reference",
     "utm-grid",
-    "remote-sensing",
-    "geoparquet"
+    "grid-reference"
   ],
   "providers": [
     {
@@ -62,10 +63,10 @@
     "item_count": 710097665
   },
   "assets": {
-    "mgrs_clean": {
-      "href": "https://data.source.coop/tge-labs/mgrs/full/mgrs_clean.parquet",
+    "full": {
+      "href": "https://data.source.coop/tge-labs/mgrs/full/",
       "type": "application/x-parquet",
-      "title": "mgrs_clean.parquet",
+      "title": "full",
       "roles": [
         "data"
       ],
@@ -85,30 +86,77 @@
         {
           "name": "GZD",
           "type": "VARCHAR",
-          "description": "[spatial_index] Grid Zone Designator \u2014 6\u00b0\u00d78\u00b0 UTM zone band identifier"
+          "description": "[admin_code] MGRS Grid Zone Designator (6\u00b0 \u00d7 8\u00b0 zone code used as partition key)"
         },
         {
           "name": "MGRS",
           "type": "VARCHAR",
-          "description": "[spatial_index] Full MGRS coordinate reference string identifying each grid cell"
+          "description": "[spatial_index] Full MGRS grid reference code identifying the 1 km cell"
         },
         {
           "name": "MGRS_10km",
           "type": "VARCHAR",
-          "description": "[spatial_index] 10-kilometer tile identifier within the GZD"
+          "description": "[spatial_index] 10-kilometer MGRS tile identifier containing this cell"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY|GEOMETRY('OGC:CRS84')",
+          "description": "[geometry] Polygon boundary of each 1 km MGRS grid cell in EPSG:4326"
+        }
+      ],
+      "description": "2 files sampled for this table"
+    },
+    "gzd_partition": {
+      "href": "https://data.source.coop/tge-labs/mgrs/gzd_partition/GZD=01L/",
+      "type": "application/x-parquet",
+      "title": "gzd_partition",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "EASTING",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NORTHING",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "kmSQ_ID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "GZD",
+          "type": "VARCHAR",
+          "description": "[admin_code] MGRS Grid Zone Designator; one partition file per GZD value"
+        },
+        {
+          "name": "MGRS",
+          "type": "VARCHAR",
+          "description": "[spatial_index] Full MGRS grid reference code identifying the 1 km cell"
+        },
+        {
+          "name": "MGRS_10km",
+          "type": "VARCHAR",
+          "description": "[spatial_index] 10-kilometer MGRS tile identifier containing this cell"
         },
         {
           "name": "geometry",
           "type": "GEOMETRY('OGC:CRS84')",
-          "description": "[geometry] Polygon geometry of each 1 km\u00b2 MGRS grid cell in OGC:CRS84"
+          "description": "[geometry] Polygon boundary of each 1 km MGRS grid cell in OGC:CRS84"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
         }
       ],
-      "table:row_count": 305799745
+      "description": "3 files sampled for this table"
     },
-    "mgrs_clean_gp20": {
-      "href": "https://data.source.coop/tge-labs/mgrs/full/mgrs_clean_gp20.parquet",
+    "partition/by_kdtree": {
+      "href": "https://data.source.coop/tge-labs/mgrs/partition/by_kdtree/",
       "type": "application/x-parquet",
-      "title": "mgrs_clean_gp20.parquet",
+      "title": "partition/by_kdtree",
       "roles": [
         "data"
       ],
@@ -128,373 +176,29 @@
         {
           "name": "GZD",
           "type": "VARCHAR",
-          "description": "[spatial_index] Grid Zone Designator \u2014 6\u00b0\u00d78\u00b0 UTM zone band identifier"
+          "description": "[admin_code] MGRS Grid Zone Designator"
         },
         {
           "name": "MGRS",
           "type": "VARCHAR",
-          "description": "[spatial_index] Full MGRS coordinate reference string identifying each grid cell"
+          "description": "[spatial_index] Full MGRS grid reference code identifying the 1 km cell"
         },
         {
           "name": "MGRS_10km",
           "type": "VARCHAR",
-          "description": "[spatial_index] 10-kilometer tile identifier within the GZD"
-        },
-        {
-          "name": "geometry",
-          "type": "GEOMETRY",
-          "description": "[geometry] Polygon geometry of each 1 km\u00b2 MGRS grid cell"
-        }
-      ],
-      "table:row_count": 305799745
-    },
-    "mgrs_01L": {
-      "href": "https://data.source.coop/tge-labs/mgrs/gzd_partition/GZD=01L/mgrs_01L.parquet",
-      "type": "application/x-parquet",
-      "title": "mgrs_01L.parquet",
-      "roles": [
-        "data"
-      ],
-      "table:columns": [
-        {
-          "name": "EASTING",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "NORTHING",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "kmSQ_ID",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "GZD",
-          "type": "VARCHAR",
-          "description": "[spatial_index] Grid Zone Designator"
-        },
-        {
-          "name": "MGRS",
-          "type": "VARCHAR",
-          "description": "[spatial_index] Full MGRS coordinate reference string"
-        },
-        {
-          "name": "MGRS_10km",
-          "type": "VARCHAR",
-          "description": "[spatial_index] 10-kilometer tile identifier within the GZD"
+          "description": "[spatial_index] 10-kilometer MGRS tile identifier containing this cell"
         },
         {
           "name": "geometry",
           "type": "GEOMETRY('OGC:CRS84')",
-          "description": "[geometry] Polygon geometry for GZD-partitioned tile (same schema as mgrs_clean)"
+          "description": "[geometry] Polygon boundary of each 1 km MGRS grid cell in OGC:CRS84"
         },
         {
           "name": "bbox",
           "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
         }
       ],
-      "table:row_count": 579332
-    },
-    "mgrs_01M": {
-      "href": "https://data.source.coop/tge-labs/mgrs/gzd_partition/GZD=01M/mgrs_01M.parquet",
-      "type": "application/x-parquet",
-      "title": "mgrs_01M.parquet",
-      "roles": [
-        "data"
-      ],
-      "table:columns": [
-        {
-          "name": "EASTING",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "NORTHING",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "kmSQ_ID",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "GZD",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "MGRS",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "MGRS_10km",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "geometry",
-          "type": "GEOMETRY('OGC:CRS84')"
-        },
-        {
-          "name": "bbox",
-          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
-        }
-      ],
-      "table:row_count": 590066
-    },
-    "mgrs_01N": {
-      "href": "https://data.source.coop/tge-labs/mgrs/gzd_partition/GZD=01N/mgrs_01N.parquet",
-      "type": "application/x-parquet",
-      "title": "mgrs_01N.parquet",
-      "roles": [
-        "data"
-      ],
-      "table:columns": [
-        {
-          "name": "EASTING",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "NORTHING",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "kmSQ_ID",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "GZD",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "MGRS",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "MGRS_10km",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "geometry",
-          "type": "GEOMETRY('OGC:CRS84')"
-        },
-        {
-          "name": "bbox",
-          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
-        }
-      ],
-      "table:row_count": 590066
-    },
-    "01011": {
-      "href": "https://data.source.coop/tge-labs/mgrs/partition/by_kdtree/01011.parquet",
-      "type": "application/x-parquet",
-      "title": "01011.parquet",
-      "roles": [
-        "data"
-      ],
-      "table:columns": [
-        {
-          "name": "EASTING",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "NORTHING",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "kmSQ_ID",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "GZD",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "MGRS",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "MGRS_10km",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "geometry",
-          "type": "GEOMETRY('OGC:CRS84')"
-        },
-        {
-          "name": "bbox",
-          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
-        }
-      ],
-      "table:row_count": 19461965
-    },
-    "01100": {
-      "href": "https://data.source.coop/tge-labs/mgrs/partition/by_kdtree/01100.parquet",
-      "type": "application/x-parquet",
-      "title": "01100.parquet",
-      "roles": [
-        "data"
-      ],
-      "table:columns": [
-        {
-          "name": "EASTING",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "NORTHING",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "kmSQ_ID",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "GZD",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "MGRS",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "MGRS_10km",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "geometry",
-          "type": "GEOMETRY('OGC:CRS84')"
-        },
-        {
-          "name": "bbox",
-          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
-        }
-      ],
-      "table:row_count": 19009782
-    },
-    "01101": {
-      "href": "https://data.source.coop/tge-labs/mgrs/partition/by_kdtree/01101.parquet",
-      "type": "application/x-parquet",
-      "title": "01101.parquet",
-      "roles": [
-        "data"
-      ],
-      "table:columns": [
-        {
-          "name": "EASTING",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "NORTHING",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "kmSQ_ID",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "GZD",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "MGRS",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "MGRS_10km",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "geometry",
-          "type": "GEOMETRY('OGC:CRS84')"
-        },
-        {
-          "name": "bbox",
-          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
-        }
-      ],
-      "table:row_count": 19700175
-    },
-    "01110": {
-      "href": "https://data.source.coop/tge-labs/mgrs/partition/by_kdtree/01110.parquet",
-      "type": "application/x-parquet",
-      "title": "01110.parquet",
-      "roles": [
-        "data"
-      ],
-      "table:columns": [
-        {
-          "name": "EASTING",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "NORTHING",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "kmSQ_ID",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "GZD",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "MGRS",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "MGRS_10km",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "geometry",
-          "type": "GEOMETRY('OGC:CRS84')"
-        },
-        {
-          "name": "bbox",
-          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
-        }
-      ],
-      "table:row_count": 19058627
-    },
-    "01111": {
-      "href": "https://data.source.coop/tge-labs/mgrs/partition/by_kdtree/01111.parquet",
-      "type": "application/x-parquet",
-      "title": "01111.parquet",
-      "roles": [
-        "data"
-      ],
-      "table:columns": [
-        {
-          "name": "EASTING",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "NORTHING",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "kmSQ_ID",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "GZD",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "MGRS",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "MGRS_10km",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "geometry",
-          "type": "GEOMETRY('OGC:CRS84')"
-        },
-        {
-          "name": "bbox",
-          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
-        }
-      ],
-      "table:row_count": 19508162
+      "description": "5 files sampled for this table"
     }
   },
   "links": [
@@ -509,21 +213,25 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "account_id": "tge-labs",
-  "created_at": "2025-10-13T11:15:41.661Z",
-  "exts": {
-    "parquet": 771,
-    "md": 1
-  },
   "visibility": "public",
+  "created_at": "2025-10-13T11:15:41.661Z",
   "data_mode": "open",
-  "disabled": false,
+  "updated_at": "2025-10-13T11:15:41.661Z",
+  "featured": 0,
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "total_bytes": 45622324162,
-  "file_count": 772,
+  "disabled": false,
+  "account_id": "tge-labs",
+  "total_bytes": 45622475718,
+  "exts": {
+    "parquet": 771,
+    "ds_store": 1,
+    "md": 1
+  },
+  "file_count": 773,
+  "product_id": "mgrs",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -536,12 +244,11 @@
       "prefix": "tge-labs/mgrs/"
     }
   },
-  "featured": 0,
-  "updated_at": "2025-10-13T11:15:41.661Z",
-  "product_id": "mgrs",
+  "readme": "## README.md\n## About\r\n\r\nThis project crawled the map download links at https://earth-info.nga.mil/index.php?dir=coordsys&action=utm-1km-polyline-dloads \r\nand put them into a GeoParquet files that follow the [Best Practices for Distributing GeoParquet](https://github.com/opengeospatial/geoparquet/blob/main/format-specs/distributing-geoparquet.md). The `full` directory contains the complete dataset as a single GeoParquet file. For now it just contains `mgrs_clean.parquet` which is all the \r\ndownload links that worked, but removing the ShapeLen, ShapeArea and area columns, as they weren't all that consistent.\r\n\r\n## \ud83d\udce6 Dataset Overview\r\n\r\n### **mgrs_clean.parquet**\r\n**Size:** 5.87 GB  \r\n**Compression:** ZSTD  \r\n**Rows:** 305,799,745  \r\n**Row Groups:** 2,483  \r\n**GeoParquet Version:** 1.0.0  \r\n**CRS:** EPSG:4326  \r\n**Bounding Box:** `[-180.000000, -80.000000, 180.000000, 84.000193]`\r\n\r\n#### Columns\r\n| Name        | Type   |\r\n|-------------|--------|\r\n| EASTING     | string |\r\n| NORTHING    | string |\r\n| kmSQ_ID     | string |\r\n| GZD         | string |\r\n| MGRS        | string |\r\n| MGRS_10km   | string |\r\n| geometry \ud83c\udf0d | binary |\r\n\r\n---\r\n\r\n### Partitioning Notes\r\n\r\nThe `partitioned/` directory currently includes **`gzd_partition/`**, containing ~700 partition files (one per GZD).  \r\nThese partitions:\r\n\r\n- originate from `mgrs_clean.parquet`\r\n- include **GeoParquet 1.1 bounding boxes** for faster spatial filtering\r\n- are intended to support future **VecOREL** extensions:\r\n  - administrative division references\r\n  - geometry metrics\r\n\r\n---\r\n\r\n## \ud83d\udce6 Sample Subset\r\n\r\n### **mgrs_10X.parquet**\r\n**Size:** 9.02 MB  \r\n**Compression:** ZSTD  \r\n**Rows:** 187,646  \r\n**Row Groups:** 1  \r\n**GeoParquet Version:** 1.1.0  \r\n**CRS:** EPSG:4326  \r\n**Bounding Box:** `[-180.000000, -80.000000, 180.000000, 84.000193]`\r\n\r\n#### Columns\r\n| Name        | Type |\r\n|------------|------|\r\n| EASTING     | string |\r\n| NORTHING    | string |\r\n| kmSQ_ID     | string |\r\n| GZD         | string |\r\n| MGRS        | string |\r\n| MGRS_10km   | string |\r\n| geometry \ud83c\udf0d | binary |\r\n| bbox | struct `<xmin: double, ymin: double, xmax: double, ymax: double>` |\r\n\r\n---\r\n\r\n\r\n\r\n## Usage\r\n\r\nThe best way to use these is to treat the partition as a full parquet dataset and query just what you need out of it. With DuckDB\r\nyou can do:\r\n\r\n```\r\nCREATE TABLE mgrs_grid AS (\r\n  SELECT * FROM read_parquet('s3://us-west-2.opendata.source.coop/tge-labs/mgrs/gzd_partition/*/*.parquet')\r\n           WHERE \"bbox\".xmin BETWEEN 11.14686 AND 14.853739\r\n           AND \"bbox\".ymin BETWEEN 50.49916 AND 54.37598);\r\n```\r\n\r\nAnd then you'll have the table locally. You can go straight to a parquet file with\r\n\r\n```\r\nCOPY (\r\n  SELECT * FROM read_parquet('s3://us-west-2.opendata.source.coop/tge-labs/mgrs/gzd_partition/*/*.parquet')\r\n           WHERE \"bbox\".xmin BETWEEN 11.14686 AND 14.853739\r\n           AND \"bbox\".ymin BETWEEN 50.49916 AND 54.37598)\r\n    TO 'my_mgrs_grid.parquet' (FORMAT PARQUET, COMPRESSION zstd, COMPRESSION_LEVEL 15);\r\n```\r\n\r\n\r\n",
   "_review": [
-    "extent.spatial.bbox: omitted; spatial reference is categorical via [mgrs_clean.geometry (geometry), mgrs_clean.MGRS (spatial_index), mgrs_clean.GZD (spatial_index), mgrs_clean.MGRS_10km (spatial_index), mgrs_clean_gp20.geometry (geometry), mgrs_clean_gp20.MGRS (spatial_index), mgrs_clean_gp20.GZD (spatial_index), mgrs_clean_gp20.MGRS_10km (spatial_index), mgrs_01L.geometry (geometry), mgrs_01L.MGRS (spatial_index), mgrs_01L.GZD (spatial_index), mgrs_01L.MGRS_10km (spatial_index)]. Add bbox once a placename \u2192 bbox gazetteer is available."
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [full.geometry (geometry), full.MGRS (spatial_index), full.MGRS_10km (spatial_index), full.GZD (admin_code), gzd_partition.geometry (geometry), gzd_partition.MGRS (spatial_index), gzd_partition.MGRS_10km (spatial_index), gzd_partition.GZD (admin_code), partition/by_kdtree.geometry (geometry), partition/by_kdtree.MGRS (spatial_index), partition/by_kdtree.MGRS_10km (spatial_index), partition/by_kdtree.GZD (admin_code)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-06-05T02:51:27+00:00"
+  "cataloged_at": "2026-06-18T10:15:30+00:00",
+  "store_format": null
 }

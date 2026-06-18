@@ -6,16 +6,16 @@
   ],
   "id": "seerai/hifld",
   "title": "HIFLD Archive",
-  "description": "An archive of the Homeland Infrastructure Foundation-Level Data (HIFLD) program, preserving hundreds of U.S. government infrastructure datasets from the decommissioned HIFLD geoplatform. Layers span administrative boundaries, hydrography, transportation networks, critical infrastructure facilities, wildfire perimeters, and maritime wrecks across the United States and territories. All datasets are converted to cloud-optimized Parquet format.",
+  "description": "An archive of the U.S. Homeland Infrastructure Foundation-Level Data (HIFLD) program, preserving hundreds of federal infrastructure datasets discontinued in August 2025. Coverage spans administrative boundaries, hydrography, transportation networks, critical infrastructure facilities, wildfire perimeters, and maritime wrecks across the United States and territories. All datasets have been converted to cloud-optimized Parquet format and spatially sorted by geohash level 8.",
   "license": "CC-BY-4.0",
   "keywords": [
     "critical-infrastructure",
     "administrative-boundaries",
-    "hydrography",
     "hydrology",
     "wildfire",
     "conservation",
     "maritime",
+    "emergency-management",
     "homeland-security"
   ],
   "providers": [
@@ -65,7 +65,7 @@
     "item_count": 4750759
   },
   "assets": {
-    "part-00000-tid-8588272384404631725-31022501-b700-4a62-bfe3-ed5034e65e86-119-1-c000.zstd": {
+    "119th-congressional-districts/119th-congressional-districts/119th-congressional-districts.parquet": {
       "href": "https://data.source.coop/seerai/hifld/119th-congressional-districts/119th-congressional-districts/119th-congressional-districts.parquet/part-00000-tid-8588272384404631725-31022501-b700-4a62-bfe3-ed5034e65e86-119-1-c000.zstd.parquet",
       "type": "application/x-parquet",
       "title": "part-00000-tid-8588272384404631725-31022501-b700-4a62-bfe3-ed5034e65e86-119-1-c000.zstd.parquet",
@@ -100,12 +100,12 @@
         {
           "name": "CENTLAT",
           "type": "VARCHAR",
-          "description": "[latlon] Centroid latitude"
+          "description": "[latlon] Centroid latitude of congressional district"
         },
         {
           "name": "CENTLON",
           "type": "VARCHAR",
-          "description": "[latlon] Centroid longitude"
+          "description": "[latlon] Centroid longitude of congressional district"
         },
         {
           "name": "FUNCSTAT",
@@ -113,7 +113,8 @@
         },
         {
           "name": "GEOID",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[admin_code] Census GEOID for the district"
         },
         {
           "name": "HU100",
@@ -122,12 +123,12 @@
         {
           "name": "INTPTLAT",
           "type": "VARCHAR",
-          "description": "[latlon] Interior point latitude"
+          "description": "[latlon] Interior point latitude of congressional district"
         },
         {
           "name": "INTPTLON",
           "type": "VARCHAR",
-          "description": "[latlon] Interior point longitude"
+          "description": "[latlon] Interior point longitude of congressional district"
         },
         {
           "name": "LSADC",
@@ -156,7 +157,7 @@
         {
           "name": "STATE",
           "type": "VARCHAR",
-          "description": "[admin_code] State code"
+          "description": "[admin_code] State code for the congressional district"
         },
         {
           "name": "STGEOMETRY",
@@ -165,7 +166,7 @@
         {
           "name": "geometry",
           "type": "GEOMETRY",
-          "description": "[geometry] Feature geometry (administrative/congressional district boundaries)"
+          "description": "[geometry] Congressional district boundary polygon"
         },
         {
           "name": "bbox",
@@ -174,7 +175,7 @@
       ],
       "table:row_count": 444
     },
-    "part-00000-tid-6597041377908076625-d95b3dfb-f104-46f8-936f-65d49b4787c8-146-1-c000.zstd": {
+    "3d-hydrography-program-3dhp-layers/catchment/catchment.parquet": {
       "href": "https://data.source.coop/seerai/hifld/3d-hydrography-program-3dhp-layers/catchment/catchment.parquet/part-00000-tid-6597041377908076625-d95b3dfb-f104-46f8-936f-65d49b4787c8-146-1-c000.zstd.parquet",
       "type": "application/x-parquet",
       "title": "part-00000-tid-6597041377908076625-d95b3dfb-f104-46f8-936f-65d49b4787c8-146-1-c000.zstd.parquet",
@@ -225,7 +226,7 @@
         {
           "name": "geometry",
           "type": "GEOMETRY",
-          "description": "[geometry] Feature geometry (hydrography)"
+          "description": "[geometry] Catchment polygon boundary"
         },
         {
           "name": "bbox",
@@ -234,7 +235,7 @@
       ],
       "table:row_count": 102167
     },
-    "part-00000-tid-3799322240472764299-b70c72c1-315f-40f7-b7a1-519c5f6c1190-2-1-c000.zstd": {
+    "3d-hydrography-program-3dhp-layers/flowline/flowline.parquet": {
       "href": "https://data.source.coop/seerai/hifld/3d-hydrography-program-3dhp-layers/flowline/flowline.parquet/part-00000-tid-3799322240472764299-b70c72c1-315f-40f7-b7a1-519c5f6c1190-2-1-c000.zstd.parquet",
       "type": "application/x-parquet",
       "title": "part-00000-tid-3799322240472764299-b70c72c1-315f-40f7-b7a1-519c5f6c1190-2-1-c000.zstd.parquet",
@@ -385,7 +386,7 @@
         {
           "name": "geometry",
           "type": "GEOMETRY",
-          "description": "[geometry] Feature geometry (flowpath/stream network)"
+          "description": "[geometry] Flowline linear geometry"
         },
         {
           "name": "bbox",
@@ -394,10 +395,10 @@
       ],
       "table:row_count": 4136000
     },
-    "part-00000-f60deb54-a330-4f2f-95df-e68e484be100-c000.zstd": {
-      "href": "https://data.source.coop/seerai/hifld/3d-hydrography-program-3dhp-layers/hydrolocation---headwater-terminus-divergence-confluence-catchment-outlet/hydrolocation---headwater-terminus-divergence-confluence-catchment-outlet.parquet/part-00000-f60deb54-a330-4f2f-95df-e68e484be100-c000.zstd.parquet",
+    "3d-hydrography-program-3dhp-layers/hydrolocation---headwater-terminus-divergence-confluence-catchment-outlet/hydrolocation---headwater-terminus-divergence-confluence-catchment-outlet.parquet": {
+      "href": "https://data.source.coop/seerai/hifld/3d-hydrography-program-3dhp-layers/hydrolocation---headwater-terminus-divergence-confluence-catchment-outlet/hydrolocation---headwater-terminus-divergence-confluence-catchment-outlet.parquet/",
       "type": "application/x-parquet",
-      "title": "part-00000-f60deb54-a330-4f2f-95df-e68e484be100-c000.zstd.parquet",
+      "title": "3d-hydrography-program-3dhp-layers/hydrolocation---headwater-terminus-divergence-confluence-catchment-outlet/hydrolocation---headwater-terminus-divergence-confluence-catchment-outlet.parquet",
       "roles": [
         "data"
       ],
@@ -409,7 +410,7 @@
         {
           "name": "geometry",
           "type": "GEOMETRY",
-          "description": "[geometry] Feature geometry"
+          "description": "[geometry] Hydrolocation point geometry"
         },
         {
           "name": "properties",
@@ -424,41 +425,9 @@
           "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
         }
       ],
-      "table:row_count": 22534
+      "description": "2 files sampled for this table"
     },
-    "part-00001-f60deb54-a330-4f2f-95df-e68e484be100-c000.zstd": {
-      "href": "https://data.source.coop/seerai/hifld/3d-hydrography-program-3dhp-layers/hydrolocation---headwater-terminus-divergence-confluence-catchment-outlet/hydrolocation---headwater-terminus-divergence-confluence-catchment-outlet.parquet/part-00001-f60deb54-a330-4f2f-95df-e68e484be100-c000.zstd.parquet",
-      "type": "application/x-parquet",
-      "title": "part-00001-f60deb54-a330-4f2f-95df-e68e484be100-c000.zstd.parquet",
-      "roles": [
-        "data"
-      ],
-      "table:columns": [
-        {
-          "name": "bpd_metadata",
-          "type": "STRUCT(county VARCHAR, date DOUBLE, job_date BIGINT, state VARCHAR)"
-        },
-        {
-          "name": "geometry",
-          "type": "GEOMETRY",
-          "description": "[geometry] Feature geometry"
-        },
-        {
-          "name": "properties",
-          "type": "STRUCT(OBJECTID BIGINT, featuredate BIGINT, featuretype BIGINT, featuretypelabel VARCHAR, gnisid VARCHAR, gnisidlabel VARCHAR, id3dhp VARCHAR, mainstemid VARCHAR, universalreferenceid VARCHAR, workunitid VARCHAR)"
-        },
-        {
-          "name": "type",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "bbox",
-          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
-        }
-      ],
-      "table:row_count": 20712
-    },
-    "part-00000-tid-5435833471479413682-bb2d0ab4-e22d-42f7-950e-173ac4637fa4-2-1-c000.zstd": {
+    "watershed-boundary-dataset-wbd/wbdline/wbdline.parquet": {
       "href": "https://data.source.coop/seerai/hifld/watershed-boundary-dataset-wbd/wbdline/wbdline.parquet/part-00000-tid-5435833471479413682-bb2d0ab4-e22d-42f7-950e-173ac4637fa4-2-1-c000.zstd.parquet",
       "type": "application/x-parquet",
       "title": "part-00000-tid-5435833471479413682-bb2d0ab4-e22d-42f7-950e-173ac4637fa4-2-1-c000.zstd.parquet",
@@ -509,7 +478,7 @@
         {
           "name": "geometry",
           "type": "GEOMETRY",
-          "description": "[geometry] Feature geometry (watershed boundary)"
+          "description": "[geometry] Watershed boundary line geometry"
         },
         {
           "name": "bbox",
@@ -518,7 +487,7 @@
       ],
       "table:row_count": 394000
     },
-    "part-00000-tid-2217420635308410744-6d1def9c-035a-40f2-b9aa-46eabe8fc7df-443-1-c000.zstd": {
+    "wfigs-interagency-fire-perimeters/perimeters/perimeters.parquet": {
       "href": "https://data.source.coop/seerai/hifld/wfigs-interagency-fire-perimeters/perimeters/perimeters.parquet/part-00000-tid-2217420635308410744-6d1def9c-035a-40f2-b9aa-46eabe8fc7df-443-1-c000.zstd.parquet",
       "type": "application/x-parquet",
       "title": "part-00000-tid-2217420635308410744-6d1def9c-035a-40f2-b9aa-46eabe8fc7df-443-1-c000.zstd.parquet",
@@ -737,12 +706,12 @@
         {
           "name": "attr_InitialLatitude",
           "type": "DOUBLE",
-          "description": "[latlon] Latitude at initial fire discovery"
+          "description": "[latlon] Latitude of fire discovery point"
         },
         {
           "name": "attr_InitialLongitude",
           "type": "DOUBLE",
-          "description": "[latlon] Longitude at initial fire discovery"
+          "description": "[latlon] Longitude of fire discovery point"
         },
         {
           "name": "attr_InitialResponseAcres",
@@ -814,11 +783,13 @@
         },
         {
           "name": "attr_POOCity",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[placename] City of point of origin for the fire"
         },
         {
           "name": "attr_POOCounty",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[placename] County of point of origin for the fire"
         },
         {
           "name": "attr_POODispatchCenterID",
@@ -826,7 +797,8 @@
         },
         {
           "name": "attr_POOFips",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[admin_code] FIPS code of the point-of-origin county"
         },
         {
           "name": "attr_POOJurisdictUnitParentUnit",
@@ -887,7 +859,7 @@
         {
           "name": "attr_POOState",
           "type": "VARCHAR",
-          "description": "[admin_code] State of fire point of origin"
+          "description": "[placename] State of point of origin for the fire"
         },
         {
           "name": "attr_PercentContained",
@@ -1012,7 +984,7 @@
         {
           "name": "geometry",
           "type": "GEOMETRY",
-          "description": "[geometry] Wildfire perimeter polygon geometry"
+          "description": "[geometry] Wildfire perimeter polygon"
         },
         {
           "name": "bbox",
@@ -1021,7 +993,7 @@
       ],
       "table:row_count": 32401
     },
-    "part-00000-tid-4429176584677834965-cf2092f2-303e-475b-941f-71e859c4cd42-743-1-c000.zstd": {
+    "wreck-areas-usace-ienc/wrecks-area/wrecks-area.parquet": {
       "href": "https://data.source.coop/seerai/hifld/wreck-areas-usace-ienc/wrecks-area/wrecks-area.parquet/part-00000-tid-4429176584677834965-cf2092f2-303e-475b-941f-71e859c4cd42-743-1-c000.zstd.parquet",
       "type": "application/x-parquet",
       "title": "part-00000-tid-4429176584677834965-cf2092f2-303e-475b-941f-71e859c4cd42-743-1-c000.zstd.parquet",
@@ -1092,7 +1064,7 @@
         {
           "name": "geometry",
           "type": "GEOMETRY",
-          "description": "[geometry] Maritime wreck geometry"
+          "description": "[geometry] Wreck area polygon geometry"
         },
         {
           "name": "bbox",
@@ -1101,7 +1073,7 @@
       ],
       "table:row_count": 10
     },
-    "part-00000-tid-5293630524682870527-a52413bb-be9f-4a0a-ae40-26742ea4ddac-471-1-c000.zstd": {
+    "wrecks-and-obstructions/wrecks-and-obstructions/wrecks-and-obstructions.parquet": {
       "href": "https://data.source.coop/seerai/hifld/wrecks-and-obstructions/wrecks-and-obstructions/wrecks-and-obstructions.parquet/part-00000-tid-5293630524682870527-a52413bb-be9f-4a0a-ae40-26742ea4ddac-471-1-c000.zstd.parquet",
       "type": "application/x-parquet",
       "title": "part-00000-tid-5293630524682870527-a52413bb-be9f-4a0a-ae40-26742ea4ddac-471-1-c000.zstd.parquet",
@@ -1148,7 +1120,7 @@
         {
           "name": "geometry",
           "type": "GEOMETRY",
-          "description": "[geometry] Maritime wreck geometry"
+          "description": "[geometry] Wreck or obstruction geometry"
         },
         {
           "name": "bbox",
@@ -1157,7 +1129,7 @@
       ],
       "table:row_count": 41941
     },
-    "part-00000-tid-5864735293272243764-037d1b42-7d5e-4d88-85bd-d256009bcc36-550-1-c000.zstd": {
+    "wrecks-usace-ienc/wrecks-point/wrecks-point.parquet": {
       "href": "https://data.source.coop/seerai/hifld/wrecks-usace-ienc/wrecks-point/wrecks-point.parquet/part-00000-tid-5864735293272243764-037d1b42-7d5e-4d88-85bd-d256009bcc36-550-1-c000.zstd.parquet",
       "type": "application/x-parquet",
       "title": "part-00000-tid-5864735293272243764-037d1b42-7d5e-4d88-85bd-d256009bcc36-550-1-c000.zstd.parquet",
@@ -1220,7 +1192,7 @@
         {
           "name": "geometry",
           "type": "GEOMETRY",
-          "description": "[geometry] Maritime wreck geometry"
+          "description": "[geometry] Wreck point geometry"
         },
         {
           "name": "bbox",
@@ -1242,6 +1214,28 @@
       "title": "Source Cooperative product page"
     }
   ],
+  "disabled": false,
+  "file_count": 2863,
+  "visibility": "public",
+  "account_id": "seerai",
+  "featured": 0,
+  "created_at": "2025-11-17T19:46:46.670Z",
+  "updated_at": "2025-12-10T15:36:01.493Z",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "total_bytes": 21616130636,
+  "exts": {
+    "": 1091,
+    "parquet": 767,
+    "md": 676,
+    "crc": 327,
+    "csv": 1,
+    "txt": 1
+  },
+  "data_mode": "open",
+  "product_id": "hifld",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -1254,30 +1248,11 @@
       "prefix": "seerai/hifld/"
     }
   },
-  "featured": 0,
-  "disabled": false,
-  "product_id": "hifld",
-  "exts": {
-    "parquet": 767,
-    "crc": 327,
-    "md": 676,
-    "csv": 1,
-    "txt": 1
-  },
-  "visibility": "public",
-  "created_at": "2025-11-17T19:46:46.670Z",
-  "file_count": 1772,
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "total_bytes": 21616086193,
-  "data_mode": "open",
-  "account_id": "seerai",
-  "updated_at": "2025-12-10T15:36:01.493Z",
+  "readme": "## README.md\n# Homeland Infrastructure Foundation-Level Data (HIFLD) Archive\n\nThe Homeland Infrastructure Foundation-Level Data (HIFLD) program was a trusted resource for infrastructure data across the U.S. It supported policy, emergency management, and research before being discontinued in August 2025. This archive preserves that resource.\n\nThe datasets were processed using SeerAI Boson, Databricks, and Apache Sedona and saved in the Parquet format for ease of access directly on cloud object storage. If a dataset included geometry, it was spatially sorted using geohash level 8, which was then removed from the dataset.\n\n## Dataset Directory Structure\nMany of the original datasets contained multiple collections, and each collection was archived as its own parquet file. To preserve some of the original structure, there is a nested folder hierarchy for datasets and files. Please see below for the structure.\n\n```\nHIFLD\n\u251c\u2500\u2500 README.md                                       -> This file\n\u251c\u2500\u2500 hifld-dataset-inventory.csv                     -> Inventory of all datasets, their descriptions, any parent dataset folder, bucket location, and URL to vector tile JSON\n\u251c\u2500\u2500 119th-congressional-districts                   -> Dataset parent folder\n\u2502   \u251c\u2500\u2500 README.md                                   -> Parent dataset README\n\u2502   \u251c\u2500\u2500 119th-congressional-districts               -> Dataset folder\n\u2502   \u2502   \u251c\u2500\u2500 119th-congressional-districts.parquet   -> Dataset parquet\n\u2502   \u2502   \u251c\u2500\u2500 README.md                               -> Dataset-specific README\n\u251c\u2500\u2500 3d-hydrography-program-3dhp-layers              -> Dataset parent folder\n\u2502   \u251c\u2500\u2500 README.md                                   -> Parent dataset README\n\u2502   \u251c\u2500\u2500 catchment                                   -> Dataset folder - corresponding to collection in original dataset\n\u2502   \u2502   \u251c\u2500\u2500 catchment.parquet                       -> Dataset parquet\n\u2502   \u2502   \u251c\u2500\u2500 README.md                               -> Dataset-specific README\n\u2502   \u251c\u2500\u2500 flowline                 \n\u2502   \u2502   \u251c\u2500\u2500 flowline.parquet               \n\u2502   \u2502   \u2514\u2500\u2500 README.md               \n\u2502   \u251c\u2500\u2500 ...     \n\u251c\u2500\u2500 ...\n```\n\n## License\nThe HIFLD archive provided by SeerAI is released under the Creative Commons Attribution 4.0 International (CC BY 4.0).\n\n## Citation\nSeerAI, Inc. (2025). HIFLD Archive. Retrieved from https://www.seer.ai/\n\n## Contact\nFor questions, issues, or feedback regarding this archive, please contact us at [contact@seerai.space](mailto:contact@seerai.space).\n",
   "_review": [
-    "extent.spatial.bbox: omitted; spatial reference is categorical via [part-00000-tid-8588272384404631725-31022501-b700-4a62-bfe3-ed5034e65e86-119-1-c000.zstd.geometry (geometry), part-00000-tid-8588272384404631725-31022501-b700-4a62-bfe3-ed5034e65e86-119-1-c000.zstd.CENTLAT (latlon), part-00000-tid-8588272384404631725-31022501-b700-4a62-bfe3-ed5034e65e86-119-1-c000.zstd.CENTLON (latlon), part-00000-tid-8588272384404631725-31022501-b700-4a62-bfe3-ed5034e65e86-119-1-c000.zstd.INTPTLAT (latlon), part-00000-tid-8588272384404631725-31022501-b700-4a62-bfe3-ed5034e65e86-119-1-c000.zstd.INTPTLON (latlon), part-00000-tid-8588272384404631725-31022501-b700-4a62-bfe3-ed5034e65e86-119-1-c000.zstd.STATE (admin_code), part-00000-tid-6597041377908076625-d95b3dfb-f104-46f8-936f-65d49b4787c8-146-1-c000.zstd.geometry (geometry), part-00000-tid-3799322240472764299-b70c72c1-315f-40f7-b7a1-519c5f6c1190-2-1-c000.zstd.geometry (geometry), part-00000-f60deb54-a330-4f2f-95df-e68e484be100-c000.zstd.geometry (geometry), part-00001-f60deb54-a330-4f2f-95df-e68e484be100-c000.zstd.geometry (geometry), part-00000-tid-5435833471479413682-bb2d0ab4-e22d-42f7-950e-173ac4637fa4-2-1-c000.zstd.geometry (geometry), part-00000-tid-2217420635308410744-6d1def9c-035a-40f2-b9aa-46eabe8fc7df-443-1-c000.zstd.geometry (geometry), part-00000-tid-2217420635308410744-6d1def9c-035a-40f2-b9aa-46eabe8fc7df-443-1-c000.zstd.attr_InitialLatitude (latlon), part-00000-tid-2217420635308410744-6d1def9c-035a-40f2-b9aa-46eabe8fc7df-443-1-c000.zstd.attr_InitialLongitude (latlon), part-00000-tid-2217420635308410744-6d1def9c-035a-40f2-b9aa-46eabe8fc7df-443-1-c000.zstd.attr_POOState (admin_code), part-00000-tid-4429176584677834965-cf2092f2-303e-475b-941f-71e859c4cd42-743-1-c000.zstd.geometry (geometry), part-00000-tid-5293630524682870527-a52413bb-be9f-4a0a-ae40-26742ea4ddac-471-1-c000.zstd.geometry (geometry), part-00000-tid-5864735293272243764-037d1b42-7d5e-4d88-85bd-d256009bcc36-550-1-c000.zstd.geometry (geometry)]. Add bbox once a placename \u2192 bbox gazetteer is available."
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [119th-congressional-districts/119th-congressional-districts/119th-congressional-districts.parquet.geometry (geometry), 119th-congressional-districts/119th-congressional-districts/119th-congressional-districts.parquet.CENTLAT (latlon), 119th-congressional-districts/119th-congressional-districts/119th-congressional-districts.parquet.CENTLON (latlon), 119th-congressional-districts/119th-congressional-districts/119th-congressional-districts.parquet.INTPTLAT (latlon), 119th-congressional-districts/119th-congressional-districts/119th-congressional-districts.parquet.INTPTLON (latlon), 119th-congressional-districts/119th-congressional-districts/119th-congressional-districts.parquet.STATE (admin_code), 119th-congressional-districts/119th-congressional-districts/119th-congressional-districts.parquet.GEOID (admin_code), 3d-hydrography-program-3dhp-layers/catchment/catchment.parquet.geometry (geometry), 3d-hydrography-program-3dhp-layers/flowline/flowline.parquet.geometry (geometry), 3d-hydrography-program-3dhp-layers/hydrolocation---headwater-terminus-divergence-confluence-catchment-outlet/hydrolocation---headwater-terminus-divergence-confluence-catchment-outlet.parquet.geometry (geometry), watershed-boundary-dataset-wbd/wbdline/wbdline.parquet.geometry (geometry), wfigs-interagency-fire-perimeters/perimeters/perimeters.parquet.geometry (geometry), wfigs-interagency-fire-perimeters/perimeters/perimeters.parquet.attr_InitialLatitude (latlon), wfigs-interagency-fire-perimeters/perimeters/perimeters.parquet.attr_InitialLongitude (latlon), wfigs-interagency-fire-perimeters/perimeters/perimeters.parquet.attr_POOCity (placename), wfigs-interagency-fire-perimeters/perimeters/perimeters.parquet.attr_POOCounty (placename), wfigs-interagency-fire-perimeters/perimeters/perimeters.parquet.attr_POOState (placename), wfigs-interagency-fire-perimeters/perimeters/perimeters.parquet.attr_POOFips (admin_code), wreck-areas-usace-ienc/wrecks-area/wrecks-area.parquet.geometry (geometry), wrecks-and-obstructions/wrecks-and-obstructions/wrecks-and-obstructions.parquet.geometry (geometry), wrecks-usace-ienc/wrecks-point/wrecks-point.parquet.geometry (geometry)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-06-05T02:52:54+00:00"
+  "cataloged_at": "2026-06-18T10:17:33+00:00",
+  "store_format": null
 }
