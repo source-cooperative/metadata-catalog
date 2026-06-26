@@ -1,6 +1,6 @@
 # Source Cooperative catalog — status
 
-_Updated 2026-06-26 22:24 UTC by the nightly pipeline._
+_Updated 2026-06-26 22:43 UTC by the nightly pipeline._
 
 **265 datasets cataloged**  ·  **55 queued for next run**  ·  last run handled **1**
 
@@ -19,6 +19,7 @@ _Updated 2026-06-26 22:24 UTC by the nightly pipeline._
 
 | run                                                                                                    | outcome   | drafted | failed | queued | cataloged |
 | ------------------------------------------------------------------------------------------------------ | --------- | ------: | -----: | -----: | --------: |
+| [2026-06-26](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/28269325106) | ✅ success |       0 |      0 |     55 |       265 |
 | [2026-06-26](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/28268592957) | ✅ success |       0 |      0 |     55 |       265 |
 | [2026-06-26](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/28267997446) | ✅ success |       0 |      0 |     55 |       265 |
 | [2026-06-26](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/28265509833) | ✅ success |       4 |      0 |     55 |       265 |
