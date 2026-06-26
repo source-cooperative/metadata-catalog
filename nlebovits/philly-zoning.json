@@ -1,15 +1,146 @@
 {
-  "account_id": "nlebovits",
-  "product_id": "philly-zoning",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
+  "id": "nlebovits/philly-zoning",
   "title": "Philadelphia Zoning Districts",
-  "description": "Official zoning base district boundaries for the City of Philadelphia, extracted from the City's ArcGIS FeatureServer. Contains 29,198 polygon features representing current zoning designations including residential, commercial, industrial, and special purpose districts.",
-  "keywords": [],
-  "created_at": "2026-06-08T17:45:10.814Z",
-  "updated_at": "2026-06-08T17:45:10.814Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": "open",
+  "description": "Official zoning base district boundaries for the City of Philadelphia, Pennsylvania. Contains 29,198 polygon features representing current zoning designations including residential, commercial, industrial, and special purpose districts. Sourced from the City's ArcGIS FeatureServer and reflects the zoning code enacted in 2011.",
+  "license": "PDDL-1.0",
+  "keywords": [
+    "land-use",
+    "administrative-boundaries",
+    "zoning",
+    "land-parcels",
+    "philadelphia"
+  ],
+  "providers": [
+    {
+      "name": "City of Philadelphia",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/nlebovits/philly-zoning"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 29198
+  },
+  "assets": {
+    "basedistricts": {
+      "href": "https://data.source.coop/nlebovits/philly-zoning/zoning_basedistricts/zoning_basedistricts.parquet",
+      "type": "application/x-parquet",
+      "title": "zoning_basedistricts.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "citycor",
+          "type": "SMALLINT"
+        },
+        {
+          "name": "long_code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "zoninggroup",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "pending",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "pendingbill",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "pendingbillurl",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "sunset_date",
+          "type": "TIMESTAMP"
+        },
+        {
+          "name": "sunsetbillnum",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "sunsetbilllink",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "objectid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "globalid",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Shape__Area",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Shape__Length",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')",
+          "description": "[geometry] OGC CRS84 polygon geometry representing zoning district boundaries"
+        }
+      ],
+      "table:row_count": 29198
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/nlebovits/philly-zoning/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/nlebovits/philly-zoning",
+      "title": "Source Cooperative product page"
+    }
+  ],
+  "product_id": "philly-zoning",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -22,8 +153,7 @@
       "prefix": "nlebovits/philly-zoning/"
     }
   },
-  "file_count": 12,
-  "total_bytes": 23726881,
+  "disabled": false,
   "exts": {
     "json": 7,
     "md": 2,
@@ -31,18 +161,24 @@
     "pmtiles": 1,
     "jpg": 1
   },
-  "ext_bytes": {
-    "parquet": 15503746,
-    "pmtiles": 8201432,
-    "json": 11157,
-    "md": 6237,
-    "jpg": 4309
-  },
-  "store_format": null,
-  "_state": "seed",
+  "updated_at": "2026-06-08T17:45:10.814Z",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "cataloged_at": "2026-06-26T21:36:52+00:00"
+  "total_bytes": 23726881,
+  "file_count": 12,
+  "created_at": "2026-06-08T17:45:10.814Z",
+  "account_id": "nlebovits",
+  "visibility": "public",
+  "featured": 0,
+  "data_mode": "open",
+  "readme": "## README.md\n# Philadelphia Zoning Districts\n\n![zoning](https://img.shields.io/badge/zoning-blue) ![land use](https://img.shields.io/badge/land_use-blue) ![planning](https://img.shields.io/badge/planning-blue) ![philadelphia](https://img.shields.io/badge/philadelphia-blue) ![pennsylvania](https://img.shields.io/badge/pennsylvania-blue) ![urban planning](https://img.shields.io/badge/urban_planning-blue) ![districts](https://img.shields.io/badge/districts-blue)\n\nOfficial zoning base district boundaries for the City of Philadelphia, extracted from the City's ArcGIS FeatureServer. Contains 29,198 polygon features representing current zoning designations including residential, commercial, industrial, and special purpose districts.\n\n## Collections\n\n### [Zoning Base Districts](./zoning_basedistricts/)\n\n\nThe City of Philadelphia has migrated metadata for this data set to the City-wide Metadata Catalog. For any questions about the migration and administration of the Metadata Catalog, please contact...\n\n## Coverage\n\n**Spatial Extent**\n\n- West: -75.2802, South: 39.8708, East: -74.9558, North: 40.1379\n\n## Source\n\n[https://services.arcgis.com/fLeGjb7u4uXqeF9q/ArcGIS/rest/services/Zoning_BaseDistricts/FeatureServer](https://services.arcgis.com/fLeGjb7u4uXqeF9q/ArcGIS/rest/services/Zoning_BaseDistricts/FeatureServer)\n\n## Processing Notes\n\nExtracted from City of Philadelphia ArcGIS FeatureServer on 2026-06-08.\nESRI UniqueValue renderer converted to Mapbox GL categorical style.\nOriginal zoning code enacted December 15, 2011, effective August 22, 2012.\n\n\n## Attribution\n\nCity of Philadelphia\n\n## License\n\nPDDL-1.0\n\n## Contact\n\nCity of Philadelphia Planning & Development <maps@phila.gov>\n\n---\n\n*Generated by [Portolan](https://github.com/portolan-sdi/portolan-cli) from STAC metadata and .portolan/metadata.yaml*\n",
+  "_review": [
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [basedistricts.geometry (geometry)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-06-26T21:43:17+00:00",
+  "_source_format": "stac",
+  "store_format": null
 }
