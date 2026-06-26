@@ -1,6 +1,6 @@
 # Source Cooperative catalog — status
 
-_Updated 2026-06-26 22:08 UTC by the nightly pipeline._
+_Updated 2026-06-26 22:24 UTC by the nightly pipeline._
 
 **265 datasets cataloged**  ·  **55 queued for next run**  ·  last run handled **1**
 
@@ -19,14 +19,15 @@ _Updated 2026-06-26 22:08 UTC by the nightly pipeline._
 
 | run                                                                                                    | outcome   | drafted | failed | queued | cataloged |
 | ------------------------------------------------------------------------------------------------------ | --------- | ------: | -----: | -----: | --------: |
+| [2026-06-26](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/28268592957) | ✅ success |       0 |      0 |     55 |       265 |
 | [2026-06-26](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/28267997446) | ✅ success |       0 |      0 |     55 |       265 |
 | [2026-06-26](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/28265509833) | ✅ success |       4 |      0 |     55 |       265 |
 
 ## Persistent failures
 
-**23 open probe-failure issues**  ·  oldest **15d**  ·  **0** open ≥30d  ·  [all open issues](https://github.com/source-cooperative/metadata-catalog/issues?q=is%3Aissue+is%3Aopen+label%3Aprobe-failure)
+**15 datasets failing**  ·  15 open issues  ·  oldest **15d**  ·  **0** ≥30d  ·  [all open issues](https://github.com/source-cooperative/metadata-catalog/issues?q=is%3Aissue+is%3Aopen+label%3Aprobe-failure)
 
-<details><summary>the 23 open issues, oldest first</summary>
+<details><summary>the 15 open issues, oldest first</summary>
 
 | repo                                 | age (d) | issue |
 | ------------------------------------ | ------: | ----: |
@@ -45,14 +46,6 @@ _Updated 2026-06-26 22:08 UTC by the nightly pipeline._
 | cboettig/habitat-corridors           |      14 |    #5 |
 | caires-tudelft/tokyo-13999-fcb       |      14 |    #4 |
 | caires-tudelft/plateau-tokyo-fcb-2   |      14 |    #3 |
-| fiboa/data                           |       9 |   #99 |
-| dynamical/dwd-icon-eu-forecast-5-day |       9 |   #98 |
-| cboettig/obis                        |       9 |   #97 |
-| bkr/cams                             |       9 |   #96 |
-| fiboa/data                           |       9 |   #95 |
-| dynamical/dwd-icon-eu-forecast-5-day |       9 |   #94 |
-| cboettig/obis                        |       9 |   #93 |
-| bkr/cams                             |       9 |   #92 |
 
 </details>
 
