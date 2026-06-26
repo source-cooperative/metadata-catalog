@@ -1,21 +1,10 @@
 # Source Cooperative catalog — status
 
-_Updated 2026-06-26 21:45 UTC by the nightly pipeline._
+_Updated 2026-06-26 22:08 UTC by the nightly pipeline._
 
-**265 datasets cataloged**  ·  **55 queued for next run**  ·  last run handled **5**
+**265 datasets cataloged**  ·  **55 queued for next run**  ·  last run handled **1**
 
 ## Last run
-
-<details><summary>✅ drafted — 4 datasets</summary>
-
-| repo                                                                     |
-| ------------------------------------------------------------------------ |
-| [000123/000001](https://source.coop/000123/000001)                       |
-| [cboettig/calenviroscreen](https://source.coop/cboettig/calenviroscreen) |
-| [nlebovits/philly-zoning](https://source.coop/nlebovits/philly-zoning)   |
-| [rcejudo/000002](https://source.coop/rcejudo/000002)                     |
-
-</details>
 
 <details><summary>⏭️ incomplete (gap) — 1 dataset</summary>
 
@@ -30,11 +19,14 @@ _Updated 2026-06-26 21:45 UTC by the nightly pipeline._
 
 | run                                                                                                    | outcome   | drafted | failed | queued | cataloged |
 | ------------------------------------------------------------------------------------------------------ | --------- | ------: | -----: | -----: | --------: |
+| [2026-06-26](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/28267997446) | ✅ success |       0 |      0 |     55 |       265 |
 | [2026-06-26](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/28265509833) | ✅ success |       4 |      0 |     55 |       265 |
 
 ## Persistent failures
 
 **23 open probe-failure issues**  ·  oldest **15d**  ·  **0** open ≥30d  ·  [all open issues](https://github.com/source-cooperative/metadata-catalog/issues?q=is%3Aissue+is%3Aopen+label%3Aprobe-failure)
+
+<details><summary>the 23 open issues, oldest first</summary>
 
 | repo                                 | age (d) | issue |
 | ------------------------------------ | ------: | ----: |
@@ -62,9 +54,11 @@ _Updated 2026-06-26 21:45 UTC by the nightly pipeline._
 | cboettig/obis                        |       9 |   #93 |
 | bkr/cams                             |       9 |   #92 |
 
-## Needs a prober (no_probe)
+</details>
 
-_Formats with no matching prober, ranked by bytes unlocked if built._
+## 12 datasets need a prober
+
+<details><summary>by format — ranked by bytes unlocked if built</summary>
 
 <details><summary>.nc — 2 datasets · 167.7 GB</summary>
 
@@ -127,28 +121,32 @@ _Formats with no matching prober, ranked by bytes unlocked if built._
 
 </details>
 
+</details>
+
 ## Catalog funnel
 
-| group                  | agg count | agg bytes | count |    bytes |
-| ---------------------- | --------: | --------: | ----: | -------: |
-| CATALOGED              |       261 |    2.6 PB |       |          |
-|   drafted              |           |           |   261 |   2.6 PB |
-| BACKLOG                |        42 |  130.7 TB |       |          |
-|   not-yet-cataloged    |           |           |    35 | 129.6 TB |
-|   all_failed .icechunk |           |           |     1 |   1.0 TB |
-|   amended (no format)  |           |           |     1 |  65.7 GB |
-|   all_failed .parquet  |           |           |     1 |  61.6 GB |
-|   no_probe .fcb        |           |           |     2 |   4.2 GB |
-|   all_failed .zarr     |           |           |     1 |   3.3 GB |
-|   no_probe .gpkg       |           |           |     1 |  24.6 MB |
-| SKIPPED                |       207 |    1.1 PB |       |          |
-|   not_geo              |           |           |    35 | 908.2 TB |
-|   unlisted             |           |           |   142 | 148.2 TB |
-|   test_repo            |           |           |     7 |   1.9 TB |
-|   tiny                 |           |           |    23 |  31.2 KB |
-| UNREGISTERED           |        40 |  924.2 TB |       |          |
-|   stowaways            |           |           |    40 | 924.2 TB |
-| S3 total               |       550 |    4.7 PB |       |          |
+_Each bucket links to its datasets under [Datasets per category](#datasets-per-category)._
+
+| group                         | agg count | agg bytes | count |    bytes |
+| ----------------------------- | --------: | --------: | ----: | -------: |
+| [CATALOGED](#cataloged)       |       261 |    2.6 PB |       |          |
+|   drafted                     |           |           |   261 |   2.6 PB |
+| [BACKLOG](#backlog)           |        42 |  130.7 TB |       |          |
+|   not-yet-cataloged           |           |           |    35 | 129.6 TB |
+|   all_failed .icechunk        |           |           |     1 |   1.0 TB |
+|   amended (no format)         |           |           |     1 |  65.7 GB |
+|   all_failed .parquet         |           |           |     1 |  61.6 GB |
+|   no_probe .fcb               |           |           |     2 |   4.2 GB |
+|   all_failed .zarr            |           |           |     1 |   3.3 GB |
+|   no_probe .gpkg              |           |           |     1 |  24.6 MB |
+| [SKIPPED](#skipped)           |       207 |    1.1 PB |       |          |
+|   not_geo                     |           |           |    35 | 908.2 TB |
+|   unlisted                    |           |           |   142 | 148.2 TB |
+|   test_repo                   |           |           |     7 |   1.9 TB |
+|   tiny                        |           |           |    23 |  31.2 KB |
+| [UNREGISTERED](#unregistered) |        40 |  924.2 TB |       |          |
+|   stowaways                   |           |           |    40 | 924.2 TB |
+| S3 total                      |       550 |    4.7 PB |       |          |
 
 ## Datasets per category
 
