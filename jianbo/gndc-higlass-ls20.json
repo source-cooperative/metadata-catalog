@@ -1,0 +1,40 @@
+{
+  "account_id": "jianbo",
+  "product_id": "gndc-higlass-ls20",
+  "title": "GNDC-HiGLASS-LS20: Gap-free 20 m 5-Day LAI/FAPAR over China, 2018\u20132023",
+  "description": "# GNDC-HiGLASS-LS20\r\n\r\nGNDC-compressed version of **HiGLASS-LS20** \u2014 the first gap-free, 20 m, 5-day\r\nLAI / FAPAR product over China (2018\u20132024), derived from integrated\r\nLandsat-8/9 and Sentinel-2 Analysis Ready Data.\r\n\r\nFiles are stored as `.gndc` (a neural data cube format; see GeoNDC reference\r\nbelow) instead of GeoTIFF to reduce size. **A decoder is required to read them.**\r\n\r\n## Decode\r\n\r\n```bash\r\npip install pygndc\r\n```\r\n\r\nDocumentation: https://github.com/jianboqi/pygndc/blob/main/TUTORIAL.md\r\n\r\n### Minimal example\r\n\r\n```python\r\nimport pygndc\r\n\r\n# Decode a .gndc file. The output is already in PHYSICAL values\r\n# (no scale factor needs to be applied).\r\ndata = pygndc.read(\"HiGLASS_LS20_n018e108_2020_v01_LAI.gndc\")\r\n\r\nprint(data.shape)   # (73, rows, cols) \u2014 73 five-day composites\r\nprint(data[0])      # first composite (DOY 001), LAI in m\u00b2 m\u207b\u00b2\r\n```\r\n\r\n> Note: after decoding, values are already physical (LAI in m\u00b2 m\u207b\u00b2,\r\n> FAPAR unitless). Do **not** multiply by the scale factors below \u2014 those\r\n> apply only to the raw uint8 GeoTIFF source and are listed for reference.\r\n\r\n## File naming\r\n\r\n```\r\nGNDC-HiGLASS_LS20_[lat][lon]_[year]_v01_LAI.gndc\r\nGNDC-HiGLASS_LS20_[lat][lon]_[year]_v01_FAPAR.gndc\r\n```\r\n\r\n- Tiles are 1\u00b0 \u00d7 1\u00b0 (WGS84 / EPSG:4326), centred at integer degree + 0.5\u00b0\r\n  (e.g. `n018e108` = 18.5\u00b0N, 108.5\u00b0E, covering ~18\u201319\u00b0N, 108\u2013109\u00b0E).\r\n- 73 bands per file = 5-day composites: DOY 001, 006, 011, \u2026, 361\r\n  (Jan 1, Jan 6, \u2026, Dec 22).\r\n\r\n## Physical values & ranges\r\n\r\n| Variable | Range | Unit |\r\n|----------|-------|------|\r\n| LAI      | 0 \u2013 10.0 | m\u00b2 m\u207b\u00b2 |\r\n| FAPAR    | 0 \u2013 1.0  | unitless |\r\n\r\n(For reference, the original uint8 GeoTIFF used scale factors LAI \u00d70.1 and\r\nFAPAR \u00d70.004. pygndc returns decoded data already in the physical ranges above.)\r\n\r\n## Extend to other regions (2019\u20132024)\r\n\r\nOpen-source pipeline (Google Colab):\r\nhttps://colab.research.google.com/drive/1zGYbUkh4COoZqpWA2tfMLZHVfsGZ1nAo\r\n\r\n## Citation\r\n\r\n**For the GNDC compression format / decoder:**\r\n\r\nQi, J., M. Li, B. Jiang, Y. Chen, and Q. Wang (2026).\r\n\"GeoNDC: A Queryable Neural Data Cube for Planetary-Scale Earth Observation.\"\r\narXiv:2603.25037 [cs.CV]. https://arxiv.org/abs/2603.25037\r\n\r\n```bibtex\r\n@misc{qi2026geondc,\r\n  title={GeoNDC: A Queryable Neural Data Cube for Planetary-Scale Earth Observation},\r\n  author={Jianbo Qi and Mengyao Li and Baogui Jiang and Yidan Chen and Qiao Wang},\r\n  year={2026},\r\n  eprint={2603.25037},\r\n  archivePrefix={arXiv},\r\n  primaryClass={cs.CV},\r\n  url={https://arxiv.org/abs/2603.25037}\r\n}\r\n```\r\n\r\n**For the underlying HiGLASS-LS20 product:**\r\n\r\nMa, H., Q. Wang, W. Li, Y. Chen, J. Xu, Y. Ma, J. Huang, and S. Liang (2025).\r\n\"The first gap-free 20 m 5-day LAI/FAPAR products over China (2018\u20132023) from\r\nintegrated Landsat-8/9 and Sentinel-2 Analysis Ready Data.\"\r\n*Remote Sensing of Environment*, 331, 115048.\r\nDOI: 10.1016/j.rse.2025.115048\r\n\r\n## Contact\r\n\r\n- Original product: Dr. Han Ma \u2014 mahan@hku.hk\r\n- GNDC packaging & pygndc decoder: Jianbo Qi \u2014 jianboqi@bnu.edu.cn\r\n",
+  "keywords": [],
+  "created_at": "2026-06-15T17:54:23.887Z",
+  "updated_at": "2026-06-15T17:58:33.450Z",
+  "visibility": "public",
+  "disabled": false,
+  "featured": 0,
+  "data_mode": "open",
+  "mirrors": {
+    "aws-opendata-us-west-2": {
+      "storage_type": "s3",
+      "is_primary": true,
+      "connection_id": "aws-opendata-us-west-2",
+      "config": {
+        "region": "us-west-2",
+        "bucket": "aws-opendata-us-west-2"
+      },
+      "prefix": "jianbo/gndc-higlass-ls20/"
+    }
+  },
+  "file_count": 3,
+  "total_bytes": 720915536,
+  "exts": {
+    "gndc": 3
+  },
+  "ext_bytes": {
+    "gndc": 720915536
+  },
+  "store_format": null,
+  "_state": "seed",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "cataloged_at": "2026-06-26T21:35:44+00:00"
+}
