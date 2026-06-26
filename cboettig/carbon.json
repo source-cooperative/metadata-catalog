@@ -3,16 +3,17 @@
   "stac_version": "1.1.0",
   "id": "cboettig/carbon",
   "title": "Irrecoverable Carbon - Conservation International",
-  "description": "Cloud-optimized GeoTIFFs (COGs) of Conservation International's Irrecoverable Carbon layers, representing carbon stocks held in ecosystems that cannot be recovered within a human lifetime if lost. The dataset provides global raster coverage and is derived from the analysis published in Nature Sustainability (doi:10.1038/s41893-021-00803-6), intended to support conservation prioritization to prevent irreversible carbon loss.",
+  "description": "Global raster dataset mapping irrecoverable carbon \u2014 ecosystem carbon stocks that cannot be recovered by 2050 if lost \u2014 along with vulnerable and manageable carbon stocks. Produced by Conservation International, the dataset spans 2010\u20132024 in two versioned releases (v1: 2021, v2: 2025 with corrections), delivered as Cloud-Optimized GeoTIFFs and H3 hexagonal Parquet files at global coverage.",
+  "license": "CC-BY-NC-4.0",
   "keywords": [
-    "carbon",
-    "irrecoverable-carbon",
     "conservation",
-    "ecosystem",
-    "biodiversity",
     "climate",
     "remote-sensing",
-    "land-use"
+    "biodiversity",
+    "global-coverage",
+    "time-series",
+    "h3",
+    "irrecoverable-carbon"
   ],
   "providers": [
     {
@@ -35,17 +36,17 @@
       "bbox": [
         [
           -180.0,
-          -60.0006861,
+          -90.0,
           180.0,
-          84.0003918
+          90.0
         ]
       ]
     },
     "temporal": {
       "interval": [
         [
-          null,
-          null
+          "2010-01-01T00:00:00Z",
+          "2024-01-01T00:00:00Z"
         ]
       ]
     }
@@ -54,7 +55,7 @@
     "data": {
       "href": "https://data.source.coop/cboettig/carbon/",
       "type": "image/tiff; application=geotiff",
-      "title": "Dataset files (18 x .tif)",
+      "title": "Dataset files (10 x .tif)",
       "roles": [
         "data"
       ]
@@ -70,12 +71,19 @@
       "rel": "via",
       "href": "https://source.coop/cboettig/carbon",
       "title": "Source Cooperative product page"
-    },
-    {
-      "rel": "cite-as",
-      "href": "https://doi.org/10.1038/s41893-021-00803-6"
     }
   ],
+  "file_count": 2710,
+  "exts": {
+    "parquet": 2679,
+    "zip": 15,
+    "tif": 10,
+    "xyz": 2,
+    "md": 1,
+    "html": 1,
+    "py": 1,
+    "json": 1
+  },
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
@@ -83,19 +91,9 @@
   "product_id": "carbon",
   "updated_at": "2025-08-21T16:39:55.567Z",
   "visibility": "public",
-  "account_id": "cboettig",
-  "exts": {
-    "tif": 18,
-    "html": 1,
-    "py": 1,
-    "md": 1
-  },
-  "file_count": 21,
   "disabled": false,
-  "total_bytes": 17920189388,
-  "created_at": "2024-03-19T23:43:37.861014+00:00",
   "featured": 0,
-  "data_mode": "open",
+  "created_at": "2024-03-19T23:43:37.861014+00:00",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -108,11 +106,14 @@
       "prefix": "cboettig/carbon/"
     }
   },
-  "readme": "## README.md\n# Irrecoverable Carbon\n\nCloud optimized geotiffs (COGs) of the Conservation International Irrecoverable Carbon layers.\n\n- Description in original publication: https://doi.org/10.1038/s41893-021-00803-6\n- Raw data accessed from https://doi.org/10.5281/zenodo.4091028\n\n[Example leaflet map](https://data.source.coop/cboettig/carbon/map.html)\n\n\n\n",
+  "total_bytes": 473033988586,
+  "data_mode": "open",
+  "account_id": "cboettig",
+  "readme": "## README.md\n# Irrecoverable Earth: Global Carbon Reserves\n\n## Overview\n\nThis dataset maps global \"irrecoverable carbon\" \u2014 carbon stocks that, if lost, cannot be recovered by 2050, making their conservation critical for meeting climate goals. The data also includes \"manageable carbon\" (stocks that can be influenced by human management) and \"vulnerable carbon\" (total stocks vulnerable to release upon land conversion).\n\nThis collection contains **two releases**:\n- **v1 (2021 release)**: 2010 and 2018 data with biomass, soil, and total components (Zenodo 4091029)\n- **v2 (2025 update)**: 2010, 2018, 2022, 2023, and 2024 data (total only); includes corrections to the 2018 baseline (Zenodo 17645053)\n\n## Source & Attribution\n\n**Source**: Conservation International  \n**Project Page**: https://www.conservation.org/irrecoverable-carbon  \n\n**v1 Data**: https://doi.org/10.5281/zenodo.4091029  \n**v2 Data (2025 update)**: https://doi.org/10.5281/zenodo.17645053\n\n**Citation**: Noon, M.L., Goldstein, A., Ledezma, J.C. et al. Mapping the irrecoverable carbon in Earth's ecosystems. *Nat Sustain* **5**, 37\u201346 (2022). https://doi.org/10.1038/s41893-021-00803-6\n\n**License**: Creative Commons Attribution Non Commercial 4.0 International (CC BY-NC 4.0)\n\n**Key findings from 2025 update**: 5.4% (7.4 Gt) of Earth's irrecoverable carbon has been lost between 2018\u20132024; global total is now 128.0 Gt.\n\n---\n\n## Data Formats & Access\n\n**Base URL**: `https://s3-west.nrp-nautilus.io/public-carbon/`\n\n---\n\n## v2 Data (2025 Release \u2014 Zenodo 17645053)\n\nCovers years **2010, 2018, 2022, 2023, 2024** for total carbon only. The 2018 baseline includes corrections to boreal grassland/shrubland estimates and updated coastal ecosystem extents. Note: irrecoverable carbon is available for all 5 years; vulnerable and manageable are available for 2010, 2018, and 2024 only.\n\n### v2 Cloud-Optimized GeoTIFFs\n\n**Path Pattern**: `v2/cogs/{category}_c_total_{year}.tif`\n\n| File | Year | Description |\n|------|------|-------------|\n| `v2/cogs/irrecoverable_c_total_2024.tif` | 2024 | Irrecoverable carbon total (corrected baseline) |\n| `v2/cogs/irrecoverable_c_total_2023.tif` | 2023 | Irrecoverable carbon total |\n| `v2/cogs/irrecoverable_c_total_2022.tif` | 2022 | Irrecoverable carbon total |\n| `v2/cogs/irrecoverable_c_total_2018.tif` | 2018 | Irrecoverable carbon total (corrected baseline) |\n| `v2/cogs/irrecoverable_c_total_2010.tif` | 2010 | \u26a0\ufe0f **Not available** \u2014 source file has corrupt TIFF IFD (Zenodo upstream issue) |\n| `v2/cogs/vulnerable_c_total_2024.tif` | 2024 | Vulnerable carbon total |\n| `v2/cogs/vulnerable_c_total_2018.tif` | 2018 | Vulnerable carbon total |\n| `v2/cogs/vulnerable_c_total_2010.tif` | 2010 | Vulnerable carbon total |\n| `v2/cogs/manageable_c_total_2024.tif` | 2024 | Manageable carbon total |\n| `v2/cogs/manageable_c_total_2018.tif` | 2018 | Manageable carbon total |\n| `v2/cogs/manageable_c_total_2010.tif` | 2010 | Manageable carbon total |\n\nAll v2 COGs are compressed with ZSTD and use GoogleMapsCompatible tiling.\n\n### v2 H3 Hexagonal Parquet\n\nAggregated carbon stocks at H3 resolution 8 (~0.74 km\u00b2), partitioned by H3 resolution 0 (h0) cells.\n\n**Path Pattern**: `v2/{dataset-name}/hex/h0={cell}/data_0.parquet`\n\n| Dataset | Path prefix |\n|---------|-------------|\n| Irrecoverable carbon 2024 | `v2/irrecoverable-carbon-2024/hex/` |\n| Irrecoverable carbon 2023 | `v2/irrecoverable-carbon-2023/hex/` |\n| Irrecoverable carbon 2022 | `v2/irrecoverable-carbon-2022/hex/` |\n| Irrecoverable carbon 2018 | `v2/irrecoverable-carbon-2018/hex/` |\n| Vulnerable carbon 2024    | `v2/vulnerable-carbon-2024/hex/` |\n| Vulnerable carbon 2018    | `v2/vulnerable-carbon-2018/hex/` |\n| Vulnerable carbon 2010    | `v2/vulnerable-carbon-2010/hex/` |\n| Manageable carbon 2024    | `v2/manageable-carbon-2024/hex/` |\n| Manageable carbon 2018    | `v2/manageable-carbon-2018/hex/` |\n| Manageable carbon 2010    | `v2/manageable-carbon-2010/hex/` |\n\n### v2 Usage Examples\n\n**DuckDB \u2014 compare irrecoverable carbon across years:**\n```sql\nSELECT\n    year,\n    SUM(carbon) / 1e9 AS total_Gt_C\nFROM (\n    SELECT 2024 AS year, carbon FROM read_parquet('https://s3-west.nrp-nautilus.io/public-carbon/v2/irrecoverable-carbon-2024/hex/**/*.parquet')\n    UNION ALL\n    SELECT 2023 AS year, carbon FROM read_parquet('https://s3-west.nrp-nautilus.io/public-carbon/v2/irrecoverable-carbon-2023/hex/**/*.parquet')\n    UNION ALL\n    SELECT 2022 AS year, carbon FROM read_parquet('https://s3-west.nrp-nautilus.io/public-carbon/v2/irrecoverable-carbon-2022/hex/**/*.parquet')\n    UNION ALL\n    SELECT 2018 AS year, carbon FROM read_parquet('https://s3-west.nrp-nautilus.io/public-carbon/v2/irrecoverable-carbon-2018/hex/**/*.parquet')\n)\nGROUP BY year ORDER BY year;\n```\n\n---\n\n## v1 Data (2021 Release \u2014 Zenodo 4091029)\n\nCovers years **2010 and 2018** with biomass, soil, and total components separately.\n\n### v1 Cloud-Optimized GeoTIFFs\n\n**Path Pattern**: `cogs/{category}_c_{component}_{year}.tif`\n\n**Categories**: `irrecoverable`, `manageable`, `vulnerable`  \n**Components**: `biomass`, `soil`, `total`  \n**Years**: `2010`, `2018`\n\nExamples:\n- `cogs/irrecoverable_c_total_2018.tif`\n- `cogs/manageable_c_biomass_2010.tif`\n- `cogs/vulnerable_c_soil_2018.tif`\n\n### v1 H3 Hexagonal Parquet\n\n| Dataset | Path |\n|---------|------|\n| Irrecoverable carbon (total 2018) | `irrecoverable-carbon/hex/h0={cell}/data_0.parquet` |\n| Vulnerable carbon (total 2018)    | `vulnerable-carbon/hex/h0={cell}/data_0.parquet` |\n\n---\n\n## Data Dictionary\n\n### Hexagonal Parquet Schema\n\n| Column | Type | Description |\n|--------|------|-------------|\n| `carbon` | Float | Total carbon stock in the hex cell (Mg C) |\n| `h8` | String | H3 hexagon cell ID at resolution 8 |\n| `h0` | String | H3 resolution 0 parent cell ID (partition key) |\n\n**Units**: Megagrams of Carbon (Mg C). One Mg = 1 metric ton.\n\n### Terminology\n\n- **Irrecoverable Carbon**: Ecosystem carbon that, if lost, could not be recovered by 2050 through natural regeneration or restoration.\n- **Vulnerable Carbon**: Total carbon stocks (biomass + soil) that are vulnerable to release upon land conversion.\n- **Manageable Carbon**: Carbon stocks in ecosystems that can be managed by human activities (forestry, agriculture, conservation).\n\n### v2 Corrections vs v1\n\nThe v2 (2025) update includes:\n1. **Bug fix**: Corrected overestimation of irrecoverable carbon in boreal grasslands and shrublands in Asia (reduces 2018 total from 139.1 Gt to 135.3 Gt)\n2. **Updated coastal extents**: Global Mangrove Watch 2022 and UNEP-WCMC 2022 for seagrasses and salt marshes\n3. **Annual tracking**: New years 2022, 2023, 2024 for irrecoverable; 2024 for vulnerable and manageable\n4. **Updated protection status**: Uses WDPA data through January 2023\u2013October 2025\n\n---\n\n## Background & Methodology\n\nThe concept of \"irrecoverable carbon\" was developed to identify carbon stocks where prevention of loss is more effective than restoration. These areas represent the overlap between:\n\n1. **High carbon density** \u2014 Significant climate mitigation value\n2. **Low recoverability** \u2014 Cannot regenerate by 2050\n3. **High threat** \u2014 Significant risk of conversion\n\nThe dataset integrates:\n- Biomass data from multiple sources (Spawn et al., Walker et al.)\n- Soil carbon from SoilGrids250m\n- Ecosystem vulnerability assessments\n- ESA CCI Land Cover for annual conversion tracking (v2 only)\n",
   "_review": [
-    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
-    "providers: role [producer, licensor] for 'Conservation International' is an AI guess \u2014 Assumed licensor as originating organization; no explicit license stated in README. Verify before flipping to _state: reviewed."
+    "extent.temporal: None (probe sample) widened to ['2010-01-01T00:00:00Z', '2024-01-01T00:00:00Z'] using README-stated coverage ['2010', '2024']."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-05-26T18:40:29+00:00"
+  "cataloged_at": "2026-06-26T19:01:21+00:00",
+  "store_format": null
 }
