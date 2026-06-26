@@ -1,15 +1,173 @@
 {
-  "account_id": "rcejudo",
-  "product_id": "000002",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
+  "id": "rcejudo/000002",
   "title": "Red_Riego_Madrid",
-  "description": "",
-  "keywords": [],
-  "created_at": "2026-06-12T07:27:56.458Z",
-  "updated_at": "2026-06-12T07:27:56.458Z",
-  "visibility": "public",
-  "disabled": false,
+  "description": "Municipal irrigation network infrastructure dataset for the city of Madrid, Spain, containing spatial records of irrigation sectors and valve-controlled irrigation lots. Each record includes irrigation type, electrovalve type, pipe caliber, and inventory identifiers linked to Madrid's infrastructure management system (MINT). The dataset covers the Madrid urban area with geometries in OGC CRS84.",
+  "keywords": [
+    "hydrology",
+    "irrigation",
+    "urban-infrastructure",
+    "geoparquet",
+    "madrid"
+  ],
+  "providers": [
+    {
+      "name": "Ayuntamiento de Madrid",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/rcejudo/000002"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 69895
+  },
+  "assets": {
+    "lote3": {
+      "href": "https://data.source.coop/rcejudo/000002/",
+      "type": "application/x-parquet",
+      "title": "lote3",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "BIGINT|INTEGER"
+        },
+        {
+          "name": "calibre",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "tipo_electrovalvula",
+          "type": "INTEGER"
+        },
+        {
+          "name": "tipo_riego",
+          "type": "INTEGER"
+        },
+        {
+          "name": "id_inventario_mint",
+          "type": "INTEGER"
+        },
+        {
+          "name": "sve",
+          "type": "INTEGER"
+        },
+        {
+          "name": "uge",
+          "type": "INTEGER"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')",
+          "description": "[geometry] OGC CRS84 polygon/linestring geometry of irrigation lot infrastructure elements"
+        },
+        {
+          "name": "geometry_bbox",
+          "type": "STRUCT(xmin FLOAT, ymin FLOAT, xmax FLOAT, ymax FLOAT)"
+        },
+        {
+          "name": "id_electro",
+          "type": "BIGINT"
+        }
+      ],
+      "description": "2 files sampled for this table"
+    },
+    "sectores_riego_lote2_lote3_": {
+      "href": "https://data.source.coop/rcejudo/000002/",
+      "type": "application/x-parquet",
+      "title": "sectores_riego_lote2_lote3_.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "BIGINT|INTEGER"
+        },
+        {
+          "name": "id_electro",
+          "type": "BIGINT"
+        },
+        {
+          "name": "elemento",
+          "type": "BIGINT"
+        },
+        {
+          "name": "id_inventario_mint",
+          "type": "INTEGER"
+        },
+        {
+          "name": "sve",
+          "type": "INTEGER"
+        },
+        {
+          "name": "uge",
+          "type": "INTEGER"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')",
+          "description": "[geometry] OGC CRS84 geometry of irrigation sectors"
+        },
+        {
+          "name": "geometry_bbox",
+          "type": "STRUCT(xmin FLOAT, ymin FLOAT, xmax FLOAT, ymax FLOAT)"
+        }
+      ],
+      "description": "3 files sampled for this table"
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/rcejudo/000002/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/rcejudo/000002",
+      "title": "Source Cooperative product page"
+    }
+  ],
+  "exts": {
+    "parquet": 5
+  },
   "featured": 0,
-  "data_mode": "open",
+  "disabled": false,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -22,19 +180,24 @@
       "prefix": "rcejudo/000002/"
     }
   },
-  "file_count": 5,
-  "total_bytes": 54306153,
-  "exts": {
-    "parquet": 5
-  },
-  "ext_bytes": {
-    "parquet": 54306153
-  },
-  "store_format": null,
-  "_state": "seed",
+  "product_id": "000002",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "cataloged_at": "2026-06-26T21:37:01+00:00"
+  "file_count": 5,
+  "updated_at": "2026-06-12T07:27:56.458Z",
+  "account_id": "rcejudo",
+  "created_at": "2026-06-12T07:27:56.458Z",
+  "total_bytes": 54306153,
+  "visibility": "public",
+  "data_mode": "open",
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
+    "providers: role [producer, licensor] for 'Ayuntamiento de Madrid' is an AI guess \u2014 Inferred as municipal data producer based on dataset name, bounding box covering Madrid, and MINT (Madrid infrastructure inventory) identifiers; no README confirms the publisher.. Verify before flipping to _state: reviewed.",
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [lote3.geometry (geometry), sectores_riego_lote2_lote3_.geometry (geometry)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-06-26T21:42:08+00:00",
+  "store_format": null
 }
