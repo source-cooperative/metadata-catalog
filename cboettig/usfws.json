@@ -1,15 +1,88 @@
 {
-  "account_id": "cboettig",
-  "product_id": "usfws",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "cboettig/usfws",
   "title": "U.S. Fish and Wildlife Service (USFWS) Datasets",
-  "description": "",
-  "keywords": [],
-  "created_at": "2026-06-17T03:34:30.090Z",
+  "description": "Cloud-optimized publication of U.S. Fish and Wildlife Service Endangered Species Act critical habitat designations for terrestrial and freshwater species under USFWS jurisdiction. Includes two polygon layers: Final (728 features, 462 species) and Proposed (49 features, 42 species) critical habitat designations. Excludes marine species and salmonid stream-line habitat under NOAA NMFS jurisdiction.",
+  "license": "public-domain",
+  "keywords": [
+    "conservation",
+    "biodiversity",
+    "endangered-species",
+    "geoparquet",
+    "pmtiles",
+    "h3"
+  ],
+  "providers": [
+    {
+      "name": "U.S. Fish and Wildlife Service, Endangered Species Program",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/cboettig/usfws"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -179.14643,
+          -14.548618,
+          179.776432,
+          74.024895
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/cboettig/usfws/",
+      "type": "application/octet-stream",
+      "title": "Dataset files (2 x .pmtiles)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/cboettig/usfws/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/cboettig/usfws",
+      "title": "Source Cooperative product page"
+    }
+  ],
+  "account_id": "cboettig",
   "updated_at": "2026-06-17T03:34:30.090Z",
-  "visibility": "public",
   "disabled": false,
-  "featured": 0,
-  "data_mode": "open",
+  "created_at": "2026-06-17T03:34:30.090Z",
+  "exts": {
+    "parquet": 28,
+    "json": 4,
+    "pmtiles": 2,
+    "zip": 2,
+    "md": 1
+  },
+  "file_count": 37,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -22,27 +95,20 @@
       "prefix": "cboettig/usfws/"
     }
   },
-  "file_count": 37,
-  "total_bytes": 447232324,
-  "exts": {
-    "parquet": 28,
-    "json": 4,
-    "zip": 2,
-    "pmtiles": 2,
-    "md": 1
-  },
-  "ext_bytes": {
-    "pmtiles": 194227533,
-    "parquet": 135971006,
-    "zip": 116990853,
-    "json": 38325,
-    "md": 4607
-  },
-  "store_format": null,
-  "_state": "seed",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "cataloged_at": "2026-06-26T21:27:59+00:00"
+  "visibility": "public",
+  "featured": 0,
+  "total_bytes": 447232324,
+  "product_id": "usfws",
+  "data_mode": "open",
+  "readme": "## README.md\n# U.S. Fish and Wildlife Service (USFWS) Datasets\n\nCloud-optimized publication of geospatial datasets administered by the U.S. Fish and Wildlife Service, hosted on the NRP Nautilus S3 bucket `public-usfws`.\n\nPublic URL: <https://s3-west.nrp-nautilus.io/public-usfws/>\n\n## Collections\n\n- **[USFWS Critical Habitat (Final + Proposed)](critical-habitat/stac-collection.json)** \u2014 ESA-designated critical habitat for species under USFWS jurisdiction.\n\n> The USFWS National Wetlands Inventory (NWI) is published in the separate `public-wetlands` bucket alongside Ramsar and GLWD; it is not duplicated here.\n\n## USFWS Critical Habitat\n\nCritical habitat under the Endangered Species Act for species under USFWS jurisdiction (terrestrial and freshwater). Two layers:\n\n| Layer | Features | Distinct species | Notes |\n|---|---|---|---|\n| Final | 728 | 462 | Legally designated, in effect |\n| Proposed | 49 | 42 | In ESA rulemaking |\n\n**Source:** FWS HQ ES Critical Habitat (ArcGIS Feature Service, item `794de45b9d774d21aed3bf9b5313ee24`). Polygon features only.\n\n> **Marine species and stream-line critical habitat** for salmonids and other species under NOAA NMFS jurisdiction are NOT included here \u2014 those are tracked separately under [data-workflows#144](https://github.com/boettiger-lab/data-workflows/issues/144).\n\n> **Spatial accuracy:** every feature carries the note \"Please check current species specific shapefile\" \u2014 the aggregated layer is generalized for visualization. For the legal extent of any single critical habitat designation, consult the species-specific shapefile via [USFWS ECOS](https://ecos.fws.gov/ecp/report/table/critical-habitat.html).\n\n### Assets\n\n| Layer | Type | URL |\n|---|---|---|\n| Final | GeoParquet | <https://s3-west.nrp-nautilus.io/public-usfws/critical-habitat/final.parquet> |\n| Final | PMTiles | <https://s3-west.nrp-nautilus.io/public-usfws/critical-habitat/final.pmtiles> |\n| Final | H3 hex (res 8) | `https://s3-west.nrp-nautilus.io/public-usfws/critical-habitat/final/hex/h0=*/data_0.parquet` |\n| Proposed | GeoParquet | <https://s3-west.nrp-nautilus.io/public-usfws/critical-habitat/proposed.parquet> |\n| Proposed | PMTiles | <https://s3-west.nrp-nautilus.io/public-usfws/critical-habitat/proposed.pmtiles> |\n| Proposed | H3 hex (res 8) | `https://s3-west.nrp-nautilus.io/public-usfws/critical-habitat/proposed/hex/h0=*/data_0.parquet` |\n\n### DuckDB example\n\n```sql\nINSTALL spatial; LOAD spatial;\nINSTALL httpfs; LOAD httpfs;\n\n-- Top species by number of critical-habitat polygons (Final designations)\nSELECT comname, sciname, listing_st, COUNT(*) AS n_polys\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-usfws/critical-habitat/final.parquet')\nWHERE comname != 'No common name'\nGROUP BY comname, sciname, listing_st\nORDER BY n_polys DESC\nLIMIT 10;\n\n-- Pre-compute the H3 cell area at resolution 8 once (square metres):\n--   approx 7.37e+05 m\u00b2 per cell; see h3-guide for exact constants.\n-- Approximate critical-habitat area covered by a species, from hex count:\nSELECT comname,\n       COUNT(DISTINCT h8) * 737327.598 AS approx_area_m2\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-usfws/critical-habitat/final/hex/h0=*/data_0.parquet')\nWHERE comname = 'Polar bear'\nGROUP BY comname;\n```\n\n### MapLibre GL JS example\n\nPMTiles `source-layer` is **`final`** for the Final layer and **`proposed`** for the Proposed layer (the last segment of `--dataset` in the cng-datasets workflow).\n\n```js\nmap.addSource('ch-final', {\n  type: 'vector',\n  url: 'pmtiles://https://s3-west.nrp-nautilus.io/public-usfws/critical-habitat/final.pmtiles'\n});\nmap.addLayer({\n  id: 'ch-final-fill',\n  source: 'ch-final',\n  'source-layer': 'final',\n  type: 'fill',\n  paint: {\n    'fill-color': ['match', ['get', 'listing_st'],\n      'Endangered', '#dc2626',\n      'Threatened', '#f59e0b',\n      /* default */ '#9ca3af'\n    ],\n    'fill-opacity': 0.55,\n    'fill-outline-color': '#1f2937'\n  }\n});\n```\n\n## Source\n\n- **Producer:** U.S. Fish and Wildlife Service, Endangered Species Program\n- **Service:** <https://services.arcgis.com/QVENGdaPbd4LUkLV/arcgis/rest/services/USFWS_Critical_Habitat/FeatureServer>\n- **OpenData portal:** <https://gis-fws.opendata.arcgis.com/maps/794de45b9d774d21aed3bf9b5313ee24>\n- **Per-species shapefiles & metadata:** <https://ecos.fws.gov/ecp/report/table/critical-habitat.html>\n- **License:** Public domain\n\n## Citation\n\n> U.S. Fish and Wildlife Service. *Threatened & Endangered Species Active Critical Habitat Report.* USFWS Environmental Conservation Online System (ECOS). <https://ecos.fws.gov/ecp/report/table/critical-habitat.html>\n",
+  "_review": [
+    "license: README states 'Public domain'; this is a U.S. federal government work not subject to copyright. Not formally licensed under a SPDX identifier."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-06-27T09:22:14+00:00",
+  "store_format": null
 }
