@@ -1,15 +1,1207 @@
 {
-  "account_id": "hdx",
-  "product_id": "hapi",
-  "title": "HDX HAPI",
-  "description": "Contains downloadable Parquet of data obtained from the HDX Humanitarian API (HDX HAPI) for users who prefer not to use APIs. HDX HAPI Data is standardized for seamless interoperability from multiple sources. The data facilitates automated workflows and visualizations to support humanitarian decision making. For more information, please see the [HDX HAPI landing page](https://data.humdata.org/hapi) and [documentation](https://hdx-hapi.readthedocs.io/en/latest/).",
-  "keywords": [],
-  "created_at": "2026-06-09T07:21:43.015Z",
-  "updated_at": "2026-06-09T07:21:43.015Z",
-  "visibility": "public",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
+  "id": "hdx/hapi",
+  "title": "HDX HAPI Cloud-Native",
+  "description": "Parquet snapshots of the HDX Humanitarian API (HDX HAPI), operated by OCHA, aggregating standardized humanitarian data from multiple organizations across crisis-affected countries. Themes include affected people (refugees, IDPs, humanitarian needs), food security and prices, conflict events, poverty rates, baseline population, climate/rainfall, and operational presence of humanitarian organizations. Data is normalized to common administrative boundary codes to enable cross-source interoperability and automated humanitarian workflows.",
+  "license": "CC-BY-4.0",
+  "keywords": [
+    "humanitarian",
+    "hapi",
+    "hdx",
+    "hxl",
+    "ocha",
+    "parquet",
+    "food-security",
+    "demographics",
+    "administrative-boundaries",
+    "displacement",
+    "conflict",
+    "precipitation"
+  ],
+  "providers": [
+    {
+      "name": "UN OCHA HDX Humanitarian API",
+      "description": "The HDX Humanitarian API (HAPI) provides standardized humanitarian indicators from multiple sources to facilitate automated workflows and visualizations supporting humanitarian decision-making.",
+      "roles": [
+        "producer",
+        "processor"
+      ],
+      "url": "https://hapi.humdata.org/"
+    },
+    {
+      "name": "UN Office for the Coordination of Humanitarian Affairs (OCHA)",
+      "roles": [
+        "host",
+        "processor"
+      ]
+    },
+    {
+      "name": "HDX contributing organizations (WFP, UNHCR, IPC, and others)",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/hdx/hapi"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -180,
+          -90,
+          180,
+          90
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "1974-01-01T00:00:00Z",
+          "2035-09-30T23:59:59Z"
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 12730115
+  },
+  "assets": {
+    "affected-people/humanitarian-needs": {
+      "href": "https://data.source.coop/hdx/hapi/affected-people/humanitarian-needs/admin_level=0/",
+      "type": "application/x-parquet",
+      "title": "affected-people/humanitarian-needs",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "location_code",
+          "type": "VARCHAR",
+          "description": "[admin_code] ISO country-level location code (pattern repeats across all assets)"
+        },
+        {
+          "name": "location_name",
+          "type": "VARCHAR",
+          "description": "[placename] Country name (pattern repeats across all assets)"
+        },
+        {
+          "name": "admin1_code",
+          "type": "VARCHAR",
+          "description": "[admin_code] Admin level 1 region code (pattern repeats across all assets)"
+        },
+        {
+          "name": "admin1_name",
+          "type": "VARCHAR",
+          "description": "[placename] Admin level 1 region name (pattern repeats across all assets)"
+        },
+        {
+          "name": "admin2_code",
+          "type": "VARCHAR",
+          "description": "[admin_code] Admin level 2 region code (pattern repeats across all assets)"
+        },
+        {
+          "name": "admin2_name",
+          "type": "VARCHAR",
+          "description": "[placename] Admin level 2 region name (pattern repeats across all assets)"
+        },
+        {
+          "name": "admin_level",
+          "type": "BIGINT"
+        },
+        {
+          "name": "resource_hdx_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "sector_code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "category",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "population_status",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "population",
+          "type": "BIGINT"
+        },
+        {
+          "name": "reference_period_start",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "reference_period_end",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "sector_name",
+          "type": "VARCHAR"
+        }
+      ],
+      "description": "3 files sampled for this table"
+    },
+    "affected-people/idps": {
+      "href": "https://data.source.coop/hdx/hapi/affected-people/idps/admin_level=0/",
+      "type": "application/x-parquet",
+      "title": "affected-people/idps",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "location_code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "location_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "admin1_code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "admin1_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "admin2_code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "admin2_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "admin_level",
+          "type": "BIGINT"
+        },
+        {
+          "name": "resource_hdx_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "reporting_round",
+          "type": "BIGINT"
+        },
+        {
+          "name": "assessment_type",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "operation",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "population",
+          "type": "BIGINT"
+        },
+        {
+          "name": "reference_period_start",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "reference_period_end",
+          "type": "VARCHAR"
+        }
+      ],
+      "description": "3 files sampled for this table"
+    },
+    "affected-people": {
+      "href": "https://data.source.coop/hdx/hapi/affected-people/",
+      "type": "application/x-parquet",
+      "title": "affected-people",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "resource_hdx_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "population_group",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "gender",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "age_range",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "min_age",
+          "type": "BIGINT"
+        },
+        {
+          "name": "max_age",
+          "type": "BIGINT"
+        },
+        {
+          "name": "population",
+          "type": "BIGINT"
+        },
+        {
+          "name": "reference_period_start",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "reference_period_end",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "origin_location_code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "origin_location_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "asylum_location_code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "asylum_location_name",
+          "type": "VARCHAR"
+        }
+      ],
+      "description": "2 files sampled for this table"
+    },
+    "climate/rainfall": {
+      "href": "https://data.source.coop/hdx/hapi/climate/rainfall/admin_level=1/",
+      "type": "application/x-parquet",
+      "title": "climate/rainfall",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "location_code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "location_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "admin1_code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "admin1_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "admin2_code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "admin2_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "admin_level",
+          "type": "BIGINT"
+        },
+        {
+          "name": "resource_hdx_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "aggregation_period",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "provider_admin1_code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "provider_admin2_code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "rainfall",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "rainfall_long_term_average",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "rainfall_anomaly_pct",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "number_pixels",
+          "type": "BIGINT"
+        },
+        {
+          "name": "version",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "reference_period_start",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "reference_period_end",
+          "type": "VARCHAR"
+        }
+      ],
+      "description": "2 files sampled for this table"
+    },
+    "coordination-context/conflict-events": {
+      "href": "https://data.source.coop/hdx/hapi/coordination-context/conflict-events/admin_level=0/",
+      "type": "application/x-parquet",
+      "title": "coordination-context/conflict-events",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "location_code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "location_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "admin1_code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "admin1_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "admin2_code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "admin2_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "admin_level",
+          "type": "BIGINT"
+        },
+        {
+          "name": "resource_hdx_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "event_type",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "events",
+          "type": "BIGINT"
+        },
+        {
+          "name": "fatalities",
+          "type": "BIGINT"
+        },
+        {
+          "name": "reference_period_start",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "reference_period_end",
+          "type": "VARCHAR"
+        }
+      ],
+      "description": "3 files sampled for this table"
+    },
+    "coordination-context": {
+      "href": "https://data.source.coop/hdx/hapi/coordination-context/",
+      "type": "application/x-parquet",
+      "title": "coordination-context",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "resource_hdx_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "appeal_code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "appeal_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "appeal_type",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "requirements_usd",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "funding_usd",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "funding_pct",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "location_code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "location_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "reference_period_start",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "reference_period_end",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "risk_class",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "global_rank",
+          "type": "BIGINT"
+        },
+        {
+          "name": "overall_risk",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "hazard_exposure_risk",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "vulnerability_risk",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "coping_capacity_risk",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "meta_missing_indicators_pct",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "meta_avg_recentness_years",
+          "type": "DOUBLE"
+        }
+      ],
+      "description": "2 files sampled for this table"
+    },
+    "coordination-context/operational-presence": {
+      "href": "https://data.source.coop/hdx/hapi/coordination-context/operational-presence/admin_level=1/",
+      "type": "application/x-parquet",
+      "title": "coordination-context/operational-presence",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "location_code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "location_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "admin1_code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "admin1_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "admin2_code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "admin2_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "admin_level",
+          "type": "BIGINT"
+        },
+        {
+          "name": "resource_hdx_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "org_acronym",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "org_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "sector_code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "sector_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "reference_period_start",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "reference_period_end",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "org_type_code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "org_type_description",
+          "type": "VARCHAR"
+        }
+      ],
+      "description": "2 files sampled for this table"
+    },
+    "food-security-nutrition-poverty/food-prices-market-monitor": {
+      "href": "https://data.source.coop/hdx/hapi/food-security-nutrition-poverty/food-prices-market-monitor/admin_level=0/",
+      "type": "application/x-parquet",
+      "title": "food-security-nutrition-poverty/food-prices-market-monitor",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "location_code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "location_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "admin1_code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "admin1_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "admin2_code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "admin2_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "admin_level",
+          "type": "BIGINT"
+        },
+        {
+          "name": "resource_hdx_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "market_code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "market_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "commodity_code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "commodity_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "commodity_category",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "currency_code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "unit",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "price_flag",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "price_type",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "price",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "lat",
+          "type": "DOUBLE",
+          "description": "[latlon] Latitude of the market location"
+        },
+        {
+          "name": "lon",
+          "type": "DOUBLE",
+          "description": "[latlon] Longitude of the market location"
+        },
+        {
+          "name": "reference_period_start",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "reference_period_end",
+          "type": "VARCHAR"
+        }
+      ],
+      "description": "2 files sampled for this table"
+    },
+    "food-security-nutrition-poverty/food-security": {
+      "href": "https://data.source.coop/hdx/hapi/food-security-nutrition-poverty/food-security/admin_level=0/",
+      "type": "application/x-parquet",
+      "title": "food-security-nutrition-poverty/food-security",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "location_code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "location_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "admin1_code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "admin1_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "admin2_code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "admin2_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "admin_level",
+          "type": "BIGINT"
+        },
+        {
+          "name": "resource_hdx_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ipc_phase",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ipc_type",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "population_in_phase",
+          "type": "BIGINT"
+        },
+        {
+          "name": "population_fraction_in_phase",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "reference_period_start",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "reference_period_end",
+          "type": "VARCHAR"
+        }
+      ],
+      "description": "3 files sampled for this table"
+    },
+    "food-security-nutrition-poverty/poverty-rate": {
+      "href": "https://data.source.coop/hdx/hapi/food-security-nutrition-poverty/poverty-rate/admin_level=0/",
+      "type": "application/x-parquet",
+      "title": "food-security-nutrition-poverty/poverty-rate",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "location_code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "location_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "admin1_code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "admin1_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "admin_level",
+          "type": "BIGINT"
+        },
+        {
+          "name": "resource_hdx_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "mpi",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "headcount_ratio",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "intensity_of_deprivation",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "vulnerable_to_poverty",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "in_severe_poverty",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "reference_period_start",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "reference_period_end",
+          "type": "VARCHAR"
+        }
+      ],
+      "description": "2 files sampled for this table"
+    },
+    "geography-infrastructure/baseline-population": {
+      "href": "https://data.source.coop/hdx/hapi/geography-infrastructure/baseline-population/admin_level=0/",
+      "type": "application/x-parquet",
+      "title": "geography-infrastructure/baseline-population",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "location_code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "location_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "admin1_code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "admin1_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "admin2_code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "admin2_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "admin_level",
+          "type": "BIGINT"
+        },
+        {
+          "name": "resource_hdx_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "gender",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "age_range",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "min_age",
+          "type": "BIGINT"
+        },
+        {
+          "name": "max_age",
+          "type": "BIGINT"
+        },
+        {
+          "name": "population",
+          "type": "BIGINT"
+        },
+        {
+          "name": "reference_period_start",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "reference_period_end",
+          "type": "VARCHAR"
+        }
+      ],
+      "description": "3 files sampled for this table"
+    },
+    "metadata": {
+      "href": "https://data.source.coop/hdx/hapi/metadata/",
+      "type": "application/x-parquet",
+      "title": "metadata",
+      "roles": [
+        "metadata"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "location_ref",
+          "type": "BIGINT"
+        },
+        {
+          "name": "code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "from_cods",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "reference_period_start",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "reference_period_end",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "location_code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "location_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "admin1_ref",
+          "type": "BIGINT"
+        },
+        {
+          "name": "admin1_code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "admin1_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "dataset_hdx_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "dataset_hdx_stub",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "dataset_hdx_title",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "hdx_provider_stub",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "hdx_provider_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "hdx_link",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "hdx_api_link",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "provider_hdx_link",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "provider_hdx_api_link",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "has_hrp",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "in_gho",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "description",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "acronym",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "org_type_code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "org_type_description",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "resource_hdx_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "format",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "update_date",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "is_hxl",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "download_url",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "hapi_updated_date",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "dataset_hdx_provider_stub",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "dataset_hdx_provider_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "dataset_hdx_link",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "dataset_hdx_api_link",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "category",
+          "type": "VARCHAR"
+        }
+      ],
+      "description": "10 files sampled for this table"
+    },
+    "metadata/data-availability": {
+      "href": "https://data.source.coop/hdx/hapi/metadata/data-availability/admin_level=0/",
+      "type": "application/x-parquet",
+      "title": "metadata/data-availability",
+      "roles": [
+        "metadata"
+      ],
+      "table:columns": [
+        {
+          "name": "location_code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "location_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "admin1_code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "admin1_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "admin2_code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "admin2_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "admin_level",
+          "type": "BIGINT"
+        },
+        {
+          "name": "category",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "subcategory",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "hapi_updated_date",
+          "type": "VARCHAR"
+        }
+      ],
+      "description": "3 files sampled for this table"
+    },
+    "metadata/wfp-market": {
+      "href": "https://data.source.coop/hdx/hapi/metadata/wfp-market/admin_level=0/",
+      "type": "application/x-parquet",
+      "title": "metadata/wfp-market",
+      "roles": [
+        "metadata"
+      ],
+      "table:columns": [
+        {
+          "name": "location_code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "location_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "admin1_code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "admin1_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "admin2_code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "admin2_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "admin_level",
+          "type": "BIGINT"
+        },
+        {
+          "name": "code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "lat",
+          "type": "DOUBLE",
+          "description": "[latlon] Latitude of the WFP market reference point"
+        },
+        {
+          "name": "lon",
+          "type": "DOUBLE",
+          "description": "[latlon] Longitude of the WFP market reference point"
+        }
+      ],
+      "description": "2 files sampled for this table"
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/hdx/hapi/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/hdx/hapi",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "rel": "license",
+      "href": "https://data.humdata.org/hapi",
+      "type": "text/html",
+      "title": "HDX HAPI \u2014 per-dataset license information"
+    },
+    {
+      "rel": "via",
+      "href": "https://hapi.humdata.org/",
+      "type": "text/html",
+      "title": "HDX Humanitarian API"
+    },
+    {
+      "rel": "describedby",
+      "href": "https://hdx-hapi.readthedocs.io/en/latest/",
+      "type": "text/html",
+      "title": "HDX HAPI documentation"
+    }
+  ],
   "disabled": false,
-  "featured": 0,
-  "data_mode": "open",
+  "total_bytes": 66404729,
+  "exts": {
+    "parquet": 42,
+    "json": 32
+  },
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -22,21 +1214,23 @@
       "prefix": "hdx/hapi/"
     }
   },
-  "file_count": 74,
-  "total_bytes": 66404729,
-  "exts": {
-    "parquet": 42,
-    "json": 32
-  },
-  "ext_bytes": {
-    "parquet": 66336818,
-    "json": 67911
-  },
-  "store_format": null,
-  "_state": "seed",
+  "product_id": "hapi",
+  "visibility": "public",
+  "created_at": "2026-06-09T07:21:43.015Z",
+  "featured": 0,
+  "account_id": "hdx",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "cataloged_at": "2026-06-26T21:35:40+00:00"
+  "data_mode": "open",
+  "file_count": 74,
+  "updated_at": "2026-06-09T07:21:43.015Z",
+  "_review": [
+    "providers: role [producer] for 'HDX contributing organizations (WFP, UNHCR, IPC, and others)' is an AI guess \u2014 Multiple humanitarian organizations contribute source datasets through HDX; specific producers per sub-dataset are catalogued in the metadata asset but not enumerated in the README.. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-06-27T09:19:16+00:00",
+  "_source_format": "stac",
+  "store_format": null
 }
