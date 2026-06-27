@@ -1,15 +1,1252 @@
 {
-  "account_id": "cboettig",
-  "product_id": "ca-dac",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
+  "id": "cboettig/ca-dac",
   "title": " California Disadvantaged Communities (DAC) and Economically Distressed Areas (EDA), 2023",
-  "description": "California Department of Water Resources (DWR) layers identifying Disadvantaged Communities (DAC, MHI < 80% of statewide) and Economically Distressed Areas (EDA, MHI < 85% of statewide plus distress factors) at multiple Census geographies, joined to ACS 2019-2023 5-year estimates on 2020 Census boundaries.",
-  "keywords": [],
-  "created_at": "2026-06-16T04:06:44.235Z",
+  "description": "California Department of Water Resources (DWR) layers identifying Disadvantaged Communities (DAC, median household income below 80% of statewide) and Economically Distressed Areas (EDA, MHI below 85% of statewide plus additional distress factors) at Census tract, place, block group, and county geographies. Designations are derived from ACS 2019\u20132023 5-year estimates joined to 2020 Census boundaries and indicate eligibility for California water-related funding programs. Layers are published as GeoParquet, PMTiles, and H3-partitioned Parquet files.",
+  "keywords": [
+    "demographics",
+    "census",
+    "administrative-boundaries",
+    "geoparquet",
+    "pmtiles",
+    "h3"
+  ],
+  "providers": [
+    {
+      "name": "California Department of Water Resources (DWR)",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "California Natural Resources Agency (CNRA)",
+      "roles": [
+        "host"
+      ]
+    },
+    {
+      "name": "boettiger-lab",
+      "roles": [
+        "processor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/cboettig/ca-dac"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2019-01-01T00:00:00Z",
+          "2023-01-01T00:00:00Z"
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 137299633
+  },
+  "assets": {
+    "dac-2023": {
+      "href": "https://data.source.coop/cboettig/ca-dac/dac-2023/",
+      "type": "application/x-parquet",
+      "title": "dac-2023",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "_cng_fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OGC_FID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OBJECTID",
+          "type": "INTEGER"
+        },
+        {
+          "name": "STATEFP20",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "COUNTYFP20",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "TRACTCE20",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "BLKGRPCE20",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "GEOID20",
+          "type": "VARCHAR",
+          "description": "[admin_code] Census FIPS code (state+county+tract+block group)"
+        },
+        {
+          "name": "ALAND20",
+          "type": "BIGINT"
+        },
+        {
+          "name": "AWATER20",
+          "type": "BIGINT"
+        },
+        {
+          "name": "INTPTLAT20",
+          "type": "VARCHAR",
+          "description": "[latlon] Internal point latitude (paired with INTPTLON20)"
+        },
+        {
+          "name": "INTPTLON20",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Pop23",
+          "type": "INTEGER"
+        },
+        {
+          "name": "HH23",
+          "type": "INTEGER"
+        },
+        {
+          "name": "DAC23",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Source",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Comments",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Date_Recor",
+          "type": "DATE"
+        },
+        {
+          "name": "Record_Las",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Date_Data_",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "MHI23",
+          "type": "INTEGER"
+        },
+        {
+          "name": "ShapeSTAre",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "ShapeSTLen",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "geom",
+          "type": "GEOMETRY('EPSG:4326')",
+          "description": "[geometry] Census geography polygon in EPSG:4326"
+        },
+        {
+          "name": "STATEFP",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "GEOID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ALAND",
+          "type": "BIGINT"
+        },
+        {
+          "name": "AWATER",
+          "type": "INTEGER"
+        },
+        {
+          "name": "INTPTLAT",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "INTPTLON",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PlaceCode",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PlaceNames",
+          "type": "VARCHAR",
+          "description": "[placename] Comma-separated place names for Place geography"
+        }
+      ],
+      "description": "3 files sampled for this table"
+    },
+    "dac-2023/blockgroup/hex": {
+      "href": "https://data.source.coop/cboettig/ca-dac/dac-2023/blockgroup/hex/h0=577199624117288959/",
+      "type": "application/x-parquet",
+      "title": "dac-2023/blockgroup/hex",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "_cng_fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OGC_FID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OBJECTID",
+          "type": "INTEGER"
+        },
+        {
+          "name": "STATEFP20",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "COUNTYFP20",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "TRACTCE20",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "BLKGRPCE20",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "GEOID20",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ALAND20",
+          "type": "BIGINT"
+        },
+        {
+          "name": "AWATER20",
+          "type": "BIGINT"
+        },
+        {
+          "name": "INTPTLAT20",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "INTPTLON20",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Pop23",
+          "type": "INTEGER"
+        },
+        {
+          "name": "HH23",
+          "type": "INTEGER"
+        },
+        {
+          "name": "DAC23",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Source",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Comments",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Date_Recor",
+          "type": "DATE"
+        },
+        {
+          "name": "Record_Las",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Date_Data_",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "MHI23",
+          "type": "INTEGER"
+        },
+        {
+          "name": "ShapeSTAre",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "ShapeSTLen",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "h10",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h0",
+          "type": "BIGINT"
+        },
+        {
+          "name": "h8",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h9",
+          "type": "UBIGINT"
+        }
+      ],
+      "description": "2 files sampled for this table"
+    },
+    "dac-2023/place/hex": {
+      "href": "https://data.source.coop/cboettig/ca-dac/dac-2023/place/hex/h0=577199624117288959/",
+      "type": "application/x-parquet",
+      "title": "dac-2023/place/hex",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "_cng_fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OGC_FID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OBJECTID",
+          "type": "INTEGER"
+        },
+        {
+          "name": "STATEFP",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "GEOID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ALAND",
+          "type": "BIGINT"
+        },
+        {
+          "name": "AWATER",
+          "type": "INTEGER"
+        },
+        {
+          "name": "INTPTLAT",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "INTPTLON",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PlaceCode",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PlaceNames",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Pop23",
+          "type": "INTEGER"
+        },
+        {
+          "name": "HH23",
+          "type": "INTEGER"
+        },
+        {
+          "name": "DAC23",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Source",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Comments",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Date_Recor",
+          "type": "DATE"
+        },
+        {
+          "name": "Record_Las",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Date_Data_",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "MHI23",
+          "type": "INTEGER"
+        },
+        {
+          "name": "ShapeSTAre",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "ShapeSTLen",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "h10",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h0",
+          "type": "BIGINT"
+        },
+        {
+          "name": "h8",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h9",
+          "type": "UBIGINT"
+        }
+      ],
+      "description": "2 files sampled for this table"
+    },
+    "dac-2023/tract/hex": {
+      "href": "https://data.source.coop/cboettig/ca-dac/dac-2023/tract/hex/h0=577199624117288959/",
+      "type": "application/x-parquet",
+      "title": "dac-2023/tract/hex",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "_cng_fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OGC_FID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OBJECTID",
+          "type": "INTEGER"
+        },
+        {
+          "name": "STATEFP20",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "COUNTYFP20",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "TRACTCE20",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "GEOID20",
+          "type": "VARCHAR",
+          "description": "[admin_code] Census tract FIPS code"
+        },
+        {
+          "name": "ALAND20",
+          "type": "BIGINT"
+        },
+        {
+          "name": "AWATER20",
+          "type": "BIGINT"
+        },
+        {
+          "name": "INTPTLAT20",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "INTPTLON20",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Pop23",
+          "type": "INTEGER"
+        },
+        {
+          "name": "HH23",
+          "type": "INTEGER"
+        },
+        {
+          "name": "DAC23",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Source",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Comments",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Date_Recor",
+          "type": "DATE"
+        },
+        {
+          "name": "Record_Las",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Date_Data_",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "MHI23",
+          "type": "INTEGER"
+        },
+        {
+          "name": "ShapeSTAre",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "ShapeSTLen",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "h10",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 cell at resolution 10 (~15,000 m\u00b2 per hex)"
+        },
+        {
+          "name": "h0",
+          "type": "BIGINT"
+        },
+        {
+          "name": "h8",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h9",
+          "type": "UBIGINT"
+        }
+      ],
+      "description": "2 files sampled for this table"
+    },
+    "eda-2023": {
+      "href": "https://data.source.coop/cboettig/ca-dac/eda-2023/",
+      "type": "application/x-parquet",
+      "title": "eda-2023",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "_cng_fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OGC_FID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OBJECTID",
+          "type": "INTEGER"
+        },
+        {
+          "name": "COUNTYFP20",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "TRACTCE20",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "BLKGRPCE20",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "GEOID20",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ALAND20",
+          "type": "BIGINT"
+        },
+        {
+          "name": "AWATER20",
+          "type": "BIGINT"
+        },
+        {
+          "name": "INTPTLAT20",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "INTPTLON20",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Pop23",
+          "type": "INTEGER"
+        },
+        {
+          "name": "HH23",
+          "type": "INTEGER"
+        },
+        {
+          "name": "LandSqMile",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "PopDensity",
+          "type": "INTEGER"
+        },
+        {
+          "name": "Flag_MHI_P",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Source",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Comments",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Date_Recor",
+          "type": "DATE"
+        },
+        {
+          "name": "Record_Las",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Date_Data_",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "MHI23",
+          "type": "INTEGER"
+        },
+        {
+          "name": "ShapeSTAre",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "ShapeSTLen",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "geom",
+          "type": "GEOMETRY('EPSG:4326')",
+          "description": "[geometry] Census geography polygon in EPSG:4326"
+        },
+        {
+          "name": "NAMELSAD20",
+          "type": "VARCHAR",
+          "description": "[placename] Geography label for county or place features"
+        },
+        {
+          "name": "Unempl_EDD",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "UnEmFlgEDD",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PLACEFP",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "GEOID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAMELSAD",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ALAND",
+          "type": "BIGINT"
+        },
+        {
+          "name": "AWATER",
+          "type": "INTEGER"
+        },
+        {
+          "name": "INTPTLAT",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "INTPTLON",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "MHI2023",
+          "type": "INTEGER"
+        }
+      ],
+      "description": "4 files sampled for this table"
+    },
+    "eda-2023/blockgroup/hex": {
+      "href": "https://data.source.coop/cboettig/ca-dac/eda-2023/blockgroup/hex/h0=577199624117288959/",
+      "type": "application/x-parquet",
+      "title": "eda-2023/blockgroup/hex",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "_cng_fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OGC_FID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OBJECTID",
+          "type": "INTEGER"
+        },
+        {
+          "name": "COUNTYFP20",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "TRACTCE20",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "BLKGRPCE20",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "GEOID20",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ALAND20",
+          "type": "BIGINT"
+        },
+        {
+          "name": "AWATER20",
+          "type": "BIGINT"
+        },
+        {
+          "name": "INTPTLAT20",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "INTPTLON20",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Pop23",
+          "type": "INTEGER"
+        },
+        {
+          "name": "HH23",
+          "type": "INTEGER"
+        },
+        {
+          "name": "LandSqMile",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "PopDensity",
+          "type": "INTEGER"
+        },
+        {
+          "name": "Flag_MHI_P",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Source",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Comments",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Date_Recor",
+          "type": "DATE"
+        },
+        {
+          "name": "Record_Las",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Date_Data_",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "MHI23",
+          "type": "INTEGER"
+        },
+        {
+          "name": "ShapeSTAre",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "ShapeSTLen",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "h10",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h0",
+          "type": "BIGINT"
+        },
+        {
+          "name": "h8",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h9",
+          "type": "UBIGINT"
+        }
+      ],
+      "description": "2 files sampled for this table"
+    },
+    "eda-2023/county/hex": {
+      "href": "https://data.source.coop/cboettig/ca-dac/eda-2023/county/hex/h0=577199624117288959/",
+      "type": "application/x-parquet",
+      "title": "eda-2023/county/hex",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "_cng_fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OGC_FID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OBJECTID",
+          "type": "INTEGER"
+        },
+        {
+          "name": "COUNTYFP20",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "GEOID20",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAMELSAD20",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ALAND20",
+          "type": "BIGINT"
+        },
+        {
+          "name": "AWATER20",
+          "type": "BIGINT"
+        },
+        {
+          "name": "INTPTLAT20",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "INTPTLON20",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Pop23",
+          "type": "INTEGER"
+        },
+        {
+          "name": "HH23",
+          "type": "INTEGER"
+        },
+        {
+          "name": "LandSqMile",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "PopDensity",
+          "type": "INTEGER"
+        },
+        {
+          "name": "Flag_MHI_P",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Unempl_EDD",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "UnEmFlgEDD",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Source",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Comments",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Date_Recor",
+          "type": "DATE"
+        },
+        {
+          "name": "Record_Las",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Date_Data_",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "MHI23",
+          "type": "INTEGER"
+        },
+        {
+          "name": "ShapeSTAre",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "ShapeSTLen",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "h10",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h0",
+          "type": "BIGINT"
+        },
+        {
+          "name": "h8",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h9",
+          "type": "UBIGINT"
+        }
+      ],
+      "description": "2 files sampled for this table"
+    },
+    "eda-2023/place/hex": {
+      "href": "https://data.source.coop/cboettig/ca-dac/eda-2023/place/hex/h0=577199624117288959/",
+      "type": "application/x-parquet",
+      "title": "eda-2023/place/hex",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "_cng_fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OGC_FID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OBJECTID",
+          "type": "INTEGER"
+        },
+        {
+          "name": "PLACEFP",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "GEOID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAMELSAD",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ALAND",
+          "type": "BIGINT"
+        },
+        {
+          "name": "AWATER",
+          "type": "INTEGER"
+        },
+        {
+          "name": "INTPTLAT",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "INTPTLON",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Pop23",
+          "type": "INTEGER"
+        },
+        {
+          "name": "HH23",
+          "type": "INTEGER"
+        },
+        {
+          "name": "LandSqMile",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "PopDensity",
+          "type": "INTEGER"
+        },
+        {
+          "name": "Flag_MHI_P",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "UnEmFlgEDD",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Unempl_EDD",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Source",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Comments",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Date_Recor",
+          "type": "DATE"
+        },
+        {
+          "name": "Record_Las",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Date_Data_",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "MHI2023",
+          "type": "INTEGER"
+        },
+        {
+          "name": "ShapeSTAre",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "ShapeSTLen",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "h10",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h0",
+          "type": "BIGINT"
+        },
+        {
+          "name": "h8",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h9",
+          "type": "UBIGINT"
+        }
+      ],
+      "description": "2 files sampled for this table"
+    },
+    "eda-2023/tract/hex": {
+      "href": "https://data.source.coop/cboettig/ca-dac/eda-2023/tract/hex/h0=577199624117288959/",
+      "type": "application/x-parquet",
+      "title": "eda-2023/tract/hex",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "_cng_fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OGC_FID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OBJECTID",
+          "type": "INTEGER"
+        },
+        {
+          "name": "COUNTYFP20",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "TRACTCE20",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "GEOID20",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ALAND20",
+          "type": "BIGINT"
+        },
+        {
+          "name": "AWATER20",
+          "type": "BIGINT"
+        },
+        {
+          "name": "INTPTLAT20",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "INTPTLON20",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Pop23",
+          "type": "INTEGER"
+        },
+        {
+          "name": "HH23",
+          "type": "INTEGER"
+        },
+        {
+          "name": "LandSqMile",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "PopDensity",
+          "type": "INTEGER"
+        },
+        {
+          "name": "Flag_MHI_P",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Source",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Comments",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Date_Recor",
+          "type": "DATE"
+        },
+        {
+          "name": "Record_Las",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Date_Data_",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "MHI23",
+          "type": "INTEGER"
+        },
+        {
+          "name": "ShapeSTAre",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "ShapeSTLen",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "h10",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h0",
+          "type": "BIGINT"
+        },
+        {
+          "name": "h8",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h9",
+          "type": "UBIGINT"
+        }
+      ],
+      "description": "2 files sampled for this table"
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/cboettig/ca-dac/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/cboettig/ca-dac",
+      "title": "Source Cooperative product page"
+    }
+  ],
   "updated_at": "2026-06-16T04:06:44.235Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
   "data_mode": "open",
+  "file_count": 37,
+  "visibility": "public",
+  "created_at": "2026-06-16T04:06:44.235Z",
+  "exts": {
+    "parquet": 21,
+    "pmtiles": 7,
+    "zip": 7,
+    "md": 1,
+    "json": 1
+  },
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "disabled": false,
+  "product_id": "ca-dac",
+  "account_id": "cboettig",
+  "featured": 0,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -22,27 +1259,16 @@
       "prefix": "cboettig/ca-dac/"
     }
   },
-  "file_count": 37,
   "total_bytes": 1595046397,
-  "exts": {
-    "parquet": 21,
-    "zip": 7,
-    "pmtiles": 7,
-    "md": 1,
-    "json": 1
-  },
-  "ext_bytes": {
-    "parquet": 1005895871,
-    "pmtiles": 369211432,
-    "zip": 219914644,
-    "json": 16747,
-    "md": 7703
-  },
-  "store_format": null,
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "cataloged_at": "2026-06-26T21:24:41+00:00"
+  "readme": "## README.md\n# California Disadvantaged Communities (DAC) and Economically Distressed Areas (EDA), 2023\n\nThis dataset republishes California Department of Water Resources (DWR) layers for\n**Disadvantaged Communities (DAC)** and **Economically Distressed Areas (EDA)** at\nthree Census geographies (Place, Tract, Block Group), with County also available for\nEDA. Source data are joined from American Community Survey (ACS) 2019\u20132023 5-year\nestimates onto 2020 Census geographies, and identify communities eligible for\nCalifornia water-related funding programs.\n\nA community is designated **Disadvantaged (DAC)** when its Median Household Income\n(MHI) is less than 80% of the statewide MHI per California Water Code \u00a779505.5(a).\nThe published `DAC23` field encodes this as `Y` / `N` / `Data Not Available`. The\nfiner **Severely Disadvantaged (SDAC)** distinction (MHI < 60% of statewide) is not\nencoded as a separate flag in this dataset \u2014 derive it from `MHI23` and the\nstatewide MHI threshold relevant to your eligibility window.\n\n**Economically Distressed Areas (EDA)** are defined per Water Code \u00a779702(k) as a\nsubset of municipalities with MHI < 85% of statewide MHI together with at least two\nof: financial hardship, unemployment \u2265 2% above statewide, or low population density.\n\n## Layers\n\nFiles are organized by the published Census geography:\n\n| Layer | Path prefix | Features | Use |\n|-------|-------------|----------|-----|\n| DAC \u2014 Census Tract | `dac-2023/tract` | 9,129 | Most common eligibility unit |\n| DAC \u2014 Census Place | `dac-2023/place` | 1,618 | Cities and CDPs |\n| DAC \u2014 Block Group | `dac-2023/blockgroup` | 25,607 | Finest-grain DAC layer |\n| EDA \u2014 Census Tract | `eda-2023/tract` | 9,129 | EDA at tract level |\n| EDA \u2014 Census Place | `eda-2023/place` | 1,618 | EDA at place level |\n| EDA \u2014 Block Group | `eda-2023/blockgroup` | 25,607 | EDA at block-group level |\n| EDA \u2014 County | `eda-2023/county` | 58 | EDA at county level |\n\nEach layer is published in three formats:\n\n- `<prefix>.parquet` \u2014 GeoParquet for analytical queries (DuckDB, Polars, geopandas)\n- `<prefix>.pmtiles` \u2014 Vector tiles for web maps (MapLibre, Leaflet)\n- `<prefix>/hex/h0={cell}/data_0.parquet` \u2014 H3 hexagonal tiling at resolution 10, hive-partitioned by H3 resolution-0 parent cell\n\n## Field Reference\n\n### DAC fields (Tract, Place, Block Group)\n\n| Field | Type | Description |\n|-------|------|-------------|\n| `GEOID` / `GEOID20` | string | Census FIPS code (state+county+tract+blkgrp, or place code) |\n| `STATEFP` / `STATEFP20` | string | State FIPS (`06` for California) |\n| `COUNTYFP20` | string | County FIPS (Tract, Block Group only) |\n| `TRACTCE20` | string | Tract code within county |\n| `BLKGRPCE20` | string | Block group code within tract (Block Group only) |\n| `PlaceCode` | string | Place code (Place only) |\n| `PlaceNames` | string | Comma-separated place names (Place only) |\n| `ALAND` / `ALAND20` | float | Land area in square meters |\n| `AWATER` / `AWATER20` | float | Water area in square meters |\n| `INTPTLAT*` / `INTPTLON*` | string | Internal point latitude / longitude |\n| `Pop23` | float | Total population, ACS 2019\u20132023 |\n| `HH23` | float | Households, ACS 2019\u20132023 |\n| `MHI23` | float | Median household income, ACS 2019\u20132023 (USD) |\n| `DAC23` | string | DAC flag: `Y` (designated DAC), `N` (not DAC), or `Data Not Available`. The Tract layer also distinguishes severely-disadvantaged designations \u2014 inspect distinct values in your layer of interest. |\n| `Source` | string | Data source for the MHI estimate |\n| `Comments` | string | Editor notes (often empty) |\n| `Date_Recor` | date | When the row was last edited (truncated from shapefile DBF) |\n| `Record_Las` | string | Editor identifier (truncated from shapefile DBF) |\n| `Date_Data_` | string | Vintage of the underlying ACS estimate (truncated from shapefile DBF) |\n| `_cng_fid`, `OGC_FID` | int64 | Row-unique keys added by the conversion pipeline |\n\n### EDA-only fields (in addition to the geographic identifiers above)\n\n| Field | Type | Description |\n|-------|------|-------------|\n| `LandSqMile` | float | Land area in square miles |\n| `PopDensity` | int | Population density (people per land sq mile) |\n| `Flag_MHI_P` | string | Flag indicating MHI is below 85% of statewide MHI |\n| `Unempl_EDD` | float | Unemployment rate (Place, County) |\n| `UnEmFlgEDD` | string | Flag indicating unemployment \u2265 2 points above statewide (Place, County) |\n| `NAMELSAD` / `NAMELSAD20` | string | Geography name (Place, County) |\n\n> **Note:** Source data are published as shapefiles, where DBF column names are\n> capped at 10 characters. Names longer than 10 characters in the original DWR\n> schema are truncated in the GeoParquet (e.g. `Date_Record_Last_Edited` \u2192\n> `Date_Recor`, `Shape.STArea()` \u2192 `ShapeSTAre`).\n\n### H3 indexing fields (added by this pipeline)\n\n| Field | Type | Description |\n|-------|------|-------------|\n| `h10` | uint64 | H3 cell at resolution 10 (~15,000 m\u00b2 per hex) |\n| `h9`, `h8` | uint64 | Parent H3 cells |\n| `h0` | uint64 | H3 resolution-0 parent (partition key) |\n\n## Usage\n\n### DuckDB \u2014 analytical query\n\n```sql\nINSTALL spatial; LOAD spatial;\nINSTALL httpfs;  LOAD httpfs;\n\n-- Lowest-income disadvantaged Census tracts in 2023\nSELECT GEOID20, MHI23, Pop23\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-ca-dac/dac-2023/tract.parquet')\nWHERE DAC23 = 'Y'\nORDER BY MHI23 ASC\nLIMIT 20;\n```\n\n### DuckDB \u2014 H3 hex spatial join\n\n```sql\n-- Anonymous-read S3 secret for the public NRP endpoint\nCREATE SECRET nrp (\n  TYPE s3, KEY_ID '', SECRET '',\n  ENDPOINT 's3-west.nrp-nautilus.io', URL_STYLE 'path', USE_SSL 'TRUE'\n);\n\n-- Count DAC tracts overlapping each h0 partition\nSELECT h0, COUNT(DISTINCT GEOID20) AS dac_tracts\nFROM read_parquet(\n  's3://public-ca-dac/dac-2023/tract/hex/**/*.parquet',\n  hive_partitioning = true\n)\nWHERE DAC23 = 'Y'\nGROUP BY h0\nORDER BY dac_tracts DESC;\n```\n\n### MapLibre \u2014 DAC tracts overlay\n\n```js\nmap.addSource('dac-tract', {\n  type: 'vector',\n  url: 'pmtiles://https://s3-west.nrp-nautilus.io/public-ca-dac/dac-2023/tract.pmtiles'\n});\n\nmap.addLayer({\n  id: 'dac-tract-fill',\n  type: 'fill',\n  source: 'dac-tract',\n  'source-layer': 'tract',  // last path segment of --dataset\n  paint: {\n    'fill-color': [\n      'match', ['get', 'DAC23'],\n      'SDAC', '#b30000',\n      'DAC',  '#e34a33',\n      '#ffffff'\n    ],\n    'fill-opacity': 0.5\n  }\n});\n```\n\nPMTiles internal `source-layer` names by file:\n\n| File | `source-layer` |\n|------|----------------|\n| `dac-2023/tract.pmtiles` | `tract` |\n| `dac-2023/place.pmtiles` | `place` |\n| `dac-2023/blockgroup.pmtiles` | `blockgroup` |\n| `eda-2023/tract.pmtiles` | `tract` |\n| `eda-2023/place.pmtiles` | `place` |\n| `eda-2023/blockgroup.pmtiles` | `blockgroup` |\n| `eda-2023/county.pmtiles` | `county` |\n\n## Citation\n\nCalifornia Department of Water Resources (DWR). *Disadvantaged Communities and\nEconomically Distressed Areas Mapping Tool, 2023 update.*\n<https://gis.water.ca.gov/app/dacs/>\n\nOriginal data layers are republished from the\n[California Natural Resources Agency Open Data hub](https://data.cnra.ca.gov/) under\nthe State of California's terms of use.\n\n## Data Lineage\n\n- **Source**: DWR ArcGIS hosted layers, 2023 vintage, downloaded as shapefile\n  (EPSG:4326) from the CNRA Open Data hub\n- **Conversion**: `cng-convert-to-parquet` produces optimized GeoParquet\n- **PMTiles**: `tippecanoe` with `--drop-densest-as-needed --extend-zooms-if-still-dropping`\n- **H3 hex tiling**: `cng-datasets vector` at resolution 10, parent resolutions 9, 8, 0,\n  hive-partitioned on `h0`\n\nSee [boettiger-lab/datasets](https://github.com/boettiger-lab/datasets) for the\nprocessing pipeline source.\n",
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
+    "providers: role [host] for 'California Natural Resources Agency (CNRA)' is an AI guess \u2014 CNRA Open Data hub is cited as the source of the original shapefiles; assumed distributor/host role.. Verify before flipping to _state: reviewed.",
+    "providers: role [processor] for 'boettiger-lab' is an AI guess \u2014 Processing pipeline (GeoParquet conversion, PMTiles tiling, H3 partitioning) attributed to boettiger-lab/datasets on GitHub.. Verify before flipping to _state: reviewed.",
+    "extent.temporal: None (probe sample) widened to ['2019-01-01T00:00:00Z', '2023-01-01T00:00:00Z'] using README-stated coverage ['2019', '2023'].",
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [dac-2023.geom (geometry), dac-2023.INTPTLAT20 (latlon), dac-2023.GEOID20 (admin_code), dac-2023.PlaceNames (placename), eda-2023.geom (geometry), eda-2023.NAMELSAD20 (placename), dac-2023/tract/hex.h10 (spatial_index), dac-2023/tract/hex.GEOID20 (admin_code)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-06-27T09:25:49+00:00",
+  "store_format": null
 }
