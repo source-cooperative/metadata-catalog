@@ -1,15 +1,104 @@
 {
-  "account_id": "cboettig",
-  "product_id": "rivers",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "cboettig/rivers",
   "title": "American Rivers Datasets",
-  "description": "",
-  "keywords": [],
-  "created_at": "2026-06-17T03:32:26.031Z",
-  "updated_at": "2026-06-17T03:32:26.031Z",
+  "description": "A collection of five U.S. river vector datasets compiled by American Rivers: a point database of 2,126 dam removals (1912\u20132025), two snapshots of the National Park Service Nationwide Rivers Inventory (NRI 2016 and 2024) cataloguing free-flowing segments assessed for Wild and Scenic River designation, a dataset of all formally designated Wild and Scenic River segments, and a dataset of segments found eligible or suitable for designation. All datasets have national coverage including Alaska, Hawaii, and Puerto Rico.",
+  "license": "CC-BY-4.0",
+  "keywords": [
+    "hydrology",
+    "conservation",
+    "geoparquet",
+    "pmtiles",
+    "h3",
+    "rivers",
+    "dam-removal"
+  ],
+  "providers": [
+    {
+      "name": "American Rivers",
+      "roles": [
+        "producer",
+        "licensor",
+        "processor"
+      ]
+    },
+    {
+      "name": "National Park Service",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "U.S. Federal Land Management Agencies",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/cboettig/rivers"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -179.231086,
+          -14.601813,
+          179.859681,
+          71.441059
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "1912-01-01T00:00:00Z",
+          "2025-01-01T00:00:00Z"
+        ]
+      ]
+    }
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/cboettig/rivers/",
+      "type": "application/octet-stream",
+      "title": "Dataset files (8 x .pmtiles)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/cboettig/rivers/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/cboettig/rivers",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "rel": "cite-as",
+      "href": "https://doi.org/10.6084/m9.figshare.5234068"
+    }
+  ],
+  "total_bytes": 4361000712,
+  "product_id": "rivers",
+  "data_mode": "open",
   "visibility": "public",
   "disabled": false,
-  "featured": 0,
-  "data_mode": "open",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "created_at": "2026-06-17T03:32:26.031Z",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -22,8 +111,10 @@
       "prefix": "cboettig/rivers/"
     }
   },
+  "featured": 0,
   "file_count": 85,
-  "total_bytes": 4361000712,
+  "account_id": "cboettig",
+  "updated_at": "2026-06-17T03:32:26.031Z",
   "exts": {
     "parquet": 57,
     "pmtiles": 8,
@@ -32,19 +123,15 @@
     "md": 5,
     "csv": 1
   },
-  "ext_bytes": {
-    "pmtiles": 2309361216,
-    "gpkg": 1192505344,
-    "parquet": 858666979,
-    "csv": 399184,
-    "json": 57571,
-    "md": 10418
-  },
-  "store_format": null,
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "cataloged_at": "2026-06-26T21:27:54+00:00"
+  "readme": "## american-rivers__dam-removal__README.md\n# American Rivers Dam Removal Database\n\nDam removals in the United States, 1912\u20132025. Compiled by [American Rivers](https://www.americanrivers.org).\n\n**2,126 dam removals** (of 2,325 total; records without valid coordinates excluded) | Points | CC BY 4.0\n\nSource: [Figshare](https://figshare.com/articles/dataset/American_Rivers_Dam_Removal_Database/5234068) (DOI: 10.6084/m9.figshare.5234068)\n\n## Files\n\n| Format | URL |\n|--------|-----|\n| GeoParquet | `https://s3-west.nrp-nautilus.io/public-rivers/american-rivers/dam-removal.parquet` |\n| PMTiles | `https://s3-west.nrp-nautilus.io/public-rivers/american-rivers/dam-removal.pmtiles` |\n| H3 hex (res 10) | `https://s3-west.nrp-nautilus.io/public-rivers/american-rivers/dam-removal/hex/h0=*/data_0.parquet` |\n\n**PMTiles source-layer name:** `dam-removal`\n\n## DuckDB Example\n\n```sql\nINSTALL spatial; LOAD spatial;\nINSTALL httpfs; LOAD httpfs;\nSET s3_endpoint='s3-west.nrp-nautilus.io';\nSET s3_url_style='path';\nSET s3_use_ssl=false;\n\n-- Top states by dam removals\nSELECT State, COUNT(*) AS removals\nFROM read_parquet('s3://public-rivers/american-rivers/dam-removal.parquet')\nGROUP BY State ORDER BY removals DESC LIMIT 10;\n\n-- Dams removed for ecology since 2000\nSELECT Dam_Name, River, State, Year_Removed, Miles_Restored_US\nFROM read_parquet('s3://public-rivers/american-rivers/dam-removal.parquet')\nWHERE Reason_for_removal ILIKE '%ecology%'\n  AND TRY_CAST(Year_Removed AS INTEGER) >= 2000\nORDER BY TRY_CAST(Year_Removed AS INTEGER) DESC\nLIMIT 20;\n```\n\n## MapLibre GL JS Example\n\n```javascript\nconst map = new maplibregl.Map({ /* ... */ });\n\nmap.on('load', () => {\n  map.addSource('dam-removal', {\n    type: 'vector',\n    url: 'pmtiles://https://s3-west.nrp-nautilus.io/public-rivers/american-rivers/dam-removal.pmtiles'\n  });\n\n  map.addLayer({\n    id: 'dam-removal-points',\n    type: 'circle',\n    source: 'dam-removal',\n    'source-layer': 'dam-removal',\n    paint: {\n      'circle-radius': 5,\n      'circle-color': '#2196F3',\n      'circle-opacity': 0.8,\n      'circle-stroke-width': 1,\n      'circle-stroke-color': '#fff'\n    }\n  });\n});\n```\n\n\n## american-rivers__nri-2016__README.md\n# Nationwide Rivers Inventory 2016 (NRI)\n\nFree-flowing river segments with outstanding values assessed for potential Wild and Scenic River designation, maintained by the National Park Service. 2016 version.\n\n**3,213 segments** | LineString | National (including Alaska, Hawaii, Puerto Rico)\n\nSource: [NPS Nationwide Rivers Inventory](https://www.nps.gov/subjects/rivers/nri.htm)\n\n## Files\n\n| Format | URL |\n|--------|-----|\n| GeoParquet | `https://s3-west.nrp-nautilus.io/public-rivers/american-rivers/nri-2016.parquet` |\n| PMTiles | `https://s3-west.nrp-nautilus.io/public-rivers/american-rivers/nri-2016.pmtiles` |\n| H3 hex (res 8) | `https://s3-west.nrp-nautilus.io/public-rivers/american-rivers/nri-2016/hex/h0=*/data_0.parquet` |\n\n**PMTiles source-layer name:** `nri-2016`\n\nLine features were hexed to H3 resolution 8 by buffering each segment by the H3 cell circumradius before polyfill.\n\n## DuckDB Example\n\n```sql\nINSTALL spatial; LOAD spatial;\nINSTALL httpfs; LOAD httpfs;\nSET s3_endpoint='s3-west.nrp-nautilus.io';\nSET s3_url_style='path';\nSET s3_use_ssl=false;\n\n-- Segments by classification\nSELECT Classifica, COUNT(*) AS n\nFROM read_parquet('s3://public-rivers/american-rivers/nri-2016.parquet')\nGROUP BY Classifica ORDER BY n DESC;\n\n-- Wild segments in Alaska\nSELECT River, Reach, GIS_Miles, ORV\nFROM read_parquet('s3://public-rivers/american-rivers/nri-2016.parquet')\nWHERE State1 = 'AK' AND Classifica = 'Wild'\nORDER BY GIS_Miles DESC LIMIT 10;\n```\n\n## MapLibre GL JS Example\n\n```javascript\nmap.addSource('nri-2016', {\n  type: 'vector',\n  url: 'pmtiles://https://s3-west.nrp-nautilus.io/public-rivers/american-rivers/nri-2016.pmtiles'\n});\n\nmap.addLayer({\n  id: 'nri-2016-lines',\n  type: 'line',\n  source: 'nri-2016',\n  'source-layer': 'nri-2016',\n  paint: {\n    'line-color': [\n      'match', ['get', 'Classifica'],\n      'Wild', '#1a6b3c',\n      'Scenic', '#2196F3',\n      'Recreational', '#FF9800',\n      '#9C27B0'\n    ],\n    'line-width': 2,\n    'line-opacity': 0.8\n  }\n});\n```\n\n\n## american-rivers__nri-2024__README.md\n# Nationwide Rivers Inventory 2024 (NRI)\n\nFree-flowing river segments with outstanding values assessed for potential Wild and Scenic River designation, maintained by the National Park Service. 2024 update with expanded coverage.\n\n**4,496 segments** | LineString | National (including Alaska, Hawaii, Puerto Rico)\n\nSource: [NPS Nationwide Rivers Inventory](https://www.nps.gov/subjects/rivers/nri.htm)\n\n## Files\n\n| Format | URL |\n|--------|-----|\n| GeoParquet | `https://s3-west.nrp-nautilus.io/public-rivers/american-rivers/nri-2024.parquet` |\n| PMTiles | `https://s3-west.nrp-nautilus.io/public-rivers/american-rivers/nri-2024.pmtiles` |\n| H3 hex (res 8) | `https://s3-west.nrp-nautilus.io/public-rivers/american-rivers/nri-2024/hex/h0=*/data_0.parquet` |\n\n**PMTiles source-layer name:** `nri-2024`\n\nLine features were hexed to H3 resolution 8 by buffering each segment by the H3 cell circumradius before polyfill.\n\n## DuckDB Example\n\n```sql\nINSTALL spatial; LOAD spatial;\nINSTALL httpfs; LOAD httpfs;\nSET s3_endpoint='s3-west.nrp-nautilus.io';\nSET s3_url_style='path';\nSET s3_use_ssl=false;\n\n-- Segments by study type and eligibility\nSELECT Study_Type, In_Eligibl, COUNT(*) AS n\nFROM read_parquet('s3://public-rivers/american-rivers/nri-2024.parquet')\nGROUP BY Study_Type, In_Eligibl ORDER BY n DESC;\n\n-- Segments added since 2016 (in NRI-2024 but not NRI-2016 by count)\n-- Note: compare NRI datasets to identify new segments\nSELECT State1, COUNT(*) AS n\nFROM read_parquet('s3://public-rivers/american-rivers/nri-2024.parquet')\nGROUP BY State1 ORDER BY n DESC LIMIT 15;\n```\n\n## MapLibre GL JS Example\n\n```javascript\nmap.addSource('nri-2024', {\n  type: 'vector',\n  url: 'pmtiles://https://s3-west.nrp-nautilus.io/public-rivers/american-rivers/nri-2024.pmtiles'\n});\n\nmap.addLayer({\n  id: 'nri-2024-lines',\n  type: 'line',\n  source: 'nri-2024',\n  'source-layer': 'nri-2024',\n  paint: {\n    'line-color': [\n      'match', ['get', 'Classifica'],\n      'Wild', '#1a6b3c',\n      'Scenic', '#2196F3',\n      'Recreational', '#FF9800',\n      '#9C27B0'\n    ],\n    'line-width': 2,\n    'line-opacity': 0.8\n  }\n});\n```\n\n\n## american-rivers__wild-scenic-designated__README.md\n# Designated Wild and Scenic Rivers\n\nAll river segments formally designated under the Wild and Scenic Rivers Act and subsequent legislation.\n\n**1,052 segments** | LineString | National (including Alaska, Hawaii, Puerto Rico)\n\nSource: American Rivers / [rivers.gov](https://www.rivers.gov/)\n\n## Files\n\n| Format | URL |\n|--------|-----|\n| GeoParquet | `https://s3-west.nrp-nautilus.io/public-rivers/american-rivers/wild-scenic-designated.parquet` |\n| PMTiles | `https://s3-west.nrp-nautilus.io/public-rivers/american-rivers/wild-scenic-designated.pmtiles` |\n| H3 hex (res 8) | `https://s3-west.nrp-nautilus.io/public-rivers/american-rivers/wild-scenic-designated/hex/h0=*/data_0.parquet` |\n\n**PMTiles source-layer name:** `wild-scenic-designated`\n\nLine features were hexed to H3 resolution 8 by buffering each segment by the H3 cell circumradius before polyfill.\n\n## DuckDB Example\n\n```sql\nINSTALL httpfs; LOAD httpfs;\nSET s3_endpoint='s3-west.nrp-nautilus.io';\nSET s3_url_style='path';\nSET s3_use_ssl=false;\n\n-- Designated rivers by agency and classification\nSELECT AGENCY, CLASSIFICA, COUNT(*) AS segments, SUM(TRY_CAST(SEGMENT_MI AS DOUBLE)) AS miles\nFROM read_parquet('s3://public-rivers/american-rivers/wild-scenic-designated.parquet')\nGROUP BY AGENCY, CLASSIFICA ORDER BY miles DESC NULLS LAST LIMIT 15;\n\n-- Wild segments managed by USFS\nSELECT WSR_RIVER_, STATE, SEGMENT_MI, ORV_LIST\nFROM read_parquet('s3://public-rivers/american-rivers/wild-scenic-designated.parquet')\nWHERE CLASSIFICA = 'Wild' AND AGENCY ILIKE '%USFS%'\nORDER BY TRY_CAST(SEGMENT_MI AS DOUBLE) DESC NULLS LAST LIMIT 10;\n```\n\n## MapLibre GL JS Example\n\n```javascript\nmap.addSource('wild-scenic-designated', {\n  type: 'vector',\n  url: 'pmtiles://https://s3-west.nrp-nautilus.io/public-rivers/american-rivers/wild-scenic-designated.pmtiles'\n});\n\nmap.addLayer({\n  id: 'wsd-lines',\n  type: 'line',\n  source: 'wild-scenic-designated',\n  'source-layer': 'wild-scenic-designated',\n  paint: {\n    'line-color': [\n      'match', ['get', 'CLASSIFICA'],\n      'Wild', '#1a6b3c',\n      'Scenic', '#2196F3',\n      'Recreational', '#FF9800',\n      '#9C27B0'\n    ],\n    'line-width': 2.5,\n    'line-opacity': 0.9\n  }\n});\n```\n\n\n## american-rivers__wild-scenic-eligible__README.md\n# Eligible and Suitable Wild and Scenic Rivers\n\nRiver segments formally assessed for Wild and Scenic River eligibility and suitability by federal land management agencies.\n\n**5,357 segments** | LineString | National (including Alaska, Hawaii, territories)\n\nSource: American Rivers / federal land management agencies\n\n## Files\n\n| Format | URL |\n|--------|-----|\n| GeoParquet | `https://s3-west.nrp-nautilus.io/public-rivers/american-rivers/wild-scenic-eligible.parquet` |\n| PMTiles | `https://s3-west.nrp-nautilus.io/public-rivers/american-rivers/wild-scenic-eligible.pmtiles` |\n| H3 hex (res 8) | `https://s3-west.nrp-nautilus.io/public-rivers/american-rivers/wild-scenic-eligible/hex/h0=*/data_0.parquet` |\n\n**PMTiles source-layer name:** `wild-scenic-eligible`\n\nLine features were hexed to H3 resolution 8 by buffering each segment by the H3 cell circumradius before polyfill.\n\n## DuckDB Example\n\n```sql\nINSTALL httpfs; LOAD httpfs;\nSET s3_endpoint='s3-west.nrp-nautilus.io';\nSET s3_url_style='path';\nSET s3_use_ssl=false;\n\n-- Suitable segments ready for Congressional designation\nSELECT RIVER_NAME, STATE1, SEGMENT_CL, MILES, ORV\nFROM read_parquet('s3://public-rivers/american-rivers/wild-scenic-eligible.parquet')\nWHERE SUITABLE = 'Yes'\nORDER BY MILES DESC LIMIT 20;\n\n-- Summary by status\nSELECT STATUS, SEGMENT_CL, COUNT(*) AS n\nFROM read_parquet('s3://public-rivers/american-rivers/wild-scenic-eligible.parquet')\nGROUP BY STATUS, SEGMENT_CL ORDER BY n DESC;\n```\n\n## MapLibre GL JS Example\n\n```javascript\nmap.addSource('wild-scenic-eligible', {\n  type: 'vector',\n  url: 'pmtiles://https://s3-west.nrp-nautilus.io/public-rivers/american-rivers/wild-scenic-eligible.pmtiles'\n});\n\nmap.addLayer({\n  id: 'wse-lines',\n  type: 'line',\n  source: 'wild-scenic-eligible',\n  'source-layer': 'wild-scenic-eligible',\n  paint: {\n    'line-color': [\n      'match', ['get', 'STATUS'],\n      'Suitable', '#1a6b3c',\n      'Eligible', '#2196F3',\n      'Eligible and Not Suitable', '#9E9E9E',\n      '#ccc'\n    ],\n    'line-width': 2\n  }\n});\n```\n",
+  "_review": [
+    "license: CC BY 4.0 is explicitly stated for the Dam Removal Database only; the NRI and Wild and Scenic River datasets do not state a license in the README.",
+    "providers: role [producer] for 'National Park Service' is an AI guess \u2014 NPS is named as the maintainer of the Nationwide Rivers Inventory; assumed producer as the authoritative source agency.. Verify before flipping to _state: reviewed.",
+    "providers: role [producer] for 'U.S. Federal Land Management Agencies' is an AI guess \u2014 Described collectively as source for eligible/suitable Wild and Scenic segments; specific agencies not named in the README.. Verify before flipping to _state: reviewed.",
+    "extent.temporal: None (probe sample) widened to ['1912-01-01T00:00:00Z', '2025-01-01T00:00:00Z'] using README-stated coverage ['1912', '2025']."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-06-27T09:29:59+00:00",
+  "_source_format": "stac",
+  "store_format": null
 }
