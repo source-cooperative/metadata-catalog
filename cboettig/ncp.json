@@ -1,15 +1,158 @@
 {
-  "account_id": "cboettig",
-  "product_id": "ncp",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
+  "id": "cboettig/ncp",
   "title": "Nature's Contributions to People (NCP) - Biodiversity Indicators",
-  "description": "",
-  "keywords": [],
+  "description": "Global indicators of Nature's Contributions to People (NCP) derived from Chaplin-Kramer et al. (2019), scoring locations by how many NCP categories they rank highly for. Two layers are provided: NCP weighted by biodiversity and natural habitat (0\u201320) and NCP alone (0\u201319). Data are distributed as cloud-optimized GeoTIFFs in WGS84 and as H3 resolution-7 hex grids with area-weighted mean values.",
+  "keywords": [
+    "biodiversity",
+    "conservation",
+    "global-coverage",
+    "h3",
+    "ecology",
+    "remote-sensing",
+    "cloud-optimized-geotiff"
+  ],
+  "providers": [
+    {
+      "name": "Chaplin-Kramer, R., et al.",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/cboettig/ncp"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 1344698
+  },
+  "assets": {
+    "hex/ncp_biod_nathab": {
+      "href": "https://data.source.coop/cboettig/ncp/hex/ncp_biod_nathab/h0=576495936675512319/",
+      "type": "application/x-parquet",
+      "title": "hex/ncp_biod_nathab",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "ncp_biod_nathab",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "h7",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution-7 hex cell identifier (primary spatial key)"
+        },
+        {
+          "name": "h0",
+          "type": "BIGINT",
+          "description": "[spatial_index] H3 resolution-0 partition key used for file partitioning"
+        },
+        {
+          "name": "h5",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution-5 parent cell identifier"
+        },
+        {
+          "name": "h6",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution-6 parent cell identifier"
+        }
+      ],
+      "description": "5 files sampled for this table"
+    },
+    "hex/ncp_only": {
+      "href": "https://data.source.coop/cboettig/ncp/hex/ncp_only/h0=580014373884395519/",
+      "type": "application/x-parquet",
+      "title": "hex/ncp_only",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "ncp_only",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "h7",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution-7 hex cell identifier (primary spatial key)"
+        },
+        {
+          "name": "h0",
+          "type": "BIGINT",
+          "description": "[spatial_index] H3 resolution-0 partition key used for file partitioning"
+        },
+        {
+          "name": "h5",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution-5 parent cell identifier"
+        },
+        {
+          "name": "h6",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution-6 parent cell identifier"
+        }
+      ],
+      "description": "5 files sampled for this table"
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/cboettig/ncp/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/cboettig/ncp",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "rel": "cite-as",
+      "href": "https://doi.org/10.1126/science.aaw3372"
+    }
+  ],
+  "total_bytes": 420615981,
   "created_at": "2026-06-17T03:29:01.831Z",
-  "updated_at": "2026-06-17T03:29:01.831Z",
-  "visibility": "public",
+  "account_id": "cboettig",
+  "file_count": 179,
   "disabled": false,
-  "featured": 0,
-  "data_mode": "open",
+  "exts": {
+    "parquet": 171,
+    "tif": 6,
+    "md": 1,
+    "json": 1
+  },
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -22,25 +165,22 @@
       "prefix": "cboettig/ncp/"
     }
   },
-  "file_count": 179,
-  "total_bytes": 420615981,
-  "exts": {
-    "parquet": 171,
-    "tif": 6,
-    "md": 1,
-    "json": 1
-  },
-  "ext_bytes": {
-    "parquet": 259325172,
-    "tif": 161281572,
-    "json": 7499,
-    "md": 1738
-  },
-  "store_format": null,
-  "_state": "seed",
+  "data_mode": "open",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "cataloged_at": "2026-06-26T21:26:20+00:00"
+  "visibility": "public",
+  "product_id": "ncp",
+  "updated_at": "2026-06-17T03:29:01.831Z",
+  "featured": 0,
+  "readme": "## README.md\n# Nature's Contributions to People (NCP) \u2014 biodiversity & natural habitat\n\nGlobal NCP indicators from Chaplin-Kramer et al. (2019) \u2014 integer scores counting the\nNature's Contributions to People a location ranks highly for. Two layers:\n- **`ncp_biod_nathab`** \u2014 NCP weighted by biodiversity & natural habitat (0\u201320)\n- **`ncp_only`** \u2014 NCP alone (0\u201319)\n\nSource rasters are 2 km **World Eckert IV** (equal-area); reprojected to **WGS84** for\nthe COG assets and aggregated to **H3 resolution 7** by area-weighted **mean**.\n\n## Assets\n\n| Asset | Format | Path |\n|---|---|---|\n| `ncp-biod-nathab-cog` / `ncp-only-cog` | COG (WGS84) | `\u2026/public-ncp/NCP_{biod_nathab,only}_4326_cog.tif` |\n| `ncp-biod-nathab-hex` / `ncp-only-hex` | H3 hex (res 7, mean) | `\u2026/public-ncp/hex/{ncp_biod_nathab,ncp_only}/h0=*/data_0.parquet` |\n\nEach hex layer is one row per `h7` cell (parents `h6/h5`, partitioned by `h0`), gap-free.\nThe value column (`ncp_biod_nathab` / `ncp_only`) is the area-weighted **mean** indicator \u2014\nan intensity: aggregate with `AVG`/`MIN`/`MAX`, **never `SUM`**.\n\n## Querying (DuckDB)\n\n```sql\nINSTALL httpfs; LOAD httpfs;\n-- Mean NCP-biodiversity score within an AOI given as h7 cells\nSELECT AVG(n.ncp_biod_nathab) AS mean_ncp\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-ncp/hex/ncp_biod_nathab/h0=*/data_0.parquet') n\nSEMI JOIN aoi_h7 m ON n.h7 = m.h7;\n```\n\nQuery `h7` directly \u2014 no `GROUP BY`/`AVG` collapse needed (one row per cell). This\nreplaces the prior res-8 point-binned build, which left coverage gaps and ~1 row per\nsource pixel.\n\n## Citation\n\nChaplin-Kramer, R., et al. (2019). Global modeling of nature's contributions to people.\n*Science*, 366(6462), 255\u2013258. doi:10.1126/science.aaw3372\n",
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
+    "providers: role [producer] for 'Chaplin-Kramer, R., et al.' is an AI guess \u2014 Lead authors of the source Science paper; assumed producer as the researchers who generated the original NCP indicator model.. Verify before flipping to _state: reviewed.",
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [hex/ncp_biod_nathab.h7 (spatial_index), hex/ncp_biod_nathab.h6 (spatial_index), hex/ncp_biod_nathab.h5 (spatial_index), hex/ncp_biod_nathab.h0 (spatial_index), hex/ncp_only.h7 (spatial_index), hex/ncp_only.h6 (spatial_index), hex/ncp_only.h5 (spatial_index), hex/ncp_only.h0 (spatial_index)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-06-27T09:26:53+00:00",
+  "store_format": null
 }
