@@ -1,15 +1,190 @@
 {
-  "account_id": "cboettig",
-  "product_id": "land-cover",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
+  "id": "cboettig/land-cover",
   "title": "Land Cover Datasets",
-  "description": "Cloud-optimized versions of global and US alnd cover data. Currently GLS-LC100 CC-BY-4.0 + NLCD. public-domain",
-  "keywords": [],
-  "created_at": "2026-06-17T03:28:33.405Z",
+  "description": "Global land cover classification at 100 m resolution for the year 2019, produced by the Copernicus Global Land Service (CGLS-LC100 v3.0.1) using the FAO Land Cover Classification System (LCCS) with 23 canonical classes and approximately 80% overall accuracy. Distributed as a Cloud-Optimized GeoTIFF and an H3 resolution-9 hive-partitioned GeoParquet hex layer with parent indexes for multi-scale analysis.",
+  "license": "CC-BY-4.0",
+  "keywords": [
+    "land-cover",
+    "global-coverage",
+    "remote-sensing",
+    "earth-observation",
+    "cloud-optimized-geotiff",
+    "h3",
+    "geoparquet"
+  ],
+  "providers": [
+    {
+      "name": "Copernicus Global Land Service (CGLS)",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/cboettig/land-cover"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2019-01-01T00:00:00Z",
+          "2019-01-01T00:00:00Z"
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 676601817
+  },
+  "assets": {
+    "cgls-lc100-2019/hex": {
+      "href": "https://data.source.coop/cboettig/land-cover/cgls-lc100-2019/hex/h0=576495936675512319/",
+      "type": "application/x-parquet",
+      "title": "cgls-lc100-2019/hex",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "lc_class",
+          "type": "BIGINT|DOUBLE"
+        },
+        {
+          "name": "h9",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution-9 cell index (~174 m edge), primary spatial key"
+        },
+        {
+          "name": "h0",
+          "type": "BIGINT",
+          "description": "[spatial_index] H3 resolution-0 base cell, used as hive partition key"
+        },
+        {
+          "name": "h5",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution-5 parent index for multi-scale joins"
+        },
+        {
+          "name": "h6",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution-6 parent index for multi-scale joins"
+        },
+        {
+          "name": "h7",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution-7 parent index for multi-scale joins"
+        },
+        {
+          "name": "h8",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution-8 parent index for multi-scale joins"
+        }
+      ],
+      "description": "5 files sampled for this table"
+    },
+    "nlcd-2024/hex": {
+      "href": "https://data.source.coop/cboettig/land-cover/nlcd-2024/hex/h0=577164439745200127/",
+      "type": "application/x-parquet",
+      "title": "nlcd-2024/hex",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "nlcd",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "h10",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution-10 cell index, primary spatial key"
+        },
+        {
+          "name": "h0",
+          "type": "BIGINT",
+          "description": "[spatial_index] H3 resolution-0 base cell, used as hive partition key"
+        },
+        {
+          "name": "h5",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution-5 parent index for multi-scale joins"
+        },
+        {
+          "name": "h6",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution-6 parent index for multi-scale joins"
+        },
+        {
+          "name": "h7",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution-7 parent index for multi-scale joins"
+        },
+        {
+          "name": "h8",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution-8 parent index for multi-scale joins"
+        },
+        {
+          "name": "h9",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution-9 parent index for multi-scale joins"
+        }
+      ],
+      "description": "5 files sampled for this table"
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/cboettig/land-cover/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/cboettig/land-cover",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "rel": "cite-as",
+      "href": "https://doi.org/10.3390/rs12061044"
+    }
+  ],
   "updated_at": "2026-06-17T03:28:33.405Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
+  "file_count": 129,
   "data_mode": "open",
+  "created_at": "2026-06-17T03:28:33.405Z",
+  "disabled": false,
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "featured": 0,
+  "exts": {
+    "parquet": 125,
+    "tif": 3,
+    "json": 2,
+    "md": 1
+  },
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -22,25 +197,16 @@
       "prefix": "cboettig/land-cover/"
     }
   },
-  "file_count": 129,
+  "visibility": "public",
   "total_bytes": 12226155358,
-  "exts": {
-    "parquet": 123,
-    "tif": 3,
-    "json": 2,
-    "md": 1
-  },
-  "ext_bytes": {
-    "parquet": 7770106074,
-    "tif": 4456026783,
-    "json": 18729,
-    "md": 3772
-  },
-  "store_format": null,
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "cataloged_at": "2026-06-26T21:26:18+00:00"
+  "product_id": "land-cover",
+  "account_id": "cboettig",
+  "readme": "## README.md\n# Copernicus Global Land Cover 100 m v3.0.1 (CGLS-LC100, 2019)\n\nGlobal land cover classification at 100 m resolution for 2019, from the\n[Copernicus Global Land Service Land Cover product v3.0.1 (Collection 3)](https://land.copernicus.eu/global/products/lc).\nUses the FAO Land Cover Classification System (LCCS); overall accuracy ~80%.\n\nLicense: **CC-BY-4.0**. Source: <https://zenodo.org/records/3939050>.\n\n## Assets\n\n| Asset | Format | Path |\n|---|---|---|\n| `cgls-lc100-2019-cog` | Cloud-Optimized GeoTIFF (EPSG:4326, uint8) | `https://s3-west.nrp-nautilus.io/public-land-cover/cgls-lc100-2019-cog.tif` |\n| `cgls-lc100-2019-hex` | H3 hex GeoParquet (resolution 9, hive-partitioned by `h0`) | `https://s3-west.nrp-nautilus.io/public-land-cover/cgls-lc100-2019/hex/h0=*/data_0.parquet` |\n\nThe hex layer aggregates the source raster to **H3 resolution 9** (~174 m edge,\n~10 source pixels per cell) by **mode** (most frequent class per cell). One row per\n`h9` cell. `lc_class` is **categorical** \u2014 only the 23 canonical LCCS codes appear.\nRe-hexed on the antimeridian/polar-fixed pipeline (boettiger-lab/datasets #88, #92,\n#93); the prior resolution-8 build inflated and dropped cells at the \u00b1180\u00b0 seam\n(boettiger-lab/data-workflows #186).\n\n## Querying the hex layer (DuckDB)\n\n```sql\nINSTALL httpfs; LOAD httpfs;\n-- Global class histogram (cell counts)\nSELECT lc_class, COUNT(*) AS cells\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-land-cover/cgls-lc100-2019/hex/h0=*/data_0.parquet')\nGROUP BY lc_class ORDER BY cells DESC;\n```\n\n`lc_class` is a class code \u2014 **never `SUM` or `AVG` it.** To estimate the area of a\nclass, count distinct cells and multiply by the H3 resolution-9 cell area:\n\n```sql\n-- Approx area (km\u00b2) of forest classes (111\u2013126), res-9 cell \u2248 0.105 km\u00b2\nSELECT COUNT(DISTINCT h9) * 0.105 AS forest_km2\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-land-cover/cgls-lc100-2019/hex/h0=*/data_0.parquet')\nWHERE lc_class BETWEEN 111 AND 126;\n```\n\nParent indexes `h8`, `h7`, `h6`, `h5` are present for multi-scale joins; partition on\n`h0` to prune reads.\n\n## Displaying the COG (MapLibre GL JS via TiTiler)\n\nThe raster has no PMTiles layer; render the COG through a TiTiler XYZ endpoint:\n\n```js\nmap.addSource('cgls-lc100', {\n  type: 'raster',\n  tiles: ['https://titiler.../cog/tiles/{z}/{x}/{y}.png?url=' +\n    encodeURIComponent('https://s3-west.nrp-nautilus.io/public-land-cover/cgls-lc100-2019-cog.tif') +\n    '&colormap_name=...'],   // use the categorical class palette (see classification:classes in STAC)\n  tileSize: 256\n});\nmap.addLayer({ id: 'cgls-lc100', type: 'raster', source: 'cgls-lc100' });\n```\n\n## Land cover classes (FAO LCCS)\n\n| Code | Class | | Code | Class |\n|---|---|---|---|---|\n| 0 | No input data | | 113 | Closed forest, deciduous needle leaf |\n| 20 | Shrubs | | 114 | Closed forest, deciduous broad leaf |\n| 30 | Herbaceous vegetation | | 115 | Closed forest, mixed |\n| 40 | Cultivated / managed | | 116 | Closed forest, unknown |\n| 50 | Urban / built-up | | 121 | Open forest, evergreen needle leaf |\n| 60 | Bare / sparse vegetation | | 122 | Open forest, evergreen broad leaf |\n| 70 | Snow and ice | | 123 | Open forest, deciduous needle leaf |\n| 80 | Permanent water bodies | | 124 | Open forest, deciduous broad leaf |\n| 90 | Herbaceous wetland | | 125 | Open forest, mixed |\n| 100 | Moss and lichen | | 126 | Open forest, unknown |\n| 111 | Closed forest, evergreen needle leaf | | 200 | Open sea |\n\nValue 0 (\"No input data\") is a retained fill class; the COG GDAL NoData sentinel is 255.\n\n## Citation\n\nBuchhorn, M., Lesiv, M., Tsendbazar, N-E., Herold, M., Bertels, L., Smets, B. (2020).\nCopernicus Global Land Cover Layers \u2014 Collection 2. *Remote Sensing*, 12(6), 1044.\ndoi:10.3390/rs12061044\n",
+  "_review": [
+    "extent.temporal: None (probe sample) widened to ['2019-01-01T00:00:00Z', '2019-01-01T00:00:00Z'] using README-stated coverage ['2019', '2019'].",
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [cgls-lc100-2019/hex.h9 (spatial_index), cgls-lc100-2019/hex.h8 (spatial_index), cgls-lc100-2019/hex.h7 (spatial_index), cgls-lc100-2019/hex.h6 (spatial_index), cgls-lc100-2019/hex.h5 (spatial_index), cgls-lc100-2019/hex.h0 (spatial_index), nlcd-2024/hex.h10 (spatial_index), nlcd-2024/hex.h9 (spatial_index), nlcd-2024/hex.h8 (spatial_index), nlcd-2024/hex.h7 (spatial_index), nlcd-2024/hex.h6 (spatial_index), nlcd-2024/hex.h5 (spatial_index), nlcd-2024/hex.h0 (spatial_index)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-06-28T10:10:39+00:00",
+  "store_format": null
 }
