@@ -1,15 +1,138 @@
 {
-  "account_id": "cboettig",
-  "product_id": "gfw",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
+  "id": "cboettig/gfw",
   "title": "Global Fishing Watch Annual Fishing Effort v3 (2012\u20132024)",
-  "description": "",
-  "keywords": [],
+  "description": "Annual apparent fishing effort derived from AIS vessel tracking, aggregated to H3 resolution-6 hexagonal cells (~36 km\u00b2) by gear type for the global ocean. Covers 2012\u20132024 in Hive-partitioned Parquet files, with supplementary annual Cloud-Optimized GeoTIFFs at 0.1\u00b0 resolution. Gear type is preserved in aggregation; flag state is dropped.",
+  "license": "CC-BY-NC-4.0",
+  "keywords": [
+    "h3",
+    "oceanography",
+    "global-coverage",
+    "time-series",
+    "cloud-optimized-geotiff",
+    "fishing-effort",
+    "vessel-tracking"
+  ],
+  "providers": [
+    {
+      "name": "Global Fishing Watch",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Zenodo",
+      "roles": [
+        "host"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/cboettig/gfw"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2012-01-01T00:00:00Z",
+          "2024-01-01T00:00:00Z"
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 5761853
+  },
+  "assets": {
+    "00": {
+      "href": "https://data.source.coop/cboettig/gfw/gfw-fishing-effort/hex/h0=576495936675512319/",
+      "type": "application/x-parquet",
+      "title": "00",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "h6",
+          "type": "BIGINT",
+          "description": "[spatial_index] H3 resolution-6 hexagonal cell ID (~36 km\u00b2 average area)"
+        },
+        {
+          "name": "year",
+          "type": "INTEGER"
+        },
+        {
+          "name": "geartype",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "fishing_hours",
+          "type": "FLOAT"
+        },
+        {
+          "name": "ais_hours",
+          "type": "FLOAT"
+        },
+        {
+          "name": "vessel_month_count",
+          "type": "FLOAT"
+        },
+        {
+          "name": "h0",
+          "type": "BIGINT",
+          "description": "[spatial_index] H3 resolution-0 parent cell, used as Hive partition key"
+        }
+      ],
+      "description": "10 files sampled for this table"
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/cboettig/gfw/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/cboettig/gfw",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "rel": "cite-as",
+      "href": "https://doi.org/10.5281/zenodo.14982712"
+    }
+  ],
   "created_at": "2026-06-17T03:25:13.500Z",
   "updated_at": "2026-06-17T03:25:13.500Z",
-  "visibility": "public",
-  "disabled": false,
   "featured": 0,
-  "data_mode": "open",
+  "total_bytes": 2810838897,
+  "exts": {
+    "parquet": 117,
+    "tif": 13,
+    "zip": 13,
+    "md": 1,
+    "json": 1
+  },
+  "file_count": 145,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -22,27 +145,22 @@
       "prefix": "cboettig/gfw/"
     }
   },
-  "file_count": 145,
-  "total_bytes": 2810838897,
-  "exts": {
-    "parquet": 117,
-    "tif": 13,
-    "zip": 13,
-    "md": 1,
-    "json": 1
-  },
-  "ext_bytes": {
-    "parquet": 1593097368,
-    "zip": 1136266953,
-    "tif": 81457408,
-    "json": 12909,
-    "md": 4259
-  },
-  "store_format": null,
-  "_state": "seed",
+  "disabled": false,
+  "data_mode": "open",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "cataloged_at": "2026-06-26T21:26:12+00:00"
+  "product_id": "gfw",
+  "visibility": "public",
+  "account_id": "cboettig",
+  "readme": "## README.md\n# Global Fishing Watch Annual Fishing Effort v3 (2012\u20132024)\n\nAnnual apparent fishing effort from AIS vessel tracking, aggregated to H3 resolution-6 hexagonal cells (~36 km\u00b2) by gear type. Annual Cloud-Optimized GeoTIFFs at 0.1\u00b0 resolution are also available for raster visualization.\n\n- **Source:** [Global Fishing Watch / Zenodo](https://zenodo.org/records/14982712) \u2014 fleet-monthly v3.0 (released March 2025)\n- **License:** CC BY-NC 4.0 \u2014 **non-commercial use only**\n- **Coverage:** 2012\u20132024, global ocean\n- **Bucket:** `s3://public-gfw/`\n\n## Data Structure\n\n```\ns3://public-gfw/\n\u251c\u2500\u2500 raw/                                              # Original Zenodo ZIPs\n\u2502   \u2514\u2500\u2500 fleet-monthly-csvs-10-v3-{YYYY}.zip\n\u251c\u2500\u2500 gfw-fishing-effort-{YYYY}-cog.tif                # Annual COG (2012\u20132024)\n\u2514\u2500\u2500 gfw-fishing-effort/\n    \u2514\u2500\u2500 hex/\n        \u2514\u2500\u2500 h0={cell}/data_00.parquet                # h0-partitioned hex (all years)\n```\n\n**Hex columns:** `h6` (H3 res-6 cell), `h0` (partition key), `year`, `geartype`, `fishing_hours`, `ais_hours`, `vessel_month_count`\n\n**H3 resolution:** 6 (~36 km\u00b2 avg cell area). Source data is 0.1\u00b0 (~123 km\u00b2) monthly by flag+geartype. Each 0.1\u00b0 cell center maps to ~3 H3 res-6 cells. Flag state is dropped in aggregation; gear type is preserved.\n\n**Partition layout:** Hive-partitioned by `h0` (H3 resolution-0 parent cell) \u2014 the standard layout shared by all datasets in this catalog. All 13 years (2012\u20132024) are stored together within each h0 file; filter with `WHERE year = YYYY` for single-year queries.\n\n## Gear Types\n\nValues present in data: `dredge_fishing`, `fishing` (unclassified), `fixed_gear` (subtype uncertain), `other_purse_seines`, `pole_and_line`, `pots_and_traps`, `purse_seines`, `seiners`, `set_gillnets`, `set_longlines`, `trawlers`, `trollers`, `tuna_purse_seines`\n\n## DuckDB Examples\n\n```sql\n-- Total fishing hours by gear type in 2022 (single-year query)\nSELECT geartype, SUM(fishing_hours) as fishing_hours\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-gfw/gfw-fishing-effort/hex/h0=*/data_00.parquet',\n                  hive_partitioning = true)\nWHERE year = 2022\nGROUP BY geartype ORDER BY fishing_hours DESC;\n\n-- Annual trawling effort trend globally\nSELECT year, SUM(fishing_hours) as trawl_hours\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-gfw/gfw-fishing-effort/hex/h0=*/data_00.parquet',\n                  hive_partitioning = true)\nWHERE geartype = 'trawlers'\nGROUP BY year ORDER BY year;\n\n-- Fishing effort inside EEZs by sovereign state (2022)\n-- h0 join prunes both datasets to matching ocean cells\nLOAD h3;\nSELECT e.SOVEREIGN1, SUM(f.fishing_hours) as fishing_hours\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-gfw/gfw-fishing-effort/hex/h0=*/data_00.parquet',\n                  hive_partitioning = true) f\nJOIN read_parquet('https://s3-west.nrp-nautilus.io/public-high-seas/iho/eez/hex/h0=*/data_0.parquet',\n                  hive_partitioning = true) e\n  ON f.h0 = e.h0\n  AND h3_cell_to_parent(f.h6, 8) = e.h8\nWHERE f.year = 2022\nGROUP BY e.SOVEREIGN1 ORDER BY fishing_hours DESC LIMIT 10;\n```\n\n## MapLibre GL JS (COG via titiler)\n\nNo PMTiles are provided \u2014 use the annual COGs with a titiler raster tile source for web map visualization:\n\n```javascript\nmap.addSource('gfw-2022', {\n  type: 'raster',\n  tiles: [\n    'https://titiler.xyz/cog/tiles/WebMercatorQuad/{z}/{x}/{y}.png' +\n    '?url=https://s3-west.nrp-nautilus.io/public-gfw/gfw-fishing-effort-2022-cog.tif' +\n    '&colormap_name=hot_r&rescale=0,500'\n  ],\n  tileSize: 256\n});\nmap.addLayer({\n  id: 'gfw-2022',\n  type: 'raster',\n  source: 'gfw-2022',\n  paint: { 'raster-opacity': 0.8 }\n});\n```\n\nReplace `2022` with any year 2012\u20132024. Adjust `rescale` (fishing hours range) to taste.\n\n## Notes\n\n- `ais_hours` is total AIS presence time (fishing + transiting + loitering); always \u2265 `fishing_hours`.\n- `vessel_month_count` sums monthly MMSI presences \u2014 **not unique vessels**. A vessel active 12 months contributes 12.\n- `fishing` and `fixed_gear` are catch-all gear types used when the model cannot classify more specifically.\n- AIS adoption improved significantly over time \u2014 early years (2012\u20132014) undercount effort relative to later years.\n",
+  "_review": [
+    "providers: role [host] for 'Zenodo' is an AI guess \u2014 Zenodo is cited as the upstream source archive; assumed host of original ZIPs based on the Zenodo record URL in the README.. Verify before flipping to _state: reviewed.",
+    "extent.temporal: None (probe sample) widened to ['2012-01-01T00:00:00Z', '2024-01-01T00:00:00Z'] using README-stated coverage ['2012', '2024'].",
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [00.h6 (spatial_index), 00.h0 (spatial_index)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-06-28T10:07:15+00:00",
+  "store_format": null
 }
