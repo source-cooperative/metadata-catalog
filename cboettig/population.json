@@ -1,15 +1,88 @@
 {
-  "account_id": "cboettig",
-  "product_id": "population",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "cboettig/population",
   "title": "Population & Demography Data",
-  "description": "",
-  "keywords": [],
-  "created_at": "2026-06-17T03:31:35.926Z",
+  "description": "Global human population distribution for 2020 derived from the Global Human Settlement Layer (GHSL R2023A), published by the European Commission JRC. Available as a Cloud-Optimized GeoTIFF at ~90 m resolution (3 arc-seconds, WGS84) and as area-weighted H3 hexagonal grid aggregations at resolution 9, with a validated global total of 7.84 billion people. Intended as a growing collection of population and demography surfaces, with WorldPop and LandScan layers planned.",
+  "license": "CC-BY-4.0",
+  "keywords": [
+    "demographics",
+    "global-coverage",
+    "h3",
+    "cloud-optimized-geotiff",
+    "geoparquet",
+    "remote-sensing",
+    "earth-observation"
+  ],
+  "providers": [
+    {
+      "name": "European Commission Joint Research Centre (JRC) \u2014 GHSL",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/cboettig/population"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -180.0004159,
+          -89.0929161,
+          180.0012493,
+          89.0920832
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2020-01-01T00:00:00Z",
+          "2020-01-01T00:00:00Z"
+        ]
+      ]
+    }
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/cboettig/population/",
+      "type": "image/tiff; application=geotiff",
+      "title": "Dataset files (2 x .tif)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/cboettig/population/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/cboettig/population",
+      "title": "Source Cooperative product page"
+    }
+  ],
+  "total_bytes": 32760643840,
+  "file_count": 126,
   "updated_at": "2026-06-17T03:31:35.926Z",
-  "visibility": "public",
+  "exts": {
+    "parquet": 121,
+    "json": 2,
+    "tif": 2,
+    "md": 1
+  },
+  "account_id": "cboettig",
   "disabled": false,
-  "featured": 0,
-  "data_mode": "open",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -22,25 +95,20 @@
       "prefix": "cboettig/population/"
     }
   },
-  "file_count": 126,
-  "total_bytes": 32760643840,
-  "exts": {
-    "parquet": 121,
-    "tif": 2,
-    "json": 2,
-    "md": 1
-  },
-  "ext_bytes": {
-    "tif": 23310409535,
-    "parquet": 9450226470,
-    "json": 6327,
-    "md": 1508
-  },
-  "store_format": null,
-  "_state": "seed",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "cataloged_at": "2026-06-26T21:27:52+00:00"
+  "product_id": "population",
+  "created_at": "2026-06-17T03:31:35.926Z",
+  "data_mode": "open",
+  "visibility": "public",
+  "featured": 0,
+  "readme": "## README.md\n# public-population\n\nGlobal and regional human **population & demography** layers on NRP S3.\nSeeded with GHS-POP (GHSL R2023A); future home for WorldPop, LandScan, and age-stratified surfaces.\n\n## ghs-pop-2020 \u2014 GHS-POP 2020 Global Population (R2023A, 3 arc-second / ~90 m)\n\nSource: European Commission JRC, GHSL R2023A. License: CC-BY-4.0. Projection: WGS84 (EPSG:4326).\n\n**Assets**\n- COG: `https://s3-west.nrp-nautilus.io/public-population/raw/ghs-pop-2020-cog.tif`\n- H3 hex (res 9, area-weighted SUM): `https://s3-west.nrp-nautilus.io/public-population/ghs-pop-2020/hex/h0=*/data_0.parquet`\n\nThe hex layer is **area-weighted to H3 resolution 9 via exact_extract** \u2014 one row per h9 cell,\npopulation already summed into the cell. `SUM(population)` is directly valid (no GROUP BY / dedup).\nValidated against the COG pixel-sum: **7.84 billion** (2020 world population).\n\n### DuckDB\n\n```sql\nINSTALL httpfs; LOAD httpfs;\n-- global total population\nSELECT SUM(population) AS people\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-population/ghs-pop-2020/hex/h0=*/data_0.parquet',\n                  hive_partitioning => true);\n-- \u2192 ~7.84e9\n\n-- roll up to a coarser resolution (parents are precomputed)\nSELECT h6, SUM(population) AS people\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-population/ghs-pop-2020/hex/h0=*/data_0.parquet',\n                  hive_partitioning => true)\nGROUP BY h6;\n```\n\nRaster-derived dataset: COG + H3 hex only (no PMTiles). Visualize the COG via titiler.\n",
+  "_review": [
+    "extent.temporal: None (probe sample) widened to ['2020-01-01T00:00:00Z', '2020-01-01T00:00:00Z'] using README-stated coverage ['2020', '2020']."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-06-28T10:12:44+00:00",
+  "store_format": null
 }
