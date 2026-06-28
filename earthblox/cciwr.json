@@ -1,15 +1,103 @@
 {
-  "account_id": "earthblox",
-  "product_id": "cciwr",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "earthblox/cciwr",
   "title": "Climate Change Impact on Water Resources (CCIWR)",
-  "description": "Projected future changes in water resources across all global land areas at 0.5\u00b0 \u00d7 0.5\u00b0 resolution, built on top of the ISIMIP3b protocol. It covers three hydrological variables \u2014 total runoff, diffuse groundwater recharge, and actual evapotranspiration \u2014 derived from a multi-model ensemble of global hydrological and CMIP6 climate models. Relative changes are provided for three future 30-year horizons under three emissions scenarios (SSP1-2.6, SSP3-7.0, SSP5-8.5), at annual and seasonal timescales. The ensemble spread captures projection uncertainty, supporting risk-aware climate change adaptation planning.",
-  "keywords": [],
+  "description": "A multi-model ensemble dataset of projected future changes in water resources (total runoff, diffuse groundwater recharge, and actual evapotranspiration) across all global land areas at 0.5\u00b0 resolution, derived from the ISIMIP3b simulation archive by Earth Blox. The dataset spans 4 global hydrological models \u00d7 5 CMIP6 climate models \u00d7 3 emissions scenarios (SSP1-2.6, SSP3-7.0, SSP5-8.5) across three 30-year future horizons centred on 2030, 2055, and 2085, enabling uncertainty-aware analysis of climate change impacts on hydrology.",
+  "keywords": [
+    "hydrology",
+    "climate",
+    "zarr",
+    "global-coverage",
+    "ensemble-forecast",
+    "numerical-weather-prediction",
+    "atmospheric-modeling",
+    "meteorology",
+    "time-series"
+  ],
+  "providers": [
+    {
+      "name": "Earth Blox",
+      "roles": [
+        "processor",
+        "host"
+      ]
+    },
+    {
+      "name": "ISIMIP Repository",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/earthblox/cciwr"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -180.0,
+          -90.0,
+          180.0,
+          90.0
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "1985-01-01T00:00:00Z",
+          "2100-01-01T00:00:00Z"
+        ]
+      ]
+    }
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/earthblox/cciwr/",
+      "type": "application/vnd+zarr",
+      "title": "Dataset files (1 x .zarr)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/earthblox/cciwr/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/earthblox/cciwr",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "rel": "cite-as",
+      "href": "https://doi.org/10.5194/egusphere-2026-1829"
+    }
+  ],
+  "product_id": "cciwr",
   "created_at": "2026-06-08T08:01:50.173Z",
-  "updated_at": "2026-06-16T11:26:08.482Z",
-  "visibility": "public",
+  "file_count": 341,
   "disabled": false,
+  "updated_at": "2026-06-16T11:26:08.482Z",
+  "total_bytes": 1324018816,
+  "visibility": "public",
   "featured": 0,
-  "data_mode": "open",
+  "exts": {
+    "": 304,
+    "json": 32,
+    "png": 3,
+    "md": 1,
+    "ipynb": 1
+  },
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -22,27 +110,19 @@
       "prefix": "earthblox/cciwr/"
     }
   },
-  "file_count": 341,
-  "total_bytes": 1324018816,
-  "exts": {
-    "": 304,
-    "json": 32,
-    "png": 3,
-    "ipynb": 1,
-    "md": 1
-  },
-  "ext_bytes": {
-    "": 1323543538,
-    "png": 364469,
-    "json": 67536,
-    "ipynb": 23892,
-    "md": 19381
-  },
-  "store_format": "zarr",
-  "_state": "seed",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "cataloged_at": "2026-06-26T21:30:21+00:00"
+  "account_id": "earthblox",
+  "data_mode": "open",
+  "readme": "## README.md\n# Climate Change Impact on Water Resources (CCIWR)\n\nA multi-model ensemble dataset of projected future changes in water resources across all global land areas, from [Earth Blox](https://earthblox.io).\n\n<!-- Accompanying blog post: <placeholder link> -->\n\n## General description\n\nClimate projections of water availability are inherently uncertain: different global\nhydrological models (GHMs) respond differently to the same climate forcing, and different\nglobal climate models (GCMs) produce different forcings for the same emission scenario.\nWorking with a **multi-model ensemble** \u2014 rather than a single model run \u2014 is therefore\nessential to characterise this uncertainty honestly and to support risk-aware adaptation\ndecisions. By spanning 4 GHMs \u00d7 5 GCMs \u00d7 3 SSPs, the dataset exposed here samples the\nmain axes of uncertainty and allows users to derive robust statistics (medians, percentiles,\nmodel agreement) rather than relying on a potentially unrepresentative single trajectory.\n\nThis document describes the structure of the derived Zarr store built from that archive\nand provides ready-to-run code snippets for common analysis patterns.\n\n**Store location**: `s3://us-west-2.opendata.source.coop/earthblox/cciwr/data/cciwr.zarr`\n\n---\n\n## Store structure\n\nThe store contains **three groups**, each a separate N-dimensional array dataset:\n\n| Group | Dimensions | Description |\n|-------|-----------|-------------|\n| `RC` | `(ghm, gcm, ssp, horizon, season, lat, lon)` | Relative change (%) vs. 1985\u20132014 baseline |\n| `FUTUR` | `(ghm, gcm, ssp, horizon, season, lat, lon)` | Absolute future value (mm) averaged over the 30-yr horizon |\n| `HISTO` | `(ghm, gcm, season, lat, lon)` | Historical baseline (mm) averaged over 1985\u20132014 |\n\nEach group holds **three hydrological variables**:\n\n| Variable | ISIMIP source(s) | Physical quantity |\n|----------|-----------------|-------------------|\n| `qr` | `qr` + `qrd` (WaterGAP only) | Diffuse groundwater recharge |\n| `qtot` | `qtot` | Total runoff |\n| `evap_total` | `evap-total` | Actual evapotranspiration |\n\n**Coordinate values**\n\n| Dimension | Values |\n|-----------|--------|\n| `ghm` | `cwatm`, `jules-es-vn6p3`, `miroc-integ-land`, `watergap2-2e` |\n| `gcm` | `gfdl-esm4`, `ipsl-cm6a-lr`, `mpi-esm1-2-hr`, `mri-esm2-0`, `ukesm1-0-ll` |\n| `ssp` | `ssp126`, `ssp370`, `ssp585` |\n| `horizon` | `2030`, `2055`, `2085` (centre of 30-yr window) |\n| `season` | `yearly`, `DJF`, `MAM`, `JJA`, `SON` |\n| `lat` | 89.75 \u2192 \u221289.75 (0.5\u00b0 step, **descending**) |\n| `lon` | \u2212179.75 \u2192 179.75 (0.5\u00b0 step, ascending) |\n\n**Storage layout** (Zarr v3, sharded) \u2014 RC / FUTUR:\n\n| Level | Shape | Role |\n|-------|-------|------|\n| Inner chunk | `(4 ghm, 5 gcm, 1 ssp, 1 horizon, 1 season, 20 lat, 20 lon)` | Read granularity \u2014 a point/small-AOI read fetches only the inner chunk(s) it touches |\n| Shard | `(4 ghm, 5 gcm, 1 ssp, 1 horizon, 1 season, 360 lat, 720 lon)` | Storage object \u2014 one shard holds the full global map for a single ssp/horizon/season |\n\nRequires **Zarr v3** (`zarr>=3`) to read the sharded store.\n\n---\n\n## Quick-start: open the store\n\n```python\nimport xarray as xr\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport matplotlib.colors as mcolors\nimport matplotlib.ticker as mticker\nimport cartopy.crs as ccrs\nimport cartopy.feature as cfeature\n\n# \u2500\u2500 Store location \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nZARR_PATH = 's3://us-west-2.opendata.source.coop/earthblox/cciwr/data/cciwr.zarr'\n\n# \u2500\u2500 Open all three groups (anonymous S3 access, lazy \u2014 no data loaded yet) \u2500\u2500\nstorage_options = {'anon': True}\nds_rc    = xr.open_zarr(ZARR_PATH, group='RC',    consolidated=True, storage_options=storage_options)\nds_futur = xr.open_zarr(ZARR_PATH, group='FUTUR', consolidated=True, storage_options=storage_options)\nds_histo = xr.open_zarr(ZARR_PATH, group='HISTO', consolidated=True, storage_options=storage_options)\n\nds_rc\n```\n\n---\n\n## Case study 1 \u2014 Ensemble percentiles of groundwater recharge RC at a POI (Lyon)\n\nCompute the **25th percentile, median, and 75th percentile** of the relative change in\ngroundwater recharge (`qr`) across all GHM \u00d7 GCM combinations at a single point of interest,\nfor a user-defined SSP, horizon, and season.\n\nThe POI is snapped to the nearest 0.5\u00b0 grid cell automatically.\n\n```python\n# \u2500\u2500 User parameters \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nPOI_LAT  = 45.75   # Lyon city centre (snapped to nearest 0.5\u00b0 cell)\nPOI_LON  = 4.75\nSSP      = 'ssp585'\nHORIZON  = 2085\nSEASON   = 'yearly'\n\n# \u2500\u2500 Select the nearest grid cell for the POI \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n# lat is descending, so method='nearest' works correctly with sel()\npoi_rc = ds_rc['qr'].sel(\n    ssp=SSP,\n    horizon=HORIZON,\n    season=SEASON,\n    lat=POI_LAT,\n    lon=POI_LON,\n)\n# poi_rc shape: (ghm, gcm)  \u2014 all ensemble members at this cell\n\n# Stack ghm \u00d7 gcm into a flat ensemble dimension for quantile computation\nensemble = poi_rc.stack(member=('ghm', 'gcm'))\n\nq10  = float(ensemble.quantile(0.10))\nq25  = float(ensemble.quantile(0.25))\nmed  = float(ensemble.quantile(0.50))\nq75  = float(ensemble.quantile(0.75))\nq90  = float(ensemble.quantile(0.90))\n\nsnapped_lat, snapped_lon = float(poi_rc.lat), float(poi_rc.lon)\n\nprint(f'Scenario     : {SSP}, horizon {HORIZON}, season {SEASON}')\nprint(f'Variable     : qr (groundwater recharge, relative change %)')\nprint(f'  25th percentile : {100 * q25:+.1f} %')\nprint(f'  Median          : {100 * med:+.1f} %')\nprint(f'  75th percentile : {100 * q75:+.1f} %')\n```\n\n```python\n# \u2500\u2500 Percentile-box chart across all three horizons \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n# Reuses POI_LAT, POI_LON, SSP, SEASON from Case study 1 parameters.\n\nVARIABLE = 'qr'          # variable to chart\nHORIZONS       = [2030, 2055, 2085]\nHORIZON_LABELS = ['2016\u20132045', '2041\u20132070', '2071\u20132100']\n\nVAR_LABELS = {\n    'qtot':       'Total Runoff',\n    'qr':         'Groundwater Recharge',\n    'evap_total': 'Actual Evapotranspiration',\n}\nSSP_LABELS = {\n    'ssp126': 'SSP1 (RCP 2.6)',\n    'ssp370': 'SSP3 (RCP 7.0)',\n    'ssp585': 'SSP5 (RCP 8.5)',\n}\n\n# \u2500\u2500 Collect percentiles for every horizon \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nhorizon_stats = {}\nsnapped_lat_chart = snapped_lon_chart = None\n\nfor h in HORIZONS:\n    # Exact match on string/categorical dims first; nearest-neighbour only for lat/lon\n    poi_h = (\n        ds_rc[VARIABLE]\n        .sel(ssp=SSP, horizon=h, season=SEASON)\n        .sel(lat=POI_LAT, lon=POI_LON, method='nearest')\n    )\n    ensemble_h = 100.0 * poi_h.stack(member=('ghm', 'gcm')).values\n\n    if snapped_lat_chart is None:\n        snapped_lat_chart = float(poi_h.lat)\n        snapped_lon_chart = float(poi_h.lon)\n\n    horizon_stats[h] = {\n        'q10': float(np.nanpercentile(ensemble_h, 10)),\n        'q25': float(np.nanpercentile(ensemble_h, 25)),\n        'med': float(np.nanpercentile(ensemble_h, 50)),\n        'q75': float(np.nanpercentile(ensemble_h, 75)),\n        'q90': float(np.nanpercentile(ensemble_h, 90)),\n        'n':   int(np.sum(~np.isnan(ensemble_h))),\n    }\n\n# \u2500\u2500 Chart \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nfig, ax = plt.subplots(figsize=(8, 4))\n\nx     = np.arange(len(HORIZONS))\nwidth = 0.55\n\nCOLOR_OUTER  = '#c8c8c8'   # 10th \u2013 90th percentile band\nCOLOR_IQR    = '#787878'   # 25th \u2013 75th IQR\nCOLOR_MEDIAN = '#303030'   # median line\n\nfor i, h in enumerate(HORIZONS):\n    s = horizon_stats[h]\n\n    # 10th \u2013 90th band (lightest)\n    ax.bar(i, s['q90'] - s['q10'], bottom=s['q10'],\n           color=COLOR_OUTER, width=width, zorder=2, linewidth=0)\n\n    # 25th \u2013 75th IQR (medium)\n    ax.bar(i, s['q75'] - s['q25'], bottom=s['q25'],\n           color=COLOR_IQR, width=width, zorder=3, linewidth=0)\n\n    # Median line\n    ax.hlines(s['med'], i - width / 2, i + width / 2,\n              colors=COLOR_MEDIAN, linewidths=2.5, zorder=4)\n\n# Reference line at 0 %\nax.axhline(0, color='black', linewidth=0.9, zorder=1)\n\n# Axes formatting\nax.set_xticks(x)\nax.set_xticklabels(HORIZON_LABELS, fontsize=11)\nax.yaxis.set_major_formatter(plt.FuncFormatter(lambda v, _: f'{v:.0f}%'))\nax.set_ylabel(\n    f'Relative change in\\n{VAR_LABELS.get(VARIABLE, VARIABLE)} since 1985\u20132014 [%]',\n    fontsize=10,\n)\nax.tick_params(axis='y', labelsize=10)\nax.set_xlim(-0.55, len(HORIZONS) - 0.45)\nax.set_ylim(-100, 100)\n\n# Major + minor horizontal grid\nax.yaxis.set_minor_locator(plt.MultipleLocator(5))\nax.yaxis.grid(True, which='major', linewidth=0.5, color='lightgrey', zorder=0)\nax.yaxis.grid(True, which='minor', linewidth=0.25, color='#e8e8e8', zorder=0)\nax.set_axisbelow(True)\nax.spines[['top', 'right']].set_visible(False)\n\n# Title\nssp_label = SSP_LABELS.get(SSP, SSP)\nn_members = horizon_stats[HORIZONS[0]]['n']\nax.set_title(\n    f'Lat: {snapped_lat_chart}\u00b0, Lon: {snapped_lon_chart}\u00b0 \u2013 '\n    f'Seasonality: {SEASON.capitalize()} \u2013 {ssp_label}',\n    fontsize=11, pad=10,\n)\n\n# Footer \u2014 ensemble size + legend explanation\nax.text(\n    0.5, -0.10,\n    f'Based on {n_members} ensemble members',\n    ha='center', va='top', transform=ax.transAxes,\n    fontstyle='italic', fontsize=9,\n)\nax.text(\n    0.5, -0.18,\n    'Outer box: 10th\u201390th percentile  \u00b7  Inner box: 25th\u201375th percentile  \u00b7  Line: median',\n    ha='center', va='top', transform=ax.transAxes,\n    fontstyle='italic', fontsize=8, color='#555555',\n)\n\nplt.tight_layout()\nplt.show()\n```\n\n![Ensemble percentiles of groundwater recharge relative change at Lyon across three horizons](https://data.source.coop/earthblox/cciwr/docs/case_study_1_percentile_box.png)\n\n---\n\n## Case study 2 \u2014 Map of ensemble-median RC in total runoff over Europe\n\nCompute the **ensemble median** (across all GHM \u00d7 GCM combinations) of the relative change in\ntotal runoff (`qtot`) over Europe, for a user-defined SSP, horizon, and season.\n\nThe map uses a diverging blue\u2013white\u2013red colormap centred on 0% to make drying vs. wetting\nsignals immediately visible.\n\n```python\n# \u2500\u2500 User parameters \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSSP     = 'ssp585'\nHORIZON = 2085\nSEASON  = 'yearly'\n\n# Europe bounding box / Change by your area of interest.\nLAT_MIN, LAT_MAX = 34.0, 72.0\nLON_MIN, LON_MAX = -25.0, 45.0\n\n# \u2500\u2500 Spatial slice \u2014 lat is descending so min/max order is reversed \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\neurope_rc = ds_rc['qtot'].sel(\n    ssp=SSP,\n    horizon=HORIZON,\n    season=SEASON,\n    lat=slice(LAT_MAX, LAT_MIN),   # descending axis\n    lon=slice(LON_MIN, LON_MAX),\n)\n# europe_rc shape: (ghm, gcm, lat, lon)\n\n# Ensemble median across all GHM \u00d7 GCM pairs\nmedian_rc = europe_rc.median(dim=['ghm', 'gcm']).compute()\n# median_rc shape: (lat, lon)\n\n# \u2500\u2500 Diverging colormap centred on 0 \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nvmax = float(np.nanpercentile(np.abs(median_rc.values), 95))\nnorm = mcolors.TwoSlopeNorm(vmin=-vmax, vcenter=0, vmax=vmax)\n\n# \u2500\u2500 Map \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nfig, ax = plt.subplots(\n    figsize=(8, 7),\n    subplot_kw={'projection': ccrs.PlateCarree()},\n)\nax.set_extent([LON_MIN, LON_MAX, LAT_MIN, LAT_MAX], crs=ccrs.PlateCarree())\n\nimg = ax.pcolormesh(\n    median_rc.lon.values,\n    median_rc.lat.values,\n    median_rc.values,\n    norm=norm,\n    cmap='RdBu',\n    transform=ccrs.PlateCarree(),\n)\n\n# Overlay borders and coastlines\nax.add_feature(cfeature.BORDERS, linewidth=0.7, edgecolor='black')\nax.add_feature(cfeature.COASTLINE, linewidth=0.8)\nax.add_feature(cfeature.RIVERS, linewidth=0.4, edgecolor='steelblue', alpha=0.6)\nax.gridlines(draw_labels=False, linewidth=0.3, color='grey', alpha=0.5)\n\ncbar = plt.colorbar(img, ax=ax, orientation='vertical', pad=0.02, fraction=0.03)\ncbar.set_label('Relative change in total runoff', fontsize=10)\ncbar.formatter = mticker.PercentFormatter(xmax=1.0, decimals=0)\ncbar.update_ticks()\n\nax.set_title(\n    f'Ensemble-median RC \u2014 qtot | {SSP}, horizon {HORIZON}, {SEASON}\\n'\n    f'(n = {len(ds_rc.ghm) * len(ds_rc.gcm)} ensemble members)',\n    fontsize=11,\n)\n\nplt.tight_layout()\nplt.show()\n```\n\n![Ensemble-median relative change in total runoff over Europe](https://data.source.coop/earthblox/cciwr/docs/case_study_2_europe_median_runoff.png)\n\n---\n\n## Case study 3 \u2014 Model consensus on a drying threshold (groundwater recharge)\n\nThe ensemble median tells you the central signal, but not how *confident* the models are.\nA more decision-relevant question is: **for a given level of stress, how many of the\nensemble members agree that it will be reached?**\n\nHere we map **model consensus** over Europe \u2014 the percentage of the GHM \u00d7 GCM members\nthat project a relative change in groundwater recharge (`qr`) **below a chosen drying\nthreshold**. The threshold is set with the `THRESHOLD` parameter at the top of the next cell\n(default: **\u221220%**). A value of 100% means *every* model agrees the cell dries by at least\nthat much; 0% means *no* model does. Note that the number of available members can vary from\npixel to pixel, so the consensus is normalised by the valid members at each cell rather than\na fixed count. This turns the raw ensemble into a transparent, risk-oriented agreement map,\nusing a sequential colormap where darker = stronger consensus on drying.\n\n```python\n# \u2500\u2500 User parameters \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nSSP       = 'ssp585'\nHORIZON   = 2085\nSEASON    = 'yearly'    # could also do seasonal slices (e.g. 'DJF', 'MAM', 'JJA', 'SON') for a more seasonal perspective\nVARIABLE  = 'qr'        # groundwater recharge\nTHRESHOLD = -0.20       # drying stress: count members with RC below -20%\n\n# Europe bounding box (same extent as Case study 2).\nLAT_MIN, LAT_MAX = 34.0, 72.0\nLON_MIN, LON_MAX = -25.0, 45.0\n\n# \u2500\u2500 Spatial slice \u2014 lat is descending so min/max order is reversed \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\neurope_rc = ds_rc[VARIABLE].sel(\n    ssp=SSP,\n    horizon=HORIZON,\n    season=SEASON,\n    lat=slice(LAT_MAX, LAT_MIN),   # descending axis\n    lon=slice(LON_MIN, LON_MAX),\n)\n# europe_rc shape: (ghm, gcm, lat, lon)\n\n# \u2500\u2500 Model consensus: fraction of members with RC below the drying threshold \u2500\u2500\n# Count members satisfying the stress, ignoring NaNs, then divide by valid count.\n# The number of valid members varies from pixel to pixel (it is NOT always 20),\n# so we normalise by the per-pixel valid count rather than a fixed denominator.\nbelow     = (europe_rc < THRESHOLD)\nn_below   = below.sum(dim=['ghm', 'gcm'])\nn_valid   = europe_rc.notnull().sum(dim=['ghm', 'gcm'])\nconsensus = (n_below / n_valid).where(n_valid > 0).compute()   # 0\u20131, NaN where no data\n# consensus shape: (lat, lon)\n\n# \u2500\u2500 Sequential colormap (0\u2013100% agreement) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nnorm = mcolors.Normalize(vmin=0.0, vmax=1.0)\n\n# \u2500\u2500 Map \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nfig, ax = plt.subplots(\n    figsize=(8, 7),\n    subplot_kw={'projection': ccrs.PlateCarree()},\n)\nax.set_extent([LON_MIN, LON_MAX, LAT_MIN, LAT_MAX], crs=ccrs.PlateCarree())\n\nimg = ax.pcolormesh(\n    consensus.lon.values,\n    consensus.lat.values,\n    consensus.values,\n    norm=norm,\n    cmap='YlOrRd',\n    transform=ccrs.PlateCarree(),\n)\n\n# Overlay borders and coastlines\nax.add_feature(cfeature.BORDERS, linewidth=0.7, edgecolor='black')\nax.add_feature(cfeature.COASTLINE, linewidth=0.8)\nax.add_feature(cfeature.RIVERS, linewidth=0.4, edgecolor='steelblue', alpha=0.6)\nax.gridlines(draw_labels=False, linewidth=0.3, color='grey', alpha=0.5)\n\ncbar = plt.colorbar(img, ax=ax, orientation='vertical', pad=0.02, fraction=0.03)\ncbar.set_label(f'Model consensus on RC < {THRESHOLD:+.0%} (share of members)', fontsize=10)\ncbar.formatter = mticker.PercentFormatter(xmax=1.0, decimals=0)\ncbar.update_ticks()\n\nax.set_title(\n    f'Model consensus on drying \u2014 {VAR_LABELS.get(VARIABLE, VARIABLE)} '\n    f'RC < {THRESHOLD:+.0%}\\n'\n    f'{SSP}, horizon {HORIZON}, {SEASON}',\n    fontsize=11,\n)\n\nplt.tight_layout()\nplt.show()\n```\n\n![Model consensus on drying of groundwater recharge over Europe](https://data.source.coop/earthblox/cciwr/docs/case_study_3_europe_consensus_drying.png)\n\n---\n\n## Resources & references\n\n### Underlying source data \u2014 ISIMIP3b\nThis composite dataset is derived entirely from the **ISIMIP3b** (Inter-Sectoral Impact Model\nIntercomparison Project, phase 3b) global water-sector simulation archive. Monthly time series\nof total runoff (`qtot`), diffuse groundwater recharge (`qr` / `qrd`), and actual\nevapotranspiration (`evap-total`) were downloaded from the ISIMIP data repository\n([https://data.isimip.org/](https://data.isimip.org/)) under the `2015soc` experiment\n([protocol](https://protocol.isimip.org/#/ISIMIP3b/water_global)). The historical reference\nperiod uses the `historical_histsoc_default` specifier; future projections use the\n`ssp126_2015soc-from-histsoc_default`, `ssp370_2015soc-from-histsoc_default`, and\n`ssp585_2015soc-from-histsoc_default` specifiers for SSP1-2.6, SSP3-7.0, and SSP5-8.5\nrespectively. The full simulation data are cited as:\n\n> Gosling, S. N., M\u00fcller Schmied, H., Bradley, A., Burek, P., Gedney, N., Grillakis, M.,\n> Guillaumot, L., Hanasaki, N., Ito, A., Kou-Giesbrecht, S., Koutroulis, A., Nishina, K.,\n> Otta, K., Sahu, R.-K., Satoh, Y., and Schewe, J. (2024).  \n> *ISIMIP3b Simulation Data from the Global Water Sector (v1.3).*  \n> ISIMIP Repository. DOI: [10.48364/ISIMIP.230418.3](https://doi.org/10.48364/ISIMIP.230418.3)\n\n### Paper\n\nD\u00f6ll, P., Attard, G., Kneier, F., and M\u00fcller, L. (2026).  \n**Supporting climate change adaptation worldwide: A web application for exploring uncertain future changes in water resources.** *EGUsphere* [preprint], under review for *Geoscience Communication*.  \nDOI: [10.5194/egusphere-2026-1829](https://doi.org/10.5194/egusphere-2026-1829)\n\n### Interactive explorer\n\nThe **CCIWR Explorer** is a free Earth Engine web application that lets you visualise\nensemble projections of total water resources, groundwater recharge, and evapotranspiration\nacross four seasons and three SSP scenarios \u2014 including percentile boxes for individual 0.5\u00b0 grid cells.[https://ee-gwp.projects.earthengine.app/view/cciwr-explorer](https://ee-gwp.projects.earthengine.app/view/cciwr-explorer)\n",
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
+    "providers: role [producer] for 'ISIMIP Repository' is an AI guess \u2014 ISIMIP3b produced the underlying global hydrological model simulation data from which this dataset is derived; treated as producer of the source data.. Verify before flipping to _state: reviewed.",
+    "extent.temporal: None (probe sample) widened to ['1985-01-01T00:00:00Z', '2100-01-01T00:00:00Z'] using README-stated coverage ['1985', '2100']."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-06-28T10:08:34+00:00",
+  "store_format": "zarr"
 }
