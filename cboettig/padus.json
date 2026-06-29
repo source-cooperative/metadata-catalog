@@ -1,29 +1,102 @@
 {
-  "account_id": "cboettig",
-  "product_id": "padus",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "cboettig/padus",
   "title": "Protected Areas of the United States (PAD-US)",
-  "description": "",
-  "keywords": [],
-  "created_at": "2026-06-17T03:30:52.573Z",
-  "updated_at": "2026-06-17T03:30:52.573Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": "open",
-  "mirrors": {
-    "aws-opendata-us-west-2": {
-      "storage_type": "s3",
-      "is_primary": true,
-      "connection_id": "aws-opendata-us-west-2",
-      "config": {
-        "region": "us-west-2",
-        "bucket": "aws-opendata-us-west-2"
-      },
-      "prefix": "cboettig/padus/"
+  "description": "The Protected Areas Database of the United States (PAD-US) 4.1 Combined layer is America's official national inventory of protected areas, managed by the USGS Gap Analysis Project. It integrates fee ownership, easements, proclamation boundaries, marine protected areas, and designation areas from federal, state, local, and private land management agencies into a comprehensive national resource. Coverage spans all 50 states, DC, Puerto Rico, the U.S. Virgin Islands, and other U.S. territories, comprising 656,986 protected area features.",
+  "keywords": [
+    "conservation",
+    "protected-areas",
+    "biodiversity",
+    "administrative-boundaries",
+    "land-use",
+    "geoparquet",
+    "pmtiles",
+    "h3"
+  ],
+  "providers": [
+    {
+      "name": "U.S. Geological Survey Gap Analysis Project (USGS GAP)",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Boettiger Lab at UC Berkeley",
+      "roles": [
+        "processor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/cboettig/padus"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          140.5892865,
+          -30.2258584,
+          -15.0687062,
+          87.3237365
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "1800-01-01T00:00:00Z",
+          "2026-01-01T00:00:00Z"
+        ]
+      ]
     }
   },
-  "file_count": 425,
+  "summaries": {
+    "item_count": 18373706
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/cboettig/padus/",
+      "type": "application/octet-stream",
+      "title": "Dataset files (3 x .filegdb)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/cboettig/padus/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/cboettig/padus",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "rel": "cite-as",
+      "href": "https://doi.org/10.5066/P96WBCHS"
+    }
+  ],
   "total_bytes": 46697673429,
+  "data_mode": "open",
+  "visibility": "public",
+  "disabled": false,
+  "account_id": "cboettig",
+  "featured": 0,
+  "product_id": "padus",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "created_at": "2026-06-17T03:30:52.573Z",
   "exts": {
     "parquet": 113,
     "atx": 72,
@@ -48,35 +121,27 @@
     "sbx": 1,
     "shp": 1
   },
-  "ext_bytes": {
-    "parquet": 27810441651,
-    "gdbtable": 11262571029,
-    "pmtiles": 7280729177,
-    "spx": 235061622,
-    "gdbtablx": 92054144,
-    "shp": 15553552,
-    "atx": 443952,
-    "freelist": 269024,
-    "lyrx": 234288,
-    "json": 133334,
-    "xml": 102203,
-    "txt": 32929,
-    "md": 22152,
-    "dbf": 11546,
-    "gdbindexes": 9550,
-    "": 1212,
-    "sbn": 652,
-    "shx": 548,
-    "horizon": 544,
-    "prj": 167,
-    "sbx": 148,
-    "cpg": 5
+  "file_count": 425,
+  "updated_at": "2026-06-17T03:30:52.573Z",
+  "mirrors": {
+    "aws-opendata-us-west-2": {
+      "storage_type": "s3",
+      "is_primary": true,
+      "connection_id": "aws-opendata-us-west-2",
+      "config": {
+        "region": "us-west-2",
+        "bucket": "aws-opendata-us-west-2"
+      },
+      "prefix": "cboettig/padus/"
+    }
   },
-  "store_format": "filegdb",
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "cataloged_at": "2026-06-26T21:27:51+00:00"
+  "readme": "## README.md\n# PAD-US 4.1 Combined: Protected Areas Database of the United States\n\n## Overview\n\nThe Protected Areas Database of the United States (PAD-US) is America's official national inventory of protected areas, managed by the USGS Gap Analysis Project (GAP). This dataset represents the **Combined layer** which integrates all protection types: fee ownership, easements, proclamation boundaries, marine protected areas, and designation areas into a comprehensive national resource.\n\nPAD-US 4.1 combines data from federal, state, local, and private land management agencies to provide a complete picture of conservation lands and waters in the United States, including territories and freely associated states.\n\n## Citation\n\nU.S. Geological Survey (USGS) Gap Analysis Project (GAP). 2023. Protected Areas Database of the United States (PAD-US) 4.1: U.S. Geological Survey data release. https://doi.org/10.5066/P96WBCHS\n\n## License\n\n**Public Domain (U.S. Government Work)** - As a work of the U.S. Government, PAD-US is not subject to copyright protection within the United States (17 U.S.C. \u00a7 105). International copyright and database rights may apply.\n\n**Attribution:** When using PAD-US data, please cite the USGS GAP as shown above.\n\n## Data Formats\n\nThis dataset is available in three cloud-native formats:\n\n| Format | Path | Use Case |\n|--------|------|---------|\n| **GeoParquet** | `s3://public-padus/padus-4-1/combined.parquet` | Analytical queries with DuckDB, Polars, pandas |\n| **PMTiles** | `s3://public-padus/padus-4-1/combined.pmtiles` | Web map visualization at multiple zoom levels |\n| **H3 Hex Parquet** | `s3://public-padus/padus-4-1/combined/hex/h0=*/` | Spatial joins, aggregation by H3 hexagons (resolution 10 + 8) |\n\n### H3 Resolution Notes\n\nMost features (99.997%) are indexed at **H3 resolution 10** (~15m\u00b2 cells). However, **20 features** with extremely complex geometries (>800K vertices) are indexed at the coarser **H3 resolution 8** (~0.74 km\u00b2 cells) due to computational constraints. These features include:\n\n- Tongass National Forest (2 parts)\n- Arctic District Office\n- Yukon Delta National Wildlife Refuge (2 parts)\n- Alaska Maritime National Wildlife Refuge (5 parts)\n- Anchorage Field Office\n- Chugach National Forest\n- Appalachian National Scenic Trail\n- Joint Base Langley-Eustis\n- Aleutian Islands Wilderness Area\n- Marjory Stoneman Douglas Wilderness Area\n- Oregon Islands National Wildlife Refuge\n- Glacier Bay Wilderness Area\n- West Chichagof-Yakobi Wilderness\n- Chincoteague National Wildlife Refuge\n\nAll features maintain consistent parent resolution columns (h9, h8, h0) enabling seamless integration during spatial queries.\n\n## Dataset Statistics\n\n- **Total Features:** 656,986 protected areas\n- **Coverage:** United States (50 states + DC, Puerto Rico, U.S. Virgin Islands, territories, freely associated states)\n- **Temporal Range:** 1800s to present (Date_Est field)\n- **Spatial Reference:** EPSG:4326 (WGS84)\n- **Original CRS:** USA Contiguous Albers Equal Area Conic (USGS version, NAD83)\n\n## Data Dictionary\n\n### Administrative & Identification Fields\n\n| Column | Type | Description |\n|--------|------|-------------|\n| `_cng_fid` | integer | Cloud-native geometry feature ID (unique identifier) |\n| `Source_PAID` | string | Protected Area ID from source agency dataset |\n| `Unit_Nm` | string | Unit name - official name of the protected area unit |\n| `Loc_Nm` | string | Local name - alternative or historical name if different from Unit_Nm |\n| `State_Nm` | string | State, territory, or freely associated state name |\n\n### Classification & Designation\n\n| Column | Type | Description |\n|--------|------|-------------|\n| `FeatClass` | string | Feature class: Fee (ownership), Easement, Designation (administrative boundary),  Marine, or Proclamation |\n| `Category` | string | GAP stewardship category: Federal Land, State Land, Local Land, Private Conservation Land, Joint Ownership, Designation Area |\n| `Des_Tp` | string | Designation type code (see Designation_Type lookup table) |\n| `Loc_Ds` | string | Local designation - official designation in original language or local terminology |\n\n### Ownership\n\n| Column | Type | Description |\n|--------|------|-------------|\n| `Own_Type` | string | Owner type: FED (Federal), STAT (State), LOC (Local), PVT (Private), JNT (Joint), TRIB (Tribal), TERR (Territorial), DIST (District), NGO (Non-Governmental Organization) |\n| `Own_Name` | string | Owner name - specific agency, organization, or entity that holds title |\n| `Loc_Own` | string | Local owner - owner name in local terminology or original language |\n\n### Management\n\n| Column | Type | Description |\n|--------|------|-------------|\n| `Mang_Type` | string | Manager type code - same categories as Own_Type |\n| `Mang_Name` | string | Manager name - agency or organization responsible for day-to-day management |\n| `Loc_Mang` | string | Local manager - manager name in local terminology |\n\n### Conservation Status\n\n| Column | Type | Description |\n|--------|------|-------------|\n| `GAP_Sts` | string | GAP Status Code: 1 = Permanent protection, biodiversity as primary goal; 2 = Permanent protection, biodiversity as primary/major goal; 3 = Permanent protection, multiple uses; 4 = No known biodiversity mandate. See GAP_Status lookup table |\n| `GAPCdSrc` | string | Source of GAP Status Code assignment |\n| `GAPCdDt` | string | Date GAP Status Code was assigned (YYYYMMDD or YYYY) |\n| `IUCN_Cat` | string | IUCN Protected Area Management Category: Ia (Strict Nature Reserve), Ib (Wilderness Area), II (National Park), III (Natural Monument), IV (Habitat/Species Management), V (Protected Landscape/Seascape), VI (Protected Area with Sustainable Use). See IUCN_Category lookup table |\n| `IUCNCtSrc` | string | Source of IUCN Category assignment |\n| `IUCNCtDt` | string | Date IUCN Category was assigned |\n| `WDPA_Cd` | integer | World Database on Protected Areas (WDPA) site code for internationally recognized sites |\n\n### Public Access\n\n| Column | Type | Description |\n|--------|------|-------------|\n| `Pub_Access` | string | Public access status: OA (Open Access), RA (Restricted Access), XA (Closed/No Public Access), UK (Unknown). See Public_Access lookup table |\n| `Access_Src` | string | Source of public access information |\n| `Access_Dt` | string | Date public access status was determined |\n\n### Temporal Information\n\n| Column | Type | Description |\n|--------|------|-------------|\n| `Date_Est` | string | Date established - when protection was formally established (YYYYMMDD, YYYY, or text description) |\n| `Term` | integer | Term flag: 1 = Temporary/Term protection, 0 or NULL = Permanent protection |\n| `Duration` | string | Duration description for temporary protections (e.g., \"20 years\", \"until 2050\") |\n\n### Data Provenance\n\n| Column | Type | Description |\n|--------|------|-------------|\n| `Agg_Src` | string | Aggregator source - organization that aggregated/compiled the data (often state agencies) |\n| `GIS_Src` | string | GIS source - original GIS data provider or source dataset name |\n| `Src_Date` | string | Source date - date of source data (YYYYMMDD or YYYY) |\n| `Comments` | string | Additional information, caveats, or notes about the feature |\n\n### Spatial Measures\n\n| Column | Type | Description |\n|--------|------|-------------|\n| `GIS_Acres` | integer | GIS-calculated area in acres (most reliable area measure, calculated from geometry) |\n| `SHAPE_Length` | double | Perimeter length in meters (original CRS units) |\n| `SHAPE_Area` | double | Area in square meters (original CRS units) |\n\n### Geometry Fields\n\n| Column | Type | Description |\n|--------|------|-------------|\n| `SHAPE` | geometry | Geometry in WKB format (EPSG:4326, typically MULTIPOLYGON) |\n| `bbox` | struct | Bounding box with xmin, ymin, xmax, ymax in EPSG:4326 coordinates |\n\n## Usage Examples\n\n### Query by State\n\n```sql\n-- Find all protected areas in California\nSELECT Unit_Nm, Category, GAP_Sts, GIS_Acres\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-padus/padus-4-1/combined.parquet')\nWHERE State_Nm = 'CA'\nORDER BY GIS_Acres DESC;\n```\n\n### Filter by GAP Status\n\n```sql\n-- Get highest protection status areas (GAP 1 or 2)\nSELECT Unit_Nm, Own_Name, Des_Tp, GIS_Acres\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-padus/padus-4-1/combined.parquet')\nWHERE GAP_Sts IN ('1', '2')\n  AND GIS_Acres > 1000;\n```\n\n### Calculate Federal Land by Manager\n\n```sql\n-- Total federal acres by managing agency\nSELECT Mang_Name, \n       COUNT(*) as num_units,\n       SUM(GIS_Acres) as total_acres\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-padus/padus-4-1/combined.parquet')\nWHERE Own_Type = 'FED'\nGROUP BY Mang_Name\nORDER BY total_acres DESC;\n```\n\n### Spatial Join with H3 Hexagons\n\n```sql\n-- Find all protected areas intersecting specific H3 cells\nSELECT pa.Unit_Nm, pa.GAP_Sts, hex.h3\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-padus/padus-4-1/combined/hex/h0=*/') hex\nJOIN read_parquet('https://s3-west.nrp-nautilus.io/public-padus/padus-4-1/combined.parquet') pa\n  ON hex._cng_fid = pa._cng_fid\nWHERE hex.h8 = 612845965541203967;\n```\n\n## Important Notes\n\n1. **Overlapping Features:** The Combined layer contains overlapping features (fee, easement, designation, marine, proclamation). A single location may be covered by multiple records. When calculating total protected area, use geometric operations to handle overlaps appropriately.\n\n2. **Temporal Coverage:** Features span from the 1800s to present. Check `Date_Est` and `Src_Date` fields for temporal relevance.\n\n3. **Access vs. Protection:** `Pub_Access` indicates public access rights, not protection status. A highly protected area (GAP 1) may have no public access (XA).\n\n4. **Mixed Resolutions:** Most features use H3 resolution 10, but 20 extremely complex features use resolution 8. Both resolutions share common parent columns (h9, h8, h0) for compatibility.\n\n5. **Null Values:** Many fields may be NULL where information is not available or not applicable to that protection type.\n\n## Related Resources\n\n- **USGS GAP Analysis Project:** https://www.usgs.gov/programs/gap-analysis-project\n- **PAD-US Data Portal:** https://www.usgs.gov/programs/gap-analysis-project/science/pad-us-data-download\n- **DOI:** https://doi.org/10.5066/P96WBCHS\n- **PAD-US Standards Manual:** https://www.usgs.gov/programs/gap-analysis-project/science/pad-us-standards-and-methods\n\n## Contact\n\nFor questions about PAD-US data content and standards, contact USGS GAP Analysis Project.\n\nFor questions about this cloud-native format, contact the Boettiger Lab at UC Berkeley.\n\n## Processing Notes\n\nThis cloud-native version was processed using the `cng-datasets` tool:\n- Source: PADUS4_1Combined_Proclamation_Marine_Fee_Designation_Easement layer from PADUS4_1Geodatabase.gdb\n- Converted to GeoParquet with spatial indexes\n- Generated PMTiles at zoom levels 0-14\n- Indexed by H3 hexagons at resolutions 10 and 8\n- Original CRS converted from USA Contiguous Albers Equal Area Conic to EPSG:4326\n\nLast updated: February 2026\n",
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
+    "providers: role [processor] for 'Boettiger Lab at UC Berkeley' is an AI guess \u2014 Credited with producing the cloud-native version using the cng-datasets tool; no broader role stated in README.. Verify before flipping to _state: reviewed.",
+    "extent.temporal: None (probe sample) widened to ['1800-01-01T00:00:00Z', '2026-01-01T00:00:00Z'] using README-stated coverage ['1800', '2026']."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-06-29T10:18:14+00:00",
+  "store_format": "filegdb"
 }
