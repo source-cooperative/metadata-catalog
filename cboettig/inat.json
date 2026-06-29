@@ -1,15 +1,316 @@
 {
-  "account_id": "cboettig",
-  "product_id": "inat",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
+  "id": "cboettig/inat",
   "title": "iNaturalist Species Ranges & Taxonomy  ",
-  "description": "",
-  "keywords": [],
+  "description": "Species range maps, taxonomic hierarchy, and vernacular names derived from iNaturalist's Geomodel and expert range estimation products. Ranges are provided as GeoParquet polygons partitioned by iconic taxon group and as H3 resolution-4 hexagonal grid cells. Taxonomy tables include the full Linnaean hierarchy and common names in hundreds of languages.",
+  "keywords": [
+    "biodiversity",
+    "ecology",
+    "global-coverage",
+    "h3",
+    "geoparquet",
+    "species-ranges",
+    "taxonomy"
+  ],
+  "providers": [
+    {
+      "name": "iNaturalist",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/cboettig/inat"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 57179004
+  },
+  "assets": {
+    "hex": {
+      "href": "https://data.source.coop/cboettig/inat/hex/",
+      "type": "application/x-parquet",
+      "title": "hex",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "taxon_id",
+          "type": "INTEGER"
+        },
+        {
+          "name": "parent_taxon_id",
+          "type": "INTEGER"
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "rank",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "iconic_taxon_id",
+          "type": "INTEGER"
+        },
+        {
+          "name": "iconic_taxon_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "h4",
+          "type": "VARCHAR",
+          "description": "[spatial_index] H3 resolution 4 hexagon index representing rasterized species range cells"
+        }
+      ],
+      "description": "5 files sampled for this table"
+    },
+    "taxon": {
+      "href": "https://data.source.coop/cboettig/inat/taxon/iconic_taxon_name=Plantae/",
+      "type": "application/x-parquet",
+      "title": "taxon",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "taxon_id",
+          "type": "INTEGER"
+        },
+        {
+          "name": "taxonID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "identifier",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "parentNameUsageID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "kingdom",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "phylum",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "class",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "order",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "family",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "genus",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "specificEpithet",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "infraspecificEpithet",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "modified",
+          "type": "TIMESTAMP"
+        },
+        {
+          "name": "scientificName",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "taxonRank",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "references",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "parent_taxon_id",
+          "type": "INTEGER"
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "rank",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "iconic_taxon_id",
+          "type": "INTEGER"
+        },
+        {
+          "name": "geomodel_version",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geom",
+          "type": "GEOMETRY('OGC:CRS84')",
+          "description": "[geometry] Modeled species range polygon geometry in OGC:CRS84 (WGS 84 geographic)"
+        },
+        {
+          "name": "iconic_taxon_name",
+          "type": "VARCHAR"
+        }
+      ],
+      "description": "3 files sampled for this table"
+    },
+    "taxonomy": {
+      "href": "https://data.source.coop/cboettig/inat/taxonomy/",
+      "type": "application/x-parquet",
+      "title": "taxonomy",
+      "roles": [
+        "metadata"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "INTEGER"
+        },
+        {
+          "name": "taxonID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "identifier",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "parentNameUsageID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "kingdom",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "phylum",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "class",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "order",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "family",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "genus",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "specificEpithet",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "infraspecificEpithet",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "modified",
+          "type": "TIMESTAMP"
+        },
+        {
+          "name": "scientificName",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "taxonRank",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "references",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "vernacularName",
+          "type": "VARCHAR"
+        }
+      ],
+      "description": "2 files sampled for this table"
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/cboettig/inat/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/cboettig/inat",
+      "title": "Source Cooperative product page"
+    }
+  ],
+  "product_id": "inat",
+  "account_id": "cboettig",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
   "created_at": "2026-06-17T03:26:16.621Z",
-  "updated_at": "2026-06-17T03:26:16.621Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
   "data_mode": "open",
+  "visibility": "public",
+  "updated_at": "2026-06-17T03:26:16.621Z",
+  "featured": 0,
+  "exts": {
+    "csv": 1090,
+    "parquet": 492,
+    "xml": 2,
+    "md": 1,
+    "json": 1,
+    "": 1
+  },
+  "total_bytes": 15116941094,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -23,28 +324,13 @@
     }
   },
   "file_count": 1587,
-  "total_bytes": 15116941094,
-  "exts": {
-    "csv": 1090,
-    "parquet": 492,
-    "xml": 2,
-    "": 1,
-    "md": 1,
-    "json": 1
-  },
-  "ext_bytes": {
-    "parquet": 14558844534,
-    "csv": 558019870,
-    "xml": 69137,
-    "json": 5590,
-    "md": 1635,
-    "": 328
-  },
-  "store_format": null,
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "cataloged_at": "2026-06-26T21:26:15+00:00"
+  "disabled": false,
+  "readme": "## README.md\n# iNaturalist Species Ranges & Taxonomy\n\nThis dataset contains species range maps, taxonomic information, and vernacular names from iNaturalist. It appears to be derived from the iNaturalist Geomodel or similar range estimation products.\n\n## Assets\n\n### 1. Species Ranges (GeoParquet)\n**Prefix:** `s3://public-inat/taxon/`\nPartitioned by `iconic_taxon_name` (e.g., Animalia, Plantae, Insecta).\n\n**Schema:**\n- `taxon_id`: iNaturalist Taxon ID\n- `scientificName`: Scientific Name\n- `geom`: Geometry (likely modeled range polygons)\n- `geomodel_version`: Version of the range model\n- `kingdom`, `phylum`, `class`,...: Taxonomic hierarchy\n\n### 2. Range Hexagons (H4)\n**File:** `s3://public-inat/ranges.parquet`\nSpecies ranges rasterized/indexed to H3 resolution 4 hexagons.\n\n**Schema:**\n- `taxon_id`: iNaturalist Taxon ID\n- `name`: Species Name\n- `h4`: H3 resolution 4 index\n- `iconic_taxon_name`: High-level group\n\n### 3. Taxonomy & Common Names\n**Files:**\n- `s3://public-inat/taxonomy/taxa.parquet`: Core taxonomy table.\n- `s3://public-inat/taxonomy/taxa_and_common.parquet`: Taxonomy with common names.\n- `s3://public-inat/taxonomy/vernacular/*.csv`: Common names in hundreds of languages.\n\n## Source\n\n- **Producer:** iNaturalist\n- **Link:** [iNaturalist.org](https://www.inaturalist.org/)\n- **Note:** This dataset likely represents the \"Geomodel\" or expert range maps used by iNaturalist for automated identification priors.\n\n## License\n\n- **iNaturalist Data:** See [iNaturalist Terms of Service](https://www.inaturalist.org/pages/terms).\n- **Open Data:** Many iNaturalist datasets are CC0 or CC-BY, but check specific taxon licensing.\n",
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [taxon.geom (geometry), hex.h4 (spatial_index)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-06-29T10:13:14+00:00",
+  "store_format": null
 }
