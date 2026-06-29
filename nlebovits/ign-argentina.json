@@ -1,15 +1,615 @@
 {
-  "account_id": "nlebovits",
-  "product_id": "ign-argentina",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
+  "id": "nlebovits/ign-argentina",
   "title": "Capas de Referencia del Instituto Geogr\u00e1fico Nacional de Argentina",
-  "description": "Capas de referencia oficiales del Instituto Geogr\u00e1fico Nacional (IGN) de la Rep\u00fablica Argentina, extra\u00eddas de su servicio WFS y publicadas como GeoParquet optimizado para la nube. Incluye hidrograf\u00eda, geomorfolog\u00eda y relieve, transporte e infraestructura vial, l\u00edmites pol\u00edtico-administrativos, asentamientos y edificios, vegetaci\u00f3n, geodesia y otras categor\u00edas del modelo de datos vectorial del IGN. Datos de uso p\u00fablico conforme al Art\u00edculo 2 de la Ley 27.275 de Derecho de Acceso a la Informaci\u00f3n P\u00fablica.",
-  "keywords": [],
-  "created_at": "2026-06-11T17:54:46.130Z",
-  "updated_at": "2026-06-11T17:54:46.130Z",
-  "visibility": "public",
+  "description": "Official reference layers from Argentina's Instituto Geogr\u00e1fico Nacional (IGN), extracted from their WFS service and published as cloud-optimized GeoParquet. The dataset comprises 192 thematic collections covering hydrography, geomorphology and relief, transport infrastructure, political-administrative boundaries (country, province, department, municipality), settlements, vegetation, geodetic networks, coastal and maritime zones, and more across Argentina including its Antarctic sector. All layers are publicly accessible under Argentina's Public Information Access Law 27.275.",
+  "license": "LicenseRef-Ley-27275",
+  "keywords": [
+    "administrative-boundaries",
+    "hydrology",
+    "topography",
+    "digital-elevation-model",
+    "geoparquet",
+    "pmtiles",
+    "points-of-interest"
+  ],
+  "providers": [
+    {
+      "name": "Instituto Geogr\u00e1fico Nacional (IGN) de la Rep\u00fablica Argentina",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/nlebovits/ign-argentina"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 152891
+  },
+  "assets": {
+    "ign_area_de_montana": {
+      "href": "https://data.source.coop/nlebovits/ign-argentina/ign_area_de_montana/ign_area_de_montana.parquet",
+      "type": "application/x-parquet",
+      "title": "ign_area_de_montana.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "gid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "cam",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "provincia",
+          "type": "VARCHAR",
+          "description": "[placename] Province name where the mountain area is located"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')",
+          "description": "[geometry] OGC CRS84 polygon geometry of mountain areas"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 72
+    },
+    "ign_area_protegida": {
+      "href": "https://data.source.coop/nlebovits/ign-argentina/ign_area_protegida/ign_area_protegida.parquet",
+      "type": "application/x-parquet",
+      "title": "ign_area_protegida.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "gid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "entidad",
+          "type": "BIGINT"
+        },
+        {
+          "name": "objeto",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "fna",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "gna",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "nam",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "tap",
+          "type": "DECIMAL(38,0)"
+        },
+        {
+          "name": "jap",
+          "type": "DECIMAL(38,0)"
+        },
+        {
+          "name": "caa",
+          "type": "DECIMAL(38,0)"
+        },
+        {
+          "name": "fdc",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "sag",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "area",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')",
+          "description": "[geometry] OGC CRS84 geometry of protected areas"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 506
+    },
+    "ign_area_vuelos_dsr_sig": {
+      "href": "https://data.source.coop/nlebovits/ign-argentina/ign_area_vuelos_dsr_sig/ign_area_vuelos_dsr_sig.parquet",
+      "type": "application/x-parquet",
+      "title": "ign_area_vuelos_dsr_sig.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "gid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "num_proyec",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "nombre_ign",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "sector",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "fecha_vuel",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "cant_fotos",
+          "type": "BIGINT"
+        },
+        {
+          "name": "pixel_cm",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "sag",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')",
+          "description": "[geometry] OGC CRS84 geometry of photogrammetric aircraft survey areas"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 99
+    },
+    "ign_area_vuelos_vant_sig": {
+      "href": "https://data.source.coop/nlebovits/ign-argentina/ign_area_vuelos_vant_sig/ign_area_vuelos_vant_sig.parquet",
+      "type": "application/x-parquet",
+      "title": "ign_area_vuelos_vant_sig.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "gid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "num_proyec",
+          "type": "BIGINT"
+        },
+        {
+          "name": "nombre_ign",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "sector",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "fecha_vuel",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "cant_fotos",
+          "type": "BIGINT"
+        },
+        {
+          "name": "pixel_cm",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "sag",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')",
+          "description": "[geometry] OGC CRS84 geometry of UAV survey areas"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 120
+    },
+    "ign_areas_de_actividad_agropecuaria_aj110": {
+      "href": "https://data.source.coop/nlebovits/ign-argentina/ign_areas_de_actividad_agropecuaria_aj110/ign_areas_de_actividad_agropecuaria_aj110.parquet",
+      "type": "application/x-parquet",
+      "title": "ign_areas_de_actividad_agropecuaria_aj110.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "gid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "entidad",
+          "type": "BIGINT"
+        },
+        {
+          "name": "objeto",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "fna",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "gna",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "nam",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "sag",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "fun",
+          "type": "DECIMAL(38,0)"
+        },
+        {
+          "name": "fdc",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')",
+          "description": "[geometry] OGC CRS84 geometry of agricultural activity areas"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 258
+    },
+    "ign_vial_nacional": {
+      "href": "https://data.source.coop/nlebovits/ign-argentina/ign_vial_nacional/ign_vial_nacional.parquet",
+      "type": "application/x-parquet",
+      "title": "ign_vial_nacional.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "gid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "rtn",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "typ",
+          "type": "BIGINT"
+        },
+        {
+          "name": "rst",
+          "type": "BIGINT"
+        },
+        {
+          "name": "hct",
+          "type": "BIGINT"
+        },
+        {
+          "name": "fdc",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "sag",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')",
+          "description": "[geometry] OGC CRS84 linestring geometry of national road network"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 2738
+    },
+    "ign_vial_provincial": {
+      "href": "https://data.source.coop/nlebovits/ign-argentina/ign_vial_provincial/ign_vial_provincial.parquet",
+      "type": "application/x-parquet",
+      "title": "ign_vial_provincial.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "gid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "rtn",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "typ",
+          "type": "BIGINT"
+        },
+        {
+          "name": "rst",
+          "type": "BIGINT"
+        },
+        {
+          "name": "hct",
+          "type": "BIGINT"
+        },
+        {
+          "name": "fdc",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "sag",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')",
+          "description": "[geometry] OGC CRS84 linestring geometry of provincial road network"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 12928
+    },
+    "ign_vial_terciaria": {
+      "href": "https://data.source.coop/nlebovits/ign-argentina/ign_vial_terciaria/ign_vial_terciaria.parquet",
+      "type": "application/x-parquet",
+      "title": "ign_vial_terciaria.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "gid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "entidad",
+          "type": "BIGINT"
+        },
+        {
+          "name": "objeto",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "fna1",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "gna1",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "nam1",
+          "type": "BIGINT"
+        },
+        {
+          "name": "fna2",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "gna2",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "nam2",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "fun",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "rst",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "typ",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "mes",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "hct",
+          "type": "BIGINT"
+        },
+        {
+          "name": "loc",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "fdc",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "nr",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "sag",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')",
+          "description": "[geometry] OGC CRS84 linestring geometry of tertiary road network"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 136168
+    },
+    "ign_zona_contigua_argentina": {
+      "href": "https://data.source.coop/nlebovits/ign-argentina/ign_zona_contigua_argentina/ign_zona_contigua_argentina.parquet",
+      "type": "application/x-parquet",
+      "title": "ign_zona_contigua_argentina.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "gid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "sag",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "fdc",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')",
+          "description": "[geometry] OGC CRS84 polygon geometry of Argentina's contiguous maritime zone"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 1
+    },
+    "ign_zona_economica_exclusiva_argentina": {
+      "href": "https://data.source.coop/nlebovits/ign-argentina/ign_zona_economica_exclusiva_argentina/ign_zona_economica_exclusiva_argentina.parquet",
+      "type": "application/x-parquet",
+      "title": "ign_zona_economica_exclusiva_argentina.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "gid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "sag",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "fdc",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')",
+          "description": "[geometry] OGC CRS84 polygon geometry of Argentina's exclusive economic zone"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 1
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/nlebovits/ign-argentina/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/nlebovits/ign-argentina",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "rel": "license",
+      "href": "http://servicios.infoleg.gob.ar/infolegInternet/anexos/265000-269999/265949/texact.htm",
+      "type": "text/html",
+      "title": "Ley 27.275 - Derecho de Acceso a la Informaci\u00f3n P\u00fablica"
+    }
+  ],
   "disabled": false,
+  "updated_at": "2026-06-11T17:54:46.130Z",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "product_id": "ign-argentina",
+  "exts": {
+    "json": 578,
+    "png": 382,
+    "md": 193,
+    "pmtiles": 192,
+    "parquet": 192
+  },
   "featured": 0,
+  "created_at": "2026-06-11T17:54:46.130Z",
   "data_mode": "open",
+  "file_count": 1537,
+  "account_id": "nlebovits",
+  "total_bytes": 1787975161,
+  "visibility": "public",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -22,27 +622,13 @@
       "prefix": "nlebovits/ign-argentina/"
     }
   },
-  "file_count": 1537,
-  "total_bytes": 1787975161,
-  "exts": {
-    "json": 578,
-    "png": 382,
-    "md": 193,
-    "parquet": 192,
-    "pmtiles": 192
-  },
-  "ext_bytes": {
-    "parquet": 1225725428,
-    "pmtiles": 536777992,
-    "png": 23918889,
-    "json": 1101387,
-    "md": 451465
-  },
-  "store_format": null,
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "cataloged_at": "2026-06-26T21:36:47+00:00"
+  "readme": "## README.md\n# Capas de Referencia del Instituto Geogr\u00e1fico Nacional de Argentina\n\n![features](https://img.shields.io/badge/features-blue) ![doscientas_millas_sector_antartico](https://img.shields.io/badge/doscientas_millas_sector_antartico-blue) ![puntos_de_geomorfologia_DB120](https://img.shields.io/badge/puntos_de_geomorfologia_DB120-blue) ![lineas_de_zona_costera_BA040](https://img.shields.io/badge/lineas_de_zona_costera_BA040-blue) ![lineas_de_mareas_y_corrientes_040601](https://img.shields.io/badge/lineas_de_mareas_y_corrientes_040601-blue) ![lineas_de_aguas_continentales_BH030](https://img.shields.io/badge/lineas_de_aguas_continentales_BH030-blue) ![lineas_de_aguas_continentales_BH010](https://img.shields.io/badge/lineas_de_aguas_continentales_BH010-blue) ![puntos_de_transporte_aereo_GB005](https://img.shields.io/badge/puntos_de_transporte_aereo_GB005-blue) ![puntos_de_transporte_aereo_GB001](https://img.shields.io/badge/puntos_de_transporte_aereo_GB001-blue) ![edafologia_afloramiento_rocoso](https://img.shields.io/badge/edafologia_afloramiento_rocoso-blue) ![puntos_de_cruces_y_enlaces_AQ065](https://img.shields.io/badge/puntos_de_cruces_y_enlaces_AQ065-blue) ![puntos_de_comunicacion_AT010](https://img.shields.io/badge/puntos_de_comunicacion_AT010-blue) ![edafologia_arenal](https://img.shields.io/badge/edafologia_arenal-blue) ![ayuda_a_la_navegacion_BC101](https://img.shields.io/badge/ayuda_a_la_navegacion_BC101-blue) ![lineas_de_geomorfologia_barranca](https://img.shields.io/badge/lineas_de_geomorfologia_barranca-blue) ![areas_de_glaciologia_050705](https://img.shields.io/badge/areas_de_glaciologia_050705-blue) ![edafologia_barrial_barrizal](https://img.shields.io/badge/edafologia_barrial_barrizal-blue) ![bahra_base_antartica](https://img.shields.io/badge/bahra_base_antartica-blue) ![vegetacion_arborea_060301](https://img.shields.io/badge/vegetacion_arborea_060301-blue) ![vegetacion_arborea_EC015](https://img.shields.io/badge/vegetacion_arborea_EC015-blue) ![ayuda_a_la_navegacion_BC020](https://img.shields.io/badge/ayuda_a_la_navegacion_BC020-blue) ![areas_de_aguas_continentales_BH020](https://img.shields.io/badge/areas_de_aguas_continentales_BH020-blue) ![lineas_de_aguas_continentales_BH020](https://img.shields.io/badge/lineas_de_aguas_continentales_BH020-blue) ![areas_de_extraccion_AA012](https://img.shields.io/badge/areas_de_extraccion_AA012-blue) ![orden:30](https://img.shields.io/badge/orden%3A30-blue) ![orden:20](https://img.shields.io/badge/orden%3A20-blue) ![orden:40](https://img.shields.io/badge/orden%3A40-blue) ![orden:10](https://img.shields.io/badge/orden%3A10-blue) ![puntos_de_aguas_continentales_BH180](https://img.shields.io/badge/puntos_de_aguas_continentales_BH180-blue) ![areas_de_equipamiento_AL030](https://img.shields.io/badge/areas_de_equipamiento_AL030-blue) ![puntos_de_equipamiento_AL030](https://img.shields.io/badge/puntos_de_equipamiento_AL030-blue) ![puntos_de_energia_AD010](https://img.shields.io/badge/puntos_de_energia_AD010-blue) ![puntos_de_ciencia_y_educacion_AL295](https://img.shields.io/badge/puntos_de_ciencia_y_educacion_AL295-blue) ![puntos_de_recreacion_020401](https://img.shields.io/badge/puntos_de_recreacion_020401-blue) ![puntos_de_geomorfologia_NA100](https://img.shields.io/badge/puntos_de_geomorfologia_NA100-blue) ![complejos_fronterizos](https://img.shields.io/badge/complejos_fronterizos-blue) ![lineas_de_geomorfologia_050205](https://img.shields.io/badge/lineas_de_geomorfologia_050205-blue) ![lineas_de_geomorfologia_050206](https://img.shields.io/badge/lineas_de_geomorfologia_050206-blue) ![areas_de_aguas_continentales_BH140](https://img.shields.io/badge/areas_de_aguas_continentales_BH140-blue) ![lineas_de_aguas_continentales_intermitentes](https://img.shields.io/badge/lineas_de_aguas_continentales_intermitentes-blue) ![lineas_de_aguas_continentales_perenne](https://img.shields.io/badge/lineas_de_aguas_continentales_perenne-blue) ![lineas_de_geomorfologia_050207](https://img.shields.io/badge/lineas_de_geomorfologia_050207-blue) ![lineas_de_geomorfologia_050208](https://img.shields.io/badge/lineas_de_geomorfologia_050208-blue) ![edafologia_cumbre_rocosa](https://img.shields.io/badge/edafologia_cumbre_rocosa-blue) ![puntos_de_estructura_asociada_AA051](https://img.shields.io/badge/puntos_de_estructura_asociada_AA051-blue) ![lineas_terrestres_070401](https://img.shields.io/badge/lineas_terrestres_070401-blue) ![orden:60](https://img.shields.io/badge/orden%3A60-blue) ![sin_vegetacion_061001](https://img.shields.io/badge/sin_vegetacion_061001-blue) ![puntos_de_aguas_continentales_BH051](https://img.shields.io/badge/puntos_de_aguas_continentales_BH051-blue) ![lineas_de_estructura_asociada_ducto_subterraneo](https://img.shields.io/badge/lineas_de_estructura_asociada_ducto_subterraneo-blue) ![lineas_terrestres_070403](https://img.shields.io/badge/lineas_terrestres_070403-blue) ![puntos_de_asentamientos_y_edificios_AL015](https://img.shields.io/badge/puntos_de_asentamientos_y_edificios_AL015-blue) ![puntos_de_asentamientos_y_edificios_020101](https://img.shields.io/badge/puntos_de_asentamientos_y_edificios_020101-blue) ![puntos_de_asentamientos_y_edificios_020102](https://img.shields.io/badge/puntos_de_asentamientos_y_edificios_020102-blue) ![salud_020801](https://img.shields.io/badge/salud_020801-blue) ![cultura_y_religion_AL330](https://img.shields.io/badge/cultura_y_religion_AL330-blue) ![orden:50](https://img.shields.io/badge/orden%3A50-blue) ![areas_de_aguas_continentales_041101](https://img.shields.io/badge/areas_de_aguas_continentales_041101-blue) ![puntos_de_aguas_continentales_041101](https://img.shields.io/badge/puntos_de_aguas_continentales_041101-blue) ![areas_de_equipamiento_AL170](https://img.shields.io/badge/areas_de_equipamiento_AL170-blue) ![areas_de_aguas_continentales_intermitenet](https://img.shields.io/badge/areas_de_aguas_continentales_intermitenet-blue) ![areas_de_actividad_agropecuaria_AL270](https://img.shields.io/badge/areas_de_actividad_agropecuaria_AL270-blue) ![puntos_de_ciencia_y_educacion_020601](https://img.shields.io/badge/puntos_de_ciencia_y_educacion_020601-blue) ![puntos_de_transporte_ferroviario_AN070](https://img.shields.io/badge/puntos_de_transporte_ferroviario_AN070-blue) ![infraestructura_de_transporte_030801](https://img.shields.io/badge/infraestructura_de_transporte_030801-blue) ![infraestructura_de_transporte_AQ180](https://img.shields.io/badge/infraestructura_de_transporte_AQ180-blue) ![infraestructura_de_transporte_AQ170](https://img.shields.io/badge/infraestructura_de_transporte_AQ170-blue) ![infraestructura_de_transporte_AQ125](https://img.shields.io/badge/infraestructura_de_transporte_AQ125-blue) ![vegetacion_arbustiva_EB015](https://img.shields.io/badge/vegetacion_arbustiva_EB015-blue) ![ayuda_a_la_navegacion_BC050](https://img.shields.io/badge/ayuda_a_la_navegacion_BC050-blue) ![lineas_de_transporte_ferroviario_AN010](https://img.shields.io/badge/lineas_de_transporte_ferroviario_AN010-blue) ![lineas_de_geomorfologia_CA020](https://img.shields.io/badge/lineas_de_geomorfologia_CA020-blue) ![puntos_de_aguas_continentales_BH170](https://img.shields.io/badge/puntos_de_aguas_continentales_BH170-blue) ![puntos_de_fabricacion_y_procesamiento_AC000](https://img.shields.io/badge/puntos_de_fabricacion_y_procesamiento_AC000-blue) ![puntos_de_estructura_asociada_AJ080](https://img.shields.io/badge/puntos_de_estructura_asociada_AJ080-blue) ![puntos_de_glaciologia_BJ030](https://img.shields.io/badge/puntos_de_glaciologia_BJ030-blue) ![gobiernoslocales_2022](https://img.shields.io/badge/gobiernoslocales_2022-blue) ![municipio](https://img.shields.io/badge/municipio-blue) ![puntos_de_transporte_aereo_GB035](https://img.shields.io/badge/puntos_de_transporte_aereo_GB035-blue) ![hitos_internacionales](https://img.shields.io/badge/hitos_internacionales-blue) ![hitos_interprovinciales](https://img.shields.io/badge/hitos_interprovinciales-blue) ![vial_AP010](https://img.shields.io/badge/vial_AP010-blue) ![infraestructura_de_transporte_030803](https://img.shields.io/badge/infraestructura_de_transporte_030803-blue) ![puntos_de_recreacion_AK040](https://img.shields.io/badge/puntos_de_recreacion_AK040-blue) ![areas_de_actividad_agropecuaria_AJ110](https://img.shields.io/badge/areas_de_actividad_agropecuaria_AJ110-blue) ![puntos_de_actividad_agropecuaria_AJ110](https://img.shields.io/badge/puntos_de_actividad_agropecuaria_AJ110-blue) ![orden:80](https://img.shields.io/badge/orden%3A80-blue) ![localidad_bahra](https://img.shields.io/badge/localidad_bahra-blue) ![lineas_de_geomorfologia_DB001](https://img.shields.io/badge/lineas_de_geomorfologia_DB001-blue) ![linea_de_limite_070114](https://img.shields.io/badge/linea_de_limite_070114-blue) ![linea_de_limite_070110](https://img.shields.io/badge/linea_de_limite_070110-blue) ![linea_de_limite_FA004](https://img.shields.io/badge/linea_de_limite_FA004-blue) ![linea_de_limite_070111](https://img.shields.io/badge/linea_de_limite_070111-blue) ![lineas_de_energia_AT030](https://img.shields.io/badge/lineas_de_energia_AT030-blue) ![mar_territorial_argentino](https://img.shields.io/badge/mar_territorial_argentino-blue) ![mareas_y_corrientes_BG020](https://img.shields.io/badge/mareas_y_corrientes_BG020-blue) ![areas_de_geomorfologia_050202](https://img.shields.io/badge/areas_de_geomorfologia_050202-blue) ![puntos_de_extraccion_AA010](https://img.shields.io/badge/puntos_de_extraccion_AA010-blue) ![mde](https://img.shields.io/badge/mde-blue) ![puntos_de_geomorfologia_050203](https://img.shields.io/badge/puntos_de_geomorfologia_050203-blue) ![puntos_de_actividad_agropecuaria_AJ050](https://img.shields.io/badge/puntos_de_actividad_agropecuaria_AJ050-blue) ![vegetacion_arborea_060302](https://img.shields.io/badge/vegetacion_arborea_060302-blue) ![puntos_de_equipamiento_AL130](https://img.shields.io/badge/puntos_de_equipamiento_AL130-blue) ![areas_de_glaciologia_BJ020](https://img.shields.io/badge/areas_de_glaciologia_BJ020-blue) ![lineas_de_puertos_y_muelles_BB190](https://img.shields.io/badge/lineas_de_puertos_y_muelles_BB190-blue) ![lineas_de_aguas_continentales_BI020](https://img.shields.io/badge/lineas_de_aguas_continentales_BI020-blue) ![areas_de_geomorfologia_DB560](https://img.shields.io/badge/areas_de_geomorfologia_DB560-blue) ![vegetacion_hidrofila_ED020](https://img.shields.io/badge/vegetacion_hidrofila_ED020-blue) ![bahra_paraje](https://img.shields.io/badge/bahra_paraje-blue) ![vegetacion_arborea_AK120](https://img.shields.io/badge/vegetacion_arborea_AK120-blue) ![pasos_de_fronteras_internacionales](https://img.shields.io/badge/pasos_de_fronteras_internacionales-blue) ![pais](https://img.shields.io/badge/pais-blue) ![edafologia_pedregal](https://img.shields.io/badge/edafologia_pedregal-blue) ![lineas_de_transporte_aereo_GB055](https://img.shields.io/badge/lineas_de_transporte_aereo_GB055-blue) ![puntos_de_estructura_asociada_AQ116](https://img.shields.io/badge/puntos_de_estructura_asociada_AQ116-blue) ![areas_de_fabricacion_y_procesamiento_AC507](https://img.shields.io/badge/areas_de_fabricacion_y_procesamiento_AC507-blue) ![puntos_de_fabricacion_y_procesamiento_AC507](https://img.shields.io/badge/puntos_de_fabricacion_y_procesamiento_AC507-blue) ![areas_de_gestion_de_residuos_AB030](https://img.shields.io/badge/areas_de_gestion_de_residuos_AB030-blue) ![puntos_de_gestion_de_residuos_AB030](https://img.shields.io/badge/puntos_de_gestion_de_residuos_AB030-blue) ![areas_de_fabricacion_y_procesamiento_BH220](https://img.shields.io/badge/areas_de_fabricacion_y_procesamiento_BH220-blue) ![puntos_de_fabricacion_y_procesamiento_BH220](https://img.shields.io/badge/puntos_de_fabricacion_y_procesamiento_BH220-blue) ![puntos_de_energia_AD030](https://img.shields.io/badge/puntos_de_energia_AD030-blue) ![plantacion_permanente_KB025](https://img.shields.io/badge/plantacion_permanente_KB025-blue) ![plataforma_continental](https://img.shields.io/badge/plataforma_continental-blue) ![areas_de_zona_costera_playa_areana](https://img.shields.io/badge/areas_de_zona_costera_playa_areana-blue) ![areas_de_zona_costera_playa_grava](https://img.shields.io/badge/areas_de_zona_costera_playa_grava-blue) ![areas_de_zona_costera_playa_restinga](https://img.shields.io/badge/areas_de_zona_costera_playa_restinga-blue) ![puntos_de_extraccion_AA050](https://img.shields.io/badge/puntos_de_extraccion_AA050-blue) ![provincia](https://img.shields.io/badge/provincia-blue) ![lineas_de_cruces_y_enlaces_AQ040](https://img.shields.io/badge/lineas_de_cruces_y_enlaces_AQ040-blue) ![puntos_de_cruces_y_enlaces_AQ040](https://img.shields.io/badge/puntos_de_cruces_y_enlaces_AQ040-blue) ![puntos_de_puertos_y_muelles_BB005](https://img.shields.io/badge/puntos_de_puertos_y_muelles_BB005-blue) ![controles_AH070](https://img.shields.io/badge/controles_AH070-blue) ![puntos_de_geomorfologia_CA030](https://img.shields.io/badge/puntos_de_geomorfologia_CA030-blue) ![lineas_de_geomorfologia_DB200](https://img.shields.io/badge/lineas_de_geomorfologia_DB200-blue) ![geodesia_ramsac_ntrip](https://img.shields.io/badge/geodesia_ramsac_ntrip-blue) ![geodesia_ramsac_web](https://img.shields.io/badge/geodesia_ramsac_web-blue) ![nivelacion_topografica](https://img.shields.io/badge/nivelacion_topografica-blue) ![nivelacion_alta_precision](https://img.shields.io/badge/nivelacion_alta_precision-blue) ![nivelacion_precision](https://img.shields.io/badge/nivelacion_precision-blue) ![red_densificacion_posgar](https://img.shields.io/badge/red_densificacion_posgar-blue) ![red_pasma](https://img.shields.io/badge/red_pasma-blue) ![red_posgar](https://img.shields.io/badge/red_posgar-blue) ![red_provincial](https://img.shields.io/badge/red_provincial-blue) ![gravimetria_bacara](https://img.shields.io/badge/gravimetria_bacara-blue) ![gravimetria_igsn71](https://img.shields.io/badge/gravimetria_igsn71-blue) ![gravimetria_raga](https://img.shields.io/badge/gravimetria_raga-blue) ![gravimetria_rpo](https://img.shields.io/badge/gravimetria_rpo-blue) ![gravimetria_rso](https://img.shields.io/badge/gravimetria_rso-blue) ![gravimetria_rto](https://img.shields.io/badge/gravimetria_rto-blue) ![vial_nacional](https://img.shields.io/badge/vial_nacional-blue) ![vial_provincial](https://img.shields.io/badge/vial_provincial-blue) ![vial_terciaria](https://img.shields.io/badge/vial_terciaria-blue) ![puntos_de_equipamiento_AH030](https://img.shields.io/badge/puntos_de_equipamiento_AH030-blue) ![areas_de_gestion_de_residuos_relleno_sanitario](https://img.shields.io/badge/areas_de_gestion_de_residuos_relleno_sanitario-blue) ![puntos_de_obstrucciones_BD130](https://img.shields.io/badge/puntos_de_obstrucciones_BD130-blue) ![lineas_de_puertos_y_muelles_BB041](https://img.shields.io/badge/lineas_de_puertos_y_muelles_BB041-blue) ![puntos_de_puertos_y_muelles_BB041](https://img.shields.io/badge/puntos_de_puertos_y_muelles_BB041-blue) ![puntos_de_asentamientos_y_edificios_ruina](https://img.shields.io/badge/puntos_de_asentamientos_y_edificios_ruina-blue) ![edafologia_salina](https://img.shields.io/badge/edafologia_salina-blue) ![edafologia_sedimento_fluvial](https://img.shields.io/badge/edafologia_sedimento_fluvial-blue) ![vial_AP050](https://img.shields.io/badge/vial_AP050-blue) ![lineas_de_geomorfologia_050204](https://img.shields.io/badge/lineas_de_geomorfologia_050204-blue) ![puntos_de_asentamientos_y_edificios_AL201](https://img.shields.io/badge/puntos_de_asentamientos_y_edificios_AL201-blue) ![sublocalidad_entidad_bahra](https://img.shields.io/badge/sublocalidad_entidad_bahra-blue) ![puntos_de_almacenamiento_y_logistica_AM080](https://img.shields.io/badge/puntos_de_almacenamiento_y_logistica_AM080-blue) ![puntos_de_almacenamiento_y_logistica_AM070](https://img.shields.io/badge/puntos_de_almacenamiento_y_logistica_AM070-blue) ![puntos_de_asentamientos_y_edificios_020108](https://img.shields.io/badge/puntos_de_asentamientos_y_edificios_020108-blue) ![terreno_para_cultivo_EA010](https://img.shields.io/badge/terreno_para_cultivo_EA010-blue) ![puntos_de_comunicacion_AT080](https://img.shields.io/badge/puntos_de_comunicacion_AT080-blue) ![lineas_terrestres_070402](https://img.shields.io/badge/lineas_terrestres_070402-blue) ![puntos_de_cruces_y_enlaces_AQ130](https://img.shields.io/badge/puntos_de_cruces_y_enlaces_AQ130-blue) ![puntos_de_ciencia_y_educacion_020602](https://img.shields.io/badge/puntos_de_ciencia_y_educacion_020602-blue) ![puntos_de_cruces_y_enlaces_BH070](https://img.shields.io/badge/puntos_de_cruces_y_enlaces_BH070-blue) ![lineas_de_geomorfologia_CA025](https://img.shields.io/badge/lineas_de_geomorfologia_CA025-blue) ![areas_de_gestion_de_residuos_AB000](https://img.shields.io/badge/areas_de_gestion_de_residuos_AB000-blue) ![areas_de_extraccion_AA052](https://img.shields.io/badge/areas_de_extraccion_AA052-blue) ![zona_contigua_argentina](https://img.shields.io/badge/zona_contigua_argentina-blue) ![zona_economica_exclusiva_argentina](https://img.shields.io/badge/zona_economica_exclusiva_argentina-blue) ![areas_de_estructura_asociada_010601](https://img.shields.io/badge/areas_de_estructura_asociada_010601-blue) ![lineas_de_geomorfologia_CA010](https://img.shields.io/badge/lineas_de_geomorfologia_CA010-blue) ![area_de_montana](https://img.shields.io/badge/area_de_montana-blue) ![area_vuelos_dsr_sig](https://img.shields.io/badge/area_vuelos_dsr_sig-blue) ![area_vuelos_vant_sig](https://img.shields.io/badge/area_vuelos_vant_sig-blue)\n\nCapas de referencia oficiales del Instituto Geogr\u00e1fico Nacional (IGN) de la Rep\u00fablica Argentina, extra\u00eddas de su servicio WFS y publicadas como GeoParquet optimizado para la nube. Incluye hidrograf\u00eda, geomorfolog\u00eda y relieve, transporte e infraestructura vial, l\u00edmites pol\u00edtico-administrativos, asentamientos y edificios, vegetaci\u00f3n, geodesia y otras categor\u00edas del modelo de datos vectorial del IGN. Datos de uso p\u00fablico conforme al Art\u00edculo 2 de la Ley 27.275 de Derecho de Acceso a la Informaci\u00f3n P\u00fablica.\n\n## Collections\n\n<details>\n<summary>\ud83d\udcc1 192 collections (click to expand)</summary>\n\n### [\u00c1rea de monta\u00f1a](./ign_area_de_montana/)\n\n\u00c1reas que representan las diferentes regiones monta\u00f1osas de la Rep\u00fablica Argentina.\n\n### [\u00c1rea protegida](./ign_area_protegida/)\n\n\u00c1rea de tierra y/o mar destinada a la protecci\u00f3n y mantenimiento de la diversidad biol\u00f3gica y de los recursos naturales y culturales asociados.\n\n### [\u00c1rea de vuelos](./ign_area_vuelos_dsr_sig/)\n\n\u00c1reas relevadas mediante un avi\u00f3n utilizando t\u00e9cnicas fotogram\u00e9tricas.\n\n### [\u00c1rea de vuelos VANT](./ign_area_vuelos_vant_sig/)\n\n\u00c1reas relevadas mediante un Veh\u00edculo A\u00e9reo no Tripulado (VANT) utilizando t\u00e9cnicas fotogram\u00e9tricas.\n\n### [Invernadero, vivero, huerta](./ign_areas_de_actividad_agropecuaria_aj110/)\n\nTerreno destinado al cultivo de hortalizas, legumbres, \u00e1rboles y dem\u00e1s. En los casos de invernadero y vivero, pueden estar dotados de una cubierta transl\u00facida. Incluye quinta.\n\n### [Establecimiento agropecuario](./ign_areas_de_actividad_agropecuaria_al270/)\n\nLugar donde se ejerce una o varias actividades agropecuarias concentradas. Incluye agricultura intensiva o extensiva, feed lot, tambo, criadero, corral, pileta de piscicultura, haras, caba\u00f1a, granj...\n\n### [Embalse rural](./ign_areas_de_aguas_continentales_041101/)\n\nExcavaci\u00f3n descubierta destinada al dep\u00f3sito de agua en zonas rurales. \n\n### [Ign Areas De Aguas Continentales Bh020](./ign_areas_de_aguas_continentales_bh020/)\n\nExcavaci\u00f3n artificial sin flujo o con flujo controlado, construido con el objetivo de transportar agua.\n\n### [Ign Areas De Aguas Continentales Bh130](./ign_areas_de_aguas_continentales_bh130/)\n\nMasa de agua retenida por una estructura artificial para su posterior aprovechamiento.\n\n### [Corriente de agua](./ign_areas_de_aguas_continentales_bh140/)\n\nFlujo natural de agua que sigue los desniveles del terreno y desemboca en otra corriente de agua, en un espejo de agua o en el mar.\n\n### [Espejo de agua intermitente](./ign_areas_de_aguas_continentales_intermitente/)\n\nCuerpo natural o artificial de agua, dulce o salada, cuyo aporte proviene de corrientes de agua, afloramientos subterr\u00e1neos o precipitaciones. Quedan excluidos los embalses y los embalses rurales.\n\n### [Espejo de agua perenne](./ign_areas_de_aguas_continentales_perenne/)\n\nCuerpo natural o artificial de agua, dulce o salada, cuyo aporte proviene de corrientes de agua, afloramientos subterr\u00e1neos o precipitaciones. Quedan excluidos los embalses y los embalses rurales.\n\n### [Planta urbana](./ign_areas_de_asentamientos_y_edificios_020105/)\n\n\u00c1rea urbana aproximada que incluye la zona contigua de amanzanamiento edificado, cuyos l\u00edmites son reconocibles.\n\n### [Ign Areas De Equipamiento Al030](./ign_areas_de_equipamiento_al030/)\n\nEspacio p\u00fablico o privado reservado para dar sepultura. Incluye cementerio parque.\n\n### [Espacio verde](./ign_areas_de_equipamiento_al170/)\n\nTerreno reservado en toda planta urbana como espacio destinado a jardines para recreo y expansi\u00f3n de la poblaci\u00f3n. Incluye plaza, plaza seca, rotonda, jard\u00edn bot\u00e1nico, zool\u00f3gico, entre otros.\n\n### [Zona de extracci\u00f3n minera](./ign_areas_de_estructura_asociada_010601/)\n\n\u00c1rea donde se efect\u00faa una actividad extractiva de origen minero. Incluye las instalaciones de producci\u00f3n, es decir, sitio que contiene todos los equipamientos de superficie necesarios para asistir ...\n\n### [Ign Areas De Extraccion Aa012](./ign_areas_de_extraccion_aa012/)\n\nExplotaci\u00f3n generalmente a cielo abierto de la que se obtienen rocas industriales, ornamentales y otros materiales. Una cantera puede tener m\u00e1s de una cava.\n\n### [Yacimiento de hidrocarburo](./ign_areas_de_extraccion_aa052/)\n\nCuerpo geol\u00f3gico aproximado, constituido por petr\u00f3leo y/o gas, econ\u00f3micamente explotable.\n\n### [\u00c1rea de fabricaci\u00f3n y procesamiento](./ign_areas_de_fabricacion_y_procesamiento_ac070/)\n\nConjunto de instalaciones para producci\u00f3n o procesamiento de materias primas, transform\u00e1ndolas en bienes o productos utilizables en otras actividades. Incluye parques industriales y polos petroqu\u00edm...\n\n### [Planta de tratamiento de efluentes cloacales](./ign_areas_de_fabricacion_y_procesamiento_ac507/)\n\nConjunto de instalaciones destinadas al tratamiento de aguas servidas.\n\n### [Planta potabilizadora de agua](./ign_areas_de_fabricacion_y_procesamiento_bh220/)\n\nConjunto de instalaciones cuya funci\u00f3n es la producci\u00f3n de agua para consumo humano.\n\n### [Ign Areas De Geomorfologia 050202](./ign_areas_de_geomorfologia_050202/)\n\nForma de relieve elevada, plana y generalmente de gran extensi\u00f3n, limitada por barrancas, circundada por valles. Incluye loma, entre otros.\n\n### [M\u00e9dano, duna](./ign_areas_de_geomorfologia_db560/)\n\nAcumulaci\u00f3n de sedimentos sueltos, tama\u00f1o arena, que puede trasladarse por acci\u00f3n del viento. Puede estar en ambiente continental o costero.\n\n### [Vertedero, basurero](./ign_areas_de_gestion_de_residuos_ab000/)\n\n\u00c1rea destinada al dep\u00f3sito de materiales de desecho, sin tratamiento previo.\n\n### [Planta de tratamiento de residuos](./ign_areas_de_gestion_de_residuos_ab030/)\n\nConjunto de instalaciones donde se realiza alg\u00fan tipo de clasificaci\u00f3n o tratamiento a los residuos. Incluye las plantas de residuos patol\u00f3gicos y las plantas recicladoras.\n\n### [Relleno sanitario](./ign_areas_de_gestion_de_residuos_relleno_sanitario/)\n\n\u00c1rea destinada al dep\u00f3sito definitivo de desechos con tratamiento ingenieril.\n\n### [Barrera de hielo](./ign_areas_de_glaciologia_050705/)\n\nMasa de hielo permanente, flotante y de espesor variable, formada a lo largo de la costa y que se encuentra adherida a ella avanzando sobre el oc\u00e9ano.\n\n### [Morena, morrena](./ign_areas_de_glaciologia_bj020/)\n\nAcumulaci\u00f3n heterog\u00e9nea de detritos en cuanto a tama\u00f1o y composici\u00f3n que, llevada por el glaciar, es acumulada por \u00e9ste. \n\n### [Ign Areas De Zona Costera Ba030](./ign_areas_de_zona_costera_ba030/)\n\nParte de la superficie terrestre rodeada de agua y de dimensiones menores que un continente.\n\n### [Playa de arena](./ign_areas_de_zona_costera_playa_areana/)\n\n\u00c1rea ribere\u00f1a de mar, corriente de agua o espejo de agua, que por lo general se caracteriza por ser una superficie casi plana de arena, conchilla o grava.\n\n### [Playa de grava](./ign_areas_de_zona_costera_playa_grava/)\n\n\u00c1rea ribere\u00f1a de mar, corriente de agua o espejo de agua, que por lo general se caracteriza por ser una superficie casi plana de arena, conchilla o grava.\n\n### [Playa de restinga](./ign_areas_de_zona_costera_playa_restinga/)\n\n\u00c1rea ribere\u00f1a de mar, corriente de agua o espejo de agua, que por lo general se caracteriza por ser una superficie casi plana de arena, conchilla o grava.\n\n### [Ign Ayuda A La Navegacion Bc020](./ign_ayuda_a_la_navegacion_bc020/)\n\nSe\u00f1alizaci\u00f3n flotante fondeada en el mar o corriente de agua con el objeto de indicar un lugar de peligro para la navegaci\u00f3n, se\u00f1alar la derrota que debe seguir un buque, como as\u00ed tambi\u00e9n cualquier...\n\n### [Ign Ayuda A La Navegacion Bc050](./ign_ayuda_a_la_navegacion_bc050/)\n\nEstructura distintiva ubicada dentro o fuera de la costa, pe\u00f1asco o flotante. Tiene caracter\u00edsticas diurnas individuales particulares para la navegaci\u00f3n de d\u00eda, y luz en su parte superior para serv...\n\n### [Ign Ayuda A La Navegacion Bc101](./ign_ayuda_a_la_navegacion_bc101/)\n\nSe\u00f1alizaci\u00f3n fija montada en la costa que se coloca como marca a los efectos de se\u00f1alar el lugar, rumbo y enfilaci\u00f3n que debe seguir una embarcaci\u00f3n.\n\n### [Base ant\u00e1rtica](./ign_bahra_base_antartica/)\n\nConjunto de instalaciones destinadas a fines cient\u00edficos ubicadas en el Continente Ant\u00e1rtico.\n\n### [Ign Bahra Paraje](./ign_bahra_paraje/)\n\nLugar situado en un \u00e1rea rural que se identifica con un top\u00f3nimo, usualmente de l\u00edmites no definidos, donde puede habitar poblaci\u00f3n en forma permanente o temporaria.\n\n### [Cartas 1:100.000](./ign_cartas_100000/)\n\nCobertura de cartas topogr\u00e1ficas a escala 1:100.000 que representan el relieve del terreno y la ubicaci\u00f3n de los elementos naturales y artificiales ubicados sobre el mismo.\n\n### [Cartas 1:250.000](./ign_cartas_250000/)\n\nCobertura de cartas topogr\u00e1ficas a escala 1:250.000 que representan el relieve del terreno y la ubicaci\u00f3n de los elementos naturales y artificiales ubicados sobre el mismo.\n\n### [Cartas 1:50.000](./ign_cartas_50000/)\n\nCobertura de cartas topogr\u00e1ficas a escala 1:50.000 que representan el relieve del terreno y la ubicaci\u00f3n de los elementos naturales y artificiales ubicados sobre el mismo.\n\n### [Cartas 1:500.000](./ign_cartas_500000/)\n\nCobertura de cartas topogr\u00e1ficas a escala 1:500.000 que representan el relieve del terreno y la ubicaci\u00f3n de los elementos naturales y artificiales ubicados sobre el mismo.\n\n### [Complejos Fronterizos](./ign_complejos_fronterizos/)\n\nEl Complejo Fronterizo (CF) hace referencia al predio en el que se emplazan uno o varios recintos y equipamientos, tanto organizativos como de procedimientos, p\u00fablicos y privados, destinados a la v...\n\n### [Puesto de Control](./ign_controles_ah070/)\n\nConjunto de instalaciones para controlar el paso, declarar y/o inspeccionar los bienes, veh\u00edculos y/o personas.\n\n### [Edificio de cultura](./ign_cultura_y_religion_al021/)\n\nConstrucci\u00f3n destinada a la manifestaci\u00f3n de expresiones culturales y art\u00edsticas.\n\n### [Edificio religioso](./ign_cultura_y_religion_al330/)\n\nConstrucci\u00f3n destinada a la pr\u00e1ctica de actividades religiosas.\n\n### [Ign Departamento](./ign_departamento/)\n\nDivisi\u00f3n pol\u00edtico administrativa de segundo orden que incluye partido y comuna.\n\n### [200 millas desde la costa del sector ant\u00e1rtico](./ign_doscientas_millas_sector_antartico/)\n\n200 millas desde las costas del Sector ant\u00e1rtico\n\n### [Afloramiento rocoso](./ign_edafologia_afloramiento_rocoso/)\n\nManifestaci\u00f3n en superficie de alguna litolog\u00eda de cualquier tipo y composici\u00f3n. Incluye macizo rocoso.\n\n### [Ign Edafologia Arenal](./ign_edafologia_arenal/)\n\nSuelo constituido por sedimento suelto, tama\u00f1o arena, sin tener la forma de m\u00e9dano y acumulado por el viento. Incluye el arenal con ripio.\n\n### [Barrial, Barrizal](./ign_edafologia_barrial_barrizal/)\n\nEl barrial o barreal es un terreno bajo y sin desag\u00fce que se inunda peri\u00f3dicamente formando un lodo gredoso y sin vegetaci\u00f3n que cuando se seca por evaporaci\u00f3n se transforma en un polvillo fino esp...\n\n### [Cumbre rocosa](./ign_edafologia_cumbre_rocosa/)\n\nCorresponde a una cima coronada por un afloramiento rocoso, de cualquier naturaleza, generalmente escarpada, lo cual no permite su representaci\u00f3n altim\u00e9trica por curvas de nivel.\n\n### [Ign Edafologia Pedregal](./ign_edafologia_pedregal/)\n\nTerreno cubierto de rocas sueltas, de tama\u00f1o mayor a la grava, generalmente angulosas y heterog\u00e9neas en cuanto a composici\u00f3n y tama\u00f1o.\n\n### [Salina, Salar, Salitral, Boratera](./ign_edafologia_salina/)\n\nZona baja arreica donde se produce acumulaci\u00f3n de sales por evaporaci\u00f3n (cloruros y sulfatos principalmente), constituyendo un dep\u00f3sito natural de sales, cuya denominaci\u00f3n var\u00eda seg\u00fan el tipo de sa...\n\n### [Sedimento Fluvial](./ign_edafologia_sedimento_fluvial/)\n\nGrava y bloques redondeados, arena y otros sedimentos finos transportados por la acci\u00f3n fluvial y que son depositados en las planicies aluviales actuales o antiguas (albardones y terrazas).\n\n### [Instituci\u00f3n penitenciaria](./ign_estructuras_operativas_y_defensivas_090101/)\n\nConjunto de instalaciones destinadas al cumplimiento de las penas previstas en las sentencias judiciales, penas pecuniarias (multas) o pena de privaci\u00f3n de ciertos derechos.\n\n### [Cuartel de bomberos](./ign_estructuras_operativas_y_defensivas_090102/)\n\nEstructura preparada para almacenar el equipamiento necesario para apagar fuegos, incluyendo mangueras, veh\u00edculos, equipos de protecci\u00f3n del personal, extintores de fuego, entre otros. Incluye inst...\n\n### [Edificio de seguridad](./ign_estructuras_operativas_y_defensivas_fa517/)\n\nConjunto de instalaciones, establecimientos o instituciones destinadas a seguridad de la poblaci\u00f3n.\n\n### [Gobierno Local](./ign_gobiernoslocales_2022/)\n\nJurisdicci\u00f3n pol\u00edtico-administrativa de tercer o cuarto orden. Incluye Municipios, Comunas, Juntas y Comisiones.\n\n### [Red gravim\u00e9trica BACARA](./ign_gravimetria_bacara/)\n\nRed gravim\u00e9trica BACARA\n\n### [Red gravim\u00e9trica IGSN 71](./ign_gravimetria_igsn71/)\n\nInternational Gravity Standardization Net 1971\n\n### [Red gravim\u00e9trica RAGA](./ign_gravimetria_raga/)\n\nRed gravim\u00e9trica RAGA\n\n### [Red gravim\u00e9trica de Primer Orden](./ign_gravimetria_rpo/)\n\nRed gravim\u00e9trica de Primer Orden\n\n### [Red gravim\u00e9trica de Segundo Orden](./ign_gravimetria_rso/)\n\nRed gravim\u00e9trica de Segundo Orden\n\n### [Red gravim\u00e9trica de Tercer Orden](./ign_gravimetria_rto/)\n\nRed gravim\u00e9trica de Tercer Orden\n\n### [Hitos internacionales](./ign_hitos_internacionales/)\n\nObra destinada a marcar o se\u00f1alar la posici\u00f3n de un punto que constituya el deslinde del territorio internacional \n\n### [Hitos interprovinciales](./ign_hitos_interprovinciales/)\n\nObra destinada a marcar o se\u00f1alar la posici\u00f3n de un punto que constituya el deslinde del territorio interprovincial.\n\n### [Estaci\u00f3n de peaje](./ign_infraestructura_de_transporte_030801/)\n\nConjunto de instalaciones situadas sobre una v\u00eda de transporte con el fin de cobrar la tasa correspondiente al mantenimiento, mejoramiento y conservaci\u00f3n de la v\u00eda en cuesti\u00f3n.\n\n### [Indicador de kil\u00f3metros](./ign_infraestructura_de_transporte_030803/)\n\nMoj\u00f3n de madera, metal o cemento que indica la distancia en kil\u00f3metros desde ese punto al origen. Se sit\u00faan alternativamente a un lado y otro en v\u00edas de transporte y ferrocarril. \n\n### [Estaci\u00f3n de \u00f3mnibus](./ign_infraestructura_de_transporte_aq125/)\n\nPredio destinado a la maniobra de \u00f3mnibus nacionales e internacionales, carga, ascenso y descenso de pasajeros. Puede o no tener aduana.\n\n### [Estaci\u00f3n de servicio](./ign_infraestructura_de_transporte_aq170/)\n\nConjunto de instalaciones ubicadas a la vera de una v\u00eda de comunicaci\u00f3n, destinada a la provisi\u00f3n de combustible y asistencia mec\u00e1nica a automotores.\n\n### [Estaci\u00f3n de pesaje](./ign_infraestructura_de_transporte_aq180/)\n\nInstalaci\u00f3n p\u00fablica ubicada al costado de una v\u00eda de comunicaci\u00f3n, provista de una b\u00e1scula o balanza destinada al pesaje de veh\u00edculos de transporte.\n\n### [Instalaci\u00f3n militar](./ign_instalacion_militar_su001/)\n\nConjunto de instalaciones destinadas al asentamiento de paz de las Fuerzas Armadas.\n\n### [L\u00edmite interdepartamental o de partido](./ign_linea_de_limite_070110/)\n\nL\u00ednea que constituye la representaci\u00f3n de la traza demarcadora que delimita la jurisdicci\u00f3n de un departamento o partido de otro.\n\n### [L\u00edmite interprovincial](./ign_linea_de_limite_070111/)\n\nL\u00ednea que constituye la representaci\u00f3n de la traza demarcadora que delimita una provincia de otra.\n\n### [L\u00edmite de \u00e1rea protegida](./ign_linea_de_limite_070114/)\n\nL\u00ednea que delimita el \u00e1rea de tierra y/o mar destinada a la protecci\u00f3n y mantenimiento de la diversidad biol\u00f3gica y de los recursos naturales y culturales asociados.\n\n### [L\u00edmite internacional](./ign_linea_de_limite_fa004/)\n\nL\u00ednea que constituye la representaci\u00f3n de la traza demarcadora que delimita un pa\u00eds.\n\n### [L\u00edmites de espacios mar\u00edtimos](./ign_linea_limite_maritimos/)\n\nL\u00edneas que representan los diferentes espac\u00edos mar\u00edtimos en su l\u00edmite exterior.\n\n### [Ign Lineas De Aguas Continentales Bh010](./ign_lineas_de_aguas_continentales_bh010/)\n\nConducto artificial que transporta agua en forma de flujo continuo con el objetivo de que esta sea accesible para su consumo u otros usos.\n\n### [Ign Lineas De Aguas Continentales Bh020](./ign_lineas_de_aguas_continentales_bh020/)\n\nExcavaci\u00f3n artificial sin flujo o con flujo controlado, construido con el objetivo de transportar agua.\n\n### [Acequia, zanja, zanj\u00f3n](./ign_lineas_de_aguas_continentales_bh030/)\n\nExcavaci\u00f3n longil\u00ednea construida en la tierra, con o sin revestimiento, con el objetivo de conducir, drenar, irrigar o controlar el agua para riego y otros usos.\n\n### [Muro de embalse](./ign_lineas_de_aguas_continentales_bi020/)\n\nRepresa construida transversalmente a una corriente de agua o canal para contener o controlar el caudal.\n\n### [Corriente de agua intermitente](./ign_lineas_de_aguas_continentales_intermitentes/)\n\nFlujo natural de agua temporario que sigue los desniveles del terreno y desemboca en otra corriente de agua, en un espejo de agua o en el mar.\n\n### [Corriente de agua perenne](./ign_lineas_de_aguas_continentales_perenne/)\n\nFlujo natural de agua continua que sigue los desniveles del terreno y desemboca en otra corriente de agua, en un espejo de agua o en el mar.\n\n### [Ign Lineas De Cruces Y Enlaces Aq040](./ign_lineas_de_cruces_y_enlaces_aq040/)\n\nEstructura que asegura la continuidad de una v\u00eda de transporte (ejemplo: red vial, calle, ferrocarril) por sobre un obst\u00e1culo natural o artificial del terreno (ejemplo: corriente de agua, canal, en...\n\n### [L\u00ednea de transmisi\u00f3n el\u00e9ctrica](./ign_lineas_de_energia_at030/)\n\n Sistema de cableado compuesto por torres y cables que transmite o distribuye energ\u00eda el\u00e9ctrica.\n\n### [Ign Lineas De Estructura Asociada Ducto Subterraneo](./ign_lineas_de_estructura_asociada_ducto_subterraneo/)\n\nSerie de tubos conectados para el transporte de s\u00f3lidos, l\u00edquidos o gases por bombeo. Se excluyen los acueductos.\n\n### [Ign Lineas De Geomorfologia 050204](./ign_lineas_de_geomorfologia_050204/)\n\nSecuencia eslabonada de cerros que en conjunto presentan disposici\u00f3n longil\u00ednea y altitudes intermedias entre la cordillera y monta\u00f1as. Incluye serran\u00eda, entendida como una extensi\u00f3n sin\u00f3nima de si...\n\n### [Ign Lineas De Geomorfologia 050205](./ign_lineas_de_geomorfologia_050205/)\n\nSecuencia eslabonada de cadenas orogr\u00e1ficas de considerable altura con una disposici\u00f3n homog\u00e9nea y pertenecientes al mismo proceso orog\u00e9nico.\n\n### [Ign Lineas De Geomorfologia 050206](./ign_lineas_de_geomorfologia_050206/)\n\nGrupo de elevaciones con disposici\u00f3n orogr\u00e1fica similar e igual orogenia, que forman parte de una cordillera o sistema monta\u00f1oso. \n\n### [Ign Lineas De Geomorfologia 050207](./ign_lineas_de_geomorfologia_050207/)\n\nElevaci\u00f3n de poca altura, alargada y estrecha, con cumbre convexa y con pendientes suaves hacia el llano. Incluye loma, lomada, entre otros.\n\n### [Ign Lineas De Geomorfologia 050208](./ign_lineas_de_geomorfologia_050208/)\n\nParte de un relieve constituido por dos pendientes asim\u00e9tricas, una abrupta y escarpada (cuesta propiamente dicha) y la opuesta, de suave inclinaci\u00f3n.\n\n### [Ign Lineas De Geomorfologia Barranca](./ign_lineas_de_geomorfologia_barranca/)\n\nDesnivel pronunciado del terreno con pendiente variable y de origen diverso. En el caso de costa marina se denomina acantilado. En el caso de origen fluvial se denomina barranca. Si se encuentra en...\n\n### [Lineas hipsometricas](./ign_lineas_de_geomorfologia_ca010/)\n\nL\u00ednea que une puntos que tienen el mismo valor de altitud respecto al nivel medio del mar. Tambi\u00e9n se la denomina isohipsa o curva hipsom\u00e9trica.\n\n### [Ign Lineas De Geomorfologia Ca020](./ign_lineas_de_geomorfologia_ca020/)\n\nCima de un cord\u00f3n monta\u00f1oso agudo, que es divisoria de aguas. Incluye silleta, entre otros.\n\n### [Ign Lineas De Geomorfologia Ca025](./ign_lineas_de_geomorfologia_ca025/)\n\nForma de erosi\u00f3n fluvial cuyas laderas tienen alturas, pendientes y profundidades diversas. Incluye bols\u00f3n, entre otros.\n\n### [Lugar geomorfol\u00f3gico](./ign_lineas_de_geomorfologia_db001/)\n\nGeoforma caracterizada por la acci\u00f3n de alg\u00fan agente geomorfol\u00f3gico. \n\n### [Quebrada, ca\u00f1ad\u00f3n, garganta](./ign_lineas_de_geomorfologia_db200/)\n\nValle de paredes abruptas m\u00e1s o menos profundo que generalmente puede estar surcado por una corriente de agua permanente o temporario. Incluye caj\u00f3n, desfiladero, entre otros.\n\n### [Ign Lineas De Puertos Y Muelles Bb041](./ign_lineas_de_puertos_y_muelles_bb041/)\n\nMuro o pared de contenci\u00f3n para la protecci\u00f3n contra olas o mareas a lo largo de una costa, protecci\u00f3n contra crecida en corrientes de agua y para facilitar operaciones de atraque de embarcaciones,...\n\n### [Ign Lineas De Puertos Y Muelles Bb190](./ign_lineas_de_puertos_y_muelles_bb190/)\n\nObra construida sobre el agua, afianzada en el lecho acu\u00e1tico por medio de bases que la sostienen firmemente, para facilitar tareas de atraque de embarcaciones, carga, descarga, embarque.\n\n### [Ign Lineas De Transporte Aereo Gb055](./ign_lineas_de_transporte_aereo_gb055/)\n\nCalzada rectangular de tierra o asfalto, definida en un campo de aviaci\u00f3n o aeropuerto, utilizada para despegue y aterrizaje de aeronaves.\n\n### [Ign Lineas De Transporte Ferroviario An010](./ign_lineas_de_transporte_ferroviario_an010/)\n\nV\u00eda f\u00e9rrea constituida por dos o tres rieles o carriles paralelos entre s\u00ed, sobre los cuales encajan y giran las ruedas de las locomotoras y vagones que conforman los trenes.\n\n### [Accidente costero](./ign_lineas_de_zona_costera_ba040/)\n\nConfiguraci\u00f3n geomorfol\u00f3gica de la zona litoral.\n\n### [C\u00edrculo polar](./ign_lineas_terrestres_070401/)\n\n\"Cada uno de los dos paralelos situados a 66\u00ba 33' 45\"\" Norte y 66\u00ba 33' 45\"\" Sur, refiri\u00e9ndose respectivamente a los c\u00edrculos polares \u00c1rtico y Ant\u00e1rtico.\"\n\n### [Ign Lineas Terrestres 070402](./ign_lineas_terrestres_070402/)\n\nCada uno de los dos c\u00edrculos imaginarios de la esfera celeste paralelos al Ecuador, ubicados aproximadamente a la latitudes de 23\u00ba 26` 17``,43 Norte y 23\u00ba 26` 17``,43 Sur.\n\n### [Ign Lineas Terrestres 070403](./ign_lineas_terrestres_070403/)\n\nC\u00edrculo m\u00e1ximo, perpendicular al eje de rotaci\u00f3n de la Tierra que la divide en dos hemisferios: Norte y Sur. En \u00e9l se origina la coordenada geogr\u00e1fica latitud.\n\n### [Ign Localidad Bahra](./ign_localidad_bahra/)\n\nSuperficie terrestre caracterizada por la continuidad de \u00e1reas edificadas y no edificadas conectadas entre s\u00ed por una red de calles donde se concentra poblaci\u00f3n.\n\n### [Mar Territorial argentino](./ign_mar_territorial_argentino/)\n\nZona mar\u00edtima que se extiende hasta una distancia de 12 millas marinas a partir de la l\u00ednea de base.\n\n### [Ign Mareas Y Corrientes Bg020](./ign_mareas_y_corrientes_bg020/)\n\nDispositivo construido en el mar, cerca de la costa, para registrar las variaciones del nivel del agua en el tiempo. \n\n### [Modelo Digital de Elevaciones](./ign_mde/)\n\nCobertura de los modelos digitales de elevaci\u00f3n (MDE)\n\n### [Gobierno Local](./ign_municipio/)\n\nDivisi\u00f3n pol\u00edtico administrativa de tercer orden que incluye comunas, juntas vecinales y dem\u00e1s formas de gobierno local.\n\n### [Red de nivelaci\u00f3n de Alta Precisi\u00f3n](./ign_nivelacion_alta_precision/)\n\nRed de nivelaci\u00f3n de Alta Precisi\u00f3n\n\n### [Red de nivelaci\u00f3n de Precisi\u00f3n](./ign_nivelacion_precision/)\n\nRed de nivelaci\u00f3n de Precisi\u00f3n\n\n### [Red de nivelaci\u00f3n Topogr\u00e1fica](./ign_nivelacion_topografica/)\n\nRed de nivelaci\u00f3n Topogr\u00e1fica\n\n### [Ign Pais](./ign_pais/)\n\nNaci\u00f3n jur\u00eddicamente organizada.\n\n### [Pasos de Fronteras Internacionales](./ign_pasos_de_fronteras_internacionales/)\n\nPaso de Frontera Internacional (PFI) identifica un punto de entrada y salida de personas, mercader\u00edas y medios de transporte, que vincula de manera directa (por medios fluviales o terrestres) a la ...\n\n### [Plantaci\u00f3n permanente](./ign_plantacion_permanente_kb025/)\n\nTerreno dedicado a una actividad agraria que implica un uso permanente del espacio geogr\u00e1fico, o por un largo lapso de tiempo.\n\n### [Plataforma Continental](./ign_plataforma_continental/)\n\nZona mar\u00edtima que comprende el lecho y el subsuelo de las \u00e1reas submarinas que se extienden m\u00e1s all\u00e1 del mar territorial y a todo lo largo de la prolongaci\u00f3n natural del territorio hasta el borde e...\n\n### [Ign Provincia](./ign_provincia/)\n\nDivisi\u00f3n pol\u00edtico territorial de primer orden. Incluye la Ciudad Aut\u00f3noma de Buenos Aires (CABA).\n\n### [Molino viento](./ign_puntos_de_actividad_agropecuaria_aj050/)\n\nArtefacto o m\u00e1quina que sirve para extracci\u00f3n de agua utilizando la energ\u00eda del viento.\n\n### [Invernadero, vivero, huerta](./ign_puntos_de_actividad_agropecuaria_aj110/)\n\nTerreno destinado al cultivo de hortalizas, legumbres, \u00e1rboles y dem\u00e1s. En los casos de invernadero y vivero, pueden estar dotados de una cubierta transl\u00facida. Incluye quinta.\n\n### [Embalse rural](./ign_puntos_de_aguas_continentales_041101/)\n\nExcavaci\u00f3n descubierta destinada al dep\u00f3sito de agua en zonas rurales. \n\n### [Ign Puntos De Aguas Continentales Bh051](./ign_puntos_de_aguas_continentales_bh051/)\n\nTerrapl\u00e9n natural o artificial destinado a detener o estancar el escurrimiento del agua en su curso, a los efectos de su almacenamiento para fines rurales o industriales.\n\n### [Fuente natural](./ign_puntos_de_aguas_continentales_bh170/)\n\nFlujo natural de agua formado por drenaje en la superficie o por afloramiento de la fre\u00e1tica subterr\u00e1nea. \n\n### [Catarata, cascada, salto](./ign_puntos_de_aguas_continentales_bh180/)\n\nCa\u00edda vertical de una corriente de agua, producida por brusco desnivel del cauce. \n\n### [Tanque de combustible](./ign_puntos_de_almacenamiento_y_logistica_am070/)\n\nDep\u00f3sito destinado a almacenar combustibles l\u00edquidos o gaseosos para su posterior utilizaci\u00f3n.\n\n### [Tanque de agua elevado](./ign_puntos_de_almacenamiento_y_logistica_am080/)\n\nTanque para almacenamiento de agua, localizado a una distancia del suelo tal que permita la presi\u00f3n de agua necesaria para su distribuci\u00f3n.\n\n### [Edificio Gubernamental](./ign_puntos_de_asentamientos_y_edificios_020101/)\n\nConstrucci\u00f3n destinada al asiento de la autoridad oficial de un organismo nacional, provincial, municipal o comunal, y sede de actividades p\u00fablicas administrativas.\n\n### [Edificio de comunicaciones](./ign_puntos_de_asentamientos_y_edificios_020102/)\n\nEdificio p\u00fablico destinado a la transmisi\u00f3n y recepci\u00f3n de mensajes realizados por distintas tecnolog\u00edas y medios.\n\n### [Ign Puntos De Asentamientos Y Edificios 020108](./ign_puntos_de_asentamientos_y_edificios_020108/)\n\nEstructura no techada, parcial o totalmente destruida, que es significativa en su entorno.\n\n### [Ign Puntos De Asentamientos Y Edificios Al015](./ign_puntos_de_asentamientos_y_edificios_al015/)\n\nEstructura techada relativamente permanente, dise\u00f1ada para alg\u00fan uso particular y que no se encuentra comprendida dentro de los dem\u00e1s objetos geogr\u00e1ficos del presente Cat\u00e1logo.\n\n### [Sitio de inter\u00e9s](./ign_puntos_de_asentamientos_y_edificios_al201/)\n\nLugar declarado de importancia o de inter\u00e9s. Incluye sitio arqueol\u00f3gico y sitio hist\u00f3rico. No incluye ruina.\n\n### [Ign Puntos De Asentamientos Y Edificios Ruina](./ign_puntos_de_asentamientos_y_edificios_ruina/)\n\nConstrucciones semidestruidas por acci\u00f3n del tiempo, antr\u00f3pica o acontecimiento natural, que tienen reconocido valor hist\u00f3rico.\n\n### [Establecimiento educativo](./ign_puntos_de_ciencia_y_educacion_020601/)\n\nEdificio dise\u00f1ado y equipado para realizar actividades educativas de nivel inicial, primario, secundario, polimodal, terciario o universitario, sea de gesti\u00f3n estatal o privada. Tiene en cuenta la ...\n\n### [Ign Puntos De Ciencia Y Educacion 020602](./ign_puntos_de_ciencia_y_educacion_020602/)\n\nConjunto de unidades educativas de ense\u00f1anza superior. Puede ser de gesti\u00f3n estatal o privada.\n\n### [Centro Cient\u00edfico](./ign_puntos_de_ciencia_y_educacion_al295/)\n\nConjunto de instalaciones destinadas a realizar investigaciones cient\u00edficas. Incluye observatorio astron\u00f3mico, polo cient\u00edfico y tecnol\u00f3gico, entre otros.\n\n### [Ign Puntos De Comunicacion At010](./ign_puntos_de_comunicacion_at010/)\n\nDispositivo dise\u00f1ado con el objetivo de emitir o recibir ondas electromagn\u00e9ticas. Est\u00e1 ubicado sobre el suelo.\n\n### [Torre de telecomunicaciones](./ign_puntos_de_comunicacion_at080/)\n\nEstructura met\u00e1lica de gran altura que se utiliza para sostener antenas con fines de transmisi\u00f3n o recepci\u00f3n de ondas electromagn\u00e9ticas. \n\n### [Ign Puntos De Cruces Y Enlaces Aq040](./ign_puntos_de_cruces_y_enlaces_aq040/)\n\nEstructura que asegura la continuidad de una v\u00eda de transporte (ejemplo: red vial, calle, ferrocarril) por sobre un obst\u00e1culo natural o artificial del terreno (ejemplo: corriente de agua, canal, en...\n\n### [Ign Puntos De Cruces Y Enlaces Aq065](./ign_puntos_de_cruces_y_enlaces_aq065/)\n\nEstructura ingenieril en forma tubular o en b\u00f3veda que se encuentra asociada a la red de transporte y que permite el cruce de una corriente de agua u otro obst\u00e1culo.\n\n### [Ign Puntos De Cruces Y Enlaces Aq130](./ign_puntos_de_cruces_y_enlaces_aq130/)\n\nPaso subterr\u00e1neo abierto artificialmente para establecer una comunicaci\u00f3n a trav\u00e9s de una monta\u00f1a, por debajo de una corriente de agua u otro obst\u00e1culo.\n\n### [Ign Puntos De Cruces Y Enlaces Bh070](./ign_puntos_de_cruces_y_enlaces_bh070/)\n\nLugar en una corriente de agua o espejo de agua con lecho m\u00e1s o menos firme y poco profundo, por donde es posible pasar a pie, caballo o veh\u00edculo.\n\n### [Central el\u00e9ctrica](./ign_puntos_de_energia_ad010/)\n\nEdificio y equipamiento necesario para la generaci\u00f3n de energ\u00eda el\u00e9ctrica. \n\n### [Planta transformadora](./ign_puntos_de_energia_ad030/)\n\nPlanta que se encuentra junto a las centrales generadoras o en la periferia de las diversas zonas de consumo, donde se transforma la tensi\u00f3n de la energ\u00eda el\u00e9ctrica.\n\n### [Ign Puntos De Equipamiento Ah030](./ign_puntos_de_equipamiento_ah030/)\n\nEstructura destinada a dar albergue eventual en zonas con condiciones adversas.\n\n### [Ign Puntos De Equipamiento Al030](./ign_puntos_de_equipamiento_al030/)\n\nEspacio p\u00fablico o privado reservado para dar sepultura. Incluye cementerio parque.\n\n### [Ign Puntos De Equipamiento Al130](./ign_puntos_de_equipamiento_al130/)\n\nObra arquitect\u00f3nica o art\u00edstica, sea conmemorativa o hist\u00f3rica. Incluye estatua, fuente, busto, inscripci\u00f3n, monolito y calvario, entre otros.\n\n### [C\u00e1mara de v\u00e1lvulas](./ign_puntos_de_estructura_asociada_aa051/)\n\nLugar cercado, que en su interior se encuentran juegos de v\u00e1lvulas para el manejo de los fluidos del ducto que controlan.\n\n### [Galp\u00f3n, tinglado](./ign_puntos_de_estructura_asociada_aj080/)\n\nLugar cubierto, cerrado o abierto por un o m\u00e1s lados destinado al almacenamiento de productos o maquinaria.\n\n### [Planta de bombeo de agua](./ign_puntos_de_estructura_asociada_aq116/)\n\nLugar que contiene bombas de achique para desagotar \u00e1reas bajas.\n\n### [Ign Puntos De Extraccion Aa010](./ign_puntos_de_extraccion_aa010/)\n\nSitio destinado a la extracci\u00f3n de minerales metal\u00edferos y no metal\u00edferos por galer\u00edas subterr\u00e1neas o a cielo abierto. \n\n### [Pozo hidrocarburos](./ign_puntos_de_extraccion_aa050/)\n\nPerforaci\u00f3n hecha en la tierra o mar para la extracci\u00f3n de hidrocarburos l\u00edquidos o gaseosos.\n\n### [Ign Puntos De Fabricacion Y Procesamiento Ac000](./ign_puntos_de_fabricacion_y_procesamiento_ac000/)\n\nConjunto de instalaciones donde se realiza una serie de actividades t\u00e9cnicas destinadas a producir bienes materiales transformando materias primas. Incluye planta de ensamble. No incluye astillero.\n\n### [Planta de tratamiento de efluentes cloacales](./ign_puntos_de_fabricacion_y_procesamiento_ac507/)\n\nConjunto de instalaciones destinadas al tratamiento de aguas servidas.\n\n### [Planta potabilizadora de agua](./ign_puntos_de_fabricacion_y_procesamiento_bh220/)\n\nConjunto de instalaciones cuya funci\u00f3n es la producci\u00f3n de agua para consumo humano.\n\n### [Ign Puntos De Geomorfologia 050203](./ign_puntos_de_geomorfologia_050203/)\n\nElevaci\u00f3n del terreno, c\u00f3nica, aislada, y con su parte superior trunca.\n\n### [Punto acotado](./ign_puntos_de_geomorfologia_ca030/)\n\nPunto del terreno que ha sido medido altim\u00e9tricamente y no est\u00e1 materializado en el terreno.\n\n### [Abra, paso, portillo, portezuelo](./ign_puntos_de_geomorfologia_db120/)\n\nDepresi\u00f3n del terreno entre dos alturas o cerros, que constituye un portal en unos casos o simplemente una puerta de paso a valles situados a ambos lados.\n\n### [Ign Puntos De Geomorfologia Na100](./ign_puntos_de_geomorfologia_na100/)\n\nElevaci\u00f3n que sobresale de los lineamientos serranos o monta\u00f1osos. Incluye monte, morro, nevado, pico, volc\u00e1n. El nevado es un cerro de gran altura que posee nieves perpetuas en su cumbre y permane...\n\n### [Planta de tratamiento de residuos](./ign_puntos_de_gestion_de_residuos_ab030/)\n\nConjunto de instalaciones donde se realiza alg\u00fan tipo de clasificaci\u00f3n o tratamiento a los residuos. Incluye las plantas de residuos patol\u00f3gicos y las plantas recicladoras.\n\n### [Ign Puntos De Glaciologia Bj030](./ign_puntos_de_glaciologia_bj030/)\n\nMasa de hielo permanente y en movimiento, alimentada desde un ventisquero y que en forma de lengua ocupa un valle movi\u00e9ndose cuesta abajo. Tambi\u00e9n incluye glaciar de circo.\n\n### [Ign Puntos De Obstrucciones Bd130](./ign_puntos_de_obstrucciones_bd130/)\n\nAgregado de una o m\u00e1s variedades de minerales, en estado s\u00f3lido, de gran tama\u00f1o, que constituye un peligro para la navegaci\u00f3n.\n\n### [Ign Puntos De Puertos Y Muelles Bb005](./ign_puntos_de_puertos_y_muelles_bb005/)\n\nConjunto de obras, instalaciones y servicios que proporciona el espacio necesario para la estancia de embarcaciones mientras se realizan operaciones de carga, descarga, almacenamiento de productos ...\n\n### [Ign Puntos De Puertos Y Muelles Bb041](./ign_puntos_de_puertos_y_muelles_bb041/)\n\nMuro o pared de contenci\u00f3n para la protecci\u00f3n contra olas o mareas a lo largo de una costa, protecci\u00f3n contra crecida en corrientes de agua y para facilitar operaciones de atraque de embarcaciones,...\n\n### [Centro de esqu\u00ed](./ign_puntos_de_recreacion_020401/)\n\n\u00c1rea que dispone de pistas de esqu\u00ed y medios de elevaci\u00f3n. Puede contener hoteles y espacio para usar trineos.\n\n### [Instalaci\u00f3n deportiva y de esparcimiento](./ign_puntos_de_recreacion_ak040/)\n\nConjunto de instalaciones destinadas al desarrollo de actividades sociales, recreativas y deportivas. Hace referencia a club, balneario, pol\u00edgono de tiro, conjunto de canchas, campo de golf, campo ...\n\n### [Ign Puntos De Transporte Aereo Gb001](./ign_puntos_de_transporte_aereo_gb001/)\n\nLugar de aterrizaje de aeronaves de menor porte que un aeropuerto, con o sin instalaciones de servicios y sin aduana. Incluye aeroclub.\n\n### [Ign Puntos De Transporte Aereo Gb005](./ign_puntos_de_transporte_aereo_gb005/)\n\nEstaci\u00f3n terrestre provista de un conjunto de pistas, instalaciones y servicios destinados al tr\u00e1fico regular de aeronaves. Puede tener aduana.\n\n### [Ign Puntos De Transporte Aereo Gb035](./ign_puntos_de_transporte_aereo_gb035/)\n\nPista circular marcada con una letra \u00a8H\u00a8, para la operaci\u00f3n de aeronaves de despegue vertical. Puede incluir instalaciones asociadas.\n\n### [Estaci\u00f3n de ferrocarril](./ign_puntos_de_transporte_ferroviario_an070/)\n\nConjunto de instalaciones edilicias y dem\u00e1s dependencias donde regularmente se detiene el transporte ferroviario, suben y bajan pasajeros y/o mercanc\u00edas.\n\n### [Red de estaciones GPS/GNSS RAMSAC](./ign_ramsac/)\n\nRed de estaciones GPS/GNSS permanentes que poseen coordenadas en el Marco de Referencia Geod\u00e9sico Nacional POSGAR 2007. Esta red es denominada Red Argentina de Monitoreo Satelital Continuo (RAMSAC).\n\n### [Red RAMSAC-NTRIP](./ign_ramsac_ntrip/)\n\nRed RAMSAC-NTRIP\n\n### [Red geod\u00e9sica Densificaci\u00f3n POSGAR07](./ign_red_densificacion_posgar/)\n\nRed geod\u00e9sica Densificaci\u00f3n POSGAR07\n\n### [Red geod\u00e9sica PASMA](./ign_red_pasma/)\n\nProyecto de Asistencia al Sector Minero\n\n### [Red geod\u00e9sica POSGAR07](./ign_red_posgar/)\n\nRed geod\u00e9sica POSGAR07\n\n### [Red geod\u00e9sica Provincial](./ign_red_provincial/)\n\nRed geod\u00e9sica Provincial\n\n### [Edificio de salud](./ign_salud_020801/)\n\nConjunto de instalaciones, establecimientos e instituciones en las cuales se brindan los servicios y la atenci\u00f3n de salud para la poblaci\u00f3n. \n\n### [Ign Sin Vegetacion 061001](./ign_sin_vegetacion_061001/)\n\n\u00c1rea en la que la vegetaci\u00f3n ha sido eliminada artificialmente para desarrollar diferentes actividades. Posteriormente puede dedicarse a la agricultura. Por lo general, es de contornos regulares.\n\n### [Ign Sublocalidad Entidad Bahra](./ign_sublocalidad_entidad_bahra/)\n\nSubdivisi\u00f3n de una localidad seg\u00fan legislaci\u00f3n del gobierno local.\n\n### [Terreno para cultivo](./ign_terreno_para_cultivo_ea010/)\n\nTerreno destinado a la siembra de cereales, hortalizas u otros vegetales que no son permanentes, y que pueden rotar de un a\u00f1o a otro. Incluye terreno en barbecho.\n\n### [Bosque artificial](./ign_vegetacion_arborea_060301/)\n\n\u00c1rea cerrada o abierta con \u00e1rboles implantados de bajo, mediano o gran porte. No incluye las \u00e1reas de reserva.\n\n### [Ign Vegetacion Arborea 060302](./ign_vegetacion_arborea_060302/)\n\nSuperficie cubierta por hierbas, arbustos y \u00e1rboles de no m\u00e1s de 5 metros de altura, de menor densidad de cobertura que en el caso del bosque.\n\n### [Parque artificial](./ign_vegetacion_arborea_ak120/)\n\n\u00c1rea con vegetaci\u00f3n implantada con diferentes especies aut\u00f3ctonas y al\u00f3ctonas, cuyo sentido es crear un \u00e1rea para esparcimiento.\n\n### [Bosque, selva](./ign_vegetacion_arborea_ec015/)\n\n\u00c1rea cerrada o abierta con \u00e1rboles naturales de importante densidad, de bajo, mediano o gran porte.\n\n### [Estepa arbustiva](./ign_vegetacion_arbustiva_eb015/)\n\n\u00c1rea con asociaci\u00f3n de arbustos bajos, de tallos finos y con baja densidad de cobertura que puede dejar claros. Se encuentran ejemplos en Patagonia. \n\n### [Pajonal, juncal, totoral](./ign_vegetacion_hidrofila_ed020/)\n\n\u00c1rea con vegetaci\u00f3n que crece en terrenos saturados de humedad o inundados, bajos y anegadizos. Algunas especies son flotantes. \n\n### [Ign Vial Ap010](./ign_vial_ap010/)\n\nCamino de acceso y recorrido de establecimientos en zonas rurales. Incluye caminos de poca importancia que se desprenden de caminos de tierra y los caminos demarcados en loteos para futuros barrios...\n\n### [Senda rural](./ign_vial_ap050/)\n\nCamino angosto de trazo sinuoso en zona rural, abierto por el tr\u00e1nsito de personas o animales.\n\n### [Red vial nacional](./ign_vial_nacional/)\n\nRepresenta los objetos geogr\u00e1ficos relativos a v\u00edas de circulaci\u00f3n de jurisdicci\u00f3n nacional.\n\n### [Red vial provincial](./ign_vial_provincial/)\n\nRepresenta los objetos geogr\u00e1ficos relativos a v\u00edas de circulaci\u00f3n de jurisdicci\u00f3n provincial.\n\n### [Red vial terciaria](./ign_vial_terciaria/)\n\nRepresenta los objetos geogr\u00e1ficos relativos a v\u00edas de circulaci\u00f3n complementarios a las redes viales nacionales y provinciales.\n\n### [Zona Contigua argentina](./ign_zona_contigua_argentina/)\n\nZona mar\u00edtima que se extiende desde el l\u00edmite exterior del mar territorial, hasta una distancia de 24 millas marinas medidas a partir de la l\u00ednea de base.\n\n### [Zona Econ\u00f3mica Exclusiva argentina](./ign_zona_economica_exclusiva_argentina/)\n\nZona mar\u00edtima que se extiende m\u00e1s all\u00e1 del l\u00edmite exterior del mar territorial, hasta una distancia de 200 millas marinas a partir de la l\u00ednea de base.\n\n</details>\n\n## Coverage\n\n**Spatial Extent**\n\n- West: -179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.0000, South: -179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.0000, East: 180.0000, North: 66.5500\n\n## Source\n\n[https://wms.ign.gob.ar/geoserver/ows](https://wms.ign.gob.ar/geoserver/ows)\n\n## Attribution\n\nInstituto Geogr\u00e1fico Nacional\n\n## License\n\n[LicenseRef-Ley-27275](http://servicios.infoleg.gob.ar/infolegInternet/anexos/265000-269999/265949/texact.htm)\n\n## Contact\n\nNissim Lebovits <nissim.lebovits@radiant.earth>\n\n---\n\n*Generated by [Portolan](https://github.com/portolan-sdi/portolan-cli) from STAC metadata and .portolan/metadata.yaml*\n",
+  "_review": [
+    "license: Argentina's Public Information Access Law 27.275 (Ley de Derecho de Acceso a la Informaci\u00f3n P\u00fablica); not a standard SPDX identifier. Full text: http://servicios.infoleg.gob.ar/infolegInternet/anexos/265000-269999/265949/texact.htm",
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [ign_area_de_montana.geometry (geometry), ign_area_de_montana.provincia (placename), ign_area_protegida.geometry (geometry), ign_area_vuelos_dsr_sig.geometry (geometry), ign_area_vuelos_vant_sig.geometry (geometry), ign_areas_de_actividad_agropecuaria_aj110.geometry (geometry), ign_vial_nacional.geometry (geometry), ign_vial_provincial.geometry (geometry), ign_vial_terciaria.geometry (geometry), ign_zona_contigua_argentina.geometry (geometry), ign_zona_economica_exclusiva_argentina.geometry (geometry)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-06-29T10:14:34+00:00",
+  "_source_format": "stac",
+  "store_format": null
 }
