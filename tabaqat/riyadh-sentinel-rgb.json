@@ -1,17 +1,90 @@
 {
-  "account_id": "tabaqat",
-  "product_id": "riyadh-sentinel-rgb",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "tabaqat/riyadh-sentinel-rgb",
   "title": "Sentinel-2 L2A RGB Satellite Imagery (COG) - Riyadh Governorate, Saudi Arabia",
-  "description": "This repository include (Cloud Opimized Geotiff) Sentinel-2 L2A Satellite Imagery of Riyadh Governorate, Saudi Arabia from (1 to 14) July 2024 , derived from https://earth-search.aws.element84.com/v1 by Tabaqat satellite tool which is one of Tabaqat GeoApps tools provided by https://tabaqat.net/.\n\n\n# You can navigate to @tabaqat to explore our repositories.",
+  "description": "Cloud-Optimized GeoTIFF RGB composite from Sentinel-2 L2A satellite imagery covering Riyadh Governorate, Saudi Arabia, derived from the Element84 Earth Search STAC catalog and processed with the Tabaqat satellite tool.",
   "keywords": [
-    "#sentinel #satellite #imagery #cog #aws #remotesensing #saudiarabia #tabaqat"
+    "sentinel-2",
+    "satellite-imagery",
+    "remote-sensing",
+    "cloud-optimized-geotiff",
+    "earth-observation"
   ],
+  "providers": [
+    {
+      "name": "Tabaqat",
+      "roles": [
+        "producer",
+        "processor"
+      ]
+    },
+    {
+      "name": "Copernicus Sentinel-2 Programme (ESA)",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/tabaqat/riyadh-sentinel-rgb"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          46.2528051,
+          24.1890302,
+          47.4548453,
+          25.4924246
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2024-07-01T00:00:00Z",
+          "2024-07-14T00:00:00Z"
+        ]
+      ]
+    }
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/tabaqat/riyadh-sentinel-rgb/",
+      "type": "image/tiff; application=geotiff",
+      "title": "Dataset files (1 x .tif)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/tabaqat/riyadh-sentinel-rgb/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/tabaqat/riyadh-sentinel-rgb",
+      "title": "Source Cooperative product page"
+    }
+  ],
+  "product_id": "riyadh-sentinel-rgb",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "file_count": 10,
   "created_at": "2024-11-23T11:11:14.903Z",
-  "updated_at": "2025-08-21T16:39:55.567Z",
-  "visibility": "public",
-  "disabled": false,
   "featured": 0,
-  "data_mode": "open",
+  "account_id": "tabaqat",
+  "disabled": false,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -24,8 +97,8 @@
       "prefix": "tabaqat/riyadh-sentinel-rgb/"
     }
   },
-  "file_count": 10,
-  "total_bytes": 964806866,
+  "data_mode": "open",
+  "updated_at": "2025-08-21T16:39:55.567Z",
   "exts": {
     "": 2,
     "trn": 2,
@@ -35,21 +108,15 @@
     "md": 1,
     "json": 1
   },
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "id": "tabaqat/riyadh-sentinel-rgb",
-  "cataloged_at": "2026-06-30T23:44:28+00:00",
-  "ext_bytes": {
-    "tif": 964801243,
-    "md": 2249,
-    "trn": 2088,
-    "json": 798,
-    "info": 256,
-    "": 168,
-    "dotnetuserlevelcache": 64
-  },
+  "total_bytes": 964806866,
+  "visibility": "public",
+  "readme": "## README.md\n\n# Sentinel-2 L2A RGB Satellite Imagery - Riyadh Governorate, Saudi Arabia\n\n![Riyadh Sentinel](https://i.imgur.com/8fTI5Gm.png)\n\n# Overview\nThis dataset includes (Cloud Opimized Geotiff) RGB Of Sentinel-2 L2A Satellite Imagery of Riyadh Governorate, Saudi Arabia.\nderived from https://earth-search.aws.element84.com/v1 by Tabaqat satellite tool \nwhich is one of Tabaqat GeoApps tools provided by https://tabaqat.net/ for a period from 1 to 14 July 2024.\n\n# Observe it in use\nYou can use https://earth.gov/ghgcenter/api/raster/cog/viewer to get a quick overview to see it in action through shared URL provided here \nhttps://data.source.coop/tabaqat/riyadh-sentinel-rgb/Sentinel-2_Satellite_RGB_Riyadh.tif by rescaling satellite image.\n\n# Files and Structure\n- `Sentinel-2_Satellite_RGB_Riyadh.tif` - COG file of Riyadh Governorate.\n- `README.md` - This file, explaining the repository.\n\n# Data Sources: \n  This dataset was compiled by tabaqat satellite tool from https://earth-search.aws.element84.com/v1.\n\n# Data Formats:\nthe data is provided in this format: \n- Cloud Optimized GeoTIFF : which is a regular GeoTIFF file, aimed at being hosted on a HTTP file server, with an internal organization that enables more efficient workflows on the cloud. It does this by leveraging the ability of clients issuing \u200bHTTP GET range requests to ask for just the parts of a file they need.for tabular data.\nAnd you can explore more information about Cloud Optimized GeoTiff Format, its Features and Tools and Sotwares that can deal with it from here https://cogeo.org/.\n\n# Data Access: \nSentinel Data Downloading Process Using Tabaqat Satellite Downloader Tool is clarified in our blog post https://tabaqat-wagtail.tabaqat.net/en/resources/blogs/enhanced-satellite-data-access-and-processing-through-tabaqat-geoapps-satellite-data-downloader/. \n\n# Data Upload Process\nData Upload Process Steps are explained in our blog post https://blogs.tabaqat.net/en/unlocking-spatial-insights-a-guide-to-uploading-geoparquet-files-onto-source-cooperative-platform-for-enhanced-data-collaboration/ which is valid for any data format.\n\n# Contact \nFor further details about the dataset or the processing steps, you can contact us via https://platform.tabaqat.net/contact-us.",
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
+    "providers: role [producer] for 'Copernicus Sentinel-2 Programme (ESA)' is an AI guess \u2014 README cites Sentinel-2 L2A imagery derived via Earth Search (Element84) rather than naming ESA/Copernicus directly as a provider.. Verify before flipping to _state: reviewed.",
+    "extent.temporal: None (probe sample) widened to ['2024-07-01T00:00:00Z', '2024-07-14T00:00:00Z'] using README-stated coverage ['2024-07-01', '2024-07-14']."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-06-30T23:51:35+00:00",
   "store_format": null
 }
