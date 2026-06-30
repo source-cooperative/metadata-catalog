@@ -1,34 +1,161 @@
 {
-  "account_id": "tge-labs",
-  "product_id": "meta-chm-v2",
-  "title": "Meta CHM v2",
-  "description": "Cloud-native version of the Version 2 High Resolution Canopy Height Maps by WRI and Meta from https://registry.opendata.aws/dataforgood-fb-forestsv2/",
-  "keywords": [],
-  "created_at": "2026-05-30T22:07:09.952Z",
-  "updated_at": "2026-06-01T17:51:32.742Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": "open",
-  "mirrors": {
-    "aws-opendata-us-west-2": {
-      "storage_type": "s3",
-      "is_primary": true,
-      "connection_id": "aws-opendata-us-west-2",
-      "config": {
-        "region": "us-west-2",
-        "bucket": "aws-opendata-us-west-2"
-      },
-      "prefix": "tge-labs/meta-chm-v2/"
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "tge-labs/meta-chm-v2",
+  "title": "Meta CHM v2 (DINOv3 global, ml3) \u2014 cloud-native companion",
+  "description": "A cloud-native repackaging of Meta's DINOv3 Global Canopy Height Map v2 (ml3), providing a global ~1.19 m resolution canopy height raster spanning 213,109 Web-Mercator tiles in EPSG:3857. Pixel values encode canopy height in meters (uint8, 0\u2013254) derived from satellite imagery and deep learning. The dataset is distributed as cloud-optimized GeoTIFFs, a multiscale GeoZarr/Icechunk store, GeoParquet tile indexes, and a static STAC catalog.",
+  "license": "CC-BY-4.0",
+  "keywords": [
+    "canopy-height",
+    "forest",
+    "lidar",
+    "global-coverage",
+    "dinov3",
+    "meta",
+    "remote-sensing",
+    "cloud-optimized-geotiff",
+    "zarr",
+    "icechunk",
+    "geoparquet"
+  ],
+  "providers": [
+    {
+      "name": "Meta AI / DataForGood",
+      "roles": [
+        "producer",
+        "licensor"
+      ],
+      "url": "https://dataforgood.facebook.com/dfg/tools/canopy-height-maps"
+    },
+    {
+      "name": "Taylor Geospatial",
+      "roles": [
+        "processor",
+        "host"
+      ],
+      "url": "https://taylorgeospatial.org"
+    },
+    {
+      "name": "Meta / Data for Good",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "World Resources Institute (WRI)",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Taylor Geospatial Engine Labs",
+      "roles": [
+        "processor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/tge-labs/meta-chm-v2"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -180.0,
+          -56.752722872057355,
+          180.0,
+          83.23642648170203
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2005-03-15T00:00:00Z",
+          "2020-08-31T00:00:00Z"
+        ]
+      ]
     }
   },
-  "file_count": 213982,
-  "total_bytes": 23828612322810,
+  "assets": {
+    "geozarr": {
+      "href": "https://data.source.coop/tge-labs/meta-chm-v2/zarr/chm.zarr.icechunk",
+      "type": "application/vnd.zarr",
+      "title": "Multiscale GeoZarr (Icechunk, virtual)",
+      "description": "Self-contained Icechunk virtual GeoZarr; groups 1x (native 1.19 m) .. 64x. Open anonymously with icechunk + xarray, or via the Arraylake repo 'taylor-geospatial/meta-chm-v2'.",
+      "roles": [
+        "data",
+        "overview"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/tge-labs/meta-chm-v2/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/tge-labs/meta-chm-v2",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "rel": "cite-as",
+      "href": "https://arxiv.org/abs/2304.07213",
+      "title": "Tolan et al., 2024"
+    },
+    {
+      "rel": "cite-as",
+      "href": "https://arxiv.org/abs/2603.06382",
+      "title": "Brandt et al., 2026 (CHMv2)"
+    }
+  ],
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
   "exts": {
     "tif": 213110,
     "": 601,
     "json": 201,
     "parquet": 3,
+    "ws3xpxh6549tmetpbj70": 1,
+    "d3ppz8q99se3mwyp89v0": 1,
+    "3v6qx1fnyjswrq7cae5g": 1,
+    "53z7mgg7w9x99e4ds2gg": 1,
+    "v5y3g0xx6pb07fek7kk0": 1,
+    "25pa1fbs1nzpe1k8dqeg": 1,
+    "qry5ebvczv9c30k0895g": 1,
+    "1f327kjcvhfmstvttfn0": 1,
+    "x37ynrncrvkddt9h4mzg": 1,
+    "4cqhk9m6bk85s1ape2a0": 1,
+    "rgwec4ndfeehncyx4kp0": 1,
+    "h9z055gsj0njppd8vvt0": 1,
+    "1m0nhgmr3nnfj0n32tkg": 1,
+    "mx06rmzg0xg2mc0nj64g": 1,
+    "e6awj4j4ck89y0w4nwx0": 1,
+    "x1794g1msbmdx0ry6qw0": 1,
+    "wj8dnkdbmytkb76sn400": 1,
+    "bv3d9xrhm03s1v1cg230": 1,
+    "16g0adn1pnn75s38hbsg": 1,
+    "xgkwrped3ve30gg85yw0": 1,
+    "9myae34bj3a8qw9ppxe0": 1,
+    "8nty0m1jz5abc4f9k6ag": 1,
+    "e6pqrfncg0aea0x6a9fg": 1,
+    "tmp57fz02b8bvxw7dc3g": 1,
+    "zpwxbstxqh680whtawag": 1,
+    "8pat7xstvqqg5993qah0": 1,
+    "y883qa0p3jkh2pwgt1ag": 1,
+    "cm6pc1jssp86j72x853g": 1,
+    "f17g1xcx5yyx5dyp19ag": 1,
+    "fm6x3b1xaxnyf1kr6eq0": 1,
+    "md": 1,
     "rd9k7940h9pq7pt8vv9g": 1,
     "tre1kvg9b53vh7c61rdg": 1,
     "5256cm58cqd1j8kyh180": 1,
@@ -43,96 +170,36 @@
     "f5gn9fjc13mpya7ay58g": 1,
     "afg0kmz5zj11k9v0j7fg": 1,
     "yjzz20wrakd7kdbhx21g": 1,
-    "1m97acsgtndacyds7sx0": 1,
-    "cv2ym8btq7kzpw7yx6s0": 1,
-    "503b2a0vqde98q1qktm0": 1,
-    "dsg3d4q7gr7tsr56x8dg": 1,
-    "43pstzv0060yq78stkw0": 1,
-    "ehgq9rg3j4em964czqp0": 1,
-    "3wj2vz1wf9wwcw2kegbg": 1,
-    "r68z7dvdjjeqa0paccyg": 1,
-    "38kwtahkcj258gsjsf10": 1,
-    "h3sznvgtjqwzc5gnb5tg": 1,
-    "vj83radvbj3bygyn6sm0": 1,
-    "dsf4fj9vy007x8c0jkwg": 1,
-    "9vbdtpr0zn44rhwd49kg": 1,
-    "y0rdb80ecrv6rrx7pva0": 1,
-    "ydyskkr15dt18fnh5hdg": 1,
-    "7k4gz5zjb4qeephfd6k0": 1,
-    "bvawaes8bpk8mbdgvg8g": 1,
-    "xc12p0h6p1w22m4y6cj0": 1,
-    "rvescg9ck4vfqwk2c1v0": 1,
-    "sg657m2dnzm0sevjfjt0": 1,
-    "43dzyb1jc8d7vch1m5k0": 1,
-    "27sgd8x0mzahsmwx158g": 1,
-    "md": 1,
-    "ws3xpxh6549tmetpbj70": 1,
-    "d3ppz8q99se3mwyp89v0": 1,
-    "3v6qx1fnyjswrq7cae5g": 1,
-    "53z7mgg7w9x99e4ds2gg": 1,
-    "v5y3g0xx6pb07fek7kk0": 1,
-    "25pa1fbs1nzpe1k8dqeg": 1,
-    "qry5ebvczv9c30k0895g": 1,
-    "1f327kjcvhfmstvttfn0": 1,
-    "x37ynrncrvkddt9h4mzg": 1
+    "1m97acsgtndacyds7sx0": 1
   },
-  "ext_bytes": {
-    "tif": 23815024798328,
-    "": 13572922781,
-    "parquet": 14110040,
-    "json": 252527,
-    "md": 7807,
-    "tre1kvg9b53vh7c61rdg": 5902,
-    "5256cm58cqd1j8kyh180": 5824,
-    "d3ppz8q99se3mwyp89v0": 5735,
-    "1bskw6jb5q5rwyz0pb0g": 5648,
-    "3v6qx1fnyjswrq7cae5g": 5541,
-    "ak2at4pk3ykwxsyczkng": 5477,
-    "53z7mgg7w9x99e4ds2gg": 5395,
-    "ms8s94wvtf4245md6etg": 5317,
-    "v5y3g0xx6pb07fek7kk0": 5229,
-    "45jszkkm9sqnvsq3kak0": 5149,
-    "25pa1fbs1nzpe1k8dqeg": 5075,
-    "qry5ebvczv9c30k0895g": 4997,
-    "9cy3008n7fq7qef9ew4g": 4921,
-    "vfy1x6bgwfa1gmq7mkxg": 4836,
-    "61x9qdq5s475k6ykhqq0": 4773,
-    "1f327kjcvhfmstvttfn0": 4692,
-    "kr4nkynk55qabw6ay750": 4621,
-    "f5gn9fjc13mpya7ay58g": 4535,
-    "ws3xpxh6549tmetpbj70": 4522,
-    "rd9k7940h9pq7pt8vv9g": 4480,
-    "afg0kmz5zj11k9v0j7fg": 4458,
-    "yjzz20wrakd7kdbhx21g": 4373,
-    "x37ynrncrvkddt9h4mzg": 4308,
-    "1m97acsgtndacyds7sx0": 4229,
-    "cv2ym8btq7kzpw7yx6s0": 4165,
-    "503b2a0vqde98q1qktm0": 4089,
-    "dsg3d4q7gr7tsr56x8dg": 4007,
-    "4cqhk9m6bk85s1ape2a0": 3945,
-    "rgwec4ndfeehncyx4kp0": 3868,
-    "43pstzv0060yq78stkw0": 3801,
-    "h9z055gsj0njppd8vvt0": 3721,
-    "1m0nhgmr3nnfj0n32tkg": 3662,
-    "mx06rmzg0xg2mc0nj64g": 3583,
-    "e6awj4j4ck89y0w4nwx0": 3513,
-    "ehgq9rg3j4em964czqp0": 3436,
-    "3wj2vz1wf9wwcw2kegbg": 3362,
-    "x1794g1msbmdx0ry6qw0": 3290,
-    "r68z7dvdjjeqa0paccyg": 3219,
-    "wj8dnkdbmytkb76sn400": 3146,
-    "bv3d9xrhm03s1v1cg230": 3070,
-    "38kwtahkcj258gsjsf10": 3002,
-    "16g0adn1pnn75s38hbsg": 2929,
-    "h3sznvgtjqwzc5gnb5tg": 2861,
-    "xgkwrped3ve30gg85yw0": 2780,
-    "vj83radvbj3bygyn6sm0": 2715
+  "updated_at": "2026-06-01T17:51:32.742Z",
+  "featured": 0,
+  "account_id": "tge-labs",
+  "data_mode": "open",
+  "disabled": false,
+  "mirrors": {
+    "aws-opendata-us-west-2": {
+      "storage_type": "s3",
+      "is_primary": true,
+      "connection_id": "aws-opendata-us-west-2",
+      "config": {
+        "region": "us-west-2",
+        "bucket": "aws-opendata-us-west-2"
+      },
+      "prefix": "tge-labs/meta-chm-v2/"
+    }
   },
-  "store_format": null,
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "cataloged_at": "2026-06-26T21:38:01+00:00"
+  "product_id": "meta-chm-v2",
+  "visibility": "public",
+  "file_count": 213982,
+  "total_bytes": 23828612322810,
+  "created_at": "2026-05-30T22:07:09.952Z",
+  "readme": "## README.md\n# Meta CHM v2 (ml3) \u2014 Cloud-Native\n\nA cloud-native repackaging of Meta's **DINOv3 Global Canopy Height Map v2 (ml3)**:\na global ~1.19 m canopy-height raster (213,109 Web-Mercator tiles).\n\nEverything lives in this one bucket with CORS + HTTP range support, so it streams directly\nto browsers and analysis tools \u2014 no credentials, no second host:\n\n```\ns3://us-west-2.opendata.source.coop/tge-labs/meta-chm-v2/   (https://data.source.coop/tge-labs/meta-chm-v2/)\n\u251c\u2500\u2500 chm/                     # 213,109 COGs \u2014 uint8 metres, EPSG:3857, ~23.8 TB (CORS mirror of Meta's)\n\u251c\u2500\u2500 overview/\n\u2502   \u2514\u2500\u2500 chm_overview_z8.tif  # single global overview COG (z0\u20139) for fast world / low-zoom views\n\u251c\u2500\u2500 tiles.parquet            # GeoParquet 1.1 tile index (213,109 rows, bbox-indexed)\n\u251c\u2500\u2500 acq_dates.parquet        # per-tile source acquisition window (start / end / count)\n\u251c\u2500\u2500 stac/\n\u2502   \u251c\u2500\u2500 collection.json      # STAC Collection (CC-BY-4.0)\n\u2502   \u251c\u2500\u2500 items.parquet        # stac-geoparquet \u2014 one Item per tile, assets \u2192 this bucket's COGs\n\u2502   \u2514\u2500\u2500 items_sample/        # ~200 sample STAC Item JSONs (spec inspection)\n\u251c\u2500\u2500 zarr/\n\u2502   \u2514\u2500\u2500 chm.zarr.icechunk    # multiscale GeoZarr (Icechunk, virtual), groups 1x (native 1.19 m) .. 64x;\n\u2502                            #   zero-copy byte-range refs into this bucket's COGs\n\u251c\u2500\u2500 README.md\n\u2514\u2500\u2500 LICENSE\n```\n\n## What each artifact is for\n\n| Artifact                       | Use it for                                                                                                                                                                    |\n| ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |\n| `chm/`                         | The pixels \u2014 native ~1.19 m COGs, CORS + range-readable. Read directly via `/vsicurl`, rioxarray, rio-tiler, or an in-browser COG reader (geotiff.js).                        |\n| `overview/chm_overview_z8.tif` | One global COG covering z0\u20139 \u2014 fast continental/world views without touching 213k tiles.                                                                                      |\n| `tiles.parquet`                | Fast spatial lookup of which tile covers an AOI; drives maplibre/deck.gl tile loaders and DuckDB spatial queries. Replaces the original 56 MB `tiles.geojson`.                |\n| `stac/`                        | Discovery + access via STAC tooling (pystac, stac-fastapi, TiTiler, odc-stac). Asset hrefs point at this bucket's CORS COGs.                                                  |\n| `zarr/chm.zarr.icechunk`       | `xarray`/`dask` analytics + multiscale visualization (Arraylake). A 7-level pyramid, `1x` (native 1.19 m) \u2026 `64x` (~76 m); reads are byte-range GETs into this bucket's COGs. |\n\n## CRS & grid\n\n- **EPSG:3857** (Web Mercator) \u2014 matches the source; zero reprojection for web maps.\n- 10-character Bing/Microsoft quadkey tile grid (zoom 10). Native pixel \u2248 1.19 m at the equator.\n- Pixel values are **canopy height in meters** (uint8, 0\u2013254). `0` is both true-zero and\n    no-data (the source sets no explicit nodata mask).\n\n## Quickstart\n\n### Tile index (DuckDB)\n\n```sql\nINSTALL spatial; LOAD spatial;\nSELECT quadkey, cog_url, tile_size_bytes\nFROM 'https://data.source.coop/tge-labs/meta-chm-v2/tiles.parquet'\nWHERE bbox_3857.minx < 1000000 AND bbox_3857.maxx > 0;  -- AOI filter\n```\n\n### STAC \u2014 serverless, cloud-native search\n\nThis is a **static** STAC catalog: a `collection.json` plus a stac-geoparquet\n`items.parquet` (213,109 Items). **No STAC API server is required.** The parquet is\nwritten in 54 quadkey-sorted (Z-order) row groups with per-group bbox statistics, so a\nspatial query reads only the matching byte ranges over HTTP \u2014 e.g. a city-scale bbox\ntouches ~3 of 54 row groups, skipping ~94% of the file. Point any of these tools straight\nat the public URL:\n\n```\nhttps://data.source.coop/tge-labs/meta-chm-v2/stac/items.parquet\n```\n\n**Collection metadata (`pystac`):**\n\n```python\nimport pystac\nc = pystac.Collection.from_file(\n    \"https://data.source.coop/tge-labs/meta-chm-v2/stac/collection.json\"\n)\n```\n\n**Search the Items \u2014 pick your tool, all stream + prune row groups:**\n\n```python\n# rustac \u2014 a pystac-client-like search, in-process, no server\nfrom rustac import DuckdbClient\nitems = DuckdbClient().search(ITEMS_URL, bbox=[13.0, 52.0, 13.4, 52.3], max_items=100)\n```\n\n```sql\n-- DuckDB (httpfs range reads + row-group pruning)\nINSTALL spatial; LOAD spatial;\nSELECT id, assets FROM read_parquet('https://data.source.coop/tge-labs/meta-chm-v2/stac/items.parquet')\nWHERE bbox.xmin <= 13.4 AND bbox.xmax >= 13.0 AND bbox.ymin <= 52.3 AND bbox.ymax >= 52.0;\n```\n\n```python\n# pyarrow.dataset \u2014 predicate pushdown over the remote file\nimport pyarrow.dataset as ds, pyarrow.compute as pc\nt = ds.dataset(ITEMS_URL, format=\"parquet\").to_table(\n    filter=(pc.field(\"bbox\", \"xmin\") <= 13.4) & (pc.field(\"bbox\", \"xmax\") >= 13.0)\n)\n```\n\nAlso works: **geopandas** `read_parquet(..., bbox=...)`, **Polars** `scan_parquet`, and the\n**stac-geoparquet** library. For teams that specifically need the `pystac-client` API\n(`Client.open(...).search(...)`), serve `items.parquet` behind\n[`stac-fastapi-geoparquet`](https://github.com/stac-utils/stac-fastapi-geoparquet) \u2014 no\ndatabase required.\n\n**Search \u2192 xarray (`odc.stac`):** turn found Items into a lazily-loaded, dask-backed\n`xarray` cube reading the COGs directly (EPSG:3857, no reprojection):\n\n```python\nimport os, pystac, odc.stac\nfrom rustac import DuckdbClient\n\nos.environ.update(AWS_NO_SIGN_REQUEST=\"YES\", AWS_REGION=\"us-west-2\")  # this bucket's COGs are anonymous + CORS\nbbox = [13.30, 52.45, 13.45, 52.55]\nitems = [pystac.Item.from_dict(d) for d in DuckdbClient().search(ITEMS_URL, bbox=bbox)]\nchm = odc.stac.load(items, bands=[\"chm\"], bbox=bbox, resolution=10, chunks={\"x\": 2048, \"y\": 2048})\nheights = chm[\"chm\"].isel(time=0).compute()  # canopy height in meters\n```\n\nSee `examples/search_and_read.py` and `examples/odc_stac_load.py` in the\n[chm-zarr](https://github.com/taylor-geospatial/meta-chm-v2) repo.\n\n### Multiscale GeoZarr (xarray + Icechunk)\n\nThe GeoZarr is virtual \u2014 its chunks are byte-range references into the COGs in this same\nbucket, so it carries the full pyramid (`1x` native \u2026 `64x`) with no duplicated pixels.\n\n```python\nimport icechunk, xarray as xr\nprefix = \"s3://us-west-2.opendata.source.coop/\"\ncfg = icechunk.RepositoryConfig.default()\ncfg.set_virtual_chunk_container(\n    icechunk.VirtualChunkContainer(prefix, icechunk.s3_store(region=\"us-west-2\", anonymous=True))\n)\nrepo = icechunk.Repository.open(\n    icechunk.s3_storage(\n        bucket=\"us-west-2.opendata.source.coop\",\n        prefix=\"tge-labs/meta-chm-v2/zarr/chm.zarr.icechunk\",\n        region=\"us-west-2\", anonymous=True,\n    ),\n    config=cfg,\n    authorize_virtual_chunk_access=icechunk.containers_credentials(\n        {prefix: icechunk.s3_anonymous_credentials()}\n    ),\n)\ndt = xr.open_datatree(repo.readonly_session(\"main\").store, engine=\"zarr\", consolidated=False)\nchm_native = dt[\"1x\"][\"chm\"]   # native ~1.19 m  (use 8x \u2248 9.6 m, 64x \u2248 76 m for overviews)\n```\n\nAlso available as a managed Arraylake repo: `taylor-geospatial/meta-chm-v2`.\n\n## Provenance & license\n\nCC-BY-4.0. Underlying data \u00a9 Meta / Data for Good; repackaging by Taylor\nGeospatial Engine Labs. See `LICENSE`. Cite Tolan et al. (2024),\nhttps://arxiv.org/abs/2304.07213, and Brandt et al. (2026, CHMv2),\nhttps://arxiv.org/abs/2603.06382.\n\nThe GeoZarr store holds only chunk references (offsets/lengths) into the COGs in **this**\nbucket (`chm/`), so it is self-contained \u2014 no dependency on Meta's bucket.\n",
+  "_review": [
+    "providers: role [producer] for 'World Resources Institute (WRI)' is an AI guess \u2014 Listed as co-producer in the API description alongside Meta; role not explicitly described in the README body. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-06-30T10:05:43+00:00",
+  "_source_format": "stac",
+  "store_format": null
 }
