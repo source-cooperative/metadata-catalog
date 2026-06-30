@@ -1,23 +1,161 @@
 {
-  "account_id": "fiboa",
-  "product_id": "austria",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
+  "id": "fiboa/austria",
   "title": "Field boundaries for Austria",
-  "description": "Provides ca. 1,300,000 official field boundaries for Austria.\nConverted from the INVEKOS Referenzen \u00d6sterreich 2021 GeoPackage to a fiboa GeoParquet file.\n\nThe layer includes all reference parcels (\"Referenzparzellen\") defined by the paying agency Agrarmarkt Austria and recorded landscape elements.",
+  "description": "Official field boundary (reference parcel) dataset for Austria, comprising approximately 1.3 million agricultural reference parcels and recorded landscape elements from the 2021 INVEKOS Referenzen \u00d6sterreich GeoPackage, converted to fiboa GeoParquet.",
+  "license": "proprietary",
   "keywords": [
-    "austria",
+    "field-boundaries",
     "fiboa",
-    "field boundaries",
-    "invekos",
+    "lpis",
+    "land-parcels",
+    "agriculture",
     "geoparquet",
-    "vector",
     "pmtiles"
   ],
+  "providers": [
+    {
+      "name": "Agrarmarkt Austria",
+      "roles": [
+        "producer",
+        "licensor"
+      ],
+      "url": "https://geometadatensuche.inspire.gv.at/metadatensuche/inspire/api/records/9db8a0c3-e92a-4df4-9d55-8210e326a7ed"
+    },
+    {
+      "name": "fiboa CLI",
+      "roles": [
+        "processor"
+      ],
+      "url": "https://pypi.org/project/fiboa-cli"
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://beta.source.coop/fiboa/austria/"
+    },
+    {
+      "name": "Agrarmarkt Austria",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Matthias Mohr",
+      "roles": [
+        "processor"
+      ]
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          9.527906274165764,
+          46.41230158735734,
+          17.15786908837973,
+          49.021160570100974
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2017-01-23T22:16:00Z",
+          "2021-06-17T07:22:54Z"
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 1299745
+  },
+  "assets": {
+    "data": {
+      "href": "inspire_referenzen_2021.parquet",
+      "title": "Field Boundaries",
+      "type": "application/vnd.apache.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "geometry",
+          "type": "binary"
+        },
+        {
+          "name": "id",
+          "type": "string"
+        },
+        {
+          "name": "ref_art",
+          "type": "string"
+        },
+        {
+          "name": "area",
+          "type": "float"
+        },
+        {
+          "name": "inspire:id",
+          "type": "string"
+        },
+        {
+          "name": "ref_art_bezeichnung",
+          "type": "string"
+        },
+        {
+          "name": "referenz_kennung",
+          "type": "uint64"
+        },
+        {
+          "name": "fart_id",
+          "type": "uint32"
+        },
+        {
+          "name": "determination_datetime",
+          "type": "timestamp[ms, tz=UTC]"
+        }
+      ],
+      "table:primary_geometry": "geometry",
+      "table:row_count": 1299745
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/fiboa/austria/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/fiboa/austria",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "href": "https://www.govdata.de/dl-de/by-2-0",
+      "title": "Data licence Germany - attribution - Version 2.0",
+      "type": "text/html",
+      "rel": "license"
+    }
+  ],
+  "product_id": "austria",
+  "account_id": "fiboa",
+  "exts": {
+    "json": 2,
+    "txt": 1,
+    "parquet": 1,
+    "md": 1,
+    "pmtiles": 1
+  },
+  "file_count": 6,
   "created_at": "2024-04-12T12:18:27.677378+00:00",
-  "updated_at": "2025-08-21T16:39:55.568Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": "open",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -30,27 +168,19 @@
       "prefix": "fiboa/austria/"
     }
   },
-  "file_count": 6,
+  "featured": 0,
   "total_bytes": 831291934,
-  "exts": {
-    "json": 2,
-    "txt": 1,
-    "parquet": 1,
-    "md": 1,
-    "pmtiles": 1
-  },
-  "_state": "seed",
+  "data_mode": "open",
+  "disabled": false,
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "cataloged_at": "2026-06-30T23:28:54+00:00",
-  "ext_bytes": {
-    "parquet": 556522791,
-    "pmtiles": 274740997,
-    "txt": 19053,
-    "json": 6545,
-    "md": 2548
-  },
+  "updated_at": "2025-08-21T16:39:55.568Z",
+  "visibility": "public",
+  "readme": "## README.md\n# Field boundaries for Austria\r\n\r\nProvides ca. 1,300,000 official field boundaries from the state of Austria.\r\nIt has been converted to a fiboa GeoParquet file from a GeoPackage that was provided by Agrarmarkt Austria.\r\n\r\n- **Source Data Provider:** [Agrarmarkt Austria](https://geometadatensuche.inspire.gv.at/metadatensuche/inspire/api/records/9db8a0c3-e92a-4df4-9d55-8210e326a7ed)\r\n- **Converted by:** [Matthias Mohr](https://mohr.ws)\r\n- **License:** CC-BY-4.0\r\n- **Projection:** EPSG:31287 (MGI / Austria Lambert)\r\n\r\n---\r\n\r\n- **[Download the data as fiboa GeoParquet](https://data.source.coop/fiboa/austria/inspire_referenzen_2021.parquet)**\r\n- [STAC Browser](https://radiantearth.github.io/stac-browser/#/external/data.source.coop/fiboa/austria/stac/collection.json)\r\n- [STAC Collection](https://data.source.coop/fiboa/austria/stac/collection.json)\r\n- [PMTiles](https://data.source.coop/fiboa/austria/inspire_referenzen_2021.pmtiles)\r\n\r\n## Columns\r\n\r\n| Property               | Data Type | Description                                                  |\r\n| ---------------------- | --------- | ------------------------------------------------------------ |\r\n| id                     | string    | Numerical identifier                                         |\r\n| inspire:id             | string    | INSPIRE-compliant identifier. Example: `https://data.inspire.gv.at/0095/9db8a0c3-e92a-4df4-9d55-8210e326a7ed/elu.ExistingLandUseObject/108601900154/MFA-2021` |\r\n| determination_datetime | datetime  | Valid since the given date.                                  |\r\n| area                   | float     | Area in ha                                                   |\r\n| ref_art                | string    | Type of field. One of: `ALM`,  `HEIM`, `HW`, `LSE_FL`, `PF`  |\r\n| ref_art_bezeichnung    | string    | Type of field in a more human-readable version of `REF_ART`. One of: `Alm`, `Heimgut`, `Hutweide`, `LSE Fl\u00e4che`, `Pflegefl\u00e4che` |\r\n| referenz_kennung       | uint64    | Example: `108601900154`                                      |\r\n| fart_id                | uint32    | Example: `1696`                                              |\r\n\r\nMapping of `REF_ART` and `REF_ART_BEZEICHNUNG`:\r\n\r\n- `ALM` = `Alm`\r\n- `HEIM` = `Heimgut`\r\n- `HW` = `Hutweide`\r\n- `LSE_FL` = `LSE Fl\u00e4che`\r\n- `PF` = `Pflegefl\u00e4che`\r\n\r\n## Lineage \r\n\r\n- Data downloaded on 2024-04-12 from https://inspire.lfrz.gv.at/009501/ds/inspire_referenzen_2021_polygon.gpkg.zip.\r\n- Converted to GeoParquet using [fiboa-cli](https://github.com/fiboa/cli), version 0.3.3-dev.\r\n",
+  "_state": "drafted",
+  "cataloged_at": "2026-06-30T23:54:52+00:00",
+  "_source_format": "stac",
   "store_format": null
 }
