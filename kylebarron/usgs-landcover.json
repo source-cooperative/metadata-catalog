@@ -1,15 +1,78 @@
 {
-  "account_id": "kylebarron",
-  "product_id": "usgs-landcover",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "kylebarron/usgs-landcover",
   "title": "Annual NLCD Land Cover data",
-  "description": "Annual Cloud-Optimized GeoTIFF files are copied from `s3://usgs-landcover`, an AWS S3 requester-pays bucket.\r\n\r\nReferences:\r\n\r\n- https://www.usgs.gov/centers/eros/science/nlcd-product-suite\r\n- https://www.usgs.gov/centers/eros/science/annual-national-land-cover-database\r\n\r\nData was copied with\r\n\r\n```\r\naws s3 sync s3://usgs-landcover/annual-nlcd/c1/v1/cu/mosaic/ ./ --request-payer\r\naws s3 sync . s3://us-west-2.opendata.source.coop/kylebarron/usgs-landcover/annual-nlcd/c1/v1/cu/mosaic/\r\n```",
-  "keywords": [],
-  "created_at": "2026-05-01T14:33:38.180Z",
-  "updated_at": "2026-05-01T16:22:57.437Z",
-  "visibility": "public",
+  "description": "Annual National Land Cover Database (NLCD) land cover classification rasters for the conterminous United States, distributed as Cloud-Optimized GeoTIFFs. Produced by USGS EROS, the dataset provides yearly land cover maps derived from Landsat imagery covering the lower 48 states. Files are mirrored from the USGS requester-pays S3 bucket.",
+  "keywords": [
+    "land-cover",
+    "remote-sensing",
+    "cloud-optimized-geotiff",
+    "earth-observation",
+    "time-series",
+    "landsat",
+    "satellite-imagery"
+  ],
+  "providers": [
+    {
+      "name": "USGS EROS",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/kylebarron/usgs-landcover"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -129.2773199,
+          21.8050952,
+          -63.1184295,
+          52.9217197
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/kylebarron/usgs-landcover/",
+      "type": "image/tiff; application=geotiff",
+      "title": "Dataset files (240 x .tif)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/kylebarron/usgs-landcover/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/kylebarron/usgs-landcover",
+      "title": "Source Cooperative product page"
+    }
+  ],
+  "product_id": "usgs-landcover",
   "disabled": false,
-  "featured": 0,
-  "data_mode": "open",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -22,21 +85,27 @@
       "prefix": "kylebarron/usgs-landcover/"
     }
   },
-  "file_count": 720,
-  "total_bytes": 506492563737,
-  "exts": {
-    "xml": 480,
-    "tif": 240
-  },
-  "store_format": null,
-  "_state": "seed",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "cataloged_at": "2026-06-09T20:47:12+00:00",
-  "ext_bytes": {
-    "tif": 506469665918,
-    "xml": 22897819
-  }
+  "account_id": "kylebarron",
+  "created_at": "2026-05-01T14:33:38.180Z",
+  "file_count": 720,
+  "total_bytes": 506492563737,
+  "featured": 0,
+  "data_mode": "open",
+  "exts": {
+    "xml": 480,
+    "tif": 240
+  },
+  "updated_at": "2026-05-01T16:22:57.437Z",
+  "visibility": "public",
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
+    "providers: role [producer, licensor] for 'USGS EROS' is an AI guess \u2014 USGS EROS is the named source of the data; licensor role inferred from government agency authorship \u2014 no explicit license terms stated.. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-06-30T09:55:33+00:00",
+  "store_format": null
 }
