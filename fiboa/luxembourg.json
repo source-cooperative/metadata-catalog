@@ -1,17 +1,137 @@
 {
-  "account_id": "fiboa",
-  "product_id": "luxembourg",
-  "title": "Luxembourg FLIK Parcels",
-  "description": "The Land Parcel Identification System (LPIS) is a reference database of the agriculture parcels used as a basis for area related payments to farmers in relation to the Common Agricultural Policy (CAP). These payments are (co)financed by the European Agricultural Guarantee Fund (\u2018EAGF\u2019) and the European Agricultural Fund for Rural Development (\u2018EAFRD\u2019).\nTo ensure that payments are regular, the CAP relies on the Integrated Administration and Control System (IACS), a set of comprehensive administrative and on the spot checks on subsidy applications, which is managed by the Member States. The Land Parcel Identification System (LPIS) is a key component of the IACS. It is an IT system based on ortho imagery (aerial or satellite photographs) which records all agricultural parcels in the Member States. It serves two main purposes: to clearly locate all eligible agricultural land contained within reference parcels and to calculate their maximum eligible area (MEA). The LPIS is used for cross checking during the administrative control procedures and as a basis for on the spot checks by the paying agency.\n",
-  "keywords": [
-    "luxembourg fiboa field flik boundaries geoparquet vector pmtiles"
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
   ],
-  "created_at": "2024-11-10T22:44:24.211Z",
-  "updated_at": "2025-08-21T16:39:55.569Z",
+  "id": "fiboa/luxembourg",
+  "title": "Luxembourg FLIK Parcels",
+  "description": "Official field boundary polygons for agricultural parcels in Luxembourg, covering 87,997 parcels identified by FLIK ID, converted to the fiboa GeoParquet specification.",
+  "license": "CC-BY-4.0",
+  "keywords": [
+    "field-boundaries",
+    "fiboa",
+    "lpis",
+    "land-parcels",
+    "agriculture",
+    "geoparquet",
+    "pmtiles"
+  ],
+  "providers": [
+    {
+      "name": "Luxembourg ministry of Agriculture",
+      "url": "https://agriculture.public.lu/",
+      "roles": [
+        "licensor",
+        "distributor"
+      ]
+    },
+    {
+      "name": "fiboa CLI",
+      "roles": [
+        "processor"
+      ],
+      "url": "https://pypi.org/project/fiboa-cli"
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/fiboa/luxembourg/"
+    },
+    {
+      "name": "Administration des services techniques de l'agriculture",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Ivor Bosloper",
+      "roles": [
+        "processor"
+      ]
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          5.736141650909274,
+          49.44872633968609,
+          6.533284021587814,
+          50.18226420224323
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 87997
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/fiboa/luxembourg/luxembourg.parquet",
+      "title": "Field Boundaries",
+      "type": "application/vnd.apache.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "geometry",
+          "type": "binary"
+        },
+        {
+          "name": "id",
+          "type": "string"
+        },
+        {
+          "name": "flik",
+          "type": "string"
+        }
+      ],
+      "table:primary_geometry": "geometry",
+      "table:row_count": 87997
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/fiboa/luxembourg/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/fiboa/luxembourg",
+      "title": "Source Cooperative product page"
+    }
+  ],
+  "total_bytes": 39338756,
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
   "visibility": "public",
-  "disabled": false,
   "featured": 0,
-  "data_mode": "open",
+  "disabled": false,
+  "updated_at": "2025-08-21T16:39:55.569Z",
+  "file_count": 6,
+  "exts": {
+    "json": 2,
+    "txt": 1,
+    "parquet": 1,
+    "md": 1,
+    "pmtiles": 1
+  },
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -24,27 +144,16 @@
       "prefix": "fiboa/luxembourg/"
     }
   },
-  "file_count": 6,
-  "total_bytes": 39338756,
-  "exts": {
-    "json": 2,
-    "txt": 1,
-    "parquet": 1,
-    "md": 1,
-    "pmtiles": 1
-  },
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "cataloged_at": "2026-06-30T23:29:14+00:00",
-  "ext_bytes": {
-    "parquet": 29085128,
-    "pmtiles": 10246860,
-    "json": 5445,
-    "md": 1210,
-    "txt": 113
-  },
+  "data_mode": "open",
+  "product_id": "luxembourg",
+  "account_id": "fiboa",
+  "created_at": "2024-11-10T22:44:24.211Z",
+  "readme": "## README.md\n# Field boundaries for Luxembourg\n\nProvides 87997 official field boundaries from Luxembourg.\nIt has been converted to a fiboa GeoParquet file from data obtained from Administration des services techniques de l'agriculture.\n\n- **Source Data Provider:** [Administration des services techniques de l'agriculture](https://agriculture.public.lu/)\n- **Converted by:** Ivor Bosloper\n- **License:** CC0 (public domain)\n- **Projection:** EPSG:2169 (Luxembourg 1930 / Gauss)\n\n---\n\n- [Download the data as fiboa GeoParquet](https://data.source.coop/fiboa/luxembourg/luxembourg.parquet)\n- [STAC Browser](https://radiantearth.github.io/stac-browser/#/external/data.source.coop/fiboa/lu/stac/collection.json)\n- [STAC Collection](https://data.source.coop/fiboa/luxembourg/stac/collection.json)\n- [PMTiles](https://data.source.coop/fiboa/luxembourg/luxembourg.pmtiles)\n\n## Columns\n\n| Property | **Data Type** | Description |\n|----------|---------------|-------------|\n| id       | string        | FLIK-id     |\n\n## Lineage\n\n- Data downloaded on 2024-11-10 from https://data.public.lu/fr/datasets/r/b4ae6690-7e4c-4454-8b60-9fa33ba6a61b .\n- Converted to GeoParquet using [fiboa-cli](https://github.com/fiboa/cli), version 0.7.0\n",
+  "_review": [
+    "providers: role [producer, licensor] for \"Administration des services techniques de l'agriculture\" is an AI guess \u2014 Listed as source data provider; assumed licensor as the original data owner.. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-06-30T23:50:28+00:00",
+  "_source_format": "unknown",
   "store_format": null
 }
