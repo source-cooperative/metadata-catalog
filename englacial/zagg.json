@@ -1,15 +1,81 @@
 {
-  "account_id": "englacial",
-  "product_id": "zagg",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "englacial/zagg",
   "title": "Zarr-aggregator",
-  "description": "Lambda builds for zagg",
-  "keywords": [],
-  "created_at": "2026-06-10T23:49:37.965Z",
-  "updated_at": "2026-06-10T23:49:37.965Z",
-  "visibility": "public",
-  "disabled": false,
+  "description": "Prebuilt AWS Lambda layer and function deployment zips for zagg, an open-source Zarr aggregation tool, keyed by minor version. Also includes benchmark outputs from zagg runs. Intended as ready-to-deploy build artifacts consumed by the zagg deployment scripts.",
+  "license": "MIT",
+  "keywords": [
+    "zarr",
+    "serverless",
+    "build-artifacts",
+    "benchmarking",
+    "cloud-storage"
+  ],
+  "providers": [
+    {
+      "name": "englacial/zagg",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/englacial/zagg"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -180.0,
+          -90.0,
+          180.0,
+          90.0
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/englacial/zagg/",
+      "type": "application/vnd+zarr",
+      "title": "Dataset files (6 x .zarr)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/englacial/zagg/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/englacial/zagg",
+      "title": "Source Cooperative product page"
+    }
+  ],
+  "product_id": "zagg",
   "featured": 0,
   "data_mode": "open",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -22,25 +88,24 @@
       "prefix": "englacial/zagg/"
     }
   },
-  "file_count": 38192,
-  "total_bytes": 1198664284,
+  "disabled": false,
+  "updated_at": "2026-06-10T23:49:37.965Z",
+  "total_bytes": 1477427895,
+  "file_count": 38222,
+  "created_at": "2026-06-10T23:49:37.965Z",
+  "visibility": "public",
   "exts": {
-    "": 38120,
-    "json": 46,
-    "zip": 20,
-    "md": 6
+    "": 38123,
+    "json": 58,
+    "zip": 32,
+    "md": 9
   },
-  "ext_bytes": {
-    "": 735238018,
-    "zip": 463364349,
-    "json": 58248,
-    "md": 3669
-  },
-  "store_format": "zarr",
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "cataloged_at": "2026-06-26T21:32:49+00:00"
+  "account_id": "englacial",
+  "readme": "## README.md\n# zagg public artifacts\n\nBuild artifacts and benchmark outputs for\n[zagg](https://github.com/englacial/zagg).\n\n- **Code license:** MIT \u2014 see [`LICENSE`](./LICENSE) in this repository.\n- **`lambda/`** \u2014 prebuilt AWS Lambda layer + function zips, keyed by zagg minor\n  version (e.g. `lambda/0.9/`). Consumed by `deployment/aws/stand_up.sh`.\n- **`benchmarks/`** \u2014 zagg benchmark outputs (forthcoming).\n\nLast updated: 2026-06-23.\n",
+  "_review": [
+    "providers: role [producer] for 'englacial/zagg' is an AI guess \u2014 Assumed producer as the GitHub project that generates and publishes these build artifacts; no explicit role stated in README.. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-06-30T09:57:08+00:00",
+  "store_format": "zarr"
 }
