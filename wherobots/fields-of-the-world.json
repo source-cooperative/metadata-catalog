@@ -1,15 +1,89 @@
 {
-  "account_id": "wherobots",
-  "product_id": "fields-of-the-world",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "wherobots/fields-of-the-world",
   "title": "Fields of the World",
-  "description": "High-resolution Sentinel-2 mosaics and AI-derived field-boundary probability maps for Japan, Mexico, Rwanda, South Africa, and Switzerland. This repository contains cloud-optimized Zarr datasets produced using the WherobotsAI platform during the FTW Phase 2 Model Bakeoff. Includes bi-temporal mosaics (Planting and Harvest seasons) and raw softmax model outputs for agricultural field segmentation.",
-  "keywords": [],
+  "description": "Country-scale Sentinel-2 mosaics and AI-derived field boundary probability maps for Japan, Mexico, Rwanda, South Africa, and Switzerland, covering 4.76 million km\u00b2. The dataset includes bi-temporal composites (planting and harvest seasons for 2023 and 2024) at 10m resolution and raw softmax model outputs (background, field, and field boundary probabilities) generated via U-Net/EfficientNet models during the FTW Phase 2 Model Bakeoff using the WherobotsAI platform. All data is stored in cloud-optimized Zarr format.",
+  "license": "CC-BY-NC-4.0",
+  "keywords": [
+    "field-boundaries",
+    "agriculture",
+    "sentinel-2",
+    "zarr",
+    "remote-sensing",
+    "machine-learning",
+    "earth-observation",
+    "time-series"
+  ],
+  "providers": [
+    {
+      "name": "Wherobots",
+      "roles": [
+        "processor",
+        "host"
+      ]
+    },
+    {
+      "name": "Fields of the World (FTW)",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/wherobots/fields-of-the-world"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -180.0,
+          -90.0,
+          180.0,
+          90.0
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2023-01-01T00:00:00",
+          "2024-01-01T00:00:00Z"
+        ]
+      ]
+    }
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/wherobots/fields-of-the-world/",
+      "type": "application/vnd+zarr",
+      "title": "Dataset files (10 x .zarr)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/wherobots/fields-of-the-world/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/wherobots/fields-of-the-world",
+      "title": "Source Cooperative product page"
+    }
+  ],
   "created_at": "2025-10-21T21:49:05.614Z",
-  "updated_at": "2025-11-27T05:14:08.150Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": "open",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -22,20 +96,27 @@
       "prefix": "wherobots/fields-of-the-world/"
     }
   },
-  "file_count": 99585,
+  "updated_at": "2025-11-27T05:14:08.150Z",
   "total_bytes": 5380753807380,
+  "product_id": "fields-of-the-world",
+  "file_count": 99585,
+  "data_mode": "open",
+  "visibility": "public",
+  "disabled": false,
+  "account_id": "wherobots",
+  "featured": 0,
   "exts": {
     "": 99509,
     "json": 70,
     "png": 5,
     "md": 1
   },
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "id": "wherobots/fields-of-the-world",
-  "cataloged_at": "2026-06-09T02:02:44+00:00",
+  "readme": "## README.md\n# Fields of the World: Country-Scale Field Boundary Predictions\n\n[![Source Coop](https://img.shields.io/badge/Source%20Coop-Access%20Data-blue?style=for-the-badge&logo=sourcetree)](https://source.coop/wherobots/fields-of-the-world)\n[![Format](https://img.shields.io/badge/Format-Zarr-purple?style=for-the-badge)](https://zarr.dev/)\n[![Model](https://img.shields.io/badge/Models-FTW%20Baselines-green?style=for-the-badge&logo=github)](https://github.com/fieldsoftheworld/ftw-baselines)\n\n**Country-scale Sentinel-2 mosaics and AI-derived field boundary probability maps for Japan, Mexico, Rwanda, South Africa, and Switzerland.**\n\nThis dataset contains the underlying raster data generated during the evaluation of models produced during the FTW Phase 2 Model Bakeoff using the **[WherobotsAI platform](https://wherobots.com)**. It includes both the input imagery (seasonally optimized mosaics) and the raw model outputs (softmax predictions) hosted in cloud-optimized **Zarr** format.\n\n## \ud83d\udcf0 Read the Blog\n\n<div align=\"center\">\n  <img src=\"https://data.source.coop/wherobots/fields-of-the-world/assets/blog.png\" width=\"80%\" alt=\"TGE + Wherobots AI = Fields of the World\">\n</div>\n\n> **Read the Blog:** [Wherobots and Taylor Geospatial Engine Bring Fields-of-the-World Models to Production Scale](https://wherobots.com/blog/fields-of-the-world-taylor-geospatial-engine-agricultural-ai/)\n\n---\n\n## \ud83d\udee0\ufe0f Try the Model\n\nThe model architecture and training pipeline are fully open-source. You can run inference, reproduce our baselines, or train your own models using the **[Fields of The World (FTW)](https://github.com/fieldsoftheworld/ftw-baselines)** repository and the FTW CLI tool.\n\n**Installation:**\n\n```bash\npip install ftw-tools\n```\n\n**Documentation & Source Code:**\nFor tutorials and usage instructions, visit the **[ftw-baselines repository](https://github.com/fieldsoftheworld/ftw-baselines)**.\n\n---\n\n## \ud83c\udf0d Dataset Coverage\n\nThe dataset covers five agricultural systems across 2 seasons and 2 years (2023 and 2024), totaling **4.76 million km\u00b2**. This data represents the inference stage of models produced during the FTW Phase 2 Model Bakeoff.\n\n| Country          | Area Processed (M km\u00b2) | Median Prediction Field Area (ha) |\n| :--------------- | :--------------------- | :-------------------------------- |\n| **Mexico**       | 2.39                   | 0.09                              |\n| **South Africa** | 1.60                   | 0.07                              |\n| **Japan**        | 0.65                   | 0.19                              |\n| **Switzerland**  | 0.09                   | 0.28                              |\n| **Rwanda**       | 0.02                   | 0.06                              |\n\n---\n\n## \ud83c\udfd7 Model Architecture\n\nThese predictions were generated using models produced during the FTW Phase 2 Model Bakeoff, which include **U-Net** architectures with **EfficientNet** encoders, specifically optimized for deployment robustness at scale.\n\n*   **Robustness:** Trained with **Log-Cosh Dice Loss** and targeted augmentations (channel shuffling, brightness, resizing) to handle atmospheric variations in large-scale mosaics.\n*   **Input Processing:** Mosaics use latitude-based heuristics to select optimal planting and harvest windows, producing cloud-free, seasonally aligned composites.\n*   **Scale:** The inference pipeline processes millions of tiles using Gaussian-weighted averaging to merge across patch overlaps, reducing tiling artifacts in predictions and producing seamless probability maps across country borders.\n\n---\n\n## \u2699\ufe0f Inference Pipeline\n\nThe high-throughput inference pipeline runs on the **[WherobotsAI platform](https://wherobots.com)** and prioritizes spatial consistency and cloud-native efficiency.\n\n1.  **Seasonally-Aligned Mosaicking:** Uses **latitude-dependent heuristics** to identify optimal *Planting* and *Harvest* windows for each tile. A greedy selection algorithm constructs cloud-free composites from Sentinel-2 imagery, minimizing temporal redundancy while maximizing coverage.\n2.  **Sliding Window Inference with Apodization:** Processes data in **256\u00d7256** patches with **25% overlap**. **Gaussian-weighted averaging (apodization)** merges across patch overlaps to reduce tiling artifacts in predictions, suppressing lower-quality predictions near patch edges and prioritizing spatially consistent center predictions.\n3.  **Parallel Zarr Construction:** Handles reprojection to **Web Mercator (EPSG:3857)** on-the-fly. Results are written in parallel directly to **Zarr** stores, generating seamless, cloud-optimized probability maps for entire countries in minutes.\n\n---\n\n## \ud83d\udcbe Data Structure (Zarr)\n\nThe data is hosted as cloud-optimized **Zarr** stores. Each store corresponds to a country and contains high-resolution raster arrays with time coordinates for 2023 and 2024:\n\n1.  **Sentinel-2 Mosaics:**\n    *   Bi-temporal composites (Planting & Harvest seasons)\n    *   Resolution: 10m\n    *   Bands: RGB + NIR\n    *   Mosaics are \"valid-pixel\" composites, filtered by cloud cover\n\n2.  **Model Predictions:**\n    *   **Raw Softmax Probabilities:** Pixel-wise probabilities for background, field, and field boundary.\n    *   Raw logits support custom thresholding, watershedding, or vectorization parameters.\n\n---\n\n## \ud83d\ude80 Usage (Data Access)\n\nThe dataset uses cloud-native Zarr format which allows access to subsets for analysis without downloading the entire dataset using Python libraries like `xarray` and `zarr`.\n\n### 1. Setup and Define AOI\n\nDefine a sample Area of Interest (AOI) over Japan:\n\n```python\nimport rioxarray\nimport geopandas as gpd\nimport xarray as xr\nimport shapely\nimport matplotlib.pyplot as plt\nimport numpy as np\n\n# Sample AOI and parameters\nsrc_crs = \"EPSG:3857\"\nplanting_bands = ['s2med_planting:B04', 's2med_planting:B03', 's2med_planting:B02']\nharvest_bands = ['s2med_harvest:B04', 's2med_harvest:B03', 's2med_harvest:B02']\nnorm = 3000\n\n# Define a bounding box (Japan)\nxmin, ymin= (140.029187, 39.520088)\nxmax, ymax = (140.403203, 39.215519)\nbox = shapely.box(xmin, ymin, xmax, ymax)\naoi = gpd.GeoDataFrame(geometry=[box], crs=\"EPSG:4326\")\naoi = aoi.to_crs(src_crs)\n```\n\n### 2. Open Zarr Stores\n\n```python\n# Open Mosaics\nmosaic_path = \"https://data.source.coop/wherobots/fields-of-the-world/mosaics/japan.zarr/\"\nmosaic = xr.open_zarr(mosaic_path)\nmosaic\n```\n<div align=\"center\">\n  <img src=\"https://data.source.coop/wherobots/fields-of-the-world/assets/mosaics-xarray.png\" width=\"60%\" alt=\"Xarray dataset repr\">\n</div>\n\n```python\n# Open Predictions\npred_path = \"https://data.source.coop/wherobots/fields-of-the-world/predictions/japan.zarr/\"\npredictions = xr.open_zarr(pred_path)\npredictions\n```\n\n<div align=\"center\">\n  <img src=\"https://data.source.coop/wherobots/fields-of-the-world/assets/mosaics-xarray.png\" width=\"60%\" alt=\"Xarray dataset repr\">\n</div>\n\n### 3. Slicing and Visualizing\n\nLazily load data within the AOI for a specific year and visualize inputs alongside model outputs.\n\n```python\ntime = \"2024-01-01\"\n\n# Slice and clipping to the AOI\np_crop = mosaic.sel(time=time, band=planting_bands).rio.clip_box(*aoi.geometry.total_bounds) / norm\nh_crop = mosaic.sel(time=time, band=harvest_bands).rio.clip_box(*aoi.geometry.total_bounds) / norm\npred_crop = predictions.sel(time=time, band=\"field\").rio.clip_box(*aoi.geometry.total_bounds)\n\np_crop = p_crop.clip(0, 1).to_array().squeeze()\nh_crop = h_crop.clip(0, 1).to_array().squeeze()\n\n# Plot\nfig, axes = plt.subplots(1, 3, figsize=(15, 5))\n\np_crop.plot.imshow(ax=axes[0])\naxes[0].axis(\"off\")\naxes[0].set_title(\"Planting Season Mosaic\")\n\nh_crop.plot.imshow(ax=axes[1])\naxes[1].axis(\"off\")\naxes[1].set_title(\"Harvest Season Mosaic\")\n\npred_crop.to_array().squeeze().plot.imshow(ax=axes[2], cmap=\"plasma\")\naxes[2].axis(\"off\")\naxes[2].set_title(\"Field Predictions\")\n\nplt.tight_layout()\nplt.show()\n```\n\n<div align=\"center\">\n  <img src=\"https://data.source.coop/wherobots/fields-of-the-world/assets/visualize.png\" width=\"90%\" alt=\"Visualizing inputs and outputs\">\n</div>\n\n### 4. Convert to Cloud-Optimized Geotiff (COG)\n\n```python\npred_crop.rio.to_raster(\n    \"field_predictions.tif\",\n    compress=\"lzw\",\n    dtype=\"float32\",\n    tiled=True,\n    blockxsize=256,\n    blockysize=256,\n    driver=\"COG\"\n)\n```\n\n### 5. Application: Field Change Detection\n\nThe dataset includes both 2023 and 2024 data. Perform basic change detection to identify where field boundaries shifted or disappeared.\n\n```python\n# Fetch predictions for both years\npred_2023 = predictions.sel(time=\"2023-01-01\", band=\"field\")\npred_2023 = pred_2023.rio.clip_box(*aoi.geometry.total_bounds).to_array().squeeze().to_numpy()\n\npred_2024 = predictions.sel(time=\"2024-01-01\", band=\"field\")\npred_2024 = pred_2024.rio.clip_box(*aoi.geometry.total_bounds).to_array().squeeze().to_numpy()\n\n# Calculate difference\ndiff = pred_2024 - pred_2023\n\n# Simple thresholding (>= 99th percentile)\npct = 99\nthreshold = np.percentile(diff[diff > 0], pct)\nchange = diff.clip(0, 1)\nchange[change >= threshold] = 1\nchange[change < threshold] = 0\n\n# Plotting\nfig, axes = plt.subplots(1, 4, figsize=(20, 5))\n\naxes[0].imshow(pred_2023, vmin=0, vmax=1, cmap=\"plasma\")\naxes[0].set_title(\"2023 Field Probability\")\naxes[0].axis(\"off\")\n\naxes[1].imshow(pred_2024, vmin=0, vmax=1, cmap=\"plasma\")\naxes[1].set_title(\"2024 Field Probability\")\naxes[1].axis(\"off\")\n\ngreen_cmap = plt.cm.colors.ListedColormap([[0, 0, 0], [0, 1, 0]])\naxes[2].imshow(change, vmin=0, vmax=1, cmap=green_cmap)\naxes[2].set_title(\"Detected Change (>=99th percentile)\")\naxes[2].axis(\"off\")\n\nimg = plt.cm.plasma(pred_2023)\nimg[change == 1, :3] = [0, 1, 0]\naxes[3].imshow(img, vmin=0, vmax=1)\naxes[3].set_title(\"Change Overlay on 2023\")\naxes[3].axis(\"off\")\n\nplt.tight_layout()\nplt.show()\n```\n\n<div align=\"center\">\n  <img src=\"https://data.source.coop/wherobots/fields-of-the-world/assets/change.png\" width=\"90%\" alt=\"Visualizing change detection\">\n</div>\n\n---\n\n## Citation & Attribution\n\nIf you use this data in your research, please cite:\n\n```bibtex\n@inproceedings{kerner2025fields,\n  title={Fields of the world: A machine learning benchmark dataset for global agricultural field boundary segmentation},\n  author={Kerner, Hannah and Chaudhari, Snehal and Ghosh, Aninda and Robinson, Caleb and Ahmad, Adeel and Choi, Eddie and Jacobs, Nathan and Holmes, Chris and Mohr, Matthias and Dodhia, Rahul and others},\n  booktitle={Proceedings of the AAAI Conference on Artificial Intelligence},\n  volume={39},\n  number={27},\n  pages={28151--28159},\n  year={2025}\n}\n```\n\n---\n\n## \ud83d\udcc4 License\n\n*The current model checkpoints used to produce these predictions were trained on the full FTW dataset, which included CC-BY-NC labels, resulting in CC-BY-NC licensed predictions. We will be releasing predictions trained on only the CC-BY licensed labels in the next few weeks.*\n\n**License:** [Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)](https://creativecommons.org/licenses/by-nc/4.0/)\n",
+  "_review": [
+    "providers: role [producer] for 'Fields of the World (FTW)' is an AI guess \u2014 FTW developed the models and benchmark dataset underlying these predictions; producer role inferred from citation authorship and model repository ownership.. Verify before flipping to _state: reviewed.",
+    "extent.temporal: ['2023-01-01T00:00:00', '2024-01-01T00:00:00'] (probe sample) widened to ['2023-01-01T00:00:00', '2024-01-01T00:00:00Z'] using README-stated coverage ['2023', '2024']."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-06-30T10:02:16+00:00",
   "store_format": "zarr"
 }
