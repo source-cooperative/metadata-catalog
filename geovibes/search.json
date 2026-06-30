@@ -1,15 +1,293 @@
 {
-  "account_id": "geovibes",
-  "product_id": "search",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
+  "id": "geovibes/search",
   "title": "Search",
-  "description": "Where the magic happens: tar files with a nearest-neighbor similarity index and a duckdb of the model embeddings bundled together. N.B the duckdb table contains all of the embeddings for a given AOI, so can be large (~20-30GB).",
-  "keywords": [],
-  "created_at": "2025-09-21T15:34:21.380Z",
-  "updated_at": "2025-09-21T15:35:21.380Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": "open",
+  "description": "A collection of geospatial image embeddings derived from satellite and aerial imagery over selected US areas of interest (Alabama, New Mexico), packaged as DuckDB databases bundled with nearest-neighbor similarity indices for efficient vector search. Each asset pairs per-tile geometries with high-dimensional embedding vectors produced by multiple foundation models including DINO ViT, EarthGenome SoftCon, Clay/NAIP, and Google Satellite Embeddings. Intended for similarity search and downstream machine learning tasks over Earth observation data.",
+  "keywords": [
+    "embeddings",
+    "machine-learning",
+    "satellite-imagery",
+    "foundation-model",
+    "earth-observation",
+    "remote-sensing",
+    "similarity-search"
+  ],
+  "providers": [
+    {
+      "name": "USDA National Agriculture Imagery Program (NAIP)",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Google",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/geovibes/search"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 70912439
+  },
+  "assets": {
+    "USA/alabama/2019-01-01-2020-01-01": {
+      "href": "https://data.source.coop/geovibes/search/USA/alabama/2019-01-01-2020-01-01/alabama_clay_naip_v1.5_2019_2020_256_0_1_metadata_sorted.db",
+      "type": "application/octet-stream",
+      "title": "alabama_clay_naip_v1.5_2019_2020_256_0_1_metadata_sorted.db",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "embedding",
+          "type": "FLOAT[1024]"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY",
+          "description": "[geometry] Tile footprint geometry for each embedded image patch"
+        }
+      ],
+      "table:row_count": 6430017
+    },
+    "USA/alabama/2019-01-01-2020-01-01/httpfs/alabama_clay_naip_v1.5_2019_2020_256_0_1": {
+      "href": "https://data.source.coop/geovibes/search/USA/alabama/2019-01-01-2020-01-01/httpfs/alabama_clay_naip_v1.5_2019_2020_256_0_1/metadata.db",
+      "type": "application/octet-stream",
+      "title": "metadata.db",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "embedding",
+          "type": "FLOAT[1024]"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY",
+          "description": "[geometry] Tile footprint geometry for each embedded image patch"
+        }
+      ],
+      "table:row_count": 6430017
+    },
+    "USA/alabama/2024-01-01-2025-01-01/httpfs/alabama_dino_vit_small_patch16_224_2024_2025_32_16_10": {
+      "href": "https://data.source.coop/geovibes/search/USA/alabama/2024-01-01-2025-01-01/httpfs/alabama_dino_vit_small_patch16_224_2024_2025_32_16_10/metadata.db",
+      "type": "application/octet-stream",
+      "title": "metadata.db",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "tile_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "embedding",
+          "type": "FLOAT[384]"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY",
+          "description": "[geometry] Tile footprint geometry for each embedded image patch"
+        }
+      ],
+      "table:row_count": 5320229
+    },
+    "USA/alabama/2024-01-01-2025-01-01/httpfs/alabama_earthgenome_softcon_2024_2025_32_16_10": {
+      "href": "https://data.source.coop/geovibes/search/USA/alabama/2024-01-01-2025-01-01/httpfs/alabama_earthgenome_softcon_2024_2025_32_16_10/metadata.db",
+      "type": "application/octet-stream",
+      "title": "metadata.db",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "source_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "embedding",
+          "type": "FLOAT[384]"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY",
+          "description": "[geometry] Tile footprint geometry for each embedded image patch"
+        }
+      ],
+      "table:row_count": 3181726
+    },
+    "USA/alabama/2024-01-01-2025-01-01/httpfs/alabama_google_satellite_embeddings_v1_2024_2025_25_0_10": {
+      "href": "https://data.source.coop/geovibes/search/USA/alabama/2024-01-01-2025-01-01/httpfs/alabama_google_satellite_embeddings_v1_2024_2025_25_0_10/metadata.db",
+      "type": "application/octet-stream",
+      "title": "metadata.db",
+      "roles": [
+        "data"
+      ],
+      "table:row_count": 2182751
+    },
+    "USA/alabama/2024-01-01-2025-01-01/httpfs/alabama_quantized_dino_vit_small_patch16_224_2024_2025_32_16_10": {
+      "href": "https://data.source.coop/geovibes/search/USA/alabama/2024-01-01-2025-01-01/httpfs/alabama_quantized_dino_vit_small_patch16_224_2024_2025_32_16_10/metadata.db",
+      "type": "application/octet-stream",
+      "title": "metadata.db",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "tile_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "embedding",
+          "type": "UTINYINT[384]"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY",
+          "description": "[geometry] Tile footprint geometry for each embedded image patch"
+        }
+      ],
+      "table:row_count": 5320229
+    },
+    "USA/new-mexico/2024-01-01-2025-01-01/httpfs/new-mexico_google_satellite_embeddings_v1_2024_2025_25_0_10": {
+      "href": "https://data.source.coop/geovibes/search/USA/new-mexico/2024-01-01-2025-01-01/httpfs/new-mexico_google_satellite_embeddings_v1_2024_2025_25_0_10/metadata.db",
+      "type": "application/octet-stream",
+      "title": "metadata.db",
+      "roles": [
+        "data"
+      ],
+      "table:row_count": 5063048
+    },
+    "USA/new-mexico/2024-01-01-2025-01-01": {
+      "href": "https://data.source.coop/geovibes/search/USA/new-mexico/2024-01-01-2025-01-01/new-mexico_google_satellite_embeddings_v1_2024_2025_25_0_10_metadata_sorted.db",
+      "type": "application/octet-stream",
+      "title": "new-mexico_google_satellite_embeddings_v1_2024_2025_25_0_10_metadata_sorted.db",
+      "roles": [
+        "data"
+      ],
+      "table:row_count": 5063048
+    },
+    "experiments/cluster_storage_benchmark": {
+      "href": "https://data.source.coop/geovibes/search/experiments/cluster_storage_benchmark/",
+      "type": "application/octet-stream",
+      "title": "experiments/cluster_storage_benchmark",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "tile_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "embedding",
+          "type": "FLOAT[384]|FLOAT[]"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY",
+          "description": "[geometry] Tile footprint geometry for each embedded image patch"
+        },
+        {
+          "name": "cluster_id",
+          "type": "INTEGER"
+        },
+        {
+          "name": "original_id",
+          "type": "BIGINT"
+        }
+      ],
+      "description": "6 files sampled for this table"
+    }
+  },
+  "table:columns": [
+    {
+      "name": "id",
+      "type": "BIGINT"
+    },
+    {
+      "name": "tile_id",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "embedding",
+      "type": "FLOAT[64]"
+    },
+    {
+      "name": "geometry",
+      "type": "GEOMETRY",
+      "description": "[geometry] Tile footprint geometry for each embedded image patch"
+    }
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/geovibes/search/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/geovibes/search",
+      "title": "Source Cooperative product page"
+    }
+  ],
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -22,20 +300,34 @@
       "prefix": "geovibes/search/"
     }
   },
-  "file_count": 42,
-  "total_bytes": 330560285540,
+  "account_id": "geovibes",
+  "visibility": "public",
+  "featured": 0,
+  "updated_at": "2025-09-21T15:35:21.380Z",
+  "created_at": "2025-09-21T15:34:21.380Z",
   "exts": {
-    "parquet": 8,
-    "": 1,
-    "gz": 9,
+    "db": 14,
     "index": 10,
-    "db": 14
+    "tar.gz": 9,
+    "parquet": 8,
+    "": 1
   },
-  "_state": "seed",
+  "total_bytes": 330560285540,
+  "file_count": 42,
+  "disabled": false,
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "id": "geovibes/search",
-  "cataloged_at": "2026-04-29T18:36:24+00:00"
+  "data_mode": "open",
+  "product_id": "search",
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
+    "providers: role [producer] for 'USDA National Agriculture Imagery Program (NAIP)' is an AI guess \u2014 Asset names reference NAIP imagery; assumed producer of underlying aerial imagery used for Clay/NAIP embeddings. Verify before flipping to _state: reviewed.",
+    "providers: role [producer] for 'Google' is an AI guess \u2014 Asset names reference Google Satellite Embeddings v1; assumed producer of underlying satellite imagery and/or embeddings. Verify before flipping to _state: reviewed.",
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [USA/alabama/2019-01-01-2020-01-01.geometry (geometry), USA/alabama/2019-01-01-2020-01-01/httpfs/alabama_clay_naip_v1.5_2019_2020_256_0_1.geometry (geometry), USA/alabama/2024-01-01-2025-01-01/httpfs/alabama_dino_vit_small_patch16_224_2024_2025_32_16_10.geometry (geometry), USA/alabama/2024-01-01-2025-01-01/httpfs/alabama_earthgenome_softcon_2024_2025_32_16_10.geometry (geometry), USA/alabama/2024-01-01-2025-01-01/httpfs/alabama_google_satellite_embeddings_v1_2024_2025_25_0_10.geometry (geometry), USA/alabama/2024-01-01-2025-01-01/httpfs/alabama_quantized_dino_vit_small_patch16_224_2024_2025_32_16_10.geometry (geometry), USA/new-mexico/2024-01-01-2025-01-01/httpfs/new-mexico_google_satellite_embeddings_v1_2024_2025_25_0_10.geometry (geometry), USA/new-mexico/2024-01-01-2025-01-01.geometry (geometry), experiments/cluster_storage_benchmark.geometry (geometry)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-06-30T09:54:28+00:00",
+  "store_format": null
 }
