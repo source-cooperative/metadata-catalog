@@ -1,15 +1,129 @@
 {
-  "account_id": "cassiebuhler",
-  "product_id": "30x30-state-policy",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
+  "id": "cassiebuhler/30x30-state-policy",
   "title": "30\u00d730 state-level conservation policy implementation and progress across the United States",
-  "description": "This repository contains a curated dataset of U.S. state-level 30\u00d730 policy implementation and progress. Policy records were collected, reviewed, and standardized by the author from publicly available primary sources, then compiled into a single, harmonized dataset.",
-  "keywords": [],
-  "created_at": "2026-02-05T21:40:07.103Z",
-  "updated_at": "2026-02-05T21:40:07.103Z",
-  "visibility": "public",
-  "disabled": false,
+  "description": "A curated, author-compiled dataset tracking U.S. state-level policy implementation and progress toward 30x30 land and water conservation goals, harmonized from public primary sources and paired with U.S. Census state boundary geometries.",
+  "keywords": [
+    "30x30",
+    "conservation",
+    "conservation-policy",
+    "biodiversity",
+    "administrative-boundaries"
+  ],
+  "providers": [
+    {
+      "name": "Cassie Buhler",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/cassiebuhler/30x30-state-policy"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 58
+  },
+  "assets": {
+    "states": {
+      "href": "https://data.source.coop/cassiebuhler/30x30-state-policy/30x30_states.parquet",
+      "type": "application/x-parquet",
+      "title": "30x30_states.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "state_id",
+          "type": "VARCHAR",
+          "description": "[admin_code] Two-letter U.S. state abbreviation identifying each record"
+        },
+        {
+          "name": "implementation_type",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "implementation_notes",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "implementation_citation",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "implementation_url",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "progress_type",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "progress_notes",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "progress_citation",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "progress_url",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geom",
+          "type": "GEOMETRY('EPSG:4326')",
+          "description": "[geometry] U.S. state boundary polygons (EPSG:4326)"
+        }
+      ],
+      "table:row_count": 58
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/cassiebuhler/30x30-state-policy/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/cassiebuhler/30x30-state-policy",
+      "title": "Source Cooperative product page"
+    }
+  ],
   "featured": 0,
-  "data_mode": "open",
+  "updated_at": "2026-02-05T21:40:07.103Z",
+  "file_count": 5,
+  "created_at": "2026-02-05T21:40:07.103Z",
+  "disabled": false,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -22,18 +136,28 @@
       "prefix": "cassiebuhler/30x30-state-policy/"
     }
   },
-  "file_count": 5,
-  "total_bytes": 15022514,
-  "exts": {
-    "parquet": 1,
-    "ipynb": 1,
-    "py": 2,
-    "md": 1
-  },
-  "_state": "seed",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "id": "cassiebuhler/30x30-state-policy"
+  "account_id": "cassiebuhler",
+  "total_bytes": 15022514,
+  "exts": {
+    "py": 2,
+    "ipynb": 1,
+    "parquet": 1,
+    "md": 1
+  },
+  "product_id": "30x30-state-policy",
+  "visibility": "public",
+  "data_mode": "open",
+  "readme": "## README.md\n# README\n\nThis repository contains a curated dataset of U.S. state-level 30\u00d730 policy implementation and progress.  \nPolicy records were collected, reviewed, and standardized by the author from publicly available primary sources, then compiled into a single, harmonized dataset.\n\nState-level policy information is presented alongside U.S. Census state boundaries and visualized as maps to support comparison across states and policy mechanisms.\n\n## State-Level 30\u00d730 Policy Implementation\n\n| State | Implementation Type | Notes | \n| -- | -- | -- |\n| CA | Executive Order + Statute | EO N-82-20 and Senate Bill 337 |\n| HI | Executive Commitment | Holomua: Marine 30x30 |\n| IL | Statute (Other) | Public Act 102-0618 |\n| NV | Legislative Resolution | AJR No. 3 |\n| ME | Executive Commitment | Maine Won't Wait |\n| MA | Executive Order | EO No. 618 |\n| MD | Statute | Senate Bill 470 |\n| MI | Executive Commitment + Proposed bill | ATB Freshwater Challenge + Senate Bill 1124 |\n| NJ | Executive Commitment | NJ Joins HAC |\n| NM | Executive Order | EO 2021-052 |\n| NY | Statute  | Environmental Conservation Law 49-0113 |\n| SC | Proposed bills | S.1024 (2020) and S.220 (2021) |\n| VT | Statute  | Act 59|\n\n![Map of 30x30 implementation methods across the United States](30x30_state_implementation.png)\n\n**Implementation Key**\n- Executive Order: A formal, binding directive issued by a governor that establishes policy and directs agency action.\n- Executive Commitment: A public commitment or policy declaration by a governor or senior executive official supporting 30\u00d730 goals, without the legal force of an executive order.\n- Statute: A law enacted by the state legislature and signed into law, providing statutory authority for implementation.\n- Statute (Other): A statute that advances 30\u00d730\u2013related objectives without explicitly committing to 30\u00d730.\n- Legislative Resolution: A non-binding legislative action expressing intent or support, without enforceable requirements.\n- Proposed Bill(s) \u2014 Legislation introduced but not enacted, indicating intent without legal effect.\n\n---\n## State-Level 30\u00d730 Policy Progress\n\n| State | Progress |\n| -- | -- |\n| CA | Active |\n| HI | Halted |\n| IL | Active |\n| NV | Dormant |\n| ME | Active |\n| MA | Active |\n| MD | Achieved |\n| MI | Active; Failed legislation |\n| NJ | Achieved |\n| NM | Achieved |\n| NY | Active |\n| SC | Failed legislation |\n| VT | Active |\n\n**Progress Key**:\n- Achieved: Stated 30\u00d730 goal met or informally completed.\n- Active: Implementation underway with regular (e.g., annual) public progress reporting.\n- Dormant: Formal commitment or resolution exists, but no recent public progress reporting is available.\n- Failed legislation: Proposed legislation did not pass, preventing formal implementation.\n- Halted: Implementation initiated but subsequently paused or discontinued.\n\n![Map of 30x30 progress across the United States](30x30_state_progress.png)\n\n\n## Sources\n#### California\n- State of California. (2020, October 7). Executive Order N\u201182\u201120. https://www.gov.ca.gov/wp-content/uploads/2020/10/10.07.2020-EO-N-82-20-.pdf\n- California Legislature. (2023). Senate Bill 337 (Chapter 392, Statutes of 2023): Environmental protection: lands and coastal waters conservation goal. Approved October 7, 2023. https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=202320240SB337\n- California Natural Resources Agency. (2025). Pathways to 30\u00d730 Annual Progress Report 2025. https://resources.ca.gov/-/media/CNRA-Website/Files/2025-30x30-Pathways-Progress-Report.pdf\n\n#### Hawai'i\n- Hawai\u02bbi Department of Land and Natural Resources, Division of Aquatic Resources. (2020, December). Holomua: Marine 30\u00d730 \u2014 Roadmap to effective management of near-shore waters. https://dlnr.hawaii.gov/dar/files/2020/12/HolomuaMarine30x30_Roadmap_final.pdf\n- Hawai\u02bbi Department of Land and Natural Resources, Division of Aquatic Resources. (2024, July). Holomua Marine Initiative: A guide to navigating nearshore resource management.https://dlnr.hawaii.gov/holomua/files/2024/07/Holomua-Guide-Final-July2024.pdf\n\n#### Illinois\n- State of Illinois. (2021, August\u202f27). Public Act\u202f102\u20110618: Illinois Thirty\u2011by\u2011Thirty Conservation Task Force Act. https://www.ilga.gov/Legislation/publicacts/view/102-0618\n- Illinois General Assembly. (2024). Senate\u202fResolution\u202f632\u202f\u2013\u202fEstablishing a 30\u202f\u00d7\u202f30 Coordinating Council [Resolution]. https://www.ilga.gov/Legislation/BillStatus?DocNum=632&GAID=17&DocTypeID=SR&LegId=151047&SessionID=112&GA=103\n- Illinois Department of Natural Resources. (n.d.). 30 by 30 Conservation Task Force. State of Illinois. Retrieved January 30, 2026. https://dnr.illinois.gov/programs/30by30.html\n\n#### Nevada\n- Nevada Legislature. (2021). Assembly Joint Resolution No. 3 (81st Leg., 2021). https://www.leg.state.nv.us/App/NELIS/REL/81st2021/Bill/7487/Overview\n\n#### Maine\n- State of Maine. (2020, December 1). Maine Won\u2019t Wait: A Four\u2011Year Plan for Climate Action. https://www.maine.gov/future/sites/maine.gov.future/files/inline-files/MaineWontWait_December2020.pdf\n- Maine Climate Council. (2025, December). 2025 Progress Report on Maine Won\u2019t Wait. State of Maine. https://www.maine.gov/future/sites/maine.gov.future/files/2025-12/MWW_2025_DIGITAL-2.pdf\n\n#### Massachusetts\n- Commonwealth of Massachusetts. (2023, September\u202f21). Executive Order\u202fNo.\u202f618: Biodiversity conservation in Massachusetts. https://www.mass.gov/executive-orders/no-618-biodiversity-conservation-in-massachusetts\n- Massachusetts Executive Office of Energy and Environmental Affairs & Massachusetts Department of Fish & Game. (2025, August 21). Massachusetts biodiversity goals report 2025. Commonwealth of Massachusetts. https://www.mass.gov/doc/massachusetts-biodiversity-goals-report-2025/\n- Commonwealth of Massachusetts. (2025). Biodiversity Goals for Massachusetts. https://www.mass.gov/info-details/biodiversity-goals-for-massachusetts\n\n#### Maryland\n- State of Maryland. (2023). Senate Bill\u202f470: Maryland the Beautiful Act (Ch.\u202f546). https://www.mgaleg.maryland.gov/2023RS/chapters_noln/Ch_546_sb0470E.pdf\n- Maryland Department of Natural Resources. (2024, May 15). Governor Moore Announces Maryland Meets 30% of State Land Conservation Goal Six Years Ahead of Schedule. https://news.maryland.gov/dnr/2024/05/15/governor-moore-announces-maryland-meets-30-of-state-land-conservation-goal-six-years-ahead-of-schedule/\n\n#### Michigan\n- State of Michigan, Office of the Governor. (2024, June 27). Gov. Whitmer accepts invitation to join White House initiative to conserve and restore freshwater resources: America the Beautiful Freshwater Challenge. https://www.michigan.gov/whitmer/news/press-releases/2024/06/27/gov-whitmer-accepts-invitation-to-join-white-house-initiative\n- Michigan Legislature. (2024). Senate Bill\u202f1124. https://www.legislature.mi.gov/Bills/Bill?ObjectName=2024\u2011SB\u20111124\n- Graham Sustainability Institute, University of Michigan. (2024). Michigan\u202fthe\u202fBeautiful: Great Lakes \u2013 Final Report [PDF]. https://graham.umich.edu/media/files/Michigan-the-Beautiful-Great-Lakes-Final-Report.pdf\n-Michigan Department of Natural Resources. (n.d.). Michigan the Beautiful\u2014conserving 30% of Michigan\u2019s lands and waters by 2030. State of Michigan. Retrieved January 30, 2026. https://www.michigan.gov/dnr/managing-resources/mtb\n\n#### New Jersey\n- State of New\u202fJersey, Office of the Governor. (2025, June\u202f3). New\u202fJersey joins Global Commitment to Preserve 30\u202f% of Natural Lands by\u202f2030.\u202fhttps://web.archive.org/web/20251016215612/https://www.nj.gov/governor/news/news/562025/approved/20250603c.shtml. \n\n#### New Mexico\n- State of New\u202fMexico. (2021, August\u202f25). Executive Order\u202f2021\u2011052: Protecting New\u202fMexico\u2019s Lands, Watersheds, Wildlife, and Natural Heritage. https://www.governor.state.nm.us/wp-content/uploads/2021/08/Executive-Order-2021-052.pdf\n- New Mexico Energy, Minerals and Natural Resources Department, Forestry Division. (2024). 30 \u00d7 30 New Mexico: 2024 Annual Report. https://www.emnrd.nm.gov/sfd/wp-content/uploads/sites/4/30x30-2024-Annual-Report-Final.pdf\n\n#### New York\n- New\u202fYork State Senate. (2021). Assembly Bill A5390 [Legislation]. https://www.nysenate.gov/legislation/bills/2021/A5390\n- New\u202fYork\u202fState Senate. (2021). Senate Bill S6191 [Legislation]. https://www.nysenate.gov/legislation/bills/2021/S6191\n- State of New\u202fYork. (2022, December\u202f23). Environmental Conservation Law \u00a7\u202f49\u20110113 \u2014 Thirty by thirty conservation goal. https://www.nysenate.gov/legislation/laws/ENV/49\u20110113\n- New\u202fYork State Department of Environmental Conservation & New\u202fYork State Office of Parks, Recreation and Historic Preservation. (2024, July). New\u202fYork\u202fState\u202f30\u00d730: Draft strategies and methodology \u2013 Conserving 30\u202fpercent of lands and waters by 2030 [PDF]. https://www.dec.ny.gov/sites/default/files/2024-07/nys30x30draft.pdf\n\n#### South Carolina\n- South Carolina Legislature. (2020). S.1024: Environmental protection and conservation (123rd\u202fLeg.). https://www.scstatehouse.gov/sess123_2019-2020/bills/1024.htm\n- South Carolina Legislature. (2021). S.220: SC Thirty\u2011by\u2011Thirty Conservation Act (124th\u202fLeg.). https://www.scstatehouse.gov/sess124_2021-2022/bills/220.htm\n- State of Vermont. (2023, June). Community Resilience and Biodiversity Protection Act (Act\u202f59). Vermont General Assembly. https://legislature.vermont.gov/Documents/2024/Docs/ACTS/ACT059/ACT059%20As%20Enacted.pdf\n\n#### Vermont\n- Vermont Housing and Conservation Board & Vermont Agency of Natural Resources. (2025). The draft Vermont conservation plan framework report [PDF]. https://lab2.future-iq.com/wp-content/uploads/2025/10/VCP-draft-framework-V03.pdf\n- Vermont Housing & Conservation Board. (n.d.). 30 by 30 (Act 59). Retrieved January 30, 2026. https://vhcb.org/conservation/act-59/\n\n## Contact\nAuthor: Cassie Buhler\n\n\n\n",
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
+    "providers: role [producer] for 'Cassie Buhler' is an AI guess \u2014 Listed as sole author/contact; assumed to be the dataset's compiler/producer.. Verify before flipping to _state: reviewed.",
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [states.geom (geometry), states.state_id (admin_code)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-06-30T23:48:34+00:00",
+  "store_format": null
 }
