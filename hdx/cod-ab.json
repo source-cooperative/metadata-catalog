@@ -1,15 +1,726 @@
 {
-  "account_id": "hdx",
-  "product_id": "cod-ab",
-  "title": "Humanitarian Subnational Administrative Boundaries",
-  "description": "",
-  "keywords": [],
-  "created_at": "2026-06-22T15:31:11.638Z",
-  "updated_at": "2026-06-22T15:38:42.401Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": "open",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
+  "id": "hdx/cod-ab",
+  "title": "COD-AB Administrative Boundaries",
+  "description": "Common Operational Dataset for Administrative Boundaries (COD-AB): country-by-country administrative boundary layers (admin0 through admin4 polygons, boundary lines, and settlement/place points) for humanitarian operations, maintained by UN OCHA and distributed via HDX. Each country's assets include P-codes, multilingual names, centroids, and geometries at each administrative level.",
+  "license": "CC-BY-3.0-IGO",
+  "keywords": [
+    "administrative-boundaries",
+    "humanitarian",
+    "geoparquet",
+    "pmtiles",
+    "global-coverage"
+  ],
+  "providers": [
+    {
+      "name": "UN OCHA Information Systems Section (ISS)",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Humanitarian Data Exchange (HDX)",
+      "roles": [
+        "processor",
+        "host"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/hdx/cod-ab"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 13839
+  },
+  "assets": {
+    "afg/latest/adm0": {
+      "href": "https://data.source.coop/hdx/cod-ab/afg/latest/adm0/",
+      "type": "application/x-parquet",
+      "title": "afg/latest/adm0",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "adm0_name",
+          "type": "VARCHAR",
+          "description": "[placename] Country name"
+        },
+        {
+          "name": "adm0_name1",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "adm0_name2",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "adm0_name3",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "adm0_pcode",
+          "type": "VARCHAR",
+          "description": "[admin_code] Country-level P-code"
+        },
+        {
+          "name": "valid_on",
+          "type": "TIMESTAMP|TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "valid_to",
+          "type": "TIMESTAMP"
+        },
+        {
+          "name": "version",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "lang",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "lang1",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "lang2",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "lang3",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "iso2",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "iso3",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY",
+          "description": "[geometry] Country boundary polygon"
+        },
+        {
+          "name": "objectid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "area_sqkm",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "adm0_ref_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "center_lat",
+          "type": "DOUBLE",
+          "description": "[latlon] Centroid latitude (paired with center_lon)"
+        },
+        {
+          "name": "center_lon",
+          "type": "DOUBLE",
+          "description": "[latlon] Centroid longitude (paired with center_lat)"
+        },
+        {
+          "name": "SHAPE__Length",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "SHAPE__Area",
+          "type": "DOUBLE"
+        }
+      ],
+      "description": "2 files sampled for this table"
+    },
+    "afg/latest/adm1": {
+      "href": "https://data.source.coop/hdx/cod-ab/afg/latest/adm1/",
+      "type": "application/x-parquet",
+      "title": "afg/latest/adm1",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "adm1_name",
+          "type": "VARCHAR",
+          "description": "[placename] Level-1 admin unit name"
+        },
+        {
+          "name": "adm1_name1",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "adm1_name2",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "adm1_name3",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "adm1_pcode",
+          "type": "VARCHAR",
+          "description": "[admin_code] Level-1 admin unit P-code"
+        },
+        {
+          "name": "adm0_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "adm0_name1",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "adm0_name2",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "adm0_name3",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "adm0_pcode",
+          "type": "VARCHAR",
+          "description": "[admin_code] Parent country P-code"
+        },
+        {
+          "name": "valid_on",
+          "type": "TIMESTAMP|TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "valid_to",
+          "type": "TIMESTAMP"
+        },
+        {
+          "name": "version",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "lang",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "lang1",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "lang2",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "lang3",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "iso2",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "iso3",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY",
+          "description": "[geometry] Level-1 admin unit boundary polygon"
+        },
+        {
+          "name": "objectid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "area_sqkm",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "adm1_ref_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "regionname_en",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "regioncode",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "center_lat",
+          "type": "DOUBLE",
+          "description": "[latlon] Centroid latitude (paired with center_lon)"
+        },
+        {
+          "name": "center_lon",
+          "type": "DOUBLE",
+          "description": "[latlon] Centroid longitude (paired with center_lat)"
+        },
+        {
+          "name": "region_name1",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "SHAPE__Length",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "SHAPE__Area",
+          "type": "DOUBLE"
+        }
+      ],
+      "description": "3 files sampled for this table"
+    },
+    "zwe/v01/adm3": {
+      "href": "https://data.source.coop/hdx/cod-ab/zwe/v01/adm3/",
+      "type": "application/x-parquet",
+      "title": "zwe/v01/adm3",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "adm3_name",
+          "type": "VARCHAR",
+          "description": "[placename] Level-3 admin unit name"
+        },
+        {
+          "name": "adm3_name1",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "adm3_name2",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "adm3_name3",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "adm3_pcode",
+          "type": "VARCHAR",
+          "description": "[admin_code] Level-3 admin unit P-code"
+        },
+        {
+          "name": "adm2_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "adm2_name1",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "adm2_name2",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "adm2_name3",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "adm2_pcode",
+          "type": "VARCHAR",
+          "description": "[admin_code] Parent level-2 admin unit P-code"
+        },
+        {
+          "name": "adm1_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "adm1_name1",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "adm1_name2",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "adm1_name3",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "adm1_pcode",
+          "type": "VARCHAR",
+          "description": "[admin_code] Parent level-1 admin unit P-code"
+        },
+        {
+          "name": "adm0_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "adm0_name1",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "adm0_name2",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "adm0_name3",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "adm0_pcode",
+          "type": "VARCHAR",
+          "description": "[admin_code] Parent country P-code"
+        },
+        {
+          "name": "valid_on",
+          "type": "TIMESTAMP|TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "valid_to",
+          "type": "TIMESTAMP"
+        },
+        {
+          "name": "version",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "lang",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "lang1",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "lang2",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "lang3",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "iso2",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "iso3",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY",
+          "description": "[geometry] Level-3 admin unit boundary polygon"
+        },
+        {
+          "name": "objectid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "area_sqkm",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "adm3_ref_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "center_lat",
+          "type": "DOUBLE",
+          "description": "[latlon] Centroid latitude (paired with center_lon)"
+        },
+        {
+          "name": "center_lon",
+          "type": "DOUBLE",
+          "description": "[latlon] Centroid longitude (paired with center_lat)"
+        },
+        {
+          "name": "SHAPE__Length",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "SHAPE__Area",
+          "type": "DOUBLE"
+        }
+      ],
+      "description": "3 files sampled for this table"
+    },
+    "zwe/v01/lines": {
+      "href": "https://data.source.coop/hdx/cod-ab/zwe/v01/lines/original.parquet",
+      "type": "application/x-parquet",
+      "title": "original.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "objectid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "adm_level",
+          "type": "SMALLINT"
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "valid_on",
+          "type": "TIMESTAMP"
+        },
+        {
+          "name": "valid_to",
+          "type": "TIMESTAMP"
+        },
+        {
+          "name": "version",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "right_pcod",
+          "type": "VARCHAR",
+          "description": "[admin_code] P-code of admin unit on right side of boundary line"
+        },
+        {
+          "name": "left_pcod",
+          "type": "VARCHAR",
+          "description": "[admin_code] P-code of admin unit on left side of boundary line"
+        },
+        {
+          "name": "SHAPE__Length",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY",
+          "description": "[geometry] Boundary line geometry"
+        }
+      ],
+      "table:row_count": 5789
+    },
+    "zwe/v01/points": {
+      "href": "https://data.source.coop/hdx/cod-ab/zwe/v01/points/original.parquet",
+      "type": "application/x-parquet",
+      "title": "original.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "objectid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "admin_level",
+          "type": "SMALLINT"
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR",
+          "description": "[placename] Point/place name"
+        },
+        {
+          "name": "name1",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name2",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name3",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "x_coord",
+          "type": "DOUBLE",
+          "description": "[latlon] Point longitude (paired with y_coord)"
+        },
+        {
+          "name": "y_coord",
+          "type": "DOUBLE",
+          "description": "[latlon] Point latitude (paired with x_coord)"
+        },
+        {
+          "name": "adm4_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "adm4_name1",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "adm4_name2",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "adm4_name3",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "adm4_pcode",
+          "type": "VARCHAR",
+          "description": "[admin_code] Level-4 admin unit P-code"
+        },
+        {
+          "name": "adm3_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "adm3_name1",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "adm3_name2",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "adm3_name3",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "adm3_pcode",
+          "type": "VARCHAR",
+          "description": "[admin_code] Level-3 admin unit P-code"
+        },
+        {
+          "name": "adm2_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "adm2_name1",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "adm2_name2",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "adm2_name3",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "adm2_pcode",
+          "type": "VARCHAR",
+          "description": "[admin_code] Level-2 admin unit P-code"
+        },
+        {
+          "name": "adm1_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "adm1_name1",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "adm1_name2",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "adm1_name3",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "adm1_pcode",
+          "type": "VARCHAR",
+          "description": "[admin_code] Level-1 admin unit P-code"
+        },
+        {
+          "name": "adm0_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "adm0_name1",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "adm0_name2",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "adm0_name3",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "adm0_pcode",
+          "type": "VARCHAR",
+          "description": "[admin_code] Country P-code"
+        },
+        {
+          "name": "valid_on",
+          "type": "TIMESTAMP"
+        },
+        {
+          "name": "valid_to",
+          "type": "TIMESTAMP"
+        },
+        {
+          "name": "version",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "lang",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "lang1",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "lang2",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "lang3",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY",
+          "description": "[geometry] Point location geometry"
+        }
+      ],
+      "table:row_count": 2063
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/hdx/cod-ab/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/hdx/cod-ab",
+      "title": "Source Cooperative product page"
+    }
+  ],
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -22,25 +733,33 @@
       "prefix": "hdx/cod-ab/"
     }
   },
-  "file_count": 34423,
-  "total_bytes": 53087165867,
-  "exts": {
-    "json": 15664,
-    "parquet": 6506,
-    "pmtiles": 6496,
-    "md": 5757
-  },
-  "ext_bytes": {
-    "parquet": 36425542240,
-    "pmtiles": 16619668228,
-    "json": 28104892,
-    "md": 13850507
-  },
-  "store_format": null,
-  "_state": "seed",
+  "featured": 0,
+  "data_mode": "open",
+  "created_at": "2026-06-22T15:31:11.638Z",
+  "visibility": "public",
+  "updated_at": "2026-06-22T15:38:42.401Z",
+  "disabled": false,
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "cataloged_at": "2026-06-30T23:33:27+00:00"
+  "account_id": "hdx",
+  "total_bytes": 53087165867,
+  "file_count": 34423,
+  "exts": {
+    "json": 4904,
+    "parquet": 3060,
+    "pmtiles": 3058,
+    "md": 1889
+  },
+  "product_id": "cod-ab",
+  "readme": "## README.md\n# COD-AB Administrative Boundaries\n\n![administrative boundaries](https://img.shields.io/badge/administrative_boundaries-blue) ![COD-AB](https://img.shields.io/badge/COD--AB-blue) ![humanitarian](https://img.shields.io/badge/humanitarian-blue) ![OCHA](https://img.shields.io/badge/OCHA-blue) ![HDX](https://img.shields.io/badge/HDX-blue) ![GeoParquet](https://img.shields.io/badge/GeoParquet-blue) ![cloud-native](https://img.shields.io/badge/cloud--native-blue)\n\nA Portolan-managed STAC catalog\n\n## Collections\n\n### [wld](./wld/)\n\nCollection: wld\n\n## Coverage\n\n**Spatial Extent**\n\n- West: -118.3651, South: -55.9795, East: 170.2383, North: 56.1725\n\n## Source\n\n[https://gis.unocha.org/server/rest/services/Hosted](https://gis.unocha.org/server/rest/services/Hosted)\n\n## Attribution\n\nUN OCHA Information Systems Section (ISS)\n\n## License\n\nCC-BY-3.0-IGO\n\n## Contact\n\nHDX Data Systems Team <hdx@un.org>\n\n---\n\n*Generated by [Portolan](https://github.com/portolan-sdi/portolan-cli) from STAC metadata and .portolan/metadata.yaml*\n",
+  "_review": [
+    "providers: role [processor, host] for 'Humanitarian Data Exchange (HDX)' is an AI guess \u2014 Inferred from HDX Data Systems Team contact and COD-AB's standard HDX distribution; README does not explicitly describe HDX's role.. Verify before flipping to _state: reviewed.",
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [afg/latest/adm0.adm0_pcode (admin_code), afg/latest/adm0.adm0_name (placename), afg/latest/adm0.geometry (geometry), afg/latest/adm0.center_lat (latlon), afg/latest/adm0.center_lon (latlon), afg/latest/adm1.adm1_pcode (admin_code), afg/latest/adm1.adm0_pcode (admin_code), afg/latest/adm1.adm1_name (placename), afg/latest/adm1.geometry (geometry), afg/latest/adm1.center_lat (latlon), afg/latest/adm1.center_lon (latlon), zwe/v01/adm3.adm3_pcode (admin_code), zwe/v01/adm3.adm2_pcode (admin_code), zwe/v01/adm3.adm1_pcode (admin_code), zwe/v01/adm3.adm0_pcode (admin_code), zwe/v01/adm3.adm3_name (placename), zwe/v01/adm3.geometry (geometry), zwe/v01/adm3.center_lat (latlon), zwe/v01/adm3.center_lon (latlon), zwe/v01/lines.right_pcod (admin_code), zwe/v01/lines.left_pcod (admin_code), zwe/v01/lines.geometry (geometry), zwe/v01/points.x_coord (latlon), zwe/v01/points.y_coord (latlon), zwe/v01/points.adm4_pcode (admin_code), zwe/v01/points.adm3_pcode (admin_code), zwe/v01/points.adm2_pcode (admin_code), zwe/v01/points.adm1_pcode (admin_code), zwe/v01/points.adm0_pcode (admin_code), zwe/v01/points.name (placename), zwe/v01/points.geometry (geometry)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-07-01T09:46:45+00:00",
+  "_source_format": "stac",
+  "store_format": null
 }
