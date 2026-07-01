@@ -1,15 +1,259 @@
 {
-  "account_id": "earthgenome",
-  "product_id": "storm-events-db",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
+  "id": "earthgenome/storm-events-db",
   "title": "Storm Events Database",
-  "description": "The Storm Events Database documents storms and other weather phenomena having sufficient intensity to cause loss of life, injuries, property damage, and/or disruption to commerce across the United States. Records date from 1950 up to the current year. Created by the National Weather Service and the National Centers for Environmental Information, the dataset is presented here by The Internet of Water Coalition, The Commons, and Earth Genome.",
-  "keywords": [],
+  "description": "A cleaned, analysis-ready reformatting of NOAA's Storm Events Database, covering over 2 million significant U.S. weather events from 1950 to the near-present, each classified by event type, location, timing, casualties, and damage, and provided as unified CSV and GeoParquet files with a single-point geometry per event.",
+  "keywords": [
+    "weather",
+    "meteorology",
+    "noaa",
+    "wildfire",
+    "conservation",
+    "air-quality",
+    "time-series",
+    "administrative-boundaries"
+  ],
+  "providers": [
+    {
+      "name": "National Weather Service",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "National Centers for Environmental Information",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Internet of Water Coalition",
+      "roles": [
+        "processor"
+      ]
+    },
+    {
+      "name": "The Commons",
+      "roles": [
+        "processor"
+      ]
+    },
+    {
+      "name": "Earth Genome",
+      "roles": [
+        "processor",
+        "host"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/earthgenome/storm-events-db"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "1950-01-01T00:00:00Z",
+          null
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 2019562
+  },
+  "assets": {
+    "events": {
+      "href": "https://data.source.coop/earthgenome/storm-events-db/events.parquet",
+      "type": "application/x-parquet",
+      "title": "events.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "event_id",
+          "type": "INTEGER"
+        },
+        {
+          "name": "event_type",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "event_type_family",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "event_narrative",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "episode_id",
+          "type": "INTEGER"
+        },
+        {
+          "name": "episode_narrative",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "begin_ts",
+          "type": "TIMESTAMP"
+        },
+        {
+          "name": "end_ts",
+          "type": "TIMESTAMP"
+        },
+        {
+          "name": "year",
+          "type": "INTEGER"
+        },
+        {
+          "name": "injuries_direct",
+          "type": "INTEGER"
+        },
+        {
+          "name": "injuries_indirect",
+          "type": "INTEGER"
+        },
+        {
+          "name": "deaths_direct",
+          "type": "INTEGER"
+        },
+        {
+          "name": "deaths_indirect",
+          "type": "INTEGER"
+        },
+        {
+          "name": "damage_property",
+          "type": "BIGINT"
+        },
+        {
+          "name": "damage_crops",
+          "type": "BIGINT"
+        },
+        {
+          "name": "state",
+          "type": "VARCHAR",
+          "description": "[placename] U.S. state name where event occurred"
+        },
+        {
+          "name": "state_fips",
+          "type": "VARCHAR",
+          "description": "[admin_code] State FIPS code"
+        },
+        {
+          "name": "cz_fips",
+          "type": "VARCHAR",
+          "description": "[admin_code] County/zone FIPS code"
+        },
+        {
+          "name": "cz_type",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "cz_name",
+          "type": "VARCHAR",
+          "description": "[placename] County or forecast zone name"
+        },
+        {
+          "name": "wfo",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "data_source",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "magnitude",
+          "type": "FLOAT"
+        },
+        {
+          "name": "magnitude_type",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "flood_cause",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "category",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "tor_f_scale",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "tor_length",
+          "type": "FLOAT"
+        },
+        {
+          "name": "tor_width",
+          "type": "FLOAT"
+        },
+        {
+          "name": "locations",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "fatalities",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)",
+          "description": "[geometry] Per-row bounding box struct (xmin, ymin, xmax, ymax)"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')",
+          "description": "[geometry] Event point geometry (GeoParquet)"
+        }
+      ],
+      "table:row_count": 2019562
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/earthgenome/storm-events-db/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/earthgenome/storm-events-db",
+      "title": "Source Cooperative product page"
+    }
+  ],
+  "exts": {
+    "zip": 77,
+    "md": 1,
+    "": 1,
+    "parquet": 1
+  },
   "created_at": "2025-09-17T02:53:43.398Z",
+  "total_bytes": 373657039,
   "updated_at": "2025-09-17T02:53:43.398Z",
-  "visibility": "public",
   "disabled": false,
   "featured": 0,
-  "data_mode": "open",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -22,26 +266,24 @@
       "prefix": "earthgenome/storm-events-db"
     }
   },
-  "file_count": 80,
-  "total_bytes": 373657039,
-  "exts": {
-    "zip": 77,
-    "": 1,
-    "parquet": 1,
-    "md": 1
-  },
-  "_state": "seed",
+  "visibility": "public",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "id": "earthgenome/storm-events-db",
-  "cataloged_at": "2026-06-30T23:24:42+00:00",
-  "store_format": null,
-  "ext_bytes": {
-    "parquet": 196717838,
-    "zip": 176923495,
-    "md": 15706,
-    "": 0
-  }
+  "product_id": "storm-events-db",
+  "file_count": 80,
+  "data_mode": "open",
+  "account_id": "earthgenome",
+  "readme": "## README.md\n# Storm Events Database Explorer - Data Products\n\nThe Storm Events Database is a publicly accessible source of National Weather Service (NWS) Storm Data, a collection of significant weather phenomena that have sufficient intensity to cause loss of life, injuries, significant property damage, and/or disruption to commerce across the United States.\n\n## About Us\n\n**The Internet of Water Coalition (IoW), The Commons, and Earth Genome** maintain this repository as part of a collaborative effort to enhance access to NOAA's storm events data and unlock its potential for insights. This project exists downstream from the official NOAA dataset and is not directly affiliated with NWS, NOAA, or NCEI. The dataset presented here powers IoW's [Storm Events Database Explorer](https://stormevents.internetofwater.app/).\n\n\n## Temporal Coverage\n\nRecords date from 1950 through approximately 3-4 months before the current date. Our goal is to update the data here on a monthly basis, pending the availability of new data from NOAA/NCEI. Historical coverage varies by event type. Between 1950 and 1954, tornadoes were the only event type recorded. Between 1955 and 1995, tornado, thunderstorm wind, and hail events were captured. From 1996 to present, all 55 event types are covered. NCEI explains that evolution [here](https://www.ncei.noaa.gov/access/storm-events-database/database-details).\n\n\n## Event Types\n\nOfficially, the dataset has 55 event types representing various weather phenomena that NWS captures in the Storm Events Database. In addition, we created 7 unofficial high-level categories to group those event types. Each category groups events by their main cause or impact. In the data schema presented here, each event has an `event_type` (the official type assigned by NWS) and an `event_type_family` (the high-level category).\n\n### Categorization\n\n#### Air Quality & Visibility\n\nHazards that make it hard to see or breathe, like fog, smoke, or ash.\n\nEvent Types: `dense-fog`, `marine-dense-fog`, `freezing-fog`, `dense-smoke`, `volcanic-ash`\n\n#### Flooding\n\nWater-related dangers from heavy rain or high tides that cause flooding.\n\nEvent Types: `coastal-flood`, `storm-surge/tide`, `seiche`, `tsunami`, `high-surf`, `rip-current`, `sneakerwave`, `astronomical-low-tide`, `heavy-rain`, `flood`, `flash-flood`, `lakeshore-flood`, `debris-flow`\n\n#### Heat\n\nHigh-temperature events and their effects, such as drought or wildfires.\n\nEvent Types: `heat`, `excessive-heat`, `drought`, `wildfire`\n\n#### Storm\n\nLocalized storms with thunder, lightning, hail, or small tornadoes.\n\nEvent Types: `dust-devil`, `dust-storm`, `thunderstorm-wind`, `marine-thunderstorm-wind`, `hail`, `marine-hail`, `lightning`, `marine-lightning`, `tornado``waterspout`, `funnel-cloud`\n\n#### Tropical\n\nLarge, spinning storms that form over warm water\u2014tropical depressions to hurricanes.\n\nEvent Types: `hurricane`, `marine-hurricane/typhoon`, `tropical-depression`, `tropical-storm`, `marine-tropical-depression`, `marine-tropical-storm`\n\n#### Wind\n\nStrong winds not caused by storms or hurricanes, like winds from frontal systems or mountain flows.\n\nEvent Types: `high-wind`, `strong-wind`, `marine-high-wind`, `marine-strong-wind`\n\n#### Winter Weather\n\nWinter hazards like snow, ice, and extreme cold that affect roads and buildings.\n\nEvent Types: `marine-heavy-freezing-spray`, `sleet`, `ice-storm`, `heavy-snow`, `lake-effect-snow`, `blizzard`, `winter-storm`, `winter-weather`, `cold/wind-chill``extreme-cold/wind-chill`, `frost/freeze`, `avalanche`\n\n## Geometry\n\nLocation data varies by event type. Some event types such as `thunderstorm-wind` and `tornado` have point coordinates, and there is variability in whether those events have a single point location or multiple points. Other event types like `drought` and `winter-storm` have no point coordinates and are instead represented spatially by NWS using the county or forecast zone where the event occurred. To simplify visualization in the [tool](https://stormevents.internetofwater.app/), we have chosen to assign a single Point geometry to every event regardless of event type. For events with one or more points in the official data, we use the event's first Point (`\"location_index\": 1`). For events represented by a county or forecast zone, we use the centroid of that boundary. Around 1% of events have a null geometry because their FIPS code could not be matched to an appropriate boundary.\n\n\n## Formats and Schema\n\nFor ease of access, the data is provided in both CSV and GeoParquet formats. The CSV zip files are organized by year, whereas the GeoParquet combines all 2 million+ events into a single file using the best practices found in [geoparquet-io](https://geoparquet.io/). The schema has the following columns:\n\n| Column         | Type        | Description                                | Formats               |\n|----------------|-------------|--------------------------------------------|-----------------------|\n| `event_id`         | INTEGER      | Unique event identifier                     | GeoParquet, CSV |\n| `event_type`       | VARCHAR     | Event type (e.g., \"tornado\", \"flash-flood\")  | GeoParquet, CSV |\n| `event_type_family`| VARCHAR     | Event family (e.g., \"storm\", \"flooding\")     | GeoParquet, CSV |\n| `event_narrative`  | VARCHAR     | Event narrative description                  | GeoParquet, CSV |\n| `episode_id`       | INTEGER      | Episode identifier (groups related events)  | GeoParquet, CSV |\n| `episode_narrative`| VARCHAR     | Episode narrative description                | GeoParquet, CSV |\n| `begin_ts`         | TIMESTAMP  | Event start timestamp                         | GeoParquet, CSV |\n| `end_ts`           | TIMESTAMP  | Event end timestamp                           | GeoParquet, CSV |\n| `year`             | INTEGER      | Event year                                  | GeoParquet, CSV |\n| `injuries_direct`  | INTEGER      | Direct injuries                             | GeoParquet, CSV |\n| `injuries_indirect`| INTEGER      | Indirect injuries                           | GeoParquet, CSV |\n| `deaths_direct`    | INTEGER      | Direct deaths                               | GeoParquet, CSV |\n| `deaths_indirect`  | INTEGER      | Indirect deaths                             | GeoParquet, CSV |\n| `damage_property`  | BIGINT      | Property damage in dollars                   | GeoParquet, CSV |\n| `damage_crops`     | BIGINT      | Crop damage in dollars                       | GeoParquet, CSV |\n| `state`            | VARCHAR     | State name                                   | GeoParquet, CSV |\n| `state_fips`       | VARCHAR     | State FIPS code                              | GeoParquet, CSV |\n| `cz_fips`          | VARCHAR     | County/Zone FIPS code                        | GeoParquet, CSV |\n| `cz_type`          | VARCHAR     | County/Zone type (C=County, Z=Zone, M=Marine)| GeoParquet, CSV |\n| `cz_name`          | VARCHAR     | County/Zone name                             | GeoParquet, CSV |\n| `wfo`              | VARCHAR     | Weather Forecast Office                      | GeoParquet, CSV |\n| `data_source`      | VARCHAR     | Data source                                  | GeoParquet, CSV |\n| `magnitude`        | FLOAT    | Event magnitude (varies by type)                | GeoParquet, CSV |\n| `magnitude_type`   | VARCHAR     | Magnitude type                               | GeoParquet, CSV |\n| `flood_cause`      | VARCHAR     | Flood cause (for flood events)               | GeoParquet, CSV |\n| `category`         | VARCHAR     | Hurricane category                           | GeoParquet, CSV |\n| `tor_f_scale`      | VARCHAR     | Tornado F-scale rating                       | GeoParquet, CSV |\n| `tor_length`       | FLOAT    | Tornado path length (miles)                     | GeoParquet, CSV |\n| `tor_width`        | FLOAT    | Tornado path width (yards)                      | GeoParquet, CSV |\n| `locations`        | VARCHAR     | JSON array of location details               | GeoParquet      |\n| `fatalities`       | VARCHAR     | JSON array of fatality details               | GeoParquet      |\n| `derived_lon`      | FLOAT     | Event longitude                                | CSV             |\n| `derived_lat`      | FLOAT     | Event latitude                                 | CSV             |\n| `geometry`         | GEOMETRY   | Event geometry (Point)                        | GeoParquet      |\n| `bbox.*`           | struct     | Per-row bounding box (xmin, ymin, xmax, ymax) | GeoParquet      |\n\n## Using the Data\n\nThe GeoParquet format is particularly helpful for users who don't want to download individual CSVs. [DuckDB](https://duckdb.org/) provides excellent support for accessing GeoParquet files with both tabular and spatial queries. To use the examples below, start by installing a DuckDB client: https://duckdb.org/install/\n\n### Setup\n\n```sql\n-- Install and load the spatial extension\nINSTALL spatial; LOAD spatial;\n```\n\n### Basic Queries\n\n```sql\n-- Preview the data\nSELECT * FROM 's3://us-west-2.opendata.source.coop/earthgenome/storm-events-db/events.parquet' LIMIT 10;\n\n-- Count total events\nSELECT COUNT(*) as total_events FROM 's3://us-west-2.opendata.source.coop/earthgenome/storm-events-db/events.parquet';\n\n-- View available columns\nDESCRIBE SELECT * FROM 's3://us-west-2.opendata.source.coop/earthgenome/storm-events-db/events.parquet';\n```\n\n### Filter by Event Type\n\n```sql\n-- Find recent tornadoes\nSELECT \n    event_id,\n    begin_ts,\n    state,\n    tor_f_scale,\n    tor_length,\n    tor_width,\n    (deaths_direct + deaths_indirect) as deaths,\n    (injuries_direct + injuries_indirect) as injuries,\n    (damage_property + damage_crops) as damages\nFROM 's3://us-west-2.opendata.source.coop/earthgenome/storm-events-db/events.parquet' \nWHERE event_type = 'tornado'\nORDER BY begin_ts DESC\nLIMIT 40;\n\n-- Count events by type\nSELECT \n    event_type, \n    COUNT(event_id) as count\nFROM 's3://us-west-2.opendata.source.coop/earthgenome/storm-events-db/events.parquet'\nGROUP BY event_type\nORDER BY count DESC;\n\n-- Summarize hail impacts in Colorado by year\nselect \n    state,\n    year, \n    count(event_id), \n    sum(damage_crops + damage_property) as costs, \n    sum(injuries_direct + injuries_indirect) as injuries, \n    sum(deaths_direct + deaths_indirect) as deaths \nfrom 's3://us-west-2.opendata.source.coop/earthgenome/storm-events-db/events.parquet' \nwhere state = 'COLORADO' \n    and event_type = 'hail' \ngroup by state, year \norder by year desc;\n```\n\n### Filter by Time Range\n\n```sql\n-- Events in a specific year\nSELECT event_id, event_type, begin_ts, state, state_fips, cz_name, cz_fips, cz_type\nFROM 's3://us-west-2.opendata.source.coop/earthgenome/storm-events-db/events.parquet' \nWHERE year = 2024;\n\n-- Events in a date range\nSELECT event_id, event_type, begin_ts, state, state_fips, cz_name, cz_fips, cz_type\nFROM 's3://us-west-2.opendata.source.coop/earthgenome/storm-events-db/events.parquet' \nWHERE begin_ts BETWEEN '2023-06-01' AND '2023-08-31'\nORDER BY begin_ts DESC;\n\n-- Events by year with counts and impact totals\nSELECT \n    year, \n    COUNT(*) as events,\n    sum(damage_crops + damage_property) as costs, \n    sum(injuries_direct + injuries_indirect) as injuries, \n    sum(deaths_direct + deaths_indirect) as deaths \nFROM 's3://us-west-2.opendata.source.coop/earthgenome/storm-events-db/events.parquet'\nGROUP BY year\nORDER BY year DESC;\n```\n\n### Spatial Queries\n\nThe GeoParquet file includes per-row bounding boxes for efficient spatial filtering:\n\n```sql\n-- Events within a bounding box (fast - uses bbox columns)\nSELECT event_id, event_type, begin_ts, state, state_fips, cz_name, cz_fips, cz_type\nFROM 's3://us-west-2.opendata.source.coop/earthgenome/storm-events-db/events.parquet' \nWHERE bbox.xmin >= -105 AND bbox.xmax <= -103\n  AND bbox.ymin >= 38 AND bbox.ymax <= 40;\n\n-- Events within a specific polygon (slower - parses geometry)\nSELECT event_id, event_type, begin_ts, state, state_fips, cz_name, cz_fips, cz_type\nFROM 's3://us-west-2.opendata.source.coop/earthgenome/storm-events-db/events.parquet'\nWHERE ST_Within(\n    geometry,\n    ST_GeomFromText('POLYGON((-105 38, -103 38, -103 40, -105 40, -105 38))')\n);\n\n-- Events near a point (within 50km)\nSELECT \n    event_id,\n    event_type,\n    state,\n    begin_ts,\n    ST_Distance(\n        geometry,\n        ST_Point(-89.5, 37.5)\n    ) as distance_degrees\nFROM 's3://us-west-2.opendata.source.coop/earthgenome/storm-events-db/events.parquet'\nWHERE bbox.xmin >= -90.5 AND bbox.xmax <= -88.5\n  AND bbox.ymin >= 36.5 AND bbox.ymax <= 38.5\nORDER BY distance_degrees\nLIMIT 20;\n```\n\n### Filter by Episode\n\n```sql\n-- All events in an episode\nSELECT * FROM 's3://us-west-2.opendata.source.coop/earthgenome/storm-events-db/events.parquet' \nWHERE episode_id = 123456\nORDER BY begin_ts;\n\n-- Episodes with multiple events\nSELECT \n    episode_id,\n    COUNT(*) as event_count,\n    MIN(begin_ts) as episode_start,\n    MAX(end_ts) as episode_end,\n    ARRAY_AGG(DISTINCT event_type) as event_types\nFROM 's3://us-west-2.opendata.source.coop/earthgenome/storm-events-db/events.parquet'\nWHERE episode_id is not null\nGROUP BY episode_id\nHAVING COUNT(*) > 5\nORDER BY event_count DESC\nLIMIT 20;\n```\n\n### Casualty and Damage Analysis\n\n```sql\n-- Find high-casualty events\nSELECT \n    event_id,\n    event_type,\n    state,\n    begin_ts,\n    deaths_direct,\n    deaths_indirect,\n    deaths_direct + deaths_indirect as total_deaths,\n    injuries_direct + injuries_indirect as total_injuries\nFROM 's3://us-west-2.opendata.source.coop/earthgenome/storm-events-db/events.parquet' \nWHERE deaths_direct > 0 OR deaths_indirect > 0\nORDER BY total_deaths DESC\nLIMIT 50;\n\n-- Costliest events\nSELECT \n    event_id,\n    event_type,\n    state,\n    begin_ts,\n    damage_property,\n    damage_crops,\n    damage_property + damage_crops as total_damage\nFROM 's3://us-west-2.opendata.source.coop/earthgenome/storm-events-db/events.parquet'\nWHERE damage_property > 0 OR damage_crops > 0\nORDER BY total_damage DESC\nLIMIT 50;\n\n-- Annual damage trends\nSELECT \n    year,\n    SUM(damage_property) as property_damage,\n    SUM(damage_crops) as crop_damage,\n    SUM(damage_property + damage_crops) as total_damage,\n    COUNT(*) as event_count\nFROM 's3://us-west-2.opendata.source.coop/earthgenome/storm-events-db/events.parquet'\nGROUP BY year\nORDER BY year;\n```\n\n### Export Results\n\n```sql\n-- Export filtered results to a new Parquet file\nCOPY (\n    SELECT * FROM 's3://us-west-2.opendata.source.coop/earthgenome/storm-events-db/events.parquet'\n    WHERE year = 2023 AND event_type = 'tornado'\n) TO 'tornadoes_2023.parquet' (FORMAT PARQUET);\n\n-- Export to CSV\nCOPY (\n    SELECT \n        event_id, event_type, state, begin_ts, deaths_direct, deaths_indirect, injuries_direct, injuries_indirect\n    FROM 's3://us-west-2.opendata.source.coop/earthgenome/storm-events-db/events.parquet'\n    WHERE state = 'OKLAHOMA' AND year >= 2020\n    ORDER BY begin_ts DESC\n) TO 'oklahoma_events.csv' (HEADER, DELIMITER ',');\n```\n\n## Data Quality Considerations\n\nAlthough this project applies data cleaning procedures to improve accuracy, limitations in the source data remain. In some rare cases, event records may contain inconsistencies such as a storm being assigned to a specific state or county FIPS code while its recorded latitude and longitude fall outside the corresponding boundary. These discrepancies arise from the underlying official data. For transparency and verification, users may access and download the original data directly from the National Centers for Environmental Information (NCEI) at https://www.ncei.noaa.gov/access/storm-events-database, which serves as the authoritative source of truth for this project's data.",
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
+    "providers: role [processor] for 'The Commons' is an AI guess \u2014 Listed as a co-maintainer of the repository alongside IoW and Earth Genome; exact contribution role not specified.. Verify before flipping to _state: reviewed.",
+    "providers: role [processor, host] for 'Earth Genome' is an AI guess \u2014 Listed as a co-maintainer; assumed host role since the data is served from an 'earthgenome' path on Source Cooperative.. Verify before flipping to _state: reviewed.",
+    "extent.temporal: None (probe sample) widened to ['1950-01-01T00:00:00Z', None] using README-stated coverage ['1950', None].",
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [events.derived_lat (latlon), events.derived_lon (latlon), events.geometry (geometry), events.bbox (geometry), events.state (placename), events.state_fips (admin_code), events.cz_fips (admin_code), events.cz_name (placename)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-07-01T09:40:33+00:00",
+  "store_format": null
 }
