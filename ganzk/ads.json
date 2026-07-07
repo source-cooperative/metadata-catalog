@@ -1,15 +1,151 @@
 {
-  "account_id": "ganzk",
-  "product_id": "ads",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
+  "id": "ganzk/ads",
   "title": "USFS Aerial Detection Surveys",
-  "description": "Damage polygons and survey areas from US Forest Service Insect and Disease Survey Program.",
-  "keywords": [],
-  "created_at": "2026-06-29T22:53:53.176Z",
-  "updated_at": "2026-06-29T22:53:53.176Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
+  "description": "Damage polygons and survey area boundaries from the US Forest Service's aerial and ground-based Insect and Disease Survey (IDS) program, documenting forest damage caused by insects, diseases, and other disturbance agents across the continental United States.",
+  "keywords": [
+    "forest-health",
+    "insect-damage",
+    "disease-survey",
+    "aerial-survey",
+    "conservation",
+    "environmental-monitoring",
+    "pmtiles"
+  ],
+  "providers": [
+    {
+      "name": "US Forest Service",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/ganzk/ads"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 1981405
+  },
+  "assets": {
+    "damage": {
+      "href": "https://data.source.coop/ganzk/ads/damage.fgb",
+      "type": "application/flatgeobuf",
+      "title": "damage.fgb",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "SURVEY_YEAR",
+          "type": "Integer"
+        },
+        {
+          "name": "HOST_CODE",
+          "type": "Integer"
+        },
+        {
+          "name": "DCA_CODE",
+          "type": "Integer"
+        },
+        {
+          "name": "DAMAGE_TYPE_CODE",
+          "type": "Integer"
+        },
+        {
+          "name": "PERCENT_AFFECTED",
+          "type": "String"
+        },
+        {
+          "name": "LEGACY_TPA",
+          "type": "Real"
+        },
+        {
+          "name": "SEVERITY",
+          "type": "String"
+        },
+        {
+          "name": "HOST_LABEL",
+          "type": "String"
+        },
+        {
+          "name": "DCA_LABEL",
+          "type": "String"
+        }
+      ],
+      "table:row_count": 1961395
+    },
+    "survey": {
+      "href": "https://data.source.coop/ganzk/ads/survey.fgb",
+      "type": "application/flatgeobuf",
+      "title": "survey.fgb",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "SURVEY_YEAR",
+          "type": "Integer"
+        },
+        {
+          "name": "IDS_DATA_SOURCE",
+          "type": "String"
+        }
+      ],
+      "table:row_count": 20010
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/ganzk/ads/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/ganzk/ads",
+      "title": "Source Cooperative product page"
+    }
+  ],
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
   "data_mode": "open",
+  "disabled": false,
+  "exts": {
+    "pmtiles": 50,
+    "fgb": 2
+  },
+  "file_count": 52,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -22,21 +158,19 @@
       "prefix": "ganzk/ads/"
     }
   },
-  "file_count": 52,
+  "featured": 0,
+  "created_at": "2026-06-29T22:53:53.176Z",
+  "account_id": "ganzk",
   "total_bytes": 2523743650,
-  "exts": {
-    "pmtiles": 50,
-    "fgb": 2
-  },
-  "ext_bytes": {
-    "fgb": 2105844328,
-    "pmtiles": 417899322
-  },
-  "store_format": null,
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "cataloged_at": "2026-07-06T10:27:45+00:00"
+  "product_id": "ads",
+  "updated_at": "2026-06-29T22:53:53.176Z",
+  "visibility": "public",
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
+    "providers: role [producer, licensor] for 'US Forest Service' is an AI guess \u2014 Producer role is explicit from the program name (USFS Insect and Disease Survey); licensor role is inferred since no license terms are stated and USFS is the originating US federal agency.. Verify before flipping to _state: reviewed.",
+    "extent.spatial.bbox: omitted; probe found no spatial dimension and AI did not flag any column as geographic."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-07-07T09:55:10+00:00",
+  "store_format": null
 }
