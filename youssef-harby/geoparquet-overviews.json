@@ -1,15 +1,472 @@
 {
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
+  "id": "youssef-harby/geoparquet-overviews",
+  "title": "geoparquet-overviews",
+  "description": "A reference/demo dataset for the \"geoparquet-overviews\" draft convention, which embeds a simplified overview geometry alongside full-resolution geometry in a single GeoParquet file so it renders instantly in a web map while remaining fully queryable by a SQL engine. It packages example conversions of Finnish topographic (MTK) building/terrain features and Overture Maps building footprints for Tokyo across multiple convention versions (root, v0.1.0, v0.2.0).",
+  "keywords": [
+    "geoparquet",
+    "building-footprints",
+    "topography",
+    "web-mapping"
+  ],
+  "providers": [
+    {
+      "name": "National Land Survey of Finland (Maanmittauslaitos)",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Overture Maps Foundation",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/youssef-harby/geoparquet-overviews"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 47929039
+  },
+  "assets": {
+    ".": {
+      "href": "https://data.source.coop/youssef-harby/geoparquet-overviews/",
+      "type": "application/x-parquet",
+      "title": ".",
+      "roles": [
+        "data"
+      ],
+      "description": "3 files sampled for this table"
+    },
+    "overture-tokyo": {
+      "href": "https://data.source.coop/youssef-harby/geoparquet-overviews/overture-tokyo/",
+      "type": "application/x-parquet",
+      "title": "overture-tokyo",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "BIGINT|VARCHAR"
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "height",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "num_floors",
+          "type": "INTEGER"
+        },
+        {
+          "name": "class",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')",
+          "description": "[geometry] Full-resolution building footprint geometry (OGC:CRS84)"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)",
+          "description": "[geometry] Bounding box struct (xmin, ymin, xmax, ymax) per feature"
+        },
+        {
+          "name": "band",
+          "type": "SMALLINT"
+        },
+        {
+          "name": "geom_overview",
+          "type": "GEOMETRY('OGC:CRS84')",
+          "description": "[geometry] Simplified overview geometry for fast web-map rendering"
+        },
+        {
+          "name": "tags",
+          "type": "MAP(VARCHAR, VARCHAR)"
+        },
+        {
+          "name": "subtype",
+          "type": "VARCHAR"
+        }
+      ],
+      "description": "3 files sampled for this table"
+    },
+    "v0.1.0": {
+      "href": "https://data.source.coop/youssef-harby/geoparquet-overviews/v0.1.0/",
+      "type": "application/x-parquet",
+      "title": "v0.1.0",
+      "roles": [
+        "data"
+      ],
+      "description": "3 files sampled for this table"
+    },
+    "v0.1.0/overture-tokyo": {
+      "href": "https://data.source.coop/youssef-harby/geoparquet-overviews/v0.1.0/overture-tokyo/",
+      "type": "application/x-parquet",
+      "title": "v0.1.0/overture-tokyo",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "BIGINT|VARCHAR"
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "height",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "num_floors",
+          "type": "INTEGER"
+        },
+        {
+          "name": "class",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')",
+          "description": "[geometry] Full-resolution building footprint geometry (OGC:CRS84)"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)",
+          "description": "[geometry] Bounding box struct (xmin, ymin, xmax, ymax) per feature"
+        },
+        {
+          "name": "band",
+          "type": "SMALLINT"
+        },
+        {
+          "name": "geom_overview",
+          "type": "GEOMETRY('OGC:CRS84')",
+          "description": "[geometry] Simplified overview geometry for fast web-map rendering"
+        },
+        {
+          "name": "tags",
+          "type": "MAP(VARCHAR, VARCHAR)"
+        },
+        {
+          "name": "subtype",
+          "type": "VARCHAR"
+        }
+      ],
+      "description": "3 files sampled for this table"
+    },
+    "v0.2.0": {
+      "href": "https://data.source.coop/youssef-harby/geoparquet-overviews/v0.2.0/",
+      "type": "application/x-parquet",
+      "title": "v0.2.0",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "INTEGER"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY|GEOMETRY('EPSG:3067')",
+          "description": "[geometry] Full-resolution feature geometry (EPSG:3067 or unspecified CRS)"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)",
+          "description": "[geometry] Bounding box struct (xmin, ymin, xmax, ymax) per feature"
+        },
+        {
+          "name": "band",
+          "type": "SMALLINT"
+        },
+        {
+          "name": "geom_overview",
+          "type": "GEOMETRY|GEOMETRY('EPSG:3067')",
+          "description": "[geometry] Simplified overview geometry for fast web-map rendering"
+        },
+        {
+          "name": "OGC_FID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "mtk_id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "sijaintitarkkuus",
+          "type": "INTEGER"
+        },
+        {
+          "name": "aineistolahde",
+          "type": "INTEGER"
+        },
+        {
+          "name": "alkupvm",
+          "type": "DATE"
+        },
+        {
+          "name": "kohderyhma",
+          "type": "INTEGER"
+        },
+        {
+          "name": "kohdeluokka",
+          "type": "INTEGER"
+        },
+        {
+          "name": "korkeustarkkuus",
+          "type": "INTEGER"
+        },
+        {
+          "name": "kayttotarkoitus",
+          "type": "INTEGER"
+        },
+        {
+          "name": "kerrosluku",
+          "type": "INTEGER"
+        },
+        {
+          "name": "pohjankorkeus",
+          "type": "INTEGER"
+        },
+        {
+          "name": "korkeusarvo",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "sijainti_piste",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "xmin",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "ymin",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "xmax",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "ymax",
+          "type": "DOUBLE"
+        }
+      ],
+      "description": "4 files sampled for this table"
+    },
+    "v0.2.0/overture-tokyo": {
+      "href": "https://data.source.coop/youssef-harby/geoparquet-overviews/v0.2.0/overture-tokyo/",
+      "type": "application/x-parquet",
+      "title": "v0.2.0/overture-tokyo",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "BIGINT|VARCHAR"
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "height",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "num_floors",
+          "type": "INTEGER"
+        },
+        {
+          "name": "class",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY",
+          "description": "[geometry] Full-resolution building footprint geometry"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)",
+          "description": "[geometry] Bounding box struct (xmin, ymin, xmax, ymax) per feature"
+        },
+        {
+          "name": "band",
+          "type": "SMALLINT"
+        },
+        {
+          "name": "geom_overview",
+          "type": "GEOMETRY",
+          "description": "[geometry] Simplified overview geometry for fast web-map rendering"
+        },
+        {
+          "name": "tags",
+          "type": "MAP(VARCHAR, VARCHAR)"
+        },
+        {
+          "name": "subtype",
+          "type": "VARCHAR"
+        }
+      ],
+      "description": "3 files sampled for this table"
+    }
+  },
+  "table:columns": [
+    {
+      "name": "id",
+      "type": "INTEGER"
+    },
+    {
+      "name": "geometry",
+      "type": "GEOMETRY('EPSG:3067')|GEOMETRY('OGC:CRS84')",
+      "description": "[geometry] Full-resolution feature geometry (EPSG:3067 or OGC:CRS84)"
+    },
+    {
+      "name": "bbox",
+      "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)",
+      "description": "[geometry] Bounding box struct (xmin, ymin, xmax, ymax) per feature"
+    },
+    {
+      "name": "band",
+      "type": "SMALLINT"
+    },
+    {
+      "name": "geom_overview",
+      "type": "GEOMETRY('EPSG:3067')|GEOMETRY('OGC:CRS84')",
+      "description": "[geometry] Simplified overview geometry for fast web-map rendering"
+    },
+    {
+      "name": "OGC_FID",
+      "type": "BIGINT"
+    },
+    {
+      "name": "mtk_id",
+      "type": "BIGINT"
+    },
+    {
+      "name": "sijaintitarkkuus",
+      "type": "INTEGER"
+    },
+    {
+      "name": "aineistolahde",
+      "type": "INTEGER"
+    },
+    {
+      "name": "alkupvm",
+      "type": "DATE"
+    },
+    {
+      "name": "kohderyhma",
+      "type": "INTEGER"
+    },
+    {
+      "name": "kohdeluokka",
+      "type": "INTEGER"
+    },
+    {
+      "name": "korkeustarkkuus",
+      "type": "INTEGER"
+    },
+    {
+      "name": "kayttotarkoitus",
+      "type": "INTEGER"
+    },
+    {
+      "name": "kerrosluku",
+      "type": "INTEGER"
+    },
+    {
+      "name": "pohjankorkeus",
+      "type": "INTEGER"
+    },
+    {
+      "name": "korkeusarvo",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "sijainti_piste",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "xmin",
+      "type": "DOUBLE"
+    },
+    {
+      "name": "ymin",
+      "type": "DOUBLE"
+    },
+    {
+      "name": "xmax",
+      "type": "DOUBLE"
+    },
+    {
+      "name": "ymax",
+      "type": "DOUBLE"
+    }
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/youssef-harby/geoparquet-overviews/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/youssef-harby/geoparquet-overviews",
+      "title": "Source Cooperative product page"
+    }
+  ],
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "disabled": false,
+  "created_at": "2026-07-02T23:04:02.311Z",
   "account_id": "youssef-harby",
   "product_id": "geoparquet-overviews",
-  "title": "geoparquet-overviews",
-  "description": " One GeoParquet file a web map previews instantly and a SQL engine reads in full. Draft convention, reference converter, and live viewer. ",
-  "keywords": [],
-  "created_at": "2026-07-02T23:04:02.311Z",
-  "updated_at": "2026-07-02T23:04:02.311Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": null,
+  "total_bytes": 4500718531,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -19,20 +476,21 @@
     }
   },
   "file_count": 20,
-  "total_bytes": 4500718531,
+  "visibility": "public",
+  "featured": 0,
+  "data_mode": null,
+  "updated_at": "2026-07-02T23:04:02.311Z",
   "exts": {
     "parquet": 19,
     "json": 1
   },
-  "ext_bytes": {
-    "parquet": 4500716571,
-    "json": 1960
-  },
-  "store_format": null,
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "cataloged_at": "2026-07-06T10:38:34+00:00"
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
+    "providers: role [producer] for 'National Land Survey of Finland (Maanmittauslaitos)' is an AI guess \u2014 Inferred from Finnish MTK (Maastotietokanta) topographic-database column names (mtk_id, aineistolahde, kohdeluokka, kayttotarkoitus, etc.) in the schema.. Verify before flipping to _state: reviewed.",
+    "providers: role [producer] for 'Overture Maps Foundation' is an AI guess \u2014 Inferred from the 'overture-tokyo' asset name and building-footprint schema (class, subtype, height, num_floors) matching the Overture Maps buildings theme.. Verify before flipping to _state: reviewed.",
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [..geometry (geometry), ..geom_overview (geometry), ..bbox (geometry), overture-tokyo.geometry (geometry), overture-tokyo.geom_overview (geometry), overture-tokyo.bbox (geometry), v0.1.0.geometry (geometry), v0.1.0.geom_overview (geometry), v0.1.0.bbox (geometry), v0.1.0/overture-tokyo.geometry (geometry), v0.1.0/overture-tokyo.geom_overview (geometry), v0.1.0/overture-tokyo.bbox (geometry), v0.2.0.geometry (geometry), v0.2.0.geom_overview (geometry), v0.2.0.bbox (geometry), v0.2.0/overture-tokyo.geometry (geometry), v0.2.0/overture-tokyo.geom_overview (geometry), v0.2.0/overture-tokyo.bbox (geometry)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-07-07T09:48:40+00:00",
+  "store_format": null
 }
