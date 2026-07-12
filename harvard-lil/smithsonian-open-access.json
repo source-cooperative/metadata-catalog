@@ -1,29 +1,90 @@
 {
-  "account_id": "harvard-lil",
-  "product_id": "smithsonian-open-access",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "harvard-lil/smithsonian-open-access",
   "title": "Smithsonian Open Access Archive",
-  "description": "This repository includes approximately 784 terabytes (8.7 million files) of public domain data from the Smithsonian Institution's Open Access collection. Sourced from more than 20 libraries, museums, and research centers across the Smithsonian, this archive is updated weekly.",
-  "keywords": [],
-  "created_at": "2025-11-20T19:27:31.110Z",
-  "updated_at": "2026-03-27T19:06:22.330Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": "open",
-  "mirrors": {
-    "aws-opendata-us-west-2": {
-      "storage_type": "s3",
-      "is_primary": true,
-      "connection_id": "aws-opendata-us-west-2",
-      "config": {
-        "region": "us-west-2",
-        "bucket": "aws-opendata-us-west-2"
-      },
-      "prefix": "harvard-lil/smithsonian-open-access/"
+  "description": "A mirror of public domain data from the Smithsonian Institution's Open Access collection, comprising 3D models, images (JPEG/TIFF), and line-delimited JSON metadata records for millions of objects sourced from more than 20 Smithsonian museums, libraries, and research centers. The repository is organized by data type and Smithsonian unit code, and is updated weekly to track additions to the source archive.",
+  "license": "CC0-1.0",
+  "keywords": [
+    "cultural-heritage",
+    "museum-collections",
+    "public-domain",
+    "3d-models",
+    "open-access",
+    "digitization",
+    "historical-archives"
+  ],
+  "providers": [
+    {
+      "name": "Smithsonian Institution",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Library Innovation Lab, Harvard Law School Library",
+      "roles": [
+        "processor",
+        "host"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/harvard-lil/smithsonian-open-access"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -180.0,
+          -90.0,
+          180.0,
+          90.0
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
     }
   },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/harvard-lil/smithsonian-open-access/",
+      "type": "image/tiff; application=geotiff",
+      "title": "Dataset files (4264438 x .tif)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/harvard-lil/smithsonian-open-access/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/harvard-lil/smithsonian-open-access",
+      "title": "Source Cooperative product page"
+    }
+  ],
   "file_count": 9081762,
+  "featured": 0,
+  "product_id": "smithsonian-open-access",
   "total_bytes": 823406241299539,
+  "disabled": false,
+  "data_mode": "open",
   "exts": {
     "jpg": 4719459,
     "tif": 4264438,
@@ -54,42 +115,31 @@
     "ds_store": 1,
     "md": 1
   },
-  "_state": "seed",
+  "mirrors": {
+    "aws-opendata-us-west-2": {
+      "storage_type": "s3",
+      "is_primary": true,
+      "connection_id": "aws-opendata-us-west-2",
+      "config": {
+        "region": "us-west-2",
+        "bucket": "aws-opendata-us-west-2"
+      },
+      "prefix": "harvard-lil/smithsonian-open-access/"
+    }
+  },
+  "account_id": "harvard-lil",
+  "updated_at": "2026-03-27T19:06:22.330Z",
+  "visibility": "public",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "id": "harvard-lil/smithsonian-open-access",
-  "cataloged_at": "2026-07-06T10:28:35+00:00",
-  "store_format": null,
-  "ext_bytes": {
-    "tif": 652936264225798,
-    "jpg": 169110422702561,
-    "zip": 673204040906,
-    "tiff": 274357066046,
-    "ply": 140413483490,
-    "pdf": 77614825787,
-    "txt": 48191918728,
-    "obj": 46618460740,
-    "glb": 32772030176,
-    "png": 30238382509,
-    "bin": 24630714832,
-    "fbx": 8653129168,
-    "usdz": 1724010410,
-    "": 768117809,
-    "json": 243050341,
-    "wrl": 47948478,
-    "stl": 34328268,
-    "gltf": 15445623,
-    "xml": 14838124,
-    "old": 5086532,
-    "lua": 4180956,
-    "jpeg": 2059870,
-    "mlx": 747099,
-    "html": 435002,
-    "mtl": 34916,
-    "db": 19968,
-    "md": 9254,
-    "ds_store": 6148
-  }
+  "created_at": "2025-11-20T19:27:31.110Z",
+  "readme": "## README.md\n# Smithsonian Open Access Archive\n\nThis is a mirror of public domain data archived from the Smithsonian Institution's [Open Access S3 bucket](https://registry.opendata.aws/smithsonian-open-access/). The source data can also be searched via the Smithsonian's [Collections Search Center](https://collections.si.edu/search/) by [limiting results to CC0 media](https://collections.si.edu/search/results.htm?q=&media.CC0=true). We look forward to enhancing the usability and discoverability of this data in the coming months.\n\nThis repository is maintained by the [Library Innovation Lab](https://lil.law.harvard.edu/) at Harvard Law School Library as part of our [Public Data Project](https://lil.law.harvard.edu/our-work/public-data-project/).\n\n![Logo for the Public Data Project at Harvard Law School Library](https://lil-blog-media.s3.amazonaws.com/pdp-logo-hlsl.svg)\n\n## Contents\n\n- [Navigation](#navigation)\n  - [3D models](#3d-models)\n  - [Images](#images)\n  - [Metadata](#metadata)\n- [Downloading data](#downloading-data)\n- [Update frequency](#update-frequency)\n- [Smithsonian unit codes](#smithsonian-unit-codes)\n\n## Navigation\n\nAt present, this repository mirrors the directory structure used by the Smithsonian:\n\n```\nroot\n\u251c\u2500\u2500 3d/\n\u2502   \u251c\u2500\u2500 002f2567-7384-4027-9b99-bcb7a7e6361e/\n\u2502   \u251c\u2500\u2500 00416a1c-358a-4f5b-9a90-053df0d6fd31/\n\u2502   \u2514\u2500\u2500 \u2026\n\u251c\u2500\u2500 media/\n\u2502   \u251c\u2500\u2500 aaa/\n\u2502   \u251c\u2500\u2500 acm/\n\u2502   \u2514\u2500\u2500 \u2026\n\u251c\u2500\u2500 metadata/edan/\n\u2502   \u251c\u2500\u2500 aaa/\n\u2502   \u251c\u2500\u2500 aag/\n\u2502   \u2514\u2500\u2500 \u2026\n\u2514\u2500\u2500 README.md\n```\n\nEach root-level directory contains a different type of data: `3d` contains 3D models, `media` contains images, and `metadata` contains metadata for all objects. For more information on working with a given type of data, please read the corresponding section below.\n\n### 3D models\n\n3D models are organized solely by identifier. Unlike images and metadata, they are not grouped by [Smithsonian unit code](#smithsonian-unit-codes). Each subdirectory under `3d` matches an object identifier, and may contain a number of objects including 3D geometry files (GLB, GLTF, OBJ) and other material:\n\n```\n3d/\n\u251c\u2500\u2500 d8c62f94-4ebc-11ea-b77f-2e728ce88125/\n\u2502   \u251c\u2500\u2500 articles/\n\u2502   \u251c\u2500\u2500 resources/\n\u2502   \u251c\u2500\u2500 f1930_54-combined_std.usdz\n\u2502   \u251c\u2500\u2500 f1930_54-combined-100K-2048_std.glb\n\u2502   \u251c\u2500\u2500 \u2026\n\u2502   \u2514\u2500\u2500 scene.svx.json\n\u2514\u2500\u2500 \u2026\n```\n\nAlso included in each `3d` subdirectory is `scene.svx.json`, an [SVX file](https://smithsonian.github.io/dpo-voyager/document/) comprising [Smithsonian Voyager](https://smithsonian.github.io/dpo-voyager/) scene information as well as general object metadata. This metadata typically includes the object's name, description, and accession number, as well as associated links and identifiers.\n\n### Images\n\nImages are organized by [Smithsonian unit code](#smithsonian-unit-codes). Each subdirectory under `media` is named for a Smithsonian unit and contains JPEG and TIFF images for that unit:\n\n```\nmedia/\n\u251c\u2500\u2500 npg/\n\u2502   \u251c\u2500\u2500 NPG-6500034A_1.jpg\n\u2502   \u251c\u2500\u2500 NPG-6500034A_1.tif\n\u2502   \u251c\u2500\u2500 NPG-6500100A_1.jpg\n\u2502   \u251c\u2500\u2500 NPG-6500100A_1.tif\n\u2502   \u2514\u2500\u2500 \u2026\n\u2514\u2500\u2500 \u2026\n```\n\nThere is typically, though not always, a high-resolution TIFF for every JPEG and vice versa. Each image file is referenced in an associated metadata record.\n\n### Metadata\n\nMetadata is organized by [Smithsonian unit code](#smithsonian-unit-codes) and grouped in large text files containing line-delimited JSON records:\n\n```\nmetadata/edan/\n\u251c\u2500\u2500 nasm/\n\u2502   \u251c\u2500\u2500 00.txt\n\u2502   \u251c\u2500\u2500 01.txt\n\u2502   \u251c\u2500\u2500 02.txt\n\u2502   \u251c\u2500\u2500 \u2026\n\u2502   \u2514\u2500\u2500 index.txt\n\u2514\u2500\u2500 \u2026\n```\n\nAlso included in each subdirectory is `index.txt`, an index file listing all the metadata files for that directory.\n\nMore than 17 million metadata records, constituting over 47 GB, are included. As a consequence, the metadata files are quite large, and querying them is memory- and time-intensive. If analysis is your goal, we recommend downloading a relevant subset of files and then querying them using a database or an efficient data storage format such as [Parquet](https://parquet.apache.org/).\n\n## Downloading data\n\nTo download an individual data object by name, copy its source URL from the user interface:\n\n```\nhttps://data.source.coop/harvard-lil/smithsonian-open-access/3d/d8c62f94-4ebc-11ea-b77f-2e728ce88125/f1930_54-combined-100K-2048_std.glb\n\nhttps://data.source.coop/harvard-lil/smithsonian-open-access/media/npg/NPG-NPG_79_209Truth_d1.jpg\n\nhttps://data.source.coop/harvard-lil/smithsonian-open-access/metadata/edan/nasm/02.txt\n```\n\nTo download large numbers of files, we recommend using tools such as the [AWS CLI](https://aws.amazon.com/cli/) or [Rclone](https://rclone.org/) to access the S3 endpoint directly:\n\n```sh\naws s3 cp s3://us-west-2.opendata.source.coop/harvard-lil/smithsonian-open-access/metadata/edan/nasm/02.txt --no-sign-request\n```\n\n## Update frequency\n\nThe files in this repository were first collected beginning in August 2025. The repository is updated weekly to mirror additions to the Smithsonian Institution's [Open Access S3 bucket](https://registry.opendata.aws/smithsonian-open-access/).\n\n## Smithsonian unit codes\n\nHere is a list of Smithsonian Institution unit codes used to organize parts of this collection:\n\n| Code          | Unit                                                                                    |\n| ------------- | --------------------------------------------------------------------------------------- |\n| AAA           | Archives of American Art                                                                |\n| ACM           | Anacostia Community Museum                                                              |\n| CFCHFOLKLIFE  | Ralph Rinzler Folklife Archives and Collections                                         |\n| CHNDM         | Cooper Hewitt, Smithsonian Design Museum                                                |\n| EEPA          | Eliot Elisofon Photographic Archives                                                    |\n| FBR           | Smithsonian Field Book Project                                                          |\n| FSG           | Freer Gallery of Art and Arthur M. Sackler Gallery (National Museum of Asian Art)       |\n| HAC           | Smithsonian Gardens                                                                     |\n| HMSG          | Hirshhorn Museum and Sculpture Garden                                                   |\n| HSFA          | Human Studies Film Archives                                                             |\n| NAA           | National Anthropological Archives                                                       |\n| NASM          | National Air and Space Museum                                                           |\n| NMAAHC        | National Museum of African American History and Culture                                 |\n| NMAH          | National Museum of American History                                                     |\n| NMAI          | National Museum of the American Indian                                                  |\n| NMAfA         | National Museum of African Art                                                          |\n| NMNH          | National Museum of Natural History                                                      |\n| NMNHANTHRO    | National Museum of Natural History: Anthropology Department                             |\n| NMNHBIRDS     | National Museum of Natural History: Vertebrate Zoology Department, Birds Division       |\n| NMNHBOTANY    | National Museum of Natural History: Botany Department                                   |\n| NMNHEDUCATION | National Museum of Natural History: Education and Outreach                              |\n| NMNHENTO      | National Museum of Natural History: Entomology Department                               |\n| NMNHFISHES    | National Museum of Natural History: Vertebrate Zoology Department, Fishes Division      |\n| NMNHHERPS     | National Museum of Natural History: Vertebrate Zoology Department, Herpetology Division |\n| NMNHINV       | National Museum of Natural History: Invertebrate Zoology Department                     |\n| NMNHMAMMALS   | National Museum of Natural History: Vertebrate Zoology Department, Mammals Division     |\n| NMNHMINSCI    | National Museum of Natural History: Mineral Sciences Department                         |\n| NMNHPALEO     | National Museum of Natural History: Paleobiology Department                             |\n| NPG           | National Portrait Gallery                                                               |\n| NPM           | National Postal Museum                                                                  |\n| NZP           | Smithsonian's National Zoo and Conservation Biology Institute                           |\n| SAAM          | Smithsonian American Art Museum                                                         |\n| SIA           | Smithsonian Institution Archives                                                        |\n| SIL           | Smithsonian Libraries                                                                   |\n",
+  "_review": [
+    "providers: role [processor, host] for 'Library Innovation Lab, Harvard Law School Library' is an AI guess \u2014 README states LIL maintains this mirror repository as part of its Public Data Project; inferred processor/host roles for the mirroring work rather than the original data hosting.. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-07-12T09:24:33+00:00",
+  "store_format": null
 }
