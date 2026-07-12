@@ -1,14 +1,116 @@
 {
-  "account_id": "govscape",
-  "product_id": "eota-pdf-archive",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
+  "id": "govscape/eota-pdf-archive",
   "title": "EOTA-PDF-Archive",
-  "description": "All PDF documents found in the 2008-2024 End of Term Archive web crawls.",
-  "keywords": [],
-  "created_at": "2026-06-09T00:10:33.037Z",
+  "description": "A collection of PDF documents harvested from the End of Term Web Archive, a collaborative project that crawls and preserves U.S. government (.gov/.mil) websites around presidential transitions, covering crawls from 2008 through 2024.",
+  "keywords": [
+    "web-archive",
+    "government-documents",
+    "digital-preservation",
+    "wayback-machine",
+    "text-corpus",
+    "archival-records"
+  ],
+  "providers": [
+    {
+      "name": "End of Term Web Archive",
+      "roles": [
+        "producer",
+        "host"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/govscape/eota-pdf-archive"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2008-01-01T00:00:00Z",
+          "2024-01-01T00:00:00Z"
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 187171903
+  },
+  "assets": {
+    "cdx": {
+      "href": "https://data.source.coop/govscape/eota-pdf-archive/cdx/complete_cdx.parquet",
+      "type": "application/x-parquet",
+      "title": "complete_cdx.parquet",
+      "roles": [
+        "metadata"
+      ],
+      "table:columns": [
+        {
+          "name": "url",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "filename",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "crawl_date",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "digest",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "offset",
+          "type": "BIGINT"
+        },
+        {
+          "name": "length",
+          "type": "BIGINT"
+        }
+      ],
+      "table:row_count": 187171903
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/govscape/eota-pdf-archive/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/govscape/eota-pdf-archive",
+      "title": "Source Cooperative product page"
+    }
+  ],
+  "product_id": "eota-pdf-archive",
   "updated_at": "2026-06-09T00:10:33.037Z",
+  "account_id": "govscape",
+  "file_count": 75427393,
+  "total_bytes": 107332823306942,
   "visibility": "public",
   "disabled": false,
-  "featured": 0,
+  "created_at": "2026-06-09T00:10:33.037Z",
   "data_mode": "open",
   "mirrors": {
     "aws-opendata-us-west-2": {
@@ -22,21 +124,22 @@
       "prefix": "govscape/eota-pdf-archive/"
     }
   },
-  "file_count": 75427393,
-  "total_bytes": 107332823306942,
-  "exts": {
-    "pdf": 75427392,
-    "parquet": 1
-  },
-  "ext_bytes": {
-    "pdf": 107321312616429,
-    "parquet": 11510690513
-  },
-  "store_format": null,
-  "_state": "seed",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "cataloged_at": "2026-06-30T23:33:19+00:00"
+  "featured": 0,
+  "exts": {
+    "pdf": 75427392,
+    "parquet": 1
+  },
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
+    "providers: role [producer, host] for 'End of Term Web Archive' is an AI guess \u2014 Inferred from the dataset name and description referencing the End of Term Archive crawls; no explicit provider/role statement is given.. Verify before flipping to _state: reviewed.",
+    "extent.temporal: None (probe sample) widened to ['2008-01-01T00:00:00Z', '2024-01-01T00:00:00Z'] using README-stated coverage ['2008', '2024'].",
+    "extent.spatial.bbox: omitted; probe found no spatial dimension and AI did not flag any column as geographic."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-07-12T09:20:19+00:00",
+  "store_format": null
 }
