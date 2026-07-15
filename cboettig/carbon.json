@@ -1,19 +1,22 @@
 {
   "type": "Collection",
   "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
   "id": "cboettig/carbon",
   "title": "Irrecoverable Carbon - Conservation International",
-  "description": "Global raster dataset mapping irrecoverable carbon \u2014 ecosystem carbon stocks that cannot be recovered by 2050 if lost \u2014 along with vulnerable and manageable carbon stocks. Produced by Conservation International, the dataset spans 2010\u20132024 in two versioned releases (v1: 2021, v2: 2025 with corrections), delivered as Cloud-Optimized GeoTIFFs and H3 hexagonal Parquet files at global coverage.",
+  "description": "Global raster and H3-hexagonal dataset mapping irrecoverable, vulnerable, and manageable carbon stocks in Earth's ecosystems, produced by Conservation International (v2, 2025 methodology update of Noon et al. 2022). Covers years 2010, 2018, and 2022\u20132024, delivered as Cloud-Optimized GeoTIFFs (carbon density) and H3 hexagonal Parquet files (carbon totals).",
   "license": "CC-BY-NC-4.0",
   "keywords": [
     "conservation",
     "climate",
+    "carbon-stocks",
     "remote-sensing",
-    "biodiversity",
     "global-coverage",
-    "time-series",
     "h3",
-    "irrecoverable-carbon"
+    "cloud-optimized-geotiff",
+    "time-series"
   ],
   "providers": [
     {
@@ -35,10 +38,10 @@
     "spatial": {
       "bbox": [
         [
-          -180.0,
-          -90.0,
-          180.0,
-          90.0
+          null,
+          null,
+          null,
+          null
         ]
       ]
     },
@@ -51,16 +54,65 @@
       ]
     }
   },
+  "summaries": {
+    "item_count": 390084868
+  },
   "assets": {
-    "data": {
-      "href": "https://data.source.coop/cboettig/carbon/",
-      "type": "image/tiff; application=geotiff",
-      "title": "Dataset files (10 x .tif)",
+    "irrecoverable-carbon-2018/hex": {
+      "href": "https://data.source.coop/cboettig/carbon/irrecoverable-carbon-2018/hex/h0=576495936675512319/",
+      "type": "application/x-parquet",
+      "title": "irrecoverable-carbon-2018/hex",
       "roles": [
         "data"
-      ]
+      ],
+      "description": "5 files sampled for this table"
+    },
+    "vulnerable-carbon-2024/hex": {
+      "href": "https://data.source.coop/cboettig/carbon/vulnerable-carbon-2024/hex/h0=580612508209905663/",
+      "type": "application/x-parquet",
+      "title": "vulnerable-carbon-2024/hex",
+      "roles": [
+        "data"
+      ],
+      "description": "5 files sampled for this table"
     }
   },
+  "table:columns": [
+    {
+      "name": "carbon",
+      "type": "DOUBLE"
+    },
+    {
+      "name": "h9",
+      "type": "UBIGINT",
+      "description": "[spatial_index] H3 cell ID at native resolution 9"
+    },
+    {
+      "name": "h0",
+      "type": "BIGINT",
+      "description": "[spatial_index] H3 resolution-0 cell ID, used as hive partition key"
+    },
+    {
+      "name": "h5",
+      "type": "UBIGINT",
+      "description": "[spatial_index] H3 parent cell ID rollup at resolution 5"
+    },
+    {
+      "name": "h6",
+      "type": "UBIGINT",
+      "description": "[spatial_index] H3 parent cell ID rollup at resolution 6"
+    },
+    {
+      "name": "h7",
+      "type": "UBIGINT",
+      "description": "[spatial_index] H3 parent cell ID rollup at resolution 7"
+    },
+    {
+      "name": "h8",
+      "type": "UBIGINT",
+      "description": "[spatial_index] H3 parent cell ID rollup at resolution 8"
+    }
+  ],
   "links": [
     {
       "rel": "self",
@@ -73,27 +125,18 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "file_count": 2710,
-  "exts": {
-    "parquet": 2679,
-    "zip": 15,
-    "tif": 10,
-    "xyz": 2,
-    "md": 1,
-    "html": 1,
-    "py": 1,
-    "json": 1
-  },
+  "account_id": "cboettig",
+  "visibility": "public",
+  "created_at": "2024-03-19T23:43:37.861014+00:00",
+  "total_bytes": 170846803317,
+  "data_mode": "open",
+  "featured": 0,
+  "disabled": false,
+  "file_count": 1224,
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "product_id": "carbon",
-  "updated_at": "2025-08-21T16:39:55.567Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "created_at": "2024-03-19T23:43:37.861014+00:00",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -106,14 +149,20 @@
       "prefix": "cboettig/carbon/"
     }
   },
-  "total_bytes": 473033988586,
-  "data_mode": "open",
-  "account_id": "cboettig",
-  "readme": "## README.md\n# Irrecoverable Earth: Global Carbon Reserves\n\n## Overview\n\nThis dataset maps global \"irrecoverable carbon\" \u2014 carbon stocks that, if lost, cannot be recovered by 2050, making their conservation critical for meeting climate goals. The data also includes \"manageable carbon\" (stocks that can be influenced by human management) and \"vulnerable carbon\" (total stocks vulnerable to release upon land conversion).\n\nThis collection contains **two releases**:\n- **v1 (2021 release)**: 2010 and 2018 data with biomass, soil, and total components (Zenodo 4091029)\n- **v2 (2025 update)**: 2010, 2018, 2022, 2023, and 2024 data (total only); includes corrections to the 2018 baseline (Zenodo 17645053)\n\n## Source & Attribution\n\n**Source**: Conservation International  \n**Project Page**: https://www.conservation.org/irrecoverable-carbon  \n\n**v1 Data**: https://doi.org/10.5281/zenodo.4091029  \n**v2 Data (2025 update)**: https://doi.org/10.5281/zenodo.17645053\n\n**Citation**: Noon, M.L., Goldstein, A., Ledezma, J.C. et al. Mapping the irrecoverable carbon in Earth's ecosystems. *Nat Sustain* **5**, 37\u201346 (2022). https://doi.org/10.1038/s41893-021-00803-6\n\n**License**: Creative Commons Attribution Non Commercial 4.0 International (CC BY-NC 4.0)\n\n**Key findings from 2025 update**: 5.4% (7.4 Gt) of Earth's irrecoverable carbon has been lost between 2018\u20132024; global total is now 128.0 Gt.\n\n---\n\n## Data Formats & Access\n\n**Base URL**: `https://s3-west.nrp-nautilus.io/public-carbon/`\n\n---\n\n## v2 Data (2025 Release \u2014 Zenodo 17645053)\n\nCovers years **2010, 2018, 2022, 2023, 2024** for total carbon only. The 2018 baseline includes corrections to boreal grassland/shrubland estimates and updated coastal ecosystem extents. Note: irrecoverable carbon is available for all 5 years; vulnerable and manageable are available for 2010, 2018, and 2024 only.\n\n### v2 Cloud-Optimized GeoTIFFs\n\n**Path Pattern**: `v2/cogs/{category}_c_total_{year}.tif`\n\n| File | Year | Description |\n|------|------|-------------|\n| `v2/cogs/irrecoverable_c_total_2024.tif` | 2024 | Irrecoverable carbon total (corrected baseline) |\n| `v2/cogs/irrecoverable_c_total_2023.tif` | 2023 | Irrecoverable carbon total |\n| `v2/cogs/irrecoverable_c_total_2022.tif` | 2022 | Irrecoverable carbon total |\n| `v2/cogs/irrecoverable_c_total_2018.tif` | 2018 | Irrecoverable carbon total (corrected baseline) |\n| `v2/cogs/irrecoverable_c_total_2010.tif` | 2010 | \u26a0\ufe0f **Not available** \u2014 source file has corrupt TIFF IFD (Zenodo upstream issue) |\n| `v2/cogs/vulnerable_c_total_2024.tif` | 2024 | Vulnerable carbon total |\n| `v2/cogs/vulnerable_c_total_2018.tif` | 2018 | Vulnerable carbon total |\n| `v2/cogs/vulnerable_c_total_2010.tif` | 2010 | Vulnerable carbon total |\n| `v2/cogs/manageable_c_total_2024.tif` | 2024 | Manageable carbon total |\n| `v2/cogs/manageable_c_total_2018.tif` | 2018 | Manageable carbon total |\n| `v2/cogs/manageable_c_total_2010.tif` | 2010 | Manageable carbon total |\n\nAll v2 COGs are compressed with ZSTD and use GoogleMapsCompatible tiling.\n\n### v2 H3 Hexagonal Parquet\n\nAggregated carbon stocks at H3 resolution 8 (~0.74 km\u00b2), partitioned by H3 resolution 0 (h0) cells.\n\n**Path Pattern**: `v2/{dataset-name}/hex/h0={cell}/data_0.parquet`\n\n| Dataset | Path prefix |\n|---------|-------------|\n| Irrecoverable carbon 2024 | `v2/irrecoverable-carbon-2024/hex/` |\n| Irrecoverable carbon 2023 | `v2/irrecoverable-carbon-2023/hex/` |\n| Irrecoverable carbon 2022 | `v2/irrecoverable-carbon-2022/hex/` |\n| Irrecoverable carbon 2018 | `v2/irrecoverable-carbon-2018/hex/` |\n| Vulnerable carbon 2024    | `v2/vulnerable-carbon-2024/hex/` |\n| Vulnerable carbon 2018    | `v2/vulnerable-carbon-2018/hex/` |\n| Vulnerable carbon 2010    | `v2/vulnerable-carbon-2010/hex/` |\n| Manageable carbon 2024    | `v2/manageable-carbon-2024/hex/` |\n| Manageable carbon 2018    | `v2/manageable-carbon-2018/hex/` |\n| Manageable carbon 2010    | `v2/manageable-carbon-2010/hex/` |\n\n### v2 Usage Examples\n\n**DuckDB \u2014 compare irrecoverable carbon across years:**\n```sql\nSELECT\n    year,\n    SUM(carbon) / 1e9 AS total_Gt_C\nFROM (\n    SELECT 2024 AS year, carbon FROM read_parquet('https://s3-west.nrp-nautilus.io/public-carbon/v2/irrecoverable-carbon-2024/hex/**/*.parquet')\n    UNION ALL\n    SELECT 2023 AS year, carbon FROM read_parquet('https://s3-west.nrp-nautilus.io/public-carbon/v2/irrecoverable-carbon-2023/hex/**/*.parquet')\n    UNION ALL\n    SELECT 2022 AS year, carbon FROM read_parquet('https://s3-west.nrp-nautilus.io/public-carbon/v2/irrecoverable-carbon-2022/hex/**/*.parquet')\n    UNION ALL\n    SELECT 2018 AS year, carbon FROM read_parquet('https://s3-west.nrp-nautilus.io/public-carbon/v2/irrecoverable-carbon-2018/hex/**/*.parquet')\n)\nGROUP BY year ORDER BY year;\n```\n\n---\n\n## v1 Data (2021 Release \u2014 Zenodo 4091029)\n\nCovers years **2010 and 2018** with biomass, soil, and total components separately.\n\n### v1 Cloud-Optimized GeoTIFFs\n\n**Path Pattern**: `cogs/{category}_c_{component}_{year}.tif`\n\n**Categories**: `irrecoverable`, `manageable`, `vulnerable`  \n**Components**: `biomass`, `soil`, `total`  \n**Years**: `2010`, `2018`\n\nExamples:\n- `cogs/irrecoverable_c_total_2018.tif`\n- `cogs/manageable_c_biomass_2010.tif`\n- `cogs/vulnerable_c_soil_2018.tif`\n\n### v1 H3 Hexagonal Parquet\n\n| Dataset | Path |\n|---------|------|\n| Irrecoverable carbon (total 2018) | `irrecoverable-carbon/hex/h0={cell}/data_0.parquet` |\n| Vulnerable carbon (total 2018)    | `vulnerable-carbon/hex/h0={cell}/data_0.parquet` |\n\n---\n\n## Data Dictionary\n\n### Hexagonal Parquet Schema\n\n| Column | Type | Description |\n|--------|------|-------------|\n| `carbon` | Float | Total carbon stock in the hex cell (Mg C) |\n| `h8` | String | H3 hexagon cell ID at resolution 8 |\n| `h0` | String | H3 resolution 0 parent cell ID (partition key) |\n\n**Units**: Megagrams of Carbon (Mg C). One Mg = 1 metric ton.\n\n### Terminology\n\n- **Irrecoverable Carbon**: Ecosystem carbon that, if lost, could not be recovered by 2050 through natural regeneration or restoration.\n- **Vulnerable Carbon**: Total carbon stocks (biomass + soil) that are vulnerable to release upon land conversion.\n- **Manageable Carbon**: Carbon stocks in ecosystems that can be managed by human activities (forestry, agriculture, conservation).\n\n### v2 Corrections vs v1\n\nThe v2 (2025) update includes:\n1. **Bug fix**: Corrected overestimation of irrecoverable carbon in boreal grasslands and shrublands in Asia (reduces 2018 total from 139.1 Gt to 135.3 Gt)\n2. **Updated coastal extents**: Global Mangrove Watch 2022 and UNEP-WCMC 2022 for seagrasses and salt marshes\n3. **Annual tracking**: New years 2022, 2023, 2024 for irrecoverable; 2024 for vulnerable and manageable\n4. **Updated protection status**: Uses WDPA data through January 2023\u2013October 2025\n\n---\n\n## Background & Methodology\n\nThe concept of \"irrecoverable carbon\" was developed to identify carbon stocks where prevention of loss is more effective than restoration. These areas represent the overlap between:\n\n1. **High carbon density** \u2014 Significant climate mitigation value\n2. **Low recoverability** \u2014 Cannot regenerate by 2050\n3. **High threat** \u2014 Significant risk of conversion\n\nThe dataset integrates:\n- Biomass data from multiple sources (Spawn et al., Walker et al.)\n- Soil carbon from SoilGrids250m\n- Ecosystem vulnerability assessments\n- ESA CCI Land Cover for annual conversion tracking (v2 only)\n",
+  "product_id": "carbon",
+  "exts": {
+    "parquet": 1212,
+    "tif": 10,
+    "md": 1,
+    "json": 1
+  },
+  "updated_at": "2025-08-21T16:39:55.567Z",
+  "readme": "## README.md\n# Irrecoverable Earth: Global Carbon Reserves (v2, 2025)\n\n## Overview\n\nThis dataset maps global \"irrecoverable carbon\" \u2014 carbon stocks that, if lost, cannot be recovered by 2050, making their conservation critical for meeting climate goals. It also includes \"manageable carbon\" (stocks that can be influenced by human management) and \"vulnerable carbon\" (total stocks vulnerable to release upon land conversion). The three are nested pools: **manageable \u2283 vulnerable \u2283 irrecoverable**.\n\nThis collection serves the **Conservation International v2 (2025) release** (Zenodo 17645053), the revised-methodology update of Noon et al. (2022). The earlier v1 (2021) release has been retired as superseded by v2.\n\n- **Irrecoverable carbon**: 2018, 2022, 2023, 2024\n- **Vulnerable & manageable carbon**: 2010, 2018, 2024\n\n(Irrecoverable 2010 is not included \u2014 its Zenodo source TIFF has a corrupt IFD and cannot be read.)\n\n## Source & Attribution\n\n**Source**: Conservation International\n**Project Page**: https://www.conservation.org/irrecoverable-carbon\n**Data (v2, 2025 update)**: https://doi.org/10.5281/zenodo.17645053\n**Citation**: Noon, M.L., Goldstein, A., Ledezma, J.C. et al. Mapping the irrecoverable carbon in Earth's ecosystems. *Nat Sustain* **5**, 37\u201346 (2022). https://doi.org/10.1038/s41893-021-00803-6\n**License**: Creative Commons Attribution Non Commercial 4.0 International (CC BY-NC 4.0) \u2014 non-commercial use only.\n\n**Key findings from the 2025 update**: 5.4% (7.4 Gt) of Earth's irrecoverable carbon was lost between 2018\u20132024; CI's published global total is now 128.0 Gt (CI corrected the original 2018 baseline from 139.1 to 135.3 Gt).\n\n---\n\n## Data Formats & Access\n\n**Base URL**: `https://s3-west.nrp-nautilus.io/public-carbon/`\n\nTwo products per layer: the source Cloud-Optimized GeoTIFF (carbon **density**, Mg C ha\u207b\u00b9, ~300 m, unchanged from source) and H3 hexagonal parquet (carbon **total**, Mg C per cell).\n\n### Cloud-Optimized GeoTIFFs\n\n**Path Pattern**: `v2/cogs/{category}_c_total_{year}.tif` \u2014 pixel values are carbon DENSITY in Mg C ha\u207b\u00b9.\n\n| File | Year |\n|------|------|\n| `v2/cogs/irrecoverable_c_total_{2024,2023,2022,2018}.tif` | 2024, 2023, 2022, 2018 |\n| `v2/cogs/vulnerable_c_total_{2024,2018,2010}.tif` | 2024, 2018, 2010 |\n| `v2/cogs/manageable_c_total_{2024,2018,2010}.tif` | 2024, 2018, 2010 |\n\nAll COGs are compressed with ZSTD. (Irrecoverable 2010 is absent \u2014 corrupt source TIFF.)\n\n### H3 Hexagonal Parquet\n\nCarbon **totals** at H3 **resolution 9** (native), with parent rollups at resolutions 8, 7, 6, 5 as columns, hive-partitioned by H3 resolution 0 (`h0`).\n\n**Path Pattern**: `{dataset-name}/hex/h0={cell}/data_0.parquet`\n\n| Dataset | Path prefix |\n|---------|-------------|\n| Irrecoverable carbon 2024 | `irrecoverable-carbon-2024/hex/` |\n| Irrecoverable carbon 2023 | `irrecoverable-carbon-2023/hex/` |\n| Irrecoverable carbon 2022 | `irrecoverable-carbon-2022/hex/` |\n| Irrecoverable carbon 2018 | `irrecoverable-carbon-2018/hex/` |\n| Vulnerable carbon 2024    | `vulnerable-carbon-2024/hex/` |\n| Vulnerable carbon 2018    | `vulnerable-carbon-2018/hex/` |\n| Vulnerable carbon 2010    | `vulnerable-carbon-2010/hex/` |\n| Manageable carbon 2024    | `manageable-carbon-2024/hex/` |\n| Manageable carbon 2018    | `manageable-carbon-2018/hex/` |\n| Manageable carbon 2010    | `manageable-carbon-2010/hex/` |\n\n### Usage Examples\n\n**DuckDB \u2014 compare irrecoverable carbon across years (totals in Gt C):**\n```sql\nSELECT year, SUM(carbon) / 1e9 AS total_Gt_C\nFROM (\n    SELECT 2024 AS year, carbon FROM read_parquet('https://s3-west.nrp-nautilus.io/public-carbon/irrecoverable-carbon-2024/hex/h0=*/data_0.parquet')\n    UNION ALL SELECT 2023, carbon FROM read_parquet('https://s3-west.nrp-nautilus.io/public-carbon/irrecoverable-carbon-2023/hex/h0=*/data_0.parquet')\n    UNION ALL SELECT 2022, carbon FROM read_parquet('https://s3-west.nrp-nautilus.io/public-carbon/irrecoverable-carbon-2022/hex/h0=*/data_0.parquet')\n    UNION ALL SELECT 2018, carbon FROM read_parquet('https://s3-west.nrp-nautilus.io/public-carbon/irrecoverable-carbon-2018/hex/h0=*/data_0.parquet')\n)\nGROUP BY year ORDER BY year;\n```\n\n---\n\n## Data Dictionary\n\n### Hexagonal Parquet Schema\n\n| Column | Type | Description |\n|--------|------|-------------|\n| `carbon` | double | Total carbon stock in the H3 cell, in Mg C (1 Mg = 1 tonne). |\n| `h9` | uint64 | H3 cell ID at resolution 9 (native; exactly one row per cell). |\n| `h8`\u2013`h5` | uint64 | H3 parent cell IDs at resolutions 8, 7, 6, 5 (rollups). |\n| `h0` | int64 | H3 resolution-0 cell ID \u2014 hive partition key. |\n\n`SUM(carbon)` over hex rows is directly valid as a carbon TOTAL (no GROUP BY or dedup) \u2014 exactly one row per `h9` cell. Roll up to coarser resolutions with `GROUP BY h8` (or h7/h6/h5) `+ SUM(carbon)`.\n\n### How `carbon` is computed (and how it validates)\n\nThe source COGs store carbon **density** (Mg C ha\u207b\u00b9). Each ~300 m pixel's density is multiplied by the pixel's ground area (latitude-dependent on the WGS84 grid) and apportioned to the H3 cells it overlaps \u2014 an area-integral that yields total Mg C per cell.\n\n**Validation (data-workflows #330):** hex `SUM(carbon)` matches an independent full-resolution area-integral of the source COG to a uniform **+0.22%** on every layer (a benign H3-cell-area vs exact-pixel discretization offset). These straight area-integrals run **~2\u20133% above** CI's published committed-loss headline figures \u2014 e.g. irrecoverable 2024 = 131.9 Gt C here vs CI's 128.0 Gt. Consequently the per-year series is **not strictly monotonic** in a raw integral (e.g. irrecoverable rises slightly 2023\u21922024); this reflects the shipped density rasters, not our processing. **For committed-loss change figures, cite CI's summary, not a difference of these totals.**\n\n### Terminology\n\n- **Irrecoverable Carbon**: Ecosystem carbon that, if lost, could not be recovered by 2050 through natural regeneration or restoration.\n- **Vulnerable Carbon**: Total carbon stocks (biomass + soil) vulnerable to release upon land conversion.\n- **Manageable Carbon**: Carbon stocks in ecosystems that can be managed by human activities (forestry, agriculture, conservation).\n\n### v2 (2025) methodology vs the original 2021 release\n\n1. **Bug fix**: corrected overestimation of irrecoverable carbon in boreal grasslands/shrublands in Asia (2018 total 139.1 \u2192 135.3 Gt).\n2. **Updated coastal extents**: Global Mangrove Watch 2022 and UNEP-WCMC 2022 (seagrasses, salt marshes).\n3. **Annual tracking**: added 2022, 2023, 2024 (irrecoverable); 2024 (vulnerable, manageable).\n4. **Protection status**: WDPA data through January 2023\u2013October 2025.\n\n---\n\n## Background & Methodology\n\n\"Irrecoverable carbon\" identifies stocks where preventing loss is more effective than restoration \u2014 the overlap of high carbon density (climate value), low recoverability (cannot regenerate by 2050), and high threat (risk of conversion). The dataset integrates biomass (Spawn et al., Walker et al.), soil carbon (SoilGrids250m), ecosystem vulnerability, and ESA CCI Land Cover for annual conversion tracking.\n",
   "_review": [
-    "extent.temporal: None (probe sample) widened to ['2010-01-01T00:00:00Z', '2024-01-01T00:00:00Z'] using README-stated coverage ['2010', '2024']."
+    "extent.temporal: None (probe sample) widened to ['2010-01-01T00:00:00Z', '2024-01-01T00:00:00Z'] using README-stated coverage ['2010', '2024'].",
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [irrecoverable-carbon-2018/hex.h9 (spatial_index), irrecoverable-carbon-2018/hex.h8 (spatial_index), irrecoverable-carbon-2018/hex.h7 (spatial_index), irrecoverable-carbon-2018/hex.h6 (spatial_index), irrecoverable-carbon-2018/hex.h5 (spatial_index), irrecoverable-carbon-2018/hex.h0 (spatial_index), vulnerable-carbon-2024/hex.h9 (spatial_index), vulnerable-carbon-2024/hex.h8 (spatial_index), vulnerable-carbon-2024/hex.h7 (spatial_index), vulnerable-carbon-2024/hex.h6 (spatial_index), vulnerable-carbon-2024/hex.h5 (spatial_index), vulnerable-carbon-2024/hex.h0 (spatial_index)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-06-26T19:01:21+00:00",
+  "cataloged_at": "2026-07-15T09:31:17+00:00",
   "store_format": null
 }
