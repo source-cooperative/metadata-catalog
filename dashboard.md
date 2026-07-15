@@ -1,81 +1,72 @@
 # Source Cooperative catalog — status
 
-_Updated 2026-07-14 10:04 UTC by the nightly pipeline._
+_Updated 2026-07-15 09:38 UTC by the nightly pipeline._
 
-**324 datasets cataloged**  ·  **54 queued for next run**  ·  last run handled **10**
+**324 datasets cataloged**  ·  **46 queued for next run**  ·  last run handled **10**
 
 ## Last run
 
 <details><summary>✅ drafted — 7 datasets</summary>
 
-| repo                                                                                           |
-| ---------------------------------------------------------------------------------------------- |
-| [bkr/dmi](https://source.coop/bkr/dmi)                                                         |
-| [bkr/geo](https://source.coop/bkr/geo)                                                         |
-| [bkr/icon](https://source.coop/bkr/icon)                                                       |
-| [bkr/silam-dust](https://source.coop/bkr/silam-dust)                                           |
-| [dynamical/ecmwf-ifs-grib](https://source.coop/dynamical/ecmwf-ifs-grib)                       |
-| [dynamical/noaa-gefs-forecast-35-day](https://source.coop/dynamical/noaa-gefs-forecast-35-day) |
-| [smartmaps/japan-seamlessphoto](https://source.coop/smartmaps/japan-seamlessphoto)             |
+| repo                                                                           |
+| ------------------------------------------------------------------------------ |
+| [bkr/ifs](https://source.coop/bkr/ifs)                                         |
+| [bkr/mrms](https://source.coop/bkr/mrms)                                       |
+| [bkr/precipradar](https://source.coop/bkr/precipradar)                         |
+| [cboettig/carbon](https://source.coop/cboettig/carbon)                         |
+| [cboettig/gbif](https://source.coop/cboettig/gbif)                             |
+| [dynamical/noaa-gfs-forecast](https://source.coop/dynamical/noaa-gfs-forecast) |
+| [fused/overture](https://source.coop/fused/overture)                           |
 
 </details>
 
-<details><summary>⏭️ incomplete (gap) — 2 datasets</summary>
+<details><summary>⏭️ incomplete (gap) — 3 datasets</summary>
 
 | repo                                                                                                                                                 | why            |
 | ---------------------------------------------------------------------------------------------------------------------------------------------------- | -------------- |
 | [alliance-bioversity-international-ciat/sample-earth-2026-co-gh](https://source.coop/alliance-bioversity-international-ciat/sample-earth-2026-co-gh) | no_probe .gpkg |
+| [forestsignal/forestsignal-ca](https://source.coop/forestsignal/forestsignal-ca)                                                                     | no_files .tif  |
 | [harvard-lil/smithsonian-open-access](https://source.coop/harvard-lil/smithsonian-open-access)                                                       | no_probe .jpg  |
 
 </details>
 
-<details><summary>⚠️ probe failed (issue filed) — 1 dataset</summary>
-
-| repo                                                                                                                           | why                |
-| ------------------------------------------------------------------------------------------------------------------------------ | ------------------ |
-| [dynamical/ecmwf-ifs-ens-forecast-15-day-0-25-degree](https://source.coop/dynamical/ecmwf-ifs-ens-forecast-15-day-0-25-degree) | error step=compose |
-
-</details>
-
-
-See [open probe-failure issues](https://github.com/source-cooperative/metadata-catalog/issues?q=is%3Aissue+is%3Aopen+label%3Aprobe-failure).
 
 ## Recent runs
 
 | run                                                                                                    | outcome   | drafted | failed | queued | cataloged |
 | ------------------------------------------------------------------------------------------------------ | --------- | ------: | -----: | -----: | --------: |
+| [2026-07-15](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/29403217926) | ✅ success |       7 |      0 |     46 |       324 |
 | [2026-07-14](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/29320375956) | ✅ success |       7 |      1 |     54 |       324 |
 | [2026-07-12](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/29186862502) | ✅ success |       8 |      1 |     51 |       324 |
 | [2026-07-01](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/28508067723) | ✅ success |       9 |      0 |     41 |       317 |
 | [2026-06-30](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/28434727318) | ✅ success |       9 |      0 |     39 |       303 |
 | [2026-06-29](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/28363895703) | ✅ success |       8 |      1 |     44 |       291 |
 | [2026-06-28](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/28317918028) | ✅ success |       9 |      0 |     37 |       283 |
-| [2026-06-27](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/28284901911) | ✅ success |       9 |      0 |     46 |       274 |
 
 ## Persistent failures
 
-**18 datasets failing**  ·  18 open issues  ·  oldest **33d**  ·  **15** ≥30d  ·  [all open issues](https://github.com/source-cooperative/metadata-catalog/issues?q=is%3Aissue+is%3Aopen+label%3Aprobe-failure)
+**18 datasets failing**  ·  18 open issues  ·  oldest **34d**  ·  **15** ≥30d  ·  [all open issues](https://github.com/source-cooperative/metadata-catalog/issues?q=is%3Aissue+is%3Aopen+label%3Aprobe-failure)
 
 <details><summary>the 18 open issues, oldest first</summary>
 
 | repo                                                | age (d) | issue |
 | --------------------------------------------------- | ------: | ----: |
-| bkr/cams                                            |      33 |    #1 |
-| smartmaps/uppsala-conflict                          |      31 |   #16 |
-| smartmaps/next-ksj                                  |      31 |   #15 |
-| smartmaps/h3ys-worldpop                             |      31 |   #14 |
-| smartmaps/dem1a                                     |      31 |   #13 |
-| smartmaps/dem10a                                    |      31 |   #12 |
-| rsignell/ncei-estuarine-bathymetry                  |      31 |   #11 |
-| pfrost/climacell-monthly                            |      31 |   #10 |
-| geovibes/geometries                                 |      31 |    #9 |
-| fiboa/data                                          |      31 |    #8 |
-| dynamical/dwd-icon-eu-forecast-5-day                |      31 |    #7 |
-| cboettig/obis                                       |      31 |    #6 |
-| cboettig/habitat-corridors                          |      31 |    #5 |
-| caires-tudelft/tokyo-13999-fcb                      |      31 |    #4 |
-| caires-tudelft/plateau-tokyo-fcb-2                  |      31 |    #3 |
-| cboettig/wetlands                                   |      14 |  #122 |
+| bkr/cams                                            |      34 |    #1 |
+| smartmaps/uppsala-conflict                          |      32 |   #16 |
+| smartmaps/next-ksj                                  |      32 |   #15 |
+| smartmaps/h3ys-worldpop                             |      32 |   #14 |
+| smartmaps/dem1a                                     |      32 |   #13 |
+| smartmaps/dem10a                                    |      32 |   #12 |
+| rsignell/ncei-estuarine-bathymetry                  |      32 |   #11 |
+| pfrost/climacell-monthly                            |      32 |   #10 |
+| geovibes/geometries                                 |      32 |    #9 |
+| fiboa/data                                          |      32 |    #8 |
+| dynamical/dwd-icon-eu-forecast-5-day                |      32 |    #7 |
+| cboettig/obis                                       |      32 |    #6 |
+| cboettig/habitat-corridors                          |      32 |    #5 |
+| caires-tudelft/tokyo-13999-fcb                      |      32 |    #4 |
+| caires-tudelft/plateau-tokyo-fcb-2                  |      32 |    #3 |
+| cboettig/wetlands                                   |      15 |  #122 |
 | dynamical/dwd-icon-grib                             |       2 |  #125 |
 | dynamical/ecmwf-ifs-ens-forecast-15-day-0-25-degree |       ? |  #126 |
 
@@ -878,7 +869,7 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 | --------- | ------------------------------------------------ | ----: | -------: |
 | ghosts    | catalog entry, no S3 data                        |    49 |  29.7 TB |
 | stowaways | S3 data, no source.coop product                  |    40 | 924.6 TB |
-| stale     | catalog bytes ≠ S3 (fixed by `make process-all`) |    70 |   1.5 PB |
+| stale     | catalog bytes ≠ S3 (fixed by `make process-all`) |    63 |   1.5 PB |
 
 <details><summary>ghosts — 49 datasets</summary>
 
@@ -983,7 +974,7 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 
 </details>
 
-<details><summary>stale — 70 datasets</summary>
+<details><summary>stale — 63 datasets</summary>
 
 | repo                                                 |        catalog → S3 |
 | ---------------------------------------------------- | ------------------: |
@@ -992,13 +983,6 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 | dynamical/dwd-icon-grib                              |   37.4 TB → 39.0 TB |
 | dynamical/ecmwf-ifs-ens-forecast-15-day-0-25-degree  |   45.2 TB → 46.4 TB |
 | forestsignal/forestsignal-ca                         |  726.4 GB → 598.0 B |
-| bkr/precipradar                                      |     4.0 TB → 4.7 TB |
-| bkr/mrms                                             |     3.0 TB → 2.4 TB |
-| fused/overture                                       |   13.4 TB → 13.8 TB |
-| cboettig/carbon                                      | 473.0 GB → 170.8 GB |
-| dynamical/noaa-gfs-forecast                          |   23.3 TB → 23.5 TB |
-| bkr/ifs                                              |   36.6 TB → 36.9 TB |
-| cboettig/gbif                                        |     1.0 TB → 1.2 TB |
 | dynamical/noaa-hrrr-forecast-48-hour                 |   12.4 TB → 12.5 TB |
 | hdx/microsoft-open-buildings                         | 206.8 GB → 105.1 GB |
 | wildland-almanac/conus                               |     1.1 TB → 1.0 TB |
