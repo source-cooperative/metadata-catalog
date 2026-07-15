@@ -6,7 +6,7 @@
   ],
   "id": "fused/overture",
   "title": "Overture Maps - Fused-partitioned",
-  "description": "The Overture Maps Foundation's global open vector map dataset, geospatially partitioned by Fused into approximately 24,000 GeoParquet files for cloud-optimized access. It covers administrative boundaries, building footprints, land use, places (points of interest), transportation networks, addresses, and water bodies at worldwide extent. Multiple versioned releases spanning February 2024 through March 2026 are available.",
+  "description": "A geospatially-partitioned mirror of the Overture Maps Foundation's global open vector map dataset, repartitioned into roughly 24,000 GeoParquet files by Fused for cloud-optimized access. It spans multiple dated releases (February 2024 through 2026) covering administrative boundaries, building footprints, land use, water bodies, places/points of interest, addresses, divisions, and transportation networks worldwide.",
   "license": "other",
   "keywords": [
     "administrative-boundaries",
@@ -78,7 +78,7 @@
         {
           "name": "geometry",
           "type": "GEOMETRY('EPSG:4326')",
-          "description": "[geometry] WKB geometry in EPSG:4326"
+          "description": "[geometry] Feature geometry in EPSG:4326"
         },
         {
           "name": "bbox",
@@ -115,12 +115,12 @@
         {
           "name": "isoCountryCodeAlpha2",
           "type": "VARCHAR",
-          "description": "[admin_code] ISO 3166-1 alpha-2 country code"
+          "description": "[admin_code] ISO alpha-2 country code for locality/admin features"
         },
         {
           "name": "isoSubCountryCode",
           "type": "VARCHAR",
-          "description": "[admin_code] ISO 3166-2 subdivision code"
+          "description": "[admin_code] Sub-country administrative code"
         },
         {
           "name": "defaultLanguage",
@@ -244,7 +244,7 @@
         {
           "name": "geometry",
           "type": "GEOMETRY('EPSG:4326')",
-          "description": "[geometry] WKB geometry in EPSG:4326"
+          "description": "[geometry] Feature geometry in EPSG:4326"
         },
         {
           "name": "bbox",
@@ -297,12 +297,12 @@
         {
           "name": "iso_country_code_alpha_2",
           "type": "VARCHAR",
-          "description": "[admin_code] ISO 3166-1 alpha-2 country code"
+          "description": "[admin_code] ISO alpha-2 country code"
         },
         {
           "name": "iso_sub_country_code",
           "type": "VARCHAR",
-          "description": "[admin_code] ISO 3166-2 subdivision code"
+          "description": "[admin_code] Sub-country administrative code"
         },
         {
           "name": "default_language",
@@ -410,7 +410,7 @@
         {
           "name": "geometry",
           "type": "GEOMETRY('EPSG:4326')",
-          "description": "[geometry] WKB geometry in EPSG:4326"
+          "description": "[geometry] Point geometry for places/POIs in EPSG:4326"
         },
         {
           "name": "bbox",
@@ -458,7 +458,8 @@
         },
         {
           "name": "addresses",
-          "type": "STRUCT(freeform VARCHAR, locality VARCHAR, postcode VARCHAR, region VARCHAR, country VARCHAR)[]"
+          "type": "STRUCT(freeform VARCHAR, locality VARCHAR, postcode VARCHAR, region VARCHAR, country VARCHAR)[]",
+          "description": "[placename] Struct array with locality, region, country and postcode for the place"
         },
         {
           "name": "theme",
@@ -486,7 +487,7 @@
         {
           "name": "geometry",
           "type": "GEOMETRY('EPSG:4326')",
-          "description": "[geometry] WKB geometry in EPSG:4326"
+          "description": "[geometry] Feature geometry in EPSG:4326"
         },
         {
           "name": "bbox",
@@ -554,7 +555,7 @@
         {
           "name": "geometry",
           "type": "GEOMETRY('EPSG:4326')",
-          "description": "[geometry] WKB geometry in EPSG:4326"
+          "description": "[geometry] Point geometry for address features in EPSG:4326"
         },
         {
           "name": "bbox",
@@ -563,16 +564,17 @@
         {
           "name": "country",
           "type": "VARCHAR",
-          "description": "[admin_code] Country code for the address record"
+          "description": "[admin_code] Country code for the address"
         },
         {
           "name": "postcode",
           "type": "VARCHAR",
-          "description": "[zipcode] Postal/ZIP code for the address"
+          "description": "[zipcode] Postal code of the address"
         },
         {
           "name": "street",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[placename] Street name component of the address"
         },
         {
           "name": "number",
@@ -656,7 +658,7 @@
         {
           "name": "geometry",
           "type": "GEOMETRY('EPSG:4326')",
-          "description": "[geometry] WKB geometry in EPSG:4326"
+          "description": "[geometry] Feature geometry in EPSG:4326"
         },
         {
           "name": "bbox",
@@ -665,7 +667,7 @@
         {
           "name": "country",
           "type": "VARCHAR",
-          "description": "[admin_code] Country code"
+          "description": "[admin_code] Country code for the division"
         },
         {
           "name": "version",
@@ -690,7 +692,7 @@
         {
           "name": "region",
           "type": "VARCHAR",
-          "description": "[admin_code] Sub-national region code"
+          "description": "[placename] Region name/code for the division"
         },
         {
           "name": "division_id",
@@ -722,7 +724,7 @@
         {
           "name": "geometry",
           "type": "GEOMETRY('EPSG:4326')",
-          "description": "[geometry] WKB geometry in EPSG:4326"
+          "description": "[geometry] Building footprint geometry in EPSG:4326"
         },
         {
           "name": "bbox",
@@ -842,7 +844,7 @@
         {
           "name": "geometry",
           "type": "GEOMETRY('EPSG:4326')",
-          "description": "[geometry] WKB geometry in EPSG:4326"
+          "description": "[geometry] Feature geometry in EPSG:4326"
         },
         {
           "name": "bbox",
@@ -850,8 +852,7 @@
         },
         {
           "name": "country",
-          "type": "VARCHAR",
-          "description": "[admin_code] Country code"
+          "type": "VARCHAR"
         },
         {
           "name": "version",
@@ -884,7 +885,7 @@
         {
           "name": "region",
           "type": "VARCHAR",
-          "description": "[admin_code] Sub-national region code"
+          "description": "[placename] Region name/code for the division"
         },
         {
           "name": "perspectives",
@@ -900,7 +901,8 @@
         },
         {
           "name": "parent_division_id",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[admin_code] Identifier of parent administrative division"
         },
         {
           "name": "norms",
@@ -944,7 +946,7 @@
         {
           "name": "geometry",
           "type": "GEOMETRY('EPSG:4326')",
-          "description": "[geometry] WKB geometry in EPSG:4326"
+          "description": "[geometry] Water feature geometry in EPSG:4326"
         },
         {
           "name": "bbox",
@@ -1016,7 +1018,7 @@
         {
           "name": "geometry",
           "type": "GEOMETRY('EPSG:4326')",
-          "description": "[geometry] WKB geometry in EPSG:4326"
+          "description": "[geometry] Transportation segment/connector geometry in EPSG:4326"
         },
         {
           "name": "bbox",
@@ -1196,7 +1198,7 @@
         {
           "name": "geometry",
           "type": "GEOMETRY('EPSG:4326')",
-          "description": "[geometry] WKB geometry in EPSG:4326"
+          "description": "[geometry] Feature geometry in EPSG:4326"
         },
         {
           "name": "sources",
@@ -1300,7 +1302,8 @@
         },
         {
           "name": "division_ids",
-          "type": "VARCHAR[]"
+          "type": "VARCHAR[]",
+          "description": "[admin_code] Array of associated administrative division identifiers"
         },
         {
           "name": "admin_level",
@@ -1325,12 +1328,12 @@
         {
           "name": "country",
           "type": "VARCHAR",
-          "description": "[admin_code] Country code"
+          "description": "[admin_code] Country code for the division"
         },
         {
           "name": "region",
           "type": "VARCHAR",
-          "description": "[admin_code] Sub-national region code"
+          "description": "[placename] Region name/code for the division"
         }
       ],
       "description": "4 files sampled for this table"
@@ -1348,12 +1351,6 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "created_at": "2024-03-06T23:45:38.072516+00:00",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "total_bytes": 13390032928861,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -1366,12 +1363,14 @@
       "prefix": "fused/overture/"
     }
   },
-  "account_id": "fused",
+  "updated_at": "2025-08-21T16:39:55.568Z",
   "product_id": "overture",
-  "visibility": "public",
+  "featured": 1,
+  "account_id": "fused",
+  "total_bytes": 13809514082884,
   "exts": {
-    "parquet": 27235,
-    "": 702,
+    "parquet": 28248,
+    "": 728,
     "c0f99f33": 1,
     "c49529c0": 1,
     "5987aac5": 1,
@@ -1383,16 +1382,20 @@
     "md": 1,
     "png": 1
   },
-  "data_mode": "open",
-  "updated_at": "2025-08-21T16:39:55.568Z",
-  "featured": 1,
-  "file_count": 27947,
+  "file_count": 28986,
+  "visibility": "public",
   "disabled": false,
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "data_mode": "open",
+  "created_at": "2024-03-06T23:45:38.072516+00:00",
   "readme": "## README.md\n# Overture - Fused-partitioned\n\n## Overview\n\nThis is the Overture dataset, geo-partitioned with Fused for convenient access. This dataset adheres to the\u00a0[Overture Data Schema](https://docs.overturemaps.org/).\n\n<img src=\"https://data.source.coop/fused/overture/docs/banner.png\" alt=\"Banner image showing London, UK\" width=\"100%\"/>\n\n## Quickstart\n\nAccess to this dataset is facilitated by the [Fused](https://www.fused.io/) platform. Browse the data on [Fused Workbench](https://www.fused.io/public/UDF_Overture_Maps_Example).\n\nTo access using Python, the [Overture Maps Example](https://github.com/fusedio/udfs/tree/main/public/Overture_Maps_Example) UDF shows an example of how to access the data using Fused: \n\n```python\nimport fused\n\nudf = fused.load(\n    \"https://github.com/fusedio/udfs/tree/main/public/Overture_Maps_Example\"\n)\n\ngdf = fused.run(udf, x=2622, y=6333, z=14)\ngdf.plot()\n```\n\nYou can query the data visually using our [notebook](https://github.com/fusedio/notebooks/blob/main/public/overture.ipynb). \n\n<a target=\"_blank\" href=\"https://colab.research.google.com/github/fusedio/notebooks/blob/main/public/overture.ipynb\">\n<img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/>\n</a>\n\n## Partitioning\n\nThis dataset is geospatially partitioned following Open GeoParquet standards, using Fused.\n\nFor technical reasons, the release is named `2024-11-13-0` in S3 (note the dash instead of a period at the end).\n\nUnder each release, the data is divided into themes: [admins](https://docs.overturemaps.org/themes/admins/), [base](https://docs.overturemaps.org/themes/base/), [buildings](https://docs.overturemaps.org/themes/buildings/building), [places](https://docs.overturemaps.org/themes/places/place), and [transportation](https://docs.overturemaps.org/themes/transportation/). Each theme contains one or more tables, which is a collection of GeoParquet files (`0.parquet`, `1.parquet`, etc.), Parquet metadata (`_metadata`), and Parquet sample (`_sample`).\n\nThe older release, 2024-03-12-alpha-0, has the following themes:\n\n- `theme=admins/type=administrative_boundary/` - Administrative boundaries such as country borders\n- `theme=base/type=land_use/` - Land use\n- `theme=base/type=water/` - Water boundaries\n- `theme=buildings/type=building/` - Building footprints. Because of the size of this table, it is further subdivided into multiple parts. There is no semantic meaning to these parts, they are subdivisions to help partitioning.\n    - `theme=buildings/type=building/part=0/`\n    - `theme=buildings/type=building/part=1/`\n    - `theme=buildings/type=building/part=2/`\n    - `theme=buildings/type=building/part=3/`\n    - `theme=buildings/type=building/part=4/`\n- `theme=places/type=place/` - Places (POIs) such as restaurants and other businesses.\n- `theme=transportation/type=connector/` - Points where transportation segments, below, are connected.\n- `theme=transportation/type=segment/` - Line strings of how human movement is organized, such as roads and walkways.\n\nThere are older releases, 2024-03-12-alpha-0 and 2024-02-15-alpha-0 that have slightly different folder structures, where types are named in camel-case. (E.g. administrativeBoundary, landUse.)\n\n## Original dataset\n\nThe original Overture datasets are downloadable from the [Overture website](https://overturemaps.org/download/). See the Overture\u00a0[GitHub repo](https://github.com/OvertureMaps/data)\u00a0for more information.\n\n\n",
   "_review": [
-    "extent.spatial.bbox: omitted; spatial reference is categorical via [2024-02-15-alpha-0.geometry (geometry), 2024-02-15-alpha-0.isoCountryCodeAlpha2 (admin_code), 2024-02-15-alpha-0.isoSubCountryCode (admin_code), 2024-03-12-alpha-0.geometry (geometry), 2024-03-12-alpha-0.iso_country_code_alpha_2 (admin_code), 2024-03-12-alpha-0.iso_sub_country_code (admin_code), 2024-08-20-0.geometry (geometry), 2024-09-18-0.geometry (geometry), 2024-10-23-0.geometry (geometry), 2024-10-23-0.country (admin_code), 2024-10-23-0.postcode (zipcode), 2024-12-18-0.geometry (geometry), 2024-12-18-0.country (admin_code), 2024-12-18-0.region (admin_code), 2025-01-22-0.geometry (geometry), 2025-05-21-0.geometry (geometry), 2025-05-21-0.country (admin_code), 2025-05-21-0.region (admin_code), 2025-06-25-0.geometry (geometry), 2025-09-24-0.geometry (geometry), 2026-03-18-0.geometry (geometry), 2026-03-18-0.country (admin_code), 2026-03-18-0.region (admin_code)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [2024-02-15-alpha-0.geometry (geometry), 2024-02-15-alpha-0.isoCountryCodeAlpha2 (admin_code), 2024-02-15-alpha-0.isoSubCountryCode (admin_code), 2024-03-12-alpha-0.geometry (geometry), 2024-03-12-alpha-0.iso_country_code_alpha_2 (admin_code), 2024-03-12-alpha-0.iso_sub_country_code (admin_code), 2024-08-20-0.geometry (geometry), 2024-08-20-0.addresses (placename), 2024-09-18-0.geometry (geometry), 2024-10-23-0.geometry (geometry), 2024-10-23-0.country (admin_code), 2024-10-23-0.postcode (zipcode), 2024-10-23-0.street (placename), 2024-12-18-0.geometry (geometry), 2024-12-18-0.country (admin_code), 2024-12-18-0.region (placename), 2025-01-22-0.geometry (geometry), 2025-05-21-0.geometry (geometry), 2025-05-21-0.region (placename), 2025-05-21-0.parent_division_id (admin_code), 2025-06-25-0.geometry (geometry), 2025-09-24-0.geometry (geometry), 2026-03-18-0.geometry (geometry), 2026-03-18-0.country (admin_code), 2026-03-18-0.region (placename), 2026-03-18-0.division_ids (admin_code)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-06-17T18:12:24+00:00",
+  "cataloged_at": "2026-07-15T09:29:20+00:00",
   "store_format": null
 }
