@@ -6,15 +6,15 @@
   ],
   "id": "cboettig/gbif",
   "title": "H3-Indexed cloud-optimized snapshots of GBIF ",
-  "description": "Cloud-optimized GeoParquet snapshots of Global Biodiversity Information Facility (GBIF) occurrence records covering over 3 billion biodiversity observations worldwide. Records are enriched with H3 hierarchical hexagonal spatial index keys at resolutions 0\u201310 and partitioned by H3 resolution-0 cell for fast spatial aggregations. Includes derived products: taxonomic aggregation counts per hexagon and a spatial join with historical US redlining (Mapping Inequality) polygons.",
+  "description": "Cloud-optimized GeoParquet snapshots of Global Biodiversity Information Facility (GBIF) occurrence records \u2014 over 3.4 billion biodiversity observations worldwide, enriched with H3 hierarchical hexagonal spatial index keys (resolutions 0-10) and partitioned by H3 resolution-0 cell. Includes derived products: per-hexagon taxonomic aggregation counts, a spatial join with historical US redlining (Mapping Inequality) polygons, and a taxa reference list.",
   "keywords": [
     "biodiversity",
     "h3",
     "geoparquet",
     "global-coverage",
     "ecology",
-    "species-occurrences",
-    "environmental-monitoring"
+    "environmental-monitoring",
+    "species-occurrences"
   ],
   "providers": [
     {
@@ -59,7 +59,7 @@
     }
   },
   "summaries": {
-    "item_count": 10464721
+    "item_count": 6355114
   },
   "assets": {
     "2024-10-01": {
@@ -69,267 +69,7 @@
       "roles": [
         "data"
       ],
-      "table:columns": [
-        {
-          "name": "gbifid",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "datasetkey",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "occurrenceid",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "kingdom",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "phylum",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "class",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "order",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "family",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "genus",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "species",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "infraspecificepithet",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "taxonrank",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "scientificname",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "verbatimscientificname",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "verbatimscientificnameauthorship",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "countrycode",
-          "type": "VARCHAR",
-          "description": "[admin_code] ISO 2-letter country code of occurrence"
-        },
-        {
-          "name": "locality",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "stateprovince",
-          "type": "VARCHAR",
-          "description": "[placename] State or province name of occurrence"
-        },
-        {
-          "name": "occurrencestatus",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "individualcount",
-          "type": "INTEGER"
-        },
-        {
-          "name": "publishingorgkey",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "decimallatitude",
-          "type": "DOUBLE",
-          "description": "[latlon] Decimal latitude of occurrence record"
-        },
-        {
-          "name": "decimallongitude",
-          "type": "DOUBLE",
-          "description": "[latlon] Decimal longitude of occurrence record"
-        },
-        {
-          "name": "coordinateuncertaintyinmeters",
-          "type": "DOUBLE"
-        },
-        {
-          "name": "coordinateprecision",
-          "type": "DOUBLE"
-        },
-        {
-          "name": "elevation",
-          "type": "DOUBLE"
-        },
-        {
-          "name": "elevationaccuracy",
-          "type": "DOUBLE"
-        },
-        {
-          "name": "depth",
-          "type": "DOUBLE"
-        },
-        {
-          "name": "depthaccuracy",
-          "type": "DOUBLE"
-        },
-        {
-          "name": "eventdate",
-          "type": "TIMESTAMP"
-        },
-        {
-          "name": "day",
-          "type": "INTEGER"
-        },
-        {
-          "name": "month",
-          "type": "INTEGER"
-        },
-        {
-          "name": "year",
-          "type": "INTEGER"
-        },
-        {
-          "name": "taxonkey",
-          "type": "INTEGER"
-        },
-        {
-          "name": "specieskey",
-          "type": "INTEGER"
-        },
-        {
-          "name": "basisofrecord",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "institutioncode",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "collectioncode",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "catalognumber",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "recordnumber",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "identifiedby",
-          "type": "VARCHAR[]"
-        },
-        {
-          "name": "dateidentified",
-          "type": "TIMESTAMP"
-        },
-        {
-          "name": "license",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "rightsholder",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "recordedby",
-          "type": "VARCHAR[]"
-        },
-        {
-          "name": "typestatus",
-          "type": "VARCHAR[]"
-        },
-        {
-          "name": "establishmentmeans",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "lastinterpreted",
-          "type": "TIMESTAMP"
-        },
-        {
-          "name": "mediatype",
-          "type": "VARCHAR[]"
-        },
-        {
-          "name": "issue",
-          "type": "VARCHAR[]"
-        },
-        {
-          "name": "geom",
-          "type": "GEOMETRY('OGC:CRS84')",
-          "description": "[geometry] OGC CRS84 point geometry of occurrence"
-        },
-        {
-          "name": "h0",
-          "type": "VARCHAR",
-          "description": "[spatial_index] H3 resolution-0 hexagonal cell index (partition key); h1\u2013h11 also present"
-        },
-        {
-          "name": "h1",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "h2",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "h3",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "h4",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "h5",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "h6",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "h7",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "h8",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "h9",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "h10",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "h11",
-          "type": "VARCHAR"
-        }
-      ],
-      "description": "5 files sampled for this table"
+      "description": "3 files sampled for this table"
     },
     "taxonomy": {
       "href": "https://data.source.coop/cboettig/gbif/taxonomy/h0=80EDFFFFFFFFFFF/",
@@ -394,7 +134,7 @@
         {
           "name": "h0",
           "type": "VARCHAR",
-          "description": "[spatial_index] H3 resolution-0 hexagonal cell index for taxonomic aggregation grouping"
+          "description": "[spatial_index] H3 resolution-0 hexagon partition key"
         }
       ],
       "description": "4 files sampled for this table"
@@ -406,269 +146,267 @@
       "roles": [
         "data"
       ],
-      "table:columns": [
-        {
-          "name": "gbifid",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "datasetkey",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "occurrenceid",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "kingdom",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "phylum",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "class",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "order",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "family",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "genus",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "species",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "infraspecificepithet",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "taxonrank",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "scientificname",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "verbatimscientificname",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "verbatimscientificnameauthorship",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "countrycode",
-          "type": "VARCHAR",
-          "description": "[admin_code] ISO 2-letter country code of occurrence"
-        },
-        {
-          "name": "locality",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "stateprovince",
-          "type": "VARCHAR",
-          "description": "[placename] State or province name of occurrence"
-        },
-        {
-          "name": "occurrencestatus",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "individualcount",
-          "type": "INTEGER"
-        },
-        {
-          "name": "publishingorgkey",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "decimallatitude",
-          "type": "DOUBLE",
-          "description": "[latlon] Decimal latitude of occurrence record"
-        },
-        {
-          "name": "decimallongitude",
-          "type": "DOUBLE",
-          "description": "[latlon] Decimal longitude of occurrence record"
-        },
-        {
-          "name": "coordinateuncertaintyinmeters",
-          "type": "DOUBLE"
-        },
-        {
-          "name": "coordinateprecision",
-          "type": "DOUBLE"
-        },
-        {
-          "name": "elevation",
-          "type": "DOUBLE"
-        },
-        {
-          "name": "elevationaccuracy",
-          "type": "DOUBLE"
-        },
-        {
-          "name": "depth",
-          "type": "DOUBLE"
-        },
-        {
-          "name": "depthaccuracy",
-          "type": "DOUBLE"
-        },
-        {
-          "name": "eventdate",
-          "type": "TIMESTAMP"
-        },
-        {
-          "name": "day",
-          "type": "INTEGER"
-        },
-        {
-          "name": "month",
-          "type": "INTEGER"
-        },
-        {
-          "name": "year",
-          "type": "INTEGER"
-        },
-        {
-          "name": "taxonkey",
-          "type": "INTEGER"
-        },
-        {
-          "name": "specieskey",
-          "type": "INTEGER"
-        },
-        {
-          "name": "basisofrecord",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "institutioncode",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "collectioncode",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "catalognumber",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "recordnumber",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "identifiedby",
-          "type": "VARCHAR[]"
-        },
-        {
-          "name": "dateidentified",
-          "type": "TIMESTAMP"
-        },
-        {
-          "name": "license",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "rightsholder",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "recordedby",
-          "type": "VARCHAR[]"
-        },
-        {
-          "name": "typestatus",
-          "type": "VARCHAR[]"
-        },
-        {
-          "name": "establishmentmeans",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "lastinterpreted",
-          "type": "TIMESTAMP"
-        },
-        {
-          "name": "mediatype",
-          "type": "VARCHAR[]"
-        },
-        {
-          "name": "issue",
-          "type": "VARCHAR[]"
-        },
-        {
-          "name": "geom",
-          "type": "GEOMETRY('OGC:CRS84')",
-          "description": "[geometry] OGC CRS84 point geometry of occurrence"
-        },
-        {
-          "name": "h0",
-          "type": "VARCHAR",
-          "description": "[spatial_index] H3 resolution-0 hexagonal cell index (partition key); h1\u2013h11 also present at finer resolutions"
-        },
-        {
-          "name": "h1",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "h2",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "h3",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "h4",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "h5",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "h6",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "h7",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "h8",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "h9",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "h10",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "h11",
-          "type": "VARCHAR"
-        }
-      ],
       "table:row_count": 609201
     }
   },
+  "table:columns": [
+    {
+      "name": "gbifid",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "datasetkey",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "occurrenceid",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "kingdom",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "phylum",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "class",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "order",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "family",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "genus",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "species",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "infraspecificepithet",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "taxonrank",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "scientificname",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "verbatimscientificname",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "verbatimscientificnameauthorship",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "countrycode",
+      "type": "VARCHAR",
+      "description": "[admin_code] ISO country code of the occurrence"
+    },
+    {
+      "name": "locality",
+      "type": "VARCHAR",
+      "description": "[placename] Named locality of the occurrence"
+    },
+    {
+      "name": "stateprovince",
+      "type": "VARCHAR",
+      "description": "[placename] State or province of the occurrence"
+    },
+    {
+      "name": "occurrencestatus",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "individualcount",
+      "type": "INTEGER"
+    },
+    {
+      "name": "publishingorgkey",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "decimallatitude",
+      "type": "DOUBLE"
+    },
+    {
+      "name": "decimallongitude",
+      "type": "DOUBLE"
+    },
+    {
+      "name": "coordinateuncertaintyinmeters",
+      "type": "DOUBLE"
+    },
+    {
+      "name": "coordinateprecision",
+      "type": "DOUBLE"
+    },
+    {
+      "name": "elevation",
+      "type": "DOUBLE"
+    },
+    {
+      "name": "elevationaccuracy",
+      "type": "DOUBLE"
+    },
+    {
+      "name": "depth",
+      "type": "DOUBLE"
+    },
+    {
+      "name": "depthaccuracy",
+      "type": "DOUBLE"
+    },
+    {
+      "name": "eventdate",
+      "type": "TIMESTAMP"
+    },
+    {
+      "name": "day",
+      "type": "INTEGER"
+    },
+    {
+      "name": "month",
+      "type": "INTEGER"
+    },
+    {
+      "name": "year",
+      "type": "INTEGER"
+    },
+    {
+      "name": "taxonkey",
+      "type": "INTEGER"
+    },
+    {
+      "name": "specieskey",
+      "type": "INTEGER"
+    },
+    {
+      "name": "basisofrecord",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "institutioncode",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "collectioncode",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "catalognumber",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "recordnumber",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "identifiedby",
+      "type": "VARCHAR[]"
+    },
+    {
+      "name": "dateidentified",
+      "type": "TIMESTAMP"
+    },
+    {
+      "name": "license",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "rightsholder",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "recordedby",
+      "type": "VARCHAR[]"
+    },
+    {
+      "name": "typestatus",
+      "type": "VARCHAR[]"
+    },
+    {
+      "name": "establishmentmeans",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "lastinterpreted",
+      "type": "TIMESTAMP"
+    },
+    {
+      "name": "mediatype",
+      "type": "VARCHAR[]"
+    },
+    {
+      "name": "issue",
+      "type": "VARCHAR[]"
+    },
+    {
+      "name": "geom",
+      "type": "GEOMETRY('OGC:CRS84')",
+      "description": "[geometry] Point geometry (OGC:CRS84) of the occurrence"
+    },
+    {
+      "name": "h0",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "h1",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "h2",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "h3",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "h4",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "h5",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "h6",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "h7",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "h8",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "h9",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "h10",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "h11",
+      "type": "VARCHAR"
+    }
+  ],
   "links": [
     {
       "rel": "self",
@@ -681,28 +419,9 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "visibility": "public",
-  "product_id": "gbif",
-  "updated_at": "2025-08-21T16:39:55.567Z",
-  "file_count": 4443,
-  "data_mode": "open",
   "created_at": "2024-07-14T03:32:28.794985+00:00",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "disabled": false,
+  "file_count": 4688,
   "account_id": "cboettig",
-  "featured": 0,
-  "total_bytes": 1019980436729,
-  "exts": {
-    "parquet": 4384,
-    "json": 51,
-    "csv": 4,
-    "html": 2,
-    "md": 1,
-    "gpkg": 1
-  },
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -715,12 +434,31 @@
       "prefix": "cboettig/gbif/"
     }
   },
-  "readme": "## README.md\n# GBIF Occurrence Data & Derived Products\n\nProcessed GBIF occurrence data hexed at H3 resolutions 0-10, plus derived products.\n\nGBIF releases new snapshots periodically. Releases are versioned by `year-month` (e.g., `2025-06`) so multiple versions can coexist in the bucket during transitions. **Always use the most recent release for new work.**\n\n## Current Release: 2025-06\n\n**Path:** `s3://public-gbif/2025-06/hex/`\n\nGlobal GBIF occurrences partitioned by H3 resolution 0 cell. 94 non-empty h0 partitions covering the globe.\n\n### Schema\n\n- Taxonomic columns: `gbifid`, `datasetkey`, `occurrenceid`, `kingdom`, `phylum`, `class`, `order`, `family`, `genus`, `species`, `infraspecificepithet`, `taxonrank`, `scientificname`, `verbatimscientificname`, `verbatimscientificnameauthorship`\n- Spatial/occurrence columns: `countrycode`, `locality`, `stateprovince`, `occurrencestatus`, `individualcount`, `decimallatitude`, `decimallongitude`, `coordinateuncertaintyinmeters`, `coordinateprecision`, `elevation`, `depth`, `eventdate`, `day`, `month`, `year`, `taxonkey`, `specieskey`, `basisofrecord`, `institutioncode`, `collectioncode`, `catalognumber`, `recordnumber`, `identifiedby`, `dateidentified`, `license`, `rightsholder`, `recordedby`, `typestatus`, `establishmentmeans`, `lastinterpreted`, `mediatype`, `issue`, `geom`\n- H3 hex columns: `h0` (VARCHAR, partition key), `h1`-`h10` (UBIGINT)\n\n### DuckDB Example\n\n```sql\nINSTALL h3 FROM community; LOAD h3;\nINSTALL httpfs; LOAD httpfs;\nSET s3_endpoint = 's3-west.nrp-nautilus.io';\nSET s3_url_style = 'path';\n\n-- Count occurrences by family in a single h0 cell\nSELECT family, COUNT(*) AS n\nFROM read_parquet('s3://public-gbif/2025-06/hex/h0=8009fffffffffff/part/*.parquet')\nGROUP BY family\nORDER BY n DESC\nLIMIT 20;\n```\n\n## Deprecated: Legacy Hex (pre-2025)\n\n**Path:** `s3://public-gbif/hex/` \u2014 **DEPRECATED, do not use for new work.**\n\nThis is the original hex partition with all h0-h11 columns stored as VARCHAR strings. It is retained only for backward compatibility with existing applications. It will be removed once no active apps depend on it. See [GitHub issue](https://github.com/boettiger-lab/data-workflows/issues) for tracking.\n\n## Other Assets\n\n### GBIF Occurrences in Redlined Cities\n**File:** `s3://public-gbif/redlined_cities_gbif.parquet`\n\nSpatial join of GBIF occurrences with \"Mapping Inequality\" (Redlining) polygons for US cities.\n\n**Schema:** `gbifid`, `scientificname`, `kingdom`, `phylum`, `class`, `order`, `family`, `genus`, `species`, `recordedby`, `date`, `coordinateuncertaintyinmeters`, `city`, `state`, `grade` (A-D), `residential`, `commercial`, `industrial`\n\n### Taxonomic Aggregations by H3 Hexagon\n**Prefix:** `s3://public-gbif/taxonomy/` (partitioned by `h0`)\n\nAggregated counts of taxa within H3 resolution 0 hexagons.\n\n**Schema:** `scientificname`, `kingdom`, `phylum`, ... `species`, `n` (count), `h0`\n\n### Taxa List\n**File:** `s3://public-gbif/taxa.parquet`\n\nReference list of all taxa found in the dataset.\n\n## Source & Citation\n\n- **Producer:** Global Biodiversity Information Facility (GBIF)\n- GBIF.org (2025). GBIF Occurrence Download. <https://www.gbif.org/>\n- Nelson, R. K., et al. (2023). Mapping Inequality. (for redlined cities asset)\n\n## License\n\n- **GBIF Data:** See [GBIF Data Use Agreement](https://www.gbif.org/terms). Individual records may have specific licenses (CC0, CC-BY, CC-BY-NC).\n- **Redlining Data:** CC-BY-NC-SA 4.0.\n",
+  "featured": 0,
+  "exts": {
+    "parquet": 4629,
+    "json": 51,
+    "csv": 4,
+    "html": 2,
+    "gpkg": 1,
+    "md": 1
+  },
+  "product_id": "gbif",
+  "visibility": "public",
+  "total_bytes": 1186323649044,
+  "updated_at": "2025-08-21T16:39:55.567Z",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "data_mode": "open",
+  "disabled": false,
+  "readme": "## README.md\n# GBIF Occurrence Data & Derived Products\n\nProcessed GBIF occurrence data hexed at H3 resolutions 0-10, plus derived products.\n\nGBIF releases new snapshots periodically. Releases are versioned by `year-month` (e.g., `2026-06`) so multiple versions can coexist in the bucket during transitions. **Always use the most recent release for new work.**\n\n## Current Release: 2026-06\n\n**Path:** `s3://public-gbif/2026-06/hex/`\n\nGlobal GBIF occurrences (GBIF 2026-06-01 snapshot, **3,499,090,951 records**) partitioned by H3 resolution-0 cell \u2014 **122 h0 partitions, one `data_0.parquet` file each**. One row per occurrence; deduplicated by `gbifid`.\n\n### Schema\n\n- Taxonomic columns: `gbifid`, `datasetkey`, `occurrenceid`, `kingdom`, `phylum`, `class`, `order`, `family`, `genus`, `species`, `infraspecificepithet`, `taxonrank`, `scientificname`, `verbatimscientificname`, `verbatimscientificnameauthorship`\n- Spatial/occurrence columns: `countrycode`, `locality`, `stateprovince`, `occurrencestatus`, `individualcount`, `decimallatitude`, `decimallongitude`, `coordinateuncertaintyinmeters`, `coordinateprecision`, `elevation`, `depth`, `eventdate`, `day`, `month`, `year`, `taxonkey`, `specieskey`, `basisofrecord`, `institutioncode`, `collectioncode`, `catalognumber`, `recordnumber`, `identifiedby`, `dateidentified`, `license`, `rightsholder`, `recordedby`, `typestatus`, `establishmentmeans`, `lastinterpreted`, `mediatype`, `issue`\n- H3 hex columns: `h0` (INT64/UBIGINT, partition key), `h1`\u2013`h10` (UBIGINT). Native resolution is `h10` (one ~15 m\u00b2 cell per point); `h0`\u2013`h9` are parent rollups.\n\n### DuckDB Example\n\n```sql\nINSTALL h3 FROM community; LOAD h3;\nINSTALL httpfs; LOAD httpfs;\nSET s3_endpoint = 's3-west.nrp-nautilus.io';\nSET s3_url_style = 'path';\n\n-- Count occurrences by family in a single h0 cell\nSELECT family, COUNT(*) AS n\nFROM read_parquet('s3://public-gbif/2026-06/hex/h0=577762574070710271/data_0.parquet')\nGROUP BY family\nORDER BY n DESC\nLIMIT 20;\n```\n\n### Fast single-species reads (sidecar)\n\nThe hex is partitioned by `h0` (geography), not species, so a bare `WHERE specieskey=\u2026` scans all 122 files. The tiny **`species-h0-index.parquet`** sidecar (`(specieskey, species, h0)`, ~22 MB) scopes the species' partitions in one query \u2014 DuckDB turns the subquery into a dynamic partition filter and reads only those h0 files (median 1/122; ~2s):\n\n```sql\nSELECT h8, COUNT(*) AS n\nFROM read_parquet('s3://public-gbif/2026-06/hex/h0=*/data_0.parquet', hive_partitioning=true)\nWHERE h0 IN (\n    SELECT h0 FROM read_parquet('s3://public-gbif/2026-06/species-h0-index.parquet')\n    WHERE specieskey = 2969135\n)\nAND specieskey = 2969135\nGROUP BY h8;\n```\n\n`species` is NULL for genus-or-coarser records and excluded from the sidecar (it keys on `specieskey IS NOT NULL`).\n\n## Deprecated: Legacy Hex (pre-2025) and 2025-06\n\n- `s3://public-gbif/hex/` \u2014 original VARCHAR-keyed hex, **deprecated**.\n- `s3://public-gbif/2025-06/hex/` \u2014 superseded by 2026-06; retained temporarily for backward compatibility, scheduled for removal once dependent apps repoint.\n\n## Other Assets\n\n### Taxonomic Aggregations by H3 Hexagon\n**Prefix:** `s3://public-gbif/2026-06/taxonomy/` (partitioned by `h0`)\n\nAggregated counts of taxa within H3 resolution-0 hexagons.\n\n**Schema:** `kingdom`, `phylum`, `class`, `order`, `family`, `genus`, `species`, `infraspecificepithet`, `taxonrank`, `scientificname`, `verbatimscientificname`, `verbatimscientificnameauthorship`, `n` (count), `h0`\n\n### GBIF Occurrences in Redlined Cities\n**File:** `s3://public-gbif/redlined_cities_gbif.parquet`\n\nSpatial join of GBIF occurrences with \"Mapping Inequality\" (Redlining) polygons for US cities.\n\n**Schema:** `gbifid`, `scientificname`, `kingdom`, `phylum`, `class`, `order`, `family`, `genus`, `species`, `recordedby`, `date`, `coordinateuncertaintyinmeters`, `city`, `state`, `grade` (A-D), `residential`, `commercial`, `industrial`\n\n### Taxa List\n**File:** `s3://public-gbif/taxa.parquet`\n\nReference list of all taxa found in the dataset.\n\n## Source & Citation\n\n- **Producer:** Global Biodiversity Information Facility (GBIF)\n- GBIF.org (2026). GBIF Occurrence Download. <https://www.gbif.org/>\n- Nelson, R. K., et al. (2023). Mapping Inequality. (for redlined cities asset)\n\n## License\n\n- **GBIF Data:** See [GBIF Data Use Agreement](https://www.gbif.org/terms). Individual records may have specific licenses (CC0, CC-BY, CC-BY-NC); the aggregate is treated **NonCommercial**.\n- **Redlining Data:** CC-BY-NC-SA 4.0.\n",
   "_review": [
     "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
-    "extent.spatial.bbox: omitted; spatial reference is categorical via [..decimallatitude (latlon), ..decimallongitude (latlon), ..geom (geometry), ..h0 (spatial_index), ..countrycode (admin_code), ..stateprovince (placename), 2024-10-01.decimallatitude (latlon), 2024-10-01.decimallongitude (latlon), 2024-10-01.geom (geometry), 2024-10-01.h0 (spatial_index), 2024-10-01.countrycode (admin_code), 2024-10-01.stateprovince (placename), taxonomy.h0 (spatial_index)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [2024-10-01.decimallatitude, decimallongitude (latlon), 2024-10-01.h0-h11 (spatial_index), 2024-10-01.countrycode (admin_code), 2024-10-01.stateprovince (placename), 2024-10-01.locality (placename), 2024-10-01.geom (geometry), taxonomy.h0 (spatial_index), ..decimallatitude, decimallongitude (latlon), ..h0-h11 (spatial_index), ..countrycode (admin_code), ..stateprovince (placename), ..locality (placename), ..geom (geometry)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-06-26T18:59:14+00:00",
+  "cataloged_at": "2026-07-15T09:37:33+00:00",
   "store_format": null
 }
