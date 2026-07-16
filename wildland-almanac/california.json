@@ -3,17 +3,15 @@
   "stac_version": "1.1.0",
   "id": "wildland-almanac/california",
   "title": "The Wildland Almanac - California",
-  "description": "The Wildland Almanac - California is a 30 m, Landsat-derived annual time series of 18 biophysical properties across California's forests, shrublands, and grasslands for water years 1985\u20132025. Properties span six themes: vegetation cover and structure, hydrology, fire hazard (including FARSITE/FlamMap landscape inputs), carbon stocks and flux, drought-driven tree dieoff risk, and disturbance severity. All layers are delivered as Cloud-Optimized GeoTIFFs in EPSG:5070, masked to the California wildland extent, with a companion STAC catalog.",
+  "description": "The Wildland Almanac - California is a 30 m, Landsat-derived annual time series (1985-2025) of 18 biophysical properties across California's forests, shrublands, and grasslands, covering vegetation cover and structure, hydrology, fire hazard, carbon, drought vulnerability, and disturbance severity. Data are delivered as Cloud-Optimized GeoTIFFs in EPSG:5070, masked to the California wildland extent, with an accompanying STAC catalog.",
   "license": "CC-BY-4.0",
   "keywords": [
-    "remote-sensing",
     "landsat",
+    "remote-sensing",
     "time-series",
     "earth-observation",
     "hydrology",
     "cloud-optimized-geotiff",
-    "ecology",
-    "biodiversity",
     "wildfire",
     "conservation"
   ],
@@ -57,7 +55,7 @@
     "data": {
       "href": "https://data.source.coop/wildland-almanac/california/",
       "type": "image/tiff; application=geotiff",
-      "title": "Dataset files (901 x .tif)",
+      "title": "Dataset files (982 x .tif)",
       "roles": [
         "data"
       ]
@@ -75,25 +73,24 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "visibility": "public",
   "product_id": "california",
+  "disabled": false,
+  "featured": 0,
   "exts": {
-    "json": 1004,
-    "tif": 901,
+    "json": 1044,
+    "tif": 982,
+    "xml": 300,
     "pdf": 2,
     "md": 1
   },
+  "total_bytes": 574145660409,
   "created_at": "2026-05-26T22:15:56.553Z",
-  "updated_at": "2026-06-14T18:55:38.313Z",
-  "featured": 0,
+  "visibility": "public",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "file_count": 1908,
-  "disabled": false,
   "account_id": "wildland-almanac",
-  "data_mode": "open",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -106,13 +103,14 @@
       "prefix": "wildland-almanac/california/"
     }
   },
-  "total_bytes": 524115402991,
+  "updated_at": "2026-06-14T18:55:38.313Z",
+  "file_count": 2329,
+  "data_mode": "open",
   "readme": "## README.md\n# The Wildland Almanac - California\n\nThe California release of the Wildland Almanac: an open, 30 m, Landsat-derived record of how California's forests, shrublands, and grasslands have changed over time. Eighteen biophysical properties - vegetation cover and structure, hydrology, fuels and fire hazard, carbon, drought vulnerability, and disturbance - produced from the Landsat archive through a single cross-consistent pipeline, every water year from 1985 to 2025.\n\n**Current release: `v2026.1` (June 2026).** Annual water years 1985 through 2025, California, all 18 layers. Released under CC BY 4.0.\n\n> This directory is the **California** half of the Wildland Almanac. The contiguous-U.S. release - decadal snapshots for water years 1990, 2000, 2010, 2020, and 2025 - is the sibling dataset at [`source.coop/wildland-almanac/conus`](https://source.coop/wildland-almanac/conus). The two share methods and conventions; the main differences are temporal cadence (California annual vs. CONUS decadal snapshots), the disturbance encoding (annual vs. cumulative), and the mask (California applies a full wildland-extent mask; CONUS is water-only).\n\n---\n\n## Quick navigation\n\n- **Current release:** [`v2026.1/`](https://source.coop/wildland-almanac/california/v2026.1/) - the actual data files (901 COGs across 18 layer directories)\n- **Documentation PDF:** [`WildlandAlmanac_CA_Documentation.pdf`](https://data.source.coop/wildland-almanac/california/WildlandAlmanac_CA_Documentation.pdf) - the binding reference for units, methods, projections, the mask definition, and the UC disclaimer (\u00a76)\n- **STAC catalog:** [`v2026.1/catalog.json`](https://data.source.coop/wildland-almanac/california/v2026.1/catalog.json) - machine-readable inventory, with 18 collections and 901 items\n- **Website (project documentation, how-to guides, In Use & Findings):** [`wildlandalmanac.org`](https://wildlandalmanac.org/)\n- **Sibling release:** [`../conus/`](https://source.coop/wildland-almanac/conus) - CONUS coverage (decadal snapshots, water years 1990-2025)\n\n---\n\n## What's in this release\n\nEighteen properties, six themes, every water year 1985 through 2025 (October-September), 30 m resolution, EPSG:5070 (NAD83 / CONUS Albers). All files are Cloud-Optimized GeoTIFFs (COGs). Canopy height, cover, base height, and bulk density are provided as bands of `Fire_LCP`, not as standalone layers.\n\n**Vegetation cover and structure (4)**\n\n- `Veg_TreeFrac/` - fractional tree canopy cover\n- `Veg_ShrubFrac/` - fractional shrub cover\n- `Veg_HerbFrac/` - fractional herbaceous cover\n- `Veg_BareFrac/` - fractional bare/non-vegetated cover\n\n**Hydrology (6)**\n\n- `WaterFlux_AETmax/` - maximum evapotranspiration (vegetation-driven, no drought limitation)\n- `WaterFlux_AETrealized/` - realized evapotranspiration (accounting for precipitation)\n- `WaterFlux_Soilmoisture/` - end-of-water-year soil moisture\n- `WaterFlux_SoilmoistureFrac/` - end-of-water-year soil moisture as a fraction of maximum rooting-zone storage\n- `WaterFlux_Runoff/` - annual discharge (precip minus AETrealized)\n- `WaterFlux_PminusETmax_SPI0/` - vegetation-driven water yield at long-term-mean precipitation\n\n**Fire hazard (3)**\n\n- `Fire_LCP/` - the components of a FARSITE/FlamMap landscape, delivered as **eight single-band COGs**: five per-year (fuel model, canopy cover, canopy height, canopy base height, canopy bulk density) and three static (elevation, slope, aspect). Clip and stack the bands to assemble a landscape - see the [Use It](https://wildlandalmanac.org/use.html) page for the carve-and-stack recipe.\n- `Fire_FlamMap_FL/` - FlamMap-predicted flame length (relative hazard, fixed run conditions)\n- `Fire_FlamMap_ROS/` - FlamMap-predicted rate of spread (relative hazard, fixed run conditions)\n\n**Carbon (2)**\n\n- `Carbon_AGB/` - aboveground live biomass (metric tons / hectare)\n- `Carbon_GPP/` - gross primary production (g C / m\u00b2 / yr)\n\n**Forest dieoff risk (1)**\n\n- `Vulner_TreeDieoff_SPI-2/` - tree-canopy vulnerability under severe long-term drought (48-month SPI = \u22122)\n\n**Disturbance severity (2)** - **annual** loss at disturbed pixels, water years 1986-2024 (boundary years 1985 and 2025 are not produced; see documentation \u00a74.3)\n\n- `Disturbance_TreeFrac/` - annual loss of tree fractional cover at disturbed pixels\n- `Disturbance_AGB/` - annual loss of aboveground biomass at disturbed pixels\n\nFilenames follow `WildlandAlmanac_CA_{Property}_{WaterYear}.tif`. The `Fire_LCP` bands follow `WildlandAlmanac_CA_Fire_LCP_{Band}_{WaterYear}.tif` (five per-year bands) and `WildlandAlmanac_CA_Fire_LCP_{Band}.tif` (three static topographic bands, no year). See the documentation PDF for full per-layer specifications, units, scaling conventions, methodology, and caveats.\n\n> **Note on base names.** `Disturbance_TreeFrac` and `Disturbance_AGB` are **annual** here and **cumulative** in the CONUS release (where they carry a `_cumulative` suffix). Do not assume the two are directly comparable without accounting for that difference.\n\n---\n\n## Releases and versioning\n\nThe Almanac uses an **archival versioning model**:\n\n- Each release is a complete reprocessing of the full 1985-onward time series under one code base.\n- Releases live in their own version directory (`v2026.1/`, `v2027.1/`, \u2026). Files at a published version URL are stable: once a version has been used in published work, its contents are preserved.\n- Future annual releases are published as **siblings**, not replacements. Earlier versions remain accessible at their original URLs (and under their original DOIs, where assigned).\n- Minor fixes may be made in place without a version bump. More significant corrections that change a quantitative result downstream will earn a new minor version (e.g. `v2026.2/`) with its own DOI, and the prior version will be retained.\n\n**Cite the version you used.** Each release receives its own DOI. When citing the Almanac in a paper, EIR, plan, or other document where future readers may need to verify the exact values you relied on, cite the **specific version** (and DOI), not the dataset as a whole. This is what makes the reference chain reproducible.\n\nFor analysis within one release: **use one version end-to-end.** Do not splice years from different versions - every release reprocesses the full series, so values for a given year may differ between versions.\n\n---\n\n## How to use the data\n\nThe data are Cloud-Optimized GeoTIFFs served over both S3 and HTTPS. Three access patterns, in increasing order of effort:\n\n**Stream it** - most common, no download. GIS tools (ArcGIS Pro, QGIS, rasterio, terra) can read COGs directly from cloud storage, transferring only the bytes needed for your current window.\n\n- ArcGIS Pro: `s3://us-west-2.opendata.source.coop/wildland-almanac/california/v2026.1/{Layer}/WildlandAlmanac_CA_{Layer}_{Year}.tif`\n- QGIS / GDAL / rasterio / terra: `/vsicurl/https://data.source.coop/wildland-almanac/california/v2026.1/{Layer}/WildlandAlmanac_CA_{Layer}_{Year}.tif`\n\n**Download one file** - `curl`, `wget`, browser, or PowerShell `Invoke-WebRequest` against the HTTPS URL above. To clip a lat/long box without downloading the whole file, use `gdalwarp -te ... -te_srs EPSG:4326 /vsicurl/<url> clip.tif` - GDAL fetches only the tiles overlapping your box.\n\n**Bulk download** - AWS CLI with `--no-sign-request` (no account needed):\n```\naws s3 sync s3://us-west-2.opendata.source.coop/wildland-almanac/california/v2026.1/{Layer}/ ./{Layer}/ --no-sign-request\n```\n\n**Building a fire-behavior landscape from `Fire_LCP`** - the eight bands are single-band COGs; clip each to your area of interest, then stack them in LCP band order (elevation, slope, aspect, fuel model, canopy cover, canopy height, canopy base height, canopy bulk density). Modern FlamMap reads the GeoTIFF stack directly. The worked recipe is on the [Use It](https://wildlandalmanac.org/use.html) page.\n\n**Full how-to with worked examples** - ArcGIS Pro, QGIS, Python (rasterio), R (terra), and the cloud-native workflow background - is on the website's [Use It](https://wildlandalmanac.org/use.html) page. That page is the authoritative how-to reference.\n\n---\n\n## About the quality of these data\n\nThe Wildland Almanac is built to be as useful as the underlying observations allow, and the layers compare favorably with comparable products and with the published literature. But much of this work remains very difficult, and the dataset has real limits. Some pixels are wrong in ways that are known and documented; others are wrong in ways that have not yet been identified. Some layers are better than others; some years are more or less constrained than others; some regions and vegetation types are better characterized than others.\n\nAnyone using these data for a specific decision should look critically at the values for their area of interest, compare against on-the-ground knowledge and independent observations when possible, and consider the documentation's notes on methods and caveats. The California layers are masked to the California wildland extent - water, areas outside California, urban/agricultural/barren land, and a set of non-target ecoregions (Central Valley and specified deserts) are excluded (see documentation \u00a74.4). The decision to release the data publicly reflects our judgment that it uses the best information of its kind available, that we believe it has reached the point where it can aid planning and research, and that use-with-feedback is the path to improvement. Reports of what looks wrong - pixel-level errors, structural issues, or systematic problems - are the most valuable contribution a user can make.\n\n---\n\n## License\n\nReleased under [Creative Commons Attribution 4.0 (CC BY)](https://creativecommons.org/licenses/by/4.0/). Free to use, share, and adapt with attribution.\n\n**University of California disclaimer.** These data are a University of California product, provided \"as is\" with no warranty; the user assumes all risk of use. Use of the data implies consent to the full University of California disclaimer, reproduced in \u00a76 of the [documentation PDF](https://data.source.coop/wildland-almanac/california/WildlandAlmanac_CA_Documentation.pdf).\n\n---\n\n## Citation\n\n> Goulden, M.L. (2026). *The Wildland Almanac - California* (Version v2026.1). Source Cooperative. DOI: [pending - EZID]. Released under CC BY.\n\nWhen citing analyses based on these data, cite the **specific version** (above). Different versions reprocess the full time series and may differ in detail; the version DOI is what makes your analysis reproducible.\n\n---\n\n## Feedback and contact\n\n**Found something wrong, or have a use case to share?** Please file an issue on GitHub: [github.com/wildland-almanac/wildland-almanac-site/issues](https://github.com/wildland-almanac/wildland-almanac-site/issues). Reports of errors and notes on real-world use are tracked there and folded into future releases.\n\n**Contact:** [mgoulden@uci.edu](mailto:mgoulden@uci.edu) \u00b7 Department of Earth System Science, University of California, Irvine. The data are offered with no promise of technical support, but feedback on errors and use cases is welcome and shapes future releases.\n\n---\n\n*The Wildland Almanac is an outgrowth of the Center for Ecosystem Climate Solutions (CECS), a multi-year University of California research program supported by California's Strategic Growth Council. Earlier work and publications referencing CECS share the same project lineage.*\n",
   "_review": [
     "extent.temporal: None (probe sample) widened to ['1985-01-01T00:00:00Z', '2025-01-01T00:00:00Z'] using README-stated coverage ['1985', '2025']."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-06-29T10:26:21+00:00",
-  "_source_format": "stac",
+  "cataloged_at": "2026-07-16T09:27:53+00:00",
   "store_format": null
 }
