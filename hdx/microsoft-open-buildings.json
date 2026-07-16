@@ -6,7 +6,7 @@
   ],
   "id": "hdx/microsoft-open-buildings",
   "title": "Microsoft Building Footprints",
-  "description": "Microsoft Building Footprints is a global dataset of building outline polygons derived from satellite imagery using Microsoft's machine learning models. Each record includes the building geometry, an estimated height, a model confidence score, and a geographic region name. The dataset is distributed in cloud-native GeoParquet 1.1 format following OGC best practices.",
+  "description": "A global dataset of building outline polygons extracted from satellite imagery using Microsoft's machine learning models. Each building record includes its footprint geometry, an estimated height, a model confidence score, and a region name, distributed as cloud-native GeoParquet.",
   "license": "other",
   "keywords": [
     "building-footprints",
@@ -52,13 +52,13 @@
     }
   },
   "summaries": {
-    "item_count": 22221
+    "item_count": 87634
   },
   "assets": {
     "part-00108-4feead82-d499-422b-94cb-c036c212127a.c000": {
-      "href": "https://data.source.coop/hdx/microsoft-open-buildings/geoparquet/RegionName=Abyei/quadkey=122320113/part-00108-4feead82-d499-422b-94cb-c036c212127a.c000.parquet",
+      "href": "https://data.source.coop/hdx/microsoft-open-buildings/geoparquet/RegionName=Abyei/quadkey=122320113/",
       "type": "application/x-parquet",
-      "title": "part-00108-4feead82-d499-422b-94cb-c036c212127a.c000.parquet",
+      "title": "part-00108-4feead82-d499-422b-94cb-c036c212127a.c000",
       "roles": [
         "data"
       ],
@@ -78,20 +78,20 @@
         {
           "name": "geometry",
           "type": "GEOMETRY",
-          "description": "[geometry] Building outline polygon geometry"
+          "description": "[geometry] Building footprint polygon geometry"
         },
         {
           "name": "RegionName",
           "type": "VARCHAR",
-          "description": "[placename] Geographic region name associated with the building"
+          "description": "[placename] Named geographic region associated with the building"
         },
         {
           "name": "quadkey",
           "type": "BIGINT",
-          "description": "[spatial_index] Bing Maps quadkey tile index used for spatial partitioning"
+          "description": "[spatial_index] Quadkey tile index for spatial partitioning"
         }
       ],
-      "table:row_count": 954
+      "description": "2 files sampled for this table"
     },
     "part-00058-4feead82-d499-422b-94cb-c036c212127a.c000": {
       "href": "https://data.source.coop/hdx/microsoft-open-buildings/geoparquet/RegionName=Abyei/quadkey=122320131/part-00058-4feead82-d499-422b-94cb-c036c212127a.c000.parquet",
@@ -128,6 +128,68 @@
         "data"
       ],
       "table:row_count": 15202
+    },
+    "part-00035-4feead82-d499-422b-94cb-c036c212127a.c000": {
+      "href": "https://data.source.coop/hdx/microsoft-open-buildings/geoparquet/RegionName=Zimbabwe/quadkey=300301010/part-00035-4feead82-d499-422b-94cb-c036c212127a.c000.parquet",
+      "type": "application/x-parquet",
+      "title": "part-00035-4feead82-d499-422b-94cb-c036c212127a.c000.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:row_count": 25112
+    },
+    "part-00149-4feead82-d499-422b-94cb-c036c212127a.c000": {
+      "href": "https://data.source.coop/hdx/microsoft-open-buildings/geoparquet/RegionName=Zimbabwe/quadkey=300301011/part-00149-4feead82-d499-422b-94cb-c036c212127a.c000.parquet",
+      "type": "application/x-parquet",
+      "title": "part-00149-4feead82-d499-422b-94cb-c036c212127a.c000.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:row_count": 10651
+    },
+    "part-00043-4feead82-d499-422b-94cb-c036c212127a.c000": {
+      "href": "https://data.source.coop/hdx/microsoft-open-buildings/geoparquet/RegionName=Zimbabwe/quadkey=300301100/part-00043-4feead82-d499-422b-94cb-c036c212127a.c000.parquet",
+      "type": "application/x-parquet",
+      "title": "part-00043-4feead82-d499-422b-94cb-c036c212127a.c000.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:row_count": 14685
+    },
+    "part-00037-4feead82-d499-422b-94cb-c036c212127a.c000": {
+      "href": "https://data.source.coop/hdx/microsoft-open-buildings/geoparquet/RegionName=leSaint-Martin/quadkey=032300312/part-00037-4feead82-d499-422b-94cb-c036c212127a.c000.parquet",
+      "type": "application/x-parquet",
+      "title": "part-00037-4feead82-d499-422b-94cb-c036c212127a.c000.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "OGC_FID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "height",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "confidence",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY"
+        },
+        {
+          "name": "RegionName",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "quadkey",
+          "type": "VARCHAR"
+        }
+      ],
+      "table:row_count": 14882
     }
   },
   "table:columns": [
@@ -168,7 +230,6 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "data_mode": "open",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -181,26 +242,27 @@
       "prefix": "hdx/microsoft-open-buildings/"
     }
   },
+  "product_id": "microsoft-open-buildings",
+  "featured": 0,
+  "data_mode": "open",
+  "disabled": false,
+  "exts": {
+    "parquet": 30344
+  },
   "created_at": "2025-09-18T12:56:06.858Z",
+  "file_count": 30344,
   "updated_at": "2025-10-26T19:46:42.053Z",
+  "account_id": "hdx",
+  "visibility": "public",
+  "total_bytes": 105087381220,
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "file_count": 60688,
-  "disabled": false,
-  "product_id": "microsoft-open-buildings",
-  "featured": 0,
-  "account_id": "hdx",
-  "exts": {
-    "parquet": 60688
-  },
-  "visibility": "public",
-  "total_bytes": 206819169346,
   "_review": [
     "extent.spatial.bbox: omitted; spatial reference is categorical via [part-00108-4feead82-d499-422b-94cb-c036c212127a.c000.geometry (geometry), part-00108-4feead82-d499-422b-94cb-c036c212127a.c000.RegionName (placename), part-00108-4feead82-d499-422b-94cb-c036c212127a.c000.quadkey (spatial_index)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-06-17T18:37:07+00:00",
+  "cataloged_at": "2026-07-16T09:23:03+00:00",
   "store_format": null
 }
