@@ -6,11 +6,13 @@
   ],
   "id": "youssef-harby/geoparquet-overviews",
   "title": "geoparquet-overviews",
-  "description": "A reference/demo dataset for the \"geoparquet-overviews\" draft convention, which embeds a simplified overview geometry alongside full-resolution geometry in a single GeoParquet file so it renders instantly in a web map while remaining fully queryable by a SQL engine. It packages example conversions of Finnish topographic (MTK) building/terrain features and Overture Maps building footprints for Tokyo across multiple convention versions (root, v0.1.0, v0.2.0).",
+  "description": "A reference/demo dataset for the \"geoparquet-overviews\" draft convention, which embeds a simplified overview geometry alongside full-resolution geometry in a single GeoParquet file so it renders instantly in a web map while remaining fully queryable by SQL. It packages example conversions of Finnish topographic (MTK) building and terrain features and Overture Maps building footprints for Tokyo, across multiple convention versions (root, v0.1.0, v0.2.0, v0.3.0).",
   "keywords": [
     "geoparquet",
+    "geoparquet-overviews",
     "building-footprints",
-    "topography"
+    "topography",
+    "elevation"
   ],
   "providers": [
     {
@@ -54,7 +56,7 @@
     }
   },
   "summaries": {
-    "item_count": 47929039
+    "item_count": 132403098
   },
   "assets": {
     ".": {
@@ -97,12 +99,11 @@
         {
           "name": "geometry",
           "type": "GEOMETRY('OGC:CRS84')",
-          "description": "[geometry] Full-resolution building footprint geometry (OGC:CRS84)"
+          "description": "[geometry] Full-resolution building footprint geometry (CRS84)"
         },
         {
           "name": "bbox",
-          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)",
-          "description": "[geometry] Bounding box struct (xmin, ymin, xmax, ymax) per feature"
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
         },
         {
           "name": "band",
@@ -111,7 +112,7 @@
         {
           "name": "geom_overview",
           "type": "GEOMETRY('OGC:CRS84')",
-          "description": "[geometry] Simplified overview geometry for fast web-map rendering"
+          "description": "[geometry] Simplified overview geometry for fast rendering"
         },
         {
           "name": "tags",
@@ -164,12 +165,11 @@
         {
           "name": "geometry",
           "type": "GEOMETRY('OGC:CRS84')",
-          "description": "[geometry] Full-resolution building footprint geometry (OGC:CRS84)"
+          "description": "[geometry] Full-resolution building footprint geometry (CRS84)"
         },
         {
           "name": "bbox",
-          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)",
-          "description": "[geometry] Bounding box struct (xmin, ymin, xmax, ymax) per feature"
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
         },
         {
           "name": "band",
@@ -178,7 +178,7 @@
         {
           "name": "geom_overview",
           "type": "GEOMETRY('OGC:CRS84')",
-          "description": "[geometry] Simplified overview geometry for fast web-map rendering"
+          "description": "[geometry] Simplified overview geometry for fast rendering"
         },
         {
           "name": "tags",
@@ -201,17 +201,16 @@
       "table:columns": [
         {
           "name": "id",
-          "type": "INTEGER"
+          "type": "BIGINT|INTEGER"
         },
         {
           "name": "geometry",
           "type": "GEOMETRY|GEOMETRY('EPSG:3067')",
-          "description": "[geometry] Full-resolution feature geometry (EPSG:3067 or unspecified CRS)"
+          "description": "[geometry] Full-resolution feature geometry (mixed MTK/Overture divisions)"
         },
         {
           "name": "bbox",
-          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)",
-          "description": "[geometry] Bounding box struct (xmin, ymin, xmax, ymax) per feature"
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
         },
         {
           "name": "band",
@@ -220,7 +219,133 @@
         {
           "name": "geom_overview",
           "type": "GEOMETRY|GEOMETRY('EPSG:3067')",
-          "description": "[geometry] Simplified overview geometry for fast web-map rendering"
+          "description": "[geometry] Simplified overview geometry for fast rendering"
+        },
+        {
+          "name": "fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "slug",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR|VARCHAR[]"
+        },
+        {
+          "name": "area",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "geometry_bbox",
+          "type": "STRUCT(xmin FLOAT, ymin FLOAT, xmax FLOAT, ymax FLOAT)"
+        },
+        {
+          "name": "type",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "building",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "building:levels",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "building:flats",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "building:material",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "building:colour",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "building:part",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "building:use",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "addr:housenumber",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "addr:street",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "addr:city",
+          "type": "VARCHAR",
+          "description": "[placename] Building address city name"
+        },
+        {
+          "name": "addr:postcode",
+          "type": "VARCHAR",
+          "description": "[zipcode] Building address postal code"
+        },
+        {
+          "name": "website",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "wikipedia",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "wikidata",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "height",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "roof:shape",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "roof:levels",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "roof:colour",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "roof:material",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "roof:orientation",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "roof:height",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "start_date",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "access",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "wheelchair",
+          "type": "VARCHAR"
         },
         {
           "name": "OGC_FID",
@@ -289,9 +414,98 @@
         {
           "name": "ymax",
           "type": "DOUBLE"
+        },
+        {
+          "name": "boundary",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "protected_area",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "leisure",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "names",
+          "type": "MAP(VARCHAR, VARCHAR)|MAP(VARCHAR, VARCHAR[])"
+        },
+        {
+          "name": "short_name",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "short_names",
+          "type": "MAP(VARCHAR, VARCHAR[])"
+        },
+        {
+          "name": "official_name",
+          "type": "VARCHAR|VARCHAR[]"
+        },
+        {
+          "name": "official_names",
+          "type": "MAP(VARCHAR, VARCHAR)|MAP(VARCHAR, VARCHAR[])"
+        },
+        {
+          "name": "protect_class",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "protection_title",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "protected",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "iucn_level",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "operator",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "operator:type",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "owner",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ownership",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "related_law",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "place",
+          "type": "VARCHAR",
+          "description": "[placename] Named place (OSM place tag)"
+        },
+        {
+          "name": "alt_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "alt_names",
+          "type": "MAP(VARCHAR, VARCHAR)"
+        },
+        {
+          "name": "population",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "tzid",
+          "type": "VARCHAR"
         }
       ],
-      "description": "4 files sampled for this table"
+      "description": "10 files sampled for this table"
     },
     "v0.2.0/overture-tokyo": {
       "href": "https://data.source.coop/youssef-harby/geoparquet-overviews/v0.2.0/overture-tokyo/",
@@ -328,8 +542,7 @@
         },
         {
           "name": "bbox",
-          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)",
-          "description": "[geometry] Bounding box struct (xmin, ymin, xmax, ymax) per feature"
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
         },
         {
           "name": "band",
@@ -338,7 +551,440 @@
         {
           "name": "geom_overview",
           "type": "GEOMETRY",
-          "description": "[geometry] Simplified overview geometry for fast web-map rendering"
+          "description": "[geometry] Simplified overview geometry for fast rendering"
+        },
+        {
+          "name": "tags",
+          "type": "MAP(VARCHAR, VARCHAR)"
+        },
+        {
+          "name": "subtype",
+          "type": "VARCHAR"
+        }
+      ],
+      "description": "3 files sampled for this table"
+    },
+    "v0.3.0": {
+      "href": "https://data.source.coop/youssef-harby/geoparquet-overviews/v0.3.0/",
+      "type": "application/x-parquet",
+      "title": "v0.3.0",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "BIGINT|INTEGER"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY|GEOMETRY('EPSG:3067')",
+          "description": "[geometry] Full-resolution feature geometry (mixed MTK/Overture divisions)"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        },
+        {
+          "name": "band",
+          "type": "SMALLINT"
+        },
+        {
+          "name": "geom_overview",
+          "type": "GEOMETRY|GEOMETRY('EPSG:3067')",
+          "description": "[geometry] Simplified overview geometry for fast rendering"
+        },
+        {
+          "name": "overview_count",
+          "type": "INTEGER"
+        },
+        {
+          "name": "fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "slug",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR|VARCHAR[]"
+        },
+        {
+          "name": "area",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "geometry_bbox",
+          "type": "STRUCT(xmin FLOAT, ymin FLOAT, xmax FLOAT, ymax FLOAT)"
+        },
+        {
+          "name": "OGC_FID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "mtk_id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "sijaintitarkkuus",
+          "type": "INTEGER"
+        },
+        {
+          "name": "aineistolahde",
+          "type": "INTEGER"
+        },
+        {
+          "name": "alkupvm",
+          "type": "DATE"
+        },
+        {
+          "name": "kohderyhma",
+          "type": "INTEGER"
+        },
+        {
+          "name": "kohdeluokka",
+          "type": "INTEGER"
+        },
+        {
+          "name": "korkeustarkkuus",
+          "type": "INTEGER"
+        },
+        {
+          "name": "kayttotarkoitus",
+          "type": "INTEGER"
+        },
+        {
+          "name": "kerrosluku",
+          "type": "INTEGER"
+        },
+        {
+          "name": "pohjankorkeus",
+          "type": "INTEGER"
+        },
+        {
+          "name": "korkeusarvo",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "sijainti_piste",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "xmin",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "ymin",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "xmax",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "ymax",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "type",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundary",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "protected_area",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "leisure",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "names",
+          "type": "MAP(VARCHAR, VARCHAR)|MAP(VARCHAR, VARCHAR[])"
+        },
+        {
+          "name": "short_name",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "short_names",
+          "type": "MAP(VARCHAR, VARCHAR[])"
+        },
+        {
+          "name": "official_name",
+          "type": "VARCHAR|VARCHAR[]"
+        },
+        {
+          "name": "official_names",
+          "type": "MAP(VARCHAR, VARCHAR)|MAP(VARCHAR, VARCHAR[])"
+        },
+        {
+          "name": "protect_class",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "protection_title",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "protected",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "iucn_level",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "access",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "operator",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "operator:type",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "owner",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ownership",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "start_date",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "related_law",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "website",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "wikidata",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "wikipedia",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "building",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "building:levels",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "building:flats",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "building:material",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "building:colour",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "building:part",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "building:use",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "addr:housenumber",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "addr:street",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "addr:city",
+          "type": "VARCHAR",
+          "description": "[placename] Building address city name"
+        },
+        {
+          "name": "addr:postcode",
+          "type": "VARCHAR",
+          "description": "[zipcode] Building address postal code"
+        },
+        {
+          "name": "height",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "roof:shape",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "roof:levels",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "roof:colour",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "roof:material",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "roof:orientation",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "roof:height",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "wheelchair",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "place",
+          "type": "VARCHAR",
+          "description": "[placename] Named place (OSM place tag)"
+        },
+        {
+          "name": "alt_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "alt_names",
+          "type": "MAP(VARCHAR, VARCHAR)"
+        },
+        {
+          "name": "population",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "objectid",
+          "type": "INTEGER"
+        },
+        {
+          "name": "scalerank",
+          "type": "INTEGER"
+        },
+        {
+          "name": "featurecla",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "map_color6",
+          "type": "INTEGER"
+        },
+        {
+          "name": "map_color8",
+          "type": "INTEGER"
+        },
+        {
+          "name": "note",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "zone",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "utc_format",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "time_zone",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "iso_8601",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "places",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "dst_places",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "tz_name1st",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "tz_namesum",
+          "type": "INTEGER"
+        }
+      ],
+      "description": "9 files sampled for this table"
+    },
+    "v0.3.0/overture-tokyo": {
+      "href": "https://data.source.coop/youssef-harby/geoparquet-overviews/v0.3.0/overture-tokyo/",
+      "type": "application/x-parquet",
+      "title": "v0.3.0/overture-tokyo",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "BIGINT|VARCHAR"
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "height",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "num_floors",
+          "type": "INTEGER"
+        },
+        {
+          "name": "class",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY",
+          "description": "[geometry] Full-resolution building footprint geometry"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        },
+        {
+          "name": "band",
+          "type": "SMALLINT"
+        },
+        {
+          "name": "geom_overview",
+          "type": "GEOMETRY",
+          "description": "[geometry] Simplified overview geometry for fast rendering"
+        },
+        {
+          "name": "overview_count",
+          "type": "INTEGER"
         },
         {
           "name": "tags",
@@ -360,12 +1006,11 @@
     {
       "name": "geometry",
       "type": "GEOMETRY('EPSG:3067')|GEOMETRY('OGC:CRS84')",
-      "description": "[geometry] Full-resolution feature geometry (EPSG:3067 or OGC:CRS84)"
+      "description": "[geometry] Full-resolution MTK feature geometry (EPSG:3067/CRS84)"
     },
     {
       "name": "bbox",
-      "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)",
-      "description": "[geometry] Bounding box struct (xmin, ymin, xmax, ymax) per feature"
+      "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
     },
     {
       "name": "band",
@@ -374,7 +1019,7 @@
     {
       "name": "geom_overview",
       "type": "GEOMETRY('EPSG:3067')|GEOMETRY('OGC:CRS84')",
-      "description": "[geometry] Simplified overview geometry for fast web-map rendering"
+      "description": "[geometry] Simplified overview geometry for fast rendering"
     },
     {
       "name": "OGC_FID",
@@ -457,15 +1102,21 @@
       "title": "Source Cooperative product page"
     }
   ],
+  "account_id": "youssef-harby",
+  "disabled": false,
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "disabled": false,
   "created_at": "2026-07-02T23:04:02.311Z",
-  "account_id": "youssef-harby",
+  "featured": 0,
   "product_id": "geoparquet-overviews",
-  "total_bytes": 4500718531,
+  "total_bytes": 14423325774,
+  "exts": {
+    "parquet": 37,
+    "json": 1
+  },
+  "file_count": 38,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -474,22 +1125,14 @@
       "prefix": "youssef-harby/geoparquet-overviews/"
     }
   },
-  "file_count": 20,
-  "visibility": "public",
-  "featured": 0,
   "data_mode": null,
+  "visibility": "public",
   "updated_at": "2026-07-02T23:04:02.311Z",
-  "exts": {
-    "parquet": 19,
-    "json": 1
-  },
   "_review": [
     "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
-    "providers: role [producer] for 'National Land Survey of Finland (Maanmittauslaitos)' is an AI guess \u2014 Inferred from Finnish MTK (Maastotietokanta) topographic-database column names (mtk_id, aineistolahde, kohdeluokka, kayttotarkoitus, etc.) in the schema.. Verify before flipping to _state: reviewed.",
-    "providers: role [producer] for 'Overture Maps Foundation' is an AI guess \u2014 Inferred from the 'overture-tokyo' asset name and building-footprint schema (class, subtype, height, num_floors) matching the Overture Maps buildings theme.. Verify before flipping to _state: reviewed.",
-    "extent.spatial.bbox: omitted; spatial reference is categorical via [..geometry (geometry), ..geom_overview (geometry), ..bbox (geometry), overture-tokyo.geometry (geometry), overture-tokyo.geom_overview (geometry), overture-tokyo.bbox (geometry), v0.1.0.geometry (geometry), v0.1.0.geom_overview (geometry), v0.1.0.bbox (geometry), v0.1.0/overture-tokyo.geometry (geometry), v0.1.0/overture-tokyo.geom_overview (geometry), v0.1.0/overture-tokyo.bbox (geometry), v0.2.0.geometry (geometry), v0.2.0.geom_overview (geometry), v0.2.0.bbox (geometry), v0.2.0/overture-tokyo.geometry (geometry), v0.2.0/overture-tokyo.geom_overview (geometry), v0.2.0/overture-tokyo.bbox (geometry)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [..geometry (geometry), ..geom_overview (geometry), overture-tokyo.geometry (geometry), overture-tokyo.geom_overview (geometry), v0.1.0.geometry (geometry), v0.1.0.geom_overview (geometry), v0.1.0/overture-tokyo.geometry (geometry), v0.1.0/overture-tokyo.geom_overview (geometry), v0.2.0.geometry (geometry), v0.2.0.geom_overview (geometry), v0.2.0.addr:city (placename), v0.2.0.addr:postcode (zipcode), v0.2.0.place (placename), v0.2.0/overture-tokyo.geometry (geometry), v0.2.0/overture-tokyo.geom_overview (geometry), v0.3.0.geometry (geometry), v0.3.0.geom_overview (geometry), v0.3.0.addr:city (placename), v0.3.0.addr:postcode (zipcode), v0.3.0.place (placename), v0.3.0/overture-tokyo.geometry (geometry), v0.3.0/overture-tokyo.geom_overview (geometry)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-07-07T09:48:40+00:00",
+  "cataloged_at": "2026-07-17T09:30:16+00:00",
   "store_format": null
 }
