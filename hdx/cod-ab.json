@@ -6,14 +6,15 @@
   ],
   "id": "hdx/cod-ab",
   "title": "COD-AB Administrative Boundaries",
-  "description": "Common Operational Dataset for Administrative Boundaries (COD-AB): country-by-country administrative boundary layers (admin0 through admin4 polygons, boundary lines, and settlement/place points) for humanitarian operations, maintained by UN OCHA and distributed via HDX. Each country's assets include P-codes, multilingual names, centroids, and geometries at each administrative level.",
+  "description": "COD-AB (Common Operational Dataset for Administrative Boundaries) is a global, country-by-country collection of administrative boundary layers (admin0 through admin4 polygons, boundary lines, and settlement/place points) with P-codes, multilingual names, and centroids, maintained by UN OCHA for humanitarian operations and distributed via HDX.",
   "license": "CC-BY-3.0-IGO",
   "keywords": [
     "administrative-boundaries",
-    "humanitarian",
     "geoparquet",
     "pmtiles",
-    "global-coverage"
+    "global-coverage",
+    "emergency-management",
+    "points-of-interest"
   ],
   "providers": [
     {
@@ -72,8 +73,7 @@
       "table:columns": [
         {
           "name": "adm0_name",
-          "type": "VARCHAR",
-          "description": "[placename] Country name"
+          "type": "VARCHAR"
         },
         {
           "name": "adm0_name1",
@@ -90,7 +90,7 @@
         {
           "name": "adm0_pcode",
           "type": "VARCHAR",
-          "description": "[admin_code] Country-level P-code"
+          "description": "[admin_code] P-code identifying the country administrative unit"
         },
         {
           "name": "valid_on",
@@ -131,7 +131,7 @@
         {
           "name": "geometry",
           "type": "GEOMETRY",
-          "description": "[geometry] Country boundary polygon"
+          "description": "[geometry] Admin0 (country) boundary polygon"
         },
         {
           "name": "objectid",
@@ -147,13 +147,11 @@
         },
         {
           "name": "center_lat",
-          "type": "DOUBLE",
-          "description": "[latlon] Centroid latitude (paired with center_lon)"
+          "type": "DOUBLE"
         },
         {
           "name": "center_lon",
-          "type": "DOUBLE",
-          "description": "[latlon] Centroid longitude (paired with center_lat)"
+          "type": "DOUBLE"
         },
         {
           "name": "SHAPE__Length",
@@ -176,8 +174,7 @@
       "table:columns": [
         {
           "name": "adm1_name",
-          "type": "VARCHAR",
-          "description": "[placename] Level-1 admin unit name"
+          "type": "VARCHAR"
         },
         {
           "name": "adm1_name1",
@@ -194,7 +191,7 @@
         {
           "name": "adm1_pcode",
           "type": "VARCHAR",
-          "description": "[admin_code] Level-1 admin unit P-code"
+          "description": "[admin_code] P-code identifying the admin1 unit"
         },
         {
           "name": "adm0_name",
@@ -214,8 +211,7 @@
         },
         {
           "name": "adm0_pcode",
-          "type": "VARCHAR",
-          "description": "[admin_code] Parent country P-code"
+          "type": "VARCHAR"
         },
         {
           "name": "valid_on",
@@ -256,7 +252,7 @@
         {
           "name": "geometry",
           "type": "GEOMETRY",
-          "description": "[geometry] Level-1 admin unit boundary polygon"
+          "description": "[geometry] Admin1 boundary polygon"
         },
         {
           "name": "objectid",
@@ -280,13 +276,11 @@
         },
         {
           "name": "center_lat",
-          "type": "DOUBLE",
-          "description": "[latlon] Centroid latitude (paired with center_lon)"
+          "type": "DOUBLE"
         },
         {
           "name": "center_lon",
-          "type": "DOUBLE",
-          "description": "[latlon] Centroid longitude (paired with center_lat)"
+          "type": "DOUBLE"
         },
         {
           "name": "region_name1",
@@ -313,8 +307,7 @@
       "table:columns": [
         {
           "name": "adm3_name",
-          "type": "VARCHAR",
-          "description": "[placename] Level-3 admin unit name"
+          "type": "VARCHAR"
         },
         {
           "name": "adm3_name1",
@@ -331,7 +324,7 @@
         {
           "name": "adm3_pcode",
           "type": "VARCHAR",
-          "description": "[admin_code] Level-3 admin unit P-code"
+          "description": "[admin_code] P-code identifying the admin3 unit"
         },
         {
           "name": "adm2_name",
@@ -351,8 +344,7 @@
         },
         {
           "name": "adm2_pcode",
-          "type": "VARCHAR",
-          "description": "[admin_code] Parent level-2 admin unit P-code"
+          "type": "VARCHAR"
         },
         {
           "name": "adm1_name",
@@ -372,8 +364,7 @@
         },
         {
           "name": "adm1_pcode",
-          "type": "VARCHAR",
-          "description": "[admin_code] Parent level-1 admin unit P-code"
+          "type": "VARCHAR"
         },
         {
           "name": "adm0_name",
@@ -393,8 +384,7 @@
         },
         {
           "name": "adm0_pcode",
-          "type": "VARCHAR",
-          "description": "[admin_code] Parent country P-code"
+          "type": "VARCHAR"
         },
         {
           "name": "valid_on",
@@ -435,7 +425,7 @@
         {
           "name": "geometry",
           "type": "GEOMETRY",
-          "description": "[geometry] Level-3 admin unit boundary polygon"
+          "description": "[geometry] Admin3 boundary polygon"
         },
         {
           "name": "objectid",
@@ -451,13 +441,11 @@
         },
         {
           "name": "center_lat",
-          "type": "DOUBLE",
-          "description": "[latlon] Centroid latitude (paired with center_lon)"
+          "type": "DOUBLE"
         },
         {
           "name": "center_lon",
-          "type": "DOUBLE",
-          "description": "[latlon] Centroid longitude (paired with center_lat)"
+          "type": "DOUBLE"
         },
         {
           "name": "SHAPE__Length",
@@ -504,13 +492,11 @@
         },
         {
           "name": "right_pcod",
-          "type": "VARCHAR",
-          "description": "[admin_code] P-code of admin unit on right side of boundary line"
+          "type": "VARCHAR"
         },
         {
           "name": "left_pcod",
-          "type": "VARCHAR",
-          "description": "[admin_code] P-code of admin unit on left side of boundary line"
+          "type": "VARCHAR"
         },
         {
           "name": "SHAPE__Length",
@@ -519,7 +505,7 @@
         {
           "name": "geometry",
           "type": "GEOMETRY",
-          "description": "[geometry] Boundary line geometry"
+          "description": "[geometry] Administrative boundary line geometry"
         }
       ],
       "table:row_count": 5789
@@ -543,7 +529,7 @@
         {
           "name": "name",
           "type": "VARCHAR",
-          "description": "[placename] Point/place name"
+          "description": "[placename] Settlement or place name"
         },
         {
           "name": "name1",
@@ -559,13 +545,11 @@
         },
         {
           "name": "x_coord",
-          "type": "DOUBLE",
-          "description": "[latlon] Point longitude (paired with y_coord)"
+          "type": "DOUBLE"
         },
         {
           "name": "y_coord",
-          "type": "DOUBLE",
-          "description": "[latlon] Point latitude (paired with x_coord)"
+          "type": "DOUBLE"
         },
         {
           "name": "adm4_name",
@@ -586,7 +570,7 @@
         {
           "name": "adm4_pcode",
           "type": "VARCHAR",
-          "description": "[admin_code] Level-4 admin unit P-code"
+          "description": "[admin_code] P-code of the finest-level admin unit containing the point"
         },
         {
           "name": "adm3_name",
@@ -606,8 +590,7 @@
         },
         {
           "name": "adm3_pcode",
-          "type": "VARCHAR",
-          "description": "[admin_code] Level-3 admin unit P-code"
+          "type": "VARCHAR"
         },
         {
           "name": "adm2_name",
@@ -627,8 +610,7 @@
         },
         {
           "name": "adm2_pcode",
-          "type": "VARCHAR",
-          "description": "[admin_code] Level-2 admin unit P-code"
+          "type": "VARCHAR"
         },
         {
           "name": "adm1_name",
@@ -648,8 +630,7 @@
         },
         {
           "name": "adm1_pcode",
-          "type": "VARCHAR",
-          "description": "[admin_code] Level-1 admin unit P-code"
+          "type": "VARCHAR"
         },
         {
           "name": "adm0_name",
@@ -669,8 +650,7 @@
         },
         {
           "name": "adm0_pcode",
-          "type": "VARCHAR",
-          "description": "[admin_code] Country P-code"
+          "type": "VARCHAR"
         },
         {
           "name": "valid_on",
@@ -703,7 +683,7 @@
         {
           "name": "geometry",
           "type": "GEOMETRY",
-          "description": "[geometry] Point location geometry"
+          "description": "[geometry] Settlement/place point geometry"
         }
       ],
       "table:row_count": 2063
@@ -721,6 +701,24 @@
       "title": "Source Cooperative product page"
     }
   ],
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "account_id": "hdx",
+  "created_at": "2026-06-22T15:31:11.638Z",
+  "data_mode": "open",
+  "product_id": "cod-ab",
+  "disabled": false,
+  "featured": 0,
+  "exts": {
+    "json": 4904,
+    "parquet": 3060,
+    "pmtiles": 3058,
+    "md": 1889
+  },
+  "updated_at": "2026-06-22T15:38:42.401Z",
+  "file_count": 12911,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -733,33 +731,13 @@
       "prefix": "hdx/cod-ab/"
     }
   },
-  "featured": 0,
-  "data_mode": "open",
-  "created_at": "2026-06-22T15:31:11.638Z",
   "visibility": "public",
-  "updated_at": "2026-06-22T15:38:42.401Z",
-  "disabled": false,
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "account_id": "hdx",
-  "total_bytes": 53087165867,
-  "file_count": 34423,
-  "exts": {
-    "json": 4904,
-    "parquet": 3060,
-    "pmtiles": 3058,
-    "md": 1889
-  },
-  "product_id": "cod-ab",
+  "total_bytes": 26623349557,
   "readme": "## README.md\n# COD-AB Administrative Boundaries\n\n![administrative boundaries](https://img.shields.io/badge/administrative_boundaries-blue) ![COD-AB](https://img.shields.io/badge/COD--AB-blue) ![humanitarian](https://img.shields.io/badge/humanitarian-blue) ![OCHA](https://img.shields.io/badge/OCHA-blue) ![HDX](https://img.shields.io/badge/HDX-blue) ![GeoParquet](https://img.shields.io/badge/GeoParquet-blue) ![cloud-native](https://img.shields.io/badge/cloud--native-blue)\n\nA Portolan-managed STAC catalog\n\n## Collections\n\n### [wld](./wld/)\n\nCollection: wld\n\n## Coverage\n\n**Spatial Extent**\n\n- West: -118.3651, South: -55.9795, East: 170.2383, North: 56.1725\n\n## Source\n\n[https://gis.unocha.org/server/rest/services/Hosted](https://gis.unocha.org/server/rest/services/Hosted)\n\n## Attribution\n\nUN OCHA Information Systems Section (ISS)\n\n## License\n\nCC-BY-3.0-IGO\n\n## Contact\n\nHDX Data Systems Team <hdx@un.org>\n\n---\n\n*Generated by [Portolan](https://github.com/portolan-sdi/portolan-cli) from STAC metadata and .portolan/metadata.yaml*\n",
   "_review": [
-    "providers: role [processor, host] for 'Humanitarian Data Exchange (HDX)' is an AI guess \u2014 Inferred from HDX Data Systems Team contact and COD-AB's standard HDX distribution; README does not explicitly describe HDX's role.. Verify before flipping to _state: reviewed.",
-    "extent.spatial.bbox: omitted; spatial reference is categorical via [afg/latest/adm0.adm0_pcode (admin_code), afg/latest/adm0.adm0_name (placename), afg/latest/adm0.geometry (geometry), afg/latest/adm0.center_lat (latlon), afg/latest/adm0.center_lon (latlon), afg/latest/adm1.adm1_pcode (admin_code), afg/latest/adm1.adm0_pcode (admin_code), afg/latest/adm1.adm1_name (placename), afg/latest/adm1.geometry (geometry), afg/latest/adm1.center_lat (latlon), afg/latest/adm1.center_lon (latlon), zwe/v01/adm3.adm3_pcode (admin_code), zwe/v01/adm3.adm2_pcode (admin_code), zwe/v01/adm3.adm1_pcode (admin_code), zwe/v01/adm3.adm0_pcode (admin_code), zwe/v01/adm3.adm3_name (placename), zwe/v01/adm3.geometry (geometry), zwe/v01/adm3.center_lat (latlon), zwe/v01/adm3.center_lon (latlon), zwe/v01/lines.right_pcod (admin_code), zwe/v01/lines.left_pcod (admin_code), zwe/v01/lines.geometry (geometry), zwe/v01/points.x_coord (latlon), zwe/v01/points.y_coord (latlon), zwe/v01/points.adm4_pcode (admin_code), zwe/v01/points.adm3_pcode (admin_code), zwe/v01/points.adm2_pcode (admin_code), zwe/v01/points.adm1_pcode (admin_code), zwe/v01/points.adm0_pcode (admin_code), zwe/v01/points.name (placename), zwe/v01/points.geometry (geometry)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [afg/latest/adm0.geometry (geometry), afg/latest/adm0.adm0_pcode (admin_code), afg/latest/adm0.center_lat / center_lon (latlon), afg/latest/adm1.geometry (geometry), afg/latest/adm1.adm1_pcode (admin_code), afg/latest/adm1.center_lat / center_lon (latlon), zwe/v01/adm3.geometry (geometry), zwe/v01/adm3.adm3_pcode (admin_code), zwe/v01/adm3.center_lat / center_lon (latlon), zwe/v01/lines.geometry (geometry), zwe/v01/lines.left_pcod / right_pcod (admin_code), zwe/v01/points.geometry (geometry), zwe/v01/points.x_coord / y_coord (latlon), zwe/v01/points.name (placename), zwe/v01/points.adm4_pcode (admin_code)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-07-01T09:46:45+00:00",
-  "_source_format": "stac",
+  "cataloged_at": "2026-07-17T09:22:35+00:00",
   "store_format": null
 }
