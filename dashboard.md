@@ -1,22 +1,22 @@
 # Source Cooperative catalog — status
 
-_Updated 2026-07-16 09:33 UTC by the nightly pipeline._
+_Updated 2026-07-17 09:32 UTC by the nightly pipeline._
 
-**324 datasets cataloged**  ·  **39 queued for next run**  ·  last run handled **10**
+**324 datasets cataloged**  ·  **32 queued for next run**  ·  last run handled **10**
 
 ## Last run
 
 <details><summary>✅ drafted — 7 datasets</summary>
 
-| repo                                                                                             |
-| ------------------------------------------------------------------------------------------------ |
-| [dynamical/ecmwf-aifs-single-forecast](https://source.coop/dynamical/ecmwf-aifs-single-forecast) |
-| [dynamical/noaa-hrrr-forecast-48-hour](https://source.coop/dynamical/noaa-hrrr-forecast-48-hour) |
-| [hdx/microsoft-open-buildings](https://source.coop/hdx/microsoft-open-buildings)                 |
-| [root-geospatial/flight-tracks](https://source.coop/root-geospatial/flight-tracks)               |
-| [walkthru-earth/indices](https://source.coop/walkthru-earth/indices)                             |
-| [wildland-almanac/california](https://source.coop/wildland-almanac/california)                   |
-| [wildland-almanac/conus](https://source.coop/wildland-almanac/conus)                             |
+| repo                                                                                         |
+| -------------------------------------------------------------------------------------------- |
+| [ausantarctic/ghrsst-mur-v2](https://source.coop/ausantarctic/ghrsst-mur-v2)                 |
+| [bkr/geos](https://source.coop/bkr/geos)                                                     |
+| [cboettig/indigenous](https://source.coop/cboettig/indigenous)                               |
+| [cboettig/social-vulnerability](https://source.coop/cboettig/social-vulnerability)           |
+| [dynamical/noaa-gfs-analysis](https://source.coop/dynamical/noaa-gfs-analysis)               |
+| [hdx/cod-ab](https://source.coop/hdx/cod-ab)                                                 |
+| [youssef-harby/geoparquet-overviews](https://source.coop/youssef-harby/geoparquet-overviews) |
 
 </details>
 
@@ -35,40 +35,40 @@ _Updated 2026-07-16 09:33 UTC by the nightly pipeline._
 
 | run                                                                                                    | outcome   | drafted | failed | queued | cataloged |
 | ------------------------------------------------------------------------------------------------------ | --------- | ------: | -----: | -----: | --------: |
+| [2026-07-17](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/29568722047) | ✅ success |       7 |      0 |     32 |       324 |
 | [2026-07-16](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/29485933223) | ✅ success |       7 |      0 |     39 |       324 |
 | [2026-07-15](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/29403217926) | ✅ success |       7 |      0 |     46 |       324 |
 | [2026-07-14](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/29320375956) | ✅ success |       7 |      1 |     54 |       324 |
 | [2026-07-12](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/29186862502) | ✅ success |       8 |      1 |     51 |       324 |
 | [2026-07-01](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/28508067723) | ✅ success |       9 |      0 |     41 |       317 |
 | [2026-06-30](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/28434727318) | ✅ success |       9 |      0 |     39 |       303 |
-| [2026-06-29](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/28363895703) | ✅ success |       8 |      1 |     44 |       291 |
 
 ## Persistent failures
 
-**18 datasets failing**  ·  18 open issues  ·  oldest **35d**  ·  **15** ≥30d  ·  [all open issues](https://github.com/source-cooperative/metadata-catalog/issues?q=is%3Aissue+is%3Aopen+label%3Aprobe-failure)
+**18 datasets failing**  ·  18 open issues  ·  oldest **36d**  ·  **15** ≥30d  ·  [all open issues](https://github.com/source-cooperative/metadata-catalog/issues?q=is%3Aissue+is%3Aopen+label%3Aprobe-failure)
 
 <details><summary>the 18 open issues, oldest first</summary>
 
 | repo                                                | age (d) | issue |
 | --------------------------------------------------- | ------: | ----: |
-| bkr/cams                                            |      35 |    #1 |
-| smartmaps/uppsala-conflict                          |      33 |   #16 |
-| smartmaps/next-ksj                                  |      33 |   #15 |
-| smartmaps/h3ys-worldpop                             |      33 |   #14 |
-| smartmaps/dem1a                                     |      33 |   #13 |
-| smartmaps/dem10a                                    |      33 |   #12 |
-| rsignell/ncei-estuarine-bathymetry                  |      33 |   #11 |
-| pfrost/climacell-monthly                            |      33 |   #10 |
-| geovibes/geometries                                 |      33 |    #9 |
-| fiboa/data                                          |      33 |    #8 |
-| dynamical/dwd-icon-eu-forecast-5-day                |      33 |    #7 |
-| cboettig/obis                                       |      33 |    #6 |
-| cboettig/habitat-corridors                          |      33 |    #5 |
-| caires-tudelft/tokyo-13999-fcb                      |      33 |    #4 |
-| caires-tudelft/plateau-tokyo-fcb-2                  |      33 |    #3 |
-| cboettig/wetlands                                   |      16 |  #122 |
-| dynamical/dwd-icon-grib                             |       3 |  #125 |
-| dynamical/ecmwf-ifs-ens-forecast-15-day-0-25-degree |       1 |  #126 |
+| bkr/cams                                            |      36 |    #1 |
+| smartmaps/uppsala-conflict                          |      34 |   #16 |
+| smartmaps/next-ksj                                  |      34 |   #15 |
+| smartmaps/h3ys-worldpop                             |      34 |   #14 |
+| smartmaps/dem1a                                     |      34 |   #13 |
+| smartmaps/dem10a                                    |      34 |   #12 |
+| rsignell/ncei-estuarine-bathymetry                  |      34 |   #11 |
+| pfrost/climacell-monthly                            |      34 |   #10 |
+| geovibes/geometries                                 |      34 |    #9 |
+| fiboa/data                                          |      34 |    #8 |
+| dynamical/dwd-icon-eu-forecast-5-day                |      34 |    #7 |
+| cboettig/obis                                       |      34 |    #6 |
+| cboettig/habitat-corridors                          |      34 |    #5 |
+| caires-tudelft/tokyo-13999-fcb                      |      34 |    #4 |
+| caires-tudelft/plateau-tokyo-fcb-2                  |      34 |    #3 |
+| cboettig/wetlands                                   |      17 |  #122 |
+| dynamical/dwd-icon-grib                             |       4 |  #125 |
+| dynamical/ecmwf-ifs-ens-forecast-15-day-0-25-degree |       2 |  #126 |
 
 </details>
 
@@ -869,7 +869,7 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 | --------- | ------------------------------------------------ | ----: | -------: |
 | ghosts    | catalog entry, no S3 data                        |    49 |  29.7 TB |
 | stowaways | S3 data, no source.coop product                  |    40 | 924.6 TB |
-| stale     | catalog bytes ≠ S3 (fixed by `make process-all`) |    56 |   1.4 PB |
+| stale     | catalog bytes ≠ S3 (fixed by `make process-all`) |    49 |   1.4 PB |
 
 <details><summary>ghosts — 49 datasets</summary>
 
@@ -974,7 +974,7 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 
 </details>
 
-<details><summary>stale — 56 datasets</summary>
+<details><summary>stale — 49 datasets</summary>
 
 | repo                                                 |        catalog → S3 |
 | ---------------------------------------------------- | ------------------: |
@@ -983,16 +983,9 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 | dynamical/dwd-icon-grib                              |   37.4 TB → 39.0 TB |
 | dynamical/ecmwf-ifs-ens-forecast-15-day-0-25-degree  |   45.2 TB → 46.4 TB |
 | forestsignal/forestsignal-ca                         |  726.4 GB → 598.0 B |
-| bkr/geos                                             |   38.9 TB → 38.9 TB |
-| hdx/cod-ab                                           |   53.1 GB → 26.6 GB |
 | e4drr-project/forecasts                              |  84.0 GB → 104.7 GB |
-| ausantarctic/ghrsst-mur-v2                           |     4.2 TB → 4.2 TB |
 | fiboa/data                                           |   30.1 GB → 49.9 GB |
 | wri-data-lab/trazofields                             |   41.4 GB → 54.8 GB |
-| cboettig/social-vulnerability                        |    1.7 GB → 13.1 GB |
-| cboettig/indigenous                                  |   12.3 GB → 23.2 GB |
-| youssef-harby/geoparquet-overviews                   |    4.5 GB → 14.4 GB |
-| dynamical/noaa-gfs-analysis                          | 500.8 GB → 508.2 GB |
 | henryspatialanalysis/openpois                        |   20.9 GB → 25.9 GB |
 | planet/agroforestry-individual-tree-detection-india  |    6.6 GB → 11.3 GB |
 | cboettig/fire                                        |     2.4 GB → 6.7 GB |
