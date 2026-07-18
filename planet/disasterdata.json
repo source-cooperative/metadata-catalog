@@ -3,16 +3,16 @@
   "stac_version": "1.1.0",
   "id": "planet/disasterdata",
   "title": "Planet Crisis Response \u2014 Hurricane Melissa, Jamaica (2025)",
-  "description": "High-resolution Planet SkySat satellite imagery documenting Hurricane Melissa's impact on southwestern Jamaica, organized as a STAC catalog pairing post-event collects (3\u20134 November 2025) with a pre-event cloud-free baseline (October 2023) for before/after damage assessment.",
+  "description": "High-resolution Planet SkySat satellite imagery documenting Hurricane Melissa's impact on southwestern Jamaica, structured as a STAC catalog that pairs post-event collects with a pre-event cloud-free baseline to support before/after damage assessment.",
   "license": "CC-BY-NC-4.0",
   "keywords": [
     "satellite-imagery",
     "cloud-optimized-geotiff",
     "emergency-management",
-    "hurricane",
     "earth-observation",
-    "change-detection",
-    "time-series"
+    "time-series",
+    "hurricane",
+    "change-detection"
   ],
   "providers": [
     {
@@ -34,17 +34,17 @@
     "spatial": {
       "bbox": [
         [
-          -78.1735917,
-          17.9975682,
-          -77.8239594,
-          18.2602935
+          -78.124876,
+          10.4055198,
+          -66.8458009,
+          18.2133771
         ]
       ]
     },
     "temporal": {
       "interval": [
         [
-          "2023-10-11T00:00:00Z",
+          "2023-10-01T00:00:00Z",
           "2025-11-04T00:00:00Z"
         ]
       ]
@@ -54,7 +54,7 @@
     "data": {
       "href": "https://data.source.coop/planet/disasterdata/",
       "type": "image/tiff; application=geotiff",
-      "title": "Dataset files (84 x .tif)",
+      "title": "Dataset files (251 x .tif)",
       "roles": [
         "data"
       ]
@@ -70,36 +70,28 @@
       "rel": "via",
       "href": "https://source.coop/planet/disasterdata",
       "title": "Source Cooperative product page"
-    },
-    {
-      "rel": "license",
-      "href": "https://creativecommons.org/licenses/by-nc/4.0/",
-      "type": "text/html",
-      "title": "CC-BY-NC-4.0"
-    },
-    {
-      "rel": "about",
-      "href": "./README.md",
-      "type": "text/markdown",
-      "title": "Dataset README"
-    },
-    {
-      "rel": "describedby",
-      "href": "./llms.txt",
-      "type": "text/markdown",
-      "title": "Agent/LLM usage guide"
-    },
-    {
-      "rel": "via",
-      "href": "https://source.coop/planet/disasterdata",
-      "type": "text/html",
-      "title": "Source dataset on Source Cooperative"
     }
   ],
-  "file_count": 117,
-  "disabled": false,
-  "updated_at": "2026-07-03T12:04:50.036Z",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "total_bytes": 5367470390,
+  "product_id": "disasterdata",
   "visibility": "public",
+  "created_at": "2026-07-03T12:04:50.036Z",
+  "updated_at": "2026-07-03T12:04:50.036Z",
+  "data_mode": null,
+  "account_id": "planet",
+  "exts": {
+    "tif": 251,
+    "json": 143,
+    "png": 135,
+    "md": 14,
+    "parquet": 9,
+    "txt": 6,
+    "yaml": 4
+  },
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -108,32 +100,14 @@
       "prefix": "planet/disasterdata/"
     }
   },
-  "exts": {
-    "tif": 84,
-    "json": 25,
-    "parquet": 3,
-    "png": 2,
-    "yaml": 1,
-    "txt": 1,
-    "md": 1
-  },
+  "disabled": false,
   "featured": 0,
-  "created_at": "2026-07-03T12:04:50.036Z",
-  "account_id": "planet",
-  "total_bytes": 1453994614,
-  "data_mode": null,
-  "product_id": "disasterdata",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "readme": "## hurricane-melissa-2025__README.md\n# Planet Crisis Response \u2014 Hurricane Melissa, Jamaica (2025)\n\nHigh-resolution **Planet SkySat** imagery of **Hurricane Melissa**'s impact on Jamaica.\nMelissa made landfall in southwestern Jamaica on **28 October 2025** as a catastrophic\nCategory 5 hurricane. The catalog pairs **post-event** collects (~0.8 m GSD, acquired\n**3\u20134 November 2025** over the landfall zone) with a **pre-event** SkySat baseline\n(**October 2023** \u2014 the most recent cloud-free SkySat of these locations before the storm)\nfor before/after comparison.\n\n- \ud83d\udef0\ufe0f **Live data & catalog:** <https://data.source.coop/planet/disasterdata/hurricane-melissa-2025/>\n- \ud83e\udded **Browse:** [Portolan browser](https://browser.portolan-sdi.org/#/external/data.source.coop/planet/disasterdata/hurricane-melissa-2025/catalog.json)\n- \ud83e\udd16 **For agents:** [`llms.txt`](https://data.source.coop/planet/disasterdata/hurricane-melissa-2025/llms.txt)\n- Imagery \u00a9 Planet Labs PBC \u2014 **CC BY-NC 4.0** (non-commercial).\n\n## Structure\n\nThe catalog is split into **post-event** and **pre-event**, each organised by **affected location**:\n\n```\ncatalog.json                          root\npost-event/catalog.json               post-event sub-catalog\n  savanna-la-mar/collection.json      14 scenes (Westmoreland, 2025-11-03)\n  black-river/collection.json         7 scenes (St. Elizabeth, 2025-11-04)\npre-event/catalog.json                pre-event baseline sub-catalog\n  savanna-la-mar/collection.json      22 scenes (2023-10-21, cloud-free)\n  black-river/collection.json         19 scenes (2023-10-11, cloud-free)\n    items/<scene>/<scene>.json         one STAC Item per SkySat scene\n    items/<scene>/<scene>_*.tif        the COGs (see assets below)\n```\n\nThe pre-event baseline is ~2 years before landfall \u2014 the most recent clear SkySat available\nover these towns (no closer-in-time SkySat was tasked here before the storm).\n\nEach Item merges the four Planet bundles ordered for this scene into one record, with\nde-duplicated masks. Asset keys:\n\n| Asset key | Product | Bands |\n|---|---|---|\n| `visual` | Visual true-colour ortho COG | RGB (8-bit) |\n| `pansharpened` | Pansharpened ortho COG | BGRN |\n| `udm2` | Usable Data Mask (per-pixel quality) | \u2014 |\n| `udm` | Unusable Data Mask | \u2014 |\n\nPer-collection `items.parquet` (STAC-GeoParquet) indexes are provided for each collection\nand as a `post-event/` aggregate.\n\n## License\n\nCatalog metadata: CC-BY-4.0. Imagery: **CC-BY-NC-4.0** \u00a9 Planet Labs PBC.\n",
+  "file_count": 562,
+  "readme": "## README.md\n<img src=\"https://data.source.coop/planet/disasterdata/logo-mark.png\" alt=\"Planet\" height=\"28\"/>\n\n# Disaster Data Releases from Planet Labs PBC\n\nImagery from the [Planet Crisis Response Program](https://www.planet.com/disasterdata/) for major disaster\nevents \u2014 earthquakes, floods, storms, wildfires and human-made disasters \u2014 as a single\nbrowsable catalog. Each event is a self-contained sub-catalog with pre- and post-event\nhigh-resolution COGs (visual, pansharpened-analytic and usable-data masks), organised by\naffected location. Imagery \u00a9 Planet Labs PBC, licensed\n[CC-BY-NC-4.0](https://creativecommons.org/licenses/by-nc/4.0/) (non-commercial).\n\nThis is a [Portolan](https://portolan-sdi.org) / [STAC](https://stacspec.org) catalog: the umbrella\nroot (`catalog.json`) links to one self-contained sub-catalog per disaster event, and new\nevents are added as new sub-catalogs.\n\n- **Browse now:** [open in the Portolan browser](https://browser.portolan-sdi.org/#/external/data.source.coop/planet/disasterdata/catalog.json)\n- **Root catalog:** [https://data.source.coop/planet/disasterdata/catalog.json](https://data.source.coop/planet/disasterdata/catalog.json)\n- **Agent / LLM guide:** [llms.txt](https://data.source.coop/planet/disasterdata/llms.txt) \u2014 point Claude Code or another\n  agent at it to explore and query the data\n- **License:** [CC-BY-NC-4.0](https://creativecommons.org/licenses/by-nc/4.0/) (non-commercial) \u2014 \u00a9 Planet Labs PBC\n- **Contact:** Planet Crisis Response Program \u2014 [crisis-response@planet.com](mailto:crisis-response@planet.com)\n\n## Events\n\n### [Planet Crisis Response \u2014 Venezuela Earthquake (2026)](https://source.coop/planet/disasterdata/venezuela-earthquake-2026-06-24)\n\n<img src=\"https://data.source.coop/planet/disasterdata/venezuela-earthquake-2026-06-24/thumbnail.png\" alt=\"Planet Crisis Response \u2014 Venezuela Earthquake (2026)\" width=\"480\"/>\n\nPlanet Crisis Response Program imagery documenting the 24 June 2026 earthquake that struck Venezuela's coast, causing extensive damage in Caracas, La Guaira, Catia La Mar, Puerto Cabello, Valencia, Ocumare de la Costa and Yumare.\n\n- Root catalog: [https://data.source.coop/planet/disasterdata/venezuela-earthquake-2026-06-24/catalog.json](https://data.source.coop/planet/disasterdata/venezuela-earthquake-2026-06-24/catalog.json)\n- Browse: [Portolan browser](https://browser.portolan-sdi.org/#/external/data.source.coop/planet/disasterdata/venezuela-earthquake-2026-06-24/catalog.json) \u00b7 [Source Cooperative](https://source.coop/planet/disasterdata/venezuela-earthquake-2026-06-24)\n- Agent guide: [llms.txt](https://data.source.coop/planet/disasterdata/venezuela-earthquake-2026-06-24/llms.txt)\n\n### [Planet Crisis Response \u2014 Philippines Earthquake (2026)](https://source.coop/planet/disasterdata/philippines-earthquake-2026-06-08)\n\n<img src=\"https://data.source.coop/planet/disasterdata/philippines-earthquake-2026-06-08/thumbnail.png\" alt=\"Planet Crisis Response \u2014 Philippines Earthquake (2026)\" width=\"480\"/>\n\nPlanet Crisis Response Program imagery documenting the 8 June 2026 earthquake in the southern Philippines (Mindanao).\n\n- Root catalog: [https://data.source.coop/planet/disasterdata/philippines-earthquake-2026-06-08/catalog.json](https://data.source.coop/planet/disasterdata/philippines-earthquake-2026-06-08/catalog.json)\n- Browse: [Portolan browser](https://browser.portolan-sdi.org/#/external/data.source.coop/planet/disasterdata/philippines-earthquake-2026-06-08/catalog.json) \u00b7 [Source Cooperative](https://source.coop/planet/disasterdata/philippines-earthquake-2026-06-08)\n- Agent guide: [llms.txt](https://data.source.coop/planet/disasterdata/philippines-earthquake-2026-06-08/llms.txt)\n\n### [Planet Crisis Response \u2014 Hurricane Melissa, Jamaica (2025)](https://source.coop/planet/disasterdata/hurricane-melissa-2025)\n\nPlanet Crisis Response Program imagery documenting Hurricane Melissa's impact on Jamaica.\n\n- Root catalog: [https://data.source.coop/planet/disasterdata/hurricane-melissa-2025/catalog.json](https://data.source.coop/planet/disasterdata/hurricane-melissa-2025/catalog.json)\n- Browse: [Portolan browser](https://browser.portolan-sdi.org/#/external/data.source.coop/planet/disasterdata/hurricane-melissa-2025/catalog.json) \u00b7 [Source Cooperative](https://source.coop/planet/disasterdata/hurricane-melissa-2025)\n- Agent guide: [llms.txt](https://data.source.coop/planet/disasterdata/hurricane-melissa-2025/llms.txt)\n\n\n## Using the catalog\n\n**Browse** the whole catalog in the [Portolan browser](https://browser.portolan-sdi.org/#/external/data.source.coop/planet/disasterdata/catalog.json), or open\n`https://data.source.coop/planet/disasterdata/catalog.json` in any STAC browser.\n\n**Explore with AI.** Point [Claude Code](https://claude.com/claude-code) or another agent at\n[llms.txt](https://data.source.coop/planet/disasterdata/llms.txt) (each event has its own too) and ask it to query the data,\nmake maps, or compare pre/post-event imagery.\n\n**Query with DuckDB.** Every collection has a STAC-GeoParquet `items.parquet` index of its\nscenes (id, datetime, geometry, cloud cover, asset hrefs):\n\n```sql\nINSTALL spatial; LOAD spatial;\nSELECT id, datetime, assets FROM read_parquet(\n  'https://data.source.coop/planet/disasterdata/<event-slug>/post-event/items.parquet'\n);\n```\n\n**Open a COG.** Asset hrefs are absolute public URLs \u2014 stream just the pixels you need with\n`/vsicurl`, rio-tiler, rasterio or GDAL, no download or API key required.\n\n---\n*Imagery \u00a9 Planet Labs PBC \u2014 [Crisis Response Program](https://www.planet.com/disasterdata/) (CC BY-NC 4.0).\nContact: [crisis-response@planet.com](mailto:crisis-response@planet.com).*\n",
   "_review": [
-    "license: Imagery (the primary data) is CC-BY-NC-4.0 (non-commercial) \u00a9 Planet Labs PBC; the catalog metadata itself is separately licensed CC-BY-4.0.",
-    "extent.temporal: None (probe sample) widened to ['2023-10-11T00:00:00Z', '2025-11-04T00:00:00Z'] using README-stated coverage ['2023-10-11', '2025-11-04']."
+    "extent.temporal: None (probe sample) widened to ['2023-10-01T00:00:00Z', '2025-11-04T00:00:00Z'] using README-stated coverage ['2023-10', '2025-11-04']."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-07-07T09:53:45+00:00",
-  "_source_format": "stac",
+  "cataloged_at": "2026-07-18T09:21:36+00:00",
   "store_format": null
 }
