@@ -3,14 +3,16 @@
   "stac_version": "1.1.0",
   "id": "cboettig/fire",
   "title": "Wildfire Boundary Polygons from USGS and CalFire in cloud native formats",
-  "description": "Snapshots of fire polygon boundaries from USGS Monitoring Trends in Burn Severity (MTBS) and the California Department of Forestry and Fire Protection (CalFire), including burned area extents and controlled burn treatments through 2022. Also includes Wildfire Hazard Potential raster data for the contiguous United States at 270-m resolution. Distributed in cloud-native formats including PMTiles and GeoParquet.",
+  "description": "A collection of wildfire and prescribed-burn perimeter polygons for California (CAL FIRE FRAP, 2024 and 2025 releases) and the wider United States (USGS Wildland Fire Combined Dataset, 1878-2021), distributed as GeoParquet, PMTiles, and H3 hex-aggregated Parquet.",
+  "license": "CC-BY-4.0",
   "keywords": [
     "wildfire",
     "conservation",
     "fire-perimeters",
-    "burned-area",
-    "wildfire-hazard",
-    "pmtiles"
+    "pmtiles",
+    "geoparquet",
+    "h3",
+    "emergency-management"
   ],
   "providers": [
     {
@@ -50,29 +52,29 @@
       "bbox": [
         [
           -124.5364653,
-          32.4220161,
-          -113.4489091,
-          42.6846036
+          5.9801641,
+          -22.0138218,
+          84.0401059
         ]
       ]
     },
     "temporal": {
       "interval": [
         [
-          null,
-          null
+          "1878-01-01T00:00:00Z",
+          "2025-01-01T00:00:00Z"
         ]
       ]
     }
   },
   "summaries": {
-    "item_count": 31425
+    "item_count": 728213
   },
   "assets": {
     "data": {
       "href": "https://data.source.coop/cboettig/fire/",
       "type": "application/octet-stream",
-      "title": "Dataset files (1 x .filegdb)",
+      "title": "Dataset files (3 x .filegdb)",
       "roles": [
         "data"
       ]
@@ -88,13 +90,34 @@
       "rel": "via",
       "href": "https://source.coop/cboettig/fire",
       "title": "Source Cooperative product page"
-    },
-    {
-      "rel": "cite-as",
-      "href": "https://doi.org/10.2737/RDS-2015-0047-4"
     }
   ],
-  "updated_at": "2025-08-21T16:39:55.567Z",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "product_id": "fire",
+  "exts": {
+    "atx": 59,
+    "gdbtable": 30,
+    "gdbtablx": 30,
+    "gdbindexes": 27,
+    "parquet": 24,
+    "freelist": 13,
+    "horizon": 9,
+    "spx": 9,
+    "": 6,
+    "json": 6,
+    "pmtiles": 5,
+    "lock": 2,
+    "md": 1
+  },
+  "file_count": 221,
+  "data_mode": "open",
+  "account_id": "cboettig",
+  "created_at": "2024-03-19T17:13:53.608378+00:00",
+  "total_bytes": 6725115056,
+  "disabled": false,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -107,53 +130,15 @@
       "prefix": "cboettig/fire/"
     }
   },
-  "data_mode": "open",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "account_id": "cboettig",
-  "total_bytes": 2404844456,
-  "created_at": "2024-03-19T17:13:53.608378+00:00",
-  "product_id": "fire",
-  "file_count": 96,
-  "exts": {
-    "parquet": 3,
-    "ipynb": 1,
-    "": 2,
-    "tif": 7,
-    "atx": 17,
-    "pdf": 1,
-    "sbn": 1,
-    "spx": 5,
-    "zip": 1,
-    "gdbtablx": 11,
-    "dbf": 1,
-    "txt": 1,
-    "sbx": 1,
-    "gdbindexes": 9,
-    "gdbtable": 11,
-    "horizon": 4,
-    "shx": 1,
-    "freelist": 6,
-    "py": 2,
-    "cpg": 1,
-    "xml": 2,
-    "shp": 1,
-    "pmtiles": 3,
-    "md": 2,
-    "prj": 1,
-    "html": 1
-  },
   "visibility": "public",
+  "updated_at": "2025-08-21T16:39:55.567Z",
   "featured": 0,
-  "disabled": false,
-  "readme": "## README.md\n# fire \n\nSnapshots of fire polygons data from multiple sources.  Cloud-optimized formats include PMTiles and (Geo)Parquet serializations.\n\n## USGS MTBS Fire perimiters:\n\n- Original shapefiles for burned area extent downloaded from: https://edcintl.cr.usgs.gov/downloads/sciweb1/shared/MTBS_Fire/data/composite_data/burned_area_extent_shapefile/mtbs_perimeter_data.zip\n\n## Calfire \n\n- Original geodatabase file up to year 2022 downloaded from: https://www.fire.ca.gov/what-we-do/fire-resource-assessment-program/gis-mapping-and-data-analytics\n\nPMTiles created using gdal 3.8.4 via\n\n```\nogr2ogr -dsco MAX_SIZE=50000000 -dsco MAX_FEATURES=20000000 calfire-2022.pmtiles CALFIRE/fire22_1.gdb\n```\n\n[Example map](https://data.source.coop/cboettig/fire/fire-pmtiles.html) created using [map.py](https://data.source.coop/cboettig/fire/map.py)\n\n## Wildfire Hazard Potential\n\n> Dillon, Gregory K. 2023. Wildfire Hazard Potential for the United States (270-m), version 2023. 4th Edition. Fort Collins, CO: Forest Service Research Data Archive. https://doi.org/10.2737/RDS-2015-0047-4\n\n\n\n",
+  "readme": "## README.md\n# Fire Datasets\n\nThis bucket contains CAL FIRE and USGS fire perimeter datasets:\n\n- **CAL FIRE Wildfire Perimeters** \u2014 California wildfire perimeters (2025 release `calfire-2025/firep`, prior `calfire-2024/firep`)\n- **CAL FIRE Prescribed Burns** \u2014 California prescribed burn treatments (2025 release `calfire-2025/rxburn`, prior `calfire-2024/rxburn`)\n- **USGS Wildland Fire Combined Dataset** \u2014 National wildfire perimeters 1878\u20132021 (`usgs-fires-2021/combined`)\n\nAll datasets are polygon geometries processed into GeoParquet, PMTiles, and H3 hex Parquet (resolution 10).\n\n**The 2025 CAL FIRE release (FRAP `fire251gdb`) is the current dataset for California fires and prescribed burns; the 2024 release is retained as a prior version.**\n\n---\n\n## CAL FIRE Wildfire Perimeters 2025 (`calfire-2025/firep`) \u2014 current\n\n**Source:** [CAL FIRE FRAP GIS](https://frap.fire.ca.gov/mapping/gis-data/) (`fire251gdb`, layer `firep25_1`)\n**Features:** 23,334 fire perimeter polygons\n**Coverage:** California, 1878\u20132025\n**License:** CC-BY-4.0\n**Source layer:** `firep` (PMTiles source-layer name)\n\n### DuckDB Example\n\n```sql\nLOAD spatial;\nSELECT YEAR_, FIRE_NAME, AGENCY, GIS_ACRES\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-fire/calfire-2025/firep.parquet')\nWHERE YEAR_ >= 2024\nORDER BY GIS_ACRES DESC\nLIMIT 10;\n```\n\n> **Hex aggregation note:** in `calfire-2025/firep/hex/h0=*/data_0.parquet`, every source attribute\n> (including `GIS_ACRES`) is repeated on each H3 cell the fire covers. **Never `SUM(GIS_ACRES)` on hex\n> data.** To total burned acreage, deduplicate by feature first:\n> `SELECT SUM(GIS_ACRES) FROM (SELECT DISTINCT _cng_fid, GIS_ACRES FROM read_parquet('\u2026/firep/hex/h0=*/data_0.parquet'))`.\n\n### MapLibre GL JS Example\n\n```javascript\nmap.addSource('calfire-firep-2025', {\n  type: 'vector',\n  url: 'pmtiles://https://s3-west.nrp-nautilus.io/public-fire/calfire-2025/firep.pmtiles'\n});\nmap.addLayer({\n  id: 'calfire-firep-2025-fill',\n  type: 'fill',\n  source: 'calfire-firep-2025',\n  'source-layer': 'firep',\n  paint: {\n    'fill-color': '#d62728',\n    'fill-opacity': 0.5\n  }\n});\n```\n\n---\n\n## CAL FIRE Prescribed Burns 2025 (`calfire-2025/rxburn`) \u2014 current\n\n**Source:** [CAL FIRE FRAP GIS](https://frap.fire.ca.gov/mapping/gis-data/) (`fire251gdb`, layer `rxburn25_1`)\n**Features:** 11,975 prescribed burn polygons\n**Coverage:** California, 1900\u20132025\n**License:** CC-BY-4.0\n**Source layer:** `rxburn` (PMTiles source-layer name)\n\n### DuckDB Example\n\n```sql\nLOAD spatial;\nSELECT YEAR_, TREATMENT_NAME, AGENCY, TREATED_AC\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-fire/calfire-2025/rxburn.parquet')\nWHERE YEAR_ >= 2020\nORDER BY TREATED_AC DESC\nLIMIT 10;\n```\n\n### MapLibre GL JS Example\n\n```javascript\nmap.addSource('calfire-rxburn-2025', {\n  type: 'vector',\n  url: 'pmtiles://https://s3-west.nrp-nautilus.io/public-fire/calfire-2025/rxburn.pmtiles'\n});\nmap.addLayer({\n  id: 'calfire-rxburn-2025-fill',\n  type: 'fill',\n  source: 'calfire-rxburn-2025',\n  'source-layer': 'rxburn',\n  paint: {\n    'fill-color': '#2ca02c',\n    'fill-opacity': 0.5\n  }\n});\n```\n\n---\n\n## 1. CAL FIRE Wildfire Perimeters (`calfire-2024/firep`) \u2014 prior release\n\n**Source:** [CAL FIRE FRAP GIS](https://www.fire.ca.gov/what-we-do/fire-resource-assessment-program)\n**Features:** 22,810 fire perimeter polygons\n**Coverage:** California, 1878\u20132024\n**Source layer:** `firep` (PMTiles source-layer name)\n\n### DuckDB Example\n\n```sql\nLOAD spatial;\nSELECT YEAR_, FIRE_NAME, AGENCY, GIS_ACRES\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-fire/calfire-2024/firep.parquet')\nWHERE YEAR_ >= 2020\nORDER BY GIS_ACRES DESC\nLIMIT 10;\n```\n\n### MapLibre GL JS Example\n\n```javascript\nmap.addSource('calfire-firep', {\n  type: 'vector',\n  url: 'pmtiles://https://s3-west.nrp-nautilus.io/public-fire/calfire-2024/firep.pmtiles'\n});\nmap.addLayer({\n  id: 'calfire-firep-fill',\n  type: 'fill',\n  source: 'calfire-firep',\n  'source-layer': 'firep',\n  paint: {\n    'fill-color': '#d62728',\n    'fill-opacity': 0.5\n  }\n});\n```\n\n### Schema\n\n| Column | Type | Description |\n|--------|------|-------------|\n| YEAR_ | int16 | Calendar year the fire was recorded |\n| STATE | string | State abbreviation (always 'CA') |\n| AGENCY | string | Responding agency code |\n| UNIT_ID | string | CAL FIRE unit identifier |\n| FIRE_NAME | string | Name of the fire |\n| INC_NUM | string | Local incident number |\n| IRWINID | string | IRWIN system incident ID |\n| ALARM_DATE | datetime | Date the fire was reported |\n| CONT_DATE | datetime | Date the fire was contained |\n| C_METHOD | int16 | Collection method code |\n| CAUSE | int16 | Fire cause code |\n| COMPLEX_NAME | string | Complex fire name (if applicable) |\n| COMPLEX_ID | string | Complex fire ID |\n| OBJECTIVE | int16 | Management objective code |\n| GIS_ACRES | float32 | GIS-calculated area in acres |\n| COMMENTS | string | Additional comments |\n| FIRE_NUM | string | Historical fire number |\n| Shape_Length | float64 | Perimeter length in meters |\n| Shape_Area | float64 | Area in square meters |\n\n---\n\n## 2. CAL FIRE Prescribed Burns (`calfire-2024/rxburn`)\n\n**Source:** [CAL FIRE FRAP GIS](https://www.fire.ca.gov/what-we-do/fire-resource-assessment-program)\n**Features:** 10,675 prescribed burn polygons\n**Coverage:** California, 1980s\u20132024\n**Source layer:** `rxburn` (PMTiles source-layer name)\n\n### DuckDB Example\n\n```sql\nLOAD spatial;\nSELECT YEAR_, TREATMENT_NAME, AGENCY, TREATED_AC\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-fire/calfire-2024/rxburn.parquet')\nWHERE YEAR_ >= 2015\nORDER BY TREATED_AC DESC\nLIMIT 10;\n```\n\n### MapLibre GL JS Example\n\n```javascript\nmap.addSource('calfire-rxburn', {\n  type: 'vector',\n  url: 'pmtiles://https://s3-west.nrp-nautilus.io/public-fire/calfire-2024/rxburn.pmtiles'\n});\nmap.addLayer({\n  id: 'calfire-rxburn-fill',\n  type: 'fill',\n  source: 'calfire-rxburn',\n  'source-layer': 'rxburn',\n  paint: {\n    'fill-color': '#2ca02c',\n    'fill-opacity': 0.5\n  }\n});\n```\n\n### Schema\n\n| Column | Type | Description |\n|--------|------|-------------|\n| YEAR_ | int16 | Calendar year of treatment |\n| STATE | string | State abbreviation (always 'CA') |\n| AGENCY | string | Responding agency code |\n| UNIT_ID | string | CAL FIRE unit identifier |\n| TREATMENT_ID | string | Unique treatment identifier |\n| TREATMENT_NAME | string | Name of the treatment |\n| TREATMENT_TYPE | int16 | Treatment type code |\n| START_DATE | datetime | Treatment start date |\n| END_DATE | datetime | Treatment end date |\n| TREATED_AC | float64 | Reported treated area in acres |\n| GIS_ACRES | float32 | GIS-calculated area in acres |\n| RX_CONSUM | int16 | Fuel consumption class code |\n| PRE_CON_CLASS | int16 | Pre-treatment condition class code |\n| POST_CON_CLASS | int16 | Post-treatment condition class code |\n| Shape_Length | float64 | Perimeter length in meters |\n| Shape_Area | float64 | Area in square meters |\n\n---\n\n## 3. USGS Wildland Fire Combined Dataset (`usgs-fires-2021/combined`)\n\n**Source:** [USGS ScienceBase](https://www.sciencebase.gov/catalog/item/61aa537dd34eb622f699df81)\n**Features:** 135,061 fire perimeter polygons\n**Coverage:** Continental US, Alaska, Hawaii, US territories, 1878\u20132021\n**Source layer:** `combined` (PMTiles source-layer name)\n\nThis dataset combines records from dozens of federal, state, and local data sources into a single de-duplicated national inventory. Where multiple sources cover the same fire, the highest-quality polygon is selected and source attributes are preserved in list fields.\n\n### DuckDB Example\n\n```sql\nLOAD spatial;\nSELECT Fire_Year, Assigned_Fire_Type, GIS_Acres, Listed_Fire_Names\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-fire/usgs-fires-2021/combined.parquet')\nWHERE Fire_Year >= 2000 AND GIS_Acres > 100000\nORDER BY GIS_Acres DESC\nLIMIT 20;\n```\n\n### H3 Hex Example (burn area by hex cell)\n\n```python\nimport duckdb\n\nconn = duckdb.connect()\nconn.execute(\"INSTALL httpfs; LOAD httpfs;\")\nconn.execute(\"\"\"\nCREATE SECRET (\n  TYPE S3,\n  KEY_ID '',\n  SECRET '',\n  ENDPOINT 's3-west.nrp-nautilus.io',\n  USE_SSL 'TRUE',\n  URL_STYLE 'path'\n)\n\"\"\")\n\nresult = conn.execute(\"\"\"\nSELECT h3_index, SUM(GIS_Acres) AS total_acres\nFROM read_parquet(\n  'https://s3-west.nrp-nautilus.io/public-fire/usgs-fires-2021/combined/hex/h0=*/data_0.parquet',\n  hive_partitioning=true\n)\nGROUP BY h3_index\nORDER BY total_acres DESC\nLIMIT 20\n\"\"\").df()\n```\n\n### MapLibre GL JS Example\n\n```javascript\nmap.addSource('usgs-fires', {\n  type: 'vector',\n  url: 'pmtiles://https://s3-west.nrp-nautilus.io/public-fire/usgs-fires-2021/combined.pmtiles'\n});\nmap.addLayer({\n  id: 'usgs-fires-fill',\n  type: 'fill',\n  source: 'usgs-fires',\n  'source-layer': 'combined',\n  paint: {\n    'fill-color': '#ff7f0e',\n    'fill-opacity': 0.4\n  }\n});\n```\n\n### Schema\n\n| Column | Type | Description |\n|--------|------|-------------|\n| USGS_Assigned_ID | int32 | Unique USGS identifier |\n| Assigned_Fire_Type | string | Fire type (Wildfire, Prescribed Fire, etc.) |\n| Fire_Year | int16 | Year the fire occurred |\n| Fire_Polygon_Tier | int16 | Source quality tier (1 = highest quality) |\n| Fire_Attribute_Tiers | string | Quality tier per attribute |\n| GIS_Acres | float64 | GIS-calculated area in acres |\n| GIS_Hectares | float64 | GIS-calculated area in hectares |\n| Source_Datasets | string | Contributing source dataset names |\n| Listed_Fire_Types | string | All fire types from contributing sources |\n| Listed_Fire_Names | string | All fire names from contributing sources |\n| Listed_Fire_Codes | string | All fire codes from contributing sources |\n| Listed_Fire_IDs | string | All fire IDs from contributing sources |\n| Listed_Fire_IRWIN_IDs | string | All IRWIN IDs from contributing sources |\n| Listed_Fire_Dates | string | All fire dates from contributing sources |\n| Listed_Fire_Causes | string | All fire causes from contributing sources |\n| Listed_Fire_Cause_Class | string | Cause classification |\n| Listed_Rx_Reported_Acres | string | Reported Rx acres |\n| Listed_Map_Digitize_Methods | string | Digitization methods |\n| Listed_Notes | string | Source dataset notes |\n| Processing_Notes | string | USGS processing and QA notes |\n| Wildfire_Notice | string | Data quality notice for wildfire attribution |\n| Prescribed_Burn_Notice | string | Data quality notice for prescribed burn attribution |\n| Wildfire_and_Rx_Flag | string | Wildfire/Rx overlap flag |\n| Overlap_Within_1_or_2_Flag | string | Temporal overlap flag |\n| Circleness_Scale | float64 | Shape circularity (1.0 = circle); low values may be artifacts |\n| Circle_Flag | int16 | Suspiciously circular geometry flag |\n| Exclude_From_Summary_Rasters | string | Whether to exclude from summary rasters |\n| Shape_Length | float64 | Perimeter length in meters |\n\n---\n\n## Citation\n\n**CAL FIRE datasets:**\nCalifornia Department of Forestry and Fire Protection (CAL FIRE), Forest and Range Assessment Program (FRAP). Fire Perimeter and Prescribed Burn data, 2025 release (`fire251gdb`; 2024 release also retained). https://frap.fire.ca.gov/mapping/gis-data/\n\n**USGS dataset:**\nWelty, J.L., and Jeffries, M.I., 2021, Combined wildfire datasets for the United States and certain territories, 1878-2019: U.S. Geological Survey data release, https://doi.org/10.5066/P9ZXGFY3\n",
   "_review": [
-    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
-    "providers: role [producer] for 'USDA Forest Service Research Data Archive' is an AI guess \u2014 Cited as publisher of the Wildfire Hazard Potential dataset (DOI 10.2737/RDS-2015-0047-4); assumed producer role. Verify before flipping to _state: reviewed.",
-    "providers: role [processor] for 'cboettig' is an AI guess \u2014 Source Cooperative account that produced the cloud-native PMTiles and GeoParquet serializations from original source files. Verify before flipping to _state: reviewed."
+    "license: CC-BY-4.0 is explicitly stated only for the CAL FIRE FRAP 2025 release (firep and rxburn); the retained CAL FIRE 2024 release and the USGS combined dataset do not restate a license in the README.",
+    "extent.temporal: None (probe sample) widened to ['1878-01-01T00:00:00Z', '2025-01-01T00:00:00Z'] using README-stated coverage ['1878', '2025']."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-06-04T01:06:14+00:00"
+  "cataloged_at": "2026-07-18T09:14:33+00:00",
+  "store_format": "filegdb"
 }
