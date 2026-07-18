@@ -3,7 +3,7 @@
   "stac_version": "1.1.0",
   "id": "dynamical/noaa-gefs-analysis",
   "title": "NOAA GEFS analysis",
-  "description": "An archive of the NOAA Global Ensemble Forecast System (GEFS) model's best estimate of past weather conditions, covering the globe at 0.25-degree (~20 km) resolution with 3-hourly timesteps from 2000 to present. Variables include temperature, precipitation, wind components, humidity, radiation flux, cloud cover, and precipitation type stored in Zarr format for cloud-native access. The archive is constructed by concatenating early forecast hours from three GEFS source archives: reforecasts (2000\u20132019), lower-resolution operational data (Jan\u2013Sep 2020), and full-resolution operational forecasts (Sep 2020\u2013present).",
+  "description": "An archive of the NOAA Global Ensemble Forecast System (GEFS) model's best estimate of past weather conditions, covering the globe at 0.25-degree (~20km) resolution with 3-hourly timesteps from 2000 to the present. It is constructed by concatenating the earliest lead-time hours of successive historical GEFS forecasts into a continuous time series of variables like temperature, precipitation, wind, humidity, and cloud cover, distributed in Zarr format.",
   "keywords": [
     "noaa",
     "meteorology",
@@ -51,7 +51,7 @@
       "interval": [
         [
           "2000-01-01T00:00:00",
-          "2026-06-17T12:00:00"
+          "present-01T00:00:00Z"
         ]
       ]
     }
@@ -78,8 +78,10 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "file_count": 4783,
-  "created_at": "2025-03-20T15:04:20.386Z",
+  "visibility": "public",
+  "file_count": 4784,
+  "data_mode": "open",
+  "featured": 0,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -93,27 +95,26 @@
     }
   },
   "disabled": false,
-  "visibility": "public",
-  "exts": {
-    "": 4755,
-    "json": 27,
-    "md": 1
-  },
-  "product_id": "noaa-gefs-analysis",
-  "featured": 0,
-  "account_id": "dynamical",
-  "updated_at": "2025-08-21T16:39:55.568Z",
-  "total_bytes": 969601314822,
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "data_mode": "open",
+  "product_id": "noaa-gefs-analysis",
+  "total_bytes": 971997968970,
+  "account_id": "dynamical",
+  "updated_at": "2025-08-21T16:39:55.568Z",
+  "exts": {
+    "": 4756,
+    "json": 27,
+    "md": 1
+  },
+  "created_at": "2025-03-20T15:04:20.386Z",
   "readme": "## README.md\n# NOAA GEFS analysis\n\n\n_View the latest documentation at https://dynamical.org/catalog/noaa-gefs-analysis/ ._\n\n| | |\n|---|---|\n| Spatial domain | Global |\n| Spatial resolution | 0.25 degrees (~20km) |\n| Time domain | 2000-01-01 00:00:00 UTC to Present |\n| Time resolution | 3.0 hours |\n\n### Data Access\n```\nhttps://data.dynamical.org/noaa/gefs/analysis/latest.zarr?email=optional@email.com\n```\n\n*\\* Email optional. Providing your email as a query param helps us understand usage and impact to keep dynamical.org supported for the long-term. For catalog updates follow [here](https://dynamical.org/updates).*\n\nThe Global Ensemble Forecast System (GEFS) is a National Oceanic and Atmospheric Administration (NOAA) National Centers for Environmental Prediction (NCEP) weather forecast model.\n\nThis analysis dataset is an archive of the model's best estimate of past weather. It is created by concatenating the first few hours of each historical forecast to provide a dataset with dimensions time, latitude, and longitude.\n\nThis dataset is designed to be used in conjunction with the [GEFS forecast 35 day](https://dynamical.org/catalog/noaa-gefs-forecast-35-day) dataset.\n\nStorage for this dataset is generously provided by [Source Cooperative](https://source.coop/), a [Radiant Earth](https://radiant.earth/) initiative.\n\n## Dimensions\n\n| | min | max | units |\n|---|---|---|---|\n| **latitude** | -90 | 90 | degrees_north |\n| **longitude** | -180 | 179.75 | degrees_east |\n| **time** | 2000-01-01T00:00:00 | Present | seconds since 1970-01-01 |\n\n## Variables\n\n| | units | dimensions |\n|---|---|---|\n| **categorical_freezing_rain_surface** <br>*Categorical freezing rain* | 0=no; 1=yes | time \u00d7 latitude \u00d7 longitude |\n| **categorical_ice_pellets_surface** <br>*Categorical ice pellets* | 0=no; 1=yes | time \u00d7 latitude \u00d7 longitude |\n| **categorical_rain_surface** <br>*Categorical rain* | 0=no; 1=yes | time \u00d7 latitude \u00d7 longitude |\n| **categorical_snow_surface** <br>*Categorical snow* | 0=no; 1=yes | time \u00d7 latitude \u00d7 longitude |\n| **downward_long_wave_radiation_flux_surface** <br>*Surface downward long-wave radiation flux* <br>*Average value in the last 6 hour period (00, 06, 12, 18 UTC) or 3 hour period (03, 09, 15, 21 UTC).* | W/(m^2) | time \u00d7 latitude \u00d7 longitude |\n| **downward_short_wave_radiation_flux_surface** <br>*Surface downward short-wave radiation flux* <br>*Average value in the last 6 hour period (00, 06, 12, 18 UTC) or 3 hour period (03, 09, 15, 21 UTC).* | W/(m^2) | time \u00d7 latitude \u00d7 longitude |\n| **geopotential_height_cloud_ceiling** <br>*Geopotential height* | gpm | time \u00d7 latitude \u00d7 longitude |\n| **maximum_temperature_2m** <br>*Maximum temperature* | C | time \u00d7 latitude \u00d7 longitude |\n| **minimum_temperature_2m** <br>*Minimum temperature* | C | time \u00d7 latitude \u00d7 longitude |\n| **percent_frozen_precipitation_surface** <br>*Percent frozen precipitation* <br>*Contains the value -50 when there is no precipitation.* | % | time \u00d7 latitude \u00d7 longitude |\n| **precipitable_water_atmosphere** <br>*Precipitable water* | kg/(m^2) | time \u00d7 latitude \u00d7 longitude |\n| **precipitation_surface** <br>*Total Precipitation* <br>*Average precipitation rate since the previous forecast step.* | mm/s | time \u00d7 latitude \u00d7 longitude |\n| **pressure_reduced_to_mean_sea_level** <br>*Pressure reduced to MSL* | Pa | time \u00d7 latitude \u00d7 longitude |\n| **pressure_surface** <br>*Surface pressure* | Pa | time \u00d7 latitude \u00d7 longitude |\n| **relative_humidity_2m** <br>*2 metre relative humidity* | % | time \u00d7 latitude \u00d7 longitude |\n| **temperature_2m** <br>*2 metre temperature* | C | time \u00d7 latitude \u00d7 longitude |\n| **total_cloud_cover_atmosphere** <br>*Total Cloud Cover* <br>*Average value in the last 6 hour period (00, 06, 12, 18 UTC) or 3 hour period (03, 09, 15, 21 UTC).* | % | time \u00d7 latitude \u00d7 longitude |\n| **wind_u_100m** <br>*100 metre U wind component* | m/s | time \u00d7 latitude \u00d7 longitude |\n| **wind_u_10m** <br>*10 metre U wind component* | m/s | time \u00d7 latitude \u00d7 longitude |\n| **wind_v_100m** <br>*100 metre V wind component* | m/s | time \u00d7 latitude \u00d7 longitude |\n| **wind_v_10m** <br>*10 metre V wind component* | m/s | time \u00d7 latitude \u00d7 longitude |\n\n*Don't see what you're looking for? Let us know at [feedback@dynamical.org](mailto:feedback@dynamical.org).*\n\n## Examples\n\n* [Open notebook in github](https://github.com/dynamical-org/notebooks/blob/main/noaa-gefs-analysis.ipynb)\n* [Open notebook in colab](https://colab.research.google.com/github/dynamical-org/notebooks/blob/main/noaa-gefs-analysis.ipynb)\n\n```python\nimport xarray as xr  # xarray>=2025.1.2 and zarr>=3.0.4 for zarr v3 support\n\nds = xr.open_zarr(\"https://data.dynamical.org/noaa/gefs/analysis/latest.zarr?email=optional@email.com\")\nds['temperature_2m'].sel(time=\"2025-01-01T00\", latitude=0, longitude=0).compute()\n```\n\n## Details\n\n### Sources\nTo provide the longest possible historical record, this dataset in constructed from three distinct GEFS forecast archives.\n\n- From 2000-01-01 to 2019-12-31 we use the [GEFS reforecast](https://registry.opendata.aws/noaa-gefs-reforecast/).\n- From 2020-01-01 to 2020-09-23 we use [GEFS forecast archive](https://registry.opendata.aws/noaa-gefs/) data which has a lower spatial and temporal resolution.\n- From 2020-09-23 to Present we use [GEFS operational forecast archives](https://registry.opendata.aws/noaa-gefs/).\n\n### Variable availability\nData is available for all variables at all times with the following exceptions.\n\n- Unavailable before 2020-01-01:\n  `relative_humidity_2m`,\n  `percent_frozen_precipitation_surface`,\n  `categorical_freezing_rain_surface`,\n  `categorical_ice_pellets_surface`,\n  `categorical_rain_surface`,\n  `categorical_snow_surface`\n- Unavailable 2020-01-01T00 to 2020-09-22T21:\n  `geopotential_height_cloud_ceiling`\n\n### Construction\nTo create a single time dimension we concatenate the first few hours of each forecast. From 2000-01-01 to 2019-12-31 reforecasts are available once per day and this dataset uses the first 21 or 24 hours of each forecast. From 2020-01-01 to present forecasts are available every 6 hours and this dataset uses the first 3 or 6 hours of each forecast. Variables with an instantaneous `step_type` use the shortest possible lead times (e.g. 0 and 3 hours) while accumulated variables must use one additional forecast step (e.g. 3 and 6 hours) because they do not have an hour 0 forecast value.\n\n### Interpolation\nFor most of the time range of the archive the source data is available at 0.25-degree resolution and a 3 hourly time step and we perform no interpolation. There are two exceptions to this. 1) From 2020-01-01 to 2020-09-23 the source data has a 1.0-degree spatial resolution and a 6 hourly time step. 2) From 2020-09-23 to present the 100m wind components have a 0.5-degree spatial resolution in the source data. To provide a consistent archive in the above two cases we first perform bilinear interpolation in space to 0.25-degree resolution followed by linear interpolation in time to a 3-hourly timestep if necessary. The original, uninterpolated data can be obtained by selecting latitudes and longitudes evenly divisible by 1 and, in case 1), time steps whose hour is divisible by 6.\n\n### Compression\nThe data values in this dataset have been rounded in their binary floating point representation to improve compression. See [Kl\u00f6wer et al. 2021](https://www.nature.com/articles/s43588-021-00156-2) for more information on this approach. The exact number of rounded bits can be found in our [reformatting code](https://github.com/dynamical-org/reformatters/blob/main/src/reformatters/noaa/gefs/common_gefs_template_config.py).\n",
   "_review": [
-    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed."
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
+    "extent.temporal: ['2000-01-01T00:00:00', '2026-07-18T00:00:00'] (probe sample) widened to ['2000-01-01T00:00:00', 'present-01T00:00:00Z'] using README-stated coverage ['2000-01-01', 'present']."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-06-17T19:19:55+00:00",
+  "cataloged_at": "2026-07-18T09:24:18+00:00",
   "store_format": "zarr"
 }
