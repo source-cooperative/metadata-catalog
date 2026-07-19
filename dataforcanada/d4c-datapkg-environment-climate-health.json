@@ -6,7 +6,7 @@
   ],
   "id": "dataforcanada/d4c-datapkg-environment-climate-health",
   "title": "Data for Canada - Environment, Climate, and Health Data Packages",
-  "description": "Time-series measurements from a network of low-cost IoT Enviro+ environmental monitoring stations distributed across Canada. Each station records particulate matter (PM1, PM2.5, PM10 and particle size distributions), gas concentrations (oxidised, reducing, NH3), temperature, pressure, humidity, and light intensity. A companion asset captures per-station device telemetry (CPU load, memory, WiFi signal, battery) to support quality-control filtering.",
+  "description": "Time-series measurements from a network of low-cost Enviro+ IoT environmental monitoring stations distributed across Canada, capturing particulate matter, gas concentrations (oxidised, reducing, NH3), temperature, pressure, humidity, and light intensity, alongside companion device-telemetry data for quality-control filtering.",
   "keywords": [
     "air-quality",
     "environmental-monitoring",
@@ -51,7 +51,7 @@
     }
   },
   "summaries": {
-    "item_count": 341
+    "item_count": 333
   },
   "assets": {
     "archive/opensensor.space/enviroplus-health": {
@@ -59,7 +59,7 @@
       "type": "application/x-parquet",
       "title": "archive/opensensor.space/enviroplus-health",
       "roles": [
-        "metadata"
+        "data"
       ],
       "table:columns": [
         {
@@ -161,14 +161,14 @@
         {
           "name": "station",
           "type": "VARCHAR",
-          "description": "[placename] Identifier naming the monitoring station location"
+          "description": "[placename] Identifier for the monitoring station, corresponding to its physical deployment location."
         },
         {
           "name": "year",
           "type": "BIGINT"
         }
       ],
-      "description": "23 files sampled for this table"
+      "description": "21 files sampled for this table"
     },
     "archive/opensensor.space/enviroplus": {
       "href": "https://data.source.coop/dataforcanada/d4c-datapkg-environment-climate-health/archive/opensensor.space/enviroplus/station=019d97ff-3220-74fc-8923-f9fb69e2273d/year=2026/month=04/day=18/",
@@ -269,14 +269,14 @@
         {
           "name": "station",
           "type": "VARCHAR",
-          "description": "[placename] Identifier naming the monitoring station location"
+          "description": "[placename] Identifier for the monitoring station, corresponding to its physical deployment location."
         },
         {
           "name": "year",
           "type": "BIGINT"
         }
       ],
-      "description": "8 files sampled for this table"
+      "description": "10 files sampled for this table"
     }
   },
   "links": [
@@ -291,9 +291,17 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "data_mode": "open",
-  "created_at": "2026-02-26T11:35:12.789Z",
+  "exts": {
+    "parquet": 16230
+  },
   "product_id": "d4c-datapkg-environment-climate-health",
+  "account_id": "dataforcanada",
+  "visibility": "public",
+  "disabled": false,
+  "updated_at": "2026-02-27T22:33:33.990Z",
+  "data_mode": "open",
+  "file_count": 16230,
+  "total_bytes": 160616344,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -306,25 +314,17 @@
       "prefix": "dataforcanada/d4c-datapkg-environment-climate-health/"
     }
   },
+  "featured": 0,
+  "created_at": "2026-02-26T11:35:12.789Z",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "total_bytes": 107334857,
-  "file_count": 10860,
-  "account_id": "dataforcanada",
-  "featured": 0,
-  "updated_at": "2026-02-27T22:33:33.990Z",
-  "exts": {
-    "parquet": 10860
-  },
-  "disabled": false,
-  "visibility": "public",
   "_review": [
     "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
     "extent.spatial.bbox: omitted; spatial reference is categorical via [archive/opensensor.space/enviroplus.station (placename), archive/opensensor.space/enviroplus-health.station (placename)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-06-17T19:29:57+00:00",
+  "cataloged_at": "2026-07-19T09:26:38+00:00",
   "store_format": null
 }
