@@ -6,7 +6,7 @@
   ],
   "id": "dynamical/asos-parquet",
   "title": "Global Airport Weather GeoParquet (1940-present)",
-  "description": "Historical and near-real-time surface weather observations from global ASOS and AWOS airport stations spanning 1940 to present, comprising approximately 1.8 billion decoded METAR reports. Each record captures temperature, dewpoint, wind speed and direction, precipitation, visibility, and atmospheric pressure in both imperial and metric units, with station point geometry embedded per record. Files are partitioned by year and stored as GeoParquet.",
+  "description": "A global archive of decoded METAR surface weather observations from ASOS and AWOS airport stations, spanning 1940 to present with roughly 1.8 billion records. Each observation includes temperature, dewpoint, wind, precipitation, visibility, and pressure in both imperial and metric units, with per-record station point geometry, partitioned by year as GeoParquet.",
   "license": "CC-BY-NC-SA-4.0",
   "keywords": [
     "weather",
@@ -53,17 +53,17 @@
       "interval": [
         [
           "1940-01-01T00:00:00Z",
-          "2026-01-01T00:00:00Z"
+          null
         ]
       ]
     }
   },
   "summaries": {
-    "item_count": 1780713866
+    "item_count": 1758676977
   },
   "assets": {
     "data": {
-      "href": "https://data.source.coop/dynamical/asos-parquet/year=2026/",
+      "href": "https://data.source.coop/dynamical/asos-parquet/year=1940/",
       "type": "application/x-parquet",
       "title": "data",
       "roles": [
@@ -81,12 +81,12 @@
         {
           "name": "longitude",
           "type": "DOUBLE",
-          "description": "[latlon] Station longitude in decimal degrees (EPSG:4326)"
+          "description": "[latlon] Station longitude, paired with latitude."
         },
         {
           "name": "latitude",
           "type": "DOUBLE",
-          "description": "[latlon] Station latitude in decimal degrees (EPSG:4326)"
+          "description": "[latlon] Station latitude, paired with longitude."
         },
         {
           "name": "tmpf",
@@ -143,12 +143,7 @@
         {
           "name": "state",
           "type": "VARCHAR",
-          "description": "[admin_code] State or sub-national administrative code for the station location"
-        },
-        {
-          "name": "geometry",
-          "type": "GEOMETRY('EPSG:4326')",
-          "description": "[geometry] Station point geometry encoded as WKB (EPSG:4326)"
+          "description": "[placename] State/province of the observing station."
         },
         {
           "name": "name",
@@ -161,12 +156,12 @@
         {
           "name": "country",
           "type": "VARCHAR",
-          "description": "[placename] Country name or code of the station"
+          "description": "[placename] Country of the observing station."
         },
         {
           "name": "county",
           "type": "VARCHAR",
-          "description": "[placename] County or local administrative area name of the station"
+          "description": "[placename] County of the observing station."
         },
         {
           "name": "wfo",
@@ -177,6 +172,11 @@
           "type": "VARCHAR"
         },
         {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:4326')",
+          "description": "[geometry] Station point geometry (EPSG:4326)."
+        },
+        {
           "name": "bbox",
           "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
         },
@@ -185,7 +185,7 @@
           "type": "BIGINT"
         }
       ],
-      "description": "88 files sampled for this table"
+      "description": "87 files sampled for this table"
     }
   },
   "links": [
@@ -200,16 +200,11 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "file_count": 88,
-  "total_bytes": 20089167924,
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "visibility": "public",
   "featured": 0,
-  "data_mode": "open",
-  "created_at": "2026-02-05T18:50:19.484Z",
+  "exts": {
+    "parquet": 88
+  },
+  "total_bytes": 20137918189,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -222,18 +217,23 @@
       "prefix": "dynamical/asos-parquet/"
     }
   },
-  "disabled": false,
-  "product_id": "asos-parquet",
-  "updated_at": "2026-02-09T17:07:41.515Z",
-  "exts": {
-    "parquet": 88
-  },
   "account_id": "dynamical",
+  "created_at": "2026-02-05T18:50:19.484Z",
+  "product_id": "asos-parquet",
+  "disabled": false,
+  "file_count": 88,
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "visibility": "public",
+  "updated_at": "2026-02-09T17:07:41.515Z",
+  "data_mode": "open",
   "_review": [
-    "extent.temporal: None (probe sample) widened to ['1940-01-01T00:00:00Z', '2026-01-01T00:00:00Z'] using README-stated coverage ['1940', '2026'].",
-    "extent.spatial.bbox: omitted; spatial reference is categorical via [data.longitude (latlon), data.latitude (latlon), data.geometry (geometry), data.state (admin_code), data.country (placename), data.county (placename)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
+    "extent.temporal: None (probe sample) widened to ['1940-01-01T00:00:00Z', None] using README-stated coverage ['1940', None].",
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [data.latitude (latlon), data.longitude (latlon), data.geometry (geometry), data.country (placename), data.state (placename), data.county (placename)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-06-17T19:27:46+00:00",
+  "cataloged_at": "2026-07-19T09:31:25+00:00",
   "store_format": null
 }
