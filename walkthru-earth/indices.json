@@ -6,13 +6,13 @@
   ],
   "id": "walkthru-earth/indices",
   "title": "Walkthru-Indices",
-  "description": "A suite of four interoperable global planetary indices \u2014 terrain morphology (elevation, slope, aspect, TRI, TPI), building density and volume, SSP2 population projections (2025-2100), and near-real-time weather forecasts \u2014 each aggregated onto a shared H3 hexagonal grid so the datasets can be spatially joined via a common h3_index column. Derived from GEDTM-30m elevation, Global Building Atlas building polygons, WorldPop population rasters, and NOAA AI-NWP forecast data.",
+  "description": "A suite of four global planetary indices \u2014 terrain morphology, building density/volume, population projections, and weather forecasts \u2014 each aggregated onto a shared H3 hexagonal grid so they can be spatially joined via a common h3_index column.",
   "license": "CC-BY-4.0",
   "keywords": [
     "h3",
     "global-coverage",
-    "building-footprints",
     "digital-elevation-model",
+    "building-footprints",
     "numerical-weather-prediction",
     "demographics",
     "topography",
@@ -69,17 +69,17 @@
         {
           "name": "country",
           "type": "VARCHAR",
-          "description": "[placename] Country name for the address tile group."
+          "description": "[placename] Country name for the address tile grouping."
         },
         {
           "name": "region",
           "type": "VARCHAR",
-          "description": "[placename] Region/state name for the address tile group."
+          "description": "[placename] Region/state name for the address tile grouping."
         },
         {
           "name": "city",
           "type": "VARCHAR",
-          "description": "[placename] City name for the address tile group."
+          "description": "[placename] City name for the address tile grouping."
         },
         {
           "name": "tiles",
@@ -107,12 +107,12 @@
         {
           "name": "region",
           "type": "VARCHAR",
-          "description": "[placename] Region/state name."
+          "description": "[placename] Region/state name for the indexed city."
         },
         {
           "name": "city",
           "type": "VARCHAR",
-          "description": "[placename] City name."
+          "description": "[placename] City name for the index entry."
         },
         {
           "name": "tiles",
@@ -125,26 +125,27 @@
         {
           "name": "bbox_min_lon_e6",
           "type": "INTEGER",
-          "description": "[latlon] Minimum longitude of city bounding box, scaled by 1e6."
+          "description": "[latlon] Bounding box minimum longitude, encoded as integer microdegrees (E6)."
         },
         {
           "name": "bbox_max_lon_e6",
           "type": "INTEGER",
-          "description": "[latlon] Maximum longitude of city bounding box, scaled by 1e6."
+          "description": "[latlon] Bounding box maximum longitude, encoded as integer microdegrees (E6)."
         },
         {
           "name": "bbox_min_lat_e6",
           "type": "INTEGER",
-          "description": "[latlon] Minimum latitude of city bounding box, scaled by 1e6."
+          "description": "[latlon] Bounding box minimum latitude, encoded as integer microdegrees (E6)."
         },
         {
           "name": "bbox_max_lat_e6",
           "type": "INTEGER",
-          "description": "[latlon] Maximum latitude of city bounding box, scaled by 1e6."
+          "description": "[latlon] Bounding box maximum latitude, encoded as integer microdegrees (E6)."
         },
         {
           "name": "country",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[placename] Country name for the indexed city."
         },
         {
           "name": "release",
@@ -154,7 +155,7 @@
       "description": "4 files sampled for this table"
     },
     "weather": {
-      "href": "https://data.source.coop/walkthru-earth/indices/weather/model=GraphCast_GFS/date=2026-07-11/hour=12/h3_res=1/",
+      "href": "https://data.source.coop/walkthru-earth/indices/weather/model=GraphCast_GFS/date=2026-07-18/hour=12/h3_res=1/",
       "type": "application/x-parquet",
       "title": "weather",
       "roles": [
@@ -164,7 +165,7 @@
         {
           "name": "h3_index",
           "type": "BIGINT",
-          "description": "[spatial_index] H3 hexagonal spatial index cell ID."
+          "description": "[spatial_index] H3 hexagonal cell identifier used to join weather records spatially."
         },
         {
           "name": "timestamp",
@@ -290,15 +291,11 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "data_mode": "open",
+  "file_count": 172906,
   "disabled": false,
-  "total_bytes": 568631367899,
-  "exts": {
-    "parquet": 172861,
-    "md": 4,
-    "json": 3,
-    "": 2,
-    "txt": 1
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
   },
   "mirrors": {
     "aws-opendata-us-west-2": {
@@ -312,22 +309,26 @@
       "prefix": "walkthru-earth/indices/"
     }
   },
-  "product_id": "indices",
-  "featured": 0,
   "visibility": "public",
-  "account_id": "walkthru-earth",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
+  "product_id": "indices",
+  "exts": {
+    "parquet": 172896,
+    "md": 4,
+    "json": 3,
+    "": 2,
+    "txt": 1
   },
-  "updated_at": "2026-03-03T20:52:49.694Z",
   "created_at": "2026-03-01T08:47:38.976Z",
-  "file_count": 172871,
+  "total_bytes": 576558431292,
+  "account_id": "walkthru-earth",
+  "updated_at": "2026-03-03T20:52:49.694Z",
+  "data_mode": "open",
+  "featured": 0,
   "readme": "## README.md\n# walkthru-earth / indices\n\nOpen planetary indices that turn raw scientific data into a single, H3-hexagonal grid anyone can query with one SQL statement. Every index shares the same cell ID (`h3_index`), so joining terrain + buildings + population + weather is a one-line `JOIN ON h3_index`.\n\n**Why?** Cities shape how people feel \u2014 but the data to prove it is scattered across dozens of agencies, formats, and projections. We unify it into one queryable, open layer so researchers, planners, and communities can finally see the full picture. Read more: [walkthru.earth/hormones-cities](https://walkthru.earth/hormones-cities)\n\n```mermaid\nflowchart LR\n    subgraph Raw[\"Raw sources\"]\n        DEM_RAW[\"GEDTM-30m\\n(30 m GeoTIFF)\"]\n        GBA_RAW[\"Global Building Atlas\\n(2.75 B polygons)\"]\n        WP_RAW[\"WorldPop SSP\\n(1 km rasters)\"]\n        NOAA_RAW[\"NOAA AI-NWP\\n(0.25\u00b0 NetCDF)\"]\n    end\n\n    subgraph H3[\"H3 conversion\"]\n        direction TB\n        DT[\"dem-terrain\\nelev \u00b7 slope \u00b7 aspect \u00b7 TRI \u00b7 TPI\"]\n        BI[\"walkthru-building-index\\ndensity \u00b7 height \u00b7 volume\"]\n        PI[\"walkthru-pop-index\\n2025 \u2192 2100 projections\"]\n        WI[\"walkthru-weather-index\\ntemp \u00b7 wind \u00b7 precip \u00b7 pressure\"]\n    end\n\n    DEM_RAW --> DT\n    GBA_RAW --> BI\n    WP_RAW --> PI\n    NOAA_RAW --> WI\n    DT -. topo corrections .-> WI\n\n    subgraph S3[\"s3://\u2026/walkthru-earth/\"]\n        T[dem-terrain/v2/h3/]\n        B[indices/building/v2/h3/]\n        P[indices/population/v2/]\n        W[indices/weather/]\n    end\n\n    DT --> T\n    BI --> B\n    PI --> P\n    WI --> W\n\n    T -. JOIN h3_index .-> Q((Query))\n    B -. JOIN .-> Q\n    P -. JOIN .-> Q\n    W -. JOIN .-> Q\n```\n\n## Indices\n\n| Index | What | H3 Res | Update | Size |\n|-------|------|--------|--------|------|\n| **[dem-terrain](https://source.coop/walkthru-earth/dem-terrain)** | Elevation, slope, aspect, TRI, TPI from GEDTM-30m | 1\u201310 | One-time | ~287 GB, 10.5 B cells |\n| **[walkthru-building-index](https://source.coop/walkthru-earth/indices)** | Density, height, footprint, volume from 2.75 B buildings | 3\u20138 | One-time | ~2.6 GB, 53 M cells |\n| **[walkthru-pop-index](https://source.coop/walkthru-earth/indices)** | SSP2 projections 2025\u20132100 (16 timesteps) from WorldPop | 1\u20138 | One-time | ~4.5 GB, 44 M cells |\n| **[walkthru-weather-index](https://source.coop/walkthru-earth/indices)** | Temperature, wind, precip, pressure + topo corrections | 0\u20135 | Every 12 h | ~3.6 GB / forecast |\n\nAll datasets: [Apache Parquet](https://parquet.apache.org/), ZSTD compression, sorted by `h3_index`.\n- **v2 (recommended):** `h3_index` is BIGINT (int64) \u2014 no `geometry`, `lat`, `lon`, or `area_km2` columns (all derivable from the H3 index via DuckDB's h3 extension). Sorted by int64 for better compression and fast range-based spatial queries.\n- **v1 (legacy):** `h3_index` is VARCHAR (hex string) with native Parquet 2.11+ GEOMETRY and `lat`/`lon`/`area_km2` columns.\n\n## Quick start\n\n```sql\n-- DuckDB: join buildings + population in one query (v2 \u2014 BIGINT h3_index, no geometry)\nINSTALL httpfs;  LOAD httpfs;\nINSTALL h3 FROM community; LOAD h3;\nSET s3_region = 'us-west-2';\n\nSELECT b.h3_index,\n       h3_h3_to_string(b.h3_index) AS h3_hex,          -- hex string for deck.gl\n       h3_cell_to_lat(b.h3_index)  AS lat,              -- derive lat on the fly\n       h3_cell_to_lng(b.h3_index)  AS lon,              -- derive lon on the fly\n       b.building_count, b.building_density,\n       p.pop_2025, p.pop_2050,\n       (b.building_count::FLOAT / NULLIF(p.pop_2025, 0))::DECIMAL(6,3) AS bldg_per_person\nFROM read_parquet('s3://us-west-2.opendata.source.coop/walkthru-earth/indices/building/v2/h3/h3_res=5/data.parquet') b\nJOIN read_parquet('s3://us-west-2.opendata.source.coop/walkthru-earth/indices/population/v2/scenario=SSP2/h3_res=5/data.parquet') p\n  ON b.h3_index = p.h3_index                            -- BIGINT join \u2014 fast\nWHERE p.pop_2025 > 10000\nORDER BY bldg_per_person DESC\nLIMIT 10;\n```\n\n## S3 layout\n\n```\ns3://us-west-2.opendata.source.coop/walkthru-earth/\n\u251c\u2500\u2500 dem-terrain/\n\u2502   \u251c\u2500\u2500 v1/h3/h3_res={1-10}/data.parquet          \u2190 legacy (VARCHAR h3, has geometry/lat/lon)\n\u2502   \u2514\u2500\u2500 v2/h3/h3_res={1-10}/data.parquet          \u2190 recommended (BIGINT h3, lean schema)\n\u2514\u2500\u2500 indices/\n    \u251c\u2500\u2500 building/\n    \u2502   \u251c\u2500\u2500 v1/h3/h3_res={3-8}/data.parquet        \u2190 legacy\n    \u2502   \u251c\u2500\u2500 v2/h3/h3_res={3-8}/data.parquet        \u2190 recommended\n    \u2502   \u2514\u2500\u2500 globalbuildingatlas/zoomlevel={2-14}/data*.parquet\n    \u251c\u2500\u2500 population/\n    \u2502   \u251c\u2500\u2500 v1/scenario=SSP2/h3_res={1-8}/data.parquet  \u2190 legacy\n    \u2502   \u2514\u2500\u2500 v2/scenario=SSP2/h3_res={1-8}/data.parquet  \u2190 recommended\n    \u2514\u2500\u2500 weather/\n        \u2514\u2500\u2500 model=GraphCast_GFS/date=YYYY-MM-DD/hour={0,12}/h3_res={0-5}/data.parquet\n```\n\n## License\n\n[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) by [walkthru.earth](https://walkthru.earth/links)\n",
   "_review": [
-    "extent.spatial.bbox: omitted; spatial reference is categorical via [addresses-index/v1.country (placename), addresses-index/v1.region (placename), addresses-index/v1.city (placename), addresses-index/v1/city_index.region (placename), addresses-index/v1/city_index.city (placename), addresses-index/v1/city_index.bbox_min_lon_e6 (latlon), addresses-index/v1/city_index.bbox_max_lon_e6 (latlon), addresses-index/v1/city_index.bbox_min_lat_e6 (latlon), addresses-index/v1/city_index.bbox_max_lat_e6 (latlon), weather.h3_index (spatial_index)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [addresses-index/v1.country (placename), addresses-index/v1.region (placename), addresses-index/v1.city (placename), addresses-index/v1/city_index.country (placename), addresses-index/v1/city_index.region (placename), addresses-index/v1/city_index.city (placename), addresses-index/v1/city_index.bbox_min_lon_e6 (latlon), addresses-index/v1/city_index.bbox_max_lon_e6 (latlon), addresses-index/v1/city_index.bbox_min_lat_e6 (latlon), addresses-index/v1/city_index.bbox_max_lat_e6 (latlon), weather.h3_index (spatial_index)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-07-16T09:33:00+00:00",
+  "cataloged_at": "2026-07-23T09:33:30+00:00",
   "store_format": null
 }
