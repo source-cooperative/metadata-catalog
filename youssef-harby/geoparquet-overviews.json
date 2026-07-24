@@ -6,7 +6,7 @@
   ],
   "id": "youssef-harby/geoparquet-overviews",
   "title": "geoparquet-overviews",
-  "description": "A reference/demo dataset for the \"geoparquet-overviews\" draft convention, which embeds a simplified overview geometry alongside full-resolution geometry in a single GeoParquet file so it renders instantly in a web map while remaining fully queryable by SQL. It packages example conversions of Finnish topographic (MTK) building and terrain features and Overture Maps building footprints for Tokyo, across multiple convention versions (root, v0.1.0, v0.2.0, v0.3.0).",
+  "description": "A reference/demo dataset for the draft \"geoparquet-overviews\" GeoParquet convention, which stores a simplified overview geometry alongside full-resolution geometry in a single file so it renders instantly in a web map while remaining fully SQL-queryable. It packages example conversions of Finnish national topographic (MTK) building and terrain features and Overture Maps building footprints for Tokyo, plus test fixtures for Barcelona, Luxembourg, and Reykjavik, across multiple convention versions (root, v0.1.0, v0.2.0, v0.3.0).",
   "keywords": [
     "geoparquet",
     "geoparquet-overviews",
@@ -56,7 +56,7 @@
     }
   },
   "summaries": {
-    "item_count": 132403098
+    "item_count": 133709013
   },
   "assets": {
     ".": {
@@ -65,6 +65,2038 @@
       "title": ".",
       "roles": [
         "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "INTEGER"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:3067')|GEOMETRY('OGC:CRS84')",
+          "description": "[geometry] Full-resolution MTK building/terrain feature geometry (EPSG:3067 or OGC:CRS84)."
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        },
+        {
+          "name": "band",
+          "type": "SMALLINT"
+        },
+        {
+          "name": "geom_overview",
+          "type": "GEOMETRY('EPSG:3067')|GEOMETRY('OGC:CRS84')",
+          "description": "[geometry] Simplified overview geometry paired with the full-resolution geometry per the geoparquet-overviews convention."
+        },
+        {
+          "name": "OGC_FID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "mtk_id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "sijaintitarkkuus",
+          "type": "INTEGER"
+        },
+        {
+          "name": "aineistolahde",
+          "type": "INTEGER"
+        },
+        {
+          "name": "alkupvm",
+          "type": "DATE"
+        },
+        {
+          "name": "kohderyhma",
+          "type": "INTEGER"
+        },
+        {
+          "name": "kohdeluokka",
+          "type": "INTEGER"
+        },
+        {
+          "name": "korkeustarkkuus",
+          "type": "INTEGER"
+        },
+        {
+          "name": "kayttotarkoitus",
+          "type": "INTEGER"
+        },
+        {
+          "name": "kerrosluku",
+          "type": "INTEGER"
+        },
+        {
+          "name": "pohjankorkeus",
+          "type": "INTEGER"
+        },
+        {
+          "name": "korkeusarvo",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "sijainti_piste",
+          "type": "VARCHAR",
+          "description": "[geometry] Finnish MTK 'location point' attribute, likely a WKT-encoded point location."
+        },
+        {
+          "name": "xmin",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "ymin",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "xmax",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "ymax",
+          "type": "DOUBLE"
+        }
+      ],
+      "description": "3 files sampled for this table"
+    },
+    "geoparquet-io-web-profile-test/naturalearth": {
+      "href": "https://data.source.coop/youssef-harby/geoparquet-overviews/geoparquet-io-web-profile-test/naturalearth/",
+      "type": "application/x-parquet",
+      "title": "geoparquet-io-web-profile-test/naturalearth",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "featurecla",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "scalerank",
+          "type": "INTEGER"
+        },
+        {
+          "name": "adm1_code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "diss_me",
+          "type": "INTEGER"
+        },
+        {
+          "name": "iso_3166_2",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "wikipedia",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "iso_a2",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "adm0_sr",
+          "type": "INTEGER"
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name_alt",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name_local",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "type",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "type_en",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "code_local",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "code_hasc",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "note",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "hasc_maybe",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "region",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "region_cod",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "provnum_ne",
+          "type": "INTEGER"
+        },
+        {
+          "name": "gadm_level",
+          "type": "INTEGER"
+        },
+        {
+          "name": "check_me",
+          "type": "INTEGER"
+        },
+        {
+          "name": "datarank",
+          "type": "INTEGER"
+        },
+        {
+          "name": "abbrev",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "postal",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "area_sqkm",
+          "type": "INTEGER"
+        },
+        {
+          "name": "sameascity",
+          "type": "INTEGER"
+        },
+        {
+          "name": "labelrank",
+          "type": "INTEGER"
+        },
+        {
+          "name": "name_len",
+          "type": "INTEGER"
+        },
+        {
+          "name": "mapcolor9",
+          "type": "INTEGER"
+        },
+        {
+          "name": "mapcolor13",
+          "type": "INTEGER"
+        },
+        {
+          "name": "fips",
+          "type": "VARCHAR",
+          "description": "[admin_code] FIPS country/region code."
+        },
+        {
+          "name": "fips_alt",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "woe_id",
+          "type": "INTEGER"
+        },
+        {
+          "name": "woe_label",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "woe_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "latitude",
+          "type": "DOUBLE",
+          "description": "[latlon] Label point latitude for the feature."
+        },
+        {
+          "name": "longitude",
+          "type": "DOUBLE",
+          "description": "[latlon] Label point longitude for the feature."
+        },
+        {
+          "name": "sov_a3",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "adm0_a3",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "adm0_label",
+          "type": "INTEGER"
+        },
+        {
+          "name": "admin",
+          "type": "VARCHAR",
+          "description": "[placename] Country / administrative unit name."
+        },
+        {
+          "name": "geonunit",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "gu_a3",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "gn_id",
+          "type": "INTEGER"
+        },
+        {
+          "name": "gn_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "gns_id",
+          "type": "INTEGER"
+        },
+        {
+          "name": "gns_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "gn_level",
+          "type": "INTEGER"
+        },
+        {
+          "name": "gn_region",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "gn_a1_code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "region_sub",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "sub_code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "gns_level",
+          "type": "INTEGER"
+        },
+        {
+          "name": "gns_lang",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "gns_adm1",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "gns_region",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "min_label",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "max_label",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "min_zoom",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "wikidataid",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name_ar",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name_bn",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name_de",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name_en",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name_es",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name_fr",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name_el",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name_hi",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name_hu",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name_it",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name_ja",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name_ko",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name_nl",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name_pl",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name_pt",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name_ru",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name_sv",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name_tr",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name_vi",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name_zh",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ne_id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "name_he",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name_uk",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name_ur",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name_fa",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name_zht",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_ISO",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_US",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_FR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_RU",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_ES",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_CN",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_TW",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_IN",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_NP",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_PK",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_DE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_GB",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_BR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_IL",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_PS",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_SA",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_EG",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_MA",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_PT",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_AR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_JP",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_KO",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_VN",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_TR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_ID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_PL",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_GR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_IT",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_NL",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_SE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_BD",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_UA",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_TLC",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geom",
+          "type": "GEOMETRY",
+          "description": "[geometry] Natural Earth country/admin boundary geometry."
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        },
+        {
+          "name": "SCALERANK",
+          "type": "INTEGER"
+        },
+        {
+          "name": "NATSCALE",
+          "type": "INTEGER"
+        },
+        {
+          "name": "LABELRANK",
+          "type": "INTEGER"
+        },
+        {
+          "name": "FEATURECLA",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAMEPAR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAMEALT",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAMEASCII",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0CAP",
+          "type": "INTEGER"
+        },
+        {
+          "name": "CAPIN",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "WORLDCITY",
+          "type": "INTEGER"
+        },
+        {
+          "name": "MEGACITY",
+          "type": "INTEGER"
+        },
+        {
+          "name": "SOV0NAME",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "SOV_A3",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0NAME",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM1NAME",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ISO_A2",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NOTE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "LATITUDE",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "LONGITUDE",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "POP_MAX",
+          "type": "BIGINT"
+        },
+        {
+          "name": "POP_MIN",
+          "type": "BIGINT"
+        },
+        {
+          "name": "POP_OTHER",
+          "type": "BIGINT"
+        },
+        {
+          "name": "RANK_MAX",
+          "type": "INTEGER"
+        },
+        {
+          "name": "RANK_MIN",
+          "type": "INTEGER"
+        },
+        {
+          "name": "MEGANAME",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "LS_NAME",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "MAX_POP10",
+          "type": "BIGINT"
+        },
+        {
+          "name": "MAX_POP20",
+          "type": "BIGINT"
+        },
+        {
+          "name": "MAX_POP50",
+          "type": "BIGINT"
+        },
+        {
+          "name": "MAX_POP300",
+          "type": "BIGINT"
+        },
+        {
+          "name": "MAX_POP310",
+          "type": "BIGINT"
+        },
+        {
+          "name": "MAX_NATSCA",
+          "type": "BIGINT"
+        },
+        {
+          "name": "MIN_AREAKM",
+          "type": "BIGINT"
+        },
+        {
+          "name": "MAX_AREAKM",
+          "type": "BIGINT"
+        },
+        {
+          "name": "MIN_AREAMI",
+          "type": "BIGINT"
+        },
+        {
+          "name": "MAX_AREAMI",
+          "type": "BIGINT"
+        },
+        {
+          "name": "MIN_PERKM",
+          "type": "BIGINT"
+        },
+        {
+          "name": "MAX_PERKM",
+          "type": "BIGINT"
+        },
+        {
+          "name": "MIN_PERMI",
+          "type": "BIGINT"
+        },
+        {
+          "name": "MAX_PERMI",
+          "type": "BIGINT"
+        },
+        {
+          "name": "MIN_BBXMIN",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "MAX_BBXMIN",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "MIN_BBXMAX",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "MAX_BBXMAX",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "MIN_BBYMIN",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "MAX_BBYMIN",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "MIN_BBYMAX",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "MAX_BBYMAX",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "MEAN_BBXC",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "MEAN_BBYC",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "TIMEZONE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "UN_FID",
+          "type": "INTEGER"
+        },
+        {
+          "name": "POP1950",
+          "type": "BIGINT"
+        },
+        {
+          "name": "POP1955",
+          "type": "BIGINT"
+        },
+        {
+          "name": "POP1960",
+          "type": "BIGINT"
+        },
+        {
+          "name": "POP1965",
+          "type": "BIGINT"
+        },
+        {
+          "name": "POP1970",
+          "type": "BIGINT"
+        },
+        {
+          "name": "POP1975",
+          "type": "BIGINT"
+        },
+        {
+          "name": "POP1980",
+          "type": "BIGINT"
+        },
+        {
+          "name": "POP1985",
+          "type": "BIGINT"
+        },
+        {
+          "name": "POP1990",
+          "type": "BIGINT"
+        },
+        {
+          "name": "POP1995",
+          "type": "BIGINT"
+        },
+        {
+          "name": "POP2000",
+          "type": "BIGINT"
+        },
+        {
+          "name": "POP2005",
+          "type": "BIGINT"
+        },
+        {
+          "name": "POP2010",
+          "type": "BIGINT"
+        },
+        {
+          "name": "POP2015",
+          "type": "BIGINT"
+        },
+        {
+          "name": "POP2020",
+          "type": "BIGINT"
+        },
+        {
+          "name": "POP2025",
+          "type": "BIGINT"
+        },
+        {
+          "name": "POP2050",
+          "type": "BIGINT"
+        },
+        {
+          "name": "MIN_ZOOM",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "WIKIDATAID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "WOF_ID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "CAPALT",
+          "type": "INTEGER"
+        },
+        {
+          "name": "NAME_EN",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_DE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_ES",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_FR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_PT",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_RU",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_ZH",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "LABEL",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_AR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_BN",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_EL",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_HI",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_HU",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_ID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_IT",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_JA",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_KO",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_NL",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_PL",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_SV",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_TR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_VI",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NE_ID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "NAME_FA",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_HE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_UK",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_UR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_ZHT",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "GEONAMESID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "SOVEREIGNT",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_DIF",
+          "type": "INTEGER"
+        },
+        {
+          "name": "LEVEL",
+          "type": "INTEGER"
+        },
+        {
+          "name": "TYPE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "TLC",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADMIN",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "GEOU_DIF",
+          "type": "INTEGER"
+        },
+        {
+          "name": "GEOUNIT",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "GU_A3",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "SU_DIF",
+          "type": "INTEGER"
+        },
+        {
+          "name": "SUBUNIT",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "SU_A3",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "BRK_DIFF",
+          "type": "INTEGER"
+        },
+        {
+          "name": "NAME_LONG",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "BRK_A3",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "BRK_NAME",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "BRK_GROUP",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ABBREV",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "POSTAL",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FORMAL_EN",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FORMAL_FR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_CIAWF",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NOTE_ADM0",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NOTE_BRK",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_SORT",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_ALT",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "MAPCOLOR7",
+          "type": "INTEGER"
+        },
+        {
+          "name": "MAPCOLOR8",
+          "type": "INTEGER"
+        },
+        {
+          "name": "MAPCOLOR9",
+          "type": "INTEGER"
+        },
+        {
+          "name": "MAPCOLOR13",
+          "type": "INTEGER"
+        },
+        {
+          "name": "POP_EST",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "POP_RANK",
+          "type": "INTEGER"
+        },
+        {
+          "name": "POP_YEAR",
+          "type": "INTEGER"
+        },
+        {
+          "name": "GDP_MD",
+          "type": "INTEGER"
+        },
+        {
+          "name": "GDP_YEAR",
+          "type": "INTEGER"
+        },
+        {
+          "name": "ECONOMY",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "INCOME_GRP",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FIPS_10",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ISO_A2_EH",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ISO_A3",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ISO_A3_EH",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ISO_N3",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ISO_N3_EH",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "UN_A3",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "WB_A2",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "WB_A3",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "WOE_ID",
+          "type": "INTEGER"
+        },
+        {
+          "name": "WOE_ID_EH",
+          "type": "INTEGER"
+        },
+        {
+          "name": "WOE_NOTE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_ISO",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_DIFF",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_TLC",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_US",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_FR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_RU",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_ES",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_CN",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_TW",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_IN",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_NP",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_PK",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_DE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_GB",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_BR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_IL",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_PS",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_SA",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_EG",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_MA",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_PT",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_AR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_JP",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_KO",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_VN",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_TR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_ID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_PL",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_GR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_IT",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_NL",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_SE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_BD",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_UA",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_UN",
+          "type": "INTEGER"
+        },
+        {
+          "name": "ADM0_A3_WB",
+          "type": "INTEGER"
+        },
+        {
+          "name": "CONTINENT",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "REGION_UN",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "SUBREGION",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "REGION_WB",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_LEN",
+          "type": "INTEGER"
+        },
+        {
+          "name": "LONG_LEN",
+          "type": "INTEGER"
+        },
+        {
+          "name": "ABBREV_LEN",
+          "type": "INTEGER"
+        },
+        {
+          "name": "TINY",
+          "type": "INTEGER"
+        },
+        {
+          "name": "HOMEPART",
+          "type": "INTEGER"
+        },
+        {
+          "name": "MIN_LABEL",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "MAX_LABEL",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "LABEL_X",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "LABEL_Y",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "TLC_DIFF",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "label",
+          "type": "VARCHAR"
+        }
+      ],
+      "description": "4 files sampled for this table"
+    },
+    "geoparquet-io-web-profile-test/overture/barcelona": {
+      "href": "https://data.source.coop/youssef-harby/geoparquet-overviews/geoparquet-io-web-profile-test/overture/barcelona/",
+      "type": "application/x-parquet",
+      "title": "geoparquet-io-web-profile-test/overture/barcelona",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "names",
+          "type": "STRUCT(\"primary\" VARCHAR, common MAP(VARCHAR, VARCHAR), rules STRUCT(variant VARCHAR, \"language\" VARCHAR, perspectives STRUCT(\"mode\" VARCHAR, countries VARCHAR[]), \"value\" VARCHAR, \"between\" DOUBLE[], side VARCHAR)[])"
+        },
+        {
+          "name": "sources",
+          "type": "STRUCT(property VARCHAR, dataset VARCHAR, license VARCHAR, record_id VARCHAR, update_time VARCHAR, confidence DOUBLE, \"between\" DOUBLE[])[]"
+        },
+        {
+          "name": "level",
+          "type": "INTEGER"
+        },
+        {
+          "name": "height",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "min_height",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "is_underground",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "num_floors",
+          "type": "INTEGER"
+        },
+        {
+          "name": "num_floors_underground",
+          "type": "INTEGER"
+        },
+        {
+          "name": "min_floor",
+          "type": "INTEGER"
+        },
+        {
+          "name": "subtype",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "class",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "facade_color",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "facade_material",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "roof_material",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "roof_shape",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "roof_direction",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "roof_orientation",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "roof_color",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "roof_height",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY",
+          "description": "[geometry] Overture Maps building footprint geometry for Barcelona."
+        },
+        {
+          "name": "has_parts",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "version",
+          "type": "INTEGER"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, xmax DOUBLE, ymin DOUBLE, ymax DOUBLE)"
+        },
+        {
+          "name": "categories",
+          "type": "STRUCT(\"primary\" VARCHAR, alternate VARCHAR[])"
+        },
+        {
+          "name": "confidence",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "websites",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "emails",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "socials",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "phones",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "brand",
+          "type": "STRUCT(wikidata VARCHAR, \"names\" STRUCT(\"primary\" VARCHAR, common MAP(VARCHAR, VARCHAR), rules STRUCT(variant VARCHAR, \"language\" VARCHAR, perspectives STRUCT(\"mode\" VARCHAR, countries VARCHAR[]), \"value\" VARCHAR, \"between\" DOUBLE[], side VARCHAR)[]))"
+        },
+        {
+          "name": "addresses",
+          "type": "STRUCT(freeform VARCHAR, locality VARCHAR, postcode VARCHAR, region VARCHAR, country VARCHAR)[]",
+          "description": "[placename] Structured address including locality, region, country, and postcode."
+        },
+        {
+          "name": "operating_status",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "basic_category",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "taxonomy",
+          "type": "STRUCT(\"primary\" VARCHAR, hierarchy VARCHAR[], alternates VARCHAR[])"
+        },
+        {
+          "name": "subclass",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "subclass_rules",
+          "type": "STRUCT(\"value\" VARCHAR, \"between\" DOUBLE[])[]"
+        },
+        {
+          "name": "connectors",
+          "type": "STRUCT(connector_id VARCHAR, \"at\" DOUBLE)[]"
+        },
+        {
+          "name": "road_surface",
+          "type": "STRUCT(\"value\" VARCHAR, \"between\" DOUBLE[])[]"
+        },
+        {
+          "name": "road_flags",
+          "type": "STRUCT(\"values\" VARCHAR[], \"between\" DOUBLE[])[]"
+        },
+        {
+          "name": "rail_flags",
+          "type": "STRUCT(\"values\" VARCHAR[], \"between\" DOUBLE[])[]"
+        },
+        {
+          "name": "width_rules",
+          "type": "STRUCT(\"value\" DOUBLE, \"between\" DOUBLE[])[]"
+        },
+        {
+          "name": "level_rules",
+          "type": "STRUCT(\"value\" INTEGER, \"between\" DOUBLE[])[]"
+        },
+        {
+          "name": "access_restrictions",
+          "type": "STRUCT(access_type VARCHAR, \"when\" STRUCT(during VARCHAR, heading VARCHAR, \"using\" VARCHAR[], recognized VARCHAR[], \"mode\" VARCHAR[], vehicle STRUCT(dimension VARCHAR, comparison VARCHAR, \"value\" DOUBLE, unit VARCHAR)[]), \"between\" DOUBLE[])[]"
+        },
+        {
+          "name": "speed_limits",
+          "type": "STRUCT(min_speed STRUCT(\"value\" INTEGER, unit VARCHAR), max_speed STRUCT(\"value\" INTEGER, unit VARCHAR), is_max_speed_variable BOOLEAN, \"when\" STRUCT(during VARCHAR, heading VARCHAR, \"using\" VARCHAR[], recognized VARCHAR[], \"mode\" VARCHAR[], vehicle STRUCT(dimension VARCHAR, comparison VARCHAR, \"value\" DOUBLE, unit VARCHAR)[]), \"between\" DOUBLE[])[]"
+        },
+        {
+          "name": "prohibited_transitions",
+          "type": "STRUCT(\"sequence\" STRUCT(connector_id VARCHAR, segment_id VARCHAR)[], final_heading VARCHAR, \"when\" STRUCT(heading VARCHAR, during VARCHAR, \"using\" VARCHAR[], recognized VARCHAR[], \"mode\" VARCHAR[], vehicle STRUCT(dimension VARCHAR, comparison VARCHAR, \"value\" DOUBLE, unit VARCHAR)[]), \"between\" DOUBLE[])[]"
+        },
+        {
+          "name": "routes",
+          "type": "STRUCT(\"name\" VARCHAR, network VARCHAR, \"ref\" VARCHAR, symbol VARCHAR, wikidata VARCHAR, \"between\" DOUBLE[])[]"
+        },
+        {
+          "name": "destinations",
+          "type": "STRUCT(labels STRUCT(\"value\" VARCHAR, \"type\" VARCHAR)[], symbols VARCHAR[], from_connector_id VARCHAR, to_segment_id VARCHAR, to_connector_id VARCHAR, \"when\" STRUCT(heading VARCHAR), final_heading VARCHAR)[]"
+        }
+      ],
+      "description": "3 files sampled for this table"
+    },
+    "geoparquet-io-web-profile-test/overture/luxembourg": {
+      "href": "https://data.source.coop/youssef-harby/geoparquet-overviews/geoparquet-io-web-profile-test/overture/luxembourg/",
+      "type": "application/x-parquet",
+      "title": "geoparquet-io-web-profile-test/overture/luxembourg",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "names",
+          "type": "STRUCT(\"primary\" VARCHAR, common MAP(VARCHAR, VARCHAR), rules STRUCT(variant VARCHAR, \"language\" VARCHAR, perspectives STRUCT(\"mode\" VARCHAR, countries VARCHAR[]), \"value\" VARCHAR, \"between\" DOUBLE[], side VARCHAR)[])"
+        },
+        {
+          "name": "sources",
+          "type": "STRUCT(property VARCHAR, dataset VARCHAR, license VARCHAR, record_id VARCHAR, update_time VARCHAR, confidence DOUBLE, \"between\" DOUBLE[])[]"
+        },
+        {
+          "name": "level",
+          "type": "INTEGER"
+        },
+        {
+          "name": "height",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "min_height",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "is_underground",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "num_floors",
+          "type": "INTEGER"
+        },
+        {
+          "name": "num_floors_underground",
+          "type": "INTEGER"
+        },
+        {
+          "name": "min_floor",
+          "type": "INTEGER"
+        },
+        {
+          "name": "subtype",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "class",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "facade_color",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "facade_material",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "roof_material",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "roof_shape",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "roof_direction",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "roof_orientation",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "roof_color",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "roof_height",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY",
+          "description": "[geometry] Overture Maps building footprint geometry for Luxembourg."
+        },
+        {
+          "name": "has_parts",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "version",
+          "type": "INTEGER"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, xmax DOUBLE, ymin DOUBLE, ymax DOUBLE)"
+        },
+        {
+          "name": "categories",
+          "type": "STRUCT(\"primary\" VARCHAR, alternate VARCHAR[])"
+        },
+        {
+          "name": "confidence",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "websites",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "emails",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "socials",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "phones",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "brand",
+          "type": "STRUCT(wikidata VARCHAR, \"names\" STRUCT(\"primary\" VARCHAR, common MAP(VARCHAR, VARCHAR), rules STRUCT(variant VARCHAR, \"language\" VARCHAR, perspectives STRUCT(\"mode\" VARCHAR, countries VARCHAR[]), \"value\" VARCHAR, \"between\" DOUBLE[], side VARCHAR)[]))"
+        },
+        {
+          "name": "addresses",
+          "type": "STRUCT(freeform VARCHAR, locality VARCHAR, postcode VARCHAR, region VARCHAR, country VARCHAR)[]",
+          "description": "[placename] Structured address including locality, region, country, and postcode."
+        },
+        {
+          "name": "operating_status",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "basic_category",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "taxonomy",
+          "type": "STRUCT(\"primary\" VARCHAR, hierarchy VARCHAR[], alternates VARCHAR[])"
+        },
+        {
+          "name": "subclass",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "subclass_rules",
+          "type": "STRUCT(\"value\" VARCHAR, \"between\" DOUBLE[])[]"
+        },
+        {
+          "name": "connectors",
+          "type": "STRUCT(connector_id VARCHAR, \"at\" DOUBLE)[]"
+        },
+        {
+          "name": "road_surface",
+          "type": "STRUCT(\"value\" VARCHAR, \"between\" DOUBLE[])[]"
+        },
+        {
+          "name": "road_flags",
+          "type": "STRUCT(\"values\" VARCHAR[], \"between\" DOUBLE[])[]"
+        },
+        {
+          "name": "rail_flags",
+          "type": "STRUCT(\"values\" VARCHAR[], \"between\" DOUBLE[])[]"
+        },
+        {
+          "name": "width_rules",
+          "type": "STRUCT(\"value\" DOUBLE, \"between\" DOUBLE[])[]"
+        },
+        {
+          "name": "level_rules",
+          "type": "STRUCT(\"value\" INTEGER, \"between\" DOUBLE[])[]"
+        },
+        {
+          "name": "access_restrictions",
+          "type": "STRUCT(access_type VARCHAR, \"when\" STRUCT(during VARCHAR, heading VARCHAR, \"using\" VARCHAR[], recognized VARCHAR[], \"mode\" VARCHAR[], vehicle STRUCT(dimension VARCHAR, comparison VARCHAR, \"value\" DOUBLE, unit VARCHAR)[]), \"between\" DOUBLE[])[]"
+        },
+        {
+          "name": "speed_limits",
+          "type": "STRUCT(min_speed STRUCT(\"value\" INTEGER, unit VARCHAR), max_speed STRUCT(\"value\" INTEGER, unit VARCHAR), is_max_speed_variable BOOLEAN, \"when\" STRUCT(during VARCHAR, heading VARCHAR, \"using\" VARCHAR[], recognized VARCHAR[], \"mode\" VARCHAR[], vehicle STRUCT(dimension VARCHAR, comparison VARCHAR, \"value\" DOUBLE, unit VARCHAR)[]), \"between\" DOUBLE[])[]"
+        },
+        {
+          "name": "prohibited_transitions",
+          "type": "STRUCT(\"sequence\" STRUCT(connector_id VARCHAR, segment_id VARCHAR)[], final_heading VARCHAR, \"when\" STRUCT(heading VARCHAR, during VARCHAR, \"using\" VARCHAR[], recognized VARCHAR[], \"mode\" VARCHAR[], vehicle STRUCT(dimension VARCHAR, comparison VARCHAR, \"value\" DOUBLE, unit VARCHAR)[]), \"between\" DOUBLE[])[]"
+        },
+        {
+          "name": "routes",
+          "type": "STRUCT(\"name\" VARCHAR, network VARCHAR, \"ref\" VARCHAR, symbol VARCHAR, wikidata VARCHAR, \"between\" DOUBLE[])[]"
+        },
+        {
+          "name": "destinations",
+          "type": "STRUCT(labels STRUCT(\"value\" VARCHAR, \"type\" VARCHAR)[], symbols VARCHAR[], from_connector_id VARCHAR, to_segment_id VARCHAR, to_connector_id VARCHAR, \"when\" STRUCT(heading VARCHAR), final_heading VARCHAR)[]"
+        }
+      ],
+      "description": "3 files sampled for this table"
+    },
+    "geoparquet-io-web-profile-test/overture/reykjavik": {
+      "href": "https://data.source.coop/youssef-harby/geoparquet-overviews/geoparquet-io-web-profile-test/overture/reykjavik/",
+      "type": "application/x-parquet",
+      "title": "geoparquet-io-web-profile-test/overture/reykjavik",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "names",
+          "type": "STRUCT(\"primary\" VARCHAR, common MAP(VARCHAR, VARCHAR), rules STRUCT(variant VARCHAR, \"language\" VARCHAR, perspectives STRUCT(\"mode\" VARCHAR, countries VARCHAR[]), \"value\" VARCHAR, \"between\" DOUBLE[], side VARCHAR)[])"
+        },
+        {
+          "name": "sources",
+          "type": "STRUCT(property VARCHAR, dataset VARCHAR, license VARCHAR, record_id VARCHAR, update_time VARCHAR, confidence DOUBLE, \"between\" DOUBLE[])[]"
+        },
+        {
+          "name": "level",
+          "type": "INTEGER"
+        },
+        {
+          "name": "height",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "min_height",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "is_underground",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "num_floors",
+          "type": "INTEGER"
+        },
+        {
+          "name": "num_floors_underground",
+          "type": "INTEGER"
+        },
+        {
+          "name": "min_floor",
+          "type": "INTEGER"
+        },
+        {
+          "name": "subtype",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "class",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "facade_color",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "facade_material",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "roof_material",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "roof_shape",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "roof_direction",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "roof_orientation",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "roof_color",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "roof_height",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY",
+          "description": "[geometry] Overture Maps building footprint geometry for Reykjavik."
+        },
+        {
+          "name": "has_parts",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "version",
+          "type": "INTEGER"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, xmax DOUBLE, ymin DOUBLE, ymax DOUBLE)"
+        },
+        {
+          "name": "categories",
+          "type": "STRUCT(\"primary\" VARCHAR, alternate VARCHAR[])"
+        },
+        {
+          "name": "confidence",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "websites",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "emails",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "socials",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "phones",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "brand",
+          "type": "STRUCT(wikidata VARCHAR, \"names\" STRUCT(\"primary\" VARCHAR, common MAP(VARCHAR, VARCHAR), rules STRUCT(variant VARCHAR, \"language\" VARCHAR, perspectives STRUCT(\"mode\" VARCHAR, countries VARCHAR[]), \"value\" VARCHAR, \"between\" DOUBLE[], side VARCHAR)[]))"
+        },
+        {
+          "name": "addresses",
+          "type": "STRUCT(freeform VARCHAR, locality VARCHAR, postcode VARCHAR, region VARCHAR, country VARCHAR)[]",
+          "description": "[placename] Structured address including locality, region, country, and postcode."
+        },
+        {
+          "name": "operating_status",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "basic_category",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "taxonomy",
+          "type": "STRUCT(\"primary\" VARCHAR, hierarchy VARCHAR[], alternates VARCHAR[])"
+        },
+        {
+          "name": "subclass",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "subclass_rules",
+          "type": "STRUCT(\"value\" VARCHAR, \"between\" DOUBLE[])[]"
+        },
+        {
+          "name": "connectors",
+          "type": "STRUCT(connector_id VARCHAR, \"at\" DOUBLE)[]"
+        },
+        {
+          "name": "road_surface",
+          "type": "STRUCT(\"value\" VARCHAR, \"between\" DOUBLE[])[]"
+        },
+        {
+          "name": "road_flags",
+          "type": "STRUCT(\"values\" VARCHAR[], \"between\" DOUBLE[])[]"
+        },
+        {
+          "name": "rail_flags",
+          "type": "STRUCT(\"values\" VARCHAR[], \"between\" DOUBLE[])[]"
+        },
+        {
+          "name": "width_rules",
+          "type": "STRUCT(\"value\" DOUBLE, \"between\" DOUBLE[])[]"
+        },
+        {
+          "name": "level_rules",
+          "type": "STRUCT(\"value\" INTEGER, \"between\" DOUBLE[])[]"
+        },
+        {
+          "name": "access_restrictions",
+          "type": "STRUCT(access_type VARCHAR, \"when\" STRUCT(during VARCHAR, heading VARCHAR, \"using\" VARCHAR[], recognized VARCHAR[], \"mode\" VARCHAR[], vehicle STRUCT(dimension VARCHAR, comparison VARCHAR, \"value\" DOUBLE, unit VARCHAR)[]), \"between\" DOUBLE[])[]"
+        },
+        {
+          "name": "speed_limits",
+          "type": "STRUCT(min_speed STRUCT(\"value\" INTEGER, unit VARCHAR), max_speed STRUCT(\"value\" INTEGER, unit VARCHAR), is_max_speed_variable BOOLEAN, \"when\" STRUCT(during VARCHAR, heading VARCHAR, \"using\" VARCHAR[], recognized VARCHAR[], \"mode\" VARCHAR[], vehicle STRUCT(dimension VARCHAR, comparison VARCHAR, \"value\" DOUBLE, unit VARCHAR)[]), \"between\" DOUBLE[])[]"
+        },
+        {
+          "name": "prohibited_transitions",
+          "type": "STRUCT(\"sequence\" STRUCT(connector_id VARCHAR, segment_id VARCHAR)[], final_heading VARCHAR, \"when\" STRUCT(heading VARCHAR, during VARCHAR, \"using\" VARCHAR[], recognized VARCHAR[], \"mode\" VARCHAR[], vehicle STRUCT(dimension VARCHAR, comparison VARCHAR, \"value\" DOUBLE, unit VARCHAR)[]), \"between\" DOUBLE[])[]"
+        },
+        {
+          "name": "routes",
+          "type": "STRUCT(\"name\" VARCHAR, network VARCHAR, \"ref\" VARCHAR, symbol VARCHAR, wikidata VARCHAR, \"between\" DOUBLE[])[]"
+        },
+        {
+          "name": "destinations",
+          "type": "STRUCT(labels STRUCT(\"value\" VARCHAR, \"type\" VARCHAR)[], symbols VARCHAR[], from_connector_id VARCHAR, to_segment_id VARCHAR, to_connector_id VARCHAR, \"when\" STRUCT(heading VARCHAR), final_heading VARCHAR)[]"
+        }
       ],
       "description": "3 files sampled for this table"
     },
@@ -99,7 +2131,7 @@
         {
           "name": "geometry",
           "type": "GEOMETRY('OGC:CRS84')",
-          "description": "[geometry] Full-resolution building footprint geometry (CRS84)"
+          "description": "[geometry] Overture Maps Tokyo building footprint geometry (OGC:CRS84)."
         },
         {
           "name": "bbox",
@@ -112,7 +2144,7 @@
         {
           "name": "geom_overview",
           "type": "GEOMETRY('OGC:CRS84')",
-          "description": "[geometry] Simplified overview geometry for fast rendering"
+          "description": "[geometry] Simplified overview geometry for the Tokyo building footprints."
         },
         {
           "name": "tags",
@@ -131,6 +2163,98 @@
       "title": "v0.1.0",
       "roles": [
         "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "INTEGER"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:3067')|GEOMETRY('OGC:CRS84')",
+          "description": "[geometry] Full-resolution MTK feature geometry, convention version 0.1.0."
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        },
+        {
+          "name": "band",
+          "type": "SMALLINT"
+        },
+        {
+          "name": "geom_overview",
+          "type": "GEOMETRY('EPSG:3067')|GEOMETRY('OGC:CRS84')",
+          "description": "[geometry] Overview geometry, convention version 0.1.0."
+        },
+        {
+          "name": "OGC_FID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "mtk_id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "sijaintitarkkuus",
+          "type": "INTEGER"
+        },
+        {
+          "name": "aineistolahde",
+          "type": "INTEGER"
+        },
+        {
+          "name": "alkupvm",
+          "type": "DATE"
+        },
+        {
+          "name": "kohderyhma",
+          "type": "INTEGER"
+        },
+        {
+          "name": "kohdeluokka",
+          "type": "INTEGER"
+        },
+        {
+          "name": "korkeustarkkuus",
+          "type": "INTEGER"
+        },
+        {
+          "name": "kayttotarkoitus",
+          "type": "INTEGER"
+        },
+        {
+          "name": "kerrosluku",
+          "type": "INTEGER"
+        },
+        {
+          "name": "pohjankorkeus",
+          "type": "INTEGER"
+        },
+        {
+          "name": "korkeusarvo",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "sijainti_piste",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "xmin",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "ymin",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "xmax",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "ymax",
+          "type": "DOUBLE"
+        }
       ],
       "description": "3 files sampled for this table"
     },
@@ -165,7 +2289,7 @@
         {
           "name": "geometry",
           "type": "GEOMETRY('OGC:CRS84')",
-          "description": "[geometry] Full-resolution building footprint geometry (CRS84)"
+          "description": "[geometry] Overture Tokyo building footprint geometry, convention version 0.1.0."
         },
         {
           "name": "bbox",
@@ -178,7 +2302,7 @@
         {
           "name": "geom_overview",
           "type": "GEOMETRY('OGC:CRS84')",
-          "description": "[geometry] Simplified overview geometry for fast rendering"
+          "description": "[geometry] Overview geometry for Tokyo footprints, convention version 0.1.0."
         },
         {
           "name": "tags",
@@ -206,7 +2330,7 @@
         {
           "name": "geometry",
           "type": "GEOMETRY|GEOMETRY('EPSG:3067')",
-          "description": "[geometry] Full-resolution feature geometry (mixed MTK/Overture divisions)"
+          "description": "[geometry] Feature geometry, convention version 0.2.0."
         },
         {
           "name": "bbox",
@@ -219,7 +2343,7 @@
         {
           "name": "geom_overview",
           "type": "GEOMETRY|GEOMETRY('EPSG:3067')",
-          "description": "[geometry] Simplified overview geometry for fast rendering"
+          "description": "[geometry] Overview geometry, convention version 0.2.0."
         },
         {
           "name": "fid",
@@ -288,12 +2412,12 @@
         {
           "name": "addr:city",
           "type": "VARCHAR",
-          "description": "[placename] Building address city name"
+          "description": "[placename] OSM-derived address city/locality name."
         },
         {
           "name": "addr:postcode",
           "type": "VARCHAR",
-          "description": "[zipcode] Building address postal code"
+          "description": "[zipcode] OSM-derived postal code."
         },
         {
           "name": "website",
@@ -485,8 +2609,7 @@
         },
         {
           "name": "place",
-          "type": "VARCHAR",
-          "description": "[placename] Named place (OSM place tag)"
+          "type": "VARCHAR"
         },
         {
           "name": "alt_name",
@@ -538,7 +2661,7 @@
         {
           "name": "geometry",
           "type": "GEOMETRY",
-          "description": "[geometry] Full-resolution building footprint geometry"
+          "description": "[geometry] Overture Tokyo building footprint geometry, convention version 0.2.0."
         },
         {
           "name": "bbox",
@@ -551,7 +2674,7 @@
         {
           "name": "geom_overview",
           "type": "GEOMETRY",
-          "description": "[geometry] Simplified overview geometry for fast rendering"
+          "description": "[geometry] Overview geometry for Tokyo footprints, convention version 0.2.0."
         },
         {
           "name": "tags",
@@ -579,7 +2702,7 @@
         {
           "name": "geometry",
           "type": "GEOMETRY|GEOMETRY('EPSG:3067')",
-          "description": "[geometry] Full-resolution feature geometry (mixed MTK/Overture divisions)"
+          "description": "[geometry] Feature geometry, convention version 0.3.0."
         },
         {
           "name": "bbox",
@@ -592,7 +2715,7 @@
         {
           "name": "geom_overview",
           "type": "GEOMETRY|GEOMETRY('EPSG:3067')",
-          "description": "[geometry] Simplified overview geometry for fast rendering"
+          "description": "[geometry] Overview geometry, convention version 0.3.0."
         },
         {
           "name": "overview_count",
@@ -821,12 +2944,12 @@
         {
           "name": "addr:city",
           "type": "VARCHAR",
-          "description": "[placename] Building address city name"
+          "description": "[placename] OSM-derived address city/locality name."
         },
         {
           "name": "addr:postcode",
           "type": "VARCHAR",
-          "description": "[zipcode] Building address postal code"
+          "description": "[zipcode] OSM-derived postal code."
         },
         {
           "name": "height",
@@ -862,8 +2985,7 @@
         },
         {
           "name": "place",
-          "type": "VARCHAR",
-          "description": "[placename] Named place (OSM place tag)"
+          "type": "VARCHAR"
         },
         {
           "name": "alt_name",
@@ -967,7 +3089,7 @@
         {
           "name": "geometry",
           "type": "GEOMETRY",
-          "description": "[geometry] Full-resolution building footprint geometry"
+          "description": "[geometry] Overture Tokyo building footprint geometry, convention version 0.3.0."
         },
         {
           "name": "bbox",
@@ -980,7 +3102,7 @@
         {
           "name": "geom_overview",
           "type": "GEOMETRY",
-          "description": "[geometry] Simplified overview geometry for fast rendering"
+          "description": "[geometry] Overview geometry for Tokyo footprints, convention version 0.3.0."
         },
         {
           "name": "overview_count",
@@ -998,98 +3120,6 @@
       "description": "3 files sampled for this table"
     }
   },
-  "table:columns": [
-    {
-      "name": "id",
-      "type": "INTEGER"
-    },
-    {
-      "name": "geometry",
-      "type": "GEOMETRY('EPSG:3067')|GEOMETRY('OGC:CRS84')",
-      "description": "[geometry] Full-resolution MTK feature geometry (EPSG:3067/CRS84)"
-    },
-    {
-      "name": "bbox",
-      "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
-    },
-    {
-      "name": "band",
-      "type": "SMALLINT"
-    },
-    {
-      "name": "geom_overview",
-      "type": "GEOMETRY('EPSG:3067')|GEOMETRY('OGC:CRS84')",
-      "description": "[geometry] Simplified overview geometry for fast rendering"
-    },
-    {
-      "name": "OGC_FID",
-      "type": "BIGINT"
-    },
-    {
-      "name": "mtk_id",
-      "type": "BIGINT"
-    },
-    {
-      "name": "sijaintitarkkuus",
-      "type": "INTEGER"
-    },
-    {
-      "name": "aineistolahde",
-      "type": "INTEGER"
-    },
-    {
-      "name": "alkupvm",
-      "type": "DATE"
-    },
-    {
-      "name": "kohderyhma",
-      "type": "INTEGER"
-    },
-    {
-      "name": "kohdeluokka",
-      "type": "INTEGER"
-    },
-    {
-      "name": "korkeustarkkuus",
-      "type": "INTEGER"
-    },
-    {
-      "name": "kayttotarkoitus",
-      "type": "INTEGER"
-    },
-    {
-      "name": "kerrosluku",
-      "type": "INTEGER"
-    },
-    {
-      "name": "pohjankorkeus",
-      "type": "INTEGER"
-    },
-    {
-      "name": "korkeusarvo",
-      "type": "VARCHAR"
-    },
-    {
-      "name": "sijainti_piste",
-      "type": "VARCHAR"
-    },
-    {
-      "name": "xmin",
-      "type": "DOUBLE"
-    },
-    {
-      "name": "ymin",
-      "type": "DOUBLE"
-    },
-    {
-      "name": "xmax",
-      "type": "DOUBLE"
-    },
-    {
-      "name": "ymax",
-      "type": "DOUBLE"
-    }
-  ],
   "links": [
     {
       "rel": "self",
@@ -1102,21 +3132,22 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "account_id": "youssef-harby",
-  "disabled": false,
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "created_at": "2026-07-02T23:04:02.311Z",
-  "featured": 0,
-  "product_id": "geoparquet-overviews",
-  "total_bytes": 14423325774,
   "exts": {
-    "parquet": 37,
+    "parquet": 50,
     "json": 1
   },
-  "file_count": 38,
+  "updated_at": "2026-07-02T23:04:02.311Z",
+  "account_id": "youssef-harby",
+  "product_id": "geoparquet-overviews",
+  "file_count": 51,
+  "featured": 0,
+  "visibility": "public",
+  "data_mode": null,
+  "created_at": "2026-07-02T23:04:02.311Z",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -1125,14 +3156,13 @@
       "prefix": "youssef-harby/geoparquet-overviews/"
     }
   },
-  "data_mode": null,
-  "visibility": "public",
-  "updated_at": "2026-07-02T23:04:02.311Z",
+  "disabled": false,
+  "total_bytes": 14651014604,
   "_review": [
     "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
-    "extent.spatial.bbox: omitted; spatial reference is categorical via [..geometry (geometry), ..geom_overview (geometry), overture-tokyo.geometry (geometry), overture-tokyo.geom_overview (geometry), v0.1.0.geometry (geometry), v0.1.0.geom_overview (geometry), v0.1.0/overture-tokyo.geometry (geometry), v0.1.0/overture-tokyo.geom_overview (geometry), v0.2.0.geometry (geometry), v0.2.0.geom_overview (geometry), v0.2.0.addr:city (placename), v0.2.0.addr:postcode (zipcode), v0.2.0.place (placename), v0.2.0/overture-tokyo.geometry (geometry), v0.2.0/overture-tokyo.geom_overview (geometry), v0.3.0.geometry (geometry), v0.3.0.geom_overview (geometry), v0.3.0.addr:city (placename), v0.3.0.addr:postcode (zipcode), v0.3.0.place (placename), v0.3.0/overture-tokyo.geometry (geometry), v0.3.0/overture-tokyo.geom_overview (geometry)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [..geometry (geometry), ..geom_overview (geometry), ..sijainti_piste (geometry), geoparquet-io-web-profile-test/naturalearth.geom (geometry), geoparquet-io-web-profile-test/naturalearth.latitude (latlon), geoparquet-io-web-profile-test/naturalearth.longitude (latlon), geoparquet-io-web-profile-test/naturalearth.iso_a3 (admin_code), geoparquet-io-web-profile-test/naturalearth.fips (admin_code), geoparquet-io-web-profile-test/naturalearth.admin (placename), geoparquet-io-web-profile-test/overture/barcelona.geometry (geometry), geoparquet-io-web-profile-test/overture/barcelona.addresses (placename), geoparquet-io-web-profile-test/overture/luxembourg.geometry (geometry), geoparquet-io-web-profile-test/overture/luxembourg.addresses (placename), geoparquet-io-web-profile-test/overture/reykjavik.geometry (geometry), geoparquet-io-web-profile-test/overture/reykjavik.addresses (placename), overture-tokyo.geometry (geometry), overture-tokyo.geom_overview (geometry), v0.1.0.geometry (geometry), v0.1.0.geom_overview (geometry), v0.1.0/overture-tokyo.geometry (geometry), v0.1.0/overture-tokyo.geom_overview (geometry), v0.2.0.geometry (geometry), v0.2.0.geom_overview (geometry), v0.2.0.addr:city (placename), v0.2.0.addr:postcode (zipcode), v0.2.0/overture-tokyo.geometry (geometry), v0.2.0/overture-tokyo.geom_overview (geometry), v0.3.0.geometry (geometry), v0.3.0.geom_overview (geometry), v0.3.0.addr:city (placename), v0.3.0.addr:postcode (zipcode), v0.3.0/overture-tokyo.geometry (geometry), v0.3.0/overture-tokyo.geom_overview (geometry)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-07-17T09:30:16+00:00",
+  "cataloged_at": "2026-07-24T09:34:34+00:00",
   "store_format": null
 }
