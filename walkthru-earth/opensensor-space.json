@@ -6,7 +6,7 @@
   ],
   "id": "walkthru-earth/opensensor-space",
   "title": "OpenSensor.Space",
-  "description": "Continuous time-series environmental and weather readings from a low-cost IoT sensor network (Raspberry Pi with Enviro+ sensors) deployed across the Cairo/Nile Delta region of Egypt, capturing temperature, pressure, humidity, gas concentrations, ambient light, and particulate matter at multiple size fractions. A companion asset provides a geospatial suitability analysis for siting additional air quality monitoring stations.",
+  "description": "Continuous time-series environmental and air-quality readings from a low-cost IoT sensor network (Raspberry Pi units with Enviro+ sensors) deployed across the Cairo/Nile Delta region of Egypt, covering temperature, pressure, humidity, gas concentrations, ambient light, and particulate matter across multiple size fractions. Includes a companion geospatial suitability analysis for siting additional air quality monitoring stations.",
   "license": "proprietary",
   "keywords": [
     "air-quality",
@@ -151,7 +151,8 @@
         },
         {
           "name": "station",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[placename] Identifier/name of the sensor deployment site within the Cairo/Nile Delta network"
         },
         {
           "name": "year",
@@ -199,7 +200,7 @@
         {
           "name": "geom",
           "type": "GEOMETRY('OGC:CRS84')",
-          "description": "[geometry] Point geometry for candidate/existing air quality monitoring station locations used in the siting suitability analysis"
+          "description": "[geometry] Geometry of candidate/existing air quality monitoring station locations"
         }
       ],
       "table:row_count": 65
@@ -217,14 +218,22 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "featured": 0,
   "data_mode": "open",
-  "total_bytes": 1426472720,
-  "exts": {
-    "parquet": 81266
+  "product_id": "opensensor-space",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
   },
-  "account_id": "walkthru-earth",
+  "visibility": "public",
+  "file_count": 82390,
+  "exts": {
+    "parquet": 82390
+  },
   "disabled": false,
+  "updated_at": "2025-11-24T18:13:45.589Z",
+  "created_at": "2025-11-24T18:13:45.589Z",
+  "account_id": "walkthru-earth",
+  "featured": 0,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -237,19 +246,11 @@
       "prefix": "walkthru-earth/opensensor-space/"
     }
   },
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "updated_at": "2025-11-24T18:13:45.589Z",
-  "visibility": "public",
-  "product_id": "opensensor-space",
-  "file_count": 81266,
-  "created_at": "2025-11-24T18:13:45.589Z",
+  "total_bytes": 1437377189,
   "_review": [
-    "extent.spatial.bbox: omitted; spatial reference is categorical via [share.geom (geometry)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [enviroplus.station (placename), share.geom (geometry)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-07-19T09:24:13+00:00",
+  "cataloged_at": "2026-07-25T09:27:11+00:00",
   "store_format": null
 }
