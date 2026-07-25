@@ -6,14 +6,13 @@
   ],
   "id": "tabaqat/gdelt-sa",
   "title": "GDELT-SA",
-  "description": "Daily-updated Parquet dataset of GDELT 2.0 geopolitical event records filtered to Saudi Arabia, partitioned by calendar day. Each row represents a news-reported event with GDELT actor and action codes, Goldstein scale scores, and sentiment metrics across three geographic reference frames (Actor1, Actor2, Action location). Records are deduplicated by source URL and pipeline-enriched with nearest-city geographic matching and optionally scraped article full text.",
+  "description": "Daily-updated Parquet dataset of GDELT 2.0 event records filtered to Saudi Arabia, with one file per day. Each row is a deduplicated, geo-enriched news event including GDELT actor/action codes, sentiment metrics (Goldstein scale, tone), nearest-city geographic matching, and scraped full article text where available.",
   "keywords": [
     "time-series",
-    "event-data",
-    "media-monitoring",
-    "sentiment-analysis",
-    "middle-east",
     "news-events",
+    "sentiment-analysis",
+    "media-monitoring",
+    "middle-east",
     "conflict-monitoring"
   ],
   "providers": [
@@ -59,7 +58,7 @@
     }
   },
   "summaries": {
-    "item_count": 1002
+    "item_count": 1022
   },
   "assets": {
     "01": {
@@ -169,26 +168,25 @@
         {
           "name": "Actor1Geo_FullName",
           "type": "VARCHAR",
-          "description": "[placename] Full place name associated with Actor 1"
+          "description": "[placename] Full geographic place name for Actor1's location"
         },
         {
           "name": "Actor1Geo_CountryCode",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[admin_code] Country code for Actor1's location"
         },
         {
           "name": "Actor1Geo_ADM1Code",
           "type": "VARCHAR",
-          "description": "[admin_code] FIPS ADM1 code for Actor 1 location"
+          "description": "[admin_code] First-level administrative division code for Actor1's location"
         },
         {
           "name": "Actor1Geo_Lat",
-          "type": "DOUBLE",
-          "description": "[latlon] Latitude of Actor 1 geographic location (paired with Actor1Geo_Long)"
+          "type": "DOUBLE"
         },
         {
           "name": "Actor1Geo_Long",
-          "type": "DOUBLE",
-          "description": "[latlon] Longitude of Actor 1 geographic location (paired with Actor1Geo_Lat)"
+          "type": "DOUBLE"
         },
         {
           "name": "Actor2Geo_Type",
@@ -197,26 +195,25 @@
         {
           "name": "Actor2Geo_FullName",
           "type": "VARCHAR",
-          "description": "[placename] Full place name associated with Actor 2"
+          "description": "[placename] Full geographic place name for Actor2's location"
         },
         {
           "name": "Actor2Geo_CountryCode",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[admin_code] Country code for Actor2's location"
         },
         {
           "name": "Actor2Geo_ADM1Code",
           "type": "VARCHAR",
-          "description": "[admin_code] FIPS ADM1 code for Actor 2 location"
+          "description": "[admin_code] First-level administrative division code for Actor2's location"
         },
         {
           "name": "Actor2Geo_Lat",
-          "type": "DOUBLE",
-          "description": "[latlon] Latitude of Actor 2 geographic location (paired with Actor2Geo_Long)"
+          "type": "DOUBLE"
         },
         {
           "name": "Actor2Geo_Long",
-          "type": "DOUBLE",
-          "description": "[latlon] Longitude of Actor 2 geographic location (paired with Actor2Geo_Lat)"
+          "type": "DOUBLE"
         },
         {
           "name": "ActionGeo_Type",
@@ -225,27 +222,25 @@
         {
           "name": "ActionGeo_FullName",
           "type": "VARCHAR",
-          "description": "[placename] Full place name of the event action location"
+          "description": "[placename] Full geographic place name where the event action occurred"
         },
         {
           "name": "ActionGeo_CountryCode",
           "type": "VARCHAR",
-          "description": "[admin_code] FIPS country code for the action location"
+          "description": "[admin_code] Country code for the event action location"
         },
         {
           "name": "ActionGeo_ADM1Code",
           "type": "VARCHAR",
-          "description": "[admin_code] FIPS ADM1 (first-level administrative division) code for the action location"
+          "description": "[admin_code] First-level administrative division code for the event action location"
         },
         {
           "name": "ActionGeo_Lat",
-          "type": "DOUBLE",
-          "description": "[latlon] Latitude of the event action location (paired with ActionGeo_Long)"
+          "type": "DOUBLE"
         },
         {
           "name": "ActionGeo_Long",
-          "type": "DOUBLE",
-          "description": "[latlon] Longitude of the event action location (paired with ActionGeo_Lat)"
+          "type": "DOUBLE"
         },
         {
           "name": "DATEADDED",
@@ -274,7 +269,7 @@
         {
           "name": "NearestCity",
           "type": "VARCHAR",
-          "description": "[placename] Pipeline-enriched nearest city name matched to ActionGeo coordinates via Haversine distance"
+          "description": "[placename] Nearest matched city to the event's action location (pipeline-enriched)"
         },
         {
           "name": "CityPopulation",
@@ -291,7 +286,7 @@
         {
           "name": "Actor1_NearestCity",
           "type": "VARCHAR",
-          "description": "[placename] Pipeline-enriched nearest city name matched to Actor1 coordinates"
+          "description": "[placename] Nearest matched city to Actor1's location (pipeline-enriched)"
         },
         {
           "name": "Actor1_CityPopulation",
@@ -308,7 +303,7 @@
         {
           "name": "Actor2_NearestCity",
           "type": "VARCHAR",
-          "description": "[placename] Pipeline-enriched nearest city name matched to Actor2 coordinates"
+          "description": "[placename] Nearest matched city to Actor2's location (pipeline-enriched)"
         },
         {
           "name": "Actor2_CityPopulation",
@@ -1453,33 +1448,6 @@
       ],
       "table:row_count": 131
     },
-    "13": {
-      "href": "https://data.source.coop/tabaqat/gdelt-sa/country=SA/year=2026/2026_06_13.parquet",
-      "type": "application/x-parquet",
-      "title": "2026_06_13.parquet",
-      "roles": [
-        "data"
-      ],
-      "table:row_count": 34
-    },
-    "14": {
-      "href": "https://data.source.coop/tabaqat/gdelt-sa/country=SA/year=2026/2026_06_14.parquet",
-      "type": "application/x-parquet",
-      "title": "2026_06_14.parquet",
-      "roles": [
-        "data"
-      ],
-      "table:row_count": 60
-    },
-    "15": {
-      "href": "https://data.source.coop/tabaqat/gdelt-sa/country=SA/year=2026/2026_06_15.parquet",
-      "type": "application/x-parquet",
-      "title": "2026_06_15.parquet",
-      "roles": [
-        "data"
-      ],
-      "table:row_count": 134
-    },
     "16": {
       "href": "https://data.source.coop/tabaqat/gdelt-sa/country=SA/year=2026/2026_06_16.parquet",
       "type": "application/x-parquet",
@@ -1497,6 +1465,33 @@
         "data"
       ],
       "table:row_count": 76
+    },
+    "18": {
+      "href": "https://data.source.coop/tabaqat/gdelt-sa/country=SA/year=2026/2026_06_18.parquet",
+      "type": "application/x-parquet",
+      "title": "2026_06_18.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:row_count": 120
+    },
+    "19": {
+      "href": "https://data.source.coop/tabaqat/gdelt-sa/country=SA/year=2026/2026_06_19.parquet",
+      "type": "application/x-parquet",
+      "title": "2026_06_19.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:row_count": 87
+    },
+    "20": {
+      "href": "https://data.source.coop/tabaqat/gdelt-sa/country=SA/year=2026/2026_06_20.parquet",
+      "type": "application/x-parquet",
+      "title": "2026_06_20.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:row_count": 41
     }
   },
   "table:columns": [
@@ -1777,9 +1772,6 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "product_id": "gdelt-sa",
-  "total_bytes": 45770653,
-  "file_count": 164,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -1792,27 +1784,30 @@
       "prefix": "tabaqat/gdelt-sa/"
     }
   },
-  "updated_at": "2026-02-08T21:54:32.446Z",
-  "disabled": false,
+  "created_at": "2026-01-28T18:30:02.503Z",
+  "product_id": "gdelt-sa",
   "data_mode": "open",
-  "exts": {
-    "parquet": 168,
-    "md": 1
-  },
+  "file_count": 172,
   "visibility": "public",
   "account_id": "tabaqat",
+  "disabled": false,
+  "total_bytes": 46974768,
+  "updated_at": "2026-02-08T21:54:32.446Z",
   "featured": 0,
-  "created_at": "2026-01-28T18:30:02.503Z",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
+  "exts": {
+    "parquet": 171,
+    "md": 1
+  },
   "readme": "## README.md\n# GDELT Saudi Arabia Daily News Events\n\nEnriched [GDELT 2.0](https://www.gdeltproject.org/) event records related to Saudi Arabia, updated daily. Each record is deduplicated, geo-enriched with nearest-city matching, and includes scraped article full text when available.\n\n**Demo:** [geonews.tabaqat.dev](https://geonews.tabaqat.dev/) - Interactive map to explore the data.\n\n## Bucket Structure\n\n```\ns3://us-west-2.opendata.source.coop/tabaqat/gdelt-sa/\n\u2514\u2500\u2500 country=SA/\n    \u2514\u2500\u2500 year=YYYY/\n        \u251c\u2500\u2500 YYYY_MM_DD.parquet\n        \u251c\u2500\u2500 YYYY_MM_DD.parquet\n        \u2514\u2500\u2500 ...\n```\n\nOne Parquet file per day (ZSTD compressed). New files are synced daily around midnight UTC via GitHub Actions.\n\n## What's in Each File\n\nEvery row is a single GDELT event. Columns fall into four groups:\n\n| Group                | Examples                                                                                                               | Count |\n| -------------------- | ---------------------------------------------------------------------------------------------------------------------- | ----- |\n| **Event**            | `GLOBALEVENTID`, `SQLDATE`, `EventCode`, `QuadClass`, `GoldsteinScale`, `AvgTone`, `NumMentions`                       | 34    |\n| **Actor geography**  | `Actor1Geo_FullName`, `Actor1Geo_Lat/Long`, `Actor2Geo_*`                                                              | 16    |\n| **Action geography** | `ActionGeo_FullName`, `ActionGeo_CountryCode`, `ActionGeo_Lat/Long`                                                    | 8     |\n| **Geo enrichment**   | `NearestCity`, `CityPopulation`, `DistanceToCity_km`, `CoordQuality` (\u00d73 geo sets)                                     | 12    |\n| **Article**          | `ArticleTitle`, `ArticleContent`, `ArticleAuthor`, `ArticlePublishDate`, `ArticleContentLength`, `ArticleScrapeMethod` | 6     |\n\n**~76 columns total.** Full schema details in the [source repo](https://github.com/tabaqatdev/gdelt-cng).\n\n## Processing Pipeline\n\nRaw GDELT 15-minute dumps go through:\n\n1. **Filter** \u2014 keep only events involving Saudi Arabia\n2. **Clean** \u2014 remove nulls, empty URLs, invalid tone values\n3. **Deduplicate** \u2014 one best record per source URL (scored by data completeness)\n4. **Geo-enrich** \u2014 match coordinates to nearest city using a 33K+ world cities reference via Haversine distance\n5. **Scrape** \u2014 extract article text using Trafilatura \u2192 Newspaper4k \u2192 Playwright fallback chain (up to 500/day)\n\n## Quick Query (DuckDB)\n\n```sql\n-- read a single day\nSELECT * FROM 's3://us-west-2.opendata.source.coop/tabaqat/gdelt-sa/country=SA/year=2026/2026_01_01.parquet' LIMIT 10;\n\n-- count events with articles across all days\nSELECT count(*) AS total,\n       count(ArticleTitle) AS with_articles\nFROM 's3://us-west-2.opendata.source.coop/tabaqat/gdelt-sa/country=SA/**/*.parquet';\n\n-- top mentioned cities\nSELECT NearestCity, count(*) AS n\nFROM 's3://us-west-2.opendata.source.coop/tabaqat/gdelt-sa/country=SA/**/*.parquet'\nWHERE NearestCity IS NOT NULL\nGROUP BY 1 ORDER BY 2 DESC LIMIT 10;\n```\n\n## License & Attribution\n\nData derived from the [GDELT Project](https://www.gdeltproject.org/). Refer to GDELT's terms of use for redistribution rights. Pipeline source code is MIT licensed.\n",
   "_review": [
     "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
-    "extent.spatial.bbox: omitted; spatial reference is categorical via [01.ActionGeo_Lat (latlon), 01.ActionGeo_Long (latlon), 01.ActionGeo_FullName (placename), 01.ActionGeo_CountryCode (admin_code), 01.ActionGeo_ADM1Code (admin_code), 01.Actor1Geo_Lat (latlon), 01.Actor1Geo_Long (latlon), 01.Actor1Geo_FullName (placename), 01.Actor1Geo_ADM1Code (admin_code), 01.Actor2Geo_Lat (latlon), 01.Actor2Geo_Long (latlon), 01.Actor2Geo_FullName (placename), 01.Actor2Geo_ADM1Code (admin_code), 01.NearestCity (placename), 01.Actor1_NearestCity (placename), 01.Actor2_NearestCity (placename)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [01.Actor1Geo_Lat / Actor1Geo_Long (latlon), 01.Actor1Geo_FullName (placename), 01.Actor1Geo_CountryCode (admin_code), 01.Actor1Geo_ADM1Code (admin_code), 01.Actor2Geo_Lat / Actor2Geo_Long (latlon), 01.Actor2Geo_FullName (placename), 01.Actor2Geo_CountryCode (admin_code), 01.Actor2Geo_ADM1Code (admin_code), 01.ActionGeo_Lat / ActionGeo_Long (latlon), 01.ActionGeo_FullName (placename), 01.ActionGeo_CountryCode (admin_code), 01.ActionGeo_ADM1Code (admin_code), 01.NearestCity (placename), 01.Actor1_NearestCity (placename), 01.Actor2_NearestCity (placename)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-06-18T10:00:35+00:00",
+  "cataloged_at": "2026-07-25T09:31:03+00:00",
   "store_format": null
 }
