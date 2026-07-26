@@ -1,15 +1,21 @@
 {
   "type": "Collection",
   "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
   "id": "cboettig/cpad",
   "title": "California Protected Areas Database",
-  "description": "Spatial database of California's protected areas including parks, reserves, and conservation lands. Version 2025b contains approximately 26 million polygon features representing designated protected areas across the state. Available in cloud-optimized Parquet, Shapefile, and other spatial formats.",
+  "description": "CPAD & CCED 2025b is a spatial database of California's protected areas (parks, reserves, and permanently protected lands) and conservation easements, covering over 50 million acres across 16,000+ protected areas and 3+ million acres across 3,800+ easements. It provides parcel-level, unit-level, and county-dissolved super-unit aggregations with USGS GAP biodiversity protection status, distributed as cloud-optimized GeoParquet, PMTiles, and H3 hex-partitioned Parquet.",
   "license": "proprietary",
   "keywords": [
-    "protected-areas",
     "conservation",
-    "land-use",
-    "boundaries"
+    "land-parcels",
+    "administrative-boundaries",
+    "geoparquet",
+    "pmtiles",
+    "h3",
+    "biodiversity"
   ],
   "providers": [
     {
@@ -30,10 +36,10 @@
     "spatial": {
       "bbox": [
         [
-          -124.421782,
-          32.5346957,
-          -114.131461,
-          42.009504
+          null,
+          null,
+          null,
+          null
         ]
       ]
     },
@@ -50,13 +56,703 @@
     "item_count": 26110310
   },
   "assets": {
-    "data": {
+    ".": {
       "href": "https://data.source.coop/cboettig/cpad/",
       "type": "application/x-parquet",
-      "title": "Dataset files (9 x .parquet)",
+      "title": ".",
       "roles": [
         "data"
-      ]
+      ],
+      "table:columns": [
+        {
+          "name": "_cng_fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "e_hold_id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "ease_label",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "sitename",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "esmthldr",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "eholdtyp",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "s_emthd1",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "e_type",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "pubaccess",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "duration",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "term",
+          "type": "BIGINT"
+        },
+        {
+          "name": "comments",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "date_est",
+          "type": "DATE"
+        },
+        {
+          "name": "year_est",
+          "type": "BIGINT"
+        },
+        {
+          "name": "county",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "src_attr",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "src_align",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "iucncat",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "nced_uid",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "eholduid1",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "gis_acres",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "GAP1_acres",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "GAP2_acres",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "GAP3_acres",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "GAP4_acres",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "GAP_tot_ac",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "GAP_Source",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geom",
+          "type": "GEOMETRY('OGC:CRS84')",
+          "description": "[geometry] Vector geometry of protected area holdings/units and conservation easements"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        },
+        {
+          "name": "HOLDING_ID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "ACCESS_TYP",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "UNIT_ID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "UNIT_NAME",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "SUID_NMA",
+          "type": "BIGINT"
+        },
+        {
+          "name": "AGNCY_ID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "AGNCY_NAME",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "AGNCY_LEV",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "AGNCY_TYP",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "AGNCY_WEB",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "LAYER",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "MNG_AG_ID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "MNG_AGNCY",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "MNG_AG_LEV",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "MNG_AG_TYP",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "SITE_NAME",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ALT_SITE_N",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PARK_URL",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "LAND_WATER",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "SPEC_USE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "CITY",
+          "type": "VARCHAR",
+          "description": "[placename] City containing the holding, if applicable"
+        },
+        {
+          "name": "COUNTY",
+          "type": "VARCHAR",
+          "description": "[placename] County containing the holding or easement"
+        },
+        {
+          "name": "ACRES",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "LABEL_NAME",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "DATE_REVIS",
+          "type": "DATE"
+        },
+        {
+          "name": "SRC_ATTR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "SRC_ALIGN",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "YR_PROTECT",
+          "type": "BIGINT"
+        },
+        {
+          "name": "YR_EST",
+          "type": "BIGINT"
+        },
+        {
+          "name": "MNG_AGENCY",
+          "type": "VARCHAR"
+        }
+      ],
+      "description": "3 files sampled for this table"
+    },
+    "cced-2025b/hex": {
+      "href": "https://data.source.coop/cboettig/cpad/cced-2025b/hex/h0=577199624117288959/",
+      "type": "application/x-parquet",
+      "title": "cced-2025b/hex",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "_cng_fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "h10",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution-10 hex index; h8, h9, h0 parent cells also included"
+        },
+        {
+          "name": "h8",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h9",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "e_hold_id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "ease_label",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "sitename",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "esmthldr",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "eholdtyp",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "s_emthd1",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "e_type",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "pubaccess",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "duration",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "term",
+          "type": "BIGINT"
+        },
+        {
+          "name": "comments",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "date_est",
+          "type": "DATE"
+        },
+        {
+          "name": "year_est",
+          "type": "BIGINT"
+        },
+        {
+          "name": "county",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "src_attr",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "src_align",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "iucncat",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "nced_uid",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "eholduid1",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "gis_acres",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "GAP1_acres",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "GAP2_acres",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "GAP3_acres",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "GAP4_acres",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "GAP_tot_ac",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "GAP_Source",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        },
+        {
+          "name": "h0",
+          "type": "BIGINT"
+        }
+      ],
+      "description": "2 files sampled for this table"
+    },
+    "cpad-2025b-holdings/hex": {
+      "href": "https://data.source.coop/cboettig/cpad/cpad-2025b-holdings/hex/h0=577199624117288959/",
+      "type": "application/x-parquet",
+      "title": "cpad-2025b-holdings/hex",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "_cng_fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "h10",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution-10 hex index; h8, h9, h0 parent cells also included"
+        },
+        {
+          "name": "h8",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h9",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "HOLDING_ID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "ACCESS_TYP",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "UNIT_ID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "UNIT_NAME",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "SUID_NMA",
+          "type": "BIGINT"
+        },
+        {
+          "name": "AGNCY_ID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "AGNCY_NAME",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "AGNCY_LEV",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "AGNCY_TYP",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "AGNCY_WEB",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "LAYER",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "MNG_AG_ID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "MNG_AGNCY",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "MNG_AG_LEV",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "MNG_AG_TYP",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "SITE_NAME",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ALT_SITE_N",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PARK_URL",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "LAND_WATER",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "SPEC_USE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "CITY",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "COUNTY",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ACRES",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "LABEL_NAME",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "DATE_REVIS",
+          "type": "DATE"
+        },
+        {
+          "name": "SRC_ATTR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "SRC_ALIGN",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "YR_PROTECT",
+          "type": "BIGINT"
+        },
+        {
+          "name": "YR_EST",
+          "type": "BIGINT"
+        },
+        {
+          "name": "GAP1_acres",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "GAP2_acres",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "GAP3_acres",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "GAP4_acres",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "GAP_tot_ac",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "GAP_Source",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        },
+        {
+          "name": "h0",
+          "type": "BIGINT"
+        }
+      ],
+      "description": "2 files sampled for this table"
+    },
+    "cpad-2025b-units/hex": {
+      "href": "https://data.source.coop/cboettig/cpad/cpad-2025b-units/hex/h0=577199624117288959/",
+      "type": "application/x-parquet",
+      "title": "cpad-2025b-units/hex",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "_cng_fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "h10",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution-10 hex index; h8, h9, h0 parent cells also included"
+        },
+        {
+          "name": "h8",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h9",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "ACCESS_TYP",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "UNIT_ID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "UNIT_NAME",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "SUID_NMA",
+          "type": "BIGINT"
+        },
+        {
+          "name": "AGNCY_ID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "AGNCY_NAME",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "AGNCY_LEV",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "AGNCY_TYP",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "AGNCY_WEB",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "LAYER",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "MNG_AG_ID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "MNG_AGENCY",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "MNG_AG_LEV",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "MNG_AG_TYP",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PARK_URL",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "COUNTY",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ACRES",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "LABEL_NAME",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "YR_EST",
+          "type": "BIGINT"
+        },
+        {
+          "name": "GAP1_acres",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "GAP2_acres",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "GAP3_acres",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "GAP4_acres",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "GAP_tot_ac",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        },
+        {
+          "name": "h0",
+          "type": "BIGINT"
+        }
+      ],
+      "description": "2 files sampled for this table"
     }
   },
   "links": [
@@ -71,35 +767,32 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "product_id": "cpad",
-  "disabled": false,
   "exts": {
-    "dbf": 4,
     "parquet": 9,
-    "pmtiles": 3,
-    "shp": 4,
-    "zip": 1,
+    "dbf": 4,
     "sbn": 4,
     "shx": 4,
-    "pdf": 2,
-    "xml": 4,
-    "txt": 2,
-    "sbx": 4,
-    "md": 1,
-    "json": 1,
+    "cpg": 4,
     "prj": 4,
-    "cpg": 4
+    "sbx": 4,
+    "shp": 4,
+    "xml": 4,
+    "json": 4,
+    "pmtiles": 3,
+    "pdf": 2,
+    "txt": 2,
+    "zip": 1,
+    "md": 1
   },
-  "file_count": 51,
-  "total_bytes": 1400979116,
   "data_mode": "open",
-  "featured": 0,
-  "created_at": "2026-01-03T21:37:27.541Z",
-  "updated_at": "2026-01-03T21:37:27.541Z",
+  "product_id": "cpad",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
+  "updated_at": "2026-01-03T21:37:27.541Z",
+  "visibility": "public",
+  "featured": 0,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -112,8 +805,16 @@
       "prefix": "cboettig/cpad/"
     }
   },
-  "visibility": "public",
+  "file_count": 54,
+  "created_at": "2026-01-03T21:37:27.541Z",
+  "total_bytes": 1401013919,
+  "disabled": false,
   "account_id": "cboettig",
+  "readme": "## README.md\n# CPAD & CCED 2025b: California Protected Areas and Conservation Easements\n\n## Overview\n\nThis dataset provides comprehensive spatial data on California's protected lands and conservation easements in three cloud-optimized formats. The data consists of two complementary databases:\n\n- **CPAD (California Protected Areas Database) 2025b**: Inventories over 50 million acres across 16,000+ parks and protected areas owned by 1,200+ public agencies and nonprofits\n- **CCED (California Conservation Easement Database) 2025b**: Inventories 3+ million acres across 3,800+ conservation easements held by 180+ agencies and nonprofits\n\n## Data Formats & Access\n\nAll data is publicly available via the National Research Platform S3 bucket:\n\n**Base URL**: `https://s3-west.nrp-nautilus.io/public-cpad/`\n\n### 1. Cloud-Optimized GeoParquet\n\nParquet files with spatial geometries, optimized for cloud-native queries:\n\n- **CPAD Holdings** (parcel-level detail): `cpad-2025b-holdings.parquet` (72 MB)\n- **CPAD Units** (named holdings within counties): `cpad-2025b-units.parquet` (53 MB)  \n- **CCED Easements**: `cced-2025b.parquet` (18 MB)\n\n### 2. PMTiles\n\nVector tile format for efficient web mapping with progressive loading:\n\n- **CPAD Holdings**: `cpad-2025b-holdings.pmtiles` (170 MB)\n  - Layer name: `cpad-2025b-holdings`\n- **CPAD Units**: `cpad-2025b-units.pmtiles` (85 MB)\n  - Layer name: `cpad-2025b-units`\n- **CCED Easements**: `cced-2025b.pmtiles` (27 MB)\n  - Layer name: `cced-2025b`\n\n### 3. H3 Hexagonal Tilings\n\nHierarchical hexagonal grid at resolution 10 (~15,000 m\u00b2 per hex), partitioned by H3 resolution 0 (h0) cell:\n\n- **CPAD Holdings**: `cpad-2025b-holdings/hex/h0={cell}/data_0.parquet`\n- **CPAD Units**: `cpad-2025b-units/hex/h0={cell}/data_0.parquet`\n- **CCED Easements**: `cced-2025b/hex/h0={cell}/data_0.parquet`\n\nH3 hexes include parent resolutions 0, 8, and 9 for hierarchical aggregation.\n\n## Database Structure\n\n### CPAD Geographic Levels\n\nCPAD provides three levels of spatial aggregation:\n\n1. **HOLDINGS**: Individual parcels of protected land - most detailed level for analysis\n2. **UNITS**: Aggregations of holdings with common name, access level, and managing agency within each county\n3. **SUPER UNITS**: Dissolved aggregations across county boundaries by park name and managing agency - useful for recreation and cartography\n\n### Key Field Descriptions\n\n#### CPAD Holdings Core Fields\n\n| Field | Description |\n|-------|-------------|\n| `HOLDING_ID` | Unique identifier for each parcel |\n| `UNIT_ID` | ID linking to parent unit |\n| `SUID_NMA` | Super unit ID |\n| `UNIT_NAME` | Name of the park/unit |\n| `AGNCY_NAME` | Full name of owning agency |\n| `AGNCY_LEV` | Jurisdiction level: City, County, Special District, Joint, State, Federal, Non Profit, Private |\n| `AGNCY_TYP` | Detailed agency type (e.g., State Agency, Non Profit - Land Trust, Recreation/Parks District) |\n| `MNG_AGNCY` | Managing agency if different from owner |\n| `ACCESS_TYP` | Public access level: Open Access, Restricted, No Public Access |\n| `LAND_WATER` | Whether holding is land or water |\n| `COUNTY` | County containing the holding |\n| `CITY` | City containing the holding (if applicable) |\n| `ACRES` | Acreage calculated by GIS |\n| `SPEC_USE` | Special uses: Cemetery, Golf Course, School JUA, Trail Corridor, Wildlife Sanctuary, etc. |\n| `YR_PROTECT` | Year parcel was acquired |\n| `YR_EST` | Year the park/unit was established |\n\n#### GAP Status Codes\n\nConservation status based on USGS GAP Analysis Program:\n\n| Field | Description |\n|-------|-------------|\n| `GAP1_acres` | Acres managed for biodiversity where disturbance events proceed or are mimicked |\n| `GAP2_acres` | Acres managed for biodiversity where disturbance events are suppressed |\n| `GAP3_acres` | Acres managed for multiple uses including extraction (mining, logging) or OHV use |\n| `GAP4_acres` | Acres with no known mandate for protection |\n| `GAP_tot_ac` | Sum of all GAP acres |\n| `GAP_Source` | Source of GAP data: USGS PAD-US, CDPR, or managing agency |\n\n#### CPAD Units Fields\n\nUnits have fewer attributes than holdings, primarily used for sub-county analysis:\n\n- Same core fields as holdings: `UNIT_ID`, `UNIT_NAME`, `SUID_NMA`, access, agency fields\n- Aggregated statistics: `ACRES`, GAP acres by category\n- No parcel-level details (no `LAND_WATER`, `SITE_NAME`, `SPEC_USE`)\n\n#### CPAD Super Units Fields\n\nSuper Units are the most generalized representation:\n\n| Field | Description |\n|-------|-------------|\n| `SUID_NMA` | Unique super unit ID |\n| `PARK_NAME` | Name of the park |\n| `MNG_AGENCY` | Managing agency name |\n| `MNG_AG_LEV` | Managing agency jurisdiction level |\n| `MNG_AG_TYP` | Detailed managing agency type |\n| `ACCESS_TYP` | Public access level |\n| `ACRES` | Total acreage |\n| `YR_EST` | Year established |\n| GAP acres by category |\n\n### CCED Easement Fields\n\n| Field | Description |\n|-------|-------------|\n| `e_hold_id` | Unique easement record ID |\n| `sitename` | Site name as reported by agency |\n| `ease_label` | Generic label \"Conservation Easement\" for mapping |\n| `esmthldr` | Primary easement holder agency name |\n| `eholdtyp` | Holder type: federal, state, local, NGO, other |\n| `s_emthd1` | Any additional easement holders |\n| `e_type` | Main purpose of easement (under development) |\n| `pubaccess` | Access status: closed, restricted, or open (almost all are closed) |\n| `duration` | Permanent or term-limited (if 10+ years) |\n| `term` | Numeric term length if applicable |\n| `date_est` | Full date established (MM/DD/YYYY) |\n| `year_est` | Year established (YYYY) |\n| `county` | County (or mostly within) |\n| `gis_acres` | Acres calculated by GIS |\n| `GAP1_acres`, `GAP2_acres`, `GAP3_acres`, `GAP4_acres` | GAP status acreage |\n| `TOT_GAP_AC` | Sum of GAP acres |\n| `GAP_Source` | Source of GAP data: PADUS, CDPR, Local Agencies |\n| `iucncat` | IUCN management category: Ia, Ib, II, III, IV, V, VI, N/A |\n\n**Important**: CCED lands are predominantly **Closed to public access**. Conservation easements are on primarily private lands with legal restrictions on development.\n\n## Key Data Characteristics\n\n### CPAD Protected Status\n\nLands in CPAD have fee title ownership dedicated to open space purposes:\n\n- **Habitat Conservation**: Wildlife or plant reserves\n- **Recreation**: Parks, trails, beaches\n- **Forestry**: Active forest management\n- **Agriculture/Ranching**: Crop lands and grazing lands\n- **Water Supply**: Watersheds and waterways\n- **Flood Control**: Natural flood control areas\n- **Scenic Areas**: Viewscape protection\n\n### CCED Conservation Purposes\n\nEasements restrict future land uses to preserve:\n\n- Habitat conservation\n- General open space\n- Historical/cultural sites\n- Forestry, agriculture, ranching\n- Water supply and watersheds\n- Scenic viewscapes\n- Flood control\n\n### Ownership vs Management\n\n- **CPAD**: Tracks by owning agency; if managed by different agency, both are recorded\n- **CCED**: Tracks by managing agency (easement holder); land ownership not included\n\n### Access Levels\n\n- **Open Access**: Open to public for agency-designated use (no guarantee of specific activities)\n- **Restricted Access**: Requires permits or has limited hours/seasons\n- **No Public Access**: Not open to the public\n\n*Always consult managing agencies for current access information and allowed activities.*\n\n### Land and Water\n\nCPAD holdings distinguish land vs water areas (tidal zones, coastal areas, lakes/reservoirs). Water boundaries use National Hydrography Dataset (NHD) and aerial imagery. Small water bodies (<10 acres) and streams are excluded.\n\n## Example SQL Queries with DuckDB\n\n### Query 1: Find Total Protected Acres by County at Each GAP Level\n\n```sql\nSELECT \n    county,\n    SUM(GAP1_acres) as gap1_acres,\n    SUM(GAP2_acres) as gap2_acres,\n    SUM(GAP3_acres) as gap3_acres,\n    SUM(GAP4_acres) as gap4_acres,\n    SUM(acres) as total_acres\nFROM read_parquet('s3://public-cpad/cpad-2025b-holdings/hex/*/*.parquet', \n                   hive_partitioning=1)\nWHERE county IS NOT NULL\nGROUP BY county\nORDER BY total_acres DESC;\n```\n\n### Query 2: Identify Open Access State Parks in Hex Cells\n\n```sql\nSELECT \n    h3_10,\n    county,\n    unit_name,\n    agncy_name,\n    acres,\n    gap1_acres,\n    gap2_acres\nFROM read_parquet('s3://public-cpad/cpad-2025b-units/hex/*/*.parquet',\n                   hive_partitioning=1)\nWHERE access_typ = 'Open Access'\n  AND agncy_lev = 'State'\n  AND agncy_typ = 'State Agency'\n  AND unit_name NOT LIKE 'Unnamed%'\nORDER BY acres DESC\nLIMIT 100;\n```\n\n### Query 3: Compare Protected Areas vs Conservation Easements by County\n\n```sql\nWITH protected AS (\n    SELECT county, SUM(acres) as protected_acres\n    FROM read_parquet('s3://public-cpad/cpad-2025b-holdings/hex/*/*.parquet',\n                       hive_partitioning=1)\n    GROUP BY county\n),\neasements AS (\n    SELECT county, SUM(gis_acres) as easement_acres\n    FROM read_parquet('s3://public-cpad/cced-2025b/hex/*/*.parquet',\n                       hive_partitioning=1)\n    GROUP BY county\n)\nSELECT \n    COALESCE(p.county, e.county) as county,\n    COALESCE(protected_acres, 0) as protected_acres,\n    COALESCE(easement_acres, 0) as easement_acres,\n    COALESCE(protected_acres, 0) + COALESCE(easement_acres, 0) as total_conserved\nFROM protected p\nFULL OUTER JOIN easements e ON p.county = e.county\nORDER BY total_conserved DESC;\n```\n\n### Query 4: Find H3 Hexagons with High Biodiversity Protection (GAP 1 & 2)\n\n```sql\nSELECT \n    h3_10,\n    h3_0,\n    COUNT(*) as num_holdings,\n    SUM(gap1_acres + gap2_acres) as high_protection_acres,\n    SUM(acres) as total_hex_acres,\n    SUM(gap1_acres + gap2_acres) / NULLIF(SUM(acres), 0) as protection_ratio\nFROM read_parquet('s3://public-cpad/cpad-2025b-holdings/hex/*/*.parquet',\n                   hive_partitioning=1)\nWHERE gap1_acres + gap2_acres > 0\nGROUP BY h3_10, h3_0\nHAVING protection_ratio > 0.8  -- 80%+ high protection\nORDER BY high_protection_acres DESC\nLIMIT 100;\n```\n\n## Data Quality Notes\n\n### CPAD\n\n- Aligned to assessor parcel boundaries in developed areas; rural areas may use PLSS boundaries\n- Water boundaries from NHD; some Bay Area tidal zones refined\n- Not all holdings have GAP status codes\n- Best used at scales above 1:24,000\n\n### CCED\n\n- Easement boundaries often NOT aligned to parcels (digitized independently or from agency data)\n- Easements may cover entire parcels or portions\n- Some stacked/overlapping polygons exist where multiple easement holders or funding sources apply\n- Use caution when calculating total acreage statistics\n- Not all small local/city easements are captured\n- No land/water distinction\n\n## Data Sources & Attribution\n\n- **CPAD**: Developed by GreenInfo Network with support from California Natural Resources Agency\n- **CCED**: Developed by GreenInfo Network with funding from California Strategic Growth Council, USGS Gap Analysis Program, California Natural Resources Agency, and Department of Water Resources\n- **Release**: Version 2025b (December 2025)\n- **Documentation**: Full manuals available at [CALands.org](https://www.calands.org)\n\n## License & Usage\n\nBoth CPAD and CCED are public records data. These datasets are suitable for planning, assessment, analysis, and display. **Not for official regulatory or legal actions** - those require official land records from county recorders or managing agencies.\n\nFor errors or corrections: cpad@CALands.org\n\n---\n\n*This dataset represents California's comprehensive conservation landscape, enabling analysis of biodiversity protection, recreation access, land management patterns, and conservation planning at multiple spatial scales.*\n",
+  "_review": [
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [..geom (geometry), ..COUNTY (placename), ..CITY (placename), cced-2025b/hex.h10 (spatial_index), cpad-2025b-holdings/hex.h10 (spatial_index), cpad-2025b-units/hex.h10 (spatial_index)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
+  ],
   "_state": "drafted",
-  "cataloged_at": "2026-04-24T18:53:45+00:00"
+  "cataloged_at": "2026-07-26T09:36:53+00:00",
+  "store_format": null
 }
