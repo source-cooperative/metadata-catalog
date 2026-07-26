@@ -6,20 +6,16 @@
   ],
   "id": "hdx/hapi",
   "title": "HDX HAPI Cloud-Native",
-  "description": "Parquet snapshots of the HDX Humanitarian API (HDX HAPI), operated by OCHA, aggregating standardized humanitarian data from multiple organizations across crisis-affected countries. Themes include affected people (refugees, IDPs, humanitarian needs), food security and prices, conflict events, poverty rates, baseline population, climate/rainfall, and operational presence of humanitarian organizations. Data is normalized to common administrative boundary codes to enable cross-source interoperability and automated humanitarian workflows.",
+  "description": "HDX HAPI Cloud-Native provides Parquet snapshots of the HDX Humanitarian API (HAPI), operated by OCHA, which aggregates and standardizes humanitarian indicators \u2014 affected populations, displacement, food security and prices, conflict events, poverty, baseline population, climate/rainfall, and operational presence of humanitarian organizations \u2014 across crisis-affected countries, normalized to common administrative boundary codes for cross-source interoperability.",
   "license": "CC-BY-4.0",
   "keywords": [
     "humanitarian",
-    "hapi",
     "hdx",
-    "hxl",
-    "ocha",
-    "parquet",
+    "displacement",
+    "conflict",
     "food-security",
     "demographics",
     "administrative-boundaries",
-    "displacement",
-    "conflict",
     "precipitation"
   ],
   "providers": [
@@ -57,18 +53,18 @@
     "spatial": {
       "bbox": [
         [
-          -180,
-          -90,
-          180,
-          90
+          null,
+          null,
+          null,
+          null
         ]
       ]
     },
     "temporal": {
       "interval": [
         [
-          "1974-01-01T00:00:00Z",
-          "2035-09-30T23:59:59Z"
+          null,
+          null
         ]
       ]
     }
@@ -88,32 +84,27 @@
         {
           "name": "location_code",
           "type": "VARCHAR",
-          "description": "[admin_code] ISO country-level location code (pattern repeats across all assets)"
+          "description": "[admin_code] Country/location P-code"
         },
         {
           "name": "location_name",
-          "type": "VARCHAR",
-          "description": "[placename] Country name (pattern repeats across all assets)"
+          "type": "VARCHAR"
         },
         {
           "name": "admin1_code",
-          "type": "VARCHAR",
-          "description": "[admin_code] Admin level 1 region code (pattern repeats across all assets)"
+          "type": "VARCHAR"
         },
         {
           "name": "admin1_name",
-          "type": "VARCHAR",
-          "description": "[placename] Admin level 1 region name (pattern repeats across all assets)"
+          "type": "VARCHAR"
         },
         {
           "name": "admin2_code",
-          "type": "VARCHAR",
-          "description": "[admin_code] Admin level 2 region code (pattern repeats across all assets)"
+          "type": "VARCHAR"
         },
         {
           "name": "admin2_name",
-          "type": "VARCHAR",
-          "description": "[placename] Admin level 2 region name (pattern repeats across all assets)"
+          "type": "VARCHAR"
         },
         {
           "name": "admin_level",
@@ -164,7 +155,8 @@
       "table:columns": [
         {
           "name": "location_code",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[admin_code] Country/location P-code"
         },
         {
           "name": "location_name",
@@ -294,7 +286,8 @@
       "table:columns": [
         {
           "name": "location_code",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[admin_code] Country/location P-code"
         },
         {
           "name": "location_name",
@@ -377,7 +370,8 @@
       "table:columns": [
         {
           "name": "location_code",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[admin_code] Country/location P-code"
         },
         {
           "name": "location_name",
@@ -468,11 +462,13 @@
         },
         {
           "name": "location_code",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[admin_code] Country/location P-code for humanitarian response plan/appeal"
         },
         {
           "name": "location_name",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[placename] Location name"
         },
         {
           "name": "reference_period_start",
@@ -527,7 +523,8 @@
       "table:columns": [
         {
           "name": "location_code",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[admin_code] Country/location P-code"
         },
         {
           "name": "location_name",
@@ -602,7 +599,8 @@
       "table:columns": [
         {
           "name": "location_code",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[admin_code] Country/location P-code"
         },
         {
           "name": "location_name",
@@ -674,13 +672,11 @@
         },
         {
           "name": "lat",
-          "type": "DOUBLE",
-          "description": "[latlon] Latitude of the market location"
+          "type": "DOUBLE"
         },
         {
           "name": "lon",
-          "type": "DOUBLE",
-          "description": "[latlon] Longitude of the market location"
+          "type": "DOUBLE"
         },
         {
           "name": "reference_period_start",
@@ -703,7 +699,8 @@
       "table:columns": [
         {
           "name": "location_code",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[admin_code] Country/location P-code"
         },
         {
           "name": "location_name",
@@ -770,7 +767,8 @@
       "table:columns": [
         {
           "name": "location_code",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[admin_code] Country/location P-code"
         },
         {
           "name": "location_name",
@@ -778,7 +776,8 @@
         },
         {
           "name": "admin1_code",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[admin_code] Subnational administrative unit P-code"
         },
         {
           "name": "admin1_name",
@@ -833,7 +832,8 @@
       "table:columns": [
         {
           "name": "location_code",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[admin_code] Country/location P-code"
         },
         {
           "name": "location_name",
@@ -1067,7 +1067,8 @@
       "table:columns": [
         {
           "name": "location_code",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[admin_code] Country/location P-code"
         },
         {
           "name": "location_name",
@@ -1118,7 +1119,8 @@
       "table:columns": [
         {
           "name": "location_code",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[admin_code] Country/location P-code"
         },
         {
           "name": "location_name",
@@ -1154,13 +1156,11 @@
         },
         {
           "name": "lat",
-          "type": "DOUBLE",
-          "description": "[latlon] Latitude of the WFP market reference point"
+          "type": "DOUBLE"
         },
         {
           "name": "lon",
-          "type": "DOUBLE",
-          "description": "[latlon] Longitude of the WFP market reference point"
+          "type": "DOUBLE"
         }
       ],
       "description": "2 files sampled for this table"
@@ -1176,28 +1176,9 @@
       "rel": "via",
       "href": "https://source.coop/hdx/hapi",
       "title": "Source Cooperative product page"
-    },
-    {
-      "rel": "license",
-      "href": "https://data.humdata.org/hapi",
-      "type": "text/html",
-      "title": "HDX HAPI \u2014 per-dataset license information"
-    },
-    {
-      "rel": "via",
-      "href": "https://hapi.humdata.org/",
-      "type": "text/html",
-      "title": "HDX Humanitarian API"
-    },
-    {
-      "rel": "describedby",
-      "href": "https://hdx-hapi.readthedocs.io/en/latest/",
-      "type": "text/html",
-      "title": "HDX HAPI documentation"
     }
   ],
-  "disabled": false,
-  "total_bytes": 66404729,
+  "visibility": "public",
   "exts": {
     "parquet": 42,
     "json": 32
@@ -1214,23 +1195,23 @@
       "prefix": "hdx/hapi/"
     }
   },
-  "product_id": "hapi",
-  "visibility": "public",
-  "created_at": "2026-06-09T07:21:43.015Z",
-  "featured": 0,
-  "account_id": "hdx",
+  "total_bytes": 66330698,
+  "updated_at": "2026-06-09T07:21:43.015Z",
+  "data_mode": "open",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "data_mode": "open",
+  "featured": 0,
+  "product_id": "hapi",
+  "created_at": "2026-06-09T07:21:43.015Z",
+  "disabled": false,
   "file_count": 74,
-  "updated_at": "2026-06-09T07:21:43.015Z",
+  "account_id": "hdx",
   "_review": [
-    "providers: role [producer] for 'HDX contributing organizations (WFP, UNHCR, IPC, and others)' is an AI guess \u2014 Multiple humanitarian organizations contribute source datasets through HDX; specific producers per sub-dataset are catalogued in the metadata asset but not enumerated in the README.. Verify before flipping to _state: reviewed."
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [affected-people/humanitarian-needs.location_code (admin_code), affected-people/humanitarian-needs.admin1_code / admin2_code (admin_code), affected-people/humanitarian-needs.location_name / admin1_name / admin2_name (placename), affected-people/idps.location_code (admin_code), affected-people/idps.admin1_code / admin2_code (admin_code), affected-people/idps.location_name / admin1_name / admin2_name (placename), affected-people.origin_location_code / asylum_location_code (admin_code), affected-people.origin_location_name / asylum_location_name (placename), climate/rainfall.location_code (admin_code), climate/rainfall.admin1_code / admin2_code / provider_admin1_code / provider_admin2_code (admin_code), climate/rainfall.location_name / admin1_name / admin2_name (placename), coordination-context/conflict-events.location_code (admin_code), coordination-context/conflict-events.admin1_code / admin2_code (admin_code), coordination-context/conflict-events.location_name / admin1_name / admin2_name (placename), coordination-context.location_code (admin_code), coordination-context.location_name (placename), coordination-context/operational-presence.location_code (admin_code), coordination-context/operational-presence.admin1_code / admin2_code (admin_code), coordination-context/operational-presence.location_name / admin1_name / admin2_name (placename), food-security-nutrition-poverty/food-prices-market-monitor.location_code (admin_code), food-security-nutrition-poverty/food-prices-market-monitor.admin1_code / admin2_code (admin_code), food-security-nutrition-poverty/food-prices-market-monitor.location_name / admin1_name / admin2_name / market_name (placename), food-security-nutrition-poverty/food-prices-market-monitor.lat / lon (latlon), food-security-nutrition-poverty/food-security.location_code (admin_code), food-security-nutrition-poverty/food-security.admin1_code / admin2_code (admin_code), food-security-nutrition-poverty/food-security.location_name / admin1_name / admin2_name (placename), food-security-nutrition-poverty/poverty-rate.location_code (admin_code), food-security-nutrition-poverty/poverty-rate.admin1_code (admin_code), food-security-nutrition-poverty/poverty-rate.location_name / admin1_name (placename), geography-infrastructure/baseline-population.location_code (admin_code), geography-infrastructure/baseline-population.admin1_code / admin2_code (admin_code), geography-infrastructure/baseline-population.location_name / admin1_name / admin2_name (placename), metadata.location_code / admin1_code (admin_code), metadata.location_name / admin1_name (placename), metadata/data-availability.location_code (admin_code), metadata/data-availability.admin1_code / admin2_code (admin_code), metadata/data-availability.location_name / admin1_name / admin2_name (placename), metadata/wfp-market.location_code (admin_code), metadata/wfp-market.admin1_code / admin2_code (admin_code), metadata/wfp-market.location_name / admin1_name / admin2_name / name (placename), metadata/wfp-market.lat / lon (latlon)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-06-27T09:19:16+00:00",
-  "_source_format": "stac",
+  "cataloged_at": "2026-07-26T09:29:40+00:00",
   "store_format": null
 }
