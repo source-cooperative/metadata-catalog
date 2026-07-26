@@ -1,21 +1,22 @@
 # Source Cooperative catalog — status
 
-_Updated 2026-07-25 09:37 UTC by the nightly pipeline._
+_Updated 2026-07-26 09:40 UTC by the nightly pipeline._
 
-**324 datasets cataloged**  ·  **18 queued for next run**  ·  last run handled **10**
+**324 datasets cataloged**  ·  **11 queued for next run**  ·  last run handled **10**
 
 ## Last run
 
-<details><summary>✅ drafted — 6 datasets</summary>
+<details><summary>✅ drafted — 7 datasets</summary>
 
-| repo                                                                                             |
-| ------------------------------------------------------------------------------------------------ |
-| [cboettig/indigenous](https://source.coop/cboettig/indigenous)                                   |
-| [cboettig/trails](https://source.coop/cboettig/trails)                                           |
-| [dynamical/asos-parquet](https://source.coop/dynamical/asos-parquet)                             |
-| [tabaqat/gdelt-sa](https://source.coop/tabaqat/gdelt-sa)                                         |
-| [walkthru-earth/opensensor-space](https://source.coop/walkthru-earth/opensensor-space)           |
-| [wildland-almanac/treatment-scenarios](https://source.coop/wildland-almanac/treatment-scenarios) |
+| repo                                                                         |
+| ---------------------------------------------------------------------------- |
+| [cboettig/cpad](https://source.coop/cboettig/cpad)                           |
+| [cboettig/mappinginequality](https://source.coop/cboettig/mappinginequality) |
+| [cboettig/overturemaps](https://source.coop/cboettig/overturemaps)           |
+| [cboettig/padus](https://source.coop/cboettig/padus)                         |
+| [cboettig/rivers](https://source.coop/cboettig/rivers)                       |
+| [hdx/hapi](https://source.coop/hdx/hapi)                                     |
+| [opengeos/geoai](https://source.coop/opengeos/geoai)                         |
 
 </details>
 
@@ -29,59 +30,49 @@ _Updated 2026-07-25 09:37 UTC by the nightly pipeline._
 
 </details>
 
-<details><summary>⚠️ probe failed (issue filed) — 1 dataset</summary>
-
-| repo                                                         | why                |
-| ------------------------------------------------------------ | ------------------ |
-| [cboettig/high-seas](https://source.coop/cboettig/high-seas) | error step=compose |
-
-</details>
-
-
-See [open probe-failure issues](https://github.com/source-cooperative/metadata-catalog/issues?q=is%3Aissue+is%3Aopen+label%3Aprobe-failure).
 
 ## Recent runs
 
 | run                                                                                                    | outcome   | drafted | failed | queued | cataloged |
 | ------------------------------------------------------------------------------------------------------ | --------- | ------: | -----: | -----: | --------: |
+| [2026-07-26](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/30195850001) | ✅ success |       7 |      0 |     11 |       324 |
 | [2026-07-25](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/30152174638) | ✅ success |       6 |      1 |     18 |       324 |
 | [2026-07-24](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/30081641153) | ✅ success |       5 |      2 |     25 |       324 |
 | [2026-07-23](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/29994393861) | ✅ success |       7 |      0 |     32 |       324 |
 | [2026-07-22](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/29907123002) | ✅ success |       7 |      0 |     39 |       324 |
 | [2026-07-19](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/29680931533) | ✅ success |       6 |      1 |     18 |       324 |
 | [2026-07-18](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/29638344163) | ✅ success |       7 |      0 |     25 |       324 |
-| [2026-07-17](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/29568722047) | ✅ success |       7 |      0 |     32 |       324 |
 
 ## Persistent failures
 
-**22 datasets failing**  ·  22 open issues  ·  oldest **44d**  ·  **15** ≥30d  ·  [all open issues](https://github.com/source-cooperative/metadata-catalog/issues?q=is%3Aissue+is%3Aopen+label%3Aprobe-failure)
+**22 datasets failing**  ·  22 open issues  ·  oldest **45d**  ·  **15** ≥30d  ·  [all open issues](https://github.com/source-cooperative/metadata-catalog/issues?q=is%3Aissue+is%3Aopen+label%3Aprobe-failure)
 
 <details><summary>the 22 open issues, oldest first</summary>
 
 | repo                                                | age (d) | issue |
 | --------------------------------------------------- | ------: | ----: |
-| bkr/cams                                            |      44 |    #1 |
-| smartmaps/uppsala-conflict                          |      42 |   #16 |
-| smartmaps/next-ksj                                  |      42 |   #15 |
-| smartmaps/h3ys-worldpop                             |      42 |   #14 |
-| smartmaps/dem1a                                     |      42 |   #13 |
-| smartmaps/dem10a                                    |      42 |   #12 |
-| rsignell/ncei-estuarine-bathymetry                  |      42 |   #11 |
-| pfrost/climacell-monthly                            |      42 |   #10 |
-| geovibes/geometries                                 |      42 |    #9 |
-| fiboa/data                                          |      42 |    #8 |
-| dynamical/dwd-icon-eu-forecast-5-day                |      42 |    #7 |
-| cboettig/obis                                       |      42 |    #6 |
-| cboettig/habitat-corridors                          |      42 |    #5 |
-| caires-tudelft/tokyo-13999-fcb                      |      42 |    #4 |
-| caires-tudelft/plateau-tokyo-fcb-2                  |      42 |    #3 |
-| cboettig/wetlands                                   |      25 |  #122 |
-| dynamical/dwd-icon-grib                             |      12 |  #125 |
-| dynamical/ecmwf-ifs-ens-forecast-15-day-0-25-degree |      10 |  #126 |
-| alukach/firesmoke                                   |       6 |  #128 |
-| cboettig/high-seas                                  |       ? |  #131 |
-| dynamical/noaa-mrms-conus-analysis-hourly           |       ? |  #130 |
-| dynamical/noaa-gefs-analysis                        |       ? |  #129 |
+| bkr/cams                                            |      45 |    #1 |
+| smartmaps/uppsala-conflict                          |      43 |   #16 |
+| smartmaps/next-ksj                                  |      43 |   #15 |
+| smartmaps/h3ys-worldpop                             |      43 |   #14 |
+| smartmaps/dem1a                                     |      43 |   #13 |
+| smartmaps/dem10a                                    |      43 |   #12 |
+| rsignell/ncei-estuarine-bathymetry                  |      43 |   #11 |
+| pfrost/climacell-monthly                            |      43 |   #10 |
+| geovibes/geometries                                 |      43 |    #9 |
+| fiboa/data                                          |      43 |    #8 |
+| dynamical/dwd-icon-eu-forecast-5-day                |      43 |    #7 |
+| cboettig/obis                                       |      43 |    #6 |
+| cboettig/habitat-corridors                          |      43 |    #5 |
+| caires-tudelft/tokyo-13999-fcb                      |      43 |    #4 |
+| caires-tudelft/plateau-tokyo-fcb-2                  |      43 |    #3 |
+| cboettig/wetlands                                   |      26 |  #122 |
+| dynamical/dwd-icon-grib                             |      13 |  #125 |
+| dynamical/ecmwf-ifs-ens-forecast-15-day-0-25-degree |      11 |  #126 |
+| alukach/firesmoke                                   |       7 |  #128 |
+| cboettig/high-seas                                  |       1 |  #131 |
+| dynamical/noaa-mrms-conus-analysis-hourly           |       1 |  #130 |
+| dynamical/noaa-gefs-analysis                        |       1 |  #129 |
 
 </details>
 
@@ -888,7 +879,7 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 | --------- | ------------------------------------------------ | ----: | -------: |
 | ghosts    | catalog entry, no S3 data                        |    50 |  29.8 TB |
 | stowaways | S3 data, no source.coop product                  |    40 | 926.4 TB |
-| stale     | catalog bytes ≠ S3 (fixed by `make process-all`) |    49 |   1.5 PB |
+| stale     | catalog bytes ≠ S3 (fixed by `make process-all`) |    42 |   1.5 PB |
 
 <details><summary>ghosts — 50 datasets</summary>
 
@@ -994,7 +985,7 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 
 </details>
 
-<details><summary>stale — 49 datasets</summary>
+<details><summary>stale — 42 datasets</summary>
 
 | repo                                                |        catalog → S3 |
 | --------------------------------------------------- | ------------------: |
@@ -1026,15 +1017,8 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 | tyler/test-files                                    |  701.4 KB → 16.0 MB |
 | planet/skyscraper                                   |   44.6 GB → 44.6 GB |
 | cboettig/high-seas                                  |   40.5 GB → 40.5 GB |
-| cboettig/mappinginequality                          |   28.5 MB → 28.7 MB |
-| opengeos/geoai                                      |   17.7 GB → 17.7 GB |
-| cboettig/overturemaps                               |   69.3 GB → 69.3 GB |
 | source/source-stats                                 |     1.9 MB → 2.0 MB |
-| hdx/hapi                                            |   66.4 MB → 66.3 MB |
 | source/metadata-catalog                             |     3.9 MB → 4.0 MB |
-| cboettig/padus                                      |   46.7 GB → 46.7 GB |
-| cboettig/cpad                                       |     1.4 GB → 1.4 GB |
-| cboettig/rivers                                     |     4.4 GB → 4.4 GB |
 | dataforcanada/d4c-datapkg-foundation                |   34.3 GB → 34.3 GB |
 | cboettig/census                                     |   34.5 GB → 34.5 GB |
 | cboettig/ca-dac                                     |     1.6 GB → 1.6 GB |
