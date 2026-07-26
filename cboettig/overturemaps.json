@@ -6,7 +6,7 @@
   ],
   "id": "cboettig/overturemaps",
   "title": "Overture Maps Divisions",
-  "description": "Global administrative boundaries (countries, regions/states, and counties/districts) derived from the Overture Maps Foundation Divisions theme, release 2026-02-18.0. Available in cloud-native GeoParquet and PMTiles formats, covering 219 countries, 3,908 regions, and 38,833 counties worldwide. Includes an added English-language name column and H3-partitioned Parquet for spatial aggregation.",
+  "description": "Global administrative boundary polygons for countries, regions/states, and counties/districts, derived from the Overture Maps Foundation Divisions theme (release 2026-02-18.0). Distributed as cloud-native GeoParquet and PMTiles, with an added English-language name column and H3-partitioned hex Parquet for spatial aggregation, covering 219 countries, 3,908 regions, and 38,833 counties.",
   "license": "CDLA-Permissive-2.0",
   "keywords": [
     "administrative-boundaries",
@@ -53,7 +53,7 @@
     }
   },
   "summaries": {
-    "item_count": 333178193
+    "item_count": 333178261
   },
   "assets": {
     "2026-02-18.0/counties/hex": {
@@ -62,84 +62,6 @@
       "title": "2026-02-18.0/counties/hex",
       "roles": [
         "data"
-      ],
-      "table:columns": [
-        {
-          "name": "id",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "bbox",
-          "type": "STRUCT(xmin FLOAT, xmax FLOAT, ymin FLOAT, ymax FLOAT)"
-        },
-        {
-          "name": "country",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "version",
-          "type": "INTEGER"
-        },
-        {
-          "name": "sources",
-          "type": "STRUCT(property VARCHAR, dataset VARCHAR, license VARCHAR, record_id VARCHAR, update_time VARCHAR, confidence DOUBLE, \"between\" DOUBLE[])[]"
-        },
-        {
-          "name": "subtype",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "class",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "names",
-          "type": "STRUCT(\"primary\" VARCHAR, common MAP(VARCHAR, VARCHAR), rules STRUCT(variant VARCHAR, \"language\" VARCHAR, perspectives STRUCT(\"mode\" VARCHAR, countries VARCHAR[]), \"value\" VARCHAR, \"between\" DOUBLE[], side VARCHAR)[])"
-        },
-        {
-          "name": "is_land",
-          "type": "BOOLEAN"
-        },
-        {
-          "name": "is_territorial",
-          "type": "BOOLEAN"
-        },
-        {
-          "name": "region",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "admin_level",
-          "type": "INTEGER"
-        },
-        {
-          "name": "division_id",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "theme",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "type",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "name_en",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "h8",
-          "type": "UBIGINT"
-        },
-        {
-          "name": "h0",
-          "type": "BIGINT"
-        },
-        {
-          "name": "_cng_fid",
-          "type": "BIGINT"
-        }
       ],
       "description": "5 files sampled for this table"
     },
@@ -152,12 +74,17 @@
       ],
       "table:columns": [
         {
+          "name": "_cng_fid",
+          "type": "BIGINT"
+        },
+        {
           "name": "id",
           "type": "VARCHAR"
         },
         {
           "name": "geometry",
-          "type": "GEOMETRY('OGC:CRS84')"
+          "type": "GEOMETRY('OGC:CRS84')",
+          "description": "[geometry] Polygon boundary of the division"
         },
         {
           "name": "bbox",
@@ -165,7 +92,8 @@
         },
         {
           "name": "country",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[admin_code] ISO country code"
         },
         {
           "name": "version",
@@ -197,7 +125,8 @@
         },
         {
           "name": "region",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[admin_code] ISO region/state code (e.g. US-CA)"
         },
         {
           "name": "admin_level",
@@ -217,7 +146,8 @@
         },
         {
           "name": "name_en",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[placename] English-language name of the division"
         }
       ],
       "table:row_count": 378
@@ -228,24 +158,6 @@
       "title": "2026-02-18.0/countries/hex",
       "roles": [
         "data"
-      ],
-      "table:columns": [
-        {
-          "name": "h8",
-          "type": "UBIGINT"
-        },
-        {
-          "name": "country",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "h0",
-          "type": "BIGINT"
-        },
-        {
-          "name": "_cng_fid",
-          "type": "BIGINT"
-        }
       ],
       "description": "2 files sampled for this table"
     },
@@ -264,17 +176,17 @@
         {
           "name": "h10",
           "type": "UBIGINT",
-          "description": "[spatial_index] H3 resolution 10 cell index"
+          "description": "[spatial_index] H3 resolution-10 hex cell"
         },
         {
           "name": "h8",
           "type": "UBIGINT",
-          "description": "[spatial_index] H3 resolution 8 parent cell index"
+          "description": "[spatial_index] H3 resolution-8 hex cell"
         },
         {
           "name": "h9",
           "type": "UBIGINT",
-          "description": "[spatial_index] H3 resolution 9 parent cell index"
+          "description": "[spatial_index] H3 resolution-9 hex cell"
         },
         {
           "name": "bbox",
@@ -282,7 +194,8 @@
         },
         {
           "name": "country",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[admin_code] ISO country code"
         },
         {
           "name": "version",
@@ -314,7 +227,8 @@
         },
         {
           "name": "region",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[admin_code] ISO region/state code"
         },
         {
           "name": "division_id",
@@ -330,12 +244,13 @@
         },
         {
           "name": "primary",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[placename] Primary/native-language name of the division"
         },
         {
           "name": "h0",
           "type": "BIGINT",
-          "description": "[spatial_index] H3 resolution 0 hive-partition key"
+          "description": "[spatial_index] H3 resolution-0 hex cell"
         }
       ],
       "description": "3 files sampled for this table"
@@ -355,7 +270,7 @@
         {
           "name": "geometry",
           "type": "GEOMETRY('OGC:CRS84')",
-          "description": "[geometry] OGC:CRS84 polygon geometry of the administrative division"
+          "description": "[geometry] Polygon boundary of the division"
         },
         {
           "name": "bbox",
@@ -364,7 +279,7 @@
         {
           "name": "country",
           "type": "VARCHAR",
-          "description": "[admin_code] ISO country code for the feature"
+          "description": "[admin_code] ISO country code"
         },
         {
           "name": "version",
@@ -397,7 +312,7 @@
         {
           "name": "region",
           "type": "VARCHAR",
-          "description": "[admin_code] ISO region code (e.g. US-CA) for sub-national features"
+          "description": "[admin_code] ISO region/state code"
         },
         {
           "name": "division_id",
@@ -413,12 +328,13 @@
         },
         {
           "name": "primary",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[placename] Primary/native-language name of the division"
         },
         {
           "name": "name_en",
           "type": "VARCHAR",
-          "description": "[placename] English-language name of the administrative division"
+          "description": "[placename] English-language name of the division"
         }
       ],
       "table:row_count": 219
@@ -437,19 +353,23 @@
         },
         {
           "name": "country",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[admin_code] ISO country code"
         },
         {
           "name": "name",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[placename] Name of the division"
         },
         {
           "name": "h8",
-          "type": "UBIGINT"
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution-8 hex cell"
         },
         {
           "name": "h0",
-          "type": "UBIGINT"
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution-0 hex cell"
         }
       ],
       "table:row_count": 176141444
@@ -461,6 +381,37 @@
       "roles": [
         "data"
       ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "country",
+          "type": "VARCHAR",
+          "description": "[admin_code] ISO country code"
+        },
+        {
+          "name": "region",
+          "type": "VARCHAR",
+          "description": "[admin_code] ISO region/state code"
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR",
+          "description": "[placename] Name of the division"
+        },
+        {
+          "name": "h8",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution-8 hex cell"
+        },
+        {
+          "name": "h0",
+          "type": "BIGINT",
+          "description": "[spatial_index] H3 resolution-0 hex cell"
+        }
+      ],
       "description": "53 files sampled for this table"
     },
     "regions/hex": {
@@ -470,33 +421,121 @@
       "roles": [
         "data"
       ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "country",
+          "type": "VARCHAR",
+          "description": "[admin_code] ISO country code"
+        },
+        {
+          "name": "region",
+          "type": "VARCHAR",
+          "description": "[admin_code] ISO region/state code"
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR",
+          "description": "[placename] Name of the division"
+        },
+        {
+          "name": "h8",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution-8 hex cell"
+        },
+        {
+          "name": "h0",
+          "type": "BIGINT",
+          "description": "[spatial_index] H3 resolution-0 hex cell"
+        }
+      ],
       "description": "33 files sampled for this table"
     }
   },
   "table:columns": [
     {
+      "name": "_cng_fid",
+      "type": "BIGINT"
+    },
+    {
       "name": "id",
       "type": "VARCHAR"
     },
     {
+      "name": "bbox",
+      "type": "STRUCT(xmin FLOAT, xmax FLOAT, ymin FLOAT, ymax FLOAT)"
+    },
+    {
       "name": "country",
+      "type": "VARCHAR",
+      "description": "[admin_code] ISO country code"
+    },
+    {
+      "name": "version",
+      "type": "INTEGER"
+    },
+    {
+      "name": "sources",
+      "type": "STRUCT(property VARCHAR, dataset VARCHAR, license VARCHAR, record_id VARCHAR, update_time VARCHAR, confidence DOUBLE, \"between\" DOUBLE[])[]"
+    },
+    {
+      "name": "subtype",
       "type": "VARCHAR"
+    },
+    {
+      "name": "class",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "names",
+      "type": "STRUCT(\"primary\" VARCHAR, common MAP(VARCHAR, VARCHAR), rules STRUCT(variant VARCHAR, \"language\" VARCHAR, perspectives STRUCT(\"mode\" VARCHAR, countries VARCHAR[]), \"value\" VARCHAR, \"between\" DOUBLE[], side VARCHAR)[])"
+    },
+    {
+      "name": "is_land",
+      "type": "BOOLEAN"
+    },
+    {
+      "name": "is_territorial",
+      "type": "BOOLEAN"
     },
     {
       "name": "region",
+      "type": "VARCHAR",
+      "description": "[admin_code] ISO region/state code"
+    },
+    {
+      "name": "admin_level",
+      "type": "INTEGER"
+    },
+    {
+      "name": "division_id",
       "type": "VARCHAR"
     },
     {
-      "name": "name",
+      "name": "theme",
       "type": "VARCHAR"
+    },
+    {
+      "name": "type",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "name_en",
+      "type": "VARCHAR",
+      "description": "[placename] English-language name of the division"
     },
     {
       "name": "h8",
-      "type": "UBIGINT"
+      "type": "UBIGINT",
+      "description": "[spatial_index] H3 resolution-8 hex cell"
     },
     {
       "name": "h0",
-      "type": "BIGINT"
+      "type": "BIGINT",
+      "description": "[spatial_index] H3 resolution-0 hex cell"
     }
   ],
   "links": [
@@ -511,17 +550,13 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "product_id": "overturemaps",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
+  "exts": {
+    "parquet": 534,
+    "pmtiles": 6,
+    "json": 4,
+    "geojson": 3,
+    "md": 1
   },
-  "data_mode": "open",
-  "updated_at": "2026-06-17T03:29:28.146Z",
-  "featured": 0,
-  "file_count": 548,
-  "created_at": "2026-06-17T03:29:28.146Z",
-  "disabled": false,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -534,21 +569,25 @@
       "prefix": "cboettig/overturemaps/"
     }
   },
-  "account_id": "cboettig",
-  "exts": {
-    "parquet": 534,
-    "pmtiles": 6,
-    "json": 4,
-    "geojson": 3,
-    "md": 1
-  },
-  "total_bytes": 69275689723,
   "visibility": "public",
+  "data_mode": "open",
+  "file_count": 548,
+  "total_bytes": 69275808691,
+  "product_id": "overturemaps",
+  "updated_at": "2026-06-17T03:29:28.146Z",
+  "disabled": false,
+  "account_id": "cboettig",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "featured": 0,
+  "created_at": "2026-06-17T03:29:28.146Z",
   "readme": "## README.md\n# Overture Maps Divisions\n\nGlobal administrative boundaries (countries, regions/states, counties/districts) from the [Overture Maps Foundation](https://overturemaps.org/) Divisions theme. Processed into cloud-native formats with an English-language name column added.\n\n**Current release:** 2026-02-18.0\n\n## Datasets\n\n| Dataset | Features | PMTiles | Parquet |\n|---------|----------|---------|---------|\n| Countries | 219 | [countries.pmtiles](https://s3-west.nrp-nautilus.io/public-overturemaps/2026-02-18.0/countries.pmtiles) | [countries.parquet](https://s3-west.nrp-nautilus.io/public-overturemaps/2026-02-18.0/countries.parquet) |\n| Regions | 3,908 | [regions.pmtiles](https://s3-west.nrp-nautilus.io/public-overturemaps/2026-02-18.0/regions.pmtiles) | [regions.parquet](https://s3-west.nrp-nautilus.io/public-overturemaps/2026-02-18.0/regions.parquet) |\n| Counties | 38,833 | [counties.pmtiles](https://s3-west.nrp-nautilus.io/public-overturemaps/2026-02-18.0/counties.pmtiles) (~150MB) | [counties.parquet](https://s3-west.nrp-nautilus.io/public-overturemaps/2026-02-18.0/counties.parquet) |\n\n## Key Column: `name_en`\n\nThe `name_en` column provides English-language names for all features:\n\n```sql\nname_en = COALESCE(names.common['en'], names.primary)\n```\n\nThis falls back to the primary (native-language) name when no English translation is available. Use `name_en` for English-language queries; use `names.primary` for local-language display.\n\n## License\n\n[CDLA Permissive 2.0](https://cdla.dev/permissive-2-0/) \u2014 free to use with attribution to Overture Maps Foundation.\n\n## DuckDB Examples\n\n```sql\n-- Install spatial extension (once)\nINSTALL httpfs; INSTALL spatial;\nLOAD httpfs; LOAD spatial;\n\n-- Query countries by English name\nSELECT id, name_en, country, population\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-overturemaps/2026-02-18.0/countries.parquet')\nWHERE name_en = 'Brazil'\nLIMIT 5;\n\n-- Find all US states/regions\nSELECT id, name_en, region, population\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-overturemaps/2026-02-18.0/regions.parquet')\nWHERE country = 'US'\nORDER BY name_en;\n\n-- Find counties in California\nSELECT id, name_en, region, population\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-overturemaps/2026-02-18.0/counties.parquet')\nWHERE region = 'US-CA'\nORDER BY population DESC;\n\n-- Spatial join: which county is a point in?\nSELECT c.name_en AS county, c.region\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-overturemaps/2026-02-18.0/counties.parquet') c\nWHERE ST_Contains(c.geometry, ST_Point(-122.4194, 37.7749));  -- San Francisco\n```\n\n## MapLibre GL JS Example\n\n```javascript\nconst map = new maplibregl.Map({ /* ... */ });\n\nmap.on('load', () => {\n  // Countries layer\n  map.addSource('overture-countries', {\n    type: 'vector',\n    url: 'pmtiles://https://s3-west.nrp-nautilus.io/public-overturemaps/2026-02-18.0/countries.pmtiles'\n  });\n  map.addLayer({\n    id: 'countries-fill',\n    type: 'fill',\n    source: 'overture-countries',\n    'source-layer': 'countries',   // <-- always \"countries\" for this dataset\n    paint: {\n      'fill-color': '#4CAF50',\n      'fill-opacity': 0.3\n    }\n  });\n\n  // Counties layer\n  map.addSource('overture-counties', {\n    type: 'vector',\n    url: 'pmtiles://https://s3-west.nrp-nautilus.io/public-overturemaps/2026-02-18.0/counties.pmtiles'\n  });\n  map.addLayer({\n    id: 'counties-line',\n    type: 'line',\n    source: 'overture-counties',\n    'source-layer': 'counties',    // <-- always \"counties\" for this dataset\n    paint: {\n      'line-color': '#333',\n      'line-width': 0.5\n    }\n  });\n});\n```\n\n**PMTiles source-layer names:** `countries`, `regions`, `counties` (matches the dataset name).\n\n## H3 Hex Parquet\n\nHex-partitioned parquet for spatial aggregation and joins, hive-partitioned by h0 cell:\n\n```\ns3://public-overturemaps/2026-02-18.0/countries/hex/h0={cell}/data_0.parquet\ns3://public-overturemaps/2026-02-18.0/regions/hex/h0={cell}/data_0.parquet\ns3://public-overturemaps/2026-02-18.0/counties/hex/h0={cell}/data_0.parquet\n```\n\nH3 resolution 10 with parent resolutions 9, 8, 0. Hex columns: `h10`, `h9`, `h8`, `h0` (UBIGINT).\n\n## Update Pipeline\n\nTo update to a new Overture Maps release:\n\n1. **Check for new releases:**\n   ```bash\n   aws s3 ls s3://overturemaps-us-west-2/release/ --no-sign-request\n   ```\n\n2. **Find the correct parquet file URL for the new release** by listing the divisions directory at the new release URL. The filename (UUID) changes with each release.\n\n3. **Edit the preprocessing job** (`catalog/overturemaps/k8s/preprocess-<VERSION>.yaml`):\n   - Update `RELEASE` variable\n   - Update `SOURCE` URL with new filename\n\n4. **Run preprocessing** to extract countries/regions/counties from the raw release:\n   ```bash\n   kubectl apply -f catalog/overturemaps/k8s/preprocess-<VERSION>.yaml\n   ```\n\n5. **Generate workflow YAMLs** (with version prefix in dataset name):\n   ```bash\n   for subtype in countries regions counties; do\n     cng-datasets workflow \\\n       --dataset <VERSION>/$subtype \\\n       --source-url s3://public-overturemaps/<VERSION>/$subtype.parquet \\\n       --bucket public-overturemaps \\\n       --h3-resolution 10 --parent-resolutions \"9,8,0\" \\\n       --hex-memory 32Gi --max-completions 200 --max-parallelism 50 \\\n       --output-dir catalog/overturemaps/k8s/<VERSION>/$subtype\n   done\n   ```\n   **Note:** Replace dots in version string with dashes in job names (e.g., `2026-02-18.0` \u2192 `om-2026-XX-YY-Z`) because Kubernetes pod names cannot contain dots.\n\n6. **Apply sequentially** (one at a time due to 200-pod namespace quota):\n   ```bash\n   kubectl apply -f catalog/overturemaps/k8s/<VERSION>/countries/configmap.yaml \\\n                 -f catalog/overturemaps/k8s/<VERSION>/countries/workflow.yaml\n   kubectl wait job/om-<VERSION>-countries-workflow --for=condition=complete --timeout=7200s -n biodiversity\n   # repeat for regions, counties\n   ```\n",
   "_review": [
-    "extent.spatial.bbox: omitted; spatial reference is categorical via [..geometry (geometry), ..country (admin_code), ..region (admin_code), ..name_en (placename), counties/hex.h10 (spatial_index), counties/hex.h9 (spatial_index), counties/hex.h8 (spatial_index), counties/hex.h0 (spatial_index)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [2026-02-18.0.geometry (geometry), 2026-02-18.0.country (admin_code), 2026-02-18.0.region (admin_code), 2026-02-18.0.name_en (placename), 2026-02-18.0/countries/hex.country (admin_code), 2026-02-18.0/countries/hex.region (admin_code), 2026-02-18.0/countries/hex.name_en (placename), 2026-02-18.0/countries/hex.h0 (spatial_index), 2026-02-18.0/countries/hex.h8 (spatial_index), 2026-02-18.0/counties/hex.country (admin_code), 2026-02-18.0/counties/hex.region (admin_code), 2026-02-18.0/counties/hex.name_en (placename), 2026-02-18.0/counties/hex.h0 (spatial_index), 2026-02-18.0/counties/hex.h8 (spatial_index), ..geometry (geometry), ..country (admin_code), ..region (admin_code), ..primary (placename), ..name_en (placename), counties/hex.country (admin_code), counties/hex.region (admin_code), counties/hex.primary (placename), counties/hex.h0 (spatial_index), counties/hex.h8 (spatial_index), counties/hex.h9 (spatial_index), counties/hex.h10 (spatial_index), hex.country (admin_code), hex.name (placename), hex.h0 (spatial_index), hex.h8 (spatial_index), hex/regions.country (admin_code), hex/regions.region (admin_code), hex/regions.name (placename), hex/regions.h0 (spatial_index), hex/regions.h8 (spatial_index), regions/hex.country (admin_code), regions/hex.region (admin_code), regions/hex.name (placename), regions/hex.h0 (spatial_index), regions/hex.h8 (spatial_index)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-06-29T10:23:22+00:00",
+  "cataloged_at": "2026-07-26T09:26:37+00:00",
   "store_format": null
 }
