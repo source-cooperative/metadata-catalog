@@ -1,31 +1,31 @@
 # Source Cooperative catalog — status
 
-_Updated 2026-07-26 09:40 UTC by the nightly pipeline._
+_Updated 2026-07-28 10:15 UTC by the nightly pipeline._
 
-**324 datasets cataloged**  ·  **11 queued for next run**  ·  last run handled **10**
+**324 datasets cataloged**  ·  **32 queued for next run**  ·  last run handled **10**
 
 ## Last run
 
-<details><summary>✅ drafted — 7 datasets</summary>
+<details><summary>✅ drafted — 8 datasets</summary>
 
-| repo                                                                         |
-| ---------------------------------------------------------------------------- |
-| [cboettig/cpad](https://source.coop/cboettig/cpad)                           |
-| [cboettig/mappinginequality](https://source.coop/cboettig/mappinginequality) |
-| [cboettig/overturemaps](https://source.coop/cboettig/overturemaps)           |
-| [cboettig/padus](https://source.coop/cboettig/padus)                         |
-| [cboettig/rivers](https://source.coop/cboettig/rivers)                       |
-| [hdx/hapi](https://source.coop/hdx/hapi)                                     |
-| [opengeos/geoai](https://source.coop/opengeos/geoai)                         |
+| repo                                                                                           |
+| ---------------------------------------------------------------------------------------------- |
+| [bkr/dmi](https://source.coop/bkr/dmi)                                                         |
+| [bkr/geo](https://source.coop/bkr/geo)                                                         |
+| [bkr/icon](https://source.coop/bkr/icon)                                                       |
+| [bkr/metoffice](https://source.coop/bkr/metoffice)                                             |
+| [bkr/mrms](https://source.coop/bkr/mrms)                                                       |
+| [dynamical/ecmwf-ifs-grib](https://source.coop/dynamical/ecmwf-ifs-grib)                       |
+| [dynamical/noaa-gefs-forecast-35-day](https://source.coop/dynamical/noaa-gefs-forecast-35-day) |
+| [dynamical/noaa-gfs-forecast](https://source.coop/dynamical/noaa-gfs-forecast)                 |
 
 </details>
 
-<details><summary>⏭️ incomplete (gap) — 3 datasets</summary>
+<details><summary>⏭️ incomplete (gap) — 2 datasets</summary>
 
 | repo                                                                                                                                                 | why            |
 | ---------------------------------------------------------------------------------------------------------------------------------------------------- | -------------- |
 | [alliance-bioversity-international-ciat/sample-earth-2026-co-gh](https://source.coop/alliance-bioversity-international-ciat/sample-earth-2026-co-gh) | no_probe .gpkg |
-| [forestsignal/forestsignal-ca](https://source.coop/forestsignal/forestsignal-ca)                                                                     | no_files .tif  |
 | [harvard-lil/smithsonian-open-access](https://source.coop/harvard-lil/smithsonian-open-access)                                                       | no_probe .jpg  |
 
 </details>
@@ -35,44 +35,44 @@ _Updated 2026-07-26 09:40 UTC by the nightly pipeline._
 
 | run                                                                                                    | outcome   | drafted | failed | queued | cataloged |
 | ------------------------------------------------------------------------------------------------------ | --------- | ------: | -----: | -----: | --------: |
+| [2026-07-28](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/30346028101) | ✅ success |       8 |      0 |     32 |       324 |
+| [2026-07-27](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/30308869346) | ❌ failure |     306 |     11 |   None |       324 |
+| [2026-07-27](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/30254651632) | ❌ failure |     306 |     11 |   None |       324 |
 | [2026-07-26](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/30195850001) | ✅ success |       7 |      0 |     11 |       324 |
 | [2026-07-25](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/30152174638) | ✅ success |       6 |      1 |     18 |       324 |
 | [2026-07-24](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/30081641153) | ✅ success |       5 |      2 |     25 |       324 |
 | [2026-07-23](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/29994393861) | ✅ success |       7 |      0 |     32 |       324 |
-| [2026-07-22](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/29907123002) | ✅ success |       7 |      0 |     39 |       324 |
-| [2026-07-19](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/29680931533) | ✅ success |       6 |      1 |     18 |       324 |
-| [2026-07-18](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/29638344163) | ✅ success |       7 |      0 |     25 |       324 |
 
 ## Persistent failures
 
-**22 datasets failing**  ·  22 open issues  ·  oldest **45d**  ·  **15** ≥30d  ·  [all open issues](https://github.com/source-cooperative/metadata-catalog/issues?q=is%3Aissue+is%3Aopen+label%3Aprobe-failure)
+**22 datasets failing**  ·  22 open issues  ·  oldest **47d**  ·  **15** ≥30d  ·  [all open issues](https://github.com/source-cooperative/metadata-catalog/issues?q=is%3Aissue+is%3Aopen+label%3Aprobe-failure)
 
 <details><summary>the 22 open issues, oldest first</summary>
 
 | repo                                                | age (d) | issue |
 | --------------------------------------------------- | ------: | ----: |
-| bkr/cams                                            |      45 |    #1 |
-| smartmaps/uppsala-conflict                          |      43 |   #16 |
-| smartmaps/next-ksj                                  |      43 |   #15 |
-| smartmaps/h3ys-worldpop                             |      43 |   #14 |
-| smartmaps/dem1a                                     |      43 |   #13 |
-| smartmaps/dem10a                                    |      43 |   #12 |
-| rsignell/ncei-estuarine-bathymetry                  |      43 |   #11 |
-| pfrost/climacell-monthly                            |      43 |   #10 |
-| geovibes/geometries                                 |      43 |    #9 |
-| fiboa/data                                          |      43 |    #8 |
-| dynamical/dwd-icon-eu-forecast-5-day                |      43 |    #7 |
-| cboettig/obis                                       |      43 |    #6 |
-| cboettig/habitat-corridors                          |      43 |    #5 |
-| caires-tudelft/tokyo-13999-fcb                      |      43 |    #4 |
-| caires-tudelft/plateau-tokyo-fcb-2                  |      43 |    #3 |
-| cboettig/wetlands                                   |      26 |  #122 |
-| dynamical/dwd-icon-grib                             |      13 |  #125 |
-| dynamical/ecmwf-ifs-ens-forecast-15-day-0-25-degree |      11 |  #126 |
-| alukach/firesmoke                                   |       7 |  #128 |
-| cboettig/high-seas                                  |       1 |  #131 |
-| dynamical/noaa-mrms-conus-analysis-hourly           |       1 |  #130 |
-| dynamical/noaa-gefs-analysis                        |       1 |  #129 |
+| bkr/cams                                            |      47 |    #1 |
+| smartmaps/uppsala-conflict                          |      45 |   #16 |
+| smartmaps/next-ksj                                  |      45 |   #15 |
+| smartmaps/h3ys-worldpop                             |      45 |   #14 |
+| smartmaps/dem1a                                     |      45 |   #13 |
+| smartmaps/dem10a                                    |      45 |   #12 |
+| rsignell/ncei-estuarine-bathymetry                  |      45 |   #11 |
+| pfrost/climacell-monthly                            |      45 |   #10 |
+| geovibes/geometries                                 |      45 |    #9 |
+| fiboa/data                                          |      45 |    #8 |
+| dynamical/dwd-icon-eu-forecast-5-day                |      45 |    #7 |
+| cboettig/obis                                       |      45 |    #6 |
+| cboettig/habitat-corridors                          |      45 |    #5 |
+| caires-tudelft/tokyo-13999-fcb                      |      45 |    #4 |
+| caires-tudelft/plateau-tokyo-fcb-2                  |      45 |    #3 |
+| cboettig/wetlands                                   |      28 |  #122 |
+| dynamical/dwd-icon-grib                             |      16 |  #125 |
+| dynamical/ecmwf-ifs-ens-forecast-15-day-0-25-degree |      14 |  #126 |
+| alukach/firesmoke                                   |       9 |  #128 |
+| dynamical/noaa-mrms-conus-analysis-hourly           |       4 |  #130 |
+| dynamical/noaa-gefs-analysis                        |       4 |  #129 |
+| cboettig/high-seas                                  |       3 |  #131 |
 
 </details>
 
@@ -80,11 +80,11 @@ _Updated 2026-07-26 09:40 UTC by the nightly pipeline._
 
 <details><summary>by format — ranked by bytes unlocked if built</summary>
 
-<details><summary>.jpg — 1 dataset · 827.7 TB</summary>
+<details><summary>.jpg — 1 dataset · 851.0 TB</summary>
 
 | repo                                                                                           |    bytes |
 | ---------------------------------------------------------------------------------------------- | -------: |
-| [harvard-lil/smithsonian-open-access](https://source.coop/harvard-lil/smithsonian-open-access) | 827.7 TB |
+| [harvard-lil/smithsonian-open-access](https://source.coop/harvard-lil/smithsonian-open-access) | 851.0 TB |
 
 </details>
 
@@ -157,26 +157,26 @@ _Each bucket links to its datasets under [Datasets per category](#datasets-per-c
 
 | group                         | agg count | agg bytes | count |    bytes |
 | ----------------------------- | --------: | --------: | ----: | -------: |
-| [CATALOGED](#cataloged)       |       320 |    3.7 PB |       |          |
-|   drafted                     |           |           |   320 |   3.7 PB |
-| [BACKLOG](#backlog)           |        22 |   44.9 TB |       |          |
-|   error step=gather-probe     |           |           |     1 |  40.6 TB |
-|   in s3, not yet seeded       |           |           |    13 |   2.9 TB |
+| [CATALOGED](#cataloged)       |       320 |    3.8 PB |       |          |
+|   drafted                     |           |           |   320 |   3.8 PB |
+| [BACKLOG](#backlog)           |        36 |   60.4 TB |       |          |
+|   error step=gather-probe     |           |           |     1 |  42.1 TB |
+|   in s3, not yet seeded       |           |           |    27 |  16.9 TB |
 |   all_failed .icechunk        |           |           |     1 |   1.0 TB |
-|   all_failed .filegdb         |           |           |     1 | 219.0 GB |
+|   all_failed .filegdb         |           |           |     1 | 198.6 GB |
 |   amended (no format)         |           |           |     1 |  65.7 GB |
 |   all_failed .parquet         |           |           |     1 |  61.6 GB |
 |   no_probe .fcb               |           |           |     2 |   4.2 GB |
 |   all_failed .zarr            |           |           |     1 |   3.3 GB |
 |   no_probe .gpkg              |           |           |     1 |  24.6 MB |
-| [SKIPPED](#skipped)           |       195 |  761.5 TB |       |          |
-|   unlisted                    |           |           |   147 | 697.8 TB |
+| [SKIPPED](#skipped)           |       195 |  869.0 TB |       |          |
+|   unlisted                    |           |           |   147 | 805.3 TB |
 |   not_geo                     |           |           |    19 |  61.8 TB |
 |   test_repo                   |           |           |     7 |   1.9 TB |
 |   tiny                        |           |           |    22 |  30.6 KB |
-| [UNREGISTERED](#unregistered) |        40 |  926.4 TB |       |          |
-|   stowaways                   |           |           |    40 | 926.4 TB |
-| S3 total                      |       577 |    5.4 PB |       |          |
+| [UNREGISTERED](#unregistered) |        40 |  926.5 TB |       |          |
+|   stowaways                   |           |           |    40 | 926.5 TB |
+| S3 total                      |       591 |    5.7 PB |       |          |
 
 ## Datasets per category
 
@@ -184,44 +184,45 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 
 ### CATALOGED
 
-<details><summary>drafted — 320 datasets · 3.7 PB</summary>
+<details><summary>drafted — 320 datasets · 3.8 PB</summary>
 
 | repo                                                                                                                               |    bytes |
 | ---------------------------------------------------------------------------------------------------------------------------------- | -------: |
-| [harvard-lil/smithsonian-open-access](https://source.coop/harvard-lil/smithsonian-open-access)                                     | 827.7 TB |
+| [harvard-lil/smithsonian-open-access](https://source.coop/harvard-lil/smithsonian-open-access)                                     | 851.0 TB |
 | [tge-labs/aef](https://source.coop/tge-labs/aef)                                                                                   | 576.6 TB |
 | [tge-labs/aef-mosaic](https://source.coop/tge-labs/aef-mosaic)                                                                     | 552.9 TB |
-| [bkr/icon](https://source.coop/bkr/icon)                                                                                           | 323.1 TB |
-| [bkr/geo](https://source.coop/bkr/geo)                                                                                             | 173.4 TB |
+| [bkr/icon](https://source.coop/bkr/icon)                                                                                           | 325.2 TB |
+| [dynamical/noaa-gefs-forecast-35-day](https://source.coop/dynamical/noaa-gefs-forecast-35-day)                                     | 199.8 TB |
+| [bkr/geo](https://source.coop/bkr/geo)                                                                                             | 190.9 TB |
 | [earthgenome/earthindeximagery](https://source.coop/earthgenome/earthindeximagery)                                                 | 171.2 TB |
-| [dynamical/noaa-gefs-forecast-35-day](https://source.coop/dynamical/noaa-gefs-forecast-35-day)                                     | 166.4 TB |
-| [dynamical/ecmwf-ifs-grib](https://source.coop/dynamical/ecmwf-ifs-grib)                                                           | 132.2 TB |
+| [dynamical/ecmwf-ifs-grib](https://source.coop/dynamical/ecmwf-ifs-grib)                                                           | 146.6 TB |
 | [govscape/eota-pdf-archive](https://source.coop/govscape/eota-pdf-archive)                                                         | 107.3 TB |
 | [earthgenome/sentinel2-temporal-mosaics](https://source.coop/earthgenome/sentinel2-temporal-mosaics)                               |  76.3 TB |
 | [cworthy/dor-efficiency-atlas](https://source.coop/cworthy/dor-efficiency-atlas)                                                   |  74.1 TB |
+| [bkr/metoffice](https://source.coop/bkr/metoffice)                                                                                 |  61.2 TB |
 | [cworthy/oae-efficiency-atlas](https://source.coop/cworthy/oae-efficiency-atlas)                                                   |  56.6 TB |
-| [dynamical/ecmwf-ifs-ens-forecast-15-day-0-25-degree](https://source.coop/dynamical/ecmwf-ifs-ens-forecast-15-day-0-25-degree)     |  46.8 TB |
+| [dynamical/ecmwf-ifs-ens-forecast-15-day-0-25-degree](https://source.coop/dynamical/ecmwf-ifs-ens-forecast-15-day-0-25-degree)     |  47.2 TB |
 | [bkr/geos](https://source.coop/bkr/geos)                                                                                           |  38.9 TB |
-| [bkr/ifs](https://source.coop/bkr/ifs)                                                                                             |  36.9 TB |
-| [bkr/metoffice](https://source.coop/bkr/metoffice)                                                                                 |  35.0 TB |
+| [bkr/ifs](https://source.coop/bkr/ifs)                                                                                             |  37.0 TB |
+| [dynamical/noaa-gfs-forecast](https://source.coop/dynamical/noaa-gfs-forecast)                                                     |  28.7 TB |
 | [mapterhorn/mapterhorn](https://source.coop/mapterhorn/mapterhorn)                                                                 |  26.7 TB |
-| [bkr/silam-dust](https://source.coop/bkr/silam-dust)                                                                               |  25.2 TB |
+| [bkr/silam-dust](https://source.coop/bkr/silam-dust)                                                                               |  25.4 TB |
 | [tge-labs/meta-chm-v2](https://source.coop/tge-labs/meta-chm-v2)                                                                   |  23.8 TB |
-| [dynamical/noaa-gfs-forecast](https://source.coop/dynamical/noaa-gfs-forecast)                                                     |  23.6 TB |
-| [bkr/dmi](https://source.coop/bkr/dmi)                                                                                             |  20.9 TB |
+| [bkr/dmi](https://source.coop/bkr/dmi)                                                                                             |  22.0 TB |
 | [carbonplan/carbonplan-ocr](https://source.coop/carbonplan/carbonplan-ocr)                                                         |  20.8 TB |
 | [dataforcanada/d4c-datapkg-orthoimagery](https://source.coop/dataforcanada/d4c-datapkg-orthoimagery)                               |  16.0 TB |
 | [fused/overture](https://source.coop/fused/overture)                                                                               |  13.8 TB |
-| [dynamical/noaa-hrrr-forecast-48-hour](https://source.coop/dynamical/noaa-hrrr-forecast-48-hour)                                   |  12.5 TB |
+| [dynamical/noaa-hrrr-forecast-48-hour](https://source.coop/dynamical/noaa-hrrr-forecast-48-hour)                                   |  12.9 TB |
 | [bkr/marine](https://source.coop/bkr/marine)                                                                                       |  12.1 TB |
 | [bkr/polar](https://source.coop/bkr/polar)                                                                                         |  10.9 TB |
 | [clay/lgnd-embeddings](https://source.coop/clay/lgnd-embeddings)                                                                   |   9.6 TB |
 | [earthgenome/earthindexembeddings](https://source.coop/earthgenome/earthindexembeddings)                                           |   8.5 TB |
 | [clay/clay-v1-5-naip-2](https://source.coop/clay/clay-v1-5-naip-2)                                                                 |   6.6 TB |
+| [bkr/precipradar](https://source.coop/bkr/precipradar)                                                                             |   5.7 TB |
 | [wherobots/fields-of-the-world](https://source.coop/wherobots/fields-of-the-world)                                                 |   5.4 TB |
 | [malariaatlas/lst](https://source.coop/malariaatlas/lst)                                                                           |   5.3 TB |
-| [bkr/precipradar](https://source.coop/bkr/precipradar)                                                                             |   5.2 TB |
 | [auspatious/geomad-sids](https://source.coop/auspatious/geomad-sids)                                                               |   4.5 TB |
+| [bkr/mrms](https://source.coop/bkr/mrms)                                                                                           |   4.3 TB |
 | [ausantarctic/ghrsst-mur-v2](https://source.coop/ausantarctic/ghrsst-mur-v2)                                                       |   4.2 TB |
 | [major-tom/elliot-pretrain](https://source.coop/major-tom/elliot-pretrain)                                                         |   4.2 TB |
 | [bkr/gmgi](https://source.coop/bkr/gmgi)                                                                                           |   4.0 TB |
@@ -229,7 +230,6 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 | [bkr/imerg](https://source.coop/bkr/imerg)                                                                                         |   4.0 TB |
 | [bkr/gfs](https://source.coop/bkr/gfs)                                                                                             |   3.8 TB |
 | [vida/google-microsoft-open-buildings](https://source.coop/vida/google-microsoft-open-buildings)                                   |   3.6 TB |
-| [bkr/mrms](https://source.coop/bkr/mrms)                                                                                           |   3.3 TB |
 | [vida/google-microsoft-osm-open-buildings](https://source.coop/vida/google-microsoft-osm-open-buildings)                           |   2.8 TB |
 | [malariaatlas/tcw](https://source.coop/malariaatlas/tcw)                                                                           |   2.7 TB |
 | [malariaatlas/tcb](https://source.coop/malariaatlas/tcb)                                                                           |   2.7 TB |
@@ -239,22 +239,22 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 | [root-geospatial/flight-tracks](https://source.coop/root-geospatial/flight-tracks)                                                 |   1.5 TB |
 | [englacial/ismip6](https://source.coop/englacial/ismip6)                                                                           |   1.3 TB |
 | [smartmaps/japan-seamlessphoto](https://source.coop/smartmaps/japan-seamlessphoto)                                                 |   1.2 TB |
-| [cboettig/gbif](https://source.coop/cboettig/gbif)                                                                                 |   1.1 TB |
+| [cboettig/gbif](https://source.coop/cboettig/gbif)                                                                                 |   1.0 TB |
 | [wildland-almanac/conus](https://source.coop/wildland-almanac/conus)                                                               |   1.0 TB |
-| [dynamical/noaa-gefs-analysis](https://source.coop/dynamical/noaa-gefs-analysis)                                                   | 972.6 GB |
+| [dynamical/noaa-gefs-analysis](https://source.coop/dynamical/noaa-gefs-analysis)                                                   |   1.0 TB |
 | [wildland-almanac/treatment-scenarios](https://source.coop/wildland-almanac/treatment-scenarios)                                   | 894.7 GB |
 | [taco/3dclouds](https://source.coop/taco/3dclouds)                                                                                 | 832.5 GB |
 | [walkthru-earth/dem-terrain](https://source.coop/walkthru-earth/dem-terrain)                                                       | 831.4 GB |
 | [cholmes/overture](https://source.coop/cholmes/overture)                                                                           | 779.1 GB |
 | [smartmaps/xing](https://source.coop/smartmaps/xing)                                                                               | 748.1 GB |
+| [dynamical/noaa-gfs-analysis](https://source.coop/dynamical/noaa-gfs-analysis)                                                     | 648.8 GB |
 | [bkr/nsrdb](https://source.coop/bkr/nsrdb)                                                                                         | 636.9 GB |
 | [geospatialml/terrabit](https://source.coop/geospatialml/terrabit)                                                                 | 626.2 GB |
-| [walkthru-earth/indices](https://source.coop/walkthru-earth/indices)                                                               | 576.6 GB |
+| [walkthru-earth/indices](https://source.coop/walkthru-earth/indices)                                                               | 597.7 GB |
 | [wildland-almanac/california](https://source.coop/wildland-almanac/california)                                                     | 574.1 GB |
 | [earthgenome/food-twin](https://source.coop/earthgenome/food-twin)                                                                 | 544.1 GB |
 | [fika/waternet](https://source.coop/fika/waternet)                                                                                 | 527.0 GB |
 | [dataforcanada/d4c-datapkg-elevation](https://source.coop/dataforcanada/d4c-datapkg-elevation)                                     | 526.0 GB |
-| [dynamical/noaa-gfs-analysis](https://source.coop/dynamical/noaa-gfs-analysis)                                                     | 510.0 GB |
 | [kylebarron/usgs-landcover](https://source.coop/kylebarron/usgs-landcover)                                                         | 506.5 GB |
 | [clay/lgnd-clay-v1-5-sentinel-2-l2a](https://source.coop/clay/lgnd-clay-v1-5-sentinel-2-l2a)                                       | 503.2 GB |
 | [protomaps/openstreetmap](https://source.coop/protomaps/openstreetmap)                                                             | 488.7 GB |
@@ -265,7 +265,7 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 | [eco4cast/neon4cast-forecasts](https://source.coop/eco4cast/neon4cast-forecasts)                                                   | 330.1 GB |
 | [smartmaps/japan-geotiff-dem](https://source.coop/smartmaps/japan-geotiff-dem)                                                     | 318.4 GB |
 | [bkr/err](https://source.coop/bkr/err)                                                                                             | 288.6 GB |
-| [dynamical/noaa-mrms-conus-analysis-hourly](https://source.coop/dynamical/noaa-mrms-conus-analysis-hourly)                         | 250.6 GB |
+| [dynamical/noaa-mrms-conus-analysis-hourly](https://source.coop/dynamical/noaa-mrms-conus-analysis-hourly)                         | 250.2 GB |
 | [smartmaps/ngs](https://source.coop/smartmaps/ngs)                                                                                 | 232.0 GB |
 | [tge-labs/globalbuildingatlas-lod1](https://source.coop/tge-labs/globalbuildingatlas-lod1)                                         | 224.7 GB |
 | [tge-labs/openbuildingmap](https://source.coop/tge-labs/openbuildingmap)                                                           | 208.3 GB |
@@ -290,7 +290,7 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 | [youssef-harby/egms-copernicus](https://source.coop/youssef-harby/egms-copernicus)                                                 |  73.0 GB |
 | [nlebovits/jrc-glofas](https://source.coop/nlebovits/jrc-glofas)                                                                   |  70.8 GB |
 | [vizzuality/hfp-100](https://source.coop/vizzuality/hfp-100)                                                                       |  70.4 GB |
-| [cboettig/overturemaps](https://source.coop/cboettig/overturemaps)                                                                 |  69.3 GB |
+| [cboettig/overturemaps](https://source.coop/cboettig/overturemaps)                                                                 |  69.8 GB |
 | [pacificspatial/flateau](https://source.coop/pacificspatial/flateau)                                                               |  63.3 GB |
 | [planet/rapidcrops](https://source.coop/planet/rapidcrops)                                                                         |  62.6 GB |
 | [avikertesz/002](https://source.coop/avikertesz/002)                                                                               |  61.4 GB |
@@ -301,6 +301,7 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 | [reflective/geomipzarr](https://source.coop/reflective/geomipzarr)                                                                 |  47.3 GB |
 | [cboettig/padus](https://source.coop/cboettig/padus)                                                                               |  46.7 GB |
 | [tge-labs/mgrs](https://source.coop/tge-labs/mgrs)                                                                                 |  45.6 GB |
+| [cboettig/land-cover](https://source.coop/cboettig/land-cover)                                                                     |  43.3 GB |
 | [cboettig/high-seas](https://source.coop/cboettig/high-seas)                                                                       |  40.5 GB |
 | [cboettig/census](https://source.coop/cboettig/census)                                                                             |  34.5 GB |
 | [dataforcanada/d4c-datapkg-foundation](https://source.coop/dataforcanada/d4c-datapkg-foundation)                                   |  34.3 GB |
@@ -323,11 +324,10 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 | [youssef-harby/exiobase-3](https://source.coop/youssef-harby/exiobase-3)                                                           |  16.3 GB |
 | [smartmaps/amx-2024-04](https://source.coop/smartmaps/amx-2024-04)                                                                 |  16.2 GB |
 | [cboettig/sahara-trees](https://source.coop/cboettig/sahara-trees)                                                                 |  15.7 GB |
-| [giswqs/opengeos](https://source.coop/giswqs/opengeos)                                                                             |  15.0 GB |
+| [giswqs/opengeos](https://source.coop/giswqs/opengeos)                                                                             |  15.7 GB |
 | [youssef-harby/geoparquet-overviews](https://source.coop/youssef-harby/geoparquet-overviews)                                       |  14.7 GB |
-| [cboettig/land-cover](https://source.coop/cboettig/land-cover)                                                                     |  14.2 GB |
 | [zluo43/citibike](https://source.coop/zluo43/citibike)                                                                             |  14.1 GB |
-| [cboettig/social-vulnerability](https://source.coop/cboettig/social-vulnerability)                                                 |  13.1 GB |
+| [cboettig/social-vulnerability](https://source.coop/cboettig/social-vulnerability)                                                 |  13.3 GB |
 | [cboettig/inat](https://source.coop/cboettig/inat)                                                                                 |  13.1 GB |
 | [nlebovits/microsoft-ml-road-detections](https://source.coop/nlebovits/microsoft-ml-road-detections)                               |  11.4 GB |
 | [planet/agroforestry-individual-tree-detection-india](https://source.coop/planet/agroforestry-individual-tree-detection-india)     |  11.3 GB |
@@ -344,16 +344,17 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 | [planet/disasterdata](https://source.coop/planet/disasterdata)                                                                     |   5.4 GB |
 | [fiboa/us-usda-cropland](https://source.coop/fiboa/us-usda-cropland)                                                               |   5.3 GB |
 | [rsignell/ncei-estuarine-bathymetry](https://source.coop/rsignell/ncei-estuarine-bathymetry)                                       |   5.3 GB |
+| [cboettig/rivers](https://source.coop/cboettig/rivers)                                                                             |   4.6 GB |
 | [alexgleith/gebco-2024](https://source.coop/alexgleith/gebco-2024)                                                                 |   4.6 GB |
 | [fish-pace/pace-oci](https://source.coop/fish-pace/pace-oci)                                                                       |   4.5 GB |
-| [cboettig/rivers](https://source.coop/cboettig/rivers)                                                                             |   4.4 GB |
 | [fiboa/es-cl](https://source.coop/fiboa/es-cl)                                                                                     |   4.2 GB |
 | [cboettig/fishbase](https://source.coop/cboettig/fishbase)                                                                         |   4.1 GB |
 | [fused/hex](https://source.coop/fused/hex)                                                                                         |   3.6 GB |
 | [clay/clay-model-v0-embeddings](https://source.coop/clay/clay-model-v0-embeddings)                                                 |   3.6 GB |
-| [cboettig/ecoregion](https://source.coop/cboettig/ecoregion)                                                                       |   3.6 GB |
 | [fiboa/at-crop](https://source.coop/fiboa/at-crop)                                                                                 |   3.4 GB |
 | [fiboa/es-cm](https://source.coop/fiboa/es-cm)                                                                                     |   3.4 GB |
+| [cboettig/ecoregion](https://source.coop/cboettig/ecoregion)                                                                       |   3.3 GB |
+| [earthgenome/amazon-mining-watch](https://source.coop/earthgenome/amazon-mining-watch)                                             |   3.3 GB |
 | [fiboa/es-vc](https://source.coop/fiboa/es-vc)                                                                                     |   3.2 GB |
 | [nlebovits/eurosat-ms](https://source.coop/nlebovits/eurosat-ms)                                                                   |   3.2 GB |
 | [englacial/bedmap](https://source.coop/englacial/bedmap)                                                                           |   3.2 GB |
@@ -376,8 +377,8 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 | [pangeo/example-tiff](https://source.coop/pangeo/example-tiff)                                                                     |   1.6 GB |
 | [cboettig/ca-dac](https://source.coop/cboettig/ca-dac)                                                                             |   1.6 GB |
 | [englacial/zagg](https://source.coop/englacial/zagg)                                                                               |   1.5 GB |
-| [fiboa/estonia-ec](https://source.coop/fiboa/estonia-ec)                                                                           |   1.4 GB |
 | [walkthru-earth/opensensor-space](https://source.coop/walkthru-earth/opensensor-space)                                             |   1.4 GB |
+| [fiboa/estonia-ec](https://source.coop/fiboa/estonia-ec)                                                                           |   1.4 GB |
 | [cboettig/cpad](https://source.coop/cboettig/cpad)                                                                                 |   1.4 GB |
 | [earthblox/cciwr](https://source.coop/earthblox/cciwr)                                                                             |   1.3 GB |
 | [cboettig/taxadb](https://source.coop/cboettig/taxadb)                                                                             |   1.2 GB |
@@ -403,6 +404,7 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 | [englacial/ice-sheet-temperature](https://source.coop/englacial/ice-sheet-temperature)                                             | 676.1 MB |
 | [nlebovits/censo-argentino](https://source.coop/nlebovits/censo-argentino)                                                         | 649.4 MB |
 | [cboettig/us-boundaries](https://source.coop/cboettig/us-boundaries)                                                               | 644.7 MB |
+| [alukach/firesmoke](https://source.coop/alukach/firesmoke)                                                                         | 638.7 MB |
 | [tge-labs/admin-boundaries](https://source.coop/tge-labs/admin-boundaries)                                                         | 622.0 MB |
 | [fiboa/es-pm](https://source.coop/fiboa/es-pm)                                                                                     | 612.0 MB |
 | [fiboa/denmark](https://source.coop/fiboa/denmark)                                                                                 | 570.1 MB |
@@ -412,7 +414,6 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 | [nlebovits/gaul-l2-admin](https://source.coop/nlebovits/gaul-l2-admin)                                                             | 509.1 MB |
 | [fiboa/sweden](https://source.coop/fiboa/sweden)                                                                                   | 502.7 MB |
 | [major-tom/index](https://source.coop/major-tom/index)                                                                             | 498.7 MB |
-| [alukach/firesmoke](https://source.coop/alukach/firesmoke)                                                                         | 488.7 MB |
 | [woodwell-climate/rangelands-raster-1](https://source.coop/woodwell-climate/rangelands-raster-1)                                   | 486.3 MB |
 | [fiboa/croatia](https://source.coop/fiboa/croatia)                                                                                 | 481.2 MB |
 | [cboettig/calenviroscreen](https://source.coop/cboettig/calenviroscreen)                                                           | 475.9 MB |
@@ -433,12 +434,11 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 | [fiboa/de-nds](https://source.coop/fiboa/de-nds)                                                                                   | 252.2 MB |
 | [cboettig/cgs](https://source.coop/cboettig/cgs)                                                                                   | 228.4 MB |
 | [smartmaps/nagasaki-mago](https://source.coop/smartmaps/nagasaki-mago)                                                             | 220.7 MB |
-| [earthgenome/amazon-mining-watch](https://source.coop/earthgenome/amazon-mining-watch)                                             | 213.3 MB |
 | [fiboa/es-pv](https://source.coop/fiboa/es-pv)                                                                                     | 203.7 MB |
 | [fiboa/us-ca-scm](https://source.coop/fiboa/us-ca-scm)                                                                             | 201.6 MB |
+| [dataforcanada/d4c-datapkg-environment-climate-health](https://source.coop/dataforcanada/d4c-datapkg-environment-climate-health)   | 187.4 MB |
 | [fiboa/de-th](https://source.coop/fiboa/de-th)                                                                                     | 179.7 MB |
 | [fiboa/es-cn](https://source.coop/fiboa/es-cn)                                                                                     | 179.6 MB |
-| [dataforcanada/d4c-datapkg-environment-climate-health](https://source.coop/dataforcanada/d4c-datapkg-environment-climate-health)   | 174.3 MB |
 | [krishnaglodha/ksrsac-gis](https://source.coop/krishnaglodha/ksrsac-gis)                                                           | 160.2 MB |
 | [smartmaps/toshik](https://source.coop/smartmaps/toshik)                                                                           | 159.9 MB |
 | [fiboa/de-mv](https://source.coop/fiboa/de-mv)                                                                                     | 150.8 MB |
@@ -465,7 +465,7 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 | [kerner-lab/fields-of-the-world-austria](https://source.coop/kerner-lab/fields-of-the-world-austria)                               |  43.9 MB |
 | [kerner-lab/fields-of-the-world-croatia](https://source.coop/kerner-lab/fields-of-the-world-croatia)                               |  41.7 MB |
 | [fiboa/luxembourg](https://source.coop/fiboa/luxembourg)                                                                           |  39.3 MB |
-| [cboettig/mappinginequality](https://source.coop/cboettig/mappinginequality)                                                       |  28.7 MB |
+| [cboettig/mappinginequality](https://source.coop/cboettig/mappinginequality)                                                       |  32.7 MB |
 | [kerner-lab/fields-of-the-world-slovakia](https://source.coop/kerner-lab/fields-of-the-world-slovakia)                             |  26.4 MB |
 | [kerner-lab/fields-of-the-world-lithuania](https://source.coop/kerner-lab/fields-of-the-world-lithuania)                           |  26.2 MB |
 | [kerner-lab/fields-of-the-world-finland](https://source.coop/kerner-lab/fields-of-the-world-finland)                               |  24.5 MB |
@@ -513,31 +513,45 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 
 ### BACKLOG
 
-<details><summary>error step=gather-probe — 1 dataset · 40.6 TB</summary>
+<details><summary>error step=gather-probe — 1 dataset · 42.1 TB</summary>
 
 | repo                                                                   |   bytes |
 | ---------------------------------------------------------------------- | ------: |
-| [dynamical/dwd-icon-grib](https://source.coop/dynamical/dwd-icon-grib) | 40.6 TB |
+| [dynamical/dwd-icon-grib](https://source.coop/dynamical/dwd-icon-grib) | 42.1 TB |
 
 </details>
 
-<details><summary>in s3, not yet seeded — 13 datasets · 2.9 TB</summary>
+<details><summary>in s3, not yet seeded — 27 datasets · 16.9 TB</summary>
 
 | repo                                                                                                                                     |    bytes |
 | ---------------------------------------------------------------------------------------------------------------------------------------- | -------: |
-| [dynamical/eccc-hrdps-grib](https://source.coop/dynamical/eccc-hrdps-grib)                                                               |   1.4 TB |
+| [govscape/eota-ocr](https://source.coop/govscape/eota-ocr)                                                                               |  12.8 TB |
+| [dynamical/eccc-hrdps-grib](https://source.coop/dynamical/eccc-hrdps-grib)                                                               |   2.4 TB |
 | [uos-shiver/greenland](https://source.coop/uos-shiver/greenland)                                                                         | 431.3 GB |
 | [uos-shiver/antarctica](https://source.coop/uos-shiver/antarctica)                                                                       | 416.5 GB |
 | [vizzuality/biodiversity-intactness-100m-v1-1](https://source.coop/vizzuality/biodiversity-intactness-100m-v1-1)                         | 316.4 GB |
 | [harvard-lil/nih](https://source.coop/harvard-lil/nih)                                                                                   | 220.5 GB |
+| [cboettig/usgs-nhd](https://source.coop/cboettig/usgs-nhd)                                                                               |  78.4 GB |
 | [harvard-lil/smithsonian-transcription-center](https://source.coop/harvard-lil/smithsonian-transcription-center)                         |  57.9 GB |
+| [cboettig/nc-frontiers](https://source.coop/cboettig/nc-frontiers)                                                                       |  52.0 GB |
+| [cboettig/hazard](https://source.coop/cboettig/hazard)                                                                                   |  38.7 GB |
+| [nlebovits/gpq-tiles-demo](https://source.coop/nlebovits/gpq-tiles-demo)                                                                 |  31.4 GB |
 | [ganzk/lcms](https://source.coop/ganzk/lcms)                                                                                             |  28.8 GB |
-| [nlebovits/gpq-tiles-demo](https://source.coop/nlebovits/gpq-tiles-demo)                                                                 |  24.7 GB |
-| [tristangruppwri/cadastral](https://source.coop/tristangruppwri/cadastral)                                                               |  14.8 GB |
-| [humane-intelligence/bias-bounty-mapping-equity-challenge](https://source.coop/humane-intelligence/bias-bounty-mapping-equity-challenge) |   5.1 GB |
-| [portolan/portolan-pipeline](https://source.coop/portolan/portolan-pipeline)                                                             |   1.0 GB |
+| [fish-pace/globcolour](https://source.coop/fish-pace/globcolour)                                                                         |  20.1 GB |
+| [tristangruppwri/cadastral](https://source.coop/tristangruppwri/cadastral)                                                               |  15.6 GB |
+| [cboettig/facts](https://source.coop/cboettig/facts)                                                                                     |  15.2 GB |
+| [cboettig/usgs-wbd](https://source.coop/cboettig/usgs-wbd)                                                                               |  15.2 GB |
+| [humane-intelligence/bias-bounty-mapping-equity-challenge](https://source.coop/humane-intelligence/bias-bounty-mapping-equity-challenge) |   5.3 GB |
+| [tristangruppwri/mapbiomas](https://source.coop/tristangruppwri/mapbiomas)                                                               |   3.1 GB |
+| [cboettig/connectivity](https://source.coop/cboettig/connectivity)                                                                       |   1.5 GB |
+| [cboettig/usgs-ungulate-migration](https://source.coop/cboettig/usgs-ungulate-migration)                                                 |   1.1 GB |
+| [carbonplan/srm-downscaling](https://source.coop/carbonplan/srm-downscaling)                                                             | 386.5 MB |
 | [hackl/euroflood-index](https://source.coop/hackl/euroflood-index)                                                                       | 138.8 MB |
+| [portolan/portolan-pipeline](https://source.coop/portolan/portolan-pipeline)                                                             |  58.2 MB |
+| [esbach/lu-ecuador-2024](https://source.coop/esbach/lu-ecuador-2024)                                                                     |  35.2 MB |
+| [tristangruppwri/soft-commodity-infrastructure](https://source.coop/tristangruppwri/soft-commodity-infrastructure)                       |  14.4 MB |
 | [tyler/iucn-get-vocabularies](https://source.coop/tyler/iucn-get-vocabularies)                                                           |   5.4 MB |
+| [geoai-ucph/gvsm](https://source.coop/geoai-ucph/gvsm)                                                                                   | 237.4 KB |
 
 </details>
 
@@ -549,11 +563,11 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 
 </details>
 
-<details><summary>all_failed .filegdb — 1 dataset · 219.0 GB</summary>
+<details><summary>all_failed .filegdb — 1 dataset · 198.6 GB</summary>
 
 | repo                                                       |    bytes |
 | ---------------------------------------------------------- | -------: |
-| [cboettig/wetlands](https://source.coop/cboettig/wetlands) | 219.0 GB |
+| [cboettig/wetlands](https://source.coop/cboettig/wetlands) | 198.6 GB |
 
 </details>
 
@@ -600,11 +614,11 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 
 ### SKIPPED
 
-<details><summary>unlisted — 147 datasets · 697.8 TB</summary>
+<details><summary>unlisted — 147 datasets · 805.3 TB</summary>
 
 | repo                                                                                                                         |    bytes |
 | ---------------------------------------------------------------------------------------------------------------------------- | -------: |
-| [tessera/tessera](https://source.coop/tessera/tessera)                                                                       | 548.8 TB |
+| [tessera/tessera](https://source.coop/tessera/tessera)                                                                       | 656.1 TB |
 | [mvrl/amos-v1](https://source.coop/mvrl/amos-v1)                                                                             |  69.6 TB |
 | [firststreet/aef-zarr](https://source.coop/firststreet/aef-zarr)                                                             |  54.7 TB |
 | [clay/clay-v1-5-naip](https://source.coop/clay/clay-v1-5-naip)                                                               |   6.8 TB |
@@ -622,19 +636,19 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 | [major-tom/landsatl8toa](https://source.coop/major-tom/landsatl8toa)                                                         | 337.1 GB |
 | [epoch/forest-typology-2020](https://source.coop/epoch/forest-typology-2020)                                                 | 333.3 GB |
 | [mlcommons/unsupservised-peoples-speech](https://source.coop/mlcommons/unsupservised-peoples-speech)                         | 258.3 GB |
+| [isaaccorley/ftw-scratchpad](https://source.coop/isaaccorley/ftw-scratchpad)                                                 | 201.3 GB |
 | [luddaludwig/boreal-fire-carbon](https://source.coop/luddaludwig/boreal-fire-carbon)                                         | 200.1 GB |
 | [epoch/jrc-tmf](https://source.coop/epoch/jrc-tmf)                                                                           | 125.9 GB |
 | [giswqs/building-height](https://source.coop/giswqs/building-height)                                                         | 115.8 GB |
-| [isaaccorley/ftw-scratchpad](https://source.coop/isaaccorley/ftw-scratchpad)                                                 | 111.0 GB |
 | [e4drr-project/forecasts](https://source.coop/e4drr-project/forecasts)                                                       | 104.7 GB |
 | [ftw/ftw-planet](https://source.coop/ftw/ftw-planet)                                                                         | 102.3 GB |
 | [cboettig/us-rivers](https://source.coop/cboettig/us-rivers)                                                                 |  99.3 GB |
+| [wri-data-lab/trazofields](https://source.coop/wri-data-lab/trazofields)                                                     |  57.6 GB |
 | [kerner-lab/fields-of-the-world-archive](https://source.coop/kerner-lab/fields-of-the-world-archive)                         |  56.8 GB |
-| [wri-data-lab/trazofields](https://source.coop/wri-data-lab/trazofields)                                                     |  54.8 GB |
 | [giswqs/biomass](https://source.coop/giswqs/biomass)                                                                         |  47.0 GB |
 | [clay/california-naip-clay-v1](https://source.coop/clay/california-naip-clay-v1)                                             |  46.8 GB |
 | [e4drr-project/observations](https://source.coop/e4drr-project/observations)                                                 |  44.2 GB |
-| [ftw/ftw-inference-output](https://source.coop/ftw/ftw-inference-output)                                                     |  37.4 GB |
+| [ftw/ftw-inference-output](https://source.coop/ftw/ftw-inference-output)                                                     |  37.5 GB |
 | [tristangruppwri/trazofields](https://source.coop/tristangruppwri/trazofields)                                               |  29.2 GB |
 | [cholmes/fiboa-scratch](https://source.coop/cholmes/fiboa-scratch)                                                           |  21.7 GB |
 | [khvzix/delineate-anything-fields](https://source.coop/khvzix/delineate-anything-fields)                                     |  21.7 GB |
@@ -669,13 +683,13 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 | [cholmes/os-opendata-cng](https://source.coop/cholmes/os-opendata-cng)                                                       |   3.9 GB |
 | [brunosan/clay-model-v0-embeddings](https://source.coop/brunosan/clay-model-v0-embeddings)                                   |   3.6 GB |
 | [nishadhka/aq-icechunk-store-ifs](https://source.coop/nishadhka/aq-icechunk-store-ifs)                                       |   2.7 GB |
+| [tyler/colombia-ecosystems-map](https://source.coop/tyler/colombia-ecosystems-map)                                           |   2.5 GB |
 | [espm-288/espm-288-testing](https://source.coop/espm-288/espm-288-testing)                                                   |   2.3 GB |
 | [tyler/usda-nass-cdl](https://source.coop/tyler/usda-nass-cdl)                                                               |   2.1 GB |
 | [tyler/gadm](https://source.coop/tyler/gadm)                                                                                 |   2.0 GB |
 | [tristangruppwri/trazotraining](https://source.coop/tristangruppwri/trazotraining)                                           |   1.9 GB |
 | [wri-data-lab/trazoannotations](https://source.coop/wri-data-lab/trazoannotations)                                           |   1.9 GB |
 | [vdavez/usaspending-data](https://source.coop/vdavez/usaspending-data)                                                       |   1.9 GB |
-| [tyler/colombia-ecosystems-map](https://source.coop/tyler/colombia-ecosystems-map)                                           |   1.8 GB |
 | [harvard-lil/data-gov-metadata](https://source.coop/harvard-lil/data-gov-metadata)                                           |   1.3 GB |
 | [youssef-harby/cloud-native-geocoding](https://source.coop/youssef-harby/cloud-native-geocoding)                             |   1.1 GB |
 | [amitbajaj/testrepo12](https://source.coop/amitbajaj/testrepo12)                                                             |   1.1 GB |
@@ -695,10 +709,10 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 | [smartmaps/rw-wip-2024-05-31](https://source.coop/smartmaps/rw-wip-2024-05-31)                                               | 226.5 MB |
 | [roorda-tudelft/public-trees-in-nl](https://source.coop/roorda-tudelft/public-trees-in-nl)                                   | 220.9 MB |
 | [smartmaps/tmet](https://source.coop/smartmaps/tmet)                                                                         | 193.1 MB |
-| [alukach/alukach-experimentation](https://source.coop/alukach/alukach-experimentation)                                       | 191.5 MB |
 | [zarr/geozarr-tests](https://source.coop/zarr/geozarr-tests)                                                                 | 156.6 MB |
 | [eeholmes/cefi](https://source.coop/eeholmes/cefi)                                                                           | 138.5 MB |
 | [m-mohr/test](https://source.coop/m-mohr/test)                                                                               | 115.3 MB |
+| [alukach/alukach-experimentation](https://source.coop/alukach/alukach-experimentation)                                       | 111.1 MB |
 | [michelle/test](https://source.coop/michelle/test)                                                                           | 102.8 MB |
 | [kerner-lab/fieldscapes-spain](https://source.coop/kerner-lab/fieldscapes-spain)                                             |  93.1 MB |
 | [kerner-lab/fieldscapes-latvia](https://source.coop/kerner-lab/fieldscapes-latvia)                                           |  57.6 MB |
@@ -730,8 +744,8 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 | [csaybar/3dclouds](https://source.coop/csaybar/3dclouds)                                                                     |   2.8 MB |
 | [val/test-prod-vp](https://source.coop/val/test-prod-vp)                                                                     |   2.6 MB |
 | [tyler/test-tiff-not-cloud-optimized](https://source.coop/tyler/test-tiff-not-cloud-optimized)                               |   2.2 MB |
+| [source/source-stats](https://source.coop/source/source-stats)                                                               |   2.1 MB |
 | [kerner-lab/fieldscapes-southafrica](https://source.coop/kerner-lab/fieldscapes-southafrica)                                 |   2.0 MB |
-| [source/source-stats](https://source.coop/source/source-stats)                                                               |   2.0 MB |
 | [kerner-lab/fieldscapes-corsica](https://source.coop/kerner-lab/fieldscapes-corsica)                                         |   2.0 MB |
 | [amitbajaj/canada-natural-gas-imports-exports](https://source.coop/amitbajaj/canada-natural-gas-imports-exports)             |   2.0 MB |
 | [kerner-lab/fieldscapes-brazil](https://source.coop/kerner-lab/fieldscapes-brazil)                                           |   1.4 MB |
@@ -772,7 +786,7 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 | [cboettig/mobi](https://source.coop/cboettig/mobi)                                                     | 283.4 MB |
 | [catalystcoop/pudl](https://source.coop/catalystcoop/pudl)                                             |  42.1 MB |
 | [fiboa/br-ba-lem](https://source.coop/fiboa/br-ba-lem)                                                 |   7.3 MB |
-| [source/metadata-catalog](https://source.coop/source/metadata-catalog)                                 |   4.0 MB |
+| [source/metadata-catalog](https://source.coop/source/metadata-catalog)                                 |   4.1 MB |
 | [youssef-harby/overture-maps-stac](https://source.coop/youssef-harby/overture-maps-stac)               | 718.0 KB |
 | [asterisk-labs/cozip](https://source.coop/asterisk-labs/cozip)                                         |  98.5 KB |
 | [fish-pace/chla-z](https://source.coop/fish-pace/chla-z)                                               |  12.0 KB |
@@ -825,7 +839,7 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 
 ### UNREGISTERED
 
-<details><summary>stowaways — 40 datasets · 926.4 TB</summary>
+<details><summary>stowaways — 40 datasets · 926.5 TB</summary>
 
 | repo                                                      |    bytes |
 | --------------------------------------------------------- | -------: |
@@ -836,15 +850,15 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 | ncar/gdex                                                 |  62.6 TB |
 | mlcommons/unsupervised-peoples-speech                     |  47.6 TB |
 | tge-labs/ftw-aef-mosaic                                   |  12.1 TB |
-| dynamical/noaa-hrrr-analysis                              |   2.7 TB |
+| dynamical/noaa-hrrr-analysis                              |   2.8 TB |
 | google-research-open-buildings/fgb-s2                     | 487.0 GB |
 | google-research-open-buildings/v2                         | 240.6 GB |
 | geovibes/experiments                                      | 163.8 GB |
 | google-research-open-buildings/geoparquet-by-country      | 161.1 GB |
 | google-research-open-buildings/geoparquet-s2-more-columns | 150.2 GB |
-| harvard-lil/batch-operations                              |  38.9 GB |
+| harvard-lil/batch-operations                              |  40.1 GB |
 | vnp46a1_thermal_anomaly/classification                    |  23.9 GB |
-| harvard-lil/inventories                                   |  22.4 GB |
+| harvard-lil/inventories                                   |  22.8 GB |
 | vnp46a1_thermal_anomaly/anomaly_det                       |   6.6 GB |
 | pangeo/esip2025                                           |   5.3 GB |
 | source/inventory                                          |   3.0 GB |
@@ -878,8 +892,8 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 | subreport | meaning                                          | count |    bytes |
 | --------- | ------------------------------------------------ | ----: | -------: |
 | ghosts    | catalog entry, no S3 data                        |    50 |  29.8 TB |
-| stowaways | S3 data, no source.coop product                  |    40 | 926.4 TB |
-| stale     | catalog bytes ≠ S3 (fixed by `make process-all`) |    42 |   1.5 PB |
+| stowaways | S3 data, no source.coop product                  |    40 | 926.5 TB |
+| stale     | catalog bytes ≠ S3 (fixed by `make process-all`) |    62 |   1.8 PB |
 
 <details><summary>ghosts — 50 datasets</summary>
 
@@ -949,15 +963,15 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 | ncar/gdex                                                 |  62.6 TB |
 | mlcommons/unsupervised-peoples-speech                     |  47.6 TB |
 | tge-labs/ftw-aef-mosaic                                   |  12.1 TB |
-| dynamical/noaa-hrrr-analysis                              |   2.7 TB |
+| dynamical/noaa-hrrr-analysis                              |   2.8 TB |
 | google-research-open-buildings/fgb-s2                     | 487.0 GB |
 | google-research-open-buildings/v2                         | 240.6 GB |
 | geovibes/experiments                                      | 163.8 GB |
 | google-research-open-buildings/geoparquet-by-country      | 161.1 GB |
 | google-research-open-buildings/geoparquet-s2-more-columns | 150.2 GB |
-| harvard-lil/batch-operations                              |  38.9 GB |
+| harvard-lil/batch-operations                              |  40.1 GB |
 | vnp46a1_thermal_anomaly/classification                    |  23.9 GB |
-| harvard-lil/inventories                                   |  22.4 GB |
+| harvard-lil/inventories                                   |  22.8 GB |
 | vnp46a1_thermal_anomaly/anomaly_det                       |   6.6 GB |
 | pangeo/esip2025                                           |   5.3 GB |
 | source/inventory                                          |   3.0 GB |
@@ -985,52 +999,72 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 
 </details>
 
-<details><summary>stale — 42 datasets</summary>
+<details><summary>stale — 62 datasets</summary>
 
-| repo                                                |        catalog → S3 |
-| --------------------------------------------------- | ------------------: |
-| tessera/tessera                                     | 227.9 TB → 548.8 TB |
-| harvard-lil/smithsonian-open-access                 | 823.4 TB → 827.7 TB |
-| dynamical/dwd-icon-grib                             |   37.4 TB → 40.6 TB |
-| dynamical/ecmwf-ifs-ens-forecast-15-day-0-25-degree |   45.2 TB → 46.8 TB |
-| forestsignal/forestsignal-ca                        |  726.4 GB → 598.0 B |
-| luddaludwig/boreal-fire-carbon                      |  74.3 GB → 200.1 GB |
-| cboettig/wetlands                                   | 187.6 GB → 219.0 GB |
-| isaaccorley/ftw-scratchpad                          |  89.2 GB → 111.0 GB |
-| e4drr-project/forecasts                             |  84.0 GB → 104.7 GB |
-| fiboa/data                                          |   30.1 GB → 49.9 GB |
-| wri-data-lab/trazofields                            |   41.4 GB → 54.8 GB |
-| opengeos/us-buildings                               |   28.4 GB → 19.2 GB |
-| dynamical/noaa-gefs-analysis                        | 972.0 GB → 972.6 GB |
-| dynamical/noaa-mrms-conus-analysis-hourly           | 250.0 GB → 250.6 GB |
-| vida/dre-atlas                                      |     4.8 GB → 5.4 GB |
-| rseg/long-lfmc-test                                 |     1.9 TB → 1.9 TB |
-| alukach/firesmoke                                   |  84.5 MB → 488.7 MB |
-| tyler/colombia-ecosystems-map                       |     1.4 GB → 1.8 GB |
-| mvrl/amos-v1                                        |   69.6 TB → 69.6 TB |
-| e4drr-project/observations                          |   44.0 GB → 44.2 GB |
-| ftw/ftw-inference-output                            |   37.2 GB → 37.4 GB |
-| alukach/test-product                                | 630.2 MB → 756.1 MB |
-| alukach/alukach-experimentation                     | 107.7 MB → 191.5 MB |
-| root-geospatial/flight-counts                       |     4.4 GB → 4.4 GB |
-| cholmes/aois                                        |     5.1 GB → 5.1 GB |
-| tyler/test-files                                    |  701.4 KB → 16.0 MB |
-| planet/skyscraper                                   |   44.6 GB → 44.6 GB |
-| cboettig/high-seas                                  |   40.5 GB → 40.5 GB |
-| source/source-stats                                 |     1.9 MB → 2.0 MB |
-| source/metadata-catalog                             |     3.9 MB → 4.0 MB |
-| dataforcanada/d4c-datapkg-foundation                |   34.3 GB → 34.3 GB |
-| cboettig/census                                     |   34.5 GB → 34.5 GB |
-| cboettig/ca-dac                                     |     1.6 GB → 1.6 GB |
-| cboettig/epa-water                                  |     2.8 GB → 2.8 GB |
-| cboettig/calenviroscreen                            | 475.8 MB → 475.9 MB |
-| cboettig/usfws                                      | 447.2 MB → 447.2 MB |
-| cboettig/land-cover                                 |   14.2 GB → 14.2 GB |
-| cboettig/ecoregion                                  |     3.6 GB → 3.6 GB |
-| cholmes/portolan-nl                                 |   83.7 GB → 83.7 GB |
-| cboettig/fire                                       |     6.7 GB → 6.7 GB |
-| cboettig/cgs                                        | 228.4 MB → 228.4 MB |
-| wri-data-lab/trazoannotations                       |     1.9 GB → 1.9 GB |
+| repo                                                 |        catalog → S3 |
+| ---------------------------------------------------- | ------------------: |
+| tessera/tessera                                      | 227.9 TB → 656.1 TB |
+| harvard-lil/smithsonian-open-access                  | 823.4 TB → 851.0 TB |
+| dynamical/dwd-icon-grib                              |   37.4 TB → 42.1 TB |
+| dynamical/ecmwf-ifs-ens-forecast-15-day-0-25-degree  |   45.2 TB → 47.2 TB |
+| forestsignal/forestsignal-ca                         |  726.4 GB → 598.0 B |
+| bkr/precipradar                                      |     5.2 TB → 5.7 TB |
+| dynamical/noaa-hrrr-forecast-48-hour                 |   12.5 TB → 12.9 TB |
+| bkr/ifs                                              |   36.9 TB → 37.0 TB |
+| bkr/silam-dust                                       |   25.2 TB → 25.4 TB |
+| dynamical/noaa-gfs-analysis                          | 510.0 GB → 648.8 GB |
+| luddaludwig/boreal-fire-carbon                       |  74.3 GB → 200.1 GB |
+| cboettig/gbif                                        |     1.1 TB → 1.0 TB |
+| isaaccorley/ftw-scratchpad                           |  89.2 GB → 201.3 GB |
+| dynamical/noaa-gefs-analysis                         |   972.0 GB → 1.0 TB |
+| cboettig/land-cover                                  |   14.2 GB → 43.3 GB |
+| walkthru-earth/indices                               | 576.6 GB → 597.7 GB |
+| e4drr-project/forecasts                              |  84.0 GB → 104.7 GB |
+| fiboa/data                                           |   30.1 GB → 49.9 GB |
+| dynamical/ecmwf-aifs-single-forecast                 |     1.9 TB → 1.9 TB |
+| wri-data-lab/trazofields                             |   41.4 GB → 57.6 GB |
+| cboettig/wetlands                                    | 187.6 GB → 198.6 GB |
+| opengeos/us-buildings                                |   28.4 GB → 19.2 GB |
+| ausantarctic/ghrsst-mur-v2                           |     4.2 TB → 4.2 TB |
+| earthgenome/amazon-mining-watch                      |   213.3 MB → 3.3 GB |
+| tyler/colombia-ecosystems-map                        |     1.4 GB → 2.5 GB |
+| giswqs/opengeos                                      |   15.0 GB → 15.7 GB |
+| vida/dre-atlas                                       |     4.8 GB → 5.4 GB |
+| alukach/firesmoke                                    |  84.5 MB → 638.7 MB |
+| cboettig/overturemaps                                |   69.3 GB → 69.8 GB |
+| rseg/long-lfmc-test                                  |     1.9 TB → 1.9 TB |
+| cboettig/ecoregion                                   |     3.6 GB → 3.3 GB |
+| ftw/ftw-inference-output                             |   37.2 GB → 37.5 GB |
+| cboettig/rivers                                      |     4.4 GB → 4.6 GB |
+| cboettig/social-vulnerability                        |   13.1 GB → 13.3 GB |
+| mvrl/amos-v1                                         |   69.6 TB → 69.6 TB |
+| e4drr-project/observations                           |   44.0 GB → 44.2 GB |
+| alukach/test-product                                 | 630.2 MB → 756.1 MB |
+| dynamical/noaa-mrms-conus-analysis-hourly            | 250.0 GB → 250.2 GB |
+| root-geospatial/flight-counts                        |     4.4 GB → 4.4 GB |
+| cholmes/aois                                         |     5.1 GB → 5.1 GB |
+| tyler/test-files                                     |  701.4 KB → 16.0 MB |
+| dataforcanada/d4c-datapkg-environment-climate-health | 174.3 MB → 187.4 MB |
+| dynamical/asos-parquet                               |   20.2 GB → 20.2 GB |
+| walkthru-earth/opensensor-space                      |     1.4 GB → 1.4 GB |
+| planet/skyscraper                                    |   44.6 GB → 44.6 GB |
+| cboettig/mappinginequality                           |   28.7 MB → 32.7 MB |
+| alukach/alukach-experimentation                      | 107.7 MB → 111.1 MB |
+| opengeos/geoai                                       |   17.7 GB → 17.7 GB |
+| cboettig/high-seas                                   |   40.5 GB → 40.5 GB |
+| source/source-stats                                  |     1.9 MB → 2.1 MB |
+| source/metadata-catalog                              |     3.9 MB → 4.1 MB |
+| cboettig/fire                                        |     6.7 GB → 6.7 GB |
+| cboettig/ca-dac                                      |     1.6 GB → 1.6 GB |
+| cboettig/indigenous                                  |   23.2 GB → 23.2 GB |
+| cboettig/calenviroscreen                             | 475.8 MB → 475.9 MB |
+| dataforcanada/d4c-datapkg-foundation                 |   34.3 GB → 34.3 GB |
+| cboettig/census                                      |   34.5 GB → 34.5 GB |
+| cboettig/epa-water                                   |     2.8 GB → 2.8 GB |
+| cboettig/usfws                                       | 447.2 MB → 447.2 MB |
+| cholmes/portolan-nl                                  |   83.7 GB → 83.7 GB |
+| cboettig/cgs                                         | 228.4 MB → 228.4 MB |
+| wri-data-lab/trazoannotations                        |     1.9 GB → 1.9 GB |
 
 </details>
 
