@@ -1,55 +1,64 @@
 # Source Cooperative catalog — status
 
-_Updated 2026-07-29 01:08 UTC by the nightly pipeline._
+_Updated 2026-07-29 09:50 UTC by the nightly pipeline._
 
-**333 datasets cataloged**  ·  **38 queued for next run**  ·  last run handled **10**
+**337 datasets cataloged**  ·  **29 queued for next run**  ·  last run handled **10**
 
 ## Last run
 
-<details><summary>✅ drafted — 9 datasets</summary>
+<details><summary>✅ drafted — 6 datasets</summary>
 
-| repo                                                                                                               |
-| ------------------------------------------------------------------------------------------------------------------ |
-| [cboettig/connectivity](https://source.coop/cboettig/connectivity)                                                 |
-| [cboettig/hazard](https://source.coop/cboettig/hazard)                                                             |
-| [cboettig/usgs-nhd](https://source.coop/cboettig/usgs-nhd)                                                         |
-| [esbach/lu-ecuador-2024](https://source.coop/esbach/lu-ecuador-2024)                                               |
-| [geoai-ucph/gvsm](https://source.coop/geoai-ucph/gvsm)                                                             |
-| [hackl/euroflood-index](https://source.coop/hackl/euroflood-index)                                                 |
-| [portolan/portolan-pipeline](https://source.coop/portolan/portolan-pipeline)                                       |
-| [tristangruppwri/mapbiomas](https://source.coop/tristangruppwri/mapbiomas)                                         |
-| [tristangruppwri/soft-commodity-infrastructure](https://source.coop/tristangruppwri/soft-commodity-infrastructure) |
+| repo                                                                                             |
+| ------------------------------------------------------------------------------------------------ |
+| [bkr/precipradar](https://source.coop/bkr/precipradar)                                           |
+| [cboettig/nc-frontiers](https://source.coop/cboettig/nc-frontiers)                               |
+| [cboettig/usgs-wbd](https://source.coop/cboettig/usgs-wbd)                                       |
+| [dynamical/noaa-hrrr-forecast-48-hour](https://source.coop/dynamical/noaa-hrrr-forecast-48-hour) |
+| [fish-pace/globcolour](https://source.coop/fish-pace/globcolour)                                 |
+| [tristangruppwri/cadastral](https://source.coop/tristangruppwri/cadastral)                       |
 
 </details>
 
-<details><summary>⏭️ incomplete (gap) — 1 dataset</summary>
+<details><summary>⏭️ incomplete (gap) — 3 datasets</summary>
 
 | repo                                                                                                                                                 | why            |
 | ---------------------------------------------------------------------------------------------------------------------------------------------------- | -------------- |
 | [alliance-bioversity-international-ciat/sample-earth-2026-co-gh](https://source.coop/alliance-bioversity-international-ciat/sample-earth-2026-co-gh) | no_probe .gpkg |
+| [forestsignal/forestsignal-ca](https://source.coop/forestsignal/forestsignal-ca)                                                                     | no_files .tif  |
+| [harvard-lil/smithsonian-open-access](https://source.coop/harvard-lil/smithsonian-open-access)                                                       | no_probe .jpg  |
 
 </details>
 
+<details><summary>⚠️ probe failed (issue filed) — 1 dataset</summary>
+
+| repo                                         | why              |
+| -------------------------------------------- | ---------------- |
+| [ganzk/lcms](https://source.coop/ganzk/lcms) | all_failed .zarr |
+
+</details>
+
+
+See [open probe-failure issues](https://github.com/source-cooperative/metadata-catalog/issues?q=is%3Aissue+is%3Aopen+label%3Aprobe-failure).
 
 ## Recent runs
 
 | run                                                                                                    | outcome   | drafted | failed | queued | cataloged |
 | ------------------------------------------------------------------------------------------------------ | --------- | ------: | -----: | -----: | --------: |
+| [2026-07-29](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/30439220176) | ✅ success |       6 |      1 |     29 |       337 |
 | [2026-07-29](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/30408834354) | ✅ success |       9 |      0 |     38 |       333 |
 | [2026-07-28](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/30346028101) | ✅ success |       8 |      0 |     32 |       324 |
 | [2026-07-27](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/30308869346) | ❌ failure |     306 |     11 |   None |       324 |
 | [2026-07-27](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/30254651632) | ❌ failure |     306 |     11 |   None |       324 |
 | [2026-07-26](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/30195850001) | ✅ success |       7 |      0 |     11 |       324 |
 | [2026-07-25](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/30152174638) | ✅ success |       6 |      1 |     18 |       324 |
-| [2026-07-24](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/30081641153) | ✅ success |       5 |      2 |     25 |       324 |
 
 Inventory compact (reseed 2026-07-29): 7.8 GB / 36.1 GB runner disk
 
 ## Persistent failures
 
-**22 datasets failing**  ·  22 open issues  ·  oldest **48d**  ·  **15** ≥30d  ·  [all open issues](https://github.com/source-cooperative/metadata-catalog/issues?q=is%3Aissue+is%3Aopen+label%3Aprobe-failure)
+**23 datasets failing**  ·  23 open issues  ·  oldest **48d**  ·  **15** ≥30d  ·  [all open issues](https://github.com/source-cooperative/metadata-catalog/issues?q=is%3Aissue+is%3Aopen+label%3Aprobe-failure)
 
-<details><summary>the 22 open issues, oldest first</summary>
+<details><summary>the 23 open issues, oldest first</summary>
 
 | repo                                                | age (d) | issue |
 | --------------------------------------------------- | ------: | ----: |
@@ -71,10 +80,11 @@ Inventory compact (reseed 2026-07-29): 7.8 GB / 36.1 GB runner disk
 | cboettig/wetlands                                   |      29 |  #122 |
 | dynamical/dwd-icon-grib                             |      16 |  #125 |
 | dynamical/ecmwf-ifs-ens-forecast-15-day-0-25-degree |      14 |  #126 |
-| alukach/firesmoke                                   |       9 |  #128 |
-| dynamical/noaa-mrms-conus-analysis-hourly           |       4 |  #130 |
-| dynamical/noaa-gefs-analysis                        |       4 |  #129 |
-| cboettig/high-seas                                  |       3 |  #131 |
+| alukach/firesmoke                                   |      10 |  #128 |
+| dynamical/noaa-mrms-conus-analysis-hourly           |       5 |  #130 |
+| dynamical/noaa-gefs-analysis                        |       5 |  #129 |
+| cboettig/high-seas                                  |       4 |  #131 |
+| ganzk/lcms                                          |       ? |  #132 |
 
 </details>
 
@@ -159,17 +169,16 @@ _Each bucket links to its datasets under [Datasets per category](#datasets-per-c
 
 | group                         | agg count | agg bytes | count |    bytes |
 | ----------------------------- | --------: | --------: | ----: | -------: |
-| [CATALOGED](#cataloged)       |       329 |    3.8 PB |       |          |
-|   drafted                     |           |           |   329 |   3.8 PB |
-| [BACKLOG](#backlog)           |        14 |   43.6 TB |       |          |
+| [CATALOGED](#cataloged)       |       333 |    3.8 PB |       |          |
+|   drafted                     |           |           |   333 |   3.8 PB |
+| [BACKLOG](#backlog)           |        10 |   43.5 TB |       |          |
 |   error step=gather-probe     |           |           |     1 |  42.1 TB |
 |   all_failed .icechunk        |           |           |     1 |   1.0 TB |
 |   all_failed .filegdb         |           |           |     1 | 198.6 GB |
-|   not-yet-cataloged           |           |           |     5 | 131.8 GB |
 |   amended (no format)         |           |           |     1 |  65.7 GB |
 |   all_failed .parquet         |           |           |     1 |  61.6 GB |
+|   all_failed .zarr            |           |           |     2 |  32.2 GB |
 |   no_probe .fcb               |           |           |     2 |   4.2 GB |
-|   all_failed .zarr            |           |           |     1 |   3.3 GB |
 |   no_probe .gpkg              |           |           |     1 |  24.6 MB |
 | [SKIPPED](#skipped)           |       208 |  885.6 TB |       |          |
 |   unlisted                    |           |           |   157 | 821.9 TB |
@@ -186,7 +195,7 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 
 ### CATALOGED
 
-<details><summary>drafted — 329 datasets · 3.8 PB</summary>
+<details><summary>drafted — 333 datasets · 3.8 PB</summary>
 
 | repo                                                                                                                               |    bytes |
 | ---------------------------------------------------------------------------------------------------------------------------------- | -------: |
@@ -300,6 +309,7 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 | [planet/eu-field-boundaries](https://source.coop/planet/eu-field-boundaries)                                                       |  61.3 GB |
 | [fused/fsq-os-places](https://source.coop/fused/fsq-os-places)                                                                     |  60.3 GB |
 | [bkr/aoml](https://source.coop/bkr/aoml)                                                                                           |  55.7 GB |
+| [cboettig/nc-frontiers](https://source.coop/cboettig/nc-frontiers)                                                                 |  52.0 GB |
 | [fiboa/data](https://source.coop/fiboa/data)                                                                                       |  49.9 GB |
 | [reflective/geomipzarr](https://source.coop/reflective/geomipzarr)                                                                 |  47.3 GB |
 | [cboettig/padus](https://source.coop/cboettig/padus)                                                                               |  46.7 GB |
@@ -319,6 +329,7 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 | [cboettig/pad-us-3](https://source.coop/cboettig/pad-us-3)                                                                         |  21.9 GB |
 | [seerai/hifld](https://source.coop/seerai/hifld)                                                                                   |  21.6 GB |
 | [dynamical/asos-parquet](https://source.coop/dynamical/asos-parquet)                                                               |  20.2 GB |
+| [fish-pace/globcolour](https://source.coop/fish-pace/globcolour)                                                                   |  20.1 GB |
 | [clarkcga/hls-multi-temporal-cloud-gap-imputation](https://source.coop/clarkcga/hls-multi-temporal-cloud-gap-imputation)           |  18.1 GB |
 | [giswqs/playa](https://source.coop/giswqs/playa)                                                                                   |  17.8 GB |
 | [ftw/ftw-grid](https://source.coop/ftw/ftw-grid)                                                                                   |  17.8 GB |
@@ -329,6 +340,8 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 | [smartmaps/amx-2024-04](https://source.coop/smartmaps/amx-2024-04)                                                                 |  16.2 GB |
 | [cboettig/sahara-trees](https://source.coop/cboettig/sahara-trees)                                                                 |  15.7 GB |
 | [giswqs/opengeos](https://source.coop/giswqs/opengeos)                                                                             |  15.7 GB |
+| [tristangruppwri/cadastral](https://source.coop/tristangruppwri/cadastral)                                                         |  15.6 GB |
+| [cboettig/usgs-wbd](https://source.coop/cboettig/usgs-wbd)                                                                         |  15.2 GB |
 | [youssef-harby/geoparquet-overviews](https://source.coop/youssef-harby/geoparquet-overviews)                                       |  14.7 GB |
 | [zluo43/citibike](https://source.coop/zluo43/citibike)                                                                             |  14.1 GB |
 | [cboettig/social-vulnerability](https://source.coop/cboettig/social-vulnerability)                                                 |  13.3 GB |
@@ -548,18 +561,6 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 
 </details>
 
-<details><summary>not-yet-cataloged — 5 datasets · 131.8 GB</summary>
-
-| repo                                                                       |   bytes |
-| -------------------------------------------------------------------------- | ------: |
-| [cboettig/nc-frontiers](https://source.coop/cboettig/nc-frontiers)         | 52.0 GB |
-| [ganzk/lcms](https://source.coop/ganzk/lcms)                               | 28.8 GB |
-| [fish-pace/globcolour](https://source.coop/fish-pace/globcolour)           | 20.1 GB |
-| [tristangruppwri/cadastral](https://source.coop/tristangruppwri/cadastral) | 15.6 GB |
-| [cboettig/usgs-wbd](https://source.coop/cboettig/usgs-wbd)                 | 15.2 GB |
-
-</details>
-
 <details><summary>amended (no format) — 1 dataset · 65.7 GB</summary>
 
 | repo                                                       |   bytes |
@@ -576,20 +577,21 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 
 </details>
 
+<details><summary>all_failed .zarr — 2 datasets · 32.2 GB</summary>
+
+| repo                                                                                             |   bytes |
+| ------------------------------------------------------------------------------------------------ | ------: |
+| [ganzk/lcms](https://source.coop/ganzk/lcms)                                                     | 28.8 GB |
+| [dynamical/dwd-icon-eu-forecast-5-day](https://source.coop/dynamical/dwd-icon-eu-forecast-5-day) |  3.3 GB |
+
+</details>
+
 <details><summary>no_probe .fcb — 2 datasets · 4.2 GB</summary>
 
 | repo                                                                                         |    bytes |
 | -------------------------------------------------------------------------------------------- | -------: |
 | [caires-tudelft/plateau-tokyo-fcb-2](https://source.coop/caires-tudelft/plateau-tokyo-fcb-2) |   4.1 GB |
 | [caires-tudelft/tokyo-13999-fcb](https://source.coop/caires-tudelft/tokyo-13999-fcb)         | 122.2 MB |
-
-</details>
-
-<details><summary>all_failed .zarr — 1 dataset · 3.3 GB</summary>
-
-| repo                                                                                             |  bytes |
-| ------------------------------------------------------------------------------------------------ | -----: |
-| [dynamical/dwd-icon-eu-forecast-5-day](https://source.coop/dynamical/dwd-icon-eu-forecast-5-day) | 3.3 GB |
 
 </details>
 
@@ -896,7 +898,7 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 | --------- | ------------------------------------------------ | ----: | -------: |
 | ghosts    | catalog entry, no S3 data                        |    49 |  29.8 TB |
 | stowaways | S3 data, no source.coop product                  |    41 | 926.5 TB |
-| stale     | catalog bytes ≠ S3 (fixed by `make process-all`) |    39 | 989.4 TB |
+| stale     | catalog bytes ≠ S3 (fixed by `make process-all`) |    37 | 970.7 TB |
 
 <details><summary>ghosts — 49 datasets</summary>
 
@@ -1002,15 +1004,13 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 
 </details>
 
-<details><summary>stale — 39 datasets</summary>
+<details><summary>stale — 37 datasets</summary>
 
 | repo                                                 |        catalog → S3 |
 | ---------------------------------------------------- | ------------------: |
 | harvard-lil/smithsonian-open-access                  | 823.4 TB → 851.0 TB |
 | dynamical/ecmwf-ifs-ens-forecast-15-day-0-25-degree  |   45.2 TB → 47.2 TB |
 | forestsignal/forestsignal-ca                         |  726.4 GB → 598.0 B |
-| bkr/precipradar                                      |     5.2 TB → 5.7 TB |
-| dynamical/noaa-hrrr-forecast-48-hour                 |   12.5 TB → 12.9 TB |
 | bkr/ifs                                              |   36.9 TB → 37.0 TB |
 | bkr/silam-dust                                       |   25.2 TB → 25.4 TB |
 | dynamical/noaa-gfs-analysis                          | 510.0 GB → 648.8 GB |
