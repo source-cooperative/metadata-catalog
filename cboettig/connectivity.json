@@ -1,15 +1,116 @@
 {
-  "account_id": "cboettig",
-  "product_id": "connectivity",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "cboettig/connectivity",
   "title": "Habitat Connectivity",
-  "description": "Habitat connectivity data layers. Currently CDFW BIOS + Schloss/Cameron data. ",
-  "keywords": [],
-  "created_at": "2026-07-25T14:37:25.587Z",
-  "updated_at": "2026-07-25T14:37:25.587Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
+  "description": "A compilation of landscape connectivity and climate-resilience GIS layers for California, combining CDFW wildlife connectivity/barrier datasets with published climate-adaptation connectivity models (Beier 2006, Schloss 2022, Cameron 2022), served as cloud-native vector (GeoParquet/PMTiles) and raster (COG) products with matching H3 hexagon aggregations.",
+  "keywords": [
+    "landscape-connectivity",
+    "conservation",
+    "biodiversity",
+    "climate",
+    "h3",
+    "pmtiles",
+    "geoparquet",
+    "cloud-optimized-geotiff"
+  ],
+  "providers": [
+    {
+      "name": "California Department of Fish and Wildlife (CDFW)",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "South Coast Wildlands",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Schloss, C. A. et al.",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Cameron, D. R. et al.",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "California Biodiversity Network (CBN)",
+      "roles": [
+        "processor",
+        "host"
+      ]
+    },
+    {
+      "name": "National Research Platform (NRP)",
+      "roles": [
+        "host"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/cboettig/connectivity"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -119.484586,
+          32.9966198,
+          -116.3416187,
+          35.4907476
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 11
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/cboettig/connectivity/",
+      "type": "application/octet-stream",
+      "title": "Dataset files (1 x .filegdb)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/cboettig/connectivity/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/cboettig/connectivity",
+      "title": "Source Cooperative product page"
+    }
+  ],
+  "product_id": "connectivity",
   "data_mode": null,
+  "total_bytes": 1514798745,
+  "account_id": "cboettig",
+  "visibility": "public",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -18,8 +119,13 @@
       "prefix": "cboettig/connectivity/"
     }
   },
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
   "file_count": 79,
-  "total_bytes": 1514798745,
+  "disabled": false,
+  "featured": 0,
   "exts": {
     "atx": 17,
     "parquet": 15,
@@ -37,28 +143,17 @@
     "md": 1,
     "geojson": 1
   },
-  "ext_bytes": {
-    "tif": 1353282210,
-    "parquet": 135488078,
-    "zip": 17172399,
-    "pmtiles": 5259817,
-    "geojson": 2740076,
-    "gdbtable": 642466,
-    "atx": 102774,
-    "json": 51080,
-    "gdbtablx": 41216,
-    "spx": 8236,
-    "md": 7260,
-    "gdbindexes": 1794,
-    "txt": 871,
-    "": 404,
-    "horizon": 64
-  },
-  "store_format": "filegdb",
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "cataloged_at": "2026-07-29T00:10:57+00:00"
+  "updated_at": "2026-07-25T14:37:25.587Z",
+  "created_at": "2026-07-25T14:37:25.587Z",
+  "readme": "## README.md\n# public-connectivity\n\nLandscape **connectivity & climate-resilience** datasets for California, from the California Biodiversity Network (CBN) and partners. All products are cloud-native and served from NRP S3 (`https://s3-west.nrp-nautilus.io/public-connectivity/`).\n\n| Dataset | Source | Products | License |\n|---|---|---|---|\n| `regional-connectivity-linkages` | Beier et al. 2006 \u2014 South Coast Missing Linkages (CDFW BIOS ds419) | GeoParquet, PMTiles, H3 hex (res 8) | CC-BY-4.0 |\n| `wildlife-movement-barriers` | CDFW 2024 \u2014 Terrestrial Wildlife Connectivity Barriers (BIOS ds2867) | GeoParquet, PMTiles, H3 hex (res 8) | CC-BY-4.0 |\n| `climate-migration-routes` | Schloss et al. 2022 (Dryad `d7wm37q1m`) | COG, H3 hex (res 9) | CC0-1.0 |\n| `present-day-connectivity/flow` | Cameron et al. 2022 (Dryad `7sqv9s4v3`) | COG, H3 hex (res 9) | CC0-1.0 |\n| `present-day-connectivity/categories` | Cameron et al. 2022 (Dryad `7sqv9s4v3`) | COG, H3 hex (res 9) | CC0-1.0 |\n\nAll layers are in **OGC:CRS84 / EPSG:4326**. The three raster sources were reprojected from their native ESRI:102003 (USA Contiguous Albers) / sphere Web-Mercator projections to EPSG:4326 (categorical layers with nearest-neighbor; the continuous flow index with bilinear).\n\n---\n\n## Vector \u2014 regional-connectivity-linkages (Beier 2006)\n\n11 South Coast Missing Linkages polygons (e.g. Tehachapi, Sierra Madre \u2013 Castaic).\n\n**DuckDB:**\n```sql\nINSTALL spatial; LOAD spatial;\nSELECT Proj_Name, Area_ha\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-connectivity/regional-connectivity-linkages.parquet')\nORDER BY Area_ha DESC;\n```\n\n**MapLibre GL JS** (PMTiles \u2014 note the `source-layer` is `regional-connectivity-linkages`):\n```js\nmap.addSource('linkages', { type: 'vector', url: 'pmtiles://https://s3-west.nrp-nautilus.io/public-connectivity/regional-connectivity-linkages.pmtiles' });\nmap.addLayer({\n  id: 'linkages-fill', type: 'fill',\n  source: 'linkages',\n  'source-layer': 'regional-connectivity-linkages',\n  paint: { 'fill-color': '#2c7fb8', 'fill-opacity': 0.5 }\n});\n```\n\n**H3 hex** (res 8). Area columns are per-feature totals repeated on every cell \u2014 never `SUM` them on hex; dedup by `_cng_fid`, or compute area from `COUNT(DISTINCT h8) \u00d7 cell_area_at_res_8`:\n```sql\nSELECT Proj_Name, COUNT(DISTINCT h8) AS cells\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-connectivity/regional-connectivity-linkages/hex/h0=*/data_0.parquet')\nGROUP BY 1 ORDER BY 2 DESC;\n```\n\n---\n\n## Vector \u2014 wildlife-movement-barriers (CDFW 2024)\n\n204 linear infrastructure segments (roads/highways) that CDFW identified as barriers to terrestrial wildlife movement across California, with priority rankings for 2020/2022/2024 and remediation status. Source: CDFW BIOS **ds2867** (priorities as of June 2024). Geometry is **lines** (LineString / MultiLineString); each segment was hexed to H3 resolution 8 by buffering it by the H3 cell circumradius before polyfill.\n\n**DuckDB** \u2014 top-priority barriers by length:\n```sql\nINSTALL spatial; LOAD spatial;\nSELECT Barrier_ID, Segment_Name, County, Priority_2024, Length_kilometers\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-connectivity/wildlife-movement-barriers.parquet')\nWHERE Priority_2024 = 'Top Priority Barrier'\nORDER BY Length_kilometers DESC;\n```\n\n**MapLibre GL JS** (PMTiles \u2014 note the `source-layer` is `wildlife-movement-barriers`):\n```js\nmap.addSource('barriers', { type: 'vector', url: 'pmtiles://https://s3-west.nrp-nautilus.io/public-connectivity/wildlife-movement-barriers.pmtiles' });\nmap.addLayer({\n  id: 'barriers-line', type: 'line',\n  source: 'barriers',\n  'source-layer': 'wildlife-movement-barriers',\n  paint: {\n    'line-width': 2,\n    'line-color': [\n      'match', ['get', 'Priority_2024'],\n      'Top Priority Barrier', '#d7301f',\n      'Priority Barrier', '#fc8d59',\n      'Barrier', '#fdcc8a',\n      'Remediated', '#2c7fb8',\n      '#cccccc'\n    ]\n  }\n});\n```\n\n**H3 hex** (res 8). `Length_kilometers` is a per-feature total **repeated on every cell** a barrier covers \u2014 never `SUM` it on hex; dedup by `Barrier_ID` (one row per barrier) or `_cng_fid` first, or count barriers with `COUNT(DISTINCT Barrier_ID)`:\n```sql\n-- barriers per H3 cell (where wildlife corridors are most pinched)\nSELECT h8, COUNT(DISTINCT Barrier_ID) AS n_barriers\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-connectivity/wildlife-movement-barriers/hex/h0=*/data_0.parquet')\nGROUP BY h8 ORDER BY n_barriers DESC;\n```\n\n`Priority_2020`/`Priority_2022`/`Priority_2024` take values `Barrier`, `Priority Barrier`, `Top Priority Barrier`, `Remediated` (NULL = not assessed that cycle). `Target_Species` is a free-text, comma-separated list of focal species. `CDFW_Region` is 1\u20136 (comma-joined for barriers spanning multiple regions). `SUMMARY_LINK` is a per-barrier CDFW summary PDF.\n\n---\n\n## Rasters\n\nH3 hex tables have columns `<value>`, `h9` (native res 9), `h0` (partition key). One row per H3 cell.\n\n### climate-migration-routes (Schloss 2022) \u2014 categorical, 13 classes\nConnectivity class per cell (`mode` reducer). Classes: `0` limited/none; `100\u2013103` Diffuse (intact); `200\u2013203` Intensified (multiple linkages); `300\u2013303` Channelized (present-day linkage); `+1/+2/+3` = HADGEM2-ES / CNRM-CM5 / both climate-model linkages. See `classification:classes` on the COG band.\n\n```sql\nSELECT connectivity_class, COUNT(*) n\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-connectivity/climate-migration-routes/hex/h0=*/data_0.parquet')\nGROUP BY 1 ORDER BY 1;\n```\nCOG (titiler / categorical colormap): `https://s3-west.nrp-nautilus.io/public-connectivity/climate-migration-routes-cog.tif`\n\n### present-day-connectivity/flow (Cameron 2022) \u2014 continuous index 0\u2013100\nCurrent-flow connectivity index (`mean` reducer).\n```sql\nSELECT MIN(current_flow), MAX(current_flow), AVG(current_flow)\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-connectivity/present-day-connectivity-flow/hex/h0=*/data_0.parquet');\n```\nCOG: `https://s3-west.nrp-nautilus.io/public-connectivity/present-day-connectivity-flow-cog.tif`\n\n### present-day-connectivity/categories (Cameron 2022) \u2014 categorical, 12 classes\nConnectivity-strategy category per cell (`mode` reducer). Classes: `3` Limited movement potential; `4` Permeable (local movement); `19` Impeded; `25,29` Diffuse; `31,35,39` Intensified; `41,45,49` Channelized; `0` background (undocumented in source). See `classification:classes` on the COG band.\nCOG: `https://s3-west.nrp-nautilus.io/public-connectivity/present-day-connectivity-categories-cog.tif`\n\n---\n\n## Citations\n- California Department of Fish and Wildlife (2024). Terrestrial Wildlife Connectivity Barriers (Wildlife Movement Barriers). CDFW BIOS ds2867. https://wildlife.ca.gov/Data/BIOS\n- Beier, P., et al. (2006). South Coast Missing Linkages. South Coast Wildlands. (CDFW BIOS ds419)\n- Cameron, D. R., Schloss, C. A., Theobald, D. M., & Morrison, S. A. (2022). A framework to select strategies for conserving and restoring habitat connectivity. *Conservation Science and Practice*, e12698. https://doi.org/10.1111/csp2.12698\n- Schloss, C. A., et al. (2022). \"No-regrets\" pathways for navigating climate change. *Ecological Applications*. https://doi.org/10.1002/eap.2468\n",
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
+    "providers: role [producer, licensor] for 'California Department of Fish and Wildlife (CDFW)' is an AI guess \u2014 Source of BIOS ds419 and ds2867 datasets; license (CC-BY-4.0) inferred to apply to CDFW-sourced products specifically.. Verify before flipping to _state: reviewed.",
+    "providers: role [producer] for 'South Coast Wildlands' is an AI guess \u2014 Authored the 2006 South Coast Missing Linkages study underlying regional-connectivity-linkages.. Verify before flipping to _state: reviewed.",
+    "providers: role [processor, host] for 'California Biodiversity Network (CBN)' is an AI guess \u2014 README attributes the compiled/reprojected products to CBN and partners, but doesn't explicitly state CBN did the processing versus just publishing it.. Verify before flipping to _state: reviewed.",
+    "providers: role [host] for 'National Research Platform (NRP)' is an AI guess \u2014 Data is served from NRP S3 (nrp-nautilus.io), inferred to be the storage host.. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-07-29T01:03:20+00:00",
+  "store_format": "filegdb"
 }
