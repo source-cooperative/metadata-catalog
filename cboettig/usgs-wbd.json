@@ -1,25 +1,92 @@
 {
-  "account_id": "cboettig",
-  "product_id": "usgs-wbd",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "cboettig/usgs-wbd",
   "title": "USGS Watershed Boundaries",
-  "description": "",
-  "keywords": [],
-  "created_at": "2026-07-25T14:29:49.747Z",
-  "updated_at": "2026-07-25T14:29:49.747Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": null,
-  "mirrors": {
-    "aws-opendata-us-west-2": {
-      "storage_type": "s3",
-      "is_primary": true,
-      "connection_id": "aws-opendata-us-west-2",
-      "prefix": "cboettig/usgs-wbd/"
+  "description": "A cloud-native GeoParquet, PMTiles, and H3 mirror of the USGS Watershed Boundary Dataset (WBD), providing a seamless, nested hierarchy of U.S. hydrologic units \u2014 from 22 HUC2 regions down to over 103,000 HUC12 subwatersheds \u2014 each level available as vector tiles and an H3 hexagon index for the finest level.",
+  "license": "Public Domain (US Government Work)",
+  "keywords": [
+    "hydrology",
+    "watersheds",
+    "administrative-boundaries",
+    "geoparquet",
+    "pmtiles",
+    "h3"
+  ],
+  "providers": [
+    {
+      "name": "USGS National Hydrography Program",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "cng-datasets (Boettiger Lab)",
+      "roles": [
+        "processor"
+      ]
+    },
+    {
+      "name": "National Research Platform (Nautilus)",
+      "roles": [
+        "host"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/cboettig/usgs-wbd"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -179.2296559,
+          -14.6101928,
+          179.8566748,
+          71.4395726
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
     }
   },
-  "file_count": 213,
-  "total_bytes": 15207680120,
+  "summaries": {
+    "item_count": 666424
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/cboettig/usgs-wbd/",
+      "type": "application/octet-stream",
+      "title": "Dataset files (1 x .filegdb)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/cboettig/usgs-wbd/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/cboettig/usgs-wbd",
+      "title": "Source Cooperative product page"
+    }
+  ],
+  "account_id": "cboettig",
+  "visibility": "public",
   "exts": {
     "atx": 49,
     "gdbtable": 27,
@@ -34,25 +101,33 @@
     "": 2,
     "md": 1
   },
-  "ext_bytes": {
-    "pmtiles": 7515104242,
-    "parquet": 4278538235,
-    "gdbtable": 3151499919,
-    "atx": 238449718,
-    "spx": 15663412,
-    "gdbtablx": 6380896,
-    "freelist": 1971240,
-    "json": 61109,
-    "gdbindexes": 5488,
-    "md": 5009,
-    "horizon": 448,
-    "": 404
+  "file_count": 213,
+  "mirrors": {
+    "aws-opendata-us-west-2": {
+      "storage_type": "s3",
+      "is_primary": true,
+      "connection_id": "aws-opendata-us-west-2",
+      "prefix": "cboettig/usgs-wbd/"
+    }
   },
-  "store_format": "filegdb",
-  "_state": "seed",
+  "featured": 0,
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "cataloged_at": "2026-07-29T00:12:13+00:00"
+  "disabled": false,
+  "total_bytes": 15207680120,
+  "created_at": "2026-07-25T14:29:49.747Z",
+  "data_mode": null,
+  "updated_at": "2026-07-25T14:29:49.747Z",
+  "product_id": "usgs-wbd",
+  "readme": "## README.md\n# USGS Watershed Boundary Dataset (WBD) \u2014 National HUC2\u2013HUC12\n\nCloud-native mirror of the [USGS Watershed Boundary Dataset](https://www.usgs.gov/national-hydrography/watershed-boundary-dataset):\na seamless, nested hierarchy of hydrologic units for the United States and territories, from **HUC2 regions**\ndown to **HUC12 subwatersheds**.\n\n- **Source:** USGS National Hydrography Program \u2014 national seamless WBD File Geodatabase\n  (`WBD_National_GDB.zip`, updated 2025-01-07). **Public domain** (US Government work).\n- **CRS:** OGC:CRS84 (longitude, latitude).\n- **Bucket:** `s3://public-usgs-wbd/` \u00b7 public URL base `https://s3-west.nrp-nautilus.io/public-usgs-wbd/`\n\n| Level | Unit | Code column | Features | GeoParquet | PMTiles | H3 hex |\n|------:|------|-------------|---------:|:----------:|:-------:|:------:|\n| HUC2  | Region       | `huc2`  |      22 | \u2705 | \u2705 | \u2014 |\n| HUC4  | Subregion    | `huc4`  |     245 | \u2705 | \u2705 | \u2014 |\n| HUC6  | Basin        | `huc6`  |     407 | \u2705 | \u2705 | \u2014 |\n| HUC8  | Subbasin     | `huc8`  |   2,456 | \u2705 | \u2705 | \u2014 |\n| HUC10 | Watershed    | `huc10` |  18,911 | \u2705 | \u2705 | \u2014 |\n| HUC12 | Subwatershed | `huc12` | 103,068 | \u2705 | \u2705 | \u2705 (res 8) |\n\n**HUC codes nest:** a HUC12 code contains its parents as prefixes \u2014 `180701050402` \u2192\nHUC2 `18`, HUC4 `1807`, HUC6 `180701`, HUC8 `18070105`, HUC10 `1807010504`. So the single HUC12 hex\nlayer answers \"what watershed is this point in?\" at *every* level.\n\n## Files\n\n```\npublic-usgs-wbd/\n\u251c\u2500\u2500 wbd/hu2.parquet   wbd/hu2.pmtiles    wbd/hu2/stac-collection.json\n\u251c\u2500\u2500 wbd/hu4.parquet   wbd/hu4.pmtiles    wbd/hu4/stac-collection.json\n\u251c\u2500\u2500 wbd/hu6.parquet   wbd/hu6.pmtiles    wbd/hu6/stac-collection.json\n\u251c\u2500\u2500 wbd/hu8.parquet   wbd/hu8.pmtiles    wbd/hu8/stac-collection.json\n\u251c\u2500\u2500 wbd/hu10.parquet  wbd/hu10.pmtiles   wbd/hu10/stac-collection.json\n\u251c\u2500\u2500 wbd/hu12.parquet  wbd/hu12.pmtiles   wbd/hu12/stac-collection.json\n\u2502   \u2514\u2500\u2500 wbd/hu12/hex/h0=*/data_0.parquet           (H3 res-8, hive-partitioned by h0)\n\u251c\u2500\u2500 stac-collection.json\n\u2514\u2500\u2500 README.md\n```\n\n## DuckDB \u2014 query the GeoParquet\n\n```sql\nINSTALL spatial; LOAD spatial;\n\n-- All HUC2 regions\nSELECT huc2, name, areasqkm\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-usgs-wbd/wbd/hu2.parquet')\nORDER BY huc2;\n\n-- Which HUC12 subwatershed contains a point (point-in-polygon, exact)?\nSELECT huc12, name, states\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-usgs-wbd/wbd/hu12.parquet')\nWHERE ST_Contains(shape, ST_Point(-118.2974, 34.0369));\n-- \u2192 180701040300  Ballona Creek  CA\n```\n\n## DuckDB \u2014 point-in-watershed via H3 hex (fast, no geometry)\n\n```sql\nINSTALL h3 FROM community; LOAD h3;\n\n-- Look up the watershed for a lat/lon by its H3 res-8 cell\nWITH pt AS (SELECT h3_latlng_to_cell(34.0369, -118.2974, 8) AS h8)\nSELECT DISTINCT hex.huc12, hex.name,\n       hex.huc12[1:2]   AS huc2,   -- parents are just prefixes\n       hex.huc12[1:8]   AS huc8\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-usgs-wbd/wbd/hu12/hex/h0=*/data_0.parquet') hex, pt\nWHERE hex.h8 = pt.h8;\n```\n\n> **Never `SUM` per-feature columns on the hex layer.** `areasqkm`, `areaacres`, `shape_Area`,\n> `shape_Length`, and the non-contributing-area columns are the subwatershed's totals, repeated on every\n> hex row it covers. For area, use `COUNT(DISTINCT h8) \u00d7 cell_area_at_resolution_8`, or\n> `SELECT DISTINCT huc12, areasqkm` before aggregating. The H3 index columns (`h8`, `h0`) are safe to aggregate.\n\n## MapLibre GL JS \u2014 display boundaries\n\nThe PMTiles `source-layer` is the level id (`hu2` \u2026 `hu12`), **not** the GDB layer name.\n\n```js\nimport { Protocol } from 'pmtiles';\nmaplibregl.addProtocol('pmtiles', new Protocol().tile);\n\nmap.addSource('wbd-hu12', {\n  type: 'vector',\n  url: 'pmtiles://https://s3-west.nrp-nautilus.io/public-usgs-wbd/wbd/hu12.pmtiles'\n});\nmap.addLayer({\n  id: 'subwatersheds',\n  type: 'line',\n  source: 'wbd-hu12',\n  'source-layer': 'hu12',     // \u2190 last path segment of the dataset\n  paint: { 'line-color': '#2b6cb0', 'line-width': 0.5 }\n});\n```\n\n## Attributes\n\nEvery level carries `huc{N}`, `name`, `areasqkm`/`areaacres`, `states` (comma-separated postal codes),\nand source-provenance fields (`tnmid`, `loaddate`, `globalid`, \u2026). Local levels add:\n\n- **HUC10 & HUC12:** `hutype` (S=Standard, C=Closed Basin, F=Frontal, M=Multiple Outlet, W=Water, I=Island,\n  U=Urban, D=Indeterminate) and `humod` (modification codes; `NM`=No Modification).\n- **HUC12 only:** `tohuc` (downstream HUC12 for surface-flow routing) and non-contributing-area columns.\n\nSee each level's `stac-collection.json` for full per-column documentation.\n\n## Provenance & processing\n\nConverted from the USGS national WBD GDB with [`cng-datasets`](https://github.com/boettiger-lab/datasets)\n(DuckDB-native GeoParquet, `tippecanoe` PMTiles, H3 polyfill for hex). Source CRS `EPSG:5498`\n(NAD83 + NAVD88 height) reprojected to OGC:CRS84. Public domain \u2014 free to use, share, and adapt.\n",
+  "_review": [
+    "license: Not a standard SPDX identifier; README states the source WBD is a U.S. Government work and therefore public domain, free to use, share, and adapt.",
+    "providers: role [processor] for 'cng-datasets (Boettiger Lab)' is an AI guess \u2014 README credits the cng-datasets tool for converting the source GDB to GeoParquet/PMTiles/H3; attributed the processing to the tool's maintaining lab since no individual/org is named directly.. Verify before flipping to _state: reviewed.",
+    "providers: role [host] for 'National Research Platform (Nautilus)' is an AI guess \u2014 Inferred from the bucket domain s3-west.nrp-nautilus.io; not explicitly named as host in the README text.. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-07-29T09:34:31+00:00",
+  "store_format": "filegdb"
 }
