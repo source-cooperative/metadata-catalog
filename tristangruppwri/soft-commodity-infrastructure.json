@@ -1,15 +1,338 @@
 {
-  "account_id": "tristangruppwri",
-  "product_id": "soft-commodity-infrastructure",
-  "title": "Soft Commodity Infrastructure",
-  "description": "Soft commodity facilities like grain stores, silos, and cooperatives in Brazil.",
-  "keywords": [],
-  "created_at": "2026-07-23T09:48:38.887Z",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
+  "id": "tristangruppwri/soft-commodity-infrastructure",
+  "title": "Soft Commodity Infrastructure (Brazil)",
+  "description": "Geolocated database of the midstream facilities that connect Brazilian farms to markets \u2014 grain silos, slaughterhouses, dairy plants, and sugar/ethanol mills \u2014 plus a municipality-level measure of cooperative membership, compiled from government registries to support deforestation traceability and supply-chain due diligence.",
+  "license": "CC-BY-4.0",
+  "keywords": [
+    "agriculture",
+    "traceability",
+    "deforestation",
+    "conservation",
+    "points-of-interest",
+    "administrative-boundaries",
+    "cooperatives"
+  ],
+  "providers": [
+    {
+      "name": "World Resources Institute (WRI)",
+      "roles": [
+        "processor",
+        "licensor"
+      ]
+    },
+    {
+      "name": "CONAB",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "MAPA",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "ANP",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "IBGE",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Trase",
+      "roles": [
+        "processor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/tristangruppwri/soft-commodity-infrastructure"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 83811
+  },
+  "assets": {
+    "points": {
+      "href": "https://data.source.coop/tristangruppwri/soft-commodity-infrastructure/facilities/",
+      "type": "application/x-parquet",
+      "title": "points",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "nr_sif",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "cnpj",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "razao_social",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "municipio_nome",
+          "type": "VARCHAR",
+          "description": "[placename] Municipality name"
+        },
+        {
+          "name": "uf",
+          "type": "VARCHAR",
+          "description": "[placename] Brazilian state abbreviation"
+        },
+        {
+          "name": "logradouro",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "cep",
+          "type": "VARCHAR",
+          "description": "[zipcode] Brazilian postal code (CEP) of the facility address"
+        },
+        {
+          "name": "capacity_band",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "entity_kind",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "commodity",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "lat",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "lon",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "geom_method",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "basis",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')",
+          "description": "[geometry] Point geometry for each facility"
+        },
+        {
+          "name": "cda",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "especie",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "tipo",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "tipo_entidade",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "cod_ibge",
+          "type": "VARCHAR",
+          "description": "[admin_code] IBGE municipality code"
+        },
+        {
+          "name": "capacity_t",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "cap_exp_t",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "cap_rec_t",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "operator",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "endereco",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "is_cooperative",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "capacity_m3d",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "facility_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "company",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "state",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "inspection_level",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "source",
+          "type": "VARCHAR"
+        }
+      ],
+      "description": "4 files sampled for this table"
+    },
+    "facilities": {
+      "href": "https://data.source.coop/tristangruppwri/soft-commodity-infrastructure/facilities/BR_facilities.parquet",
+      "type": "application/x-parquet",
+      "title": "BR_facilities.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "entity_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "entity_kind",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "tier",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "weight",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "basis",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geom_method",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "source",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')",
+          "description": "[geometry] Point geometry for the unified facility/cooperative layer"
+        }
+      ],
+      "table:row_count": 40669
+    },
+    "muni": {
+      "href": "https://data.source.coop/tristangruppwri/soft-commodity-infrastructure/facilities/",
+      "type": "application/x-parquet",
+      "title": "muni",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "cod_ibge",
+          "type": "VARCHAR",
+          "description": "[admin_code] IBGE municipality code"
+        },
+        {
+          "name": "coop_members",
+          "type": "INTEGER"
+        },
+        {
+          "name": "municipio_nome",
+          "type": "VARCHAR",
+          "description": "[placename] Municipality name"
+        },
+        {
+          "name": "uf",
+          "type": "VARCHAR",
+          "description": "[placename] Brazilian state abbreviation"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')",
+          "description": "[geometry] Municipality boundary polygon"
+        },
+        {
+          "name": "cx",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "cy",
+          "type": "DOUBLE"
+        }
+      ],
+      "description": "2 files sampled for this table"
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/tristangruppwri/soft-commodity-infrastructure/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/tristangruppwri/soft-commodity-infrastructure",
+      "title": "Source Cooperative product page"
+    }
+  ],
   "updated_at": "2026-07-23T13:12:13.991Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": null,
+  "product_id": "soft-commodity-infrastructure",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -18,23 +341,30 @@
       "prefix": "tristangruppwri/soft-commodity-infrastructure/"
     }
   },
+  "featured": 0,
   "file_count": 13,
-  "total_bytes": 14413007,
+  "account_id": "tristangruppwri",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
   "exts": {
     "parquet": 7,
     "json": 4,
     "md": 2
   },
-  "ext_bytes": {
-    "parquet": 14382162,
-    "json": 18393,
-    "md": 12452
-  },
-  "store_format": null,
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "cataloged_at": "2026-07-29T00:42:42+00:00"
+  "created_at": "2026-07-23T09:48:38.887Z",
+  "visibility": "public",
+  "disabled": false,
+  "data_mode": null,
+  "total_bytes": 14413007,
+  "readme": "## README.md\n# Soft Commodity Infrastructure (Brazil)\r\n\r\n![brazil](https://img.shields.io/badge/brazil-blue) ![soft commodities](https://img.shields.io/badge/soft_commodities-blue) ![supply chain](https://img.shields.io/badge/supply_chain-blue) ![traceability](https://img.shields.io/badge/traceability-blue) ![EUDR](https://img.shields.io/badge/EUDR-blue) ![deforestation](https://img.shields.io/badge/deforestation-blue) ![cooperatives](https://img.shields.io/badge/cooperatives-blue) ![slaughterhouses](https://img.shields.io/badge/slaughterhouses-blue) ![grain silos](https://img.shields.io/badge/grain_silos-blue) ![sugar ethanol](https://img.shields.io/badge/sugar_ethanol-blue) ![agriculture](https://img.shields.io/badge/agriculture-blue)\r\n\r\nWhere Brazilian farms connect to markets. This is the geolocated midstream of\r\nBrazilian agriculture: the silos, slaughterhouses, dairy plants, and sugar/ethanol\r\nmills that farms sell into, plus the cooperatives that farms belong to. It exists\r\nto answer, for any rural property, **who to contact** about deforestation on the\r\nland \u2014 the cooperative that has the farmer as a member, or the buyer that receives\r\ntheir grain, cattle, or cane.\r\n\r\n## How it was made\r\n\r\nEvery point comes from a government registry, or is geocoded from one. Nothing is\r\nguessed from satellite imagery.\r\n\r\n- **Grain silos** \u2014 CONAB's national warehouse registry (`ArmazensCadastrados`),\r\n  which every grain warehouse must register with. It ships real GPS coordinates,\r\n  so these are exact. Includes cooperative, trader/private, and official silos.\r\n- **Slaughterhouses & dairy plants, federal** \u2014 MAPA's SIF (federal meat/dairy\r\n  inspection) registry. Has the company, tax ID, and address but no coordinates,\r\n  so we geocoded the addresses ourselves. Beef, poultry, pork, dairy.\r\n- **Slaughterhouses & dairy plants, state/municipal** \u2014 the smaller local plants\r\n  (SIE/SIM/CONSORCIO) that a frontier producer often delivers to, which the\r\n  federal list misses. These live in MAPA's SISBI system, which has no bulk\r\n  download; Trase pulled the SISBI records and geocoded them from the registry\r\n  addresses, and we use that subset. Registry-derived, not AI-detected.\r\n- **Sugar/ethanol mills** \u2014 ANP's ethanol producer list (company, tax ID, town,\r\n  capacity). No street address, so each mill sits at its town's center.\r\n- **Cooperative membership** \u2014 IBGE's Censo Agropecu\u00e1rio 2017, which counts how\r\n  many farms in each munic\u00edpio belong to a cooperative. A density signal, not a\r\n  named cooperative \u2014 but it works even in remote frontier towns.\r\n- **Municipality geometry** \u2014 IBGE's official munic\u00edpio boundaries.\r\n\r\n## Trust labels on every row\r\n\r\nBecause not every point is equally precise, each carries two labels. **`basis`**\r\nis `observed` (someone official recorded it) or `modelled` (we calculated it \u2014 only\r\nthe gravity-catchment rows). **`geom_method`** is `registered` (the source gave us\r\nthe GPS coordinate \u2014 CONAB silos), `geocoded` (we turned an address into a point \u2014\r\ncan be off), or `municipality_centroid` (all we had was the town). A user can see\r\nat a glance how good each location is.\r\n\r\n## Full methodology & source\r\n\r\nPipeline, tests, and a plain-language writeup live at\r\nhttps://github.com/wri/rural-land (see `soft_commodity_infrastructure/METHODOLOGY.md`).\r\nBrazil only. Rice, cotton, and coffee are not covered \u2014 no authoritative open\r\ngeolocated source exists for them.\r\n\r\n\r\n## Collections\r\n\r\n### [facilities](./facilities/)\r\n\r\nFacility and membership layers for Brazilian soft-commodity supply chains. One\r\nunified layer plus the components it's built from. Geometry is WGS84 (EPSG:4326).\r\n\r\n## The files\r\n\r\n- **`BR_facilities`**...\r\n\r\n## Coverage\r\n\r\n**Spatial Extent**\r\n\r\n- West: -73.9904, South: -33.7508, East: -29.2990, North: 5.2718\r\n\r\n## Source\r\n\r\n[https://github.com/wri/rural-land](https://github.com/wri/rural-land)\r\n\r\n## Processing Notes\r\n\r\nFacilities compiled from government registries. Grain silos: CONAB national warehouse registry (registered coordinates), cooperative + trader + official. Slaughterhouses & dairy plants: MAPA SIF (federal, address-geocoded) plus Trase SISBI (state/municipal, registry-geocoded). Sugar/ethanol mills: ANP producers, municipality-centroid. Cooperative membership: IBGE Censo Agropecu\u00e1rio 2017 by munic\u00edpio. Every geometry carries a `basis` (observed | modelled) and `geom_method` (registered | geocoded | municipality_centroid) so precision is explicit. No AI-detected geometry. BR_facilities.parquet is the unified layer (all tiers); the other files are the component layers. See METHODOLOGY.md in the source repo for full detail.\r\n\r\n## Attribution\r\n\r\nSoft Commodity Infrastructure (Brazil), WRI. Sources: CONAB, MAPA/SIF, ANP, IBGE, Trase (SISBI) \u2014 CC-BY 4.0.\r\n\r\n## License\r\n\r\n[CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/)\r\n\r\n## Contact\r\n\r\nTristan Grupp (WRI) <tristan.grupp@gmail.com>\r\n\r\n---\r\n\r\n*Generated by [Portolan](https://github.com/portolan-sdi/portolan-cli) from STAC metadata and .portolan/metadata.yaml*\r\n",
+  "_review": [
+    "providers: role [processor, licensor] for 'World Resources Institute (WRI)' is an AI guess \u2014 Attribution credits WRI for the compiled dataset and lists CC-BY-4.0 alongside it, implying WRI both compiled/geocoded the data and licenses the result.. Verify before flipping to _state: reviewed.",
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [points.lat, lon (latlon), points.geometry (geometry), points.cep (zipcode), points.municipio_nome (placename), points.uf (placename), points.cod_ibge (admin_code), facilities.geometry (geometry), muni.geometry (geometry), muni.cod_ibge (admin_code), muni.municipio_nome (placename), muni.uf (placename), muni.cx, cy (latlon)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-07-29T00:52:08+00:00",
+  "_source_format": "stac",
+  "store_format": null
 }
