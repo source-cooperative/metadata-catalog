@@ -1,25 +1,189 @@
 {
-  "account_id": "cboettig",
-  "product_id": "nc-frontiers",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
+  "id": "cboettig/nc-frontiers",
   "title": "NatCap Landscape Efficiency Frontiers",
-  "description": "Cloud-optimized versions of public datasets used in Polasky et al 2026 Landscape Efficiency Frontiers paper. (CC0)",
-  "keywords": [],
-  "created_at": "2026-07-25T14:34:08.640Z",
-  "updated_at": "2026-07-25T14:34:08.640Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": null,
-  "mirrors": {
-    "aws-opendata-us-west-2": {
-      "storage_type": "s3",
-      "is_primary": true,
-      "connection_id": "aws-opendata-us-west-2",
-      "prefix": "cboettig/nc-frontiers/"
+  "description": "H3-hexed cloud-native input layers (GeoParquet hex tables and visualization COGs) supporting the sustainable landscape efficiency-frontier analysis of Polasky et al. (2026, Science). Includes agricultural/grazing/forestry revenue densities, land-use transition costs, constraint masks, carbon zone assignments, current land-use classification, and non-spatial lookup tables.",
+  "license": "CC0-1.0",
+  "keywords": [
+    "land-use",
+    "agriculture",
+    "conservation",
+    "h3",
+    "land-cover",
+    "arable-land",
+    "carbon"
+  ],
+  "providers": [
+    {
+      "name": "Natural Capital Project",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/cboettig/nc-frontiers"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
     }
   },
+  "summaries": {
+    "item_count": 21277326
+  },
+  "assets": {
+    "carbon-zones/hex": {
+      "href": "https://data.source.coop/cboettig/nc-frontiers/carbon-zones/hex/h0=576495936675512319/",
+      "type": "application/x-parquet",
+      "title": "carbon-zones/hex",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "carbon_zone",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "h8",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 res-8 hex cell index (native resolution)"
+        },
+        {
+          "name": "h0",
+          "type": "BIGINT",
+          "description": "[spatial_index] H3 res-0 hex, used as hive partition key"
+        },
+        {
+          "name": "h5",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 res-5 parent hex (paper's ~8000 ha decision unit)"
+        },
+        {
+          "name": "h6",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h7",
+          "type": "UBIGINT"
+        }
+      ],
+      "description": "5 files sampled for this table"
+    },
+    "tran-cost-sustainable-current/hex": {
+      "href": "https://data.source.coop/cboettig/nc-frontiers/tran-cost-sustainable-current/hex/h0=580718061326172159/",
+      "type": "application/x-parquet",
+      "title": "tran-cost-sustainable-current/hex",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "tcost_sustainable_current_usd",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "h8",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 res-8 hex cell index (native resolution)"
+        },
+        {
+          "name": "h0",
+          "type": "BIGINT",
+          "description": "[spatial_index] H3 res-0 hex, used as hive partition key"
+        },
+        {
+          "name": "h5",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 res-5 parent hex (paper's ~8000 ha decision unit)"
+        },
+        {
+          "name": "h6",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h7",
+          "type": "UBIGINT"
+        }
+      ],
+      "description": "2 files sampled for this table"
+    },
+    "work/points": {
+      "href": "https://data.source.coop/cboettig/nc-frontiers/work/points/",
+      "type": "application/x-parquet",
+      "title": "work/points",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "lon",
+          "type": "DOUBLE",
+          "description": "[latlon] Longitude coordinate paired with lat"
+        },
+        {
+          "name": "lat",
+          "type": "DOUBLE",
+          "description": "[latlon] Latitude coordinate paired with lon"
+        },
+        {
+          "name": "val",
+          "type": "DOUBLE"
+        }
+      ],
+      "description": "3 files sampled for this table"
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/cboettig/nc-frontiers/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/cboettig/nc-frontiers",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "rel": "cite-as",
+      "href": "https://doi.org/10.1126/science.aea9058"
+    }
+  ],
+  "disabled": false,
+  "visibility": "public",
   "file_count": 3177,
+  "account_id": "cboettig",
+  "product_id": "nc-frontiers",
+  "featured": 0,
+  "created_at": "2026-07-25T14:34:08.640Z",
   "total_bytes": 52042349978,
+  "updated_at": "2026-07-25T14:34:08.640Z",
   "exts": {
     "parquet": 3118,
     "tif": 43,
@@ -34,25 +198,25 @@
     "shp": 1,
     "json": 1
   },
-  "ext_bytes": {
-    "parquet": 27805584582,
-    "tif": 15719784549,
-    "zip": 8507444186,
-    "shp": 8668952,
-    "csv": 741274,
-    "json": 67995,
-    "dbf": 45775,
-    "txt": 5618,
-    "md": 4507,
-    "shx": 2140,
-    "qpj": 257,
-    "prj": 143
+  "mirrors": {
+    "aws-opendata-us-west-2": {
+      "storage_type": "s3",
+      "is_primary": true,
+      "connection_id": "aws-opendata-us-west-2",
+      "prefix": "cboettig/nc-frontiers/"
+    }
   },
-  "store_format": null,
-  "_state": "seed",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "cataloged_at": "2026-07-29T00:11:15+00:00"
+  "data_mode": null,
+  "readme": "## README.md\n# Sustainable Landscape Efficiency Frontiers \u2014 Input Layers (`public-nci-frontiers`)\n\nH3-hexed input layers for the sustainable landscape efficiency-frontier analysis of\n**Polasky et al. (2026), _Science_ 392:1069** ([doi:10.1126/science.aea9058](https://doi.org/10.1126/science.aea9058)),\nprocessed to cloud-native formats (H3 hex GeoParquet + visualization COGs) on NRP S3.\n\n**License: `CC0-1.0`** (public-domain dedication). Input data are from the CC0 Dryad\ndeposit [doi:10.5061/dryad.qjq2bvqw5](https://doi.org/10.5061/dryad.qjq2bvqw5)\n(Polasky et al. / Natural Capital Project). No attribution is legally required, but a\ncitation to the paper and the Dryad deposit is requested.\n\n## STAC\n\nCatalog entry: <https://s3-west.nrp-nautilus.io/public-nci-frontiers/stac-collection.json>\n\n## What's here\n\nAll layers are **raster-derived H3 hexes** (one row per H3 cell; no vector GeoParquet /\nPMTiles). Selected layers also ship a visualization COG.\n\n| Family | Native res | Reducer / semantics | Examples |\n|---|---|---|---|\n| **Economic production value** (revenue) | h5 (~9 km / ~8000 ha source parcel) | `mean` \u2014 per-ha USD **densities**; aggregate with **AVG**, never SUM. Negative = net loss | `crop-current`, `crop-irrigated`, `crop-rainfed`, `palm-current`, `grazing-return`, `forestry-return` |\n| **Grazing methane** | h5 | `mean` \u2014 per-ha **density** (AVG) | `grazing-methane` |\n| **Forest Landscape Integrity Index** | h8 (300 m source) | `mean` \u2014 index (AVG) | `flii` |\n| **Land-use transition costs** | h8 | `sum` \u2014 per-cell USD **totals**; SUM is the catalog total | `tran-cost-*` (restoration, extensification, fixed-area, grazing/forestry expansion, \u2026) |\n| **Constraint masks** | h8 | `mode` \u2014 binary suitability / slope eligibility | `mask-irrigation`, `mask-rainfed`, `mask-expansion-suit`, `mask-slope-*`, `mask-sustainable-irrig` |\n| **Carbon zones** | h8 | `mode` \u2014 zone ID keying the carbon lookup | `carbon-zones` |\n| **Current land use** | h8 | `mode` \u2014 ESA CCI Land Cover 2025 class | `esa-lc-2025` |\n| **Lookup tables** (non-spatial) | \u2014 | joined by zone / LULC class | `carbon-by-zone-lulc`, `predicts-crosswalk`, `predicts-sr-response` |\n\n**Every layer carries an `h5` column** \u2014 the res-5 layers as native (parents `h4,h3,h0`),\nthe res-8 layers as an `h5` parent \u2014 so all layers meet at the paper's res-5 decision unit\n(~8000 ha). `h0` is the hive partition key. Check each hex asset's `h3:native_resolution` /\n`h3:parent_resolutions` in the STAC for the exact set.\n\n> \u26a0\ufe0f **Reducer semantics matter.** Revenue / methane / FLII are **densities** \u2014 aggregate\n> across cells with `AVG`/`MIN`/`MAX`, **never `SUM`**. Transition costs are per-cell USD\n> **totals** \u2014 `SUM` is correct. `nodata` (0) is excluded during hexing. See the STAC\n> per-column descriptions for the exact value column and units of each layer.\n\n## Usage\n\n### DuckDB (H3 hex \u2014 the primary query target)\n\n```sql\nINSTALL httpfs; LOAD httpfs;\nINSTALL h3 FROM community; LOAD h3;\n\n-- Current crop revenue density (USD/ha) \u2014 a DENSITY, so average, never sum\nSELECT AVG(crop_current_usd_ha) AS mean_usd_ha\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-nci-frontiers/crop-current/hex/h0=*/data_0.parquet')\nWHERE crop_current_usd_ha IS NOT NULL;\n\n-- Restoration transition cost \u2014 a per-cell TOTAL, so SUM is the catalog total\nSELECT SUM(value) AS total_usd\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-nci-frontiers/tran-cost-restoration/hex/h0=*/data_0.parquet');\n```\n\n### MapLibre GL JS (visualization COG via titiler)\n\nRaster layers have no PMTiles; render the visualization COG through a titiler raster-tile\nendpoint:\n\n```js\nmap.addSource(\"crop-current\", {\n  type: \"raster\",\n  tiles: [\n    \"https://titiler.../cog/tiles/{z}/{x}/{y}.png\" +\n    \"?url=https://s3-west.nrp-nautilus.io/public-nci-frontiers/crop-current/crop-current-cog.tif\" +\n    \"&rescale=-2000,2000&colormap_name=viridis\"\n  ],\n  tileSize: 256,\n});\nmap.addLayer({ id: \"crop-current\", type: \"raster\", source: \"crop-current\" });\n```\n\n## Related catalog collections\n\nFor the biodiversity and carbon objectives of the same analysis, see\n`iucn-richness-2025`, `wwf-ecoregions-2017`, `irrecoverable-carbon`, and `wdpa` (the\nIUCN I\u2013IV protected-area constraint).\n\n## Citation\n\nPolasky, S. et al. (2026). _Science_ 392:1069. [doi:10.1126/science.aea9058](https://doi.org/10.1126/science.aea9058).\nInput data: Dryad [doi:10.5061/dryad.qjq2bvqw5](https://doi.org/10.5061/dryad.qjq2bvqw5) (CC0-1.0).\n",
+  "_review": [
+    "providers: role [producer, licensor] for 'Natural Capital Project' is an AI guess \u2014 README credits 'Polasky et al. / Natural Capital Project' as the source of the CC0 Dryad deposit; not explicitly separated into producer vs. licensor roles.. Verify before flipping to _state: reviewed.",
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [work/points.lat (latlon), work/points.lon (latlon), carbon-zones/hex.h8 (spatial_index), carbon-zones/hex.h5 (spatial_index), carbon-zones/hex.h0 (spatial_index), tran-cost-sustainable-current/hex.h8 (spatial_index), tran-cost-sustainable-current/hex.h5 (spatial_index), tran-cost-sustainable-current/hex.h0 (spatial_index)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-07-29T09:38:24+00:00",
+  "store_format": null
 }
