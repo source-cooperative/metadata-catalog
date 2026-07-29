@@ -1,14 +1,375 @@
 {
-  "account_id": "cboettig",
-  "product_id": "usgs-nhd",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
+  "id": "cboettig/usgs-nhd",
   "title": "USGS National Hydrography",
-  "description": "",
-  "keywords": [],
-  "created_at": "2026-07-25T14:29:03.822Z",
-  "updated_at": "2026-07-25T14:29:03.822Z",
-  "visibility": "public",
+  "description": "Cloud-native distribution of the USGS National Hydrography Dataset (High Resolution) stream network (NHDFlowline) for the entire United States, covering all 50 states, DC, and Pacific/Caribbean territories. Provided as GeoParquet, PMTiles, and H3-indexed hex assets in two layers: all flowlines with Strahler stream order attached from the NHDPlus value-added attribute table, and a subset of officially classified perennial streams (FCODE 46006).",
+  "keywords": [
+    "hydrology",
+    "stream-network",
+    "geoparquet",
+    "pmtiles",
+    "h3"
+  ],
+  "providers": [
+    {
+      "name": "U.S. Geological Survey, National Hydrography Program",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/cboettig/usgs-nhd"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 154305329
+  },
+  "assets": {
+    ".": {
+      "href": "https://data.source.coop/cboettig/usgs-nhd/",
+      "type": "application/x-parquet",
+      "title": ".",
+      "roles": [
+        "data"
+      ],
+      "description": "2 files sampled for this table"
+    },
+    "perennial-streams/hex": {
+      "href": "https://data.source.coop/cboettig/usgs-nhd/perennial-streams/hex/h0=576707042908045311/",
+      "type": "application/x-parquet",
+      "title": "perennial-streams/hex",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "_cng_fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OBJECTID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "PERMANENT_IDENTIFIER",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FDATE",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "RESOLUTION",
+          "type": "INTEGER"
+        },
+        {
+          "name": "GNIS_ID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "GNIS_NAME",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "LENGTHKM",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "REACHCODE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FLOWDIR",
+          "type": "INTEGER"
+        },
+        {
+          "name": "WBAREA_PERMANENT_IDENTIFIER",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FTYPE",
+          "type": "INTEGER"
+        },
+        {
+          "name": "FCODE",
+          "type": "INTEGER"
+        },
+        {
+          "name": "GLOBALID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "INNETWORK",
+          "type": "INTEGER"
+        },
+        {
+          "name": "MAINPATH",
+          "type": "INTEGER"
+        },
+        {
+          "name": "VISIBILITYFILTER",
+          "type": "INTEGER"
+        },
+        {
+          "name": "SHAPE_Length",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "h8",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution-8 cell covering a buffered flowline segment."
+        },
+        {
+          "name": "h0",
+          "type": "BIGINT",
+          "description": "[spatial_index] H3 resolution-0 cell, used as hive partition key."
+        }
+      ],
+      "description": "16 files sampled for this table"
+    },
+    "raw": {
+      "href": "https://data.source.coop/cboettig/usgs-nhd/raw/",
+      "type": "application/x-parquet",
+      "title": "raw",
+      "roles": [
+        "data"
+      ],
+      "description": "2 files sampled for this table"
+    },
+    "streams-by-order/hex": {
+      "href": "https://data.source.coop/cboettig/usgs-nhd/streams-by-order/hex/h0=576707042908045311/",
+      "type": "application/x-parquet",
+      "title": "streams-by-order/hex",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "_cng_fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OBJECTID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "PERMANENT_IDENTIFIER",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FDATE",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "RESOLUTION",
+          "type": "INTEGER"
+        },
+        {
+          "name": "GNIS_ID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "GNIS_NAME",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "LENGTHKM",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "REACHCODE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FLOWDIR",
+          "type": "INTEGER"
+        },
+        {
+          "name": "WBAREA_PERMANENT_IDENTIFIER",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FTYPE",
+          "type": "INTEGER"
+        },
+        {
+          "name": "FCODE",
+          "type": "INTEGER"
+        },
+        {
+          "name": "GLOBALID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "INNETWORK",
+          "type": "INTEGER"
+        },
+        {
+          "name": "MAINPATH",
+          "type": "INTEGER"
+        },
+        {
+          "name": "VISIBILITYFILTER",
+          "type": "INTEGER"
+        },
+        {
+          "name": "SHAPE_Length",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "STREAMORDER",
+          "type": "INTEGER"
+        },
+        {
+          "name": "STREAMLEVEL",
+          "type": "INTEGER"
+        },
+        {
+          "name": "h8",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution-8 cell covering a buffered flowline segment."
+        },
+        {
+          "name": "h0",
+          "type": "BIGINT",
+          "description": "[spatial_index] H3 resolution-0 cell, used as hive partition key."
+        }
+      ],
+      "description": "17 files sampled for this table"
+    }
+  },
+  "table:columns": [
+    {
+      "name": "_cng_fid",
+      "type": "BIGINT"
+    },
+    {
+      "name": "OBJECTID",
+      "type": "BIGINT"
+    },
+    {
+      "name": "PERMANENT_IDENTIFIER",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "FDATE",
+      "type": "TIMESTAMP WITH TIME ZONE"
+    },
+    {
+      "name": "RESOLUTION",
+      "type": "INTEGER"
+    },
+    {
+      "name": "GNIS_ID",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "GNIS_NAME",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "LENGTHKM",
+      "type": "DOUBLE"
+    },
+    {
+      "name": "REACHCODE",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "FLOWDIR",
+      "type": "INTEGER"
+    },
+    {
+      "name": "WBAREA_PERMANENT_IDENTIFIER",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "FTYPE",
+      "type": "INTEGER"
+    },
+    {
+      "name": "FCODE",
+      "type": "INTEGER"
+    },
+    {
+      "name": "GLOBALID",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "INNETWORK",
+      "type": "INTEGER"
+    },
+    {
+      "name": "MAINPATH",
+      "type": "INTEGER"
+    },
+    {
+      "name": "VISIBILITYFILTER",
+      "type": "INTEGER"
+    },
+    {
+      "name": "SHAPE_Length",
+      "type": "DOUBLE"
+    },
+    {
+      "name": "SHAPE",
+      "type": "GEOMETRY('OGC:CRS84')",
+      "description": "[geometry] NHD flowline geometry (MultiLineString) in OGC:CRS84."
+    },
+    {
+      "name": "STREAMORDER",
+      "type": "INTEGER"
+    },
+    {
+      "name": "STREAMLEVEL",
+      "type": "INTEGER"
+    }
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/cboettig/usgs-nhd/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/cboettig/usgs-nhd",
+      "title": "Source Cooperative product page"
+    }
+  ],
+  "file_count": 44,
   "disabled": false,
-  "featured": 0,
+  "total_bytes": 78414046810,
+  "visibility": "public",
   "data_mode": null,
   "mirrors": {
     "aws-opendata-us-west-2": {
@@ -18,8 +379,15 @@
       "prefix": "cboettig/usgs-nhd/"
     }
   },
-  "file_count": 44,
-  "total_bytes": 78414046810,
+  "updated_at": "2026-07-25T14:29:03.822Z",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "created_at": "2026-07-25T14:29:03.822Z",
+  "account_id": "cboettig",
+  "product_id": "usgs-nhd",
+  "featured": 0,
   "exts": {
     "parquet": 37,
     "json": 3,
@@ -27,18 +395,12 @@
     "zip": 1,
     "md": 1
   },
-  "ext_bytes": {
-    "parquet": 40266437167,
-    "zip": 29980665212,
-    "pmtiles": 8166900485,
-    "json": 39751,
-    "md": 4195
-  },
-  "store_format": null,
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "cataloged_at": "2026-07-29T00:11:28+00:00"
+  "readme": "## README.md\n# USGS National Hydrography Dataset (NHD) \u2014 Streams (national)\n\nCloud-native distribution of the **USGS National Hydrography Dataset, High Resolution** stream network (`NHDFlowline`), nationwide (50 states + DC + PR/VI + Pacific territories as bundled in the USGS national seamless GDB). Two layers:\n\n| Dataset | What it is | Features |\n|---|---|---|\n| **`streams-by-order`** | All NHD flowlines, with **Strahler stream order** attached from the NHDPlus value-added attribute table (`NHDFlowlineVAA`). | ~30.2 M lines |\n| **`perennial-streams`** | NHD flowlines filtered to **perennial** streams/rivers (`FCODE = 46006`). | subset of the above |\n\n- **Producer:** U.S. Geological Survey, National Hydrography Program (High Resolution).\n- **License:** `public-domain` (US federal work).\n- **Source:** `NHD_H_National_GDB.zip` (national seamless High-Resolution GDB).\n- **Geometry:** vector lines (`MultiLineString`), **OGC:CRS84** (lon, lat). Reprojected from the source NAD83 (EPSG:4269).\n- **H3 hex:** each dataset is indexed to **H3 resolution 8**. Line features are hexed to H3 res 8 by **buffering each segment by the H3 cell circumradius before polyfill**.\n\nEach dataset ships three assets: GeoParquet (`<name>.parquet`), PMTiles (`<name>.pmtiles`), and hive-partitioned H3 hex (`<name>/hex/h0=*/data_0.parquet`).\n\n---\n\n## DuckDB \u2014 query the GeoParquet\n\n```sql\nINSTALL spatial; LOAD spatial;\n\n-- Perennial streams in a bounding box (lon/lat). The geometry column is SHAPE.\nSELECT permanent_identifier, gnis_name, lengthkm, fcode\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-usgs-nhd/perennial-streams.parquet')\nWHERE ST_Intersects(SHAPE, ST_MakeEnvelope(-122.6, 37.7, -122.3, 37.9))\nLIMIT 20;\n\n-- Stream-order distribution (streams-by-order)\nSELECT streamorder, COUNT(*) AS n\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-usgs-nhd/streams-by-order.parquet')\nGROUP BY streamorder ORDER BY streamorder;\n```\n\n## DuckDB \u2014 H3 hex (aggregation / spatial join)\n\n```sql\n-- How many res-8 cells does the perennial network touch in each h0 region?\nSELECT h0, COUNT(DISTINCT h8) AS cells\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-usgs-nhd/perennial-streams/hex/h0=*/data_0.parquet')\nGROUP BY h0 ORDER BY cells DESC;\n```\n\n> **Hex aggregation caveat.** One hex row = one (flowline, h8) pair. Per-feature columns\n> (`lengthkm`, `shape_length`) are **repeated on every cell a flowline covers** \u2014 never `SUM`\n> them on hex data. Network length \u2248 `SUM(lengthkm)` only after `SELECT DISTINCT permanent_identifier, lengthkm`.\n> The H3 index columns (`h8`, `h0`) are the only fields safe to aggregate directly.\n\n## MapLibre GL JS \u2014 PMTiles\n\nThe `source-layer` is the **last segment of the dataset name** (`streams-by-order` or `perennial-streams`), NOT the GDB layer name.\n\n```js\nconst map = new maplibregl.Map({\n  container: 'map',\n  style: 'https://demotiles.maplibre.org/style.json',\n  center: [-119, 37], zoom: 5\n});\nmap.on('load', () => {\n  const p = new pmtiles.PMTiles('https://s3-west.nrp-nautilus.io/public-usgs-nhd/perennial-streams.pmtiles');\n  protocol.add(p);\n  map.addSource('streams', { type: 'vector', url: 'pmtiles://' + p.source.getKey() });\n  map.addLayer({\n    id: 'streams', type: 'line', source: 'streams',\n    'source-layer': 'perennial-streams',\n    paint: { 'line-color': '#2b8cbe', 'line-width': 0.6 }\n  });\n});\n```\n\n---\n\n## Stream order\n\n`streams-by-order` carries `streamorder` (Strahler stream order, integer) joined from the NHD\nvalue-added attribute table `NHDFlowlineVAA` on `permanent_identifier`. Higher = larger\ndownstream river; headwater channels are order 1. `streamlevel` (downstream-mainstem level) is\nincluded as well. Flowlines with no VAA match have NULL stream order.\n\n## FCODE (feature code) reference\n\n`perennial-streams` is the subset where `fcode = 46006`. For reference, related stream FCODEs in the source:\n\n| FCODE | Meaning |\n|---|---|\n| 46000 | Stream/River (general, unspecified hydrographic category) |\n| 46003 | Stream/River \u2014 Intermittent |\n| **46006** | **Stream/River \u2014 Perennial** |\n| 46007 | Stream/River \u2014 Ephemeral |\n| 46100 | Submerged Stream |\n\nSource: USGS NHD `NHDFCode` domain table.\n",
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [..SHAPE (geometry), raw.SHAPE (geometry), perennial-streams/hex.h8 (spatial_index), perennial-streams/hex.h0 (spatial_index), streams-by-order/hex.h8 (spatial_index), streams-by-order/hex.h0 (spatial_index)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-07-29T01:07:31+00:00",
+  "store_format": null
 }
