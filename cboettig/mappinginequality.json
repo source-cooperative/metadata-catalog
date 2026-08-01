@@ -6,7 +6,7 @@
   ],
   "id": "cboettig/mappinginequality",
   "title": "Mapping Inequality Data -- Redlining",
-  "description": "Vector dataset of Home Owners' Loan Corporation (HOLC) 'redlining' security-grade maps for US city neighborhoods, digitized from 1930s-era maps created by the Digital Scholarship Lab's Mapping Inequality project. Each polygon records a neighborhood's HOLC grade (A-D), land-use classification, and associated metadata, distributed as GeoParquet, PMTiles, and H3-indexed hexagons.",
+  "description": "Vector polygon dataset of 1930s Home Owners' Loan Corporation (HOLC) 'redlining' security-grade maps for neighborhoods in US cities, digitized by the University of Richmond's Mapping Inequality project. Each polygon records a HOLC grade (A-D), land-use classification, and related attributes, distributed as GeoParquet, PMTiles, and H3-indexed hexagons.",
   "license": "other",
   "keywords": [
     "redlining",
@@ -54,7 +54,7 @@
     }
   },
   "summaries": {
-    "item_count": 1056077
+    "item_count": 1066231
   },
   "assets": {
     "hex": {
@@ -76,12 +76,12 @@
         {
           "name": "city",
           "type": "VARCHAR",
-          "description": "[placename] City name"
+          "description": "[placename] Name of the city"
         },
         {
           "name": "state",
           "type": "VARCHAR",
-          "description": "[admin_code] Two-letter US state abbreviation"
+          "description": "[placename] Two-letter state abbreviation"
         },
         {
           "name": "city_survey",
@@ -117,8 +117,7 @@
         },
         {
           "name": "geom_bbox",
-          "type": "STRUCT(xmin FLOAT, ymin FLOAT, xmax FLOAT, ymax FLOAT)",
-          "description": "[geometry] Bounding box of the polygon geometry"
+          "type": "STRUCT(xmin FLOAT, ymin FLOAT, xmax FLOAT, ymax FLOAT)"
         },
         {
           "name": "h10",
@@ -170,12 +169,12 @@
         {
           "name": "city",
           "type": "VARCHAR",
-          "description": "[placename] City name"
+          "description": "[placename] Name of the city"
         },
         {
           "name": "state",
           "type": "VARCHAR",
-          "description": "[admin_code] Two-letter US state abbreviation"
+          "description": "[placename] Two-letter state abbreviation"
         },
         {
           "name": "city_survey",
@@ -212,12 +211,81 @@
         {
           "name": "geom",
           "type": "GEOMETRY('OGC:CRS84')",
-          "description": "[geometry] Neighborhood polygon geometry"
+          "description": "[geometry] Polygon geometry of the HOLC neighborhood boundary (OGC:CRS84)"
         },
         {
           "name": "geom_bbox",
-          "type": "STRUCT(xmin FLOAT, ymin FLOAT, xmax FLOAT, ymax FLOAT)",
-          "description": "[geometry] Bounding box of the polygon geometry"
+          "type": "STRUCT(xmin FLOAT, ymin FLOAT, xmax FLOAT, ymax FLOAT)"
+        }
+      ],
+      "table:row_count": 10154
+    },
+    "raw": {
+      "href": "https://data.source.coop/cboettig/mappinginequality/raw/mappinginequality-src.parquet",
+      "type": "application/x-parquet",
+      "title": "mappinginequality-src.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "area_id",
+          "type": "INTEGER"
+        },
+        {
+          "name": "city",
+          "type": "VARCHAR",
+          "description": "[placename] Name of the city"
+        },
+        {
+          "name": "state",
+          "type": "VARCHAR",
+          "description": "[placename] Two-letter state abbreviation"
+        },
+        {
+          "name": "city_survey",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "category",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "grade",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "label",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "residential",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "commercial",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "industrial",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "fill",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geom",
+          "type": "GEOMETRY('OGC:CRS84')",
+          "description": "[geometry] Polygon geometry of the HOLC neighborhood boundary (OGC:CRS84)"
+        },
+        {
+          "name": "geom_bbox",
+          "type": "STRUCT(xmin FLOAT, ymin FLOAT, xmax FLOAT, ymax FLOAT)"
         }
       ],
       "table:row_count": 10154
@@ -235,8 +303,8 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "total_bytes": 28684283,
-  "data_mode": "open",
+  "total_bytes": 32655261,
+  "account_id": "cboettig",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -249,30 +317,30 @@
       "prefix": "cboettig/mappinginequality/"
     }
   },
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
+  "created_at": "2026-01-03T21:20:03.841Z",
+  "data_mode": "open",
+  "file_count": 11,
+  "featured": 0,
   "exts": {
-    "parquet": 7,
+    "parquet": 8,
     "md": 1,
     "pmtiles": 1,
     "json": 1
   },
-  "disabled": false,
-  "account_id": "cboettig",
-  "product_id": "mappinginequality",
-  "file_count": 10,
-  "created_at": "2026-01-03T21:20:03.841Z",
-  "featured": 0,
   "visibility": "public",
   "updated_at": "2026-01-03T21:20:03.841Z",
+  "disabled": false,
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "product_id": "mappinginequality",
   "readme": "## README.md\n# Mapping Inequality: Redlining in New Deal America\n\nThis dataset contains the \"Home Owners' Loan Corporation\" (HOLC) grades for neighborhoods in cities across the United States. These maps, created in the 1930s, were used to grade the \"security\" of real estate investments, leading to the practice known as redlining.\n\n## Source\n\n- **Project:** [Mapping Inequality: Redlining in New Deal America](https://dsl.richmond.edu/panorama/redlining/)\n- **Authors:** Robert K. Nelson, Laedale Winling, Richard Marciano, Nathan Connolly, et al.\n- **Institution:** Digital Scholarship Lab, University of Richmond\n- **License:** [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International](https://creativecommons.org/licenses/by-nc-sa/4.0/)\n\n## Data Format\n\nThe dataset is available in the following formats:\n- **GeoParquet:** `s3://public-mappinginequality/mappinginequality.parquet` (Full dataset)\n- **PMTiles:** `s3://public-mappinginequality/mappinginequality.pmtiles` (For web mapping)\n- **H3 Hexagons:** `s3://public-mappinginequality/hex/` (Partitioned by h0)\n\n## Data Dictionary\n\n| Column | Type | Description |\n|--------|------|-------------|\n| `fid` | BigInt | Unique Feature ID |\n| `area_id` | Integer | ID of the specific polygon area |\n| `city` | String | Name of the city |\n| `state` | String | Two-letter state abbreviation |\n| `city_survey` | Boolean | Whether the city was surveyed |\n| `category` | String | HOLC Grade (A, B, C, D) - duplicates `grade` |\n| `grade` | String | HOLC Grade (A=\"Best\", B=\"Still Desirable\", C=\"Definitely Declining\", D=\"Hazardous\") |\n| `label` | String | Full label (e.g., \"A1\", \"D4\") |\n| `residential` | Boolean | Classified as residential area |\n| `commercial` | Boolean | Classified as commercial area |\n| `industrial` | Boolean | Classified as industrial area |\n| `fill` | String | Hex color code associated with the grade |\n\n### HOLC Grades\n\nThe `grade` column contains the core classification:\n- **A (Green):** \"Best\" - Upper-class, wealthy neighborhoods.\n- **B (Blue):** \"Still Desirable\" - Sound working-class neighborhoods.\n- **C (Yellow):** \"Definitely Declining\" - Neighborhoods with \"infiltration\" of lower-grade populations.\n- **D (Red):** \"Hazardous\" - Neighborhoods with high populations of racial/ethnic minorities or \"undesirable\" features.\n\n## Usage Examples\n\n### DuckDB\n\n```sql\n-- Explore redlining grades by city\nSELECT city, state, grade, COUNT(*) as n\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-mappinginequality/mappinginequality.parquet')\nGROUP BY city, state, grade\nORDER BY city, grade;\n```\n\n### MapLibre GL JS\n\nThe PMTiles `source-layer` name is **`redlining`**.\n\n```js\nmap.addSource('redlining', {\n  type: 'vector',\n  url: 'pmtiles://https://s3-west.nrp-nautilus.io/public-mappinginequality/mappinginequality.pmtiles'\n});\n\nmap.addLayer({\n  id: 'redlining-fill',\n  type: 'fill',\n  source: 'redlining',\n  'source-layer': 'redlining',\n  paint: {\n    'fill-color': ['get', 'fill'],\n    'fill-opacity': 0.6\n  }\n});\n```\n\n## Citation\n\nRobert K. Nelson, Laedale Winling, Richard Marciano, Nathan Connolly, et al., \"Mapping Inequality,\" American Panorama, ed. Robert K. Nelson and Edward L. Ayers, accessed [Date], https://dsl.richmond.edu/panorama/redlining/\n",
   "_review": [
     "extent.temporal: None (probe sample) widened to ['1930-01-01T00:00:00Z', '1939-01-01T00:00:00Z'] using README-stated coverage ['1930', '1939'].",
-    "extent.spatial.bbox: omitted; spatial reference is categorical via [hex.city (placename), hex.state (admin_code), hex.geom_bbox (geometry), hex.h0 (spatial_index), hex.h8 (spatial_index), hex.h9 (spatial_index), hex.h10 (spatial_index), ..city (placename), ..state (admin_code), ..geom (geometry), ..geom_bbox (geometry)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [..geom (geometry), ..city (placename), ..state (placename), raw.geom (geometry), raw.city (placename), raw.state (placename), hex.city (placename), hex.state (placename), hex.h0 (spatial_index), hex.h8 (spatial_index), hex.h9 (spatial_index), hex.h10 (spatial_index)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-07-26T09:20:13+00:00",
+  "cataloged_at": "2026-08-01T09:24:56+00:00",
   "store_format": null
 }
