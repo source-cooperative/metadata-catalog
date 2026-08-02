@@ -6,17 +6,17 @@
   ],
   "id": "cboettig/epa-water",
   "title": "EPA Water Datasets",
-  "description": "Polygon service-area boundaries for 44,656 community public water systems (CWS) in the United States, covering all 50 states, DC, and tribal/territorial areas (~99% of U.S. CWS-served population). Roughly 60% of boundaries are authoritative (from state primacy agencies and utilities); the remainder are EPA-modeled using building footprints, parcels, population data, and OpenStreetMap. Published as GeoParquet, PMTiles, and H3-partitioned hex parquet for spatial joins.",
+  "description": "Polygon service-area boundaries for 44,656 community public water systems (CWS) across the United States, version 3 of the EPA Office of Research and Development's Service Area Boundary dataset, reprocessed into cloud-native GeoParquet, PMTiles, and H3 hex formats. Roughly 60% of boundaries are authoritative (state primacy agencies, utilities) and the remainder are EPA-modeled from building footprints, parcels, population data, and OpenStreetMap.",
   "license": "LicenseRef-USGovernmentPublicDomain",
   "keywords": [
     "hydrology",
     "administrative-boundaries",
-    "drinking-water",
     "geoparquet",
     "pmtiles",
     "h3",
     "demographics",
-    "environmental-monitoring"
+    "environmental-monitoring",
+    "drinking-water"
   ],
   "providers": [
     {
@@ -105,7 +105,7 @@
         {
           "name": "Primacy_Agency",
           "type": "VARCHAR",
-          "description": "[admin_code] Two-letter state or EPA-region code of the regulating primacy agency"
+          "description": "[admin_code] Two-letter state/EPA-region code regulating the system."
         },
         {
           "name": "Pop_Cat_5",
@@ -174,7 +174,7 @@
         {
           "name": "geom",
           "type": "GEOMETRY('OGC:CRS84')",
-          "description": "[geometry] MultiPolygon service area boundary, WGS84 (EPSG:4326)"
+          "description": "[geometry] MultiPolygon service-area boundary, WGS84 (EPSG:4326)."
         }
       ],
       "table:row_count": 44656
@@ -214,7 +214,7 @@
         {
           "name": "Primacy_Agency",
           "type": "VARCHAR",
-          "description": "[admin_code] Two-letter state or EPA-region code of the regulating primacy agency"
+          "description": "[admin_code] Two-letter state/EPA-region code regulating the system."
         },
         {
           "name": "Pop_Cat_5",
@@ -283,22 +283,22 @@
         {
           "name": "h10",
           "type": "UBIGINT",
-          "description": "[spatial_index] H3 cell at native resolution 10 (~15,000 m\u00b2 per cell)"
+          "description": "[spatial_index] H3 resolution-10 cell index, native resolution of the hex asset."
         },
         {
           "name": "h0",
           "type": "BIGINT",
-          "description": "[spatial_index] H3 parent cell at resolution 0; used as hive partition key"
+          "description": "[spatial_index] H3 resolution-0 parent cell, used as the hive-partition key."
         },
         {
           "name": "h8",
           "type": "UBIGINT",
-          "description": "[spatial_index] H3 parent cell at resolution 8"
+          "description": "[spatial_index] H3 resolution-8 parent cell rollup."
         },
         {
           "name": "h9",
           "type": "UBIGINT",
-          "description": "[spatial_index] H3 parent cell at resolution 9"
+          "description": "[spatial_index] H3 resolution-9 parent cell rollup."
         }
       ],
       "description": "13 files sampled for this table"
@@ -316,27 +316,25 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "visibility": "public",
-  "created_at": "2026-06-17T03:24:48.681Z",
-  "disabled": false,
-  "updated_at": "2026-06-17T03:24:48.681Z",
   "data_mode": "open",
-  "file_count": 20,
-  "product_id": "epa-water",
+  "featured": 0,
+  "created_at": "2026-06-17T03:24:48.681Z",
   "exts": {
     "parquet": 14,
     "json": 2,
+    "zip": 1,
     "pmtiles": 1,
     "md": 1,
-    "gpkg": 1,
-    "zip": 1
+    "gpkg": 1
   },
-  "total_bytes": 2841194020,
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "account_id": "cboettig",
+  "disabled": false,
+  "total_bytes": 2841201596,
+  "product_id": "epa-water",
+  "file_count": 20,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -349,15 +347,14 @@
       "prefix": "cboettig/epa-water/"
     }
   },
-  "featured": 0,
+  "account_id": "cboettig",
+  "visibility": "public",
+  "updated_at": "2026-06-17T03:24:48.681Z",
   "readme": "## epa-sab-v3__cws__README.md\n# EPA Community Water System Service Area Boundaries (v3)\n\nPolygon service-area boundaries for **community public water systems (CWS)** in the United States \u2014 version 3 (March 2026) of the U.S. EPA Office of Research and Development's Service Area Boundary (SAB) dataset, reprocessed into cloud-native formats.\n\n- **Coverage:** 44,656 community water systems (~99% of U.S. population served by CWS), all 50 states + DC + tribal/territorial. The H3 hex asset represents 44,128 of these (528 very-small features did not cover a single H3 res-10 cell).\n- **Provenance:** ~60% authoritative (state primacy agencies, utilities); ~40% EPA-modeled from building footprints, parcels, population, OSM. The `Model_Method` column is empty for authoritative boundaries.\n- **Geometry:** MultiPolygon, reprojected from NAD83 (EPSG:4269) to WGS84 (EPSG:4326).\n- **License:** U.S. federal data \u2014 public domain (no restrictions).\n- **Source:** https://www.epa.gov/ground-water-and-drinking-water/community-water-system-service-area-boundaries\n- **Citation:** EPA Office of Research and Development. *Community Water System Service Area Boundaries v3*, March 2026. https://github.com/USEPA/ORD_SAB_Model\n\n## What's in this collection\n\nThe full v3 release also contains a `T_NTNC` layer (transient + non-transient non-community water systems \u2014 schools, campgrounds, gas stations, etc., ~77k features). Only the **CWS** layer is published here; T_NTNC may be added later.\n\n| Asset | Path | Use |\n|---|---|---|\n| GeoParquet | `epa-sab-v3/cws.parquet` | DuckDB / Polars queries, joins to SDWIS |\n| PMTiles | `epa-sab-v3/cws.pmtiles` | Web map (`source-layer: cws`) |\n| H3 hex parquet | `epa-sab-v3/cws/hex/h0={cell}/data_0.parquet` | Spatial joins, overlays with watersheds, fire-risk, demographics |\n\nThe raw EPA zip (with documentation PDF and census crosswalk tables) is preserved at `raw/PWS_Boundaries_Latest.zip`.\n\n## Key columns\n\n| Column | Type | Notes |\n|---|---|---|\n| `PWSID` | string | EPA Public Water System ID \u2014 canonical join key to SDWIS. ~13 PWSIDs appear on more than one feature; not strictly unique. |\n| `PWS_Name` | string | Utility name as reported by the primacy agency. |\n| `Primacy_Agency` | string | Two-letter state/EPA-region code regulating the system. |\n| `Pop_Cat_5` | string | Size bucket: `<=500`, `501-3,300`, `3,301-10,000`, `10,001-100,000`, `>100,000`. |\n| `Population_Served_Count` | int | Population served by the entire system (range 0\u20138.3M). |\n| `Service_Connections_Count` | int | Active service connections (meters). |\n| `Service_Area_Type` | string | EPA SDWIS classification \u2014 `Residential Area`, `Municipality`, `Mobile Home Park`, etc. |\n| `Model_Method` | string | `` (authoritative) / `Random Forest` / `Decision Tree` / `Parcel` / `OSM`. Empty = highest confidence. |\n\nSee the [STAC collection](./stac-collection.json) for the full data dictionary including values for coded columns and per-feature aggregation warnings on the hex asset.\n\n## Usage\n\n### DuckDB (GeoParquet)\n\n```sql\nINSTALL spatial; LOAD spatial;\nINSTALL httpfs; LOAD httpfs;\n\n-- All Texas community water systems serving >100k people\nSELECT PWSID, PWS_Name, Population_Served_Count, Service_Area_Type\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-epa-water/epa-sab-v3/cws.parquet')\nWHERE Primacy_Agency = 'TX' AND Pop_Cat_5 = '>100,000'\nORDER BY Population_Served_Count DESC;\n```\n\n### DuckDB (H3 hex \u2014 spatial joins)\n\nH3 hex parquet is hive-partitioned by `h0`. **Always include an `h0` filter** when querying a region \u2014 otherwise you scan all 122 partitions.\n\n```sql\n-- Population served by any CWS overlapping a HydroBasins HUC8 (example)\nWITH region AS (\n  SELECT DISTINCT h8 FROM read_parquet(\n    'https://s3-west.nrp-nautilus.io/public-hydrobasins/.../hex/h0=*/data_0.parquet'\n  ) WHERE HYBAS_ID = 7080023860\n),\nsystems AS (\n  SELECT DISTINCT cws.PWSID, cws.PWS_Name, cws.Population_Served_Count\n  FROM read_parquet(\n    'https://s3-west.nrp-nautilus.io/public-epa-water/epa-sab-v3/cws/hex/h0=*/data_0.parquet'\n  ) cws\n  JOIN region USING (h8)\n)\nSELECT SUM(Population_Served_Count) AS total_pop, COUNT(*) AS n_systems FROM systems;\n```\n\nThe `SELECT DISTINCT cws.PWSID, ...` step is essential \u2014 `Population_Served_Count` is repeated on every hex row a service area covers. See the hex asset's `table:columns` description for the full duplication caveat.\n\n### MapLibre GL JS\n\n```js\nmap.addSource('epa-sab-cws', {\n  type: 'vector',\n  url: 'pmtiles://https://s3-west.nrp-nautilus.io/public-epa-water/epa-sab-v3/cws.pmtiles'\n});\n\nmap.addLayer({\n  id: 'epa-sab-cws-fill',\n  type: 'fill',\n  source: 'epa-sab-cws',\n  'source-layer': 'cws',   // <-- last segment of --dataset, NOT the GDB layer name\n  paint: {\n    'fill-color': '#1f78b4',\n    'fill-opacity': 0.35,\n    'fill-outline-color': '#08306b'\n  }\n});\n```\n\n## Processing notes\n\n- Reprojected from NAD83 (EPSG:4269) to WGS84 (EPSG:4326) at conversion time.\n- `Shape_Area` and `Shape_Length` are carried through from the source dataset in the original CRS units; they are **not** recomputed after reprojection. For accurate area, compute from the WGS84 geometry or use the H3 hex count.\n- H3 native resolution **10** (\u224815,000 m\u00b2 cells), with parent rollups at 9, 8, and 0.\n- One row per (CWS feature, H3 cell) pair in the hex asset.\n- Built with [`cng-datasets`](https://github.com/boettiger-lab/datasets) on NRP Nautilus.\n",
   "_review": [
-    "license: U.S. federal government work \u2014 public domain with no use restrictions under 17 U.S.C. \u00a7 105. No SPDX identifier was explicitly assigned; nearest equivalent is CC0-1.0.",
-    "providers: role [producer] for 'State primacy agencies and water utilities' is an AI guess \u2014 Authoritative boundaries (~60%) were supplied by state primacy agencies and utilities; they are the original spatial data producers for that subset.. Verify before flipping to _state: reviewed.",
-    "providers: role [processor] for 'boettiger-lab/cng-datasets (NRP Nautilus)' is an AI guess \u2014 Identified as the processing pipeline that reprojected to WGS84 and produced the cloud-native GeoParquet, PMTiles, and H3 hex assets.. Verify before flipping to _state: reviewed.",
     "extent.spatial.bbox: omitted; spatial reference is categorical via [epa-sab-v3.geom (geometry), epa-sab-v3.Primacy_Agency (admin_code), epa-sab-v3/cws/hex.h10 (spatial_index), epa-sab-v3/cws/hex.h9 (spatial_index), epa-sab-v3/cws/hex.h8 (spatial_index), epa-sab-v3/cws/hex.h0 (spatial_index), epa-sab-v3/cws/hex.Primacy_Agency (admin_code)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-06-27T09:23:50+00:00",
+  "cataloged_at": "2026-08-02T10:03:13+00:00",
   "store_format": null
 }
