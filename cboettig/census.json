@@ -6,12 +6,13 @@
   ],
   "id": "cboettig/census",
   "title": "US Census Geographic Boundaries",
-  "description": "Cloud-optimized Parquet files of US Census TIGER/Line geographic boundaries for multiple years (2022, 2024, 2025), covering administrative levels including tracts, counties, states, congressional districts, and state legislative districts. Each level is provided both as native geometries with FIPS identifiers and as H3 hexagonal spatial index crosswalks at resolutions 8\u201310, enabling spatial joins between Census tabular data and H3-indexed datasets. The collection contains geometry and administrative identifiers only; demographic attributes are not included.",
+  "description": "A cloud-optimized Parquet dataset providing a spatial crosswalk between 2022 US Census Tract boundaries (from TIGER/Line Shapefiles) and the H3 hexagonal spatial indexing system at resolution 10, partitioned by H3 resolution-0 cells. It contains only geometry and FIPS identifiers, not demographic attributes.",
   "keywords": [
     "census",
     "h3",
     "administrative-boundaries",
-    "crosswalk"
+    "geoparquet",
+    "pmtiles"
   ],
   "providers": [
     {
@@ -86,7 +87,7 @@
         {
           "name": "GEOID",
           "type": "VARCHAR",
-          "description": "[admin_code] Census GEOID (composite FIPS code) uniquely identifying the geographic unit"
+          "description": "[admin_code] Census GEOID identifier for the district/tract/county unit"
         },
         {
           "name": "GEOIDFQ",
@@ -122,18 +123,16 @@
         },
         {
           "name": "INTPTLAT",
-          "type": "VARCHAR",
-          "description": "[latlon] Internal point latitude (centroid) of the census unit"
+          "type": "VARCHAR"
         },
         {
           "name": "INTPTLON",
-          "type": "VARCHAR",
-          "description": "[latlon] Internal point longitude (centroid) of the census unit"
+          "type": "VARCHAR"
         },
         {
           "name": "geom",
           "type": "GEOMETRY('OGC:CRS84')",
-          "description": "[geometry] WKB polygon geometry of the census geographic unit"
+          "description": "[geometry] OGC geometry of the boundary polygon"
         },
         {
           "name": "bbox",
@@ -204,18 +203,15 @@
         },
         {
           "name": "h10",
-          "type": "UBIGINT",
-          "description": "[spatial_index] H3 resolution 10 index intersecting this congressional district"
+          "type": "UBIGINT"
         },
         {
           "name": "h8",
-          "type": "UBIGINT",
-          "description": "[spatial_index] H3 resolution 8 index intersecting this congressional district"
+          "type": "UBIGINT"
         },
         {
           "name": "h9",
-          "type": "UBIGINT",
-          "description": "[spatial_index] H3 resolution 9 index intersecting this congressional district"
+          "type": "UBIGINT"
         },
         {
           "name": "OGC_FID",
@@ -232,7 +228,7 @@
         {
           "name": "GEOID",
           "type": "VARCHAR",
-          "description": "[admin_code] Census GEOID for the congressional district"
+          "description": "[admin_code] Census GEOID identifier for the congressional district"
         },
         {
           "name": "GEOIDFQ",
@@ -268,13 +264,11 @@
         },
         {
           "name": "INTPTLAT",
-          "type": "VARCHAR",
-          "description": "[latlon] Internal point latitude of the congressional district"
+          "type": "VARCHAR"
         },
         {
           "name": "INTPTLON",
-          "type": "VARCHAR",
-          "description": "[latlon] Internal point longitude of the congressional district"
+          "type": "VARCHAR"
         },
         {
           "name": "bbox",
@@ -282,8 +276,7 @@
         },
         {
           "name": "h0",
-          "type": "BIGINT",
-          "description": "[spatial_index] H3 resolution 0 partition key for this congressional district"
+          "type": "BIGINT"
         }
       ],
       "description": "16 files sampled for this table"
@@ -299,7 +292,7 @@
         {
           "name": "h8",
           "type": "UBIGINT",
-          "description": "[spatial_index] H3 resolution 8 index intersecting this county"
+          "description": "[spatial_index] H3 resolution-8 index intersecting the county"
         },
         {
           "name": "STATEFP",
@@ -316,7 +309,7 @@
         {
           "name": "GEOID",
           "type": "VARCHAR",
-          "description": "[admin_code] Census GEOID (state+county FIPS) for the county"
+          "description": "[admin_code] Census GEOID identifier for the county"
         },
         {
           "name": "GEOIDFQ",
@@ -368,18 +361,15 @@
         },
         {
           "name": "INTPTLAT",
-          "type": "VARCHAR",
-          "description": "[latlon] Internal point latitude of the county"
+          "type": "VARCHAR"
         },
         {
           "name": "INTPTLON",
-          "type": "VARCHAR",
-          "description": "[latlon] Internal point longitude of the county"
+          "type": "VARCHAR"
         },
         {
           "name": "h0",
-          "type": "BIGINT",
-          "description": "[spatial_index] H3 resolution 0 partition key for this county"
+          "type": "BIGINT"
         },
         {
           "name": "_cng_fid",
@@ -399,7 +389,7 @@
         {
           "name": "h8",
           "type": "UBIGINT",
-          "description": "[spatial_index] H3 resolution 8 index intersecting this state"
+          "description": "[spatial_index] H3 resolution-8 index intersecting the state"
         },
         {
           "name": "REGION",
@@ -420,7 +410,7 @@
         {
           "name": "GEOID",
           "type": "VARCHAR",
-          "description": "[admin_code] Census GEOID (state FIPS) for the state"
+          "description": "[admin_code] Census GEOID identifier for the state"
         },
         {
           "name": "GEOIDFQ",
@@ -456,18 +446,15 @@
         },
         {
           "name": "INTPTLAT",
-          "type": "VARCHAR",
-          "description": "[latlon] Internal point latitude of the state"
+          "type": "VARCHAR"
         },
         {
           "name": "INTPTLON",
-          "type": "VARCHAR",
-          "description": "[latlon] Internal point longitude of the state"
+          "type": "VARCHAR"
         },
         {
           "name": "h0",
-          "type": "BIGINT",
-          "description": "[spatial_index] H3 resolution 0 partition key for this state"
+          "type": "BIGINT"
         },
         {
           "name": "_cng_fid",
@@ -498,18 +485,15 @@
         },
         {
           "name": "h10",
-          "type": "UBIGINT",
-          "description": "[spatial_index] H3 resolution 10 index intersecting this census tract"
+          "type": "UBIGINT"
         },
         {
           "name": "h8",
-          "type": "UBIGINT",
-          "description": "[spatial_index] H3 resolution 8 index intersecting this census tract"
+          "type": "UBIGINT"
         },
         {
           "name": "h9",
-          "type": "UBIGINT",
-          "description": "[spatial_index] H3 resolution 9 index intersecting this census tract"
+          "type": "UBIGINT"
         },
         {
           "name": "OGC_FID",
@@ -530,7 +514,7 @@
         {
           "name": "GEOID",
           "type": "VARCHAR",
-          "description": "[admin_code] 11-digit FIPS code (state+county+tract) for the census tract"
+          "description": "[admin_code] Census GEOID identifier for the tract (State+County+Tract FIPS)"
         },
         {
           "name": "GEOIDFQ",
@@ -562,13 +546,11 @@
         },
         {
           "name": "INTPTLAT",
-          "type": "VARCHAR",
-          "description": "[latlon] Internal point latitude of the census tract"
+          "type": "VARCHAR"
         },
         {
           "name": "INTPTLON",
-          "type": "VARCHAR",
-          "description": "[latlon] Internal point longitude of the census tract"
+          "type": "VARCHAR"
         },
         {
           "name": "bbox",
@@ -576,8 +558,7 @@
         },
         {
           "name": "h0",
-          "type": "BIGINT",
-          "description": "[spatial_index] H3 resolution 0 partition key for this census tract"
+          "type": "BIGINT"
         }
       ],
       "description": "16 files sampled for this table"
@@ -609,7 +590,7 @@
         {
           "name": "GEOID",
           "type": "VARCHAR",
-          "description": "[admin_code] Census GEOID for the state legislative district"
+          "description": "[admin_code] Census GEOID identifier for the legislative district"
         },
         {
           "name": "GEOIDFQ",
@@ -645,13 +626,11 @@
         },
         {
           "name": "INTPTLAT",
-          "type": "VARCHAR",
-          "description": "[latlon] Internal point latitude of the legislative district"
+          "type": "VARCHAR"
         },
         {
           "name": "INTPTLON",
-          "type": "VARCHAR",
-          "description": "[latlon] Internal point longitude of the legislative district"
+          "type": "VARCHAR"
         },
         {
           "name": "bbox",
@@ -660,7 +639,7 @@
         {
           "name": "geom",
           "type": "GEOMETRY('OGC:CRS84')",
-          "description": "[geometry] WKB polygon geometry of the state legislative district"
+          "description": "[geometry] OGC geometry of the state legislative district boundary"
         },
         {
           "name": "SLDUST",
@@ -683,18 +662,15 @@
         },
         {
           "name": "h10",
-          "type": "UBIGINT",
-          "description": "[spatial_index] H3 resolution 10 index intersecting this lower state legislative district"
+          "type": "UBIGINT"
         },
         {
           "name": "h8",
-          "type": "UBIGINT",
-          "description": "[spatial_index] H3 resolution 8 index intersecting this lower state legislative district"
+          "type": "UBIGINT"
         },
         {
           "name": "h9",
-          "type": "UBIGINT",
-          "description": "[spatial_index] H3 resolution 9 index intersecting this lower state legislative district"
+          "type": "UBIGINT"
         },
         {
           "name": "OGC_FID",
@@ -711,7 +687,7 @@
         {
           "name": "GEOID",
           "type": "VARCHAR",
-          "description": "[admin_code] Census GEOID for the lower state legislative district"
+          "description": "[admin_code] Census GEOID identifier for the state house district"
         },
         {
           "name": "GEOIDFQ",
@@ -747,13 +723,11 @@
         },
         {
           "name": "INTPTLAT",
-          "type": "VARCHAR",
-          "description": "[latlon] Internal point latitude of the lower legislative district"
+          "type": "VARCHAR"
         },
         {
           "name": "INTPTLON",
-          "type": "VARCHAR",
-          "description": "[latlon] Internal point longitude of the lower legislative district"
+          "type": "VARCHAR"
         },
         {
           "name": "bbox",
@@ -761,8 +735,7 @@
         },
         {
           "name": "h0",
-          "type": "BIGINT",
-          "description": "[spatial_index] H3 resolution 0 partition key for this lower legislative district"
+          "type": "BIGINT"
         }
       ],
       "description": "13 files sampled for this table"
@@ -781,18 +754,15 @@
         },
         {
           "name": "h10",
-          "type": "UBIGINT",
-          "description": "[spatial_index] H3 resolution 10 index intersecting this upper state legislative district"
+          "type": "UBIGINT"
         },
         {
           "name": "h8",
-          "type": "UBIGINT",
-          "description": "[spatial_index] H3 resolution 8 index intersecting this upper state legislative district"
+          "type": "UBIGINT"
         },
         {
           "name": "h9",
-          "type": "UBIGINT",
-          "description": "[spatial_index] H3 resolution 9 index intersecting this upper state legislative district"
+          "type": "UBIGINT"
         },
         {
           "name": "OGC_FID",
@@ -809,7 +779,7 @@
         {
           "name": "GEOID",
           "type": "VARCHAR",
-          "description": "[admin_code] Census GEOID for the upper state legislative district"
+          "description": "[admin_code] Census GEOID identifier for the state senate district"
         },
         {
           "name": "GEOIDFQ",
@@ -845,13 +815,11 @@
         },
         {
           "name": "INTPTLAT",
-          "type": "VARCHAR",
-          "description": "[latlon] Internal point latitude of the upper legislative district"
+          "type": "VARCHAR"
         },
         {
           "name": "INTPTLON",
-          "type": "VARCHAR",
-          "description": "[latlon] Internal point longitude of the upper legislative district"
+          "type": "VARCHAR"
         },
         {
           "name": "bbox",
@@ -859,8 +827,7 @@
         },
         {
           "name": "h0",
-          "type": "BIGINT",
-          "description": "[spatial_index] H3 resolution 0 partition key for this upper legislative district"
+          "type": "BIGINT"
         }
       ],
       "description": "13 files sampled for this table"
@@ -878,26 +845,25 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "total_bytes": 34539537105,
   "product_id": "census",
-  "data_mode": "open",
-  "disabled": false,
-  "account_id": "cboettig",
-  "updated_at": "2026-06-16T04:09:32.812Z",
-  "visibility": "public",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
   "exts": {
     "parquet": 96,
     "json": 14,
     "md": 11,
     "pmtiles": 6
   },
-  "created_at": "2026-06-16T04:09:32.812Z",
-  "file_count": 127,
+  "total_bytes": 34539553846,
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
   "featured": 0,
+  "created_at": "2026-06-16T04:09:32.812Z",
+  "disabled": false,
+  "data_mode": "open",
+  "updated_at": "2026-06-16T04:09:32.812Z",
+  "visibility": "public",
+  "file_count": 127,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -910,13 +876,14 @@
       "prefix": "cboettig/census/"
     }
   },
+  "account_id": "cboettig",
   "readme": "## README.md\n# US Census 2022 - Spatial Crosswalk (Tracts to H3)\n\nThis dataset provides a spatial index crosswalk between US Census Tracts (2022) and the H3 geospatial indexing system. It allows for efficient integration of census data with other H3-indexed datasets.\n\n**Note:** This dataset currently contains only the **geometry and identifiers** (FIPS codes). It does *not* contain demographic attributes (population, income, etc.), which should be joined by FIPS code from the appropriate Census API or table.\n\n## Source\n\n- **Producer:** US Census Bureau (TIGER/Line Shapefiles)\n- **Year:** 2022\n- **Level:** Census Tract\n- **Processing:** Boettiger Lab (H3 Indexing)\n\n## Data Format\n\nThe dataset is partitioned by H3 resolution 0 index for efficient global querying.\n\n- **Parquet:** `s3://public-census/year=2022/tracts-hex-z10.parquet`\n- **H3 Resolution:** 10 (Average area ~0.015 km\u00b2)\n\n## Data Dictionary\n\n| Column | Type | Description |\n|--------|------|-------------|\n| `FIPS` | String | 11-digit Federal Information Processing Standards code uniquely identifying the census tract (State+County+Tract) |\n| `h10` | List(String) | List of H3 resolution 10 indices that intersect with this tract |\n| `STATE` | String | FIPS State Code |\n| `COUNTY` | String | FIPS County Code |\n| `year` | Integer | Census year (2022) |\n| `geom` | Binary | WKB Geometry of the tract |\n\n## Usage\n\nUse this dataset as a \"spine\" to map tabular Census data to H3 hexagons.\n\n1. **Get Census Data:** Download demographic data (e.g., ACS 5-year estimates) for 2022 tracts using the Census API or libraries like `tidycensus` / `cenpy`.\n2. **Join:** Join your tabular data to this dataset on the `FIPS` column (ensure FIPS codes are formatted consistently as 11-character strings).\n3. **Spatial Analysis:** Use the `h10` column to aggregate or correlate with other H3 datasets.\n\n## Citation\n\nU.S. Census Bureau. (2022). TIGER/Line Shapefiles. Retrieved from https://www.census.gov/geographies/mapping-files/time-series/geo/tiger-line-file.html\n",
   "_review": [
     "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
     "extent.temporal: None (probe sample) widened to ['2022-01-01T00:00:00Z', '2022-01-01T00:00:00Z'] using README-stated coverage ['2022', '2022'].",
-    "extent.spatial.bbox: omitted; spatial reference is categorical via [census-2024.geom (geometry), census-2024.INTPTLAT (latlon), census-2024.INTPTLON (latlon), census-2024.GEOID (admin_code), census-2024/cd/hex.h10 (spatial_index), census-2024/cd/hex.h9 (spatial_index), census-2024/cd/hex.h8 (spatial_index), census-2024/cd/hex.h0 (spatial_index), census-2024/cd/hex.INTPTLAT (latlon), census-2024/cd/hex.INTPTLON (latlon), census-2024/cd/hex.GEOID (admin_code), census-2024/county/hex.h8 (spatial_index), census-2024/county/hex.h0 (spatial_index), census-2024/county/hex.INTPTLAT (latlon), census-2024/county/hex.INTPTLON (latlon), census-2024/county/hex.GEOID (admin_code), census-2024/state/hex.h8 (spatial_index), census-2024/state/hex.h0 (spatial_index), census-2024/state/hex.INTPTLAT (latlon), census-2024/state/hex.INTPTLON (latlon), census-2024/state/hex.GEOID (admin_code), census-2024/tract/hex.h10 (spatial_index), census-2024/tract/hex.h9 (spatial_index), census-2024/tract/hex.h8 (spatial_index), census-2024/tract/hex.h0 (spatial_index), census-2024/tract/hex.INTPTLAT (latlon), census-2024/tract/hex.INTPTLON (latlon), census-2024/tract/hex.GEOID (admin_code), census-2025.geom (geometry), census-2025.INTPTLAT (latlon), census-2025.INTPTLON (latlon), census-2025.GEOID (admin_code), census-2025/sldl/hex.h10 (spatial_index), census-2025/sldl/hex.h9 (spatial_index), census-2025/sldl/hex.h8 (spatial_index), census-2025/sldl/hex.h0 (spatial_index), census-2025/sldl/hex.INTPTLAT (latlon), census-2025/sldl/hex.INTPTLON (latlon), census-2025/sldl/hex.GEOID (admin_code), census-2025/sldu/hex.h10 (spatial_index), census-2025/sldu/hex.h9 (spatial_index), census-2025/sldu/hex.h8 (spatial_index), census-2025/sldu/hex.h0 (spatial_index), census-2025/sldu/hex.INTPTLAT (latlon), census-2025/sldu/hex.INTPTLON (latlon), census-2025/sldu/hex.GEOID (admin_code)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [census-2024.geom (geometry), census-2024.GEOID (admin_code), census-2024.INTPTLAT, INTPTLON (latlon), census-2024/cd/hex.h8, h9, h10 (spatial_index), census-2024/cd/hex.GEOID (admin_code), census-2024/county/hex.h8 (spatial_index), census-2024/county/hex.GEOID (admin_code), census-2024/state/hex.h8 (spatial_index), census-2024/state/hex.GEOID (admin_code), census-2024/tract/hex.h8, h9, h10 (spatial_index), census-2024/tract/hex.GEOID (admin_code), census-2025.geom (geometry), census-2025.GEOID (admin_code), census-2025.INTPTLAT, INTPTLON (latlon), census-2025/sldl/hex.h8, h9, h10 (spatial_index), census-2025/sldl/hex.GEOID (admin_code), census-2025/sldu/hex.h8, h9, h10 (spatial_index), census-2025/sldu/hex.GEOID (admin_code)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-06-28T10:06:15+00:00",
+  "cataloged_at": "2026-08-02T10:01:20+00:00",
   "store_format": null
 }
