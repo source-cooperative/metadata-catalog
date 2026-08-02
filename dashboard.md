@@ -1,30 +1,30 @@
 # Source Cooperative catalog — status
 
-_Updated 2026-08-01 09:34 UTC by the nightly pipeline._
+_Updated 2026-08-02 10:06 UTC by the nightly pipeline._
 
-**337 datasets cataloged**  ·  **8 queued for next run**  ·  last run handled **10**
+**337 datasets cataloged**  ·  **1 queued for next run**  ·  last run handled **10**
 
 ## Last run
 
-<details><summary>✅ drafted — 7 datasets</summary>
+<details><summary>✅ drafted — 6 datasets</summary>
 
-| repo                                                                                                                             |
-| -------------------------------------------------------------------------------------------------------------------------------- |
-| [cboettig/ca-dac](https://source.coop/cboettig/ca-dac)                                                                           |
-| [cboettig/fire](https://source.coop/cboettig/fire)                                                                               |
-| [cboettig/mappinginequality](https://source.coop/cboettig/mappinginequality)                                                     |
-| [dataforcanada/d4c-datapkg-environment-climate-health](https://source.coop/dataforcanada/d4c-datapkg-environment-climate-health) |
-| [dynamical/asos-parquet](https://source.coop/dynamical/asos-parquet)                                                             |
-| [opengeos/geoai](https://source.coop/opengeos/geoai)                                                                             |
-| [walkthru-earth/opensensor-space](https://source.coop/walkthru-earth/opensensor-space)                                           |
+| repo                                                                                             |
+| ------------------------------------------------------------------------------------------------ |
+| [cboettig/calenviroscreen](https://source.coop/cboettig/calenviroscreen)                         |
+| [cboettig/census](https://source.coop/cboettig/census)                                           |
+| [cboettig/epa-water](https://source.coop/cboettig/epa-water)                                     |
+| [cboettig/indigenous](https://source.coop/cboettig/indigenous)                                   |
+| [cboettig/usfws](https://source.coop/cboettig/usfws)                                             |
+| [dataforcanada/d4c-datapkg-foundation](https://source.coop/dataforcanada/d4c-datapkg-foundation) |
 
 </details>
 
-<details><summary>⏭️ incomplete (gap) — 3 datasets</summary>
+<details><summary>⏭️ incomplete (gap) — 4 datasets</summary>
 
 | repo                                                                                                                                                 | why            |
 | ---------------------------------------------------------------------------------------------------------------------------------------------------- | -------------- |
 | [alliance-bioversity-international-ciat/sample-earth-2026-co-gh](https://source.coop/alliance-bioversity-international-ciat/sample-earth-2026-co-gh) | no_probe .gpkg |
+| [cholmes/portolan-nl](https://source.coop/cholmes/portolan-nl)                                                                                       | no_probe .png  |
 | [forestsignal/forestsignal-ca](https://source.coop/forestsignal/forestsignal-ca)                                                                     | no_files .tif  |
 | [harvard-lil/smithsonian-open-access](https://source.coop/harvard-lil/smithsonian-open-access)                                                       | no_probe .jpg  |
 
@@ -35,51 +35,51 @@ _Updated 2026-08-01 09:34 UTC by the nightly pipeline._
 
 | run                                                                                                    | outcome   | drafted | failed | queued | cataloged |
 | ------------------------------------------------------------------------------------------------------ | --------- | ------: | -----: | -----: | --------: |
+| [2026-08-02](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/30741074920) | ✅ success |       6 |      0 |      1 |       337 |
 | [2026-08-01](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/30693034652) | ✅ success |       7 |      0 |      8 |       337 |
 | [2026-07-31](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/30619634040) | ✅ success |       7 |      0 |     15 |       337 |
 | [2026-07-30](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/30529962811) | ✅ success |       7 |      0 |     22 |       337 |
 | [2026-07-29](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/30439220176) | ✅ success |       6 |      1 |     29 |       337 |
 | [2026-07-29](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/30408834354) | ✅ success |       9 |      0 |     38 |       333 |
 | [2026-07-28](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/30346028101) | ✅ success |       8 |      0 |     32 |       324 |
-| [2026-07-27](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/30308869346) | ❌ failure |     306 |     11 |   None |       324 |
 
 Inventory compact (reseed 2026-07-29): 7.8 GB / 36.1 GB runner disk
 
 ## Persistent failures
 
-**23 datasets failing**  ·  23 open issues  ·  oldest **51d**  ·  **16** ≥30d  ·  [all open issues](https://github.com/source-cooperative/metadata-catalog/issues?q=is%3Aissue+is%3Aopen+label%3Aprobe-failure)
+**23 datasets failing**  ·  23 open issues  ·  oldest **52d**  ·  **16** ≥30d  ·  [all open issues](https://github.com/source-cooperative/metadata-catalog/issues?q=is%3Aissue+is%3Aopen+label%3Aprobe-failure)
 
 <details><summary>the 23 open issues, oldest first</summary>
 
 | repo                                                | age (d) | issue |
 | --------------------------------------------------- | ------: | ----: |
-| bkr/cams                                            |      51 |    #1 |
-| smartmaps/uppsala-conflict                          |      49 |   #16 |
-| smartmaps/next-ksj                                  |      49 |   #15 |
-| smartmaps/h3ys-worldpop                             |      49 |   #14 |
-| smartmaps/dem1a                                     |      49 |   #13 |
-| smartmaps/dem10a                                    |      49 |   #12 |
-| rsignell/ncei-estuarine-bathymetry                  |      49 |   #11 |
-| pfrost/climacell-monthly                            |      49 |   #10 |
-| geovibes/geometries                                 |      49 |    #9 |
-| fiboa/data                                          |      49 |    #8 |
-| dynamical/dwd-icon-eu-forecast-5-day                |      49 |    #7 |
-| cboettig/obis                                       |      49 |    #6 |
-| cboettig/habitat-corridors                          |      49 |    #5 |
-| caires-tudelft/tokyo-13999-fcb                      |      49 |    #4 |
-| caires-tudelft/plateau-tokyo-fcb-2                  |      49 |    #3 |
-| cboettig/wetlands                                   |      32 |  #122 |
-| dynamical/dwd-icon-grib                             |      19 |  #125 |
-| dynamical/ecmwf-ifs-ens-forecast-15-day-0-25-degree |      17 |  #126 |
-| alukach/firesmoke                                   |      13 |  #128 |
-| dynamical/noaa-mrms-conus-analysis-hourly           |       7 |  #130 |
-| dynamical/noaa-gefs-analysis                        |       7 |  #129 |
-| cboettig/high-seas                                  |       6 |  #131 |
-| ganzk/lcms                                          |       2 |  #132 |
+| bkr/cams                                            |      52 |    #1 |
+| smartmaps/uppsala-conflict                          |      50 |   #16 |
+| smartmaps/next-ksj                                  |      50 |   #15 |
+| smartmaps/h3ys-worldpop                             |      50 |   #14 |
+| smartmaps/dem1a                                     |      50 |   #13 |
+| smartmaps/dem10a                                    |      50 |   #12 |
+| rsignell/ncei-estuarine-bathymetry                  |      50 |   #11 |
+| pfrost/climacell-monthly                            |      50 |   #10 |
+| geovibes/geometries                                 |      50 |    #9 |
+| fiboa/data                                          |      50 |    #8 |
+| dynamical/dwd-icon-eu-forecast-5-day                |      50 |    #7 |
+| cboettig/obis                                       |      50 |    #6 |
+| cboettig/habitat-corridors                          |      50 |    #5 |
+| caires-tudelft/tokyo-13999-fcb                      |      50 |    #4 |
+| caires-tudelft/plateau-tokyo-fcb-2                  |      50 |    #3 |
+| cboettig/wetlands                                   |      33 |  #122 |
+| dynamical/dwd-icon-grib                             |      21 |  #125 |
+| dynamical/ecmwf-ifs-ens-forecast-15-day-0-25-degree |      19 |  #126 |
+| alukach/firesmoke                                   |      14 |  #128 |
+| dynamical/noaa-mrms-conus-analysis-hourly           |       9 |  #130 |
+| dynamical/noaa-gefs-analysis                        |       9 |  #129 |
+| cboettig/high-seas                                  |       8 |  #131 |
+| ganzk/lcms                                          |       4 |  #132 |
 
 </details>
 
-## 13 datasets need a prober
+## 14 datasets need a prober
 
 <details><summary>by format — ranked by bytes unlocked if built</summary>
 
@@ -97,6 +97,14 @@ Inventory compact (reseed 2026-07-29): 7.8 GB / 36.1 GB runner disk
 | -------------------------------------------------------------------------------------------- | -------: |
 | [pfrost/climacell-monthly](https://source.coop/pfrost/climacell-monthly)                     | 162.4 GB |
 | [rsignell/ncei-estuarine-bathymetry](https://source.coop/rsignell/ncei-estuarine-bathymetry) |   5.3 GB |
+
+</details>
+
+<details><summary>.png — 1 dataset · 83.7 GB</summary>
+
+| repo                                                           |   bytes |
+| -------------------------------------------------------------- | ------: |
+| [cholmes/portolan-nl](https://source.coop/cholmes/portolan-nl) | 83.7 GB |
 
 </details>
 
@@ -889,7 +897,7 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 | --------- | ------------------------------------------------ | ----: | -------: |
 | ghosts    | catalog entry, no S3 data                        |    49 |  29.8 TB |
 | stowaways | S3 data, no source.coop product                  |    41 | 926.5 TB |
-| stale     | catalog bytes ≠ S3 (fixed by `make process-all`) |    16 | 899.7 TB |
+| stale     | catalog bytes ≠ S3 (fixed by `make process-all`) |    10 | 899.6 TB |
 
 <details><summary>ghosts — 49 datasets</summary>
 
@@ -995,7 +1003,7 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 
 </details>
 
-<details><summary>stale — 16 datasets</summary>
+<details><summary>stale — 10 datasets</summary>
 
 | repo                                                |        catalog → S3 |
 | --------------------------------------------------- | ------------------: |
@@ -1007,12 +1015,6 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 | alukach/firesmoke                                   |  84.5 MB → 638.7 MB |
 | dynamical/noaa-mrms-conus-analysis-hourly           | 250.0 GB → 250.2 GB |
 | cboettig/high-seas                                  |   40.5 GB → 40.5 GB |
-| cboettig/indigenous                                 |   23.2 GB → 23.2 GB |
-| cboettig/calenviroscreen                            | 475.8 MB → 475.9 MB |
-| dataforcanada/d4c-datapkg-foundation                |   34.3 GB → 34.3 GB |
-| cboettig/census                                     |   34.5 GB → 34.5 GB |
-| cboettig/epa-water                                  |     2.8 GB → 2.8 GB |
-| cboettig/usfws                                      | 447.2 MB → 447.2 MB |
 | cholmes/portolan-nl                                 |   83.7 GB → 83.7 GB |
 | cboettig/cgs                                        | 228.4 MB → 228.4 MB |
 
