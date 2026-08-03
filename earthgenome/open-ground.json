@@ -1,14 +1,87 @@
 {
-  "account_id": "earthgenome",
-  "product_id": "open-ground",
-  "title": "OpenGround",
-  "description": "Two open-source, validated data layers for evaluating agricultural climate risk in the U.S. Corn Belt (Iowa and South Dakota). Layer 1 detects crop failure from satellite cropland maps (\"did the crop fail?\"); Layer 2 derives phenology-anchored extreme-weather stress covariates from daily weather grids (\"did the weather warrant it?\"). Both are validated against independent ground truth.\r\n\r\nLayer 1 \u2014 Crop failure detection. Annual 30 m binary rasters of fallow / unplanted cropland from the USDA Cropland Data Layer (code 61 only). Validated against USDA FSA prevented-plant records.\r\n\r\nLayer 2 \u2014 Phenology-anchored stress covariates. Per-pixel-year weather-stress covariates anchored on calibrated phenology (corn silking, soybean R5): 10 individual indices, 6 spring water-balance terms, and 3 compound scores, built from GridMET. Validated against NASS county yields (leave-one-year-out cross-validation).\r\n\r\nBoth layers use EPSG:5070 and ship as Cloud-Optimized GeoTIFFs.\r\n\r\nA partnership between Fractal Agriculture and Earth Genome, funded by the Cisco Foundation.",
-  "keywords": [],
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "earthgenome/open-ground",
+  "title": "Open Ground \u2014 validated agricultural climate-risk data layers",
+  "description": "Open Ground provides two independent validation-grade geospatial data layers for agricultural climate risk in the U.S. Corn Belt (Iowa and South Dakota): annual 30 m rasters of crop failure/fallow cropland derived from the USDA Cropland Data Layer, and annual ~4 km phenology-anchored extreme-weather stress covariates and compound scores derived from GridMET weather data. Both layers are validated against independent USDA ground truth (FSA prevented-plant records and NASS county yields) and distributed as Cloud-Optimized GeoTIFFs with supporting CSV tables.",
+  "license": "CC-BY-4.0",
+  "keywords": [
+    "agriculture",
+    "crop-classification",
+    "arable-land",
+    "land-use",
+    "remote-sensing",
+    "climate",
+    "weather",
+    "cloud-optimized-geotiff",
+    "environmental-monitoring"
+  ],
+  "providers": [
+    {
+      "name": "Fractal Agriculture",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Earth Genome",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/earthgenome/open-ground"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -104.841732,
+          40.0709841,
+          -89.5262214,
+          46.2684518
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "1995-01-01T00:00:00Z",
+          "2025-01-01T00:00:00Z"
+        ]
+      ]
+    }
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/earthgenome/open-ground/",
+      "type": "image/tiff; application=geotiff",
+      "title": "Dataset files (785 x .tif)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/earthgenome/open-ground/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/earthgenome/open-ground",
+      "title": "Source Cooperative product page"
+    }
+  ],
   "created_at": "2026-07-28T19:42:17.331Z",
-  "updated_at": "2026-07-28T19:42:17.331Z",
   "visibility": "public",
-  "disabled": false,
-  "featured": 0,
   "data_mode": null,
   "mirrors": {
     "aws-opendata-us-west-2": {
@@ -18,8 +91,17 @@
       "prefix": "earthgenome/open-ground/"
     }
   },
+  "featured": 0,
+  "updated_at": "2026-07-28T19:42:17.331Z",
+  "account_id": "earthgenome",
   "file_count": 854,
   "total_bytes": 154881032,
+  "product_id": "open-ground",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "disabled": false,
   "exts": {
     "tif": 785,
     "json": 44,
@@ -27,18 +109,14 @@
     "": 1,
     "md": 1
   },
-  "ext_bytes": {
-    "tif": 147893799,
-    "csv": 6718023,
-    "json": 258562,
-    "md": 8962,
-    "": 1686
-  },
-  "store_format": null,
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "cataloged_at": "2026-08-03T10:20:59+00:00"
+  "readme": "## README.md\n# Open Ground \u2014 validated data layers for agricultural climate risk\n\nOpen-source, validation-grade data layers describing agricultural climate risk for the U.S. Corn Belt (Iowa and South Dakota). Two independent layers:\n\n- **Layer 1 \u2014 Crop failure detection.** Annual 30 m rasters of fallow / unplanted cropland, derived from the USDA Cropland Data Layer and validated against USDA FSA prevented-plant records.\n- **Layer 2 \u2014 Phenology-anchored extreme-weather stress covariates.** Annual ~4 km per-pixel covariates anchored on calibrated crop phenology (corn silking, soybean R5), plus compound stress scores, validated against NASS county yields.\n\nBoth layers are distributed as Cloud-Optimized GeoTIFFs (COG) in EPSG:5070 (NAD83 / Conus Albers), with supporting tabular validation data as CSV.\n\nA partnership between [Fractal Agriculture](https://fractal.ag) and Earth Genome, funded by the Cisco Foundation.\n\n---\n\n## Repository layout\n\n```\nopen-ground/\n\u251c\u2500\u2500 README.md                     \u2190 this file\n\u251c\u2500\u2500 LICENSE\n\u251c\u2500\u2500 crop-failure/                 \u2190 Layer 1\n\u2502   \u251c\u2500\u2500 fallow_<YEAR>.tif          (30 m COG; 1 = fallow, 0 = planted, 255 = nodata)\n\u2502   \u2514\u2500\u2500 fallow_by_county.csv       (county-level fallow area + fraction)\n\u2514\u2500\u2500 extreme-weather/              \u2190 Layer 2\n    \u251c\u2500\u2500 compound_stress/           (compound scores + excess-moisture; ~4 km COG)\n    \u251c\u2500\u2500 covariates/                (16 individual phenology-anchored covariates)\n    \u251c\u2500\u2500 phenology/                 (day-of-year phenology rasters + QA tables)\n    \u2514\u2500\u2500 validation/                (NASS county-yield validation tables)\n```\n\nAll rasters follow the naming convention `<variable>_<YEAR>.tif`.\n\n---\n\n## Common conventions\n\n| Property | Value |\n|---|---|\n| Projection | EPSG:5070 (NAD83 / Conus Albers), metre units |\n| Format | Cloud-Optimized GeoTIFF (internal tiling 512\u00d7512 + overviews), DEFLATE |\n| Spatial scope | Iowa (FIPS 19) + South Dakota (FIPS 46) |\n| Raster nodata | Layer 1: `255` (Byte); Layer 2: `NaN` (Float32) |\n\nNote the two layers are at **different native resolutions** (30 m vs ~4 km) and carry **different nodata conventions** \u2014 they are separate products that share a projection and study area, not a single stacked cube.\n\n---\n\n## Layer 1 \u2014 Crop failure detection (`crop-failure/`)\n\nAnnual binary rasters flagging fallow / idle cropland, the remote-sensing signature of an unplanted or failed field.\n\n| | |\n|---|---|\n| Resolution | 30 m |\n| Years | 2012, 2017\u20132025 |\n| Source | USDA NASS Cropland Data Layer (CDL) |\n| Pixel values | `1` = fallow (CDL code 61), `0` = planted cropland, `255` = nodata |\n\n**Method.** Each annual CDL is clipped to the IA + SD study area and reclassified to a binary fallow mask using **CDL code 61 (Fallow/Idle Cropland) only**, per Lobell et al. (2024, *Nature Sustainability*). Earlier work counted codes 122/190/195 (developed open space, woody/herbaceous wetlands) as fallow; that broad definition produced a spurious ~4\u00d7 \"fallow spike\" in the 2025 CDL (the first Sentinel-2-based release) and was retired. See caveats below.\n\n**`fallow_by_county.csv`** \u2014 one row per county-year: `year, fips, county_name, fallow_pixels, valid_pixels, fallow_acres, valid_acres, fallow_pct`.\n\n**Validation.** Fallow area is validated against USDA FSA prevented-plant acreage at the county level. 2019 (a regional prevent-plant year) is the clearest positive signal; most other years show low background fallow, as expected.\n\n---\n\n## Layer 2 \u2014 Phenology-anchored stress covariates (`extreme-weather/`)\n\nPer-pixel, per-year weather-stress covariates anchored to **calibrated crop phenology** rather than fixed calendar windows, so the stress-accumulation window tracks each pixel's actual reproductive period.\n\n| | |\n|---|---|\n| Resolution | ~4 km (GridMET native) |\n| Years | 1995\u20132025 |\n| Source | GridMET (`pr`, `tmmx`, `tmmn`, `vpd`, `etr`); phenology validated vs NASS Crop Progress; compound scores validated vs NASS county yields |\n\n> **Layer 2 is phenology-anchored only.** An earlier static-window representation (Apr\u2013Oct EDD, growing-season precipitation z-scores, PDSI/SPEI 6-category classification) was retired after head-to-head validation against NASS county yields showed it had no usable predictive signal at county scale. It is **not** included in this product.\n\n### `phenology/` \u2014 calibrated phenological dates (day-of-year rasters)\n\n| Variable | Meaning |\n|---|---|\n| `P_corn` | Corn planting / emergence DOY (Kucharik 2006 air-temperature method) |\n| `S_corn` | Corn silking DOY (86/50 GDU threshold), calibrated to NASS-50% |\n| `P_soy` | Soybean planting DOY (`P_corn` + lag) |\n| `S_soy` | Soybean R5 (beginning seed) DOY, calibrated to NASS-50% |\n\nCalibration offsets shift model first-crossing dates to the NASS-50% mid-crop reference (+8 days corn, +11 days soy). Post-calibration bias vs NASS is 0.0 \u00b1 2.7 days (corn) and \u22120.3 \u00b1 5.1 days (soy). QA tables (`*.csv`) hold the NASS comparison and the S_soy sensitivity sweep.\n\n### `covariates/` \u2014 individual stress covariates\n\n16 covariates, each a per-pixel-year scalar over a phenology-anchored window (days relative to `S_corn` / `S_soy`):\n\n- **Corn:** `corn_edd` (extreme degree-days > 29 \u00b0C), `corn_vpd` (VPD exceedance), `corn_eddi_onset` / `corn_eddi_peak` (evaporative demand drought index), `corn_night_heat` (nighttime-heat exceedance), `corn_spi1` (1-month SPI).\n- **Soy:** `soy_edd` (> 30 \u00b0C), `soy_vpd`, `soy_spi6`, `soy_spei6` (6-month SPI / SPEI, trailing to `S_soy`).\n- **Spring water balance** (fixed Apr/May/Jun, aligned to RMA planting deadlines): `spring_wb_{apr,may,jun}_mm` (mm) and `spring_wb_{apr,may,jun}_sd` (standard-deviation anomaly vs 1981\u20132010).\n\nPercentile-based covariates use a 1981\u20132010 (WMO-standard) historical baseline.\n\n### `compound_stress/` \u2014 compound scores + excess moisture\n\n| Variable | Definition |\n|---|---|\n| `corn_compound` | Attribution-weighted sum: 0.725\u00b7EDD + 0.176\u00b7VPD + 0.108\u00b7SPI-1 (Yang et al. PMC11197588) |\n| `soy_compound` | Multiplicative product of `soy_edd`, `soy_vpd`, `soy_spi6`, `soy_spei6` |\n| `soy_compound_gmean` | Geometric-mean variant of `soy_compound` (for linear models) |\n| `excess_moisture_flag` | 1 if spring precipitation exceeds volumetric + anomaly thresholds, else 0 |\n| `excess_moisture_intensity` | Continuous severity of the excess-moisture signal |\n\nThe corn compound is an empirically-derived **weighted sum** (the multiplicative 5-component form underperformed `corn_spi1` alone and was dropped); the soy compound stays multiplicative because co-occurrence adds large tail-risk signal. See the methodology writeup for the derivation.\n\n### `validation/` \u2014 NASS county-yield validation\n\nLeave-one-year-out cross-validation of the covariates against detrended NASS county yields (1995\u20132024, ~4,100\u20134,500 corn/soy county-years). Headline discrimination of yield-failure events (reduced feature set, `auc_headline.csv`):\n\n| Crop | z < \u22121.0 | z < \u22121.28 | z < \u22121.5 (catastrophic) |\n|---|---|---|---|\n| Corn (pooled) | 0.72 | 0.74 | 0.76 |\n| Soy (pooled) | 0.78 | 0.80 | 0.81 |\n\nBy-state AUC reaches 0.85 (corn, SD) and 0.81 (soy). The phenological features beat the retired static-window features by \u0394AUC +0.09 to +0.21 across every crop \u00d7 threshold combination. Supporting tables: `auc_headline.csv`, `auc_reduced.csv`, `auc_ablation.csv`, `lofo_auc.csv`, `model_coefficients.csv`, `predictions.csv`, `county_panel.csv`, and the `task*.csv` series.\n\n---\n\n## Known caveats\n\n- **2025 CDL (Layer 1).** 2025 is the first Sentinel-2-based CDL release. With the code-61-only fallow definition the earlier apparent spike disappears, but 2025 remains a new-sensor year \u2014 treat cross-year comparisons involving 2025 with corresponding care.\n- **Soy compound crop-specificity.** `soy_compound` correlates somewhat more strongly with corn yields than soy yields at county scale; this is documented and expected to be revisited at pixel-level validation.\n- **Resolution mismatch.** Layer 2 is county-scale-validated at ~4 km; it is not a field-level product.\n\n---\n\n## Provenance & methodology\n\n- **Primary sources:** USDA CDL, USDA FSA prevented-plant, GridMET, USDA NASS (Crop Progress + county yields).\n- **Key references:** Lobell et al. 2024 (*Nature Sustainability*); Kucharik 2006 (*Agron. J.* 98:1544\u20131550); Yang et al. (PMC11197588).\n\n## License\n\nLicensed under the [Creative Commons Attribution 4.0 International License (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/). You may use, adapt, and redistribute this data for any purpose, including commercial use, provided you give appropriate credit. See the `LICENSE` file for details.\n\n## Citation\n\nFractal Agriculture & Earth Genome (2026). *Open Ground: validated data layers for agricultural climate risk (Iowa & South Dakota).* Funded by the Cisco Foundation.\n\n## Contact\n\nEmma Fuller \u00b7 emma@fractal.ag \u00b7 Fractal Agriculture\n",
+  "_review": [
+    "providers: role [producer, licensor] for 'Fractal Agriculture' is an AI guess \u2014 README names Fractal Agriculture as a partnership lead and contact; licensor role assumed since no separate rights-holder is stated.. Verify before flipping to _state: reviewed.",
+    "providers: role [producer] for 'Earth Genome' is an AI guess \u2014 README names Earth Genome as the other partner in producing the dataset, but does not detail their specific contribution.. Verify before flipping to _state: reviewed.",
+    "extent.temporal: None (probe sample) widened to ['1995-01-01T00:00:00Z', '2025-01-01T00:00:00Z'] using README-stated coverage ['1995', '2025']."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-08-03T10:41:25+00:00",
+  "_source_format": "stac",
+  "store_format": null
 }
