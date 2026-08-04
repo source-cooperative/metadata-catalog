@@ -1,31 +1,31 @@
 # Source Cooperative catalog — status
 
-_Updated 2026-08-03 11:16 UTC by the nightly pipeline._
+_Updated 2026-08-04 09:57 UTC by the nightly pipeline._
 
-**340 datasets cataloged**  ·  **33 queued for next run**  ·  last run handled **10**
+**340 datasets cataloged**  ·  **25 queued for next run**  ·  last run handled **10**
 
 ## Last run
 
-<details><summary>✅ drafted — 8 datasets</summary>
+<details><summary>✅ drafted — 7 datasets</summary>
 
-| repo                                                                           |
-| ------------------------------------------------------------------------------ |
-| [bkr/geo](https://source.coop/bkr/geo)                                         |
-| [bkr/icon](https://source.coop/bkr/icon)                                       |
-| [bkr/mrms](https://source.coop/bkr/mrms)                                       |
-| [carbonplan/virtual-datasets](https://source.coop/carbonplan/virtual-datasets) |
-| [dynamical/ecmwf-ifs-grib](https://source.coop/dynamical/ecmwf-ifs-grib)       |
-| [earthgenome/open-ground](https://source.coop/earthgenome/open-ground)         |
-| [geoai-ucph/gvsm](https://source.coop/geoai-ucph/gvsm)                         |
-| [smartmaps/cogenerate](https://source.coop/smartmaps/cogenerate)               |
+| repo                                                                                           |
+| ---------------------------------------------------------------------------------------------- |
+| [bkr/dmi](https://source.coop/bkr/dmi)                                                         |
+| [bkr/ifs](https://source.coop/bkr/ifs)                                                         |
+| [bkr/metoffice](https://source.coop/bkr/metoffice)                                             |
+| [bkr/precipradar](https://source.coop/bkr/precipradar)                                         |
+| [bkr/silam-dust](https://source.coop/bkr/silam-dust)                                           |
+| [cboettig/gbif](https://source.coop/cboettig/gbif)                                             |
+| [dynamical/noaa-gefs-forecast-35-day](https://source.coop/dynamical/noaa-gefs-forecast-35-day) |
 
 </details>
 
-<details><summary>⏭️ incomplete (gap) — 2 datasets</summary>
+<details><summary>⏭️ incomplete (gap) — 3 datasets</summary>
 
 | repo                                                                                                                                                 | why            |
 | ---------------------------------------------------------------------------------------------------------------------------------------------------- | -------------- |
 | [alliance-bioversity-international-ciat/sample-earth-2026-co-gh](https://source.coop/alliance-bioversity-international-ciat/sample-earth-2026-co-gh) | no_probe .gpkg |
+| [forestsignal/forestsignal-ca](https://source.coop/forestsignal/forestsignal-ca)                                                                     | no_files .tif  |
 | [harvard-lil/smithsonian-open-access](https://source.coop/harvard-lil/smithsonian-open-access)                                                       | no_probe .jpg  |
 
 </details>
@@ -35,25 +35,25 @@ _Updated 2026-08-03 11:16 UTC by the nightly pipeline._
 
 | run                                                                                                    | outcome   | drafted | failed | queued | cataloged |
 | ------------------------------------------------------------------------------------------------------ | --------- | ------: | -----: | -----: | --------: |
+| [2026-08-04](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/30895839523) | ✅ success |       7 |      0 |     25 |       340 |
 | [2026-08-03](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/30802053388) | ✅ success |       8 |      0 |     33 |       340 |
 | [2026-08-02](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/30741074920) | ✅ success |       6 |      0 |      1 |       337 |
 | [2026-08-01](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/30693034652) | ✅ success |       7 |      0 |      8 |       337 |
 | [2026-07-31](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/30619634040) | ✅ success |       7 |      0 |     15 |       337 |
 | [2026-07-30](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/30529962811) | ✅ success |       7 |      0 |     22 |       337 |
 | [2026-07-29](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/30439220176) | ✅ success |       6 |      1 |     29 |       337 |
-| [2026-07-29](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/30408834354) | ✅ success |       9 |      0 |     38 |       333 |
 
 Inventory compact (reseed 2026-08-03): 7.7 GB / 36.1 GB runner disk
 
 ## Persistent failures
 
-**23 datasets failing**  ·  23 open issues  ·  oldest **53d**  ·  **16** ≥30d  ·  [all open issues](https://github.com/source-cooperative/metadata-catalog/issues?q=is%3Aissue+is%3Aopen+label%3Aprobe-failure)
+**23 datasets failing**  ·  23 open issues  ·  oldest **54d**  ·  **16** ≥30d  ·  [all open issues](https://github.com/source-cooperative/metadata-catalog/issues?q=is%3Aissue+is%3Aopen+label%3Aprobe-failure)
 
 <details><summary>the 23 open issues, oldest first</summary>
 
 | repo                                                | age (d) | issue |
 | --------------------------------------------------- | ------: | ----: |
-| bkr/cams                                            |      53 |    #1 |
+| bkr/cams                                            |      54 |    #1 |
 | smartmaps/uppsala-conflict                          |      52 |   #16 |
 | smartmaps/next-ksj                                  |      52 |   #15 |
 | smartmaps/h3ys-worldpop                             |      52 |   #14 |
@@ -71,11 +71,11 @@ Inventory compact (reseed 2026-08-03): 7.7 GB / 36.1 GB runner disk
 | cboettig/wetlands                                   |      35 |  #122 |
 | dynamical/dwd-icon-grib                             |      22 |  #125 |
 | dynamical/ecmwf-ifs-ens-forecast-15-day-0-25-degree |      20 |  #126 |
-| alukach/firesmoke                                   |      15 |  #128 |
-| dynamical/noaa-mrms-conus-analysis-hourly           |      10 |  #130 |
-| dynamical/noaa-gefs-analysis                        |      10 |  #129 |
-| cboettig/high-seas                                  |       9 |  #131 |
-| ganzk/lcms                                          |       5 |  #132 |
+| alukach/firesmoke                                   |      16 |  #128 |
+| dynamical/noaa-mrms-conus-analysis-hourly           |      11 |  #130 |
+| dynamical/noaa-gefs-analysis                        |      11 |  #129 |
+| cboettig/high-seas                                  |      10 |  #131 |
+| ganzk/lcms                                          |       6 |  #132 |
 
 </details>
 
@@ -902,7 +902,7 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 | --------- | ------------------------------------------------ | ----: | -------: |
 | ghosts    | catalog entry, no S3 data                        |    49 |  29.8 TB |
 | stowaways | S3 data, no source.coop product                  |    42 | 948.7 TB |
-| stale     | catalog bytes ≠ S3 (fixed by `make process-all`) |    40 |   1.3 PB |
+| stale     | catalog bytes ≠ S3 (fixed by `make process-all`) |    33 | 988.6 TB |
 
 <details><summary>ghosts — 49 datasets</summary>
 
@@ -1009,20 +1009,13 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 
 </details>
 
-<details><summary>stale — 40 datasets</summary>
+<details><summary>stale — 33 datasets</summary>
 
 | repo                                                 |        catalog → S3 |
 | ---------------------------------------------------- | ------------------: |
 | harvard-lil/smithsonian-open-access                  | 823.4 TB → 851.0 TB |
 | dynamical/ecmwf-ifs-ens-forecast-15-day-0-25-degree  |   45.2 TB → 47.6 TB |
-| bkr/dmi                                              |   22.0 TB → 23.0 TB |
-| cboettig/gbif                                        |   1.0 TB → 169.0 GB |
 | forestsignal/forestsignal-ca                         |  726.4 GB → 598.0 B |
-| bkr/metoffice                                        |   61.2 TB → 61.7 TB |
-| dynamical/noaa-gefs-forecast-35-day                  | 199.8 TB → 200.3 TB |
-| bkr/precipradar                                      |     5.7 TB → 6.1 TB |
-| bkr/silam-dust                                       |   25.4 TB → 25.6 TB |
-| bkr/ifs                                              |   37.0 TB → 37.1 TB |
 | dynamical/noaa-gfs-forecast                          |   28.7 TB → 28.7 TB |
 | dynamical/noaa-gefs-analysis                         |   972.0 GB → 1.0 TB |
 | bkr/geos                                             |   38.9 TB → 39.0 TB |
