@@ -1,22 +1,22 @@
 # Source Cooperative catalog — status
 
-_Updated 2026-08-04 09:57 UTC by the nightly pipeline._
+_Updated 2026-08-05 09:46 UTC by the nightly pipeline._
 
-**340 datasets cataloged**  ·  **25 queued for next run**  ·  last run handled **10**
+**340 datasets cataloged**  ·  **18 queued for next run**  ·  last run handled **10**
 
 ## Last run
 
 <details><summary>✅ drafted — 7 datasets</summary>
 
-| repo                                                                                           |
-| ---------------------------------------------------------------------------------------------- |
-| [bkr/dmi](https://source.coop/bkr/dmi)                                                         |
-| [bkr/ifs](https://source.coop/bkr/ifs)                                                         |
-| [bkr/metoffice](https://source.coop/bkr/metoffice)                                             |
-| [bkr/precipradar](https://source.coop/bkr/precipradar)                                         |
-| [bkr/silam-dust](https://source.coop/bkr/silam-dust)                                           |
-| [cboettig/gbif](https://source.coop/cboettig/gbif)                                             |
-| [dynamical/noaa-gefs-forecast-35-day](https://source.coop/dynamical/noaa-gefs-forecast-35-day) |
+| repo                                                                                             |
+| ------------------------------------------------------------------------------------------------ |
+| [bkr/geos](https://source.coop/bkr/geos)                                                         |
+| [dynamical/ecmwf-aifs-single-forecast](https://source.coop/dynamical/ecmwf-aifs-single-forecast) |
+| [dynamical/noaa-gfs-forecast](https://source.coop/dynamical/noaa-gfs-forecast)                   |
+| [dynamical/noaa-hrrr-forecast-48-hour](https://source.coop/dynamical/noaa-hrrr-forecast-48-hour) |
+| [fish-pace/globcolour](https://source.coop/fish-pace/globcolour)                                 |
+| [planet/disasterdata](https://source.coop/planet/disasterdata)                                   |
+| [tristangruppwri/cadastral](https://source.coop/tristangruppwri/cadastral)                       |
 
 </details>
 
@@ -35,46 +35,46 @@ _Updated 2026-08-04 09:57 UTC by the nightly pipeline._
 
 | run                                                                                                    | outcome   | drafted | failed | queued | cataloged |
 | ------------------------------------------------------------------------------------------------------ | --------- | ------: | -----: | -----: | --------: |
+| [2026-08-05](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/30992740344) | ✅ success |       7 |      0 |     18 |       340 |
 | [2026-08-04](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/30895839523) | ✅ success |       7 |      0 |     25 |       340 |
 | [2026-08-03](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/30802053388) | ✅ success |       8 |      0 |     33 |       340 |
 | [2026-08-02](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/30741074920) | ✅ success |       6 |      0 |      1 |       337 |
 | [2026-08-01](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/30693034652) | ✅ success |       7 |      0 |      8 |       337 |
 | [2026-07-31](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/30619634040) | ✅ success |       7 |      0 |     15 |       337 |
 | [2026-07-30](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/30529962811) | ✅ success |       7 |      0 |     22 |       337 |
-| [2026-07-29](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/30439220176) | ✅ success |       6 |      1 |     29 |       337 |
 
 Inventory compact (reseed 2026-08-03): 7.7 GB / 36.1 GB runner disk
 
 ## Persistent failures
 
-**23 datasets failing**  ·  23 open issues  ·  oldest **54d**  ·  **16** ≥30d  ·  [all open issues](https://github.com/source-cooperative/metadata-catalog/issues?q=is%3Aissue+is%3Aopen+label%3Aprobe-failure)
+**23 datasets failing**  ·  23 open issues  ·  oldest **55d**  ·  **16** ≥30d  ·  [all open issues](https://github.com/source-cooperative/metadata-catalog/issues?q=is%3Aissue+is%3Aopen+label%3Aprobe-failure)
 
 <details><summary>the 23 open issues, oldest first</summary>
 
 | repo                                                | age (d) | issue |
 | --------------------------------------------------- | ------: | ----: |
-| bkr/cams                                            |      54 |    #1 |
-| smartmaps/uppsala-conflict                          |      52 |   #16 |
-| smartmaps/next-ksj                                  |      52 |   #15 |
-| smartmaps/h3ys-worldpop                             |      52 |   #14 |
-| smartmaps/dem1a                                     |      52 |   #13 |
-| smartmaps/dem10a                                    |      52 |   #12 |
-| rsignell/ncei-estuarine-bathymetry                  |      52 |   #11 |
-| pfrost/climacell-monthly                            |      52 |   #10 |
-| geovibes/geometries                                 |      52 |    #9 |
-| fiboa/data                                          |      52 |    #8 |
-| dynamical/dwd-icon-eu-forecast-5-day                |      52 |    #7 |
-| cboettig/obis                                       |      52 |    #6 |
-| cboettig/habitat-corridors                          |      52 |    #5 |
-| caires-tudelft/tokyo-13999-fcb                      |      52 |    #4 |
-| caires-tudelft/plateau-tokyo-fcb-2                  |      52 |    #3 |
-| cboettig/wetlands                                   |      35 |  #122 |
-| dynamical/dwd-icon-grib                             |      22 |  #125 |
-| dynamical/ecmwf-ifs-ens-forecast-15-day-0-25-degree |      20 |  #126 |
-| alukach/firesmoke                                   |      16 |  #128 |
+| bkr/cams                                            |      55 |    #1 |
+| smartmaps/uppsala-conflict                          |      53 |   #16 |
+| smartmaps/next-ksj                                  |      53 |   #15 |
+| smartmaps/h3ys-worldpop                             |      53 |   #14 |
+| smartmaps/dem1a                                     |      53 |   #13 |
+| smartmaps/dem10a                                    |      53 |   #12 |
+| rsignell/ncei-estuarine-bathymetry                  |      53 |   #11 |
+| pfrost/climacell-monthly                            |      53 |   #10 |
+| geovibes/geometries                                 |      53 |    #9 |
+| fiboa/data                                          |      53 |    #8 |
+| dynamical/dwd-icon-eu-forecast-5-day                |      53 |    #7 |
+| cboettig/obis                                       |      53 |    #6 |
+| cboettig/habitat-corridors                          |      53 |    #5 |
+| caires-tudelft/tokyo-13999-fcb                      |      53 |    #4 |
+| caires-tudelft/plateau-tokyo-fcb-2                  |      53 |    #3 |
+| cboettig/wetlands                                   |      36 |  #122 |
+| dynamical/dwd-icon-grib                             |      23 |  #125 |
+| dynamical/ecmwf-ifs-ens-forecast-15-day-0-25-degree |      21 |  #126 |
+| alukach/firesmoke                                   |      17 |  #128 |
+| cboettig/high-seas                                  |      11 |  #131 |
 | dynamical/noaa-mrms-conus-analysis-hourly           |      11 |  #130 |
 | dynamical/noaa-gefs-analysis                        |      11 |  #129 |
-| cboettig/high-seas                                  |      10 |  #131 |
 | ganzk/lcms                                          |       6 |  #132 |
 
 </details>
@@ -902,7 +902,7 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 | --------- | ------------------------------------------------ | ----: | -------: |
 | ghosts    | catalog entry, no S3 data                        |    49 |  29.8 TB |
 | stowaways | S3 data, no source.coop product                  |    42 | 948.7 TB |
-| stale     | catalog bytes ≠ S3 (fixed by `make process-all`) |    33 | 988.6 TB |
+| stale     | catalog bytes ≠ S3 (fixed by `make process-all`) |    26 | 905.9 TB |
 
 <details><summary>ghosts — 49 datasets</summary>
 
@@ -1009,22 +1009,15 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 
 </details>
 
-<details><summary>stale — 33 datasets</summary>
+<details><summary>stale — 26 datasets</summary>
 
 | repo                                                 |        catalog → S3 |
 | ---------------------------------------------------- | ------------------: |
 | harvard-lil/smithsonian-open-access                  | 823.4 TB → 851.0 TB |
 | dynamical/ecmwf-ifs-ens-forecast-15-day-0-25-degree  |   45.2 TB → 47.6 TB |
 | forestsignal/forestsignal-ca                         |  726.4 GB → 598.0 B |
-| dynamical/noaa-gfs-forecast                          |   28.7 TB → 28.7 TB |
 | dynamical/noaa-gefs-analysis                         |   972.0 GB → 1.0 TB |
-| bkr/geos                                             |   38.9 TB → 39.0 TB |
-| dynamical/noaa-hrrr-forecast-48-hour                 |   12.9 TB → 13.0 TB |
 | fiboa/data                                           |   30.1 GB → 49.9 GB |
-| planet/disasterdata                                  |    5.4 GB → 23.4 GB |
-| dynamical/ecmwf-aifs-single-forecast                 |     1.9 TB → 1.9 TB |
-| fish-pace/globcolour                                 |    20.1 GB → 2.3 GB |
-| tristangruppwri/cadastral                            |    15.6 GB → 4.7 GB |
 | cboettig/census                                      |   34.5 GB → 44.3 GB |
 | walkthru-earth/indices                               | 597.7 GB → 606.7 GB |
 | henryspatialanalysis/openpois                        |   25.9 GB → 34.5 GB |
