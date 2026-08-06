@@ -1,8 +1,8 @@
 # Source Cooperative catalog — status
 
-_Updated 2026-08-05 09:46 UTC by the nightly pipeline._
+_Updated 2026-08-06 09:48 UTC by the nightly pipeline._
 
-**340 datasets cataloged**  ·  **18 queued for next run**  ·  last run handled **10**
+**340 datasets cataloged**  ·  **11 queued for next run**  ·  last run handled **10**
 
 ## Last run
 
@@ -10,13 +10,13 @@ _Updated 2026-08-05 09:46 UTC by the nightly pipeline._
 
 | repo                                                                                             |
 | ------------------------------------------------------------------------------------------------ |
-| [bkr/geos](https://source.coop/bkr/geos)                                                         |
-| [dynamical/ecmwf-aifs-single-forecast](https://source.coop/dynamical/ecmwf-aifs-single-forecast) |
-| [dynamical/noaa-gfs-forecast](https://source.coop/dynamical/noaa-gfs-forecast)                   |
-| [dynamical/noaa-hrrr-forecast-48-hour](https://source.coop/dynamical/noaa-hrrr-forecast-48-hour) |
-| [fish-pace/globcolour](https://source.coop/fish-pace/globcolour)                                 |
-| [planet/disasterdata](https://source.coop/planet/disasterdata)                                   |
-| [tristangruppwri/cadastral](https://source.coop/tristangruppwri/cadastral)                       |
+| [ausantarctic/ghrsst-mur-v2](https://source.coop/ausantarctic/ghrsst-mur-v2)                     |
+| [cboettig/census](https://source.coop/cboettig/census)                                           |
+| [dynamical/noaa-gfs-analysis](https://source.coop/dynamical/noaa-gfs-analysis)                   |
+| [henryspatialanalysis/openpois](https://source.coop/henryspatialanalysis/openpois)               |
+| [rseg/sentinel1-lfmc](https://source.coop/rseg/sentinel1-lfmc)                                   |
+| [walkthru-earth/indices](https://source.coop/walkthru-earth/indices)                             |
+| [woodwell-climate/rangelands-raster-1](https://source.coop/woodwell-climate/rangelands-raster-1) |
 
 </details>
 
@@ -35,47 +35,47 @@ _Updated 2026-08-05 09:46 UTC by the nightly pipeline._
 
 | run                                                                                                    | outcome   | drafted | failed | queued | cataloged |
 | ------------------------------------------------------------------------------------------------------ | --------- | ------: | -----: | -----: | --------: |
+| [2026-08-06](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/31088638902) | ✅ success |       7 |      0 |     11 |       340 |
 | [2026-08-05](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/30992740344) | ✅ success |       7 |      0 |     18 |       340 |
 | [2026-08-04](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/30895839523) | ✅ success |       7 |      0 |     25 |       340 |
 | [2026-08-03](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/30802053388) | ✅ success |       8 |      0 |     33 |       340 |
 | [2026-08-02](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/30741074920) | ✅ success |       6 |      0 |      1 |       337 |
 | [2026-08-01](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/30693034652) | ✅ success |       7 |      0 |      8 |       337 |
 | [2026-07-31](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/30619634040) | ✅ success |       7 |      0 |     15 |       337 |
-| [2026-07-30](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/30529962811) | ✅ success |       7 |      0 |     22 |       337 |
 
 Inventory compact (reseed 2026-08-03): 7.7 GB / 36.1 GB runner disk
 
 ## Persistent failures
 
-**23 datasets failing**  ·  23 open issues  ·  oldest **55d**  ·  **16** ≥30d  ·  [all open issues](https://github.com/source-cooperative/metadata-catalog/issues?q=is%3Aissue+is%3Aopen+label%3Aprobe-failure)
+**23 datasets failing**  ·  23 open issues  ·  oldest **56d**  ·  **16** ≥30d  ·  [all open issues](https://github.com/source-cooperative/metadata-catalog/issues?q=is%3Aissue+is%3Aopen+label%3Aprobe-failure)
 
 <details><summary>the 23 open issues, oldest first</summary>
 
 | repo                                                | age (d) | issue |
 | --------------------------------------------------- | ------: | ----: |
-| bkr/cams                                            |      55 |    #1 |
-| smartmaps/uppsala-conflict                          |      53 |   #16 |
-| smartmaps/next-ksj                                  |      53 |   #15 |
-| smartmaps/h3ys-worldpop                             |      53 |   #14 |
-| smartmaps/dem1a                                     |      53 |   #13 |
-| smartmaps/dem10a                                    |      53 |   #12 |
-| rsignell/ncei-estuarine-bathymetry                  |      53 |   #11 |
-| pfrost/climacell-monthly                            |      53 |   #10 |
-| geovibes/geometries                                 |      53 |    #9 |
-| fiboa/data                                          |      53 |    #8 |
-| dynamical/dwd-icon-eu-forecast-5-day                |      53 |    #7 |
-| cboettig/obis                                       |      53 |    #6 |
-| cboettig/habitat-corridors                          |      53 |    #5 |
-| caires-tudelft/tokyo-13999-fcb                      |      53 |    #4 |
-| caires-tudelft/plateau-tokyo-fcb-2                  |      53 |    #3 |
-| cboettig/wetlands                                   |      36 |  #122 |
-| dynamical/dwd-icon-grib                             |      23 |  #125 |
-| dynamical/ecmwf-ifs-ens-forecast-15-day-0-25-degree |      21 |  #126 |
-| alukach/firesmoke                                   |      17 |  #128 |
-| cboettig/high-seas                                  |      11 |  #131 |
-| dynamical/noaa-mrms-conus-analysis-hourly           |      11 |  #130 |
-| dynamical/noaa-gefs-analysis                        |      11 |  #129 |
-| ganzk/lcms                                          |       6 |  #132 |
+| bkr/cams                                            |      56 |    #1 |
+| smartmaps/uppsala-conflict                          |      54 |   #16 |
+| smartmaps/next-ksj                                  |      54 |   #15 |
+| smartmaps/h3ys-worldpop                             |      54 |   #14 |
+| smartmaps/dem1a                                     |      54 |   #13 |
+| smartmaps/dem10a                                    |      54 |   #12 |
+| rsignell/ncei-estuarine-bathymetry                  |      54 |   #11 |
+| pfrost/climacell-monthly                            |      54 |   #10 |
+| geovibes/geometries                                 |      54 |    #9 |
+| fiboa/data                                          |      54 |    #8 |
+| dynamical/dwd-icon-eu-forecast-5-day                |      54 |    #7 |
+| cboettig/obis                                       |      54 |    #6 |
+| cboettig/habitat-corridors                          |      54 |    #5 |
+| caires-tudelft/tokyo-13999-fcb                      |      54 |    #4 |
+| caires-tudelft/plateau-tokyo-fcb-2                  |      54 |    #3 |
+| cboettig/wetlands                                   |      37 |  #122 |
+| dynamical/dwd-icon-grib                             |      24 |  #125 |
+| dynamical/ecmwf-ifs-ens-forecast-15-day-0-25-degree |      22 |  #126 |
+| alukach/firesmoke                                   |      18 |  #128 |
+| cboettig/high-seas                                  |      12 |  #131 |
+| dynamical/noaa-mrms-conus-analysis-hourly           |      12 |  #130 |
+| dynamical/noaa-gefs-analysis                        |      12 |  #129 |
+| ganzk/lcms                                          |       7 |  #132 |
 
 </details>
 
@@ -902,7 +902,7 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 | --------- | ------------------------------------------------ | ----: | -------: |
 | ghosts    | catalog entry, no S3 data                        |    49 |  29.8 TB |
 | stowaways | S3 data, no source.coop product                  |    42 | 948.7 TB |
-| stale     | catalog bytes ≠ S3 (fixed by `make process-all`) |    26 | 905.9 TB |
+| stale     | catalog bytes ≠ S3 (fixed by `make process-all`) |    19 | 900.2 TB |
 
 <details><summary>ghosts — 49 datasets</summary>
 
@@ -1009,7 +1009,7 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 
 </details>
 
-<details><summary>stale — 26 datasets</summary>
+<details><summary>stale — 19 datasets</summary>
 
 | repo                                                 |        catalog → S3 |
 | ---------------------------------------------------- | ------------------: |
@@ -1018,15 +1018,8 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 | forestsignal/forestsignal-ca                         |  726.4 GB → 598.0 B |
 | dynamical/noaa-gefs-analysis                         |   972.0 GB → 1.0 TB |
 | fiboa/data                                           |   30.1 GB → 49.9 GB |
-| cboettig/census                                      |   34.5 GB → 44.3 GB |
-| walkthru-earth/indices                               | 597.7 GB → 606.7 GB |
-| henryspatialanalysis/openpois                        |   25.9 GB → 34.5 GB |
-| ausantarctic/ghrsst-mur-v2                           |     4.2 TB → 4.2 TB |
-| dynamical/noaa-gfs-analysis                          | 648.8 GB → 651.1 GB |
 | dynamical/noaa-mrms-conus-analysis-hourly            | 250.0 GB → 250.7 GB |
 | alukach/firesmoke                                    |  84.5 MB → 713.8 MB |
-| rseg/sentinel1-lfmc                                  | 167.8 GB → 168.3 GB |
-| woodwell-climate/rangelands-raster-1                 | 486.3 MB → 694.0 MB |
 | cholmes/portolan-nl                                  |   83.7 GB → 83.6 GB |
 | giswqs/opengeos                                      |   15.7 GB → 15.8 GB |
 | portolan/portolan-pipeline                           |  58.2 MB → 105.7 MB |
