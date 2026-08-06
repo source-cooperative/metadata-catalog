@@ -6,13 +6,14 @@
   ],
   "id": "cboettig/census",
   "title": "US Census Geographic Boundaries",
-  "description": "A cloud-optimized Parquet dataset providing a spatial crosswalk between 2022 US Census Tract boundaries (from TIGER/Line Shapefiles) and the H3 hexagonal spatial indexing system at resolution 10, partitioned by H3 resolution-0 cells. It contains only geometry and FIPS identifiers, not demographic attributes.",
+  "description": "A collection of US Census Bureau geographic boundary and demographic datasets, centered on a spatial crosswalk between 2022 Census Tract boundaries (TIGER/Line Shapefiles) and the H3 hexagonal spatial indexing system, alongside related ACS block-group demographics, county/state H3 hex aggregations, and legislative district boundaries, delivered as cloud-optimized GeoParquet and PMTiles.",
   "keywords": [
     "census",
     "h3",
     "administrative-boundaries",
     "geoparquet",
-    "pmtiles"
+    "pmtiles",
+    "demographics"
   ],
   "providers": [
     {
@@ -57,13 +58,13 @@
     }
   },
   "summaries": {
-    "item_count": 2605869178
+    "item_count": 13854696
   },
   "assets": {
-    "census-2024": {
-      "href": "https://data.source.coop/cboettig/census/census-2024/",
+    "acs-2020-2024": {
+      "href": "https://data.source.coop/cboettig/census/acs-2020-2024/blockgroup.parquet",
       "type": "application/x-parquet",
-      "title": "census-2024",
+      "title": "blockgroup.parquet",
       "roles": [
         "data"
       ],
@@ -81,13 +82,21 @@
           "type": "VARCHAR"
         },
         {
-          "name": "CD119FP",
+          "name": "COUNTYFP",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "TRACTCE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "BLKGRPCE",
           "type": "VARCHAR"
         },
         {
           "name": "GEOID",
           "type": "VARCHAR",
-          "description": "[admin_code] Census GEOID identifier for the district/tract/county unit"
+          "description": "[admin_code] Full census geographic identifier (state+county+tract+block group)"
         },
         {
           "name": "GEOIDFQ",
@@ -95,14 +104,6 @@
         },
         {
           "name": "NAMELSAD",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "LSAD",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "CDSESSN",
           "type": "VARCHAR"
         },
         {
@@ -123,20 +124,66 @@
         },
         {
           "name": "INTPTLAT",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[latlon] Latitude of internal point"
         },
         {
           "name": "INTPTLON",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[latlon] Longitude of internal point"
         },
         {
           "name": "geom",
           "type": "GEOMETRY('OGC:CRS84')",
-          "description": "[geometry] OGC geometry of the boundary polygon"
+          "description": "[geometry] Polygon geometry of the block group"
         },
         {
-          "name": "bbox",
-          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+          "name": "TotPop",
+          "type": "BIGINT"
+        },
+        {
+          "name": "Under18",
+          "type": "BIGINT"
+        },
+        {
+          "name": "Senior65",
+          "type": "BIGINT"
+        },
+        {
+          "name": "PovInd",
+          "type": "BIGINT"
+        },
+        {
+          "name": "MHHI",
+          "type": "BIGINT"
+        },
+        {
+          "name": "PCI",
+          "type": "BIGINT"
+        },
+        {
+          "name": "NoCar",
+          "type": "BIGINT"
+        }
+      ],
+      "table:row_count": 242748
+    },
+    "census-2024/county/hex": {
+      "href": "https://data.source.coop/cboettig/census/census-2024/county/hex/h0=576812596024311807/",
+      "type": "application/x-parquet",
+      "title": "census-2024/county/hex",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "h8",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution 8 index of the county hexagon"
+        },
+        {
+          "name": "STATEFP",
+          "type": "VARCHAR"
         },
         {
           "name": "COUNTYFP",
@@ -147,11 +194,32 @@
           "type": "VARCHAR"
         },
         {
+          "name": "GEOID",
+          "type": "VARCHAR",
+          "description": "[admin_code] County FIPS geographic identifier"
+        },
+        {
+          "name": "GEOIDFQ",
+          "type": "VARCHAR"
+        },
+        {
           "name": "NAME",
           "type": "VARCHAR"
         },
         {
+          "name": "NAMELSAD",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "LSAD",
+          "type": "VARCHAR"
+        },
+        {
           "name": "CLASSFP",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "MTFCC",
           "type": "VARCHAR"
         },
         {
@@ -165,6 +233,55 @@
         {
           "name": "METDIVFP",
           "type": "VARCHAR"
+        },
+        {
+          "name": "FUNCSTAT",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ALAND",
+          "type": "BIGINT"
+        },
+        {
+          "name": "AWATER",
+          "type": "BIGINT"
+        },
+        {
+          "name": "INTPTLAT",
+          "type": "VARCHAR",
+          "description": "[latlon] Latitude of internal point"
+        },
+        {
+          "name": "INTPTLON",
+          "type": "VARCHAR",
+          "description": "[latlon] Longitude of internal point"
+        },
+        {
+          "name": "h0",
+          "type": "BIGINT"
+        },
+        {
+          "name": "_cng_fid",
+          "type": "BIGINT"
+        }
+      ],
+      "description": "8 files sampled for this table"
+    },
+    "census-2024": {
+      "href": "https://data.source.coop/cboettig/census/census-2024/state.parquet",
+      "type": "application/x-parquet",
+      "title": "state.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "_cng_fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OGC_FID",
+          "type": "BIGINT"
         },
         {
           "name": "REGION",
@@ -175,7 +292,20 @@
           "type": "VARCHAR"
         },
         {
+          "name": "STATEFP",
+          "type": "VARCHAR"
+        },
+        {
           "name": "STATENS",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "GEOID",
+          "type": "VARCHAR",
+          "description": "[admin_code] State FIPS geographic identifier"
+        },
+        {
+          "name": "GEOIDFQ",
           "type": "VARCHAR"
         },
         {
@@ -183,168 +313,15 @@
           "type": "VARCHAR"
         },
         {
-          "name": "TRACTCE",
-          "type": "VARCHAR"
-        }
-      ],
-      "description": "4 files sampled for this table"
-    },
-    "census-2024/cd/hex": {
-      "href": "https://data.source.coop/cboettig/census/census-2024/cd/hex/h0=576707042908045311/",
-      "type": "application/x-parquet",
-      "title": "census-2024/cd/hex",
-      "roles": [
-        "data"
-      ],
-      "table:columns": [
-        {
-          "name": "_cng_fid",
-          "type": "BIGINT"
-        },
-        {
-          "name": "h10",
-          "type": "UBIGINT"
-        },
-        {
-          "name": "h8",
-          "type": "UBIGINT"
-        },
-        {
-          "name": "h9",
-          "type": "UBIGINT"
-        },
-        {
-          "name": "OGC_FID",
-          "type": "BIGINT"
-        },
-        {
-          "name": "STATEFP",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "CD119FP",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "GEOID",
-          "type": "VARCHAR",
-          "description": "[admin_code] Census GEOID identifier for the congressional district"
-        },
-        {
-          "name": "GEOIDFQ",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "NAMELSAD",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "LSAD",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "CDSESSN",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "MTFCC",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "FUNCSTAT",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "ALAND",
-          "type": "BIGINT"
-        },
-        {
-          "name": "AWATER",
-          "type": "BIGINT"
-        },
-        {
-          "name": "INTPTLAT",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "INTPTLON",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "bbox",
-          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
-        },
-        {
-          "name": "h0",
-          "type": "BIGINT"
-        }
-      ],
-      "description": "16 files sampled for this table"
-    },
-    "census-2024/county/hex": {
-      "href": "https://data.source.coop/cboettig/census/census-2024/county/hex/h0=576707042908045311/",
-      "type": "application/x-parquet",
-      "title": "census-2024/county/hex",
-      "roles": [
-        "data"
-      ],
-      "table:columns": [
-        {
-          "name": "h8",
-          "type": "UBIGINT",
-          "description": "[spatial_index] H3 resolution-8 index intersecting the county"
-        },
-        {
-          "name": "STATEFP",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "COUNTYFP",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "COUNTYNS",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "GEOID",
-          "type": "VARCHAR",
-          "description": "[admin_code] Census GEOID identifier for the county"
-        },
-        {
-          "name": "GEOIDFQ",
-          "type": "VARCHAR"
-        },
-        {
           "name": "NAME",
           "type": "VARCHAR"
         },
         {
-          "name": "NAMELSAD",
-          "type": "VARCHAR"
-        },
-        {
           "name": "LSAD",
           "type": "VARCHAR"
         },
         {
-          "name": "CLASSFP",
-          "type": "VARCHAR"
-        },
-        {
           "name": "MTFCC",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "CSAFP",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "CBSAFP",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "METDIVFP",
           "type": "VARCHAR"
         },
         {
@@ -361,22 +338,25 @@
         },
         {
           "name": "INTPTLAT",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[latlon] Latitude of internal point"
         },
         {
           "name": "INTPTLON",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[latlon] Longitude of internal point"
         },
         {
-          "name": "h0",
-          "type": "BIGINT"
+          "name": "geom",
+          "type": "GEOMETRY('OGC:CRS84')",
+          "description": "[geometry] Polygon geometry of the state"
         },
         {
-          "name": "_cng_fid",
-          "type": "BIGINT"
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
         }
       ],
-      "description": "16 files sampled for this table"
+      "table:row_count": 56
     },
     "census-2024/state/hex": {
       "href": "https://data.source.coop/cboettig/census/census-2024/state/hex/h0=576707042908045311/",
@@ -389,7 +369,7 @@
         {
           "name": "h8",
           "type": "UBIGINT",
-          "description": "[spatial_index] H3 resolution-8 index intersecting the state"
+          "description": "[spatial_index] H3 resolution 8 index of the state hexagon"
         },
         {
           "name": "REGION",
@@ -410,7 +390,7 @@
         {
           "name": "GEOID",
           "type": "VARCHAR",
-          "description": "[admin_code] Census GEOID identifier for the state"
+          "description": "[admin_code] State FIPS geographic identifier"
         },
         {
           "name": "GEOIDFQ",
@@ -446,11 +426,13 @@
         },
         {
           "name": "INTPTLAT",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[latlon] Latitude of internal point"
         },
         {
           "name": "INTPTLON",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[latlon] Longitude of internal point"
         },
         {
           "name": "h0",
@@ -469,104 +451,12 @@
           "type": "BIGINT"
         }
       ],
-      "description": "16 files sampled for this table"
-    },
-    "census-2024/tract/hex": {
-      "href": "https://data.source.coop/cboettig/census/census-2024/tract/hex/h0=576707042908045311/",
-      "type": "application/x-parquet",
-      "title": "census-2024/tract/hex",
-      "roles": [
-        "data"
-      ],
-      "table:columns": [
-        {
-          "name": "_cng_fid",
-          "type": "BIGINT"
-        },
-        {
-          "name": "h10",
-          "type": "UBIGINT"
-        },
-        {
-          "name": "h8",
-          "type": "UBIGINT"
-        },
-        {
-          "name": "h9",
-          "type": "UBIGINT"
-        },
-        {
-          "name": "OGC_FID",
-          "type": "BIGINT"
-        },
-        {
-          "name": "STATEFP",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "COUNTYFP",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "TRACTCE",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "GEOID",
-          "type": "VARCHAR",
-          "description": "[admin_code] Census GEOID identifier for the tract (State+County+Tract FIPS)"
-        },
-        {
-          "name": "GEOIDFQ",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "NAME",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "NAMELSAD",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "MTFCC",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "FUNCSTAT",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "ALAND",
-          "type": "BIGINT"
-        },
-        {
-          "name": "AWATER",
-          "type": "BIGINT"
-        },
-        {
-          "name": "INTPTLAT",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "INTPTLON",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "bbox",
-          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
-        },
-        {
-          "name": "h0",
-          "type": "BIGINT"
-        }
-      ],
-      "description": "16 files sampled for this table"
+      "description": "8 files sampled for this table"
     },
     "census-2025": {
-      "href": "https://data.source.coop/cboettig/census/census-2025/",
+      "href": "https://data.source.coop/cboettig/census/census-2025/sldl.parquet",
       "type": "application/x-parquet",
-      "title": "census-2025",
+      "title": "sldl.parquet",
       "roles": [
         "data"
       ],
@@ -590,7 +480,7 @@
         {
           "name": "GEOID",
           "type": "VARCHAR",
-          "description": "[admin_code] Census GEOID identifier for the legislative district"
+          "description": "[admin_code] State legislative district FIPS geographic identifier"
         },
         {
           "name": "GEOIDFQ",
@@ -639,198 +529,10 @@
         {
           "name": "geom",
           "type": "GEOMETRY('OGC:CRS84')",
-          "description": "[geometry] OGC geometry of the state legislative district boundary"
-        },
-        {
-          "name": "SLDUST",
-          "type": "VARCHAR"
+          "description": "[geometry] Polygon geometry of the legislative district"
         }
       ],
-      "description": "2 files sampled for this table"
-    },
-    "census-2025/sldl/hex": {
-      "href": "https://data.source.coop/cboettig/census/census-2025/sldl/hex/h0=576707042908045311/",
-      "type": "application/x-parquet",
-      "title": "census-2025/sldl/hex",
-      "roles": [
-        "data"
-      ],
-      "table:columns": [
-        {
-          "name": "_cng_fid",
-          "type": "BIGINT"
-        },
-        {
-          "name": "h10",
-          "type": "UBIGINT"
-        },
-        {
-          "name": "h8",
-          "type": "UBIGINT"
-        },
-        {
-          "name": "h9",
-          "type": "UBIGINT"
-        },
-        {
-          "name": "OGC_FID",
-          "type": "BIGINT"
-        },
-        {
-          "name": "STATEFP",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "SLDLST",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "GEOID",
-          "type": "VARCHAR",
-          "description": "[admin_code] Census GEOID identifier for the state house district"
-        },
-        {
-          "name": "GEOIDFQ",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "NAMELSAD",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "LSAD",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "LSY",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "MTFCC",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "FUNCSTAT",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "ALAND",
-          "type": "BIGINT"
-        },
-        {
-          "name": "AWATER",
-          "type": "BIGINT"
-        },
-        {
-          "name": "INTPTLAT",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "INTPTLON",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "bbox",
-          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
-        },
-        {
-          "name": "h0",
-          "type": "BIGINT"
-        }
-      ],
-      "description": "13 files sampled for this table"
-    },
-    "census-2025/sldu/hex": {
-      "href": "https://data.source.coop/cboettig/census/census-2025/sldu/hex/h0=576707042908045311/",
-      "type": "application/x-parquet",
-      "title": "census-2025/sldu/hex",
-      "roles": [
-        "data"
-      ],
-      "table:columns": [
-        {
-          "name": "_cng_fid",
-          "type": "BIGINT"
-        },
-        {
-          "name": "h10",
-          "type": "UBIGINT"
-        },
-        {
-          "name": "h8",
-          "type": "UBIGINT"
-        },
-        {
-          "name": "h9",
-          "type": "UBIGINT"
-        },
-        {
-          "name": "OGC_FID",
-          "type": "BIGINT"
-        },
-        {
-          "name": "STATEFP",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "SLDUST",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "GEOID",
-          "type": "VARCHAR",
-          "description": "[admin_code] Census GEOID identifier for the state senate district"
-        },
-        {
-          "name": "GEOIDFQ",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "NAMELSAD",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "LSAD",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "LSY",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "MTFCC",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "FUNCSTAT",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "ALAND",
-          "type": "BIGINT"
-        },
-        {
-          "name": "AWATER",
-          "type": "BIGINT"
-        },
-        {
-          "name": "INTPTLAT",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "INTPTLON",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "bbox",
-          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
-        },
-        {
-          "name": "h0",
-          "type": "BIGINT"
-        }
-      ],
-      "description": "13 files sampled for this table"
+      "table:row_count": 4879
     }
   },
   "links": [
@@ -845,25 +547,11 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "product_id": "census",
-  "exts": {
-    "parquet": 96,
-    "json": 14,
-    "md": 11,
-    "pmtiles": 6
-  },
-  "total_bytes": 34539553846,
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "featured": 0,
-  "created_at": "2026-06-16T04:09:32.812Z",
   "disabled": false,
+  "product_id": "census",
+  "featured": 0,
   "data_mode": "open",
-  "updated_at": "2026-06-16T04:09:32.812Z",
-  "visibility": "public",
-  "file_count": 127,
+  "total_bytes": 44255454893,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -876,14 +564,30 @@
       "prefix": "cboettig/census/"
     }
   },
+  "exts": {
+    "parquet": 129,
+    "zip": 112,
+    "json": 16,
+    "md": 13,
+    "dat": 9,
+    "pmtiles": 8
+  },
+  "visibility": "public",
   "account_id": "cboettig",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "file_count": 287,
+  "created_at": "2026-06-16T04:09:32.812Z",
+  "updated_at": "2026-06-16T04:09:32.812Z",
   "readme": "## README.md\n# US Census 2022 - Spatial Crosswalk (Tracts to H3)\n\nThis dataset provides a spatial index crosswalk between US Census Tracts (2022) and the H3 geospatial indexing system. It allows for efficient integration of census data with other H3-indexed datasets.\n\n**Note:** This dataset currently contains only the **geometry and identifiers** (FIPS codes). It does *not* contain demographic attributes (population, income, etc.), which should be joined by FIPS code from the appropriate Census API or table.\n\n## Source\n\n- **Producer:** US Census Bureau (TIGER/Line Shapefiles)\n- **Year:** 2022\n- **Level:** Census Tract\n- **Processing:** Boettiger Lab (H3 Indexing)\n\n## Data Format\n\nThe dataset is partitioned by H3 resolution 0 index for efficient global querying.\n\n- **Parquet:** `s3://public-census/year=2022/tracts-hex-z10.parquet`\n- **H3 Resolution:** 10 (Average area ~0.015 km\u00b2)\n\n## Data Dictionary\n\n| Column | Type | Description |\n|--------|------|-------------|\n| `FIPS` | String | 11-digit Federal Information Processing Standards code uniquely identifying the census tract (State+County+Tract) |\n| `h10` | List(String) | List of H3 resolution 10 indices that intersect with this tract |\n| `STATE` | String | FIPS State Code |\n| `COUNTY` | String | FIPS County Code |\n| `year` | Integer | Census year (2022) |\n| `geom` | Binary | WKB Geometry of the tract |\n\n## Usage\n\nUse this dataset as a \"spine\" to map tabular Census data to H3 hexagons.\n\n1. **Get Census Data:** Download demographic data (e.g., ACS 5-year estimates) for 2022 tracts using the Census API or libraries like `tidycensus` / `cenpy`.\n2. **Join:** Join your tabular data to this dataset on the `FIPS` column (ensure FIPS codes are formatted consistently as 11-character strings).\n3. **Spatial Analysis:** Use the `h10` column to aggregate or correlate with other H3 datasets.\n\n## Citation\n\nU.S. Census Bureau. (2022). TIGER/Line Shapefiles. Retrieved from https://www.census.gov/geographies/mapping-files/time-series/geo/tiger-line-file.html\n",
   "_review": [
     "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
     "extent.temporal: None (probe sample) widened to ['2022-01-01T00:00:00Z', '2022-01-01T00:00:00Z'] using README-stated coverage ['2022', '2022'].",
-    "extent.spatial.bbox: omitted; spatial reference is categorical via [census-2024.geom (geometry), census-2024.GEOID (admin_code), census-2024.INTPTLAT, INTPTLON (latlon), census-2024/cd/hex.h8, h9, h10 (spatial_index), census-2024/cd/hex.GEOID (admin_code), census-2024/county/hex.h8 (spatial_index), census-2024/county/hex.GEOID (admin_code), census-2024/state/hex.h8 (spatial_index), census-2024/state/hex.GEOID (admin_code), census-2024/tract/hex.h8, h9, h10 (spatial_index), census-2024/tract/hex.GEOID (admin_code), census-2025.geom (geometry), census-2025.GEOID (admin_code), census-2025.INTPTLAT, INTPTLON (latlon), census-2025/sldl/hex.h8, h9, h10 (spatial_index), census-2025/sldl/hex.GEOID (admin_code), census-2025/sldu/hex.h8, h9, h10 (spatial_index), census-2025/sldu/hex.GEOID (admin_code)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [acs-2020-2024.GEOID (admin_code), acs-2020-2024.INTPTLAT (latlon), acs-2020-2024.INTPTLON (latlon), acs-2020-2024.geom (geometry), census-2024.GEOID (admin_code), census-2024.INTPTLAT (latlon), census-2024.INTPTLON (latlon), census-2024.geom (geometry), census-2024/county/hex.h8 (spatial_index), census-2024/county/hex.GEOID (admin_code), census-2024/county/hex.INTPTLAT (latlon), census-2024/county/hex.INTPTLON (latlon), census-2024/state/hex.h8 (spatial_index), census-2024/state/hex.GEOID (admin_code), census-2024/state/hex.INTPTLAT (latlon), census-2024/state/hex.INTPTLON (latlon), census-2025.GEOID (admin_code), census-2025.geom (geometry)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-08-02T10:01:20+00:00",
+  "cataloged_at": "2026-08-06T09:37:28+00:00",
   "store_format": null
 }
