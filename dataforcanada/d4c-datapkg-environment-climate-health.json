@@ -6,7 +6,7 @@
   ],
   "id": "dataforcanada/d4c-datapkg-environment-climate-health",
   "title": "Data for Canada - Environment, Climate, and Health Data Packages",
-  "description": "Time-series environmental sensor readings from a network of low-cost Enviro+ IoT monitoring stations deployed across Canada, capturing particulate matter, gas concentrations (oxidised, reducing, NH3), temperature, pressure, humidity, and light, together with companion device-telemetry records (CPU, memory, network, power) used for quality-control filtering of the sensor data.",
+  "description": "Time-series environmental sensor readings from a network of low-cost Enviro+ IoT air-quality and weather monitoring stations deployed across Canada, capturing particulate matter, gas concentrations, temperature, pressure, humidity, and light, alongside companion device-telemetry records used for quality-control filtering of the sensor data.",
   "keywords": [
     "air-quality",
     "environmental-monitoring",
@@ -52,7 +52,7 @@
     }
   },
   "summaries": {
-    "item_count": 326
+    "item_count": 315
   },
   "assets": {
     "archive/opensensor.space/enviroplus-health": {
@@ -161,7 +161,8 @@
         },
         {
           "name": "station",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[placename] Identifier/name of the monitoring station deployment site."
         },
         {
           "name": "year",
@@ -268,7 +269,8 @@
         },
         {
           "name": "station",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[placename] Identifier/name of the monitoring station deployment site."
         },
         {
           "name": "year",
@@ -290,11 +292,9 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
+  "exts": {
+    "parquet": 20276
   },
-  "account_id": "dataforcanada",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -307,23 +307,25 @@
       "prefix": "dataforcanada/d4c-datapkg-environment-climate-health/"
     }
   },
-  "total_bytes": 187403613,
-  "data_mode": "open",
-  "updated_at": "2026-02-27T22:33:33.990Z",
+  "total_bytes": 200587724,
   "visibility": "public",
-  "disabled": false,
-  "exts": {
-    "parquet": 18940
-  },
-  "product_id": "d4c-datapkg-environment-climate-health",
-  "file_count": 18940,
-  "created_at": "2026-02-26T11:35:12.789Z",
+  "account_id": "dataforcanada",
+  "data_mode": "open",
   "featured": 0,
+  "updated_at": "2026-02-27T22:33:33.990Z",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "file_count": 20276,
+  "disabled": false,
+  "product_id": "d4c-datapkg-environment-climate-health",
+  "created_at": "2026-02-26T11:35:12.789Z",
   "_review": [
     "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
-    "extent.spatial.bbox: omitted; probe found no spatial dimension and AI did not flag any column as geographic."
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [archive/opensensor.space/enviroplus.station (placename), archive/opensensor.space/enviroplus-health.station (placename)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-08-01T09:17:19+00:00",
+  "cataloged_at": "2026-08-07T09:07:46+00:00",
   "store_format": null
 }
