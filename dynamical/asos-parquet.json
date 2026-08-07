@@ -6,7 +6,7 @@
   ],
   "id": "dynamical/asos-parquet",
   "title": "Global Airport Weather GeoParquet (1940-present)",
-  "description": "A global archive of decoded METAR surface weather observations from ASOS and AWOS airport weather stations, spanning 1940 to present with roughly 1.8 billion records. Each record includes temperature, dewpoint, wind, precipitation, visibility, and pressure readings along with per-record station point geometry, partitioned by year as GeoParquet.",
+  "description": "A global archive of decoded METAR surface weather observations from ASOS and AWOS airport weather stations, spanning 1940 to present with roughly 1.8 billion records, including temperature, dewpoint, wind, precipitation, visibility, and pressure readings with per-record station point geometry, partitioned by year as GeoParquet.",
   "license": "CC-BY-NC-SA-4.0",
   "keywords": [
     "weather",
@@ -52,14 +52,14 @@
     "temporal": {
       "interval": [
         [
-          null,
+          "1940-01-01T00:00:00Z",
           null
         ]
       ]
     }
   },
   "summaries": {
-    "item_count": 1760761088
+    "item_count": 1761734373
   },
   "assets": {
     "data": {
@@ -80,13 +80,11 @@
         },
         {
           "name": "longitude",
-          "type": "DOUBLE",
-          "description": "[latlon] Station longitude in decimal degrees"
+          "type": "DOUBLE"
         },
         {
           "name": "latitude",
-          "type": "DOUBLE",
-          "description": "[latlon] Station latitude in decimal degrees"
+          "type": "DOUBLE"
         },
         {
           "name": "tmpf",
@@ -143,7 +141,7 @@
         {
           "name": "state",
           "type": "VARCHAR",
-          "description": "[placename] US state or region of the station"
+          "description": "[placename] US state or equivalent subdivision of the station"
         },
         {
           "name": "name",
@@ -161,12 +159,12 @@
         {
           "name": "county",
           "type": "VARCHAR",
-          "description": "[placename] County of the station"
+          "description": "[placename] County containing the station"
         },
         {
           "name": "wfo",
           "type": "VARCHAR",
-          "description": "[admin_code] NOAA Weather Forecast Office identifier for the station's region"
+          "description": "[admin_code] NWS Weather Forecast Office code for the station"
         },
         {
           "name": "tzname",
@@ -175,7 +173,7 @@
         {
           "name": "geometry",
           "type": "GEOMETRY('EPSG:4326')",
-          "description": "[geometry] Point geometry (EPSG:4326) for the observing station"
+          "description": "[geometry] Per-record station point geometry (EPSG:4326)"
         },
         {
           "name": "bbox",
@@ -201,13 +199,15 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "disabled": false,
-  "updated_at": "2026-02-09T17:07:41.515Z",
+  "product_id": "asos-parquet",
   "data_mode": "open",
+  "visibility": "public",
+  "featured": 0,
+  "updated_at": "2026-02-09T17:07:41.515Z",
   "file_count": 88,
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
+  "account_id": "dynamical",
+  "exts": {
+    "parquet": 88
   },
   "mirrors": {
     "aws-opendata-us-west-2": {
@@ -221,19 +221,18 @@
       "prefix": "dynamical/asos-parquet/"
     }
   },
-  "exts": {
-    "parquet": 88
-  },
   "created_at": "2026-02-05T18:50:19.484Z",
-  "product_id": "asos-parquet",
-  "account_id": "dynamical",
-  "featured": 0,
-  "visibility": "public",
-  "total_bytes": 20161532839,
+  "total_bytes": 20176682846,
+  "disabled": false,
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
   "_review": [
-    "extent.spatial.bbox: omitted; spatial reference is categorical via [data.longitude (latlon), data.latitude (latlon), data.geometry (geometry), data.state (placename), data.country (placename), data.county (placename), data.wfo (admin_code)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
+    "extent.temporal: None (probe sample) widened to ['1940-01-01T00:00:00Z', None] using README-stated coverage ['1940', None].",
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [data.latitude/longitude (latlon), data.geometry (geometry), data.state (placename), data.country (placename), data.county (placename), data.wfo (admin_code)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-08-01T09:21:26+00:00",
+  "cataloged_at": "2026-08-07T09:05:28+00:00",
   "store_format": null
 }
