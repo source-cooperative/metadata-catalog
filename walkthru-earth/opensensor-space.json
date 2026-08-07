@@ -6,7 +6,7 @@
   ],
   "id": "walkthru-earth/opensensor-space",
   "title": "OpenSensor.Space",
-  "description": "Continuous time-series environmental and air-quality sensor readings (temperature, pressure, humidity, gas concentrations, ambient light, and particulate matter) from a low-cost IoT sensor network of Raspberry Pi units with Enviro+ sensors deployed across the Cairo/Nile Delta region of Egypt. Includes a companion geospatial suitability analysis for siting additional air quality monitoring stations.",
+  "description": "Continuous time-series readings of temperature, pressure, humidity, gas concentrations, ambient light, and particulate matter from a low-cost IoT network of Raspberry Pi units with Enviro+ sensors deployed across the Cairo/Nile Delta region of Egypt, along with a companion geospatial analysis identifying suitable sites for additional air quality monitoring stations.",
   "license": "proprietary",
   "keywords": [
     "air-quality",
@@ -151,7 +151,7 @@
         {
           "name": "station",
           "type": "VARCHAR",
-          "description": "[placename] Identifier/name of the sensor station where the reading was recorded"
+          "description": "[placename] Identifier for the sensor deployment station/location"
         },
         {
           "name": "year",
@@ -174,7 +174,8 @@
       "table:columns": [
         {
           "name": "name",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[placename] Name of the candidate or existing air quality monitoring site"
         },
         {
           "name": "type",
@@ -199,7 +200,7 @@
         {
           "name": "geom",
           "type": "GEOMETRY('OGC:CRS84')",
-          "description": "[geometry] Geometry of existing or candidate air quality monitoring station sites"
+          "description": "[geometry] Point geometry for candidate or existing monitoring station locations"
         }
       ],
       "table:row_count": 65
@@ -217,18 +218,19 @@
       "title": "Source Cooperative product page"
     }
   ],
+  "visibility": "public",
+  "total_bytes": 1452995404,
+  "file_count": 84037,
+  "updated_at": "2025-11-24T18:13:45.589Z",
+  "featured": 0,
+  "data_mode": "open",
+  "disabled": false,
+  "exts": {
+    "parquet": 84037
+  },
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
-  },
-  "data_mode": "open",
-  "product_id": "opensensor-space",
-  "visibility": "public",
-  "account_id": "walkthru-earth",
-  "disabled": false,
-  "file_count": 82830,
-  "exts": {
-    "parquet": 82830
   },
   "mirrors": {
     "aws-opendata-us-west-2": {
@@ -243,13 +245,12 @@
     }
   },
   "created_at": "2025-11-24T18:13:45.589Z",
-  "updated_at": "2025-11-24T18:13:45.589Z",
-  "featured": 0,
-  "total_bytes": 1441526270,
+  "product_id": "opensensor-space",
+  "account_id": "walkthru-earth",
   "_review": [
-    "extent.spatial.bbox: omitted; spatial reference is categorical via [enviroplus.station (placename), share.geom (geometry)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [enviroplus.station (placename), share.name (placename), share.geom (geometry)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-08-01T09:23:32+00:00",
+  "cataloged_at": "2026-08-07T09:10:23+00:00",
   "store_format": null
 }
