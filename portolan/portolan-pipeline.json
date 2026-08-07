@@ -6,7 +6,7 @@
   ],
   "id": "portolan/portolan-pipeline",
   "title": "Portolan Golden Example Catalog",
-  "description": "A mixed reference/test catalog assembled for the Portolan v0.1 specification testbed, bundling real openly-licensed geospatial and tabular data \u2014 Natural Earth country and populated-place boundaries, US Census county polygons (FlatGeobuf + GeoParquet), City of Boston open-space parcels, Netherlands provincial boundaries, San Francisco address points, a sample Cloud Optimized GeoTIFF, and Eurostat electricity-price statistics \u2014 to exercise vector, raster, tabular, nested, official, and mirrored data cases.",
+  "description": "A mixed reference/test catalog built for the Portolan v0.1 specification testbed, bundling real openly-licensed geospatial and tabular data \u2014 Natural Earth country and populated-place boundaries, US Census county polygons, City of Boston open-space parcels, Netherlands provincial boundaries, San Francisco address points, a sample Cloud Optimized GeoTIFF, and Eurostat electricity-price statistics. It is structured as nested and flat STAC-like collections to exercise vector, raster, tabular, mirrored, and official-source cataloging cases.",
   "keywords": [
     "administrative-boundaries",
     "census",
@@ -95,33 +95,112 @@
     "temporal": {
       "interval": [
         [
-          "2007-01-01T00:00:00Z",
-          "2025-12-01T00:00:00Z"
+          "2023-08-09T16:00:00Z",
+          "2023-10-20T16:00:00Z"
         ]
       ]
     }
   },
   "summaries": {
-    "item_count": 241296
+    "item_count": 229383
   },
   "assets": {
-    "portolan-golden/branches/fgb-parquet-items/boundaries/boston-open-space": {
-      "href": "https://data.source.coop/portolan/portolan-pipeline/portolan-golden/branches/fgb-parquet-items/boundaries/boston-open-space/prk_open_space.parquet",
+    "naip-mosaic/PRs/111/imagery/colorado-2023": {
+      "href": "https://data.source.coop/portolan/portolan-pipeline/naip-mosaic/PRs/111/imagery/colorado-2023/items.parquet",
       "type": "application/x-parquet",
-      "title": "prk_open_space.parquet",
-      "roles": [
-        "data"
-      ],
-      "table:row_count": 577
-    },
-    "portolan-golden/branches/fgb-parquet-items/boundaries/netherlands-provinces": {
-      "href": "https://data.source.coop/portolan/portolan-pipeline/portolan-golden/branches/fgb-parquet-items/boundaries/netherlands-provinces/bestuurlijkegebieden_provinciegebied.parquet",
-      "type": "application/x-parquet",
-      "title": "bestuurlijkegebieden_provinciegebied.parquet",
+      "title": "items.parquet",
       "roles": [
         "data"
       ],
       "table:columns": [
+        {
+          "name": "type",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "stac_version",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "stac_extensions",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "collection",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:4326')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        },
+        {
+          "name": "assets",
+          "type": "STRUCT(image STRUCT(href VARCHAR, \"type\" VARCHAR, title VARCHAR, roles VARCHAR[], \"file:size\" BIGINT, bands STRUCT(data_type VARCHAR, \"statistics\" STRUCT(minimum DOUBLE, maximum DOUBLE, mean DOUBLE, stddev DOUBLE, approximate BOOLEAN))[], \"proj:code\" VARCHAR), thumbnail STRUCT(href VARCHAR, \"type\" VARCHAR, title VARCHAR, roles VARCHAR[], \"file:size\" BIGINT))"
+        },
+        {
+          "name": "links",
+          "type": "STRUCT(rel VARCHAR, href VARCHAR, \"type\" VARCHAR)[]"
+        },
+        {
+          "name": "gsd",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "datetime",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "proj:bbox",
+          "type": "DOUBLE[]"
+        },
+        {
+          "name": "proj:shape",
+          "type": "BIGINT[]"
+        },
+        {
+          "name": "proj:centroid",
+          "type": "STRUCT(lat DOUBLE, lon DOUBLE)"
+        },
+        {
+          "name": "proj:transform",
+          "type": "DOUBLE[]"
+        },
+        {
+          "name": "proj:code",
+          "type": "VARCHAR"
+        }
+      ],
+      "table:row_count": 924
+    },
+    "portolan-reference/PRs/111/boundaries/boston-open-space": {
+      "href": "https://data.source.coop/portolan/portolan-pipeline/portolan-reference/PRs/111/boundaries/boston-open-space/boston-open-space.parquet",
+      "type": "application/x-parquet",
+      "title": "boston-open-space.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:row_count": 1012
+    },
+    "portolan-reference/PRs/111/boundaries/netherlands-provinces": {
+      "href": "https://data.source.coop/portolan/portolan-pipeline/portolan-reference/PRs/111/boundaries/netherlands-provinces/netherlands-provinces.parquet",
+      "type": "application/x-parquet",
+      "title": "netherlands-provinces.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "fid",
+          "type": "BIGINT"
+        },
         {
           "name": "identificatie",
           "type": "VARCHAR"
@@ -132,21 +211,19 @@
         },
         {
           "name": "code",
-          "type": "BIGINT",
-          "description": "[admin_code] Province administrative code."
-        },
-        {
-          "name": "ligtInLandCode",
-          "type": "BIGINT"
-        },
-        {
-          "name": "ligtInLandNaam",
           "type": "VARCHAR"
         },
         {
-          "name": "geometry",
-          "type": "GEOMETRY",
-          "description": "[geometry] Polygon geometry of provincial boundaries."
+          "name": "ligt_in_land_code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ligt_in_land_naam",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geom",
+          "type": "GEOMETRY('EPSG:28992')"
         },
         {
           "name": "bbox",
@@ -155,8 +232,8 @@
       ],
       "table:row_count": 12
     },
-    "portolan-golden/branches/fgb-parquet-items/boundaries/us-counties": {
-      "href": "https://data.source.coop/portolan/portolan-pipeline/portolan-golden/branches/fgb-parquet-items/boundaries/us-counties/us-counties.parquet",
+    "portolan-reference/PRs/111/boundaries/us-counties": {
+      "href": "https://data.source.coop/portolan/portolan-pipeline/portolan-reference/PRs/111/boundaries/us-counties/us-counties.parquet",
       "type": "application/x-parquet",
       "title": "us-counties.parquet",
       "roles": [
@@ -164,49 +241,70 @@
       ],
       "table:columns": [
         {
-          "name": "OGC_FID",
+          "name": "fid",
           "type": "BIGINT"
         },
         {
-          "name": "STATE_FIPS",
+          "name": "STATEFP",
           "type": "VARCHAR"
         },
         {
-          "name": "COUNTY_FIP",
+          "name": "COUNTYFP",
           "type": "VARCHAR"
         },
         {
-          "name": "FIPS",
-          "type": "VARCHAR",
-          "description": "[admin_code] Combined state+county FIPS code."
+          "name": "COUNTYNS",
+          "type": "VARCHAR"
         },
         {
-          "name": "STATE",
+          "name": "GEOIDFQ",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "GEOID",
           "type": "VARCHAR"
         },
         {
           "name": "NAME",
-          "type": "VARCHAR",
-          "description": "[placename] County name."
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAMELSAD",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "STUSPS",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "STATE_NAME",
+          "type": "VARCHAR"
         },
         {
           "name": "LSAD",
           "type": "VARCHAR"
         },
         {
+          "name": "ALAND",
+          "type": "BIGINT"
+        },
+        {
+          "name": "AWATER",
+          "type": "BIGINT"
+        },
+        {
           "name": "geom",
-          "type": "GEOMETRY('EPSG:4269')",
-          "description": "[geometry] Polygon geometry of county boundaries."
+          "type": "GEOMETRY('EPSG:4269')"
         },
         {
           "name": "bbox",
           "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
         }
       ],
-      "table:row_count": 3221
+      "table:row_count": 3235
     },
-    "portolan-golden/branches/fgb-parquet-items/mirror/san-francisco-addresses": {
-      "href": "https://data.source.coop/portolan/portolan-pipeline/portolan-golden/branches/fgb-parquet-items/mirror/san-francisco-addresses/san-francisco-addresses.parquet",
+    "portolan-reference/PRs/111/mirror/san-francisco-addresses": {
+      "href": "https://data.source.coop/portolan/portolan-pipeline/portolan-reference/PRs/111/mirror/san-francisco-addresses/san-francisco-addresses.parquet",
       "type": "application/x-parquet",
       "title": "san-francisco-addresses.parquet",
       "roles": [
@@ -214,7 +312,7 @@
       ],
       "table:columns": [
         {
-          "name": "OGC_FID",
+          "name": "fid",
           "type": "BIGINT"
         },
         {
@@ -223,13 +321,11 @@
         },
         {
           "name": "zip_code",
-          "type": "VARCHAR",
-          "description": "[zipcode] Postal code of the address."
+          "type": "VARCHAR"
         },
         {
           "name": "latitude",
-          "type": "VARCHAR",
-          "description": "[latlon] Latitude of address point (stored as text)."
+          "type": "VARCHAR"
         },
         {
           "name": "address_number_suffix",
@@ -257,12 +353,11 @@
         },
         {
           "name": "data_loaded_at",
-          "type": "TIMESTAMP"
+          "type": "TIMESTAMP WITH TIME ZONE"
         },
         {
           "name": "longitude",
-          "type": "VARCHAR",
-          "description": "[latlon] Longitude of address point (stored as text)."
+          "type": "VARCHAR"
         },
         {
           "name": "street_name",
@@ -278,8 +373,7 @@
         },
         {
           "name": "nhood",
-          "type": "VARCHAR",
-          "description": "[placename] San Francisco neighborhood name."
+          "type": "VARCHAR"
         },
         {
           "name": "block",
@@ -315,7 +409,7 @@
         },
         {
           "name": "data_updated_at",
-          "type": "TIMESTAMP"
+          "type": "TIMESTAMP WITH TIME ZONE"
         },
         {
           "name": "address_number",
@@ -331,7 +425,7 @@
         },
         {
           "name": "data_as_of",
-          "type": "TIMESTAMP"
+          "type": "TIMESTAMP WITH TIME ZONE"
         },
         {
           "name": "landmark_aliases",
@@ -339,18 +433,17 @@
         },
         {
           "name": "geom",
-          "type": "GEOMETRY",
-          "description": "[geometry] Point geometry of the address location."
+          "type": "GEOMETRY"
         },
         {
           "name": "bbox",
           "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
         }
       ],
-      "table:row_count": 50000
+      "table:row_count": 5000
     },
-    "portolan-golden/branches/fgb-parquet-items/reference/natural-earth-countries": {
-      "href": "https://data.source.coop/portolan/portolan-pipeline/portolan-golden/branches/fgb-parquet-items/reference/natural-earth-countries/natural-earth-countries.parquet",
+    "portolan-reference/PRs/111/reference/natural-earth-countries": {
+      "href": "https://data.source.coop/portolan/portolan-pipeline/portolan-reference/PRs/111/reference/natural-earth-countries/natural-earth-countries.parquet",
       "type": "application/x-parquet",
       "title": "natural-earth-countries.parquet",
       "roles": [
@@ -358,259 +451,679 @@
       ],
       "table:columns": [
         {
-          "name": "OGC_FID",
+          "name": "fid",
           "type": "BIGINT"
+        },
+        {
+          "name": "featurecla",
+          "type": "VARCHAR"
         },
         {
           "name": "scalerank",
           "type": "INTEGER"
         },
         {
-          "name": "labelrank",
+          "name": "LABELRANK",
           "type": "INTEGER"
         },
         {
-          "name": "sovereignt",
+          "name": "SOVEREIGNT",
           "type": "VARCHAR"
         },
         {
-          "name": "sov_a3",
+          "name": "SOV_A3",
           "type": "VARCHAR"
         },
         {
-          "name": "adm0_dif",
+          "name": "ADM0_DIF",
           "type": "INTEGER"
         },
         {
-          "name": "level",
+          "name": "LEVEL",
           "type": "INTEGER"
         },
         {
-          "name": "type",
+          "name": "TYPE",
           "type": "VARCHAR"
         },
         {
-          "name": "admin",
+          "name": "TLC",
           "type": "VARCHAR"
         },
         {
-          "name": "adm0_a3",
+          "name": "ADMIN",
           "type": "VARCHAR"
         },
         {
-          "name": "geou_dif",
+          "name": "ADM0_A3",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "GEOU_DIF",
           "type": "INTEGER"
         },
         {
-          "name": "geounit",
+          "name": "GEOUNIT",
           "type": "VARCHAR"
         },
         {
-          "name": "gu_a3",
+          "name": "GU_A3",
           "type": "VARCHAR"
         },
         {
-          "name": "su_dif",
+          "name": "SU_DIF",
           "type": "INTEGER"
         },
         {
-          "name": "subunit",
+          "name": "SUBUNIT",
           "type": "VARCHAR"
         },
         {
-          "name": "su_a3",
+          "name": "SU_A3",
           "type": "VARCHAR"
         },
         {
-          "name": "brk_diff",
+          "name": "BRK_DIFF",
           "type": "INTEGER"
         },
         {
-          "name": "name",
+          "name": "NAME",
           "type": "VARCHAR"
         },
         {
-          "name": "name_long",
+          "name": "NAME_LONG",
           "type": "VARCHAR"
         },
         {
-          "name": "brk_a3",
+          "name": "BRK_A3",
           "type": "VARCHAR"
         },
         {
-          "name": "brk_name",
+          "name": "BRK_NAME",
           "type": "VARCHAR"
         },
         {
-          "name": "brk_group",
+          "name": "BRK_GROUP",
           "type": "VARCHAR"
         },
         {
-          "name": "abbrev",
+          "name": "ABBREV",
           "type": "VARCHAR"
         },
         {
-          "name": "postal",
+          "name": "POSTAL",
           "type": "VARCHAR"
         },
         {
-          "name": "formal_en",
+          "name": "FORMAL_EN",
           "type": "VARCHAR"
         },
         {
-          "name": "formal_fr",
+          "name": "FORMAL_FR",
           "type": "VARCHAR"
         },
         {
-          "name": "note_adm0",
+          "name": "NAME_CIAWF",
           "type": "VARCHAR"
         },
         {
-          "name": "note_brk",
+          "name": "NOTE_ADM0",
           "type": "VARCHAR"
         },
         {
-          "name": "name_sort",
+          "name": "NOTE_BRK",
           "type": "VARCHAR"
         },
         {
-          "name": "name_alt",
+          "name": "NAME_SORT",
           "type": "VARCHAR"
         },
         {
-          "name": "mapcolor7",
+          "name": "NAME_ALT",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "MAPCOLOR7",
           "type": "INTEGER"
         },
         {
-          "name": "mapcolor8",
+          "name": "MAPCOLOR8",
           "type": "INTEGER"
         },
         {
-          "name": "mapcolor9",
+          "name": "MAPCOLOR9",
           "type": "INTEGER"
         },
         {
-          "name": "mapcolor13",
+          "name": "MAPCOLOR13",
           "type": "INTEGER"
         },
         {
-          "name": "pop_est",
-          "type": "INTEGER"
-        },
-        {
-          "name": "gdp_md_est",
+          "name": "POP_EST",
           "type": "DOUBLE"
         },
         {
-          "name": "pop_year",
+          "name": "POP_RANK",
           "type": "INTEGER"
         },
         {
-          "name": "lastcensus",
+          "name": "POP_YEAR",
           "type": "INTEGER"
         },
         {
-          "name": "gdp_year",
+          "name": "GDP_MD",
           "type": "INTEGER"
         },
         {
-          "name": "economy",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "income_grp",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "wikipedia",
+          "name": "GDP_YEAR",
           "type": "INTEGER"
         },
         {
-          "name": "fips_10",
+          "name": "ECONOMY",
           "type": "VARCHAR"
         },
         {
-          "name": "iso_a2",
+          "name": "INCOME_GRP",
           "type": "VARCHAR"
         },
         {
-          "name": "iso_a3",
+          "name": "FIPS_10",
           "type": "VARCHAR"
         },
         {
-          "name": "iso_n3",
+          "name": "ISO_A2",
           "type": "VARCHAR"
         },
         {
-          "name": "un_a3",
+          "name": "ISO_A2_EH",
           "type": "VARCHAR"
         },
         {
-          "name": "wb_a2",
+          "name": "ISO_A3",
           "type": "VARCHAR"
         },
         {
-          "name": "wb_a3",
+          "name": "ISO_A3_EH",
           "type": "VARCHAR"
         },
         {
-          "name": "woe_id",
+          "name": "ISO_N3",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ISO_N3_EH",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "UN_A3",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "WB_A2",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "WB_A3",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "WOE_ID",
           "type": "INTEGER"
         },
         {
-          "name": "adm0_a3_is",
+          "name": "WOE_ID_EH",
+          "type": "INTEGER"
+        },
+        {
+          "name": "WOE_NOTE",
           "type": "VARCHAR"
         },
         {
-          "name": "adm0_a3_us",
+          "name": "ADM0_ISO",
           "type": "VARCHAR"
         },
         {
-          "name": "adm0_a3_un",
-          "type": "INTEGER"
-        },
-        {
-          "name": "adm0_a3_wb",
-          "type": "INTEGER"
-        },
-        {
-          "name": "continent",
+          "name": "ADM0_DIFF",
           "type": "VARCHAR"
         },
         {
-          "name": "region_un",
+          "name": "ADM0_TLC",
           "type": "VARCHAR"
         },
         {
-          "name": "subregion",
+          "name": "ADM0_A3_US",
           "type": "VARCHAR"
         },
         {
-          "name": "region_wb",
+          "name": "ADM0_A3_FR",
           "type": "VARCHAR"
         },
         {
-          "name": "name_len",
+          "name": "ADM0_A3_RU",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_ES",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_CN",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_TW",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_IN",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_NP",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_PK",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_DE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_GB",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_BR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_IL",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_PS",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_SA",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_EG",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_MA",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_PT",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_AR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_JP",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_KO",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_VN",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_TR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_ID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_PL",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_GR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_IT",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_NL",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_SE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_BD",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_UA",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_UN",
           "type": "INTEGER"
         },
         {
-          "name": "long_len",
+          "name": "ADM0_A3_WB",
           "type": "INTEGER"
         },
         {
-          "name": "abbrev_len",
+          "name": "CONTINENT",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "REGION_UN",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "SUBREGION",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "REGION_WB",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_LEN",
           "type": "INTEGER"
         },
         {
-          "name": "tiny",
+          "name": "LONG_LEN",
           "type": "INTEGER"
         },
         {
-          "name": "homepart",
+          "name": "ABBREV_LEN",
           "type": "INTEGER"
         },
         {
-          "name": "featureclass",
+          "name": "TINY",
+          "type": "INTEGER"
+        },
+        {
+          "name": "HOMEPART",
+          "type": "INTEGER"
+        },
+        {
+          "name": "MIN_ZOOM",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "MIN_LABEL",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "MAX_LABEL",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "LABEL_X",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "LABEL_Y",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "NE_ID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "WIKIDATAID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_AR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_BN",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_DE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_EN",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_ES",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_FA",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_FR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_EL",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_HE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_HI",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_HU",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_ID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_IT",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_JA",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_KO",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_NL",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_PL",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_PT",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_RU",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_SV",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_TR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_UK",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_UR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_VI",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_ZH",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_ZHT",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_ISO",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "TLC_DIFF",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_TLC",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_US",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_FR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_RU",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_ES",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_CN",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_TW",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_IN",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_NP",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_PK",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_DE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_GB",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_BR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_IL",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_PS",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_SA",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_EG",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_MA",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_PT",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_AR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_JP",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_KO",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_VN",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_TR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_ID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_PL",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_GR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_IT",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_NL",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_SE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_BD",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_UA",
           "type": "VARCHAR"
         },
         {
@@ -624,8 +1137,8 @@
       ],
       "table:row_count": 177
     },
-    "portolan-golden/branches/fgb-parquet-items/reference/natural-earth-populated-places": {
-      "href": "https://data.source.coop/portolan/portolan-pipeline/portolan-golden/branches/fgb-parquet-items/reference/natural-earth-populated-places/natural-earth-populated-places.parquet",
+    "portolan-reference/PRs/111/reference/natural-earth-populated-places": {
+      "href": "https://data.source.coop/portolan/portolan-pipeline/portolan-reference/PRs/111/reference/natural-earth-populated-places/natural-earth-populated-places.parquet",
       "type": "application/x-parquet",
       "title": "natural-earth-populated-places.parquet",
       "roles": [
@@ -633,7 +1146,7 @@
       ],
       "table:columns": [
         {
-          "name": "OGC_FID",
+          "name": "fid",
           "type": "BIGINT"
         },
         {
@@ -665,19 +1178,11 @@
           "type": "VARCHAR"
         },
         {
-          "name": "DIFFASCII",
-          "type": "INTEGER"
-        },
-        {
           "name": "NAMEASCII",
           "type": "VARCHAR"
         },
         {
           "name": "ADM0CAP",
-          "type": "INTEGER"
-        },
-        {
-          "name": "CAPALT",
           "type": "INTEGER"
         },
         {
@@ -729,28 +1234,16 @@
           "type": "DOUBLE"
         },
         {
-          "name": "CHANGED",
-          "type": "INTEGER"
-        },
-        {
-          "name": "NAMEDIFF",
-          "type": "INTEGER"
-        },
-        {
-          "name": "DIFFNOTE",
-          "type": "VARCHAR"
-        },
-        {
           "name": "POP_MAX",
-          "type": "INTEGER"
+          "type": "BIGINT"
         },
         {
           "name": "POP_MIN",
-          "type": "INTEGER"
+          "type": "BIGINT"
         },
         {
           "name": "POP_OTHER",
-          "type": "INTEGER"
+          "type": "BIGINT"
         },
         {
           "name": "RANK_MAX",
@@ -758,10 +1251,6 @@
         },
         {
           "name": "RANK_MIN",
-          "type": "INTEGER"
-        },
-        {
-          "name": "GEONAMEID",
           "type": "INTEGER"
         },
         {
@@ -773,68 +1262,60 @@
           "type": "VARCHAR"
         },
         {
-          "name": "LS_MATCH",
-          "type": "INTEGER"
-        },
-        {
-          "name": "CHECKME",
-          "type": "INTEGER"
-        },
-        {
           "name": "MAX_POP10",
-          "type": "INTEGER"
+          "type": "BIGINT"
         },
         {
           "name": "MAX_POP20",
-          "type": "INTEGER"
+          "type": "BIGINT"
         },
         {
           "name": "MAX_POP50",
-          "type": "INTEGER"
+          "type": "BIGINT"
         },
         {
           "name": "MAX_POP300",
-          "type": "INTEGER"
+          "type": "BIGINT"
         },
         {
           "name": "MAX_POP310",
-          "type": "INTEGER"
+          "type": "BIGINT"
         },
         {
           "name": "MAX_NATSCA",
-          "type": "INTEGER"
+          "type": "BIGINT"
         },
         {
           "name": "MIN_AREAKM",
-          "type": "INTEGER"
+          "type": "BIGINT"
         },
         {
           "name": "MAX_AREAKM",
-          "type": "INTEGER"
+          "type": "BIGINT"
         },
         {
           "name": "MIN_AREAMI",
-          "type": "INTEGER"
+          "type": "BIGINT"
         },
         {
           "name": "MAX_AREAMI",
-          "type": "INTEGER"
+          "type": "BIGINT"
         },
         {
           "name": "MIN_PERKM",
-          "type": "INTEGER"
+          "type": "BIGINT"
         },
         {
           "name": "MAX_PERKM",
-          "type": "INTEGER"
+          "type": "BIGINT"
         },
         {
           "name": "MIN_PERMI",
-          "type": "INTEGER"
+          "type": "BIGINT"
         },
         {
           "name": "MAX_PERMI",
-          "type": "INTEGER"
+          "type": "BIGINT"
         },
         {
           "name": "MIN_BBXMIN",
@@ -877,43 +1358,7 @@
           "type": "DOUBLE"
         },
         {
-          "name": "COMPARE",
-          "type": "INTEGER"
-        },
-        {
-          "name": "GN_ASCII",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "FEATURE_CL",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "FEATURE_CO",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "ADMIN1_COD",
-          "type": "INTEGER"
-        },
-        {
-          "name": "GN_POP",
-          "type": "INTEGER"
-        },
-        {
-          "name": "ELEVATION",
-          "type": "INTEGER"
-        },
-        {
-          "name": "GTOPO30",
-          "type": "INTEGER"
-        },
-        {
           "name": "TIMEZONE",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "GEONAMESNO",
           "type": "VARCHAR"
         },
         {
@@ -921,87 +1366,335 @@
           "type": "INTEGER"
         },
         {
-          "name": "UN_ADM0",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "UN_LAT",
-          "type": "DOUBLE"
-        },
-        {
-          "name": "UN_LONG",
-          "type": "DOUBLE"
-        },
-        {
           "name": "POP1950",
-          "type": "INTEGER"
+          "type": "BIGINT"
         },
         {
           "name": "POP1955",
-          "type": "INTEGER"
+          "type": "BIGINT"
         },
         {
           "name": "POP1960",
-          "type": "INTEGER"
+          "type": "BIGINT"
         },
         {
           "name": "POP1965",
-          "type": "INTEGER"
+          "type": "BIGINT"
         },
         {
           "name": "POP1970",
-          "type": "INTEGER"
+          "type": "BIGINT"
         },
         {
           "name": "POP1975",
-          "type": "INTEGER"
+          "type": "BIGINT"
         },
         {
           "name": "POP1980",
-          "type": "INTEGER"
+          "type": "BIGINT"
         },
         {
           "name": "POP1985",
-          "type": "INTEGER"
+          "type": "BIGINT"
         },
         {
           "name": "POP1990",
-          "type": "INTEGER"
+          "type": "BIGINT"
         },
         {
           "name": "POP1995",
-          "type": "INTEGER"
+          "type": "BIGINT"
         },
         {
           "name": "POP2000",
-          "type": "INTEGER"
+          "type": "BIGINT"
         },
         {
           "name": "POP2005",
-          "type": "INTEGER"
+          "type": "BIGINT"
         },
         {
           "name": "POP2010",
-          "type": "INTEGER"
+          "type": "BIGINT"
         },
         {
           "name": "POP2015",
-          "type": "INTEGER"
+          "type": "BIGINT"
         },
         {
           "name": "POP2020",
-          "type": "INTEGER"
+          "type": "BIGINT"
         },
         {
           "name": "POP2025",
-          "type": "INTEGER"
+          "type": "BIGINT"
         },
         {
           "name": "POP2050",
+          "type": "BIGINT"
+        },
+        {
+          "name": "MIN_ZOOM",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "WIKIDATAID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "WOF_ID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "CAPALT",
           "type": "INTEGER"
         },
         {
-          "name": "CITYALT",
+          "name": "NAME_EN",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_DE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_ES",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_FR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_PT",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_RU",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_ZH",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "LABEL",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_AR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_BN",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_EL",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_HI",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_HU",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_ID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_IT",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_JA",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_KO",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_NL",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_PL",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_SV",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_TR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_VI",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NE_ID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "NAME_FA",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_HE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_UK",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_UR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_ZHT",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "GEONAMESID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "FCLASS_ISO",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_US",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_FR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_RU",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_ES",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_CN",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_TW",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_IN",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_NP",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_PK",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_DE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_GB",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_BR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_IL",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_PS",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_SA",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_EG",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_MA",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_PT",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_AR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_JP",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_KO",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_VN",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_TR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_ID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_PL",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_GR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_IT",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_NL",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_SE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_BD",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_UA",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_TLC",
           "type": "VARCHAR"
         },
         {
@@ -1013,10 +1706,10 @@
           "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
         }
       ],
-      "table:row_count": 1249
+      "table:row_count": 1251
     },
-    "portolan-golden/branches/fgb-parquet-items/tabular/eurostat-electricity-prices": {
-      "href": "https://data.source.coop/portolan/portolan-pipeline/portolan-golden/branches/fgb-parquet-items/tabular/eurostat-electricity-prices/eurostat-electricity-prices.parquet",
+    "portolan-reference/PRs/111/tabular/eurostat-electricity-prices": {
+      "href": "https://data.source.coop/portolan/portolan-pipeline/portolan-reference/PRs/111/tabular/eurostat-electricity-prices/eurostat-electricity-prices.parquet",
       "type": "application/x-parquet",
       "title": "eurostat-electricity-prices.parquet",
       "roles": [
@@ -1057,8 +1750,7 @@
         },
         {
           "name": "geo",
-          "type": "VARCHAR",
-          "description": "[admin_code] NUTS-0 country code, join key for the table."
+          "type": "VARCHAR"
         },
         {
           "name": "TIME_PERIOD",
@@ -1077,25 +1769,29 @@
           "type": "VARCHAR"
         }
       ],
-      "table:row_count": 65412
+      "table:row_count": 65466
     },
-    "portolan-golden/main/boundaries/boston-open-space": {
-      "href": "https://data.source.coop/portolan/portolan-pipeline/portolan-golden/main/boundaries/boston-open-space/prk_open_space.parquet",
+    "portolan-reference/PRs/119/boundaries/boston-open-space": {
+      "href": "https://data.source.coop/portolan/portolan-pipeline/portolan-reference/PRs/119/boundaries/boston-open-space/boston-open-space.parquet",
       "type": "application/x-parquet",
-      "title": "prk_open_space.parquet",
+      "title": "boston-open-space.parquet",
       "roles": [
         "data"
       ],
-      "table:row_count": 577
+      "table:row_count": 1012
     },
-    "portolan-golden/main/boundaries/netherlands-provinces": {
-      "href": "https://data.source.coop/portolan/portolan-pipeline/portolan-golden/main/boundaries/netherlands-provinces/bestuurlijkegebieden_provinciegebied.parquet",
+    "portolan-reference/PRs/119/boundaries/netherlands-provinces": {
+      "href": "https://data.source.coop/portolan/portolan-pipeline/portolan-reference/PRs/119/boundaries/netherlands-provinces/netherlands-provinces.parquet",
       "type": "application/x-parquet",
-      "title": "bestuurlijkegebieden_provinciegebied.parquet",
+      "title": "netherlands-provinces.parquet",
       "roles": [
         "data"
       ],
       "table:columns": [
+        {
+          "name": "fid",
+          "type": "BIGINT"
+        },
         {
           "name": "identificatie",
           "type": "VARCHAR"
@@ -1106,21 +1802,19 @@
         },
         {
           "name": "code",
-          "type": "BIGINT",
-          "description": "[admin_code] Province administrative code."
-        },
-        {
-          "name": "ligtInLandCode",
-          "type": "BIGINT"
-        },
-        {
-          "name": "ligtInLandNaam",
           "type": "VARCHAR"
         },
         {
-          "name": "geometry",
-          "type": "GEOMETRY",
-          "description": "[geometry] Polygon geometry of provincial boundaries."
+          "name": "ligt_in_land_code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ligt_in_land_naam",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geom",
+          "type": "GEOMETRY('EPSG:28992')"
         },
         {
           "name": "bbox",
@@ -1129,8 +1823,8 @@
       ],
       "table:row_count": 12
     },
-    "portolan-golden/main/boundaries/us-counties": {
-      "href": "https://data.source.coop/portolan/portolan-pipeline/portolan-golden/main/boundaries/us-counties/us-counties.parquet",
+    "portolan-reference/PRs/119/boundaries/us-counties": {
+      "href": "https://data.source.coop/portolan/portolan-pipeline/portolan-reference/PRs/119/boundaries/us-counties/us-counties.parquet",
       "type": "application/x-parquet",
       "title": "us-counties.parquet",
       "roles": [
@@ -1138,50 +1832,70 @@
       ],
       "table:columns": [
         {
-          "name": "OGC_FID",
+          "name": "fid",
           "type": "BIGINT"
         },
         {
-          "name": "STATE_FIPS",
-          "type": "VARCHAR",
-          "description": "[admin_code] State FIPS code."
-        },
-        {
-          "name": "COUNTY_FIP",
+          "name": "STATEFP",
           "type": "VARCHAR"
         },
         {
-          "name": "FIPS",
-          "type": "VARCHAR",
-          "description": "[admin_code] Combined state+county FIPS code."
+          "name": "COUNTYFP",
+          "type": "VARCHAR"
         },
         {
-          "name": "STATE",
+          "name": "COUNTYNS",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "GEOIDFQ",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "GEOID",
           "type": "VARCHAR"
         },
         {
           "name": "NAME",
-          "type": "VARCHAR",
-          "description": "[placename] County name."
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAMELSAD",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "STUSPS",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "STATE_NAME",
+          "type": "VARCHAR"
         },
         {
           "name": "LSAD",
           "type": "VARCHAR"
         },
         {
+          "name": "ALAND",
+          "type": "BIGINT"
+        },
+        {
+          "name": "AWATER",
+          "type": "BIGINT"
+        },
+        {
           "name": "geom",
-          "type": "GEOMETRY('EPSG:4269')",
-          "description": "[geometry] Polygon geometry of county boundaries."
+          "type": "GEOMETRY('EPSG:4269')"
         },
         {
           "name": "bbox",
           "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
         }
       ],
-      "table:row_count": 3221
+      "table:row_count": 3235
     },
-    "portolan-golden/main/mirror/san-francisco-addresses": {
-      "href": "https://data.source.coop/portolan/portolan-pipeline/portolan-golden/main/mirror/san-francisco-addresses/san-francisco-addresses.parquet",
+    "portolan-reference/PRs/119/mirror/san-francisco-addresses": {
+      "href": "https://data.source.coop/portolan/portolan-pipeline/portolan-reference/PRs/119/mirror/san-francisco-addresses/san-francisco-addresses.parquet",
       "type": "application/x-parquet",
       "title": "san-francisco-addresses.parquet",
       "roles": [
@@ -1189,7 +1903,7 @@
       ],
       "table:columns": [
         {
-          "name": "OGC_FID",
+          "name": "fid",
           "type": "BIGINT"
         },
         {
@@ -1198,13 +1912,11 @@
         },
         {
           "name": "zip_code",
-          "type": "VARCHAR",
-          "description": "[zipcode] Postal code of the address."
+          "type": "VARCHAR"
         },
         {
           "name": "latitude",
-          "type": "VARCHAR",
-          "description": "[latlon] Latitude of address point (stored as text)."
+          "type": "VARCHAR"
         },
         {
           "name": "address_number_suffix",
@@ -1232,12 +1944,11 @@
         },
         {
           "name": "data_loaded_at",
-          "type": "TIMESTAMP"
+          "type": "TIMESTAMP WITH TIME ZONE"
         },
         {
           "name": "longitude",
-          "type": "VARCHAR",
-          "description": "[latlon] Longitude of address point (stored as text)."
+          "type": "VARCHAR"
         },
         {
           "name": "street_name",
@@ -1253,8 +1964,7 @@
         },
         {
           "name": "nhood",
-          "type": "VARCHAR",
-          "description": "[placename] San Francisco neighborhood name."
+          "type": "VARCHAR"
         },
         {
           "name": "block",
@@ -1290,7 +2000,7 @@
         },
         {
           "name": "data_updated_at",
-          "type": "TIMESTAMP"
+          "type": "TIMESTAMP WITH TIME ZONE"
         },
         {
           "name": "address_number",
@@ -1306,7 +2016,7 @@
         },
         {
           "name": "data_as_of",
-          "type": "TIMESTAMP"
+          "type": "TIMESTAMP WITH TIME ZONE"
         },
         {
           "name": "landmark_aliases",
@@ -1314,18 +2024,17 @@
         },
         {
           "name": "geom",
-          "type": "GEOMETRY",
-          "description": "[geometry] Point geometry of the address location."
+          "type": "GEOMETRY"
         },
         {
           "name": "bbox",
           "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
         }
       ],
-      "table:row_count": 50000
+      "table:row_count": 5000
     },
-    "portolan-golden/main/reference/natural-earth-countries": {
-      "href": "https://data.source.coop/portolan/portolan-pipeline/portolan-golden/main/reference/natural-earth-countries/natural-earth-countries.parquet",
+    "portolan-reference/PRs/119/reference/natural-earth-countries": {
+      "href": "https://data.source.coop/portolan/portolan-pipeline/portolan-reference/PRs/119/reference/natural-earth-countries/natural-earth-countries.parquet",
       "type": "application/x-parquet",
       "title": "natural-earth-countries.parquet",
       "roles": [
@@ -1333,267 +2042,684 @@
       ],
       "table:columns": [
         {
-          "name": "OGC_FID",
+          "name": "fid",
           "type": "BIGINT"
+        },
+        {
+          "name": "featurecla",
+          "type": "VARCHAR"
         },
         {
           "name": "scalerank",
           "type": "INTEGER"
         },
         {
-          "name": "labelrank",
+          "name": "LABELRANK",
           "type": "INTEGER"
         },
         {
-          "name": "sovereignt",
+          "name": "SOVEREIGNT",
           "type": "VARCHAR"
         },
         {
-          "name": "sov_a3",
+          "name": "SOV_A3",
           "type": "VARCHAR"
         },
         {
-          "name": "adm0_dif",
+          "name": "ADM0_DIF",
           "type": "INTEGER"
         },
         {
-          "name": "level",
+          "name": "LEVEL",
           "type": "INTEGER"
         },
         {
-          "name": "type",
+          "name": "TYPE",
           "type": "VARCHAR"
         },
         {
-          "name": "admin",
+          "name": "TLC",
           "type": "VARCHAR"
         },
         {
-          "name": "adm0_a3",
+          "name": "ADMIN",
           "type": "VARCHAR"
         },
         {
-          "name": "geou_dif",
+          "name": "ADM0_A3",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "GEOU_DIF",
           "type": "INTEGER"
         },
         {
-          "name": "geounit",
+          "name": "GEOUNIT",
           "type": "VARCHAR"
         },
         {
-          "name": "gu_a3",
+          "name": "GU_A3",
           "type": "VARCHAR"
         },
         {
-          "name": "su_dif",
+          "name": "SU_DIF",
           "type": "INTEGER"
         },
         {
-          "name": "subunit",
+          "name": "SUBUNIT",
           "type": "VARCHAR"
         },
         {
-          "name": "su_a3",
+          "name": "SU_A3",
           "type": "VARCHAR"
         },
         {
-          "name": "brk_diff",
+          "name": "BRK_DIFF",
           "type": "INTEGER"
         },
         {
-          "name": "name",
-          "type": "VARCHAR",
-          "description": "[placename] Country name."
-        },
-        {
-          "name": "name_long",
+          "name": "NAME",
           "type": "VARCHAR"
         },
         {
-          "name": "brk_a3",
+          "name": "NAME_LONG",
           "type": "VARCHAR"
         },
         {
-          "name": "brk_name",
+          "name": "BRK_A3",
           "type": "VARCHAR"
         },
         {
-          "name": "brk_group",
+          "name": "BRK_NAME",
           "type": "VARCHAR"
         },
         {
-          "name": "abbrev",
+          "name": "BRK_GROUP",
           "type": "VARCHAR"
         },
         {
-          "name": "postal",
+          "name": "ABBREV",
           "type": "VARCHAR"
         },
         {
-          "name": "formal_en",
+          "name": "POSTAL",
           "type": "VARCHAR"
         },
         {
-          "name": "formal_fr",
+          "name": "FORMAL_EN",
           "type": "VARCHAR"
         },
         {
-          "name": "note_adm0",
+          "name": "FORMAL_FR",
           "type": "VARCHAR"
         },
         {
-          "name": "note_brk",
+          "name": "NAME_CIAWF",
           "type": "VARCHAR"
         },
         {
-          "name": "name_sort",
+          "name": "NOTE_ADM0",
           "type": "VARCHAR"
         },
         {
-          "name": "name_alt",
+          "name": "NOTE_BRK",
           "type": "VARCHAR"
         },
         {
-          "name": "mapcolor7",
+          "name": "NAME_SORT",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_ALT",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "MAPCOLOR7",
           "type": "INTEGER"
         },
         {
-          "name": "mapcolor8",
+          "name": "MAPCOLOR8",
           "type": "INTEGER"
         },
         {
-          "name": "mapcolor9",
+          "name": "MAPCOLOR9",
           "type": "INTEGER"
         },
         {
-          "name": "mapcolor13",
+          "name": "MAPCOLOR13",
           "type": "INTEGER"
         },
         {
-          "name": "pop_est",
-          "type": "INTEGER"
-        },
-        {
-          "name": "gdp_md_est",
+          "name": "POP_EST",
           "type": "DOUBLE"
         },
         {
-          "name": "pop_year",
+          "name": "POP_RANK",
           "type": "INTEGER"
         },
         {
-          "name": "lastcensus",
+          "name": "POP_YEAR",
           "type": "INTEGER"
         },
         {
-          "name": "gdp_year",
+          "name": "GDP_MD",
           "type": "INTEGER"
         },
         {
-          "name": "economy",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "income_grp",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "wikipedia",
+          "name": "GDP_YEAR",
           "type": "INTEGER"
         },
         {
-          "name": "fips_10",
+          "name": "ECONOMY",
           "type": "VARCHAR"
         },
         {
-          "name": "iso_a2",
+          "name": "INCOME_GRP",
           "type": "VARCHAR"
         },
         {
-          "name": "iso_a3",
-          "type": "VARCHAR",
-          "description": "[admin_code] ISO 3166-1 alpha-3 country code."
-        },
-        {
-          "name": "iso_n3",
+          "name": "FIPS_10",
           "type": "VARCHAR"
         },
         {
-          "name": "un_a3",
+          "name": "ISO_A2",
           "type": "VARCHAR"
         },
         {
-          "name": "wb_a2",
+          "name": "ISO_A2_EH",
           "type": "VARCHAR"
         },
         {
-          "name": "wb_a3",
+          "name": "ISO_A3",
           "type": "VARCHAR"
         },
         {
-          "name": "woe_id",
+          "name": "ISO_A3_EH",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ISO_N3",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ISO_N3_EH",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "UN_A3",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "WB_A2",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "WB_A3",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "WOE_ID",
           "type": "INTEGER"
         },
         {
-          "name": "adm0_a3_is",
+          "name": "WOE_ID_EH",
+          "type": "INTEGER"
+        },
+        {
+          "name": "WOE_NOTE",
           "type": "VARCHAR"
         },
         {
-          "name": "adm0_a3_us",
+          "name": "ADM0_ISO",
           "type": "VARCHAR"
         },
         {
-          "name": "adm0_a3_un",
-          "type": "INTEGER"
-        },
-        {
-          "name": "adm0_a3_wb",
-          "type": "INTEGER"
-        },
-        {
-          "name": "continent",
+          "name": "ADM0_DIFF",
           "type": "VARCHAR"
         },
         {
-          "name": "region_un",
+          "name": "ADM0_TLC",
           "type": "VARCHAR"
         },
         {
-          "name": "subregion",
+          "name": "ADM0_A3_US",
           "type": "VARCHAR"
         },
         {
-          "name": "region_wb",
+          "name": "ADM0_A3_FR",
           "type": "VARCHAR"
         },
         {
-          "name": "name_len",
+          "name": "ADM0_A3_RU",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_ES",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_CN",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_TW",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_IN",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_NP",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_PK",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_DE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_GB",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_BR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_IL",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_PS",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_SA",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_EG",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_MA",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_PT",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_AR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_JP",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_KO",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_VN",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_TR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_ID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_PL",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_GR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_IT",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_NL",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_SE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_BD",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_UA",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_UN",
           "type": "INTEGER"
         },
         {
-          "name": "long_len",
+          "name": "ADM0_A3_WB",
           "type": "INTEGER"
         },
         {
-          "name": "abbrev_len",
+          "name": "CONTINENT",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "REGION_UN",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "SUBREGION",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "REGION_WB",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_LEN",
           "type": "INTEGER"
         },
         {
-          "name": "tiny",
+          "name": "LONG_LEN",
           "type": "INTEGER"
         },
         {
-          "name": "homepart",
+          "name": "ABBREV_LEN",
           "type": "INTEGER"
         },
         {
-          "name": "featureclass",
+          "name": "TINY",
+          "type": "INTEGER"
+        },
+        {
+          "name": "HOMEPART",
+          "type": "INTEGER"
+        },
+        {
+          "name": "MIN_ZOOM",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "MIN_LABEL",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "MAX_LABEL",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "LABEL_X",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "LABEL_Y",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "NE_ID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "WIKIDATAID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_AR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_BN",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_DE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_EN",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_ES",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_FA",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_FR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_EL",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_HE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_HI",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_HU",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_ID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_IT",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_JA",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_KO",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_NL",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_PL",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_PT",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_RU",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_SV",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_TR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_UK",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_UR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_VI",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_ZH",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_ZHT",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_ISO",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "TLC_DIFF",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_TLC",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_US",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_FR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_RU",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_ES",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_CN",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_TW",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_IN",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_NP",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_PK",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_DE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_GB",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_BR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_IL",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_PS",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_SA",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_EG",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_MA",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_PT",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_AR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_JP",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_KO",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_VN",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_TR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_ID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_PL",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_GR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_IT",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_NL",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_SE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_BD",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_UA",
           "type": "VARCHAR"
         },
         {
           "name": "geom",
-          "type": "GEOMETRY",
-          "description": "[geometry] Polygon geometry of country boundaries."
+          "type": "GEOMETRY"
         },
         {
           "name": "bbox",
@@ -1602,8 +2728,8 @@
       ],
       "table:row_count": 177
     },
-    "portolan-golden/main/reference/natural-earth-populated-places": {
-      "href": "https://data.source.coop/portolan/portolan-pipeline/portolan-golden/main/reference/natural-earth-populated-places/natural-earth-populated-places.parquet",
+    "portolan-reference/PRs/119/reference/natural-earth-populated-places": {
+      "href": "https://data.source.coop/portolan/portolan-pipeline/portolan-reference/PRs/119/reference/natural-earth-populated-places/natural-earth-populated-places.parquet",
       "type": "application/x-parquet",
       "title": "natural-earth-populated-places.parquet",
       "roles": [
@@ -1611,7 +2737,7 @@
       ],
       "table:columns": [
         {
-          "name": "OGC_FID",
+          "name": "fid",
           "type": "BIGINT"
         },
         {
@@ -1632,8 +2758,7 @@
         },
         {
           "name": "NAME",
-          "type": "VARCHAR",
-          "description": "[placename] City/town name."
+          "type": "VARCHAR"
         },
         {
           "name": "NAMEPAR",
@@ -1644,19 +2769,11 @@
           "type": "VARCHAR"
         },
         {
-          "name": "DIFFASCII",
-          "type": "INTEGER"
-        },
-        {
           "name": "NAMEASCII",
           "type": "VARCHAR"
         },
         {
           "name": "ADM0CAP",
-          "type": "INTEGER"
-        },
-        {
-          "name": "CAPALT",
           "type": "INTEGER"
         },
         {
@@ -1693,8 +2810,7 @@
         },
         {
           "name": "ISO_A2",
-          "type": "VARCHAR",
-          "description": "[admin_code] ISO 3166-1 alpha-2 country code."
+          "type": "VARCHAR"
         },
         {
           "name": "NOTE",
@@ -1702,37 +2818,23 @@
         },
         {
           "name": "LATITUDE",
-          "type": "DOUBLE",
-          "description": "[latlon] Latitude of the place."
+          "type": "DOUBLE"
         },
         {
           "name": "LONGITUDE",
-          "type": "DOUBLE",
-          "description": "[latlon] Longitude of the place."
-        },
-        {
-          "name": "CHANGED",
-          "type": "INTEGER"
-        },
-        {
-          "name": "NAMEDIFF",
-          "type": "INTEGER"
-        },
-        {
-          "name": "DIFFNOTE",
-          "type": "VARCHAR"
+          "type": "DOUBLE"
         },
         {
           "name": "POP_MAX",
-          "type": "INTEGER"
+          "type": "BIGINT"
         },
         {
           "name": "POP_MIN",
-          "type": "INTEGER"
+          "type": "BIGINT"
         },
         {
           "name": "POP_OTHER",
-          "type": "INTEGER"
+          "type": "BIGINT"
         },
         {
           "name": "RANK_MAX",
@@ -1740,10 +2842,6 @@
         },
         {
           "name": "RANK_MIN",
-          "type": "INTEGER"
-        },
-        {
-          "name": "GEONAMEID",
           "type": "INTEGER"
         },
         {
@@ -1755,68 +2853,60 @@
           "type": "VARCHAR"
         },
         {
-          "name": "LS_MATCH",
-          "type": "INTEGER"
-        },
-        {
-          "name": "CHECKME",
-          "type": "INTEGER"
-        },
-        {
           "name": "MAX_POP10",
-          "type": "INTEGER"
+          "type": "BIGINT"
         },
         {
           "name": "MAX_POP20",
-          "type": "INTEGER"
+          "type": "BIGINT"
         },
         {
           "name": "MAX_POP50",
-          "type": "INTEGER"
+          "type": "BIGINT"
         },
         {
           "name": "MAX_POP300",
-          "type": "INTEGER"
+          "type": "BIGINT"
         },
         {
           "name": "MAX_POP310",
-          "type": "INTEGER"
+          "type": "BIGINT"
         },
         {
           "name": "MAX_NATSCA",
-          "type": "INTEGER"
+          "type": "BIGINT"
         },
         {
           "name": "MIN_AREAKM",
-          "type": "INTEGER"
+          "type": "BIGINT"
         },
         {
           "name": "MAX_AREAKM",
-          "type": "INTEGER"
+          "type": "BIGINT"
         },
         {
           "name": "MIN_AREAMI",
-          "type": "INTEGER"
+          "type": "BIGINT"
         },
         {
           "name": "MAX_AREAMI",
-          "type": "INTEGER"
+          "type": "BIGINT"
         },
         {
           "name": "MIN_PERKM",
-          "type": "INTEGER"
+          "type": "BIGINT"
         },
         {
           "name": "MAX_PERKM",
-          "type": "INTEGER"
+          "type": "BIGINT"
         },
         {
           "name": "MIN_PERMI",
-          "type": "INTEGER"
+          "type": "BIGINT"
         },
         {
           "name": "MAX_PERMI",
-          "type": "INTEGER"
+          "type": "BIGINT"
         },
         {
           "name": "MIN_BBXMIN",
@@ -1859,43 +2949,7 @@
           "type": "DOUBLE"
         },
         {
-          "name": "COMPARE",
-          "type": "INTEGER"
-        },
-        {
-          "name": "GN_ASCII",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "FEATURE_CL",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "FEATURE_CO",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "ADMIN1_COD",
-          "type": "INTEGER"
-        },
-        {
-          "name": "GN_POP",
-          "type": "INTEGER"
-        },
-        {
-          "name": "ELEVATION",
-          "type": "INTEGER"
-        },
-        {
-          "name": "GTOPO30",
-          "type": "INTEGER"
-        },
-        {
           "name": "TIMEZONE",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "GEONAMESNO",
           "type": "VARCHAR"
         },
         {
@@ -1903,103 +2957,2041 @@
           "type": "INTEGER"
         },
         {
-          "name": "UN_ADM0",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "UN_LAT",
-          "type": "DOUBLE"
-        },
-        {
-          "name": "UN_LONG",
-          "type": "DOUBLE"
-        },
-        {
           "name": "POP1950",
-          "type": "INTEGER"
+          "type": "BIGINT"
         },
         {
           "name": "POP1955",
-          "type": "INTEGER"
+          "type": "BIGINT"
         },
         {
           "name": "POP1960",
-          "type": "INTEGER"
+          "type": "BIGINT"
         },
         {
           "name": "POP1965",
-          "type": "INTEGER"
+          "type": "BIGINT"
         },
         {
           "name": "POP1970",
-          "type": "INTEGER"
+          "type": "BIGINT"
         },
         {
           "name": "POP1975",
-          "type": "INTEGER"
+          "type": "BIGINT"
         },
         {
           "name": "POP1980",
-          "type": "INTEGER"
+          "type": "BIGINT"
         },
         {
           "name": "POP1985",
-          "type": "INTEGER"
+          "type": "BIGINT"
         },
         {
           "name": "POP1990",
-          "type": "INTEGER"
+          "type": "BIGINT"
         },
         {
           "name": "POP1995",
-          "type": "INTEGER"
+          "type": "BIGINT"
         },
         {
           "name": "POP2000",
-          "type": "INTEGER"
+          "type": "BIGINT"
         },
         {
           "name": "POP2005",
-          "type": "INTEGER"
+          "type": "BIGINT"
         },
         {
           "name": "POP2010",
-          "type": "INTEGER"
+          "type": "BIGINT"
         },
         {
           "name": "POP2015",
-          "type": "INTEGER"
+          "type": "BIGINT"
         },
         {
           "name": "POP2020",
-          "type": "INTEGER"
+          "type": "BIGINT"
         },
         {
           "name": "POP2025",
-          "type": "INTEGER"
+          "type": "BIGINT"
         },
         {
           "name": "POP2050",
+          "type": "BIGINT"
+        },
+        {
+          "name": "MIN_ZOOM",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "WIKIDATAID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "WOF_ID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "CAPALT",
           "type": "INTEGER"
         },
         {
-          "name": "CITYALT",
+          "name": "NAME_EN",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_DE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_ES",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_FR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_PT",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_RU",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_ZH",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "LABEL",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_AR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_BN",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_EL",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_HI",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_HU",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_ID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_IT",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_JA",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_KO",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_NL",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_PL",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_SV",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_TR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_VI",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NE_ID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "NAME_FA",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_HE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_UK",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_UR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_ZHT",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "GEONAMESID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "FCLASS_ISO",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_US",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_FR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_RU",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_ES",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_CN",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_TW",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_IN",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_NP",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_PK",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_DE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_GB",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_BR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_IL",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_PS",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_SA",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_EG",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_MA",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_PT",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_AR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_JP",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_KO",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_VN",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_TR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_ID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_PL",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_GR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_IT",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_NL",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_SE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_BD",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_UA",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_TLC",
           "type": "VARCHAR"
         },
         {
           "name": "geom",
-          "type": "GEOMETRY",
-          "description": "[geometry] Point geometry of the populated place."
+          "type": "GEOMETRY"
         },
         {
           "name": "bbox",
           "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
         }
       ],
-      "table:row_count": 1249
+      "table:row_count": 1251
     },
-    "portolan-golden/main/tabular/eurostat-electricity-prices": {
-      "href": "https://data.source.coop/portolan/portolan-pipeline/portolan-golden/main/tabular/eurostat-electricity-prices/eurostat-electricity-prices.parquet",
+    "portolan-reference/PRs/119/tabular/eurostat-electricity-prices": {
+      "href": "https://data.source.coop/portolan/portolan-pipeline/portolan-reference/PRs/119/tabular/eurostat-electricity-prices/eurostat-electricity-prices.parquet",
+      "type": "application/x-parquet",
+      "title": "eurostat-electricity-prices.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "DATAFLOW",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "LAST UPDATE",
+          "type": "TIMESTAMP"
+        },
+        {
+          "name": "freq",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "siec",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "nrg_cons",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "unit",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "tax",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "currency",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geo",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "TIME_PERIOD",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "OBS_VALUE",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "OBS_FLAG",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "CONF_STATUS",
+          "type": "VARCHAR"
+        }
+      ],
+      "table:row_count": 65466
+    },
+    "portolan-reference/main/boundaries/boston-open-space": {
+      "href": "https://data.source.coop/portolan/portolan-pipeline/portolan-reference/main/boundaries/boston-open-space/boston-open-space.parquet",
+      "type": "application/x-parquet",
+      "title": "boston-open-space.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OBJECTID",
+          "type": "INTEGER"
+        },
+        {
+          "name": "SITE_NAME",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "OWNERSHIP",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PROTECTION",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "TYPECODE",
+          "type": "INTEGER"
+        },
+        {
+          "name": "DISTRICT",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ACRES",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "ADDRESS",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ZonAgg",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "TypeLong",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "OS_Own_Jur",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "OS_Mngmnt",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "POS",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PA",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ALT_NAME",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "AgncyJuris",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ShapeSTAre",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "ShapeSTLen",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "geom",
+          "type": "GEOMETRY",
+          "description": "[geometry] Open space parcel polygon geometry"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 1012
+    },
+    "portolan-reference/main/boundaries/netherlands-provinces": {
+      "href": "https://data.source.coop/portolan/portolan-pipeline/portolan-reference/main/boundaries/netherlands-provinces/netherlands-provinces.parquet",
+      "type": "application/x-parquet",
+      "title": "netherlands-provinces.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "identificatie",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "naam",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ligt_in_land_code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ligt_in_land_naam",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geom",
+          "type": "GEOMETRY('EPSG:28992')",
+          "description": "[geometry] Province boundary polygon geometry (EPSG:28992)"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 12
+    },
+    "portolan-reference/main/boundaries/us-counties": {
+      "href": "https://data.source.coop/portolan/portolan-pipeline/portolan-reference/main/boundaries/us-counties/us-counties.parquet",
+      "type": "application/x-parquet",
+      "title": "us-counties.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "STATEFP",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "COUNTYFP",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "COUNTYNS",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "GEOIDFQ",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "GEOID",
+          "type": "VARCHAR",
+          "description": "[admin_code] FIPS state+county identifier"
+        },
+        {
+          "name": "NAME",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAMELSAD",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "STUSPS",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "STATE_NAME",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "LSAD",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ALAND",
+          "type": "BIGINT"
+        },
+        {
+          "name": "AWATER",
+          "type": "BIGINT"
+        },
+        {
+          "name": "geom",
+          "type": "GEOMETRY('EPSG:4269')",
+          "description": "[geometry] County boundary polygon geometry (EPSG:4269)"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 3235
+    },
+    "portolan-reference/main/mirror/san-francisco-addresses": {
+      "href": "https://data.source.coop/portolan/portolan-pipeline/portolan-reference/main/mirror/san-francisco-addresses/san-francisco-addresses.parquet",
+      "type": "application/x-parquet",
+      "title": "san-francisco-addresses.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "street_full_street_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "zip_code",
+          "type": "VARCHAR",
+          "description": "[zipcode] Postal ZIP code of the address"
+        },
+        {
+          "name": "latitude",
+          "type": "VARCHAR",
+          "description": "[latlon] Address latitude (paired with longitude)"
+        },
+        {
+          "name": "address_number_suffix",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "supdistpad",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "complete_landmark_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "eas_fullid",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "direct_source",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "cnn",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "data_loaded_at",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "longitude",
+          "type": "VARCHAR",
+          "description": "[latlon] Address longitude (paired with latitude)"
+        },
+        {
+          "name": "street_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "supdist",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "eas_baseid",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "nhood",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "block",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "supname",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "street_type",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "eas_subid",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "lot",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "address",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "unit_number",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "supervisor",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "data_updated_at",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "address_number",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "parcel_number",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "numbertext",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "data_as_of",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "landmark_aliases",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geom",
+          "type": "GEOMETRY",
+          "description": "[geometry] Address point geometry"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 5000
+    },
+    "portolan-reference/main/reference/natural-earth-countries": {
+      "href": "https://data.source.coop/portolan/portolan-pipeline/portolan-reference/main/reference/natural-earth-countries/natural-earth-countries.parquet",
+      "type": "application/x-parquet",
+      "title": "natural-earth-countries.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "featurecla",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "scalerank",
+          "type": "INTEGER"
+        },
+        {
+          "name": "LABELRANK",
+          "type": "INTEGER"
+        },
+        {
+          "name": "SOVEREIGNT",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "SOV_A3",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_DIF",
+          "type": "INTEGER"
+        },
+        {
+          "name": "LEVEL",
+          "type": "INTEGER"
+        },
+        {
+          "name": "TYPE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "TLC",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADMIN",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "GEOU_DIF",
+          "type": "INTEGER"
+        },
+        {
+          "name": "GEOUNIT",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "GU_A3",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "SU_DIF",
+          "type": "INTEGER"
+        },
+        {
+          "name": "SUBUNIT",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "SU_A3",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "BRK_DIFF",
+          "type": "INTEGER"
+        },
+        {
+          "name": "NAME",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_LONG",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "BRK_A3",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "BRK_NAME",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "BRK_GROUP",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ABBREV",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "POSTAL",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FORMAL_EN",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FORMAL_FR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_CIAWF",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NOTE_ADM0",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NOTE_BRK",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_SORT",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_ALT",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "MAPCOLOR7",
+          "type": "INTEGER"
+        },
+        {
+          "name": "MAPCOLOR8",
+          "type": "INTEGER"
+        },
+        {
+          "name": "MAPCOLOR9",
+          "type": "INTEGER"
+        },
+        {
+          "name": "MAPCOLOR13",
+          "type": "INTEGER"
+        },
+        {
+          "name": "POP_EST",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "POP_RANK",
+          "type": "INTEGER"
+        },
+        {
+          "name": "POP_YEAR",
+          "type": "INTEGER"
+        },
+        {
+          "name": "GDP_MD",
+          "type": "INTEGER"
+        },
+        {
+          "name": "GDP_YEAR",
+          "type": "INTEGER"
+        },
+        {
+          "name": "ECONOMY",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "INCOME_GRP",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FIPS_10",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ISO_A2",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ISO_A2_EH",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ISO_A3",
+          "type": "VARCHAR",
+          "description": "[admin_code] ISO 3166-1 alpha-3 country code"
+        },
+        {
+          "name": "ISO_A3_EH",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ISO_N3",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ISO_N3_EH",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "UN_A3",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "WB_A2",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "WB_A3",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "WOE_ID",
+          "type": "INTEGER"
+        },
+        {
+          "name": "WOE_ID_EH",
+          "type": "INTEGER"
+        },
+        {
+          "name": "WOE_NOTE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_ISO",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_DIFF",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_TLC",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_US",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_FR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_RU",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_ES",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_CN",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_TW",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_IN",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_NP",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_PK",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_DE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_GB",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_BR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_IL",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_PS",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_SA",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_EG",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_MA",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_PT",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_AR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_JP",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_KO",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_VN",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_TR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_ID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_PL",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_GR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_IT",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_NL",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_SE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_BD",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_UA",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3_UN",
+          "type": "INTEGER"
+        },
+        {
+          "name": "ADM0_A3_WB",
+          "type": "INTEGER"
+        },
+        {
+          "name": "CONTINENT",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "REGION_UN",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "SUBREGION",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "REGION_WB",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_LEN",
+          "type": "INTEGER"
+        },
+        {
+          "name": "LONG_LEN",
+          "type": "INTEGER"
+        },
+        {
+          "name": "ABBREV_LEN",
+          "type": "INTEGER"
+        },
+        {
+          "name": "TINY",
+          "type": "INTEGER"
+        },
+        {
+          "name": "HOMEPART",
+          "type": "INTEGER"
+        },
+        {
+          "name": "MIN_ZOOM",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "MIN_LABEL",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "MAX_LABEL",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "LABEL_X",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "LABEL_Y",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "NE_ID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "WIKIDATAID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_AR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_BN",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_DE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_EN",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_ES",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_FA",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_FR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_EL",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_HE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_HI",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_HU",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_ID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_IT",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_JA",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_KO",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_NL",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_PL",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_PT",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_RU",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_SV",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_TR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_UK",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_UR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_VI",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_ZH",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_ZHT",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_ISO",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "TLC_DIFF",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_TLC",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_US",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_FR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_RU",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_ES",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_CN",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_TW",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_IN",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_NP",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_PK",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_DE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_GB",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_BR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_IL",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_PS",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_SA",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_EG",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_MA",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_PT",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_AR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_JP",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_KO",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_VN",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_TR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_ID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_PL",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_GR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_IT",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_NL",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_SE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_BD",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_UA",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geom",
+          "type": "GEOMETRY",
+          "description": "[geometry] Country boundary polygon geometry"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 177
+    },
+    "portolan-reference/main/reference/natural-earth-populated-places": {
+      "href": "https://data.source.coop/portolan/portolan-pipeline/portolan-reference/main/reference/natural-earth-populated-places/natural-earth-populated-places.parquet",
+      "type": "application/x-parquet",
+      "title": "natural-earth-populated-places.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "SCALERANK",
+          "type": "INTEGER"
+        },
+        {
+          "name": "NATSCALE",
+          "type": "INTEGER"
+        },
+        {
+          "name": "LABELRANK",
+          "type": "INTEGER"
+        },
+        {
+          "name": "FEATURECLA",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME",
+          "type": "VARCHAR",
+          "description": "[placename] City/town name"
+        },
+        {
+          "name": "NAMEPAR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAMEALT",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAMEASCII",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0CAP",
+          "type": "INTEGER"
+        },
+        {
+          "name": "CAPIN",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "WORLDCITY",
+          "type": "INTEGER"
+        },
+        {
+          "name": "MEGACITY",
+          "type": "INTEGER"
+        },
+        {
+          "name": "SOV0NAME",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "SOV_A3",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0NAME",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM0_A3",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADM1NAME",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ISO_A2",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NOTE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "LATITUDE",
+          "type": "DOUBLE",
+          "description": "[latlon] Place latitude (paired with LONGITUDE)"
+        },
+        {
+          "name": "LONGITUDE",
+          "type": "DOUBLE",
+          "description": "[latlon] Place longitude (paired with LATITUDE)"
+        },
+        {
+          "name": "POP_MAX",
+          "type": "BIGINT"
+        },
+        {
+          "name": "POP_MIN",
+          "type": "BIGINT"
+        },
+        {
+          "name": "POP_OTHER",
+          "type": "BIGINT"
+        },
+        {
+          "name": "RANK_MAX",
+          "type": "INTEGER"
+        },
+        {
+          "name": "RANK_MIN",
+          "type": "INTEGER"
+        },
+        {
+          "name": "MEGANAME",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "LS_NAME",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "MAX_POP10",
+          "type": "BIGINT"
+        },
+        {
+          "name": "MAX_POP20",
+          "type": "BIGINT"
+        },
+        {
+          "name": "MAX_POP50",
+          "type": "BIGINT"
+        },
+        {
+          "name": "MAX_POP300",
+          "type": "BIGINT"
+        },
+        {
+          "name": "MAX_POP310",
+          "type": "BIGINT"
+        },
+        {
+          "name": "MAX_NATSCA",
+          "type": "BIGINT"
+        },
+        {
+          "name": "MIN_AREAKM",
+          "type": "BIGINT"
+        },
+        {
+          "name": "MAX_AREAKM",
+          "type": "BIGINT"
+        },
+        {
+          "name": "MIN_AREAMI",
+          "type": "BIGINT"
+        },
+        {
+          "name": "MAX_AREAMI",
+          "type": "BIGINT"
+        },
+        {
+          "name": "MIN_PERKM",
+          "type": "BIGINT"
+        },
+        {
+          "name": "MAX_PERKM",
+          "type": "BIGINT"
+        },
+        {
+          "name": "MIN_PERMI",
+          "type": "BIGINT"
+        },
+        {
+          "name": "MAX_PERMI",
+          "type": "BIGINT"
+        },
+        {
+          "name": "MIN_BBXMIN",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "MAX_BBXMIN",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "MIN_BBXMAX",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "MAX_BBXMAX",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "MIN_BBYMIN",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "MAX_BBYMIN",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "MIN_BBYMAX",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "MAX_BBYMAX",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "MEAN_BBXC",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "MEAN_BBYC",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "TIMEZONE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "UN_FID",
+          "type": "INTEGER"
+        },
+        {
+          "name": "POP1950",
+          "type": "BIGINT"
+        },
+        {
+          "name": "POP1955",
+          "type": "BIGINT"
+        },
+        {
+          "name": "POP1960",
+          "type": "BIGINT"
+        },
+        {
+          "name": "POP1965",
+          "type": "BIGINT"
+        },
+        {
+          "name": "POP1970",
+          "type": "BIGINT"
+        },
+        {
+          "name": "POP1975",
+          "type": "BIGINT"
+        },
+        {
+          "name": "POP1980",
+          "type": "BIGINT"
+        },
+        {
+          "name": "POP1985",
+          "type": "BIGINT"
+        },
+        {
+          "name": "POP1990",
+          "type": "BIGINT"
+        },
+        {
+          "name": "POP1995",
+          "type": "BIGINT"
+        },
+        {
+          "name": "POP2000",
+          "type": "BIGINT"
+        },
+        {
+          "name": "POP2005",
+          "type": "BIGINT"
+        },
+        {
+          "name": "POP2010",
+          "type": "BIGINT"
+        },
+        {
+          "name": "POP2015",
+          "type": "BIGINT"
+        },
+        {
+          "name": "POP2020",
+          "type": "BIGINT"
+        },
+        {
+          "name": "POP2025",
+          "type": "BIGINT"
+        },
+        {
+          "name": "POP2050",
+          "type": "BIGINT"
+        },
+        {
+          "name": "MIN_ZOOM",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "WIKIDATAID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "WOF_ID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "CAPALT",
+          "type": "INTEGER"
+        },
+        {
+          "name": "NAME_EN",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_DE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_ES",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_FR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_PT",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_RU",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_ZH",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "LABEL",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_AR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_BN",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_EL",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_HI",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_HU",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_ID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_IT",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_JA",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_KO",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_NL",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_PL",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_SV",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_TR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_VI",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NE_ID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "NAME_FA",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_HE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_UK",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_UR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "NAME_ZHT",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "GEONAMESID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "FCLASS_ISO",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_US",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_FR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_RU",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_ES",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_CN",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_TW",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_IN",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_NP",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_PK",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_DE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_GB",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_BR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_IL",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_PS",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_SA",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_EG",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_MA",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_PT",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_AR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_JP",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_KO",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_VN",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_TR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_ID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_PL",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_GR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_IT",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_NL",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_SE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_BD",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_UA",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCLASS_TLC",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geom",
+          "type": "GEOMETRY",
+          "description": "[geometry] Populated place point geometry"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 1251
+    },
+    "portolan-reference/main/tabular/eurostat-electricity-prices": {
+      "href": "https://data.source.coop/portolan/portolan-pipeline/portolan-reference/main/tabular/eurostat-electricity-prices/eurostat-electricity-prices.parquet",
       "type": "application/x-parquet",
       "title": "eurostat-electricity-prices.parquet",
       "roles": [
@@ -2041,7 +5033,7 @@
         {
           "name": "geo",
           "type": "VARCHAR",
-          "description": "[admin_code] NUTS-0 country code, join key for the table."
+          "description": "[admin_code] Eurostat country/region geo code"
         },
         {
           "name": "TIME_PERIOD",
@@ -2060,13 +5052,17 @@
           "type": "VARCHAR"
         }
       ],
-      "table:row_count": 65412
+      "table:row_count": 65466
     }
   },
   "table:columns": [
     {
-      "name": "OBJECTID",
+      "name": "fid",
       "type": "BIGINT"
+    },
+    {
+      "name": "OBJECTID",
+      "type": "INTEGER"
     },
     {
       "name": "SITE_NAME",
@@ -2129,50 +5125,16 @@
       "type": "VARCHAR"
     },
     {
-      "name": "PARK_ID",
-      "type": "VARCHAR"
-    },
-    {
-      "name": "REGION",
-      "type": "VARCHAR"
-    },
-    {
-      "name": "OS_ID",
-      "type": "VARCHAR"
-    },
-    {
-      "name": "F_100ftRule",
-      "type": "VARCHAR"
-    },
-    {
-      "name": "ZipCode",
-      "type": "VARCHAR",
-      "description": "[zipcode] Postal code of the site."
-    },
-    {
-      "name": "ParcelNumber",
-      "type": "VARCHAR"
-    },
-    {
-      "name": "YearAcquired",
-      "type": "SMALLINT"
-    },
-    {
-      "name": "Shape",
-      "type": "BLOB"
-    },
-    {
-      "name": "Shape.STArea()",
+      "name": "ShapeSTAre",
       "type": "DOUBLE"
     },
     {
-      "name": "Shape.STLength()",
+      "name": "ShapeSTLen",
       "type": "DOUBLE"
     },
     {
-      "name": "geometry",
-      "type": "GEOMETRY",
-      "description": "[geometry] Polygon geometry of open-space parcels."
+      "name": "geom",
+      "type": "GEOMETRY"
     },
     {
       "name": "bbox",
@@ -2189,27 +5151,18 @@
       "rel": "via",
       "href": "https://source.coop/portolan/portolan-pipeline",
       "title": "Source Cooperative product page"
-    },
-    {
-      "rel": "agents",
-      "href": "./AGENTS.md",
-      "type": "text/markdown",
-      "title": "Agent/LLM usage guide"
     }
   ],
+  "total_bytes": 105651175,
+  "visibility": "public",
+  "updated_at": "2026-07-17T07:57:13.309Z",
+  "file_count": 1303,
   "account_id": "portolan",
-  "created_at": "2026-07-17T07:57:13.309Z",
-  "file_count": 131,
-  "exts": {
-    "json": 50,
-    "md": 46,
-    "parquet": 14,
-    "jpg": 14,
-    "tif": 2,
-    "pmtiles": 2,
-    "xml": 2,
-    "fgb": 1
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
   },
+  "product_id": "portolan-pipeline",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -2218,28 +5171,25 @@
       "prefix": "portolan/portolan-pipeline/"
     }
   },
-  "visibility": "public",
-  "featured": 0,
-  "updated_at": "2026-07-17T07:57:13.309Z",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "total_bytes": 58180182,
-  "product_id": "portolan-pipeline",
-  "data_mode": null,
   "disabled": false,
-  "readme": "## portolan-golden__branches__fgb-parquet-items__README.md\n# Portolan Golden Example Catalog\n\nA mixed reference catalog for the Portolan v0.1 testbed. It gathers real, openly licensed geospatial and tabular data (Natural Earth, US counties, City of Boston open space, Dutch administrative boundaries, San Francisco addresses, a sample raster COG, and Eurostat electricity prices) to exercise every major case in the Portolan specification, vector, raster, tabular, nested, official, and mirror.\n\nA Portolan catalog node.\n\n\n## portolan-golden__branches__fgb-parquet-items__boundaries__README.md\n# Boundaries\n\nCatalog: boundaries\n\nA Portolan catalog node.\n\n\n## portolan-golden__branches__fgb-parquet-items__boundaries__boston-open-space__README.md\n# Boston Open Space\n\nCity of Boston open spaces and parks (playgrounds, athletic fields, conservation land, cemeteries), 577 polygons, from the City of Boston ArcGIS server. Official primary source. Native CRS is Massachusetts State Plane (EPSG:2249), reprojected to WGS84 on ingest.\n\nLicense PDDL-1.0.\nProvenance official.\n\n\n## portolan-golden__branches__fgb-parquet-items__boundaries__netherlands-provinces__README.md\n# Netherlands Provinces\n\nThe 12 provinces of the Netherlands (administrative boundaries) from the Dutch national spatial data infrastructure PDOK, derived from the Kadaster BRK. Official source, CC-BY-4.0, attribution Kadaster / PDOK.\n\nLicense CC-BY-4.0.\nProvenance mirror.\n\n\n## portolan-golden__branches__fgb-parquet-items__boundaries__us-counties__README.md\n# US Counties\n\nUnited States county boundaries (3,221 polygons) from the FlatGeobuf project sample, derived from US Census Bureau TIGER data (US federal, public domain). Published in two cloud-native representations of the same features, the row based FlatGeobuf source for feature streaming and map rendering, and columnar GeoParquet for analytical column scans. Each carries its own file size and checksum.\n\nLicense other.\nProvenance mirror.\n\n\n## portolan-golden__branches__fgb-parquet-items__mirror__README.md\n# Mirror\n\nCatalog: mirror\n\nA Portolan catalog node.\n\n\n## portolan-golden__branches__fgb-parquet-items__mirror__san-francisco-addresses__README.md\n# San Francisco Addresses (EAS)\n\nPoint addresses from the City and County of San Francisco Enterprise Addressing System, a 50,000-feature extract of the official DataSF open data layer, converted to cloud-native GeoParquet. Open Data Commons PDDL 1.0. Attribution, City and County of San Francisco.\n\nLicense PDDL-1.0.\nProvenance mirror.\n\n\n## portolan-golden__branches__fgb-parquet-items__raster__README.md\n# Raster\n\nCatalog: raster\n\nA Portolan catalog node.\n\n\n## portolan-golden__branches__fgb-parquet-items__raster__sample-cog__README.md\n# Sample Raster COG\n\nA small 3-band Cloud Optimized GeoTIFF used to exercise the raster path end to end. portolan add optimizes it to a COG and computes the per-band statistics (minimum, maximum, mean, standard deviation) the spec requires. From the rasterio test fixtures (RGB.byte.tif), a ~1.7 MB 3-band raster in UTM zone 18N (EPSG:32618), BSD-3-Clause. Its CRS resolves to a real EPSG authority code, unlike a synthetic/unnamed projection.\n\nLicense BSD-3-Clause.\nProvenance official.\n\n\n## portolan-golden__branches__fgb-parquet-items__reference__README.md\n# Reference\n\nCatalog: reference\n\nA Portolan catalog node.\n\n\n## portolan-golden__branches__fgb-parquet-items__tabular__README.md\n# Tabular\n\nCatalog: tabular\n\nA Portolan catalog node.\n\n\n## portolan-golden__main__README.md\n# Portolan Golden Example Catalog\n\nA mixed reference catalog for the Portolan v0.1 testbed. It gathers real, openly licensed geospatial and tabular data (Natural Earth, US counties, City of Boston open space, Dutch administrative boundaries, San Francisco addresses, a sample raster COG, and Eurostat electricity prices) to exercise every major case in the Portolan specification, vector, raster, tabular, nested, official, and mirror.\n\nA Portolan catalog node.\n\n\n## portolan-golden__main__boundaries__README.md\n# Boundaries\n\nCatalog: boundaries\n\nA Portolan catalog node.\n\n\n## portolan-golden__main__boundaries__boston-open-space__README.md\n# Boston Open Space\n\nCity of Boston open spaces and parks (playgrounds, athletic fields, conservation land, cemeteries), 577 polygons, from the City of Boston ArcGIS server. Official primary source. Native CRS is Massachusetts State Plane (EPSG:2249), reprojected to WGS84 on ingest.\n\nLicense PDDL-1.0.\nProvenance official.\n\n\n## portolan-golden__main__boundaries__netherlands-provinces__README.md\n# Netherlands Provinces\n\nThe 12 provinces of the Netherlands (administrative boundaries) from the Dutch national spatial data infrastructure PDOK, derived from the Kadaster BRK. Official source, CC-BY-4.0, attribution Kadaster / PDOK.\n\nLicense CC-BY-4.0.\nProvenance mirror.\n\n\n## portolan-golden__main__boundaries__us-counties__README.md\n# US Counties\n\nUnited States county boundaries (3,221 polygons) from the FlatGeobuf project sample, derived from US Census Bureau TIGER data (US federal, public domain). Included to exercise the FlatGeobuf input format.\n\nLicense other.\nProvenance mirror.\n\n\n## portolan-golden__main__mirror__README.md\n# Mirror\n\nCatalog: mirror\n\nA Portolan catalog node.\n\n\n## portolan-golden__main__mirror__san-francisco-addresses__README.md\n# San Francisco Addresses (EAS)\n\nPoint addresses from the City and County of San Francisco Enterprise Addressing System, a 50,000-feature extract of the official DataSF open data layer, converted to cloud-native GeoParquet. Open Data Commons PDDL 1.0. Attribution, City and County of San Francisco.\n\nLicense PDDL-1.0.\nProvenance mirror.\n\n\n## portolan-golden__main__raster__README.md\n# Raster\n\nCatalog: raster\n\nA Portolan catalog node.\n\n\n## portolan-golden__main__raster__sample-cog__README.md\n# Sample Raster COG\n\nA small 3-band Cloud Optimized GeoTIFF used to exercise the raster path end to end. portolan add optimizes it to a COG and computes the per-band statistics (minimum, maximum, mean, standard deviation) the spec requires. From the rasterio test fixtures (RGB.byte.tif), a ~1.7 MB 3-band raster in UTM zone 18N (EPSG:32618), BSD-3-Clause. Its CRS resolves to a real EPSG authority code, unlike a synthetic/unnamed projection.\n\nLicense BSD-3-Clause.\nProvenance official.\n\n\n## portolan-golden__main__reference__README.md\n# Reference\n\nCatalog: reference\n\nA Portolan catalog node.\n\n\n## portolan-golden__main__reference__natural-earth-countries__README.md\n# Natural Earth Countries (1:110m)\n\nWorld country boundaries at 1:110m scale from Natural Earth, the public domain reference basemap maintained by NACIS. Official source. Optional credit, \"Made with Natural Earth\".\n\nLicense CC0-1.0.\nProvenance mirror.\n\n\n## portolan-golden__main__reference__natural-earth-populated-places__README.md\n# Natural Earth Populated Places (1:50m)\n\nPoint locations of populated places (cities and towns) at 1:50m scale from Natural Earth. Public domain, official source.\n\nLicense CC0-1.0.\nProvenance mirror.\n\n\n## portolan-golden__main__tabular__README.md\n# Tabular\n\nCatalog: tabular\n\nA Portolan catalog node.\n\n\n## portolan-golden__main__tabular__eurostat-electricity-prices__README.md\n# Eurostat Electricity Prices for Household Consumers\n\nBi-annual electricity prices for household consumers across European countries by consumption band, tax component, and currency (Eurostat table nrg_pc_204, 2007-S1 to 2025-S2). Non-geospatial companion table, join key is the country code column geo (NUTS-0). Official source, CC-BY-4.0, attribution \"Source, Eurostat\".\n\nLicense CC-BY-4.0.\nProvenance official.\n",
+  "featured": 0,
+  "exts": {
+    "json": 1059,
+    "md": 146,
+    "parquet": 36,
+    "png": 36,
+    "pmtiles": 20,
+    "tif": 5,
+    "xml": 1
+  },
+  "data_mode": null,
+  "created_at": "2026-07-17T07:57:13.309Z",
+  "readme": "## naip-mosaic__PRs__111__README.md\n# NAIP Aerial Imagery Mosaics\n\nCloud-native mirror Collections of National Agriculture Imagery Program scenes, modelled as per-scene STAC Items whose Cloud Optimized GeoTIFFs stay on the host that publishes them.\n\nCollections, 1.\nNested Catalogs, 1.\nLicenses, other.\nProvenance, 1 mirror Collection.\n\nUpstream sources.\n\n- NAIP Colorado 2023, https://planetarycomputer.microsoft.com/api/stac/v1/search?collections=naip&bbox=-106.6059,38.7455,-104.5917,40.4223&datetime=2023-01-01T00:00:00Z/2023-12-31T23:59:59Z&filter-lang=cql2-json&filter={\"op\":\"=\",\"args\":[{\"property\":\"naip:state\"},\"co\"]}&limit=1000\n\n\n## naip-mosaic__PRs__111__imagery__README.md\n# Aerial Imagery\n\nPer-scene aerial imagery Collections mirrored from their publisher.\n\nCollections, 1.\nLicenses, other.\nProvenance, 1 mirror Collection.\n\nUpstream sources.\n\n- NAIP Colorado 2023, https://planetarycomputer.microsoft.com/api/stac/v1/search?collections=naip&bbox=-106.6059,38.7455,-104.5917,40.4223&datetime=2023-01-01T00:00:00Z/2023-12-31T23:59:59Z&filter-lang=cql2-json&filter={\"op\":\"=\",\"args\":[{\"property\":\"naip:state\"},\"co\"]}&limit=1000\n\n\n## portolan-reference__PRs__111__README.md\n# Portolan Reference Catalog\n\nA mixed reference catalog exercising every major case in the Portolan v0.1 specification with real, openly licensed data pulled from its original upstream sources, vector polygons and points, raster, tabular, mirror provenance, nested catalogs and flat collections.\n\nCollections, 8.\nNested Catalogs, 5.\nLicenses, BSD-3-Clause, CC-BY-4.0, CC0-1.0, PDDL-1.0.\nProvenance, 8 mirror Collections.\n\nUpstream sources.\n\n- Natural Earth Countries (1:110m), https://naciscdn.org/naturalearth/110m/cultural/ne_110m_admin_0_countries.zip\n- Natural Earth Populated Places (1:50m), https://naciscdn.org/naturalearth/50m/cultural/ne_50m_populated_places.zip\n- United States Counties (2023, 1:500k), https://www2.census.gov/geo/tiger/GENZ2023/shp/cb_2023_us_county_500k.zip\n- Boston Open Space, https://opendata.arcgis.com/api/v3/datasets/2868d370c55d4d458d4ae2224ef8cddd_7/downloads/data?format=shp&spatialRefId=4326\n- Netherlands Provinces, https://service.pdok.nl/kadaster/brk-bestuurlijke-gebieden/atom/downloads/BestuurlijkeGebieden_2026.gpkg\n- San Francisco Addresses (EAS), https://data.sfgov.org/resource/ramy-di5m.geojson?$limit=5000&$order=:id\n- Sample Raster COG, https://raw.githubusercontent.com/rasterio/rasterio/main/tests/data/RGB.byte.tif\n- Eurostat Electricity Prices for Household Consumers, https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/nrg_pc_204/?format=SDMX-CSV&compressed=false\n\n\n## portolan-reference__PRs__111__boundaries__README.md\n# Administrative Boundaries\n\nAdministrative and open-space boundary Collections from official sources.\n\nCollections, 3.\nLicenses, CC-BY-4.0, CC0-1.0, PDDL-1.0.\nProvenance, 3 mirror Collections.\n\nUpstream sources.\n\n- United States Counties (2023, 1:500k), https://www2.census.gov/geo/tiger/GENZ2023/shp/cb_2023_us_county_500k.zip\n- Boston Open Space, https://opendata.arcgis.com/api/v3/datasets/2868d370c55d4d458d4ae2224ef8cddd_7/downloads/data?format=shp&spatialRefId=4326\n- Netherlands Provinces, https://service.pdok.nl/kadaster/brk-bestuurlijke-gebieden/atom/downloads/BestuurlijkeGebieden_2026.gpkg\n\n\n## portolan-reference__PRs__111__mirror__README.md\n# Mirrored Collections\n\nCloud-native mirror Collections of data maintained elsewhere.\n\nCollections, 1.\nLicenses, PDDL-1.0.\nProvenance, 1 mirror Collection.\n\nUpstream sources.\n\n- San Francisco Addresses (EAS), https://data.sfgov.org/resource/ramy-di5m.geojson?$limit=5000&$order=:id\n\n\n## portolan-reference__PRs__111__raster__README.md\n# Raster Data\n\nCloud Optimized GeoTIFF raster Collections.\n\nCollections, 1.\nLicenses, BSD-3-Clause.\nProvenance, 1 mirror Collection.\n\nUpstream sources.\n\n- Sample Raster COG, https://raw.githubusercontent.com/rasterio/rasterio/main/tests/data/RGB.byte.tif\n\n\n## portolan-reference__PRs__111__reference__README.md\n# Reference Basemaps\n\nPublic domain reference basemap layers for general orientation and joins.\n\nCollections, 2.\nLicenses, CC0-1.0.\nProvenance, 2 mirror Collections.\n\nUpstream sources.\n\n- Natural Earth Countries (1:110m), https://naciscdn.org/naturalearth/110m/cultural/ne_110m_admin_0_countries.zip\n- Natural Earth Populated Places (1:50m), https://naciscdn.org/naturalearth/50m/cultural/ne_50m_populated_places.zip\n\n\n## portolan-reference__PRs__111__tabular__README.md\n# Tabular Data\n\nNon-geospatial companion tables published as Parquet.\n\nCollections, 1.\nLicenses, CC-BY-4.0.\nProvenance, 1 mirror Collection.\n\nUpstream sources.\n\n- Eurostat Electricity Prices for Household Consumers, https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/nrg_pc_204/?format=SDMX-CSV&compressed=false\n\n\n## portolan-reference__PRs__119__README.md\n# Portolan Reference Catalog\n\nA mixed reference catalog exercising every major case in the Portolan v0.1 specification with real, openly licensed data pulled from its original upstream sources, vector polygons and points, raster, tabular, mirror provenance, nested catalogs and flat collections.\n\nEvery Collection here is a mirror that cites its true upstream source\nwith a real checksum, and every README and AGENTS.md is written to the\nstandard in the spec's documentation best practices, so the catalog\ndoubles as the worked example of what good catalog documentation looks\nlike. The Netherlands provinces Collection also mirrors its upstream ISO\n19115 record as a metadata-role asset, and every code block in these\ndocs is executed by the repository's checks before it publishes.\n\nAgents, each Collection carries its own AGENTS.md with join keys, quirks,\nand tested queries, and the catalog-level [AGENTS.md](./AGENTS.md) maps\nthe joins between Collections.\n\n## Collections\n\n| Collection | Contents | Description |\n|---|---|---|\n| [Natural Earth Countries (1:110m)](./reference/natural-earth-countries/README.md) | 177 polygons | 177 country polygons at world scale, the public domain basemap behind most web choropleths. |\n| [Natural Earth Populated Places (1:50m)](./reference/natural-earth-populated-places/README.md) | 1,251 points | 1,251 curated city and town points with population estimates, from Tokyo to Antarctic research stations. |\n| [United States Counties (2023, 1:500k)](./boundaries/us-counties/README.md) | 3,235 polygons | All 3,235 county and equivalent boundaries as of January 1, 2023, keyed by the FIPS codes that unlock US county statistics. |\n| [Boston Open Space](./boundaries/boston-open-space/README.md) | 1,012 polygons | 1,012 open space polygons of conservation and recreation interest, regardless of ownership, from Franklin Park to community gardens. |\n| [Netherlands Provinces](./boundaries/netherlands-provinces/README.md) | 12 polygons | The 12 provinces from the cadastral registry, boundaries that reproduce the national statistics office's official areas to one decimal. |\n| [San Francisco Addresses (EAS)](./mirror/san-francisco-addresses/README.md) | 5,000 points | A fixed 5,000-record extract of San Francisco's 388,550-record master address database, kept small on purpose for spec demonstration. |\n| [Sample Raster COG](./raster/sample-cog/README.md) | 3-band raster | A 1 MB Landsat-derived reference COG for learning and testing cloud-optimized raster access, not for analysis. |\n| [Eurostat Electricity Prices for Household Consumers](./tabular/eurostat-electricity-prices/README.md) | 65,466 rows | 65,412 semi-annual household electricity prices for 41 European countries from 2007 on, the official record of the 2022 energy crisis. |\n\n## Where the Data Comes From\n\nLicenses, CC-BY-4.0, CC0-1.0, PDDL-1.0.\nProvenance, 8 mirror Collections.\n\nUpstream sources.\n\n- Natural Earth Countries (1:110m), https://naciscdn.org/naturalearth/110m/cultural/ne_110m_admin_0_countries.zip\n- Natural Earth Populated Places (1:50m), https://naciscdn.org/naturalearth/50m/cultural/ne_50m_populated_places.zip\n- United States Counties (2023, 1:500k), https://www2.census.gov/geo/tiger/GENZ2023/shp/cb_2023_us_county_500k.zip\n- Boston Open Space, https://opendata.arcgis.com/api/v3/datasets/2868d370c55d4d458d4ae2224ef8cddd_7/downloads/data?format=shp&spatialRefId=4326\n- Netherlands Provinces, https://service.pdok.nl/kadaster/brk-bestuurlijke-gebieden/atom/downloads/BestuurlijkeGebieden_2026.gpkg\n- San Francisco Addresses (EAS), https://data.sfgov.org/resource/ramy-di5m.geojson?$limit=5000&$order=:id\n- Sample Raster COG, https://raw.githubusercontent.com/rasterio/rasterio/main/tests/data/RGB.byte.tif\n- Eurostat Electricity Prices for Household Consumers, https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/nrg_pc_204/?format=SDMX-CSV&compressed=false\n\n\n## portolan-reference__PRs__119__boundaries__README.md\n# Administrative Boundaries\n\nAdministrative and open-space boundary Collections from official sources.\n\n## Collections\n\n| Collection | Contents | Description |\n|---|---|---|\n| [United States Counties (2023, 1:500k)](./us-counties/README.md) | 3,235 polygons | All 3,235 county and equivalent boundaries as of January 1, 2023, keyed by the FIPS codes that unlock US county statistics. |\n| [Boston Open Space](./boston-open-space/README.md) | 1,012 polygons | 1,012 open space polygons of conservation and recreation interest, regardless of ownership, from Franklin Park to community gardens. |\n| [Netherlands Provinces](./netherlands-provinces/README.md) | 12 polygons | The 12 provinces from the cadastral registry, boundaries that reproduce the national statistics office's official areas to one decimal. |\n\n## Where the Data Comes From\n\nLicenses, CC-BY-4.0, CC0-1.0, PDDL-1.0.\nProvenance, 3 mirror Collections.\n\nUpstream sources.\n\n- United States Counties (2023, 1:500k), https://www2.census.gov/geo/tiger/GENZ2023/shp/cb_2023_us_county_500k.zip\n- Boston Open Space, https://opendata.arcgis.com/api/v3/datasets/2868d370c55d4d458d4ae2224ef8cddd_7/downloads/data?format=shp&spatialRefId=4326\n- Netherlands Provinces, https://service.pdok.nl/kadaster/brk-bestuurlijke-gebieden/atom/downloads/BestuurlijkeGebieden_2026.gpkg\n\n\n## portolan-reference__PRs__119__mirror__README.md\n# Mirrored Collections\n\nCloud-native mirror Collections of data maintained elsewhere.\n\n## Collections\n\n| Collection | Contents | Description |\n|---|---|---|\n| [San Francisco Addresses (EAS)](./san-francisco-addresses/README.md) | 5,000 points | A fixed 5,000-record extract of San Francisco's 388,550-record master address database, kept small on purpose for spec demonstration. |\n\n## Where the Data Comes From\n\nLicenses, PDDL-1.0.\nProvenance, 1 mirror Collection.\n\nUpstream sources.\n\n- San Francisco Addresses (EAS), https://data.sfgov.org/resource/ramy-di5m.geojson?$limit=5000&$order=:id\n\n\n## portolan-reference__PRs__119__raster__README.md\n# Raster Data\n\nCloud Optimized GeoTIFF raster Collections.\n\n## Collections\n\n| Collection | Contents | Description |\n|---|---|---|\n| [Sample Raster COG](./sample-cog/README.md) | 3-band raster | A 1 MB Landsat-derived reference COG for learning and testing cloud-optimized raster access, not for analysis. |\n\n## Where the Data Comes From\n\nLicenses, CC0-1.0.\nProvenance, 1 mirror Collection.\n\nUpstream sources.\n\n- Sample Raster COG, https://raw.githubusercontent.com/rasterio/rasterio/main/tests/data/RGB.byte.tif\n\n\n## portolan-reference__main__README.md\n# Portolan Reference Catalog\n\nA mixed reference catalog exercising every major case in the Portolan v0.1 specification with real, openly licensed data pulled from its original upstream sources, vector polygons and points, raster, tabular, mirror provenance, nested catalogs and flat collections.\n\nEvery Collection here is a mirror that cites its true upstream source\nwith a real checksum, and every README and AGENTS.md is written to the\nstandard in the spec's documentation best practices, so the catalog\ndoubles as the worked example of what good catalog documentation looks\nlike. The Netherlands provinces Collection also mirrors its upstream ISO\n19115 record as a metadata-role asset, and every code block in these\ndocs is executed by the repository's checks before it publishes.\n\nAgents, each Collection carries its own AGENTS.md with join keys, quirks,\nand tested queries, and the catalog-level [AGENTS.md](./AGENTS.md) maps\nthe joins between Collections.\n\n## Collections\n\n| Collection | Contents | Description |\n|---|---|---|\n| [Natural Earth Countries (1:110m)](./reference/natural-earth-countries/README.md) | 177 polygons | 177 country polygons at world scale, the public domain basemap behind most web choropleths. |\n| [Natural Earth Populated Places (1:50m)](./reference/natural-earth-populated-places/README.md) | 1,251 points | 1,251 curated city and town points with population estimates, from Tokyo to Antarctic research stations. |\n| [United States Counties (2023, 1:500k)](./boundaries/us-counties/README.md) | 3,235 polygons | All 3,235 county and equivalent boundaries as of January 1, 2023, keyed by the FIPS codes that unlock US county statistics. |\n| [Boston Open Space](./boundaries/boston-open-space/README.md) | 1,012 polygons | 1,012 open space polygons of conservation and recreation interest, regardless of ownership, from Franklin Park to community gardens. |\n| [Netherlands Provinces](./boundaries/netherlands-provinces/README.md) | 12 polygons | The 12 provinces from the cadastral registry, boundaries that reproduce the national statistics office's official areas to one decimal. |\n| [San Francisco Addresses (EAS)](./mirror/san-francisco-addresses/README.md) | 5,000 points | A fixed 5,000-record extract of San Francisco's 388,550-record master address database, kept small on purpose for spec demonstration. |\n| [Sample Raster COG](./raster/sample-cog/README.md) | 3-band raster | A 1 MB Landsat-derived reference COG for learning and testing cloud-optimized raster access, not for analysis. |\n| [Eurostat Electricity Prices for Household Consumers](./tabular/eurostat-electricity-prices/README.md) | 65,466 rows | 65,412 semi-annual household electricity prices for 41 European countries from 2007 on, the official record of the 2022 energy crisis. |\n\n## Where the Data Comes From\n\nLicenses, CC-BY-4.0, CC0-1.0, PDDL-1.0.\nProvenance, 8 mirror Collections.\n\nUpstream sources.\n\n- Natural Earth Countries (1:110m), https://naciscdn.org/naturalearth/110m/cultural/ne_110m_admin_0_countries.zip\n- Natural Earth Populated Places (1:50m), https://naciscdn.org/naturalearth/50m/cultural/ne_50m_populated_places.zip\n- United States Counties (2023, 1:500k), https://www2.census.gov/geo/tiger/GENZ2023/shp/cb_2023_us_county_500k.zip\n- Boston Open Space, https://opendata.arcgis.com/api/v3/datasets/2868d370c55d4d458d4ae2224ef8cddd_7/downloads/data?format=shp&spatialRefId=4326\n- Netherlands Provinces, https://service.pdok.nl/kadaster/brk-bestuurlijke-gebieden/atom/downloads/BestuurlijkeGebieden_2026.gpkg\n- San Francisco Addresses (EAS), https://data.sfgov.org/resource/ramy-di5m.geojson?$limit=5000&$order=:id\n- Sample Raster COG, https://raw.githubusercontent.com/rasterio/rasterio/main/tests/data/RGB.byte.tif\n- Eurostat Electricity Prices for Household Consumers, https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/nrg_pc_204/?format=SDMX-CSV&compressed=false\n\n\n## portolan-reference__main__boundaries__README.md\n# Administrative Boundaries\n\nAdministrative and open-space boundary Collections from official sources.\n\n## Collections\n\n| Collection | Contents | Description |\n|---|---|---|\n| [United States Counties (2023, 1:500k)](./us-counties/README.md) | 3,235 polygons | All 3,235 county and equivalent boundaries as of January 1, 2023, keyed by the FIPS codes that unlock US county statistics. |\n| [Boston Open Space](./boston-open-space/README.md) | 1,012 polygons | 1,012 open space polygons of conservation and recreation interest, regardless of ownership, from Franklin Park to community gardens. |\n| [Netherlands Provinces](./netherlands-provinces/README.md) | 12 polygons | The 12 provinces from the cadastral registry, boundaries that reproduce the national statistics office's official areas to one decimal. |\n\n## Where the Data Comes From\n\nLicenses, CC-BY-4.0, CC0-1.0, PDDL-1.0.\nProvenance, 3 mirror Collections.\n\nUpstream sources.\n\n- United States Counties (2023, 1:500k), https://www2.census.gov/geo/tiger/GENZ2023/shp/cb_2023_us_county_500k.zip\n- Boston Open Space, https://opendata.arcgis.com/api/v3/datasets/2868d370c55d4d458d4ae2224ef8cddd_7/downloads/data?format=shp&spatialRefId=4326\n- Netherlands Provinces, https://service.pdok.nl/kadaster/brk-bestuurlijke-gebieden/atom/downloads/BestuurlijkeGebieden_2026.gpkg\n\n\n## portolan-reference__main__mirror__README.md\n# Mirrored Collections\n\nCloud-native mirror Collections of data maintained elsewhere.\n\n## Collections\n\n| Collection | Contents | Description |\n|---|---|---|\n| [San Francisco Addresses (EAS)](./san-francisco-addresses/README.md) | 5,000 points | A fixed 5,000-record extract of San Francisco's 388,550-record master address database, kept small on purpose for spec demonstration. |\n\n## Where the Data Comes From\n\nLicenses, PDDL-1.0.\nProvenance, 1 mirror Collection.\n\nUpstream sources.\n\n- San Francisco Addresses (EAS), https://data.sfgov.org/resource/ramy-di5m.geojson?$limit=5000&$order=:id\n\n\n## portolan-reference__main__raster__README.md\n# Raster Data\n\nCloud Optimized GeoTIFF raster Collections.\n\n## Collections\n\n| Collection | Contents | Description |\n|---|---|---|\n| [Sample Raster COG](./sample-cog/README.md) | 3-band raster | A 1 MB Landsat-derived reference COG for learning and testing cloud-optimized raster access, not for analysis. |\n\n## Where the Data Comes From\n\nLicenses, CC0-1.0.\nProvenance, 1 mirror Collection.\n\nUpstream sources.\n\n- Sample Raster COG, https://raw.githubusercontent.com/rasterio/rasterio/main/tests/data/RGB.byte.tif\n\n\n## portolan-reference__main__reference__README.md\n# Reference Basemaps\n\nPublic domain reference basemap layers for general orientation and joins.\n\n## Collections\n\n| Collection | Contents | Description |\n|---|---|---|\n| [Natural Earth Countries (1:110m)](./natural-earth-countries/README.md) | 177 polygons | 177 country polygons at world scale, the public domain basemap behind most web choropleths. |\n| [Natural Earth Populated Places (1:50m)](./natural-earth-populated-places/README.md) | 1,251 points | 1,251 curated city and town points with population estimates, from Tokyo to Antarctic research stations. |\n\n## Where the Data Comes From\n\nLicenses, CC0-1.0.\nProvenance, 2 mirror Collections.\n\nUpstream sources.\n\n- Natural Earth Countries (1:110m), https://naciscdn.org/naturalearth/110m/cultural/ne_110m_admin_0_countries.zip\n- Natural Earth Populated Places (1:50m), https://naciscdn.org/naturalearth/50m/cultural/ne_50m_populated_places.zip\n\n\n## portolan-reference__main__tabular__README.md\n# Tabular Data\n\nNon-geospatial companion tables published as Parquet.\n\n## Collections\n\n| Collection | Contents | Description |\n|---|---|---|\n| [Eurostat Electricity Prices for Household Consumers](./eurostat-electricity-prices/README.md) | 65,466 rows | 65,412 semi-annual household electricity prices for 41 European countries from 2007 on, the official record of the 2022 energy crisis. |\n\n## Where the Data Comes From\n\nLicenses, CC-BY-4.0.\nProvenance, 1 mirror Collection.\n\nUpstream sources.\n\n- Eurostat Electricity Prices for Household Consumers, https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/nrg_pc_204/?format=SDMX-CSV&compressed=false\n",
   "_review": [
     "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
-    "providers: role [producer, licensor] for 'US Census Bureau' is an AI guess \u2014 US counties are described as derived from Census Bureau TIGER data via the FlatGeobuf project sample; licensor role assumed from 'US federal, public domain' phrasing.. Verify before flipping to _state: reviewed.",
-    "providers: role [producer, licensor] for 'rasterio project' is an AI guess \u2014 Sample raster is the rasterio test fixture RGB.byte.tif; assumed the project is both original producer and license holder (BSD-3-Clause).. Verify before flipping to _state: reviewed.",
-    "providers: role [processor] for 'Portolan project' is an AI guess \u2014 Inferred as processor because the README describes 'portolan add' optimizing the raster to COG, computing band statistics, and reprojecting/converting other assets to cloud-native formats.. Verify before flipping to _state: reviewed.",
-    "extent.temporal: None (probe sample) widened to ['2007-01-01T00:00:00Z', '2025-12-01T00:00:00Z'] using README-stated coverage ['2007-01', '2025-12'].",
-    "extent.spatial.bbox: omitted; spatial reference is categorical via [portolan-golden/main/boundaries/boston-open-space.geometry (geometry), portolan-golden/main/boundaries/boston-open-space.ZipCode (zipcode), portolan-golden/main/boundaries/netherlands-provinces.geometry (geometry), portolan-golden/main/boundaries/netherlands-provinces.code (admin_code), portolan-golden/main/boundaries/us-counties.geom (geometry), portolan-golden/main/boundaries/us-counties.FIPS (admin_code), portolan-golden/main/boundaries/us-counties.STATE_FIPS (admin_code), portolan-golden/main/boundaries/us-counties.NAME (placename), portolan-golden/main/mirror/san-francisco-addresses.geom (geometry), portolan-golden/main/mirror/san-francisco-addresses.latitude (latlon), portolan-golden/main/mirror/san-francisco-addresses.longitude (latlon), portolan-golden/main/mirror/san-francisco-addresses.zip_code (zipcode), portolan-golden/main/mirror/san-francisco-addresses.nhood (placename), portolan-golden/main/reference/natural-earth-countries.geom (geometry), portolan-golden/main/reference/natural-earth-countries.iso_a3 (admin_code), portolan-golden/main/reference/natural-earth-countries.name (placename), portolan-golden/main/reference/natural-earth-populated-places.geom (geometry), portolan-golden/main/reference/natural-earth-populated-places.LATITUDE (latlon), portolan-golden/main/reference/natural-earth-populated-places.LONGITUDE (latlon), portolan-golden/main/reference/natural-earth-populated-places.ISO_A2 (admin_code), portolan-golden/main/reference/natural-earth-populated-places.NAME (placename), portolan-golden/main/tabular/eurostat-electricity-prices.geo (admin_code), portolan-golden/branches/fgb-parquet-items/boundaries/boston-open-space.geometry (geometry), portolan-golden/branches/fgb-parquet-items/boundaries/boston-open-space.ZipCode (zipcode), portolan-golden/branches/fgb-parquet-items/boundaries/netherlands-provinces.geometry (geometry), portolan-golden/branches/fgb-parquet-items/boundaries/netherlands-provinces.code (admin_code), portolan-golden/branches/fgb-parquet-items/boundaries/us-counties.geom (geometry), portolan-golden/branches/fgb-parquet-items/boundaries/us-counties.FIPS (admin_code), portolan-golden/branches/fgb-parquet-items/boundaries/us-counties.NAME (placename), portolan-golden/branches/fgb-parquet-items/mirror/san-francisco-addresses.geom (geometry), portolan-golden/branches/fgb-parquet-items/mirror/san-francisco-addresses.latitude (latlon), portolan-golden/branches/fgb-parquet-items/mirror/san-francisco-addresses.longitude (latlon), portolan-golden/branches/fgb-parquet-items/mirror/san-francisco-addresses.zip_code (zipcode), portolan-golden/branches/fgb-parquet-items/mirror/san-francisco-addresses.nhood (placename), portolan-golden/branches/fgb-parquet-items/tabular/eurostat-electricity-prices.geo (admin_code)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [portolan-reference/main/boundaries/boston-open-space.geom (geometry), portolan-reference/main/boundaries/netherlands-provinces.geom (geometry), portolan-reference/main/boundaries/us-counties.geom (geometry), portolan-reference/main/boundaries/us-counties.GEOID (admin_code), portolan-reference/main/mirror/san-francisco-addresses.geom (geometry), portolan-reference/main/mirror/san-francisco-addresses.latitude (latlon), portolan-reference/main/mirror/san-francisco-addresses.longitude (latlon), portolan-reference/main/mirror/san-francisco-addresses.zip_code (zipcode), portolan-reference/main/reference/natural-earth-countries.geom (geometry), portolan-reference/main/reference/natural-earth-countries.ISO_A3 (admin_code), portolan-reference/main/reference/natural-earth-populated-places.geom (geometry), portolan-reference/main/reference/natural-earth-populated-places.LATITUDE (latlon), portolan-reference/main/reference/natural-earth-populated-places.LONGITUDE (latlon), portolan-reference/main/reference/natural-earth-populated-places.NAME (placename), portolan-reference/main/tabular/eurostat-electricity-prices.geo (admin_code)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-07-29T00:56:01+00:00",
-  "_source_format": "stac",
+  "cataloged_at": "2026-08-07T09:00:22+00:00",
   "store_format": null
 }
