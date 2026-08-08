@@ -6,7 +6,7 @@
   ],
   "id": "cboettig/hazard",
   "title": "Climate-related hazards (e.g. flooding & sea level rise currently)",
-  "description": "A meta-collection of national climate- and flood-hazard datasets for the United States, bundling NOAA sea level rise inundation projections and FEMA National Flood Hazard Layer (NFHL) flood zones, processed into cloud-native formats (GeoParquet, PMTiles, H3 hex, COG) for hazard mapping and spatial analysis.",
+  "description": "A meta-collection of U.S. national climate- and flood-hazard geospatial layers, combining NOAA Office for Coastal Management sea level rise inundation projections (5 ft scenario) and the FEMA National Flood Hazard Layer (NFHL) flood zones, distributed in cloud-native formats (GeoParquet, PMTiles, H3 hex) for hazard mapping and spatial analysis. A third member covering mid-century habitat climate exposure is documented but excluded from this mirror pending license confirmation.",
   "keywords": [
     "climate",
     "flood-hazard",
@@ -95,7 +95,7 @@
         {
           "name": "geom",
           "type": "GEOMETRY('EPSG:4326')|GEOMETRY('OGC:CRS84')",
-          "description": "[geometry] Feature geometry (EPSG:4326 / OGC:CRS84)"
+          "description": "[geometry] Feature geometry (EPSG:4326/OGC:CRS84)"
         }
       ],
       "description": "10 files sampled for this table"
@@ -184,12 +184,12 @@
         {
           "name": "state",
           "type": "VARCHAR",
-          "description": "[placename] US state associated with the feature"
+          "description": "[placename] U.S. state name"
         },
         {
           "name": "region",
           "type": "VARCHAR",
-          "description": "[placename] Named region associated with the feature"
+          "description": "[placename] Named region"
         },
         {
           "name": "slr_ft",
@@ -278,22 +278,22 @@
         {
           "name": "h10",
           "type": "UBIGINT",
-          "description": "[spatial_index] H3 hex index (resolution 10)"
+          "description": "[spatial_index] H3 hex index, resolution 10"
         },
         {
           "name": "h0",
           "type": "BIGINT",
-          "description": "[spatial_index] H3 hex index (resolution 0)"
+          "description": "[spatial_index] H3 hex index, resolution 0"
         },
         {
           "name": "h8",
           "type": "UBIGINT",
-          "description": "[spatial_index] H3 hex index (resolution 8)"
+          "description": "[spatial_index] H3 hex index, resolution 8"
         },
         {
           "name": "h9",
           "type": "UBIGINT",
-          "description": "[spatial_index] H3 hex index (resolution 9)"
+          "description": "[spatial_index] H3 hex index, resolution 9"
         },
         {
           "name": "_cng_fid",
@@ -321,12 +321,12 @@
         {
           "name": "state",
           "type": "VARCHAR",
-          "description": "[placename] US state associated with the feature"
+          "description": "[placename] U.S. state name"
         },
         {
           "name": "region",
           "type": "VARCHAR",
-          "description": "[placename] Named region associated with the feature"
+          "description": "[placename] Named region"
         },
         {
           "name": "slr_ft",
@@ -335,22 +335,22 @@
         {
           "name": "h10",
           "type": "UBIGINT",
-          "description": "[spatial_index] H3 hex index (resolution 10)"
+          "description": "[spatial_index] H3 hex index, resolution 10"
         },
         {
           "name": "h0",
           "type": "BIGINT",
-          "description": "[spatial_index] H3 hex index (resolution 0)"
+          "description": "[spatial_index] H3 hex index, resolution 0"
         },
         {
           "name": "h8",
           "type": "UBIGINT",
-          "description": "[spatial_index] H3 hex index (resolution 8)"
+          "description": "[spatial_index] H3 hex index, resolution 8"
         },
         {
           "name": "h9",
           "type": "UBIGINT",
-          "description": "[spatial_index] H3 hex index (resolution 9)"
+          "description": "[spatial_index] H3 hex index, resolution 9"
         }
       ],
       "description": "10 files sampled for this table"
@@ -368,20 +368,21 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "product_id": "hazard",
+  "exts": {
+    "parquet": 36,
+    "json": 6,
+    "md": 5,
+    "pmtiles": 2
+  },
+  "file_count": 49,
+  "total_bytes": 38666044165,
   "data_mode": null,
   "featured": 0,
-  "account_id": "cboettig",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "visibility": "public",
-  "updated_at": "2026-07-25T14:36:25.794Z",
-  "file_count": 49,
-  "created_at": "2026-07-25T14:36:25.794Z",
-  "disabled": false,
-  "total_bytes": 38666042150,
+  "product_id": "hazard",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -390,20 +391,17 @@
       "prefix": "cboettig/hazard/"
     }
   },
-  "exts": {
-    "parquet": 36,
-    "json": 6,
-    "md": 5,
-    "pmtiles": 2
-  },
+  "visibility": "public",
+  "created_at": "2026-07-25T14:36:25.794Z",
+  "disabled": false,
+  "account_id": "cboettig",
+  "updated_at": "2026-07-25T14:36:25.794Z",
   "readme": "## README.md\n# Climate & Flood Hazard Layers (`public-hazard`)\n\nNational climate- and flood-hazard datasets for the United States, processed to\ncloud-native formats (GeoParquet, PMTiles, H3 hex, COG) and hosted on NRP S3.\n\nThis is a **meta-collection**: each member below is an independent dataset with its\nown source, license, and STAC sub-collection (and its own `README.md`). The\nbucket-level license is therefore `various` \u2014 **see each member for its actual\nlicense.**\n\n## Members\n\n| Dataset | Source | License | Formats |\n|---|---|---|---|\n| [`sea-level-rise`](https://s3-west.nrp-nautilus.io/public-hazard/sea-level-rise/stac-collection.json) | NOAA Office for Coastal Management \u2014 Sea Level Rise inundation (national, 5 ft scenario) | **public-domain** (U.S. Government work) | GeoParquet, PMTiles, H3 hex |\n| [`flood-hazard`](https://s3-west.nrp-nautilus.io/public-hazard/flood-hazard/stac-collection.json) | FEMA National Flood Hazard Layer (NFHL) \u2014 flood hazard zones (national) | **public-domain** (U.S. Government work) | GeoParquet, PMTiles, H3 hex |\n| [`mid-century-habitat-climate-exposure`](https://s3-west.nrp-nautilus.io/public-hazard/mid-century-habitat-climate-exposure/stac-collection.json) | Thorne et al. (2016), CDFW-commissioned (SWAP 2015) | **other** \u2014 redistribution terms not published with the source and require confirmation | COG, H3 hex |\n\n> **Redistribution note.** `sea-level-rise` and `flood-hazard` are U.S. federal works\n> (public domain). `mid-century-habitat-climate-exposure` ships **no explicit license**;\n> its terms are unconfirmed, so it is **excluded** from the source.coop mirror of this\n> bucket until CDFW/Thorne terms are confirmed. Do not assert a license for it.\n\n## STAC\n\nCatalog entry: <https://s3-west.nrp-nautilus.io/public-hazard/stac-collection.json>\n\n## Usage\n\n### MapLibre GL JS (PMTiles)\n\nThe `source-layer` is the last path segment of the dataset name \u2014 `flood-hazard` for\nthe FEMA layer, `sea-level-rise` for the NOAA layer.\n\n```js\n// requires the pmtiles protocol: https://github.com/protomaps/PMTiles\nconst protocol = new pmtiles.Protocol();\nmaplibregl.addProtocol(\"pmtiles\", protocol.tile);\n\nmap.addSource(\"flood-hazard\", {\n  type: \"vector\",\n  url: \"pmtiles://https://s3-west.nrp-nautilus.io/public-hazard/flood-hazard.pmtiles\",\n});\nmap.addLayer({\n  id: \"flood-hazard-fill\",\n  type: \"fill\",\n  source: \"flood-hazard\",\n  \"source-layer\": \"flood-hazard\",   // = last segment of the dataset name\n  paint: { \"fill-color\": \"#3182bd\", \"fill-opacity\": 0.4 },\n});\n```\n\n### DuckDB (GeoParquet)\n\n```sql\nINSTALL spatial; LOAD spatial;\nINSTALL httpfs; LOAD httpfs;\n\n-- NOAA sea-level-rise inundation (national, 5 ft)\nSELECT COUNT(*)\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-hazard/sea-level-rise.parquet');\n\n-- FEMA flood hazard zones\nSELECT COUNT(*)\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-hazard/flood-hazard.parquet');\n```\n\n### H3 hex (spatial joins / aggregation)\n\n```sql\nSELECT h8, COUNT(*) AS n\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-hazard/sea-level-rise/hex/h0=*/data_0.parquet')\nGROUP BY h8;\n```\n\nFor per-feature attributes that are repeated across the hex cells a feature covers,\ndedup on the feature id before summing; for area, derive it from the H3 footprint (see\nthe catalog h3-guide) rather than summing a per-feature area column.\n",
   "_review": [
     "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
-    "providers: role [producer, licensor] for 'NOAA Office for Coastal Management' is an AI guess \u2014 Assumed licensor because the sea-level-rise data is described as a U.S. Government work (public domain), not because the README names a licensor explicitly.. Verify before flipping to _state: reviewed.",
-    "providers: role [producer, licensor] for 'FEMA' is an AI guess \u2014 Assumed licensor because the National Flood Hazard Layer is described as a U.S. Government work (public domain), not because the README names a licensor explicitly.. Verify before flipping to _state: reviewed.",
-    "extent.spatial.bbox: omitted; spatial reference is categorical via [_stoi-repro.wkb (geometry), _stoi-repro.geom (geometry), ..geom (geometry), ..Shape (geometry), ..state (placename), ..region (placename), flood-hazard/hex.h0 (spatial_index), flood-hazard/hex.h8 (spatial_index), flood-hazard/hex.h9 (spatial_index), flood-hazard/hex.h10 (spatial_index), sea-level-rise/hex.h0 (spatial_index), sea-level-rise/hex.h8 (spatial_index), sea-level-rise/hex.h9 (spatial_index), sea-level-rise/hex.h10 (spatial_index), sea-level-rise/hex.state (placename), sea-level-rise/hex.region (placename)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [_stoi-repro.wkb (geometry), _stoi-repro.geom (geometry), ..geom (geometry), ..Shape (geometry), ..state (placename), ..region (placename), flood-hazard/hex.h0 (spatial_index), flood-hazard/hex.h8 (spatial_index), flood-hazard/hex.h9 (spatial_index), flood-hazard/hex.h10 (spatial_index), sea-level-rise/hex.state (placename), sea-level-rise/hex.region (placename), sea-level-rise/hex.h0 (spatial_index), sea-level-rise/hex.h8 (spatial_index), sea-level-rise/hex.h9 (spatial_index), sea-level-rise/hex.h10 (spatial_index)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-07-29T01:01:45+00:00",
+  "cataloged_at": "2026-08-08T08:51:13+00:00",
   "store_format": null
 }
