@@ -3,7 +3,7 @@
   "stac_version": "1.1.0",
   "id": "cboettig/cgs",
   "title": "California Geological Survey (CGS) Datasets",
-  "description": "Cloud-optimized publication of California Geological Survey (CGS) Geologic Data Map (GDM) series products, co-produced with the U.S. Geological Survey. Currently includes the Sierra Nevada Earth Science Atlas (GDM 009), comprising 6,221 geologic-unit polygons across 268 distinct map units for California's Sierra Nevada region. Data are derived from the MapUnitPolys feature class of the source File Geodatabase, reprojected to WGS84, and published as GeoParquet, PMTiles, and H3-indexed Parquet.",
+  "description": "Cloud-optimized publication of geologic-unit polygon data from the California Geological Survey's Sierra Nevada Earth Science Atlas (GDM 009), a collaborative CGS/USGS geologic mapping product covering California's Sierra Nevada region. Comprises 6,221 polygons across 268 distinct map units, reprojected to WGS84 and distributed as GeoParquet, PMTiles, and H3-indexed Parquet, part of a broader CGS Geologic Data Map series.",
   "license": "LicenseRef-PublicDomain",
   "keywords": [
     "geoparquet",
@@ -81,31 +81,15 @@
       "title": "Source Cooperative product page"
     }
   ],
+  "product_id": "cgs",
+  "disabled": false,
+  "featured": 0,
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "exts": {
-    "atx": 49,
-    "gdbtable": 42,
-    "gdbtablx": 42,
-    "gdbindexes": 40,
-    "horizon": 29,
-    "spx": 29,
-    "freelist": 3,
-    "json": 3,
-    "parquet": 3,
-    "": 2,
-    "md": 1,
-    "pmtiles": 1,
-    "zip": 1
-  },
-  "disabled": false,
-  "account_id": "cboettig",
-  "created_at": "2026-06-16T04:11:22.118Z",
-  "product_id": "cgs",
-  "total_bytes": 228374189,
-  "visibility": "public",
+  "data_mode": "open",
+  "file_count": 245,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -118,15 +102,28 @@
       "prefix": "cboettig/cgs/"
     }
   },
-  "file_count": 245,
+  "visibility": "public",
+  "created_at": "2026-06-16T04:11:22.118Z",
+  "account_id": "cboettig",
+  "exts": {
+    "atx": 49,
+    "gdbtable": 42,
+    "gdbtablx": 42,
+    "gdbindexes": 40,
+    "horizon": 29,
+    "spx": 29,
+    "parquet": 3,
+    "freelist": 3,
+    "json": 3,
+    "": 2,
+    "zip": 1,
+    "md": 1,
+    "pmtiles": 1
+  },
   "updated_at": "2026-06-16T04:11:22.118Z",
-  "data_mode": "open",
-  "featured": 0,
+  "total_bytes": 228374051,
   "readme": "## README.md\n# California Geological Survey Datasets\n\nCloud-optimized publication of California Geological Survey (CGS) Geologic Data Map (GDM) series products, hosted on the NRP Nautilus S3 bucket `public-cgs`.\n\nPublic URL: <https://s3-west.nrp-nautilus.io/public-cgs/>\n\n## Available collections\n\n- **[Sierra Nevada Earth Science Atlas (GDM 009)](sierra-nevada-atlas/stac-collection.json)** \u2014 collaborative CGS/USGS geologic mapping of California's Sierra Nevada. Currently includes the geologic unit polygon layer; remaining layers (faults, landslides, neotectonics, geophysical anomalies, geochronology, mineralization) tracked in [data-workflows#149](https://github.com/boettiger-lab/data-workflows/issues/149).\n\n## Sierra Nevada Earth Science Atlas \u2014 Map Unit Polygons\n\nGeologic-unit polygons for the Sierra Nevada region. 6,221 features across 268 distinct map units, derived from the `MapUnitPolys` feature class of the source File Geodatabase. Reprojected from NAD83 / California Albers (EPSG:3310) to WGS84 (EPSG:4326).\n\n### Assets\n\n| Asset | URL |\n|---|---|\n| GeoParquet | <https://s3-west.nrp-nautilus.io/public-cgs/sierra-nevada-atlas/map-unit-polys.parquet> |\n| PMTiles | <https://s3-west.nrp-nautilus.io/public-cgs/sierra-nevada-atlas/map-unit-polys.pmtiles> |\n| H3 hex (res 10) | `https://s3-west.nrp-nautilus.io/public-cgs/sierra-nevada-atlas/map-unit-polys/hex/h0=*/data_0.parquet` |\n| Map-unit descriptions | <https://s3-west.nrp-nautilus.io/public-cgs/sierra-nevada-atlas/description-of-map-units.parquet> |\n\n### DuckDB example\n\n```sql\nINSTALL spatial; LOAD spatial;\nINSTALL httpfs; LOAD httpfs;\n\n-- Geologic units with full names, ages, and standardized rock classes\nSELECT\n  p.MapUnit,\n  d.Name,\n  d.Age,\n  d.GeoMaterial,\n  COUNT(*)         AS n_polygons,\n  SUM(p.Shape_Area) AS area_m2\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-cgs/sierra-nevada-atlas/map-unit-polys.parquet') p\nLEFT JOIN read_parquet('https://s3-west.nrp-nautilus.io/public-cgs/sierra-nevada-atlas/description-of-map-units.parquet') d\n  USING (MapUnit)\nGROUP BY p.MapUnit, d.Name, d.Age, d.GeoMaterial\nORDER BY area_m2 DESC\nLIMIT 10;\n```\n\n### MapLibre GL JS example\n\nPMTiles `source-layer` is **`map-unit-polys`** (last segment of `--dataset`).\n\n```js\nmap.addSource('snesa-units', {\n  type: 'vector',\n  url: 'pmtiles://https://s3-west.nrp-nautilus.io/public-cgs/sierra-nevada-atlas/map-unit-polys.pmtiles'\n});\nmap.addLayer({\n  id: 'snesa-units-fill',\n  source: 'snesa-units',\n  'source-layer': 'map-unit-polys',\n  type: 'fill',\n  paint: {\n    'fill-color': ['match', ['get', 'MapUnit'],\n      'water', '#3b82f6',\n      'gl', '#cbd5e1',\n      'aft', '#a16207',\n      /* default */ '#9ca3af'\n    ],\n    'fill-opacity': 0.7,\n    'fill-outline-color': '#1f2937'\n  }\n});\n```\n\n## Source\n\n- **Producer:** California Geological Survey + U.S. Geological Survey\n- **Original release:** GDM_009-SNESA-Data.zip, 2026 (v1 data; companion report expected late 2026)\n- **Source URL:** <https://www.conservation.ca.gov/cgs/sierra-nevada-atlas>\n- **License:** Public domain (state/federal coproduction)\n\n## Citation\n\n> California Geological Survey and U.S. Geological Survey (2026). *Sierra Nevada Earth Science Atlas, v1.* Geologic Data Map No. 9. California Geological Survey, Sacramento, CA. <https://www.conservation.ca.gov/cgs/sierra-nevada-atlas>\n",
-  "_review": [
-    "license: Declared public domain as a state/federal co-production (California Geological Survey + U.S. Geological Survey); no formal SPDX identifier assigned."
-  ],
   "_state": "drafted",
-  "cataloged_at": "2026-06-27T09:28:29+00:00",
+  "cataloged_at": "2026-08-08T08:58:10+00:00",
   "store_format": "filegdb"
 }
