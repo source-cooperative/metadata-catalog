@@ -1,21 +1,19 @@
 # Source Cooperative catalog — status
 
-_Updated 2026-08-07 09:12 UTC by the nightly pipeline._
+_Updated 2026-08-08 08:59 UTC by the nightly pipeline._
 
-**340 datasets cataloged**  ·  **4 queued for next run**  ·  last run handled **10**
+**340 datasets cataloged**  ·  **0 queued for next run**  ·  last run handled **8**
 
 ## Last run
 
-<details><summary>✅ drafted — 6 datasets</summary>
+<details><summary>✅ drafted — 4 datasets</summary>
 
-| repo                                                                                                                             |
-| -------------------------------------------------------------------------------------------------------------------------------- |
-| [cboettig/connectivity](https://source.coop/cboettig/connectivity)                                                               |
-| [dataforcanada/d4c-datapkg-environment-climate-health](https://source.coop/dataforcanada/d4c-datapkg-environment-climate-health) |
-| [dynamical/asos-parquet](https://source.coop/dynamical/asos-parquet)                                                             |
-| [giswqs/opengeos](https://source.coop/giswqs/opengeos)                                                                           |
-| [portolan/portolan-pipeline](https://source.coop/portolan/portolan-pipeline)                                                     |
-| [walkthru-earth/opensensor-space](https://source.coop/walkthru-earth/opensensor-space)                                           |
+| repo                                                       |
+| ---------------------------------------------------------- |
+| [cboettig/cgs](https://source.coop/cboettig/cgs)           |
+| [cboettig/hazard](https://source.coop/cboettig/hazard)     |
+| [cboettig/usgs-nhd](https://source.coop/cboettig/usgs-nhd) |
+| [cboettig/usgs-wbd](https://source.coop/cboettig/usgs-wbd) |
 
 </details>
 
@@ -35,47 +33,47 @@ _Updated 2026-08-07 09:12 UTC by the nightly pipeline._
 
 | run                                                                                                    | outcome   | drafted | failed | queued | cataloged |
 | ------------------------------------------------------------------------------------------------------ | --------- | ------: | -----: | -----: | --------: |
+| [2026-08-08](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/31248723208) | ✅ success |       4 |      0 |      0 |       340 |
 | [2026-08-07](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/31162689390) | ✅ success |       6 |      0 |      4 |       340 |
 | [2026-08-06](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/31088638902) | ✅ success |       7 |      0 |     11 |       340 |
 | [2026-08-05](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/30992740344) | ✅ success |       7 |      0 |     18 |       340 |
 | [2026-08-04](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/30895839523) | ✅ success |       7 |      0 |     25 |       340 |
 | [2026-08-03](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/30802053388) | ✅ success |       8 |      0 |     33 |       340 |
 | [2026-08-02](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/30741074920) | ✅ success |       6 |      0 |      1 |       337 |
-| [2026-08-01](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/30693034652) | ✅ success |       7 |      0 |      8 |       337 |
 
 Inventory compact (reseed 2026-08-03): 7.7 GB / 36.1 GB runner disk
 
 ## Persistent failures
 
-**23 datasets failing**  ·  23 open issues  ·  oldest **57d**  ·  **16** ≥30d  ·  [all open issues](https://github.com/source-cooperative/metadata-catalog/issues?q=is%3Aissue+is%3Aopen+label%3Aprobe-failure)
+**23 datasets failing**  ·  23 open issues  ·  oldest **58d**  ·  **16** ≥30d  ·  [all open issues](https://github.com/source-cooperative/metadata-catalog/issues?q=is%3Aissue+is%3Aopen+label%3Aprobe-failure)
 
 <details><summary>the 23 open issues, oldest first</summary>
 
 | repo                                                | age (d) | issue |
 | --------------------------------------------------- | ------: | ----: |
-| bkr/cams                                            |      57 |    #1 |
-| smartmaps/uppsala-conflict                          |      55 |   #16 |
-| smartmaps/next-ksj                                  |      55 |   #15 |
-| smartmaps/h3ys-worldpop                             |      55 |   #14 |
-| smartmaps/dem1a                                     |      55 |   #13 |
-| smartmaps/dem10a                                    |      55 |   #12 |
-| rsignell/ncei-estuarine-bathymetry                  |      55 |   #11 |
-| pfrost/climacell-monthly                            |      55 |   #10 |
-| geovibes/geometries                                 |      55 |    #9 |
-| fiboa/data                                          |      55 |    #8 |
-| dynamical/dwd-icon-eu-forecast-5-day                |      55 |    #7 |
-| cboettig/obis                                       |      55 |    #6 |
-| cboettig/habitat-corridors                          |      55 |    #5 |
-| caires-tudelft/tokyo-13999-fcb                      |      55 |    #4 |
-| caires-tudelft/plateau-tokyo-fcb-2                  |      55 |    #3 |
-| cboettig/wetlands                                   |      38 |  #122 |
-| dynamical/dwd-icon-grib                             |      25 |  #125 |
-| dynamical/ecmwf-ifs-ens-forecast-15-day-0-25-degree |      23 |  #126 |
-| alukach/firesmoke                                   |      18 |  #128 |
-| dynamical/noaa-mrms-conus-analysis-hourly           |      13 |  #130 |
-| dynamical/noaa-gefs-analysis                        |      13 |  #129 |
-| cboettig/high-seas                                  |      12 |  #131 |
-| ganzk/lcms                                          |       8 |  #132 |
+| bkr/cams                                            |      58 |    #1 |
+| smartmaps/uppsala-conflict                          |      56 |   #16 |
+| smartmaps/next-ksj                                  |      56 |   #15 |
+| smartmaps/h3ys-worldpop                             |      56 |   #14 |
+| smartmaps/dem1a                                     |      56 |   #13 |
+| smartmaps/dem10a                                    |      56 |   #12 |
+| rsignell/ncei-estuarine-bathymetry                  |      56 |   #11 |
+| pfrost/climacell-monthly                            |      56 |   #10 |
+| geovibes/geometries                                 |      56 |    #9 |
+| fiboa/data                                          |      56 |    #8 |
+| dynamical/dwd-icon-eu-forecast-5-day                |      56 |    #7 |
+| cboettig/obis                                       |      56 |    #6 |
+| cboettig/habitat-corridors                          |      56 |    #5 |
+| caires-tudelft/tokyo-13999-fcb                      |      56 |    #4 |
+| caires-tudelft/plateau-tokyo-fcb-2                  |      56 |    #3 |
+| cboettig/wetlands                                   |      39 |  #122 |
+| dynamical/dwd-icon-grib                             |      26 |  #125 |
+| dynamical/ecmwf-ifs-ens-forecast-15-day-0-25-degree |      24 |  #126 |
+| alukach/firesmoke                                   |      19 |  #128 |
+| dynamical/noaa-mrms-conus-analysis-hourly           |      14 |  #130 |
+| dynamical/noaa-gefs-analysis                        |      14 |  #129 |
+| cboettig/high-seas                                  |      13 |  #131 |
+| ganzk/lcms                                          |       9 |  #132 |
 
 </details>
 
@@ -902,7 +900,7 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 | --------- | ------------------------------------------------ | ----: | -------: |
 | ghosts    | catalog entry, no S3 data                        |    49 |  29.8 TB |
 | stowaways | S3 data, no source.coop product                  |    42 | 948.7 TB |
-| stale     | catalog bytes ≠ S3 (fixed by `make process-all`) |    13 | 900.1 TB |
+| stale     | catalog bytes ≠ S3 (fixed by `make process-all`) |     9 | 900.0 TB |
 
 <details><summary>ghosts — 49 datasets</summary>
 
@@ -1009,7 +1007,7 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 
 </details>
 
-<details><summary>stale — 13 datasets</summary>
+<details><summary>stale — 9 datasets</summary>
 
 | repo                                                |        catalog → S3 |
 | --------------------------------------------------- | ------------------: |
@@ -1022,10 +1020,6 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 | alukach/firesmoke                                   |  84.5 MB → 713.8 MB |
 | cholmes/portolan-nl                                 |   83.7 GB → 83.6 GB |
 | cboettig/high-seas                                  |   40.5 GB → 40.5 GB |
-| cboettig/hazard                                     |   38.7 GB → 38.7 GB |
-| cboettig/usgs-wbd                                   |   15.2 GB → 15.2 GB |
-| cboettig/usgs-nhd                                   |   78.4 GB → 78.4 GB |
-| cboettig/cgs                                        | 228.4 MB → 228.4 MB |
 
 </details>
 
