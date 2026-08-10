@@ -1,25 +1,139 @@
 {
-  "account_id": "cholmes",
-  "product_id": "trimet",
-  "title": "Portland Trimet Portolan Data Catalog (Mirror)",
-  "description": "This is a portolan catalog version of https://developer.trimet.org/gis/ - taking the static data layers there and making them fully cloud-native and interactive.",
-  "keywords": [],
-  "created_at": "2026-08-03T00:53:40.642Z",
-  "updated_at": "2026-08-03T00:53:40.642Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": null,
-  "mirrors": {
-    "aws-opendata-us-west-2": {
-      "storage_type": "s3",
-      "is_primary": true,
-      "connection_id": "aws-opendata-us-west-2",
-      "prefix": "cholmes/trimet/"
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "cholmes/trimet",
+  "title": "TriMet Geospatial Data",
+  "description": "A cloud-native mirror of TriMet's eight public geospatial data layers (district boundary, routes, rail lines, stops, route stops, rail stops, transit centers, and park and rides) covering bus, light rail, commuter rail, and streetcar service in the Portland, Oregon metropolitan area, republished as GeoParquet and PMTiles alongside links to the original Shapefile/KML sources.",
+  "license": "other",
+  "keywords": [
+    "public-transit",
+    "transit-routes",
+    "light-rail",
+    "geoparquet",
+    "pmtiles",
+    "administrative-boundaries",
+    "points-of-interest"
+  ],
+  "providers": [
+    {
+      "name": "TriMet",
+      "description": "Tri-County Metropolitan Transportation District of Oregon, the transit agency for the Portland metropolitan area and the originator of this data.",
+      "roles": [
+        "producer",
+        "licensor"
+      ],
+      "url": "https://developer.trimet.org/gis/",
+      "email": "gis@trimet.org"
+    },
+    {
+      "name": "Chris Holmes",
+      "description": "Maintains this cloud-native mirror. Not affiliated with TriMet.",
+      "roles": [
+        "host"
+      ],
+      "url": "https://github.com/cholmes/portolan-catalog-trimet",
+      "email": "cholmes@9eo.org"
+    },
+    {
+      "name": "TriMet",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Chris Holmes",
+      "roles": [
+        "processor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/cholmes/trimet"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -123.153536,
+          45.255802,
+          -122.277052,
+          45.657213
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2013-01-09T00:00:00Z",
+          null
+        ]
+      ]
     }
   },
-  "file_count": 86,
-  "total_bytes": 7609977,
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/cholmes/trimet/",
+      "type": "application/octet-stream",
+      "title": "Dataset files (8 x .pmtiles)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/cholmes/trimet/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/cholmes/trimet",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "rel": "describedby",
+      "href": "./README.md",
+      "type": "text/markdown",
+      "title": "Catalog README"
+    },
+    {
+      "rel": "agents",
+      "href": "./AGENTS.md",
+      "type": "text/markdown",
+      "title": "Catalog agent guide"
+    },
+    {
+      "rel": "license",
+      "href": "https://developer.trimet.org/terms_of_use.shtml",
+      "type": "text/html",
+      "title": "TriMet Terms of Use"
+    },
+    {
+      "rel": "alternate",
+      "href": "https://source.coop/cholmes/trimet/",
+      "type": "text/html",
+      "title": "Browse this catalog on Source Cooperative"
+    },
+    {
+      "rel": "via",
+      "href": "https://developer.trimet.org/gis/",
+      "type": "text/html",
+      "title": "TriMet Geospatial Data"
+    },
+    {
+      "rel": "icon",
+      "href": "./_assets/trimet-logo.png",
+      "type": "image/png",
+      "title": "TriMet"
+    }
+  ],
+  "featured": 0,
   "exts": {
     "json": 39,
     "md": 18,
@@ -29,20 +143,34 @@
     "xml": 4,
     "png": 1
   },
-  "ext_bytes": {
-    "pmtiles": 5027706,
-    "parquet": 1686667,
-    "webp": 393628,
-    "json": 223089,
-    "md": 145434,
-    "xml": 130372,
-    "png": 3081
-  },
-  "store_format": null,
-  "_state": "seed",
+  "total_bytes": 7609977,
+  "created_at": "2026-08-03T00:53:40.642Z",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "cataloged_at": "2026-08-10T09:29:54+00:00"
+  "visibility": "public",
+  "mirrors": {
+    "aws-opendata-us-west-2": {
+      "storage_type": "s3",
+      "is_primary": true,
+      "connection_id": "aws-opendata-us-west-2",
+      "prefix": "cholmes/trimet/"
+    }
+  },
+  "account_id": "cholmes",
+  "product_id": "trimet",
+  "disabled": false,
+  "updated_at": "2026-08-03T00:53:40.642Z",
+  "data_mode": null,
+  "file_count": 86,
+  "readme": "## README.md\n# TriMet Geospatial Data\n\n[![TriMet](https://data.source.coop/cholmes/trimet/_assets/trimet-logo.png)](https://developer.trimet.org/gis/)\n\nTriMet \u2014 the Tri-County Metropolitan Transportation District of Oregon \u2014 runs\nbus, light rail (MAX), commuter rail (WES) and streetcar service across the\nPortland metropolitan area. It publishes eight geospatial layers at\n[developer.trimet.org/gis](https://developer.trimet.org/gis/) as Shapefile and\nKML, each with a metadata page carrying full attribute definitions and code\nlists.\n\nThis catalog is a cloud-native mirror of all eight: the same features as\nGeoParquet and PMTiles, with TriMet's original Shapefile, KML and metadata page\nlinked from every collection. Nothing has been added to the data and no features\nwere dropped.\n\nThe GeoParquet keeps TriMet's native **EPSG:2913** (NAD83(HARN) / Oregon North,\ninternational feet), so lengths and areas come out in feet without a projection\nstep. The PMTiles are WGS84, because vector tiles are.\n\n\n### \ud83d\uddfa\ufe0f [Open the TriMet data browser \u2192](https://cholmes.github.io/trimet-data-browser)\n\nPreview all eight collections on a map drawn with TriMet's own cartography,\ninspect each one's schema and license, download the GeoParquet or PMTiles, and\nfollow the links back to TriMet \u2014 no setup, nothing to install.\n\n> **Agents:** start at [AGENTS.md](https://source.coop/cholmes/trimet/AGENTS.md) for join keys, the\n> quirks that produce silently wrong answers, and verified query recipes.\n\n## Collections\n\n| Collection | Features | Geometry | Description |\n|---|---|---|---|\n| [TriMet District Boundary](https://source.coop/cholmes/trimet/district-boundary/) | 1 | Polygon | TriMet service district boundary. |\n| [TriMet Routes](https://source.coop/cholmes/trimet/routes/) | 200 | LineString | TriMet fixed route alignments (includes bus and rail.) |\n| [TriMet Rail Lines](https://source.coop/cholmes/trimet/rail-lines/) | 171 | LineString | TriMet rail service optimized for cartographic display. |\n| [TriMet Stops](https://source.coop/cholmes/trimet/stops/) | 6,316 | Point | Active TriMet stops (includes bus and rail.) |\n| [TriMet Route Stops](https://source.coop/cholmes/trimet/route-stops/) | 8,314 | Point | Active TriMet stops (includes bus and rail) by route and direction. |\n| [TriMet Rail Stops](https://source.coop/cholmes/trimet/rail-stops/) | 169 | Point | TriMet rail stops optimized for cartographic display. |\n| [TriMet Transit Centers](https://source.coop/cholmes/trimet/transit-centers/) | 15 | Point | TriMet transit center locations. |\n| [TriMet Park and Rides](https://source.coop/cholmes/trimet/park-and-rides/) | 46 | Point | TriMet park and ride locations. |\n\n## Quick start\n\n```sql\nINSTALL spatial; LOAD spatial;\nINSTALL httpfs;  LOAD httpfs;\n\n-- The 15 transit centers, by county\nSELECT county, count(*) FROM 'https://data.source.coop/cholmes/trimet/transit-centers/transit-centers.parquet'\nGROUP BY county;\n```\n\nPast the first query, the interesting pattern is joining across collections.\n`stops` and `route-stops` share `stop_id` exactly \u2014 all 6,316 of them \u2014 which\nturns a stop location into the set of routes that serve it:\n\n```sql\nSELECT s.stop_name, count(DISTINCT r.rte) AS routes\nFROM 'https://data.source.coop/cholmes/trimet/stops/stops.parquet' s\nJOIN 'https://data.source.coop/cholmes/trimet/route-stops/route-stops.parquet' r USING (stop_id)\nGROUP BY 1 ORDER BY routes DESC LIMIT 10;\n```\n\n## Cartography\n\nWhere TriMet publishes a style for a layer, this catalog reproduces it rather\nthan inventing one. Two TriMet sources are used, and both are mirrored into the\ncollections they style so the reproduction can be checked against its origin:\n\n- **`ott:rail`**, the GeoServer SLD behind TriMet's rail maps, fetched from\n  [`ws.trimet.org`](https://ws.trimet.org/geoserver/ows?service=WMS&version=1.1.1&request=GetStyles&layers=ott:current_rail)\n  via WMS `GetStyles`. Its rules key on exactly the `line` values\n  the rail layers carry, so `rail-lines/styles/default.json` reproduces it\n  segment for segment \u2014 including the layered dashed overlays that show which\n  services share a track.\n- **[`trimet-routes`](https://tiles.trimet.org/styles/trimet-routes/style.json)**,\n  TriMet's MapLibre style at [tiles.trimet.org](https://tiles.trimet.org/styles.json), which gives\n  the line weights and the flat bus color `#136390`. Where it resolves\n  `route_color` from GTFS, the equivalent colors are taken from TriMet's GTFS\n  `routes.txt`.\n\nEvery collection ships three to five styles; see each collection's README.\n\n## Where the data comes from\n\n| Collection | TriMet source | Last updated at source |\n|---|---|---|\n| TriMet District Boundary | `tm_boundary` \u2014 [Shapefile](https://developer.trimet.org/gis/data/tm_boundary.zip) \u00b7 [KML](https://developer.trimet.org/gis/data/tm_boundary.kml) \u00b7 [Metadata](https://developer.trimet.org/gis/meta_tm_boundary.shtml) | January 09, 2013 |\n| TriMet Routes | `tm_routes` \u2014 [Shapefile](https://developer.trimet.org/gis/data/tm_routes.zip) \u00b7 [KML](https://developer.trimet.org/gis/data/tm_routes.kml) \u00b7 [Metadata](https://developer.trimet.org/gis/meta_tm_routes.shtml) | July 13, 2026 |\n| TriMet Rail Lines | `tm_rail_lines` \u2014 [Shapefile](https://developer.trimet.org/gis/data/tm_rail_lines.zip) \u00b7 [KML](https://developer.trimet.org/gis/data/tm_rail_lines.kml) \u00b7 [Metadata](https://developer.trimet.org/gis/meta_tm_rail_lines.shtml) | September 26, 2024 |\n| TriMet Stops | `tm_stops` \u2014 [Shapefile](https://developer.trimet.org/gis/data/tm_stops.zip) \u00b7 [KML](https://developer.trimet.org/gis/data/tm_stops.kml) \u00b7 [Metadata](https://developer.trimet.org/gis/meta_tm_stops.shtml) | July 30, 2026 |\n| TriMet Route Stops | `tm_route_stops` \u2014 [Shapefile](https://developer.trimet.org/gis/data/tm_route_stops.zip) \u00b7 [KML](https://developer.trimet.org/gis/data/tm_route_stops.kml) \u00b7 [Metadata](https://developer.trimet.org/gis/meta_tm_route_stops.shtml) | July 30, 2026 |\n| TriMet Rail Stops | `tm_rail_stops` \u2014 [Shapefile](https://developer.trimet.org/gis/data/tm_rail_stops.zip) \u00b7 [KML](https://developer.trimet.org/gis/data/tm_rail_stops.kml) \u00b7 [Metadata](https://developer.trimet.org/gis/meta_tm_rail_stops.shtml) | December 04, 2024 |\n| TriMet Transit Centers | `tm_tran_cen` \u2014 [Shapefile](https://developer.trimet.org/gis/data/tm_tran_cen.zip) \u00b7 [KML](https://developer.trimet.org/gis/data/tm_tran_cen.kml) \u00b7 [Metadata](https://developer.trimet.org/gis/meta_tm_tran_cen.shtml) | July 31, 2024 |\n| TriMet Park and Rides | `tm_parkride` \u2014 [Shapefile](https://developer.trimet.org/gis/data/tm_parkride.zip) \u00b7 [KML](https://developer.trimet.org/gis/data/tm_parkride.kml) \u00b7 [Metadata](https://developer.trimet.org/gis/meta_tm_parkride.shtml) | June 23, 2026 |\n\nAll eight are published in EPSG:2913 (NAD83(HARN) / Oregon North (ft)) and reprojected\nhere to EPSG:4326. TriMet's note on the GIS page:\n\n> TriMet provides these datasets free of charge in shapefile and KML format. All geospatial datasets created and distributed by TriMet are in NAD83, Oregon State Plane North projection and coordinate system. Refer to the metadata for additional information regarding a specific data layer. TriMet provides data to the general public under certain terms and conditions.\n\nContact for the source data: **TriMet GIS**, 4012 SE 17th Ave, GIS3,\nPortland, OR 97202 \u2014\n[gis@trimet.org](mailto:gis@trimet.org).\n\n## License, and a warning\n\nTriMet distributes these datasets free of charge, but **the terms of use do not\ngrant redistribution rights**. Section 4 of TriMet's\n[Terms of Use](https://developer.trimet.org/terms_of_use.shtml) reserves\nreproduction, modification, distribution and republication of site Content\nwithout written consent; the redistribution license in section 5 covers the Web\nServices API, not these GIS downloads. The collections therefore declare\n`\"license\": \"other\"` with a link to those terms, rather than claiming an open\nlicense the source does not offer.\n\nPractically: use the data, and contact **[gis@trimet.org](mailto:gis@trimet.org)** before redistributing\nit or building a product on it. If you need transit data under clear open terms,\nTriMet's [GTFS feed](https://developer.trimet.org/GTFS.shtml) is the better\nstarting point.\n\n\n## About this mirror\n\nMaintained by Chris Holmes\n([cholmes@9eo.org](mailto:cholmes@9eo.org)), **not affiliated with\nTriMet**. Conforms to the [Portolan](https://www.portolan-sdi.org/)\nspecification v0.1.0.\n\n### Both halves are on GitHub, and contributions are welcome\n\nNothing here is hand-written \u2014 the catalog is generated, so a fix belongs in the\nsource rather than in the published files.\n\n| | Repository | What lives there |\n|---|---|---|\n| **Catalog** | [`cholmes/portolan-catalog-trimet`](https://github.com/cholmes/portolan-catalog-trimet) | The generators in [`tools/`](https://github.com/cholmes/portolan-catalog-trimet/tree/main/tools) that build this catalog from TriMet's Shapefiles \u2014 the metadata, the column descriptions, the MapLibre styles and these docs. |\n| **Data browser** | [`cholmes/trimet-data-browser`](https://github.com/cholmes/trimet-data-browser) | The [data browser](https://cholmes.github.io/trimet-data-browser) itself \u2014 map preview, downloads, schema and license. |\n\n**Found something wrong?** A description that misreads, a column definition that\ndoes not match the data, a query that fails, a style that draws badly, a caveat\nthat is missing \u2014 please [open an issue](https://github.com/cholmes/portolan-catalog-trimet/issues) or send a pull\nrequest. Improvements are just as welcome as corrections.\n\nCorrections to the *data itself* go to TriMet at\n[gis@trimet.org](mailto:gis@trimet.org); this catalog only mirrors what they\npublish and does not edit it.\n\nIf you are editing the catalog, everything under `catalog/` is regenerated by\n`tools/build.py` and a hand-edit will be overwritten \u2014 change the generator or\nthe manifest instead.\n[CLAUDE.md](https://github.com/cholmes/portolan-catalog-trimet/blob/main/CLAUDE.md) says which file to edit for\nwhat, and the test suite runs every published SQL example before anything ships.\n\nThe TriMet name and logo are trademarks of TriMet, used here solely as a link\nback to [trimet.org](https://trimet.org/), which section 6 of TriMet's\n[Terms of Use](https://developer.trimet.org/terms_of_use.shtml) permits.\n",
+  "_review": [
+    "license: TriMet's Terms of Use (https://developer.trimet.org/terms_of_use.shtml) reserve redistribution rights over these GIS downloads; the catalog explicitly declares license \"other\" with a link to those terms rather than an open license.",
+    "providers: role [processor] for 'Chris Holmes' is an AI guess \u2014 Maintains and generates this mirror (reprojection, GeoParquet/PMTiles conversion, cartography) but is not TriMet-affiliated; README does not use the word 'processor'.. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-08-10T10:04:25+00:00",
+  "_source_format": "stac",
+  "store_format": null
 }
