@@ -1,15 +1,159 @@
 {
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
+  "id": "tge-labs/trazo-fiboa",
+  "title": "Trazo field boundary annotations for South America",
+  "description": "GeoParquet dataset of 60,386 manually annotated agricultural field boundary polygons across 17 South American ecoregions (e.g. Chaco, Cerrado, Amazon, Pampas), produced by the Trazo project (WRI & Arizona State University) and converted to the fiboa specification. It is designed to complement the Fields of The World (FTW) benchmark for training and evaluating field boundary segmentation models in South America.",
+  "license": "CC-BY-4.0",
+  "keywords": [
+    "field-boundaries",
+    "fiboa",
+    "agriculture",
+    "arable-land",
+    "land-use",
+    "machine-learning",
+    "south-america"
+  ],
+  "providers": [
+    {
+      "name": "World Resources Institute & Arizona State University",
+      "roles": [
+        "producer",
+        "licensor"
+      ],
+      "url": "https://source.coop/wri-data-lab/trazoannotations"
+    },
+    {
+      "name": "World Resources Institute",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Arizona State University",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/tge-labs/trazo-fiboa"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -76.7601038,
+          -38.9176182,
+          -39.0051103230735,
+          1.7415096590154422
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2020-01-01T00:00:00Z",
+          "2024-01-01T00:00:00Z"
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 60386
+  },
+  "assets": {
+    "data": {
+      "roles": [
+        "data"
+      ],
+      "href": "C:\\FTW\\trazo-fiboa\\output\\wri_trazo.parquet",
+      "processing:software": {
+        "fiboa-cli": "0.21.0",
+        "vecorel-cli": "0.2.15"
+      },
+      "type": "application/vnd.apache.parquet",
+      "table:columns": [
+        {
+          "name": "metrics:area",
+          "type": "float"
+        },
+        {
+          "name": "id",
+          "type": "string"
+        },
+        {
+          "name": "split",
+          "type": "string"
+        },
+        {
+          "name": "region",
+          "type": "string"
+        },
+        {
+          "name": "geometry",
+          "type": "binary"
+        },
+        {
+          "name": "collection",
+          "type": "string"
+        },
+        {
+          "name": "determination:datetime",
+          "type": "timestamp[ms, tz=UTC]"
+        },
+        {
+          "name": "metrics:perimeter",
+          "type": "float"
+        },
+        {
+          "name": "bbox",
+          "type": "struct<xmin: double, ymin: double, xmax: double, ymax: double>"
+        }
+      ],
+      "table:primary_geometry": "geometry",
+      "table:row_count": 60386
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/tge-labs/trazo-fiboa/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/tge-labs/trazo-fiboa",
+      "title": "Source Cooperative product page"
+    }
+  ],
   "account_id": "tge-labs",
-  "product_id": "trazo-fiboa",
-  "title": "Trazo Field Boundary Annotations (fiboa)",
-  "description": "Field boundaries from WRI/ASU's Trazo project across 17 South American ecoregions, converted to fiboa GeoParquet. 60,386 manually annotated polygons, CC-BY-4.0. Complements the FTW benchmark dataset",
-  "keywords": [],
-  "created_at": "2026-08-06T14:49:16.898Z",
-  "updated_at": "2026-08-06T14:49:16.898Z",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "exts": {
+    "parquet": 1,
+    "md": 1,
+    "json": 1
+  },
+  "data_mode": null,
+  "total_bytes": 22101812,
   "visibility": "public",
   "disabled": false,
+  "file_count": 3,
   "featured": 0,
-  "data_mode": null,
+  "updated_at": "2026-08-06T14:49:16.898Z",
+  "product_id": "trazo-fiboa",
+  "created_at": "2026-08-06T14:49:16.898Z",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "is_primary": true,
@@ -17,23 +161,12 @@
       "prefix": "tge-labs/trazo-fiboa/"
     }
   },
-  "file_count": 3,
-  "total_bytes": 22101812,
-  "exts": {
-    "parquet": 1,
-    "md": 1,
-    "json": 1
-  },
-  "ext_bytes": {
-    "parquet": 22094362,
-    "md": 4089,
-    "json": 3361
-  },
-  "store_format": null,
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "cataloged_at": "2026-08-10T09:56:53+00:00"
+  "readme": "## README.md\n# Trazo Field Boundary Annotations (fiboa)\n\nField boundary annotations from the [Trazo project](https://wri.github.io/trazo/landing/) (WRI & Arizona State University), converted to [fiboa](https://fiboa.org) GeoParquet.\n\nTrazo extends the [Fields of The World (FTW)](https://fieldsofthe.world/) baseline with **60,386 manually annotated field boundary polygons across 17 South American ecoregions** \u2014 the Chaco, Chiquitania, Araucaria, Amazon, Cerrado, Caatinga, Pampas and others \u2014 created to adapt field boundary segmentation models to South American agricultural landscapes.\n\n## Relationship to FTW (no duplication)\n\nThis dataset contains **only the new Trazo annotations**. The upstream Trazo repository intentionally excludes FTW data (\"intended to be used in conjunction with the FTW benchmark dataset\"), and we verified this spatially: FTW's only South American subset (LEM, West Bahia, Brazil \u2014 1,854 fields) has **zero polygon intersections** with this dataset. You can safely combine this dataset with the FTW benchmark without deduplication.\n\n## Contents\n\n- `wri_trazo.parquet` \u2014 fiboa GeoParquet (fiboa 0.3.0, GeoParquet 1.1.0), 60,386 features, EPSG:4326\n- `stac/collection.json` \u2014 STAC Collection metadata\n\n## Columns\n\n| Property                 | Type      | Description                                                        |\n|--------------------------|-----------|--------------------------------------------------------------------|\n| `id`                     | string    | Unique identifier (`trazo_NNNNNN`)                                 |\n| `geometry`               | Polygon   | Field boundary (EPSG:4326)                                         |\n| `collection`             | string    | `wri_trazo`                                                        |\n| `metrics:area`           | float     | Field area in square meters (computed in EPSG:6933 equal-area)     |\n| `metrics:perimeter`      | float     | Field perimeter in meters (computed in EPSG:6933 equal-area)       |\n| `determination:datetime` | timestamp | Annotation year (Jan 1 of the labeled year, 2020\u20132024)             |\n| `determination:method`   | string    | `manual` \u2014 annotated by subject-matter experts                     |\n| `region`                 | string    | Source ecoregion / sampling folder (25 values, e.g. `chaco`, `maparaguay`, `testsoy`) |\n| `split`                  | string    | `train` (52,484) or `test` (7,902); `test` = randomly sampled test folders |\n\nRegions prefixed `test` (`testchiquitania`, `testmatogrosso`, `testsoy`) were truly randomly sampled and are the statistically rigorous choice for model evaluation. Other regions were selected for poor baseline model performance, active-learning query strategies (`matogrosso_brazil_*`), or partner data availability (`maparaguay` \u2014 Mundo Agropecuario), and are best used for training/validation.\n\n## Lineage\n\n- Source: [source.coop/wri-data-lab/trazoannotations](https://source.coop/wri-data-lab/trazoannotations) (per-ecoregion GeoPackages)\n- Normalization: reprojected to EPSG:4326, geometries made valid, multipart polygons exploded, Z dimension dropped; per-feature `year` filled from the source filename where the column was absent (test folders)\n- Converted with [fiboa-cli](https://github.com/fiboa/cli) 0.21.0 using the `wri_trazo` converter\n\n## License and Citation\n\nCreative Commons Attribution 4.0 International (CC-BY-4.0). Please cite:\n\n> **Grupp et al. (2026)** \u2014 *Field Boundaries of South America.* World Resources Institute & Arizona State University. [Technical Note](https://www.wri.org/research/field-boundaries-south-america)\n\nWhen used together with the FTW benchmark, also cite:\n\n> **Kerner et al. (2025)** \u2014 *Fields of The World: A Machine Learning Benchmark Dataset for Global Agricultural Field Boundary Segmentation.* AAAI 2025, 39(27), 28151\u201328159. [DOI: 10.1609/aaai.v39i27.35034](https://doi.org/10.1609/aaai.v39i27.35034)\n\nTrazo was produced by WRI and Arizona State University with support from the Land and Carbon Lab, funded through a Walmart Foundation grant.\n",
+  "_review": [
+    "providers: role [producer, licensor] for 'World Resources Institute' is an AI guess \u2014 Stated as co-producer of Trazo; licensor role inferred since WRI is the lead organization behind the CC-BY-4.0 licensed dataset.. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-08-10T10:02:33+00:00",
+  "_source_format": "stac",
+  "store_format": null
 }
