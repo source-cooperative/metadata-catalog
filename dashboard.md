@@ -1,20 +1,10 @@
 # Source Cooperative catalog — status
 
-_Updated 2026-08-14 09:06 UTC by the nightly pipeline._
+_Updated 2026-08-15 08:46 UTC by the nightly pipeline._
 
-**344 datasets cataloged**  ·  **0 queued for next run**  ·  last run handled **7**
+**344 datasets cataloged**  ·  **0 queued for next run**  ·  last run handled **4**
 
 ## Last run
-
-<details><summary>✅ drafted — 3 datasets</summary>
-
-| repo                                                                                                                             |
-| -------------------------------------------------------------------------------------------------------------------------------- |
-| [dataforcanada/d4c-datapkg-environment-climate-health](https://source.coop/dataforcanada/d4c-datapkg-environment-climate-health) |
-| [dynamical/asos-parquet](https://source.coop/dynamical/asos-parquet)                                                             |
-| [walkthru-earth/opensensor-space](https://source.coop/walkthru-earth/opensensor-space)                                           |
-
-</details>
 
 <details><summary>⏭️ incomplete (gap) — 4 datasets</summary>
 
@@ -32,48 +22,48 @@ _Updated 2026-08-14 09:06 UTC by the nightly pipeline._
 
 | run                                                                                                    | outcome   | drafted | failed | queued | cataloged |
 | ------------------------------------------------------------------------------------------------------ | --------- | ------: | -----: | -----: | --------: |
+| [2026-08-15](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/31874788883) | ✅ success |       0 |      0 |      0 |       344 |
 | [2026-08-14](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/31785271901) | ✅ success |       3 |      0 |      0 |       344 |
 | [2026-08-13](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/31683810235) | ✅ success |       6 |      0 |      3 |       344 |
 | [2026-08-12](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/31580016587) | ✅ success |       7 |      0 |     10 |       344 |
 | [2026-08-11](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/31474119691) | ✅ success |       7 |      0 |     17 |       344 |
 | [2026-08-10](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/31372058614) | ✅ success |       7 |      1 |     25 |       344 |
 | [2026-08-09](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/31303880236) | ✅ success |       0 |      0 |      0 |       340 |
-| [2026-08-08](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/31248723208) | ✅ success |       4 |      0 |      0 |       340 |
 
 Inventory compact (reseed 2026-08-10): 7.8 GB / 36.1 GB runner disk
 
 ## Persistent failures
 
-**24 datasets failing**  ·  24 open issues  ·  oldest **64d**  ·  **18** ≥30d  ·  [all open issues](https://github.com/source-cooperative/metadata-catalog/issues?q=is%3Aissue+is%3Aopen+label%3Aprobe-failure)
+**24 datasets failing**  ·  24 open issues  ·  oldest **65d**  ·  **18** ≥30d  ·  [all open issues](https://github.com/source-cooperative/metadata-catalog/issues?q=is%3Aissue+is%3Aopen+label%3Aprobe-failure)
 
 <details><summary>the 24 open issues, oldest first</summary>
 
 | repo                                                | age (d) | issue |
 | --------------------------------------------------- | ------: | ----: |
-| bkr/cams                                            |      64 |    #1 |
-| smartmaps/uppsala-conflict                          |      62 |   #16 |
-| smartmaps/next-ksj                                  |      62 |   #15 |
-| smartmaps/h3ys-worldpop                             |      62 |   #14 |
-| smartmaps/dem1a                                     |      62 |   #13 |
-| smartmaps/dem10a                                    |      62 |   #12 |
-| rsignell/ncei-estuarine-bathymetry                  |      62 |   #11 |
-| pfrost/climacell-monthly                            |      62 |   #10 |
-| geovibes/geometries                                 |      62 |    #9 |
-| fiboa/data                                          |      62 |    #8 |
-| dynamical/dwd-icon-eu-forecast-5-day                |      62 |    #7 |
-| cboettig/obis                                       |      62 |    #6 |
-| cboettig/habitat-corridors                          |      62 |    #5 |
-| caires-tudelft/tokyo-13999-fcb                      |      62 |    #4 |
-| caires-tudelft/plateau-tokyo-fcb-2                  |      62 |    #3 |
-| cboettig/wetlands                                   |      45 |  #122 |
-| dynamical/dwd-icon-grib                             |      32 |  #125 |
-| dynamical/ecmwf-ifs-ens-forecast-15-day-0-25-degree |      30 |  #126 |
-| alukach/firesmoke                                   |      25 |  #128 |
-| dynamical/noaa-mrms-conus-analysis-hourly           |      20 |  #130 |
-| dynamical/noaa-gefs-analysis                        |      20 |  #129 |
-| cboettig/high-seas                                  |      19 |  #131 |
-| ganzk/lcms                                          |      15 |  #132 |
-| dynamical/noaa-gefs-forecast-35-day                 |       3 |  #134 |
+| bkr/cams                                            |      65 |    #1 |
+| smartmaps/uppsala-conflict                          |      63 |   #16 |
+| smartmaps/next-ksj                                  |      63 |   #15 |
+| smartmaps/h3ys-worldpop                             |      63 |   #14 |
+| smartmaps/dem1a                                     |      63 |   #13 |
+| smartmaps/dem10a                                    |      63 |   #12 |
+| rsignell/ncei-estuarine-bathymetry                  |      63 |   #11 |
+| pfrost/climacell-monthly                            |      63 |   #10 |
+| geovibes/geometries                                 |      63 |    #9 |
+| fiboa/data                                          |      63 |    #8 |
+| dynamical/dwd-icon-eu-forecast-5-day                |      63 |    #7 |
+| cboettig/obis                                       |      63 |    #6 |
+| cboettig/habitat-corridors                          |      63 |    #5 |
+| caires-tudelft/tokyo-13999-fcb                      |      63 |    #4 |
+| caires-tudelft/plateau-tokyo-fcb-2                  |      63 |    #3 |
+| cboettig/wetlands                                   |      46 |  #122 |
+| dynamical/dwd-icon-grib                             |      33 |  #125 |
+| dynamical/ecmwf-ifs-ens-forecast-15-day-0-25-degree |      31 |  #126 |
+| alukach/firesmoke                                   |      26 |  #128 |
+| dynamical/noaa-mrms-conus-analysis-hourly           |      21 |  #130 |
+| dynamical/noaa-gefs-analysis                        |      21 |  #129 |
+| cboettig/high-seas                                  |      20 |  #131 |
+| ganzk/lcms                                          |      16 |  #132 |
+| dynamical/noaa-gefs-forecast-35-day                 |       4 |  #134 |
 
 </details>
 
