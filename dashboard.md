@@ -1,6 +1,6 @@
 # Source Cooperative catalog — status
 
-_Updated 2026-08-15 08:46 UTC by the nightly pipeline._
+_Updated 2026-08-16 08:45 UTC by the nightly pipeline._
 
 **344 datasets cataloged**  ·  **0 queued for next run**  ·  last run handled **4**
 
@@ -22,48 +22,48 @@ _Updated 2026-08-15 08:46 UTC by the nightly pipeline._
 
 | run                                                                                                    | outcome   | drafted | failed | queued | cataloged |
 | ------------------------------------------------------------------------------------------------------ | --------- | ------: | -----: | -----: | --------: |
+| [2026-08-16](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/31936760237) | ✅ success |       0 |      0 |      0 |       344 |
 | [2026-08-15](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/31874788883) | ✅ success |       0 |      0 |      0 |       344 |
 | [2026-08-14](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/31785271901) | ✅ success |       3 |      0 |      0 |       344 |
 | [2026-08-13](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/31683810235) | ✅ success |       6 |      0 |      3 |       344 |
 | [2026-08-12](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/31580016587) | ✅ success |       7 |      0 |     10 |       344 |
 | [2026-08-11](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/31474119691) | ✅ success |       7 |      0 |     17 |       344 |
 | [2026-08-10](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/31372058614) | ✅ success |       7 |      1 |     25 |       344 |
-| [2026-08-09](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/31303880236) | ✅ success |       0 |      0 |      0 |       340 |
 
 Inventory compact (reseed 2026-08-10): 7.8 GB / 36.1 GB runner disk
 
 ## Persistent failures
 
-**24 datasets failing**  ·  24 open issues  ·  oldest **65d**  ·  **18** ≥30d  ·  [all open issues](https://github.com/source-cooperative/metadata-catalog/issues?q=is%3Aissue+is%3Aopen+label%3Aprobe-failure)
+**24 datasets failing**  ·  24 open issues  ·  oldest **66d**  ·  **18** ≥30d  ·  [all open issues](https://github.com/source-cooperative/metadata-catalog/issues?q=is%3Aissue+is%3Aopen+label%3Aprobe-failure)
 
 <details><summary>the 24 open issues, oldest first</summary>
 
 | repo                                                | age (d) | issue |
 | --------------------------------------------------- | ------: | ----: |
-| bkr/cams                                            |      65 |    #1 |
-| smartmaps/uppsala-conflict                          |      63 |   #16 |
-| smartmaps/next-ksj                                  |      63 |   #15 |
-| smartmaps/h3ys-worldpop                             |      63 |   #14 |
-| smartmaps/dem1a                                     |      63 |   #13 |
-| smartmaps/dem10a                                    |      63 |   #12 |
-| rsignell/ncei-estuarine-bathymetry                  |      63 |   #11 |
-| pfrost/climacell-monthly                            |      63 |   #10 |
-| geovibes/geometries                                 |      63 |    #9 |
-| fiboa/data                                          |      63 |    #8 |
-| dynamical/dwd-icon-eu-forecast-5-day                |      63 |    #7 |
-| cboettig/obis                                       |      63 |    #6 |
-| cboettig/habitat-corridors                          |      63 |    #5 |
-| caires-tudelft/tokyo-13999-fcb                      |      63 |    #4 |
-| caires-tudelft/plateau-tokyo-fcb-2                  |      63 |    #3 |
-| cboettig/wetlands                                   |      46 |  #122 |
-| dynamical/dwd-icon-grib                             |      33 |  #125 |
-| dynamical/ecmwf-ifs-ens-forecast-15-day-0-25-degree |      31 |  #126 |
-| alukach/firesmoke                                   |      26 |  #128 |
-| dynamical/noaa-mrms-conus-analysis-hourly           |      21 |  #130 |
-| dynamical/noaa-gefs-analysis                        |      21 |  #129 |
-| cboettig/high-seas                                  |      20 |  #131 |
-| ganzk/lcms                                          |      16 |  #132 |
-| dynamical/noaa-gefs-forecast-35-day                 |       4 |  #134 |
+| bkr/cams                                            |      66 |    #1 |
+| smartmaps/uppsala-conflict                          |      64 |   #16 |
+| smartmaps/next-ksj                                  |      64 |   #15 |
+| smartmaps/h3ys-worldpop                             |      64 |   #14 |
+| smartmaps/dem1a                                     |      64 |   #13 |
+| smartmaps/dem10a                                    |      64 |   #12 |
+| rsignell/ncei-estuarine-bathymetry                  |      64 |   #11 |
+| pfrost/climacell-monthly                            |      64 |   #10 |
+| geovibes/geometries                                 |      64 |    #9 |
+| fiboa/data                                          |      64 |    #8 |
+| dynamical/dwd-icon-eu-forecast-5-day                |      64 |    #7 |
+| cboettig/obis                                       |      64 |    #6 |
+| cboettig/habitat-corridors                          |      64 |    #5 |
+| caires-tudelft/tokyo-13999-fcb                      |      64 |    #4 |
+| caires-tudelft/plateau-tokyo-fcb-2                  |      64 |    #3 |
+| cboettig/wetlands                                   |      47 |  #122 |
+| dynamical/dwd-icon-grib                             |      34 |  #125 |
+| dynamical/ecmwf-ifs-ens-forecast-15-day-0-25-degree |      32 |  #126 |
+| alukach/firesmoke                                   |      27 |  #128 |
+| dynamical/noaa-mrms-conus-analysis-hourly           |      22 |  #130 |
+| dynamical/noaa-gefs-analysis                        |      22 |  #129 |
+| cboettig/high-seas                                  |      21 |  #131 |
+| ganzk/lcms                                          |      17 |  #132 |
+| dynamical/noaa-gefs-forecast-35-day                 |       5 |  #134 |
 
 </details>
 
