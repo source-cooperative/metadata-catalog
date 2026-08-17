@@ -1,24 +1,75 @@
 {
-  "account_id": "ganzk",
-  "product_id": "vodca",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "ganzk/vodca",
   "title": "Vegetation Optical Depth Climate Archive v2",
-  "description": "This is a mirror of VODCA v2, a multi-sensor vegetation optical depth archive produced by TU Wien: https://researchdata.tuwien.ac.at/records/t74ty-tcx62. This archive only includes the C-, X-, and Ku-band merged product.",
-  "keywords": [],
-  "created_at": "2026-08-13T22:42:47.839Z",
-  "updated_at": "2026-08-13T22:42:47.839Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": null,
-  "mirrors": {
-    "aws-opendata-us-west-2": {
-      "is_primary": true,
-      "connection_id": "aws-opendata-us-west-2",
-      "prefix": "ganzk/vodca/"
+  "description": "VODCA v2 is a multi-sensor vegetation optical depth (VOD) climate data record produced by TU Wien, merging passive microwave observations from C-, X-, and Ku-band satellite sensors into a long-term, globally gridded time series.",
+  "keywords": [
+    "vegetation-optical-depth",
+    "remote-sensing",
+    "climate",
+    "time-series",
+    "global-coverage",
+    "zarr"
+  ],
+  "providers": [
+    {
+      "name": "TU Wien",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/ganzk/vodca"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -179.875,
+          -89.875,
+          179.875,
+          89.875
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "1987-07-09T00:00:00",
+          "2021-12-31T00:00:00Z"
+        ]
+      ]
     }
   },
-  "file_count": 12608,
-  "total_bytes": 13441458348,
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/ganzk/vodca/",
+      "type": "application/vnd+zarr",
+      "title": "Dataset files (1 x .zarr)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/ganzk/vodca/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/ganzk/vodca",
+      "title": "Source Cooperative product page"
+    }
+  ],
   "exts": {
     "0": 840,
     "1": 840,
@@ -41,33 +92,33 @@
     "zmetadata": 1,
     "zgroup": 1
   },
-  "ext_bytes": {
-    "8": 2258828331,
-    "7": 1681984635,
-    "4": 1537611439,
-    "11": 1337930253,
-    "12": 1156191085,
-    "9": 1148966100,
-    "10": 994632543,
-    "3": 879028385,
-    "2": 673126573,
-    "5": 618496826,
-    "6": 448119553,
-    "13": 377170681,
-    "1": 145974964,
-    "0": 94622280,
-    "14": 88761540,
-    "zmetadata": 5010,
-    "": 4667,
-    "zattrs": 2126,
-    "zarray": 1333,
-    "zgroup": 24
-  },
-  "store_format": "zarr",
-  "_state": "seed",
+  "data_mode": null,
+  "account_id": "ganzk",
+  "product_id": "vodca",
+  "total_bytes": 13441458348,
+  "file_count": 12608,
+  "visibility": "public",
+  "disabled": false,
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "cataloged_at": "2026-08-17T09:26:32+00:00"
+  "created_at": "2026-08-13T22:42:47.839Z",
+  "mirrors": {
+    "aws-opendata-us-west-2": {
+      "is_primary": true,
+      "connection_id": "aws-opendata-us-west-2",
+      "prefix": "ganzk/vodca/"
+    }
+  },
+  "updated_at": "2026-08-13T22:42:47.839Z",
+  "featured": 0,
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
+    "providers: role [producer, licensor] for 'TU Wien' is an AI guess \u2014 Assumed licensor since TU Wien produced and hosts the original archive, though the README does not state licensing terms.. Verify before flipping to _state: reviewed.",
+    "extent.temporal: ['1987-07-09T00:00:00', '2021-12-31T00:00:00'] (probe sample) widened to ['1987-07-09T00:00:00', '2021-12-31T00:00:00Z'] using README-stated coverage ['1987-07-09', '2021-12-31']."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-08-17T09:45:35+00:00",
+  "store_format": "zarr"
 }
