@@ -106,7 +106,7 @@
   },
   "visibility": "public",
   "created_at": "2024-10-09T00:46:23.812955+00:00",
-  "file_count": 157,
+  "object_count": 157,
   "readme": "## README.md\n**Description**:\n\nThis dataset is a copy of the New York City Citibike data, which can be found here: https://citibikenyc.com/system-data, made available in the cloud-native geoparquet format partitioned by year and month.\n\nThe original data scehma exhibits inconsistencies across source files,particularly in data type definitions. \n\nThis dataset has been standardized and divided into twodistinct schemas ('new' and 'old') to best reflect the official Citibike data schema variations.\n\nSpecific data transformation steps are documented in my Medium blog post: https://medium.com/@calvinluozhengpei/  from-wall-street-to-central-park-decoding-nycs-citi-bike-patterns-part-1-3155569278cf\n\nFeel free to read and provide feedback on how to make the process more efficient!\n\n**Example Usage**: \n\n\nLoad data with Duckdb in Python:\n\n```\ncon = duckdb.connect(database = \":memory:\")\ncon.sql(\"\"\" \nSELECT * FROM read_parquet('s3://us-west-2.opendata.source.coop/zluo43/citibike/old_schema_combined_with_geom.parquet/**/*.parquet')\n\"\"\")\n\n```\n\nBasic EDA in Python:\n\n```\ndf=con.sql(\"\"\" \nSELECT * FROM read_parquet('s3://us-west-2.opendata.source.coop/zluo43/citibike/old_schema_combined_with_geom.parquet/**/*.parquet')\n\"\"\").df()\ndf.info()\n\n```\n",
   "_state": "drafted",
   "cataloged_at": "2026-04-24T19:02:00+00:00"
