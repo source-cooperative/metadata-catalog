@@ -1,0 +1,21 @@
+name: CI
+
+# Entries whose paths differ only by case break checkouts on case-insensitive
+# filesystems (macOS default) — metadata-catalog-pipeline#20.
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  case-collisions:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: No paths differing only by case
+        run: |
+          dupes=$(git ls-files | tr 'A-Z' 'a-z' | sort | uniq -d)
+          test -z "$dupes" || { echo "case-colliding paths:"; echo "$dupes"; exit 1; }
