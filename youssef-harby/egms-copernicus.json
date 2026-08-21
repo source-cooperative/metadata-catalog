@@ -108,5 +108,13 @@
   "account_id": "youssef-harby",
   "readme": "## README.md\n# European Ground Motion Service Data Conversion\n\nThis repository contains data converted from the original Copernicus European Ground Motion Service datasets. The source data was provided as zipped CSV files and has been transformed into cloud native geospatial formats.\n\n## Data Sources\n\n- **Original Data**: [Copernicus European Ground Motion Service](https://land.copernicus.eu/en/products/european-ground-motion-service)\n- **Formats Provided**:\n  - **Parquet Geo** \u2013 Optimized for scalable geospatial analytics.\n  - **PMTiles** \u2013 Designed for efficient, cloud-native tile serving.\n\n## Conversion Process\n\n1. **Extraction**: Unzipping and parsing CSV files.\n2. **Transformation**: Converting CSV data into geospatial datasets.\n3. **Output**: Generating Parquet Geo files for analysis and PMTiles(with only pid and geom and filename) for mapping.\n\n## Usage\n\n- **Parquet Geo**: Use with cloud-based analytics platforms for fast querying.\nExample using DuckDB:\n```sql\nSELECT * FROM read_parquet('https://data.source.coop/youssef-harby/egms-copernicus/L2a/parquet/CY/EGMS_L2a_087_0205_IW2_VV_2019_2023_1.parquet') LIMIT 10;\n```\n- **PMTiles**: Serve directly to web maps or GIS applications for interactive visualization like [here](https://pmtiles.io/?url=https%3A%2F%2Fdata.source.coop%2Fyoussef-harby%2Fegms-copernicus%2FL2a%2Fpmtiles%2Fcy.pmtiles#map=9.36/34.9833/33.293).\n\n## License & Acknowledgements\n\nPlease refer to the original data license provided by Copernicus for usage terms. This conversion project builds on the high-quality datasets provided by the European Ground Motion Service.\n",
   "_state": "drafted",
-  "cataloged_at": "2026-04-24T18:52:00+00:00"
+  "cataloged_at": "2026-04-24T18:52:00+00:00",
+  "ext_bytes": {
+    "parquet": 35965999689,
+    "duckdb": 24034947072,
+    "geojson": 12571216540,
+    "pmtiles": 475153891,
+    "json": 15392,
+    "md": 1602
+  }
 }
