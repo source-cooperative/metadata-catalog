@@ -2,13 +2,20 @@
   "schema_version": 1,
   "type": "Collection",
   "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
   "id": "nlebovits/microsoft-ml-road-detections",
   "title": "Microsoft ML Road Detections",
-  "description": "Global dataset of 54.2 million kilometers of roads detected using machine learning from Bing Maps imagery across 235 countries. Data are provided as GeoParquet linestring geometries with approximate road width estimates, partitioned by country.",
+  "description": "A GeoParquet mirror, partitioned by country, of Microsoft's global road detections mined from Bing Maps aerial imagery via machine learning \u2014 256,555,010 road segments across 235 countries with per-segment width estimates.",
   "license": "ODbL-1.0",
   "keywords": [
     "road-networks",
-    "remote-sensing"
+    "remote-sensing",
+    "machine-learning",
+    "geoparquet",
+    "global-coverage",
+    "aerial-imagery"
   ],
   "providers": [
     {
@@ -29,10 +36,10 @@
     "spatial": {
       "bbox": [
         [
-          -70.0621963,
-          -34.8316386,
-          74.8278379,
-          60.5327571
+          null,
+          null,
+          null,
+          null
         ]
       ]
     },
@@ -49,15 +56,121 @@
     "item_count": 5155928
   },
   "assets": {
-    "data": {
-      "href": "https://data.source.coop/nlebovits/microsoft-ml-road-detections/",
+    "ABW": {
+      "href": "https://data.source.coop/nlebovits/microsoft-ml-road-detections/road-detections/by_country/country=ABW/ABW.parquet",
       "type": "application/x-parquet",
-      "title": "Dataset files (235 x .parquet)",
+      "title": "ABW.parquet",
       "roles": [
         "data"
-      ]
+      ],
+      "table:row_count": 9104
+    },
+    "AFG": {
+      "href": "https://data.source.coop/nlebovits/microsoft-ml-road-detections/road-detections/by_country/country=AFG/AFG.parquet",
+      "type": "application/x-parquet",
+      "title": "AFG.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:row_count": 385960
+    },
+    "AGO": {
+      "href": "https://data.source.coop/nlebovits/microsoft-ml-road-detections/road-detections/by_country/country=AGO/AGO.parquet",
+      "type": "application/x-parquet",
+      "title": "AGO.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:row_count": 413340
+    },
+    "AIA": {
+      "href": "https://data.source.coop/nlebovits/microsoft-ml-road-detections/road-detections/by_country/country=AIA/AIA.parquet",
+      "type": "application/x-parquet",
+      "title": "AIA.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:row_count": 1514
+    },
+    "ALA": {
+      "href": "https://data.source.coop/nlebovits/microsoft-ml-road-detections/road-detections/by_country/country=ALA/ALA.parquet",
+      "type": "application/x-parquet",
+      "title": "ALA.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:row_count": 7038
+    },
+    "XXW": {
+      "href": "https://data.source.coop/nlebovits/microsoft-ml-road-detections/road-detections/by_country/country=XXW/XXW.parquet",
+      "type": "application/x-parquet",
+      "title": "XXW.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:row_count": 110601
+    },
+    "YEM": {
+      "href": "https://data.source.coop/nlebovits/microsoft-ml-road-detections/road-detections/by_country/country=YEM/YEM.parquet",
+      "type": "application/x-parquet",
+      "title": "YEM.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:row_count": 248435
+    },
+    "ZAF": {
+      "href": "https://data.source.coop/nlebovits/microsoft-ml-road-detections/road-detections/by_country/country=ZAF/ZAF.parquet",
+      "type": "application/x-parquet",
+      "title": "ZAF.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:row_count": 3403472
+    },
+    "ZMB": {
+      "href": "https://data.source.coop/nlebovits/microsoft-ml-road-detections/road-detections/by_country/country=ZMB/ZMB.parquet",
+      "type": "application/x-parquet",
+      "title": "ZMB.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:row_count": 285783
+    },
+    "ZWE": {
+      "href": "https://data.source.coop/nlebovits/microsoft-ml-road-detections/road-detections/by_country/country=ZWE/ZWE.parquet",
+      "type": "application/x-parquet",
+      "title": "ZWE.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:row_count": 290681
     }
   },
+  "table:columns": [
+    {
+      "name": "country",
+      "type": "VARCHAR",
+      "description": "[admin_code] Country code partition value"
+    },
+    {
+      "name": "width_meters",
+      "type": "DOUBLE"
+    },
+    {
+      "name": "geometry_type",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "geometry",
+      "type": "GEOMETRY('OGC:CRS84')",
+      "description": "[geometry] Road segment linestring geometry (OGC:CRS84)"
+    },
+    {
+      "name": "bbox",
+      "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+    }
+  ],
   "links": [
     {
       "rel": "self",
@@ -70,6 +183,18 @@
       "title": "Source Cooperative product page"
     }
   ],
+  "product_id": "microsoft-ml-road-detections",
+  "object_count": 248,
+  "total_bytes": 14807918961,
+  "updated_at": "2025-10-20T20:26:43.578Z",
+  "data_mode": "open",
+  "account_id": "nlebovits",
+  "featured": 0,
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "disabled": false,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -82,25 +207,22 @@
       "prefix": "nlebovits/microsoft-ml-road-detections/"
     }
   },
+  "created_at": "2025-10-20T20:26:43.578Z",
   "visibility": "public",
-  "object_count": 236,
   "exts": {
     "parquet": 235,
-    "md": 1
+    "json": 5,
+    "md": 4,
+    "png": 2,
+    "pmtiles": 1,
+    "txt": 1
   },
-  "account_id": "nlebovits",
-  "data_mode": "open",
-  "product_id": "microsoft-ml-road-detections",
-  "updated_at": "2025-10-20T20:26:43.578Z",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "featured": 0,
-  "disabled": false,
-  "total_bytes": 11393116212,
-  "created_at": "2025-10-20T20:26:43.578Z",
-  "readme": "## README.md\n## Microsoft ML Road Detections\n\nThis dataset provides parquet versions of [Microsoft's ML road detections](https://github.com/microsoft/RoadDetections), mined from Bing Maps imagery. This accounts for 54.2 million kilometers of roads worldwide, mined from Bing Maps imagery in 235 countries worldwide (note that several east Asian countries such as China, Japan, and South Korea do not appear in the original Microsoft data).\n\nFor more information about the conversion or maintenance of this dataset, please contact nlebovits@pm.me.\n\n\n### Data Vintage\n\nPer Microsoft:\n\n> The vintage of the roads depends on the vintage of the underlying imagery. Because Bing \n> Imagery is a composite of multiple sources it is difficult to know the exact dates for \n> individual pieces of data. However data is up-to-date with freshest available imagery \n> from Microsoft Maps.\n\n\n### Data Format and Partitioning\n\nThe data are provided in parquet files partitioned by country, corresponding to the countries listed in the original Microsoft data. The original data are provided as zipped .tsv files containing GeoJSON data, totaling 67GB. Parquet compression brings the files down to under 10GB.\n\n\n### Schema\n\nEach row in the dataset provides information on a specific road with associated information on individual columns:\n\n- **country** (STRING): Alpha-3 country code, e.g., FRA\n- **width_meters** (FLOAT): Approximate width of the road in meters\n- **geometry_type** (STRING): Indicates type of geometry (should be LINESTRING)\n- **geometry** (GEOMETRY): Geometry type encoded as WKB\n- **bbox** (STRUCT): A bbox struct for efficient spatial queries\n\n\n### Changelog\n\n**Current version: 1.0**\n\n**Version 1.0** (2025-10-20):\n- Initial release!\n  - 54.2 million kilometers of roads worldwide across 235 countries via Microsoft ML road detections\n  - Using GeoParquet schema version 1.1.0\n  - Data is partitioned by country\n  - Data is available in Parquet format\n\n\n### Dataset License\n\nPer the terms of use listed by Microsoft, these data are freely available for download and use under the [Open Data Commons Open Database License (ODbL)](https://opendatacommons.org/licenses/odbl/). \n",
+  "readme": "## README.md\n# Microsoft ML Road Detections\n\nA cloud-native mirror of the road detections Microsoft mines from Bing Maps aerial imagery.\n\nMicrosoft publishes this data at [microsoft/RoadDetections](https://github.com/microsoft/RoadDetections)\nas nineteen zipped TSV files of GeoJSON, one per UN subregion, totalling about 67 GB unpacked. That\nformat is fine for a bulk download and useless for a query. This catalog carries the same roads as\nGeoParquet partitioned by country, so a reader can pull one country, one bounding box, or the whole\nplanet without unpacking anything.\n\nOne collection:\n\n| Collection | What it holds |\n|---|---|\n| [road-detections](https://source.coop/nlebovits/microsoft-ml-road-detections/road-detections/README.md) | 256,555,010 road segments in 235 country partitions, worldwide |\n\n## Provenance\n\n**This is a mirror, not the source.** Microsoft produces the data. This catalog reformats and hosts\nit, and adds nothing to it. Geometries, widths, and country assignments are exactly as Microsoft\npublished them.\n\nUpstream drop: `2025.04.28`, the current release as of 2026-08-14. Roads were converted to\nGeoParquet in October 2025. If Microsoft publishes a newer drop, this mirror will lag it until it is\nre-synced; the `updated` field on the catalog and the collection records the last sync.\n\nFor what the detections are, how they were produced, what they do not cover, and the traps in the\ncountry codes, read the [collection README](https://source.coop/nlebovits/microsoft-ml-road-detections/road-detections/README.md).\n\n## License\n\n`ODbL-1.0`, the [Open Data Commons Open Database License](https://opendatacommons.org/licenses/odbl/).\n\nMicrosoft's [LICENSE file](https://github.com/microsoft/RoadDetections/blob/main/LICENSE) reads in\nfull:\n\n> Data in this repository has been licensed by Microsoft under the Open Data Commons Open Database\n> License (ODbL).\n\nODbL is share-alike. A Derivative Database you publish has to be offered under ODbL as well, and\nthis mirror is. Microsoft states no required attribution wording, so ODbL section 4.3 obliges you to\nsupply one. This works:\n\n> Contains road detections from Microsoft, mined from Bing Maps imagery, licensed under ODbL.\n\nMicrosoft's terms do not grant rights to its names, logos, or trademarks, which is why no Microsoft\nbranding appears anywhere in this catalog.\n\n## Access\n\nEvery partition, read as one table:\n\n```sql\nINSTALL spatial; LOAD spatial; INSTALL httpfs; LOAD httpfs;\n\n-- The glob needs s3://, because expanding it requires a listing and plain HTTP\n-- cannot list. The bucket reads anonymously; path style is required because the\n-- bucket name contains dots.\nCREATE OR REPLACE SECRET source_coop (\n  TYPE s3, PROVIDER config, KEY_ID '', SECRET '',\n  REGION 'us-west-2', URL_STYLE 'path',\n  ENDPOINT 's3.us-west-2.amazonaws.com'\n);\n\nSELECT count(*)\nFROM read_parquet(\n  's3://us-west-2.opendata.source.coop/nlebovits/microsoft-ml-road-detections/'\n  || 'road-detections/by_country/country=*/*.parquet'\n);\n-- 256555010\n```\n\nOne country, which reads one file instead of 235:\n\n```sql\nSELECT width_meters, geometry\nFROM read_parquet(\n  'https://data.source.coop/nlebovits/microsoft-ml-road-detections/'\n  || 'road-detections/by_country/country=NLD/NLD.parquet'\n)\nLIMIT 10;\n```\n\nAgents should start at [AGENTS.md](https://source.coop/nlebovits/microsoft-ml-road-detections/AGENTS.md), which carries the tested query recipes, the join\nkeys, and the quirks that otherwise produce confident wrong answers.\n\n## Maintenance\n\nCatalog metadata lives in\n[nlebovits/microsoft-ml-road-detections](https://github.com/nlebovits/microsoft-ml-road-detections)\nand is validated on every pull request. Corrections are welcome as\n[issues](https://github.com/nlebovits/microsoft-ml-road-detections/issues) or pull requests. Problems\nwith the road data itself belong upstream, at\n[microsoft/RoadDetections](https://github.com/microsoft/RoadDetections/issues).\n\nContact: nissim.lebovits@radiant.earth\n",
+  "_review": [
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [ABW.geometry (geometry), ABW.country (admin_code), AFG.geometry (geometry), AFG.country (admin_code), AGO.geometry (geometry), AGO.country (admin_code), AIA.geometry (geometry), AIA.country (admin_code), ALA.geometry (geometry), ALA.country (admin_code), XXW.geometry (geometry), XXW.country (admin_code), YEM.geometry (geometry), YEM.country (admin_code), ZAF.geometry (geometry), ZAF.country (admin_code), ZMB.geometry (geometry), ZMB.country (admin_code), ZWE.geometry (geometry), ZWE.country (admin_code)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
+  ],
   "_state": "drafted",
-  "cataloged_at": "2026-04-24T19:03:49+00:00"
+  "cataloged_at": "2026-08-21T01:15:05+00:00",
+  "objects_updated_at": "2026-08-14T15:08:46+00:00",
+  "store_format": null
 }
