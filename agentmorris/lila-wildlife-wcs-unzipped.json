@@ -1,23 +1,91 @@
 {
   "schema_version": 1,
-  "account_id": "agentmorris",
-  "product_id": "lila-wildlife-wcs-unzipped",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "agentmorris/lila-wildlife-wcs-unzipped",
   "title": "WCS Camera Traps",
-  "description": "A large collection of wildlife camera trap imagery assembled by the Wildlife Conservation Society (WCS), comprising over 1.1 million images (JPEG) and 66 video clips (AVI) captured by motion-triggered field cameras. The dataset is intended for wildlife monitoring, species identification, and ecological research.",
+  "description": "A collection of approximately 1.4 million motion-triggered camera trap images (with roughly 375,000 bounding box annotations) spanning about 675 wildlife species across 12 countries. The imagery was collected by the Wildlife Conservation Society and is distributed in COCO Camera Traps annotation format as part of the LILA (Labeled Information Library of Alexandria) camera trap data collection.",
+  "license": "CDLA-Permissive-1.0",
   "keywords": [
-    "camera-traps",
-    "wildlife",
-    "wildlife-monitoring",
     "biodiversity",
-    "species-detection",
-    "remote-sensing"
+    "conservation",
+    "camera-traps",
+    "wildlife-monitoring",
+    "species-classification",
+    "ecology"
   ],
-  "created_at": null,
-  "updated_at": null,
+  "providers": [
+    {
+      "name": "Wildlife Conservation Society (WCS)",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "LILA (Labeled Information Library of Alexandria)",
+      "roles": [
+        "processor",
+        "host"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/agentmorris/lila-wildlife-wcs-unzipped"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -180.0,
+          -90.0,
+          180.0,
+          90.0
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2005.05.23T17.52.31",
+          "2012-07-02T17:23:02"
+        ]
+      ]
+    }
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/agentmorris/lila-wildlife-wcs-unzipped/",
+      "type": "application/octet-stream",
+      "title": "Dataset files (1190505 x .jpg)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/agentmorris/lila-wildlife-wcs-unzipped/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/agentmorris/lila-wildlife-wcs-unzipped",
+      "title": "Source Cooperative product page"
+    }
+  ],
+  "data_mode": "open",
+  "total_bytes": 594638706291,
+  "object_count": 1190649,
+  "account_id": "agentmorris",
   "visibility": "public",
   "disabled": false,
-  "featured": 0,
-  "data_mode": "open",
+  "product_id": "lila-wildlife-wcs-unzipped",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -30,21 +98,24 @@
       "prefix": "agentmorris/lila-wildlife/wcs-unzipped/"
     }
   },
-  "object_count": 1190649,
-  "total_bytes": 594638706291,
+  "featured": 0,
   "exts": {
     "avi": 66,
     "tif": 1,
     "bmp": 74,
     "jpg": 1190508
   },
-  "store_format": null,
-  "_state": "seed",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "cataloged_at": "2026-06-04T23:59:16+00:00",
-  "readme": "# WCS Camera Traps\n\n### WCS Camera Traps\n\n#### S3 base\n\n`s3://us-west-2.opendata.source.coop/agentmorris/lila-wildlife/wcs-unzipped`\n\n#### Overview\n\nThis data set contains approximately 1.4M camera trap images representing around 675 species from 12 countries, making it one of the most diverse camera trap data sets available publicly. Data were provided by the [Wildlife Conservation Society](https://www.wcs.org/). The most common classes are tayassu pecari (peccary), meleagris ocellata (ocellated turkey), and bos taurus (cattle). A complete list of classes and associated image counts is available [here](https://storage.googleapis.com/public-datasets-lila/wcs/wcs_specieslist.csv). Approximately 50% of images are empty. We have also added approximately 375,000 bounding box annotations to approximately 300,000 of those images, which come from sequences covering almost all locations.\n\nSequences are inferred from timestamps, so may not strictly represent bursts. Images were labeled at a combination of image and sequence level, so \u2013 as is the case with most camera trap data sets \u2013 empty images may be labeled as non-empty (if an animal was present in one frame of a sequence but not in others). Images containing humans are referred to in metadata, but are not included in the data files.\n\n#### Contact information\n\nThis data set is released under the [Community Data License Agreement (permissive variant)](https://cdla.io/permissive-1-0/).\n\n#### Data format\n\nAnnotations are provided in the [COCO Camera Traps](https://github.com/agentmorris/MegaDetector/blob/main/megadetector/data_management/README.md#coco-camera-traps-format) .json format used for most data sets on lila.science.\n\nFor information about mapping this dataset's categories to a common taxonomy, see [this page](https://lila.science/taxonomy-mapping-for-camera-trap-data-sets/).\n\n#### Accessing the data\n\nClass-level annotations are available here:\n\n&nbsp;&nbsp;&nbsp;&nbsp;[wcs_camera_traps.json.zip](https://storage.googleapis.com/public-datasets-lila/wcs/wcs_camera_traps.json.zip)\n\nBounding box annotations are available here:\n\n&nbsp;&nbsp;&nbsp;&nbsp;[wcs_20220205_bboxes_with_classes.zip](https://storage.googleapis.com/public-datasets-lila/wcs/wcs_20220205_bboxes_with_classes.zip) (with the same classes as the class-level labels)\n\n&nbsp;&nbsp;&nbsp;&nbsp;[wcs_20220205_bboxes_no_classes.zip](https://storage.googleapis.com/public-datasets-lila/wcs/wcs_20220205_bboxes_no_classes.zip) (with just animal/person/vehicle labels)\n\nRecommended train/val/test splits are available here:\n\n&nbsp;&nbsp;&nbsp;&nbsp;[wcs_splits.json](https://storage.googleapis.com/public-datasets-lila/wcs/wcs_splits.json)\n\nImages are available in the following cloud storage folders:\n\n* gs://public-datasets-lila/wcs-unzipped (GCP)\n* s3://us-west-2.opendata.source.coop/agentmorris/lila-wildlife/wcs-unzipped (AWS)\n* https://lilawildlife.blob.core.windows.net/lila-wildlife/wcs-unzipped (Azure)\n\nWe recommend downloading images (the whole folder, or a subset of the folder) using [gsutil](https://cloud.google.com/storage/docs/gsutil) (for GCP), [aws s3](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/index.html) (for AWS), or [AzCopy](https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10) (for Azure). For more information about using gsutil, aws s3, or AzCopy, check out our [guidelines for accessing images without using giant zipfiles](http://lila.science/image-access).\n\nIf you prefer to download images via http, you can. For example, one image (with lots of birds) appears in the metadata as:\n\nanimals/0011/0009.jpg\n\nThis image can be downloaded directly from any of the following URLs (one for each cloud):\n\nhttps://storage.googleapis.com/public-datasets-lila/wcs-unzipped/animals/0011/0009.jpg\n\nhttp://us-west-2.opendata.source.coop.s3.amazonaws.com/agentmorris/lila-wildlife/wcs-unzipped/animals/0011/0009.jpg\n\nhttps://lilawildlife.blob.core.windows.net/lila-wildlife/wcs-unzipped/animals/0011/0009.jpg\n\nHaving trouble downloading? Check out our [FAQ](http://lila.science/faq#downloadtips).\n\n#### Other useful links\n\n[MegaDetector](https://github.com/agentmorris/MegaDetector/blob/main/megadetector.md) results for all camera trap datasets on LILA are available [here](https://lila.science/megadetector-results-for-camera-trap-datasets/).\n\nInformation about mapping camera trap datasets to a common taxonomy is available [here](https://lila.science/taxonomy-mapping-for-camera-trap-data-sets/).\n\n![](http://lila.science/wp-content/uploads/2019/06/wcs_thumbnail.jpg)\n\n",
-  "_decomposed_from": "agentmorris/lila-wildlife"
+  "created_at": null,
+  "updated_at": null,
+  "_decomposed_from": "agentmorris/lila-wildlife",
+  "readme": "## README.md\n# WCS Camera Traps\n\n### WCS Camera Traps\n\n#### S3 base\n\n`s3://us-west-2.opendata.source.coop/agentmorris/lila-wildlife/wcs-unzipped`\n\n#### Overview\n\nThis data set contains approximately 1.4M camera trap images representing around 675 species from 12 countries, making it one of the most diverse camera trap data sets available publicly. Data were provided by the [Wildlife Conservation Society](https://www.wcs.org/). The most common classes are tayassu pecari (peccary), meleagris ocellata (ocellated turkey), and bos taurus (cattle). A complete list of classes and associated image counts is available [here](https://storage.googleapis.com/public-datasets-lila/wcs/wcs_specieslist.csv). Approximately 50% of images are empty. We have also added approximately 375,000 bounding box annotations to approximately 300,000 of those images, which come from sequences covering almost all locations.\n\nSequences are inferred from timestamps, so may not strictly represent bursts. Images were labeled at a combination of image and sequence level, so \u2013 as is the case with most camera trap data sets \u2013 empty images may be labeled as non-empty (if an animal was present in one frame of a sequence but not in others). Images containing humans are referred to in metadata, but are not included in the data files.\n\n#### Contact information\n\nThis data set is released under the [Community Data License Agreement (permissive variant)](https://cdla.io/permissive-1-0/).\n\n#### Data format\n\nAnnotations are provided in the [COCO Camera Traps](https://github.com/agentmorris/MegaDetector/blob/main/megadetector/data_management/README.md#coco-camera-traps-format) .json format used for most data sets on lila.science.\n\nFor information about mapping this dataset's categories to a common taxonomy, see [this page](https://lila.science/taxonomy-mapping-for-camera-trap-data-sets/).\n\n#### Accessing the data\n\nClass-level annotations are available here:\n\n&nbsp;&nbsp;&nbsp;&nbsp;[wcs_camera_traps.json.zip](https://storage.googleapis.com/public-datasets-lila/wcs/wcs_camera_traps.json.zip)\n\nBounding box annotations are available here:\n\n&nbsp;&nbsp;&nbsp;&nbsp;[wcs_20220205_bboxes_with_classes.zip](https://storage.googleapis.com/public-datasets-lila/wcs/wcs_20220205_bboxes_with_classes.zip) (with the same classes as the class-level labels)\n\n&nbsp;&nbsp;&nbsp;&nbsp;[wcs_20220205_bboxes_no_classes.zip](https://storage.googleapis.com/public-datasets-lila/wcs/wcs_20220205_bboxes_no_classes.zip) (with just animal/person/vehicle labels)\n\nRecommended train/val/test splits are available here:\n\n&nbsp;&nbsp;&nbsp;&nbsp;[wcs_splits.json](https://storage.googleapis.com/public-datasets-lila/wcs/wcs_splits.json)\n\nImages are available in the following cloud storage folders:\n\n* gs://public-datasets-lila/wcs-unzipped (GCP)\n* s3://us-west-2.opendata.source.coop/agentmorris/lila-wildlife/wcs-unzipped (AWS)\n* https://lilawildlife.blob.core.windows.net/lila-wildlife/wcs-unzipped (Azure)\n\nWe recommend downloading images (the whole folder, or a subset of the folder) using [gsutil](https://cloud.google.com/storage/docs/gsutil) (for GCP), [aws s3](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/index.html) (for AWS), or [AzCopy](https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10) (for Azure). For more information about using gsutil, aws s3, or AzCopy, check out our [guidelines for accessing images without using giant zipfiles](http://lila.science/image-access).\n\nIf you prefer to download images via http, you can. For example, one image (with lots of birds) appears in the metadata as:\n\nanimals/0011/0009.jpg\n\nThis image can be downloaded directly from any of the following URLs (one for each cloud):\n\nhttps://storage.googleapis.com/public-datasets-lila/wcs-unzipped/animals/0011/0009.jpg\n\nhttp://us-west-2.opendata.source.coop.s3.amazonaws.com/agentmorris/lila-wildlife/wcs-unzipped/animals/0011/0009.jpg\n\nhttps://lilawildlife.blob.core.windows.net/lila-wildlife/wcs-unzipped/animals/0011/0009.jpg\n\nHaving trouble downloading? Check out our [FAQ](http://lila.science/faq#downloadtips).\n\n#### Other useful links\n\n[MegaDetector](https://github.com/agentmorris/MegaDetector/blob/main/megadetector.md) results for all camera trap datasets on LILA are available [here](https://lila.science/megadetector-results-for-camera-trap-datasets/).\n\nInformation about mapping camera trap datasets to a common taxonomy is available [here](https://lila.science/taxonomy-mapping-for-camera-trap-data-sets/).\n\n![](http://lila.science/wp-content/uploads/2019/06/wcs_thumbnail.jpg)\n\n",
+  "_review": [
+    "providers: role [processor, host] for 'LILA (Labeled Information Library of Alexandria)' is an AI guess \u2014 README states this dataset uses LILA's standard COCO Camera Traps annotation format and is one of the datasets hosted on lila.science, but doesn't explicitly describe LILA's processing role.. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-08-21T23:09:49+00:00"
 }
