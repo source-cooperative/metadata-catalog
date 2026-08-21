@@ -1,23 +1,86 @@
 {
   "schema_version": 1,
-  "account_id": "agentmorris",
-  "product_id": "lila-wildlife-california-small-animals",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "agentmorris/lila-wildlife-california-small-animals",
   "title": "California Small Animals",
-  "description": "A large image collection of small animals in California, comprising approximately 2.28 million photographs (JPG and PNG). The dataset likely documents wildlife or fauna species observed across California, though specific subjects, taxonomy, and collection methodology are not documented.",
+  "description": "A large-scale camera-trap image collection of 2,278,071 photographs of small mammals, reptiles, and amphibians across California, collected by the California Department of Fish and Wildlife to study the impacts of land use and climate change on wildlife populations. Images are labeled via the Wildlife Insights platform and provided with annotations in COCO Camera Traps format.",
+  "license": "CC-BY-4.0",
   "keywords": [
-    "california",
-    "small-animals",
+    "camera-traps",
     "wildlife",
-    "wildlife-photography",
-    "fauna",
-    "images"
+    "biodiversity",
+    "conservation",
+    "land-use",
+    "climate",
+    "machine-learning"
   ],
-  "created_at": null,
-  "updated_at": null,
-  "visibility": "public",
-  "disabled": false,
+  "providers": [
+    {
+      "name": "California Department of Fish and Wildlife",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "LILA (Labeled Information Library of Alexandria)",
+      "roles": [
+        "processor",
+        "host"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/agentmorris/lila-wildlife-california-small-animals"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -180.0,
+          -90.0,
+          180.0,
+          90.0
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2020-06-30T02:47:31",
+          "2023-04-03T15:14:17"
+        ]
+      ]
+    }
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/agentmorris/lila-wildlife-california-small-animals/",
+      "type": "application/octet-stream",
+      "title": "Dataset files (2277118 x .jpg)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/agentmorris/lila-wildlife-california-small-animals/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/agentmorris/lila-wildlife-california-small-animals",
+      "title": "Source Cooperative product page"
+    }
+  ],
   "featured": 0,
-  "data_mode": "open",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -30,20 +93,29 @@
       "prefix": "agentmorris/lila-wildlife/california-small-animals/"
     }
   },
-  "object_count": 2277449,
-  "total_bytes": 790546266336,
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "data_mode": "open",
+  "_decomposed_from": "agentmorris/lila-wildlife",
+  "visibility": "public",
   "exts": {
     "jpg": 2277119,
     "png": 329,
     "zip": 1
   },
-  "store_format": null,
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "cataloged_at": "2026-06-04T23:59:15+00:00",
-  "readme": "# California Small Animals\n\n### California Small Animals\n\n#### S3 base\n\n`s3://us-west-2.opendata.source.coop/agentmorris/lila-wildlife/california-small-animals`\n\n#### Overview\n\nThe dataset contains 2,278,071 images, collected by the California Department of Fish and Wildlife following a standardized [protocol](https://storymaps.arcgis.com/collections/a6a06b22b05f43cd863568b2690b08c1?item=1). These data were collected to better understand the potential impacts of land use and climate-related changes on wildlife populations in California. The images were collected from downward-facing, short-focus (factory modified to 40 cm) Reconyx cameras, which were deployed in combination with a drift fence. Image labeling was conducted using the [Wildlife Insights](https://wildlifeinsights.org) platform.\n\nTarget species include small mammals, reptiles, and amphibians. In general, images were identified to the taxonomic level possible based on the image alone (species distributions within California were not considered) following these recommendations for [mammals](https://experience.arcgis.com/experience/35f1057df2c746d2b6b888485201aa86/page/ID-Guides?views=Mammals) and for [amphibians and reptiles](https://experience.arcgis.com/experience/35f1057df2c746d2b6b888485201aa86/page/ID-Guides?views=Reptiles-%26-Amphibians). The most common categories are blank/misfire (1,320,489 images), mouse species (252,986 images), arvicolinae subfamily (124,342 images), and rodent (112,248 images).\n\n#### Citation, license, and contact information\n\nIf you use this dataset, please cite:\n\nCannabis and Sentinel Site Projects, California Department of Fish and Wildlife\n\nFor questions about this data set, contact [Lindsey Rich](mailto:lindsey.rich@wildlife.ca.gov).\n\nThis data set is released under the [CC-BY 4.0 license](https://creativecommons.org/licenses/by/4.0/deed.en).\n\n#### Data format\n\nAnnotations (including species tags and unique location identifiers) are provided in [COCO Camera Traps](https://lila.science/coco-camera-traps) format.\n\nFor information about mapping this dataset's categories to a common taxonomy, see [this page](https://lila.science/taxonomy-mapping-for-camera-trap-data-sets/).\n\n#### Downloading the data\n\nMetadata is available [here](https://lilawildlife.blob.core.windows.net/lila-wildlife/california-small-animals/california_small_animals_with_sequences.zip).\n\nImages are available in the following cloud storage folders:\n\n* gs://public-datasets-lila/california-small-animals (GCP)\n* s3://us-west-2.opendata.source.coop/agentmorris/lila-wildlife/california-small-animals (AWS)\n* https://lilawildlife.blob.core.windows.net/lila-wildlife/california-small-animals (Azure)\n\nWe recommend downloading images (the whole folder, or a subset of the folder) using [gsutil](https://cloud.google.com/storage/docs/gsutil) (for GCP), [aws s3](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/index.html) (for AWS), or [AzCopy](https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10) (for Azure). For more information about using gsutil, aws s3, or AzCopy, check out our [guidelines for accessing images without using giant zipfiles](http://lila.science/image-access).\n\nIf you prefer to download individual images via http, you can. For example, the thumbnail below appears in the metadata as:\n\n2002875_cemap-small-animals_exclude-identify/images/deployment/2238003/prod/directUpload/742e531e-cd87-4b6d-9ebf-88986ab3bcf0.JPG\n\nThis image can be downloaded directly from any of the following URLs (one for each cloud):\n\nhttps://storage.googleapis.com/public-datasets-lila/california-small-animals/2002875_cemap-small-animals_exclude-identify/images/deployment/2238003/prod/directUpload/742e531e-cd87-4b6d-9ebf-88986ab3bcf0.JPG\n\nhttp://us-west-2.opendata.source.coop.s3.amazonaws.com/agentmorris/lila-wildlife/california-small-animals/2002875_cemap-small-animals_exclude-identify/images/deployment/2238003/prod/directUpload/742e531e-cd87-4b6d-9ebf-88986ab3bcf0.JPG\n\nhttps://lilawildlife.blob.core.windows.net/lila-wildlife/california-small-animals/2002875_cemap-small-animals_exclude-identify/images/deployment/2238003/prod/directUpload/742e531e-cd87-4b6d-9ebf-88986ab3bcf0.JPG\n\nHaving trouble downloading? Check out our [FAQ](https://lila.science/faq#downloadtips).\n\n#### Other useful links\n\nInformation about mapping camera trap datasets to a common taxonomy is available [here](https://lila.science/taxonomy-mapping-for-camera-trap-data-sets/).\n\n![weasel in a camera trap image](http://lila.science/wp-content/uploads/2025/10/deployment_2238003_prod_directUpload_742e531e-cd87-4b6d-9ebf-88986ab3bcf0.jpg)\n\n",
-  "_decomposed_from": "agentmorris/lila-wildlife"
+  "created_at": null,
+  "disabled": false,
+  "account_id": "agentmorris",
+  "object_count": 2277449,
+  "product_id": "lila-wildlife-california-small-animals",
+  "total_bytes": 790546266336,
+  "updated_at": null,
+  "readme": "## README.md\n# California Small Animals\n\n### California Small Animals\n\n#### S3 base\n\n`s3://us-west-2.opendata.source.coop/agentmorris/lila-wildlife/california-small-animals`\n\n#### Overview\n\nThe dataset contains 2,278,071 images, collected by the California Department of Fish and Wildlife following a standardized [protocol](https://storymaps.arcgis.com/collections/a6a06b22b05f43cd863568b2690b08c1?item=1). These data were collected to better understand the potential impacts of land use and climate-related changes on wildlife populations in California. The images were collected from downward-facing, short-focus (factory modified to 40 cm) Reconyx cameras, which were deployed in combination with a drift fence. Image labeling was conducted using the [Wildlife Insights](https://wildlifeinsights.org) platform.\n\nTarget species include small mammals, reptiles, and amphibians. In general, images were identified to the taxonomic level possible based on the image alone (species distributions within California were not considered) following these recommendations for [mammals](https://experience.arcgis.com/experience/35f1057df2c746d2b6b888485201aa86/page/ID-Guides?views=Mammals) and for [amphibians and reptiles](https://experience.arcgis.com/experience/35f1057df2c746d2b6b888485201aa86/page/ID-Guides?views=Reptiles-%26-Amphibians). The most common categories are blank/misfire (1,320,489 images), mouse species (252,986 images), arvicolinae subfamily (124,342 images), and rodent (112,248 images).\n\n#### Citation, license, and contact information\n\nIf you use this dataset, please cite:\n\nCannabis and Sentinel Site Projects, California Department of Fish and Wildlife\n\nFor questions about this data set, contact [Lindsey Rich](mailto:lindsey.rich@wildlife.ca.gov).\n\nThis data set is released under the [CC-BY 4.0 license](https://creativecommons.org/licenses/by/4.0/deed.en).\n\n#### Data format\n\nAnnotations (including species tags and unique location identifiers) are provided in [COCO Camera Traps](https://lila.science/coco-camera-traps) format.\n\nFor information about mapping this dataset's categories to a common taxonomy, see [this page](https://lila.science/taxonomy-mapping-for-camera-trap-data-sets/).\n\n#### Downloading the data\n\nMetadata is available [here](https://lilawildlife.blob.core.windows.net/lila-wildlife/california-small-animals/california_small_animals_with_sequences.zip).\n\nImages are available in the following cloud storage folders:\n\n* gs://public-datasets-lila/california-small-animals (GCP)\n* s3://us-west-2.opendata.source.coop/agentmorris/lila-wildlife/california-small-animals (AWS)\n* https://lilawildlife.blob.core.windows.net/lila-wildlife/california-small-animals (Azure)\n\nWe recommend downloading images (the whole folder, or a subset of the folder) using [gsutil](https://cloud.google.com/storage/docs/gsutil) (for GCP), [aws s3](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/index.html) (for AWS), or [AzCopy](https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10) (for Azure). For more information about using gsutil, aws s3, or AzCopy, check out our [guidelines for accessing images without using giant zipfiles](http://lila.science/image-access).\n\nIf you prefer to download individual images via http, you can. For example, the thumbnail below appears in the metadata as:\n\n2002875_cemap-small-animals_exclude-identify/images/deployment/2238003/prod/directUpload/742e531e-cd87-4b6d-9ebf-88986ab3bcf0.JPG\n\nThis image can be downloaded directly from any of the following URLs (one for each cloud):\n\nhttps://storage.googleapis.com/public-datasets-lila/california-small-animals/2002875_cemap-small-animals_exclude-identify/images/deployment/2238003/prod/directUpload/742e531e-cd87-4b6d-9ebf-88986ab3bcf0.JPG\n\nhttp://us-west-2.opendata.source.coop.s3.amazonaws.com/agentmorris/lila-wildlife/california-small-animals/2002875_cemap-small-animals_exclude-identify/images/deployment/2238003/prod/directUpload/742e531e-cd87-4b6d-9ebf-88986ab3bcf0.JPG\n\nhttps://lilawildlife.blob.core.windows.net/lila-wildlife/california-small-animals/2002875_cemap-small-animals_exclude-identify/images/deployment/2238003/prod/directUpload/742e531e-cd87-4b6d-9ebf-88986ab3bcf0.JPG\n\nHaving trouble downloading? Check out our [FAQ](https://lila.science/faq#downloadtips).\n\n#### Other useful links\n\nInformation about mapping camera trap datasets to a common taxonomy is available [here](https://lila.science/taxonomy-mapping-for-camera-trap-data-sets/).\n\n![weasel in a camera trap image](http://lila.science/wp-content/uploads/2025/10/deployment_2238003_prod_directUpload_742e531e-cd87-4b6d-9ebf-88986ab3bcf0.jpg)\n\n",
+  "_review": [
+    "providers: role [processor, host] for 'LILA (Labeled Information Library of Alexandria)' is an AI guess \u2014 Curates the dataset into COCO Camera Traps format and mirrors it across GCS/Azure/AWS; role inferred from context, not explicitly stated.. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-08-21T23:12:02+00:00"
 }
