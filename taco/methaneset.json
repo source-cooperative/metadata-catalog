@@ -1,16 +1,793 @@
 {
   "schema_version": 1,
-  "account_id": "taco",
-  "product_id": "methaneset",
-  "title": "MethaneSet",
-  "description": "",
-  "keywords": [],
-  "created_at": "2026-02-21T14:24:36.691Z",
-  "updated_at": "2026-02-21T14:24:36.691Z",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
+  "id": "taco/methaneset",
+  "title": "MethanePlumeBank: Synthetic Methane Plume Bank from WRF-LES Simulations",
+  "description": "MethaneSET is a collection of resources for satellite-based methane plume detection: a synthetic plume bank of over one million \u0394XCH4 maps generated from WRF-LES atmospheric simulations, plus paired pretraining (plume-free) and fine-tuning (verified plume) image chip datasets from Sentinel-2 and Landsat 8/9. Each satellite sample includes target/reference image pairs, wind vectors, solar/viewing geometry, elevation, and AlphaEarth Foundation embeddings, intended for training and evaluating methane emission detection and segmentation models.",
+  "license": "CC-BY-4.0",
+  "keywords": [
+    "methane",
+    "plume-detection",
+    "synthetic-data",
+    "wrf-les",
+    "sentinel-2",
+    "landsat",
+    "emit",
+    "remote-sensing",
+    "earth-observation",
+    "data-augmentation",
+    "greenhouse-gas",
+    "foundation-model"
+  ],
+  "providers": [
+    {
+      "name": "Image and Signal Processing Group (ISP-UV)",
+      "roles": [
+        "producer"
+      ],
+      "url": null,
+      "links": null
+    },
+    {
+      "name": "LARS-UPV",
+      "roles": [
+        "producer"
+      ],
+      "url": null,
+      "links": null
+    },
+    {
+      "name": "Image and Signal Processing Group (ISP-UV)",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "LARS-UPV",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "UNEP IMEO",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/taco/methaneset"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -180.0,
+          -90.0,
+          180.0,
+          90.0
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2018-01-01T00:00:00Z",
+          "2024-12-31T17:27:23.051000Z"
+        ],
+        [
+          "2018-01-10T07:01:13.279000Z",
+          "2024-12-30T10:08:34.423000Z"
+        ],
+        [
+          "2018-01-05T10:02:52.340000Z",
+          "2024-12-31T17:27:23.051000Z"
+        ],
+        [
+          "2018-01-05T07:13:01Z",
+          "2024-12-29T17:17:31Z"
+        ],
+        [
+          "2018-01-01T10:04:09Z",
+          "2024-12-31T17:06:29Z"
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 1064548
+  },
+  "assets": {
+    "methaneset-bank": {
+      "href": "https://data.source.coop/taco/methaneset/methaneset-bank/",
+      "type": "application/octet-stream",
+      "title": "methaneset-bank",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "string"
+        },
+        {
+          "name": "type",
+          "type": "string"
+        },
+        {
+          "name": "methane:source_type",
+          "type": "string"
+        },
+        {
+          "name": "methane:wind_speed",
+          "type": "double|float"
+        },
+        {
+          "name": "methane:wind_dir",
+          "type": "int16|int64"
+        },
+        {
+          "name": "methane:plume_id",
+          "type": "int64|int8"
+        },
+        {
+          "name": "methane:snapshot",
+          "type": "int16|int64"
+        },
+        {
+          "name": "methane:sza",
+          "type": "int64|int8"
+        },
+        {
+          "name": "methane:saa",
+          "type": "int16|int64"
+        },
+        {
+          "name": "methane:q_ref",
+          "type": "float"
+        },
+        {
+          "name": "internal:current_id",
+          "type": "int64"
+        },
+        {
+          "name": "internal:parent_id",
+          "type": "int64"
+        },
+        {
+          "name": "methane:sim_type",
+          "type": "string"
+        },
+        {
+          "name": "methane:Q_ref",
+          "type": "double"
+        }
+      ],
+      "description": "9 files sampled for this table",
+      "bbox": [
+        -180.0,
+        -90.0,
+        180.0,
+        90.0
+      ],
+      "item_count": 1064548
+    },
+    "methaneset-l89-finetune": {
+      "href": "https://data.source.coop/taco/methaneset/methaneset-l89-finetune/",
+      "type": "application/octet-stream",
+      "title": "methaneset-l89-finetune",
+      "roles": [
+        "data"
+      ],
+      "description": "20 files sampled for this table",
+      "bbox": [
+        -103.9824558,
+        -50.7460462,
+        151.1042268,
+        45.5634372
+      ],
+      "item_count": 1548
+    },
+    "methaneset-l89-pretraining": {
+      "href": "https://data.source.coop/taco/methaneset/methaneset-l89-pretraining/",
+      "type": "application/octet-stream",
+      "title": "methaneset-l89-pretraining",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "string"
+        },
+        {
+          "name": "type",
+          "type": "string"
+        },
+        {
+          "name": "stac:crs",
+          "type": "string"
+        },
+        {
+          "name": "stac:tensor_shape",
+          "type": "list<item: int64>"
+        },
+        {
+          "name": "stac:geotransform",
+          "type": "list<item: double>"
+        },
+        {
+          "name": "stac:time_start",
+          "type": "timestamp[us]"
+        },
+        {
+          "name": "stac:centroid",
+          "type": "binary",
+          "description": "[latlon] Center point in EPSG:4326, stored as WKB"
+        },
+        {
+          "name": "stac:time_end",
+          "type": "timestamp[us]"
+        },
+        {
+          "name": "stac:time_middle",
+          "type": "timestamp[us]"
+        },
+        {
+          "name": "methane:wind_u",
+          "type": "float"
+        },
+        {
+          "name": "methane:wind_v",
+          "type": "float"
+        },
+        {
+          "name": "methane:wind_source",
+          "type": "string"
+        },
+        {
+          "name": "methane:isplume",
+          "type": "bool"
+        },
+        {
+          "name": "methane:ch4_fluxrate",
+          "type": "float"
+        },
+        {
+          "name": "methane:ch4_fluxrate_std",
+          "type": "float"
+        },
+        {
+          "name": "methane:offshore",
+          "type": "bool"
+        },
+        {
+          "name": "methane:sector",
+          "type": "string"
+        },
+        {
+          "name": "satellite:platform",
+          "type": "string"
+        },
+        {
+          "name": "satellite:tile",
+          "type": "string"
+        },
+        {
+          "name": "satellite:vza",
+          "type": "float"
+        },
+        {
+          "name": "satellite:sza",
+          "type": "float"
+        },
+        {
+          "name": "satellite:background_tile",
+          "type": "string"
+        },
+        {
+          "name": "site:location_name",
+          "type": "string"
+        },
+        {
+          "name": "site:country",
+          "type": "string",
+          "description": "[placename] Country where the site is located"
+        },
+        {
+          "name": "site:footprint",
+          "type": "binary",
+          "description": "[geometry] Image footprint as WKB geometry"
+        },
+        {
+          "name": "site:case_study",
+          "type": "string"
+        },
+        {
+          "name": "quality:percentage_clear",
+          "type": "float"
+        },
+        {
+          "name": "quality:observability",
+          "type": "string"
+        },
+        {
+          "name": "quality:notified",
+          "type": "bool"
+        },
+        {
+          "name": "quality:last_update",
+          "type": "string"
+        },
+        {
+          "name": "split",
+          "type": "string"
+        },
+        {
+          "name": "majortom:code",
+          "type": "string",
+          "description": "[spatial_index] MajorTOM spherical grid cell identifier"
+        },
+        {
+          "name": "geoenrich:elevation",
+          "type": "float"
+        },
+        {
+          "name": "geoenrich:temperature",
+          "type": "float"
+        },
+        {
+          "name": "geoenrich:population",
+          "type": "float"
+        },
+        {
+          "name": "geoenrich:admin_countries",
+          "type": "string",
+          "description": "[placename] Country name at centroid location"
+        },
+        {
+          "name": "geoenrich:admin_states",
+          "type": "string",
+          "description": "[placename] State/province name at centroid location"
+        },
+        {
+          "name": "geoenrich:admin_districts",
+          "type": "string",
+          "description": "[placename] District/county name at centroid location"
+        },
+        {
+          "name": "internal:current_id",
+          "type": "int64"
+        },
+        {
+          "name": "internal:parent_id",
+          "type": "int64"
+        }
+      ],
+      "description": "20 files sampled for this table",
+      "bbox": [
+        -121.9052769,
+        -50.7463221,
+        151.4190357,
+        50.38554
+      ],
+      "item_count": 14870
+    },
+    "methaneset-s2-finetune": {
+      "href": "https://data.source.coop/taco/methaneset/methaneset-s2-finetune/",
+      "type": "application/octet-stream",
+      "title": "methaneset-s2-finetune",
+      "roles": [
+        "data"
+      ],
+      "description": "20 files sampled for this table",
+      "bbox": [
+        -103.9822973,
+        -36.3654808,
+        116.5220752,
+        49.9680701
+      ],
+      "item_count": 3454
+    },
+    "methaneset-s2-pretraining": {
+      "href": "https://data.source.coop/taco/methaneset/methaneset-s2-pretraining/",
+      "type": "application/octet-stream",
+      "title": "methaneset-s2-pretraining",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "string"
+        },
+        {
+          "name": "type",
+          "type": "string"
+        },
+        {
+          "name": "stac:crs",
+          "type": "string"
+        },
+        {
+          "name": "stac:tensor_shape",
+          "type": "list<item: int64>"
+        },
+        {
+          "name": "stac:geotransform",
+          "type": "list<item: double>"
+        },
+        {
+          "name": "stac:time_start",
+          "type": "timestamp[us]"
+        },
+        {
+          "name": "stac:centroid",
+          "type": "binary",
+          "description": "[latlon] Center point in EPSG:4326, stored as WKB"
+        },
+        {
+          "name": "stac:time_end",
+          "type": "timestamp[us]"
+        },
+        {
+          "name": "stac:time_middle",
+          "type": "timestamp[us]"
+        },
+        {
+          "name": "methane:wind_u",
+          "type": "float"
+        },
+        {
+          "name": "methane:wind_v",
+          "type": "float"
+        },
+        {
+          "name": "methane:wind_source",
+          "type": "string"
+        },
+        {
+          "name": "methane:isplume",
+          "type": "bool"
+        },
+        {
+          "name": "methane:ch4_fluxrate",
+          "type": "float"
+        },
+        {
+          "name": "methane:ch4_fluxrate_std",
+          "type": "float"
+        },
+        {
+          "name": "methane:offshore",
+          "type": "bool"
+        },
+        {
+          "name": "methane:sector",
+          "type": "string"
+        },
+        {
+          "name": "satellite:platform",
+          "type": "string"
+        },
+        {
+          "name": "satellite:tile",
+          "type": "string"
+        },
+        {
+          "name": "satellite:vza",
+          "type": "float"
+        },
+        {
+          "name": "satellite:sza",
+          "type": "float"
+        },
+        {
+          "name": "satellite:background_tile",
+          "type": "string"
+        },
+        {
+          "name": "site:location_name",
+          "type": "string"
+        },
+        {
+          "name": "site:country",
+          "type": "string",
+          "description": "[placename] Country where the site is located"
+        },
+        {
+          "name": "site:footprint",
+          "type": "binary",
+          "description": "[geometry] Image footprint as WKB geometry"
+        },
+        {
+          "name": "site:case_study",
+          "type": "string"
+        },
+        {
+          "name": "quality:percentage_clear",
+          "type": "float"
+        },
+        {
+          "name": "quality:observability",
+          "type": "string"
+        },
+        {
+          "name": "quality:notified",
+          "type": "bool"
+        },
+        {
+          "name": "quality:last_update",
+          "type": "string"
+        },
+        {
+          "name": "split",
+          "type": "string"
+        },
+        {
+          "name": "majortom:code",
+          "type": "string",
+          "description": "[spatial_index] MajorTOM spherical grid cell identifier"
+        },
+        {
+          "name": "geoenrich:elevation",
+          "type": "float"
+        },
+        {
+          "name": "geoenrich:temperature",
+          "type": "float"
+        },
+        {
+          "name": "geoenrich:population",
+          "type": "float"
+        },
+        {
+          "name": "geoenrich:admin_countries",
+          "type": "string",
+          "description": "[placename] Country name at centroid location"
+        },
+        {
+          "name": "geoenrich:admin_states",
+          "type": "string",
+          "description": "[placename] State/province name at centroid location"
+        },
+        {
+          "name": "geoenrich:admin_districts",
+          "type": "string",
+          "description": "[placename] District/county name at centroid location"
+        },
+        {
+          "name": "internal:current_id",
+          "type": "int64"
+        },
+        {
+          "name": "internal:parent_id",
+          "type": "int64"
+        }
+      ],
+      "description": "20 files sampled for this table",
+      "bbox": [
+        -121.9053346,
+        -50.7462076,
+        151.4189829,
+        51.5823201
+      ],
+      "item_count": 40304
+    }
+  },
+  "table:columns": [
+    {
+      "name": "id",
+      "type": "string"
+    },
+    {
+      "name": "type",
+      "type": "string"
+    },
+    {
+      "name": "stac:crs",
+      "type": "string"
+    },
+    {
+      "name": "stac:tensor_shape",
+      "type": "list<item: int64>"
+    },
+    {
+      "name": "stac:geotransform",
+      "type": "list<item: double>"
+    },
+    {
+      "name": "stac:time_start",
+      "type": "timestamp[us]"
+    },
+    {
+      "name": "stac:centroid",
+      "type": "binary",
+      "description": "[latlon] Center point in EPSG:4326, stored as WKB"
+    },
+    {
+      "name": "stac:time_end",
+      "type": "timestamp[us]"
+    },
+    {
+      "name": "stac:time_middle",
+      "type": "timestamp[us]"
+    },
+    {
+      "name": "methane:wind_u",
+      "type": "float"
+    },
+    {
+      "name": "methane:wind_v",
+      "type": "float"
+    },
+    {
+      "name": "methane:wind_source",
+      "type": "string"
+    },
+    {
+      "name": "methane:isplume",
+      "type": "bool"
+    },
+    {
+      "name": "methane:ch4_fluxrate",
+      "type": "float"
+    },
+    {
+      "name": "methane:ch4_fluxrate_std",
+      "type": "float"
+    },
+    {
+      "name": "methane:offshore",
+      "type": "bool"
+    },
+    {
+      "name": "methane:sector",
+      "type": "string"
+    },
+    {
+      "name": "plume:geometry",
+      "type": "binary",
+      "description": "[geometry] Plume extent as WKB geometry"
+    },
+    {
+      "name": "satellite:platform",
+      "type": "string"
+    },
+    {
+      "name": "satellite:tile",
+      "type": "string"
+    },
+    {
+      "name": "satellite:vza",
+      "type": "float"
+    },
+    {
+      "name": "satellite:sza",
+      "type": "float"
+    },
+    {
+      "name": "satellite:background_tile",
+      "type": "string"
+    },
+    {
+      "name": "site:location_name",
+      "type": "string"
+    },
+    {
+      "name": "site:country",
+      "type": "string",
+      "description": "[placename] Country where the site is located"
+    },
+    {
+      "name": "site:footprint",
+      "type": "binary",
+      "description": "[geometry] Image footprint as WKB geometry"
+    },
+    {
+      "name": "site:case_study",
+      "type": "string"
+    },
+    {
+      "name": "quality:percentage_clear",
+      "type": "float"
+    },
+    {
+      "name": "quality:observability",
+      "type": "string"
+    },
+    {
+      "name": "quality:notified",
+      "type": "bool"
+    },
+    {
+      "name": "quality:last_update",
+      "type": "string"
+    },
+    {
+      "name": "split",
+      "type": "string"
+    },
+    {
+      "name": "majortom:code",
+      "type": "string",
+      "description": "[spatial_index] MajorTOM spherical grid cell identifier"
+    },
+    {
+      "name": "geoenrich:elevation",
+      "type": "float"
+    },
+    {
+      "name": "geoenrich:temperature",
+      "type": "float"
+    },
+    {
+      "name": "geoenrich:population",
+      "type": "float"
+    },
+    {
+      "name": "geoenrich:admin_countries",
+      "type": "string",
+      "description": "[placename] Country name at centroid location"
+    },
+    {
+      "name": "geoenrich:admin_states",
+      "type": "string",
+      "description": "[placename] State/province name at centroid location"
+    },
+    {
+      "name": "geoenrich:admin_districts",
+      "type": "string",
+      "description": "[placename] District/county name at centroid location"
+    },
+    {
+      "name": "internal:current_id",
+      "type": "int64"
+    },
+    {
+      "name": "internal:parent_id",
+      "type": "int64"
+    }
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/taco/methaneset/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/taco/methaneset",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "rel": "cite-as",
+      "href": "https://doi.org/10.5281/zenodo.18161182"
+    }
+  ],
+  "_citation": "Gorro\u00f1o, J., Pei, Z., & Guanter, L. (2025). Benchmark simulations for methane emissions validation and sensitivity studies. Zenodo.",
+  "exts": {
+    "metadata": 149,
+    "lock": 149,
+    "tacozip": 125,
+    "parquet": 9,
+    "json": 6,
+    "md": 5,
+    "html": 5,
+    "gitignore": 1,
+    "safetensors": 1
+  },
+  "object_count": 450,
   "visibility": "public",
   "disabled": false,
-  "featured": 0,
-  "data_mode": "open",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -23,36 +800,26 @@
       "prefix": "taco/methaneset/"
     }
   },
-  "object_count": 450,
+  "created_at": "2026-02-21T14:24:36.691Z",
   "total_bytes": 325038977904,
-  "exts": {
-    "lock": 149,
-    "metadata": 149,
-    "tacozip": 125,
-    "parquet": 9,
-    "json": 6,
-    "md": 5,
-    "html": 5,
-    "gitignore": 1,
-    "safetensors": 1
-  },
-  "_state": "seed",
+  "updated_at": "2026-02-21T14:24:36.691Z",
+  "product_id": "methaneset",
+  "featured": 0,
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "id": "taco/methaneset",
-  "cataloged_at": "2026-06-30T23:44:30+00:00",
-  "ext_bytes": {
-    "tacozip": 324939840778,
-    "parquet": 95624439,
-    "html": 3271625,
-    "json": 182469,
-    "md": 39542,
-    "metadata": 15422,
-    "safetensors": 3628,
-    "gitignore": 1,
-    "lock": 0
-  },
+  "account_id": "taco",
+  "data_mode": "open",
+  "readme": "## methaneset-bank__README.md\n\n# MethanePlumeBank: Synthetic Methane Plume Bank from WRF-LES Simulations\n\nSynthetic methane plume bank generated from WRF-LES 4.7.0 atmospheric simulations (Gorro\u00f1o et al., Zenodo doi:10.5281/zenodo.18161182). Contains 1,064,448 \u0394XCH4 maps [mol/mol] at 20m resolution spanning 11 wind speeds, 12 wind directions, 9 multisource and 5 areasource plume geometries, 3 temporal snapshots, 8 Solar Zenith Angles, and 24 Solar Azimuth Angles. All plumes are normalized to a reference emission rate of 3000 kg/h and scale linearly. Intended for synthetic data augmentation in satellite-based methane plume detection models.\n## Dataset Information\n\n**Version**: 2.0.0\n\n**License**: CC-BY-4.0\n\n**Keywords**: methane, plume-detection, synthetic-data, WRF-LES, Sentinel-2, Landsat, EMIT, remote-sensing, earth-observation, data-augmentation, greenhouse-gas\n\n**Tasks**: regression, segmentation\n\n## Dataset Overview\n\n**Partitions**: 8 files\n**Spatial coverage**: [-180.00, -90.00, 180.00, 90.00] (WGS84)\n\n## Dataset Structure (Root-Sibling Uniform Tree)\n\n**Root**: FILE (1,064,448 samples)\n\n\n## Metadata Fields\n\n### LEVEL0\n\n| Field | Type | Description |\n|-------|------|-------------|\n| `id` | `string` | Unique sample identifier within parent scope. Must be unique among siblings. |\n| `type` | `string` | Sample type discriminator (FILE or FOLDER). |\n| `methane:source_type` | `string` | Simulation type: &#39;multi&#39; (point sources) or &#39;area&#39; (distributed) |\n| `methane:wind_speed` | `float` | Geostrophic wind speed [m/s] |\n| `methane:wind_dir` | `int16` | Wind direction [degrees, 0=North] |\n| `methane:plume_id` | `int8` | Plume identifier (multi: 1-9, area: 1-5) |\n| `methane:snapshot` | `int16` | WRF-LES snapshot index (70, 90, or 110) |\n| `methane:sza` | `int8` | Solar Zenith Angle [degrees] |\n| `methane:saa` | `int16` | Solar Azimuth Angle [degrees, 0=North] |\n| `methane:q_ref` | `float` | Reference emission rate [kg/h] \u2014 scale linearly for other rates |\n| `internal:current_id` | `int64` | Current sample position at this level (0-indexed). Enables O(1) random access and relational JOINs (ZIP, FOLDER, TACOCAT). |\n| `internal:parent_id` | `int64` | Foreign key referencing parent sample position in previous level (ZIP, FOLDER, TACOCAT). |\n\n\n## Usage\n\n### Python\n\n```python\n# pip install tacoreader\nimport tacoreader\n\nds = tacoreader.load(\"methane-plume-bank.tacozip\")\nprint(f\"ID: {ds.id}\")\nprint(f\"Version: {ds.version}\")\nprint(f\"Samples: {len(ds.data)}\")\n```\n\n### R\n\n```r\n# Coming soon: R support is planned but not yet available\n# install.packages(\"tacoreader\")\nlibrary(tacoreader)\n\nds <- load_taco(\"methane-plume-bank.tacozip\")\ncat(sprintf(\"ID: %s\\n\", ds$id))\ncat(sprintf(\"Version: %s\\n\", ds$version))\ncat(sprintf(\"Samples: %d\\n\", nrow(ds$data)))\n```\n\n### Julia\n\n```julia\n# Coming soon: Julia support is planned but not yet available\n# using Pkg; Pkg.add(\"TacoReader\")\nusing TacoReader\n\nds = load_taco(\"methane-plume-bank.tacozip\")\nprintln(\"ID: \", ds.id)\nprintln(\"Version: \", ds.version)\nprintln(\"Samples: \", size(ds.data, 1))\n```\n\n## Data Providers\n\n**Image and Signal Processing Group (ISP-UV)** \u2014 *producer*\n\n**LARS-UPV** \u2014 *producer*\n\n\n## Dataset Curators\n\n| Name | Organization | Email |\n|------|--------------|-------|\n| Cesar Aybar | Image and Signal Processing Group, University of Valencia | csaybar@uv.es |\n\n## Publications & Citations\n\nIf you use this dataset in your research, please cite:\n\n\n**DOI**: 10.5281/zenodo.18161182\n\nGorro\u00f1o, J., Pei, Z., &amp; Guanter, L. (2025). Benchmark simulations for methane emissions validation and sensitivity studies. Zenodo.\n\n*Source WRF-LES simulations used to generate the plume bank.*\n\n---\n\n**DOI**: 10.5194/egusphere-2025-4924\n\nGorro\u00f1o, J., et al. (2025). Considering the observation and illumination angular configuration for improved methane detection. EGUsphere.\n\n*Describes the parallax correction methodology applied during projection.*\n\n---\n\n### BibTeX\n\n```bibtex\n@dataset{methane-plume-bank2,\n  title = {MethanePlumeBank: Synthetic Methane Plume Bank from WRF-LES Simulations},\n  author = {Cesar Aybar},\n  year = {2024},\n  version = {2.0.0},\n  publisher = {Image and Signal Processing Group, University of Valencia}\n}\n```\n\n---\n\nGenerated with \u2764\ufe0f using [TacoToolbox](https://github.com/tacotoolbox/tacotoolbox) v0.26.5\n\n## methaneset-l89-finetune__README.md\n\n# MethaneSET-L89 Finetune: Verified Methane Plume Events for Supervised Learning\n\nmethaneset-l89-finetune is the verified plume subset of MethaneSET-L89, designed for supervised fine-tuning of methane detection and segmentation models. This subset contains Landsat 8/9 imagery with manually verified methane plumes, binary segmentation masks, and methane enhancement maps (\u0394XCH\u2084 in ppb). Unlike MARS-S2L which provides only six common bands, MethaneSET retrieves all 9 Landsat OLI bands at 10m GSD (200x200 pixel chips), enabling research with coastal aerosol, cirrus, and panchromatic channels. Each sample includes target and reference image pairs, plume segmentation masks, CH4 enhancement images, Cloud Score+ masks, wind vectors (ERA5-Land onshore, GEOS-FP offshore), solar/viewing geometry, emission rates with uncertainties, elevation (Copernicus DEM GLO-30), and 64-dim AlphaEarth Foundation embeddings.\n## Dataset Information\n\n**Version**: 1.0.0\n\n**License**: CC-BY-4.0\n\n**Keywords**: methane, finetune, supervised, segmentation, plume-detection, remote-sensing, Landsat-8, Landsat-9, OLI, earth-observation, deep-learning\n\n**Tasks**: segmentation, classification, detection\n\n## Dataset Overview\n\n**Partitions**: 20 files\n**Spatial coverage**: [-103.98, -50.75, 151.10, 45.56] (WGS84)\n**Temporal coverage**: 2018-01-10 to 2024-12-30\n\n## Dataset Structure (Root-Sibling Uniform Tree)\n\n**Root**: FOLDER (1,548 samples)\n\n**Hierarchy**:\n\n- Level 1: FILE \u2192 FILE \u2192 FILE \u2192 FILE \u2192 FILE \u2192 FILE (9,288 samples)\n\n## Metadata Fields\n\n### LEVEL0\n\n| Field | Type | Description |\n|-------|------|-------------|\n| `id` | `string` | Unique sample identifier within parent scope. Must be unique among siblings. |\n| `type` | `string` | Sample type discriminator (FILE or FOLDER). |\n| `stac:crs` | `string` | Coordinate reference system (WKT2, EPSG, or PROJ) |\n| `stac:tensor_shape` | `list&lt;item: int64&gt;` | Raster dimensions [bands, height, width] |\n| `stac:geotransform` | `list&lt;item: double&gt;` | GDAL affine transform |\n| `stac:time_start` | `timestamp[us]` | Start timestamp (\u03bcs since Unix epoch, UTC) |\n| `stac:centroid` | `binary` | Center point in EPSG:4326 (WKB) |\n| `stac:time_end` | `timestamp[us]` | End timestamp (\u03bcs since Unix epoch, UTC) |\n| `stac:time_middle` | `timestamp[us]` | Middle timestamp (\u03bcs since Unix epoch, UTC) |\n| `methane:wind_u` | `float` | U component of wind at 10m (m/s) |\n| `methane:wind_v` | `float` | V component of wind at 10m (m/s) |\n| `methane:wind_source` | `string` | Wind data source (e.g. ERA5-Land, GEOS-FP) |\n| `methane:isplume` | `bool` | Whether a methane plume is present |\n| `methane:ch4_fluxrate` | `float` | Methane flux rate (kg/h) |\n| `methane:ch4_fluxrate_std` | `float` | Standard deviation of flux rate |\n| `methane:offshore` | `bool` | Whether location is offshore |\n| `methane:sector` | `string` | Observation sector |\n| `plume:geometry` | `binary` | Plume extent as WKB geometry |\n| `satellite:platform` | `string` | Satellite platform (LC08, LC09) |\n| `satellite:tile` | `string` | Landsat product identifier |\n| `satellite:vza` | `float` | Viewing zenith angle (degrees) |\n| `satellite:sza` | `float` | Solar zenith angle (degrees) |\n| `satellite:background_tile` | `string` | Reference image product identifier |\n| `site:location_name` | `string` | Location code identifier |\n| `site:country` | `string` | Country where the site is located |\n| `site:footprint` | `binary` | Image footprint as WKB geometry |\n| `site:case_study` | `string` | Case study area name |\n| `quality:percentage_clear` | `float` | Percentage of clear pixels according to CloudSEN12 (0-100) |\n| `quality:observability` | `string` | Image quality classification (clear, cloudy, bad_retrieval, etc.) |\n| `quality:notified` | `bool` | Whether observation has been notified |\n| `quality:last_update` | `string` | Last registry modification timestamp (ISO format) |\n| `split` | `string` | Dataset partition identifier (train, test, or validation) |\n| `majortom:code` | `string` | MajorTOM spherical grid cell identifier (e.g., 0100km_0003U_0005R) with ~dist_km spacing |\n| `geoenrich:elevation` | `float` | Mean elevation in meters (GLO-30 DEM) |\n| `geoenrich:temperature` | `float` | Mean annual temperature in \u00b0C estimated from MODIS LST data |\n| `geoenrich:population` | `float` | Population density from HRSL. Facebook High Resolution Settlement Layer |\n| `geoenrich:admin_countries` | `string` | Country name at centroid location |\n| `geoenrich:admin_states` | `string` | State/province name at centroid location |\n| `geoenrich:admin_districts` | `string` | District/county name at centroid location |\n| `internal:current_id` | `int64` | Current sample position at this level (0-indexed). Enables O(1) random access and relational JOINs (ZIP, FOLDER, TACOCAT). |\n| `internal:parent_id` | `int64` | Foreign key referencing parent sample position in previous level (ZIP, FOLDER, TACOCAT). |\n\n### LEVEL1\n\n| Field | Type | Description |\n|-------|------|-------------|\n| `id` | `string` | Unique sample identifier within parent scope. Must be unique among siblings. |\n| `type` | `string` | Sample type discriminator (FILE or FOLDER). |\n| `geotiff:stats` | `list&lt;item: list&lt;item: float&gt;&gt;` | Per-band statistics (List[List[Float32]]): categorical mode returns class probabilities, continuous mode returns [min, max, mean, std, valid%, p25, p50, p75, p95] |\n| `taco:header` | `binary` | Binary TACOTIFF header (35 bytes + tile counts) for fast reading without IFD parsing |\n| `internal:current_id` | `int64` | Current sample position at this level (0-indexed). Enables O(1) random access and relational JOINs (ZIP, FOLDER, TACOCAT). |\n| `internal:parent_id` | `int64` | Foreign key referencing parent sample position in previous level (ZIP, FOLDER, TACOCAT). |\n| `internal:relative_path` | `string` | Relative path from DATA/ directory. Format: {parent_path}/{id} or {id} for level0 (ZIP, FOLDER, TACOCAT). |\n\n\n## Usage\n\n### Python\n\n```python\n# pip install tacoreader\nimport tacoreader\n\nds = tacoreader.load(\"methaneset-l89-finetune.tacozip\")\nprint(f\"ID: {ds.id}\")\nprint(f\"Version: {ds.version}\")\nprint(f\"Samples: {len(ds.data)}\")\n```\n\n### R\n\n```r\n# Coming soon: R support is planned but not yet available\n# install.packages(\"tacoreader\")\nlibrary(tacoreader)\n\nds <- load_taco(\"methaneset-l89-finetune.tacozip\")\ncat(sprintf(\"ID: %s\\n\", ds$id))\ncat(sprintf(\"Version: %s\\n\", ds$version))\ncat(sprintf(\"Samples: %d\\n\", nrow(ds$data)))\n```\n\n### Julia\n\n```julia\n# Coming soon: Julia support is planned but not yet available\n# using Pkg; Pkg.add(\"TacoReader\")\nusing TacoReader\n\nds = load_taco(\"methaneset-l89-finetune.tacozip\")\nprintln(\"ID: \", ds.id)\nprintln(\"Version: \", ds.version)\nprintln(\"Samples: \", size(ds.data, 1))\n```\n\n## Data Providers\n\n**UNEP IMEO** \u2014 *producer*\n\n**Source Cooperative** \u2014 *host*\n\n\n## Dataset Curators\n\n| Name | Organization | Email |\n|------|--------------|-------|\n| Cesar Aybar | Universitat de Val\u00e8ncia, Image and Signal Processing (ISP) Group | cesar.aybar@uv.es |\n\n## Publications & Citations\n\nIf you use this dataset in your research, please cite:\n\n\n**DOI**: 10.48550/arXiv.2411.15452\n\nVaughan, A.*, Mateo-Garcia, G.*, Irakulis-Loitxate, I., Watine, M., Fernandez-Poblaciones, P., Turner, R. E., Requeima, J., Gorro\u00f1o, J., Randles, C., Caltagirone, M., &amp; Cifarelli, C.* (2024). AI for operational methane emitter monitoring from space. arXiv preprint arXiv:2411.15452.\n\n*Operational MARS-S2L system for global methane monitoring from Sentinel-2 and Landsat 8/9.*\n\n---\n\n**DOI**: 10.48550/arXiv.2511.21777\n\nVaughan, A.*, Mateo-Garcia, G.*, Irakulis-Loitxate, I., Watine, M., Fernandez-Poblaciones, P., Turner, R. E., Requeima, J., Gorro\u00f1o, J., Randles, C., Caltagirone, M., &amp; Cifarelli, C.* (2024). Artificial intelligence for methane detection: from continuous monitoring to verified mitigation. arXiv preprint arXiv:2511.21777.\n\n*Extended operational deployment demonstrating 1,015 stakeholder notifications across 20 countries and verified permanent mitigation of six persistent emitters.*\n\n---\n\n**DOI**: 10.5194/essd-13-4349-2021\n\nMu\u00f1oz-Sabater, J., et al. (2021). ERA5-Land: a state-of-the-art global reanalysis. Earth System Science Data, 13, 4349-4383.\n\n---\n\n**DOI**: 10.1029/2014JD022685\n\nLucchesi, R. (2013). GEOS-5 FP (Forward Processing) File Specification. NASA GMAO Technical Report.\n\n---\n\n### BibTeX\n\n```bibtex\n@dataset{methaneset-l89-finetune1,\n  title = {MethaneSET-L89 Finetune: Verified Methane Plume Events for Supervised Learning},\n  author = {Cesar Aybar},\n  year = {2018},\n  version = {1.0.0},\n  publisher = {Universitat de Val\u00e8ncia, Image and Signal Processing (ISP) Group}\n}\n```\n\n---\n\nGenerated with \u2764\ufe0f using [TacoToolbox](https://github.com/tacotoolbox/tacotoolbox) v0.26.5\n\n## methaneset-l89-pretraining__README.md\n\n# MethaneSET-L89 Pretraining: Plume-Free Landsat 8/9 Scenes for Self-Supervised Learning\n\nmethaneset-l89-pretraining is the plume-free subset of MethaneSET-L89, designed for self-supervised pretraining of methane detection models. This subset contains Landsat 8/9 imagery from locations and time periods where no methane plumes were detected, providing clean background scenes for learning spectral representations of oil/gas infrastructure, geological features, and atmospheric conditions without methane signatures. Unlike MARS-S2L which provides only six common bands, MethaneSET retrieves all 9 Landsat OLI bands at 10m GSD (200x200 pixel chips), enabling research with coastal aerosol, cirrus, and panchromatic channels. Each sample includes target and reference image pairs, Cloud Score+ masks, wind vectors (ERA5-Land onshore, GEOS-FP offshore), solar/viewing geometry, elevation (Copernicus DEM GLO-30), and 64-dim AlphaEarth Foundation embeddings.\n## Dataset Information\n\n**Version**: 1.0.0\n\n**License**: CC-BY-4.0\n\n**Keywords**: methane, pretraining, self-supervised, remote-sensing, Landsat-8, Landsat-9, OLI, foundation-model, representation-learning, earth-observation, deep-learning\n\n**Tasks**: regression, classification, segmentation\n\n## Dataset Overview\n\n**Partitions**: 37 files\n**Spatial coverage**: [-121.91, -50.75, 151.42, 51.35] (WGS84)\n**Temporal coverage**: 2018-01-05 to 2024-12-31\n\n## Dataset Structure (Root-Sibling Uniform Tree)\n\n**Root**: FOLDER (21,926 samples)\n\n**Hierarchy**:\n\n- Level 1: FILE \u2192 FILE \u2192 FILE \u2192 FILE (87,704 samples)\n\n## Metadata Fields\n\n### LEVEL0\n\n| Field | Type | Description |\n|-------|------|-------------|\n| `id` | `string` | Unique sample identifier within parent scope. Must be unique among siblings. |\n| `type` | `string` | Sample type discriminator (FILE or FOLDER). |\n| `stac:crs` | `string` | Coordinate reference system (WKT2, EPSG, or PROJ) |\n| `stac:tensor_shape` | `list&lt;item: int64&gt;` | Raster dimensions [bands, height, width] |\n| `stac:geotransform` | `list&lt;item: double&gt;` | GDAL affine transform |\n| `stac:time_start` | `timestamp[us]` | Start timestamp (\u03bcs since Unix epoch, UTC) |\n| `stac:centroid` | `binary` | Center point in EPSG:4326 (WKB) |\n| `stac:time_end` | `timestamp[us]` | End timestamp (\u03bcs since Unix epoch, UTC) |\n| `stac:time_middle` | `timestamp[us]` | Middle timestamp (\u03bcs since Unix epoch, UTC) |\n| `methane:wind_u` | `float` | U component of wind at 10m (m/s) |\n| `methane:wind_v` | `float` | V component of wind at 10m (m/s) |\n| `methane:wind_source` | `string` | Wind data source (e.g. ERA5-Land, GEOS-FP) |\n| `methane:isplume` | `bool` | Whether a methane plume is present |\n| `methane:ch4_fluxrate` | `float` | Methane flux rate (kg/h) |\n| `methane:ch4_fluxrate_std` | `float` | Standard deviation of flux rate |\n| `methane:offshore` | `bool` | Whether location is offshore |\n| `methane:sector` | `string` | Observation sector |\n| `satellite:platform` | `string` | Satellite platform (LC08, LC09) |\n| `satellite:tile` | `string` | Landsat product identifier |\n| `satellite:vza` | `float` | Viewing zenith angle (degrees) |\n| `satellite:sza` | `float` | Solar zenith angle (degrees) |\n| `satellite:background_tile` | `string` | Reference image product identifier |\n| `site:location_name` | `string` | Location code identifier |\n| `site:country` | `string` | Country where the site is located |\n| `site:footprint` | `binary` | Image footprint as WKB geometry |\n| `site:case_study` | `string` | Case study area name |\n| `quality:percentage_clear` | `float` | Percentage of clear pixels according to CloudSEN12 (0-100) |\n| `quality:observability` | `string` | Image quality classification (clear, cloudy, bad_retrieval, etc.) |\n| `quality:notified` | `bool` | Whether observation has been notified |\n| `quality:last_update` | `string` | Last registry modification timestamp (ISO format) |\n| `split` | `string` | Dataset partition identifier (train, test, or validation) |\n| `majortom:code` | `string` | MajorTOM spherical grid cell identifier (e.g., 0100km_0003U_0005R) with ~dist_km spacing |\n| `geoenrich:elevation` | `float` | Mean elevation in meters (GLO-30 DEM) |\n| `geoenrich:temperature` | `float` | Mean annual temperature in \u00b0C estimated from MODIS LST data |\n| `geoenrich:population` | `float` | Population density from HRSL. Facebook High Resolution Settlement Layer |\n| `geoenrich:admin_countries` | `string` | Country name at centroid location |\n| `geoenrich:admin_states` | `string` | State/province name at centroid location |\n| `geoenrich:admin_districts` | `string` | District/county name at centroid location |\n| `internal:current_id` | `int64` | Current sample position at this level (0-indexed). Enables O(1) random access and relational JOINs (ZIP, FOLDER, TACOCAT). |\n| `internal:parent_id` | `int64` | Foreign key referencing parent sample position in previous level (ZIP, FOLDER, TACOCAT). |\n\n### LEVEL1\n\n| Field | Type | Description |\n|-------|------|-------------|\n| `id` | `string` | Unique sample identifier within parent scope. Must be unique among siblings. |\n| `type` | `string` | Sample type discriminator (FILE or FOLDER). |\n| `geotiff:stats` | `list&lt;item: list&lt;item: float&gt;&gt;` | Per-band statistics (List[List[Float32]]): categorical mode returns class probabilities, continuous mode returns [min, max, mean, std, valid%, p25, p50, p75, p95] |\n| `taco:header` | `binary` | Binary TACOTIFF header (35 bytes + tile counts) for fast reading without IFD parsing |\n| `internal:current_id` | `int64` | Current sample position at this level (0-indexed). Enables O(1) random access and relational JOINs (ZIP, FOLDER, TACOCAT). |\n| `internal:parent_id` | `int64` | Foreign key referencing parent sample position in previous level (ZIP, FOLDER, TACOCAT). |\n| `internal:relative_path` | `string` | Relative path from DATA/ directory. Format: {parent_path}/{id} or {id} for level0 (ZIP, FOLDER, TACOCAT). |\n\n\n## Usage\n\n### Python\n\n```python\n# pip install tacoreader\nimport tacoreader\n\nds = tacoreader.load(\"methaneset-l89-pretraining.tacozip\")\nprint(f\"ID: {ds.id}\")\nprint(f\"Version: {ds.version}\")\nprint(f\"Samples: {len(ds.data)}\")\n```\n\n### R\n\n```r\n# Coming soon: R support is planned but not yet available\n# install.packages(\"tacoreader\")\nlibrary(tacoreader)\n\nds <- load_taco(\"methaneset-l89-pretraining.tacozip\")\ncat(sprintf(\"ID: %s\\n\", ds$id))\ncat(sprintf(\"Version: %s\\n\", ds$version))\ncat(sprintf(\"Samples: %d\\n\", nrow(ds$data)))\n```\n\n### Julia\n\n```julia\n# Coming soon: Julia support is planned but not yet available\n# using Pkg; Pkg.add(\"TacoReader\")\nusing TacoReader\n\nds = load_taco(\"methaneset-l89-pretraining.tacozip\")\nprintln(\"ID: \", ds.id)\nprintln(\"Version: \", ds.version)\nprintln(\"Samples: \", size(ds.data, 1))\n```\n\n## Data Providers\n\n**UNEP IMEO** \u2014 *producer*\n\n**Source Cooperative** \u2014 *host*\n\n\n## Dataset Curators\n\n| Name | Organization | Email |\n|------|--------------|-------|\n| Cesar Aybar | Universitat de Val\u00e8ncia, Image and Signal Processing (ISP) Group | cesar.aybar@uv.es |\n\n## Publications & Citations\n\nIf you use this dataset in your research, please cite:\n\n\n**DOI**: 10.48550/arXiv.2411.15452\n\nVaughan, A.*, Mateo-Garcia, G.*, Irakulis-Loitxate, I., Watine, M., Fernandez-Poblaciones, P., Turner, R. E., Requeima, J., Gorro\u00f1o, J., Randles, C., Caltagirone, M., &amp; Cifarelli, C.* (2024). AI for operational methane emitter monitoring from space. arXiv preprint arXiv:2411.15452.\n\n*Operational MARS-S2L system for global methane monitoring from Sentinel-2 and Landsat 8/9.*\n\n---\n\n**DOI**: 10.48550/arXiv.2511.21777\n\nVaughan, A.*, Mateo-Garcia, G.*, Irakulis-Loitxate, I., Watine, M., Fernandez-Poblaciones, P., Turner, R. E., Requeima, J., Gorro\u00f1o, J., Randles, C., Caltagirone, M., &amp; Cifarelli, C.* (2024). Artificial intelligence for methane detection: from continuous monitoring to verified mitigation. arXiv preprint arXiv:2511.21777.\n\n*Extended operational deployment demonstrating 1,015 stakeholder notifications across 20 countries and verified permanent mitigation of six persistent emitters.*\n\n---\n\n**DOI**: 10.5194/essd-13-4349-2021\n\nMu\u00f1oz-Sabater, J., et al. (2021). ERA5-Land: a state-of-the-art global reanalysis. Earth System Science Data, 13, 4349-4383.\n\n---\n\n**DOI**: 10.1029/2014JD022685\n\nLucchesi, R. (2013). GEOS-5 FP (Forward Processing) File Specification. NASA GMAO Technical Report.\n\n---\n\n### BibTeX\n\n```bibtex\n@dataset{methaneset-l89-pretraining1,\n  title = {MethaneSET-L89 Pretraining: Plume-Free Landsat 8/9 Scenes for Self-Supervised Learning},\n  author = {Cesar Aybar},\n  year = {2018},\n  version = {1.0.0},\n  publisher = {Universitat de Val\u00e8ncia, Image and Signal Processing (ISP) Group}\n}\n```\n\n---\n\nGenerated with \u2764\ufe0f using [TacoToolbox](https://github.com/tacotoolbox/tacotoolbox) v0.26.5\n\n## methaneset-s2-finetune__README.md\n\n# MethaneSET-S2 Finetune: Verified Methane Plume Events from Sentinel-2 for Supervised Learning\n\nmethaneset-s2-finetune is the verified plume subset of MethaneSET-S2, designed for supervised fine-tuning of methane detection and segmentation models. This subset contains Sentinel-2 imagery with manually verified methane plumes, binary segmentation masks, and methane enhancement maps (\u0394XCH\u2084 in ppb). Unlike MARS-S2L which provides only six common bands, MethaneSET retrieves all 13 Sentinel-2 L1C bands at 10m GSD (200x200 pixel chips), enabling research with coastal aerosol, water vapour, cirrus, and red edge channels. Each sample includes target and reference image pairs, plume segmentation masks, CH4 enhancement images, Cloud Score+ masks, wind vectors (ERA5-Land onshore, GEOS-FP offshore), solar/viewing geometry, emission rates with uncertainties, elevation (Copernicus DEM GLO-30), and 64-dim AlphaEarth Foundation embeddings.\n## Dataset Information\n\n**Version**: 1.0.0\n\n**License**: CC-BY-4.0\n\n**Keywords**: methane, finetune, supervised, segmentation, plume-detection, remote-sensing, Sentinel-2, MSI, earth-observation, deep-learning\n\n**Tasks**: segmentation, classification, detection\n\n## Dataset Overview\n\n**Partitions**: 21 files\n**Spatial coverage**: [-103.98, -36.37, 116.52, 49.97] (WGS84)\n**Temporal coverage**: 2018-01-05 to 2024-12-30\n\n## Dataset Structure (Root-Sibling Uniform Tree)\n\n**Root**: FOLDER (3,611 samples)\n\n**Hierarchy**:\n\n- Level 1: FILE \u2192 FILE \u2192 FILE \u2192 FILE \u2192 FILE \u2192 FILE (21,666 samples)\n\n## Metadata Fields\n\n### LEVEL0\n\n| Field | Type | Description |\n|-------|------|-------------|\n| `id` | `string` | Unique sample identifier within parent scope. Must be unique among siblings. |\n| `type` | `string` | Sample type discriminator (FILE or FOLDER). |\n| `stac:crs` | `string` | Coordinate reference system (WKT2, EPSG, or PROJ) |\n| `stac:tensor_shape` | `list&lt;item: int64&gt;` | Raster dimensions [bands, height, width] |\n| `stac:geotransform` | `list&lt;item: double&gt;` | GDAL affine transform |\n| `stac:time_start` | `timestamp[us]` | Start timestamp (\u03bcs since Unix epoch, UTC) |\n| `stac:centroid` | `binary` | Center point in EPSG:4326 (WKB) |\n| `stac:time_end` | `timestamp[us]` | End timestamp (\u03bcs since Unix epoch, UTC) |\n| `stac:time_middle` | `timestamp[us]` | Middle timestamp (\u03bcs since Unix epoch, UTC) |\n| `methane:wind_u` | `float` | U component of wind at 10m (m/s) |\n| `methane:wind_v` | `float` | V component of wind at 10m (m/s) |\n| `methane:wind_source` | `string` | Wind data source (e.g. ERA5-Land, GEOS-FP) |\n| `methane:isplume` | `bool` | Whether a methane plume is present |\n| `methane:ch4_fluxrate` | `float` | Methane flux rate (kg/h) |\n| `methane:ch4_fluxrate_std` | `float` | Standard deviation of flux rate |\n| `methane:offshore` | `bool` | Whether location is offshore |\n| `methane:sector` | `string` | Observation sector |\n| `plume:geometry` | `binary` | Plume extent as WKB geometry |\n| `satellite:platform` | `string` | Satellite platform (LC08, LC09) |\n| `satellite:tile` | `string` | Landsat product identifier |\n| `satellite:vza` | `float` | Viewing zenith angle (degrees) |\n| `satellite:sza` | `float` | Solar zenith angle (degrees) |\n| `satellite:background_tile` | `string` | Reference image product identifier |\n| `site:location_name` | `string` | Location code identifier |\n| `site:country` | `string` | Country where the site is located |\n| `site:footprint` | `binary` | Image footprint as WKB geometry |\n| `site:case_study` | `string` | Case study area name |\n| `quality:percentage_clear` | `float` | Percentage of clear pixels according to CloudSEN12 (0-100) |\n| `quality:observability` | `string` | Image quality classification (clear, cloudy, bad_retrieval, etc.) |\n| `quality:notified` | `bool` | Whether observation has been notified |\n| `quality:last_update` | `string` | Last registry modification timestamp (ISO format) |\n| `split` | `string` | Dataset partition identifier (train, test, or validation) |\n| `majortom:code` | `string` | MajorTOM spherical grid cell identifier (e.g., 0100km_0003U_0005R) with ~dist_km spacing |\n| `geoenrich:elevation` | `float` | Mean elevation in meters (GLO-30 DEM) |\n| `geoenrich:temperature` | `float` | Mean annual temperature in \u00b0C estimated from MODIS LST data |\n| `geoenrich:population` | `float` | Population density from HRSL. Facebook High Resolution Settlement Layer |\n| `geoenrich:admin_countries` | `string` | Country name at centroid location |\n| `geoenrich:admin_states` | `string` | State/province name at centroid location |\n| `geoenrich:admin_districts` | `string` | District/county name at centroid location |\n| `internal:current_id` | `int64` | Current sample position at this level (0-indexed). Enables O(1) random access and relational JOINs (ZIP, FOLDER, TACOCAT). |\n| `internal:parent_id` | `int64` | Foreign key referencing parent sample position in previous level (ZIP, FOLDER, TACOCAT). |\n\n### LEVEL1\n\n| Field | Type | Description |\n|-------|------|-------------|\n| `id` | `string` | Unique sample identifier within parent scope. Must be unique among siblings. |\n| `type` | `string` | Sample type discriminator (FILE or FOLDER). |\n| `geotiff:stats` | `list&lt;item: list&lt;item: float&gt;&gt;` | Per-band statistics (List[List[Float32]]): categorical mode returns class probabilities, continuous mode returns [min, max, mean, std, valid%, p25, p50, p75, p95] |\n| `taco:header` | `binary` | Binary TACOTIFF header (35 bytes + tile counts) for fast reading without IFD parsing |\n| `internal:current_id` | `int64` | Current sample position at this level (0-indexed). Enables O(1) random access and relational JOINs (ZIP, FOLDER, TACOCAT). |\n| `internal:parent_id` | `int64` | Foreign key referencing parent sample position in previous level (ZIP, FOLDER, TACOCAT). |\n| `internal:relative_path` | `string` | Relative path from DATA/ directory. Format: {parent_path}/{id} or {id} for level0 (ZIP, FOLDER, TACOCAT). |\n\n\n## Usage\n\n### Python\n\n```python\n# pip install tacoreader\nimport tacoreader\n\nds = tacoreader.load(\"methaneset-s2-finetune.tacozip\")\nprint(f\"ID: {ds.id}\")\nprint(f\"Version: {ds.version}\")\nprint(f\"Samples: {len(ds.data)}\")\n```\n\n### R\n\n```r\n# Coming soon: R support is planned but not yet available\n# install.packages(\"tacoreader\")\nlibrary(tacoreader)\n\nds <- load_taco(\"methaneset-s2-finetune.tacozip\")\ncat(sprintf(\"ID: %s\\n\", ds$id))\ncat(sprintf(\"Version: %s\\n\", ds$version))\ncat(sprintf(\"Samples: %d\\n\", nrow(ds$data)))\n```\n\n### Julia\n\n```julia\n# Coming soon: Julia support is planned but not yet available\n# using Pkg; Pkg.add(\"TacoReader\")\nusing TacoReader\n\nds = load_taco(\"methaneset-s2-finetune.tacozip\")\nprintln(\"ID: \", ds.id)\nprintln(\"Version: \", ds.version)\nprintln(\"Samples: \", size(ds.data, 1))\n```\n\n## Data Providers\n\n**UNEP IMEO** \u2014 *producer*\n\n**Source Cooperative** \u2014 *host*\n\n\n## Dataset Curators\n\n| Name | Organization | Email |\n|------|--------------|-------|\n| Cesar Aybar | Universitat de Val\u00e8ncia, Image and Signal Processing (ISP) Group | cesar.aybar@uv.es |\n\n## Publications & Citations\n\nIf you use this dataset in your research, please cite:\n\n\n**DOI**: 10.48550/arXiv.2411.15452\n\nVaughan, A.*, Mateo-Garcia, G.*, Irakulis-Loitxate, I., Watine, M., Fernandez-Poblaciones, P., Turner, R. E., Requeima, J., Gorro\u00f1o, J., Randles, C., Caltagirone, M., &amp; Cifarelli, C.* (2024). AI for operational methane emitter monitoring from space. arXiv preprint arXiv:2411.15452.\n\n*Operational MARS-S2L system for global methane monitoring from Sentinel-2 and Landsat 8/9.*\n\n---\n\n**DOI**: 10.48550/arXiv.2511.21777\n\nVaughan, A.*, Mateo-Garcia, G.*, Irakulis-Loitxate, I., Watine, M., Fernandez-Poblaciones, P., Turner, R. E., Requeima, J., Gorro\u00f1o, J., Randles, C., Caltagirone, M., &amp; Cifarelli, C.* (2024). Artificial intelligence for methane detection: from continuous monitoring to verified mitigation. arXiv preprint arXiv:2511.21777.\n\n*Extended operational deployment demonstrating 1,015 stakeholder notifications across 20 countries and verified permanent mitigation of six persistent emitters.*\n\n---\n\n**DOI**: 10.5194/essd-13-4349-2021\n\nMu\u00f1oz-Sabater, J., et al. (2021). ERA5-Land: a state-of-the-art global reanalysis. Earth System Science Data, 13, 4349-4383.\n\n---\n\n**DOI**: 10.1029/2014JD022685\n\nLucchesi, R. (2013). GEOS-5 FP (Forward Processing) File Specification. NASA GMAO Technical Report.\n\n---\n\n### BibTeX\n\n```bibtex\n@dataset{methaneset-s2-finetune1,\n  title = {MethaneSET-S2 Finetune: Verified Methane Plume Events from Sentinel-2 for Supervised Learning},\n  author = {Cesar Aybar},\n  year = {2018},\n  version = {1.0.0},\n  publisher = {Universitat de Val\u00e8ncia, Image and Signal Processing (ISP) Group}\n}\n```\n\n---\n\nGenerated with \u2764\ufe0f using [TacoToolbox](https://github.com/tacotoolbox/tacotoolbox) v0.26.5\n\n## methaneset-s2-pretraining__README.md\n\n# MethaneSET-S2 Pretraining: Plume-Free Sentinel-2 Scenes for Self-Supervised Learning\n\nmethaneset-s2-pretraining is the plume-free subset of MethaneSET-S2, designed for self-supervised pretraining of methane detection models. This subset contains Sentinel-2 imagery from locations and time periods where no methane plumes were detected, providing clean background scenes for learning spectral representations of oil/gas infrastructure, geological features, and atmospheric conditions without methane signatures. Unlike MARS-S2L which provides only six common bands, MethaneSET retrieves all 13 Sentinel-2 L1C bands at 10m GSD (200x200 pixel chips), enabling research with coastal aerosol, water vapour, cirrus, and red edge channels. Each sample includes target and reference image pairs, Cloud Score+ masks, wind vectors (ERA5-Land onshore, GEOS-FP offshore), solar/viewing geometry, elevation (Copernicus DEM GLO-30), and 64-dim AlphaEarth Foundation embeddings.\n## Dataset Information\n\n**Version**: 1.0.0\n\n**License**: CC-BY-4.0\n\n**Keywords**: methane, pretraining, self-supervised, remote-sensing, Sentinel-2, MSI, foundation-model, representation-learning, earth-observation, deep-learning\n\n**Tasks**: regression, classification, segmentation\n\n## Dataset Overview\n\n**Partitions**: 38 files\n**Spatial coverage**: [-121.91, -50.75, 151.42, 52.30] (WGS84)\n**Temporal coverage**: 2018-01-01 to 2024-12-31\n\n## Dataset Structure (Root-Sibling Uniform Tree)\n\n**Root**: FOLDER (57,291 samples)\n\n**Hierarchy**:\n\n- Level 1: FILE \u2192 FILE \u2192 FILE \u2192 FILE (229,164 samples)\n\n## Metadata Fields\n\n### LEVEL0\n\n| Field | Type | Description |\n|-------|------|-------------|\n| `id` | `string` | Unique sample identifier within parent scope. Must be unique among siblings. |\n| `type` | `string` | Sample type discriminator (FILE or FOLDER). |\n| `stac:crs` | `string` | Coordinate reference system (WKT2, EPSG, or PROJ) |\n| `stac:tensor_shape` | `list&lt;item: int64&gt;` | Raster dimensions [bands, height, width] |\n| `stac:geotransform` | `list&lt;item: double&gt;` | GDAL affine transform |\n| `stac:time_start` | `timestamp[us]` | Start timestamp (\u03bcs since Unix epoch, UTC) |\n| `stac:centroid` | `binary` | Center point in EPSG:4326 (WKB) |\n| `stac:time_end` | `timestamp[us]` | End timestamp (\u03bcs since Unix epoch, UTC) |\n| `stac:time_middle` | `timestamp[us]` | Middle timestamp (\u03bcs since Unix epoch, UTC) |\n| `methane:wind_u` | `float` | U component of wind at 10m (m/s) |\n| `methane:wind_v` | `float` | V component of wind at 10m (m/s) |\n| `methane:wind_source` | `string` | Wind data source (e.g. ERA5-Land, GEOS-FP) |\n| `methane:isplume` | `bool` | Whether a methane plume is present |\n| `methane:ch4_fluxrate` | `float` | Methane flux rate (kg/h) |\n| `methane:ch4_fluxrate_std` | `float` | Standard deviation of flux rate |\n| `methane:offshore` | `bool` | Whether location is offshore |\n| `methane:sector` | `string` | Observation sector |\n| `satellite:platform` | `string` | Satellite platform (LC08, LC09) |\n| `satellite:tile` | `string` | Landsat product identifier |\n| `satellite:vza` | `float` | Viewing zenith angle (degrees) |\n| `satellite:sza` | `float` | Solar zenith angle (degrees) |\n| `satellite:background_tile` | `string` | Reference image product identifier |\n| `site:location_name` | `string` | Location code identifier |\n| `site:country` | `string` | Country where the site is located |\n| `site:footprint` | `binary` | Image footprint as WKB geometry |\n| `site:case_study` | `string` | Case study area name |\n| `quality:percentage_clear` | `float` | Percentage of clear pixels according to CloudSEN12 (0-100) |\n| `quality:observability` | `string` | Image quality classification (clear, cloudy, bad_retrieval, etc.) |\n| `quality:notified` | `bool` | Whether observation has been notified |\n| `quality:last_update` | `string` | Last registry modification timestamp (ISO format) |\n| `split` | `string` | Dataset partition identifier (train, test, or validation) |\n| `majortom:code` | `string` | MajorTOM spherical grid cell identifier (e.g., 0100km_0003U_0005R) with ~dist_km spacing |\n| `geoenrich:elevation` | `float` | Mean elevation in meters (GLO-30 DEM) |\n| `geoenrich:temperature` | `float` | Mean annual temperature in \u00b0C estimated from MODIS LST data |\n| `geoenrich:population` | `float` | Population density from HRSL. Facebook High Resolution Settlement Layer |\n| `geoenrich:admin_countries` | `string` | Country name at centroid location |\n| `geoenrich:admin_states` | `string` | State/province name at centroid location |\n| `geoenrich:admin_districts` | `string` | District/county name at centroid location |\n| `internal:current_id` | `int64` | Current sample position at this level (0-indexed). Enables O(1) random access and relational JOINs (ZIP, FOLDER, TACOCAT). |\n| `internal:parent_id` | `int64` | Foreign key referencing parent sample position in previous level (ZIP, FOLDER, TACOCAT). |\n\n### LEVEL1\n\n| Field | Type | Description |\n|-------|------|-------------|\n| `id` | `string` | Unique sample identifier within parent scope. Must be unique among siblings. |\n| `type` | `string` | Sample type discriminator (FILE or FOLDER). |\n| `geotiff:stats` | `list&lt;item: list&lt;item: float&gt;&gt;` | Per-band statistics (List[List[Float32]]): categorical mode returns class probabilities, continuous mode returns [min, max, mean, std, valid%, p25, p50, p75, p95] |\n| `taco:header` | `binary` | Binary TACOTIFF header (35 bytes + tile counts) for fast reading without IFD parsing |\n| `internal:current_id` | `int64` | Current sample position at this level (0-indexed). Enables O(1) random access and relational JOINs (ZIP, FOLDER, TACOCAT). |\n| `internal:parent_id` | `int64` | Foreign key referencing parent sample position in previous level (ZIP, FOLDER, TACOCAT). |\n| `internal:relative_path` | `string` | Relative path from DATA/ directory. Format: {parent_path}/{id} or {id} for level0 (ZIP, FOLDER, TACOCAT). |\n\n\n## Usage\n\n### Python\n\n```python\n# pip install tacoreader\nimport tacoreader\n\nds = tacoreader.load(\"methaneset-s2-pretraining.tacozip\")\nprint(f\"ID: {ds.id}\")\nprint(f\"Version: {ds.version}\")\nprint(f\"Samples: {len(ds.data)}\")\n```\n\n### R\n\n```r\n# Coming soon: R support is planned but not yet available\n# install.packages(\"tacoreader\")\nlibrary(tacoreader)\n\nds <- load_taco(\"methaneset-s2-pretraining.tacozip\")\ncat(sprintf(\"ID: %s\\n\", ds$id))\ncat(sprintf(\"Version: %s\\n\", ds$version))\ncat(sprintf(\"Samples: %d\\n\", nrow(ds$data)))\n```\n\n### Julia\n\n```julia\n# Coming soon: Julia support is planned but not yet available\n# using Pkg; Pkg.add(\"TacoReader\")\nusing TacoReader\n\nds = load_taco(\"methaneset-s2-pretraining.tacozip\")\nprintln(\"ID: \", ds.id)\nprintln(\"Version: \", ds.version)\nprintln(\"Samples: \", size(ds.data, 1))\n```\n\n## Data Providers\n\n**UNEP IMEO** \u2014 *producer*\n\n**Source Cooperative** \u2014 *host*\n\n\n## Dataset Curators\n\n| Name | Organization | Email |\n|------|--------------|-------|\n| Cesar Aybar | Universitat de Val\u00e8ncia, Image and Signal Processing (ISP) Group | cesar.aybar@uv.es |\n\n## Publications & Citations\n\nIf you use this dataset in your research, please cite:\n\n\n**DOI**: 10.48550/arXiv.2411.15452\n\nVaughan, A.*, Mateo-Garcia, G.*, Irakulis-Loitxate, I., Watine, M., Fernandez-Poblaciones, P., Turner, R. E., Requeima, J., Gorro\u00f1o, J., Randles, C., Caltagirone, M., &amp; Cifarelli, C.* (2024). AI for operational methane emitter monitoring from space. arXiv preprint arXiv:2411.15452.\n\n*Operational MARS-S2L system for global methane monitoring from Sentinel-2 and Landsat 8/9.*\n\n---\n\n**DOI**: 10.48550/arXiv.2511.21777\n\nVaughan, A.*, Mateo-Garcia, G.*, Irakulis-Loitxate, I., Watine, M., Fernandez-Poblaciones, P., Turner, R. E., Requeima, J., Gorro\u00f1o, J., Randles, C., Caltagirone, M., &amp; Cifarelli, C.* (2024). Artificial intelligence for methane detection: from continuous monitoring to verified mitigation. arXiv preprint arXiv:2511.21777.\n\n*Extended operational deployment demonstrating 1,015 stakeholder notifications across 20 countries and verified permanent mitigation of six persistent emitters.*\n\n---\n\n**DOI**: 10.5194/essd-13-4349-2021\n\nMu\u00f1oz-Sabater, J., et al. (2021). ERA5-Land: a state-of-the-art global reanalysis. Earth System Science Data, 13, 4349-4383.\n\n---\n\n**DOI**: 10.1029/2014JD022685\n\nLucchesi, R. (2013). GEOS-5 FP (Forward Processing) File Specification. NASA GMAO Technical Report.\n\n---\n\n### BibTeX\n\n```bibtex\n@dataset{methaneset-s2-pretraining1,\n  title = {MethaneSET-S2 Pretraining: Plume-Free Sentinel-2 Scenes for Self-Supervised Learning},\n  author = {Cesar Aybar},\n  year = {2018},\n  version = {1.0.0},\n  publisher = {Universitat de Val\u00e8ncia, Image and Signal Processing (ISP) Group}\n}\n```\n\n---\n\nGenerated with \u2764\ufe0f using [TacoToolbox](https://github.com/tacotoolbox/tacotoolbox) v0.26.5",
+  "_review": [
+    "extent.temporal: ['2018-01-01T10:04:09Z', '2024-12-31T17:27:23.051000Z'] (probe sample) widened to ['2018-01-01T00:00:00Z', '2024-12-31T17:27:23.051000Z'] using README-stated coverage ['2018-01-01', '2024-12-31'].",
+    "summaries.item_count: parts overlap, so this is max(part), not the sum \u2014 methaneset-bank/ 1064548, methaneset-l89-finetune/ 1548, methaneset-l89-pretraining/ 14870, methaneset-s2-finetune/ 3454, methaneset-s2-pretraining/ 40304. Sum them only once the parts are known to be disjoint.",
+    "citation: captured publisher citation from upstream into _citation; promote to a public field once standardized with source.coop."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-08-21T00:20:35+00:00",
+  "_source_format": "taco",
+  "objects_updated_at": "2026-02-26T05:12:31+00:00",
   "store_format": null
 }
