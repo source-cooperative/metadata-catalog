@@ -1,22 +1,90 @@
 {
   "schema_version": 1,
-  "account_id": "agentmorris",
-  "product_id": "lila-wildlife-larch-casebearer",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "agentmorris/lila-wildlife-larch-casebearer",
   "title": "Forest Damages - Larch Casebearer",
-  "description": "Geospatial dataset recording forest damage attributed to the Larch Casebearer (Coleophora laricella), a moth whose larvae defoliate larch trees. No README is present; content details are inferred from the dataset title alone.",
+  "description": "Drone aerial imagery and Pascal VOC bounding-box annotations of larch trees across five forest areas in V\u00e4sterg\u00f6tland, Sweden, collected by the Swedish Forest Agency to support AI-based detection of forest damage caused by the larch casebearer moth (Coleophora laricella). The dataset spans 1,543 images with 101,878 annotated trees, a subset of which (840 images, 44,522 trees) also carry damage-severity labels (healthy, light, high damage).",
+  "license": "CDLA-Permissive-1.0",
   "keywords": [
+    "aerial-imagery",
+    "machine-learning",
     "forest-damage",
-    "larch",
     "invasive-species",
-    "forestry",
-    "pest-monitoring"
+    "pest-monitoring",
+    "tree-health"
   ],
-  "created_at": null,
-  "updated_at": null,
-  "visibility": "public",
+  "providers": [
+    {
+      "name": "Swedish Forest Agency",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Lantm\u00e4teriet",
+      "roles": [
+        "licensor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/agentmorris/lila-wildlife-larch-casebearer"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -180.0,
+          -90.0,
+          180.0,
+          90.0
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/agentmorris/lila-wildlife-larch-casebearer/",
+      "type": "application/octet-stream",
+      "title": "Dataset files",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/agentmorris/lila-wildlife-larch-casebearer/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/agentmorris/lila-wildlife-larch-casebearer",
+      "title": "Source Cooperative product page"
+    }
+  ],
+  "account_id": "agentmorris",
   "disabled": false,
-  "featured": 0,
+  "product_id": "lila-wildlife-larch-casebearer",
   "data_mode": "open",
+  "updated_at": null,
+  "object_count": 1,
+  "featured": 0,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -29,18 +97,22 @@
       "prefix": "agentmorris/lila-wildlife/larch-casebearer/"
     }
   },
-  "object_count": 1,
-  "total_bytes": 3542556211,
   "exts": {
     "zip": 1
   },
-  "store_format": null,
-  "_state": "seed",
+  "_decomposed_from": "agentmorris/lila-wildlife",
+  "created_at": null,
+  "total_bytes": 3542556211,
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "cataloged_at": "2026-06-04T23:59:15+00:00",
-  "readme": "# Forest Damages - Larch Casebearer\n\n### Forest Damages - Larch Casebearer\n\n#### S3 base\n\n`s3://us-west-2.opendata.source.coop/agentmorris/lila-wildlife/larch-casebearer`\n\n#### Overview\n\nThe larch casebearer, *Coleophora laricella*, is a moth that mainly attacks larch trees and has caused significant damage in larch stands in V\u00e4sterg\u00f6tland, Sweden.\n\nThe Swedish Forest Agency, supported by Microsoft\u2019s AI for Earth program, started a project that utilizes artificial intelligence for identifying, inventorying, mapping, and monitoring forest areas affected by the larch casebearer. The primary intention of the project is to help forest caretakers to quickly identify threats and react to prevent further forest damage.\n\nThis dataset is an outcome of the project, and it contains 1,543 images taken from two drone flying occasions over five affected areas in V\u00e4sterg\u00f6tland, Sweden. The data set is structured in 10 batches, numbered 1 to 10.\n\nAll batches contain bounding box annotations around trees, categorized as *Larch* and *Other*. These annotations can be used to train AI models for tree identification. In 1,543 images, there are 101,878 annotated trees.\n\nBatches 1-5 also contain annotations describing tree damage in four categories: *Healthy (H)*, *Light Damage (LD)*, *High Damage (HD)*, and *Other*. These annotations can be used to train models for damage classification. In 840 images there are 44,522 larch trees annotated with damage level.\n\nAn overview of the project is available [here](https://www.youtube.com/watch?v=WcVzys6ECys) (video).\n\n*Figure 1: Data set statistics*\n\n![](http://lila.science/wp-content/uploads/2021/03/casebearer_stats.png)\n\n#### Data format\n\nThere are ten folders in the zipfile, each corresponding to a drone survey, named according to:\n\n[area_name]_[capture_date]\n\n* area_name is one of \"Bebehojd\", \"Ekbacka\", \"Jallasvag\", \"Kampe\", \"Nordkap\"\n* capture_date is the capture date, formatted as yyyymmdd\n\nWithin each survey folder are two folders: \"Annotations\" and \"Images\".\n\nImage files are named according to:\n\nImages/B[batch_number]_[image_number].JPG\n\n* batch_number is a two-digit batch number, from 01 to 10. Each survey folder contains only a single batch number.\n* image_number is a five-digit image number\n\nAnnotation files are named according to:\n\nAnnotations/B[batch_number]_[image_number].XML\n\n* batch_number is a two-digit batch number, from 01 to 10, which will match the corresponding \"Images\" folder.\n* image_number is a five-digit image number\n\nAnnotations are in the [Pascal VOC XML format](https://roboflow.com/formats/pascal-voc-xml#w-tabs-0-data-w-pane-3) for objection detection. A typical individual tree object would be annotated as:\n\n```\n\n\nLarch\nLD\nUnspecified\n0\n0\n\n164\n107\n347\n380\n\n\n\n```\n#### Citation\n\nIf you use these data in a publication or report, please use the following citation:\n\nSwedish Forest Agency (2021): Forest Damages - Larch Casebearer 1.0. [National Forest Data Lab](https://skogsdatalabbet.se/). Dataset.\n\n#### Contact information\n\nFor questions about this data set, contact Halil Radogoshi ([halil.radogoshi@skogsstyrelsen.se](mailto:halil.radogoshi@skogsstyrelsen.se)) at the Swedish Forest Agency.\n\n#### License\n\n*Labels*\n\nThe organizations responsible for generating and funding this dataset make no representations of any kind including, but not limited to the warranties of merchantability or fitness for a particular use, nor are any such warranties to be implied with respect to the data. Although every effort has been made to ensure the accuracy of information, errors may be reflected in data supplied. The user must be aware of data conditions and bear responsibility for the appropriate use of the information with respect to possible errors, collection methodology, currency of data, and other conditions. Credit should always be given to the data source when this data is transferred, altered, or used for analysis.\n\nLabels are released under the [Community Data License Agreement (permissive variant)](https://cdla.io/permissive-1-0/).\n\n*Images*\n\nFor the drone images, the Swedish Forest Agency has secured [permit for dissemination of geographical data](https://www.lantmateriet.se/en/about-lantmateriet/Rattsinformation/permit-for-dissemination-of-geographical-data/) from Lantm\u00e4teriet, an authority belonging to Ministry of Finance in Sweden.\n\n#### Downloading the data\n\nThis dataset is provided as a single zipfile:\n\n[Download from GCP](https://storage.googleapis.com/public-datasets-lila/larch-casebearer/Data_Set_Larch_Casebearer.zip) (3.3GB)  \n\n[Download from AWS](http://us-west-2.opendata.source.coop.s3.amazonaws.com/agentmorris/lila-wildlife/larch-casebearer/Data_Set_Larch_Casebearer.zip) (3.3GB)  \n\n[Download from Azure](https://lilawildlife.blob.core.windows.net/lila-wildlife/larch-casebearer/Data_Set_Larch_Casebearer.zip) (3.3GB)  \n\nHaving trouble downloading? Check out our [FAQ](http://lila.science/faq#downloadtips).\n\n![](http://lila.science/wp-content/uploads/2021/03/sfa_thumb_800.jpg)\n\n",
-  "_decomposed_from": "agentmorris/lila-wildlife"
+  "visibility": "public",
+  "readme": "## README.md\n# Forest Damages - Larch Casebearer\n\n### Forest Damages - Larch Casebearer\n\n#### S3 base\n\n`s3://us-west-2.opendata.source.coop/agentmorris/lila-wildlife/larch-casebearer`\n\n#### Overview\n\nThe larch casebearer, *Coleophora laricella*, is a moth that mainly attacks larch trees and has caused significant damage in larch stands in V\u00e4sterg\u00f6tland, Sweden.\n\nThe Swedish Forest Agency, supported by Microsoft\u2019s AI for Earth program, started a project that utilizes artificial intelligence for identifying, inventorying, mapping, and monitoring forest areas affected by the larch casebearer. The primary intention of the project is to help forest caretakers to quickly identify threats and react to prevent further forest damage.\n\nThis dataset is an outcome of the project, and it contains 1,543 images taken from two drone flying occasions over five affected areas in V\u00e4sterg\u00f6tland, Sweden. The data set is structured in 10 batches, numbered 1 to 10.\n\nAll batches contain bounding box annotations around trees, categorized as *Larch* and *Other*. These annotations can be used to train AI models for tree identification. In 1,543 images, there are 101,878 annotated trees.\n\nBatches 1-5 also contain annotations describing tree damage in four categories: *Healthy (H)*, *Light Damage (LD)*, *High Damage (HD)*, and *Other*. These annotations can be used to train models for damage classification. In 840 images there are 44,522 larch trees annotated with damage level.\n\nAn overview of the project is available [here](https://www.youtube.com/watch?v=WcVzys6ECys) (video).\n\n*Figure 1: Data set statistics*\n\n![](http://lila.science/wp-content/uploads/2021/03/casebearer_stats.png)\n\n#### Data format\n\nThere are ten folders in the zipfile, each corresponding to a drone survey, named according to:\n\n[area_name]_[capture_date]\n\n* area_name is one of \"Bebehojd\", \"Ekbacka\", \"Jallasvag\", \"Kampe\", \"Nordkap\"\n* capture_date is the capture date, formatted as yyyymmdd\n\nWithin each survey folder are two folders: \"Annotations\" and \"Images\".\n\nImage files are named according to:\n\nImages/B[batch_number]_[image_number].JPG\n\n* batch_number is a two-digit batch number, from 01 to 10. Each survey folder contains only a single batch number.\n* image_number is a five-digit image number\n\nAnnotation files are named according to:\n\nAnnotations/B[batch_number]_[image_number].XML\n\n* batch_number is a two-digit batch number, from 01 to 10, which will match the corresponding \"Images\" folder.\n* image_number is a five-digit image number\n\nAnnotations are in the [Pascal VOC XML format](https://roboflow.com/formats/pascal-voc-xml#w-tabs-0-data-w-pane-3) for objection detection. A typical individual tree object would be annotated as:\n\n```\n\n\nLarch\nLD\nUnspecified\n0\n0\n\n164\n107\n347\n380\n\n\n\n```\n#### Citation\n\nIf you use these data in a publication or report, please use the following citation:\n\nSwedish Forest Agency (2021): Forest Damages - Larch Casebearer 1.0. [National Forest Data Lab](https://skogsdatalabbet.se/). Dataset.\n\n#### Contact information\n\nFor questions about this data set, contact Halil Radogoshi ([halil.radogoshi@skogsstyrelsen.se](mailto:halil.radogoshi@skogsstyrelsen.se)) at the Swedish Forest Agency.\n\n#### License\n\n*Labels*\n\nThe organizations responsible for generating and funding this dataset make no representations of any kind including, but not limited to the warranties of merchantability or fitness for a particular use, nor are any such warranties to be implied with respect to the data. Although every effort has been made to ensure the accuracy of information, errors may be reflected in data supplied. The user must be aware of data conditions and bear responsibility for the appropriate use of the information with respect to possible errors, collection methodology, currency of data, and other conditions. Credit should always be given to the data source when this data is transferred, altered, or used for analysis.\n\nLabels are released under the [Community Data License Agreement (permissive variant)](https://cdla.io/permissive-1-0/).\n\n*Images*\n\nFor the drone images, the Swedish Forest Agency has secured [permit for dissemination of geographical data](https://www.lantmateriet.se/en/about-lantmateriet/Rattsinformation/permit-for-dissemination-of-geographical-data/) from Lantm\u00e4teriet, an authority belonging to Ministry of Finance in Sweden.\n\n#### Downloading the data\n\nThis dataset is provided as a single zipfile:\n\n[Download from GCP](https://storage.googleapis.com/public-datasets-lila/larch-casebearer/Data_Set_Larch_Casebearer.zip) (3.3GB)  \n\n[Download from AWS](http://us-west-2.opendata.source.coop.s3.amazonaws.com/agentmorris/lila-wildlife/larch-casebearer/Data_Set_Larch_Casebearer.zip) (3.3GB)  \n\n[Download from Azure](https://lilawildlife.blob.core.windows.net/lila-wildlife/larch-casebearer/Data_Set_Larch_Casebearer.zip) (3.3GB)  \n\nHaving trouble downloading? Check out our [FAQ](http://lila.science/faq#downloadtips).\n\n![](http://lila.science/wp-content/uploads/2021/03/sfa_thumb_800.jpg)\n\n",
+  "_review": [
+    "license: Applies to the annotation labels only. The drone images are separately covered by a permit for dissemination of geographical data granted to the Swedish Forest Agency by Lantm\u00e4teriet (Swedish mapping authority), not a standard open license.",
+    "providers: role [licensor] for 'Lantm\u00e4teriet' is an AI guess \u2014 Granted the permit governing dissemination of the drone imagery; inferred as licensor for the image portion of the dataset since it controls the terms of use.. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-08-21T22:32:27+00:00"
 }
