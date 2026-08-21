@@ -1,16 +1,100 @@
 {
   "schema_version": 1,
-  "account_id": "planet",
-  "product_id": "skyscraper",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "planet/skyscraper",
   "title": "SkyScraper",
-  "description": "Skyscraper pairs multi-temporal Earth-observation imagery with GDELT-derived news text: each record links geolocated PlanetScope or Sentinel-2 image sequences to event-centric captions and article metadata.",
-  "keywords": [],
-  "created_at": "2026-05-08T00:15:39.391Z",
-  "updated_at": "2026-05-08T00:15:39.391Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": "open",
+  "description": "Skyscraper pairs multi-temporal PlanetScope and Sentinel-2 satellite imagery sequences with GDELT-derived news event captions and article text, released as two parallel per-sensor bundles with joined labels, imagery stacks, and per-event metadata for multimodal Earth-observation/text research.",
+  "license": "CC-BY-NC-4.0",
+  "keywords": [
+    "earth-observation",
+    "satellite-imagery",
+    "remote-sensing",
+    "sentinel-2",
+    "machine-learning",
+    "time-series",
+    "news-media"
+  ],
+  "providers": [
+    {
+      "name": "Planet",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "European Space Agency (Copernicus)",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "GDELT Project",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/planet/skyscraper"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -180.0,
+          -90.0,
+          180.0,
+          90.0
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "assets": {
+    "gdelt-planetscope/imagery": {
+      "href": "https://data.source.coop/planet/skyscraper/gdelt-planetscope/imagery/",
+      "type": "application/octet-stream",
+      "title": "gdelt-planetscope/imagery/ (107109 \u00d7 .jpg)",
+      "roles": [
+        "data"
+      ]
+    },
+    "gdelt-sentinel/imagery": {
+      "href": "https://data.source.coop/planet/skyscraper/gdelt-sentinel/imagery/",
+      "type": "application/octet-stream",
+      "title": "gdelt-sentinel/imagery/ (35405 \u00d7 .jpg)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/planet/skyscraper/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/planet/skyscraper",
+      "title": "Source Cooperative product page"
+    }
+  ],
+  "object_count": 151981,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -23,25 +107,39 @@
       "prefix": "planet/skyscraper/"
     }
   },
-  "object_count": 151981,
+  "ext_bytes": {
+    "jpg": 44378445059,
+    "json": 170374475,
+    "csv": 65914901,
+    "md": 3985
+  },
+  "updated_at": "2026-05-08T00:15:39.391Z",
   "total_bytes": 44614738420,
+  "created_at": "2026-05-08T00:15:39.391Z",
+  "product_id": "skyscraper",
+  "data_mode": "open",
+  "account_id": "planet",
   "exts": {
     "jpg": 142514,
     "json": 9464,
     "csv": 2,
     "md": 1
   },
-  "store_format": null,
-  "_state": "seed",
+  "disabled": false,
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "cataloged_at": "2026-07-29T00:37:41+00:00",
-  "ext_bytes": {
-    "jpg": 44378445059,
-    "json": 170374475,
-    "csv": 65914901,
-    "md": 3985
-  }
+  "featured": 0,
+  "visibility": "public",
+  "readme": "## README.md\n# Skyscraper\n\nMulti-temporal Earth-observation imagery with GDELT-linked news text: each example ties geolocated **PlanetScope** or **Sentinel-2** image sequences to event-centric captions and article metadata.\n\nMachine-readable documentation for this release lives in [`croissant.json`](croissant.json) ([Croissant](https://mlcommons.org/working-groups/data/croissant/) 1.1, including Responsible AI fields).\n\n## Source Cooperative\n\n| Resource | URL |\n|----------|-----|\n| Product listing | [source.coop/planet/skyscraper](https://source.coop/planet/skyscraper) |\n| PlanetScope bundle | [source.coop/planet/skyscraper/gdelt-planetscope](https://source.coop/planet/skyscraper/gdelt-planetscope) |\n| Sentinel-2 bundle | [source.coop/planet/skyscraper/gdelt-sentinel](https://source.coop/planet/skyscraper/gdelt-sentinel) |\n\nDownload layout should match the directory tree below so paths in `croissant.json` resolve correctly.\n\n## Layout\n\nPlace `croissant.json` next to two parallel bundles (same schema, different sensors):\n\n```text\nskyscraper/\n\u251c\u2500\u2500 README.md\n\u251c\u2500\u2500 croissant.json\n\u251c\u2500\u2500 gdelt-planetscope/\n\u2502   \u251c\u2500\u2500 labels.csv\n\u2502   \u251c\u2500\u2500 imagery/\n\u2502   \u2502   \u2514\u2500\u2500 <article_id>/*.jpg\n\u2502   \u2514\u2500\u2500 metadata/\n\u2502       \u2514\u2500\u2500 <article_id>/metadata.json\n\u2514\u2500\u2500 gdelt-sentinel/\n    \u251c\u2500\u2500 labels.csv\n    \u251c\u2500\u2500 imagery/\n    \u2502   \u2514\u2500\u2500 <article_id>/*.jpg\n    \u2514\u2500\u2500 metadata/\n        \u2514\u2500\u2500 <article_id>/metadata.json\n```\n\n- **`labels.csv`** \u2014 One row per record; join key is **`article_id`** (matches imagery and metadata folders).\n- **`imagery/`** \u2014 JPEG stacks per `article_id`.\n- **`metadata/`** \u2014 Per-event JSON; may include extended or model-derived fields (see `croissant.json` provenance notes).\n\n## Labels (`labels.csv`)\n\nBoth bundles use the same columns:\n\n| Column | Role |\n|--------|------|\n| `article_id` | Integer ID; directory name under `imagery/` and `metadata/` |\n| `event_type` | Event category |\n| `event_caption` | Text description of the event / visible change |\n| `visible` | Whether the event is marked visible in the release |\n| `sequence_start_date`, `sequence_end_date` | Satellite sequence window |\n| `event_start_date`, `event_end_date` | Event time window (may be empty) |\n| `location_name` | Place description |\n| `coordinates` | Encoded lat/lon (format as produced by the pipeline) |\n| `source` | Sensor/source tag (e.g. planet / sentinel) |\n| `api` | Basemap or API used for context (e.g. mapbox) |\n| `url` | News article URL |\n| `article_content` | Article body text included in the export |\n\n## License\n\nThis release is described in `croissant.json` as **CC BY-NC 4.0**:  \nhttps://creativecommons.org/licenses/by-nc/4.0/\n\nUpstream constraints still apply: **Planet** imagery, **Copernicus Sentinel-2**, **GDELT**, and **news publishers** each impose their own terms. Redistributing or displaying full article text must respect those sources.\n\n## Citation\n\nUse the bibliographic entry from the accompanying paper when available. The dataset record also includes a `citeAs` string in [`croissant.json`](croissant.json).\n\n## Responsible use\n\nLimitations, biases, sensitivity of locations and news text, and recommended use cases are summarized in the **RAI** and **provenance** sections of [`croissant.json`](croissant.json). The dataset is intended for research (e.g. multimodal EO\u2013text modeling), not for surveillance, individual identification, or high-stakes operational decisions without validation.\n\n## Loading via Croissant (optional)\n\nWith [mlcroissant](https://github.com/mlcommons/croissant) installed and data paths matching this README:\n\n```python\nfrom pathlib import Path\nfrom mlcroissant import Dataset\n\nds = Dataset(jsonld=Path(\"croissant.json\"))\n# Iterate record sets (e.g. records_planetscope, records_sentinel) per library docs\n```\n\nRecord streaming may require the full data tree present locally or an archive layout consistent with the `includes` patterns in `croissant.json`.\n",
+  "_review": [
+    "providers: role [producer, licensor] for 'Planet' is an AI guess \u2014 README names Planet as the PlanetScope imagery source and notes Planet imposes its own terms, implying producer/licensor.. Verify before flipping to _state: reviewed.",
+    "providers: role [producer, licensor] for 'European Space Agency (Copernicus)' is an AI guess \u2014 README attributes Sentinel-2 imagery to Copernicus Sentinel-2 and notes its own terms apply, implying producer/licensor.. Verify before flipping to _state: reviewed.",
+    "providers: role [producer] for 'GDELT Project' is an AI guess \u2014 README says captions/metadata are GDELT-derived, implying GDELT as an upstream data producer.. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-08-21T23:00:23+00:00",
+  "objects_updated_at": "2026-07-14T16:48:02+00:00",
+  "store_format": null
 }
