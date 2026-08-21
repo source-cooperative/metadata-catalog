@@ -1,23 +1,93 @@
 {
   "schema_version": 1,
-  "account_id": "agentmorris",
-  "product_id": "lila-wildlife-orinoquia-camera-traps",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "agentmorris/lila-wildlife-orinoquia-camera-traps",
   "title": "Orinoqu\u00eda Camera Traps",
-  "description": "A collection of approximately 104,780 camera trap photographs from the Orinoqu\u00eda region (Orinoco River basin, Colombia/Venezuela), likely documenting wildlife presence and activity. No README is available; description is inferred from the dataset title and file composition.",
+  "description": "A camera-trap image dataset of 104,782 photographs collected in 2020 from a 50-camera array across two private natural reserves (El Rey Zamuro and Las Unamas) in the Orinoqu\u00eda region of Meta department, Colombia. Images are annotated across 51 wildlife classes (predominantly mammals such as peccaries, agoutis, pacas, tapirs, and giant anteaters) in COCO Camera Traps format, and have also been used to benchmark AI-based camera-trap image processing platforms.",
+  "license": "CDLA-Permissive-1.0",
   "keywords": [
     "camera-traps",
     "wildlife",
     "biodiversity",
-    "orinoqu\u00eda",
-    "colombia",
-    "mammals"
+    "conservation",
+    "machine-learning",
+    "colombia"
   ],
-  "created_at": null,
+  "providers": [
+    {
+      "name": "Juliana Velez Gomez",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "LILA BC",
+      "roles": [
+        "host"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/agentmorris/lila-wildlife-orinoquia-camera-traps"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -180.0,
+          -90.0,
+          180.0,
+          90.0
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2020-01-01T00:00:00Z",
+          "2020-07-01T00:00:00Z"
+        ]
+      ]
+    }
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/agentmorris/lila-wildlife-orinoquia-camera-traps/",
+      "type": "application/octet-stream",
+      "title": "Dataset files (104780 x .jpg)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/agentmorris/lila-wildlife-orinoquia-camera-traps/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/agentmorris/lila-wildlife-orinoquia-camera-traps",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "rel": "cite-as",
+      "href": "https://doi.org/10.1111/2041-210X.14044"
+    }
+  ],
+  "exts": {
+    "jpg": 104780,
+    "zip": 2
+  },
+  "featured": 0,
   "updated_at": null,
   "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": "open",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -30,19 +100,23 @@
       "prefix": "agentmorris/lila-wildlife/orinoquia-camera-traps/"
     }
   },
-  "object_count": 104782,
   "total_bytes": 154513217292,
-  "exts": {
-    "jpg": 104780,
-    "zip": 2
-  },
-  "store_format": null,
-  "_state": "seed",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "cataloged_at": "2026-06-04T23:59:15+00:00",
-  "readme": "# Orinoqu\u00eda Camera Traps\n\n### Orinoqu\u00eda Camera Traps\n\n#### S3 base\n\n`s3://us-west-2.opendata.source.coop/agentmorris/lila-wildlife/orinoquia-camera-traps`\n\n#### Overview\n\nThis data set contains 104,782 images collected from a 50-camera-trap array deployed from January to July 2020 within the private natural reserves El Rey Zamuro (31 km2) and Las Unamas (40 km2), located in the Meta department in the Orinoqu\u00eda region in central Colombia. We deployed cameras using a stratified random sampling design across forest core area strata. Cameras were spaced 1 km apart from one another, located facing wildlife trails, and deployed with no bait. Images were stored and reviewed by experts using the Wildlife Insights platform.\n\nThis data set contains 51 classes, predominantly mammals such as the collared peccary, black agouti, spotted paca, white-lipped peccary, lowland tapir, and giant anteater. Approximately 20% of images are empty.\n\nThe main purpose of the study is to understand how humans, wildlife, and domestic animals interact in multi-functional landscapes (e.g., agricultural livestock areas with native forest remnants). However, this data set was also used to review model performance of AI-powered platforms \u2013 Wildlife Insights (WI), MegaDetector (MD), and Machine Learning for Wildlife Image Classification (MLWIC2). We provide a demonstration of the use of WI, MD, and MLWIC2 and R code for evaluating model performance of these platforms in the accompanying GitHub repository:\n\n&nbsp;&nbsp;&nbsp;&nbsp;https://github.com/julianavelez1/Processing-Camera-Trap-Data-Using-AI\n\nThe metadata contains references to images containing humans, but these have been removed from the dataset.\n\n#### Citation, license, and contact information\n\nIf you use these data in a publication or report, please use the following citation:\n\nV\u00e9lez J, McShea W, Shamon H, Castiblanco\u2010Camacho PJ, Tabak MA, Chalmers C, Fergus P, Fieberg J. [An evaluation of platforms for processing camera\u2010trap data using artificial intelligence](https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/2041-210X.14044). Methods in Ecology and Evolution. 2023 Feb;14(2):459-77.\n\nFor questions about this data set, contact [Juliana Velez Gomez](mailto:julianavelezgomez@gmail.com).\n\nThis data set is released under the [Community Data License Agreement (permissive variant)](https://cdla.io/permissive-1-0/).\n\n#### Data format\n\nAnnotations are provided in [COCO Camera Traps](https://github.com/agentmorris/MegaDetector/blob/main/megadetector/data_management/README.md#coco-camera-traps-format) format.\n\nFor information about mapping this dataset's categories to a common taxonomy, see [this page](https://lila.science/taxonomy-mapping-for-camera-trap-data-sets/).\n\n#### Downloading the data\n\nMetadata is available [here](https://storage.googleapis.com/public-datasets-lila/orinoquia-camera-traps/orinoquia_camera_traps_metadata.zip) (2.4MB).\n\nImages are available as a single zipfile:\n\n[Download from GCP](https://storage.googleapis.com/public-datasets-lila/orinoquia-camera-traps/orinoquia_camera_traps_images.zip) (72GB)  \n\n[Download from AWS](http://us-west-2.opendata.source.coop.s3.amazonaws.com/agentmorris/lila-wildlife/orinoquia-camera-traps/orinoquia_camera_traps_images.zip) (72GB)  \n\n[Download from Azure](https://lilawildlife.blob.core.windows.net/lila-wildlife/orinoquia-camera-traps/orinoquia_camera_traps_images.zip) (72GB)  \n\nImages are also available (unzipped) in the following cloud storage folders:\n\n* gs://public-datasets-lila/orinoquia-camera-traps (GCP)\n* s3://us-west-2.opendata.source.coop/agentmorris/lila-wildlife/orinoquia-camera-traps (AWS)\n* https://lilawildlife.blob.core.windows.net/lila-wildlife/orinoquia-camera-traps (Azure)\n\nWe recommend downloading images (the whole folder, or a subset of the folder) using [gsutil](https://cloud.google.com/storage/docs/gsutil) (for GCP), [aws s3](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/index.html) (for AWS), or [AzCopy](https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10) (for Azure). For more information about using gsutil, aws s3, or AzCopy, check out our [guidelines for accessing images without using giant zipfiles](http://lila.science/image-access).\n\nHaving trouble downloading? Check out our [FAQ](https://lila.science/faq#downloadtips).\n\n#### Other useful links\n\n[MegaDetector](https://github.com/agentmorris/MegaDetector/blob/main/megadetector.md) results for all camera trap datasets on LILA are available [here](https://lila.science/megadetector-results-for-camera-trap-datasets/).\n\nInformation about mapping camera trap datasets to a common taxonomy is available [here](https://lila.science/taxonomy-mapping-for-camera-trap-data-sets/).\n\n![](http://lila.science/wp-content/uploads/2022/01/orinoquia-thumb-web.jpg)\n\n",
-  "_decomposed_from": "agentmorris/lila-wildlife"
+  "object_count": 104782,
+  "data_mode": "open",
+  "created_at": null,
+  "account_id": "agentmorris",
+  "disabled": false,
+  "_decomposed_from": "agentmorris/lila-wildlife",
+  "product_id": "lila-wildlife-orinoquia-camera-traps",
+  "readme": "## README.md\n# Orinoqu\u00eda Camera Traps\n\n### Orinoqu\u00eda Camera Traps\n\n#### S3 base\n\n`s3://us-west-2.opendata.source.coop/agentmorris/lila-wildlife/orinoquia-camera-traps`\n\n#### Overview\n\nThis data set contains 104,782 images collected from a 50-camera-trap array deployed from January to July 2020 within the private natural reserves El Rey Zamuro (31 km2) and Las Unamas (40 km2), located in the Meta department in the Orinoqu\u00eda region in central Colombia. We deployed cameras using a stratified random sampling design across forest core area strata. Cameras were spaced 1 km apart from one another, located facing wildlife trails, and deployed with no bait. Images were stored and reviewed by experts using the Wildlife Insights platform.\n\nThis data set contains 51 classes, predominantly mammals such as the collared peccary, black agouti, spotted paca, white-lipped peccary, lowland tapir, and giant anteater. Approximately 20% of images are empty.\n\nThe main purpose of the study is to understand how humans, wildlife, and domestic animals interact in multi-functional landscapes (e.g., agricultural livestock areas with native forest remnants). However, this data set was also used to review model performance of AI-powered platforms \u2013 Wildlife Insights (WI), MegaDetector (MD), and Machine Learning for Wildlife Image Classification (MLWIC2). We provide a demonstration of the use of WI, MD, and MLWIC2 and R code for evaluating model performance of these platforms in the accompanying GitHub repository:\n\n&nbsp;&nbsp;&nbsp;&nbsp;https://github.com/julianavelez1/Processing-Camera-Trap-Data-Using-AI\n\nThe metadata contains references to images containing humans, but these have been removed from the dataset.\n\n#### Citation, license, and contact information\n\nIf you use these data in a publication or report, please use the following citation:\n\nV\u00e9lez J, McShea W, Shamon H, Castiblanco\u2010Camacho PJ, Tabak MA, Chalmers C, Fergus P, Fieberg J. [An evaluation of platforms for processing camera\u2010trap data using artificial intelligence](https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/2041-210X.14044). Methods in Ecology and Evolution. 2023 Feb;14(2):459-77.\n\nFor questions about this data set, contact [Juliana Velez Gomez](mailto:julianavelezgomez@gmail.com).\n\nThis data set is released under the [Community Data License Agreement (permissive variant)](https://cdla.io/permissive-1-0/).\n\n#### Data format\n\nAnnotations are provided in [COCO Camera Traps](https://github.com/agentmorris/MegaDetector/blob/main/megadetector/data_management/README.md#coco-camera-traps-format) format.\n\nFor information about mapping this dataset's categories to a common taxonomy, see [this page](https://lila.science/taxonomy-mapping-for-camera-trap-data-sets/).\n\n#### Downloading the data\n\nMetadata is available [here](https://storage.googleapis.com/public-datasets-lila/orinoquia-camera-traps/orinoquia_camera_traps_metadata.zip) (2.4MB).\n\nImages are available as a single zipfile:\n\n[Download from GCP](https://storage.googleapis.com/public-datasets-lila/orinoquia-camera-traps/orinoquia_camera_traps_images.zip) (72GB)  \n\n[Download from AWS](http://us-west-2.opendata.source.coop.s3.amazonaws.com/agentmorris/lila-wildlife/orinoquia-camera-traps/orinoquia_camera_traps_images.zip) (72GB)  \n\n[Download from Azure](https://lilawildlife.blob.core.windows.net/lila-wildlife/orinoquia-camera-traps/orinoquia_camera_traps_images.zip) (72GB)  \n\nImages are also available (unzipped) in the following cloud storage folders:\n\n* gs://public-datasets-lila/orinoquia-camera-traps (GCP)\n* s3://us-west-2.opendata.source.coop/agentmorris/lila-wildlife/orinoquia-camera-traps (AWS)\n* https://lilawildlife.blob.core.windows.net/lila-wildlife/orinoquia-camera-traps (Azure)\n\nWe recommend downloading images (the whole folder, or a subset of the folder) using [gsutil](https://cloud.google.com/storage/docs/gsutil) (for GCP), [aws s3](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/index.html) (for AWS), or [AzCopy](https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10) (for Azure). For more information about using gsutil, aws s3, or AzCopy, check out our [guidelines for accessing images without using giant zipfiles](http://lila.science/image-access).\n\nHaving trouble downloading? Check out our [FAQ](https://lila.science/faq#downloadtips).\n\n#### Other useful links\n\n[MegaDetector](https://github.com/agentmorris/MegaDetector/blob/main/megadetector.md) results for all camera trap datasets on LILA are available [here](https://lila.science/megadetector-results-for-camera-trap-datasets/).\n\nInformation about mapping camera trap datasets to a common taxonomy is available [here](https://lila.science/taxonomy-mapping-for-camera-trap-data-sets/).\n\n![](http://lila.science/wp-content/uploads/2022/01/orinoquia-thumb-web.jpg)\n\n",
+  "_review": [
+    "providers: role [host] for 'LILA BC' is an AI guess \u2014 Data is mirrored from LILA's GCP/AWS/Azure buckets (lila.science); inferred as an original hosting platform rather than a stated role.. Verify before flipping to _state: reviewed.",
+    "extent.temporal: ['2020-01-09T10:54:39', '2020-06-04T19:11:29'] (probe sample) widened to ['2020-01-01T00:00:00Z', '2020-07-01T00:00:00Z'] using README-stated coverage ['2020-01', '2020-07']."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-08-21T22:53:26+00:00"
 }
