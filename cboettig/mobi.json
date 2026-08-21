@@ -1,37 +1,105 @@
 {
   "schema_version": 1,
-  "account_id": "cboettig",
-  "product_id": "mobi",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "cboettig/mobi",
   "title": "Map of Biodiversity Importance, NatureServe",
-  "description": "Demonstration of generating and serving static raster tiles with GDAL using Map of Biodiversity Importance (MOBI) data from NatureServe, (2022) https://www.natureserve.org/map-biodiversity-importance, original data files from https://geohub-natureserve.opendata.arcgis.com/search?q=mobi",
+  "description": "MOBI Species Richness (All Taxa) is a NatureServe dataset reporting the number of modeled imperiled and endemic vertebrate, invertebrate, and plant species with predicted suitable habitat per H3 hexagon (resolution 8) across the contiguous United States, derived by area-weighted max-reduction from a 990m Cloud-Optimized GeoTIFF habitat model raster.",
   "keywords": [
-    "raster",
-    "cog",
-    "tiles",
-    "static",
     "biodiversity",
-    "gdal"
+    "conservation",
+    "h3",
+    "cloud-optimized-geotiff",
+    "ecology",
+    "species-richness"
   ],
-  "created_at": "2024-03-20T15:37:01.908638+00:00",
-  "updated_at": "2025-08-21T16:39:55.567Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": "open",
-  "mirrors": {
-    "aws-opendata-us-west-2": {
-      "storage_type": "s3",
-      "is_primary": true,
-      "connection_id": "aws-opendata-us-west-2",
-      "config": {
-        "region": "us-west-2",
-        "bucket": "aws-opendata-us-west-2"
-      },
-      "prefix": "cboettig/mobi/"
+  "providers": [
+    {
+      "name": "NatureServe",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Microsoft AI for Earth",
+      "roles": [
+        "processor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/cboettig/mobi"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -180.0,
+          -90.0,
+          180.0,
+          90.0
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
     }
   },
-  "object_count": 27246,
-  "total_bytes": 283374182,
+  "assets": {
+    "tiles/green/range-size-rarity-all": {
+      "href": "https://data.source.coop/cboettig/mobi/tiles/green/range-size-rarity-all/",
+      "type": "application/octet-stream",
+      "title": "tiles/green/range-size-rarity-all/ (3840 \u00d7 .png)",
+      "roles": [
+        "data"
+      ]
+    },
+    "tiles/grey/species-richness-all": {
+      "href": "https://data.source.coop/cboettig/mobi/tiles/grey/species-richness-all/",
+      "type": "application/octet-stream",
+      "title": "tiles/grey/species-richness-all/ (11680 \u00d7 .png)",
+      "roles": [
+        "data"
+      ]
+    },
+    "tiles/red/species-richness-all": {
+      "href": "https://data.source.coop/cboettig/mobi/tiles/red/species-richness-all/",
+      "type": "application/octet-stream",
+      "title": "tiles/red/species-richness-all/ (11680 \u00d7 .png)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/cboettig/mobi/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/cboettig/mobi",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "rel": "cite-as",
+      "href": "https://doi.org/10.1002/eap.2534"
+    }
+  ],
+  "visibility": "public",
+  "product_id": "mobi",
+  "disabled": false,
+  "created_at": "2024-03-20T15:37:01.908638+00:00",
   "exts": {
     "png": 27200,
     "html": 14,
@@ -41,22 +109,22 @@
     "mapml": 3,
     "r": 2,
     "vrt": 2,
-    "tfw": 2,
-    "py": 2,
     "xml": 2,
+    "py": 2,
+    "tfw": 2,
     "zip": 1,
     "dbf": 1,
-    "sh": 1,
     "md": 1,
     "json": 1,
-    "cpg": 1
+    "cpg": 1,
+    "sh": 1
   },
-  "_state": "seed",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "id": "cboettig/mobi",
+  "data_mode": "open",
+  "updated_at": "2025-08-21T16:39:55.567Z",
   "ext_bytes": {
     "png": 172535415,
     "vrt": 61885033,
@@ -76,6 +144,29 @@
     "tfw": 192,
     "cpg": 5
   },
-  "store_format": null,
-  "cataloged_at": "2026-06-30T23:17:12+00:00"
+  "object_count": 27246,
+  "mirrors": {
+    "aws-opendata-us-west-2": {
+      "storage_type": "s3",
+      "is_primary": true,
+      "connection_id": "aws-opendata-us-west-2",
+      "config": {
+        "region": "us-west-2",
+        "bucket": "aws-opendata-us-west-2"
+      },
+      "prefix": "cboettig/mobi/"
+    }
+  },
+  "featured": 0,
+  "account_id": "cboettig",
+  "total_bytes": 283374182,
+  "readme": "## README.md\n# MOBI \u2014 Map of Biodiversity Importance: Species Richness (All Taxa)\n\n**Source:** NatureServe\n**Coverage:** Contiguous United States (CONUS)\n**H3 resolution:** 8 (~0.74 km\u00b2 per cell)\n**Value range:** 0\u201332 species per cell\n\n## Overview\n\nThe [Map of Biodiversity Importance (MOBI)](https://www.natureserve.org/map-biodiversity-importance) integrates NatureServe habitat models for ~2,400 imperiled and endemic species of vertebrates, invertebrates, and plants across the contiguous US. This layer \u2014 **Species Richness (All Taxa)** \u2014 reports the number of modeled species with predicted suitable habitat. The H3 hex layer has ~7.7 million non-zero cells (\u224810.5 million total cells including richness 0) across CONUS.\n\nThe source raster (990 m pixels) is published as a WGS84 Cloud-Optimized GeoTIFF and aggregated to H3 resolution 8 hexagons by **area-weighted exact-extract with the `max` reducer**: each cell stores the *maximum* modeled richness among the source pixels covering it (one row per cell). `max` is used because richness is a count of species present \u2014 the peak, not an average \u2014 so rollups to coarser resolutions take `MAX`, preserving biodiversity hotspots.\n\n## Data access\n\n**H3 Hex Parquet** (Hive-partitioned by h0 cell):\n```\nhttps://s3-west.nrp-nautilus.io/public-mobi/mobi-species-richness-all/hex/h0=*/data_0.parquet\n```\n\n**Cloud-Optimized GeoTIFF** (WGS84, for raster visualization via titiler / GDAL):\n```\nhttps://s3-west.nrp-nautilus.io/public-mobi/mobi-species-richness-all-cog.tif\n```\n\n### DuckDB example\n\n```sql\nINSTALL httpfs; LOAD httpfs;\nSET s3_endpoint = 's3-west.nrp-nautilus.io';\nSET s3_use_ssl = true;\nSET s3_url_style = 'path';\n\n-- Top 10 highest species-richness cells (one row per cell \u2014 no GROUP BY needed)\nSELECT h8, species_richness\nFROM read_parquet('s3://public-mobi/mobi-species-richness-all/hex/h0=*/data_0.parquet')\nWHERE species_richness > 0\nORDER BY species_richness DESC\nLIMIT 10;\n\n-- Roll up to resolution 6: MAX-of-MAX preserves the hotspot (never AVG/SUM)\nSELECT h6, MAX(species_richness) AS peak_richness\nFROM read_parquet('s3://public-mobi/mobi-species-richness-all/hex/h0=*/data_0.parquet')\nGROUP BY h6;\n```\n\n### Visualization\n\nThis is a raster-derived layer (COG + H3 hex; no PMTiles). For web maps, serve the\nWGS84 COG through a tile server such as [titiler](https://developmentseed.org/titiler/),\nor render the H3 cells directly from the Parquet (e.g. with `h3-js` + deck.gl\n`H3HexagonLayer`, coloring by `species_richness`).\n\n## Columns\n\n| Column | Type | Description |\n|--------|------|-------------|\n| `species_richness` | float | Maximum modeled species richness among source pixels covering the cell (exact-extract `max`). One row per cell. Integer-valued, range 0\u201332. |\n| `h8` | uint64 | H3 cell index at resolution 8 (native resolution) |\n| `h7` | uint64 | H3 cell index at resolution 7 (rollup key) |\n| `h6` | uint64 | H3 cell index at resolution 6 (rollup key) |\n| `h5` | uint64 | H3 cell index at resolution 5 (rollup key) |\n| `h0` | int64 | H3 cell index at resolution 0 (Hive partition key) |\n\n## Citation\n\nHamilton, H., Smyth, R. L., Young, B. E., Howard, T. G., Tracey, C., Breyer, S., Cameron, D. R., Chazal, A., Conley, A. K., Frye, C., & Schloss, C. (2022). Increasing taxonomic diversity and spatial resolution clarifies opportunities for protecting US imperiled species. *Ecological Applications*, 32(3), e2534. https://doi.org/10.1002/eap.2534\n\n**Partners:** NatureServe, Esri, The Nature Conservancy, state natural heritage programs (NY, VA, PA, CO, FL, OR, MT, MI, WY and others). Computational support from Microsoft AI for Earth.\n",
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
+    "providers: role [processor] for 'Microsoft AI for Earth' is an AI guess \u2014 README credits Microsoft AI for Earth with 'computational support', inferred as a processing role. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-08-21T22:44:53+00:00",
+  "objects_updated_at": "2026-08-12T22:34:14+00:00",
+  "store_format": null
 }
