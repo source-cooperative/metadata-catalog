@@ -7,7 +7,7 @@
   ],
   "id": "dataforcanada/d4c-datapkg-statistical",
   "title": "Data for Canada - Statistical Data Packages",
-  "description": "Statistical data packages derived from Statistics Canada's 2021 Census of Agriculture and 2021 Population Census, covering all of Canada. Includes agricultural census variables on crop production, livestock counts, farm finances, land use, and farm operator demographics, as well as health workforce demographic tables from the population census. Data are aggregated to agricultural regions, census divisions, consolidated subdivisions, and aggregate dissemination areas, delivered in cloud-native formats (Parquet, PMTiles, FlatGeobuf).",
+  "description": "Statistical data packages derived from Statistics Canada's 2021 Census of Agriculture and 2021 Census of Population, covering all of Canada. Includes agricultural census variables (crop production, livestock, farm finances, land use, farm operator demographics) and health workforce demographic tables, aggregated to agricultural regions, census divisions, consolidated subdivisions, and dissemination areas, delivered in cloud-native formats (Parquet, PMTiles, FlatGeobuf).",
   "license": "proprietary",
   "keywords": [
     "agriculture",
@@ -42,8 +42,8 @@
     "temporal": {
       "interval": [
         [
-          null,
-          null
+          "2021-01-01T00:00:00Z",
+          "2021-01-01T00:00:00Z"
         ]
       ]
     }
@@ -62,7 +62,8 @@
       "table:columns": [
         {
           "name": "country_dguid",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[admin_code] Statistics Canada DGUID for country-level unit"
         },
         {
           "name": "country_en_name",
@@ -82,7 +83,8 @@
         },
         {
           "name": "grc_dguid",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[admin_code] DGUID for agricultural region"
         },
         {
           "name": "grc_en_name",
@@ -94,12 +96,12 @@
         },
         {
           "name": "pr_dguid",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[admin_code] DGUID for province/territory"
         },
         {
           "name": "pr_en_name",
-          "type": "VARCHAR",
-          "description": "[placename] English name of the province or territory"
+          "type": "VARCHAR"
         },
         {
           "name": "pr_fr_name",
@@ -116,11 +118,12 @@
         {
           "name": "pr_iso_code",
           "type": "VARCHAR",
-          "description": "[admin_code] ISO province/territory code (e.g. AB, BC, ON)"
+          "description": "[admin_code] ISO code for province/territory"
         },
         {
           "name": "car_dguid",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[admin_code] DGUID for census agricultural region"
         },
         {
           "name": "car_en_name",
@@ -132,7 +135,8 @@
         },
         {
           "name": "cd_dguid",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[admin_code] DGUID for census division"
         },
         {
           "name": "cd_name",
@@ -144,11 +148,13 @@
         },
         {
           "name": "cma_dguid",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[admin_code] DGUID for census metropolitan area"
         },
         {
           "name": "cma_p_dguid",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[admin_code] DGUID for census metropolitan area part"
         },
         {
           "name": "cma_name",
@@ -160,12 +166,13 @@
         },
         {
           "name": "ada_dguid",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[admin_code] DGUID for aggregate dissemination area"
         },
         {
           "name": "geom",
           "type": "GEOMETRY('OGC:CRS84')",
-          "description": "[geometry] OGC CRS84 geometry for the census geographic unit (agricultural region, census division, etc.)"
+          "description": "[geometry] Polygon geometry of the administrative/statistical unit"
         },
         {
           "name": "geom_bbox",
@@ -3193,7 +3200,8 @@
         },
         {
           "name": "ccs_dguid",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[admin_code] DGUID for consolidated census subdivision"
         }
       ],
       "description": "5 files sampled for this table"
@@ -3221,12 +3229,12 @@
         {
           "name": "GEO",
           "type": "VARCHAR",
-          "description": "[placename] Geographic area name for the tabular census record"
+          "description": "[placename] Named geographic area label for the statistical table row"
         },
         {
           "name": "DGUID",
           "type": "VARCHAR",
-          "description": "[admin_code] Statistics Canada Dissemination Geography Unique Identifier for the geographic unit"
+          "description": "[admin_code] Statistics Canada dissemination geography unique identifier"
         },
         {
           "name": "Health occupations (52)",
@@ -3242,8 +3250,7 @@
         },
         {
           "name": "Coordinate",
-          "type": "VARCHAR",
-          "description": "[latlon] Coordinate field associated with the census geographic record"
+          "type": "VARCHAR"
         },
         {
           "name": "Gender (3):Total - Gender[1]",
@@ -3705,26 +3712,11 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "data_mode": "open",
-  "exts": {
-    "parquet": 7940,
-    "json": 7891,
-    "pmtiles": 18,
-    "fgb": 3
-  },
+  "object_count": 16084,
   "disabled": false,
-  "total_bytes": 101412086217,
+  "visibility": "public",
   "account_id": "dataforcanada",
   "product_id": "d4c-datapkg-statistical",
-  "visibility": "public",
-  "object_count": 15852,
-  "updated_at": "2026-02-27T22:34:07.463Z",
-  "created_at": "2026-02-20T13:13:51.106Z",
-  "featured": 0,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -3737,10 +3729,29 @@
       "prefix": "dataforcanada/d4c-datapkg-statistical/"
     }
   },
+  "updated_at": "2026-02-27T22:34:07.463Z",
+  "featured": 0,
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "total_bytes": 134142629220,
+  "data_mode": "open",
+  "created_at": "2026-02-20T13:13:51.106Z",
+  "exts": {
+    "parquet": 7940,
+    "json": 7891,
+    "zip": 230,
+    "pmtiles": 18,
+    "fgb": 3,
+    "xlsx": 2
+  },
   "_review": [
-    "extent.spatial.bbox: omitted; spatial reference is categorical via [processed.geom (geometry), processed.pr_iso_code (admin_code), processed.pr_en_name (placename), processed/tables.GEO (placename), processed/tables.DGUID (admin_code), processed/tables.Coordinate (latlon)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
+    "extent.temporal: None (probe sample) widened to ['2021-01-01T00:00:00Z', '2021-01-01T00:00:00Z'] using README-stated coverage ['2021', '2021'].",
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [processed.geom (geometry), processed.country_dguid (admin_code), processed.grc_dguid (admin_code), processed.pr_dguid (admin_code), processed.pr_iso_code (admin_code), processed.car_dguid (admin_code), processed.cd_dguid (admin_code), processed.cma_dguid (admin_code), processed.cma_p_dguid (admin_code), processed.ada_dguid (admin_code), processed.ccs_dguid (admin_code), processed/tables.DGUID (admin_code), processed/tables.GEO (placename)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-06-18T10:12:40+00:00",
+  "cataloged_at": "2026-08-21T00:50:56+00:00",
+  "objects_updated_at": "2026-08-12T16:11:41+00:00",
   "store_format": null
 }
