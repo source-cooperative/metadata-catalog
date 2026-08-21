@@ -1,23 +1,81 @@
 {
   "schema_version": 1,
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "agentmorris/lila-wildlife-nz-thermal",
+  "title": "New Zealand Wildlife Thermal Imaging",
+  "description": "A collection of approximately 121,190 thermal video clips (with matched MP4 and HDF5 versions) capturing wildlife across New Zealand, gathered by heat-triggered camera traps as part of The Cacophony Project's effort to monitor native species and detect invasive predators such as possums, rodents, cats, hedgehogs, and mustelids. Each clip is annotated with tracked object trajectories and species labels across 45 categories.",
+  "license": "CDLA-Permissive-1.0",
+  "keywords": [
+    "wildlife-monitoring",
+    "thermal-imaging",
+    "camera-traps",
+    "invasive-species",
+    "species-classification",
+    "conservation",
+    "machine-learning"
+  ],
+  "providers": [
+    {
+      "name": "The Cacophony Project",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/agentmorris/lila-wildlife-nz-thermal"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -180.0,
+          -90.0,
+          180.0,
+          90.0
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/agentmorris/lila-wildlife-nz-thermal/",
+      "type": "application/octet-stream",
+      "title": "Dataset files",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/agentmorris/lila-wildlife-nz-thermal/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/agentmorris/lila-wildlife-nz-thermal",
+      "title": "Source Cooperative product page"
+    }
+  ],
   "account_id": "agentmorris",
   "product_id": "lila-wildlife-nz-thermal",
-  "title": "New Zealand Wildlife Thermal Imaging",
-  "description": "Thermal imaging dataset of wildlife in New Zealand, comprising approximately 121,190 matched sets of HDF5 data files, MP4 video recordings, and JSON metadata files. The dataset likely captures thermal signatures of wildlife subjects across survey events, totalling approximately 677 GB.",
-  "keywords": [
-    "wildlife",
-    "thermal-imaging",
-    "new-zealand",
-    "remote-sensing",
-    "conservation",
-    "aerial-survey"
-  ],
-  "created_at": null,
   "updated_at": null,
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": "open",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -31,7 +89,9 @@
     }
   },
   "object_count": 484724,
-  "total_bytes": 677386834481,
+  "featured": 0,
+  "disabled": false,
+  "data_mode": "open",
   "exts": {
     "zip": 3,
     "mp4": 242340,
@@ -39,13 +99,15 @@
     "hdf5": 121190,
     "csv": 1
   },
-  "store_format": null,
-  "_state": "seed",
+  "total_bytes": 677386834481,
+  "created_at": null,
+  "visibility": "public",
+  "_decomposed_from": "agentmorris/lila-wildlife",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "cataloged_at": "2026-06-04T23:59:15+00:00",
-  "readme": "# New Zealand Wildlife Thermal Imaging\n\n### New Zealand Wildlife Thermal Imaging\n\n#### S3 base\n\n`s3://us-west-2.opendata.source.coop/agentmorris/lila-wildlife/nz-thermal`\n\n#### Overview\n\nThis dataset contains 121,190 thermal videos, from [The Cacophony Project](https://cacophony.org.nz/). The Cacophony Project focuses on monitoring native wildlife of New Zealand, with a particular emphasis on detecting and understanding the behaviour of invasive predators such as possums, rodents, cats, hedgehogs, and mustelids. The goal of this work is to conserve and restore native wildlife by eliminating these invasive species from the wild.\n\nThe videos were captured across various regions of New Zealand, mostly at night. Video capture was triggered by a change in incident heat; approximately 24,000 videos are labeled as false positives. Labels are provided for 45 categories; the most common (other than false positives) are \"bird\", \"rodent\", and \"possum\". A full list of labels and the number of videos associated with each label is available [here](https://storage.googleapis.com/public-datasets-lila/nz-thermal/new-zealand-wildlife-thermal-imaging-counts.csv) (csv).\n\n#### Benchmark results\n\nBenchmark results on this dataset, with instructions for reproducing those results, are available [here](https://github.com/TheCacophonyProject/classifier-pipeline#lila-dataset).\n#### Citation, license, and contact information\n\nFor questions about this dataset, contact [coredev@cacophony.org.nz](mailto:coredev@cacophony.org.nz) at The Cacophony Project.\n\nThis data set is released under the [Community Data License Agreement (permissive variant)](https://cdla.io/permissive-1-0/).\n\nNo citation is required, but if you find this dataset useful, or you just want to support technology that is contributing to the conservation of New Zealand's native wildlife, consider [donating to The Cacophony Project](https://givealittle.co.nz/org/cacophony).\n\n[![](https://lila.science/wp-content/uploads/2023/07/GiveToCacophony.png)](https://givealittle.co.nz/org/cacophony)\n\n#### Data format\n\nIf you prefer tinkering with a notebook to reading documentation, you may prefer to ignore this section, and go right to the [sample notebook](https://github.com/agentmorris/MegaDetector/blob/main/data_management/importers/cacophony-thermal-demo.ipynb).\n\nThree versions of each video are available:\n\n* An mp4 video, in which the background has been estimated as the median of the clip, and each frame represents the deviation from that background. This video is referred to as the \"filtered\" video in the metadata described below. We think this is what most ML folks will want to use. This is not a perfectly faithful representation of the original data, since we've lost information about absolute temperature, and median-filtering isn't a perfect way to estimate background. Nonetheless, this is probably easiest to work with for 99% of ML applications. ([example background-subtracted video](https://storage.googleapis.com/public-datasets-lila/nz-thermal/videos/1486055_filtered.mp4))\n* An mp4 video, in which each frame has been independently normalized. This captures the gestalt of the scene a little better, e.g. you can generally pick out trees. ([example non-background-subtracted video](https://storage.googleapis.com/public-datasets-lila/nz-thermal/videos/1486055.mp4))\n* An HDF file representing the original thermal data, including - in some cases - metadata that allows the reconstruction of absolute temperature. More complicated to work with, but totally faithful to what came off of the sensor. These files are also more than ten times larger (totaling around 500GB, whereas the compressed mp4's add up to around 35GB), so they are not included in the big zipfile below. We don't expect most ML use cases to need these files.\n\nThe [metadata file](https://storage.googleapis.com/public-datasets-lila/nz-thermal/new-zealand-wildlife-thermal-imaging-metadata.json.zip) (.json) describes the annotations associated with each video. Annotators were not labeling whole videos with each tag, they were labeling \"tracks\", which are individual sequences of continuous movement within a video. So in some cases, for example, a single cat might move through the video, disappear behind a tree, and re-appear, in which case the metadata will contain two tracks with the \"cat\" label. The metadata contains the start/stop frames of each track and the trajectories of those tracks. Tracks are based on thresholding and clustering approaches, i.e., the tracks are themselves machine-generated, but they are generally quite reliable (other than some false positives), and the main focus of this dataset is the classification of tracks and pixels (both movement trajectory and thermal appearance can contribute to species identification), rather than improving tracking.\n\nMore specifically the [main metadata file](https://storage.googleapis.com/public-datasets-lila/nz-thermal/new-zealand-wildlife-thermal-imaging-metadata.json.zip) contains everything about each clip *except* the track coordinates, which would make the metadata file very large. Each clip also has its own .json metadata file, which has all the information available in the main metadata file about that clip, as well as the track coordinates.\n\nClip metadata is stored as a dictionary with an \"info\" field containing general information about the dataset, and a \"clips\" field with all the information about the videos. The \"clips\" field is a list of dicts, each element corresponding to a video, with fields:\n\n* *filtered_video_filename*: the filename of the mp4 video that has been background-subtracted\n* *video_filename*: the filename of the mp4 video in which each frame has been independently normalized\n* *hdf_filename*: the filename of the HDF file with raw thermal data\n* *metadata_filename*: the filename of the .json file with the same data included in this clip's dictionary in the main metadata file, plus the track coordinates\n* *width*, *height*\n* *frame_rate*: always 9\n* *error*: usually None; a few HDF files were corrupted, but are kept in the metadata for book-keeping purposes, in which case \\*only\\* this field and the HDF filename are populated\n* *labels*: a list of unique labels appearing in this video; technically redundant with information in the \"tracks\" field, but makes it easier to find videos of a particular category\n* *location*: a unique identifier for the location (camera) from which this video was collected\n* *id*: a unique identifier for this video\n* *calibration_frames*: if non-empty, a list of frame indices in which the camera was self-calibrating; data may be less reliable during these intervals\n* *tracks*: a list of annotated tracks, each of which is a dict with fields \"start_frame\", \"end_frame\", \"points\", and \"tags\". \"tags\" is a list of dicts with fields \"label\" and \"confidence\". All tags were reviewed by humans, so the \"confidence\" value is mostly a remnant of an AI model that was used as part of the labeling process, and these values may or may not carry meaningful information. \"points\" is a list of (x,y,frame) triplets. x and y are in pixels, with the origin at the upper-left of the video. *As per above, the \"points\" array is only available in the individual-clip metadata files, not the main metadata file.*\n\nThat was a lot. tl;dr: check out the [sample notebook](https://github.com/agentmorris/MegaDetector/blob/main/data_management/importers/cacophony-thermal-demo.ipynb).\n\nA recommended train/test split is available [here](https://storage.googleapis.com/public-datasets-lila/nz-thermal/new-zealand-wildlife-thermal-imaging-splits.zip). The train/test split is based on location IDs, but the splits are provided at the level of clip IDs. For a few categories where only a very small number of examples exist, those examples were divided across the splits (so a small number of locations appear in both train and test, but only for a couple of categories).\n\nThe format of the HDF files is described [here](https://github.com/agentmorris/MegaDetector/blob/main/data_management/importers/cacophony-thermal-hdf-format.md). The script used to convert the HDF files to json/mp4 is available [here](https://github.com/agentmorris/MegaDetector/blob/main/data_management/importers/cacophony-thermal-importer.py).\n\n#### Downloading the data\n\nThe main metadata, individual clip metadata, and mp4 videos are all available in a single zipfile:\n\n[Download metadata, mp4 videos from GCP](https://storage.googleapis.com/public-datasets-lila/nz-thermal/new-zealand-wildlife-thermal-imaging.zip) (33GB)  \n\n[Download metadata, mp4 videos from AWS](http://us-west-2.opendata.source.coop.s3.amazonaws.com/agentmorris/lila-wildlife/nz-thermal/new-zealand-wildlife-thermal-imaging.zip) (33GB)  \n\n[Download metadata, mp4 videos from Azure](https://lilawildlife.blob.core.windows.net/lila-wildlife/nz-thermal/new-zealand-wildlife-thermal-imaging.zip) (33GB)  \n\nIf you just want to browse the main metadata file, it's available separately at:\n\n[metadata](https://storage.googleapis.com/public-datasets-lila/nz-thermal/new-zealand-wildlife-thermal-imaging-metadata.json.zip) (5MB)  \n\nThe HDF files are not available as a zipfile, but are available in the following cloud storage folders:\n\n* gs://public-datasets-lila/nz-thermal/hdf (GCP)\n* s3://us-west-2.opendata.source.coop/agentmorris/lila-wildlife/nz-thermal/hdf (AWS)\n* https://lilawildlife.blob.core.windows.net/lila-wildlife/nz-thermal/hdf (Azure)\n\nThe unzipped mp4 files are available in the following cloud storage folders:\n\n* gs://public-datasets-lila/nz-thermal/videos (GCP)\n* s3://us-west-2.opendata.source.coop/agentmorris/lila-wildlife/nz-thermal/videos (AWS)\n* https://lilawildlife.blob.core.windows.net/lila-wildlife/nz-thermal/videos (Azure)\n\nFor example, the clip with ID 1486055 is available at the following URLs (the non-background-subtracted mp4, background-subtracted mp4, and HDF file, respectively):\n\n* https://storage.googleapis.com/public-datasets-lila/nz-thermal/videos/1486055.mp4\n* https://storage.googleapis.com/public-datasets-lila/nz-thermal/videos/1486055_filtered.mp4\n* https://storage.googleapis.com/public-datasets-lila/nz-thermal/hdf/1486055.hdf5\n\n...or the following gs URLs (for use with, e.g., gsutil):\n\n* gs://public-datasets-lila/nz-thermal/videos/1486055.mp4\n* gs://public-datasets-lila/nz-thermal/videos/1486055_filtered.mp4\n* gs://public-datasets-lila/nz-thermal/hdf/1486055.hdf5\n\nHaving trouble downloading? Check out our [FAQ](https://lila.science/faq#downloadtips).\n\n#### Neat thermal camera trap image\n\n![](http://lila.science/wp-content/uploads/2023/07/new-zealand-wildlife-thermal-imaging-thumb.png)\n\n",
-  "_decomposed_from": "agentmorris/lila-wildlife"
+  "readme": "## README.md\n# New Zealand Wildlife Thermal Imaging\n\n### New Zealand Wildlife Thermal Imaging\n\n#### S3 base\n\n`s3://us-west-2.opendata.source.coop/agentmorris/lila-wildlife/nz-thermal`\n\n#### Overview\n\nThis dataset contains 121,190 thermal videos, from [The Cacophony Project](https://cacophony.org.nz/). The Cacophony Project focuses on monitoring native wildlife of New Zealand, with a particular emphasis on detecting and understanding the behaviour of invasive predators such as possums, rodents, cats, hedgehogs, and mustelids. The goal of this work is to conserve and restore native wildlife by eliminating these invasive species from the wild.\n\nThe videos were captured across various regions of New Zealand, mostly at night. Video capture was triggered by a change in incident heat; approximately 24,000 videos are labeled as false positives. Labels are provided for 45 categories; the most common (other than false positives) are \"bird\", \"rodent\", and \"possum\". A full list of labels and the number of videos associated with each label is available [here](https://storage.googleapis.com/public-datasets-lila/nz-thermal/new-zealand-wildlife-thermal-imaging-counts.csv) (csv).\n\n#### Benchmark results\n\nBenchmark results on this dataset, with instructions for reproducing those results, are available [here](https://github.com/TheCacophonyProject/classifier-pipeline#lila-dataset).\n#### Citation, license, and contact information\n\nFor questions about this dataset, contact [coredev@cacophony.org.nz](mailto:coredev@cacophony.org.nz) at The Cacophony Project.\n\nThis data set is released under the [Community Data License Agreement (permissive variant)](https://cdla.io/permissive-1-0/).\n\nNo citation is required, but if you find this dataset useful, or you just want to support technology that is contributing to the conservation of New Zealand's native wildlife, consider [donating to The Cacophony Project](https://givealittle.co.nz/org/cacophony).\n\n[![](https://lila.science/wp-content/uploads/2023/07/GiveToCacophony.png)](https://givealittle.co.nz/org/cacophony)\n\n#### Data format\n\nIf you prefer tinkering with a notebook to reading documentation, you may prefer to ignore this section, and go right to the [sample notebook](https://github.com/agentmorris/MegaDetector/blob/main/data_management/importers/cacophony-thermal-demo.ipynb).\n\nThree versions of each video are available:\n\n* An mp4 video, in which the background has been estimated as the median of the clip, and each frame represents the deviation from that background. This video is referred to as the \"filtered\" video in the metadata described below. We think this is what most ML folks will want to use. This is not a perfectly faithful representation of the original data, since we've lost information about absolute temperature, and median-filtering isn't a perfect way to estimate background. Nonetheless, this is probably easiest to work with for 99% of ML applications. ([example background-subtracted video](https://storage.googleapis.com/public-datasets-lila/nz-thermal/videos/1486055_filtered.mp4))\n* An mp4 video, in which each frame has been independently normalized. This captures the gestalt of the scene a little better, e.g. you can generally pick out trees. ([example non-background-subtracted video](https://storage.googleapis.com/public-datasets-lila/nz-thermal/videos/1486055.mp4))\n* An HDF file representing the original thermal data, including - in some cases - metadata that allows the reconstruction of absolute temperature. More complicated to work with, but totally faithful to what came off of the sensor. These files are also more than ten times larger (totaling around 500GB, whereas the compressed mp4's add up to around 35GB), so they are not included in the big zipfile below. We don't expect most ML use cases to need these files.\n\nThe [metadata file](https://storage.googleapis.com/public-datasets-lila/nz-thermal/new-zealand-wildlife-thermal-imaging-metadata.json.zip) (.json) describes the annotations associated with each video. Annotators were not labeling whole videos with each tag, they were labeling \"tracks\", which are individual sequences of continuous movement within a video. So in some cases, for example, a single cat might move through the video, disappear behind a tree, and re-appear, in which case the metadata will contain two tracks with the \"cat\" label. The metadata contains the start/stop frames of each track and the trajectories of those tracks. Tracks are based on thresholding and clustering approaches, i.e., the tracks are themselves machine-generated, but they are generally quite reliable (other than some false positives), and the main focus of this dataset is the classification of tracks and pixels (both movement trajectory and thermal appearance can contribute to species identification), rather than improving tracking.\n\nMore specifically the [main metadata file](https://storage.googleapis.com/public-datasets-lila/nz-thermal/new-zealand-wildlife-thermal-imaging-metadata.json.zip) contains everything about each clip *except* the track coordinates, which would make the metadata file very large. Each clip also has its own .json metadata file, which has all the information available in the main metadata file about that clip, as well as the track coordinates.\n\nClip metadata is stored as a dictionary with an \"info\" field containing general information about the dataset, and a \"clips\" field with all the information about the videos. The \"clips\" field is a list of dicts, each element corresponding to a video, with fields:\n\n* *filtered_video_filename*: the filename of the mp4 video that has been background-subtracted\n* *video_filename*: the filename of the mp4 video in which each frame has been independently normalized\n* *hdf_filename*: the filename of the HDF file with raw thermal data\n* *metadata_filename*: the filename of the .json file with the same data included in this clip's dictionary in the main metadata file, plus the track coordinates\n* *width*, *height*\n* *frame_rate*: always 9\n* *error*: usually None; a few HDF files were corrupted, but are kept in the metadata for book-keeping purposes, in which case \\*only\\* this field and the HDF filename are populated\n* *labels*: a list of unique labels appearing in this video; technically redundant with information in the \"tracks\" field, but makes it easier to find videos of a particular category\n* *location*: a unique identifier for the location (camera) from which this video was collected\n* *id*: a unique identifier for this video\n* *calibration_frames*: if non-empty, a list of frame indices in which the camera was self-calibrating; data may be less reliable during these intervals\n* *tracks*: a list of annotated tracks, each of which is a dict with fields \"start_frame\", \"end_frame\", \"points\", and \"tags\". \"tags\" is a list of dicts with fields \"label\" and \"confidence\". All tags were reviewed by humans, so the \"confidence\" value is mostly a remnant of an AI model that was used as part of the labeling process, and these values may or may not carry meaningful information. \"points\" is a list of (x,y,frame) triplets. x and y are in pixels, with the origin at the upper-left of the video. *As per above, the \"points\" array is only available in the individual-clip metadata files, not the main metadata file.*\n\nThat was a lot. tl;dr: check out the [sample notebook](https://github.com/agentmorris/MegaDetector/blob/main/data_management/importers/cacophony-thermal-demo.ipynb).\n\nA recommended train/test split is available [here](https://storage.googleapis.com/public-datasets-lila/nz-thermal/new-zealand-wildlife-thermal-imaging-splits.zip). The train/test split is based on location IDs, but the splits are provided at the level of clip IDs. For a few categories where only a very small number of examples exist, those examples were divided across the splits (so a small number of locations appear in both train and test, but only for a couple of categories).\n\nThe format of the HDF files is described [here](https://github.com/agentmorris/MegaDetector/blob/main/data_management/importers/cacophony-thermal-hdf-format.md). The script used to convert the HDF files to json/mp4 is available [here](https://github.com/agentmorris/MegaDetector/blob/main/data_management/importers/cacophony-thermal-importer.py).\n\n#### Downloading the data\n\nThe main metadata, individual clip metadata, and mp4 videos are all available in a single zipfile:\n\n[Download metadata, mp4 videos from GCP](https://storage.googleapis.com/public-datasets-lila/nz-thermal/new-zealand-wildlife-thermal-imaging.zip) (33GB)  \n\n[Download metadata, mp4 videos from AWS](http://us-west-2.opendata.source.coop.s3.amazonaws.com/agentmorris/lila-wildlife/nz-thermal/new-zealand-wildlife-thermal-imaging.zip) (33GB)  \n\n[Download metadata, mp4 videos from Azure](https://lilawildlife.blob.core.windows.net/lila-wildlife/nz-thermal/new-zealand-wildlife-thermal-imaging.zip) (33GB)  \n\nIf you just want to browse the main metadata file, it's available separately at:\n\n[metadata](https://storage.googleapis.com/public-datasets-lila/nz-thermal/new-zealand-wildlife-thermal-imaging-metadata.json.zip) (5MB)  \n\nThe HDF files are not available as a zipfile, but are available in the following cloud storage folders:\n\n* gs://public-datasets-lila/nz-thermal/hdf (GCP)\n* s3://us-west-2.opendata.source.coop/agentmorris/lila-wildlife/nz-thermal/hdf (AWS)\n* https://lilawildlife.blob.core.windows.net/lila-wildlife/nz-thermal/hdf (Azure)\n\nThe unzipped mp4 files are available in the following cloud storage folders:\n\n* gs://public-datasets-lila/nz-thermal/videos (GCP)\n* s3://us-west-2.opendata.source.coop/agentmorris/lila-wildlife/nz-thermal/videos (AWS)\n* https://lilawildlife.blob.core.windows.net/lila-wildlife/nz-thermal/videos (Azure)\n\nFor example, the clip with ID 1486055 is available at the following URLs (the non-background-subtracted mp4, background-subtracted mp4, and HDF file, respectively):\n\n* https://storage.googleapis.com/public-datasets-lila/nz-thermal/videos/1486055.mp4\n* https://storage.googleapis.com/public-datasets-lila/nz-thermal/videos/1486055_filtered.mp4\n* https://storage.googleapis.com/public-datasets-lila/nz-thermal/hdf/1486055.hdf5\n\n...or the following gs URLs (for use with, e.g., gsutil):\n\n* gs://public-datasets-lila/nz-thermal/videos/1486055.mp4\n* gs://public-datasets-lila/nz-thermal/videos/1486055_filtered.mp4\n* gs://public-datasets-lila/nz-thermal/hdf/1486055.hdf5\n\nHaving trouble downloading? Check out our [FAQ](https://lila.science/faq#downloadtips).\n\n#### Neat thermal camera trap image\n\n![](http://lila.science/wp-content/uploads/2023/07/new-zealand-wildlife-thermal-imaging-thumb.png)\n\n",
+  "_state": "drafted",
+  "cataloged_at": "2026-08-21T23:10:45+00:00"
 }
