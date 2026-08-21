@@ -1,16 +1,205 @@
 {
   "schema_version": 1,
-  "account_id": "abry-tudelft",
-  "product_id": "eubucco",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
+  "id": "abry-tudelft/eubucco",
   "title": "EUBUCCO",
-  "description": "The EUBUCCO (EUropean BUilding stock Characteristics in a Common and Open database for 200+ million individual buildings) dataset, originally hosted at <https://eubucco.com/>.\r\n\r\nEUBUCCO is a scientific database of individual building footprints for 200+ million buildings across the 27 European Union countries and Switzerland, together with three main attributes \u2013 building type, height and construction year \u2013 included for respectively 45%, 74%, 24% of the buildings.\r\n\r\nEUBUCCO is composed of 50 open government datasets and OpenStreetMap that have been collected, harmonized and partly validated.\r\n\r\nThe license of the data is ODbL.\r\nFor simplicity reasons, we did not include the small parts of the dataset with different licenses (Prague and Abruzzo) which can still be downloaded from the original source as `v0_1\u2212CZE_11\u2212OTHER\u2212LICENSE\u2212CC\u2212BY\u2212SA.zip` for Prague and `v0_1\u2212ITA_1\u2212OTHER\u2212LICENSE\u2212CC\u2212BY\u2212NC.zip`.",
-  "keywords": [],
-  "created_at": "2026-01-27T08:17:21.194Z",
-  "updated_at": "2026-01-27T08:18:41.500Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
+  "description": "EUBUCCO is a harmonized, open database of individual building footprints for over 200 million buildings across the 27 European Union countries and Switzerland. It combines and cross-validates 50 open government building datasets with OpenStreetMap, attaching height, construction year, and building type attributes where available.",
+  "license": "ODbL-1.0",
+  "keywords": [
+    "building-footprints",
+    "geoparquet",
+    "h3",
+    "pmtiles",
+    "european-union",
+    "openstreetmap",
+    "administrative-boundaries"
+  ],
+  "providers": [
+    {
+      "name": "EUBUCCO",
+      "roles": [
+        "producer",
+        "licensor",
+        "processor"
+      ]
+    },
+    {
+      "name": "OpenStreetMap contributors",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/abry-tudelft/eubucco"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 119477784
+  },
+  "assets": {
+    "parquet/country": {
+      "href": "https://data.source.coop/abry-tudelft/eubucco/parquet/country/",
+      "type": "application/x-parquet",
+      "title": "parquet/country",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "height",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "age",
+          "type": "BIGINT|DOUBLE|VARCHAR"
+        },
+        {
+          "name": "type",
+          "type": "DOUBLE|VARCHAR"
+        },
+        {
+          "name": "id_source",
+          "type": "BIGINT|VARCHAR"
+        },
+        {
+          "name": "type_source",
+          "type": "DOUBLE|VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:4326')",
+          "description": "[geometry] Building footprint polygon geometry (EPSG:4326)"
+        }
+      ],
+      "description": "20 files sampled for this table",
+      "bbox": [
+        -31.2660596,
+        27.6393564,
+        34.0856738,
+        68.9743312
+      ],
+      "item_count": 119477784
+    },
+    "parquet/h3": {
+      "href": "https://data.source.coop/abry-tudelft/eubucco/parquet/h3/h3_cell=8401261ffffffff/",
+      "type": "application/x-parquet",
+      "title": "parquet/h3",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "height",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "age",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "type",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "id_source",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "type_source",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:4326')",
+          "description": "[geometry] Building footprint polygon geometry (EPSG:4326)"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)",
+          "description": "[geometry] Axis-aligned bounding box coordinates of the building footprint"
+        },
+        {
+          "name": "h3_cell",
+          "type": "VARCHAR",
+          "description": "[spatial_index] H3 hexagonal spatial index cell identifier for the building"
+        }
+      ],
+      "description": "20 files sampled for this table",
+      "bbox": [
+        -14.3614961,
+        28.0470779,
+        28.6668268,
+        70.0905803
+      ],
+      "item_count": 38315
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/abry-tudelft/eubucco/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/abry-tudelft/eubucco",
+      "title": "Source Cooperative product page"
+    }
+  ],
+  "objects_updated_at": "2026-01-27T12:09:34+00:00",
   "data_mode": "open",
+  "exts": {
+    "parquet": 3224,
+    "fgb": 27,
+    "json": 1,
+    "pmtiles": 1
+  },
+  "object_count": 3253,
+  "product_id": "eubucco",
+  "visibility": "public",
+  "created_at": "2026-01-27T08:17:21.194Z",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "featured": 0,
+  "account_id": "abry-tudelft",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -23,26 +212,16 @@
       "prefix": "abry-tudelft/eubucco/"
     }
   },
-  "object_count": 3253,
-  "objects_updated_at": "2026-01-27T12:09:34+00:00",
+  "updated_at": "2026-01-27T08:18:41.500Z",
   "total_bytes": 395241514776,
-  "exts": {
-    "parquet": 3224,
-    "fgb": 27,
-    "json": 1,
-    "pmtiles": 1
-  },
-  "ext_bytes": {
-    "parquet": 184353580446,
-    "fgb": 180404969184,
-    "pmtiles": 30482913200,
-    "json": 51946
-  },
-  "store_format": null,
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "cataloged_at": "2026-08-21T21:08:06+00:00"
+  "disabled": false,
+  "_review": [
+    "license: Overall database is licensed ODbL-1.0. Small excluded portions (Prague and Abruzzo) are under different licenses (CC-BY-SA and CC-BY-NC respectively) and are distributed separately from the original source.",
+    "providers: role [producer] for 'OpenStreetMap contributors' is an AI guess \u2014 OpenStreetMap is named as one of the source datasets harmonized into EUBUCCO, but its exact contribution role isn't detailed.. Verify before flipping to _state: reviewed.",
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [parquet/country.geometry (geometry), parquet/h3.geometry (geometry), parquet/h3.bbox (geometry), parquet/h3.h3_cell (spatial_index)]. Add bbox once the placename \u2192 bbox gazetteer covers it.",
+    "summaries.item_count: parts overlap, so this is max(part), not the sum \u2014 parquet/country/ 119477784, parquet/h3/ 38315. Sum them only once the parts are known to be disjoint."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-08-21T21:19:15+00:00",
+  "store_format": null
 }
