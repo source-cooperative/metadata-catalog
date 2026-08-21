@@ -7,7 +7,7 @@
   ],
   "id": "cboettig/inat",
   "title": "iNaturalist Species Ranges & Taxonomy  ",
-  "description": "Species range maps, taxonomic hierarchy, and vernacular (common) names for organisms cataloged by iNaturalist, including GeoParquet range polygons partitioned by taxonomic group, H3 resolution-4 hexagon-indexed ranges, and taxonomy/common-name tables covering hundreds of languages.",
+  "description": "A collection of species range maps, taxonomic hierarchy, and vernacular (common) name tables derived from iNaturalist, including GeoParquet range polygons by taxonomic group, H3 resolution-4 hexagon-indexed ranges, and common names in hundreds of languages.",
   "keywords": [
     "biodiversity",
     "ecology",
@@ -583,46 +583,6 @@
       "roles": [
         "data"
       ],
-      "table:columns": [
-        {
-          "name": "id",
-          "type": "BIGINT"
-        },
-        {
-          "name": "vernacularName",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "language",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "locality",
-          "type": "VARCHAR",
-          "description": "[placename] Named place/region associated with the vernacular name record (pattern repeats across all per-language VernacularNames-* assets)"
-        },
-        {
-          "name": "countryCode",
-          "type": "VARCHAR",
-          "description": "[admin_code] ISO country code associated with the vernacular name record (pattern repeats across all per-language VernacularNames-* assets)"
-        },
-        {
-          "name": "source",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "lexicon",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "contributor",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "created",
-          "type": "TIMESTAMP WITH TIME ZONE"
-        }
-      ],
       "table:row_count": 3602
     }
   },
@@ -676,22 +636,14 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "account_id": "cboettig",
   "updated_at": "2026-06-17T03:26:16.621Z",
-  "visibility": "public",
-  "created_at": "2026-06-17T03:26:16.621Z",
-  "disabled": false,
-  "featured": 0,
-  "exts": {
-    "csv": 1090,
-    "parquet": 492,
-    "xml": 2,
-    "": 1,
-    "md": 1,
-    "json": 1
+  "product_id": "inat",
+  "total_bytes": 13082795184,
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
   },
-  "total_bytes": 13057677400,
-  "object_count": 1587,
+  "featured": 0,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -705,17 +657,26 @@
     }
   },
   "data_mode": "open",
-  "product_id": "inat",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
+  "account_id": "cboettig",
+  "disabled": false,
+  "object_count": 1587,
+  "created_at": "2026-06-17T03:26:16.621Z",
+  "exts": {
+    "csv": 1090,
+    "parquet": 492,
+    "xml": 2,
+    "md": 1,
+    "json": 1,
+    "": 1
   },
+  "visibility": "public",
   "readme": "## README.md\n# iNaturalist Species Ranges & Taxonomy\n\nThis dataset contains species range maps, taxonomic information, and vernacular names from iNaturalist. It appears to be derived from the iNaturalist Geomodel or similar range estimation products.\n\n## Assets\n\n### 1. Species Ranges (GeoParquet)\n**Prefix:** `s3://public-inat/taxon/`\nPartitioned by `iconic_taxon_name` (e.g., Animalia, Plantae, Insecta).\n\n**Schema:**\n- `taxon_id`: iNaturalist Taxon ID\n- `scientificName`: Scientific Name\n- `geom`: Geometry (likely modeled range polygons)\n- `geomodel_version`: Version of the range model\n- `kingdom`, `phylum`, `class`,...: Taxonomic hierarchy\n\n### 2. Range Hexagons (H4)\n**File:** `s3://public-inat/ranges.parquet`\nSpecies ranges rasterized/indexed to H3 resolution 4 hexagons.\n\n**Schema:**\n- `taxon_id`: iNaturalist Taxon ID\n- `name`: Species Name\n- `h4`: H3 resolution 4 index\n- `iconic_taxon_name`: High-level group\n\n### 3. Taxonomy & Common Names\n**Files:**\n- `s3://public-inat/taxonomy/taxa.parquet`: Core taxonomy table.\n- `s3://public-inat/taxonomy/taxa_and_common.parquet`: Taxonomy with common names.\n- `s3://public-inat/taxonomy/vernacular/*.csv`: Common names in hundreds of languages.\n\n## Source\n\n- **Producer:** iNaturalist\n- **Link:** [iNaturalist.org](https://www.inaturalist.org/)\n- **Note:** This dataset likely represents the \"Geomodel\" or expert range maps used by iNaturalist for automated identification priors.\n\n## License\n\n- **iNaturalist Data:** See [iNaturalist Terms of Service](https://www.inaturalist.org/pages/terms).\n- **Open Data:** Many iNaturalist datasets are CC0 or CC-BY, but check specific taxon licensing.\n",
   "_review": [
     "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
-    "extent.spatial.bbox: omitted; spatial reference is categorical via [taxon.geom (geometry), ranges.h4 (spatial_index), VernacularNames-zulu.locality (placename), VernacularNames-zulu.countryCode (admin_code)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [taxon.geom (geometry), ranges.h4 (spatial_index), VernacularNames-*.locality (placename), VernacularNames-*.countryCode (admin_code)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-07-23T09:37:29+00:00",
+  "cataloged_at": "2026-08-21T01:49:47+00:00",
+  "objects_updated_at": "2026-08-12T22:33:28+00:00",
   "store_format": null
 }
