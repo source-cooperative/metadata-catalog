@@ -7,7 +7,7 @@
   ],
   "id": "portolan/portolan-pipeline",
   "title": "Portolan Golden Example Catalog",
-  "description": "A reference and testbed catalog for the Portolan v0.1 metadata specification, bundling eight openly-licensed geospatial and tabular collections mirrored from their original sources: Natural Earth country and populated-place boundaries, US Census county polygons, City of Boston open-space parcels, Netherlands provincial boundaries, San Francisco address points, a sample Cloud Optimized GeoTIFF, and Eurostat household electricity-price statistics. It exercises vector, raster, tabular, and nested-catalog cataloging patterns with each collection citing a verifiable upstream source and checksum.",
+  "description": "A reference and testbed catalog for the Portolan v0.1 metadata specification, bundling eight openly-licensed collections mirrored from their original upstream sources: Natural Earth country and populated-place boundaries, US Census county polygons, City of Boston open-space parcels, Netherlands provincial boundaries, San Francisco address points, a sample Cloud Optimized GeoTIFF, and Eurostat household electricity-price statistics. Each collection is republished as cloud-native GeoParquet, COG, or Parquet with a verifiable upstream source and checksum, exercising vector, raster, tabular, and nested-catalog cataloging patterns.",
   "keywords": [
     "administrative-boundaries",
     "conservation",
@@ -103,7 +103,7 @@
     }
   },
   "summaries": {
-    "item_count": 229383
+    "item_count": 153230
   },
   "assets": {
     "naip-mosaic/PRs/111/imagery/colorado-2023": {
@@ -187,6 +187,92 @@
       "title": "boston-open-space.parquet",
       "roles": [
         "data"
+      ],
+      "table:columns": [
+        {
+          "name": "fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OBJECTID",
+          "type": "INTEGER"
+        },
+        {
+          "name": "SITE_NAME",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "OWNERSHIP",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PROTECTION",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "TYPECODE",
+          "type": "INTEGER"
+        },
+        {
+          "name": "DISTRICT",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ACRES",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "ADDRESS",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ZonAgg",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "TypeLong",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "OS_Own_Jur",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "OS_Mngmnt",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "POS",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PA",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ALT_NAME",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "AgncyJuris",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ShapeSTAre",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "ShapeSTLen",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "geom",
+          "type": "GEOMETRY"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
       ],
       "table:row_count": 1012
     },
@@ -1776,1601 +1862,6 @@
       ],
       "table:row_count": 65466
     },
-    "portolan-reference/PRs/124/boundaries/boston-open-space": {
-      "href": "https://data.source.coop/portolan/portolan-pipeline/portolan-reference/PRs/124/boundaries/boston-open-space/boston-open-space.parquet",
-      "type": "application/x-parquet",
-      "title": "boston-open-space.parquet",
-      "roles": [
-        "data"
-      ],
-      "table:row_count": 1012
-    },
-    "portolan-reference/PRs/124/boundaries/netherlands-provinces": {
-      "href": "https://data.source.coop/portolan/portolan-pipeline/portolan-reference/PRs/124/boundaries/netherlands-provinces/netherlands-provinces.parquet",
-      "type": "application/x-parquet",
-      "title": "netherlands-provinces.parquet",
-      "roles": [
-        "data"
-      ],
-      "table:columns": [
-        {
-          "name": "fid",
-          "type": "BIGINT"
-        },
-        {
-          "name": "identificatie",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "naam",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "code",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "ligt_in_land_code",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "ligt_in_land_naam",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "geom",
-          "type": "GEOMETRY('EPSG:28992')"
-        },
-        {
-          "name": "bbox",
-          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
-        }
-      ],
-      "table:row_count": 12
-    },
-    "portolan-reference/PRs/124/boundaries/us-counties": {
-      "href": "https://data.source.coop/portolan/portolan-pipeline/portolan-reference/PRs/124/boundaries/us-counties/us-counties.parquet",
-      "type": "application/x-parquet",
-      "title": "us-counties.parquet",
-      "roles": [
-        "data"
-      ],
-      "table:columns": [
-        {
-          "name": "fid",
-          "type": "BIGINT"
-        },
-        {
-          "name": "STATEFP",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "COUNTYFP",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "COUNTYNS",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "GEOIDFQ",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "GEOID",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "NAME",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "NAMELSAD",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "STUSPS",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "STATE_NAME",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "LSAD",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "ALAND",
-          "type": "BIGINT"
-        },
-        {
-          "name": "AWATER",
-          "type": "BIGINT"
-        },
-        {
-          "name": "geom",
-          "type": "GEOMETRY('EPSG:4269')"
-        },
-        {
-          "name": "bbox",
-          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
-        }
-      ],
-      "table:row_count": 3235
-    },
-    "portolan-reference/PRs/124/mirror/san-francisco-addresses": {
-      "href": "https://data.source.coop/portolan/portolan-pipeline/portolan-reference/PRs/124/mirror/san-francisco-addresses/san-francisco-addresses.parquet",
-      "type": "application/x-parquet",
-      "title": "san-francisco-addresses.parquet",
-      "roles": [
-        "data"
-      ],
-      "table:columns": [
-        {
-          "name": "fid",
-          "type": "BIGINT"
-        },
-        {
-          "name": "street_full_street_name",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "zip_code",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "latitude",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "address_number_suffix",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "supdistpad",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "complete_landmark_name",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "eas_fullid",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "direct_source",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "cnn",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "data_loaded_at",
-          "type": "TIMESTAMP WITH TIME ZONE"
-        },
-        {
-          "name": "longitude",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "street_name",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "supdist",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "eas_baseid",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "nhood",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "block",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "supname",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "eas_address_id",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "street_type",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "eas_subid",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "lot",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "address",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "unit_number",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "supervisor",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "data_updated_at",
-          "type": "TIMESTAMP WITH TIME ZONE"
-        },
-        {
-          "name": "address_number",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "parcel_number",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "numbertext",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "data_as_of",
-          "type": "TIMESTAMP WITH TIME ZONE"
-        },
-        {
-          "name": "landmark_aliases",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "geom",
-          "type": "GEOMETRY"
-        },
-        {
-          "name": "bbox",
-          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
-        }
-      ],
-      "table:row_count": 5000
-    },
-    "portolan-reference/PRs/124/reference/natural-earth-countries": {
-      "href": "https://data.source.coop/portolan/portolan-pipeline/portolan-reference/PRs/124/reference/natural-earth-countries/natural-earth-countries.parquet",
-      "type": "application/x-parquet",
-      "title": "natural-earth-countries.parquet",
-      "roles": [
-        "data"
-      ],
-      "table:columns": [
-        {
-          "name": "fid",
-          "type": "BIGINT"
-        },
-        {
-          "name": "featurecla",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "scalerank",
-          "type": "INTEGER"
-        },
-        {
-          "name": "LABELRANK",
-          "type": "INTEGER"
-        },
-        {
-          "name": "SOVEREIGNT",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "SOV_A3",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "ADM0_DIF",
-          "type": "INTEGER"
-        },
-        {
-          "name": "LEVEL",
-          "type": "INTEGER"
-        },
-        {
-          "name": "TYPE",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "TLC",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "ADMIN",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "ADM0_A3",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "GEOU_DIF",
-          "type": "INTEGER"
-        },
-        {
-          "name": "GEOUNIT",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "GU_A3",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "SU_DIF",
-          "type": "INTEGER"
-        },
-        {
-          "name": "SUBUNIT",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "SU_A3",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "BRK_DIFF",
-          "type": "INTEGER"
-        },
-        {
-          "name": "NAME",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "NAME_LONG",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "BRK_A3",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "BRK_NAME",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "BRK_GROUP",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "ABBREV",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "POSTAL",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "FORMAL_EN",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "FORMAL_FR",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "NAME_CIAWF",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "NOTE_ADM0",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "NOTE_BRK",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "NAME_SORT",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "NAME_ALT",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "MAPCOLOR7",
-          "type": "INTEGER"
-        },
-        {
-          "name": "MAPCOLOR8",
-          "type": "INTEGER"
-        },
-        {
-          "name": "MAPCOLOR9",
-          "type": "INTEGER"
-        },
-        {
-          "name": "MAPCOLOR13",
-          "type": "INTEGER"
-        },
-        {
-          "name": "POP_EST",
-          "type": "DOUBLE"
-        },
-        {
-          "name": "POP_RANK",
-          "type": "INTEGER"
-        },
-        {
-          "name": "POP_YEAR",
-          "type": "INTEGER"
-        },
-        {
-          "name": "GDP_MD",
-          "type": "INTEGER"
-        },
-        {
-          "name": "GDP_YEAR",
-          "type": "INTEGER"
-        },
-        {
-          "name": "ECONOMY",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "INCOME_GRP",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "FIPS_10",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "ISO_A2",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "ISO_A2_EH",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "ISO_A3",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "ISO_A3_EH",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "ISO_N3",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "ISO_N3_EH",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "UN_A3",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "WB_A2",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "WB_A3",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "WOE_ID",
-          "type": "INTEGER"
-        },
-        {
-          "name": "WOE_ID_EH",
-          "type": "INTEGER"
-        },
-        {
-          "name": "WOE_NOTE",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "ADM0_ISO",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "ADM0_DIFF",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "ADM0_TLC",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "ADM0_A3_US",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "ADM0_A3_FR",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "ADM0_A3_RU",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "ADM0_A3_ES",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "ADM0_A3_CN",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "ADM0_A3_TW",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "ADM0_A3_IN",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "ADM0_A3_NP",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "ADM0_A3_PK",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "ADM0_A3_DE",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "ADM0_A3_GB",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "ADM0_A3_BR",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "ADM0_A3_IL",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "ADM0_A3_PS",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "ADM0_A3_SA",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "ADM0_A3_EG",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "ADM0_A3_MA",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "ADM0_A3_PT",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "ADM0_A3_AR",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "ADM0_A3_JP",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "ADM0_A3_KO",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "ADM0_A3_VN",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "ADM0_A3_TR",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "ADM0_A3_ID",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "ADM0_A3_PL",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "ADM0_A3_GR",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "ADM0_A3_IT",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "ADM0_A3_NL",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "ADM0_A3_SE",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "ADM0_A3_BD",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "ADM0_A3_UA",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "ADM0_A3_UN",
-          "type": "INTEGER"
-        },
-        {
-          "name": "ADM0_A3_WB",
-          "type": "INTEGER"
-        },
-        {
-          "name": "CONTINENT",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "REGION_UN",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "SUBREGION",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "REGION_WB",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "NAME_LEN",
-          "type": "INTEGER"
-        },
-        {
-          "name": "LONG_LEN",
-          "type": "INTEGER"
-        },
-        {
-          "name": "ABBREV_LEN",
-          "type": "INTEGER"
-        },
-        {
-          "name": "TINY",
-          "type": "INTEGER"
-        },
-        {
-          "name": "HOMEPART",
-          "type": "INTEGER"
-        },
-        {
-          "name": "MIN_ZOOM",
-          "type": "DOUBLE"
-        },
-        {
-          "name": "MIN_LABEL",
-          "type": "DOUBLE"
-        },
-        {
-          "name": "MAX_LABEL",
-          "type": "DOUBLE"
-        },
-        {
-          "name": "LABEL_X",
-          "type": "DOUBLE"
-        },
-        {
-          "name": "LABEL_Y",
-          "type": "DOUBLE"
-        },
-        {
-          "name": "NE_ID",
-          "type": "BIGINT"
-        },
-        {
-          "name": "WIKIDATAID",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "NAME_AR",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "NAME_BN",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "NAME_DE",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "NAME_EN",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "NAME_ES",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "NAME_FA",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "NAME_FR",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "NAME_EL",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "NAME_HE",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "NAME_HI",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "NAME_HU",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "NAME_ID",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "NAME_IT",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "NAME_JA",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "NAME_KO",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "NAME_NL",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "NAME_PL",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "NAME_PT",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "NAME_RU",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "NAME_SV",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "NAME_TR",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "NAME_UK",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "NAME_UR",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "NAME_VI",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "NAME_ZH",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "NAME_ZHT",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "FCLASS_ISO",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "TLC_DIFF",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "FCLASS_TLC",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "FCLASS_US",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "FCLASS_FR",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "FCLASS_RU",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "FCLASS_ES",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "FCLASS_CN",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "FCLASS_TW",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "FCLASS_IN",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "FCLASS_NP",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "FCLASS_PK",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "FCLASS_DE",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "FCLASS_GB",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "FCLASS_BR",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "FCLASS_IL",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "FCLASS_PS",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "FCLASS_SA",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "FCLASS_EG",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "FCLASS_MA",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "FCLASS_PT",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "FCLASS_AR",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "FCLASS_JP",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "FCLASS_KO",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "FCLASS_VN",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "FCLASS_TR",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "FCLASS_ID",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "FCLASS_PL",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "FCLASS_GR",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "FCLASS_IT",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "FCLASS_NL",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "FCLASS_SE",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "FCLASS_BD",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "FCLASS_UA",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "geom",
-          "type": "GEOMETRY"
-        },
-        {
-          "name": "bbox",
-          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
-        }
-      ],
-      "table:row_count": 177
-    },
-    "portolan-reference/PRs/124/reference/natural-earth-populated-places": {
-      "href": "https://data.source.coop/portolan/portolan-pipeline/portolan-reference/PRs/124/reference/natural-earth-populated-places/natural-earth-populated-places.parquet",
-      "type": "application/x-parquet",
-      "title": "natural-earth-populated-places.parquet",
-      "roles": [
-        "data"
-      ],
-      "table:columns": [
-        {
-          "name": "fid",
-          "type": "BIGINT"
-        },
-        {
-          "name": "SCALERANK",
-          "type": "INTEGER"
-        },
-        {
-          "name": "NATSCALE",
-          "type": "INTEGER"
-        },
-        {
-          "name": "LABELRANK",
-          "type": "INTEGER"
-        },
-        {
-          "name": "FEATURECLA",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "NAME",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "NAMEPAR",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "NAMEALT",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "NAMEASCII",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "ADM0CAP",
-          "type": "INTEGER"
-        },
-        {
-          "name": "CAPIN",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "WORLDCITY",
-          "type": "INTEGER"
-        },
-        {
-          "name": "MEGACITY",
-          "type": "INTEGER"
-        },
-        {
-          "name": "SOV0NAME",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "SOV_A3",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "ADM0NAME",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "ADM0_A3",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "ADM1NAME",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "ISO_A2",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "NOTE",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "LATITUDE",
-          "type": "DOUBLE"
-        },
-        {
-          "name": "LONGITUDE",
-          "type": "DOUBLE"
-        },
-        {
-          "name": "POP_MAX",
-          "type": "BIGINT"
-        },
-        {
-          "name": "POP_MIN",
-          "type": "BIGINT"
-        },
-        {
-          "name": "POP_OTHER",
-          "type": "BIGINT"
-        },
-        {
-          "name": "RANK_MAX",
-          "type": "INTEGER"
-        },
-        {
-          "name": "RANK_MIN",
-          "type": "INTEGER"
-        },
-        {
-          "name": "MEGANAME",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "LS_NAME",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "MAX_POP10",
-          "type": "BIGINT"
-        },
-        {
-          "name": "MAX_POP20",
-          "type": "BIGINT"
-        },
-        {
-          "name": "MAX_POP50",
-          "type": "BIGINT"
-        },
-        {
-          "name": "MAX_POP300",
-          "type": "BIGINT"
-        },
-        {
-          "name": "MAX_POP310",
-          "type": "BIGINT"
-        },
-        {
-          "name": "MAX_NATSCA",
-          "type": "BIGINT"
-        },
-        {
-          "name": "MIN_AREAKM",
-          "type": "BIGINT"
-        },
-        {
-          "name": "MAX_AREAKM",
-          "type": "BIGINT"
-        },
-        {
-          "name": "MIN_AREAMI",
-          "type": "BIGINT"
-        },
-        {
-          "name": "MAX_AREAMI",
-          "type": "BIGINT"
-        },
-        {
-          "name": "MIN_PERKM",
-          "type": "BIGINT"
-        },
-        {
-          "name": "MAX_PERKM",
-          "type": "BIGINT"
-        },
-        {
-          "name": "MIN_PERMI",
-          "type": "BIGINT"
-        },
-        {
-          "name": "MAX_PERMI",
-          "type": "BIGINT"
-        },
-        {
-          "name": "MIN_BBXMIN",
-          "type": "DOUBLE"
-        },
-        {
-          "name": "MAX_BBXMIN",
-          "type": "DOUBLE"
-        },
-        {
-          "name": "MIN_BBXMAX",
-          "type": "DOUBLE"
-        },
-        {
-          "name": "MAX_BBXMAX",
-          "type": "DOUBLE"
-        },
-        {
-          "name": "MIN_BBYMIN",
-          "type": "DOUBLE"
-        },
-        {
-          "name": "MAX_BBYMIN",
-          "type": "DOUBLE"
-        },
-        {
-          "name": "MIN_BBYMAX",
-          "type": "DOUBLE"
-        },
-        {
-          "name": "MAX_BBYMAX",
-          "type": "DOUBLE"
-        },
-        {
-          "name": "MEAN_BBXC",
-          "type": "DOUBLE"
-        },
-        {
-          "name": "MEAN_BBYC",
-          "type": "DOUBLE"
-        },
-        {
-          "name": "TIMEZONE",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "UN_FID",
-          "type": "INTEGER"
-        },
-        {
-          "name": "POP1950",
-          "type": "BIGINT"
-        },
-        {
-          "name": "POP1955",
-          "type": "BIGINT"
-        },
-        {
-          "name": "POP1960",
-          "type": "BIGINT"
-        },
-        {
-          "name": "POP1965",
-          "type": "BIGINT"
-        },
-        {
-          "name": "POP1970",
-          "type": "BIGINT"
-        },
-        {
-          "name": "POP1975",
-          "type": "BIGINT"
-        },
-        {
-          "name": "POP1980",
-          "type": "BIGINT"
-        },
-        {
-          "name": "POP1985",
-          "type": "BIGINT"
-        },
-        {
-          "name": "POP1990",
-          "type": "BIGINT"
-        },
-        {
-          "name": "POP1995",
-          "type": "BIGINT"
-        },
-        {
-          "name": "POP2000",
-          "type": "BIGINT"
-        },
-        {
-          "name": "POP2005",
-          "type": "BIGINT"
-        },
-        {
-          "name": "POP2010",
-          "type": "BIGINT"
-        },
-        {
-          "name": "POP2015",
-          "type": "BIGINT"
-        },
-        {
-          "name": "POP2020",
-          "type": "BIGINT"
-        },
-        {
-          "name": "POP2025",
-          "type": "BIGINT"
-        },
-        {
-          "name": "POP2050",
-          "type": "BIGINT"
-        },
-        {
-          "name": "MIN_ZOOM",
-          "type": "DOUBLE"
-        },
-        {
-          "name": "WIKIDATAID",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "WOF_ID",
-          "type": "BIGINT"
-        },
-        {
-          "name": "CAPALT",
-          "type": "INTEGER"
-        },
-        {
-          "name": "NAME_EN",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "NAME_DE",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "NAME_ES",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "NAME_FR",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "NAME_PT",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "NAME_RU",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "NAME_ZH",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "LABEL",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "NAME_AR",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "NAME_BN",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "NAME_EL",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "NAME_HI",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "NAME_HU",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "NAME_ID",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "NAME_IT",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "NAME_JA",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "NAME_KO",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "NAME_NL",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "NAME_PL",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "NAME_SV",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "NAME_TR",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "NAME_VI",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "NE_ID",
-          "type": "BIGINT"
-        },
-        {
-          "name": "NAME_FA",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "NAME_HE",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "NAME_UK",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "NAME_UR",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "NAME_ZHT",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "GEONAMESID",
-          "type": "BIGINT"
-        },
-        {
-          "name": "FCLASS_ISO",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "FCLASS_US",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "FCLASS_FR",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "FCLASS_RU",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "FCLASS_ES",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "FCLASS_CN",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "FCLASS_TW",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "FCLASS_IN",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "FCLASS_NP",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "FCLASS_PK",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "FCLASS_DE",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "FCLASS_GB",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "FCLASS_BR",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "FCLASS_IL",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "FCLASS_PS",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "FCLASS_SA",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "FCLASS_EG",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "FCLASS_MA",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "FCLASS_PT",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "FCLASS_AR",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "FCLASS_JP",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "FCLASS_KO",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "FCLASS_VN",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "FCLASS_TR",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "FCLASS_ID",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "FCLASS_PL",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "FCLASS_GR",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "FCLASS_IT",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "FCLASS_NL",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "FCLASS_SE",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "FCLASS_BD",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "FCLASS_UA",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "FCLASS_TLC",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "geom",
-          "type": "GEOMETRY"
-        },
-        {
-          "name": "bbox",
-          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
-        }
-      ],
-      "table:row_count": 1251
-    },
-    "portolan-reference/PRs/124/tabular/eurostat-electricity-prices": {
-      "href": "https://data.source.coop/portolan/portolan-pipeline/portolan-reference/PRs/124/tabular/eurostat-electricity-prices/eurostat-electricity-prices.parquet",
-      "type": "application/x-parquet",
-      "title": "eurostat-electricity-prices.parquet",
-      "roles": [
-        "data"
-      ],
-      "table:columns": [
-        {
-          "name": "DATAFLOW",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "LAST UPDATE",
-          "type": "TIMESTAMP"
-        },
-        {
-          "name": "freq",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "siec",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "nrg_cons",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "unit",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "tax",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "currency",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "geo",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "TIME_PERIOD",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "OBS_VALUE",
-          "type": "DOUBLE"
-        },
-        {
-          "name": "OBS_FLAG",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "CONF_STATUS",
-          "type": "VARCHAR"
-        }
-      ],
-      "table:row_count": 65466
-    },
     "portolan-reference/main/boundaries/boston-open-space": {
       "href": "https://data.source.coop/portolan/portolan-pipeline/portolan-reference/main/boundaries/boston-open-space/boston-open-space.parquet",
       "type": "application/x-parquet",
@@ -3389,8 +1880,7 @@
         },
         {
           "name": "SITE_NAME",
-          "type": "VARCHAR",
-          "description": "[placename] Open space site name"
+          "type": "VARCHAR"
         },
         {
           "name": "OWNERSHIP",
@@ -3459,7 +1949,7 @@
         {
           "name": "geom",
           "type": "GEOMETRY",
-          "description": "[geometry] Open space parcel polygon geometry"
+          "description": "[geometry] Open-space site polygon, WGS84 lon/lat."
         },
         {
           "name": "bbox",
@@ -3482,17 +1972,16 @@
         },
         {
           "name": "identificatie",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[admin_code] CBS province code (PV20-PV31), join key to CBS StatLine."
         },
         {
           "name": "naam",
-          "type": "VARCHAR",
-          "description": "[placename] Province name"
+          "type": "VARCHAR"
         },
         {
           "name": "code",
-          "type": "VARCHAR",
-          "description": "[admin_code] Provincial administrative code"
+          "type": "VARCHAR"
         },
         {
           "name": "ligt_in_land_code",
@@ -3505,7 +1994,7 @@
         {
           "name": "geom",
           "type": "GEOMETRY('EPSG:28992')",
-          "description": "[geometry] Province polygon geometry (EPSG:28992)"
+          "description": "[geometry] Province multipolygon, EPSG:28992."
         },
         {
           "name": "bbox",
@@ -3545,12 +2034,11 @@
         {
           "name": "GEOID",
           "type": "VARCHAR",
-          "description": "[admin_code] Combined state+county FIPS code"
+          "description": "[admin_code] Five-digit county FIPS code."
         },
         {
           "name": "NAME",
-          "type": "VARCHAR",
-          "description": "[placename] County name"
+          "type": "VARCHAR"
         },
         {
           "name": "NAMELSAD",
@@ -3579,7 +2067,7 @@
         {
           "name": "geom",
           "type": "GEOMETRY('EPSG:4269')",
-          "description": "[geometry] County polygon geometry (EPSG:4269)"
+          "description": "[geometry] County polygon clipped to shoreline, NAD83."
         },
         {
           "name": "bbox",
@@ -3607,12 +2095,12 @@
         {
           "name": "zip_code",
           "type": "VARCHAR",
-          "description": "[zipcode] Address ZIP code"
+          "description": "[zipcode] Five-digit ZIP code."
         },
         {
           "name": "latitude",
           "type": "VARCHAR",
-          "description": "[latlon] Address latitude"
+          "description": "[latlon] Latitude as text (prefer geom)."
         },
         {
           "name": "address_number_suffix",
@@ -3645,7 +2133,7 @@
         {
           "name": "longitude",
           "type": "VARCHAR",
-          "description": "[latlon] Address longitude"
+          "description": "[latlon] Longitude as text (prefer geom)."
         },
         {
           "name": "street_name",
@@ -3726,7 +2214,7 @@
         {
           "name": "geom",
           "type": "GEOMETRY",
-          "description": "[geometry] Address point geometry"
+          "description": "[geometry] Address point, WGS84 lon/lat."
         },
         {
           "name": "bbox",
@@ -3821,8 +2309,7 @@
         },
         {
           "name": "NAME",
-          "type": "VARCHAR",
-          "description": "[placename] Country name"
+          "type": "VARCHAR"
         },
         {
           "name": "NAME_LONG",
@@ -3934,12 +2421,12 @@
         },
         {
           "name": "ISO_A3",
-          "type": "VARCHAR",
-          "description": "[admin_code] ISO 3166-1 alpha-3 country code"
+          "type": "VARCHAR"
         },
         {
           "name": "ISO_A3_EH",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[admin_code] ISO 3166-1 alpha-3 code with sentinels repaired."
         },
         {
           "name": "ISO_N3",
@@ -4424,7 +2911,7 @@
         {
           "name": "geom",
           "type": "GEOMETRY",
-          "description": "[geometry] Country polygon geometry"
+          "description": "[geometry] Country polygon/multipolygon, WGS84."
         },
         {
           "name": "bbox",
@@ -4463,8 +2950,7 @@
         },
         {
           "name": "NAME",
-          "type": "VARCHAR",
-          "description": "[placename] Populated place name"
+          "type": "VARCHAR"
         },
         {
           "name": "NAMEPAR",
@@ -4508,7 +2994,8 @@
         },
         {
           "name": "ADM0_A3",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[admin_code] Natural Earth country code, join key to countries collection."
         },
         {
           "name": "ADM1NAME",
@@ -4525,12 +3012,12 @@
         {
           "name": "LATITUDE",
           "type": "DOUBLE",
-          "description": "[latlon] Latitude of populated place"
+          "description": "[latlon] Legacy latitude column (prefer geom)."
         },
         {
           "name": "LONGITUDE",
           "type": "DOUBLE",
-          "description": "[latlon] Longitude of populated place"
+          "description": "[latlon] Legacy longitude column (prefer geom)."
         },
         {
           "name": "POP_MAX",
@@ -4999,7 +3486,7 @@
         {
           "name": "geom",
           "type": "GEOMETRY",
-          "description": "[geometry] Point geometry for populated place"
+          "description": "[geometry] City/town point, WGS84."
         },
         {
           "name": "bbox",
@@ -5051,7 +3538,7 @@
         {
           "name": "geo",
           "type": "VARCHAR",
-          "description": "[admin_code] Eurostat country/geo grouping code"
+          "description": "[admin_code] Reporting country as Eurostat NUTS-0 code (non-spatial table)."
         },
         {
           "name": "TIME_PERIOD",
@@ -5073,92 +3560,6 @@
       "table:row_count": 65466
     }
   },
-  "table:columns": [
-    {
-      "name": "fid",
-      "type": "BIGINT"
-    },
-    {
-      "name": "OBJECTID",
-      "type": "INTEGER"
-    },
-    {
-      "name": "SITE_NAME",
-      "type": "VARCHAR"
-    },
-    {
-      "name": "OWNERSHIP",
-      "type": "VARCHAR"
-    },
-    {
-      "name": "PROTECTION",
-      "type": "VARCHAR"
-    },
-    {
-      "name": "TYPECODE",
-      "type": "INTEGER"
-    },
-    {
-      "name": "DISTRICT",
-      "type": "VARCHAR"
-    },
-    {
-      "name": "ACRES",
-      "type": "DOUBLE"
-    },
-    {
-      "name": "ADDRESS",
-      "type": "VARCHAR"
-    },
-    {
-      "name": "ZonAgg",
-      "type": "VARCHAR"
-    },
-    {
-      "name": "TypeLong",
-      "type": "VARCHAR"
-    },
-    {
-      "name": "OS_Own_Jur",
-      "type": "VARCHAR"
-    },
-    {
-      "name": "OS_Mngmnt",
-      "type": "VARCHAR"
-    },
-    {
-      "name": "POS",
-      "type": "VARCHAR"
-    },
-    {
-      "name": "PA",
-      "type": "VARCHAR"
-    },
-    {
-      "name": "ALT_NAME",
-      "type": "VARCHAR"
-    },
-    {
-      "name": "AgncyJuris",
-      "type": "VARCHAR"
-    },
-    {
-      "name": "ShapeSTAre",
-      "type": "DOUBLE"
-    },
-    {
-      "name": "ShapeSTLen",
-      "type": "DOUBLE"
-    },
-    {
-      "name": "geom",
-      "type": "GEOMETRY"
-    },
-    {
-      "name": "bbox",
-      "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
-    }
-  ],
   "links": [
     {
       "rel": "self",
@@ -5172,17 +3573,14 @@
     }
   ],
   "account_id": "portolan",
-  "product_id": "portolan-pipeline",
-  "exts": {
-    "json": 1037,
-    "md": 118,
-    "parquet": 29,
-    "png": 29,
-    "pmtiles": 16,
-    "tif": 4,
-    "xml": 3
-  },
+  "updated_at": "2026-07-17T07:57:13.309Z",
   "featured": 0,
+  "visibility": "public",
+  "created_at": "2026-07-17T07:57:13.309Z",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -5191,23 +3589,27 @@
       "prefix": "portolan/portolan-pipeline/"
     }
   },
-  "data_mode": null,
-  "total_bytes": 85614599,
   "disabled": false,
-  "visibility": "public",
-  "object_count": 1236,
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
+  "exts": {
+    "json": 993,
+    "md": 62,
+    "png": 16,
+    "parquet": 15,
+    "pmtiles": 8,
+    "tif": 2,
+    "xml": 2
   },
-  "updated_at": "2026-07-17T07:57:13.309Z",
-  "created_at": "2026-07-17T07:57:13.309Z",
-  "readme": "## naip-mosaic__PRs__111__README.md\n# NAIP Aerial Imagery Mosaics\n\nCloud-native mirror Collections of National Agriculture Imagery Program scenes, modelled as per-scene STAC Items whose Cloud Optimized GeoTIFFs stay on the host that publishes them.\n\nEvery Collection here describes imagery it does not host. The scene bytes\nstay with the organization that publishes them and are referenced by URL,\nwhile this catalog publishes the metadata, one STAC Item per scene, and a\nstac-geoparquet item mirror so a client can read every footprint in one\nrequest.\n\nThat is the difference from the `portolan-reference` catalog beside it,\nwhere every Collection serves its own bytes. Most public imagery arrives\nin this shape, far too large to copy, so Portolan has to describe it\nwithout holding it. This catalog is the worked example of doing that.\n\nAgents, each Collection carries its own AGENTS.md with the band order, the\nread pattern, and the reason no scene carries a checksum.\n\n## Collections\n\n| Collection | Contents | Description |\n|---|---|---|\n| [NAIP Colorado 2023](./imagery/colorado-2023/README.md) | 924 scenes | 924 NAIP scenes described but not hosted, indexed by a stac-geoparquet item mirror. |\n\n## Where the Data Comes From\n\nLicenses, other.\nProvenance, 1 mirror Collection.\n\nUpstream sources.\n\n- NAIP Colorado 2023, https://planetarycomputer.microsoft.com/api/stac/v1/search?collections=naip&bbox=-106.6059,38.7455,-104.5917,40.4223&datetime=2023-01-01T00:00:00Z/2023-12-31T23:59:59Z&filter-lang=cql2-json&filter={\"op\":\"=\",\"args\":[{\"property\":\"naip:state\"},\"co\"]}&limit=1000\n\n\n## naip-mosaic__PRs__111__imagery__README.md\n# Aerial Imagery\n\nPer-scene aerial imagery Collections mirrored from their publisher.\n\n## Collections\n\n| Collection | Contents | Description |\n|---|---|---|\n| [NAIP Colorado 2023](./colorado-2023/README.md) | 924 scenes | 924 NAIP scenes described but not hosted, indexed by a stac-geoparquet item mirror. |\n\n## Where the Data Comes From\n\nLicenses, other.\nProvenance, 1 mirror Collection.\n\nUpstream sources.\n\n- NAIP Colorado 2023, https://planetarycomputer.microsoft.com/api/stac/v1/search?collections=naip&bbox=-106.6059,38.7455,-104.5917,40.4223&datetime=2023-01-01T00:00:00Z/2023-12-31T23:59:59Z&filter-lang=cql2-json&filter={\"op\":\"=\",\"args\":[{\"property\":\"naip:state\"},\"co\"]}&limit=1000\n\n\n## portolan-reference__PRs__111__README.md\n# Portolan Reference Catalog\n\nA mixed reference catalog exercising every major case in the Portolan v0.1 specification with real, openly licensed data pulled from its original upstream sources, vector polygons and points, raster, tabular, mirror provenance, nested catalogs and flat collections.\n\nEvery Collection here is a mirror that cites its true upstream source\nwith a real checksum, and every README and AGENTS.md is written to the\nstandard in the spec's documentation best practices, so the catalog\ndoubles as the worked example of what good catalog documentation looks\nlike. The Netherlands provinces Collection also mirrors its upstream ISO\n19115 record as a metadata-role asset, and every code block in these\ndocs is executed by the repository's checks before it publishes.\n\nAgents, each Collection carries its own AGENTS.md with join keys, quirks,\nand tested queries, and the catalog-level [AGENTS.md](./AGENTS.md) maps\nthe joins between Collections.\n\n## Collections\n\n| Collection | Contents | Description |\n|---|---|---|\n| [Natural Earth Countries (1:110m)](./reference/natural-earth-countries/README.md) | 177 polygons | 177 country polygons at world scale, the public domain basemap behind most web choropleths. |\n| [Natural Earth Populated Places (1:50m)](./reference/natural-earth-populated-places/README.md) | 1,251 points | 1,251 curated city and town points with population estimates, from Tokyo to Antarctic research stations. |\n| [United States Counties (2023, 1:500k)](./boundaries/us-counties/README.md) | 3,235 polygons | All 3,235 county and equivalent boundaries as of January 1, 2023, keyed by the FIPS codes that unlock US county statistics. |\n| [Boston Open Space](./boundaries/boston-open-space/README.md) | 1,012 polygons | 1,012 open space polygons of conservation and recreation interest, regardless of ownership, from Franklin Park to community gardens. |\n| [Netherlands Provinces](./boundaries/netherlands-provinces/README.md) | 12 polygons | The 12 provinces from the cadastral registry, boundaries that reproduce the national statistics office's official areas to one decimal. |\n| [San Francisco Addresses (EAS)](./mirror/san-francisco-addresses/README.md) | 5,000 points | A fixed 5,000-record extract of San Francisco's 388,550-record master address database, kept small on purpose for spec demonstration. |\n| [Sample Raster COG](./raster/sample-cog/README.md) | 3-band raster | A 1 MB Landsat-derived reference COG for learning and testing cloud-optimized raster access, not for analysis. |\n| [Eurostat Electricity Prices for Household Consumers](./tabular/eurostat-electricity-prices/README.md) | 65,466 rows | 65,412 semi-annual household electricity prices for 41 European countries from 2007 on, the official record of the 2022 energy crisis. |\n\n## Where the Data Comes From\n\nLicenses, CC-BY-4.0, CC0-1.0, PDDL-1.0.\nProvenance, 8 mirror Collections.\n\nUpstream sources.\n\n- Natural Earth Countries (1:110m), https://naciscdn.org/naturalearth/110m/cultural/ne_110m_admin_0_countries.zip\n- Natural Earth Populated Places (1:50m), https://naciscdn.org/naturalearth/50m/cultural/ne_50m_populated_places.zip\n- United States Counties (2023, 1:500k), https://www2.census.gov/geo/tiger/GENZ2023/shp/cb_2023_us_county_500k.zip\n- Boston Open Space, https://opendata.arcgis.com/api/v3/datasets/2868d370c55d4d458d4ae2224ef8cddd_7/downloads/data?format=shp&spatialRefId=4326\n- Netherlands Provinces, https://service.pdok.nl/kadaster/brk-bestuurlijke-gebieden/atom/downloads/BestuurlijkeGebieden_2026.gpkg\n- San Francisco Addresses (EAS), https://data.sfgov.org/resource/ramy-di5m.geojson?$limit=5000&$order=:id\n- Sample Raster COG, https://raw.githubusercontent.com/rasterio/rasterio/main/tests/data/RGB.byte.tif\n- Eurostat Electricity Prices for Household Consumers, https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/nrg_pc_204/?format=SDMX-CSV&compressed=false\n\n\n## portolan-reference__PRs__111__boundaries__README.md\n# Administrative Boundaries\n\nAdministrative and open-space boundary Collections from official sources.\n\n## Collections\n\n| Collection | Contents | Description |\n|---|---|---|\n| [United States Counties (2023, 1:500k)](./us-counties/README.md) | 3,235 polygons | All 3,235 county and equivalent boundaries as of January 1, 2023, keyed by the FIPS codes that unlock US county statistics. |\n| [Boston Open Space](./boston-open-space/README.md) | 1,012 polygons | 1,012 open space polygons of conservation and recreation interest, regardless of ownership, from Franklin Park to community gardens. |\n| [Netherlands Provinces](./netherlands-provinces/README.md) | 12 polygons | The 12 provinces from the cadastral registry, boundaries that reproduce the national statistics office's official areas to one decimal. |\n\n## Where the Data Comes From\n\nLicenses, CC-BY-4.0, CC0-1.0, PDDL-1.0.\nProvenance, 3 mirror Collections.\n\nUpstream sources.\n\n- United States Counties (2023, 1:500k), https://www2.census.gov/geo/tiger/GENZ2023/shp/cb_2023_us_county_500k.zip\n- Boston Open Space, https://opendata.arcgis.com/api/v3/datasets/2868d370c55d4d458d4ae2224ef8cddd_7/downloads/data?format=shp&spatialRefId=4326\n- Netherlands Provinces, https://service.pdok.nl/kadaster/brk-bestuurlijke-gebieden/atom/downloads/BestuurlijkeGebieden_2026.gpkg\n\n\n## portolan-reference__PRs__111__mirror__README.md\n# Mirrored Collections\n\nCloud-native mirror Collections of data maintained elsewhere.\n\n## Collections\n\n| Collection | Contents | Description |\n|---|---|---|\n| [San Francisco Addresses (EAS)](./san-francisco-addresses/README.md) | 5,000 points | A fixed 5,000-record extract of San Francisco's 388,550-record master address database, kept small on purpose for spec demonstration. |\n\n## Where the Data Comes From\n\nLicenses, PDDL-1.0.\nProvenance, 1 mirror Collection.\n\nUpstream sources.\n\n- San Francisco Addresses (EAS), https://data.sfgov.org/resource/ramy-di5m.geojson?$limit=5000&$order=:id\n\n\n## portolan-reference__PRs__111__raster__README.md\n# Raster Data\n\nCloud Optimized GeoTIFF raster Collections.\n\n## Collections\n\n| Collection | Contents | Description |\n|---|---|---|\n| [Sample Raster COG](./sample-cog/README.md) | 3-band raster | A 1 MB Landsat-derived reference COG for learning and testing cloud-optimized raster access, not for analysis. |\n\n## Where the Data Comes From\n\nLicenses, CC0-1.0.\nProvenance, 1 mirror Collection.\n\nUpstream sources.\n\n- Sample Raster COG, https://raw.githubusercontent.com/rasterio/rasterio/main/tests/data/RGB.byte.tif\n\n\n## portolan-reference__PRs__111__reference__README.md\n# Reference Basemaps\n\nPublic domain reference basemap layers for general orientation and joins.\n\n## Collections\n\n| Collection | Contents | Description |\n|---|---|---|\n| [Natural Earth Countries (1:110m)](./natural-earth-countries/README.md) | 177 polygons | 177 country polygons at world scale, the public domain basemap behind most web choropleths. |\n| [Natural Earth Populated Places (1:50m)](./natural-earth-populated-places/README.md) | 1,251 points | 1,251 curated city and town points with population estimates, from Tokyo to Antarctic research stations. |\n\n## Where the Data Comes From\n\nLicenses, CC0-1.0.\nProvenance, 2 mirror Collections.\n\nUpstream sources.\n\n- Natural Earth Countries (1:110m), https://naciscdn.org/naturalearth/110m/cultural/ne_110m_admin_0_countries.zip\n- Natural Earth Populated Places (1:50m), https://naciscdn.org/naturalearth/50m/cultural/ne_50m_populated_places.zip\n\n\n## portolan-reference__PRs__111__tabular__README.md\n# Tabular Data\n\nNon-geospatial companion tables published as Parquet.\n\n## Collections\n\n| Collection | Contents | Description |\n|---|---|---|\n| [Eurostat Electricity Prices for Household Consumers](./eurostat-electricity-prices/README.md) | 65,466 rows | 65,412 semi-annual household electricity prices for 41 European countries from 2007 on, the official record of the 2022 energy crisis. |\n\n## Where the Data Comes From\n\nLicenses, CC-BY-4.0.\nProvenance, 1 mirror Collection.\n\nUpstream sources.\n\n- Eurostat Electricity Prices for Household Consumers, https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/nrg_pc_204/?format=SDMX-CSV&compressed=false\n\n\n## portolan-reference__PRs__124__README.md\n# Portolan Reference Catalog\n\nA mixed reference catalog exercising every major case in the Portolan v0.1 specification with real, openly licensed data pulled from its original upstream sources, vector polygons and points, raster, tabular, mirror provenance, nested catalogs and flat collections.\n\nEvery Collection here is a mirror that cites its true upstream source\nwith a real checksum, and every README and AGENTS.md is written to the\nstandard in the spec's documentation best practices, so the catalog\ndoubles as the worked example of what good catalog documentation looks\nlike. The Netherlands provinces Collection also mirrors its upstream ISO\n19115 record as a metadata-role asset, and every code block in these\ndocs is executed by the repository's checks before it publishes.\n\nAgents, each Collection carries its own AGENTS.md with join keys, quirks,\nand tested queries, and the catalog-level [AGENTS.md](./AGENTS.md) maps\nthe joins between Collections.\n\n## Collections\n\n| Collection | Contents | Description |\n|---|---|---|\n| [Natural Earth Countries (1:110m)](./reference/natural-earth-countries/README.md) | 177 polygons | 177 country polygons at world scale, the public domain basemap behind most web choropleths. |\n| [Natural Earth Populated Places (1:50m)](./reference/natural-earth-populated-places/README.md) | 1,251 points | 1,251 curated city and town points with population estimates, from Tokyo to Antarctic research stations. |\n| [United States Counties (2023, 1:500k)](./boundaries/us-counties/README.md) | 3,235 polygons | All 3,235 county and equivalent boundaries as of January 1, 2023, keyed by the FIPS codes that unlock US county statistics. |\n| [Boston Open Space](./boundaries/boston-open-space/README.md) | 1,012 polygons | 1,012 open space polygons of conservation and recreation interest, regardless of ownership, from Franklin Park to community gardens. |\n| [Netherlands Provinces](./boundaries/netherlands-provinces/README.md) | 12 polygons | The 12 provinces from the cadastral registry, boundaries that reproduce the national statistics office's official areas to one decimal. |\n| [San Francisco Addresses (EAS)](./mirror/san-francisco-addresses/README.md) | 5,000 points | A fixed 5,000-record extract of San Francisco's 388,550-record master address database, kept small on purpose for spec demonstration. |\n| [Sample Raster COG](./raster/sample-cog/README.md) | 3-band raster | A 1 MB Landsat-derived reference COG for learning and testing cloud-optimized raster access, not for analysis. |\n| [Eurostat Electricity Prices for Household Consumers](./tabular/eurostat-electricity-prices/README.md) | 65,466 rows | 65,412 semi-annual household electricity prices for 41 European countries from 2007 on, the official record of the 2022 energy crisis. |\n\n## Where the Data Comes From\n\nLicenses, CC-BY-4.0, CC0-1.0, PDDL-1.0.\nProvenance, 8 mirror Collections.\n\nUpstream sources.\n\n- Natural Earth Countries (1:110m), https://naciscdn.org/naturalearth/110m/cultural/ne_110m_admin_0_countries.zip\n- Natural Earth Populated Places (1:50m), https://naciscdn.org/naturalearth/50m/cultural/ne_50m_populated_places.zip\n- United States Counties (2023, 1:500k), https://www2.census.gov/geo/tiger/GENZ2023/shp/cb_2023_us_county_500k.zip\n- Boston Open Space, https://opendata.arcgis.com/api/v3/datasets/2868d370c55d4d458d4ae2224ef8cddd_7/downloads/data?format=shp&spatialRefId=4326\n- Netherlands Provinces, https://service.pdok.nl/kadaster/brk-bestuurlijke-gebieden/atom/downloads/BestuurlijkeGebieden_2026.gpkg\n- San Francisco Addresses (EAS), https://data.sfgov.org/resource/ramy-di5m.geojson?$limit=5000&$order=:id\n- Sample Raster COG, https://raw.githubusercontent.com/rasterio/rasterio/main/tests/data/RGB.byte.tif\n- Eurostat Electricity Prices for Household Consumers, https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/nrg_pc_204/?format=SDMX-CSV&compressed=false\n\n\n## portolan-reference__PRs__124__boundaries__README.md\n# Administrative Boundaries\n\nAdministrative and open-space boundary Collections from official sources.\n\n## Collections\n\n| Collection | Contents | Description |\n|---|---|---|\n| [United States Counties (2023, 1:500k)](./us-counties/README.md) | 3,235 polygons | All 3,235 county and equivalent boundaries as of January 1, 2023, keyed by the FIPS codes that unlock US county statistics. |\n| [Boston Open Space](./boston-open-space/README.md) | 1,012 polygons | 1,012 open space polygons of conservation and recreation interest, regardless of ownership, from Franklin Park to community gardens. |\n| [Netherlands Provinces](./netherlands-provinces/README.md) | 12 polygons | The 12 provinces from the cadastral registry, boundaries that reproduce the national statistics office's official areas to one decimal. |\n\n## Where the Data Comes From\n\nLicenses, CC-BY-4.0, CC0-1.0, PDDL-1.0.\nProvenance, 3 mirror Collections.\n\nUpstream sources.\n\n- United States Counties (2023, 1:500k), https://www2.census.gov/geo/tiger/GENZ2023/shp/cb_2023_us_county_500k.zip\n- Boston Open Space, https://opendata.arcgis.com/api/v3/datasets/2868d370c55d4d458d4ae2224ef8cddd_7/downloads/data?format=shp&spatialRefId=4326\n- Netherlands Provinces, https://service.pdok.nl/kadaster/brk-bestuurlijke-gebieden/atom/downloads/BestuurlijkeGebieden_2026.gpkg\n\n\n## portolan-reference__PRs__124__mirror__README.md\n# Mirrored Collections\n\nCloud-native mirror Collections of data maintained elsewhere.\n\n## Collections\n\n| Collection | Contents | Description |\n|---|---|---|\n| [San Francisco Addresses (EAS)](./san-francisco-addresses/README.md) | 5,000 points | A fixed 5,000-record extract of San Francisco's 388,550-record master address database, kept small on purpose for spec demonstration. |\n\n## Where the Data Comes From\n\nLicenses, PDDL-1.0.\nProvenance, 1 mirror Collection.\n\nUpstream sources.\n\n- San Francisco Addresses (EAS), https://data.sfgov.org/resource/ramy-di5m.geojson?$limit=5000&$order=:id\n\n\n## portolan-reference__PRs__124__raster__README.md\n# Raster Data\n\nCloud Optimized GeoTIFF raster Collections.\n\n## Collections\n\n| Collection | Contents | Description |\n|---|---|---|\n| [Sample Raster COG](./sample-cog/README.md) | 3-band raster | A 1 MB Landsat-derived reference COG for learning and testing cloud-optimized raster access, not for analysis. |\n\n## Where the Data Comes From\n\nLicenses, CC0-1.0.\nProvenance, 1 mirror Collection.\n\nUpstream sources.\n\n- Sample Raster COG, https://raw.githubusercontent.com/rasterio/rasterio/main/tests/data/RGB.byte.tif\n\n\n## portolan-reference__PRs__124__reference__README.md\n# Reference Basemaps\n\nPublic domain reference basemap layers for general orientation and joins.\n\n## Collections\n\n| Collection | Contents | Description |\n|---|---|---|\n| [Natural Earth Countries (1:110m)](./natural-earth-countries/README.md) | 177 polygons | 177 country polygons at world scale, the public domain basemap behind most web choropleths. |\n| [Natural Earth Populated Places (1:50m)](./natural-earth-populated-places/README.md) | 1,251 points | 1,251 curated city and town points with population estimates, from Tokyo to Antarctic research stations. |\n\n## Where the Data Comes From\n\nLicenses, CC0-1.0.\nProvenance, 2 mirror Collections.\n\nUpstream sources.\n\n- Natural Earth Countries (1:110m), https://naciscdn.org/naturalearth/110m/cultural/ne_110m_admin_0_countries.zip\n- Natural Earth Populated Places (1:50m), https://naciscdn.org/naturalearth/50m/cultural/ne_50m_populated_places.zip\n\n\n## portolan-reference__main__README.md\n# Portolan Reference Catalog\n\nA mixed reference catalog exercising every major case in the Portolan v0.1 specification with real, openly licensed data pulled from its original upstream sources, vector polygons and points, raster, tabular, mirror provenance, nested catalogs and flat collections.\n\nEvery Collection here is a mirror that cites its true upstream source\nwith a real checksum, and every README and AGENTS.md is written to the\nstandard in the spec's documentation best practices, so the catalog\ndoubles as the worked example of what good catalog documentation looks\nlike. The Netherlands provinces Collection also mirrors its upstream ISO\n19115 record as a metadata-role asset, and every code block in these\ndocs is executed by the repository's checks before it publishes.\n\nAgents, each Collection carries its own AGENTS.md with join keys, quirks,\nand tested queries, and the catalog-level [AGENTS.md](./AGENTS.md) maps\nthe joins between Collections.\n\n## Collections\n\n| Collection | Contents | Description |\n|---|---|---|\n| [Natural Earth Countries (1:110m)](./reference/natural-earth-countries/README.md) | 177 polygons | 177 country polygons at world scale, the public domain basemap behind most web choropleths. |\n| [Natural Earth Populated Places (1:50m)](./reference/natural-earth-populated-places/README.md) | 1,251 points | 1,251 curated city and town points with population estimates, from Tokyo to Antarctic research stations. |\n| [United States Counties (2023, 1:500k)](./boundaries/us-counties/README.md) | 3,235 polygons | All 3,235 county and equivalent boundaries as of January 1, 2023, keyed by the FIPS codes that unlock US county statistics. |\n| [Boston Open Space](./boundaries/boston-open-space/README.md) | 1,012 polygons | 1,012 open space polygons of conservation and recreation interest, regardless of ownership, from Franklin Park to community gardens. |\n| [Netherlands Provinces](./boundaries/netherlands-provinces/README.md) | 12 polygons | The 12 provinces from the cadastral registry, boundaries that reproduce the national statistics office's official areas to one decimal. |\n| [San Francisco Addresses (EAS)](./mirror/san-francisco-addresses/README.md) | 5,000 points | A fixed 5,000-record extract of San Francisco's 388,550-record master address database, kept small on purpose for spec demonstration. |\n| [Sample Raster COG](./raster/sample-cog/README.md) | 3-band raster | A 1 MB Landsat-derived reference COG for learning and testing cloud-optimized raster access, not for analysis. |\n| [Eurostat Electricity Prices for Household Consumers](./tabular/eurostat-electricity-prices/README.md) | 65,466 rows | 65,412 semi-annual household electricity prices for 41 European countries from 2007 on, the official record of the 2022 energy crisis. |\n\n## Where the Data Comes From\n\nAll 8 Collections here are mirrors, so this catalog hosts copies of data produced elsewhere.\n\nNatural Earth Countries (1:110m) is built from the [Natural Earth 110m Admin 0 Countries (zipped Shapefile)](https://naciscdn.org/naturalearth/110m/cultural/ne_110m_admin_0_countries.zip), pinned by checksum and licensed CC0-1.0.\nNatural Earth Populated Places (1:50m) is built from the [Natural Earth 50m Populated Places (zipped Shapefile)](https://naciscdn.org/naturalearth/50m/cultural/ne_50m_populated_places.zip), pinned by checksum and licensed CC0-1.0.\nUnited States Counties (2023, 1:500k) is built from the [US Census cartographic boundary counties 2023 500k (zipped Shapefile)](https://www2.census.gov/geo/tiger/GENZ2023/shp/cb_2023_us_county_500k.zip), pinned by checksum and licensed CC0-1.0.\n\nBoston Open Space tracks the [City of Boston Open Space (zipped Shapefile export)](https://opendata.arcgis.com/api/v3/datasets/2868d370c55d4d458d4ae2224ef8cddd_7/downloads/data?format=shp&spatialRefId=4326), a live endpoint refetched on every build rather than pinned, licensed PDDL-1.0.\nNetherlands Provinces is built from the [PDOK Bestuurlijke Gebieden 2026 (GeoPackage)](https://service.pdok.nl/kadaster/brk-bestuurlijke-gebieden/atom/downloads/BestuurlijkeGebieden_2026.gpkg), pinned by checksum and licensed CC-BY-4.0.\nSan Francisco Addresses (EAS) tracks the [DataSF San Francisco Addresses with Units (GeoJSON, 5k extract)](https://data.sfgov.org/resource/ramy-di5m.geojson?$limit=5000&$order=:id), a live endpoint refetched on every build rather than pinned, licensed PDDL-1.0.\n\nSample Raster COG is built from the [rasterio RGB.byte.tif test fixture (GeoTIFF)](https://raw.githubusercontent.com/rasterio/rasterio/main/tests/data/RGB.byte.tif), pinned by checksum and licensed CC0-1.0.\nEurostat Electricity Prices for Household Consumers tracks the [Eurostat nrg_pc_204 electricity prices (SDMX-CSV)](https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/nrg_pc_204/?format=SDMX-CSV&compressed=false), a live endpoint refetched on every build rather than pinned, licensed CC-BY-4.0.\n\n\n## portolan-reference__main__boundaries__README.md\n# Administrative Boundaries\n\nAdministrative and open-space boundary Collections from official sources.\n\n## Collections\n\n| Collection | Contents | Description |\n|---|---|---|\n| [United States Counties (2023, 1:500k)](./us-counties/README.md) | 3,235 polygons | All 3,235 county and equivalent boundaries as of January 1, 2023, keyed by the FIPS codes that unlock US county statistics. |\n| [Boston Open Space](./boston-open-space/README.md) | 1,012 polygons | 1,012 open space polygons of conservation and recreation interest, regardless of ownership, from Franklin Park to community gardens. |\n| [Netherlands Provinces](./netherlands-provinces/README.md) | 12 polygons | The 12 provinces from the cadastral registry, boundaries that reproduce the national statistics office's official areas to one decimal. |\n\n## Where the Data Comes From\n\nAll 3 Collections here are mirrors, so this catalog hosts copies of data produced elsewhere.\n\nUnited States Counties (2023, 1:500k) is built from the [US Census cartographic boundary counties 2023 500k (zipped Shapefile)](https://www2.census.gov/geo/tiger/GENZ2023/shp/cb_2023_us_county_500k.zip), pinned by checksum and licensed CC0-1.0.\nBoston Open Space tracks the [City of Boston Open Space (zipped Shapefile export)](https://opendata.arcgis.com/api/v3/datasets/2868d370c55d4d458d4ae2224ef8cddd_7/downloads/data?format=shp&spatialRefId=4326), a live endpoint refetched on every build rather than pinned, licensed PDDL-1.0.\nNetherlands Provinces is built from the [PDOK Bestuurlijke Gebieden 2026 (GeoPackage)](https://service.pdok.nl/kadaster/brk-bestuurlijke-gebieden/atom/downloads/BestuurlijkeGebieden_2026.gpkg), pinned by checksum and licensed CC-BY-4.0.\n\n\n## portolan-reference__main__mirror__README.md\n# Mirrored Collections\n\nCloud-native mirror Collections of data maintained elsewhere.\n\n## Collections\n\n| Collection | Contents | Description |\n|---|---|---|\n| [San Francisco Addresses (EAS)](./san-francisco-addresses/README.md) | 5,000 points | A fixed 5,000-record extract of San Francisco's 388,550-record master address database, kept small on purpose for spec demonstration. |\n\n## Where the Data Comes From\n\nThe Collection here is a mirror, so this catalog hosts a copy of data produced elsewhere.\n\nSan Francisco Addresses (EAS) tracks the [DataSF San Francisco Addresses with Units (GeoJSON, 5k extract)](https://data.sfgov.org/resource/ramy-di5m.geojson?$limit=5000&$order=:id), a live endpoint refetched on every build rather than pinned, licensed PDDL-1.0.\n\n\n## portolan-reference__main__raster__README.md\n# Raster Data\n\nCloud Optimized GeoTIFF raster Collections.\n\n## Collections\n\n| Collection | Contents | Description |\n|---|---|---|\n| [Sample Raster COG](./sample-cog/README.md) | 3-band raster | A 1 MB Landsat-derived reference COG for learning and testing cloud-optimized raster access, not for analysis. |\n\n## Where the Data Comes From\n\nThe Collection here is a mirror, so this catalog hosts a copy of data produced elsewhere.\n\nSample Raster COG is built from the [rasterio RGB.byte.tif test fixture (GeoTIFF)](https://raw.githubusercontent.com/rasterio/rasterio/main/tests/data/RGB.byte.tif), pinned by checksum and licensed CC0-1.0.\n\n\n## portolan-reference__main__reference__README.md\n# Reference Basemaps\n\nPublic domain reference basemap layers for general orientation and joins.\n\n## Collections\n\n| Collection | Contents | Description |\n|---|---|---|\n| [Natural Earth Countries (1:110m)](./natural-earth-countries/README.md) | 177 polygons | 177 country polygons at world scale, the public domain basemap behind most web choropleths. |\n| [Natural Earth Populated Places (1:50m)](./natural-earth-populated-places/README.md) | 1,251 points | 1,251 curated city and town points with population estimates, from Tokyo to Antarctic research stations. |\n\n## Where the Data Comes From\n\nAll 2 Collections here are mirrors, so this catalog hosts copies of data produced elsewhere.\n\nNatural Earth Countries (1:110m) is built from the [Natural Earth 110m Admin 0 Countries (zipped Shapefile)](https://naciscdn.org/naturalearth/110m/cultural/ne_110m_admin_0_countries.zip), pinned by checksum and licensed CC0-1.0.\nNatural Earth Populated Places (1:50m) is built from the [Natural Earth 50m Populated Places (zipped Shapefile)](https://naciscdn.org/naturalearth/50m/cultural/ne_50m_populated_places.zip), pinned by checksum and licensed CC0-1.0.\n\n\n## portolan-reference__main__tabular__README.md\n# Tabular Data\n\nNon-geospatial companion tables published as Parquet.\n\n## Collections\n\n| Collection | Contents | Description |\n|---|---|---|\n| [Eurostat Electricity Prices for Household Consumers](./eurostat-electricity-prices/README.md) | 65,466 rows | 65,412 semi-annual household electricity prices for 41 European countries from 2007 on, the official record of the 2022 energy crisis. |\n\n## Where the Data Comes From\n\nThe Collection here is a mirror, so this catalog hosts a copy of data produced elsewhere.\n\nEurostat Electricity Prices for Household Consumers tracks the [Eurostat nrg_pc_204 electricity prices (SDMX-CSV)](https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/nrg_pc_204/?format=SDMX-CSV&compressed=false), a live endpoint refetched on every build rather than pinned, licensed CC-BY-4.0.\n",
+  "object_count": 1098,
+  "total_bytes": 45381830,
+  "product_id": "portolan-pipeline",
+  "data_mode": null,
+  "readme": "## naip-mosaic__PRs__111__README.md\n# NAIP Aerial Imagery Mosaics\n\nCloud-native mirror Collections of National Agriculture Imagery Program scenes, modelled as per-scene STAC Items whose Cloud Optimized GeoTIFFs stay on the host that publishes them.\n\nEvery Collection here describes imagery it does not host. The scene bytes\nstay with the organization that publishes them and are referenced by URL,\nwhile this catalog publishes the metadata, one STAC Item per scene, and a\nstac-geoparquet item mirror so a client can read every footprint in one\nrequest.\n\nThat is the difference from the `portolan-reference` catalog beside it,\nwhere every Collection serves its own bytes. Most public imagery arrives\nin this shape, far too large to copy, so Portolan has to describe it\nwithout holding it. This catalog is the worked example of doing that.\n\nAgents, each Collection carries its own AGENTS.md with the band order, the\nread pattern, and the reason no scene carries a checksum.\n\n## Collections\n\n| Collection | Contents | Description |\n|---|---|---|\n| [NAIP Colorado 2023](./imagery/colorado-2023/README.md) | 924 scenes | 924 NAIP scenes described but not hosted, indexed by a stac-geoparquet item mirror. |\n\n## Where the Data Comes From\n\nLicenses, other.\nProvenance, 1 mirror Collection.\n\nUpstream sources.\n\n- NAIP Colorado 2023, https://planetarycomputer.microsoft.com/api/stac/v1/search?collections=naip&bbox=-106.6059,38.7455,-104.5917,40.4223&datetime=2023-01-01T00:00:00Z/2023-12-31T23:59:59Z&filter-lang=cql2-json&filter={\"op\":\"=\",\"args\":[{\"property\":\"naip:state\"},\"co\"]}&limit=1000\n\n\n## naip-mosaic__PRs__111__imagery__README.md\n# Aerial Imagery\n\nPer-scene aerial imagery Collections mirrored from their publisher.\n\n## Collections\n\n| Collection | Contents | Description |\n|---|---|---|\n| [NAIP Colorado 2023](./colorado-2023/README.md) | 924 scenes | 924 NAIP scenes described but not hosted, indexed by a stac-geoparquet item mirror. |\n\n## Where the Data Comes From\n\nLicenses, other.\nProvenance, 1 mirror Collection.\n\nUpstream sources.\n\n- NAIP Colorado 2023, https://planetarycomputer.microsoft.com/api/stac/v1/search?collections=naip&bbox=-106.6059,38.7455,-104.5917,40.4223&datetime=2023-01-01T00:00:00Z/2023-12-31T23:59:59Z&filter-lang=cql2-json&filter={\"op\":\"=\",\"args\":[{\"property\":\"naip:state\"},\"co\"]}&limit=1000\n\n\n## naip-mosaic__PRs__111__imagery__colorado-2023__README.md\n# NAIP Colorado 2023\n\nA metadata-only mirror of 924 National Agriculture Imagery Program scenes over a Colorado study area, flown August to October 2023 at 0.3 m in red, green, blue and near infrared. The Cloud Optimized GeoTIFFs stay on the Microsoft Planetary Computer and are referenced by URL, so what this Collection publishes is the STAC Items and a stac-geoparquet item mirror of them.\n\nThe National Agriculture Imagery Program flies the continental United\nStates at least once every three years, during the growing season, and\nreleases the result into the public domain. It is administered by the\nAerial Field Photography Office within the USDA Farm Service Agency.\nThese scenes are from the 2023 Colorado flight,\nreaching this catalog through the\n[Microsoft Planetary Computer](https://planetarycomputer.microsoft.com/dataset/naip),\nwhich holds NAIP from 2010 onward. Pixels are in UTM zone 13N,\nEPSG:26913.\n\n**The scene bytes are not here.** They total 1.86 TB, around 2 GB each,\nand stay on the host that publishes them. Reading all 924 footprints\nfrom the item mirror is one request. Doing the same by fetching the\nItems would be 924.\n\nThat is the shape this example exists to demonstrate, a Portolan\nCollection that describes data it does not host. Every other Collection\nin these examples serves its own bytes.\n\nAgents, [AGENTS.md](./AGENTS.md) covers the band order, the public\ndomain reading, and why no scene carries a checksum.\n\n## Quick Start\n\nThis Collection describes scenes it does not host. Each Item carries its Cloud Optimized GeoTIFF as an item-level asset, and the asset href points at the upstream host. Read the whole item index in one query with DuckDB.\n\n```sql\nINSTALL spatial; LOAD spatial;\nSELECT id, bbox, assets FROM read_parquet('items.parquet') LIMIT 5;\n```\n\nThen read any single scene straight from the upstream host, over range requests, without downloading it.\n\n```python\nimport rasterio\n\n# href is an image asset href read from the index above, which points\n# at the upstream host, https://naipeuwest.blob.core.windows.net/ .\nhref = \"<the image asset href from an Item>\"\nwith rasterio.open(f\"/vsicurl/{href}\") as src:\n    print(src.profile, src.overviews(1))\n```\n\n## What the Mirror Answers on Its Own\n\nThe point of the item mirror is that questions about the collection do\nnot cost a scene read. This one touches no imagery at all.\n\n```sql\nINSTALL spatial; LOAD spatial;\nSELECT count(*) AS scenes,\n       round(sum(assets.image.\"file:size\") / 1e12, 2) AS terabytes,\n       min(datetime)::DATE AS first_flown,\n       max(datetime)::DATE AS last_flown\nFROM read_parquet('items.parquet');\n-- 924, 1.86, 2023-08-09, 2023-10-20\n```\n\nFootprints are real geometries, so spatial predicates work directly.\nColorado Springs falls inside exactly one scene.\n\n```sql\nINSTALL spatial; LOAD spatial;\nSELECT id, datetime::DATE AS flown\nFROM read_parquet('items.parquet')\nWHERE ST_Contains(geometry, ST_Point(-104.8214, 38.8339));\n-- co_m_3810410_nw_13_030_20231008_20240104, 2023-10-08\n```\n\nA `minimal.json` sits beside the mirror carrying only bounding boxes\nand hrefs, for a browser client that wants the mosaic index without a\nParquet reader.\n\n## Suggested Uses\n\nLand cover and vegetation work at parcel scale, change detection\nagainst earlier NAIP flights, and training data for segmentation, the\nnear infrared band making vegetation separable without an index. It is\nalso the worked example for reading a large raster collection you do\nnot host, which is the pattern most public imagery arrives in.\n\n## Limitations\n\nAerial imagery, not satellite, so acquisition is opportunistic rather\nthan on a repeat cycle and a scene's date is the day a plane flew it.\nColours are display-oriented 8-bit, not calibrated reflectance, so\ncross-scene radiometric comparison is unsound even within one flight.\nBand statistics published here are read from each scene's coarsest\noverview and are flagged `approximate` in the metadata for that reason.\nCoverage is one study area, not the state.\n\n## Provenance and License\n\nLicense, other. Attribution, NAIP imagery provided by USDA Farm Service Agency.\nProviders, USDA Farm Service Agency (producer, licensor), Esri (processor), Microsoft (processor), Portolan SDI (host).\nOriginal source, https://planetarycomputer.microsoft.com/api/stac/v1/search?collections=naip&bbox=-106.6059,38.7455,-104.5917,40.4223&datetime=2023-01-01T00:00:00Z/2023-12-31T23:59:59Z&filter-lang=cql2-json&filter={\"op\":\"=\",\"args\":[{\"property\":\"naip:state\"},\"co\"]}&limit=1000 .\nScenes, 924. Cloud-native asset, items.parquet (stac-geoparquet item mirror).\nScene bytes are hosted upstream and referenced by URL, not copied here. Each scene asset carries file:size read from the host and no file:checksum, which core.md asks for as a SHOULD and which this catalog cannot compute for bytes it never reads.\nThe upstream source is a live endpoint, so it is referenced by URL only and not archived as a source asset.\n\n\n## portolan-reference__PRs__111__README.md\n# Portolan Reference Catalog\n\nA mixed reference catalog exercising every major case in the Portolan v0.1 specification with real, openly licensed data pulled from its original upstream sources, vector polygons and points, raster, tabular, mirror provenance, nested catalogs and flat collections.\n\nEvery Collection here is a mirror that cites its true upstream source\nwith a real checksum, and every README and AGENTS.md is written to the\nstandard in the spec's documentation best practices, so the catalog\ndoubles as the worked example of what good catalog documentation looks\nlike. The Netherlands provinces Collection also mirrors its upstream ISO\n19115 record as a metadata-role asset, and every code block in these\ndocs is executed by the repository's checks before it publishes.\n\nAgents, each Collection carries its own AGENTS.md with join keys, quirks,\nand tested queries, and the catalog-level [AGENTS.md](./AGENTS.md) maps\nthe joins between Collections.\n\n## Collections\n\n| Collection | Contents | Description |\n|---|---|---|\n| [Natural Earth Countries (1:110m)](./reference/natural-earth-countries/README.md) | 177 polygons | 177 country polygons at world scale, the public domain basemap behind most web choropleths. |\n| [Natural Earth Populated Places (1:50m)](./reference/natural-earth-populated-places/README.md) | 1,251 points | 1,251 curated city and town points with population estimates, from Tokyo to Antarctic research stations. |\n| [United States Counties (2023, 1:500k)](./boundaries/us-counties/README.md) | 3,235 polygons | All 3,235 county and equivalent boundaries as of January 1, 2023, keyed by the FIPS codes that unlock US county statistics. |\n| [Boston Open Space](./boundaries/boston-open-space/README.md) | 1,012 polygons | 1,012 open space polygons of conservation and recreation interest, regardless of ownership, from Franklin Park to community gardens. |\n| [Netherlands Provinces](./boundaries/netherlands-provinces/README.md) | 12 polygons | The 12 provinces from the cadastral registry, boundaries that reproduce the national statistics office's official areas to one decimal. |\n| [San Francisco Addresses (EAS)](./mirror/san-francisco-addresses/README.md) | 5,000 points | A fixed 5,000-record extract of San Francisco's 388,550-record master address database, kept small on purpose for spec demonstration. |\n| [Sample Raster COG](./raster/sample-cog/README.md) | 3-band raster | A 1 MB Landsat-derived reference COG for learning and testing cloud-optimized raster access, not for analysis. |\n| [Eurostat Electricity Prices for Household Consumers](./tabular/eurostat-electricity-prices/README.md) | 65,466 rows | 65,412 semi-annual household electricity prices for 41 European countries from 2007 on, the official record of the 2022 energy crisis. |\n\n## Where the Data Comes From\n\nLicenses, CC-BY-4.0, CC0-1.0, PDDL-1.0.\nProvenance, 8 mirror Collections.\n\nUpstream sources.\n\n- Natural Earth Countries (1:110m), https://naciscdn.org/naturalearth/110m/cultural/ne_110m_admin_0_countries.zip\n- Natural Earth Populated Places (1:50m), https://naciscdn.org/naturalearth/50m/cultural/ne_50m_populated_places.zip\n- United States Counties (2023, 1:500k), https://www2.census.gov/geo/tiger/GENZ2023/shp/cb_2023_us_county_500k.zip\n- Boston Open Space, https://opendata.arcgis.com/api/v3/datasets/2868d370c55d4d458d4ae2224ef8cddd_7/downloads/data?format=shp&spatialRefId=4326\n- Netherlands Provinces, https://service.pdok.nl/kadaster/brk-bestuurlijke-gebieden/atom/downloads/BestuurlijkeGebieden_2026.gpkg\n- San Francisco Addresses (EAS), https://data.sfgov.org/resource/ramy-di5m.geojson?$limit=5000&$order=:id\n- Sample Raster COG, https://raw.githubusercontent.com/rasterio/rasterio/main/tests/data/RGB.byte.tif\n- Eurostat Electricity Prices for Household Consumers, https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/nrg_pc_204/?format=SDMX-CSV&compressed=false\n\n\n## portolan-reference__PRs__111__boundaries__README.md\n# Administrative Boundaries\n\nAdministrative and open-space boundary Collections from official sources.\n\n## Collections\n\n| Collection | Contents | Description |\n|---|---|---|\n| [United States Counties (2023, 1:500k)](./us-counties/README.md) | 3,235 polygons | All 3,235 county and equivalent boundaries as of January 1, 2023, keyed by the FIPS codes that unlock US county statistics. |\n| [Boston Open Space](./boston-open-space/README.md) | 1,012 polygons | 1,012 open space polygons of conservation and recreation interest, regardless of ownership, from Franklin Park to community gardens. |\n| [Netherlands Provinces](./netherlands-provinces/README.md) | 12 polygons | The 12 provinces from the cadastral registry, boundaries that reproduce the national statistics office's official areas to one decimal. |\n\n## Where the Data Comes From\n\nLicenses, CC-BY-4.0, CC0-1.0, PDDL-1.0.\nProvenance, 3 mirror Collections.\n\nUpstream sources.\n\n- United States Counties (2023, 1:500k), https://www2.census.gov/geo/tiger/GENZ2023/shp/cb_2023_us_county_500k.zip\n- Boston Open Space, https://opendata.arcgis.com/api/v3/datasets/2868d370c55d4d458d4ae2224ef8cddd_7/downloads/data?format=shp&spatialRefId=4326\n- Netherlands Provinces, https://service.pdok.nl/kadaster/brk-bestuurlijke-gebieden/atom/downloads/BestuurlijkeGebieden_2026.gpkg\n\n\n## portolan-reference__PRs__111__boundaries__boston-open-space__README.md\n# Boston Open Space\n\nCity of Boston open spaces and parks, playgrounds, athletic fields, conservation land, and cemeteries, 1,012 polygons from the City of Boston GIS open data platform. Official primary source, republished as cloud-native GeoParquet with a PMTiles visualization and MapLibre styles.\n\nEvery open space of conservation and recreation interest in Boston,\n1,012 polygons and 7,356 acres, from Franklin Park's 392 acres down to\npocket gardens, maintained by the\n[Boston Parks and Recreation Department](https://www.boston.gov/departments/parks-and-recreation)\nand published on [Analyze Boston](https://data.boston.gov/dataset/open-space).\nThe layer's defining trait is in its official description, regardless\nof ownership. City parks sit beside 214 privately owned sites, state\nreservations, cemeteries, and 124 community gardens.\n\nThis inventory is the basis of the city's\n[Open Space and Recreation Plan 2023-2029](https://www.boston.gov/departments/parks-and-recreation/updating-seven-year-open-space-plan),\nwhich reports 7.1 acres of protected open space per 1,000 residents,\nand every site in it triggers design review within 100 feet under\nBoston's Municipal Ordinance 7-4.11.\n\nAgents, [AGENTS.md](./AGENTS.md) documents the free-text traps in this\nvery real municipal data, read it before aggregating.\n\n## What Is in It\n\nSix site types by acreage. Parkways, reservations, and beaches, 82\nsites and 2,622 acres. Parks, playgrounds, and athletic fields, 361\nsites and 2,559 acres. Cemeteries and burying grounds, 38 and 1,013.\nUrban wilds and natural areas, 144 and 929. Malls, squares, and\nplazas, 261 and 199. Community gardens, 124 sites and 32 acres.\n\n## Quick Start\n\n```python\nimport geopandas as gpd\n\ngdf = gpd.read_parquet(\"boston-open-space.parquet\")\nprint(gdf.head())\n```\n\nThe `data` asset is GeoParquet 2.0 with a native geometry type and a covering bbox column, so it needs a GeoPandas built on pyarrow 24 or newer. DuckDB spatial queries the same file in place, see [AGENTS.md](./AGENTS.md) for those patterns. Paths are relative to this directory, and the same code works against the published URL.\n\n## Schema\n\n| Column | Type | Description |\n|---|---|---|\n| `SITE_NAME` | varchar | Best-known or official site name. Multi-parcel sites carry Roman numeral suffixes, Stony Brook Reservation I and II. |\n| `OWNERSHIP` | varchar | Fee owner where known. City of Boston, Commonwealth of Massachusetts, private owners, and agency abbreviations like BRA and BNAN. |\n| `PROTECTION` | varchar | Slash-separated legal protection instruments. A97 is Article 97 of the Massachusetts Constitution, the strongest. Free text, match with LIKE. |\n| `TYPECODE` | integer | Numeric open space type 1 through 7. Disagrees with TypeLong on about 13 rows, treat TypeLong as closer to intent. |\n| `DISTRICT` | varchar | Planning district per the city's open space plan, not the official neighborhood boundaries. Includes the non-spatial value Multi-District. |\n| `ACRES` | double | Official area in acres of the open-space portion, the figure to use instead of computing geometry area. |\n| `ADDRESS` | varchar | Street address if known, null for 589 rows. |\n| `ZonAgg` | varchar | Aggregated zoning district, for example Open Space District. |\n| `TypeLong` | varchar | Open space type as text, with minor spelling variants worth normalizing before grouping. |\n| `OS_Own_Jur` | varchar | The entity holding the open-space rights. BPRD, DCR, the Boston Conservation Commission, or None. |\n| `OS_Mngmnt` | varchar | Managing entity only when it differs from OS_Own_Jur. Null means the steward manages it, not missing data. |\n| `POS` | varchar | Protected open space flag. X permanently protected, N not. |\n| `PA` | varchar | Public access flag. X accessible, A by appointment, N no or unknown access. |\n| `ALT_NAME` | varchar | Official, previous, or colloquial alternate names. |\n| `AgncyJuris` | varchar | Agency of jurisdiction for government-owned unprotected sites. Sparsely populated by design. |\n| `ShapeSTAre` | double | ArcGIS-computed area in square meters from the source State Plane geometry. |\n| `ShapeSTLen` | double | ArcGIS-computed perimeter in meters. |\n| `geom` | geometry | Site geometry, WGS84 longitude and latitude. |\n| `bbox` | struct(xmin double, ymin double, xmax double, ymax double) | Per-feature bounding box struct, the GeoParquet covering. |\n\nThe table has 21 columns in all. The full list with types lives in `table:columns` on the `data` asset.\n\n## Protection and Access Are Columns, Not Assumptions\n\nBeing in this file does not mean a site is a public park. Cross the\ntwo flag columns before any access or equity claim. `POS` says whether\na site is permanently protected, 450 sites and 5,015 acres are, mostly\nunder Article 97 of the Massachusetts Constitution, which requires a\ntwo-thirds vote of the legislature to convert conservation land.\n`PA` says whether the public can actually get in, 724 sites yes, 4 by\nappointment only, and the rest unknown or no.\n\n```sql\nSELECT SITE_NAME, ACRES, DISTRICT\nFROM read_parquet('boston-open-space.parquet')\nWHERE POS = 'X' AND PA = 'X'\nORDER BY ACRES DESC LIMIT 5;\n```\n\n## Limitations\n\nA planning inventory, not a legal record. The city's own disclaimer\nlimits it to general planning, only deeds research and surveys settle\nboundaries. It also is not a complete greenspace layer, street trees,\nmost schoolyards, and private yards are absent. This is a fixed\nsnapshot from July 2026 of a continuously edited layer, and it carries\nno stable public identifier, so joins to later versions go through\n`SITE_NAME` or space.\n\n## Provenance and License\n\nLicense, PDDL-1.0.\nProviders, City of Boston (producer, licensor), Portolan SDI (host).\nOriginal source, https://opendata.arcgis.com/api/v3/datasets/2868d370c55d4d458d4ae2224ef8cddd_7/downloads/data?format=shp&spatialRefId=4326 .\nFeatures, 1,012. Cloud-native asset, boston-open-space.parquet (GeoParquet 2.0).\nThe upstream source is a live endpoint, so it is referenced by URL only and not archived as a source asset.\n\n\n## portolan-reference__PRs__111__boundaries__netherlands-provinces__README.md\n# Netherlands Provinces\n\nThe 12 provinces of the Netherlands, administrative boundaries from the Dutch national spatial data infrastructure PDOK, derived from the Kadaster BRK Bestuurlijke Gebieden. Republished as cloud-native GeoParquet with a PMTiles visualization and categorical, labeled MapLibre styles.\n\n[Kadaster](https://www.kadaster.nl), the Dutch cadastral agency,\nderives the country's administrative division from the cadastral\nregistration and publishes it through\n[PDOK](https://www.pdok.nl/introductie/-/article/bestuurlijke-gebieden),\nthe national open geodata platform, in an edition established every\nJanuary when municipal reorganizations take effect. This Collection\ncarries the 12 provinces of the 2026 edition, valid from January 1,\n2026. PDOK names the layer as the base of public applications from\n[atlasleefomgeving.nl](https://www.atlasleefomgeving.nl) to the\nofficial bathing water site [zwemwater.nl](https://www.zwemwater.nl).\n\nThe geometry checks out against the national statistics office.\nComputing `ST_Area` per province reproduces the official CBS surface\nfigures to one decimal, Utrecht 1,560.1 square kilometres against the\npublished 1,560.05.\n\nAgents, [AGENTS.md](./AGENTS.md) has the CBS join recipe, the Baarle\nenclave surprise, and the metric CRS consequences.\n\n## Quick Start\n\n```python\nimport geopandas as gpd\n\ngdf = gpd.read_parquet(\"netherlands-provinces.parquet\")\nprint(gdf.head())\n```\n\nThe `data` asset is GeoParquet 2.0 with a native geometry type and a covering bbox column, so it needs a GeoPandas built on pyarrow 24 or newer. DuckDB spatial queries the same file in place, see [AGENTS.md](./AGENTS.md) for those patterns. Paths are relative to this directory, and the same code works against the published URL.\n\n## Machine-Readable Metadata\n\nBeside the data sits `iso19115.xml`, the upstream ISO 19115 metadata\nrecord for BRK Bestuurlijke Gebieden, mirrored on July 31, 2026 from\nthe [Nationaal Georegister](https://www.nationaalgeoregister.nl/geonetwork/srv/dut/catalog.search#/metadata/208bc283-7c66-4ce7-8ad3-1cf3e8933fb5)\nand carried as a metadata-role asset. Catalogs that already maintain\nISO metadata can ship it alongside the STAC this way instead of\nabandoning it.\n\n## Schema\n\n| Column | Type | Description |\n|---|---|---|\n| `identificatie` | varchar | Province identifier PV20 through PV31, PV plus the CBS province code. The join key to CBS StatLine regional tables. |\n| `naam` | varchar | Official province name. Frysl\u00e2n carries its official Frisian spelling, a filter on Friesland returns nothing. |\n| `code` | varchar | Two-digit CBS province code as a string, 20 through 31. Joins to ligt_in_provincie_code in the source's municipality layer. |\n| `ligt_in_land_code` | varchar | Country code, the constant 6030 for Nederland. |\n| `ligt_in_land_naam` | varchar | Country name, the constant Nederland. |\n| `geom` | geometry('epsg:28992') | Province geometry, multipolygon, in the Dutch national grid EPSG:28992 in meters. |\n| `bbox` | struct(xmin double, ymin double, xmax double, ymax double) | Per-feature bounding box struct in RD New meters, the GeoParquet covering. |\n\nThe table has 8 columns in all. The full list with types lives in `table:columns` on the `data` asset.\n\n## Join the National Statistics\n\n`identificatie` holds the CBS region codes PV20 through PV31, the same\nkeys every provincial table on\n[CBS StatLine](https://opendata.cbs.nl) uses, which connects these 12\npolygons to Dutch official statistics on population, income, land use,\nand more. Trim the CBS side first, the classic OData API pads its keys\nwith trailing spaces.\n\n## Water Is Inside the Boundaries\n\nThe provinces sum to 41,543 square kilometres while the land surface\nof the Netherlands is about 33,500. Administrative boundaries divide\nthe Wadden Sea, the IJsselmeer, and the delta waters among provinces,\nso Frysl\u00e2n is the largest province by total area and roughly 42\npercent water. Rankings and densities computed from these polygons\nanswer the water-inclusive question unless you subtract water first,\nCBS publishes the land-only figures.\n\n## Limitations\n\nOne annual snapshot, valid for January 1, 2026 only, and boundary\nhistory needs the matching year's edition, PDOK keeps five. Derived\nfrom the cadastre but not a substitute for it, parcel-level legal\nquestions belong to the BRK itself. The Caribbean Netherlands,\nBonaire, Sint Eustatius, and Saba, belongs to no province and is not\nhere.\n\n## Provenance and License\n\nLicense, CC-BY-4.0. Attribution, Kadaster / PDOK.\nProviders, Kadaster (producer, licensor), PDOK (processor), Portolan SDI (host).\nOriginal source, https://service.pdok.nl/kadaster/brk-bestuurlijke-gebieden/atom/downloads/BestuurlijkeGebieden_2026.gpkg .\nFeatures, 12. Cloud-native asset, netherlands-provinces.parquet (GeoParquet 2.0).\n\n\n## portolan-reference__PRs__111__mirror__README.md\n# Mirrored Collections\n\nCloud-native mirror Collections of data maintained elsewhere.\n\n## Collections\n\n| Collection | Contents | Description |\n|---|---|---|\n| [San Francisco Addresses (EAS)](./san-francisco-addresses/README.md) | 5,000 points | A fixed 5,000-record extract of San Francisco's 388,550-record master address database, kept small on purpose for spec demonstration. |\n\n## Where the Data Comes From\n\nLicenses, PDDL-1.0.\nProvenance, 1 mirror Collection.\n\nUpstream sources.\n\n- San Francisco Addresses (EAS), https://data.sfgov.org/resource/ramy-di5m.geojson?$limit=5000&$order=:id\n\n\n## portolan-reference__PRs__111__raster__README.md\n# Raster Data\n\nCloud Optimized GeoTIFF raster Collections.\n\n## Collections\n\n| Collection | Contents | Description |\n|---|---|---|\n| [Sample Raster COG](./sample-cog/README.md) | 3-band raster | A 1 MB Landsat-derived reference COG for learning and testing cloud-optimized raster access, not for analysis. |\n\n## Where the Data Comes From\n\nLicenses, CC0-1.0.\nProvenance, 1 mirror Collection.\n\nUpstream sources.\n\n- Sample Raster COG, https://raw.githubusercontent.com/rasterio/rasterio/main/tests/data/RGB.byte.tif\n\n\n## portolan-reference__PRs__111__reference__README.md\n# Reference Basemaps\n\nPublic domain reference basemap layers for general orientation and joins.\n\n## Collections\n\n| Collection | Contents | Description |\n|---|---|---|\n| [Natural Earth Countries (1:110m)](./natural-earth-countries/README.md) | 177 polygons | 177 country polygons at world scale, the public domain basemap behind most web choropleths. |\n| [Natural Earth Populated Places (1:50m)](./natural-earth-populated-places/README.md) | 1,251 points | 1,251 curated city and town points with population estimates, from Tokyo to Antarctic research stations. |\n\n## Where the Data Comes From\n\nLicenses, CC0-1.0.\nProvenance, 2 mirror Collections.\n\nUpstream sources.\n\n- Natural Earth Countries (1:110m), https://naciscdn.org/naturalearth/110m/cultural/ne_110m_admin_0_countries.zip\n- Natural Earth Populated Places (1:50m), https://naciscdn.org/naturalearth/50m/cultural/ne_50m_populated_places.zip\n\n\n## portolan-reference__PRs__111__tabular__README.md\n# Tabular Data\n\nNon-geospatial companion tables published as Parquet.\n\n## Collections\n\n| Collection | Contents | Description |\n|---|---|---|\n| [Eurostat Electricity Prices for Household Consumers](./eurostat-electricity-prices/README.md) | 65,466 rows | 65,412 semi-annual household electricity prices for 41 European countries from 2007 on, the official record of the 2022 energy crisis. |\n\n## Where the Data Comes From\n\nLicenses, CC-BY-4.0.\nProvenance, 1 mirror Collection.\n\nUpstream sources.\n\n- Eurostat Electricity Prices for Household Consumers, https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/nrg_pc_204/?format=SDMX-CSV&compressed=false\n\n\n## portolan-reference__main__README.md\n# Portolan Reference Catalog\n\nA mixed reference catalog exercising every major case in the Portolan v0.1 specification with real, openly licensed data pulled from its original upstream sources, vector polygons and points, raster, tabular, mirror provenance, nested catalogs and flat collections.\n\nEvery Collection here is a mirror that cites its true upstream source\nwith a real checksum, and every README and AGENTS.md is written to the\nstandard in the spec's documentation best practices, so the catalog\ndoubles as the worked example of what good catalog documentation looks\nlike. The Netherlands provinces Collection also mirrors its upstream ISO\n19115 record as a metadata-role asset, and every code block in these\ndocs is executed by the repository's checks before it publishes.\n\nAgents, each Collection carries its own AGENTS.md with join keys, quirks,\nand tested queries, and the catalog-level [AGENTS.md](./AGENTS.md) maps\nthe joins between Collections.\n\n## Collections\n\n| Collection | Contents | Description |\n|---|---|---|\n| [Natural Earth Countries (1:110m)](./reference/natural-earth-countries/README.md) | 177 polygons | 177 country polygons at world scale, the public domain basemap behind most web choropleths. |\n| [Natural Earth Populated Places (1:50m)](./reference/natural-earth-populated-places/README.md) | 1,251 points | 1,251 curated city and town points with population estimates, from Tokyo to Antarctic research stations. |\n| [United States Counties (2023, 1:500k)](./boundaries/us-counties/README.md) | 3,235 polygons | All 3,235 county and equivalent boundaries as of January 1, 2023, keyed by the FIPS codes that unlock US county statistics. |\n| [Boston Open Space](./boundaries/boston-open-space/README.md) | 1,012 polygons | 1,012 open space polygons of conservation and recreation interest, regardless of ownership, from Franklin Park to community gardens. |\n| [Netherlands Provinces](./boundaries/netherlands-provinces/README.md) | 12 polygons | The 12 provinces from the cadastral registry, boundaries that reproduce the national statistics office's official areas to one decimal. |\n| [San Francisco Addresses (EAS)](./mirror/san-francisco-addresses/README.md) | 5,000 points | A fixed 5,000-record extract of San Francisco's 388,550-record master address database, kept small on purpose for spec demonstration. |\n| [Sample Raster COG](./raster/sample-cog/README.md) | 3-band raster | A 1 MB Landsat-derived reference COG for learning and testing cloud-optimized raster access, not for analysis. |\n| [Eurostat Electricity Prices for Household Consumers](./tabular/eurostat-electricity-prices/README.md) | 65,466 rows | 65,412 semi-annual household electricity prices for 41 European countries from 2007 on, the official record of the 2022 energy crisis. |\n\n## Where the Data Comes From\n\nAll 8 Collections here are mirrors, so this catalog hosts copies of data produced elsewhere.\n\nNatural Earth Countries (1:110m) is built from the [Natural Earth 110m Admin 0 Countries (zipped Shapefile)](https://naciscdn.org/naturalearth/110m/cultural/ne_110m_admin_0_countries.zip), pinned by checksum and licensed CC0-1.0.\nNatural Earth Populated Places (1:50m) is built from the [Natural Earth 50m Populated Places (zipped Shapefile)](https://naciscdn.org/naturalearth/50m/cultural/ne_50m_populated_places.zip), pinned by checksum and licensed CC0-1.0.\nUnited States Counties (2023, 1:500k) is built from the [US Census cartographic boundary counties 2023 500k (zipped Shapefile)](https://www2.census.gov/geo/tiger/GENZ2023/shp/cb_2023_us_county_500k.zip), pinned by checksum and licensed CC0-1.0.\n\nBoston Open Space tracks the [City of Boston Open Space (zipped Shapefile export)](https://opendata.arcgis.com/api/v3/datasets/2868d370c55d4d458d4ae2224ef8cddd_7/downloads/data?format=shp&spatialRefId=4326), a live endpoint refetched on every build rather than pinned, licensed PDDL-1.0.\nNetherlands Provinces is built from the [PDOK Bestuurlijke Gebieden 2026 (GeoPackage)](https://service.pdok.nl/kadaster/brk-bestuurlijke-gebieden/atom/downloads/BestuurlijkeGebieden_2026.gpkg), pinned by checksum and licensed CC-BY-4.0.\nSan Francisco Addresses (EAS) tracks the [DataSF San Francisco Addresses with Units (GeoJSON, 5k extract)](https://data.sfgov.org/resource/ramy-di5m.geojson?$limit=5000&$order=:id), a live endpoint refetched on every build rather than pinned, licensed PDDL-1.0.\n\nSample Raster COG is built from the [rasterio RGB.byte.tif test fixture (GeoTIFF)](https://raw.githubusercontent.com/rasterio/rasterio/main/tests/data/RGB.byte.tif), pinned by checksum and licensed CC0-1.0.\nEurostat Electricity Prices for Household Consumers tracks the [Eurostat nrg_pc_204 electricity prices (SDMX-CSV)](https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/nrg_pc_204/?format=SDMX-CSV&compressed=false), a live endpoint refetched on every build rather than pinned, licensed CC-BY-4.0.\n\n\n## portolan-reference__main__boundaries__README.md\n# Administrative Boundaries\n\nAdministrative and open-space boundary Collections from official sources.\n\n## Collections\n\n| Collection | Contents | Description |\n|---|---|---|\n| [United States Counties (2023, 1:500k)](./us-counties/README.md) | 3,235 polygons | All 3,235 county and equivalent boundaries as of January 1, 2023, keyed by the FIPS codes that unlock US county statistics. |\n| [Boston Open Space](./boston-open-space/README.md) | 1,012 polygons | 1,012 open space polygons of conservation and recreation interest, regardless of ownership, from Franklin Park to community gardens. |\n| [Netherlands Provinces](./netherlands-provinces/README.md) | 12 polygons | The 12 provinces from the cadastral registry, boundaries that reproduce the national statistics office's official areas to one decimal. |\n\n## Where the Data Comes From\n\nAll 3 Collections here are mirrors, so this catalog hosts copies of data produced elsewhere.\n\nUnited States Counties (2023, 1:500k) is built from the [US Census cartographic boundary counties 2023 500k (zipped Shapefile)](https://www2.census.gov/geo/tiger/GENZ2023/shp/cb_2023_us_county_500k.zip), pinned by checksum and licensed CC0-1.0.\nBoston Open Space tracks the [City of Boston Open Space (zipped Shapefile export)](https://opendata.arcgis.com/api/v3/datasets/2868d370c55d4d458d4ae2224ef8cddd_7/downloads/data?format=shp&spatialRefId=4326), a live endpoint refetched on every build rather than pinned, licensed PDDL-1.0.\nNetherlands Provinces is built from the [PDOK Bestuurlijke Gebieden 2026 (GeoPackage)](https://service.pdok.nl/kadaster/brk-bestuurlijke-gebieden/atom/downloads/BestuurlijkeGebieden_2026.gpkg), pinned by checksum and licensed CC-BY-4.0.\n\n\n## portolan-reference__main__boundaries__boston-open-space__README.md\n# Boston Open Space\n\nCity of Boston open spaces and parks, playgrounds, athletic fields, conservation land, and cemeteries, 1,012 polygons from the City of Boston GIS open data platform. Official primary source, republished as cloud-native GeoParquet with a PMTiles visualization and MapLibre styles.\n\nEvery open space of conservation and recreation interest in Boston,\n1,012 polygons and 7,356 acres, from Franklin Park's 392 acres down to\npocket gardens, maintained by the\n[Boston Parks and Recreation Department](https://www.boston.gov/departments/parks-and-recreation)\nand published on [Analyze Boston](https://data.boston.gov/dataset/open-space).\nThe layer's defining trait is in its official description, regardless\nof ownership. City parks sit beside 214 privately owned sites, state\nreservations, cemeteries, and 124 community gardens.\n\nThis inventory is the basis of the city's\n[Open Space and Recreation Plan 2023-2029](https://www.boston.gov/departments/parks-and-recreation/updating-seven-year-open-space-plan),\nwhich reports 7.1 acres of protected open space per 1,000 residents,\nand every site in it triggers design review within 100 feet under\nBoston's Municipal Ordinance 7-4.11.\n\nAgents, [AGENTS.md](./AGENTS.md) documents the free-text traps in this\nvery real municipal data, read it before aggregating.\n\n## What Is in It\n\nSix site types by acreage. Parkways, reservations, and beaches, 82\nsites and 2,622 acres. Parks, playgrounds, and athletic fields, 361\nsites and 2,559 acres. Cemeteries and burying grounds, 38 and 1,013.\nUrban wilds and natural areas, 144 and 929. Malls, squares, and\nplazas, 261 and 199. Community gardens, 124 sites and 32 acres.\n\n## Quick Start\n\n```python\nimport geopandas as gpd\n\ngdf = gpd.read_parquet(\"boston-open-space.parquet\")\nprint(gdf.head())\n```\n\nThe `data` asset is GeoParquet 2.0 with a native geometry type and a covering bbox column, so it needs a GeoPandas built on pyarrow 24 or newer. DuckDB spatial queries the same file in place, see [AGENTS.md](./AGENTS.md) for those patterns. Paths are relative to this directory, and the same code works against the published URL.\n\n## Schema\n\n| Column | Type | Description |\n|---|---|---|\n| `SITE_NAME` | varchar | Best-known or official site name. Multi-parcel sites carry Roman numeral suffixes, Stony Brook Reservation I and II. |\n| `OWNERSHIP` | varchar | Fee owner where known. City of Boston, Commonwealth of Massachusetts, private owners, and agency abbreviations like BRA and BNAN. |\n| `PROTECTION` | varchar | Slash-separated legal protection instruments. A97 is Article 97 of the Massachusetts Constitution, the strongest. Free text, match with LIKE. |\n| `TYPECODE` | integer | Numeric open space type 1 through 7. Disagrees with TypeLong on about 13 rows, treat TypeLong as closer to intent. |\n| `DISTRICT` | varchar | Planning district per the city's open space plan, not the official neighborhood boundaries. Includes the non-spatial value Multi-District. |\n| `ACRES` | double | Official area in acres of the open-space portion, the figure to use instead of computing geometry area. |\n| `ADDRESS` | varchar | Street address if known, null for 589 rows. |\n| `ZonAgg` | varchar | Aggregated zoning district, for example Open Space District. |\n| `TypeLong` | varchar | Open space type as text, with minor spelling variants worth normalizing before grouping. |\n| `OS_Own_Jur` | varchar | The entity holding the open-space rights. BPRD, DCR, the Boston Conservation Commission, or None. |\n| `OS_Mngmnt` | varchar | Managing entity only when it differs from OS_Own_Jur. Null means the steward manages it, not missing data. |\n| `POS` | varchar | Protected open space flag. X permanently protected, N not. |\n| `PA` | varchar | Public access flag. X accessible, A by appointment, N no or unknown access. |\n| `ALT_NAME` | varchar | Official, previous, or colloquial alternate names. |\n| `AgncyJuris` | varchar | Agency of jurisdiction for government-owned unprotected sites. Sparsely populated by design. |\n| `ShapeSTAre` | double | ArcGIS-computed area in square meters from the source State Plane geometry. |\n| `ShapeSTLen` | double | ArcGIS-computed perimeter in meters. |\n| `geom` | geometry | Site geometry, WGS84 longitude and latitude. |\n| `bbox` | struct(xmin double, ymin double, xmax double, ymax double) | Per-feature bounding box struct, the GeoParquet covering. |\n\nThe table has 21 columns in all. The full list with types lives in `table:columns` on the collection.\n\n## Protection and Access Are Columns, Not Assumptions\n\nBeing in this file does not mean a site is a public park. Cross the\ntwo flag columns before any access or equity claim. `POS` says whether\na site is permanently protected, 450 sites and 5,015 acres are, mostly\nunder Article 97 of the Massachusetts Constitution, which requires a\ntwo-thirds vote of the legislature to convert conservation land.\n`PA` says whether the public can actually get in, 724 sites yes, 4 by\nappointment only, and the rest unknown or no.\n\n```sql\nSELECT SITE_NAME, ACRES, DISTRICT\nFROM read_parquet('boston-open-space.parquet')\nWHERE POS = 'X' AND PA = 'X'\nORDER BY ACRES DESC LIMIT 5;\n```\n\n## Limitations\n\nA planning inventory, not a legal record. The city's own disclaimer\nlimits it to general planning, only deeds research and surveys settle\nboundaries. It also is not a complete greenspace layer, street trees,\nmost schoolyards, and private yards are absent. This is a fixed\nsnapshot from July 2026 of a continuously edited layer, and it carries\nno stable public identifier, so joins to later versions go through\n`SITE_NAME` or space.\n\n## Provenance and License\n\nLicense, PDDL-1.0.\nProviders, City of Boston (producer, licensor), Portolan SDI (host).\nOriginal source, https://opendata.arcgis.com/api/v3/datasets/2868d370c55d4d458d4ae2224ef8cddd_7/downloads/data?format=shp&spatialRefId=4326 .\nFeatures, 1,012. Cloud-native asset, boston-open-space.parquet (GeoParquet 2.0).\nThe upstream source is a live endpoint, so it is referenced by URL only and not archived as a source asset.\n\n\n## portolan-reference__main__boundaries__netherlands-provinces__README.md\n# Netherlands Provinces\n\nThe 12 provinces of the Netherlands, administrative boundaries from the Dutch national spatial data infrastructure PDOK, derived from the Kadaster BRK Bestuurlijke Gebieden. Republished as cloud-native GeoParquet with a PMTiles visualization and categorical, labeled MapLibre styles.\n\n[Kadaster](https://www.kadaster.nl), the Dutch cadastral agency,\nderives the country's administrative division from the cadastral\nregistration and publishes it through\n[PDOK](https://www.pdok.nl/introductie/-/article/bestuurlijke-gebieden),\nthe national open geodata platform, in an edition established every\nJanuary when municipal reorganizations take effect. This Collection\ncarries the 12 provinces of the 2026 edition, valid from January 1,\n2026. PDOK names the layer as the base of public applications from\n[atlasleefomgeving.nl](https://www.atlasleefomgeving.nl) to the\nofficial bathing water site [zwemwater.nl](https://www.zwemwater.nl).\n\nThe geometry checks out against the national statistics office.\nComputing `ST_Area` per province reproduces the official CBS surface\nfigures to one decimal, Utrecht 1,560.1 square kilometres against the\npublished 1,560.05.\n\nAgents, [AGENTS.md](./AGENTS.md) has the CBS join recipe, the Baarle\nenclave surprise, and the metric CRS consequences.\n\n## Quick Start\n\n```python\nimport geopandas as gpd\n\ngdf = gpd.read_parquet(\"netherlands-provinces.parquet\")\nprint(gdf.head())\n```\n\nThe `data` asset is GeoParquet 2.0 with a native geometry type and a covering bbox column, so it needs a GeoPandas built on pyarrow 24 or newer. DuckDB spatial queries the same file in place, see [AGENTS.md](./AGENTS.md) for those patterns. Paths are relative to this directory, and the same code works against the published URL.\n\n## Machine-Readable Metadata\n\nBeside the data sits `iso19115.xml`, the upstream ISO 19115 metadata\nrecord for BRK Bestuurlijke Gebieden, mirrored on July 31, 2026 from\nthe [Nationaal Georegister](https://www.nationaalgeoregister.nl/geonetwork/srv/dut/catalog.search#/metadata/208bc283-7c66-4ce7-8ad3-1cf3e8933fb5)\nand carried as a metadata-role asset. Catalogs that already maintain\nISO metadata can ship it alongside the STAC this way instead of\nabandoning it.\n\n## Schema\n\n| Column | Type | Description |\n|---|---|---|\n| `identificatie` | varchar | Province identifier PV20 through PV31, PV plus the CBS province code. The join key to CBS StatLine regional tables. |\n| `naam` | varchar | Official province name. Frysl\u00e2n carries its official Frisian spelling, a filter on Friesland returns nothing. |\n| `code` | varchar | Two-digit CBS province code as a string, 20 through 31. Joins to ligt_in_provincie_code in the source's municipality layer. |\n| `ligt_in_land_code` | varchar | Country code, the constant 6030 for Nederland. |\n| `ligt_in_land_naam` | varchar | Country name, the constant Nederland. |\n| `geom` | geometry('epsg:28992') | Province geometry, multipolygon, in the Dutch national grid EPSG:28992 in meters. |\n| `bbox` | struct(xmin double, ymin double, xmax double, ymax double) | Per-feature bounding box struct in RD New meters, the GeoParquet covering. |\n\nThe table has 8 columns in all. The full list with types lives in `table:columns` on the collection.\n\n## Join the National Statistics\n\n`identificatie` holds the CBS region codes PV20 through PV31, the same\nkeys every provincial table on\n[CBS StatLine](https://opendata.cbs.nl) uses, which connects these 12\npolygons to Dutch official statistics on population, income, land use,\nand more. Trim the CBS side first, the classic OData API pads its keys\nwith trailing spaces.\n\n## Water Is Inside the Boundaries\n\nThe provinces sum to 41,543 square kilometres while the land surface\nof the Netherlands is about 33,500. Administrative boundaries divide\nthe Wadden Sea, the IJsselmeer, and the delta waters among provinces,\nso Frysl\u00e2n is the largest province by total area and roughly 42\npercent water. Rankings and densities computed from these polygons\nanswer the water-inclusive question unless you subtract water first,\nCBS publishes the land-only figures.\n\n## Limitations\n\nOne annual snapshot, valid for January 1, 2026 only, and boundary\nhistory needs the matching year's edition, PDOK keeps five. Derived\nfrom the cadastre but not a substitute for it, parcel-level legal\nquestions belong to the BRK itself. The Caribbean Netherlands,\nBonaire, Sint Eustatius, and Saba, belongs to no province and is not\nhere.\n\n## Provenance and License\n\nLicense, CC-BY-4.0. Attribution, Kadaster / PDOK.\nProviders, Kadaster (producer, licensor), PDOK (processor), Portolan SDI (host).\nOriginal source, https://service.pdok.nl/kadaster/brk-bestuurlijke-gebieden/atom/downloads/BestuurlijkeGebieden_2026.gpkg .\nFeatures, 12. Cloud-native asset, netherlands-provinces.parquet (GeoParquet 2.0).\n\n\n## portolan-reference__main__boundaries__us-counties__README.md\n# United States Counties (2023, 1:500k)\n\nCounty and equivalent boundaries for the United States, the 2023 cartographic boundary file at 1:500,000 from the US Census Bureau, generalized for small-scale mapping. Republished as cloud-native GeoParquet alongside the original zipped Shapefile.\n\nEvery county and county equivalent in the United States and its\nterritories, 3,235 polygons as of January 1, 2023, from the\n[US Census Bureau's cartographic boundary files](https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.html).\nCartographic boundary files are generalized from the authoritative\n[TIGER/Line](https://www.census.gov/geographies/mapping-files/time-series/geo/tiger-line-file.html)\ndatabase for thematic mapping, simplified to 1:500,000 and clipped to\nthe shoreline, so coastal counties look like the coastline rather than\nextending into their legal water area. A new vintage ships every year.\n\nThe `GEOID` column is the five-digit county FIPS code that keys county\nstatistics across the US government, Census ACS and decennial tables,\nBLS employment, CDC health data, USDA agriculture. That join is what\nthis Collection is for.\n\nAgents, [AGENTS.md](./AGENTS.md) carries the FIPS join hazards, the\narea-calculation trap, and tested queries.\n\n## Quick Start\n\n```python\nimport geopandas as gpd\n\ngdf = gpd.read_parquet(\"us-counties.parquet\")\nprint(gdf.head())\n```\n\nThe `data` asset is GeoParquet 2.0 with a native geometry type and a covering bbox column, so it needs a GeoPandas built on pyarrow 24 or newer. DuckDB spatial queries the same file in place, see [AGENTS.md](./AGENTS.md) for those patterns. Paths are relative to this directory, and the same code works against the published URL.\n\n## Not Every County Is a County\n\nThe file holds 3,144 county equivalents in the 50 states and DC plus 91\nin the territories, and the `LSAD` column tells them apart, 2,999\ncounties, 78 Puerto Rico municipios, 64 Louisiana parishes, 40\nindependent cities, Alaska's boroughs and census areas, and more.\nConnecticut is the one to know about. In June 2022 the Census Bureau\n[replaced its eight legacy counties](https://www.federalregister.gov/documents/2022/06/06/2022-12063/change-to-county-equivalents-in-the-state-of-connecticut)\nwith nine planning regions, so this file carries GEOIDs 09110 through\n09190 and any dataset still keyed to 09001 through 09015 will not join.\n\n## Schema\n\n| Column | Type | Description |\n|---|---|---|\n| `STATEFP` | varchar | Two-digit state or territory FIPS code as a zero-padded string. |\n| `COUNTYFP` | varchar | Three-digit county FIPS code, unique within its state. |\n| `COUNTYNS` | varchar | Eight-digit ANSI (GNIS) code, the permanent identifier that survives FIPS reassignment. |\n| `GEOIDFQ` | varchar | Fully qualified GEOID, 0500000US plus GEOID. Matches the GEO_ID column in data.census.gov downloads directly. Called AFFGEOID before the 2023 vintage. |\n| `GEOID` | varchar | Five-digit STATEFP plus COUNTYFP concatenation, the standard join key for US county statistics. Keep it a string, integer casts strip the leading zero. |\n| `NAME` | varchar | Base name only, for example Denver. 31 rows are named Washington, so never key on it. |\n| `NAMELSAD` | varchar | Name with its legal or statistical description, for example St. Louis city. The display name. |\n| `STUSPS` | varchar | Two-letter USPS state or territory abbreviation. |\n| `STATE_NAME` | varchar | Full state or territory name. |\n| `LSAD` | varchar | Legal or statistical area description code. Twelve kinds of county equivalent appear in this file. |\n| `ALAND` | bigint | Land area in square meters, computed from the full-resolution legal boundary, not from this generalized geometry. |\n| `AWATER` | bigint | Water area in square meters, including territorial water that lies outside the clipped shoreline geometry. |\n| `geom` | geometry('epsg:4269') | County geometry clipped to the shoreline, NAD83 longitude and latitude. |\n| `bbox` | struct(xmin double, ymin double, xmax double, ymax double) | Per-feature bounding box struct, the GeoParquet covering. |\n\nThe table has 15 columns in all. The full list with types lives in `table:columns` on the collection.\n\n## Join Census Data\n\n`GEOIDFQ` equals the GEO_ID column of every table downloaded from\n[data.census.gov](https://data.census.gov), so American Community\nSurvey data joins with no string surgery. The pattern, with the ACS\ntable read from a downloaded CSV.\n\n```\nSELECT c.NAMELSAD, acs.estimate\nFROM 'us-counties.parquet' c\nJOIN 'acs_table.csv' acs ON acs.GEO_ID = c.GEOIDFQ\n```\n\n## Suggested Uses\n\nCounty choropleths of any FIPS-keyed statistic, the same role the\nCensus files play behind the D3 ecosystem's\n[us-atlas](https://github.com/topojson/us-atlas), state-level rollups\nvia `STATEFP`, and point-in-county lookups at city scale and coarser.\n\n## Limitations\n\nThe Census Bureau's own guidance rules out geographic analysis\nincluding area or perimeter calculation, geocoding, and legal boundary\ndetermination. Use `ALAND` and `AWATER` for areas, they come from the\nfull-resolution geography. At neighborhood zoom the generalized lines\nvisibly cut corners, and small offshore islands may be missing\nentirely. Boundaries are the January 1, 2023 vintage, so data keyed to\nother years can mismatch, Connecticut above all.\n\n## Provenance and License\n\nLicense, CC0-1.0.\nProviders, U.S. Census Bureau (producer, licensor), Portolan SDI (host).\nOriginal source, https://www2.census.gov/geo/tiger/GENZ2023/shp/cb_2023_us_county_500k.zip .\nFeatures, 3,235. Cloud-native asset, us-counties.parquet (GeoParquet 2.0).\n\n\n## portolan-reference__main__mirror__README.md\n# Mirrored Collections\n\nCloud-native mirror Collections of data maintained elsewhere.\n\n## Collections\n\n| Collection | Contents | Description |\n|---|---|---|\n| [San Francisco Addresses (EAS)](./san-francisco-addresses/README.md) | 5,000 points | A fixed 5,000-record extract of San Francisco's 388,550-record master address database, kept small on purpose for spec demonstration. |\n\n## Where the Data Comes From\n\nThe Collection here is a mirror, so this catalog hosts a copy of data produced elsewhere.\n\nSan Francisco Addresses (EAS) tracks the [DataSF San Francisco Addresses with Units (GeoJSON, 5k extract)](https://data.sfgov.org/resource/ramy-di5m.geojson?$limit=5000&$order=:id), a live endpoint refetched on every build rather than pinned, licensed PDDL-1.0.\n\n\n## portolan-reference__main__mirror__san-francisco-addresses__README.md\n# San Francisco Addresses (EAS)\n\nPoint addresses from the City and County of San Francisco Enterprise Addressing System, a 5,000-feature extract of the official DataSF open data layer, converted to cloud-native GeoParquet with a PMTiles visualization. The source asset points at the full live DataSF layer.\n\nFive thousand records from the\n[Enterprise Addressing System](https://data.sfgov.org/Geographic-Locations-and-Boundaries/Addresses-with-Units-Enterprise-Addressing-System/ramy-di5m),\nSan Francisco's master address database. Read this first, the full\nlayer holds 388,550 records and refreshes nightly, and this Collection\nis deliberately a fixed 1.3 percent extract, the first 5,000 records\nin the portal's internal order from the July 24, 2026 snapshot. It\nexists to demonstrate the Portolan mirror pattern against a live\nupstream at a size that keeps this reference catalog small. Query it\nto learn the data's shape, then take real questions to the full layer.\n\nThe EAS is the city's operational address registry, aggregated from\nthe Department of Building Inspection, Planning, the Assessor's\nOffice, and the Department of Technology, and only DBI-approved\naddresses enter it. Its rows have a grain worth understanding before\ncounting anything. One row is a base address, a unit, and a parcel\nlink, so a building appears once per unit and once per linked condo\nparcel. The extract holds 4,488 distinct buildings under its 5,000\nrows.\n\nAgents, [AGENTS.md](./AGENTS.md) carries the row-grain rules and the\nsentinel-value traps.\n\n## Quick Start\n\n```python\nimport geopandas as gpd\n\ngdf = gpd.read_parquet(\"san-francisco-addresses.parquet\")\nprint(gdf.head())\n```\n\nThe `data` asset is GeoParquet 2.0 with a native geometry type and a covering bbox column, so it needs a GeoPandas built on pyarrow 24 or newer. DuckDB spatial queries the same file in place, see [AGENTS.md](./AGENTS.md) for those patterns. Paths are relative to this directory, and the same code works against the published URL.\n\n## Getting the Real Thing\n\nThe full live layer is one request away, the Socrata API serves it as\nGeoJSON, CSV, or JSON pages.\n\n```bash\ncurl 'https://data.sfgov.org/resource/ramy-di5m.json?$select=count(*)'\n# 388550 as of July 2026\n```\n\n## Schema\n\n| Column | Type | Description |\n|---|---|---|\n| `street_full_street_name` | varchar | Street name and type together. |\n| `zip_code` | varchar | Five-digit ZIP code as a string. |\n| `latitude` | varchar | Latitude as text. Prefer the geometry column. |\n| `address_number_suffix` | varchar | Street number suffix such as A, null for nearly all rows. |\n| `complete_landmark_name` | varchar | Landmark name for the few rows that carry one, Millennium Tower. |\n| `eas_fullid` | varchar | Unique row identifier, base id, sub id, and parcel link id joined with dashes. The only column unique per row. |\n| `direct_source` | varchar | Where the record entered the EAS, SF DBI, State of CA, or The Presidio Trust. |\n| `cnn` | varchar | Centerline Network Number, the street-segment key of the city basemap, joins to the DataSF street centerlines. |\n| `data_loaded_at` | timestamp with time zone | When the portal loaded the record. |\n| `longitude` | varchar | Longitude as text. Prefer the geometry column. |\n| `street_name` | varchar | Parsed street name. |\n| `eas_baseid` | varchar | Identifier of the base address, the building. Units share it, so count distinct eas_baseid for buildings. |\n| `nhood` | varchar | DataSF analysis neighborhood name, joins to the Analysis Neighborhoods dataset by name. |\n| `block` | varchar | Assessor block number as a string. |\n| `street_type` | varchar | Parsed street type, ST or AVE. Null for streets like BROADWAY that have no type. |\n| `eas_subid` | varchar | Identifier of the sub-address, a unit or apartment, within its base. |\n| `lot` | varchar | Assessor lot number as a string. |\n| `address` | varchar | Full address string, with the unit as a hash suffix when present. |\n| `unit_number` | varchar | Unit designator, null on base-address rows. |\n| `supervisor` | varchar | Supervisor district number as a string. |\n| `data_updated_at` | timestamp with time zone | Record update timestamp, with a 1970 epoch sentinel on never-updated rows. |\n| `address_number` | varchar | Street number. |\n| `parcel_number` | varchar | Assessor parcel number, block plus lot. Null on 32 percent of rows, a parcel join drops them silently. |\n| `data_as_of` | timestamp with time zone | Snapshot timestamp of the upstream export, July 24, 2026 for every row here. |\n| `geom` | geometry | Address point, WGS84 longitude and latitude. Units stack on their building's single point. |\n| `bbox` | struct(xmin double, ymin double, xmax double, ymax double) | Per-feature bounding box struct, the GeoParquet covering. |\n\nThe table has 33 columns in all. The full list with types lives in `table:columns` on the collection.\n\n## Suggested Uses\n\nDemonstrating and testing address-data patterns, base-versus-unit\nmodeling, parcel joins on `parcel_number` to DataSF's parcels layer,\nneighborhood rollups on `nhood`, at a size where every query is\ninstant. The upstream EAS itself feeds DBI permitting and the\nPlanning Department's Property Information Map.\n\n## Limitations\n\nWrong for any question about San Francisco itself. Geocoding against\nit misses about 98.7 percent of the city's addresses, per-area counts\nreflect sample order rather than density, and the snapshot ages while\nupstream changes nightly. Points sit at building entrances, not\nparcel centroids, and a third of rows carry no parcel link at all.\nPresence of a unit record says nothing about occupancy or mail\ndeliverability.\n\n## Provenance and License\n\nLicense, PDDL-1.0.\nProviders, City and County of San Francisco (producer, licensor), DataSF (processor), Portolan SDI (host).\nOriginal source, https://data.sfgov.org/resource/ramy-di5m.geojson?$limit=5000&$order=:id .\nFeatures, 5,000. Cloud-native asset, san-francisco-addresses.parquet (GeoParquet 2.0).\nThe upstream source is a live endpoint, so it is referenced by URL only and not archived as a source asset.\n\n\n## portolan-reference__main__raster__README.md\n# Raster Data\n\nCloud Optimized GeoTIFF raster Collections.\n\n## Collections\n\n| Collection | Contents | Description |\n|---|---|---|\n| [Sample Raster COG](./sample-cog/README.md) | 3-band raster | A 1 MB Landsat-derived reference COG for learning and testing cloud-optimized raster access, not for analysis. |\n\n## Where the Data Comes From\n\nThe Collection here is a mirror, so this catalog hosts a copy of data produced elsewhere.\n\nSample Raster COG is built from the [rasterio RGB.byte.tif test fixture (GeoTIFF)](https://raw.githubusercontent.com/rasterio/rasterio/main/tests/data/RGB.byte.tif), pinned by checksum and licensed CC0-1.0.\n\n\n## portolan-reference__main__raster__sample-cog__README.md\n# Sample Raster COG\n\nA small 3-band Cloud Optimized GeoTIFF used to exercise the raster path end to end, rasterio's RGB.byte.tif test fixture, derived from USGS Landsat 7 imagery over Andros Island in the Bahamas. Optimized to a COG with per-band statistics, minimum, maximum, mean, and standard deviation, embedded in the header, in UTM zone 18N (EPSG:32618).\n\nA 791 by 718 pixel, 3-band, 8-bit image at roughly 300 meter\nresolution whose georeferencing places it over Andros Island in the\nBahamas, the shallow Great Bahama Bank to its west and the deep Tongue\nof the Ocean along its east coast. It is\n[rasterio's](https://github.com/rasterio/rasterio) RGB.byte.tif test\nfixture, derived from USGS Landsat 7 imagery per the project's\n[test data notes](https://github.com/rasterio/rasterio/blob/main/tests/data/README.rst),\nin the repository since rasterio's first tests in November 2013 and\nthe workhorse image of its README and topic guides ever since. Anyone\nwho has learned rasterio has seen this picture.\n\nHere it exercises the Portolan raster path end to end, a Cloud\nOptimized GeoTIFF with internal tiling, an overview level, and\nper-band statistics embedded in both the STAC metadata and the GeoTIFF\nheader.\n\nAgents, [AGENTS.md](./AGENTS.md) covers the nodata trap and windowed\nreads.\n\n## Quick Start\n\n```python\nimport rioxarray\n\nda = rioxarray.open_rasterio(\"sample-cog.tif\", masked=True)\nprint(da)\n```\n\nThe `data` asset is a Cloud Optimized GeoTIFF, so the same call against the published URL streams only the bytes it needs over HTTP range requests. Pass masked=True so nodata reads as NaN.\n\n## Why a COG, Watching the Range Reads\n\nA Cloud Optimized GeoTIFF serves partial reads over HTTP. Opening the\npublished copy with GDAL's debug output on shows it, a 64 pixel window\ncosts two range requests of roughly 0.4 MB, not the whole file.\n\n```bash\nCPL_DEBUG=ON gdal_translate -srcwin 0 0 64 64 \\\n  /vsicurl/https://data.source.coop/portolan/portolan-pipeline/portolan-reference/main/raster/sample-cog/sample-cog.tif \\\n  /tmp/window.tif\n# VSICURL: Downloading 0-16383 ... 229376-655359\n```\n\n## Suggested Uses\n\nLearning and testing COG access patterns, windowed reads, overview\nreads, HTTP range requests, at a size where experiments cost nothing.\nIts familiarity is the feature, tutorials and bug reports written\nagainst rasterio's docs transfer directly.\n\n## Limitations\n\nNot an analytically useful dataset, and the documentation should be\nthe last place you learn that. The acquisition date and Landsat scene\nid are unrecorded, the temporal extent here starts at the Landsat 7\nlaunch in April 1999 only as an honest lower bound. Bands are\ndisplay-stretched 8-bit RGB, not calibrated reflectance, so no\nconclusion about the Bahamas should be drawn from these pixels. About\na third of the image is a nodata collar from the rotated scene\nfootprint.\n\n## Provenance and License\n\nLicense, CC0-1.0.\nProviders, rasterio (producer, licensor), Portolan SDI (host).\nOriginal source, https://raw.githubusercontent.com/rasterio/rasterio/main/tests/data/RGB.byte.tif .\nBands, 3. CRS, EPSG:32618. Cloud-native asset, sample-cog.tif (COG).\n\n\n## portolan-reference__main__reference__README.md\n# Reference Basemaps\n\nPublic domain reference basemap layers for general orientation and joins.\n\n## Collections\n\n| Collection | Contents | Description |\n|---|---|---|\n| [Natural Earth Countries (1:110m)](./natural-earth-countries/README.md) | 177 polygons | 177 country polygons at world scale, the public domain basemap behind most web choropleths. |\n| [Natural Earth Populated Places (1:50m)](./natural-earth-populated-places/README.md) | 1,251 points | 1,251 curated city and town points with population estimates, from Tokyo to Antarctic research stations. |\n\n## Where the Data Comes From\n\nAll 2 Collections here are mirrors, so this catalog hosts copies of data produced elsewhere.\n\nNatural Earth Countries (1:110m) is built from the [Natural Earth 110m Admin 0 Countries (zipped Shapefile)](https://naciscdn.org/naturalearth/110m/cultural/ne_110m_admin_0_countries.zip), pinned by checksum and licensed CC0-1.0.\nNatural Earth Populated Places (1:50m) is built from the [Natural Earth 50m Populated Places (zipped Shapefile)](https://naciscdn.org/naturalearth/50m/cultural/ne_50m_populated_places.zip), pinned by checksum and licensed CC0-1.0.\n\n\n## portolan-reference__main__reference__natural-earth-countries__README.md\n# Natural Earth Countries (1:110m)\n\nWorld country boundaries at 1:110m scale from Natural Earth, the public domain reference basemap maintained by NACIS. Republished as cloud-native GeoParquet alongside the original zipped Shapefile.\n\n[Natural Earth](https://www.naturalearthdata.com) is the public domain\nreference map dataset that Nathaniel Vaughn Kelso and Tom Patterson\nstarted in 2009 and maintain with volunteer cartographers under\n[NACIS](https://nacis.org). This collection carries its 1:110m countries\ntheme, version 5.1.1 from May 2022, and holds 177 country polygons with\n171 attribute columns of names in 26 languages, ISO codes, population\nand GDP estimates from 2019, and cartographic styling hints. It is the\ngeometry behind [world-atlas](https://github.com/topojson/world-atlas)\nand with that most of the world choropleths on the web.\n\nBoundaries follow Natural Earth's\n[de facto policy](https://www.naturalearthdata.com/about/disputed-boundaries-policy/),\nshowing who controls territory rather than legal claims, so Somaliland\nand Northern Cyprus appear as their own rows. The 34 FCLASS point-of-view\ncolumns added in December 2021 let a map follow a specific national\nworldview instead.\n\nAgents, read [AGENTS.md](./AGENTS.md) first. It carries the join keys,\nthe sentinel-value traps, and tested queries.\n\n## Quick Start\n\n```python\nimport geopandas as gpd\n\ngdf = gpd.read_parquet(\"natural-earth-countries.parquet\")\nprint(gdf.head())\n```\n\nThe `data` asset is GeoParquet 2.0 with a native geometry type and a covering bbox column, so it needs a GeoPandas built on pyarrow 24 or newer. DuckDB spatial queries the same file in place, see [AGENTS.md](./AGENTS.md) for those patterns. Paths are relative to this directory, and the same code works against the published URL.\n\n## Schema, the Columns That Matter\n\nTwenty-two of the 171 columns do most of the work.\n\n| Column | Type | Description |\n|---|---|---|\n| `SOVEREIGNT` | varchar | The owning sovereign state, which differs from ADMIN for territories such as Greenland (Denmark). |\n| `TYPE` | varchar | Unit type, Sovereign country, Country, Dependency, Disputed, Indeterminate, or Sovereignty. |\n| `ADM0_A3` | varchar | Natural Earth's own three-letter country code. Never a sentinel value, and the join key to the populated places Collection. |\n| `NAME` | varchar | Short map label, for example Dem. Rep. Congo. |\n| `NAME_LONG` | varchar | Long-form name, for example Democratic Republic of the Congo. Differs from NAME on 21 rows. |\n| `POP_EST` | double | Population estimate, mostly the 2019 vintage. See POP_YEAR. |\n| `POP_YEAR` | integer | Year the population estimate refers to. |\n| `GDP_MD` | integer | GDP in millions of US dollars, mostly the 2019 vintage. See GDP_YEAR. |\n| `GDP_YEAR` | integer | Year the GDP figure refers to. |\n| `ISO_A2` | varchar | ISO 3166-1 alpha-2 code, -99 for the same five countries as ISO_A3. |\n| `ISO_A2_EH` | varchar | ISO alpha-2 with France, Norway, and Kosovo (XK) repaired. |\n| `ISO_A3` | varchar | ISO 3166-1 alpha-3 code, with the sentinel -99 for France, Norway, Kosovo, Northern Cyprus, and Somaliland. Prefer ISO_A3_EH. |\n| `ISO_A3_EH` | varchar | ISO alpha-3 with France and Norway repaired. The column to join external ISO-coded statistics on. |\n| `CONTINENT` | varchar | Continent rollup. Includes the value Seven seas (open ocean), so a GROUP BY returns eight groups. |\n| `REGION_UN` | varchar | United Nations macro region. |\n| `SUBREGION` | varchar | United Nations subregion. |\n| `LABEL_X` | double | Longitude of the preferred label point. |\n| `LABEL_Y` | double | Latitude of the preferred label point. |\n| `NE_ID` | bigint | Stable Natural Earth feature id, unique in this file. |\n| `WIKIDATAID` | varchar | Wikidata QID, present on all 177 rows. |\n| `geom` | geometry | Country geometry, polygon or multipolygon, WGS84 longitude and latitude. |\n| `bbox` | struct(xmin double, ymin double, xmax double, ymax double) | Per-feature bounding box struct, the GeoParquet covering used for spatial predicate pushdown. |\n\nThe table has 171 columns in all. The full list with types lives in `table:columns` on the collection.\n\n## Join Statistics to Geometry\n\nThe reason this Collection is in the catalog. Any table keyed by ISO\ncountry code joins here for mapping, like the Eurostat electricity\nprices table two directories over. Join on `ISO_A2_EH` or `ISO_A3_EH`,\nnot the raw ISO columns, which hold -99 for France and Norway.\n\n```sql\nINSTALL spatial; LOAD spatial;\nSELECT n.NAME, e.OBS_VALUE AS eur_per_kwh, n.geom\nFROM read_parquet('../../tabular/eurostat-electricity-prices/eurostat-electricity-prices.parquet') e\nJOIN read_parquet('natural-earth-countries.parquet') n\n  ON (CASE e.geo WHEN 'EL' THEN 'GR' WHEN 'UK' THEN 'GB' ELSE e.geo END) = n.ISO_A2_EH\nWHERE e.TIME_PERIOD = '2025-S2' AND e.nrg_cons = 'KWH2500-4999'\n  AND e.tax = 'I_TAX' AND e.currency = 'EUR';\n```\n\n## Suggested Uses\n\nChoropleths of ISO-coded statistics, continent and region rollups, and\nquick spatial-query demos. The `MAPCOLOR7` through `MAPCOLOR13` columns\nassign map colors so neighboring countries differ, and `LABEL_X` and\n`LABEL_Y` carry hand-placed label points, both there for basemap\nrendering.\n\n## Limitations\n\nNot authoritative for legal boundaries. Natural Earth draws de facto\ncontrol, so Crimea, Kashmir, and Western Sahara follow the situation on\nthe ground, not treaties. Not measurement geometry either. At 1:110m a\ncoastline is simplified by tens of kilometres, and 43 small countries\nand territories, from Andorra and Malta to Singapore and the Vatican,\nhave no polygon at all. Population and GDP are 2019 estimates. Upstream\npublishes no formal accuracy figures, and the last cultural release was\nin May 2022.\n\n## Provenance and License\n\nLicense, CC0-1.0.\nProviders, Natural Earth (producer, licensor), Portolan SDI (host).\nOriginal source, https://naciscdn.org/naturalearth/110m/cultural/ne_110m_admin_0_countries.zip .\nFeatures, 177. Cloud-native asset, natural-earth-countries.parquet (GeoParquet 2.0).\n\n\n## portolan-reference__main__reference__natural-earth-populated-places__README.md\n# Natural Earth Populated Places (1:50m)\n\nPoint locations of populated places, cities and towns, at 1:50m scale from Natural Earth. Public domain reference points, republished as cloud-native GeoParquet alongside the original zipped Shapefile.\n\nCity and town points at 1:50m scale from\n[Natural Earth](https://www.naturalearthdata.com), version 5.1.2 from\nMay 2022. The 1,251 points cover every national and most first-level\ncapitals, major cities, and, in Natural Earth's own words, a sampling\nof smaller towns in sparsely inhabited regions, favoring regional\nsignificance over population census. LandScan-derived population\nestimates cover about 90 percent of the places.\n\nAgents, read [AGENTS.md](./AGENTS.md) first, especially before joining\nthese points to country polygons.\n\n## What Counts as a Place\n\nThe `FEATURECLA` column answers it. 482 Admin-1 capitals, 414 plain\npopulated places, 202 national capitals, and some surprises, 40\nAntarctic research stations including Amundsen-Scott at exactly 90\ndegrees south, 13 alternate capitals such as The Hague and Lagos, and\none historic place, the abandoned Siberian port of Ambarchik with\npopulation zero. Filter on it before counting cities.\n\n## Quick Start\n\n```python\nimport geopandas as gpd\n\ngdf = gpd.read_parquet(\"natural-earth-populated-places.parquet\")\nprint(gdf.head())\n```\n\nThe `data` asset is GeoParquet 2.0 with a native geometry type and a covering bbox column, so it needs a GeoPandas built on pyarrow 24 or newer. DuckDB spatial queries the same file in place, see [AGENTS.md](./AGENTS.md) for those patterns. Paths are relative to this directory, and the same code works against the published URL.\n\n## Sizing and Filtering Labels\n\nThe cartographic columns are the point of this theme. Natural Earth's\nguidance is to size labels from `POP_MAX` and thin them with the scale\nrankings, and `MIN_ZOOM` maps that to web-map zoom levels directly.\n\n```sql\nSELECT NAME, POP_MAX, SCALERANK\nFROM read_parquet('natural-earth-populated-places.parquet')\nWHERE SCALERANK = 0\nORDER BY POP_MAX DESC LIMIT 5;\n```\n\n## Schema, the Columns That Matter\n\nNineteen of the 140 columns cover most uses.\n\n| Column | Type | Description |\n|---|---|---|\n| `SCALERANK` | integer | Importance rank 0 to 10, 0 most important. Filter on it to thin labels by zoom. |\n| `FEATURECLA` | varchar | What kind of place this is. Admin-0 capital, Admin-1 capital, Populated place, Scientific station, and four rarer classes. |\n| `NAME` | varchar | Display name with diacritics, for example Neuqu\u00e9n. Not unique, several city names repeat across countries. |\n| `NAMEASCII` | varchar | ASCII fallback spelling of the name. |\n| `ADM0CAP` | integer | 1 marks a national capital, 200 rows in this file. |\n| `WORLDCITY` | integer | 1 flags 70 globally prominent cities. |\n| `MEGACITY` | integer | 1 flags the 462 places Natural Earth treats as megacities. |\n| `ADM0NAME` | varchar | Country name the point belongs to. |\n| `ADM0_A3` | varchar | Natural Earth country code, the join key to the countries Collection. |\n| `ADM1NAME` | varchar | First-level admin region the point belongs to. |\n| `POP_MAX` | bigint | Population of the metro area, LandScan derived. Tokyo carries 35,676,000. |\n| `POP_MIN` | bigint | Population of the city proper. Tokyo carries 8,336,599. |\n| `TIMEZONE` | varchar | IANA time zone name, empty for 114 rows. |\n| `MIN_ZOOM` | double | Suggested minimum web-map zoom for showing the place. |\n| `WIKIDATAID` | varchar | Wikidata QID, missing for 7 rows. |\n| `NE_ID` | bigint | Stable Natural Earth feature id, unique in this file. |\n| `GEONAMESID` | bigint | GeoNames id, missing for 43 rows. |\n| `geom` | geometry | Point geometry, WGS84 longitude and latitude. Use it instead of the legacy LATITUDE and LONGITUDE columns. |\n| `bbox` | struct(xmin double, ymin double, xmax double, ymax double) | Per-feature bounding box struct, the GeoParquet covering. |\n\nThe table has 140 columns in all. The full list with types lives in `table:columns` on the collection.\n\n## Limitations\n\nA curated cartographic layer, not a gazetteer and not a demographic\ndataset. Absence means Natural Earth chose not to include a town, not\nthat it does not exist, and the population figures are 2019-era\nestimates for label sizing, not census data. `POP_MAX` counts the\nmetro area and `POP_MIN` the city proper, so ranking cities without\npicking one deliberately mixes definitions. Names repeat, M\u00e9rida,\nPortland, and Valencia each appear twice, so use `NE_ID` as the key.\n\n## Provenance and License\n\nLicense, CC0-1.0.\nProviders, Natural Earth (producer, licensor), Portolan SDI (host).\nOriginal source, https://naciscdn.org/naturalearth/50m/cultural/ne_50m_populated_places.zip .\nFeatures, 1,251. Cloud-native asset, natural-earth-populated-places.parquet (GeoParquet 2.0).\n\n\n## portolan-reference__main__tabular__README.md\n# Tabular Data\n\nNon-geospatial companion tables published as Parquet.\n\n## Collections\n\n| Collection | Contents | Description |\n|---|---|---|\n| [Eurostat Electricity Prices for Household Consumers](./eurostat-electricity-prices/README.md) | 65,466 rows | 65,412 semi-annual household electricity prices for 41 European countries from 2007 on, the official record of the 2022 energy crisis. |\n\n## Where the Data Comes From\n\nThe Collection here is a mirror, so this catalog hosts a copy of data produced elsewhere.\n\nEurostat Electricity Prices for Household Consumers tracks the [Eurostat nrg_pc_204 electricity prices (SDMX-CSV)](https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/nrg_pc_204/?format=SDMX-CSV&compressed=false), a live endpoint refetched on every build rather than pinned, licensed CC-BY-4.0.\n\n\n## portolan-reference__main__tabular__eurostat-electricity-prices__README.md\n# Eurostat Electricity Prices for Household Consumers\n\nSemi-annual electricity prices for household consumers across European countries by consumption band, tax component, and currency, Eurostat table nrg_pc_204. Non-geospatial companion table, join key is the country code column geo (NUTS-0), converted to cloud-native Parquet.\n\nWhat households pay for electricity across Europe, semester by\nsemester since 2007. This is Eurostat table\n[nrg_pc_204](https://ec.europa.eu/eurostat/databrowser/view/nrg_pc_204/default/table),\n65,412 observations covering 41 countries and territories plus the\nEU27 and euro area aggregates, collected under\n[Regulation (EU) 2016/1952](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32016R1952)\nas consumption-weighted national average prices per six-month period.\nNew semesters land each April and October, and Eurostat's own\n[price statistics article](https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Electricity_price_statistics)\nis written from this table. It is the official record of the 2022\nenergy crisis, Germany's all-tax price for a typical household rose\nfrom 0.33 to a 0.41 euro per kilowatt-hour peak in the first half of\n2023.\n\nAgents, [AGENTS.md](./AGENTS.md) decodes every dimension and carries\nthe aggregate-row trap.\n\n## Quick Start\n\n```python\nimport pandas as pd\n\ndf = pd.read_parquet(\"eurostat-electricity-prices.parquet\")\nprint(df.head())\n```\n\nThe `data` asset is plain Parquet, so pandas, DuckDB, and Polars all read it directly. Paths are relative to this directory, and the same code works against the published URL.\n\n## Reading a Price Correctly\n\nEvery price is qualified by four dimensions, and comparisons only mean\nsomething within a fixed combination. The band, how much the household\nconsumes per year, where KWH2500-4999 is the band Eurostat headlines.\nThe tax level, X_TAX before taxes, X_VAT before VAT, I_TAX what a\nhousehold actually pays. The currency, where EUR is nominal, NAC is\nnational currency, and PPS adjusts for price levels, Bulgaria's 2025-S2\nprice is 0.14 EUR but 0.22 PPS, and the gap is the point. And the\nsemester string, 2025-S2 meaning July to December 2025.\n\n## Schema\n\n| Column | Type | Description |\n|---|---|---|\n| `DATAFLOW` | varchar | Eurostat dataflow identifier, the constant ESTAT nrg_pc_204 version 1.0. |\n| `LAST UPDATE` | timestamp | Frozen at one 2019 timestamp for every row of this snapshot while the data runs to 2025. Unreliable, do not derive freshness from it. |\n| `freq` | varchar | Observation frequency, the constant S for semi-annual. S1 is January to June, S2 is July to December. |\n| `siec` | varchar | Energy product code, the constant E7000 for electricity. |\n| `nrg_cons` | varchar | Annual consumption band. KWH_LT1000, KWH1000-2499, KWH2500-4999 the headline household band, KWH5000-14999, KWH_GE15000, and TOT_KWH the weighted all-band average that exists only from 2017-S2. |\n| `unit` | varchar | Unit of measure, the constant KWH. Prices are per kilowatt-hour. |\n| `tax` | varchar | Tax level. X_TAX excludes all taxes and levies, X_VAT excludes VAT and recoverable taxes, I_TAX includes everything a household pays. |\n| `currency` | varchar | EUR, NAC for national currency, or PPS purchasing power standard. NAC equals EUR in the euro area. |\n| `geo` | varchar | Reporting country as a Eurostat NUTS-0 code, ISO 3166-1 alpha-2 except EL for Greece and UK for the United Kingdom, plus the aggregates EU27_2020 and EA. The join key to a geometry Collection. |\n| `TIME_PERIOD` | varchar | Reference semester as a string, 2025-S2. Fixed format, so string ordering and MAX work. |\n| `OBS_VALUE` | double | The observed electricity price in the stated currency per kilowatt-hour. |\n| `OBS_FLAG` | varchar | Observation status, e estimated, p provisional, d definition differs, null for 98 percent of rows. |\n| `CONF_STATUS` | varchar | Confidentiality status, entirely null in this snapshot. |\n\nThe same descriptions live in `table:columns` on the collection, so tools that read STAC see them too.\n\n## Join to Geometry\n\nThis table carries no geometry. The `geo` codes join to the Natural\nEarth countries Collection in this catalog on `ISO_A2_EH`, after\nremapping Eurostat's two non-ISO codes. Greece is EL and the United\nKingdom is UK. The raw ISO_A2 column would silently drop France,\nNorway, and Kosovo, Natural Earth stores -99 there.\n\n```sql\nINSTALL spatial; LOAD spatial;\nSELECT n.NAME, e.OBS_VALUE AS eur_per_kwh, n.geom\nFROM read_parquet('eurostat-electricity-prices.parquet') e\nJOIN read_parquet('../../reference/natural-earth-countries/natural-earth-countries.parquet') n\n  ON (CASE e.geo WHEN 'EL' THEN 'GR' WHEN 'UK' THEN 'GB' ELSE e.geo END) = n.ISO_A2_EH\nWHERE e.TIME_PERIOD = '2025-S2' AND e.nrg_cons = 'KWH2500-4999'\n  AND e.tax = 'I_TAX' AND e.currency = 'EUR'\nORDER BY eur_per_kwh DESC;\n```\n\nMalta and Liechtenstein stay unmatched, the 1:110m basemap has no\npolygon for them, and the EU27_2020 and EA aggregates have no\ngeometry by nature.\n\n## Limitations\n\nThese are averages over suppliers and six months, not offers, Eurostat\nitself notes there is no single price for electricity. One number per\ncountry per semester, nothing sub-national. Values from the second\nhalf of 2021 onward embed government subsidies and caps, so 2022 to\n2024 understate underlying costs in heavily supported countries, and\nRomania's 59 percent jump in late 2025 is a cap ending, not a market\nshock. Data before 2007 lives in a separate, methodologically\nincompatible table, never splice them.\n\n## Provenance and License\n\nLicense, CC-BY-4.0. Attribution, Source, Eurostat.\nProviders, Eurostat (producer, licensor), Portolan SDI (host).\nOriginal source, https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/nrg_pc_204/?format=SDMX-CSV&compressed=false .\nRows, 65,466. Columns, 13. Cloud-native asset, eurostat-electricity-prices.parquet (Parquet).\nNon-geospatial table, the bounding box is the area of interest the data pertains to, [-31.5, 34.0, 46.5, 71.5].\nThe upstream source is a live endpoint, so it is referenced by URL only and not archived as a source asset.\n",
   "_review": [
     "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
-    "extent.spatial.bbox: omitted; spatial reference is categorical via [portolan-reference/main/reference/natural-earth-countries.geom (geometry), portolan-reference/main/reference/natural-earth-countries.ISO_A3 (admin_code), portolan-reference/main/reference/natural-earth-countries.NAME (placename), portolan-reference/main/reference/natural-earth-populated-places.geom (geometry), portolan-reference/main/reference/natural-earth-populated-places.LATITUDE (latlon), portolan-reference/main/reference/natural-earth-populated-places.LONGITUDE (latlon), portolan-reference/main/reference/natural-earth-populated-places.NAME (placename), portolan-reference/main/boundaries/us-counties.geom (geometry), portolan-reference/main/boundaries/us-counties.GEOID (admin_code), portolan-reference/main/boundaries/us-counties.NAME (placename), portolan-reference/main/boundaries/boston-open-space.geom (geometry), portolan-reference/main/boundaries/boston-open-space.SITE_NAME (placename), portolan-reference/main/boundaries/netherlands-provinces.geom (geometry), portolan-reference/main/boundaries/netherlands-provinces.code (admin_code), portolan-reference/main/boundaries/netherlands-provinces.naam (placename), portolan-reference/main/mirror/san-francisco-addresses.geom (geometry), portolan-reference/main/mirror/san-francisco-addresses.latitude (latlon), portolan-reference/main/mirror/san-francisco-addresses.longitude (latlon), portolan-reference/main/mirror/san-francisco-addresses.zip_code (zipcode), portolan-reference/main/tabular/eurostat-electricity-prices.geo (admin_code)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [portolan-reference/main/boundaries/boston-open-space.geom (geometry), portolan-reference/main/boundaries/netherlands-provinces.geom (geometry), portolan-reference/main/boundaries/netherlands-provinces.identificatie (admin_code), portolan-reference/main/boundaries/us-counties.geom (geometry), portolan-reference/main/boundaries/us-counties.GEOID (admin_code), portolan-reference/main/mirror/san-francisco-addresses.geom (geometry), portolan-reference/main/mirror/san-francisco-addresses.latitude (latlon), portolan-reference/main/mirror/san-francisco-addresses.longitude (latlon), portolan-reference/main/mirror/san-francisco-addresses.zip_code (zipcode), portolan-reference/main/reference/natural-earth-countries.geom (geometry), portolan-reference/main/reference/natural-earth-countries.ISO_A3_EH (admin_code), portolan-reference/main/reference/natural-earth-populated-places.geom (geometry), portolan-reference/main/reference/natural-earth-populated-places.LATITUDE (latlon), portolan-reference/main/reference/natural-earth-populated-places.LONGITUDE (latlon), portolan-reference/main/reference/natural-earth-populated-places.ADM0_A3 (admin_code), portolan-reference/main/tabular/eurostat-electricity-prices.geo (admin_code)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-08-13T09:12:32+00:00",
+  "cataloged_at": "2026-08-21T01:47:53+00:00",
+  "objects_updated_at": "2026-08-14T14:02:32+00:00",
   "store_format": null
 }
