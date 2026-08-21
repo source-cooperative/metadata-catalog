@@ -1,24 +1,142 @@
 {
   "schema_version": 1,
-  "account_id": "agentmorris",
-  "product_id": "lila-wildlife-geolifeclef-2020",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "agentmorris/lila-wildlife-geolifeclef-2020",
   "title": "GeoLifeCLEF 2020",
-  "description": "GeoLifeCLEF 2020 is a benchmark dataset for plant and organism species identification from geographic location context, created for the GeoLifeCLEF 2020 challenge. It pairs geo-located species occurrence records with multi-spectral satellite image patches (RGB, near-infrared, altitude) and environmental rasters covering France and the United States. The dataset supports research in species distribution modeling and location-based species prediction.",
+  "description": "GeoLifeCLEF 2020 pairs 1.9 million geo-located plant and animal species occurrence records (31,435 species from the US and France) with high-resolution RGB-IR/land-cover/altitude image patches and low-resolution environmental covariate rasters (climate, soil). It was built for the GeoLifeCLEF 2020 species distribution modeling competition.",
   "keywords": [
     "biodiversity",
-    "species-distribution",
-    "remote-sensing",
     "ecology",
-    "species-occurrence",
+    "remote-sensing",
     "satellite-imagery",
-    "land-use"
+    "land-cover",
+    "climate",
+    "digital-elevation-model",
+    "machine-learning"
   ],
-  "created_at": null,
-  "updated_at": null,
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": "open",
+  "providers": [
+    {
+      "name": "Inria (GeoLifeCLEF)",
+      "roles": [
+        "producer",
+        "processor"
+      ]
+    },
+    {
+      "name": "USGS",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "IGN",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "CESBIO",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "iNaturalist",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Pl@ntNet",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "NASA",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "SoilGrids",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "WorldClim",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/agentmorris/lila-wildlife-geolifeclef-2020"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -180.0,
+          -90.0,
+          180.0,
+          90.0
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/agentmorris/lila-wildlife-geolifeclef-2020/",
+      "type": "application/octet-stream",
+      "title": "Dataset files",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/agentmorris/lila-wildlife-geolifeclef-2020/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/agentmorris/lila-wildlife-geolifeclef-2020",
+      "title": "Source Cooperative product page"
+    }
+  ],
+  "exts": {
+    "md5": 1,
+    "gz": 52,
+    "json": 3,
+    "zip": 20
+  },
+  "object_count": 76,
+  "account_id": "agentmorris",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -31,21 +149,26 @@
       "prefix": "agentmorris/lila-wildlife/geolifeclef-2020/"
     }
   },
-  "object_count": 76,
+  "created_at": null,
+  "disabled": false,
+  "featured": 0,
+  "updated_at": null,
+  "_decomposed_from": "agentmorris/lila-wildlife",
+  "product_id": "lila-wildlife-geolifeclef-2020",
   "total_bytes": 780250436355,
-  "exts": {
-    "md5": 1,
-    "gz": 52,
-    "json": 3,
-    "zip": 20
-  },
-  "store_format": null,
-  "_state": "seed",
+  "data_mode": "open",
+  "visibility": "public",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "cataloged_at": "2026-06-04T23:59:15+00:00",
-  "readme": "# GeoLifeCLEF 2020\n\n### GeoLifeCLEF 2020\n\n#### S3 base\n\n`s3://us-west-2.opendata.source.coop/agentmorris/lila-wildlife/geolifeclef-2020`\n\n#### Overview\n\nUnderstanding the geographic distribution of species is a key concern in conservation. By pairing species occurrences with environmental features, researchers can model the relationship between an environment and the species which may be found there. To facilitate research in this area, we present the GeoLifeCLEF 2020 (GLC2020) dataset, which consists of 1.9 million geo-located species observations paired with high-resolution remote sensing imagery, land cover data, and altitude, in addition to traditional low-resolution climate and soil variables. The observations in this dataset cover 31,435 plant and animal species from the United States and France. The dataset was originally prepared for the [GeoLifeCLEF 2020 competition](https://www.aicrowd.com/challenges/lifeclef-2020-geo). Full details can be found in the [dataset paper](https://arxiv.org/abs/2004.04192) (cited below).\n\n#### Citation\n\nIf you use this data set, please cite the associated manuscript:\n\nCole E, Deneu B, Lorieul T, Servajean M, Botella C, Morris D, Jojic N, Bonnet P, Joly A. The GeoLifeCLEF 2020 Dataset. arXiv preprint arXiv:2004.04192. 2020 Apr 8. ([bibtex](http://lila.science/wp-content/uploads/2019/05/robinson2019large_bibtex.txt))\n\n#### Data format\n\nThe dataset consists of three components: **high-resolution patches**, **annotations** for those patches, and **low-resolution covariate rasters**.\n\nEach **high-resolution patch** is stored as a pair of .npy files: XXX.npy containing RGB-IR and land cover (256x256x5 uint8 array) and XXX_alti.npy containing altitude (256x256x1 uint16 array).\n\n**Annotations** for the high-resolution patches are provided as JSON files that adhere to a modified version of the [COCO dataset annotation format](https://cocodataset.org/). The format is as follows:\n\n```\n\n \n\t\"images\": [image],\n\t\"categories\": [category],\n\t\"annotations\": [annotation]\n \n\nimage \n \n\t\"id\": int,\n\t\"width\": int,\n\t\"height\": int,\n\t\"file_name\": str,\n\t\"file_name_alti\": str,\n\t\"lon\": float,\n\t\"lat\": float,\n\t\"country\": str\n \n\ncategory\n \n\t\"id\": int,\n\t\"gbif_id\": int,\n\t\"gbif_name\": str\n \n\nannotation\n \n\t\"id\": int,\n\t\"image_id\": int,\n\t\"category_id\" int\n \n\n```\n\nThe **low-resolution covariate rasters** are provided as pairs of .tif files (one for the US and one for France) for each variable. On the [competition GitHub page](https://github.com/maximiliense/GLC) we provide code to extract values for 27 environmental characteristics at any location in the US or France.\n\n#### Download links\n\n**High-resolution-patches (GCP links)**\n\nHigh-resolution patches are available at:\n\nhttps://storage.googleapis.com/public-datasets-lila/geolifeclef-2020/patches_[region]_[index].tar.gz (11GB each)\n\n...where *region* is \"us\" or \"fr\" for the US and France, respectively, and \"index\" is 01, 02, ... 20. For example:\n\nhttps://storage.googleapis.com/public-datasets-lila/geolifeclef-2020/patches_fr_01.tar.gz\n\n**High-resolution-patches (AWS links)**\n\nHigh-resolution patches are available at:\n\nhttp://us-west-2.opendata.source.coop.s3.amazonaws.com/agentmorris/lila-wildlife/geolifeclef-2020/patches_[region]_[index].tar.gz (11GB each)\n\n...where *region* is \"us\" or \"fr\" for the US and France, respectively, and \"index\" is 01, 02, ... 20. For example:\n\nhttp://us-west-2.opendata.source.coop.s3.amazonaws.com/agentmorris/lila-wildlife/geolifeclef-2020/patches_fr_01.tar.gz\n\n**High-resolution-patches (Azure links)**\n\nHigh-resolution patches are available at:\n\nhttps://lilawildlife.blob.core.windows.net/lila-wildlife/geolifeclef-2020/patches_[region]_[index].tar.gz (11GB each)\n\n...where *region* is \"us\" or \"fr\" for the US and France, respectively, and \"index\" is 01, 02, ... 20. For example:\n\nhttps://lilawildlife.blob.core.windows.net/lila-wildlife/geolifeclef-2020/patches_fr_01.tar.gz\n\n**High-resolution-patches (folder structure)**\n\nFor each country, each of the 20 .tar.gz files contains five directories from the set  00/, ..., 99/ . For example, patches_fr_01.tar.gz contains 00/, ..., 04/ and patches_fr_02.tar.gz contains 05/, ..., 09/, and so on. Then each of those directories contains subdirectories 00/, ..., 99/. These indices do not have a semantic interpretation, they are just to help the operating system deal with the number of files. Each pair of patch files is named XXXXABCD.npy and XXXXABCD_alti.npy, and lives at CD/AB/ where CD and AB are each among 00/, ..., 99/.\n\nThe contents of each file should be extracted to the same directory, such that, for example, the 00/ folder contains the contents of both patches_us_01/ and patches_fr_01/.\n\n**Annotations**\n\n* Training (450MB) ([GCP link](https://storage.googleapis.com/public-datasets-lila/geolifeclef-2020/annotations_train.json)) ([Azure link](https://lilawildlife.blob.core.windows.net/lila-wildlife/geolifeclef-2020/annotations_train.json)) ([AWS link](http://us-west-2.opendata.source.coop.s3.amazonaws.com/agentmorris/lila-wildlife/geolifeclef-2020/annotations_train.json))\n* Validation (11MB) ([GCP link](https://storage.googleapis.com/public-datasets-lila/geolifeclef-2020/annotations_val.json)) ([Azure link](https://lilawildlife.blob.core.windows.net/lila-wildlife/geolifeclef-2020/annotations_val.json)) ([AWS link](http://us-west-2.opendata.source.coop.s3.amazonaws.com/agentmorris/lila-wildlife/geolifeclef-2020/annotations_val.json))\n* Testing (13MB) ([GCP link](https://storage.googleapis.com/public-datasets-lila/geolifeclef-2020/annotations_test.json)) ([Azure link](https://lilawildlife.blob.core.windows.net/lila-wildlife/geolifeclef-2020/annotations_test.json)) ([AWS link](http://us-west-2.opendata.source.coop.s3.amazonaws.com/agentmorris/lila-wildlife/geolifeclef-2020/annotations_test.json))\n\n**Low-resolution covariate rasters**\n\nCovariate rasters (2.4GB) ([GCP link](https://storage.googleapis.com/public-datasets-lila/geolifeclef-2020/rasters.tar.gz)) ([Azure link](https://lilawildlife.blob.core.windows.net/lila-wildlife/geolifeclef-2020/rasters.tar.gz)) ([AWS link](http://us-west-2.opendata.source.coop.s3.amazonaws.com/agentmorris/lila-wildlife/geolifeclef-2020/rasters.tar.gz))\n\n&nbsp;&nbsp;&nbsp;&nbsp;\n\nHaving trouble downloading? Check out our [FAQ](http://lila.science/faq#downloadtips).\n\n#### Contact information\n\nFor questions about this dataset, contact [geolifeclef@inria.fr](mailto:geolifeclef@inria.fr).\n\n#### License information\n\n**RGB-IR imagery**\n\n*US*\n\nSource: NAIP/USGS  \n\nLicense: public domain\n\n*FR*\n\nSource: IGN  \n\nLicense: CC BY 4.0 (By Permission of IGN)\n\n**Land cover**\n\n*US*\n\nSource: NLCD/USGS  \n\nLicense: public domain\n\n*FR*\n\nSource: CESBIO  \n\nLicense: ODC-BY 1.0\n\n**Species occurrences**\n\n*US*\n\nSource: iNaturalist  \n\nLicense: CC BY-NC 4.0\n\n*FR*\n\nSource #1: Pl@ntNet and iNaturalist  \n\nLicense #1: CC BY 4.0  \n\nSource #2: iNaturalist  \n\nLicense #2: CC BY-NC 4.0  \n\n**Altitude**\n\nSource: SRTM/NASA  \n\nLicense: public domain\n\n**Soil rasters**\n\nSource: SoilGrids  \n\nLicense: CC BY 4.0\n\n**Bioclimatic rasters**\n\nSource: WorldClim  \n\nLicense: CC BY-SA 4.0\n\n![](http://lila.science/wp-content/uploads/2021/01/glc.jpg)\n\n",
-  "_decomposed_from": "agentmorris/lila-wildlife"
+  "readme": "## README.md\n# GeoLifeCLEF 2020\n\n### GeoLifeCLEF 2020\n\n#### S3 base\n\n`s3://us-west-2.opendata.source.coop/agentmorris/lila-wildlife/geolifeclef-2020`\n\n#### Overview\n\nUnderstanding the geographic distribution of species is a key concern in conservation. By pairing species occurrences with environmental features, researchers can model the relationship between an environment and the species which may be found there. To facilitate research in this area, we present the GeoLifeCLEF 2020 (GLC2020) dataset, which consists of 1.9 million geo-located species observations paired with high-resolution remote sensing imagery, land cover data, and altitude, in addition to traditional low-resolution climate and soil variables. The observations in this dataset cover 31,435 plant and animal species from the United States and France. The dataset was originally prepared for the [GeoLifeCLEF 2020 competition](https://www.aicrowd.com/challenges/lifeclef-2020-geo). Full details can be found in the [dataset paper](https://arxiv.org/abs/2004.04192) (cited below).\n\n#### Citation\n\nIf you use this data set, please cite the associated manuscript:\n\nCole E, Deneu B, Lorieul T, Servajean M, Botella C, Morris D, Jojic N, Bonnet P, Joly A. The GeoLifeCLEF 2020 Dataset. arXiv preprint arXiv:2004.04192. 2020 Apr 8. ([bibtex](http://lila.science/wp-content/uploads/2019/05/robinson2019large_bibtex.txt))\n\n#### Data format\n\nThe dataset consists of three components: **high-resolution patches**, **annotations** for those patches, and **low-resolution covariate rasters**.\n\nEach **high-resolution patch** is stored as a pair of .npy files: XXX.npy containing RGB-IR and land cover (256x256x5 uint8 array) and XXX_alti.npy containing altitude (256x256x1 uint16 array).\n\n**Annotations** for the high-resolution patches are provided as JSON files that adhere to a modified version of the [COCO dataset annotation format](https://cocodataset.org/). The format is as follows:\n\n```\n\n \n\t\"images\": [image],\n\t\"categories\": [category],\n\t\"annotations\": [annotation]\n \n\nimage \n \n\t\"id\": int,\n\t\"width\": int,\n\t\"height\": int,\n\t\"file_name\": str,\n\t\"file_name_alti\": str,\n\t\"lon\": float,\n\t\"lat\": float,\n\t\"country\": str\n \n\ncategory\n \n\t\"id\": int,\n\t\"gbif_id\": int,\n\t\"gbif_name\": str\n \n\nannotation\n \n\t\"id\": int,\n\t\"image_id\": int,\n\t\"category_id\" int\n \n\n```\n\nThe **low-resolution covariate rasters** are provided as pairs of .tif files (one for the US and one for France) for each variable. On the [competition GitHub page](https://github.com/maximiliense/GLC) we provide code to extract values for 27 environmental characteristics at any location in the US or France.\n\n#### Download links\n\n**High-resolution-patches (GCP links)**\n\nHigh-resolution patches are available at:\n\nhttps://storage.googleapis.com/public-datasets-lila/geolifeclef-2020/patches_[region]_[index].tar.gz (11GB each)\n\n...where *region* is \"us\" or \"fr\" for the US and France, respectively, and \"index\" is 01, 02, ... 20. For example:\n\nhttps://storage.googleapis.com/public-datasets-lila/geolifeclef-2020/patches_fr_01.tar.gz\n\n**High-resolution-patches (AWS links)**\n\nHigh-resolution patches are available at:\n\nhttp://us-west-2.opendata.source.coop.s3.amazonaws.com/agentmorris/lila-wildlife/geolifeclef-2020/patches_[region]_[index].tar.gz (11GB each)\n\n...where *region* is \"us\" or \"fr\" for the US and France, respectively, and \"index\" is 01, 02, ... 20. For example:\n\nhttp://us-west-2.opendata.source.coop.s3.amazonaws.com/agentmorris/lila-wildlife/geolifeclef-2020/patches_fr_01.tar.gz\n\n**High-resolution-patches (Azure links)**\n\nHigh-resolution patches are available at:\n\nhttps://lilawildlife.blob.core.windows.net/lila-wildlife/geolifeclef-2020/patches_[region]_[index].tar.gz (11GB each)\n\n...where *region* is \"us\" or \"fr\" for the US and France, respectively, and \"index\" is 01, 02, ... 20. For example:\n\nhttps://lilawildlife.blob.core.windows.net/lila-wildlife/geolifeclef-2020/patches_fr_01.tar.gz\n\n**High-resolution-patches (folder structure)**\n\nFor each country, each of the 20 .tar.gz files contains five directories from the set  00/, ..., 99/ . For example, patches_fr_01.tar.gz contains 00/, ..., 04/ and patches_fr_02.tar.gz contains 05/, ..., 09/, and so on. Then each of those directories contains subdirectories 00/, ..., 99/. These indices do not have a semantic interpretation, they are just to help the operating system deal with the number of files. Each pair of patch files is named XXXXABCD.npy and XXXXABCD_alti.npy, and lives at CD/AB/ where CD and AB are each among 00/, ..., 99/.\n\nThe contents of each file should be extracted to the same directory, such that, for example, the 00/ folder contains the contents of both patches_us_01/ and patches_fr_01/.\n\n**Annotations**\n\n* Training (450MB) ([GCP link](https://storage.googleapis.com/public-datasets-lila/geolifeclef-2020/annotations_train.json)) ([Azure link](https://lilawildlife.blob.core.windows.net/lila-wildlife/geolifeclef-2020/annotations_train.json)) ([AWS link](http://us-west-2.opendata.source.coop.s3.amazonaws.com/agentmorris/lila-wildlife/geolifeclef-2020/annotations_train.json))\n* Validation (11MB) ([GCP link](https://storage.googleapis.com/public-datasets-lila/geolifeclef-2020/annotations_val.json)) ([Azure link](https://lilawildlife.blob.core.windows.net/lila-wildlife/geolifeclef-2020/annotations_val.json)) ([AWS link](http://us-west-2.opendata.source.coop.s3.amazonaws.com/agentmorris/lila-wildlife/geolifeclef-2020/annotations_val.json))\n* Testing (13MB) ([GCP link](https://storage.googleapis.com/public-datasets-lila/geolifeclef-2020/annotations_test.json)) ([Azure link](https://lilawildlife.blob.core.windows.net/lila-wildlife/geolifeclef-2020/annotations_test.json)) ([AWS link](http://us-west-2.opendata.source.coop.s3.amazonaws.com/agentmorris/lila-wildlife/geolifeclef-2020/annotations_test.json))\n\n**Low-resolution covariate rasters**\n\nCovariate rasters (2.4GB) ([GCP link](https://storage.googleapis.com/public-datasets-lila/geolifeclef-2020/rasters.tar.gz)) ([Azure link](https://lilawildlife.blob.core.windows.net/lila-wildlife/geolifeclef-2020/rasters.tar.gz)) ([AWS link](http://us-west-2.opendata.source.coop.s3.amazonaws.com/agentmorris/lila-wildlife/geolifeclef-2020/rasters.tar.gz))\n\n&nbsp;&nbsp;&nbsp;&nbsp;\n\nHaving trouble downloading? Check out our [FAQ](http://lila.science/faq#downloadtips).\n\n#### Contact information\n\nFor questions about this dataset, contact [geolifeclef@inria.fr](mailto:geolifeclef@inria.fr).\n\n#### License information\n\n**RGB-IR imagery**\n\n*US*\n\nSource: NAIP/USGS  \n\nLicense: public domain\n\n*FR*\n\nSource: IGN  \n\nLicense: CC BY 4.0 (By Permission of IGN)\n\n**Land cover**\n\n*US*\n\nSource: NLCD/USGS  \n\nLicense: public domain\n\n*FR*\n\nSource: CESBIO  \n\nLicense: ODC-BY 1.0\n\n**Species occurrences**\n\n*US*\n\nSource: iNaturalist  \n\nLicense: CC BY-NC 4.0\n\n*FR*\n\nSource #1: Pl@ntNet and iNaturalist  \n\nLicense #1: CC BY 4.0  \n\nSource #2: iNaturalist  \n\nLicense #2: CC BY-NC 4.0  \n\n**Altitude**\n\nSource: SRTM/NASA  \n\nLicense: public domain\n\n**Soil rasters**\n\nSource: SoilGrids  \n\nLicense: CC BY 4.0\n\n**Bioclimatic rasters**\n\nSource: WorldClim  \n\nLicense: CC BY-SA 4.0\n\n![](http://lila.science/wp-content/uploads/2021/01/glc.jpg)\n\n",
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
+    "providers: role [producer, processor] for 'Inria (GeoLifeCLEF)' is an AI guess \u2014 Assumed as compiler/producer based on being the paper's authors and challenge organizers; not explicitly labeled 'producer' in the README.. Verify before flipping to _state: reviewed.",
+    "providers: role [producer, licensor] for 'USGS' is an AI guess \u2014 Assumed producer/licensor role for NAIP and NLCD source data credited in the README.. Verify before flipping to _state: reviewed.",
+    "providers: role [producer, licensor] for 'NASA' is an AI guess \u2014 Assumed producer/licensor role for SRTM altitude data credited in the README.. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-08-21T22:40:12+00:00"
 }
