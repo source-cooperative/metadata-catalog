@@ -1,22 +1,90 @@
 {
   "schema_version": 1,
-  "account_id": "agentmorris",
-  "product_id": "lila-wildlife-lindenthal-camera-traps",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "agentmorris/lila-wildlife-lindenthal-camera-traps",
   "title": "Lindenthal Camera Traps",
-  "description": "Camera trap imagery dataset from Lindenthal. Contains wildlife monitoring data collected via motion-triggered cameras. No README is available; description is inferred from the dataset title alone.",
+  "description": "A camera trap dataset of 775 video sequences captured at the Lindenthal wildlife park near Cologne, Germany, using an Intel RealSense D435 stereo camera that records synchronized color/infrared and depth imagery. A subset of 412 images is annotated with 1038 individual animal instances (masks, bounding boxes, class labels, and track IDs) covering birds and mammals such as deer, goats, sheep, donkeys, and foxes.",
+  "license": "CDLA-Permissive-1.0",
   "keywords": [
     "camera-traps",
-    "wildlife",
-    "ecology",
+    "wildlife-monitoring",
     "biodiversity",
-    "wildlife-monitoring"
+    "ecology",
+    "machine-learning",
+    "instance-segmentation"
   ],
-  "created_at": null,
+  "providers": [
+    {
+      "name": "Timm Haucke",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Volker Steinhage",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/agentmorris/lila-wildlife-lindenthal-camera-traps"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -180.0,
+          -90.0,
+          180.0,
+          90.0
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/agentmorris/lila-wildlife-lindenthal-camera-traps/",
+      "type": "application/octet-stream",
+      "title": "Dataset files",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/agentmorris/lila-wildlife-lindenthal-camera-traps/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/agentmorris/lila-wildlife-lindenthal-camera-traps",
+      "title": "Source Cooperative product page"
+    }
+  ],
   "updated_at": null,
-  "visibility": "public",
+  "total_bytes": 213133457498,
   "disabled": false,
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
   "featured": 0,
-  "data_mode": "open",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -29,19 +97,22 @@
       "prefix": "agentmorris/lila-wildlife/lindenthal-camera-traps/"
     }
   },
+  "visibility": "public",
+  "product_id": "lila-wildlife-lindenthal-camera-traps",
   "object_count": 2,
-  "total_bytes": 213133457498,
+  "account_id": "agentmorris",
   "exts": {
     "zip": 1,
     "": 1
   },
-  "store_format": null,
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "cataloged_at": "2026-06-04T23:59:15+00:00",
-  "readme": "# Lindenthal Camera Traps\n\n### Lindenthal Camera Traps\n\n#### S3 base\n\n`s3://us-west-2.opendata.source.coop/agentmorris/lila-wildlife/lindenthal-camera-traps`\n\n#### Overview\n\nThis data set contains 775 video sequences, captured in the [wildlife park Lindenthal](https://www.lindenthaler-tierpark.de) (Cologne, Germany) as part of the [AMMOD project](https://ammod.de/), using an Intel RealSense D435 stereo camera. In addition to color and infrared images, the D435 is able to infer the distance (or \u201cdepth\u201d) to objects in the scene using stereo vision. Observed animals include various birds (at daytime) and mammals such as deer, goats, sheep, donkeys, and foxes (primarily at nighttime). A subset of 412 images is annotated with a total of 1038 individual animal annotations, including instance masks, bounding boxes, class labels, and corresponding track IDs to identify the same individual over the entire video.\n\n#### Citation, license, and contact information\n\nThe capture process and dataset is described in more detail in the following preprint:\n\nHaucke T, Steinhage V. [Exploiting depth information for wildlife monitoring](https://arxiv.org/abs/2102.05607). arXiv preprint arXiv:2102.05607. 2021 Feb 10.\n\nPlease cite this manuscript if you use this data set. For questions about this data set, contact [Timm Haucke](mailto:haucke@cs.uni-bonn.de) at the University of Bonn.\n\nThis data set is released under the [Community Data License Agreement (permissive variant)](https://cdla.io/permissive-1-0/).\n\n#### Data format\n\nThe videos are captured using an Intel RealSense D435 stereo camera and stored as [RealSense rosbag](https://github.com/IntelRealSense/librealsense/blob/master/doc/record-and-playback.md) files. Each video contains intensity (RGB at daytime, IR at nighttime) and depth image streams with durations of 15 to 45 seconds at 15 frames per second. The depth images are computed on the RealSense D435 in real-time. Sequences recorded from December 17, 2020 additionally contain the raw left / right IR intensity images to facilitate offline stereo correspondence. The file names correspond to the local time, formatted as %Y%m%d%H%M%S.\n\nA subset of videos is labeled with instance masks, bounding boxes, class labels, and track ids in the COCO JSON format. The first 20 frames of the video were skipped during annotation such that the annotated images are not affected by the automatic exposure process of the D435. After two seconds, every 10th frame was annotated with instance masks and track IDs. Together with the COCO JSON annotation files we provide the corresponding extracted still image files in JPEG (intensity) and OpenEXR (depth) format. The included Jupyter Notebook demonstrates how to load and visualize these images and the corresponding annotations.\n\n#### Downloading the data\n\nThis dataset is provided as a single zipfile:\n\n[Download from GCP](https://storage.googleapis.com/public-datasets-lila/lindenthal-camera-traps/lindenthal-camera-traps.zip) (213GB)  \n\n[Download from AWS](http://us-west-2.opendata.source.coop.s3.amazonaws.com/agentmorris/lila-wildlife/lindenthal-camera-traps/lindenthal-camera-traps.zip) (213GB)  \n\n[Download from Azure](https://lilawildlife.blob.core.windows.net/lila-wildlife/lindenthal-camera-traps/lindenthal-camera-traps.zip) (213GB)  \n\nHaving trouble downloading? Check out our [FAQ](https://lila.science/faq#downloadtips).\n\n![](http://lila.science/wp-content/uploads/2022/12/lindenthal-thumb-800.png)\n\n",
-  "_decomposed_from": "agentmorris/lila-wildlife"
+  "data_mode": "open",
+  "_decomposed_from": "agentmorris/lila-wildlife",
+  "created_at": null,
+  "readme": "## README.md\n# Lindenthal Camera Traps\n\n### Lindenthal Camera Traps\n\n#### S3 base\n\n`s3://us-west-2.opendata.source.coop/agentmorris/lila-wildlife/lindenthal-camera-traps`\n\n#### Overview\n\nThis data set contains 775 video sequences, captured in the [wildlife park Lindenthal](https://www.lindenthaler-tierpark.de) (Cologne, Germany) as part of the [AMMOD project](https://ammod.de/), using an Intel RealSense D435 stereo camera. In addition to color and infrared images, the D435 is able to infer the distance (or \u201cdepth\u201d) to objects in the scene using stereo vision. Observed animals include various birds (at daytime) and mammals such as deer, goats, sheep, donkeys, and foxes (primarily at nighttime). A subset of 412 images is annotated with a total of 1038 individual animal annotations, including instance masks, bounding boxes, class labels, and corresponding track IDs to identify the same individual over the entire video.\n\n#### Citation, license, and contact information\n\nThe capture process and dataset is described in more detail in the following preprint:\n\nHaucke T, Steinhage V. [Exploiting depth information for wildlife monitoring](https://arxiv.org/abs/2102.05607). arXiv preprint arXiv:2102.05607. 2021 Feb 10.\n\nPlease cite this manuscript if you use this data set. For questions about this data set, contact [Timm Haucke](mailto:haucke@cs.uni-bonn.de) at the University of Bonn.\n\nThis data set is released under the [Community Data License Agreement (permissive variant)](https://cdla.io/permissive-1-0/).\n\n#### Data format\n\nThe videos are captured using an Intel RealSense D435 stereo camera and stored as [RealSense rosbag](https://github.com/IntelRealSense/librealsense/blob/master/doc/record-and-playback.md) files. Each video contains intensity (RGB at daytime, IR at nighttime) and depth image streams with durations of 15 to 45 seconds at 15 frames per second. The depth images are computed on the RealSense D435 in real-time. Sequences recorded from December 17, 2020 additionally contain the raw left / right IR intensity images to facilitate offline stereo correspondence. The file names correspond to the local time, formatted as %Y%m%d%H%M%S.\n\nA subset of videos is labeled with instance masks, bounding boxes, class labels, and track ids in the COCO JSON format. The first 20 frames of the video were skipped during annotation such that the annotated images are not affected by the automatic exposure process of the D435. After two seconds, every 10th frame was annotated with instance masks and track IDs. Together with the COCO JSON annotation files we provide the corresponding extracted still image files in JPEG (intensity) and OpenEXR (depth) format. The included Jupyter Notebook demonstrates how to load and visualize these images and the corresponding annotations.\n\n#### Downloading the data\n\nThis dataset is provided as a single zipfile:\n\n[Download from GCP](https://storage.googleapis.com/public-datasets-lila/lindenthal-camera-traps/lindenthal-camera-traps.zip) (213GB)  \n\n[Download from AWS](http://us-west-2.opendata.source.coop.s3.amazonaws.com/agentmorris/lila-wildlife/lindenthal-camera-traps/lindenthal-camera-traps.zip) (213GB)  \n\n[Download from Azure](https://lilawildlife.blob.core.windows.net/lila-wildlife/lindenthal-camera-traps/lindenthal-camera-traps.zip) (213GB)  \n\nHaving trouble downloading? Check out our [FAQ](https://lila.science/faq#downloadtips).\n\n![](http://lila.science/wp-content/uploads/2022/12/lindenthal-thumb-800.png)\n\n",
+  "_review": [
+    "providers: role [producer] for 'Timm Haucke' is an AI guess \u2014 Listed as dataset contact and lead author of the capture-process paper; assumed to be a data producer.. Verify before flipping to _state: reviewed.",
+    "providers: role [producer] for 'Volker Steinhage' is an AI guess \u2014 Co-author of the capture-process paper; assumed to be a data producer.. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-08-21T22:37:28+00:00"
 }
