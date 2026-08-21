@@ -1,79 +1,16 @@
 {
   "schema_version": 1,
-  "type": "Collection",
-  "stac_version": "1.1.0",
-  "id": "forestsignal/forestsignal-ca",
+  "account_id": "forestsignal",
+  "product_id": "forestsignal-ca",
   "title": "ForestSignal California (1985\u20132025)",
-  "description": "ForestSignal-CA is a 30-meter resolution, Landsat-derived data cube covering California's forest, shrubland, and grassland ecosystems across 19 thematic layers for water years 1985\u20132025. Layers span vegetation structure, hydrology, fire hazard, carbon stocks, drought-driven tree die-off vulnerability, and disturbance severity. Built by university scientists using a unified methodology designed for temporal and cross-property consistency to support ecological research and land management.",
-  "license": "CC-BY-NC-4.0",
-  "keywords": [
-    "remote-sensing",
-    "forest",
-    "land-cover",
-    "fire-hazard",
-    "carbon-stocks",
-    "landsat",
-    "hydrology",
-    "biomass"
-  ],
-  "providers": [
-    {
-      "name": "ForestSignal",
-      "roles": [
-        "producer",
-        "licensor"
-      ]
-    },
-    {
-      "name": "Source Cooperative",
-      "roles": [
-        "host"
-      ],
-      "url": "https://source.coop/forestsignal/forestsignal-ca"
-    }
-  ],
-  "extent": {
-    "spatial": {
-      "bbox": [
-        [
-          -126.1218422,
-          31.0515273,
-          -112.364731,
-          44.6832803
-        ]
-      ]
-    },
-    "temporal": {
-      "interval": [
-        [
-          "1985-01-01T00:00:00Z",
-          "2025-01-01T00:00:00Z"
-        ]
-      ]
-    }
-  },
-  "assets": {
-    "data": {
-      "href": "https://data.source.coop/forestsignal/forestsignal-ca/",
-      "type": "image/tiff; application=geotiff",
-      "title": "Dataset files (773 x .tif)",
-      "roles": [
-        "data"
-      ]
-    }
-  },
-  "links": [
-    {
-      "rel": "self",
-      "href": "https://source.coop/forestsignal/forestsignal-ca/collection.json",
-      "type": "application/json"
-    },
-    {
-      "rel": "via",
-      "href": "https://source.coop/forestsignal/forestsignal-ca",
-      "title": "Source Cooperative product page"
-    }
-  ],
+  "description": "RETIRED \u2014 superseded by The Wildland Almanac. This ForestSignal-CA data cube is obsolete and no longer maintained. The current California release \u2014 reprocessed, expanded, and relicensed CC BY 4.0 \u2014 is at source.coop/wildland-almanac/california. Please update your links and citations.",
+  "keywords": [],
+  "created_at": "2026-05-11T17:20:36.773Z",
+  "updated_at": "2026-06-14T18:39:51.056Z",
+  "visibility": "public",
+  "disabled": false,
+  "featured": 0,
+  "data_mode": "open",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -86,33 +23,20 @@
       "prefix": "forestsignal/forestsignal-ca/"
     }
   },
-  "created_at": "2026-05-11T17:20:36.773Z",
-  "total_bytes": 726352876298,
+  "object_count": 1,
+  "objects_updated_at": "2026-06-14T18:47:49+00:00",
+  "total_bytes": 598,
+  "exts": {
+    "md": 1
+  },
+  "ext_bytes": {
+    "md": 598
+  },
+  "store_format": null,
+  "_state": "seed",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "exts": {
-    "json": 793,
-    "tif": 773,
-    "pdf": 1,
-    "md": 1
-  },
-  "visibility": "public",
-  "object_count": 1568,
-  "disabled": false,
-  "account_id": "forestsignal",
-  "data_mode": "open",
-  "featured": 0,
-  "updated_at": "2026-05-11T17:20:36.773Z",
-  "product_id": "forestsignal-ca",
-  "readme": "## README.md\n# ForestSignal \u2014 California\n\nThis repository contains the first full upload of the ForestSignal-CA data cube \u2014 19 layers \u00d7 41 years (water years 1985\u20132025). Documentation, STAC catalog, integration demos, and the broader release infrastructure are still being finalized over the coming weeks. A CONUS release will follow. Layout and metadata conventions may change before the formal release; contact mgoulden@uci.edu.\n\n## About ForestSignal\n\nForestSignal develops 40-year+ data cubes of forest, shrubland, and grassland properties, including vegetation structure, fuel loads, fire hazard, biomass, hydrology, and disturbance history. The data are based on Landsat and use a unified approach that emphasizes temporal and cross-property consistency, with a goal of tracking change and exploring tradeoffs. The data are built and openly shared by university scientists to support decision-making and scientific discovery.\n\n## What's in this repository\n\n19 layers covering water years 1985\u20132025 (October\u2013September), 30 m resolution, EPSG:5070 (NAD83 / Conus Albers). All files are Cloud-Optimized GeoTIFFs (COGs).\n\n**Vegetation cover and structure**\n- `Veg_TreeFrac/` \u2014 fractional tree canopy cover\n- `Veg_ShrubFrac/` \u2014 fractional shrub cover\n- `Veg_HerbFrac/` \u2014 fractional herbaceous cover\n- `Veg_BareFrac/` \u2014 fractional bare/non-vegetated cover\n- `Veg_CanopyHt/` \u2014 tree canopy height\n\n**Hydrology**\n- `WaterFlux_AETmax/` \u2014 potential evapotranspiration\n- `WaterFlux_AETrealized/` \u2014 actual evapotranspiration\n- `WaterFlux_Soilmoisture/` \u2014 soil moisture\n- `WaterFlux_Runoff/` \u2014 runoff\n- `WaterFlux_PminusETmax_SPI0/` \u2014 climatological water deficit at SPI-48 = 0\n\n**Fire hazard**\n- `Fire_LCP/` \u2014 8-band landscape file (FARSITE v.4 format) for fire-behavior modeling\n- `Fire_FlamMap_FL/` \u2014 FlamMap-predicted flame length\n- `Fire_FlamMap_ROS/` \u2014 FlamMap-predicted rate of spread\n\n**Carbon sequestration**\n- `Carbon_AGB/` \u2014 above-ground biomass\n- `Carbon_GPP/` \u2014 gross primary production\n\n**Forest dieoff risk**\n- `Vulner_TreeDieoff_SPI-2/` \u2014 drought-driven tree dieoff vulnerability under SPI-48 = \u22122\n\n**Disturbance severity** (water years 1986\u20132024; first and last years cannot be computed)\n- `Disturbance_TreeFrac/` \u2014 annual tree-canopy loss\n- `Disturbance_ShrubFrac/` \u2014 annual shrub-canopy loss\n- `Disturbance_AGB/` \u2014 annual above-ground biomass loss\n\n## Documentation\n\n`ForestSignal_CA_Documentation.pdf` in this repo contains complete layer descriptions, unit conventions, methodology summaries, projection details, and use limitations. **Read it before working with the data quantitatively** \u2014 several layers (Fire_LCP bands, Disturbance layers, Veg fractions) use specific scaling conventions that affect any numeric analysis.\n\n## How to access the data\n\nAll files are Cloud-Optimized GeoTIFFs in EPSG:5070, 30 m. Three ways to use them, in increasing order of sophistication.\n\n### Streaming (most common \u2014 no download needed)\n\nThe COG format means rasters can be read directly from cloud storage over HTTP, transferring only the bytes needed for the current view. The URI form differs between ArcGIS Pro and open-source GIS tools.\n\n**For ArcGIS Pro** \u2014 use the S3 URI, for example:\n```\ns3://us-west-2.opendata.source.coop/forestsignal/forestsignal-ca/Carbon_AGB/ForestSignal_CAwide_Carbon_AGB_2025_V260426.tif\n```\nIn ArcGIS Pro: Add Data \u2192 From Path \u2192 paste the URI.\n\n**For QGIS, GDAL, rasterio, terra** \u2014 use the `/vsicurl/` URL, for example:\n```\n/vsicurl/https://data.source.coop/forestsignal/forestsignal-ca/Carbon_AGB/ForestSignal_CAwide_Carbon_AGB_2025_V260426.tif\n```\nIn QGIS: Layer \u2192 Add Layer \u2192 Add Raster Layer \u2192 paste the URI as the Source.\n\nBoth URI forms point at the same underlying file. Source Cooperative's file detail pages show both forms \u2014 \"Cloud URI\" is the S3 form (for ArcGIS), \"Source URL\" is the HTTPS form (prepend `/vsicurl/` for GDAL-based tools). Substitute the layer name and year for any other file.\n\n### Direct download via HTTPS\n\nEvery file has a public URL you can fetch with any HTTP client. No credentials needed.\n\n```\nhttps://data.source.coop/forestsignal/forestsignal-ca/Carbon_AGB/ForestSignal_CAwide_Carbon_AGB_2025_V260426.tif\n```\n\nUse `curl`, `wget`, browser save, `Invoke-WebRequest` on Windows PowerShell.\n\n### Bulk download via AWS CLI\n\nFor downloading multiple files or whole layer directories, the AWS CLI is fastest. No credentials or AWS account needed \u2014 use the `--no-sign-request` flag:\n\n```\n# Download a single file\naws s3 cp s3://us-west-2.opendata.source.coop/forestsignal/forestsignal-ca/Carbon_AGB/ForestSignal_CAwide_Carbon_AGB_2025_V260426.tif . --no-sign-request\n\n# Sync an entire layer directory (41 files)\naws s3 sync s3://us-west-2.opendata.source.coop/forestsignal/forestsignal-ca/Carbon_AGB/ ./Carbon_AGB/ --no-sign-request\n\n# Sync everything\naws s3 sync s3://us-west-2.opendata.source.coop/forestsignal/forestsignal-ca/ ./forestsignal-ca/ --no-sign-request\n```\n\nAWS CLI is available for Windows, Mac, and Linux at [aws.amazon.com/cli](https://aws.amazon.com/cli/).\n\n## File naming\n\nFiles follow the convention `ForestSignal_CAwide_{LayerName}_{YYYY}_V{YYMMDD}.tif`, where `{YYYY}` is the four-digit water year and `V{YYMMDD}` is the processing-batch date. The version stamp is provisional and may move to STAC metadata in the final release.\n\n## License\n\nThese data are shared under the [Creative Commons Attribution-NonCommercial 4.0 International license (CC BY-NC 4.0)](https://creativecommons.org/licenses/by-nc/4.0/). Use of these data implies consent to the license terms and to the University of California disclaimer reproduced in \u00a76 of the documentation PDF and summarized below. The license restricts use for commercial purposes \u2014 see [creativecommons.org/faq/](https://creativecommons.org/faq/) for a discussion of commercial use.\n\nThe data are offered with no promise of technical support and with the hope that users will provide feedback to help refine and improve them.\n\n## Legal and terms of access\n\nThe materials are offered \"as is\"; the user assumes any and all risks of any kind or amount in using these materials. Access or use of these data implies consent to the disclaimer in the dataset documentation (\u00a76 of `ForestSignal_CA_Documentation.pdf`), which is the binding statement.\n\n## Citation\n\n> Goulden, M.L. (2026). *ForestSignal CA: 41 years of reconciled forest dynamics for California, water years 1985\u20132025* (Version V260426). Source Cooperative. [DOI to be assigned]\n\n## Contact and feedback\n\nmgoulden@uci.edu \u2014 notes on errors and use cases are especially valuable. Feedback will materially shape the final release.\n\n---\n\n*Preliminary release V260426 (April 2026 build). University of California, Irvine.*\n",
-  "_review": [
-    "extent.temporal: None (probe sample) widened to ['1985-01-01T00:00:00Z', '2025-01-01T00:00:00Z'] using README-stated coverage ['1985', '2025']."
-  ],
-  "_state": "drafted",
-  "cataloged_at": "2026-06-09T06:11:55+00:00",
-  "ext_bytes": {
-    "md": 598
-  }
+  "cataloged_at": "2026-08-21T21:26:53+00:00"
 }
