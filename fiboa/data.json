@@ -7,17 +7,18 @@
   ],
   "id": "fiboa/data",
   "title": "Field boundaries for Austria (2025)",
-  "description": "Agricultural field boundary polygons for Austria for the 2025 reference year, derived from official LPIS (Land Parcel Information System) data and conforming to the fiboa 0.3.0+ specification. Each parcel record includes polygon geometry, harmonized crop type codes (HCAT), native and English crop names, and area metrics.",
+  "description": "A multi-country collection of official agricultural field boundary (cadastral parcel) datasets, harmonized and converted into the fiboa GeoParquet specification. Each per-country/region asset contains parcel polygon geometries, area metrics, and crop classification (HCAT) codes sourced from national or regional government land-parcel registries across Europe, Brazil, and the United States.",
   "license": "CC-BY-4.0",
   "keywords": [
     "field-boundaries",
     "agriculture",
     "crop-classification",
-    "lpis",
     "land-parcels",
     "arable-land",
     "land-use",
-    "fiboa"
+    "lpis",
+    "fiboa",
+    "geoparquet"
   ],
   "providers": [
     {
@@ -70,10 +71,10 @@
     }
   },
   "summaries": {
-    "item_count": 94424834
+    "item_count": 95048500
   },
   "assets": {
-    "at-2025": {
+    "at": {
       "href": "https://data.source.coop/fiboa/data/at/at-2025.parquet",
       "type": "application/x-parquet",
       "title": "at-2025.parquet",
@@ -96,7 +97,7 @@
         {
           "name": "geometry",
           "type": "GEOMETRY('EPSG:31287')",
-          "description": "[geometry] Field boundary polygon in EPSG:31287 (MGI / Austria Lambert)"
+          "description": "[geometry] Field boundary polygon (EPSG:31287)"
         },
         {
           "name": "id",
@@ -124,16 +125,15 @@
         },
         {
           "name": "bbox",
-          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)",
-          "description": "[geometry] Bounding box struct (xmin/ymin/xmax/ymax) derived from the field polygon"
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
         }
       ],
       "table:row_count": 2944405
     },
-    "be_vlg-2023": {
-      "href": "https://data.source.coop/fiboa/data/be_vlg/be_vlg-2023.parquet",
+    "be_vlg": {
+      "href": "https://data.source.coop/fiboa/data/be_vlg/",
       "type": "application/x-parquet",
-      "title": "be_vlg-2023.parquet",
+      "title": "be_vlg",
       "roles": [
         "data"
       ],
@@ -172,7 +172,8 @@
         },
         {
           "name": "geometry",
-          "type": "GEOMETRY('EPSG:31370')"
+          "type": "GEOMETRY('EPSG:31370')",
+          "description": "[geometry] Field boundary polygon (EPSG:31370)"
         },
         {
           "name": "hcat:code",
@@ -181,123 +182,13 @@
         {
           "name": "bbox",
           "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
-        }
-      ],
-      "table:row_count": 100
-    },
-    "be_vlg-2024": {
-      "href": "https://data.source.coop/fiboa/data/be_vlg/be_vlg-2024.parquet",
-      "type": "application/x-parquet",
-      "title": "be_vlg-2024.parquet",
-      "roles": [
-        "data"
-      ],
-      "table:columns": [
-        {
-          "name": "crop:code",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "hcat:name",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "hcat:name_en",
-          "type": "VARCHAR"
         },
         {
           "name": "source",
           "type": "VARCHAR"
-        },
-        {
-          "name": "crop:name",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "id",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "hcat:code",
-          "type": "UINTEGER"
-        },
-        {
-          "name": "geometry",
-          "type": "GEOMETRY('EPSG:31370')"
-        },
-        {
-          "name": "metrics:area",
-          "type": "FLOAT"
-        },
-        {
-          "name": "typology",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "collection",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "bbox",
-          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
         }
       ],
-      "table:row_count": 589898
-    },
-    "be_vlg-2025": {
-      "href": "https://data.source.coop/fiboa/data/be_vlg/be_vlg-2025.parquet",
-      "type": "application/x-parquet",
-      "title": "be_vlg-2025.parquet",
-      "roles": [
-        "data"
-      ],
-      "table:columns": [
-        {
-          "name": "hcat:code",
-          "type": "UINTEGER"
-        },
-        {
-          "name": "hcat:name_en",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "id",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "crop:name",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "metrics:area",
-          "type": "FLOAT"
-        },
-        {
-          "name": "hcat:name",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "typology",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "geometry",
-          "type": "GEOMETRY('EPSG:31370')"
-        },
-        {
-          "name": "collection",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "crop:code",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "bbox",
-          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
-        }
-      ],
-      "table:row_count": 594732
+      "description": "3 files sampled for this table"
     },
     "be_wal": {
       "href": "https://data.source.coop/fiboa/data/be_wal/be_wal.parquet",
@@ -321,7 +212,8 @@
         },
         {
           "name": "geometry",
-          "type": "GEOMETRY('EPSG:3035')"
+          "type": "GEOMETRY('EPSG:3035')",
+          "description": "[geometry] Field boundary polygon (EPSG:3035)"
         },
         {
           "name": "hcat:code",
@@ -360,7 +252,8 @@
         },
         {
           "name": "geometry",
-          "type": "GEOMETRY('EPSG:32635')"
+          "type": "GEOMETRY('EPSG:32635')",
+          "description": "[geometry] Field boundary polygon (EPSG:32635)"
         },
         {
           "name": "id",
@@ -451,7 +344,8 @@
         },
         {
           "name": "geometry",
-          "type": "GEOMETRY('EPSG:4326')"
+          "type": "GEOMETRY('EPSG:4326')",
+          "description": "[geometry] Field boundary polygon (EPSG:4326)"
         },
         {
           "name": "bbox",
@@ -474,15 +368,18 @@
         },
         {
           "name": "geometry",
-          "type": "GEOMETRY('EPSG:4674')"
+          "type": "GEOMETRY('EPSG:4674')",
+          "description": "[geometry] Field boundary polygon (EPSG:4674)"
         },
         {
           "name": "admin_municipality_code",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[admin_code] Municipality code"
         },
         {
           "name": "admin_municipality_name",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[placename] Municipality name"
         },
         {
           "name": "collection",
@@ -500,9 +397,9 @@
       "table:row_count": 465691
     },
     "ch": {
-      "href": "https://data.source.coop/fiboa/data/ch/ch.parquet",
+      "href": "https://data.source.coop/fiboa/data/ch/",
       "type": "application/x-parquet",
-      "title": "ch.parquet",
+      "title": "ch",
       "roles": [
         "data"
       ],
@@ -513,11 +410,13 @@
         },
         {
           "name": "admin:subdivision_code",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[admin_code] Canton code"
         },
         {
           "name": "geometry",
-          "type": "GEOMETRY('EPSG:2056')"
+          "type": "GEOMETRY('EPSG:2056')",
+          "description": "[geometry] Field boundary polygon (EPSG:2056)"
         },
         {
           "name": "id",
@@ -550,33 +449,11 @@
         {
           "name": "bbox",
           "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
-        }
-      ],
-      "table:row_count": 1159957
-    },
-    "ch_2023": {
-      "href": "https://data.source.coop/fiboa/data/ch/ch_2023.parquet",
-      "type": "application/x-parquet",
-      "title": "ch_2023.parquet",
-      "roles": [
-        "data"
-      ],
-      "table:columns": [
-        {
-          "name": "geometry",
-          "type": "GEOMETRY('EPSG:2056')"
-        },
-        {
-          "name": "id",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "metrics:area",
-          "type": "FLOAT"
         },
         {
           "name": "administrative_area_level_1",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[placename] Legacy canton/administrative area name column"
         },
         {
           "name": "crop_name",
@@ -585,13 +462,9 @@
         {
           "name": "determination_datetime",
           "type": "TIMESTAMP WITH TIME ZONE"
-        },
-        {
-          "name": "bbox",
-          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
         }
       ],
-      "table:row_count": 1159957
+      "description": "2 files sampled for this table"
     },
     "cz": {
       "href": "https://data.source.coop/fiboa/data/cz/cz.parquet",
@@ -627,7 +500,8 @@
         },
         {
           "name": "geometry",
-          "type": "GEOMETRY('EPSG:4258')"
+          "type": "GEOMETRY('EPSG:4258')",
+          "description": "[geometry] Field boundary polygon (EPSG:4258)"
         },
         {
           "name": "crop:code",
@@ -670,7 +544,8 @@
         },
         {
           "name": "geometry",
-          "type": "GEOMETRY('EPSG:25833')"
+          "type": "GEOMETRY('EPSG:25833')",
+          "description": "[geometry] Field boundary polygon (EPSG:25833)"
         },
         {
           "name": "hcat:name_en",
@@ -725,7 +600,8 @@
         },
         {
           "name": "geometry",
-          "type": "GEOMETRY('EPSG:25832')"
+          "type": "GEOMETRY('EPSG:25832')",
+          "description": "[geometry] Field boundary polygon (EPSG:25832)"
         },
         {
           "name": "hcat:name",
@@ -792,7 +668,8 @@
         },
         {
           "name": "bez_kreis",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[placename] District (Kreis) name"
         },
         {
           "name": "erwater",
@@ -812,7 +689,8 @@
         },
         {
           "name": "geometry",
-          "type": "GEOMETRY('EPSG:25833')"
+          "type": "GEOMETRY('EPSG:25833')",
+          "description": "[geometry] Field boundary polygon (EPSG:25833)"
         },
         {
           "name": "bbox",
@@ -821,7 +699,7 @@
       ],
       "table:row_count": 20000
     },
-    "de_nds-2025": {
+    "de_nds": {
       "href": "https://data.source.coop/fiboa/data/de_nds/de_nds-2025.parquet",
       "type": "application/x-parquet",
       "title": "de_nds-2025.parquet",
@@ -835,7 +713,8 @@
         },
         {
           "name": "geometry",
-          "type": "GEOMETRY('EPSG:25832')"
+          "type": "GEOMETRY('EPSG:25832')",
+          "description": "[geometry] Field boundary polygon (EPSG:25832)"
         },
         {
           "name": "crop:code",
@@ -910,7 +789,8 @@
         },
         {
           "name": "geometry",
-          "type": "GEOMETRY('EPSG:25832')"
+          "type": "GEOMETRY('EPSG:25832')",
+          "description": "[geometry] Field boundary polygon (EPSG:25832)"
         },
         {
           "name": "hcat:code",
@@ -931,7 +811,7 @@
       ],
       "table:row_count": 749151
     },
-    "dk-2024": {
+    "dk": {
       "href": "https://data.source.coop/fiboa/data/dk/dk-2024.parquet",
       "type": "application/x-parquet",
       "title": "dk-2024.parquet",
@@ -969,7 +849,8 @@
         },
         {
           "name": "geometry",
-          "type": "GEOMETRY('EPSG:25832')"
+          "type": "GEOMETRY('EPSG:25832')",
+          "description": "[geometry] Field boundary polygon (EPSG:25832)"
         },
         {
           "name": "id",
@@ -1012,7 +893,8 @@
         },
         {
           "name": "geometry",
-          "type": "GEOMETRY('EPSG:32635')"
+          "type": "GEOMETRY('EPSG:32635')",
+          "description": "[geometry] Field boundary polygon (EPSG:32635)"
         },
         {
           "name": "source",
@@ -1037,7 +919,7 @@
       ],
       "table:row_count": 259862
     },
-    "ee-2024": {
+    "ee": {
       "href": "https://data.source.coop/fiboa/data/ee/ee-2024.parquet",
       "type": "application/x-parquet",
       "title": "ee-2024.parquet",
@@ -1059,7 +941,8 @@
         },
         {
           "name": "geometry",
-          "type": "GEOMETRY('EPSG:3301')"
+          "type": "GEOMETRY('EPSG:3301')",
+          "description": "[geometry] Field boundary polygon (EPSG:3301)"
         },
         {
           "name": "id",
@@ -1080,17 +963,18 @@
       ],
       "table:row_count": 166508
     },
-    "es-2025": {
-      "href": "https://data.source.coop/fiboa/data/es/es-2025.parquet",
+    "es": {
+      "href": "https://data.source.coop/fiboa/data/es/",
       "type": "application/x-parquet",
-      "title": "es-2025.parquet",
+      "title": "es",
       "roles": [
         "data"
       ],
       "table:columns": [
         {
           "name": "geometry",
-          "type": "GEOMETRY('EPSG:4258')"
+          "type": "GEOMETRY('EPSG:4258')",
+          "description": "[geometry] Field boundary polygon (EPSG:4258)"
         },
         {
           "name": "metrics:area",
@@ -1129,58 +1013,7 @@
           "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
         }
       ],
-      "table:row_count": 17857146
-    },
-    "es-2025_11": {
-      "href": "https://data.source.coop/fiboa/data/es/es-2025_11.parquet",
-      "type": "application/x-parquet",
-      "title": "es-2025_11.parquet",
-      "roles": [
-        "data"
-      ],
-      "table:columns": [
-        {
-          "name": "collection",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "crop:code",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "metrics:area",
-          "type": "FLOAT"
-        },
-        {
-          "name": "irrigation_system",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "hcat:name_en",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "hcat:name",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "geometry",
-          "type": "GEOMETRY('EPSG:4258')"
-        },
-        {
-          "name": "id",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "hcat:code",
-          "type": "UINTEGER"
-        },
-        {
-          "name": "bbox",
-          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
-        }
-      ],
-      "table:row_count": 167215
+      "description": "2 files sampled for this table"
     },
     "fi": {
       "href": "https://data.source.coop/fiboa/data/fi/fi.parquet",
@@ -1216,7 +1049,8 @@
         },
         {
           "name": "geometry",
-          "type": "GEOMETRY('EPSG:3067')"
+          "type": "GEOMETRY('EPSG:3067')",
+          "description": "[geometry] Field boundary polygon (EPSG:3067)"
         },
         {
           "name": "hcat:code",
@@ -1237,10 +1071,10 @@
       ],
       "table:row_count": 1006588
     },
-    "fr-2021": {
-      "href": "https://data.source.coop/fiboa/data/fr/fr-2021.parquet",
+    "fr": {
+      "href": "https://data.source.coop/fiboa/data/fr/",
       "type": "application/x-parquet",
-      "title": "fr-2021.parquet",
+      "title": "fr",
       "roles": [
         "data"
       ],
@@ -1275,7 +1109,8 @@
         },
         {
           "name": "geometry",
-          "type": "GEOMETRY('EPSG:2154')"
+          "type": "GEOMETRY('EPSG:2154')",
+          "description": "[geometry] Field boundary polygon (EPSG:2154)"
         },
         {
           "name": "collection",
@@ -1286,160 +1121,7 @@
           "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
         }
       ],
-      "table:row_count": 9848558
-    },
-    "fr-2022": {
-      "href": "https://data.source.coop/fiboa/data/fr/fr-2022.parquet",
-      "type": "application/x-parquet",
-      "title": "fr-2022.parquet",
-      "roles": [
-        "data"
-      ],
-      "table:columns": [
-        {
-          "name": "crop:code",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "hcat:name_en",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "hcat:code",
-          "type": "UINTEGER"
-        },
-        {
-          "name": "id",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "hcat:name",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "metrics:area",
-          "type": "FLOAT"
-        },
-        {
-          "name": "geometry",
-          "type": "GEOMETRY('EPSG:2154')"
-        },
-        {
-          "name": "group_code",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "collection",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "bbox",
-          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
-        }
-      ],
-      "table:row_count": 9888801
-    },
-    "fr-2023": {
-      "href": "https://data.source.coop/fiboa/data/fr/fr-2023.parquet",
-      "type": "application/x-parquet",
-      "title": "fr-2023.parquet",
-      "roles": [
-        "data"
-      ],
-      "table:columns": [
-        {
-          "name": "group_code",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "hcat:name_en",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "metrics:area",
-          "type": "FLOAT"
-        },
-        {
-          "name": "geometry",
-          "type": "GEOMETRY('EPSG:2154')"
-        },
-        {
-          "name": "crop:code",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "collection",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "hcat:name",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "id",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "hcat:code",
-          "type": "UINTEGER"
-        },
-        {
-          "name": "bbox",
-          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
-        }
-      ],
-      "table:row_count": 9788919
-    },
-    "fr-2024": {
-      "href": "https://data.source.coop/fiboa/data/fr/fr-2024.parquet",
-      "type": "application/x-parquet",
-      "title": "fr-2024.parquet",
-      "roles": [
-        "data"
-      ],
-      "table:columns": [
-        {
-          "name": "hcat:code",
-          "type": "UINTEGER"
-        },
-        {
-          "name": "group_code",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "hcat:name",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "id",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "hcat:name_en",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "collection",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "crop:code",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "geometry",
-          "type": "GEOMETRY('EPSG:2154')"
-        },
-        {
-          "name": "metrics:area",
-          "type": "FLOAT"
-        },
-        {
-          "name": "bbox",
-          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
-        }
-      ],
-      "table:row_count": 9678595
+      "description": "4 files sampled for this table"
     },
     "hr": {
       "href": "https://data.source.coop/fiboa/data/hr/hr.parquet",
@@ -1463,7 +1145,8 @@
         },
         {
           "name": "geometry",
-          "type": "GEOMETRY('EPSG:3765')"
+          "type": "GEOMETRY('EPSG:3765')",
+          "description": "[geometry] Field boundary polygon (EPSG:3765)"
         },
         {
           "name": "metrics:perimeter",
@@ -1543,7 +1226,8 @@
         },
         {
           "name": "home_name",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[placename] Named place associated with the parcel"
         },
         {
           "name": "rp",
@@ -1560,7 +1244,7 @@
       ],
       "table:row_count": 1315950
     },
-    "ie-2024": {
+    "ie": {
       "href": "https://data.source.coop/fiboa/data/ie/ie-2024.parquet",
       "type": "application/x-parquet",
       "title": "ie-2024.parquet",
@@ -1570,7 +1254,8 @@
       "table:columns": [
         {
           "name": "geometry",
-          "type": "GEOMETRY('EPSG:4258')"
+          "type": "GEOMETRY('EPSG:4258')",
+          "description": "[geometry] Field boundary polygon (EPSG:4258)"
         },
         {
           "name": "hcat:name",
@@ -1603,6 +1288,54 @@
       ],
       "table:row_count": 1123135
     },
+    "it_1": {
+      "href": "https://data.source.coop/fiboa/data/it_1/it_1-2023.parquet",
+      "type": "application/x-parquet",
+      "title": "it_1-2023.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "collection",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "metrics:area",
+          "type": "FLOAT"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:3035')",
+          "description": "[geometry] Field boundary polygon (EPSG:3035)"
+        },
+        {
+          "name": "hcat:name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "hcat:code",
+          "type": "UINTEGER"
+        },
+        {
+          "name": "hcat:name_en",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "crop:code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 623666
+    },
     "jecam": {
       "href": "https://data.source.coop/fiboa/data/jecam/jecam.parquet",
       "type": "application/x-parquet",
@@ -1617,7 +1350,8 @@
         },
         {
           "name": "geometry",
-          "type": "GEOMETRY('EPSG:4326')"
+          "type": "GEOMETRY('EPSG:4326')",
+          "description": "[geometry] Field boundary polygon (EPSG:4326)"
         },
         {
           "name": "id",
@@ -1629,7 +1363,8 @@
         },
         {
           "name": "admin:country_code",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[admin_code] ISO 3166-1 alpha-2 country code"
         },
         {
           "name": "determination:datetime",
@@ -1649,7 +1384,8 @@
         },
         {
           "name": "site_name",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[placename] Name of monitoring site"
         },
         {
           "name": "bbox",
@@ -1676,7 +1412,8 @@
         },
         {
           "name": "geometry",
-          "type": "GEOMETRY('EPSG:3035')"
+          "type": "GEOMETRY('EPSG:3035')",
+          "description": "[geometry] Field boundary polygon (EPSG:3035)"
         },
         {
           "name": "crop:name",
@@ -1739,7 +1476,8 @@
         },
         {
           "name": "geometry",
-          "type": "GEOMETRY('EPSG:3059')"
+          "type": "GEOMETRY('EPSG:3059')",
+          "description": "[geometry] Field boundary polygon (EPSG:3059)"
         },
         {
           "name": "crop:code",
@@ -1760,7 +1498,7 @@
       ],
       "table:row_count": 416323
     },
-    "nl-2025": {
+    "nl": {
       "href": "https://data.source.coop/fiboa/data/nl/nl-2025.parquet",
       "type": "application/x-parquet",
       "title": "nl-2025.parquet",
@@ -1790,7 +1528,8 @@
         },
         {
           "name": "geometry",
-          "type": "GEOMETRY('EPSG:28992')"
+          "type": "GEOMETRY('EPSG:28992')",
+          "description": "[geometry] Field boundary polygon (EPSG:28992)"
         },
         {
           "name": "metrics:area",
@@ -1815,7 +1554,7 @@
       ],
       "table:row_count": 1297461
     },
-    "pt-2023": {
+    "pt": {
       "href": "https://data.source.coop/fiboa/data/pt/pt-2023.parquet",
       "type": "application/x-parquet",
       "title": "pt-2023.parquet",
@@ -1857,7 +1596,8 @@
         },
         {
           "name": "geometry",
-          "type": "GEOMETRY('EPSG:3763')"
+          "type": "GEOMETRY('EPSG:3763')",
+          "description": "[geometry] Field boundary polygon (EPSG:3763)"
         },
         {
           "name": "hcat:name",
@@ -1874,71 +1614,25 @@
       ],
       "table:row_count": 4805469
     },
-    "se-2024": {
-      "href": "https://data.source.coop/fiboa/data/se/se-2024.parquet",
-      "type": "application/x-parquet",
-      "title": "se-2024.parquet",
-      "roles": [
-        "data"
-      ],
-      "table:columns": [
-        {
-          "name": "geometry",
-          "type": "GEOMETRY('EPSG:3006')"
-        },
-        {
-          "name": "hcat:code",
-          "type": "UINTEGER"
-        },
-        {
-          "name": "hcat:name_en",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "hcat:name",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "id",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "collection",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "crop:code",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "metrics:area",
-          "type": "FLOAT"
-        },
-        {
-          "name": "bbox",
-          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
-        }
-      ],
-      "table:row_count": 1146499
-    },
     "se": {
-      "href": "https://data.source.coop/fiboa/data/se/se.parquet",
+      "href": "https://data.source.coop/fiboa/data/se/",
       "type": "application/x-parquet",
-      "title": "se.parquet",
+      "title": "se",
       "roles": [
         "data"
       ],
       "table:columns": [
         {
-          "name": "crop:code",
-          "type": "VARCHAR"
-        },
-        {
           "name": "geometry",
-          "type": "GEOMETRY('EPSG:3006')"
+          "type": "GEOMETRY('EPSG:3006')",
+          "description": "[geometry] Field boundary polygon (EPSG:3006)"
         },
         {
-          "name": "collection",
+          "name": "hcat:code",
+          "type": "UINTEGER"
+        },
+        {
+          "name": "hcat:name_en",
           "type": "VARCHAR"
         },
         {
@@ -1950,105 +1644,34 @@
           "type": "VARCHAR"
         },
         {
-          "name": "hcat:code",
-          "type": "UINTEGER"
-        },
-        {
-          "name": "hcat:name_en",
+          "name": "collection",
           "type": "VARCHAR"
         },
-        {
-          "name": "metrics:area",
-          "type": "FLOAT"
-        },
-        {
-          "name": "bbox",
-          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
-        }
-      ],
-      "table:row_count": 1142785
-    },
-    "si-2024": {
-      "href": "https://data.source.coop/fiboa/data/si/si-2024.parquet",
-      "type": "application/x-parquet",
-      "title": "si-2024.parquet",
-      "roles": [
-        "data"
-      ],
-      "table:columns": [
         {
           "name": "crop:code",
           "type": "VARCHAR"
         },
         {
-          "name": "hcat:name_en",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "hcat:name",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "hcat:code",
-          "type": "UINTEGER"
-        },
-        {
-          "name": "id",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "geometry",
-          "type": "GEOMETRY('EPSG:3794')"
-        },
-        {
-          "name": "collection",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "crop:name",
-          "type": "VARCHAR"
-        },
-        {
           "name": "metrics:area",
           "type": "FLOAT"
-        },
-        {
-          "name": "crop:name_en",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "block_id",
-          "type": "UBIGINT"
         },
         {
           "name": "bbox",
           "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
         }
       ],
-      "table:row_count": 809044
+      "description": "2 files sampled for this table"
     },
     "si": {
-      "href": "https://data.source.coop/fiboa/data/si/si.parquet",
+      "href": "https://data.source.coop/fiboa/data/si/",
       "type": "application/x-parquet",
-      "title": "si.parquet",
+      "title": "si",
       "roles": [
         "data"
       ],
       "table:columns": [
         {
-          "name": "crop:name_en",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "hcat:code",
-          "type": "UINTEGER"
-        },
-        {
-          "name": "hcat:name",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "crop:name",
+          "name": "crop:code",
           "type": "VARCHAR"
         },
         {
@@ -2056,15 +1679,28 @@
           "type": "VARCHAR"
         },
         {
-          "name": "crop:code",
+          "name": "hcat:name",
           "type": "VARCHAR"
+        },
+        {
+          "name": "hcat:code",
+          "type": "UINTEGER"
         },
         {
           "name": "id",
           "type": "VARCHAR"
         },
         {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:3794')",
+          "description": "[geometry] Field boundary polygon (EPSG:3794)"
+        },
+        {
           "name": "collection",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "crop:name",
           "type": "VARCHAR"
         },
         {
@@ -2072,19 +1708,19 @@
           "type": "FLOAT"
         },
         {
-          "name": "block_id",
-          "type": "UBIGINT"
+          "name": "crop:name_en",
+          "type": "VARCHAR"
         },
         {
-          "name": "geometry",
-          "type": "GEOMETRY('EPSG:3794')"
+          "name": "block_id",
+          "type": "UBIGINT"
         },
         {
           "name": "bbox",
           "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
         }
       ],
-      "table:row_count": 830856
+      "description": "2 files sampled for this table"
     },
     "sk": {
       "href": "https://data.source.coop/fiboa/data/sk/sk.parquet",
@@ -2128,11 +1764,13 @@
         },
         {
           "name": "geometry",
-          "type": "GEOMETRY('EPSG:5514')"
+          "type": "GEOMETRY('EPSG:5514')",
+          "description": "[geometry] Field boundary polygon (EPSG:5514)"
         },
         {
           "name": "municipality",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[placename] Municipality name"
         },
         {
           "name": "bbox",
@@ -2141,7 +1779,7 @@
       ],
       "table:row_count": 274467
     },
-    "ukfields": {
+    "uk": {
       "href": "https://data.source.coop/fiboa/data/uk/ukfields.parquet",
       "type": "application/x-parquet",
       "title": "ukfields.parquet",
@@ -2159,7 +1797,8 @@
         },
         {
           "name": "geometry",
-          "type": "GEOMETRY('EPSG:27700')"
+          "type": "GEOMETRY('EPSG:27700')",
+          "description": "[geometry] Field boundary polygon (EPSG:27700)"
         },
         {
           "name": "determination_method",
@@ -2176,7 +1815,7 @@
       ],
       "table:row_count": 1665637
     },
-    "us_ca_scm-2023": {
+    "us_ca_scm": {
       "href": "https://data.source.coop/fiboa/data/us_ca_scm/us_ca_scm-2023.parquet",
       "type": "application/x-parquet",
       "title": "us_ca_scm-2023.parquet",
@@ -2190,7 +1829,8 @@
         },
         {
           "name": "geometry",
-          "type": "GEOMETRY('EPSG:4269')"
+          "type": "GEOMETRY('EPSG:4269')",
+          "description": "[geometry] Field boundary polygon (EPSG:4269)"
         },
         {
           "name": "id",
@@ -2198,7 +1838,8 @@
         },
         {
           "name": "admin_level_2",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[admin_code] Administrative subdivision code (county-level)"
         },
         {
           "name": "crop:code",
@@ -2227,7 +1868,7 @@
       ],
       "table:row_count": 447219
     },
-    "us_usda_cropland-2024": {
+    "us_usda_cropland": {
       "href": "https://data.source.coop/fiboa/data/us_usda_cropland/us_usda_cropland-2024.parquet",
       "type": "application/x-parquet",
       "title": "us_usda_cropland-2024.parquet",
@@ -2245,11 +1886,13 @@
         },
         {
           "name": "administrative_area_level_2",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[placename] County-level administrative area name"
         },
         {
           "name": "geometry",
-          "type": "GEOMETRY('{\"$schema\":\"https://proj.org/schemas/v0.7/projjson.schema.json\",\"type\":\"ProjectedCRS\",\"name\":\"Albers_Conic_Equal_Area\",\"base_crs\":{\"type\":\"GeographicCRS\",\"name\":\"NAD83\",\"datum\":{\"type\":\"GeodeticReferenceFrame\",\"name\":\"North American Datum 1983\",\"ellipsoid\":{\"name\":\"GRS 1980\",\"semi_major_axis\":6378137,\"inverse_flattening\":298.257222101},\"id\":{\"authority\":\"EPSG\",\"code\":6269}},\"coordinate_system\":{\"subtype\":\"ellipsoidal\",\"axis\":[{\"name\":\"Longitude\",\"abbreviation\":\"lon\",\"direction\":\"east\",\"unit\":{\"type\":\"AngularUnit\",\"name\":\"Degree\",\"conversion_factor\":0.0174532925199433}},{\"name\":\"Latitude\",\"abbreviation\":\"lat\",\"direction\":\"north\",\"unit\":{\"type\":\"AngularUnit\",\"name\":\"Degree\",\"conversion_factor\":0.0174532925199433}}]}},\"conversion\":{\"name\":\"unnamed\",\"method\":{\"name\":\"Albers Equal Area\",\"id\":{\"authority\":\"EPSG\",\"code\":9822}},\"parameters\":[{\"name\":\"Latitude of false origin\",\"value\":23,\"unit\":{\"type\":\"AngularUnit\",\"name\":\"Degree\",\"conversion_factor\":0.0174532925199433},\"id\":{\"authority\":\"EPSG\",\"code\":8821}},{\"name\":\"Longitude of false origin\",\"value\":-96,\"unit\":{\"type\":\"AngularUnit\",\"name\":\"Degree\",\"conversion_factor\":0.0174532925199433},\"id\":{\"authority\":\"EPSG\",\"code\":8822}},{\"name\":\"Latitude of 1st standard parallel\",\"value\":29.5,\"unit\":{\"type\":\"AngularUnit\",\"name\":\"Degree\",\"conversion_factor\":0.0174532925199433},\"id\":{\"authority\":\"EPSG\",\"code\":8823}},{\"name\":\"Latitude of 2nd standard parallel\",\"value\":45.5,\"unit\":{\"type\":\"AngularUnit\",\"name\":\"Degree\",\"conversion_factor\":0.0174532925199433},\"id\":{\"authority\":\"EPSG\",\"code\":8824}},{\"name\":\"Easting at false origin\",\"value\":0,\"unit\":\"metre\",\"id\":{\"authority\":\"EPSG\",\"code\":8826}},{\"name\":\"Northing at false origin\",\"value\":0,\"unit\":\"metre\",\"id\":{\"authority\":\"EPSG\",\"code\":8827}}]},\"coordinate_system\":{\"subtype\":\"Cartesian\",\"axis\":[{\"name\":\"Easting\",\"abbreviation\":\"\",\"direction\":\"east\",\"unit\":\"metre\"},{\"name\":\"Northing\",\"abbreviation\":\"\",\"direction\":\"north\",\"unit\":\"metre\"}]}}')"
+          "type": "GEOMETRY('{\"$schema\":\"https://proj.org/schemas/v0.7/projjson.schema.json\",\"type\":\"ProjectedCRS\",\"name\":\"Albers_Conic_Equal_Area\",\"base_crs\":{\"type\":\"GeographicCRS\",\"name\":\"NAD83\",\"datum\":{\"type\":\"GeodeticReferenceFrame\",\"name\":\"North American Datum 1983\",\"ellipsoid\":{\"name\":\"GRS 1980\",\"semi_major_axis\":6378137,\"inverse_flattening\":298.257222101},\"id\":{\"authority\":\"EPSG\",\"code\":6269}},\"coordinate_system\":{\"subtype\":\"ellipsoidal\",\"axis\":[{\"name\":\"Longitude\",\"abbreviation\":\"lon\",\"direction\":\"east\",\"unit\":{\"type\":\"AngularUnit\",\"name\":\"Degree\",\"conversion_factor\":0.0174532925199433}},{\"name\":\"Latitude\",\"abbreviation\":\"lat\",\"direction\":\"north\",\"unit\":{\"type\":\"AngularUnit\",\"name\":\"Degree\",\"conversion_factor\":0.0174532925199433}}]}},\"conversion\":{\"name\":\"unnamed\",\"method\":{\"name\":\"Albers Equal Area\",\"id\":{\"authority\":\"EPSG\",\"code\":9822}},\"parameters\":[{\"name\":\"Latitude of false origin\",\"value\":23,\"unit\":{\"type\":\"AngularUnit\",\"name\":\"Degree\",\"conversion_factor\":0.0174532925199433},\"id\":{\"authority\":\"EPSG\",\"code\":8821}},{\"name\":\"Longitude of false origin\",\"value\":-96,\"unit\":{\"type\":\"AngularUnit\",\"name\":\"Degree\",\"conversion_factor\":0.0174532925199433},\"id\":{\"authority\":\"EPSG\",\"code\":8822}},{\"name\":\"Latitude of 1st standard parallel\",\"value\":29.5,\"unit\":{\"type\":\"AngularUnit\",\"name\":\"Degree\",\"conversion_factor\":0.0174532925199433},\"id\":{\"authority\":\"EPSG\",\"code\":8823}},{\"name\":\"Latitude of 2nd standard parallel\",\"value\":45.5,\"unit\":{\"type\":\"AngularUnit\",\"name\":\"Degree\",\"conversion_factor\":0.0174532925199433},\"id\":{\"authority\":\"EPSG\",\"code\":8824}},{\"name\":\"Easting at false origin\",\"value\":0,\"unit\":\"metre\",\"id\":{\"authority\":\"EPSG\",\"code\":8826}},{\"name\":\"Northing at false origin\",\"value\":0,\"unit\":\"metre\",\"id\":{\"authority\":\"EPSG\",\"code\":8827}}]},\"coordinate_system\":{\"subtype\":\"Cartesian\",\"axis\":[{\"name\":\"Easting\",\"abbreviation\":\"\",\"direction\":\"east\",\"unit\":\"metre\"},{\"name\":\"Northing\",\"abbreviation\":\"\",\"direction\":\"north\",\"unit\":\"metre\"}]}}')",
+          "description": "[geometry] Field boundary polygon (Albers Equal Area, NAD83)"
         },
         {
           "name": "id",
@@ -2287,20 +1930,23 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "account_id": "fiboa",
-  "created_at": "2025-10-03T09:16:01.587Z",
-  "total_bytes": 30118103539,
-  "updated_at": "2025-10-03T09:16:01.587Z",
   "exts": {
-    "md": 29,
-    "parquet": 37,
-    "pmtiles": 36,
-    "md~": 3,
-    "txt": 29,
-    "json": 30
+    "parquet": 42,
+    "pmtiles": 40,
+    "json": 33,
+    "md": 32,
+    "txt": 32,
+    "md~": 3
   },
-  "object_count": 164,
-  "product_id": "data",
+  "disabled": false,
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "created_at": "2025-10-03T09:16:01.587Z",
+  "account_id": "fiboa",
+  "visibility": "public",
+  "total_bytes": 49864068699,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -2314,16 +1960,16 @@
     }
   },
   "data_mode": "open",
-  "visibility": "public",
+  "object_count": 182,
+  "product_id": "data",
   "featured": 0,
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "disabled": false,
+  "updated_at": "2025-10-03T09:16:01.587Z",
+  "readme": "## at__README.md\n# Field boundaries for Austria\n\nProvides 2944405 official field boundaries from Austria.\nIt has been converted to a fiboa GeoParquet file from data obtained from Agrarmarkt Austria (Government).\n\n- **Source Data Provider:** [Agrarmarkt Austria (Government)](https://geometadatensuche.inspire.gv.at/metadatensuche/inspire/api/records/9db8a0c3-e92a-4df4-9d55-8210e326a7ed)\n- **Converted by:** Matthias Mohr\n- **License:** CC-BY-4.0\n- **Projection:** EPSG:31287 (MGI / Austria Lambert)\n- **Data Survey:** https://github.com/fiboa/data-survey/blob/main/data/AT.md\n\n---\n\n- [Download the data as fiboa GeoParquet](https://data.source.coop/fiboa/data/at/at-2025.parquet)\n- [STAC Browser](https://radiantearth.github.io/stac-browser/#/external/data.source.coop/fiboa/data/at/stac/collection.json)\n- [STAC Collection](https://data.source.coop/fiboa/data/at/stac/collection.json)\n- [PMTiles](https://data.source.coop/fiboa/data/at/at-2025.pmtiles)\n\n## Columns\n\n| Property               | **Data Type** | Description                                                 |\n|------------------------|---------------|-------------------------------------------------------------|\n| inspire:id             | string        | The INSPIRE identifier                                      |\n| id                     | string        | Unique identifier                                           |\n| determination:datetime | timestamp     | Timestamp of the determination of the field boundary        |\n| metrics:area           | float         | Field area in square meters                                 |\n| crop:code              | string        | The crop code                                               |\n| hcat:name              | string        | The machine-readable HCAT name of the crop                  |\n| hcat:name_en           | string        | The HCAT crop name translated into English                  |\n| hcat:code              | uint32        | The 10-digit HCAT code indicating the hierarchy of the crop |\n| crop:name              | string        | Crop name in the original language                          |\n\n## Lineage\n\n- Data downloaded on 2025-10-27 from:\n  - https://inspire.lfrz.gv.at/009501/ds/inspire_schlaege_2025-1_polygon.gpkg.zip\n- Converted to GeoParquet using [fiboa-cli](https://github.com/fiboa/cli), version 0.20.1\n\n\n## be_vlg__README.md\n# Field boundaries for Belgium, Flanders\n\nProvides 589898 official field boundaries from Belgium, Flanders.\nIt has been converted to a fiboa GeoParquet file from data obtained from Agriculture and Marine Fisheries Agency of the Flemish government (Government).\n\n- **Source Data Provider:** [Agriculture and Marine Fisheries Agency of the Flemish government (Government)](https://landbouwcijfers.vlaanderen.be/open-geodata-landbouwgebruikspercelen)\n- **Converted by:** Matthias Mohr\n- **License:** CC-0 (described as \"Publiek\" and \"Toegang zonder voorwaarden\")\n- **Projection:** EPSG:31370 (BD72 / Belgian Lambert 72)\n- **Data Survey:** https://github.com/fiboa/data-survey/blob/main/data/BE-VLG.md\n\n---\n\n- [Download the data as fiboa GeoParquet](https://data.source.coop/fiboa/data/be_vlg/be_vlg-2024.parquet)\n- [STAC Browser](https://radiantearth.github.io/stac-browser/#/external/data.source.coop/fiboa/data/be_vlg/stac/collection.json)\n- [STAC Collection](https://data.source.coop/fiboa/data/be_vlg/stac/collection.json)\n- [PMTiles](https://data.source.coop/fiboa/data/be_vlg/be_vlg-2024.pmtiles)\n\n## Columns\n\n| Property     | **Data Type** | Description                                                 |\n|--------------|---------------|-------------------------------------------------------------|\n| crop:code    | string        | The crop code                                               |\n| hcat:name    | string        | The machine-readable HCAT name of the crop                  |\n| hcat:name_en | string        | The HCAT crop name translated into English                  |\n| source       | string        |                                                             |\n| crop:name    | string        | Crop name in the original language                          |\n| id           | string        | Unique identifier                                           |\n| hcat:code    | uint32        | The 10-digit HCAT code indicating the hierarchy of the crop |\n| metrics:area | float         | Field area in square meters                                 |\n| typology     | string        |                                                             |\n\n## Lineage\n\n- Data downloaded on 2025-10-17 from:\n  - https://www.landbouwvlaanderen.be/bestanden/gis/Landbouwgebruikspercelen_2024_-_Voorlopig_(extractie_15-10-2024)_GPKG.zip\n- Converted to GeoParquet using [fiboa-cli](https://github.com/fiboa/cli), version 0.20.1\n\n\n## be_wal__README.md\n# Field boundaries for Belgium, Wallonia\n\nProvides 341968 official field boundaries from Belgium, Wallonia.\nIt has been converted to a fiboa GeoParquet file from data obtained from Inspire Geoportal of the European Commission <https://inspire-geoportal.ec.europa.eu/srv/eng/catalog.search#/metadata/2a0d9be0-ac3d-443e-9db0-a7cfb0f128e2>.\n\n- **Source Data Provider:** [Inspire Geoportal of the European Commission <https://inspire-geoportal.ec.europa.eu/srv/eng/catalog.search#/metadata/2a0d9be0-ac3d-443e-9db0-a7cfb0f128e2>]()\n- **Converted by:** Fiboa project\n- **License:** No conditions apply to access and use. Distributed through Inspire guidelines <https://inspire-geoportal.ec.europa.eu/srv/eng/catalog.search#/metadata/2a0d9be0-ac3d-443e-9db0-a7cfb0f128e2>\n- **Projection:** \n\n---\n\n- [Download the data as fiboa GeoParquet](https://data.source.coop/fiboa/data/be_wal/be_wal.parquet)\n- [STAC Browser](https://radiantearth.github.io/stac-browser/#/external/data.source.coop/fiboa/data/be_wal/stac/collection.json)\n- [STAC Collection](https://data.source.coop/fiboa/data/be_wal/stac/collection.json)\n- [PMTiles](https://data.source.coop/fiboa/data/be_wal/be_wal.pmtiles)\n\n## Columns\n\n| Property  | **Data Type** | Description       |\n|-----------|---------------|-------------------|\n| crop:name | string        | Crop name         |\n| id        | string        | Unique identifier |\n| crop:code | string        | Crop code         |\n\n## Lineage\n\n- Data downloaded on 2025-10-10 from:\n  - https://geoservices.wallonie.be/geotraitement/spwdatadownload/get/2a0d9be0-ac3d-443e-9db0-a7cfb0f128e2/LU_ExistingLandUse_SIGEC2022.gml.zip?blocksize=0\n- Converted to GeoParquet using [fiboa-cli](https://github.com/fiboa/cli), version 0.3.0\n\n\n## bg__README.md\n# Field boundaries for Bulgaria\n\nProvides 180186 official field boundaries from Bulgaria.\nIt has been converted to a fiboa GeoParquet file from data obtained from Ministry of Agriculture and Food, Bulgaria.\n\n- **Source Data Provider:** [Ministry of Agriculture and Food, Bulgaria](https://www.mzh.government.bg/en/)\n- **Converted by:** Ivor Bosloper\n- **License:** Inspire\n- **Projection:** EPSG:32635 (WGS 84 / UTM zone 35N)\n- **Data Survey:** https://github.com/fiboa/data-survey/blob/main/data/BG.md\n\n---\n\n- [Download the data as fiboa GeoParquet](https://data.source.coop/fiboa/data/bg/bg.parquet)\n- [STAC Browser](https://radiantearth.github.io/stac-browser/#/external/data.source.coop/fiboa/data/bg/stac/collection.json)\n- [STAC Collection](https://data.source.coop/fiboa/data/bg/stac/collection.json)\n- [PMTiles](https://data.source.coop/fiboa/data/bg/bg.pmtiles)\n\n## Columns\n\n| Property     | **Data Type** | Description                        |\n|--------------|---------------|------------------------------------|\n| crop:name    | string        | Crop name in the original language |\n| id           | string        | Unique identifier                  |\n| crop:code    | string        | The crop code                      |\n| metrics:area | float         | Field area in square meters        |\n\n## Lineage\n\n- Data downloaded on 2025-10-29 from:\n  - http://inspire.mzh.government.bg:8080/geoserver/ows?request=GetFeature&service=WFS&version=2.0.0&outputFormat=SHAPE-ZIP&typeNames=VectorDataSet:Arable_Land_2024\n- Converted to GeoParquet using [fiboa-cli](https://github.com/fiboa/cli), version 0.20.1\n\n\n## br_ba_lem__README.md\n# Field boundaries for West Bahia, Brazil\n\nProvides 1964 official field boundaries from West Bahia, Brazil.\nIt has been converted to a fiboa GeoParquet file from data obtained from Mendeley Data <https://data.mendeley.com/datasets/vz6d7tw87f/1#file-5ac1542b-12ef-4dce-8258-113b5c5d87c9>.\n\n- **Source Data Provider:** [Mendeley Data <https://data.mendeley.com/datasets/vz6d7tw87f/1#file-5ac1542b-12ef-4dce-8258-113b5c5d87c9>]()\n- **Converted by:** Ivor Bosloper\n- **License:** CC-BY-4.0\n- **Projection:** EPSG:4326 (WGS 84)\n\n---\n\n- [Download the data as fiboa GeoParquet](https://data.source.coop/fiboa/data/br_ba_lem/br_ba_lem.parquet)\n- [STAC Browser](https://radiantearth.github.io/stac-browser/#/external/data.source.coop/fiboa/data/br_ba_lem/stac/collection.json)\n- [STAC Collection](https://data.source.coop/fiboa/data/br_ba_lem/stac/collection.json)\n- [PMTiles](https://data.source.coop/fiboa/data/br_ba_lem/br_ba_lem.pmtiles)\n\n## Columns\n\n| Property | **Data Type** | Description       |\n|----------|---------------|-------------------|\n| id       | string        | Unique identifier |\n| 2020-08  | string        | Land use information in October 2019. Information includes \"Beans\", \"Brachiaria\", \"Cerrado\",\"Coffee\", \"Conversion area\", \"Corn\", \"Cotton\", \"Crotalaria\", \"Eucalyptus\", \"Hay\", \"Millet\", \"Not identified\", \"Pasture\", \"Sorghum\", \"Soybean\", \"Uncultivated soil\". |\n| 2020-06  | string        | Same as above                  |\n| 2020-01  | string        | Same as above                  |\n| 2020-02  | string        | Same as above                  |\n| 2019-11  | string        | Same as above                  |\n| 2019-12  | string        | Same as above                  |\n| 2020-04  | string        | Same as above                  |\n| 2020-03  | string        | Same as above                  |\n| 2020-07  | string        | Same as above                  |\n| 2019-10  | string        | Same as above                  |\n| 2020-05  | string        | Same as above                  |\n| 2020-09  | string        | Same as above                  |\n\n\n## Lineage\n\n- Data downloaded on 2025-10-18 from:\n  - https://data.mendeley.com/public-files/datasets/vz6d7tw87f/files/57c83c3f-b5a9-45f5-94f8-ac1df8fab923/file_downloaded\n- Converted to GeoParquet using [fiboa-cli](https://github.com/fiboa/cli), version 0.20.1\n\n\n## br_conab__README.md\n# Field boundaries for Conab\n\nProvides 465691 official field boundaries from Conab.\nIt has been converted to a fiboa GeoParquet file from data obtained from Conab <https://portaldeinformacoes.conab.gov.br/mapeamentos-agricolas-downloads.html>.\n\n- **Source Data Provider:** [Conab <https://portaldeinformacoes.conab.gov.br/mapeamentos-agricolas-downloads.html>](https://portaldeinformacoes.conab.gov.br/)\n- **Converted by:** Fiboa project\n- **License:** CC-BY-NC\n- **Projection:** EPSG:4674\n\n---\n\n- [Download the data as fiboa GeoParquet](https://data.source.coop/fiboa/data/br_conab/br_conab.parquet)\n- [STAC Browser](https://radiantearth.github.io/stac-browser/#/external/data.source.coop/fiboa/data/br_conab/stac/collection.json)\n- [STAC Collection](https://data.source.coop/fiboa/data/br_conab/stac/collection.json)\n- [PMTiles](https://data.source.coop/fiboa/data/br_conab/br_conab.pmtiles)\n\n## Columns\n\n| Property                | **Data Type** | Description                                |\n|-------------------------|---------------|--------------------------------------------|\n| admin_municipality_name | string        | Municipality name                          |\n| id                      | string        | Not so usefull combining multiple datasets |\n| metrics:area            | float         | Area in ha                                 |\n| admin_municipality_code | string        | Municipality code                          |\n\n## Lineage\n\n- Data downloaded on 2025-10-10 from:\n  - https://portaldeinformacoes.conab.gov.br/downloads/mapas/Algodao/GO/ALGODAO_GO_Safra_2019_2020.zip\n  - https://portaldeinformacoes.conab.gov.br/downloads/mapas/Algodao/GO/ALGODAO-GO_Safra_2018_2019.zip\n  - https://portaldeinformacoes.conab.gov.br/downloads/mapas/Algodao/GO/GO_ALGODAO_2021.zip\n  - https://portaldeinformacoes.conab.gov.br/downloads/mapas/Algodao/GO/GO_ALGODAO_2223.zip\n  - https://portaldeinformacoes.conab.gov.br/downloads/mapas/Algodao/MS/MS_ALGODAO_2021.zip\n  - https://portaldeinformacoes.conab.gov.br/downloads/mapas/Algodao/MS/MS_ALGODAO_2122.zip\n  - https://portaldeinformacoes.conab.gov.br/downloads/mapas/Arroz_Irrigado/GO/GO_ARROZ_IRRIG_2122.zip\n  - https://portaldeinformacoes.conab.gov.br/downloads/mapas/Arroz_Irrigado/GO/GO_ARROZ_IRRIG_INUND_2324.zip\n  - https://portaldeinformacoes.conab.gov.br/downloads/mapas/Arroz_Irrigado/GO/ARROZ-GO_Safra_2018_2019.zip\n  - https://portaldeinformacoes.conab.gov.br/downloads/mapas/Arroz_Irrigado/MS/ARROZ-MS_Safra_2018_2019.zip\n  - https://portaldeinformacoes.conab.gov.br/downloads/mapas/Arroz_Irrigado/PR/ARROZ-PR_Safra_2017_2018.zip\n  - https://portaldeinformacoes.conab.gov.br/downloads/mapas/Arroz_Irrigado/RS/ARROZ-RS_Safra_2019_2020.zip\n  - https://portaldeinformacoes.conab.gov.br/downloads/mapas/Arroz_Irrigado/SC/ARROZ-SC_Safra_2018_2019.zip\n  - https://portaldeinformacoes.conab.gov.br/downloads/mapas/Arroz_Irrigado/TO/ARROZ-TO_Safra_2017_2018.zip\n  - https://portaldeinformacoes.conab.gov.br/downloads/mapas/Arroz_Irrigado/TO/TO_ARROZ_IRRIG_2324.zip\n  - https://portaldeinformacoes.conab.gov.br/downloads/mapas/Cana/GO/CANA-GO_Safra_2011_2012.zip\n  - https://portaldeinformacoes.conab.gov.br/downloads/mapas/Cafe/BA/CAFE-BA_Safra_2019.zip\n  - https://portaldeinformacoes.conab.gov.br/downloads/mapas/Cafe/DF/CAFE-DF_Safra_2018.zip\n  - https://portaldeinformacoes.conab.gov.br/downloads/mapas/Cafe/GO/CAFE-GO_Safra_2018.zip\n  - https://portaldeinformacoes.conab.gov.br/downloads/mapas/Cafe/GO/CAFE-GO_Safra_2019.zip\n  - https://portaldeinformacoes.conab.gov.br/downloads/mapas/Cafe/PR/CAFE-PR_Safra_2017.zip\n  - https://portaldeinformacoes.conab.gov.br/downloads/mapas/Cafe/MG/CAFE-MG_Safra_2017.zip\n  - https://portaldeinformacoes.conab.gov.br/downloads/mapas/Cafe/DF/DF_CAFE_24.zip\n  - https://portaldeinformacoes.conab.gov.br/downloads/mapas/Cafe/GO/GO_CAFE_21.zip\n  - https://portaldeinformacoes.conab.gov.br/downloads/mapas/Cafe/RJ/RJ_CAFE_21.zip\n  - https://portaldeinformacoes.conab.gov.br/downloads/mapas/Culturas_de_Verao_1_Safra/DF/CV-DF_Safra_2013_2014.zip\n  - https://portaldeinformacoes.conab.gov.br/downloads/mapas/Culturas_de_Verao_1_Safra/DF/CV-DF_Safra_2014_2015.zip\n  - https://portaldeinformacoes.conab.gov.br/downloads/mapas/Culturas_de_Verao_1_Safra/DF/CV-DF_Safra_2017_2018.zip\n  - https://portaldeinformacoes.conab.gov.br/downloads/mapas/Culturas_de_Verao_1_Safra/TO/CV-TO_Safra_2019_2020.zip\n- Converted to GeoParquet using [fiboa-cli](https://github.com/fiboa/cli), version 0.20.1\n\n\n## ch__README.md\n# Field boundaries for Switzerland\n\nProvides 1159957 official field boundaries from Switzerland.\nIt has been converted to a fiboa GeoParquet file from data obtained from Konferenz der kantonalen Geoinformations- und Katasterstellen.\n\n- **Source Data Provider:** [Konferenz der kantonalen Geoinformations- und Katasterstellen](https://www.kgk-cgc.ch/)\n- **Converted by:** Ivor Bosloper\n- **License:** Open-BY (https://opendata.swiss/de/terms-of-use)\n- **Projection:** EPSG:2056 (CH1903+ / LV95)\n- **Data Survey:** https://github.com/fiboa/data-survey/blob/main/data/CH.md\n\n---\n\n- [Download the data as fiboa GeoParquet](https://data.source.coop/fiboa/data/ch/ch.parquet)\n- [STAC Browser](https://radiantearth.github.io/stac-browser/#/external/data.source.coop/fiboa/data/ch/stac/collection.json)\n- [STAC Collection](https://data.source.coop/fiboa/data/ch/stac/collection.json)\n- [PMTiles](https://data.source.coop/fiboa/data/ch/ch.pmtiles)\n\n## Columns\n\n| Property               | **Data Type** | Description                                                 |\n|------------------------|---------------|-------------------------------------------------------------|\n| admin:subdivision_code | string        | Canton code                                                 |\n| id                     | string        | Unique identifier                                           |\n| crop:name              | string        | Usage                                                       |\n| hcat:name_en           | string        | The HCAT crop name translated into English                  |\n| hcat:name              | string        | The machine-readable HCAT name of the crop                  |\n| determination:datetime | timestamp     | The year of validity                                        |\n| hcat:code              | uint32        | The 10-digit HCAT code indicating the hierarchy of the crop |\n| metrics:area           | float         | area in sq. meter                                           |\n\n## Lineage\n\n- Data downloaded on 2025-12-01 from:\n  - manually downloaded file\n- Converted to GeoParquet using [fiboa-cli](https://github.com/fiboa/cli), version 0.20.1\n\n\n## cz__README.md\n# Field boundaries for Czech\n\nProvides 426584 official field boundaries from Czech.\nIt has been converted to a fiboa GeoParquet file from data obtained from Czech Ministry of Agriculture (Ministr Zem\u011bd\u011blstv\u00ed).\n\n- **Source Data Provider:** [Czech Ministry of Agriculture (Ministr Zem\u011bd\u011blstv\u00ed)](https://mze.gov.cz/public/portal/mze/farmar/LPIS)\n- **Converted by:** Ivor Bosloper\n- **License:** CC-0 (Publicly distributed as part of the Inspire directive)\n- **Projection:** EPSG:4258 (ETRS89)\n- **Data Survey:** https://github.com/fiboa/data-survey/blob/main/data/CZ.md\n\n---\n\n- [Download the data as fiboa GeoParquet](https://data.source.coop/fiboa/data/cz/cz.parquet)\n- [STAC Browser](https://radiantearth.github.io/stac-browser/#/external/data.source.coop/fiboa/data/cz/stac/collection.json)\n- [STAC Collection](https://data.source.coop/fiboa/data/cz/stac/collection.json)\n- [PMTiles](https://data.source.coop/fiboa/data/cz/cz.pmtiles)\n\n## Columns\n\n| Property               | **Data Type** | Description                                                 |\n|------------------------|---------------|-------------------------------------------------------------|\n| hcat:name              | string        | The machine-readable HCAT name of the crop                  |\n| metrics:area           | float         | Field area in square meters                                 |\n| hcat:name_en           | string        | The HCAT crop name translated into English                  |\n| id                     | string        | Unique identifier                                           |\n| block_id               | string        |                                                             |\n| crop:name              | string        | Crop name in the original language                          |\n| crop:code              | string        | The crop code                                               |\n| hcat:code              | uint32        | The 10-digit HCAT code indicating the hierarchy of the crop |\n| determination:datetime | timestamp     | Timestamp of the determination of the field boundary        |\n\n## Lineage\n\n- Data downloaded on 2025-11-28 from:\n  - https://mze.gov.cz/public/app/eagriapp/Files/geoprostor_zadosti23_2024-08-01_202409261243_epsg4258.zip\n- Converted to GeoParquet using [fiboa-cli](https://github.com/fiboa/cli), version 0.20.1\n\n\n## de_bb__README.md\n# Field boundaries for Germany, Berlin/Brandenburg\n\nProvides 290130 official field boundaries from Germany, Berlin/Brandenburg.\nIt has been converted to a fiboa GeoParquet file from data obtained from Land Brandenburg (Government).\n\n- **Source Data Provider:** [Land Brandenburg (Government)](https://geobroker.geobasis-bb.de/gbss.php?MODE=GetProductInformation&PRODUCTID=9e95f21f-4ecf-4682-9a44-e5f7609f6fa0)\n- **Converted by:** Ivor Bosloper\n- **License:** [Data licence Germany \u2013 attribution \u2013 Version 2.0](https://www.govdata.de/dl-de/by-2-0) / Proprietary\n- **Projection:** EPSG:25833 (ETRS89 / UTM zone 33N)\n- **Data Survey:** https://github.com/fiboa/data-survey/blob/main/data/DE-BB.md\n\n---\n\n- [Download the data as fiboa GeoParquet](https://data.source.coop/fiboa/data/de_bb/de_bb.parquet)\n- [STAC Browser](https://radiantearth.github.io/stac-browser/#/external/data.source.coop/fiboa/data/de_bb/stac/collection.json)\n- [STAC Collection](https://data.source.coop/fiboa/data/de_bb/stac/collection.json)\n- [PMTiles](https://data.source.coop/fiboa/data/de_bb/de_bb.pmtiles)\n\n## Columns\n\n| Property               | **Data Type** | Description                                                 |\n|------------------------|---------------|-------------------------------------------------------------|\n| farmer_id              | string        | Identifier of declarant                                     |\n| hcat:code              | uint32        | The 10-digit HCAT code indicating the hierarchy of the crop |\n| hcat:name_en           | string        | The HCAT crop name translated into English                  |\n| crop:code              | string        | The crop code                                               |\n| crop:name              | string        | Crop name in the original language                          |\n| determination:datetime | timestamp     | Timestamp of the determination of the field boundary        |\n| metrics:area           | float         | Field area in square meters                                 |\n| hcat:name              | string        | The machine-readable HCAT name of the crop                  |\n\n## Lineage\n\n- Data downloaded on 2025-10-24 from:\n  - https://data.geobasis-bb.de/geofachdaten/Landwirtschaft/antrag.zip\n- Converted to GeoParquet using [fiboa-cli](https://github.com/fiboa/cli), version 0.20.1\n\n\n## de_by__README.md\n# Field boundaries for Germany, Bavaria\n\nProvides 1296105 official field boundaries from Germany, Bavaria.\nIt has been converted to a fiboa GeoParquet file from data obtained from Bayerische Vermessungsverwaltung <https://www.ldbv.bayern.de>.\n\n- **Source Data Provider:** [Bayerische Vermessungsverwaltung <https://www.ldbv.bayern.de>]()\n- **Converted by:** Fiboa project\n- **License:** CC-BY-4.0\n- **Projection:** EPSG:25832 (ETRS89 / UTM zone 32N)\n\n---\n\n- [Download the data as fiboa GeoParquet](https://data.source.coop/fiboa/data/de_by/de_by.parquet)\n- [STAC Browser](https://radiantearth.github.io/stac-browser/#/external/data.source.coop/fiboa/data/de_by/stac/collection.json)\n- [STAC Collection](https://data.source.coop/fiboa/data/de_by/stac/collection.json)\n- [PMTiles](https://data.source.coop/fiboa/data/de_by/de_by.pmtiles)\n\n## Columns\n\n| Property               | **Data Type** | Description                                                 |\n|------------------------|---------------|-------------------------------------------------------------|\n| hcat:code              | uint32        | The 10-digit HCAT code indicating the hierarchy of the crop |\n| crop:code              | string        | The crop code                                               |\n| hcat:name              | string        | The machine-readable HCAT name of the crop                  |\n| determination:datetime | timestamp     | Timestamp of the determination of the field boundary        |\n| crop:name              | string        | Crop name in the original language                          |\n| id                     | string        | Unique identifier                                           |\n\n## Lineage\n\n- Data downloaded on 2026-05-20 from:\n  - https://geodaten.bayern.de/odd/m/3/daten/ln/landnutzung.gpkg\n- Converted to GeoParquet using [fiboa-cli](https://github.com/fiboa/cli), version 0.21.0\n\n\n## de_mv__README.md\n# Field boundaries for Germany, Mecklenburg-Western Pomerania\n\nProvides 20000 official field boundaries from Germany, Mecklenburg-Western Pomerania.\nIt has been converted to a fiboa GeoParquet file from data obtained from Ministerium f\u00fcr Landwirtschaft und Umwelt M-V <https://www.geodaten-mv.de/dienste/feldblock_atom?type=dataset&id=f18122c4-2585-4c22-9c48-9e960e8dhd34>.\n\n- **Source Data Provider:** [Ministerium f\u00fcr Landwirtschaft und Umwelt M-V <https://www.geodaten-mv.de/dienste/feldblock_atom?type=dataset&id=f18122c4-2585-4c22-9c48-9e960e8dhd34>]()\n- **Converted by:** Fiboa project\n- **License:** No restrictions apply <https://www.geodaten-mv.de/dienste/feldblock_atom?type=dataset&id=f18122c4-2585-4c22-9c48-9e960e8dhd34>\n- **Projection:** EPSG:25833 (ETRS89 / UTM zone 33N)\n\n---\n\n- [Download the data as fiboa GeoParquet](https://data.source.coop/fiboa/data/de_mv/de_mv.parquet)\n- [STAC Browser](https://radiantearth.github.io/stac-browser/#/external/data.source.coop/fiboa/data/de_mv/stac/collection.json)\n- [STAC Collection](https://data.source.coop/fiboa/data/de_mv/stac/collection.json)\n- [PMTiles](https://data.source.coop/fiboa/data/de_mv/de_mv.pmtiles)\n\n## Columns\n\n| Property          | **Data Type** | Description                      |\n|-------------------|---------------|----------------------------------|\n| erwind_l          | string        |                                  |\n| erwater           | string        |                                  |\n| flik              | string        |                                  |\n| erwater_l         | string        |                                  |\n| id                | string        | Unique identifier                |\n| bez_kreis         | string        |                                  |\n| bodennutzu        | string        |                                  |\n| metrics:perimeter | float         | Field perimeter in square meters |\n| erwind            | string        |                                  |\n| metrics:area      | float         | Field area in square meters      |\n| dgl_jahr          | int16         |                                  |\n\n## Lineage\n\n- Data downloaded on 2025-10-17 from:\n  - https://www.geodaten-mv.de/dienste/gdimv_feldblock_wfs?SERVICE=WFS&VERSION=1.1.0&REQUEST=GetFeature&TYPENAME=mv:feldbloecke&OUTPUTFORMAT=shape-zip\n- Converted to GeoParquet using [fiboa-cli](https://github.com/fiboa/cli), version 0.20.1\n\n\n## de_nds__README.md\n# Field boundaries for Germany, Lower Saxony/Bremen/Hamburg\n\nProvides 880805 official field boundaries from Germany, Lower Saxony/Bremen/Hamburg.\nIt has been converted to a fiboa GeoParquet file from data obtained from ML/SLA Niedersachsen (Government).\n\n- **Source Data Provider:** [ML/SLA Niedersachsen (Government)](https://sla.niedersachsen.de/landentwicklung/LEA/)\n- **Converted by:** Matthias Mohr\n- **License:** [Data licence Germany \u2013 attribution \u2013 Version 2.0](https://www.govdata.de/dl-de/by-2-0)\n- **Projection:** EPSG:25832 (ETRS89 / UTM zone 32N)\n- **Data Survey:** https://github.com/fiboa/data-survey/blob/main/data/DE-NDS.md\n\n---\n\n- [Download the data as fiboa GeoParquet](https://data.source.coop/fiboa/data/de_nds/de_nds-2025.parquet)\n- [STAC Browser](https://radiantearth.github.io/stac-browser/#/external/data.source.coop/fiboa/data/de_nds/stac/collection.json)\n- [STAC Collection](https://data.source.coop/fiboa/data/de_nds/stac/collection.json)\n- [PMTiles](https://data.source.coop/fiboa/data/de_nds/de_nds-2025.pmtiles)\n\n## Columns\n\n| Property     | **Data Type** | Description                                                   |\n|--------------|---------------|---------------------------------------------------------------|\n| metrics:area | float         | Field area in square meters                                   |\n| crop:code    | string        | The crop code                                                 |\n| flik         | string        | Area identifier for field blocks. Example: `DENIHB0412500015` |\n| subfield_id  | int64         |                                                               |\n| hcat:name    | string        | The machine-readable HCAT name of the crop                    |\n| hcat:name_en | string        | The HCAT crop name translated into English                    |\n| hcat:code    | uint32        | The 10-digit HCAT code indicating the hierarchy of the crop   |\n\n## Lineage\n\n- Data downloaded on 2025-10-24 from:\n  - https://sla.niedersachsen.de/mapbender_sla/download/schlaege_aktuell_2025.zip\n- Converted to GeoParquet using [fiboa-cli](https://github.com/fiboa/cli), version 0.20.1\n\n\n## de_nrw__README.md\n# Field boundaries for Germany, North Rhine-Westphalia\n\nProvides 397158 official field boundaries from Germany, North Rhine-Westphalia.\nIt has been converted to a fiboa GeoParquet file from data obtained from Land Nordrhein-Westfalen / Open.NRW <https://www.opengeodata.nrw.de/produkte/umwelt_klima/bodennutzung/landwirtschaft/>.\n\n- **Source Data Provider:** [Land Nordrhein-Westfalen / Open.NRW <https://www.opengeodata.nrw.de/produkte/umwelt_klima/bodennutzung/landwirtschaft/>](https://www.opengeodata.nrw.de/produkte/umwelt_klima/bodennutzung/landwirtschaft/)\n- **Converted by:** Matthias Mohr\n- **License:** [Data licence Germany \u2013 attribution \u2013 Version 2.0](https://www.govdata.de/dl-de/by-2-0)\n- **Projection:** EPSG:25832 (ETRS89 / UTM zone 32N)\n- **Data Survey:** https://github.com/fiboa/data-survey/blob/main/data/DE-NRW.md\n\n---\n\n- [Download the data as fiboa GeoParquet](https://data.source.coop/fiboa/data/de_nrw/de_nrw.parquet)\n- [STAC Browser](https://radiantearth.github.io/stac-browser/#/external/data.source.coop/fiboa/data/de_nrw/stac/collection.json)\n- [STAC Collection](https://data.source.coop/fiboa/data/de_nrw/stac/collection.json)\n- [PMTiles](https://data.source.coop/fiboa/data/de_nrw/de_nrw.pmtiles)\n\n## Columns\n\n| Property     | **Data Type** | Description                                                   |\n|--------------|---------------|---------------------------------------------------------------|\n| flik         | string        | Area identifier for field blocks. Example: `DENWLI0552020444` |\n| crop:name    | string        | Crop name in the original language                            |\n| crop:code    | string        | The crop code                                                 |\n| metrics:area | float         | Field area in square meters                                   |\n| inspire:id   | string        | The INSPIRE identifier                                        |\n| id           | string        | Internal identifier                                           |\n\n## Lineage\n\n- Data downloaded on 2025-10-24 from:\n  - https://www.opengeodata.nrw.de/produkte/umwelt_klima/bodennutzung/landwirtschaft/LFK-AKTI_EPSG25832_Shape.zip\n- Converted to GeoParquet using [fiboa-cli](https://github.com/fiboa/cli), version 0.20.1\n\n\n## dk__README.md\n# Field boundaries for Denmark\n\nProvides 617941 official field boundaries from Denmark.\nIt has been converted to a fiboa GeoParquet file from data obtained from Danish Agricultural Agency, under the Ministry of Food, Agriculture and Fisheries of Denmark.\n\n- **Source Data Provider:** [Danish Agricultural Agency, under the Ministry of Food, Agriculture and Fisheries of Denmark](https://lbst.dk/ , https://fvm.dk/)\n- **Converted by:** Ivor Bosloper\n- **License:** CC-0\n- **Projection:** EPSG:25832 (ETRS89 / UTM zone 32N)\n- **Data Survey:** https://github.com/fiboa/data-survey/blob/main/data/DK.md\n\n---\n\n- [Download the data as fiboa GeoParquet](https://data.source.coop/fiboa/data/dk/dk-2024.parquet)\n- [STAC Browser](https://radiantearth.github.io/stac-browser/#/external/data.source.coop/fiboa/data/dk/stac/collection.json)\n- [STAC Collection](https://data.source.coop/fiboa/data/dk/stac/collection.json)\n- [PMTiles](https://data.source.coop/fiboa/data/dk/dk-2024.pmtiles)\n\n## Columns\n\n| Property     | **Data Type** | Description                                                 |\n|--------------|---------------|-------------------------------------------------------------|\n| hcat:name_en | string        | The HCAT crop name translated into English                  |\n| hcat:code    | uint32        | The 10-digit HCAT code indicating the hierarchy of the crop |\n| crop:name    | string        | Crop name in the original language                          |\n| hcat:name    | string        | The machine-readable HCAT name of the crop                  |\n| metrics:area | float         | Field area in square meters                                 |\n| crop:code    | string        | The crop code                                               |\n| id           | string        | Unique identifier                                           |\n\n## Lineage\n\n- Data downloaded on 2025-10-24 from:\n  - https://landbrugsgeodata.fvm.dk/Download/Marker/Marker_2024.zip\n- Converted to GeoParquet using [fiboa-cli](https://github.com/fiboa/cli), version 0.20.1\n\n\n## ec_ro__README.md\n# Field boundaries for Romania - Eurocrops\n\nProvides 259862 official field boundaries from Romania - Eurocrops.\nIt has been converted to a fiboa GeoParquet file from data obtained from Ministry of Regional Development and Public Administration <http://spatial.mdrap.ro>, EuroCrops <https://github.com/maja601/EuroCrops>.\n\nThe dataset includes the land cover layer from the Romanian side of the Romania-Bulgaria cross-border area (Mehedin\u021bi, Dolj, Olt, Teleorman, Giurgiu, C\u0103l\u0103ra\u0219i, Constan\u021ba counties), developed within the project \"Common strategy for territorial development of the cross-border area Romania-Bulgaria\", code MIS-ETC 171, funded by the Romania-Bulgaria Cross-Border Cooperation Programme 2007-2013.\nThe dataset is published in the WGS 84 / UTM zone 35N coordinate system (to be compatible with the similar dataset on the Bulgarian side).\nThe dataset is in line with the conceptual framework described in the Land Cover Data Specifications for the Implementation of the INSPIRE Directive (version 3.0). The information layer was developed based on a methodology developed within the project, which was carried out as follows: - analysis and harmonisation of the land cover classification system; - acquisition and processing of the reference data, listed below; - verification and validation of the quality of the spatial data produced;\n\n- **Source Data Provider:** [Ministry of Regional Development and Public Administration <http://spatial.mdrap.ro>, EuroCrops <https://github.com/maja601/EuroCrops>]()\n- **Converted by:** Fiboa project\n- **License:** CC-BY-SA-4.0\n- **Projection:** EPSG:32635 (WGS 84 / UTM zone 35N)\n\n---\n\n- [Download the data as fiboa GeoParquet](https://data.source.coop/fiboa/data/ec_ro/ec_ro.parquet)\n- [STAC Browser](https://radiantearth.github.io/stac-browser/#/external/data.source.coop/fiboa/data/ec_ro/stac/collection.json)\n- [STAC Collection](https://data.source.coop/fiboa/data/ec_ro/stac/collection.json)\n- [PMTiles](https://data.source.coop/fiboa/data/ec_ro/ec_ro.pmtiles)\n\n## Columns\n\n| Property     | **Data Type** | Description                                                 |\n|--------------|---------------|-------------------------------------------------------------|\n| hcat:name    | string        | The machine-readable HCAT name of the crop                  |\n| hcat:name_en | string        | The HCAT crop name translated into English                  |\n| hcat:code    | uint32        | The 10-digit HCAT code indicating the hierarchy of the crop |\n| crop:name    | string        | Crop name in the original language                          |\n| source       | string        |                                                             |\n| metrics:area | float         | Field area in square meters                                 |\n| id           | string        | Unique identifier                                           |\n| crop:code    | string        | The crop code                                               |\n\n## Lineage\n\n- Data downloaded on 2025-12-06 from:\n  - https://zenodo.org/records/14094196/files/RO_ny.zip?download=1\n- Converted to GeoParquet using [fiboa-cli](https://github.com/fiboa/cli), version 0.20.3\n\n\n## ee__README.md\n# Field boundaries for Estonia\n\nProvides 166508 official field boundaries from Estonia.\nIt has been converted to a fiboa GeoParquet file from data obtained from P\u00f5llumajanduse Registrite ja Informatsiooni Amet <http://data.europa.eu/88u/dataset/pria-pollud>.\n\n- **Source Data Provider:** [P\u00f5llumajanduse Registrite ja Informatsiooni Amet <http://data.europa.eu/88u/dataset/pria-pollud>]()\n- **Converted by:** Fiboa project\n- **License:** CC-BY-SA-3.0-EE\n- **Projection:** EPSG:3301 (Estonian Coordinate System of 1997)\n\n---\n\n- [Download the data as fiboa GeoParquet](https://data.source.coop/fiboa/data/ee/ee-2024.parquet)\n- [STAC Browser](https://radiantearth.github.io/stac-browser/#/external/data.source.coop/fiboa/data/ee/stac/collection.json)\n- [STAC Collection](https://data.source.coop/fiboa/data/ee/stac/collection.json)\n- [PMTiles](https://data.source.coop/fiboa/data/ee/ee-2024.pmtiles)\n\n## Columns\n\n| Property     | **Data Type** | Description                                                 |\n|--------------|---------------|-------------------------------------------------------------|\n| crop:name    | string        | Crop name in the original language                          |\n| hcat:code    | uint32        | The 10-digit HCAT code indicating the hierarchy of the crop |\n| hcat:name    | string        | The machine-readable HCAT name of the crop                  |\n| id           | string        | Unique identifier                                           |\n| hcat:name_en | string        | The HCAT crop name translated into English                  |\n| metrics:area | float         | Field area in square meters                                 |\n\n## Lineage\n\n- Data downloaded on 2025-12-01 from:\n  - https://kls.pria.ee/geoserver/inspire_gsaa/wfs?service=WFS&version=2.0.0&request=GetFeature&typeName=inspire_gsaa:LU.GSAA.AGRICULTURAL_PARCELS_2024&propertyName=geom,pollu_id,taotlusaasta,pindala_ha,taotletud_kultuur\n- Converted to GeoParquet using [fiboa-cli](https://github.com/fiboa/cli), version 0.20.1\n\n\n## es__README.md\n# Field boundaries for Spain\n\nProvides 427173 official field boundaries from Spain.\nIt has been converted to a fiboa GeoParquet file from data obtained from Fondo Espa\u00f1ol de Garant\u00eda Agraria (FEGA), Ministerio de Agricultura, Pesca y Alimentaci\u00f3n (Government).\n\n- **Source Data Provider:** [Fondo Espa\u00f1ol de Garant\u00eda Agraria (FEGA), Ministerio de Agricultura, Pesca y Alimentaci\u00f3n (Government)](https://sigpac-hubcloud.es/)\n- **Converted by:** Ivor Bosloper\n- **License:** [Creative Commons Attribution 4.0 (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/)\n- **Projection:** EPSG:4258 (ETRS89)\n- **Data Survey:** https://github.com/fiboa/data-survey/blob/main/data/ES.md\n\n---\n\n- [Download the data as fiboa GeoParquet](https://data.source.coop/fiboa/data/es/es-2025.parquet)\n- [STAC Browser](https://radiantearth.github.io/stac-browser/#/external/data.source.coop/fiboa/data/es/stac/collection.json)\n- [STAC Collection](https://data.source.coop/fiboa/data/es/stac/collection.json)\n- [PMTiles](https://data.source.coop/fiboa/data/es/es-2025.pmtiles)\n\n## Columns\n\n| Property          | **Data Type** | Description                                                         |\n|-------------------|---------------|---------------------------------------------------------------------|\n| crop:code         | string        | Declared crop / product code                                        |\n| hcat:name_en      | string        | The HCAT crop name translated into English                          |\n| id                | string        | Unique identifier                                                   |\n| irrigation_system | string        | Exploitation system: `S` rainfed (secano) / `R` irrigated (regad\u00edo) |\n| hcat:name         | string        | The machine-readable HCAT name of the crop                          |\n| metrics:area      | float         | Surface area (m\u00b2)                                                   |\n| hcat:code         | uint32        | The 10-digit HCAT code indicating the hierarchy of the crop         |\n\n## Lineage\n\n- Data downloaded on 2026-05-20 from:\n  - https://sigpac-hubcloud.es/geopackages/2025/cultivo_declarado/01_ALAVA_cd_2025_20250105_gpkg.zip\n  - https://sigpac-hubcloud.es/geopackages/2025/cultivo_declarado/02_ALBACETE_cd_2025_20250110_gpkg.zip\n  - https://sigpac-hubcloud.es/geopackages/2025/cultivo_declarado/03_ALICANTE_cd_2025_20250110_gpkg.zip\n  - https://sigpac-hubcloud.es/geopackages/2025/cultivo_declarado/04_ALMERIA_cd_2025_20250110_gpkg.zip\n  - https://sigpac-hubcloud.es/geopackages/2025/cultivo_declarado/05_AVILA_cd_2025_20250110_gpkg.zip\n  - https://sigpac-hubcloud.es/geopackages/2025/cultivo_declarado/06_BADAJOZ_cd_2025_20250110_gpkg.zip\n  - https://sigpac-hubcloud.es/geopackages/2025/cultivo_declarado/07_ILLES%20BALEARS_cd_2025_20250110_gpkg.zip\n  - https://sigpac-hubcloud.es/geopackages/2025/cultivo_declarado/08_BARCELONA_cd_2025_20241126_gpkg.zip\n  - https://sigpac-hubcloud.es/geopackages/2025/cultivo_declarado/09_BURGOS_cd_2025_20250110_gpkg.zip\n  - https://sigpac-hubcloud.es/geopackages/2025/cultivo_declarado/10_CACERES_cd_2025_20250110_gpkg.zip\n  - https://sigpac-hubcloud.es/geopackages/2025/cultivo_declarado/11_CADIZ_cd_2025_20250110_gpkg.zip\n  - https://sigpac-hubcloud.es/geopackages/2025/cultivo_declarado/12_CASTELLON_cd_2025_20250110_gpkg.zip\n  - https://sigpac-hubcloud.es/geopackages/2025/cultivo_declarado/13_CIUDAD%20REAL_cd_2025_20250110_gpkg.zip\n  - https://sigpac-hubcloud.es/geopackages/2025/cultivo_declarado/14_CORDOBA_cd_2025_20250110_gpkg.zip\n  - https://sigpac-hubcloud.es/geopackages/2025/cultivo_declarado/15_A%20CORU%C3%91A_cd_2025_20250110_gpkg.zip\n  - https://sigpac-hubcloud.es/geopackages/2025/cultivo_declarado/16_CUENCA_cd_2025_20250110_gpkg.zip\n  - https://sigpac-hubcloud.es/geopackages/2025/cultivo_declarado/17_GIRONA_cd_2025_20241126_gpkg.zip\n  - https://sigpac-hubcloud.es/geopackages/2025/cultivo_declarado/18_GRANADA_cd_2025_20250110_gpkg.zip\n  - https://sigpac-hubcloud.es/geopackages/2025/cultivo_declarado/19_GUADALAJARA_cd_2025_20250110_gpkg.zip\n  - https://sigpac-hubcloud.es/geopackages/2025/cultivo_declarado/20_GUIPUZCOA_cd_2025_20250105_gpkg.zip\n  - https://sigpac-hubcloud.es/geopackages/2025/cultivo_declarado/21_HUELVA_cd_2025_20250110_gpkg.zip\n  - https://sigpac-hubcloud.es/geopackages/2025/cultivo_declarado/22_HUESCA_cd_2025_20250110_gpkg.zip\n  - https://sigpac-hubcloud.es/geopackages/2025/cultivo_declarado/23_JAEN_cd_2025_20250110_gpkg.zip\n  - https://sigpac-hubcloud.es/geopackages/2025/cultivo_declarado/24_LEON_cd_2025_20250110_gpkg.zip\n  - https://sigpac-hubcloud.es/geopackages/2025/cultivo_declarado/25_LLEIDA_cd_2025_20241126_gpkg.zip\n  - https://sigpac-hubcloud.es/geopackages/2025/cultivo_declarado/26_LA%20RIOJA_cd_2025_20250110_gpkg.zip\n  - https://sigpac-hubcloud.es/geopackages/2025/cultivo_declarado/27_LUGO_cd_2025_20250110_gpkg.zip\n  - https://sigpac-hubcloud.es/geopackages/2025/cultivo_declarado/28_MADRID_cd_2025_20250110_gpkg.zip\n  - https://sigpac-hubcloud.es/geopackages/2025/cultivo_declarado/29_MALAGA_cd_2025_20250110_gpkg.zip\n  - https://sigpac-hubcloud.es/geopackages/2025/cultivo_declarado/30_MURCIA_cd_2025_20250110_gpkg.zip\n  - https://sigpac-hubcloud.es/geopackages/2025/cultivo_declarado/31_NAVARRA_cd_2025_20250110_gpkg.zip\n  - https://sigpac-hubcloud.es/geopackages/2025/cultivo_declarado/32_OURENSE_cd_2025_20250110_gpkg.zip\n  - https://sigpac-hubcloud.es/geopackages/2025/cultivo_declarado/33_ASTURIAS_cd_2025_20250110_gpkg.zip\n  - https://sigpac-hubcloud.es/geopackages/2025/cultivo_declarado/34_PALENCIA_cd_2025_20250110_gpkg.zip\n  - https://sigpac-hubcloud.es/geopackages/2025/cultivo_declarado/35_LAS%20PALMAS_cd_2025_20241026_gpkg.zip\n  - https://sigpac-hubcloud.es/geopackages/2025/cultivo_declarado/36_PONTEVEDRA_cd_2025_20250110_gpkg.zip\n  - https://sigpac-hubcloud.es/geopackages/2025/cultivo_declarado/37_SALAMANCA_cd_2025_20250110_gpkg.zip\n  - https://sigpac-hubcloud.es/geopackages/2025/cultivo_declarado/38_SANTA%20CRUZ%20DE%20TENERIFE_cd_2025_20241026_gpkg.zip\n  - https://sigpac-hubcloud.es/geopackages/2025/cultivo_declarado/39_CANTABRIA_cd_2025_20250110_gpkg.zip\n  - https://sigpac-hubcloud.es/geopackages/2025/cultivo_declarado/40_SEGOVIA_cd_2025_20250110_gpkg.zip\n  - https://sigpac-hubcloud.es/geopackages/2025/cultivo_declarado/41_SEVILLA_cd_2025_20250110_gpkg.zip\n  - https://sigpac-hubcloud.es/geopackages/2025/cultivo_declarado/42_SORIA_cd_2025_20250110_gpkg.zip\n  - https://sigpac-hubcloud.es/geopackages/2025/cultivo_declarado/43_TARRAGONA_cd_2025_20241126_gpkg.zip\n  - https://sigpac-hubcloud.es/geopackages/2025/cultivo_declarado/44_TERUEL_cd_2025_20250110_gpkg.zip\n  - https://sigpac-hubcloud.es/geopackages/2025/cultivo_declarado/45_TOLEDO_cd_2025_20250110_gpkg.zip\n  - https://sigpac-hubcloud.es/geopackages/2025/cultivo_declarado/46_VALENCIA_cd_2025_20250110_gpkg.zip\n  - https://sigpac-hubcloud.es/geopackages/2025/cultivo_declarado/47_VALLADOLID_cd_2025_20250110_gpkg.zip\n  - https://sigpac-hubcloud.es/geopackages/2025/cultivo_declarado/48_VIZCAYA_cd_2025_20250105_gpkg.zip\n  - https://sigpac-hubcloud.es/geopackages/2025/cultivo_declarado/49_ZAMORA_cd_2025_20250110_gpkg.zip\n  - https://sigpac-hubcloud.es/geopackages/2025/cultivo_declarado/50_ZARAGOZA_cd_2025_20250110_gpkg.zip\n- Converted to GeoParquet using [fiboa-cli](https://github.com/fiboa/cli), version 0.21.0\n\n\n## fi__README.md\n# Field boundaries for Finland\n\nProvides 1006588 official field boundaries from Finland.\nIt has been converted to a fiboa GeoParquet file from data obtained from Finnish Food Authority.\n\n- **Source Data Provider:** [Finnish Food Authority](https://www.ruokavirasto.fi/en/about-us/open-information/spatial-data-sets/)\n- **Converted by:** Ivor Bosloper\n- **License:** CC-BY-4.0\n- **Projection:** EPSG:3067 (ETRS89 / TM35FIN(E,N))\n- **Data Survey:** https://github.com/fiboa/data-survey/blob/main/data/FI.md\n\n---\n\n- [Download the data as fiboa GeoParquet](https://data.source.coop/fiboa/data/fi/fi.parquet)\n- [STAC Browser](https://radiantearth.github.io/stac-browser/#/external/data.source.coop/fiboa/data/fi/stac/collection.json)\n- [STAC Collection](https://data.source.coop/fiboa/data/fi/stac/collection.json)\n- [PMTiles](https://data.source.coop/fiboa/data/fi/fi.pmtiles)\n\n## Columns\n\n| Property     | **Data Type** | Description                                                 |\n|--------------|---------------|-------------------------------------------------------------|\n| id           | string        | Unique identifier                                           |\n| block_id     | int64         |                                                             |\n| hcat:code    | uint32        | The 10-digit HCAT code indicating the hierarchy of the crop |\n| crop:code    | string        | The crop code                                               |\n| hcat:name_en | string        | The HCAT crop name translated into English                  |\n| hcat:name    | string        | The machine-readable HCAT name of the crop                  |\n| metrics:area | float         | Field area in square meters                                 |\n| crop:name    | string        | Crop name in the original language                          |\n\n## Lineage\n\n- Data downloaded on 2025-10-24 from:\n  - https://download.inspire.ruokavirasto-awsa.com/data/2023/LandUse.ExistingLandUse.GSAAAgriculturalParcel.gpkg\n- Converted to GeoParquet using [fiboa-cli](https://github.com/fiboa/cli), version 0.20.1\n\n\n## fr__README.md\n# Field boundaries for France\n\nProvides 9888801 official field boundaries from France.\nIt has been converted to a fiboa GeoParquet file from data obtained from Institut National de l'Information G\u00e9ographique et Foresti\u00e8re (contact.geoservices@ign.fr ).\n\n- **Source Data Provider:** [Institut National de l'Information G\u00e9ographique et Foresti\u00e8re (contact.geoservices@ign.fr )](https://www.data.gouv.fr/en/datasets/registre-parcellaire-graphique-rpg-contours-des-parcelles-et-ilots-culturaux-et-leur-groupe-de-cultures-majoritaire/)\n- **Converted by:** Ivor Bosloper\n- **License:** \"Licence Ouverte / Open Licence\" https://etalab.gouv.fr/licence-ouverte-open-licence\n- **Projection:** EPSG:2154 (RGF93 v1 / Lambert-93)\n- **Data Survey:** https://github.com/fiboa/data-survey/blob/main/data/FR.md\n\n---\n\n- [Download the data as fiboa GeoParquet](https://data.source.coop/fiboa/data/fr/fr-2022.parquet)\n- [STAC Browser](https://radiantearth.github.io/stac-browser/#/external/data.source.coop/fiboa/data/fr/stac/collection.json)\n- [STAC Collection](https://data.source.coop/fiboa/data/fr/stac/collection.json)\n- [PMTiles](https://data.source.coop/fiboa/data/fr/fr-2022.pmtiles)\n\n## Columns\n\n| Property     | **Data Type** | Description                                                 |\n|--------------|---------------|-------------------------------------------------------------|\n| hcat:code    | uint32        | The 10-digit HCAT code indicating the hierarchy of the crop |\n| group_code   | string        | Group code of main crop                                     |\n| hcat:name    | string        | The machine-readable HCAT name of the crop                  |\n| crop:code    | string        | Main crop code                                              |\n| metrics:area | float         | Surface area                                                |\n| hcat:name_en | string        | The HCAT crop name translated into English                  |\n| id           | string        | Identifier                                                  |\n\n## Lineage\n\n- Data downloaded on 2025-11-28 from:\n  - https://data.geopf.fr/telechargement/download/RPG/RPG_2-0__GPKG_LAMB93_FXX_2022-01-01/RPG_2-0__GPKG_LAMB93_FXX_2022-01-01.7z.001\n- Converted to GeoParquet using [fiboa-cli](https://github.com/fiboa/cli), version 0.20.3\n\n\n## hr__README.md\n# Field boundaries for Croatia\n\nProvides 1321278 official field boundaries from Croatia.\nIt has been converted to a fiboa GeoParquet file from data obtained from Agencija za pla\u0107anja u poljoprivredi, ribarstvu i ruralnom razvoju objavila.\n\n- **Source Data Provider:** [Agencija za pla\u0107anja u poljoprivredi, ribarstvu i ruralnom razvoju objavila](https://www.apprrr.hr/prostorni-podaci-servisi/)\n- **Converted by:** Ivor Bosloper\n- **License:** Not stated . Data is downloadable.\n- **Projection:** EPSG:3765 (HTRS96 / Croatia TM)\n- **Data Survey:** https://github.com/fiboa/data-survey/blob/main/data/HR.md\n\n---\n\n- [Download the data as fiboa GeoParquet](https://data.source.coop/fiboa/data/hr/hr.parquet)\n- [STAC Browser](https://radiantearth.github.io/stac-browser/#/external/data.source.coop/fiboa/data/hr/stac/collection.json)\n- [STAC Collection](https://data.source.coop/fiboa/data/hr/stac/collection.json)\n- [PMTiles](https://data.source.coop/fiboa/data/hr/hr.pmtiles)\n\n## Columns\n\n| Property                 | **Data Type** | Description                   |\n|--------------------------|---------------|-------------------------------|\n| jpaid                    | string        |                               |\n| anc                      | int32         |                               |\n| eligibility_coef         | double        | eligibility_coefficient       |\n| crop:code                | string        | Land cover code               |\n| mines_year_removed       | int32         | Year of mine removal          |\n| ot_nat_area              | double        |                               |\n| irrigation_source        | int32         | 0                             |\n| mines_status             | string        | mines status                  |\n| irrigation               | int32         | has irrigation                |\n| anc_area                 | double        |                               |\n| id                       | string        | Unique identifier             |\n| tvpv                     | int32         |                               |\n| natura2000_pop           | double        |                               |\n| natura2000_povs          | double        |                               |\n| sanitary_protection_zone | string        |                               |\n| metrics:area             | float         | area                          |\n| z_avg                    | double        | average height                |\n| slope                    | double        | slope                         |\n| natura2000_ok            | string        |                               |\n| home_name                | string        |                               |\n| metrics:perimeter        | float         | perimeter                     |\n| irrigation_type          | int32         | irrigation type               |\n| water_protect_zone       | string        | Water protection zone         |\n| rp                       | int32         |                               |\n| ot_nat                   | int32         |                               |\n| natura2000               | double        | Area of natura2000 protection |\n\n## Lineage\n\n- Data downloaded on 2025-10-24 from:\n  - https://www.apprrr.hr/wp-content/uploads/nipp/land_parcels.gpkg\n- Converted to GeoParquet using [fiboa-cli](https://github.com/fiboa/cli), version 0.20.1\n\n\n## ie__README.md\n# Field boundaries for Ireland\n\nProvides 1123135 official field boundaries from Ireland.\nIt has been converted to a fiboa GeoParquet file from data obtained from Ireland Department of Agriculture, Food and the Marine.\n\n- **Source Data Provider:** [Ireland Department of Agriculture, Food and the Marine](https://inspire.geohive.ie/geoportal/)\n- **Converted by:** Ivor Bosloper\n- **License:** CC-BY-4.0\n- **Projection:** EPSG:4258 (ETRS89)\n- **Data Survey:** https://github.com/fiboa/data-survey/blob/main/data/IE.md\n\n---\n\n- [Download the data as fiboa GeoParquet](https://data.source.coop/fiboa/data/ie/ie-2024.parquet)\n- [STAC Browser](https://radiantearth.github.io/stac-browser/#/external/data.source.coop/fiboa/data/ie/stac/collection.json)\n- [STAC Collection](https://data.source.coop/fiboa/data/ie/stac/collection.json)\n- [PMTiles](https://data.source.coop/fiboa/data/ie/ie-2024.pmtiles)\n\n## Columns\n\n| Property  | **Data Type** | Description                                                 |\n|-----------|---------------|-------------------------------------------------------------|\n| hcat:name | string        | The machine-readable HCAT name of the crop                  |\n| crop:name | string        | Name of crop                                                |\n| hcat:code | uint32        | The 10-digit HCAT code indicating the hierarchy of the crop |\n| id        | string        | Unique identifier                                           |\n| crop:code | string        | The crop code                                               |\n\n## Lineage\n\n- Data downloaded on 2025-11-28 from:\n  - https://dafm-inspire-atom.s3.eu-west-1.amazonaws.com/files/LU/GSAA_2024.zip\n- Converted to GeoParquet using [fiboa-cli](https://github.com/fiboa/cli), version 0.20.3\n\n\n## it_1__README.md\n# Field boundaries for Italy, Tuscany\n\nProvides 623666 official field boundaries from Italy, Tuscany.\nIt has been converted to a fiboa GeoParquet file from data obtained from Joint Research Centre, European Commission <https://data.jrc.ec.europa.eu/dataset/b9fb9e67-78a9-4327-9d59-39a928d812d3>.\n\n- **Source Data Provider:** [Joint Research Centre, European Commission <https://data.jrc.ec.europa.eu/dataset/b9fb9e67-78a9-4327-9d59-39a928d812d3>]()\n- **Converted by:** Fiboa project\n- **License:** CC-BY-4.0\n- **Projection:** EPSG:3035 (ETRS89-extended / LAEA Europe)\n\n---\n\n- [Download the data as fiboa GeoParquet](https://data.source.coop/fiboa/data/it_1/it_1-2023.parquet)\n- [STAC Browser](https://radiantearth.github.io/stac-browser/#/external/data.source.coop/fiboa/data/it_1/stac/collection.json)\n- [STAC Collection](https://data.source.coop/fiboa/data/it_1/stac/collection.json)\n- [PMTiles](https://data.source.coop/fiboa/data/it_1/it_1-2023.pmtiles)\n\n## Columns\n\n| Property     | **Data Type** | Description                                                 |\n|--------------|---------------|-------------------------------------------------------------|\n| id           | string        | Unique identifier                                           |\n| metrics:area | float         | Field area in square meters                                 |\n| hcat:name    | string        | The machine-readable HCAT name of the crop                  |\n| hcat:code    | uint32        | The 10-digit HCAT code indicating the hierarchy of the crop |\n| hcat:name_en | string        | The HCAT crop name translated into English                  |\n| crop:code    | string        | The crop code                                               |\n\n## Lineage\n\n- Data downloaded on 2026-06-17 from:\n  - https://jeodpp.jrc.ec.europa.eu/ftp/jrc-opendata/DRLL/EuroCropsV2/gpqtv201/iti1_2023.parquet\n- Converted to GeoParquet using [fiboa-cli](https://github.com/fiboa/cli), version 0.21.0\n\n\n## jecam__README.md\n# Field boundaries for Jecam Sirad\n\nProvides 31989 official field boundaries from Jecam Sirad.\nIt has been converted to a fiboa GeoParquet file from data obtained from IEEE GRSS <http://www.grss-ieee.org/community/technical-committees/data-fusion/>.\n\n- **Source Data Provider:** [IEEE GRSS <http://www.grss-ieee.org/community/technical-committees/data-fusion/>]()\n- **Converted by:** Ivor Bosloper\n- **License:** CC-BY-4.0\n- **Projection:** EPSG:4326 (WGS 84)\n\n---\n\n- [Download the data as fiboa GeoParquet](https://data.source.coop/fiboa/data/jecam/jecam.parquet)\n- [STAC Browser](https://radiantearth.github.io/stac-browser/#/external/data.source.coop/fiboa/data/jecam/stac/collection.json)\n- [STAC Collection](https://data.source.coop/fiboa/data/jecam/stac/collection.json)\n- [PMTiles](https://data.source.coop/fiboa/data/jecam/jecam.pmtiles)\n\n## Columns\n\n| Property               | **Data Type** | Description                                          |\n|------------------------|---------------|------------------------------------------------------|\n| id                     | string        | Unique identifier                                    |\n| irrigated              | bool          | Whether a field is irrigated                         |\n| admin:country_code     | string        | ISO 3166-1 alpha-2 country code.                     |\n| determination:datetime | timestamp     | Timestamp of the determination of the field boundary |\n| crop:name              | string        | Crop name in the original language                   |\n| metrics:area           | float         | Field area in square meters                          |\n| crop:code              | string        | The crop code                                        |\n| site_name              | string        | Name of site                                         |\n\n## Lineage\n\n- Data downloaded on 2025-10-24 from:\n  - https://dataverse.cirad.fr/api/access/datafile/17993\n- Converted to GeoParquet using [fiboa-cli](https://github.com/fiboa/cli), version 0.20.1\n\n\n## lt__README.md\n# Field boundaries for Lithuania\n\nProvides 1213522 official field boundaries from Lithuania.\nIt has been converted to a fiboa GeoParquet file from data obtained from Nacionalin\u0117 mok\u0117jimo agent\u016bra prie \u017dem\u0117s \u016bkio ministerijos.\n\n- **Source Data Provider:** [Nacionalin\u0117 mok\u0117jimo agent\u016bra prie \u017dem\u0117s \u016bkio ministerijos](https://nma.lrv.lt/lt/)\n- **Converted by:** Ivor Bosloper\n- **License:** For the data portal download; a personally, limited-time allowed license is granted after creating an account, yielding address information and signing an agreement in Lithuanian.\n- **Projection:** EPSG:3035 (ETRS89-extended / LAEA Europe)\n- **Data Survey:** https://github.com/fiboa/data-survey/blob/main/data/LT.md\n\n---\n\n- [Download the data as fiboa GeoParquet](https://data.source.coop/fiboa/data/lt/lt.parquet)\n- [STAC Browser](https://radiantearth.github.io/stac-browser/#/external/data.source.coop/fiboa/data/lt/stac/collection.json)\n- [STAC Collection](https://data.source.coop/fiboa/data/lt/stac/collection.json)\n- [PMTiles](https://data.source.coop/fiboa/data/lt/lt.pmtiles)\n\n## Columns\n\n| Property     | **Data Type** | Description                                                 |\n|--------------|---------------|-------------------------------------------------------------|\n| hcat:name_en | string        | The HCAT crop name translated into English                  |\n| hcat:code    | uint32        | The 10-digit HCAT code indicating the hierarchy of the crop |\n| crop:name    | string        | Crop name in the original language                          |\n| id           | string        | Unique identifier                                           |\n| metrics:area | float         | Field area in square meters                                 |\n| hcat:name    | string        | The machine-readable HCAT name of the crop                  |\n\n## Lineage\n\n- Data downloaded on 2025-11-30 from:\n  - https://zenodo.org/records/14384070/files/LT_2024.zip?download=1\n- Converted to GeoParquet using [fiboa-cli](https://github.com/fiboa/cli), version 0.20.1\n\n\n## lv__README.md\n# Field boundaries for Latvia\n\nProvides 416323 official field boundaries from Latvia.\nIt has been converted to a fiboa GeoParquet file from data obtained from Rural Support Service Republic of Latvia (Lauku atbalsta dienests).\n\n- **Source Data Provider:** [Rural Support Service Republic of Latvia (Lauku atbalsta dienests)](https://www.lad.gov.lv/lv/lauku-registra-dati)\n- **Converted by:** Ivor Bosloper\n- **License:** WFS has no access constraints\n- **Projection:** EPSG:3059 (LKS-92 / Latvia TM)\n- **Data Survey:** https://github.com/fiboa/data-survey/blob/main/data/LV.md\n\n---\n\n- [Download the data as fiboa GeoParquet](https://data.source.coop/fiboa/data/lv/lv.parquet)\n- [STAC Browser](https://radiantearth.github.io/stac-browser/#/external/data.source.coop/fiboa/data/lv/stac/collection.json)\n- [STAC Collection](https://data.source.coop/fiboa/data/lv/stac/collection.json)\n- [PMTiles](https://data.source.coop/fiboa/data/lv/lv.pmtiles)\n\n## Columns\n\n| Property               | **Data Type** | Description                                                 |\n|------------------------|---------------|-------------------------------------------------------------|\n| hcat:name_en           | string        | The HCAT crop name translated into English                  |\n| hcat:name              | string        | The machine-readable HCAT name of the crop                  |\n| metrics:area           | float         | Field area in square meters                                 |\n| id                     | string        | Unique identifier                                           |\n| parcel_id              | uint64        | identifier                                                  |\n| determination:datetime | timestamp     | Timestamp of the determination of the field boundary        |\n| crop:code              | string        | The crop code                                               |\n| crop:name              | string        | Crop name in the original language                          |\n| hcat:code              | uint32        | The 10-digit HCAT code indicating the hierarchy of the crop |\n\n## Lineage\n\n- Data downloaded on 2025-12-01 from:\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=0\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=3000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=6000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=9000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=12000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=15000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=18000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=21000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=24000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=27000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=30000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=33000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=36000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=39000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=42000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=45000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=48000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=51000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=54000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=57000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=60000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=63000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=66000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=69000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=72000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=75000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=78000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=81000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=84000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=87000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=90000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=93000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=96000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=99000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=102000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=105000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=108000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=111000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=114000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=117000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=120000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=123000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=126000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=129000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=132000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=135000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=138000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=141000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=144000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=147000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=150000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=153000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=156000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=159000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=162000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=165000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=168000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=171000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=174000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=177000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=180000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=183000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=186000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=189000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=192000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=195000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=198000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=201000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=204000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=207000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=210000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=213000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=216000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=219000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=222000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=225000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=228000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=231000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=234000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=237000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=240000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=243000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=246000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=249000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=252000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=255000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=258000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=261000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=264000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=267000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=270000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=273000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=276000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=279000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=282000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=285000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=288000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=291000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=294000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=297000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=300000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=303000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=306000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=309000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=312000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=315000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=318000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=321000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=324000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=327000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=330000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=333000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=336000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=339000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=342000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=345000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=348000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=351000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=354000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=357000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=360000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=363000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=366000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=369000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=372000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=375000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=378000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=381000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=384000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=387000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=390000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=393000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=396000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=399000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=402000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=405000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=408000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=411000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=414000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=417000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=420000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=423000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=426000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=429000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=432000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=435000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=438000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=441000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=444000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=447000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=450000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=453000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=456000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=459000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=462000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=465000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=468000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=471000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=474000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=477000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=480000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=483000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=486000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=489000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=492000\n  - https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer?request=GetFeature&service=wfs&version=2.0.0&typeNames=Lauki&count=3000&startindex=495000\n- Converted to GeoParquet using [fiboa-cli](https://github.com/fiboa/cli), version 0.20.3\n",
   "_review": [
-    "extent.spatial.bbox: omitted; spatial reference is categorical via [at-2025.geometry (geometry), at-2025.bbox (geometry)]. Add bbox once a placename \u2192 bbox gazetteer is available."
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [at.geometry (geometry), be_vlg.geometry (geometry), be_wal.geometry (geometry), bg.geometry (geometry), br_ba_lem.geometry (geometry), br_conab.geometry (geometry), br_conab.admin_municipality_code (admin_code), br_conab.admin_municipality_name (placename), ch.geometry (geometry), ch.admin:subdivision_code (admin_code), ch.administrative_area_level_1 (placename), cz.geometry (geometry), de_bb.geometry (geometry), de_by.geometry (geometry), de_mv.geometry (geometry), de_mv.bez_kreis (placename), de_nds.geometry (geometry), de_nrw.geometry (geometry), dk.geometry (geometry), ec_ro.geometry (geometry), ee.geometry (geometry), es.geometry (geometry), fi.geometry (geometry), fr.geometry (geometry), hr.geometry (geometry), hr.home_name (placename), ie.geometry (geometry), it_1.geometry (geometry), jecam.geometry (geometry), jecam.admin:country_code (admin_code), jecam.site_name (placename), lt.geometry (geometry), lv.geometry (geometry), nl.geometry (geometry), pt.geometry (geometry), se.geometry (geometry), si.geometry (geometry), sk.geometry (geometry), sk.municipality (placename), uk.geometry (geometry), us_ca_scm.geometry (geometry), us_ca_scm.admin_level_2 (admin_code), us_usda_cropland.geometry (geometry), us_usda_cropland.administrative_area_level_2 (placename)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-06-05T00:27:51+00:00"
+  "cataloged_at": "2026-08-21T00:55:29+00:00",
+  "objects_updated_at": "2026-06-17T12:54:02+00:00",
+  "store_format": null
 }
