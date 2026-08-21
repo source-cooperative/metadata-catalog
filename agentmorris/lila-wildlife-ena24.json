@@ -1,19 +1,91 @@
 {
   "schema_version": 1,
-  "account_id": "agentmorris",
-  "product_id": "lila-wildlife-ena24",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "agentmorris/lila-wildlife-ena24",
   "title": "ENA24-detection",
-  "description": "ENA24-detection is an image-based object detection dataset comprising 8,789 JPEG images with accompanying JSON annotation files. No further description is available \u2014 the dataset has no README.",
+  "description": "ENA24-detection is a camera trap image dataset from Eastern North America containing approximately 10,000 images across 23 animal species classes, each annotated with bounding boxes in COCO Camera Traps JSON format for object detection and species classification research.",
+  "license": "CDLA-Permissive-1.0",
   "keywords": [
+    "camera-traps",
+    "wildlife-monitoring",
     "object-detection",
-    "remote-sensing"
+    "machine-learning",
+    "species-classification",
+    "biodiversity"
   ],
-  "created_at": null,
-  "updated_at": null,
+  "providers": [
+    {
+      "name": "Hayder Yousif, Roland Kays, and Zhihai He",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "LILA (Labeled Information Library of Alexandria)",
+      "roles": [
+        "licensor",
+        "host"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/agentmorris/lila-wildlife-ena24"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -180.0,
+          -90.0,
+          180.0,
+          90.0
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2016-06-09T18:00:26",
+          "2016-06-20T08:33:25"
+        ]
+      ]
+    }
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/agentmorris/lila-wildlife-ena24/",
+      "type": "application/octet-stream",
+      "title": "Dataset files (8789 x .jpg)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/agentmorris/lila-wildlife-ena24/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/agentmorris/lila-wildlife-ena24",
+      "title": "Source Cooperative product page"
+    }
+  ],
   "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": "open",
+  "updated_at": null,
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "_decomposed_from": "agentmorris/lila-wildlife",
+  "product_id": "lila-wildlife-ena24",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -26,20 +98,23 @@
       "prefix": "agentmorris/lila-wildlife/ena24/"
     }
   },
-  "object_count": 8792,
+  "account_id": "agentmorris",
+  "featured": 0,
   "total_bytes": 7778725443,
+  "created_at": null,
+  "disabled": false,
+  "data_mode": "open",
   "exts": {
     "json": 2,
     "zip": 1,
     "jpg": 8789
   },
-  "store_format": null,
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "cataloged_at": "2026-06-04T23:59:15+00:00",
-  "readme": "# ENA24-detection\n\n### ENA24-detection\n\n#### S3 base\n\n`s3://us-west-2.opendata.source.coop/agentmorris/lila-wildlife/ena24`\n\n#### Overview\n\nThis data set contains approximately 10,000 camera trap images representing 23 classes from Eastern North America, with bounding boxes on each image. The most common classes are \"American Crow\", \"American Black Bear\", and \"Dog\".\n\n#### Citation, license, and contact information\n\nThis data set is released under the [Community Data License Agreement (permissive variant)](https://cdla.io/permissive-1-0/).\n\nThe data set is described in more detail in the associated manuscript:\n\nYousif H, Kays R, Zhihai H. Dynamic Programming Selection of Object Proposals for Sequence-Level Animal Species Classification in the Wild. IEEE Transactions on Circuits and Systems for Video Technology, 2019. ([bibtex](http://lila.science/wp-content/uploads/2019/12/hayder2019_bibtex.txt))\n\nPlease cite this manuscript if you use this data set.\n\nFor questions about this data set, contact [Hayder Yousif](mailto:hyypp5@mail.missouri.edu).\n\n#### Data format\n\nAnnotations are provided in the [COCO Camera Traps](https://github.com/agentmorris/MegaDetector/blob/main/megadetector/data_management/README.md#coco-camera-traps-format) .json format used for most data sets on lila.science. Images containing humans were removed from the data set, but the metadata still contains information about those images.\n\nFor information about mapping this dataset's categories to a common taxonomy, see [this page](https://lila.science/taxonomy-mapping-for-camera-trap-data-sets/).\n\n#### Downloading the data\n\nImages are available in the following cloud folders:\n\n* gs://public-datasets-lila/ena24/images (GCP)\n* s3://us-west-2.opendata.source.coop/agentmorris/lila-wildlife/ena24/images (AWS)\n* https://lilawildlife.blob.core.windows.net/lila-wildlife/ena24/images (Azure)\n\nA link to a zipfile is also provided below, but - whether you want the whole data set, a specific folder, or a subset of the data (e.g. images for one species) - we recommend checking out our [guidelines for accessing images without using giant zipfiles](http://lila.science/image-access).\n\nDownload links:\n\n[Images](https://storage.googleapis.com/public-datasets-lila/ena24/ena24.zip) (GCP, 3.6GB)  \n\n[Metadata](https://storage.googleapis.com/public-datasets-lila/ena24/ena24.json) (GCP, 3.6MB)\n\n[Images](https://lilawildlife.blob.core.windows.net/lila-wildlife/ena24/ena24.zip) (Azure, 3.6GB)  \n\n[Metadata](https://lilawildlife.blob.core.windows.net/lila-wildlife/ena24/ena24.json) (Azure 3.6MB)\n\n[Images](http://us-west-2.opendata.source.coop.s3.amazonaws.com/agentmorris/lila-wildlife/ena24/ena24.zip) (AWS, 3.6GB)  \n\n[Metadata](http://us-west-2.opendata.source.coop.s3.amazonaws.com/agentmorris/lila-wildlife/ena24/ena24.json) (AWS, 3.6MB)\n\nAn \"unofficial\" version of the metadata file that only includes annotations for images that are present in the public data set (i.e., from which metadata for images of humans has been removed) is available at:\n\n&nbsp;&nbsp;&nbsp;&nbsp;\n[Metadata (non-human images only)](https://storage.googleapis.com/public-datasets-lila/ena24/ena24_public.json) (2.9MB)\n\nIt is not guaranteed that this version will be maintained across changes to the underlying data set, but we're like 99.9999999% sure that if you're reading this, it's still accurate.\n\nHaving trouble downloading? Check out our [FAQ](http://lila.science/faq#downloadtips).\n\n#### Other useful links\n\n[MegaDetector](https://github.com/agentmorris/MegaDetector/blob/main/megadetector.md) results for all camera trap datasets on LILA are available [here](https://lila.science/megadetector-results-for-camera-trap-datasets/).\n\nInformation about mapping camera trap datasets to a common taxonomy is available [here](https://lila.science/taxonomy-mapping-for-camera-trap-data-sets/).\n\n![](http://lila.science/wp-content/uploads/2019/12/ena24_candidate05.jpg)\n\n",
-  "_decomposed_from": "agentmorris/lila-wildlife"
+  "object_count": 8792,
+  "readme": "## README.md\n# ENA24-detection\n\n### ENA24-detection\n\n#### S3 base\n\n`s3://us-west-2.opendata.source.coop/agentmorris/lila-wildlife/ena24`\n\n#### Overview\n\nThis data set contains approximately 10,000 camera trap images representing 23 classes from Eastern North America, with bounding boxes on each image. The most common classes are \"American Crow\", \"American Black Bear\", and \"Dog\".\n\n#### Citation, license, and contact information\n\nThis data set is released under the [Community Data License Agreement (permissive variant)](https://cdla.io/permissive-1-0/).\n\nThe data set is described in more detail in the associated manuscript:\n\nYousif H, Kays R, Zhihai H. Dynamic Programming Selection of Object Proposals for Sequence-Level Animal Species Classification in the Wild. IEEE Transactions on Circuits and Systems for Video Technology, 2019. ([bibtex](http://lila.science/wp-content/uploads/2019/12/hayder2019_bibtex.txt))\n\nPlease cite this manuscript if you use this data set.\n\nFor questions about this data set, contact [Hayder Yousif](mailto:hyypp5@mail.missouri.edu).\n\n#### Data format\n\nAnnotations are provided in the [COCO Camera Traps](https://github.com/agentmorris/MegaDetector/blob/main/megadetector/data_management/README.md#coco-camera-traps-format) .json format used for most data sets on lila.science. Images containing humans were removed from the data set, but the metadata still contains information about those images.\n\nFor information about mapping this dataset's categories to a common taxonomy, see [this page](https://lila.science/taxonomy-mapping-for-camera-trap-data-sets/).\n\n#### Downloading the data\n\nImages are available in the following cloud folders:\n\n* gs://public-datasets-lila/ena24/images (GCP)\n* s3://us-west-2.opendata.source.coop/agentmorris/lila-wildlife/ena24/images (AWS)\n* https://lilawildlife.blob.core.windows.net/lila-wildlife/ena24/images (Azure)\n\nA link to a zipfile is also provided below, but - whether you want the whole data set, a specific folder, or a subset of the data (e.g. images for one species) - we recommend checking out our [guidelines for accessing images without using giant zipfiles](http://lila.science/image-access).\n\nDownload links:\n\n[Images](https://storage.googleapis.com/public-datasets-lila/ena24/ena24.zip) (GCP, 3.6GB)  \n\n[Metadata](https://storage.googleapis.com/public-datasets-lila/ena24/ena24.json) (GCP, 3.6MB)\n\n[Images](https://lilawildlife.blob.core.windows.net/lila-wildlife/ena24/ena24.zip) (Azure, 3.6GB)  \n\n[Metadata](https://lilawildlife.blob.core.windows.net/lila-wildlife/ena24/ena24.json) (Azure 3.6MB)\n\n[Images](http://us-west-2.opendata.source.coop.s3.amazonaws.com/agentmorris/lila-wildlife/ena24/ena24.zip) (AWS, 3.6GB)  \n\n[Metadata](http://us-west-2.opendata.source.coop.s3.amazonaws.com/agentmorris/lila-wildlife/ena24/ena24.json) (AWS, 3.6MB)\n\nAn \"unofficial\" version of the metadata file that only includes annotations for images that are present in the public data set (i.e., from which metadata for images of humans has been removed) is available at:\n\n&nbsp;&nbsp;&nbsp;&nbsp;\n[Metadata (non-human images only)](https://storage.googleapis.com/public-datasets-lila/ena24/ena24_public.json) (2.9MB)\n\nIt is not guaranteed that this version will be maintained across changes to the underlying data set, but we're like 99.9999999% sure that if you're reading this, it's still accurate.\n\nHaving trouble downloading? Check out our [FAQ](http://lila.science/faq#downloadtips).\n\n#### Other useful links\n\n[MegaDetector](https://github.com/agentmorris/MegaDetector/blob/main/megadetector.md) results for all camera trap datasets on LILA are available [here](https://lila.science/megadetector-results-for-camera-trap-datasets/).\n\nInformation about mapping camera trap datasets to a common taxonomy is available [here](https://lila.science/taxonomy-mapping-for-camera-trap-data-sets/).\n\n![](http://lila.science/wp-content/uploads/2019/12/ena24_candidate05.jpg)\n\n",
+  "_review": [
+    "providers: role [producer] for 'Hayder Yousif, Roland Kays, and Zhihai He' is an AI guess \u2014 Listed as the citation authors and dataset contact; assumed to be the original data creators. Verify before flipping to _state: reviewed.",
+    "providers: role [licensor, host] for 'LILA (Labeled Information Library of Alexandria)' is an AI guess \u2014 README notes the annotation format is 'used for most data sets on lila.science' and provides lila.science distribution links, implying LILA is the original publisher/host. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-08-21T22:41:21+00:00"
 }
