@@ -1,23 +1,108 @@
 {
   "schema_version": 1,
-  "account_id": "agentmorris",
-  "product_id": "lila-wildlife-noaa-psnf",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "agentmorris/lila-wildlife-noaa-psnf",
   "title": "NOAA Puget Sound Nearshore Fish 2017-2018",
-  "description": "Nearshore fish survey data collected by NOAA in the Puget Sound, Washington State, covering the years 2017\u20132018. The dataset likely includes species occurrence, abundance, or biological sampling records from shallow coastal habitats.",
+  "description": "A collection of 77,739 underwater images sampled from video captured at shellfish aquaculture farms and surrounding estuary habitat in Puget Sound, Washington (2017-2018), with 67,990 fish and crab objects annotated across 30,384 images using COCO Camera Traps format for training computer-vision detection models.",
+  "license": "CDLA-Permissive-1.0",
   "keywords": [
-    "puget-sound",
-    "nearshore-fish",
+    "biodiversity",
+    "machine-learning",
+    "aquaculture",
+    "computer-vision",
+    "object-detection",
     "marine-ecology",
-    "fish-survey",
-    "noaa",
-    "washington-state"
+    "underwater-imagery"
   ],
-  "created_at": null,
-  "updated_at": null,
-  "visibility": "public",
-  "disabled": false,
+  "providers": [
+    {
+      "name": "NOAA Northwest Fisheries Science Center",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "The Nature Conservancy",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Microsoft AI for Good Research Lab",
+      "roles": [
+        "processor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/agentmorris/lila-wildlife-noaa-psnf"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -180.0,
+          -90.0,
+          180.0,
+          90.0
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2017-01-01T00:00:00Z",
+          "2018-01-01T00:00:00Z"
+        ]
+      ]
+    }
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/agentmorris/lila-wildlife-noaa-psnf/",
+      "type": "application/octet-stream",
+      "title": "Dataset files",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/agentmorris/lila-wildlife-noaa-psnf/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/agentmorris/lila-wildlife-noaa-psnf",
+      "title": "Source Cooperative product page"
+    }
+  ],
+  "object_count": 6,
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "_decomposed_from": "agentmorris/lila-wildlife",
   "featured": 0,
-  "data_mode": "open",
+  "created_at": null,
+  "product_id": "lila-wildlife-noaa-psnf",
+  "account_id": "agentmorris",
+  "updated_at": null,
+  "total_bytes": 7708263850,
+  "disabled": false,
+  "exts": {
+    "zip": 4,
+    "": 2
+  },
+  "visibility": "public",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -30,19 +115,13 @@
       "prefix": "agentmorris/lila-wildlife/noaa-psnf/"
     }
   },
-  "object_count": 6,
-  "total_bytes": 7708263850,
-  "exts": {
-    "zip": 4,
-    "": 2
-  },
-  "store_format": null,
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "cataloged_at": "2026-06-04T23:59:15+00:00",
-  "readme": "# NOAA Puget Sound Nearshore Fish 2017-2018\n\n### NOAA Puget Sound Nearshore Fish 2017-2018\n\n#### S3 base\n\n`s3://us-west-2.opendata.source.coop/agentmorris/lila-wildlife/noaa-psnf`\n\n#### Overview\n\nThis data set contains 77,739 images sampled from video collected on and around shellfish aquaculture farms in an estuary in the Northeast Pacific, in which 67,990 objects (fish and crustaceans) have been annotated on 30,384 images (the remainder have been annotated as \"empty\"). Boxes are on individual objects, but labeling was done at the image level, so objects are labeled as one of \"fish\", \"crab\", or \"fish_and_crab\", where \"fish_and_crab\" means that both categories were present in this image.\n\nThis data set was used to develop a computer vision model to detect fish, allowing specialists from NOAA to examine images in which fish were detected to classify and quantify their species more efficiently. Incorporating artificial intelligence into ecological and resource management fields will advance our understanding of potential changes in the marine environment in the context of fisheries and aquaculture expansion, shoreline development, and climate change.\n\nThese data were collected in a collaborative effort between the [NOAA Northwest Fisheries Science Center](https://www.fisheries.noaa.gov/about/northwest-fisheries-science-center), The Nature Conservancy, and shellfish aquaculture farms in WA, USA. Funding was provided by the NOAA Office of Aquaculture Grant (NA17OAR4170218) and Washington Sea Grant (UWSC10159). The data were labelled in a collaborative effort between the NOAA Northwest Fisheries Science Center and the Microsoft AI for Good Research Lab.\n\nCode for fine-tuning YOLOv5 on this data is available [here](https://github.com/agentmorris/noaa-fish).\n\n#### Citation, license, and contact information\n\nIf you use these data in a publication or report, please use the following citation to refer to the data collection process:\n\nFerriss B, Veggerby K, Bogeberg M, Conway-Cranos L, Hoberecht L, Kiffney P, Litle K, Toft J, Sanderson B. [Characterizing the habitat function of bivalve aquaculture using underwater video](https://www.int-res.com/abstracts/aei/v13/p439-454/). Aquaculture Environment Interactions. 2021 Nov 18;13:439-54.\n\n...and/or the following citation to refer to the annotations and public data set:\n\nFarrell DM, Ferriss B, Sanderson B, Veggerby K, Robinson L, Trivedi A, Pathak S, Muppalla S, Wang J, Morris D, Dodhia R. A labeled data set of underwater images of fish and crab species from five mesohabitats in Puget Sound WA USA. Scientific Data. 2023 Nov 13;10(1):799.\n\nFor questions about this data set, contact [Beth Sanderson](mailto:beth.sanderson@noaa.gov) (NOAA Northwest Fisheries Science Center) and [Bridget Ferriss](mailto:bridget.ferriss@noaa.gov) (NOAA Alaska Fisheries Science Center).\n\nThis data set is released under the [Community Data License Agreement (permissive variant)](https://cdla.io/permissive-1-0/).\n\n#### Data format\n\nAnnotations are provided in [COCO Camera Traps .json format](https://github.com/agentmorris/MegaDetector/blob/main/megadetector/data_management/README.md#coco-camera-traps-format).\n\nSome deployments used a green-blocking filter; the Boolean \"filter\" property on each image in the dataset indicates whether that images was captured with a filter.\n\n#### Downloading the data\n\nDownload links:\n\n[Download images from GCP](https://storage.googleapis.com/public-datasets-lila/noaa-psnf/noaa_estuary_fish-images.zip) (7GB)  \n\n[Download annotations from GCP](https://storage.googleapis.com/public-datasets-lila/noaa-psnf/noaa_estuary_fish-annotations-2023.08.19.zip) (4MB)  \n\n[Download images from AWS](http://us-west-2.opendata.source.coop.s3.amazonaws.com/agentmorris/lila-wildlife/noaa-psnf/noaa_estuary_fish-images.zip) (7GB)  \n\n[Download annotations from AWS](http://us-west-2.opendata.source.coop.s3.amazonaws.com/agentmorris/lila-wildlife/noaa-psnf/noaa_estuary_fish-annotations-2023.08.19.zip) (4MB)  \n\n[Download images from Azure](https://lilawildlife.blob.core.windows.net/lila-wildlife/noaa-psnf/noaa_estuary_fish-images.zip) (7GB)  \n\n[Download annotations from Azure](https://lilawildlife.blob.core.windows.net/lila-wildlife/noaa-psnf/noaa_estuary_fish-annotations-2023.08.19.zip) (4MB)\n\nHaving trouble downloading? Check out our [FAQ](https://lila.science/faq#downloadtips).\n\n![](http://lila.science/wp-content/uploads/2022/07/noaa-estuary-thumb-800.png)\n\n",
-  "_decomposed_from": "agentmorris/lila-wildlife"
+  "data_mode": "open",
+  "readme": "## README.md\n# NOAA Puget Sound Nearshore Fish 2017-2018\n\n### NOAA Puget Sound Nearshore Fish 2017-2018\n\n#### S3 base\n\n`s3://us-west-2.opendata.source.coop/agentmorris/lila-wildlife/noaa-psnf`\n\n#### Overview\n\nThis data set contains 77,739 images sampled from video collected on and around shellfish aquaculture farms in an estuary in the Northeast Pacific, in which 67,990 objects (fish and crustaceans) have been annotated on 30,384 images (the remainder have been annotated as \"empty\"). Boxes are on individual objects, but labeling was done at the image level, so objects are labeled as one of \"fish\", \"crab\", or \"fish_and_crab\", where \"fish_and_crab\" means that both categories were present in this image.\n\nThis data set was used to develop a computer vision model to detect fish, allowing specialists from NOAA to examine images in which fish were detected to classify and quantify their species more efficiently. Incorporating artificial intelligence into ecological and resource management fields will advance our understanding of potential changes in the marine environment in the context of fisheries and aquaculture expansion, shoreline development, and climate change.\n\nThese data were collected in a collaborative effort between the [NOAA Northwest Fisheries Science Center](https://www.fisheries.noaa.gov/about/northwest-fisheries-science-center), The Nature Conservancy, and shellfish aquaculture farms in WA, USA. Funding was provided by the NOAA Office of Aquaculture Grant (NA17OAR4170218) and Washington Sea Grant (UWSC10159). The data were labelled in a collaborative effort between the NOAA Northwest Fisheries Science Center and the Microsoft AI for Good Research Lab.\n\nCode for fine-tuning YOLOv5 on this data is available [here](https://github.com/agentmorris/noaa-fish).\n\n#### Citation, license, and contact information\n\nIf you use these data in a publication or report, please use the following citation to refer to the data collection process:\n\nFerriss B, Veggerby K, Bogeberg M, Conway-Cranos L, Hoberecht L, Kiffney P, Litle K, Toft J, Sanderson B. [Characterizing the habitat function of bivalve aquaculture using underwater video](https://www.int-res.com/abstracts/aei/v13/p439-454/). Aquaculture Environment Interactions. 2021 Nov 18;13:439-54.\n\n...and/or the following citation to refer to the annotations and public data set:\n\nFarrell DM, Ferriss B, Sanderson B, Veggerby K, Robinson L, Trivedi A, Pathak S, Muppalla S, Wang J, Morris D, Dodhia R. A labeled data set of underwater images of fish and crab species from five mesohabitats in Puget Sound WA USA. Scientific Data. 2023 Nov 13;10(1):799.\n\nFor questions about this data set, contact [Beth Sanderson](mailto:beth.sanderson@noaa.gov) (NOAA Northwest Fisheries Science Center) and [Bridget Ferriss](mailto:bridget.ferriss@noaa.gov) (NOAA Alaska Fisheries Science Center).\n\nThis data set is released under the [Community Data License Agreement (permissive variant)](https://cdla.io/permissive-1-0/).\n\n#### Data format\n\nAnnotations are provided in [COCO Camera Traps .json format](https://github.com/agentmorris/MegaDetector/blob/main/megadetector/data_management/README.md#coco-camera-traps-format).\n\nSome deployments used a green-blocking filter; the Boolean \"filter\" property on each image in the dataset indicates whether that images was captured with a filter.\n\n#### Downloading the data\n\nDownload links:\n\n[Download images from GCP](https://storage.googleapis.com/public-datasets-lila/noaa-psnf/noaa_estuary_fish-images.zip) (7GB)  \n\n[Download annotations from GCP](https://storage.googleapis.com/public-datasets-lila/noaa-psnf/noaa_estuary_fish-annotations-2023.08.19.zip) (4MB)  \n\n[Download images from AWS](http://us-west-2.opendata.source.coop.s3.amazonaws.com/agentmorris/lila-wildlife/noaa-psnf/noaa_estuary_fish-images.zip) (7GB)  \n\n[Download annotations from AWS](http://us-west-2.opendata.source.coop.s3.amazonaws.com/agentmorris/lila-wildlife/noaa-psnf/noaa_estuary_fish-annotations-2023.08.19.zip) (4MB)  \n\n[Download images from Azure](https://lilawildlife.blob.core.windows.net/lila-wildlife/noaa-psnf/noaa_estuary_fish-images.zip) (7GB)  \n\n[Download annotations from Azure](https://lilawildlife.blob.core.windows.net/lila-wildlife/noaa-psnf/noaa_estuary_fish-annotations-2023.08.19.zip) (4MB)\n\nHaving trouble downloading? Check out our [FAQ](https://lila.science/faq#downloadtips).\n\n![](http://lila.science/wp-content/uploads/2022/07/noaa-estuary-thumb-800.png)\n\n",
+  "_review": [
+    "providers: role [producer, licensor] for 'NOAA Northwest Fisheries Science Center' is an AI guess \u2014 Assumed licensor since NOAA is the primary named data collector/releaser; not explicitly stated as the licensing party.. Verify before flipping to _state: reviewed.",
+    "providers: role [producer] for 'The Nature Conservancy' is an AI guess \u2014 Assumed producer role from being named a collaborator in the data collection effort.. Verify before flipping to _state: reviewed.",
+    "extent.temporal: None (probe sample) widened to ['2017-01-01T00:00:00Z', '2018-01-01T00:00:00Z'] using README-stated coverage ['2017', '2018']."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-08-21T22:36:26+00:00"
 }
