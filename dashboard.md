@@ -1,41 +1,82 @@
 # Source Cooperative catalog — status
 
-_Updated 2026-08-21 21:25 UTC by the nightly pipeline._
+_Updated 2026-08-21 23:23 UTC by the nightly pipeline._
 
-**355 datasets cataloged**  ·  **0 queued for next run**  ·  last run handled **4**
+**396 datasets cataloged**  ·  **0 queued for next run**  ·  last run handled **43**
 
 ## Last run
 
-<details><summary>✅ drafted — 3 datasets</summary>
+<details><summary>✅ drafted — 42 datasets</summary>
 
-| repo                                                                                           |
-| ---------------------------------------------------------------------------------------------- |
-| [abry-tudelft/eubucco](https://source.coop/abry-tudelft/eubucco)                               |
-| [cholmes/portolan-nl](https://source.coop/cholmes/portolan-nl)                                 |
-| [harvard-lil/smithsonian-open-access](https://source.coop/harvard-lil/smithsonian-open-access) |
+| repo                                                                                                                                                   |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| [agentmorris/lila-wildlife](https://source.coop/agentmorris/lila-wildlife)                                                                             |
+| [agentmorris/lila-wildlife-adkres-invasive](https://source.coop/agentmorris/lila-wildlife-adkres-invasive)                                             |
+| [agentmorris/lila-wildlife-biome-health-project-maasai-mara-2018](https://source.coop/agentmorris/lila-wildlife-biome-health-project-maasai-mara-2018) |
+| [agentmorris/lila-wildlife-boxes-on-bees](https://source.coop/agentmorris/lila-wildlife-boxes-on-bees)                                                 |
+| [agentmorris/lila-wildlife-california-small-animals](https://source.coop/agentmorris/lila-wildlife-california-small-animals)                           |
+| [agentmorris/lila-wildlife-caltech-unzipped](https://source.coop/agentmorris/lila-wildlife-caltech-unzipped)                                           |
+| [agentmorris/lila-wildlife-channel-islands-camera-traps](https://source.coop/agentmorris/lila-wildlife-channel-islands-camera-traps)                   |
+| [agentmorris/lila-wildlife-community-fish-detection-dataset](https://source.coop/agentmorris/lila-wildlife-community-fish-detection-dataset)           |
+| [agentmorris/lila-wildlife-conservationdrones](https://source.coop/agentmorris/lila-wildlife-conservationdrones)                                       |
+| [agentmorris/lila-wildlife-desert-lion-camera-traps](https://source.coop/agentmorris/lila-wildlife-desert-lion-camera-traps)                           |
+| [agentmorris/lila-wildlife-ena24](https://source.coop/agentmorris/lila-wildlife-ena24)                                                                 |
+| [agentmorris/lila-wildlife-geolifeclef-2020](https://source.coop/agentmorris/lila-wildlife-geolifeclef-2020)                                           |
+| [agentmorris/lila-wildlife-icimod-glacier-mapping](https://source.coop/agentmorris/lila-wildlife-icimod-glacier-mapping)                               |
+| [agentmorris/lila-wildlife-idaho-camera-traps](https://source.coop/agentmorris/lila-wildlife-idaho-camera-traps)                                       |
+| [agentmorris/lila-wildlife-islandconservationcameratraps](https://source.coop/agentmorris/lila-wildlife-islandconservationcameratraps)                 |
+| [agentmorris/lila-wildlife-izembek-lagoon-birds](https://source.coop/agentmorris/lila-wildlife-izembek-lagoon-birds)                                   |
+| [agentmorris/lila-wildlife-larch-casebearer](https://source.coop/agentmorris/lila-wildlife-larch-casebearer)                                           |
+| [agentmorris/lila-wildlife-lindenthal-camera-traps](https://source.coop/agentmorris/lila-wildlife-lindenthal-camera-traps)                             |
+| [agentmorris/lila-wildlife-missouricameratraps](https://source.coop/agentmorris/lila-wildlife-missouricameratraps)                                     |
+| [agentmorris/lila-wildlife-nkhotakota-camera-traps](https://source.coop/agentmorris/lila-wildlife-nkhotakota-camera-traps)                             |
+| [agentmorris/lila-wildlife-noaa-kotz](https://source.coop/agentmorris/lila-wildlife-noaa-kotz)                                                         |
+| [agentmorris/lila-wildlife-noaa-psnf](https://source.coop/agentmorris/lila-wildlife-noaa-psnf)                                                         |
+| [agentmorris/lila-wildlife-nz-thermal](https://source.coop/agentmorris/lila-wildlife-nz-thermal)                                                       |
+| [agentmorris/lila-wildlife-nz-trailcams](https://source.coop/agentmorris/lila-wildlife-nz-trailcams)                                                   |
+| [agentmorris/lila-wildlife-orinoquia-camera-traps](https://source.coop/agentmorris/lila-wildlife-orinoquia-camera-traps)                               |
+| [agentmorris/lila-wildlife-osu-small-animals](https://source.coop/agentmorris/lila-wildlife-osu-small-animals)                                         |
+| [agentmorris/lila-wildlife-sea-star-re-id](https://source.coop/agentmorris/lila-wildlife-sea-star-re-id)                                               |
+| [agentmorris/lila-wildlife-seattleish-camera-traps](https://source.coop/agentmorris/lila-wildlife-seattleish-camera-traps)                             |
+| [agentmorris/lila-wildlife-snapshot-safari](https://source.coop/agentmorris/lila-wildlife-snapshot-safari)                                             |
+| [agentmorris/lila-wildlife-snapshot-safari-2024-expansion](https://source.coop/agentmorris/lila-wildlife-snapshot-safari-2024-expansion)               |
+| [agentmorris/lila-wildlife-snapshotserengeti-unzipped](https://source.coop/agentmorris/lila-wildlife-snapshotserengeti-unzipped)                       |
+| [agentmorris/lila-wildlife-swg-camera-traps](https://source.coop/agentmorris/lila-wildlife-swg-camera-traps)                                           |
+| [agentmorris/lila-wildlife-uas-imagery-of-migratory-waterfowl](https://source.coop/agentmorris/lila-wildlife-uas-imagery-of-migratory-waterfowl)       |
+| [agentmorris/lila-wildlife-unsw-predators](https://source.coop/agentmorris/lila-wildlife-unsw-predators)                                               |
+| [agentmorris/lila-wildlife-wcs-unzipped](https://source.coop/agentmorris/lila-wildlife-wcs-unzipped)                                                   |
+| [agentmorris/lila-wildlife-wellington-unzipped](https://source.coop/agentmorris/lila-wildlife-wellington-unzipped)                                     |
+| [agentmorris/lila-wildlife-wild-me](https://source.coop/agentmorris/lila-wildlife-wild-me)                                                             |
+| [agentmorris/lila-wildlife-wni-giraffes](https://source.coop/agentmorris/lila-wildlife-wni-giraffes)                                                   |
+| [cboettig/mobi](https://source.coop/cboettig/mobi)                                                                                                     |
+| [jrc-lucas/jrc-lucas-ml](https://source.coop/jrc-lucas/jrc-lucas-ml)                                                                                   |
+| [planet/skyscraper](https://source.coop/planet/skyscraper)                                                                                             |
+| [source/metadata-catalog](https://source.coop/source/metadata-catalog)                                                                                 |
 
 </details>
 
-<details><summary>⏭️ incomplete (gap) — 1 dataset</summary>
+<details><summary>⚠️ probe failed (issue filed) — 1 dataset</summary>
 
-| repo                                                                             | why           |
-| -------------------------------------------------------------------------------- | ------------- |
-| [forestsignal/forestsignal-ca](https://source.coop/forestsignal/forestsignal-ca) | no_files .tif |
+| repo                                                                               | why             |
+| ---------------------------------------------------------------------------------- | --------------- |
+| [wadhwani-ai/wiai-pm-open-data](https://source.coop/wadhwani-ai/wiai-pm-open-data) | all_failed .jpg |
 
 </details>
 
+
+See [open probe-failure issues](https://github.com/source-cooperative/metadata-catalog/issues?q=is%3Aissue+is%3Aopen+label%3Aprobe-failure).
 
 ## Recent runs
 
 | run                                                                                                    | outcome   | drafted | failed | queued | cataloged |
 | ------------------------------------------------------------------------------------------------------ | --------- | ------: | -----: | -----: | --------: |
+| [2026-08-21](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/32532487535) | ✅ success |      42 |      1 |      0 |       396 |
 | [2026-08-21](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/32527111256) | ✅ success |       3 |      0 |      0 |       355 |
 | [2026-08-21](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/32463860945) | ✅ success |       0 |      0 |      0 |       355 |
 | [2026-08-21](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/32424301885) | ✅ success |      44 |      6 |      0 |       355 |
 | [2026-08-17](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/32011099608) | ✅ success |       7 |      0 |     34 |       346 |
 | [2026-08-16](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/31936760237) | ✅ success |       0 |      0 |      0 |       344 |
 | [2026-08-15](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/31874788883) | ✅ success |       0 |      0 |      0 |       344 |
-| [2026-08-14](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/31785271901) | ✅ success |       3 |      0 |      0 |       344 |
 
 ## Persistent failures
 
@@ -54,24 +95,87 @@ _Updated 2026-08-21 21:25 UTC by the nightly pipeline._
 
 </details>
 
+## Perpetual gaps
+
+**2 datasets** re-queued every run without progress — each retry fetched the repo's keys and hit the same gap.
+
+| repo                                 | gap                 | runs | since      | retries                     |
+| ------------------------------------ | ------------------- | ---: | ---------- | --------------------------- |
+| cboettig/obis                        | all_failed .parquet |   21 | 2026-04-24 | backed off until 2026-09-20 |
+| dynamical/dwd-icon-eu-forecast-5-day | all_failed .zarr    |   18 | 2026-06-04 | backed off until 2026-09-20 |
+
+## 12 datasets need a prober
+
+<details><summary>by format — ranked by bytes unlocked if built</summary>
+
+<details><summary>.zip — 4 datasets · 17.9 TB</summary>
+
+| repo                                                                                     |   bytes |
+| ---------------------------------------------------------------------------------------- | ------: |
+| [harvard-lil/gov-data](https://source.coop/harvard-lil/gov-data)                         | 17.9 TB |
+| [taco/darktom](https://source.coop/taco/darktom)                                         |  3.0 GB |
+| [cboettig/usgs-ungulate-migration](https://source.coop/cboettig/usgs-ungulate-migration) |  1.1 GB |
+| [asterisk-labs/cozip](https://source.coop/asterisk-labs/cozip)                           | 98.5 KB |
+
+</details>
+
+<details><summary>.mkv — 1 dataset · 10.9 GB</summary>
+
+| repo                                                                                                   |   bytes |
+| ------------------------------------------------------------------------------------------------------ | ------: |
+| [dataforcanada/d4c-datapkg-field-imagery](https://source.coop/dataforcanada/d4c-datapkg-field-imagery) | 10.9 GB |
+
+</details>
+
+<details><summary>.gndc — 1 dataset · 720.9 MB</summary>
+
+| repo                                                                     |    bytes |
+| ------------------------------------------------------------------------ | -------: |
+| [jianbo/gndc-higlass-ls20](https://source.coop/jianbo/gndc-higlass-ls20) | 720.9 MB |
+
+</details>
+
+<details><summary>.json — 5 datasets · 329.4 MB</summary>
+
+| repo                                                                                               |    bytes |
+| -------------------------------------------------------------------------------------------------- | -------: |
+| [troyschmidt/hurrevac-storm-advisories](https://source.coop/troyschmidt/hurrevac-storm-advisories) | 321.4 MB |
+| [fiboa/br-ba-lem](https://source.coop/fiboa/br-ba-lem)                                             |   7.3 MB |
+| [youssef-harby/overture-maps-stac](https://source.coop/youssef-harby/overture-maps-stac)           | 718.0 KB |
+| [fish-pace/chla-z](https://source.coop/fish-pace/chla-z)                                           |  12.0 KB |
+| [cboettig/glen](https://source.coop/cboettig/glen)                                                 |  10.9 KB |
+
+</details>
+
+<details><summary>.sqlite — 1 dataset · 42.1 MB</summary>
+
+| repo                                                       |   bytes |
+| ---------------------------------------------------------- | ------: |
+| [catalystcoop/pudl](https://source.coop/catalystcoop/pudl) | 42.1 MB |
+
+</details>
+
+</details>
+
 ## Catalog funnel
 
 _Each bucket links to its datasets under [Datasets per category](#datasets-per-category)._
 
 | group                         | agg count | agg bytes | count |    bytes |
 | ----------------------------- | --------: | --------: | ----: | -------: |
-| [CATALOGED](#cataloged)       |       351 |    4.1 PB |       |          |
-|   drafted                     |           |           |   351 |   4.1 PB |
-| [BACKLOG](#backlog)           |         4 |  130.6 GB |       |          |
+| [CATALOGED](#cataloged)       |       355 |    4.1 PB |       |          |
+|   drafted                     |           |           |   355 |   4.1 PB |
+| [BACKLOG](#backlog)           |         5 |  222.4 GB |       |          |
+|   all_failed .jpg             |           |           |     1 |  91.8 GB |
 |   amended (no format)         |           |           |     1 |  65.7 GB |
 |   all_failed .parquet         |           |           |     1 |  61.6 GB |
 |   all_failed .zarr            |           |           |     1 |   3.3 GB |
 |   in s3, not yet seeded       |           |           |     1 |    3.0 B |
-| [SKIPPED](#skipped)           |       209 |    1.7 PB |       |          |
+| [SKIPPED](#skipped)           |       204 |    1.6 PB |       |          |
 |   unlisted                    |           |           |   161 |   1.6 PB |
-|   not_geo                     |           |           |    18 |  61.4 TB |
+|   no_prober                   |           |           |    12 |  17.9 TB |
 |   test_repo                   |           |           |     7 |   2.0 TB |
-|   tiny                        |           |           |    23 |  30.6 KB |
+|   tiny                        |           |           |    24 |  31.2 KB |
 | [UNREGISTERED](#unregistered) |        42 |  951.3 TB |       |          |
 |   stowaways                   |           |           |    42 | 951.3 TB |
 | S3 total                      |       606 |    6.7 PB |       |          |
@@ -82,7 +186,7 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 
 ### CATALOGED
 
-<details><summary>drafted — 351 datasets · 4.1 PB</summary>
+<details><summary>drafted — 355 datasets · 4.1 PB</summary>
 
 | repo                                                                                                                                                 |    bytes |
 | ---------------------------------------------------------------------------------------------------------------------------------------------------- | -------: |
@@ -102,6 +206,7 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 | [cworthy/oae-efficiency-atlas](https://source.coop/cworthy/oae-efficiency-atlas)                                                                     |  56.6 TB |
 | [dynamical/ecmwf-ifs-ens-forecast-15-day-0-25-degree](https://source.coop/dynamical/ecmwf-ifs-ens-forecast-15-day-0-25-degree)                       |  48.4 TB |
 | [dynamical/dwd-icon-grib](https://source.coop/dynamical/dwd-icon-grib)                                                                               |  46.9 TB |
+| [agentmorris/lila-wildlife](https://source.coop/agentmorris/lila-wildlife)                                                                           |  43.3 TB |
 | [bkr/geos](https://source.coop/bkr/geos)                                                                                                             |  39.0 TB |
 | [bkr/ifs](https://source.coop/bkr/ifs)                                                                                                               |  37.1 TB |
 | [dynamical/noaa-gfs-forecast](https://source.coop/dynamical/noaa-gfs-forecast)                                                                       |  29.0 TB |
@@ -211,6 +316,7 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 | [reflective/geomipzarr](https://source.coop/reflective/geomipzarr)                                                                                   |  47.3 GB |
 | [cboettig/padus](https://source.coop/cboettig/padus)                                                                                                 |  46.8 GB |
 | [tge-labs/mgrs](https://source.coop/tge-labs/mgrs)                                                                                                   |  45.6 GB |
+| [planet/skyscraper](https://source.coop/planet/skyscraper)                                                                                           |  44.6 GB |
 | [cboettig/census](https://source.coop/cboettig/census)                                                                                               |  44.3 GB |
 | [cboettig/hazard](https://source.coop/cboettig/hazard)                                                                                               |  40.7 GB |
 | [cboettig/high-seas](https://source.coop/cboettig/high-seas)                                                                                         |  40.5 GB |
@@ -271,6 +377,7 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 | [fiboa/es-cm](https://source.coop/fiboa/es-cm)                                                                                                       |   3.4 GB |
 | [cboettig/ecoregion](https://source.coop/cboettig/ecoregion)                                                                                         |   3.3 GB |
 | [earthgenome/amazon-mining-watch](https://source.coop/earthgenome/amazon-mining-watch)                                                               |   3.3 GB |
+| [jrc-lucas/jrc-lucas-ml](https://source.coop/jrc-lucas/jrc-lucas-ml)                                                                                 |   3.3 GB |
 | [fiboa/es-vc](https://source.coop/fiboa/es-vc)                                                                                                       |   3.2 GB |
 | [nlebovits/eurosat-ms](https://source.coop/nlebovits/eurosat-ms)                                                                                     |   3.2 GB |
 | [englacial/bedmap](https://source.coop/englacial/bedmap)                                                                                             |   3.2 GB |
@@ -350,6 +457,7 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 | [fiboa/slovenia](https://source.coop/fiboa/slovenia)                                                                                                 | 354.6 MB |
 | [addresscloud/epc](https://source.coop/addresscloud/epc)                                                                                             | 302.5 MB |
 | [fiboa/es-nc](https://source.coop/fiboa/es-nc)                                                                                                       | 293.8 MB |
+| [cboettig/mobi](https://source.coop/cboettig/mobi)                                                                                                   | 283.4 MB |
 | [fiboa/de-nrw](https://source.coop/fiboa/de-nrw)                                                                                                     | 273.9 MB |
 | [tabaqat/roads-overture-pmtiles](https://source.coop/tabaqat/roads-overture-pmtiles)                                                                 | 268.6 MB |
 | [fiboa/de-nds](https://source.coop/fiboa/de-nds)                                                                                                     | 252.2 MB |
@@ -422,6 +530,7 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 | [avikertesz/003](https://source.coop/avikertesz/003)                                                                                                 |   5.6 MB |
 | [maxar/maxar-opendata](https://source.coop/maxar/maxar-opendata)                                                                                     |   5.0 MB |
 | [tabaqat/riyadh-places](https://source.coop/tabaqat/riyadh-places)                                                                                   |   4.7 MB |
+| [source/metadata-catalog](https://source.coop/source/metadata-catalog)                                                                               |   4.4 MB |
 | [cholmes/nyc-taxi-zones](https://source.coop/cholmes/nyc-taxi-zones)                                                                                 |   3.5 MB |
 | [mdsumner/mdstest2](https://source.coop/mdsumner/mdstest2)                                                                                           |   3.2 MB |
 | [kerner-lab/fields-of-the-world-portugal](https://source.coop/kerner-lab/fields-of-the-world-portugal)                                               |   3.0 MB |
@@ -436,11 +545,18 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 | [ftw/ftw-inference-input](https://source.coop/ftw/ftw-inference-input)                                                                               | 342.9 KB |
 | [kerner-lab/fields-of-the-world-rwanda](https://source.coop/kerner-lab/fields-of-the-world-rwanda)                                                   | 140.4 KB |
 | [kerner-lab/fields-of-the-world-kenya](https://source.coop/kerner-lab/fields-of-the-world-kenya)                                                     |  92.5 KB |
-| [forestsignal/forestsignal-ca](https://source.coop/forestsignal/forestsignal-ca)                                                                     |  598.0 B |
 
 </details>
 
 ### BACKLOG
+
+<details><summary>all_failed .jpg — 1 dataset · 91.8 GB</summary>
+
+| repo                                                                               |   bytes |
+| ---------------------------------------------------------------------------------- | ------: |
+| [wadhwani-ai/wiai-pm-open-data](https://source.coop/wadhwani-ai/wiai-pm-open-data) | 91.8 GB |
+
+</details>
 
 <details><summary>amended (no format) — 1 dataset · 65.7 GB</summary>
 
@@ -644,24 +760,18 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 
 </details>
 
-<details><summary>not_geo — 18 datasets · 61.4 TB</summary>
+<details><summary>no_prober — 12 datasets · 17.9 TB</summary>
 
 | repo                                                                                                   |    bytes |
 | ------------------------------------------------------------------------------------------------------ | -------: |
-| [agentmorris/lila-wildlife](https://source.coop/agentmorris/lila-wildlife)                             |  43.3 TB |
 | [harvard-lil/gov-data](https://source.coop/harvard-lil/gov-data)                                       |  17.9 TB |
-| [wadhwani-ai/wiai-pm-open-data](https://source.coop/wadhwani-ai/wiai-pm-open-data)                     |  91.8 GB |
-| [planet/skyscraper](https://source.coop/planet/skyscraper)                                             |  44.6 GB |
 | [dataforcanada/d4c-datapkg-field-imagery](https://source.coop/dataforcanada/d4c-datapkg-field-imagery) |  10.9 GB |
-| [jrc-lucas/jrc-lucas-ml](https://source.coop/jrc-lucas/jrc-lucas-ml)                                   |   3.3 GB |
 | [taco/darktom](https://source.coop/taco/darktom)                                                       |   3.0 GB |
 | [cboettig/usgs-ungulate-migration](https://source.coop/cboettig/usgs-ungulate-migration)               |   1.1 GB |
 | [jianbo/gndc-higlass-ls20](https://source.coop/jianbo/gndc-higlass-ls20)                               | 720.9 MB |
 | [troyschmidt/hurrevac-storm-advisories](https://source.coop/troyschmidt/hurrevac-storm-advisories)     | 321.4 MB |
-| [cboettig/mobi](https://source.coop/cboettig/mobi)                                                     | 283.4 MB |
 | [catalystcoop/pudl](https://source.coop/catalystcoop/pudl)                                             |  42.1 MB |
 | [fiboa/br-ba-lem](https://source.coop/fiboa/br-ba-lem)                                                 |   7.3 MB |
-| [source/metadata-catalog](https://source.coop/source/metadata-catalog)                                 |   4.4 MB |
 | [youssef-harby/overture-maps-stac](https://source.coop/youssef-harby/overture-maps-stac)               | 718.0 KB |
 | [asterisk-labs/cozip](https://source.coop/asterisk-labs/cozip)                                         |  98.5 KB |
 | [fish-pace/chla-z](https://source.coop/fish-pace/chla-z)                                               |  12.0 KB |
@@ -683,7 +793,7 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 
 </details>
 
-<details><summary>tiny — 23 datasets · 30.6 KB</summary>
+<details><summary>tiny — 24 datasets · 31.2 KB</summary>
 
 | repo                                                                                               |   bytes |
 | -------------------------------------------------------------------------------------------------- | ------: |
@@ -696,6 +806,7 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 | [iceberg/s3_logs_hourly_stats](https://source.coop/iceberg/s3_logs_hourly_stats)                   |  1.7 KB |
 | [nlebovits/philadelphia-aerial-imagery](https://source.coop/nlebovits/philadelphia-aerial-imagery) |  1.2 KB |
 | [fiboa/spain](https://source.coop/fiboa/spain)                                                     |  1.2 KB |
+| [forestsignal/forestsignal-ca](https://source.coop/forestsignal/forestsignal-ca)                   | 598.0 B |
 | [tyler/tylers-test-product-id](https://source.coop/tyler/tylers-test-product-id)                   | 548.0 B |
 | [saraka/test-1](https://source.coop/saraka/test-1)                                                 | 343.0 B |
 | [bkr/gmgsi](https://source.coop/bkr/gmgsi)                                                         | 209.0 B |
@@ -771,58 +882,58 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 | --------- | ------------------------------------------------ | ----: | -------: |
 | ghosts    | catalog entry, no S3 data                        |    49 |  29.8 TB |
 | stowaways | S3 data, no source.coop product                  |    42 | 951.3 TB |
-| stale     | catalog bytes ≠ S3 (fixed by `make process-all`) |     6 | 111.1 GB |
+| stale     | catalog bytes ≠ S3 (fixed by `make process-all`) |     5 | 111.1 GB |
 
 <details><summary>ghosts — 49 datasets</summary>
 
 | repo                                                            | state   | catalog claims |
 | --------------------------------------------------------------- | ------- | -------------: |
-| agentmorris/lila-wildlife-snapshotserengeti-unzipped            | seed    |         6.1 TB |
-| agentmorris/lila-wildlife-snapshot-safari-2024-expansion        | seed    |         5.0 TB |
-| agentmorris/lila-wildlife-idaho-camera-traps                    | seed    |         3.1 TB |
-| agentmorris/lila-wildlife-swg-camera-traps                      | seed    |         2.8 TB |
-| agentmorris/lila-wildlife-nz-trailcams                          | seed    |         2.1 TB |
-| agentmorris/lila-wildlife-noaa-kotz                             | seed    |         1.7 TB |
+| agentmorris/lila-wildlife-snapshotserengeti-unzipped            | drafted |         6.1 TB |
+| agentmorris/lila-wildlife-snapshot-safari-2024-expansion        | drafted |         5.0 TB |
+| agentmorris/lila-wildlife-idaho-camera-traps                    | drafted |         3.1 TB |
+| agentmorris/lila-wildlife-swg-camera-traps                      | drafted |         2.8 TB |
+| agentmorris/lila-wildlife-nz-trailcams                          | drafted |         2.1 TB |
+| agentmorris/lila-wildlife-noaa-kotz                             | drafted |         1.7 TB |
 | agentmorris/lila-wildlife-nacti-unzipped                        | drafted |         1.5 TB |
 | agentmorris/lila-wildlife-lcmcvpr2019                           | drafted |       886.7 GB |
-| agentmorris/lila-wildlife-california-small-animals              | seed    |       790.5 GB |
-| agentmorris/lila-wildlife-geolifeclef-2020                      | seed    |       780.3 GB |
-| agentmorris/lila-wildlife-nz-thermal                            | seed    |       677.4 GB |
-| agentmorris/lila-wildlife-wcs-unzipped                          | seed    |       594.6 GB |
-| agentmorris/lila-wildlife-snapshot-safari                       | seed    |       542.3 GB |
-| agentmorris/lila-wildlife-nkhotakota-camera-traps               | seed    |       337.5 GB |
-| agentmorris/lila-wildlife-seattleish-camera-traps               | seed    |       321.2 GB |
-| agentmorris/lila-wildlife-izembek-lagoon-birds                  | seed    |       265.4 GB |
-| agentmorris/lila-wildlife-community-fish-detection-dataset      | seed    |       261.1 GB |
-| agentmorris/lila-wildlife-lindenthal-camera-traps               | seed    |       213.1 GB |
-| agentmorris/lila-wildlife-wni-giraffes                          | seed    |       200.7 GB |
-| agentmorris/lila-wildlife-wellington-unzipped                   | seed    |       198.4 GB |
-| agentmorris/lila-wildlife-channel-islands-camera-traps          | seed    |       186.4 GB |
-| agentmorris/lila-wildlife-islandconservationcameratraps         | seed    |       164.0 GB |
-| agentmorris/lila-wildlife-desert-lion-camera-traps              | seed    |       154.7 GB |
-| agentmorris/lila-wildlife-orinoquia-camera-traps                | seed    |       154.5 GB |
-| agentmorris/lila-wildlife-unsw-predators                        | seed    |       130.4 GB |
-| agentmorris/lila-wildlife-caltech-unzipped                      | seed    |       112.4 GB |
-| agentmorris/lila-wildlife-conservationdrones                    | seed    |        98.3 GB |
-| agentmorris/lila-wildlife-icimod-glacier-mapping                | seed    |        73.9 GB |
-| agentmorris/lila-wildlife-biome-health-project-maasai-mara-2018 | seed    |        64.0 GB |
+| agentmorris/lila-wildlife-california-small-animals              | drafted |       790.5 GB |
+| agentmorris/lila-wildlife-geolifeclef-2020                      | drafted |       780.3 GB |
+| agentmorris/lila-wildlife-nz-thermal                            | drafted |       677.4 GB |
+| agentmorris/lila-wildlife-wcs-unzipped                          | drafted |       594.6 GB |
+| agentmorris/lila-wildlife-snapshot-safari                       | drafted |       542.3 GB |
+| agentmorris/lila-wildlife-nkhotakota-camera-traps               | drafted |       337.5 GB |
+| agentmorris/lila-wildlife-seattleish-camera-traps               | drafted |       321.2 GB |
+| agentmorris/lila-wildlife-izembek-lagoon-birds                  | drafted |       265.4 GB |
+| agentmorris/lila-wildlife-community-fish-detection-dataset      | drafted |       261.1 GB |
+| agentmorris/lila-wildlife-lindenthal-camera-traps               | drafted |       213.1 GB |
+| agentmorris/lila-wildlife-wni-giraffes                          | drafted |       200.7 GB |
+| agentmorris/lila-wildlife-wellington-unzipped                   | drafted |       198.4 GB |
+| agentmorris/lila-wildlife-channel-islands-camera-traps          | drafted |       186.4 GB |
+| agentmorris/lila-wildlife-islandconservationcameratraps         | drafted |       164.0 GB |
+| agentmorris/lila-wildlife-desert-lion-camera-traps              | drafted |       154.7 GB |
+| agentmorris/lila-wildlife-orinoquia-camera-traps                | drafted |       154.5 GB |
+| agentmorris/lila-wildlife-unsw-predators                        | drafted |       130.4 GB |
+| agentmorris/lila-wildlife-caltech-unzipped                      | drafted |       112.4 GB |
+| agentmorris/lila-wildlife-conservationdrones                    | drafted |        98.3 GB |
+| agentmorris/lila-wildlife-icimod-glacier-mapping                | drafted |        73.9 GB |
+| agentmorris/lila-wildlife-biome-health-project-maasai-mara-2018 | drafted |        64.0 GB |
 | agentmorris/lila-wildlife-boise-state-vegetation                | drafted |        62.9 GB |
-| agentmorris/lila-wildlife-osu-small-animals                     | seed    |        60.8 GB |
-| agentmorris/lila-wildlife-wild-me                               | seed    |        29.6 GB |
+| agentmorris/lila-wildlife-osu-small-animals                     | drafted |        60.8 GB |
+| agentmorris/lila-wildlife-wild-me                               | drafted |        29.6 GB |
 | ftw/financial-times                                             | seed    |        22.8 GB |
-| agentmorris/lila-wildlife-missouricameratraps                   | seed    |        20.5 GB |
-| agentmorris/lila-wildlife-ena24                                 | seed    |         7.8 GB |
-| agentmorris/lila-wildlife-noaa-psnf                             | seed    |         7.7 GB |
+| agentmorris/lila-wildlife-missouricameratraps                   | drafted |        20.5 GB |
+| agentmorris/lila-wildlife-ena24                                 | drafted |         7.8 GB |
+| agentmorris/lila-wildlife-noaa-psnf                             | drafted |         7.7 GB |
 | harvard-lil/duckdb-test                                         | seed    |         5.3 GB |
 | agentmorris/lila-wildlife-cvwc2019                              | drafted |         4.4 GB |
 | dataforcanada/ca-orthoimagery-labs                              | seed    |         4.3 GB |
-| agentmorris/lila-wildlife-larch-casebearer                      | seed    |         3.5 GB |
+| agentmorris/lila-wildlife-larch-casebearer                      | drafted |         3.5 GB |
 | agentmorris/lila-wildlife-aerial-birds-west-africa              | drafted |         2.4 GB |
-| agentmorris/lila-wildlife-boxes-on-bees                         | seed    |         2.1 GB |
-| agentmorris/lila-wildlife-sea-star-re-id                        | seed    |         1.9 GB |
+| agentmorris/lila-wildlife-boxes-on-bees                         | drafted |         2.1 GB |
+| agentmorris/lila-wildlife-sea-star-re-id                        | drafted |         1.9 GB |
 | tge-labs/tessera                                                | seed    |         1.1 GB |
-| agentmorris/lila-wildlife-uas-imagery-of-migratory-waterfowl    | seed    |       337.8 MB |
-| agentmorris/lila-wildlife-adkres-invasive                       | seed    |       158.7 MB |
+| agentmorris/lila-wildlife-uas-imagery-of-migratory-waterfowl    | drafted |       337.8 MB |
+| agentmorris/lila-wildlife-adkres-invasive                       | drafted |       158.7 MB |
 | major-tom/copernicusdem                                         | seed    |        13.1 MB |
 | tge-labs/terrabit                                               | seed    |         6.6 MB |
 | dataforcanada/ca-foundation-labs                                | seed    |        86.9 KB |
@@ -878,16 +989,15 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 
 </details>
 
-<details><summary>stale — 6 datasets</summary>
+<details><summary>stale — 5 datasets</summary>
 
-| repo                         | updated    |       catalog → S3 |
-| ---------------------------- | ---------- | -----------------: |
-| cboettig/usgs-wbd            | 2026-08-12 |  15.2 GB → 15.5 GB |
-| cboettig/padus               | 2026-08-12 |  46.7 GB → 46.8 GB |
-| cboettig/high-seas           | 2026-08-12 |  40.5 GB → 40.5 GB |
-| cboettig/fire                | 2026-08-12 |    6.7 GB → 6.8 GB |
-| cboettig/connectivity        | 2026-08-12 |    1.5 GB → 1.5 GB |
-| forestsignal/forestsignal-ca | 2026-06-14 | 726.4 GB → 598.0 B |
+| repo                  | updated    |      catalog → S3 |
+| --------------------- | ---------- | ----------------: |
+| cboettig/usgs-wbd     | 2026-08-12 | 15.2 GB → 15.5 GB |
+| cboettig/padus        | 2026-08-12 | 46.7 GB → 46.8 GB |
+| cboettig/high-seas    | 2026-08-12 | 40.5 GB → 40.5 GB |
+| cboettig/fire         | 2026-08-12 |   6.7 GB → 6.8 GB |
+| cboettig/connectivity | 2026-08-12 |   1.5 GB → 1.5 GB |
 
 </details>
 
