@@ -1,16 +1,136 @@
 {
   "schema_version": 1,
-  "account_id": "caires-tudelft",
-  "product_id": "plateau-tokyo-fcb-2",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
+  "id": "caires-tudelft/plateau-tokyo-fcb-2",
   "title": "Plateau Tokyo Buildings in FlatCityBuf",
-  "description": "Plateau Tokyo Buildings in FlatCityBuf (Updated 29 Jan 2026)",
-  "keywords": [],
-  "created_at": "2026-01-29T22:06:31.807Z",
-  "updated_at": "2026-01-29T22:06:31.807Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": "open",
+  "description": "3D building models for Tokyo from Japan's Project PLATEAU city-model initiative, encoded in the FlatCityBuf (fcb) format, with per-building attributes including height, storey counts, usage class, and floor area.",
+  "keywords": [
+    "building-footprints",
+    "3d-city-model",
+    "citygml",
+    "flatcitybuf",
+    "plateau",
+    "tokyo"
+  ],
+  "providers": [
+    {
+      "name": "Project PLATEAU / MLIT (Ministry of Land, Infrastructure, Transport and Tourism, Japan)",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/caires-tudelft/plateau-tokyo-fcb-2"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 3217290
+  },
+  "assets": {
+    "output": {
+      "href": "https://data.source.coop/caires-tudelft/plateau-tokyo-fcb-2/output.fcb",
+      "type": "application/octet-stream",
+      "title": "output.fcb",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "creationDate",
+          "type": "DateTime"
+        },
+        {
+          "name": "\u5ef6\u3079\u9762\u7a4d\u63db\u7b97\u4fc2\u6570",
+          "type": "String"
+        },
+        {
+          "name": "\u5927\u5b57\u30fb\u753a\u30b3\u30fc\u30c9",
+          "type": "String",
+          "description": "[admin_code] Oaza/town-level administrative area code"
+        },
+        {
+          "name": "\u753a\u30fb\u4e01\u76ee\u30b3\u30fc\u30c9",
+          "type": "String",
+          "description": "[admin_code] Chome (block) level administrative code"
+        },
+        {
+          "name": "13+\u533a\u5e02\u753a\u6751\u30b3\u30fc\u30c9+\u5927\u5b57\u30fb\u753a\u30b3\u30fc\u30c9+\u753a\u30fb\u4e01\u76ee\u30b3\u30fc\u30c9",
+          "type": "String",
+          "description": "[admin_code] Combined prefecture (13=Tokyo) + municipality + district + block administrative code"
+        },
+        {
+          "name": "measuredHeight",
+          "type": "Double"
+        },
+        {
+          "name": "class",
+          "type": "String"
+        },
+        {
+          "name": "usage",
+          "type": "String"
+        },
+        {
+          "name": "storeysAboveGround",
+          "type": "ULong"
+        },
+        {
+          "name": "storeysBelowGround",
+          "type": "ULong"
+        },
+        {
+          "name": "\u8aac\u660e\u6ce8\u8a18",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        }
+      ],
+      "table:row_count": 3217290
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/caires-tudelft/plateau-tokyo-fcb-2/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/caires-tudelft/plateau-tokyo-fcb-2",
+      "title": "Source Cooperative product page"
+    }
+  ],
+  "product_id": "plateau-tokyo-fcb-2",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -23,20 +143,29 @@
       "prefix": "caires-tudelft/plateau-tokyo-fcb-2/"
     }
   },
-  "object_count": 1,
-  "total_bytes": 4063055824,
   "exts": {
     "fcb": 1
   },
-  "_state": "seed",
+  "created_at": "2026-01-29T22:06:31.807Z",
+  "visibility": "public",
+  "data_mode": "open",
+  "updated_at": "2026-01-29T22:06:31.807Z",
+  "account_id": "caires-tudelft",
+  "disabled": false,
+  "object_count": 1,
+  "total_bytes": 4063055824,
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "id": "caires-tudelft/plateau-tokyo-fcb-2",
-  "ext_bytes": {
-    "fcb": 4063055824
-  },
-  "store_format": null,
-  "cataloged_at": "2026-06-30T23:16:06+00:00"
+  "featured": 0,
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
+    "providers: role [producer] for 'Project PLATEAU / MLIT (Ministry of Land, Infrastructure, Transport and Tourism, Japan)' is an AI guess \u2014 Inferred from the 'Plateau Tokyo Buildings' title; no README present to confirm.. Verify before flipping to _state: reviewed.",
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [output.\u5927\u5b57\u30fb\u753a\u30b3\u30fc\u30c9 (admin_code), output.\u753a\u30fb\u4e01\u76ee\u30b3\u30fc\u30c9 (admin_code), output.13+\u533a\u5e02\u753a\u6751\u30b3\u30fc\u30c9+\u5927\u5b57\u30fb\u753a\u30b3\u30fc\u30c9+\u753a\u30fb\u4e01\u76ee\u30b3\u30fc\u30c9 (admin_code)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-08-21T00:05:58+00:00",
+  "objects_updated_at": "2026-01-29T22:13:45+00:00",
+  "store_format": null
 }
