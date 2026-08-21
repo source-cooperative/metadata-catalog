@@ -1,61 +1,10 @@
 # Source Cooperative catalog — status
 
-_Updated 2026-08-21 02:08 UTC by the nightly pipeline._
+_Updated 2026-08-21 08:48 UTC by the nightly pipeline._
 
-**355 datasets cataloged**  ·  **0 queued for next run**  ·  last run handled **54**
+**355 datasets cataloged**  ·  **0 queued for next run**  ·  last run handled **3**
 
 ## Last run
-
-<details><summary>✅ drafted — 44 datasets</summary>
-
-| repo                                                                                                                                                 |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [alliance-bioversity-international-ciat/sample-earth-2026-co-gh](https://source.coop/alliance-bioversity-international-ciat/sample-earth-2026-co-gh) |
-| [alukach/firesmoke](https://source.coop/alukach/firesmoke)                                                                                           |
-| [ausantarctic/ghrsst-mur-v2](https://source.coop/ausantarctic/ghrsst-mur-v2)                                                                         |
-| [bkr/cams](https://source.coop/bkr/cams)                                                                                                             |
-| [bkr/mrms](https://source.coop/bkr/mrms)                                                                                                             |
-| [bkr/silam-dust](https://source.coop/bkr/silam-dust)                                                                                                 |
-| [caires-tudelft/plateau-tokyo-fcb-2](https://source.coop/caires-tudelft/plateau-tokyo-fcb-2)                                                         |
-| [caires-tudelft/tokyo-13999-fcb](https://source.coop/caires-tudelft/tokyo-13999-fcb)                                                                 |
-| [cboettig/cpad](https://source.coop/cboettig/cpad)                                                                                                   |
-| [cboettig/hazard](https://source.coop/cboettig/hazard)                                                                                               |
-| [cboettig/inat](https://source.coop/cboettig/inat)                                                                                                   |
-| [cboettig/indigenous](https://source.coop/cboettig/indigenous)                                                                                       |
-| [cboettig/land-cover](https://source.coop/cboettig/land-cover)                                                                                       |
-| [cboettig/rivers](https://source.coop/cboettig/rivers)                                                                                               |
-| [cboettig/usgs-nhd](https://source.coop/cboettig/usgs-nhd)                                                                                           |
-| [cboettig/wetlands](https://source.coop/cboettig/wetlands)                                                                                           |
-| [csaybar/methaneset](https://source.coop/csaybar/methaneset)                                                                                         |
-| [dataforcanada/d4c-datapkg-environment-climate-health](https://source.coop/dataforcanada/d4c-datapkg-environment-climate-health)                     |
-| [dataforcanada/d4c-datapkg-foundation](https://source.coop/dataforcanada/d4c-datapkg-foundation)                                                     |
-| [dataforcanada/d4c-datapkg-statistical](https://source.coop/dataforcanada/d4c-datapkg-statistical)                                                   |
-| [dynamical/asos-parquet](https://source.coop/dynamical/asos-parquet)                                                                                 |
-| [dynamical/dwd-icon-grib](https://source.coop/dynamical/dwd-icon-grib)                                                                               |
-| [dynamical/ecmwf-aifs-single-forecast](https://source.coop/dynamical/ecmwf-aifs-single-forecast)                                                     |
-| [dynamical/ecmwf-ifs-ens-forecast-15-day-0-25-degree](https://source.coop/dynamical/ecmwf-ifs-ens-forecast-15-day-0-25-degree)                       |
-| [dynamical/noaa-gefs-analysis](https://source.coop/dynamical/noaa-gefs-analysis)                                                                     |
-| [dynamical/noaa-gefs-forecast-35-day](https://source.coop/dynamical/noaa-gefs-forecast-35-day)                                                       |
-| [dynamical/noaa-gfs-analysis](https://source.coop/dynamical/noaa-gfs-analysis)                                                                       |
-| [dynamical/noaa-gfs-forecast](https://source.coop/dynamical/noaa-gfs-forecast)                                                                       |
-| [dynamical/noaa-hrrr-forecast-48-hour](https://source.coop/dynamical/noaa-hrrr-forecast-48-hour)                                                     |
-| [dynamical/noaa-mrms-conus-analysis-hourly](https://source.coop/dynamical/noaa-mrms-conus-analysis-hourly)                                           |
-| [fiboa/data](https://source.coop/fiboa/data)                                                                                                         |
-| [ganzk/lcms](https://source.coop/ganzk/lcms)                                                                                                         |
-| [giswqs/opengeos](https://source.coop/giswqs/opengeos)                                                                                               |
-| [nlebovits/microsoft-ml-road-detections](https://source.coop/nlebovits/microsoft-ml-road-detections)                                                 |
-| [nlebovits/pergamino-ide](https://source.coop/nlebovits/pergamino-ide)                                                                               |
-| [planet/disasterdata](https://source.coop/planet/disasterdata)                                                                                       |
-| [portolan/portolan-pipeline](https://source.coop/portolan/portolan-pipeline)                                                                         |
-| [rseg/sentinel1-lfmc](https://source.coop/rseg/sentinel1-lfmc)                                                                                       |
-| [smartmaps/japan-geotiff-dem](https://source.coop/smartmaps/japan-geotiff-dem)                                                                       |
-| [smartmaps/mapterhorn-japan-bridge](https://source.coop/smartmaps/mapterhorn-japan-bridge)                                                           |
-| [taco/methaneset](https://source.coop/taco/methaneset)                                                                                               |
-| [walkthru-earth/indices](https://source.coop/walkthru-earth/indices)                                                                                 |
-| [walkthru-earth/opensensor-space](https://source.coop/walkthru-earth/opensensor-space)                                                               |
-| [wildland-almanac/california](https://source.coop/wildland-almanac/california)                                                                       |
-
-</details>
 
 <details><summary>⏭️ incomplete (gap) — 3 datasets</summary>
 
@@ -67,41 +16,35 @@ _Updated 2026-08-21 02:08 UTC by the nightly pipeline._
 
 </details>
 
-<details><summary>⚠️ probe failed (issue filed) — 6 datasets</summary>
-
-| repo                                                                                             | why                 |
-| ------------------------------------------------------------------------------------------------ | ------------------- |
-| [cboettig/connectivity](https://source.coop/cboettig/connectivity)                               | all_failed .filegdb |
-| [cboettig/fire](https://source.coop/cboettig/fire)                                               | all_failed .filegdb |
-| [cboettig/obis](https://source.coop/cboettig/obis)                                               | all_failed .parquet |
-| [cboettig/padus](https://source.coop/cboettig/padus)                                             | all_failed .filegdb |
-| [cboettig/usgs-wbd](https://source.coop/cboettig/usgs-wbd)                                       | all_failed .filegdb |
-| [dynamical/dwd-icon-eu-forecast-5-day](https://source.coop/dynamical/dwd-icon-eu-forecast-5-day) | all_failed .zarr    |
-
-</details>
-
-<details><summary>❌ step failed — 1 dataset</summary>
-
-| repo                                                         | why                                              |
-| ------------------------------------------------------------ | ------------------------------------------------ |
-| [cboettig/high-seas](https://source.coop/cboettig/high-seas) | error step=compose — backed off until 2026-08-23 |
-
-</details>
-
-
-See [open probe-failure issues](https://github.com/source-cooperative/metadata-catalog/issues?q=is%3Aissue+is%3Aopen+label%3Aprobe-failure).
 
 ## Recent runs
 
 | run                                                                                                    | outcome   | drafted | failed | queued | cataloged |
 | ------------------------------------------------------------------------------------------------------ | --------- | ------: | -----: | -----: | --------: |
+| [2026-08-21](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/32463860945) | ✅ success |       0 |      0 |      0 |       355 |
 | [2026-08-21](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/32424301885) | ✅ success |      44 |      6 |      0 |       355 |
 | [2026-08-17](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/32011099608) | ✅ success |       7 |      0 |     34 |       346 |
 | [2026-08-16](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/31936760237) | ✅ success |       0 |      0 |      0 |       344 |
 | [2026-08-15](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/31874788883) | ✅ success |       0 |      0 |      0 |       344 |
 | [2026-08-14](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/31785271901) | ✅ success |       3 |      0 |      0 |       344 |
 | [2026-08-13](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/31683810235) | ✅ success |       6 |      0 |      3 |       344 |
-| [2026-08-12](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/31580016587) | ✅ success |       7 |      0 |     10 |       344 |
+
+## Persistent failures
+
+**6 datasets failing**  ·  6 open issues  ·  oldest **0d**  ·  **0** ≥30d  ·  [all open issues](https://github.com/source-cooperative/metadata-catalog/issues?q=is%3Aissue+is%3Aopen+label%3Aprobe-failure)
+
+<details><summary>the 6 open issues, oldest first</summary>
+
+| repo                                 | age (d) | issue |
+| ------------------------------------ | ------: | ----: |
+| dynamical/dwd-icon-eu-forecast-5-day |       ? |  #154 |
+| cboettig/usgs-wbd                    |       ? |  #153 |
+| cboettig/padus                       |       ? |  #152 |
+| cboettig/obis                        |       ? |  #151 |
+| cboettig/fire                        |       ? |  #150 |
+| cboettig/connectivity                |       ? |  #149 |
+
+</details>
 
 ## 2 datasets need a prober
 
