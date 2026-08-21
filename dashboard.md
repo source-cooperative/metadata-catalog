@@ -1,18 +1,26 @@
 # Source Cooperative catalog — status
 
-_Updated 2026-08-21 08:48 UTC by the nightly pipeline._
+_Updated 2026-08-21 21:25 UTC by the nightly pipeline._
 
-**355 datasets cataloged**  ·  **0 queued for next run**  ·  last run handled **3**
+**355 datasets cataloged**  ·  **0 queued for next run**  ·  last run handled **4**
 
 ## Last run
 
-<details><summary>⏭️ incomplete (gap) — 3 datasets</summary>
+<details><summary>✅ drafted — 3 datasets</summary>
 
-| repo                                                                                           | why           |
-| ---------------------------------------------------------------------------------------------- | ------------- |
-| [cholmes/portolan-nl](https://source.coop/cholmes/portolan-nl)                                 | no_probe .png |
-| [forestsignal/forestsignal-ca](https://source.coop/forestsignal/forestsignal-ca)               | no_files .tif |
-| [harvard-lil/smithsonian-open-access](https://source.coop/harvard-lil/smithsonian-open-access) | no_probe .jpg |
+| repo                                                                                           |
+| ---------------------------------------------------------------------------------------------- |
+| [abry-tudelft/eubucco](https://source.coop/abry-tudelft/eubucco)                               |
+| [cholmes/portolan-nl](https://source.coop/cholmes/portolan-nl)                                 |
+| [harvard-lil/smithsonian-open-access](https://source.coop/harvard-lil/smithsonian-open-access) |
+
+</details>
+
+<details><summary>⏭️ incomplete (gap) — 1 dataset</summary>
+
+| repo                                                                             | why           |
+| -------------------------------------------------------------------------------- | ------------- |
+| [forestsignal/forestsignal-ca](https://source.coop/forestsignal/forestsignal-ca) | no_files .tif |
 
 </details>
 
@@ -21,13 +29,13 @@ _Updated 2026-08-21 08:48 UTC by the nightly pipeline._
 
 | run                                                                                                    | outcome   | drafted | failed | queued | cataloged |
 | ------------------------------------------------------------------------------------------------------ | --------- | ------: | -----: | -----: | --------: |
+| [2026-08-21](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/32527111256) | ✅ success |       3 |      0 |      0 |       355 |
 | [2026-08-21](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/32463860945) | ✅ success |       0 |      0 |      0 |       355 |
 | [2026-08-21](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/32424301885) | ✅ success |      44 |      6 |      0 |       355 |
 | [2026-08-17](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/32011099608) | ✅ success |       7 |      0 |     34 |       346 |
 | [2026-08-16](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/31936760237) | ✅ success |       0 |      0 |      0 |       344 |
 | [2026-08-15](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/31874788883) | ✅ success |       0 |      0 |      0 |       344 |
 | [2026-08-14](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/31785271901) | ✅ success |       3 |      0 |      0 |       344 |
-| [2026-08-13](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/31683810235) | ✅ success |       6 |      0 |      3 |       344 |
 
 ## Persistent failures
 
@@ -43,28 +51,6 @@ _Updated 2026-08-21 08:48 UTC by the nightly pipeline._
 | cboettig/obis                        |       ? |  #151 |
 | cboettig/fire                        |       ? |  #150 |
 | cboettig/connectivity                |       ? |  #149 |
-
-</details>
-
-## 2 datasets need a prober
-
-<details><summary>by format — ranked by bytes unlocked if built</summary>
-
-<details><summary>.jpg — 1 dataset · 851.0 TB</summary>
-
-| repo                                                                                           |    bytes |
-| ---------------------------------------------------------------------------------------------- | -------: |
-| [harvard-lil/smithsonian-open-access](https://source.coop/harvard-lil/smithsonian-open-access) | 851.0 TB |
-
-</details>
-
-<details><summary>.png — 1 dataset · 83.6 GB</summary>
-
-| repo                                                           |   bytes |
-| -------------------------------------------------------------- | ------: |
-| [cholmes/portolan-nl](https://source.coop/cholmes/portolan-nl) | 83.6 GB |
-
-</details>
 
 </details>
 
@@ -785,7 +771,7 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 | --------- | ------------------------------------------------ | ----: | -------: |
 | ghosts    | catalog entry, no S3 data                        |    49 |  29.8 TB |
 | stowaways | S3 data, no source.coop product                  |    42 | 951.3 TB |
-| stale     | catalog bytes ≠ S3 (fixed by `make process-all`) |     8 | 851.2 TB |
+| stale     | catalog bytes ≠ S3 (fixed by `make process-all`) |     6 | 111.1 GB |
 
 <details><summary>ghosts — 49 datasets</summary>
 
@@ -892,18 +878,16 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 
 </details>
 
-<details><summary>stale — 8 datasets</summary>
+<details><summary>stale — 6 datasets</summary>
 
-| repo                                | updated    |        catalog → S3 |
-| ----------------------------------- | ---------- | ------------------: |
-| harvard-lil/smithsonian-open-access | 2026-08-14 | 823.4 TB → 851.0 TB |
-| cboettig/usgs-wbd                   | 2026-08-12 |   15.2 GB → 15.5 GB |
-| cboettig/padus                      | 2026-08-12 |   46.7 GB → 46.8 GB |
-| cboettig/high-seas                  | 2026-08-12 |   40.5 GB → 40.5 GB |
-| cboettig/fire                       | 2026-08-12 |     6.7 GB → 6.8 GB |
-| cboettig/connectivity               | 2026-08-12 |     1.5 GB → 1.5 GB |
-| cholmes/portolan-nl                 | 2026-08-02 |   83.7 GB → 83.6 GB |
-| forestsignal/forestsignal-ca        | 2026-06-14 |  726.4 GB → 598.0 B |
+| repo                         | updated    |       catalog → S3 |
+| ---------------------------- | ---------- | -----------------: |
+| cboettig/usgs-wbd            | 2026-08-12 |  15.2 GB → 15.5 GB |
+| cboettig/padus               | 2026-08-12 |  46.7 GB → 46.8 GB |
+| cboettig/high-seas           | 2026-08-12 |  40.5 GB → 40.5 GB |
+| cboettig/fire                | 2026-08-12 |    6.7 GB → 6.8 GB |
+| cboettig/connectivity        | 2026-08-12 |    1.5 GB → 1.5 GB |
+| forestsignal/forestsignal-ca | 2026-06-14 | 726.4 GB → 598.0 B |
 
 </details>
 
