@@ -2,9 +2,12 @@
   "schema_version": 1,
   "type": "Collection",
   "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
   "id": "dataforcanada/d4c-datapkg-foundation",
   "title": "Data for Canada - Foundation Data Packages",
-  "description": "Standardized foundation geospatial data packages for Canada derived from Statistics Canada sources, comprising three temporal snapshots of the National Address Register (June 2024, December 2024, July 2025) and the 2021 Road Network File. Each address record is enriched with a full hierarchy of StatCan geographic identifiers spanning country, province, census division, CSD, CMA, dissemination area, and dissemination block.",
+  "description": "Standardized foundation geospatial data packages for Canada derived from Statistics Canada sources, comprising three temporal snapshots of the National Address Register (June 2024, December 2024, July 2025) and the 2021 Road Network File. Each address record is enriched with a full hierarchy of Statistics Canada geographic identifiers spanning country, province, census division, census subdivision, census metropolitan area, dissemination area, and dissemination block.",
   "keywords": [
     "administrative-boundaries",
     "census",
@@ -41,10 +44,10 @@
     "spatial": {
       "bbox": [
         [
-          -141.0,
-          41.73467,
-          -52.621428,
-          82.5
+          null,
+          null,
+          null,
+          null
         ]
       ]
     },
@@ -57,14 +60,540 @@
       ]
     }
   },
+  "summaries": {
+    "item_count": 52018144
+  },
   "assets": {
-    "data": {
-      "href": "https://data.source.coop/dataforcanada/d4c-datapkg-foundation/",
-      "type": "application/octet-stream",
-      "title": "Dataset files (4 x .pmtiles)",
+    "v0.1.0-beta": {
+      "href": "https://data.source.coop/dataforcanada/d4c-datapkg-foundation/processed/",
+      "type": "application/x-parquet",
+      "title": "v0.1.0-beta",
       "roles": [
         "data"
-      ]
+      ],
+      "table:columns": [
+        {
+          "name": "country_dguid",
+          "type": "VARCHAR",
+          "description": "[admin_code] StatCan dissemination geography unique identifier for country level"
+        },
+        {
+          "name": "country_en_name",
+          "type": "VARCHAR",
+          "description": "[placename] English name of country"
+        },
+        {
+          "name": "country_fr_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "country_en_abbreviation",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "country_fr_abbreviation",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "grc_dguid",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "grc_en_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "grc_fr_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "pr_dguid",
+          "type": "VARCHAR",
+          "description": "[admin_code] StatCan DGUID for province/territory"
+        },
+        {
+          "name": "pr_en_name",
+          "type": "VARCHAR",
+          "description": "[placename] English name of province/territory"
+        },
+        {
+          "name": "pr_fr_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "pr_en_abbreviation",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "pr_fr_abbreviation",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "pr_iso_code",
+          "type": "VARCHAR",
+          "description": "[admin_code] ISO 3166-2 code for province/territory"
+        },
+        {
+          "name": "car_dguid",
+          "type": "VARCHAR",
+          "description": "[admin_code] StatCan DGUID for census agricultural region"
+        },
+        {
+          "name": "car_en_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "car_fr_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "er_dguid",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "er_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "cd_dguid",
+          "type": "VARCHAR",
+          "description": "[admin_code] StatCan DGUID for census division"
+        },
+        {
+          "name": "cd_name",
+          "type": "VARCHAR",
+          "description": "[placename] Name of census division"
+        },
+        {
+          "name": "cd_type",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ccs_dguid",
+          "type": "VARCHAR",
+          "description": "[admin_code] StatCan DGUID for census consolidated subdivision"
+        },
+        {
+          "name": "ccs_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "cma_dguid",
+          "type": "VARCHAR",
+          "description": "[admin_code] StatCan DGUID for census metropolitan area"
+        },
+        {
+          "name": "cma_p_dguid",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "cma_name",
+          "type": "VARCHAR",
+          "description": "[placename] Name of census metropolitan area"
+        },
+        {
+          "name": "cma_type",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "csd_dguid",
+          "type": "VARCHAR",
+          "description": "[admin_code] StatCan DGUID for census subdivision"
+        },
+        {
+          "name": "csd_name",
+          "type": "VARCHAR",
+          "description": "[placename] Name of census subdivision (municipality)"
+        },
+        {
+          "name": "csd_type",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "sac_type",
+          "type": "BIGINT"
+        },
+        {
+          "name": "sac_code",
+          "type": "BIGINT"
+        },
+        {
+          "name": "fed_dguid",
+          "type": "VARCHAR",
+          "description": "[admin_code] StatCan DGUID for federal electoral district"
+        },
+        {
+          "name": "fed_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "fed_en_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "fed_fr_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ct_dguid",
+          "type": "VARCHAR",
+          "description": "[admin_code] StatCan DGUID for census tract"
+        },
+        {
+          "name": "ada_dguid",
+          "type": "VARCHAR",
+          "description": "[admin_code] StatCan DGUID for aggregate dissemination area"
+        },
+        {
+          "name": "da_dguid",
+          "type": "VARCHAR",
+          "description": "[admin_code] StatCan DGUID for dissemination area"
+        },
+        {
+          "name": "db_dguid",
+          "type": "VARCHAR",
+          "description": "[admin_code] StatCan DGUID for dissemination block"
+        },
+        {
+          "name": "addr_guid",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "apt_no_label",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "civic_no",
+          "type": "INTEGER"
+        },
+        {
+          "name": "civic_no_suffix",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "official_street_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "mail_street_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "official_street_type",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "mail_street_type",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "official_street_direction",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "mail_street_direction",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "mail_postal_code",
+          "type": "VARCHAR",
+          "description": "[zipcode] Canadian postal code for the mailing address"
+        },
+        {
+          "name": "mail_municipality_name",
+          "type": "VARCHAR",
+          "description": "[placename] Municipality name used for mailing address"
+        },
+        {
+          "name": "bu_n_civic_add",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "bu_use",
+          "type": "SMALLINT"
+        },
+        {
+          "name": "bg_dls_lsd",
+          "type": "INTEGER",
+          "description": "[admin_code] Dominion Land Survey legal subdivision code"
+        },
+        {
+          "name": "bg_dls_qtr",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "bg_dls_sctn",
+          "type": "VARCHAR",
+          "description": "[admin_code] Dominion Land Survey section code"
+        },
+        {
+          "name": "bg_dls_rng",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "bg_dls_mrd",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geom",
+          "type": "GEOMETRY('OGC:CRS84')",
+          "description": "[geometry] Feature geometry (address point or road linestring) in CRS84"
+        },
+        {
+          "name": "geom_bbox",
+          "type": "STRUCT(xmin FLOAT, ymin FLOAT, xmax FLOAT, ymax FLOAT)",
+          "description": "[geometry] Bounding box of the geom column"
+        },
+        {
+          "name": "grc_dguid_left",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "grc_dguid_right",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "grc_en_name_left",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "grc_en_name_right",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "grc_fr_name_left",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "grc_fr_name_right",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "pr_dguid_left",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "pr_dguid_right",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "pr_en_name_left",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "pr_en_name_right",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "pr_fr_name_left",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "pr_fr_name_right",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "pr_iso_code_left",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "pr_iso_code_right",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "car_dguid_left",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "car_dguid_right",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "car_en_name_left",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "car_en_name_right",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "car_fr_name_left",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "car_fr_name_right",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "er_dguid_left",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "er_dguid_right",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "er_name_left",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "er_name_right",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "cd_dguid_left",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "cd_dguid_right",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "cd_name_left",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "cd_name_right",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "cd_type_left",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "cd_type_right",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ccs_dguid_left",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ccs_dguid_right",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ccs_name_left",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ccs_name_right",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "cma_dguid_left",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "cma_dguid_right",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "cma_p_dguid_left",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "cma_p_dguid_right",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "cma_name_left",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "cma_name_right",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "cma_type_left",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "cma_type_right",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "csd_dguid_left",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "csd_dguid_right",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "csd_name_left",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "csd_name_right",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "csd_type_left",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "csd_type_right",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "sac_type_left",
+          "type": "BIGINT"
+        },
+        {
+          "name": "sac_type_right",
+          "type": "BIGINT"
+        },
+        {
+          "name": "sac_code_left",
+          "type": "BIGINT"
+        },
+        {
+          "name": "sac_code_right",
+          "type": "BIGINT"
+        },
+        {
+          "name": "road_ngd_uid",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "road_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "road_type",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "road_direction",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "road_address_from_left_value",
+          "type": "INTEGER"
+        },
+        {
+          "name": "road_address_to_left_value",
+          "type": "INTEGER"
+        },
+        {
+          "name": "road_address_from_right_value",
+          "type": "INTEGER"
+        },
+        {
+          "name": "road_address_to_right_value",
+          "type": "INTEGER"
+        },
+        {
+          "name": "road_rank",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "road_class",
+          "type": "VARCHAR"
+        }
+      ],
+      "description": "4 files sampled for this table"
     }
   },
   "links": [
@@ -79,13 +608,18 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "product_id": "d4c-datapkg-foundation",
-  "total_bytes": 34267784711,
-  "account_id": "dataforcanada",
-  "updated_at": "2026-02-27T22:33:13.903Z",
+  "exts": {
+    "zip": 60,
+    "parquet": 4,
+    "pmtiles": 4,
+    "fgb": 3,
+    "json": 2
+  },
+  "total_bytes": 52761926148,
   "data_mode": "open",
-  "visibility": "public",
   "disabled": false,
+  "account_id": "dataforcanada",
+  "object_count": 73,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -98,24 +632,22 @@
       "prefix": "dataforcanada/d4c-datapkg-foundation/"
     }
   },
-  "created_at": "2026-02-22T00:28:58.731Z",
-  "featured": 0,
+  "visibility": "public",
+  "updated_at": "2026-02-27T22:33:13.903Z",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "object_count": 13,
-  "exts": {
-    "parquet": 4,
-    "pmtiles": 4,
-    "fgb": 3,
-    "json": 2
-  },
+  "product_id": "d4c-datapkg-foundation",
+  "created_at": "2026-02-22T00:28:58.731Z",
+  "featured": 0,
   "_review": [
     "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
-    "extent.temporal: None (probe sample) widened to ['2021-01-01T00:00:00Z', '2025-07-01T00:00:00Z'] using README-stated coverage ['2021', '2025-07']."
+    "extent.temporal: None (probe sample) widened to ['2021-01-01T00:00:00Z', '2025-07-01T00:00:00Z'] using README-stated coverage ['2021', '2025-07'].",
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [v0.1.0-beta.geom (geometry), v0.1.0-beta.geom_bbox (geometry), v0.1.0-beta.mail_postal_code (zipcode), v0.1.0-beta.country_dguid (admin_code), v0.1.0-beta.pr_dguid (admin_code), v0.1.0-beta.pr_iso_code (admin_code), v0.1.0-beta.car_dguid (admin_code), v0.1.0-beta.cd_dguid (admin_code), v0.1.0-beta.ccs_dguid (admin_code), v0.1.0-beta.cma_dguid (admin_code), v0.1.0-beta.csd_dguid (admin_code), v0.1.0-beta.fed_dguid (admin_code), v0.1.0-beta.ct_dguid (admin_code), v0.1.0-beta.ada_dguid (admin_code), v0.1.0-beta.da_dguid (admin_code), v0.1.0-beta.db_dguid (admin_code), v0.1.0-beta.country_en_name (placename), v0.1.0-beta.pr_en_name (placename), v0.1.0-beta.cd_name (placename), v0.1.0-beta.cma_name (placename), v0.1.0-beta.csd_name (placename), v0.1.0-beta.mail_municipality_name (placename), v0.1.0-beta.bg_dls_lsd (admin_code), v0.1.0-beta.bg_dls_sctn (admin_code)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-08-02T09:24:23+00:00",
+  "cataloged_at": "2026-08-21T00:57:08+00:00",
+  "objects_updated_at": "2026-08-14T16:35:59+00:00",
   "store_format": null
 }
