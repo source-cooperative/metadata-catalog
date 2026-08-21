@@ -1,22 +1,95 @@
 {
   "schema_version": 1,
-  "account_id": "agentmorris",
-  "product_id": "lila-wildlife-izembek-lagoon-birds",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "agentmorris/lila-wildlife-izembek-lagoon-birds",
   "title": "Izembek Lagoon Waterfowl",
-  "description": "A collection of 9,267 images (JPG) associated with waterfowl at Izembek Lagoon, a nationally significant wildlife refuge on the Alaska Peninsula known for its eelgrass beds and migratory bird populations. Two ZIP archives are also included, likely containing ancillary data or metadata.",
+  "description": "A collection of 9,267 high-resolution aerial images from Izembek Lagoon, Alaska, annotated with 521,270 bounding boxes identifying waterfowl (primarily Brant, Canada goose, Emperor goose, and gull) in COCO Camera Traps format. It is a curated, detector-training-oriented subset of a much larger USGS aerial waterfowl survey dataset, with most empty (bird-free) images excluded.",
   "keywords": [
+    "aerial-imagery",
+    "biodiversity",
+    "conservation",
+    "machine-learning",
     "waterfowl",
-    "wildlife",
-    "alaska",
-    "wetlands",
-    "imagery"
+    "object-detection"
   ],
-  "created_at": null,
-  "updated_at": null,
-  "visibility": "public",
-  "disabled": false,
+  "providers": [
+    {
+      "name": "U.S. Geological Survey",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "LILA Science",
+      "roles": [
+        "processor",
+        "host"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/agentmorris/lila-wildlife-izembek-lagoon-birds"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -162.9801767,
+          55.2080017,
+          -162.5623267,
+          55.3772167
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2017-01-01T00:00:00Z",
+          "2019-10-11T17:37:05"
+        ]
+      ]
+    }
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/agentmorris/lila-wildlife-izembek-lagoon-birds/",
+      "type": "application/octet-stream",
+      "title": "Dataset files (9267 x .jpg)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/agentmorris/lila-wildlife-izembek-lagoon-birds/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/agentmorris/lila-wildlife-izembek-lagoon-birds",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "rel": "cite-as",
+      "href": "https://doi.org/10.5066/P9UHP1LE"
+    }
+  ],
   "featured": 0,
-  "data_mode": "open",
+  "exts": {
+    "zip": 2,
+    "jpg": 9267
+  },
+  "visibility": "public",
+  "_decomposed_from": "agentmorris/lila-wildlife",
+  "total_bytes": 265386131909,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -29,19 +102,24 @@
       "prefix": "agentmorris/lila-wildlife/izembek-lagoon-birds/"
     }
   },
-  "object_count": 9269,
-  "total_bytes": 265386131909,
-  "exts": {
-    "zip": 2,
-    "jpg": 9267
-  },
-  "store_format": null,
-  "_state": "seed",
+  "data_mode": "open",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "cataloged_at": "2026-06-04T23:59:15+00:00",
-  "readme": "# Izembek Lagoon Waterfowl\n\n### Izembek Lagoon Waterfowl\n\n#### S3 base\n\n`s3://us-west-2.opendata.source.coop/agentmorris/lila-wildlife/izembek-lagoon-birds`\n\n#### Overview\n\nThis dataset contains 9,267 high-resolution (8688x5792) aerial images from Izembek Lagoon in Alaska, collected to survey waterfowl. The dataset includes 521,270 bounding boxes on waterfowl, with each box identified as one of:\n\n* Brant (424,790 boxes)\n* Canada goose (47,561 boxes)\n* Gull (5,631 boxes)\n* Emperor goose (2,013 boxes)\n* Other (5,631 boxes)\n\nAll were originally annotated as points, and were converted to boxes as a convenience for detector training. Consequently, the boxes are all identical in size, centered on the original annotation points and sized to the typical size of birds in these images. Approximately half of the images (4,281) are annotated as empty.\n\nThis dataset is a subset of the [Aerial Photo Imagery from Fall Waterfowl Surveys](https://alaska.usgs.gov/products/data.php?dataid=484) dataset; all non-empty images from the original dataset are included, but only a small fraction of the empty images are included. The original dataset is the dataset of record; the present dataset is provided as a convenience for training AI models, as (a) some effort was required to convert the annotations to a standard format ([import code](https://github.com/agentmorris/usgs-geese/blob/main/usgs-geese-data-import.py)), and (b) the original dataset is quite large (1.82TB). Because the proportion of empty images has been dramatically reduced in the present dataset, models trained on the subset should be evaluated against the original dataset before making claims about precision and recall as they would apply in a real-world setting.\n\n#### Citation\n\nIf you use this dataset, please cite the original dataset:\n\nWeiser EL, Flint PL, Marks DK, Shults BS, Wilson HM, Thompson SJ, Fischer JB, 2022, Aerial photo imagery from fall waterfowl surveys, Izembek Lagoon, Alaska, 2017-2019: U.S. Geological Survey data release, https://doi.org/10.5066/P9UHP1LE.\n\n#### Data format\n\nAnnotations are provided in [COCO Camera Traps](https://github.com/agentmorris/MegaDetector/blob/main/megadetector/data_management/README.md#coco-camera-traps-format) format.\n\n#### Downloading the data\n\nMetadata is available [here](https://storage.googleapis.com/public-datasets-lila/izembek-lagoon-birds/izembek-lagoon-birds-metadata.zip).\n\nImages are available as a single zipfile:\n\n[Download from GCP](https://storage.googleapis.com/public-datasets-lila/izembek-lagoon-birds/izembek-lagoon-birds.zip) (124GB)  \n\n[Download from AWS](http://us-west-2.opendata.source.coop.s3.amazonaws.com/agentmorris/lila-wildlife/izembek-lagoon-birds/izembek-lagoon-birds.zip) (124GB)  \n\n[Download from Azure](https://lilawildlife.blob.core.windows.net/lila-wildlife/izembek-lagoon-birds/izembek-lagoon-birds.zip) (124GB)  \n\nImages are also available (unzipped) in the following cloud storage folders:\n\n* gs://public-datasets-lila/izembek-lagoon-birds/images (GCP)\n* s3://us-west-2.opendata.source.coop/agentmorris/lila-wildlife/izembek-lagoon-birds/images (AWS)\n* https://lilawildlife.blob.core.windows.net/lila-wildlife/izembek-lagoon-birds/images (Azure)\n\nWe recommend downloading images (the whole folder, or a subset of the folder) using [gsutil](https://cloud.google.com/storage/docs/gsutil) (for GCP), [aws s3](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/index.html) (for AWS), or [AzCopy](https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10) (for Azure). For more information about using gsutil, aws s3, or AzCopy, check out our [guidelines for accessing images without using giant zipfiles](http://lila.science/image-access).\n\nIf you prefer to download images via http, you can. For example, one image (with lots of birds) appears in the metadata as:\n\n2017_Replicate_2017-09-30_Cam2_CAM24430.JPG\n\nThis image can be downloaded directly from any of the following URLs (one for each cloud):\n\nhttps://storage.googleapis.com/public-datasets-lila/izembek-lagoon-birds/images/2017_Replicate_2017-09-30_Cam2_CAM24430.JPG\n\nhttp://us-west-2.opendata.source.coop.s3.amazonaws.com/agentmorris/lila-wildlife/izembek-lagoon-birds/images/2017_Replicate_2017-09-30_Cam2_CAM24430.JPG\n\nhttps://lilawildlife.blob.core.windows.net/lila-wildlife/izembek-lagoon-birds/images/2017_Replicate_2017-09-30_Cam2_CAM24430.JPG\n\nHaving trouble downloading? Check out our [FAQ](https://lila.science/faq#downloadtips).\n\n![](http://lila.science/wp-content/uploads/2024/02/izembek_sample_image-700.jpg)\n\n",
-  "_decomposed_from": "agentmorris/lila-wildlife"
+  "object_count": 9269,
+  "product_id": "lila-wildlife-izembek-lagoon-birds",
+  "account_id": "agentmorris",
+  "disabled": false,
+  "created_at": null,
+  "updated_at": null,
+  "readme": "## README.md\n# Izembek Lagoon Waterfowl\n\n### Izembek Lagoon Waterfowl\n\n#### S3 base\n\n`s3://us-west-2.opendata.source.coop/agentmorris/lila-wildlife/izembek-lagoon-birds`\n\n#### Overview\n\nThis dataset contains 9,267 high-resolution (8688x5792) aerial images from Izembek Lagoon in Alaska, collected to survey waterfowl. The dataset includes 521,270 bounding boxes on waterfowl, with each box identified as one of:\n\n* Brant (424,790 boxes)\n* Canada goose (47,561 boxes)\n* Gull (5,631 boxes)\n* Emperor goose (2,013 boxes)\n* Other (5,631 boxes)\n\nAll were originally annotated as points, and were converted to boxes as a convenience for detector training. Consequently, the boxes are all identical in size, centered on the original annotation points and sized to the typical size of birds in these images. Approximately half of the images (4,281) are annotated as empty.\n\nThis dataset is a subset of the [Aerial Photo Imagery from Fall Waterfowl Surveys](https://alaska.usgs.gov/products/data.php?dataid=484) dataset; all non-empty images from the original dataset are included, but only a small fraction of the empty images are included. The original dataset is the dataset of record; the present dataset is provided as a convenience for training AI models, as (a) some effort was required to convert the annotations to a standard format ([import code](https://github.com/agentmorris/usgs-geese/blob/main/usgs-geese-data-import.py)), and (b) the original dataset is quite large (1.82TB). Because the proportion of empty images has been dramatically reduced in the present dataset, models trained on the subset should be evaluated against the original dataset before making claims about precision and recall as they would apply in a real-world setting.\n\n#### Citation\n\nIf you use this dataset, please cite the original dataset:\n\nWeiser EL, Flint PL, Marks DK, Shults BS, Wilson HM, Thompson SJ, Fischer JB, 2022, Aerial photo imagery from fall waterfowl surveys, Izembek Lagoon, Alaska, 2017-2019: U.S. Geological Survey data release, https://doi.org/10.5066/P9UHP1LE.\n\n#### Data format\n\nAnnotations are provided in [COCO Camera Traps](https://github.com/agentmorris/MegaDetector/blob/main/megadetector/data_management/README.md#coco-camera-traps-format) format.\n\n#### Downloading the data\n\nMetadata is available [here](https://storage.googleapis.com/public-datasets-lila/izembek-lagoon-birds/izembek-lagoon-birds-metadata.zip).\n\nImages are available as a single zipfile:\n\n[Download from GCP](https://storage.googleapis.com/public-datasets-lila/izembek-lagoon-birds/izembek-lagoon-birds.zip) (124GB)  \n\n[Download from AWS](http://us-west-2.opendata.source.coop.s3.amazonaws.com/agentmorris/lila-wildlife/izembek-lagoon-birds/izembek-lagoon-birds.zip) (124GB)  \n\n[Download from Azure](https://lilawildlife.blob.core.windows.net/lila-wildlife/izembek-lagoon-birds/izembek-lagoon-birds.zip) (124GB)  \n\nImages are also available (unzipped) in the following cloud storage folders:\n\n* gs://public-datasets-lila/izembek-lagoon-birds/images (GCP)\n* s3://us-west-2.opendata.source.coop/agentmorris/lila-wildlife/izembek-lagoon-birds/images (AWS)\n* https://lilawildlife.blob.core.windows.net/lila-wildlife/izembek-lagoon-birds/images (Azure)\n\nWe recommend downloading images (the whole folder, or a subset of the folder) using [gsutil](https://cloud.google.com/storage/docs/gsutil) (for GCP), [aws s3](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/index.html) (for AWS), or [AzCopy](https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10) (for Azure). For more information about using gsutil, aws s3, or AzCopy, check out our [guidelines for accessing images without using giant zipfiles](http://lila.science/image-access).\n\nIf you prefer to download images via http, you can. For example, one image (with lots of birds) appears in the metadata as:\n\n2017_Replicate_2017-09-30_Cam2_CAM24430.JPG\n\nThis image can be downloaded directly from any of the following URLs (one for each cloud):\n\nhttps://storage.googleapis.com/public-datasets-lila/izembek-lagoon-birds/images/2017_Replicate_2017-09-30_Cam2_CAM24430.JPG\n\nhttp://us-west-2.opendata.source.coop.s3.amazonaws.com/agentmorris/lila-wildlife/izembek-lagoon-birds/images/2017_Replicate_2017-09-30_Cam2_CAM24430.JPG\n\nhttps://lilawildlife.blob.core.windows.net/lila-wildlife/izembek-lagoon-birds/images/2017_Replicate_2017-09-30_Cam2_CAM24430.JPG\n\nHaving trouble downloading? Check out our [FAQ](https://lila.science/faq#downloadtips).\n\n![](http://lila.science/wp-content/uploads/2024/02/izembek_sample_image-700.jpg)\n\n",
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
+    "providers: role [producer, licensor] for 'U.S. Geological Survey' is an AI guess \u2014 Assumed licensor since USGS published the original data release that this dataset is derived from; README does not state licensing terms.. Verify before flipping to _state: reviewed.",
+    "providers: role [processor, host] for 'LILA Science' is an AI guess \u2014 Assumed processor/host based on the README describing conversion of point annotations to boxes and distribution via LILA-affiliated cloud storage links.. Verify before flipping to _state: reviewed.",
+    "extent.temporal: ['2017-09-30T11:28:02', '2019-10-11T17:37:05'] (probe sample) widened to ['2017-01-01T00:00:00Z', '2019-10-11T17:37:05'] using README-stated coverage ['2017', '2019']."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-08-21T22:47:42+00:00"
 }
