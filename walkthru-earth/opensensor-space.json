@@ -7,7 +7,7 @@
   ],
   "id": "walkthru-earth/opensensor-space",
   "title": "OpenSensor.Space",
-  "description": "Continuous time-series readings of temperature, pressure, humidity, gas concentrations, ambient light, and particulate matter from a network of low-cost Raspberry Pi units fitted with Enviro+ sensors, deployed across the Cairo/Nile Delta region of Egypt. Includes a companion geospatial analysis identifying candidate sites for additional air quality monitoring stations.",
+  "description": "Continuous time-series readings (temperature, pressure, humidity, gas concentrations, ambient light, and particulate matter) from a network of low-cost Raspberry Pi units fitted with Enviro+ sensors, deployed across the Cairo/Nile Delta region of Egypt. Includes device health telemetry and a companion geospatial analysis identifying candidate sites for additional air quality monitoring stations.",
   "license": "proprietary",
   "keywords": [
     "air-quality",
@@ -54,11 +54,111 @@
     }
   },
   "summaries": {
-    "item_count": 285567
+    "item_count": 127632
   },
   "assets": {
+    "enviroplus-health": {
+      "href": "https://data.source.coop/walkthru-earth/opensensor-space/enviroplus-health/station=0195ae3c-43e0-7624-8c5c-7424adbcc30d/year=2025/month=11/day=29/",
+      "type": "application/x-parquet",
+      "title": "enviroplus-health",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "timestamp",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "cpu_temp_c",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "cpu_load_1min",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "cpu_load_5min",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "cpu_load_15min",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "memory_total_mb",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "memory_available_mb",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "memory_percent_used",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "disk_total_gb",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "disk_free_gb",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "disk_percent_used",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "wifi_ssid",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "wifi_signal_dbm",
+          "type": "BIGINT"
+        },
+        {
+          "name": "wifi_quality_percent",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "ip_address",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "clock_synced",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "ntp_offset_ms",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "uptime_seconds",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "power_source",
+          "type": "INTEGER"
+        },
+        {
+          "name": "battery_percent",
+          "type": "INTEGER"
+        },
+        {
+          "name": "cpu_voltage_v",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "throttled_hex",
+          "type": "VARCHAR"
+        }
+      ],
+      "description": "20 files sampled for this table",
+      "item_count": 253
+    },
     "enviroplus": {
-      "href": "https://data.source.coop/walkthru-earth/opensensor-space/enviroplus/station=0195ae3c-43e0-7624-8c5c-7424adbcc30d/year=2025/month=10/day=4/",
+      "href": "https://data.source.coop/walkthru-earth/opensensor-space/enviroplus/station=0195ae3c-43e0-7624-8c5c-7424adbcc30d/year=2025/month=10/day=10/",
       "type": "application/x-parquet",
       "title": "enviroplus",
       "roles": [
@@ -142,28 +242,12 @@
           "type": "FLOAT"
         },
         {
-          "name": "day",
-          "type": "BIGINT|VARCHAR"
-        },
-        {
-          "name": "month",
-          "type": "BIGINT|VARCHAR"
-        },
-        {
-          "name": "station",
-          "type": "VARCHAR",
-          "description": "[placename] Identifier/name of the sensor station reporting the reading"
-        },
-        {
-          "name": "year",
-          "type": "BIGINT"
-        },
-        {
           "name": "raw_humidity",
           "type": "FLOAT"
         }
       ],
-      "description": "40 files sampled for this table"
+      "description": "20 files sampled for this table",
+      "item_count": 127632
     },
     "share": {
       "href": "https://data.source.coop/walkthru-earth/opensensor-space/share/suitability_analysis_of_aq.parquet",
@@ -200,7 +284,7 @@
         {
           "name": "geom",
           "type": "GEOMETRY('OGC:CRS84')",
-          "description": "[geometry] Point geometry of an existing or candidate monitoring station location"
+          "description": "[geometry] Geometry of candidate/existing monitoring station sites"
         }
       ],
       "table:row_count": 65
@@ -218,7 +302,6 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "account_id": "walkthru-earth",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -231,26 +314,29 @@
       "prefix": "walkthru-earth/opensensor-space/"
     }
   },
-  "total_bytes": 1465068769,
   "product_id": "opensensor-space",
-  "featured": 0,
+  "disabled": false,
+  "object_count": 86550,
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "exts": {
-    "parquet": 85303
-  },
-  "object_count": 85303,
-  "disabled": false,
-  "visibility": "public",
-  "data_mode": "open",
-  "updated_at": "2025-11-24T18:13:45.589Z",
+  "featured": 0,
   "created_at": "2025-11-24T18:13:45.589Z",
+  "data_mode": "open",
+  "total_bytes": 1476922072,
+  "exts": {
+    "parquet": 86550
+  },
+  "visibility": "public",
+  "updated_at": "2025-11-24T18:13:45.589Z",
+  "account_id": "walkthru-earth",
   "_review": [
-    "extent.spatial.bbox: omitted; spatial reference is categorical via [enviroplus.station (placename), share.geom (geometry)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [share.geom (geometry)]. Add bbox once the placename \u2192 bbox gazetteer covers it.",
+    "summaries.item_count: parts overlap, so this is max(part), not the sum \u2014 enviroplus-health/ 253, enviroplus/ 127632. Sum them only once the parts are known to be disjoint."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-08-14T09:02:37+00:00",
+  "cataloged_at": "2026-08-21T02:02:09+00:00",
+  "objects_updated_at": "2026-08-16T04:16:55+00:00",
   "store_format": null
 }
