@@ -2,18 +2,22 @@
   "schema_version": 1,
   "type": "Collection",
   "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
   "id": "nlebovits/pergamino-ide",
   "title": "Pergamino IDE (Demo Portolan)",
-  "description": "A STAC catalog aggregating 178 municipal GIS layers for the Partido de Pergamino (Buenos Aires Province, Argentina), published via the Portolan pipeline as PMTiles vector tiles. Covers cadastral parcels, administrative boundaries, infrastructure, demographics, environmental hazards, agriculture, and points of interest for the municipality and surrounding areas.",
+  "description": "A cloud-native mirror of the Municipality of Pergamino's (Buenos Aires Province, Argentina) spatial data infrastructure (IDE Pergamino), comprising 183 vector layers across 13 thematic groups \u2014 cadastre, roads, transport, sanitation, energy, health, education, security, demographics, environment/agriculture, administrative boundaries, municipal services, and commerce/culture \u2014 republished as GeoParquet and PMTiles for direct cloud querying.",
+  "license": "CC-BY-SA-4.0",
   "keywords": [
     "land-parcels",
     "administrative-boundaries",
     "land-use",
     "demographics",
     "points-of-interest",
-    "crop-classification",
     "hydrology",
-    "topography"
+    "topography",
+    "agriculture"
   ],
   "providers": [
     {
@@ -34,10 +38,10 @@
     "spatial": {
       "bbox": [
         [
-          -61.5112399,
-          -34.6546899,
-          -59.4691099,
-          -33.0469099
+          null,
+          null,
+          null,
+          null
         ]
       ]
     },
@@ -50,16 +54,5599 @@
       ]
     }
   },
+  "summaries": {
+    "item_count": 95578
+  },
   "assets": {
-    "data": {
-      "href": "https://data.source.coop/nlebovits/pergamino-ide/",
-      "type": "application/octet-stream",
-      "title": "Dataset files (177 x .pmtiles)",
+    "ambiente-y-agro/arbolado": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/ambiente-y-agro/arbolado/publico_arbolado.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_arbolado.parquet",
       "roles": [
         "data"
-      ]
+      ],
+      "table:columns": [
+        {
+          "name": "ele",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "time",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name",
+          "type": "BIGINT"
+        },
+        {
+          "name": "modulo",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "id_gps",
+          "type": "BIGINT"
+        },
+        {
+          "name": "id_asociad",
+          "type": "BIGINT"
+        },
+        {
+          "name": "espacio",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "altura",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "estado_gen",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "observacio",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "planilla",
+          "type": "BIGINT"
+        },
+        {
+          "name": "altura_ini",
+          "type": "BIGINT"
+        },
+        {
+          "name": "altura_fin",
+          "type": "BIGINT"
+        },
+        {
+          "name": "lado",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "id_bbdd",
+          "type": "BIGINT"
+        },
+        {
+          "name": "obs_data",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "circunsf",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "diametro",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "vereda",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "numeracion_aproximada",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "especie_arbol",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "elementos_estranos",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "tipo_elementos_estranos",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "descripcion_elementos_estranos",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "clavel_del_aire",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "calle",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ancho_vereda",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "dano_en_vereda",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "vereda_levantada",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "fuente",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "actualizacion",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "barrio",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 43525
+    },
+    "ambiente-y-agro/banados": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/ambiente-y-agro/banados/publico_banados.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_banados.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "area",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "perimetro",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "fuente",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 10
+    },
+    "ambiente-y-agro/cobertura_arbolado_urbano": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/ambiente-y-agro/cobertura_arbolado_urbano/publico_cobertura_arbolado_urbano.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_cobertura_arbolado_urbano.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "localidad",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "barrio",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "area",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "perimetro",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "espacio_verde",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "metodo_deteccion",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 45825
+    },
+    "ambiente-y-agro/cuencas_arroyo_pergamino": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/ambiente-y-agro/cuencas_arroyo_pergamino/publico_cuencas_arroyo_pergamino.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_cuencas_arroyo_pergamino.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "curso",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "area",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "fuente",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 32
+    },
+    "ambiente-y-agro/proyecto_presa_area_inundable": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/ambiente-y-agro/proyecto_presa_area_inundable/publico_proyecto_presa_area_inundable.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_proyecto_presa_area_inundable.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "area_km2",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "area_ha",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "fuente",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 1
+    },
+    "ambiente-y-agro/puntos_de_nivel_iatasa_abs": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/ambiente-y-agro/puntos_de_nivel_iatasa_abs/publico_puntos_de_nivel_iatasa_abs.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_puntos_de_nivel_iatasa_abs.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "detalle",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "tipo",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "x",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "y",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "cota",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "fuente",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "actualizacion",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "observaciones",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 6003
+    },
+    "ambiente-y-agro/riego_por_pivote_central": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/ambiente-y-agro/riego_por_pivote_central/publico_riego_por_pivote_central.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_riego_por_pivote_central.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "score",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "area",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "metodo",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "fecha",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 87
+    },
+    "ambiente-y-agro/suelos_pergamino_50mil": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/ambiente-y-agro/suelos_pergamino_50mil/publico_suelos_pergamino_50mil.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_suelos_pergamino_50mil.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "objectid_1",
+          "type": "BIGINT"
+        },
+        {
+          "name": "objectid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "simbc",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "nombre_uc",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "tipo",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "serie1",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "porc1",
+          "type": "BIGINT"
+        },
+        {
+          "name": "serie2",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "porc2",
+          "type": "BIGINT"
+        },
+        {
+          "name": "serie3",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "porc3",
+          "type": "BIGINT"
+        },
+        {
+          "name": "serie4",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "porc4",
+          "type": "BIGINT"
+        },
+        {
+          "name": "serie5",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "porc5",
+          "type": "BIGINT"
+        },
+        {
+          "name": "serie6",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "porc6",
+          "type": "BIGINT"
+        },
+        {
+          "name": "fase1",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "fase2",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "fase3",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "fase4",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "fase5",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "fase6",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "paisaje",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "posic1",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "posic2",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "posic3",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "posic4",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "posic5",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "posic6",
+          "type": "BIGINT"
+        },
+        {
+          "name": "cap_uso",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "taxo_ppal",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "taxo_2rio",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "taxo_3rio",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 95
+    },
+    "catastro/areas_fiscalizadas_construcciones": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/catastro/areas_fiscalizadas_construcciones/publico_areas_fiscalizadas_construcciones.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_areas_fiscalizadas_construcciones.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "nombre",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "fecha",
+          "type": "BIGINT"
+        },
+        {
+          "name": "estado",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "area_fiscalizada",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "observaciones",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "cantidad_mz",
+          "type": "BIGINT"
+        },
+        {
+          "name": "cantidad_pc",
+          "type": "BIGINT"
+        },
+        {
+          "name": "barrio",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 33
+    },
+    "catastro/chacra": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/catastro/chacra/publico_catastro_chacra.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_catastro_chacra.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "cca",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ara1",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "sag",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "etiqueta",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 285
+    },
+    "catastro/circunscripcion": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/catastro/circunscripcion/publico_catastro_circunscripcion.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_catastro_circunscripcion.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "cca",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "ara3",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "sag",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "etiqueta",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "localidad_asociada",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 23
+    },
+    "catastro/complejos_habitacionales": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/catastro/complejos_habitacionales/publico_complejos_habitacionales.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_complejos_habitacionales.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "complejo",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "barrio",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "tipo",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "plan",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "obs",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "nombre_alternativo",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "viviendas",
+          "type": "BIGINT"
+        },
+        {
+          "name": "distrito",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "estado",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "habilitacion",
+          "type": "BIGINT"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 108
+    },
+    "catastro/quinta": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/catastro/quinta/publico_catastro_quinta.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_catastro_quinta.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "cca",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ara1",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "sag",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "etiqueta",
+          "type": "BIGINT"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 136
+    },
+    "catastro/seccion": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/catastro/seccion/publico_catastro_seccion.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_catastro_seccion.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "etiqueta",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "cca",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ara1",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "seg",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 71
+    },
+    "catastro/subparcela": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/catastro/subparcela/publico_catastro_subparcela.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_catastro_subparcela.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "nomencla",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "partida",
+          "type": "BIGINT"
+        },
+        {
+          "name": "etiqueta",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 487
+    },
+    "catastro/zonificacion": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/catastro/zonificacion/publico_zonificacion.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_zonificacion.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "descripcion",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "designacion",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "categoria",
+          "type": "BIGINT"
+        },
+        {
+          "name": "fos",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "fota",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "fotp",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "dena",
+          "type": "BIGINT"
+        },
+        {
+          "name": "denp",
+          "type": "BIGINT"
+        },
+        {
+          "name": "um2",
+          "type": "BIGINT"
+        },
+        {
+          "name": "ul",
+          "type": "BIGINT"
+        },
+        {
+          "name": "sm",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "lm",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "hmax",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ud",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "uc",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "observaciones",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "distrito",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "fotp_prem",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "des_cat",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "actan",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "tipo_suelo",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "superficie_ha",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "zonas",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "u_c_r",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ord_ma",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "dec_ma",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ord_mod",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "dec_mod",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "fecha_ac",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "x",
+          "type": "BIGINT"
+        },
+        {
+          "name": "y",
+          "type": "BIGINT"
+        },
+        {
+          "name": "t_etiqueta",
+          "type": "BIGINT"
+        },
+        {
+          "name": "localidad",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ord_observaciones",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "urbano",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 230
+    },
+    "comercio-y-cultura/agencias_de_viaje": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/comercio-y-cultura/agencias_de_viaje/publico_agencias_de_viaje.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_agencias_de_viaje.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "nombre",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "direccion",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "horarios",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "web",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "redes sociales",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "telefono",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "actualizacion",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "mail",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "observaciones",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 15
+    },
+    "comercio-y-cultura/asociaciones_sindicales": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/comercio-y-cultura/asociaciones_sindicales/publico_asociaciones_sindicales.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_asociaciones_sindicales.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "nombre",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "domicilio",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "localidad",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "contacto_tel",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "contacto_mail",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "web",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "descripcion",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 29
+    },
+    "comercio-y-cultura/beata_crescencia_perez": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/comercio-y-cultura/beata_crescencia_perez/publico_beata_crescencia_perez.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_beata_crescencia_perez.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "nombre",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "direccion",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 3
+    },
+    "comercio-y-cultura/colegios_de_profesionales": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/comercio-y-cultura/colegios_de_profesionales/publico_colegios_de_profesionales.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_colegios_de_profesionales.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "nombre",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "domicilio",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "tel",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "mail",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 19
+    },
+    "comercio-y-cultura/parques_industriales_y_anexos": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/comercio-y-cultura/parques_industriales_y_anexos/publico_parques_industriales_y_anexos.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_parques_industriales_y_anexos.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "nombre",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ubicacion",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "caracter",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "contacto",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "tipo",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "estado",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 5
+    },
+    "comercio-y-cultura/paseos_comerciales": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/comercio-y-cultura/paseos_comerciales/publico_paseos_comerciales.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_paseos_comerciales.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "nombre",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ubicacion",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "link",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "detalle",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "tipo",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 20
+    },
+    "comercio-y-cultura/puntos_de_interes": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/comercio-y-cultura/puntos_de_interes/publico_puntos_de_interes.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_puntos_de_interes.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "nombre",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ubicacion",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "lat",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "lon",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "observaciones",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "link",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "localidad",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "tipo_interes",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 31
+    },
+    "comercio-y-cultura/puntos_venta_simple": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/comercio-y-cultura/puntos_venta_simple/publico_puntos_venta_simple.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_puntos_venta_simple.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "nombre",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "direccion",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "dia_horario",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "web",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "mail",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "tipo",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 21
+    },
+    "demografia/calidad_vivienda": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/demografia/calidad_vivienda/publico_calidad_vivienda.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_calidad_vivienda.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "habitantes_al_2010",
+          "type": "BIGINT"
+        },
+        {
+          "name": "1_satisfactorio",
+          "type": "BIGINT"
+        },
+        {
+          "name": "2_basico",
+          "type": "BIGINT"
+        },
+        {
+          "name": "3_insuficiente",
+          "type": "BIGINT"
+        },
+        {
+          "name": "total",
+          "type": "BIGINT"
+        },
+        {
+          "name": "indice_insuficiente",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "clavera",
+          "type": "BIGINT"
+        },
+        {
+          "name": "fuente",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "actualizacion",
+          "type": "BIGINT"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 178
+    },
+    "demografia/domicilios_por_manzana": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/demografia/domicilios_por_manzana/publico_domicilios_por_manzana.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_domicilios_por_manzana.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "provincia",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "depto",
+          "type": "BIGINT"
+        },
+        {
+          "name": "codigo_localidad",
+          "type": "BIGINT"
+        },
+        {
+          "name": "fraccion",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "radio",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "manzana",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "area",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "perimetro",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "codigo_adra",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "viviendas_2010",
+          "type": "BIGINT"
+        },
+        {
+          "name": "viviendas_2020",
+          "type": "BIGINT"
+        },
+        {
+          "name": "porcentaje_viv_2010_a_2020",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "domicilios_2010",
+          "type": "BIGINT"
+        },
+        {
+          "name": "domicilios_2020",
+          "type": "BIGINT"
+        },
+        {
+          "name": "porcentaje_dom_2010_a_2020",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 2197
+    },
+    "demografia/habitantes_por_manzana_provisorio_2022": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/demografia/habitantes_por_manzana_provisorio_2022/publico_habitantes_por_manzana_provisorio_2022.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_habitantes_por_manzana_provisorio_2022.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "provincia",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "depto",
+          "type": "BIGINT"
+        },
+        {
+          "name": "codigo_localidad",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "fraccion",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "radio",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "manzana",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "area",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "perimetro",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "codigo_adra",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "viviendas_2010",
+          "type": "BIGINT"
+        },
+        {
+          "name": "viviendas_2020",
+          "type": "BIGINT"
+        },
+        {
+          "name": "porcentaje_viv_2010_a_2020",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "domicilios_2010",
+          "type": "BIGINT"
+        },
+        {
+          "name": "domicilios_2020",
+          "type": "BIGINT"
+        },
+        {
+          "name": "porcentaje_dom_2010_a_2020",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "proyeccion_viviendas_2022",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "proyeccion_habitantes_2022",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "fuente",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "actualizacion",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "barrio",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "localidad",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "proyeccion_domicilios_2022",
+          "type": "BIGINT"
+        },
+        {
+          "name": "tasa_vivienda_2010-2022",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "tasa_vivienda_2010-2020",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "distrito",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "densidad_proyeccion_habitantes_2022",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 2888
+    },
+    "demografia/hacinamiento": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/demografia/hacinamiento/publico_hacinamiento.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_hacinamiento.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "habitantes_al_2010",
+          "type": "BIGINT"
+        },
+        {
+          "name": "0-0.50ppc",
+          "type": "BIGINT"
+        },
+        {
+          "name": "0.51-0.99",
+          "type": "BIGINT"
+        },
+        {
+          "name": "1.00-1.49",
+          "type": "BIGINT"
+        },
+        {
+          "name": "1.50-1.99",
+          "type": "BIGINT"
+        },
+        {
+          "name": "2.00-3.00",
+          "type": "BIGINT"
+        },
+        {
+          "name": "mas3.00ppc",
+          "type": "BIGINT"
+        },
+        {
+          "name": "total",
+          "type": "BIGINT"
+        },
+        {
+          "name": "indice_mas3ppc",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "clavera",
+          "type": "BIGINT"
+        },
+        {
+          "name": "observaciones",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "fuente",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "actualizacion",
+          "type": "BIGINT"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 178
+    },
+    "demografia/radios_censales_indec_2010": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/demografia/radios_censales_indec_2010/publico_radios_censales_indec_2010.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_radios_censales_indec_2010.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "clavera",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "radio-id",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "varon",
+          "type": "BIGINT"
+        },
+        {
+          "name": "mujer",
+          "type": "BIGINT"
+        },
+        {
+          "name": "hab_2010",
+          "type": "BIGINT"
+        },
+        {
+          "name": "radio_id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "fuente",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "actualizacion",
+          "type": "BIGINT"
+        },
+        {
+          "name": "normalized_v",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "normalized_m",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 178
+    },
+    "demografia/razon_de_sexo_2010": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/demografia/razon_de_sexo_2010/publico_razon_de_sexo_2010.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_razon_de_sexo_2010.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "varon",
+          "type": "BIGINT"
+        },
+        {
+          "name": "mujer",
+          "type": "BIGINT"
+        },
+        {
+          "name": "habitantes_al_2010",
+          "type": "BIGINT"
+        },
+        {
+          "name": "predominancia",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "razon",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "clavera",
+          "type": "BIGINT"
+        },
+        {
+          "name": "fuente",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "actualizacion",
+          "type": "BIGINT"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 178
+    },
+    "demografia/redatam_censo_2022_radios": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/demografia/redatam_censo_2022_radios/publico_redatam_censo_2022_radios.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_redatam_censo_2022_radios.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "clavera",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "codigo_partido",
+          "type": "BIGINT"
+        },
+        {
+          "name": "codigo_localidad",
+          "type": "DOUBLE",
+          "description": "[admin_code] INDEC locality administrative code"
+        },
+        {
+          "name": "nombre_localidad",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "fraccion",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "radio",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "tipo",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "radio_id",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "mujeres_total",
+          "type": "BIGINT"
+        },
+        {
+          "name": "varones_total",
+          "type": "BIGINT"
+        },
+        {
+          "name": "poblacion_total",
+          "type": "BIGINT"
+        },
+        {
+          "name": "indice_normalizado_sexo",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "mujeres_porcentaje",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "varones_porcentaje",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "poblacion_porcentaje_sobre_total",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "edad_hasta_14",
+          "type": "BIGINT"
+        },
+        {
+          "name": "edad_entre_14_y_64",
+          "type": "BIGINT"
+        },
+        {
+          "name": "edad_64_o_mas",
+          "type": "BIGINT"
+        },
+        {
+          "name": "edad_hasta_14_porcentaje",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "edad_entre_14_y_64_porcentaje",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "edad_64_o_mas_porcentaje",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "viviendas",
+          "type": "BIGINT"
+        },
+        {
+          "name": "hogares",
+          "type": "BIGINT"
+        },
+        {
+          "name": "indice_normalizado_vivienda_hogar",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "viviendas_ocupadas",
+          "type": "BIGINT"
+        },
+        {
+          "name": "viviendas_desocupadas",
+          "type": "BIGINT"
+        },
+        {
+          "name": "indice_normalizado_ocupacion_vivienda",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "densidad",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 212
+    },
+    "demografia/renabap_barrios_populares": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/demografia/renabap_barrios_populares/publico_renabap_barrios_populares.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_renabap_barrios_populares.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "renabap_id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "nombre_barrio",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "provincia",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "departamento",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "localidad",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "cantidad_familias_aproximada",
+          "type": "BIGINT"
+        },
+        {
+          "name": "cantidad_viviendas_aproximadas",
+          "type": "BIGINT"
+        },
+        {
+          "name": "decada_de_creacion",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "anio_de_creacion",
+          "type": "BIGINT"
+        },
+        {
+          "name": "energia_electrica",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "efluentes_cloacales",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "agua_corriente",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "cocina",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "calefaccion",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "situacion_dominial",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "clasificacion_barrio",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "superficie_m2",
+          "type": "BIGINT"
+        },
+        {
+          "name": "actualizacion",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "observaciones",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "revision",
+          "type": "BIGINT"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 21
+    },
+    "energia-y-conectividad/circuitos_energeticos": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/energia-y-conectividad/circuitos_energeticos/publico_circuitos_energeticos.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_circuitos_energeticos.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "denominacion",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "identificador",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "sendero",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ubicacion",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "promotor",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "a\u00f1o",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "financiamiento",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "tecnologia",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "fuente",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "enlace_team",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "proposito",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 19
+    },
+    "energia-y-conectividad/cobertura_gas_natural": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/energia-y-conectividad/cobertura_gas_natural/publico_cobertura_gas_natural.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_cobertura_gas_natural.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "numero_plano",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "actualizacion",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "fuente",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "localidad",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "observaciones",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "descargo_responsabilidad",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 17
+    },
+    "energia-y-conectividad/fibra_optica": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/energia-y-conectividad/fibra_optica/publico_fibra_optica.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_fibra_optica.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "Nombre",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Longitud",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "categoria",
+          "type": "BIGINT"
+        },
+        {
+          "name": "entidad",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 16
+    },
+    "energia-y-conectividad/red_federal_fibra_optica_nodos": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/energia-y-conectividad/red_federal_fibra_optica_nodos/publico_red_federal_fibra_optica_nodos.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_red_federal_fibra_optica_nodos.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "cuicom",
+          "type": "BIGINT"
+        },
+        {
+          "name": "nivacc",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "localidad",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "departamen",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "provincia",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "operat",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "observ",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "longitud",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "latitud",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 50
+    },
+    "energia-y-conectividad/red_federal_fibra_optica_tramos": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/energia-y-conectividad/red_federal_fibra_optica_tramos/publico_red_federal_fibra_optica_tramos.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_red_federal_fibra_optica_tramos.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "cuicom",
+          "type": "BIGINT"
+        },
+        {
+          "name": "nivacc",
+          "type": "BIGINT"
+        },
+        {
+          "name": "actual",
+          "type": "TIMESTAMP"
+        },
+        {
+          "name": "observ",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "nombre_tramo",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 53
+    },
+    "energia-y-conectividad/wifi_espacios_verdes": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/energia-y-conectividad/wifi_espacios_verdes/publico_wifi_espacios_verdes.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_wifi_espacios_verdes.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "nombre",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "barrio",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "localidad",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 11
+    },
+    "limites/aglomerados_urbanos": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/limites/aglomerados_urbanos/publico_aglomerados_urbanos.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_aglomerados_urbanos.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "area",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "metodologia",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "clasificacion",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "distrito",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "fecha_actualizacion",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "fuente",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "definicion",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "descargo_responsabilidad",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "observaciones",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "seccion",
+          "type": "BIGINT"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 166
+    },
+    "limites/barrios": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/limites/barrios/publico_barrios.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_barrios.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "nombre",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "tipo",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "area",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "ordenanza",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "delimitacion",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "distrito",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "proy_habitantes_2020",
+          "type": "BIGINT"
+        },
+        {
+          "name": "proy_densidad_2020",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "color_id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "localidad",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "manzanas",
+          "type": "BIGINT"
+        },
+        {
+          "name": "seccion",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "primera_letra",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 45
+    },
+    "limites/circuitos_electorales": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/limites/circuitos_electorales/publico_circuitos_electorales.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_circuitos_electorales.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "circuito",
+          "type": "VARCHAR",
+          "description": "[admin_code] Electoral circuit code"
+        },
+        {
+          "name": "cabecera",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "municipio",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "muni_id",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "circuitos_intendente_3ro",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "circuitos_intendente_%_3ro",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 122
+    },
+    "limites/cpa": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/limites/cpa/publico_cpa.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_cpa.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "nombre",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "nombre_alt",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "pre_tipo",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "pre_dir",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "impar_ini",
+          "type": "BIGINT"
+        },
+        {
+          "name": "impar_fin",
+          "type": "BIGINT"
+        },
+        {
+          "name": "par_ini",
+          "type": "BIGINT"
+        },
+        {
+          "name": "par_fin",
+          "type": "BIGINT"
+        },
+        {
+          "name": "clase",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "barrio",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "localidad",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "cpa",
+          "type": "VARCHAR",
+          "description": "[zipcode] Argentine postal code (CPA) associated with street address ranges"
+        },
+        {
+          "name": "fuente",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "actualizacion",
+          "type": "BIGINT"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 6869
+    },
+    "limites/manchas_urbanas_historicas": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/limites/manchas_urbanas_historicas/publico_manchas_urbanas_historicas.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_manchas_urbanas_historicas.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "a\u00f1o",
+          "type": "BIGINT"
+        },
+        {
+          "name": "fuente",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "denominacion",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "poblacion",
+          "type": "BIGINT"
+        },
+        {
+          "name": "superficia_ha",
+          "type": "BIGINT"
+        },
+        {
+          "name": "observaciones",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 8
+    },
+    "limites/partido_pergamino": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/limites/partido_pergamino/publico_partido_pergamino.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_partido_pergamino.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "gid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "departa",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "cabecer",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "provincia",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "cod_depto",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "poblacion",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "gentilicio",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "pref_tel",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "patrona",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "coordenada",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "web",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "area_ha",
+          "type": "BIGINT"
+        },
+        {
+          "name": "area_km2",
+          "type": "BIGINT"
+        },
+        {
+          "name": "lon_centroide",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "lat_centroide",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "perimetro_m",
+          "type": "BIGINT"
+        },
+        {
+          "name": "perimetro_km",
+          "type": "BIGINT"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 1
+    },
+    "limites/pueblos": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/limites/pueblos/publico_pueblos.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_pueblos.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "nombre",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "tipo",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "area",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "ordenanza",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "delimitacion",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "distrito",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "proy_habitantes_2020",
+          "type": "BIGINT"
+        },
+        {
+          "name": "proy_densidad_2020",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "color_id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "localidad",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "manzanas",
+          "type": "BIGINT"
+        },
+        {
+          "name": "seccion",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "primera_letra",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 13
+    },
+    "limites/zonas_electorales_celp": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/limites/zonas_electorales_celp/publico_zonas_electorales_celp.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_zonas_electorales_celp.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "numero_zona",
+          "type": "BIGINT"
+        },
+        {
+          "name": "barrios",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "fuente",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "observaciones",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "actualizacion",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "etiqueta",
+          "type": "BIGINT"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 8
+    },
+    "salud/areas_programaticas_salud": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/salud/areas_programaticas_salud/publico_areas_programaticas_salud.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_areas_programaticas_salud.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "nombre_area",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "numero_area",
+          "type": "BIGINT"
+        },
+        {
+          "name": "fecha_actualizacion",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "fuente",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "barrios",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "cantidad_viviendas_2020",
+          "type": "BIGINT"
+        },
+        {
+          "name": "cantidad_habitantes_proyectado_2020",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "caps_asociados",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "localidad",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 17
+    },
+    "salud/caps": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/salud/caps/publico_caps.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_caps.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "nombre",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "direccion",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "telefono",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "horario",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "barrio",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "clinmedica",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "pediatria",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "tocogineco",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "obstetrici",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "odontologi",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "trabsocial",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "nutricion",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "psicologia",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "fonoaudio",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ecografia",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "oftalmolog",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "kinesiolog",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "cardioinfa",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "enfermeria",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "vacunas_calendario",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "actualizacion",
+          "type": "BIGINT"
+        },
+        {
+          "name": "tipo",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 30
+    },
+    "salud/centros_de_salud": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/salud/centros_de_salud/publico_centros_de_salud.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_centros_de_salud.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "nombre",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "tipo",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "direccion",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "telefono",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "web",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "mail",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "titularida",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "especialid",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 23
+    },
+    "salud/desfibriladores": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/salud/desfibriladores/publico_desfibriladores.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_desfibriladores.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "direccion",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ubicacion",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "url",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "marca",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "modelo",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "codigo",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "estado",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 10
+    },
+    "salud/estaciones_de_salud": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/salud/estaciones_de_salud/publico_estaciones_de_salud.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_estaciones_de_salud.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "nombre",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "localidad",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "barrio",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ubicacion",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "actualizacion",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "fuente",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 29
+    },
+    "salud/guardias_emergencias_servicios": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/salud/guardias_emergencias_servicios/publico_guardias_emergencias_servicios.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_guardias_emergencias_servicios.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "nombre",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "servicio",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ubicacion",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "telefono_1",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "telefono_2",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 6
+    },
+    "salud/guardias_medicas": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/salud/guardias_medicas/publico_guardias_medicas.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_guardias_medicas.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "nombre",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ubicacion",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "telefono_1",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "telefono_2",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 5
+    },
+    "seguridad/bomberos": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/seguridad/bomberos/publico_bomberos.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_bomberos.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "nombre",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ubicacion",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "telefono",
+          "type": "BIGINT"
+        },
+        {
+          "name": "telefono_2",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "fecha_fundacion",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "web",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "lema",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 2
+    },
+    "seguridad/camaras_seguridad": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/seguridad/camaras_seguridad/publico_camaras_seguridad.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_camaras_seguridad.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "idpo",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "idcam",
+          "type": "BIGINT"
+        },
+        {
+          "name": "tipo",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "jurisdiccion",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "cuadricula",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "zona",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ubicacion",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "fuente",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 523
+    },
+    "seguridad/centros_evacuados": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/seguridad/centros_evacuados/publico_centros_evacuados.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_centros_evacuados.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "nombre",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "direccion",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "zona",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "capacidad",
+          "type": "BIGINT"
+        },
+        {
+          "name": "fuente",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "observaciones",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 5
+    },
+    "seguridad/cuadriculas_policiales": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/seguridad/cuadriculas_policiales/publico_cuadriculas_policiales.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_cuadriculas_policiales.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "comisaria",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "zona",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "localidad",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "cuadricula",
+          "type": "BIGINT"
+        },
+        {
+          "name": "jurisdiccion",
+          "type": "BIGINT"
+        },
+        {
+          "name": "observaciones",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 14
+    },
+    "seguridad/dependencias_seguridad": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/seguridad/dependencias_seguridad/publico_dependencias_seguridad.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_dependencias_seguridad.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "tipo",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "direccion",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "telefono",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "localidad",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "actualizacion",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "fuente",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "nombre",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "etiqueta",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "operador",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "categoria",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "detalles",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 52
+    },
+    "seguridad/jurisdicciones_policiales": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/seguridad/jurisdicciones_policiales/publico_jurisdicciones_policiales.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_jurisdicciones_policiales.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "jurisdiccion",
+          "type": "BIGINT"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 3
+    },
+    "seguridad/zonas_emergencias_y_riesgo": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/seguridad/zonas_emergencias_y_riesgo/publico_zonas_emergencias_y_riesgo.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_zonas_emergencias_y_riesgo.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "zona",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "fuente",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 9
+    },
+    "seguridad/zonas_seguridad": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/seguridad/zonas_seguridad/publico_zonas_seguridad.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_zonas_seguridad.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "comisaria",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "zona",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "localidad",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "cuadricula",
+          "type": "BIGINT"
+        },
+        {
+          "name": "jurisdiccion",
+          "type": "BIGINT"
+        },
+        {
+          "name": "observaciones",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 14
+    },
+    "servicios-municipales/agencias_gubernamentales": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/servicios-municipales/agencias_gubernamentales/publico_agencias_gubernamentales.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_agencias_gubernamentales.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "nombre",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "reparticio",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "domicilio",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "tel",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "mail",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "web",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "asunto",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 10
+    },
+    "servicios-municipales/areas_programaticas_desarrollo_social": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/servicios-municipales/areas_programaticas_desarrollo_social/publico_areas_programaticas_desarrollo_social.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_areas_programaticas_desarrollo_social.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "zona",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 7
+    },
+    "servicios-municipales/barrido_y_limpieza": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/servicios-municipales/barrido_y_limpieza/publico_barrido_y_limpieza.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_barrido_y_limpieza.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "numero_zona",
+          "type": "BIGINT"
+        },
+        {
+          "name": "zona",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "empresa",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "frecuencia",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 21
+    },
+    "servicios-municipales/bocas_pago_tasas": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/servicios-municipales/bocas_pago_tasas/publico_bocas_pago_tasas.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_bocas_pago_tasas.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "nombre",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "direccion",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "tipo",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "fuente",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "actualizacion",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "observaciones",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 86
+    },
+    "servicios-municipales/puntos_clickeados": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/servicios-municipales/puntos_clickeados/publico_puntos_clickeados.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_puntos_clickeados.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "nombre",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "domicilio",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "barrio",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 4
+    },
+    "servicios-municipales/recoleccion_residuos_domiciliarios": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/servicios-municipales/recoleccion_residuos_domiciliarios/publico_recoleccion_residuos_domiciliarios.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_recoleccion_residuos_domiciliarios.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "nombre",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "turno",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "lunes",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "martes",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "miercoles",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "jueves",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "viernes",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "sabado",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "domingo",
+          "type": "BIGINT"
+        },
+        {
+          "name": "observacion",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "horario",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "numero_ruta",
+          "type": "BIGINT"
+        },
+        {
+          "name": "etiqueta",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 34
+    },
+    "servicios-municipales/recoleccion_residuos_voluminosos": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/servicios-municipales/recoleccion_residuos_voluminosos/publico_recoleccion_residuos_voluminosos.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_recoleccion_residuos_voluminosos.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "zona",
+          "type": "BIGINT"
+        },
+        {
+          "name": "semana",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "fuente",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "actualizacion",
+          "type": "BIGINT"
+        },
+        {
+          "name": "detalle",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 4
+    },
+    "servicios-municipales/sanitarios_publicos": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/servicios-municipales/sanitarios_publicos/publico_sanitarios_publicos.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_sanitarios_publicos.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "nombre",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "direccion",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "horario",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "actualizacion",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 5
+    },
+    "servicios-sanitarios/cobertura_agua_antes_de_2015": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/servicios-sanitarios/cobertura_agua_antes_de_2015/publico_cobertura_agua_antes_de_2015.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_cobertura_agua_antes_de_2015.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:row_count": 8
+    },
+    "servicios-sanitarios/cobertura_agua_de_2015_a_2019": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/servicios-sanitarios/cobertura_agua_de_2015_a_2019/publico_cobertura_agua_de_2015_a_2019.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_cobertura_agua_de_2015_a_2019.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:row_count": 39
+    },
+    "servicios-sanitarios/cobertura_agua_de_2019_a_2023": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/servicios-sanitarios/cobertura_agua_de_2019_a_2023/publico_cobertura_agua_de_2019_a_2023.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_cobertura_agua_de_2019_a_2023.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:row_count": 23
+    },
+    "servicios-sanitarios/cobertura_agua_de_2023_a_2027": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/servicios-sanitarios/cobertura_agua_de_2023_a_2027/publico_cobertura_agua_de_2023_a_2027.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_cobertura_agua_de_2023_a_2027.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:row_count": 37
+    },
+    "servicios-sanitarios/pluviales": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/servicios-sanitarios/pluviales/publico_pluviales.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_pluviales.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "tipo",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "forma",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ancho",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "alto",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "diametro",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "material",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "calle",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "altura_inicial",
+          "type": "BIGINT"
+        },
+        {
+          "name": "altura_final",
+          "type": "BIGINT"
+        },
+        {
+          "name": "observaciones",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "conducto_cerrado",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "funcion",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "longitud",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "sistema",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "fuente",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "descargo_responsabilidad",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "nombre_pliego",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 1739
+    },
+    "servicios-sanitarios/pozos_agua_doss": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/servicios-sanitarios/pozos_agua_doss/publico_pozos_agua_doss.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_pozos_agua_doss.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "nombre",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ubicacion",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "estado",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 95
+    },
+    "servicios-sanitarios/sumideros": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/servicios-sanitarios/sumideros/publico_sumideros.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_sumideros.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "sistema",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "calle",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "observaciones",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "tapa_acceso",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "altura_boca",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ancho_boca",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "reja",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "vereda",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "profundidad",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "latitud",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "longitud",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "fuente",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "descargo_responsabilidad",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 955
+    },
+    "servicios-sanitarios/zonas_facturacion": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/servicios-sanitarios/zonas_facturacion/publico_zonas_facturacion.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_zonas_facturacion.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "zona",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "fuente",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "actualizacion",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "observaciones",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "numero_zona",
+          "type": "BIGINT"
+        },
+        {
+          "name": "localidad",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 54
+    },
+    "transporte/aeropuertos": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/transporte/aeropuertos/publico_aeropuertos.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_aeropuertos.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "local",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "oaci",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "iata",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "tipo",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "denominacion",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "coordenadas",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "latitud",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "longitud",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "elev",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "uom_elev",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ref",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "distancia_ref",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "direccion_ref",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "condicion",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "control",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "region",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "fir",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "uso",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "trafico",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "sna",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "concesionado",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "provincia",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "inhab",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "fuente",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 40
+    },
+    "transporte/cicloturismo_rural": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/transporte/cicloturismo_rural/publico_cicloturismo_rural.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_cicloturismo_rural.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "circuito",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "tramo",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "dificultad",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "longitud",
+          "type": "BIGINT"
+        },
+        {
+          "name": "observaciones",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 10
+    },
+    "transporte/ciclovias": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/transporte/ciclovias/publico_ciclovias.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_ciclovias.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "nombre",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "clase",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "material_calzada",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "lado_ciclovia",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 11703
+    },
+    "transporte/colectivos_interurbanos": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/transporte/colectivos_interurbanos/publico_colectivos_interurbanos.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_colectivos_interurbanos.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "empresa",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ruta",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "linea",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "tramo",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "recorrido",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "comentario",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "duracion",
+          "type": "BIGINT"
+        },
+        {
+          "name": "acumulada",
+          "type": "BIGINT"
+        },
+        {
+          "name": "frecuencia",
+          "type": "BIGINT"
+        },
+        {
+          "name": "nombre",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 57
+    },
+    "transporte/linea_parque_industrial": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/transporte/linea_parque_industrial/publico_linea_parque_industrial.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_linea_parque_industrial.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "recorrido",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "fuente",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "actualizacion",
+          "type": "BIGINT"
+        },
+        {
+          "name": "longitud_km",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "nombre_linea",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ramal",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "frecuencia_hora_pico_min",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "frecuencia_hora_no_pico_min",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "observaciones",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 2
+    },
+    "transporte/paradas_de_colectivo": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/transporte/paradas_de_colectivo/publico_paradas_de_colectivo.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_paradas_de_colectivo.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "ubicaci\u00f3n",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "fuente",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "actualizacion",
+          "type": "BIGINT"
+        },
+        {
+          "name": "ramal_a",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ramal_b",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ramal_c",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ramal_d",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ramal_e",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ramal_parque_industrial",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "refugio",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 394
+    },
+    "transporte/remis_taxi": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/transporte/remis_taxi/publico_remis_taxi.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_remis_taxi.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "nombre",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "domicilio",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "tel_1",
+          "type": "BIGINT"
+        },
+        {
+          "name": "tel_2",
+          "type": "BIGINT"
+        },
+        {
+          "name": "horario",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "tipo",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 24
+    },
+    "transporte/sube": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/transporte/sube/publico_sube.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_sube.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "nombre",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "direccion",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "tipo",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "conseguir",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "cargar",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "registrar",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "consulta",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "acreditar",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "gestion",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "social",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "horarios",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "fuente",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "actualizacion",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 97
+    },
+    "vialidad/alcantarillas_vialidad": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/vialidad/alcantarillas_vialidad/publico_alcantarillas_vialidad.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_alcantarillas_vialidad.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "cod_ruta",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "progresiva",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "progresiv0",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "ano_ruta",
+          "type": "BIGINT"
+        },
+        {
+          "name": "clase_estr",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "material_e",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "descripcio",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "angulo",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "fuente",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 74
+    },
+    "vialidad/altura_de_calle": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/vialidad/altura_de_calle/publico_altura_de_calle.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_altura_de_calle.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "nombre",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "impar_ini",
+          "type": "BIGINT"
+        },
+        {
+          "name": "impar_fin",
+          "type": "BIGINT"
+        },
+        {
+          "name": "par_ini",
+          "type": "BIGINT"
+        },
+        {
+          "name": "par_fin",
+          "type": "BIGINT"
+        },
+        {
+          "name": "e_num_imp",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "e_num_par",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 11703
+    },
+    "vialidad/callejero": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/vialidad/callejero/publico_callejero.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_callejero.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "codigo",
+          "type": "BIGINT"
+        },
+        {
+          "name": "ancho",
+          "type": "BIGINT"
+        },
+        {
+          "name": "nombre",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "nombre_alt",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "pre_tipo",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "pre_dir",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "impar_ini",
+          "type": "BIGINT"
+        },
+        {
+          "name": "impar_fin",
+          "type": "BIGINT"
+        },
+        {
+          "name": "par_ini",
+          "type": "BIGINT"
+        },
+        {
+          "name": "par_fin",
+          "type": "BIGINT"
+        },
+        {
+          "name": "ruta",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "clase",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "sentido",
+          "type": "BIGINT"
+        },
+        {
+          "name": "barrio",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "barrido",
+          "type": "DECIMAL(38,0)"
+        },
+        {
+          "name": "zona_barri",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "etiqueta",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "buffer",
+          "type": "BIGINT"
+        },
+        {
+          "name": "t_etiq",
+          "type": "BIGINT"
+        },
+        {
+          "name": "e_num_imp",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "e_num_par",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "localidad",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "long",
+          "type": "BIGINT"
+        },
+        {
+          "name": "long_km",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "buff",
+          "type": "BIGINT"
+        },
+        {
+          "name": "ordenanza",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "prog_ini",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "prog_fin",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "est_medido",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "cc_empresa",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "cc_fecha_inicio_obra",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "cc_fecha_fin_obra",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "cc_expediente",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "cc_etapa",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "pav_empresa",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "pav_fecha_inicio_obra",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "pav_fecha_fin_obra",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "pav_expediente",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "pav_etapa",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "velocidad_maxima",
+          "type": "BIGINT"
+        },
+        {
+          "name": "cpa_impar",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "cpa_par",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "restriccion_estacionamiento",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "observaciones",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "nombre_corto",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ancho_vereda_par",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "ancho_vereda_impar",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "tipo_vereda_par",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "tipo_vereda_impar",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "cob_cloacas_par",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "cob_cloacas_impar",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "cob_agua_par",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "cob_agua_impar",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ancho_nominal",
+          "type": "BIGINT"
+        },
+        {
+          "name": "ancho_real",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "ancho_calzada",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "id_calle",
+          "type": "BIGINT"
+        },
+        {
+          "name": "lado_ciclovia",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "transitable",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "numero_reparto_facturacion",
+          "type": "BIGINT"
+        },
+        {
+          "name": "nombre_completo",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "material_calzada",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "cordon_cuneta",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "proyecto_infraestructura",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "arbolado",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 11703
+    },
+    "vialidad/callejero_listado": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/vialidad/callejero_listado/publico_callejero_listado.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_callejero_listado.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "localidad",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "nombre",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "id_calle",
+          "type": "BIGINT"
+        }
+      ],
+      "table:row_count": 1098
+    },
+    "vialidad/reductores_de_velocidad": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/vialidad/reductores_de_velocidad/publico_reductores_de_velocidad.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_reductores_de_velocidad.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "calle",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "altura",
+          "type": "BIGINT"
+        },
+        {
+          "name": "tipo",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "obs",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "localidad",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 217
+    },
+    "vialidad/semaforos": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/vialidad/semaforos/publico_semaforos.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_semaforos.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "tipo",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "vehicular",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "peatonal",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "observaciones",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "actualizacion",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 294
+    },
+    "vialidad/tipo_de_vereda": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/vialidad/tipo_de_vereda/publico_tipo_de_vereda.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_tipo_de_vereda.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "nombre",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "impar_ini",
+          "type": "BIGINT"
+        },
+        {
+          "name": "impar_fin",
+          "type": "BIGINT"
+        },
+        {
+          "name": "par_ini",
+          "type": "BIGINT"
+        },
+        {
+          "name": "par_fin",
+          "type": "BIGINT"
+        },
+        {
+          "name": "tipo_vereda_impar",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "tipo_vereda_par",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ancho_vereda_impar",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "ancho_vereda_par",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 11703
+    },
+    "vialidad/tranqueras_rurales": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/vialidad/tranqueras_rurales/publico_tranqueras_rurales.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_tranqueras_rurales.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "longitud",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "latitud",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "codigo",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "instrucciones_ingreso",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "partida",
+          "type": "BIGINT"
+        },
+        {
+          "name": "objeto",
+          "type": "BIGINT"
+        },
+        {
+          "name": "reserva_agua",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 171
+    },
+    "educacion/bibliotecas": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/educacion/bibliotecas/publico_bibliotecas.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_bibliotecas.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "gid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "nombre",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "direccion",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "telefono",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "sitio web",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "mail",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "tipo",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "horario",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 11
+    },
+    "educacion/gestion": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/educacion/gestion/publico_educacion_gestion.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_educacion_gestion.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "clave",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "cue_anexo",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "nombre",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "nro",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "direccion",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "calles_laterales",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "barrio",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "localidad",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "telefono",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "cp",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "sector",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "etiqueta",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "nivel",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "fuente",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 200
+    },
+    "educacion/nivel": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/educacion/nivel/publico_educacion_nivel.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_educacion_nivel.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "clave",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "cue_anexo",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "nombre",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "nro",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "direccion",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "calles_laterales",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "barrio",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "localidad",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "telefono",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "cp",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "sector",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "etiqueta",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "nivel",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "fuente",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 200
+    },
+    "educacion/predios_educativos": {
+      "href": "https://data.source.coop/nlebovits/pergamino-ide/educacion/predios_educativos/publico_predios_educativos.parquet",
+      "type": "application/x-parquet",
+      "title": "publico_predios_educativos.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "cui",
+          "type": "BIGINT"
+        },
+        {
+          "name": "cue_clave",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "latitud",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "longitud",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "fuente",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "actualizacion",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "area",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "partido",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "barrio",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "localidad",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 133
     }
   },
+  "table:columns": [
+    {
+      "name": "id",
+      "type": "BIGINT"
+    },
+    {
+      "name": "zona",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "sistema",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "area",
+      "type": "DOUBLE"
+    },
+    {
+      "name": "fecha_actualizacion",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "observaciones",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "gestion",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "fuente",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "geometry",
+      "type": "GEOMETRY('OGC:CRS84')"
+    },
+    {
+      "name": "bbox",
+      "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+    }
+  ],
   "links": [
     {
       "rel": "self",
@@ -72,12 +5659,6 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "updated_at": "2026-05-08T18:02:27.574Z",
-  "object_count": 1494,
-  "visibility": "public",
-  "created_at": "2026-05-08T18:02:27.574Z",
-  "data_mode": "open",
-  "total_bytes": 117618016,
   "account_id": "nlebovits",
   "mirrors": {
     "aws-opendata-us-west-2": {
@@ -91,30 +5672,34 @@
       "prefix": "nlebovits/pergamino-ide/"
     }
   },
-  "featured": 0,
-  "product_id": "pergamino-ide",
-  "disabled": false,
+  "exts": {
+    "json": 562,
+    "md": 394,
+    "parquet": 183,
+    "pmtiles": 182,
+    "jpg": 182,
+    "png": 181
+  },
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "exts": {
-    "json": 597,
-    "yaml": 181,
-    "md": 179,
-    "parquet": 179,
-    "jpg": 178,
-    "pmtiles": 177,
-    "pmtiles-journal": 2,
-    "lock": 1
-  },
-  "readme": "## README.md\n# pergamino-ide\n\n![WFS](https://img.shields.io/badge/WFS-blue) ![WMS](https://img.shields.io/badge/WMS-blue) ![GEOSERVER](https://img.shields.io/badge/GEOSERVER-blue) ![features](https://img.shields.io/badge/features-blue) ![aeropuertos](https://img.shields.io/badge/aeropuertos-blue) ![agencias_de_viaje](https://img.shields.io/badge/agencias_de_viaje-blue) ![agencias_gubernamentales](https://img.shields.io/badge/agencias_gubernamentales-blue) ![aglomerados_urbanos](https://img.shields.io/badge/aglomerados_urbanos-blue) ![alcantarillas_vialidad](https://img.shields.io/badge/alcantarillas_vialidad-blue) ![altura_de_calle](https://img.shields.io/badge/altura_de_calle-blue) ![arbolado](https://img.shields.io/badge/arbolado-blue) ![areas_fiscalizadas_construcciones](https://img.shields.io/badge/areas_fiscalizadas_construcciones-blue) ![areas_programaticas_desarrollo_social](https://img.shields.io/badge/areas_programaticas_desarrollo_social-blue) ![areas_programaticas_salud](https://img.shields.io/badge/areas_programaticas_salud-blue) ![asociaciones_sindicales](https://img.shields.io/badge/asociaciones_sindicales-blue) ![barrido_y_limpieza](https://img.shields.io/badge/barrido_y_limpieza-blue) ![barrios](https://img.shields.io/badge/barrios-blue) ![banados](https://img.shields.io/badge/banados-blue) ![beata_crescencia_perez](https://img.shields.io/badge/beata_crescencia_perez-blue) ![bibliotecas](https://img.shields.io/badge/bibliotecas-blue) ![bocas_pago_tasas](https://img.shields.io/badge/bocas_pago_tasas-blue) ![bomberos](https://img.shields.io/badge/bomberos-blue) ![calidad_vivienda](https://img.shields.io/badge/calidad_vivienda-blue) ![callejero](https://img.shields.io/badge/callejero-blue) ![callejero_listado](https://img.shields.io/badge/callejero_listado-blue) ![camaras_seguridad](https://img.shields.io/badge/camaras_seguridad-blue) ![camaras_y_radares](https://img.shields.io/badge/camaras_y_radares-blue) ![caps](https://img.shields.io/badge/caps-blue) ![salud](https://img.shields.io/badge/salud-blue) ![carteles_viales](https://img.shields.io/badge/carteles_viales-blue) ![catastro_chacra](https://img.shields.io/badge/catastro_chacra-blue) ![catastro_circunscripcion](https://img.shields.io/badge/catastro_circunscripcion-blue) ![catastro_fraccion](https://img.shields.io/badge/catastro_fraccion-blue) ![catastro_manzana](https://img.shields.io/badge/catastro_manzana-blue) ![catastro_medida_lado](https://img.shields.io/badge/catastro_medida_lado-blue) ![catastro_parcela](https://img.shields.io/badge/catastro_parcela-blue) ![catastro_ph](https://img.shields.io/badge/catastro_ph-blue) ![catastro_quinta](https://img.shields.io/badge/catastro_quinta-blue) ![catastro_seccion](https://img.shields.io/badge/catastro_seccion-blue) ![catastro_subparcela](https://img.shields.io/badge/catastro_subparcela-blue) ![centros_de_desarrollo_comunitario](https://img.shields.io/badge/centros_de_desarrollo_comunitario-blue) ![cdc](https://img.shields.io/badge/cdc-blue) ![centros_de_salud](https://img.shields.io/badge/centros_de_salud-blue) ![centros_evacuados](https://img.shields.io/badge/centros_evacuados-blue) ![cicloturismo_rural](https://img.shields.io/badge/cicloturismo_rural-blue) ![ciclovia](https://img.shields.io/badge/ciclovia-blue) ![circuitos_electorales](https://img.shields.io/badge/circuitos_electorales-blue) ![circuitos_energ\u00e9ticos](https://img.shields.io/badge/circuitos_energ%C3%A9ticos-blue) ![cobertura_agua_antes_de_2015](https://img.shields.io/badge/cobertura_agua_antes_de_2015-blue) ![cobertura_agua_de_2015_a_2019](https://img.shields.io/badge/cobertura_agua_de_2015_a_2019-blue) ![cobertura_agua_de_2019_a_2023](https://img.shields.io/badge/cobertura_agua_de_2019_a_2023-blue) ![cobertura_agua_de_2023_a_2027](https://img.shields.io/badge/cobertura_agua_de_2023_a_2027-blue) ![cobertura_arbolado_urbano](https://img.shields.io/badge/cobertura_arbolado_urbano-blue) ![cobertura_cloacas_antes_de_2015](https://img.shields.io/badge/cobertura_cloacas_antes_de_2015-blue) ![cobertura_cloacas_de_2019_a_2023](https://img.shields.io/badge/cobertura_cloacas_de_2019_a_2023-blue) ![cobertura_cloacas_de_2023_a_2027](https://img.shields.io/badge/cobertura_cloacas_de_2023_a_2027-blue) ![cobertura_gas_natural](https://img.shields.io/badge/cobertura_gas_natural-blue) ![codigo_reparto_facturacion](https://img.shields.io/badge/codigo_reparto_facturacion-blue) ![coeficientes_zonales_doss](https://img.shields.io/badge/coeficientes_zonales_doss-blue) ![colectivos_interurbanos](https://img.shields.io/badge/colectivos_interurbanos-blue) ![colectivos_urbanos](https://img.shields.io/badge/colectivos_urbanos-blue) ![colectoras_cloacales_maximas](https://img.shields.io/badge/colectoras_cloacales_maximas-blue) ![colegios_de_profesionales](https://img.shields.io/badge/colegios_de_profesionales-blue) ![comisiones_caminos_rurales](https://img.shields.io/badge/comisiones_caminos_rurales-blue) ![complejos_habitacionales](https://img.shields.io/badge/complejos_habitacionales-blue) ![contenedores_basura_reciclaje](https://img.shields.io/badge/contenedores_basura_reciclaje-blue) ![cordon_cuneta](https://img.shields.io/badge/cordon_cuneta-blue) ![cpa](https://img.shields.io/badge/cpa-blue) ![cuadriculas_policiales](https://img.shields.io/badge/cuadriculas_policiales-blue) ![seguridad](https://img.shields.io/badge/seguridad-blue) ![cuadriculas](https://img.shields.io/badge/cuadriculas-blue) ![cuencas_arroyo_pergamino](https://img.shields.io/badge/cuencas_arroyo_pergamino-blue) ![cuencas_hidricas_norte_ba](https://img.shields.io/badge/cuencas_hidricas_norte_ba-blue) ![cursos_de_agua](https://img.shields.io/badge/cursos_de_agua-blue) ![curvas_de_nivel_iatasa_abs](https://img.shields.io/badge/curvas_de_nivel_iatasa_abs-blue) ![curvas_nivel_cuenca](https://img.shields.io/badge/curvas_nivel_cuenca-blue) ![curvas_nivel_ign](https://img.shields.io/badge/curvas_nivel_ign-blue) ![delegaciones_pueblos](https://img.shields.io/badge/delegaciones_pueblos-blue) ![dependencias_municipales](https://img.shields.io/badge/dependencias_municipales-blue) ![dependencias_seguridad](https://img.shields.io/badge/dependencias_seguridad-blue) ![deportivo](https://img.shields.io/badge/deportivo-blue) ![desarrollo_social](https://img.shields.io/badge/desarrollo_social-blue) ![desecho_pilas_usadas](https://img.shields.io/badge/desecho_pilas_usadas-blue) ![desfibriladores](https://img.shields.io/badge/desfibriladores-blue) ![adra_manzanas](https://img.shields.io/badge/adra_manzanas-blue) ![ecobotellas](https://img.shields.io/badge/ecobotellas-blue) ![edificaciones_pa](https://img.shields.io/badge/edificaciones_pa-blue) ![edificaciones_pb](https://img.shields.io/badge/edificaciones_pb-blue) ![edificios_en_altura](https://img.shields.io/badge/edificios_en_altura-blue) ![edificios_historicos](https://img.shields.io/badge/edificios_historicos-blue) ![educacion_gestion](https://img.shields.io/badge/educacion_gestion-blue) ![escuelas_nivel](https://img.shields.io/badge/escuelas_nivel-blue) ![entretenimiento](https://img.shields.io/badge/entretenimiento-blue) ![espacios_verdes](https://img.shields.io/badge/espacios_verdes-blue) ![estacionamiento_medido](https://img.shields.io/badge/estacionamiento_medido-blue) ![estacionamiento_motos_bicicletas](https://img.shields.io/badge/estacionamiento_motos_bicicletas-blue) ![estacionamiento_nocturno](https://img.shields.io/badge/estacionamiento_nocturno-blue) ![estacionamiento_privado](https://img.shields.io/badge/estacionamiento_privado-blue) ![estaciones_de_bombeo](https://img.shields.io/badge/estaciones_de_bombeo-blue) ![estaciones_de_salud](https://img.shields.io/badge/estaciones_de_salud-blue) ![gimnasia](https://img.shields.io/badge/gimnasia-blue) ![estaciones_servicio](https://img.shields.io/badge/estaciones_servicio-blue) ![estado_parcela](https://img.shields.io/badge/estado_parcela-blue) ![extraccion_dinero](https://img.shields.io/badge/extraccion_dinero-blue) ![farmacias](https://img.shields.io/badge/farmacias-blue) ![ferrocarriles](https://img.shields.io/badge/ferrocarriles-blue) ![fibra_optica](https://img.shields.io/badge/fibra_optica-blue) ![gastronomia](https://img.shields.io/badge/gastronomia-blue) ![gomerias](https://img.shields.io/badge/gomerias-blue) ![guardias_emergencias_servicios](https://img.shields.io/badge/guardias_emergencias_servicios-blue) ![guardias_medicas](https://img.shields.io/badge/guardias_medicas-blue) ![habitantes_por_manzana_provisorio_2022](https://img.shields.io/badge/habitantes_por_manzana_provisorio_2022-blue) ![hacinamiento](https://img.shields.io/badge/hacinamiento-blue) ![hospedajes](https://img.shields.io/badge/hospedajes-blue) ![icv](https://img.shields.io/badge/icv-blue) ![inta_mnc_2018_2019](https://img.shields.io/badge/inta_mnc_2018_2019-blue) ![inta_mnc_2019_invierno](https://img.shields.io/badge/inta_mnc_2019_invierno-blue) ![inta_mnc_2020_invierno](https://img.shields.io/badge/inta_mnc_2020_invierno-blue) ![inta_mnc_2020_verano](https://img.shields.io/badge/inta_mnc_2020_verano-blue) ![inta_mnc_2021_invierno](https://img.shields.io/badge/inta_mnc_2021_invierno-blue) ![inta_mnc_2021_verano](https://img.shields.io/badge/inta_mnc_2021_verano-blue) ![inta_mnc_2022_invierno](https://img.shields.io/badge/inta_mnc_2022_invierno-blue) ![inta_mnc_2022_verano](https://img.shields.io/badge/inta_mnc_2022_verano-blue) ![inta_mnc_2023_verano](https://img.shields.io/badge/inta_mnc_2023_verano-blue) ![inundacion_1995](https://img.shields.io/badge/inundacion_1995-blue) ![inundacion_2016](https://img.shields.io/badge/inundacion_2016-blue) ![isohietas_precipitaciones_medias_anuales_pergamino_geointa](https://img.shields.io/badge/isohietas_precipitaciones_medias_anuales_pergamino_geointa-blue) ![jurisdicciones_policiales](https://img.shields.io/badge/jurisdicciones_policiales-blue) ![limpieza_mantenimiento_espacios_verdes](https://img.shields.io/badge/limpieza_mantenimiento_espacios_verdes-blue) ![linea_a](https://img.shields.io/badge/linea_a-blue) ![linea_b](https://img.shields.io/badge/linea_b-blue) ![linea_c](https://img.shields.io/badge/linea_c-blue) ![linea_d](https://img.shields.io/badge/linea_d-blue) ![linea_e](https://img.shields.io/badge/linea_e-blue) ![linea_parque_industrial](https://img.shields.io/badge/linea_parque_industrial-blue) ![localidades](https://img.shields.io/badge/localidades-blue) ![luminarias](https://img.shields.io/badge/luminarias-blue) ![luminarias_espacios_verdes](https://img.shields.io/badge/luminarias_espacios_verdes-blue) ![manchas_urbanas_historicas](https://img.shields.io/badge/manchas_urbanas_historicas-blue) ![material_de_calzada](https://img.shields.io/badge/material_de_calzada-blue) ![medidores_agua](https://img.shields.io/badge/medidores_agua-blue) ![medios_de_comunicacion](https://img.shields.io/badge/medios_de_comunicacion-blue) ![museos_y_espacios_culturales](https://img.shields.io/badge/museos_y_espacios_culturales-blue) ![nbi](https://img.shields.io/badge/nbi-blue) ![oferentes_espacios_culturales](https://img.shields.io/badge/oferentes_espacios_culturales-blue) ![paradas_de_colectivo](https://img.shields.io/badge/paradas_de_colectivo-blue) ![parcelario](https://img.shields.io/badge/parcelario-blue) ![parcelario_contralor](https://img.shields.io/badge/parcelario_contralor-blue) ![parcelario_tarifa_social](https://img.shields.io/badge/parcelario_tarifa_social-blue) ![parques_industriales_y_anexos](https://img.shields.io/badge/parques_industriales_y_anexos-blue) ![partido_pergamino](https://img.shields.io/badge/partido_pergamino-blue) ![partidos](https://img.shields.io/badge/partidos-blue) ![paseos_comerciales](https://img.shields.io/badge/paseos_comerciales-blue) ![pluviales](https://img.shields.io/badge/pluviales-blue) ![pobreza_cronica](https://img.shields.io/badge/pobreza_cronica-blue) ![pozos_agua_doss](https://img.shields.io/badge/pozos_agua_doss-blue) ![pozos_bombeo_doss](https://img.shields.io/badge/pozos_bombeo_doss-blue) ![predios_educativos](https://img.shields.io/badge/predios_educativos-blue) ![progresivas_rutas](https://img.shields.io/badge/progresivas_rutas-blue) ![proyeccion_habitantes_por_manzana_2010_2030](https://img.shields.io/badge/proyeccion_habitantes_por_manzana_2010_2030-blue) ![proyecto_presa](https://img.shields.io/badge/proyecto_presa-blue) ![proyecto_presa_area_inundable](https://img.shields.io/badge/proyecto_presa_area_inundable-blue) ![proyectos_infraestructura](https://img.shields.io/badge/proyectos_infraestructura-blue) ![pueblos](https://img.shields.io/badge/pueblos-blue) ![puntos_clickeados](https://img.shields.io/badge/puntos_clickeados-blue) ![puntos_de_interes](https://img.shields.io/badge/puntos_de_interes-blue) ![puntos_de_nivel_iatasa_abs](https://img.shields.io/badge/puntos_de_nivel_iatasa_abs-blue) ![puntos_fijos](https://img.shields.io/badge/puntos_fijos-blue) ![puntos_venta_simple](https://img.shields.io/badge/puntos_venta_simple-blue) ![radios_censales_indec_2010](https://img.shields.io/badge/radios_censales_indec_2010-blue) ![razon_de_sexo_2010](https://img.shields.io/badge/razon_de_sexo_2010-blue) ![recambio_led](https://img.shields.io/badge/recambio_led-blue) ![recoleccion_residuos_domiciliarios](https://img.shields.io/badge/recoleccion_residuos_domiciliarios-blue) ![recoleccion_residuos_voluminosos](https://img.shields.io/badge/recoleccion_residuos_voluminosos-blue) ![red_federal_fibra_optica_nodos](https://img.shields.io/badge/red_federal_fibra_optica_nodos-blue) ![red_federal_fibra_optica_tramos](https://img.shields.io/badge/red_federal_fibra_optica_tramos-blue) ![redatam_censo_2022_radios](https://img.shields.io/badge/redatam_censo_2022_radios-blue) ![reductor_de_velocidad](https://img.shields.io/badge/reductor_de_velocidad-blue) ![remis_taxi](https://img.shields.io/badge/remis_taxi-blue) ![renabap_barrios_populares](https://img.shields.io/badge/renabap_barrios_populares-blue) ![riego_por_pivote_central](https://img.shields.io/badge/riego_por_pivote_central-blue) ![sanitarios_publicos](https://img.shields.io/badge/sanitarios_publicos-blue) ![semaforos](https://img.shields.io/badge/semaforos-blue) ![sube](https://img.shields.io/badge/sube-blue) ![suelos_pergamino_50mil](https://img.shields.io/badge/suelos_pergamino_50mil-blue) ![sumideros](https://img.shields.io/badge/sumideros-blue) ![tipo_de_vereda](https://img.shields.io/badge/tipo_de_vereda-blue) ![tranqueras_rurales](https://img.shields.io/badge/tranqueras_rurales-blue) ![wifi_espacios_verdes](https://img.shields.io/badge/wifi_espacios_verdes-blue) ![zonas_electorales_celp](https://img.shields.io/badge/zonas_electorales_celp-blue) ![zonas_emergencias_y_riesgo](https://img.shields.io/badge/zonas_emergencias_y_riesgo-blue) ![zonas_facturacion](https://img.shields.io/badge/zonas_facturacion-blue) ![zonas_seguridad](https://img.shields.io/badge/zonas_seguridad-blue) ![zonificacion](https://img.shields.io/badge/zonificacion-blue)\n\nA Portolan-managed STAC catalog\n\n## Collections\n\n<details>\n<summary>\ud83d\udcc1 178 collections (click to expand)</summary>\n\n### [publico_aeropuertos](./publico_aeropuertos/)\n\nCapa de aeropuertos y aeropistas declaradas en Pergamino y alrededores.\n\n### [publico_agencias_de_viaje](./publico_agencias_de_viaje/)\n\nAgencias de viaje y turismo del Partido de Pergamino.\n\n### [publico_agencias_gubernamentales](./publico_agencias_gubernamentales/)\n\nAgencias de gobierno de jurisdicci\u00f3n provincial y nacional\n\n### [publico_aglomerados_urbanos](./publico_aglomerados_urbanos/)\n\nMancha de aglomerados urbanos donde la caracter\u00edstica principal son las edificaciones e instalaciones en las cuales se desarrollan actividades humanas.\n\n### [publico_alcantarillas_vialidad](./publico_alcantarillas_vialidad/)\n\nAlcantarillas en rutas provinciales y nacionales.\n\n### [publico_altura_de_calle](./publico_altura_de_calle/)\n\nAltura (numeraci\u00f3n) de calles del Partido de Pergamino.\n\n### [publico_arbolado](./publico_arbolado/)\n\nCapa de arbolado p\u00fablico de la Ciudad de Pergamino. Relevado en el marco del Censo de Arbolado y Luminarias llevado adelante por la Direcci\u00f3n de Espacios Verdes P\u00fablicos en el a\u00f1o 2013\n\n### [publico_areas_fiscalizadas_construcciones](./publico_areas_fiscalizadas_construcciones/)\n\n\u00c1reas de las fiscalizaciones en el marco del Proyecto de Detecci\u00f3n de Construcciones No Declaradas de la Secretar\u00eda de Hacienda de Pergamino.\n\n### [publico_areas_programaticas_desarrollo_social](./publico_areas_programaticas_desarrollo_social/)\n\n\u00c1reas program\u00e1ticas de la Secretar\u00eda de Desarrollo Social.\n\n### [publico_areas_programaticas_salud](./publico_areas_programaticas_salud/)\n\n\u00c1reas o zonas program\u00e1ticas de la Secretaria de Salud de la Municipalidad de Pergamino.\n\n### [publico_asociaciones_sindicales](./publico_asociaciones_sindicales/)\n\nSedes de gremios o asociaciones sindicales presentes en Pergamino\n\n### [publico_banados](./publico_banados/)\n\nCapa de ba\u00f1ados de la cuenca del Arroyo Pergamino. Fuente desconocida.\n\n### [publico_barrido_y_limpieza](./publico_barrido_y_limpieza/)\n\nzonas de barrido y limpieza de calles en la Ciudad de Pergamino.\n\n### [publico_barrios](./publico_barrios/)\n\nL\u00edmites administrativos oficiales de la Ciudad de Pergamino\n\n### [publico_beata_crescencia_perez](./publico_beata_crescencia_perez/)\n\nCapa dedicada a la Beata Crescencia P\u00e9rez\n\n### [publico_bibliotecas](./publico_bibliotecas/)\n\nBibliotecas del Partido de Pergamino.\n\n### [publico_bocas_pago_tasas](./publico_bocas_pago_tasas/)\n\nBocas de pago de tasas municipales.\n\n### [publico_bomberos](./publico_bomberos/)\n\nEstaciones de bombero de la Ciudad de Pergamino.\n\n### [publico_calidad_vivienda](./publico_calidad_vivienda/)\n\n\u00cdndice de calidad de vivienda seg\u00fan Censo INDEC 2010.\n\n### [publico_callejero](./publico_callejero/)\n\nCalles, avenidas y caminos del Partido de Pergamino.\n\n### [publico_camaras_seguridad](./publico_camaras_seguridad/)\n\nC\u00e1maras de seguridad en la v\u00eda p\u00fablica de la Ciudad de Pergamino.\n\n### [publico_camaras_y_radares](./publico_camaras_y_radares/)\n\nC\u00e1maras, radares y t\u00f3tems para el control y multas por exceso de velocidad, violaci\u00f3n de sendas peatonales y cruce de sem\u00e1foros en rojo.\n\n### [publico_caps](./publico_caps/)\n\nCentros de Atenci\u00f3n Primaria de Salud del Partido de Pergamino.\n\n### [publico_carteles_viales](./publico_carteles_viales/)\n\nCarteles y se\u00f1ales de tr\u00e1nsito del Partido de Pergamino.\n\n### [publico_catastro_chacra](./publico_catastro_chacra/)\n\nChacras catastrales del Partido de Pergamino.\n\n### [publico_catastro_circunscripcion](./publico_catastro_circunscripcion/)\n\nCapa de Circunscripciones catastrales o Cuarteles del Partido de Pergamino.\n\n### [publico_catastro_fraccion](./publico_catastro_fraccion/)\n\nFracciones catastrales del Partido de Pergamino.\n\n### [publico_catastro_manzana](./publico_catastro_manzana/)\n\nManzanas catastrales del Partido de Pergamino.\n\n### [publico_catastro_medida_lado](./publico_catastro_medida_lado/)\n\nMedidas de los macizos del Partido de Pergamino.\n\n### [publico_catastro_ph](./publico_catastro_ph/)\n\nCapa de PH, propiedad horizontal o subparcelas del Partido de Pergamino\n\n### [publico_catastro_quinta](./publico_catastro_quinta/)\n\nQuintas catastrales del Partido de Pergamino.\n\n### [publico_catastro_seccion](./publico_catastro_seccion/)\n\nCapa de secciones catastrales del Partido de Pergamino.\n\n### [publico_catastro_subparcela](./publico_catastro_subparcela/)\n\nSubparcelas catastrales del Partido de Pergamino.\n\n### [publico_centros_de_desarrollo_comunitario](./publico_centros_de_desarrollo_comunitario/)\n\nCentros de Desarrollo Comunitario del Partido de Pergamino, dependientes de la Secretar\u00eda de Desarrollo Social. CDC.\n\n### [publico_centros_de_salud](./publico_centros_de_salud/)\n\nPrincipales centros de salud del Partido de Pergamino.\n\n### [publico_centros_evacuados](./publico_centros_evacuados/)\n\nCentros de evacuaci\u00f3n ante casos de emergencia dentro del marco de la Gesti\u00f3n de Riesgo.\n\n### [publico_cicloturismo_rural](./publico_cicloturismo_rural/)\n\nCapa de recorridos ciclotur\u00edsticos para la zona rural del Partido de Pergamino. Elaborado sobre la base de los caminos habituales que recorren las distintas asociaciones de cicloturismo del Partido...\n\n### [publico_ciclovias](./publico_ciclovias/)\n\nCiclov\u00edas o bicisendas de la Ciudad de Pergamino.\n\n### [publico_circuitos_electorales](./publico_circuitos_electorales/)\n\nCollection: publico_circuitos_electorales\n\n### [publico_circuitos_energeticos](./publico_circuitos_energeticos/)\n\nCapa de Circuitos Energ\u00e9ticos elaborados por el equipo TEAM-UNNOBA. Los circuitos energ\u00e9ticos de escala local buscan dar a conocer y poner en valor iniciativas, proyectos y patrimonio vinculado a l...\n\n### [publico_cobertura_agua_antes_de_2015](./publico_cobertura_agua_antes_de_2015/)\n\nCapa de cobertura del servicio sanitario de red de agua corriente para Pergamino, anterior a la gesti\u00f3n 2015. La cobertura del servicio es aproximada, se deber\u00e1 consultar a la Direcci\u00f3n de Obras y ...\n\n### [publico_cobertura_agua_de_2015_a_2019](./publico_cobertura_agua_de_2015_a_2019/)\n\nCapa de cobertura del servicio sanitario de red de agua corriente para Pergamino, entre 2015 y 2019. La cobertura del servicio es aproximada, se deber\u00e1 consultar a la Direcci\u00f3n de Obras y Servicios...\n\n### [publico_cobertura_agua_de_2019_a_2023](./publico_cobertura_agua_de_2019_a_2023/)\n\nCapa de cobertura del servicio sanitario de red de agua corriente para Pergamino, entre 2019 y 2023. La cobertura del servicio es aproximada, se deber\u00e1 consultar a la Direcci\u00f3n de Obras y Servicios...\n\n### [publico_cobertura_agua_de_2023_a_2027](./publico_cobertura_agua_de_2023_a_2027/)\n\nCapa de cobertura del servicio sanitario de red de agua corriente para Pergamino, entre 2023 y 2027. La cobertura del servicio es aproximada, se deber\u00e1 consultar a la Direcci\u00f3n de Obras y Servicios...\n\n### [publico_cobertura_arbolado_urbano](./publico_cobertura_arbolado_urbano/)\n\nDataset que contiene las cobertura verde, o cobertura de follaje arb\u00f3reo de las \u00e1reas urbanas del Partido de Pergamino. La obtenci\u00f3n del dato se bas\u00f3 en detecci\u00f3n por IA, con correcciones manuales.\n\n### [publico_cobertura_cloacas_antes_de_2015](./publico_cobertura_cloacas_antes_de_2015/)\n\nCapa de cobertura del servicio sanitario de red cloacal para Pergamino, anterior a la gesti\u00f3n 2015. La cobertura del servicio es aproximada, se deber\u00e1 consultar a la Direcci\u00f3n de Obras y Servicios ...\n\n### [publico_cobertura_cloacas_de_2015_a_2019](./publico_cobertura_cloacas_de_2015_a_2019/)\n\nCapa de cobertura del servicio sanitario de red cloacal para Pergamino, posterior a la gesti\u00f3n 2015. La cobertura del servicio es aproximada, se deber\u00e1 consultar a la Direcci\u00f3n de Obras y Servicios...\n\n### [publico_cobertura_cloacas_de_2019_a_2023](./publico_cobertura_cloacas_de_2019_a_2023/)\n\nCapa de cobertura del servicio sanitario de red cloacal para Pergamino, posterior a la gesti\u00f3n 2019. La cobertura del servicio es aproximada, se deber\u00e1 consultar a la Direcci\u00f3n de Obras y Servicios...\n\n### [publico_cobertura_cloacas_de_2023_a_2027](./publico_cobertura_cloacas_de_2023_a_2027/)\n\nCapa de cobertura del servicio sanitario de red cloacal para Pergamino, posterior a la gesti\u00f3n 2023. La cobertura del servicio es aproximada, se deber\u00e1 consultar a la Direcci\u00f3n de Obras y Servicios...\n\n### [publico_cobertura_gas_natural](./publico_cobertura_gas_natural/)\n\nCobertura de gas natural para la Ciudad de Pergamino, provista por Litoral Gas S.A.\n\n### [publico_coeficientes_zonales_doss](./publico_coeficientes_zonales_doss/)\n\nCoeficientes multiplicadores para el cobro de tasas por Servicios Sanitarios.\n\n### [publico_colectivos_interurbanos](./publico_colectivos_interurbanos/)\n\nLineas de colectivos interurbanos de Pergamino.\n\n### [publico_colectivos_urbanos](./publico_colectivos_urbanos/)\n\nL\u00edneas de colectivos urbanos de la Ciudad de Pergamino.\n\n### [publico_colectoras_cloacales_maximas](./publico_colectoras_cloacales_maximas/)\n\nColectoras cloacales m\u00e1ximas divididas en los diversos sistemas que posee la red de servicios sanitarios de la Ciudad de Pergamino.\n\n### [publico_colegios_de_profesionales](./publico_colegios_de_profesionales/)\n\nColegios de profesionales del Partido de Pergamino.\n\n### [publico_comisiones_caminos_rurales](./publico_comisiones_caminos_rurales/)\n\n\u00c1reas de las comisiones de caminos rurales determinados para el cobro de tasa vial.\n\n### [publico_complejos_habitacionales](./publico_complejos_habitacionales/)\n\ncomplejos habitacionales del partido de Pergamino.\n\n### [publico_contenedores_basura_reciclaje](./publico_contenedores_basura_reciclaje/)\n\nContenedores y campanas del programa Actu\u00e1 en Verde, Higiene Urbana.\n\n### [publico_cordon_cuneta](./publico_cordon_cuneta/)\n\nDescribe si la calle posee cord\u00f3n cuneta ejecutado, tanto en ambas como en alguna de ellas: ambas, par, impar, ninguno y no_corresponde.\n\n### [publico_cpa](./publico_cpa/)\n\nC\u00f3digo Postal Argentino tomado de la p\u00e1gina Oficial del Correo Argentino.\n\n### [publico_cuadriculas_policiales](./publico_cuadriculas_policiales/)\n\nCapa de 14 cuadr\u00edculas policiales comprendidas dentro de las 6 zonas de seguridad de la Ciudad de Pergamino\n\n### [publico_cuencas_arroyo_pergamino](./publico_cuencas_arroyo_pergamino/)\n\nCuencas del arroyo Pergamino\n\n### [publico_cuencas_hidricas_norte_ba](./publico_cuencas_hidricas_norte_ba/)\n\nCuencas h\u00eddricas del norte de la Provincia de Buenos Aires obtenidas del portal GeoInfra.\n\n### [publico_cursos_de_agua](./publico_cursos_de_agua/)\n\nCursos de agua del Partido de Pergamino y alrededores. Arroyos, canales y r\u00edos.\n\n### [publico_curvas_de_nivel_iatasa_abs](./publico_curvas_de_nivel_iatasa_abs/)\n\nCurvas de nivel elaboradas por IATASA-ABS para la Ciudad de Pergamino, a\u00f1o 2007.\n\n### [publico_curvas_nivel_cuenca](./publico_curvas_nivel_cuenca/)\n\nCurvas de nivel elaboradas por IATASA-ABS para el proyecto de la Presa del Arroyo Pergamino.\n\n### [publico_curvas_nivel_ign](./publico_curvas_nivel_ign/)\n\nCurvas de nivel IGN.\n\n### [publico_delegaciones_pueblos](./publico_delegaciones_pueblos/)\n\nCapa de delegaciones de Pueblos del Partido de Pergamino.\n\n### [publico_dependencias_municipales](./publico_dependencias_municipales/)\n\nCapa de dependencias y oficinas municipales del Partido de Pergamino\n\n### [publico_dependencias_seguridad](./publico_dependencias_seguridad/)\n\nDependencias, comisar\u00edas y puestos de vigilancia de Seguridad, tanto municipales, provinciales como nacionales.\n\n### [publico_deportivo](./publico_deportivo/)\n\nDatos y ubicaci\u00f3n de clubes y gimnasios del Partido de Pergamino.\n\n### [publico_desarrollo_social](./publico_desarrollo_social/)\n\nCentros de Desarrollo de la Secretar\u00eda de Desarrollo Social.\n\n### [publico_desecho_pilas_usadas](./publico_desecho_pilas_usadas/)\n\nPuntos de desecho de pilas usadas.\n\n### [publico_desfibriladores](./publico_desfibriladores/)\n\nDesfibriladores port\u00e1tiles gestionados por Defensa Civil.\n\n### [publico_domicilios_por_manzana](./publico_domicilios_por_manzana/)\n\nCantidad de domicilios y viviendas por manzana relevados por la Municipalidad de Pergamino en 2020. Contiene porcentajes de variaci\u00f3n y cantidad de habitantes por manzana 2010 seg\u00fan INDEC.\n\n### [publico_ecobotellas](./publico_ecobotellas/)\n\nCapa de lugares donde se pueden depositar las ecobotellas.\n\n### [publico_edificaciones_pa](./publico_edificaciones_pa/)\n\nEdificaciones en planta alta detectadas en el marco del Proyecto de Construcciones no Declaradas.\n\n### [publico_edificios_en_altura](./publico_edificios_en_altura/)\n\nEdificios de m\u00e1s de 2 pisos en el Partido de Pergamino.\n\n### [publico_edificios_historicos](./publico_edificios_historicos/)\n\nEdificios hist\u00f3ricos del Partido de Pergamino.\n\n### [publico_educacion_gestion](./publico_educacion_gestion/)\n\nEstablecimientos educativos del Partido de Pergamino categorizados por tipo de gesti\u00f3n o sector.\n\n### [publico_educacion_nivel](./publico_educacion_nivel/)\n\nCapa de establecimientos educativos del Partido de Pergamino organizados por nivel.\n\n### [publico_entretenimiento](./publico_entretenimiento/)\n\nCapa de locales de entretenimiento como teatros, cines, etc., del Partido de Pergamino.\n\n### [publico_espacios_verdes](./publico_espacios_verdes/)\n\nContiene todos los espacios verdes p\u00fablicos del Partido de Pergamino, como plazas, plazoletas y parques.\n\n### [publico_estacionamiento_medido](./publico_estacionamiento_medido/)\n\nCapa de calles afectadas por el sistema de estacionamiento medido SIMPLE de la Ciudad de Pergamino.\n\n### [publico_estacionamiento_motos_bicicletas](./publico_estacionamiento_motos_bicicletas/)\n\nCapa de estacionamiento de motos y bicicletas.\n\n### [publico_estacionamiento_nocturno](./publico_estacionamiento_nocturno/)\n\nCalles en las cuales se permite el estacionamiento del lado izquierdo desde las 20hs del viernes hasta las 7hs del lunes.\n\n### [publico_estacionamiento_privado](./publico_estacionamiento_privado/)\n\nCapa de playas de estacionamiento privadas.\n\n### [publico_estaciones_de_bombeo](./publico_estaciones_de_bombeo/)\n\nEstaciones de bombeo de agua que sirven para evitar inundaciones en la Ciudad de Pergamino.\n\n### [publico_estaciones_de_salud](./publico_estaciones_de_salud/)\n\nEstaciones de salud del Partido de Pergamino donde se puede realizar gimnasia al aire libre.\n\n### [publico_estaciones_servicio](./publico_estaciones_servicio/)\n\nCapa de estaciones de servicio del Partido de Pergamino.\n\n### [publico_extraccion_dinero](./publico_extraccion_dinero/)\n\nPuntos de extracci\u00f3n de dinero en efectivo.\n\n### [publico_farmacias](./publico_farmacias/)\n\nFarmacias del Partido de Pergamino. Los datos son provistos por el Colegio de Farmac\u00e9uticos de Pergamino.\n\n### [publico_ferrocarriles](./publico_ferrocarriles/)\n\nRedes ferroviarias en el Partido de Pergamino. Fuente: IGN.\n\n### [publico_fibra_optica](./publico_fibra_optica/)\n\nCollection: publico_fibra_optica\n\n### [publico_gastronomia](./publico_gastronomia/)\n\nOferta gastron\u00f3mica del Partido de Pergamino.\n\n### [publico_gomerias](./publico_gomerias/)\n\nGomer\u00edas y tiendas de venta de neum\u00e1ticos en Pergamino.\n\n### [publico_guardias_emergencias_servicios](./publico_guardias_emergencias_servicios/)\n\nGuardias de emergencia para los servicios p\u00fablicos y privados.\n\n### [publico_guardias_medicas](./publico_guardias_medicas/)\n\nGuardias m\u00e9dicas de los principales centros de salud de Pergamino.\n\n### [publico_habitantes_por_manzana_provisorio_2022](./publico_habitantes_por_manzana_provisorio_2022/)\n\nHabitantes por manzana calculado a partir de la cantidad de viviendas y datos provisorios publicados para el Censo 2022, para la Ciudad de Pergamino.\n\n### [publico_hacinamiento](./publico_hacinamiento/)\n\n\u00cdndice de hacinamiento seg\u00fan Censo INDEC 2010.\n\n### [publico_hospedajes](./publico_hospedajes/)\n\nHoteles y hospedajes del Partido de Pergamino.\n\n### [publico_icv](./publico_icv/)\n\nCapa de datos Calidad de Vida elaborado por el CONICET. Ver: https://www.conicet.gov.ar/dime-donde-resides-y-te-dire-cuan-bien-o-mal-vives/\n\n### [publico_inta_mnc_2018_2019](./publico_inta_mnc_2018_2019/)\n\nMapa nacional de cultivos INTA 2018-2019, tomado de\r\nhttps://geo-backend.inta.gob.ar/catalogue/#/dataset/479\n\n### [publico_inta_mnc_2019_invierno](./publico_inta_mnc_2019_invierno/)\n\nMapa nacional de cultivos INTA invierno 2019, tomado de\r\nhttps://geo-backend.inta.gob.ar/catalogue/#/dataset/481\n\n### [publico_inta_mnc_2020_invierno](./publico_inta_mnc_2020_invierno/)\n\nMapa nacional de cultivos INTA invierno 2020, tomado de\r\nhttps://geo-backend.inta.gob.ar/catalogue/#/dataset/488\n\n### [publico_inta_mnc_2020_verano](./publico_inta_mnc_2020_verano/)\n\nMapa nacional de cultivos INTA verano 2020, tomado de\r\nhttps://geo-backend.inta.gob.ar/catalogue/#/dataset/482\n\n### [publico_inta_mnc_2021_invierno](./publico_inta_mnc_2021_invierno/)\n\nMapa nacional de cultivos INTA invierno 2021, tomado de\r\nhttps://geo-backend.inta.gob.ar/catalogue/#/dataset/490\n\n### [publico_inta_mnc_2021_verano](./publico_inta_mnc_2021_verano/)\n\nMapa nacional de cultivos INTA verano 2021, tomado de\r\nhttps://geo-backend.inta.gob.ar/catalogue/#/dataset/489\n\n### [publico_inta_mnc_2022_invierno](./publico_inta_mnc_2022_invierno/)\n\nMapa nacional de cultivos INTA invierno 2022, tomado de\r\nhttps://deabelle.users.earthengine.app/view/mnc22-23\n\n### [publico_inta_mnc_2022_verano](./publico_inta_mnc_2022_verano/)\n\nMapa nacional de cultivos INTA verano 2022, tomado de\r\nhttps://geo-backend.inta.gob.ar/catalogue/#/dataset/491\n\n### [publico_inta_mnc_2023_verano](./publico_inta_mnc_2023_verano/)\n\nMapa nacional de cultivos INTA verano 2023, tomado de\r\nhttps://deabelle.users.earthengine.app/view/mnc22-23\n\n### [publico_inundacion_1995](./publico_inundacion_1995/)\n\nMancha de la inundaci\u00f3n del a\u00f1o 1995 en el \u00e1rea urbana de Pergamino, seg\u00fan datos relevados por el INA.\n\n### [publico_inundacion_2016](./publico_inundacion_2016/)\n\nResoluci\u00f3n 195/2017 respecto a la mancha de agua generada por la inundaci\u00f3n ocurrida el 26-12-16.\n\n### [publico_isohietas_precipitaciones_medias_anuales_pergamino_geointa](./publico_isohietas_precipitaciones_medias_anuales_pergamino_geointa/)\n\nIsohietas de precipitaciones medias anuales elaboradas a partir de la capa correspondiente del GeoInta, Atlas clim\u00e1tico digital de la Rep\u00fablica Argentina.\n\n### [publico_jurisdicciones_policiales](./publico_jurisdicciones_policiales/)\n\nJurisdicciones de las tres comisar\u00edas existentes en la Ciudad, Cada jurisdicci\u00f3n contiene 2 zonas.\n\n### [publico_limpieza_mantenimiento_espacios_verdes](./publico_limpieza_mantenimiento_espacios_verdes/)\n\nDistribuci\u00f3n de equipos de trabajo para el mantenimiento y limpieza de \u00e1reas verdes urbanas de la Ciudad de Pergamino.\n\n### [publico_linea_a](./publico_linea_a/)\n\nLinea A de colectivos urbanos\n\n### [publico_linea_b](./publico_linea_b/)\n\nLinea B de colectivos urbanos\n\n### [publico_linea_c](./publico_linea_c/)\n\nLinea C de colectivos urbanos\n\n### [publico_linea_d](./publico_linea_d/)\n\nLinea D de colectivos urbanos\n\n### [publico_linea_e](./publico_linea_e/)\n\nLinea E de colectivos urbanos\n\n### [publico_linea_parque_industrial](./publico_linea_parque_industrial/)\n\nLinea especial Parque Industrial de colectivos urbanos\n\n### [publico_localidades](./publico_localidades/)\n\nLocalidades del Partido de Pergamino y de Partidos contiguos.\n\n### [publico_luminarias_espacios_verdes](./publico_luminarias_espacios_verdes/)\n\nLuminarias en espacios verdes p\u00fablicos de Pergamino.\n\n### [publico_manchas_urbanas_historicas](./publico_manchas_urbanas_historicas/)\n\nManchas urbanas hist\u00f3ricas de la Ciudad de Pergamino, desde el 1773 al 2025.\n\n### [publico_material_de_calzada](./publico_material_de_calzada/)\n\nTipo de material mayoritario que posee la calle, adoquinado, asfalto, hormig\u00f3n, escoriado, tierra y met\u00e1lico.\n\n### [publico_medidores_agua](./publico_medidores_agua/)\n\nZonas de instalaci\u00f3n de medidores de agua corriente DOSS.\n\n### [publico_medios_de_comunicacion](./publico_medios_de_comunicacion/)\n\nMedios gr\u00e1ficos y audiovisuales del Partido de Pergamino.\n\n### [publico_museos_y_espacios_culturales](./publico_museos_y_espacios_culturales/)\n\nMuseos y espacios culturales del Partido de Pergamino.\n\n### [publico_nbi](./publico_nbi/)\n\nNiveles B\u00e1sicos Insatisfechos seg\u00fan Censo INDEC 2010.\n\n### [publico_oferentes_espacios_culturales](./publico_oferentes_espacios_culturales/)\n\nOferentes de espacios culturales p\u00fablicos y privados.\n\n### [publico_paradas_de_colectivo](./publico_paradas_de_colectivo/)\n\nParadas de colectivos urbanos e interurbanos.\n\n### [publico_parcelario_tarifa_social](./publico_parcelario_tarifa_social/)\n\nParcelario beneficiado con Tarifa Social.\n\n### [publico_parques_industriales_y_anexos](./publico_parques_industriales_y_anexos/)\n\nParques Industriales y Anexos del Partido de Pergamino.\n\n### [publico_partido_pergamino](./publico_partido_pergamino/)\n\nL\u00edmites del Partido de Pergamino.\n\n### [publico_partidos](./publico_partidos/)\n\nCollection: publico_partidos\n\n### [publico_paseos_comerciales](./publico_paseos_comerciales/)\n\nPaseos comerciales primarios, secundarios y terciarios de Pergamino.\n\n### [publico_pluviales](./publico_pluviales/)\n\nPluviales de la Ciudad de Pergamino.\n\n### [publico_pobreza_cronica](./publico_pobreza_cronica/)\n\nDentro de la poblaci\u00f3n argentina, hay un grupo de personas que tiene la menor probabilidad de salir de la pobreza. Esto es lo que se denomina \u201cpobreza cr\u00f3nica\u201d. CIPPEC, PNUD y CEDLAS caracterizan a...\n\n### [publico_pozos_agua_doss](./publico_pozos_agua_doss/)\n\nLocalizaci\u00f3n de pozos de extracci\u00f3n de agua de Pergamino.\n\n### [publico_pozos_bombeo_doss](./publico_pozos_bombeo_doss/)\n\nPozos de extracci\u00f3n de agua para la red de agua corriente de la Ciudad de Pergamino\n\n### [publico_predios_educativos](./publico_predios_educativos/)\n\nPredios educativos tomados desde el sitio ABC de la Provincia de Buenos Aires\n\n### [publico_progresivas_rutas](./publico_progresivas_rutas/)\n\nProgresivas de rutas nacionales y provinciales.\n\n### [publico_proyeccion_habitantes_por_manzana_2010_2030](./publico_proyeccion_habitantes_por_manzana_2010_2030/)\n\nCapa de datos con cantidad de habitantes por manzana o macizo desde 2010 a 2030, quinquenal.\n\n### [publico_proyecto_presa](./publico_proyecto_presa/)\n\nProyecto presa de contenci\u00f3n para la Ciudad e Pergamino, actualmente en ejecuci\u00f3n.\n\n### [publico_proyecto_presa_area_inundable](./publico_proyecto_presa_area_inundable/)\n\n\u00c1rea inundable seg\u00fan el proyecto de presa de contenci\u00f3n para prevenir inundaciones en la Ciudad de Pergamino.\n\n### [publico_proyectos_infraestructura](./publico_proyectos_infraestructura/)\n\nProyectos de infraestructura urbana como cord\u00f3n cuneta y pavimentaci\u00f3n.\n\n### [publico_pueblos](./publico_pueblos/)\n\nPol\u00edgonos de los Pueblos del Partido de Pergamino.\n\n### [publico_puntos_clickeados](./publico_puntos_clickeados/)\n\nPuntos educativos Clickeados pertenecientes a la Secretar\u00eda de Desarrollo Social.\n\n### [publico_puntos_de_interes](./publico_puntos_de_interes/)\n\nPuntos de inter\u00e9s, POI, del Partido de Pergamino.\n\n### [publico_puntos_de_nivel_iatasa_abs](./publico_puntos_de_nivel_iatasa_abs/)\n\nPuntos de nivelaci\u00f3n generados por el estudio IATASA-ABS para el partido de Pergamino.\n\n### [publico_puntos_fijos](./publico_puntos_fijos/)\n\nPuntos fijos de nivelaci\u00f3n.\n\n### [publico_puntos_venta_simple](./publico_puntos_venta_simple/)\n\nCapa de puntos de venta y recarga de cr\u00e9ditos para el sistema Simple de Estacionamiento Medido.\n\n### [publico_radios_censales_indec_2010](./publico_radios_censales_indec_2010/)\n\nRadios censales INDEC 2010, rectificados.\n\n### [Rampas de acceso a veredas](./publico_rampas_acceso_veredas/)\n\nRampas de acceso a veredas para personas con discapacidad motriz.\n\n### [publico_razon_de_sexo_2010](./publico_razon_de_sexo_2010/)\n\nCoeficientes de raz\u00f3n de sexo, o predominancia entre cantidad de varones y mujeres pro radio censal.\n\n### [publico_recambio_led](./publico_recambio_led/)\n\nCapa de luminarias clasificadas por proyecto y ejecuci\u00f3n de recambio LED.\n\n### [publico_recoleccion_residuos_domiciliarios](./publico_recoleccion_residuos_domiciliarios/)\n\nRutas de recolecci\u00f3n de residuos domiciliarios a partir del 2025, empresa ENTRE\n\n### [publico_recoleccion_residuos_voluminosos](./publico_recoleccion_residuos_voluminosos/)\n\nZonas de recolecci\u00f3n de residuos voluminosos de la Ciudad de Pergamino\n\n### [publico_red_federal_fibra_optica_nodos](./publico_red_federal_fibra_optica_nodos/)\n\nNodos de la Red Federal de Fibra \u00d3ptica Argentina para un radio de 50km desde Pergamino. Dato proveniente de IDECOM.\n\n### [publico_red_federal_fibra_optica_tramos](./publico_red_federal_fibra_optica_tramos/)\n\nTramos de la Red Federal de Fibra \u00d3ptica Argentina para un radio de 50km desde Pergamino. Dato proveniente de IDECOM.\n\n### [publico_redatam_censo_2022_radios](./publico_redatam_censo_2022_radios/)\n\nDatos de poblaci\u00f3n del Censo INDEC 2022 obtenido de REDATAM y geometr\u00eda del Departamento de DPE PBA.\n\n### [publico_reductores_de_velocidad](./publico_reductores_de_velocidad/)\n\nReductores de velocidad y bumpers.\n\n### [publico_remis_taxi](./publico_remis_taxi/)\n\nCapa de locales de remises y paradas de taxis en la Ciudad de Pergamino.\n\n### [publico_renabap_barrios_populares](./publico_renabap_barrios_populares/)\n\nCapa de barrios populares relevados por RENABAP\n\n### [publico_riego_por_pivote_central](./publico_riego_por_pivote_central/)\n\nDetecci\u00f3n autom\u00e1tica del riego por pivote central con im\u00e1genes Sentinel.\n\n### [publico_sanitarios_publicos](./publico_sanitarios_publicos/)\n\nCapa de ba\u00f1os p\u00fablicos de Pergamino.\n\n### [publico_semaforos](./publico_semaforos/)\n\nCapa de sem\u00e1foros del Partido de Pergamino.\n\n### [publico_sube](./publico_sube/)\n\nPuntos de recarga de tarjetas SUBE.\n\n### [publico_suelos_pergamino_50mil](./publico_suelos_pergamino_50mil/)\n\nCartas de Suelos Rep\u00fablica Argentina - Provincia de Buenos Aires (INTA). El Plan Mapa de Suelos de la Regi\u00f3n Pampeana en el a\u00f1o 1964 marca la etapa de mayor trascendencia del inventario de los suel...\n\n### [publico_sumideros](./publico_sumideros/)\n\nSumideros de la Ciudad de Pergamino.\n\n### [publico_tranqueras_rurales](./publico_tranqueras_rurales/)\n\nTranqueras rurales del Partido de Pergamino pertenecientes al programa de la Secretar\u00eda de Seguridad Ojos En Alerta Rural.\n\n### [publico_wifi_espacios_verdes](./publico_wifi_espacios_verdes/)\n\nZonas de Internet gratuito por WiFi en espacios verdes.\n\n### [publico_zonas_electorales_celp](./publico_zonas_electorales_celp/)\n\nCapa de zonas electorales de la Cooperativa El\u00e9ctrica Limitada de Pergamino.\n\n### [publico_zonas_emergencias_y_riesgo](./publico_zonas_emergencias_y_riesgo/)\n\nZonas de divisi\u00f3n de tareas en la Gesti\u00f3n de Emergencias y Riesgo.\n\n### [publico_zonas_facturacion](./publico_zonas_facturacion/)\n\nZonas de coeficientes de facturaci\u00f3n determinadas por la Secretar\u00eda de Hacienda.\n\n### [publico_zonas_seguridad](./publico_zonas_seguridad/)\n\nZonas de seguridad propuestas por la Secretar\u00eda de Seguridad de Pergamino.\n\n### [publico_zonificacion](./publico_zonificacion/)\n\nCapa de zonificaci\u00f3n y uso del suelo para el Partido de Pergamino.\n\n</details>\n\n## Coverage\n\n**Spatial Extent**\n\n- West: -61.5112, South: -35.1962, East: -58.8487, North: -32.9104\n\n## Source\n\n[https://ide.pergamino.gob.ar:8443/geoserver/wfs](https://ide.pergamino.gob.ar:8443/geoserver/wfs)\n\n## Attribution\n\nMunicipalidad de Pergamino\n\n## License\n\nTODO: Add value\n\n## Contact\n\nTODO: Add value <TODO: Add value>\n\n---\n\n*Generated by [Portolan](https://github.com/portolan-sdi/portolan-cli) from STAC metadata and .portolan/metadata.yaml*\n",
+  "visibility": "public",
+  "data_mode": "open",
+  "featured": 0,
+  "updated_at": "2026-05-08T18:02:27.574Z",
+  "created_at": "2026-05-08T18:02:27.574Z",
+  "disabled": false,
+  "object_count": 1684,
+  "total_bytes": 390603411,
+  "product_id": "pergamino-ide",
+  "readme": "## README.md\n# IDE Pergamino \u2014 Infraestructura de Datos Espaciales\n\nEspejo cloud-native de la IDE del Municipio de Pergamino, Provincia de Buenos Aires, Argentina.\n\n183 colecciones en 13 grupos tem\u00e1ticos, en GeoParquet y PMTiles, consultables directamente desde la nube.\n\n## Grupos\n\n| Grupo | Colecciones | Contenido |\n|---|--:|---|\n| [Catastro](./catastro/) | 20 | Parcelario y jerarqu\u00eda catastral del Partido de Pergamino, desde la circunscripci\u00f3n hasta la subparcela y la propiedad horizontal, junto con zonificaci\u00f3n, edificaciones y edificios de inter\u00e9s |\n| [Vialidad](./vialidad/) | 18 | Red vial del Partido de Pergamino: callejero, tipo de calzada y vereda, cord\u00f3n cuneta, se\u00f1alizaci\u00f3n, sem\u00e1foros, alumbrado p\u00fablico y caminos rurales |\n| [Transporte](./transporte/) | 19 | Transporte p\u00fablico y movilidad: colectivos urbanos e interurbanos y sus l\u00edneas, paradas, ferrocarriles, ciclov\u00edas, remises y taxis, aeropuertos y estacionamiento |\n| [Servicios sanitarios](./servicios-sanitarios/) | 17 | Cobertura de agua corriente y red cloacal por per\u00edodo de gesti\u00f3n, medidores, pozos y estaciones de bombeo de la Direcci\u00f3n de Obras y Servicios Sanitarios (DOSS), desag\u00fces pluviales y zonas de facturaci\u00f3n |\n| [Energ\u00eda y conectividad](./energia-y-conectividad/) | 6 | Cobertura de gas natural, circuitos energ\u00e9ticos, red de fibra \u00f3ptica municipal y federal, y puntos de acceso wifi en espacios verdes |\n| [Salud](./salud/) | 7 | Establecimientos y cobertura sanitaria: centros de salud, CAPS, \u00e1reas program\u00e1ticas, desfibriladores de acceso p\u00fablico y guardias |\n| [Educaci\u00f3n](./educacion/) | 4 | Establecimientos educativos por nivel y tipo de gesti\u00f3n, predios educativos y bibliotecas del Partido de Pergamino |\n| [Seguridad](./seguridad/) | 8 | Cuarteles de bomberos, cuadr\u00edculas y jurisdicciones policiales, c\u00e1maras de seguridad, dependencias, zonas de emergencia y riesgo, y centros de evacuados |\n| [Demograf\u00eda e indicadores sociales](./demografia/) | 12 | Geograf\u00eda censal y sus indicadores: radios censales INDEC 2010 y 2022, NBI, \u00cdndice de Calidad de Vida (CONICET), hacinamiento, raz\u00f3n de sexo, pobreza cr\u00f3nica, calidad de vivienda, poblaci\u00f3n y domicilios por manzana, y barrios populares RENABAP |\n| [Ambiente y agro](./ambiente-y-agro/) | 29 | Arbolado urbano, espacios verdes, suelos y cultivos INTA, hidrograf\u00eda y cuencas, curvas de nivel, isohietas, modelo digital de elevaciones, inundaciones hist\u00f3ricas y el proyecto de presa |\n| [L\u00edmites administrativos](./limites/) | 10 | L\u00edmites del partido, barrios, localidades y pueblos, delegaciones, aglomerados urbanos, manchas urbanas hist\u00f3ricas desde 1773, circuitos electorales y c\u00f3digos postales |\n| [Servicios municipales](./servicios-municipales/) | 15 | Dependencias y tr\u00e1mites municipales, desarrollo social, higiene urbana, recolecci\u00f3n de residuos, puntos de reciclado y sanitarios p\u00fablicos |\n| [Comercio y cultura](./comercio-y-cultura/) | 18 | Actividad comercial, gastronom\u00eda y hospedaje, cultura, deporte y entretenimiento, medios de comunicaci\u00f3n, entidades profesionales y sindicales, parques industriales y puntos de inter\u00e9s |\n\n## Acceso r\u00e1pido\n\n```python\nimport duckdb\nduckdb.sql(\"INSTALL spatial; LOAD spatial;\")\n\n# Los barrios de Pergamino\nduckdb.sql(\"\"\"\n  SELECT * FROM read_parquet('https://data.source.coop/nlebovits/pergamino-ide/limites/barrios/publico_barrios.parquet')\n\"\"\").df()\n```\n\n## Procedencia\n\nLos datos son producidos y publicados por la **Direcci\u00f3n de Sistemas de Informaci\u00f3n Georreferenciada (DSIG)** de la Municipalidad de Pergamino, a trav\u00e9s de su GeoServer y su portal GeoNode:\n\n- Geoportal: https://geonode.pergamino.gob.ar/\n- Geoservicios: https://ide.pergamino.gob.ar:8443/geoserver/\n- P\u00e1gina institucional: https://pergamino.ar/servicios/ide-pergamino/\n\nEste cat\u00e1logo **no es la fuente original**. Es un espejo optimizado para consulta en la nube. Para el dato autoritativo y actualizado, consultar la IDE de Pergamino.\n\nVarias capas son datos de organismos nacionales y provinciales (INTA, IGN, INDEC, RENABAP, CONICET, INA, ARBA, BAHRA, Correo Argentino) rehospedados por el municipio. Cada colecci\u00f3n atribuye a su organismo de origen.\n\n## Licencia\n\n**CC BY-SA 4.0**, seg\u00fan la declaraci\u00f3n de la Municipalidad de Pergamino para su IDE:\n\n> Los datos dispuestos en nuestra Infraestructura de Datos Espaciales estan licenciados mediante Creative Commons 4.0 BY-SA, lo cual permite utilizar, compartir y adaptar este material siempre que reconozca atribuci\u00f3n y permita la misma licencia en sus derivados.\n\nLa licencia cubre los datos, no la marca institucional del municipio. Las capas de terceros conservan los t\u00e9rminos de su organismo de origen.\n\n## Advertencia del publicador\n\n> La informaci\u00f3n contenida en la IDE se encuentra en constante actualizaci\u00f3n por parte de las distintas \u00e1reas responsables de su generaci\u00f3n, por lo tanto, podria contener diferencias e inconsistencias en relaci\u00f3n al objeto o fen\u00f3meno representado, tanto espacial como temporalmente.\n\nGeoNode declara `maintenance_frequency: notPlanned` para m\u00e1s de la mitad del cat\u00e1logo. La mayor parte de los datos no tiene una actualizaci\u00f3n programada.\n\n\n## Cobertura\n\nEste espejo replica la mayor parte de las capas vectoriales publicadas por la IDE de Pergamino. Un peque\u00f1o n\u00famero no se replica. Para consultas sobre la cobertura, escribir a nlebovits@pm.me.\n",
   "_review": [
-    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
-    "providers: role [producer] for 'Municipalidad de Pergamino' is an AI guess \u2014 README lists this under 'Attribution' but does not explicitly state a role; inferred as the originating producer of the municipal GIS layers.. Verify before flipping to _state: reviewed."
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [comercio-y-cultura/puntos_de_interes.lat/lon (latlon), energia-y-conectividad/red_federal_fibra_optica_nodos.latitud/longitud (latlon), transporte/aeropuertos.latitud/longitud (latlon), educacion/predios_educativos.latitud/longitud (latlon), servicios-sanitarios/sumideros.latitud/longitud (latlon), vialidad/tranqueras_rurales.longitud/latitud (latlon), limites/partido_pergamino.lon_centroide/lat_centroide (latlon), limites/cpa.cpa (zipcode), demografia/redatam_censo_2022_radios.codigo_localidad (admin_code), limites/circuitos_electorales.circuito (admin_code)]. Add bbox once the placename \u2192 bbox gazetteer covers it.",
+    "summaries.item_count: parts overlap, so this is max(part), not the sum \u2014 ambiente-y-agro/ 95578, catastro/ 1373, comercio-y-cultura/ 143, demografia/ 6030, energia-y-conectividad/ 166, limites/ 7232, salud/ 120, seguridad/ 622, servicios-municipales/ 171, servicios-sanitarios/ 2950, transporte/ 12327, vialidad/ 36963. Sum them only once the parts are known to be disjoint."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-07-01T09:41:19+00:00",
-  "_source_format": "stac",
+  "cataloged_at": "2026-08-21T01:39:03+00:00",
+  "objects_updated_at": "2026-08-14T21:57:32+00:00",
   "store_format": null
 }
