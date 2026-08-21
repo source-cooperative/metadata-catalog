@@ -7,7 +7,7 @@
   ],
   "id": "cboettig/indigenous",
   "title": "LandMark: Indigenous & Community Land Rights",
-  "description": "LandMark provides global geospatial data mapping the land rights of Indigenous Peoples and local communities, including documented community territory boundaries (polygons and points) and model-estimated indicative land-right extents for areas lacking direct boundary mapping. Each feature includes attributes on recognition status, population, area, and data provenance, aggregated from local, national, and regional mapping initiatives (v202509 release).",
+  "description": "LandMark is a global platform mapping the land rights of Indigenous Peoples and local communities, providing documented community territory boundaries (points and polygons) as well as model-estimated indicative land-right extents where direct boundary mapping is unavailable. Each feature carries attributes on recognition status, population, area, and data provenance, aggregated from local, national, and regional mapping initiatives (v202509 release).",
   "license": "CC-BY-4.0",
   "keywords": [
     "indigenous-peoples",
@@ -56,13 +56,44 @@
     }
   },
   "summaries": {
-    "item_count": 52283274
+    "item_count": 414300119
   },
   "assets": {
-    "landmark": {
-      "href": "https://data.source.coop/cboettig/indigenous/landmark/indicative-poly.parquet",
+    "landmark/indicative-poly/chunks-rehex": {
+      "href": "https://data.source.coop/cboettig/indigenous/landmark/indicative-poly/chunks-rehex/",
       "type": "application/x-parquet",
-      "title": "indicative-poly.parquet",
+      "title": "landmark/indicative-poly/chunks-rehex",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "_cng_fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "h10",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h0",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h8",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h9",
+          "type": "UBIGINT"
+        }
+      ],
+      "description": "10 files sampled for this table"
+    },
+    "landmark/indicative-poly/hex": {
+      "href": "https://data.source.coop/cboettig/indigenous/landmark/indicative-poly/hex/h0=578571814628753407/",
+      "type": "application/x-parquet",
+      "title": "landmark/indicative-poly/hex",
       "roles": [
         "data"
       ],
@@ -101,8 +132,7 @@
         },
         {
           "name": "country",
-          "type": "VARCHAR",
-          "description": "[placename] Country name where the territory is located"
+          "type": "VARCHAR"
         },
         {
           "name": "category",
@@ -178,21 +208,23 @@
         },
         {
           "name": "iso_code",
-          "type": "VARCHAR",
-          "description": "[admin_code] ISO 3166-1 alpha-3 country code (polygon layers)"
+          "type": "VARCHAR"
         },
         {
-          "name": "geom",
-          "type": "GEOMETRY('OGC:CRS84')",
-          "description": "[geometry] Feature geometry in WGS84 (OGC:CRS84)"
+          "name": "h8",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h0",
+          "type": "BIGINT|UBIGINT"
         }
       ],
-      "table:row_count": 17539
+      "description": "10 files sampled for this table"
     },
-    "landmark/indicative-poly/chunks-rehex": {
-      "href": "https://data.source.coop/cboettig/indigenous/landmark/indicative-poly/chunks-rehex/",
+    "landmark/iplc-poly/hex": {
+      "href": "https://data.source.coop/cboettig/indigenous/landmark/iplc-poly/hex/h0=576495936675512319/",
       "type": "application/x-parquet",
-      "title": "landmark/indicative-poly/chunks-rehex",
+      "title": "landmark/iplc-poly/hex",
       "roles": [
         "data"
       ],
@@ -202,30 +234,145 @@
           "type": "BIGINT"
         },
         {
+          "name": "OGC_FID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "identity",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "form_rec",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "doc_status",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "stat_date",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "stat_note",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "country",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "category",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ethncty_1",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "populatn",
+          "type": "BIGINT"
+        },
+        {
+          "name": "pop_source",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "pop_year",
+          "type": "BIGINT"
+        },
+        {
+          "name": "area_ofcl",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "area_gis",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "scale",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "method",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "data_ctrb",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "data_src",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "data_src_s",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "data_src_l",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "data_date",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "add_note",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "more_info",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "layer",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "download",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "iso_code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        },
+        {
           "name": "h10",
-          "type": "UBIGINT",
-          "description": "[spatial_index] H3 hex index at resolution 10"
+          "type": "UBIGINT"
         },
         {
           "name": "h0",
-          "type": "UBIGINT",
-          "description": "[spatial_index] H3 hex index at resolution 0"
+          "type": "UBIGINT"
         },
         {
           "name": "h8",
-          "type": "UBIGINT",
-          "description": "[spatial_index] H3 hex index at resolution 8"
+          "type": "UBIGINT"
         },
         {
           "name": "h9",
-          "type": "UBIGINT",
-          "description": "[spatial_index] H3 hex index at resolution 9"
+          "type": "UBIGINT"
         }
       ],
-      "description": "4 files sampled for this table"
+      "description": "20 files sampled for this table",
+      "bbox": [
+        -176.8345033,
+        -53.3138693,
+        179.435937,
+        83.6274185
+      ],
+      "item_count": 414300119
     },
     "landmark/iplc-pt/hex": {
-      "href": "https://data.source.coop/cboettig/indigenous/landmark/iplc-pt/hex/h0=578923658349641727/",
+      "href": "https://data.source.coop/cboettig/indigenous/landmark/iplc-pt/hex/h0=576707042908045311/",
       "type": "application/x-parquet",
       "title": "landmark/iplc-pt/hex",
       "roles": [
@@ -266,8 +413,7 @@
         },
         {
           "name": "country",
-          "type": "VARCHAR",
-          "description": "[placename] Country name where the point is located"
+          "type": "VARCHAR"
         },
         {
           "name": "iso_code",
@@ -351,26 +497,267 @@
         },
         {
           "name": "h10",
-          "type": "UBIGINT",
-          "description": "[spatial_index] H3 hex index at resolution 10"
+          "type": "UBIGINT"
         },
         {
           "name": "h0",
-          "type": "BIGINT",
-          "description": "[spatial_index] H3 hex index at resolution 0"
+          "type": "UBIGINT"
         },
         {
           "name": "h8",
-          "type": "UBIGINT",
-          "description": "[spatial_index] H3 hex index at resolution 8"
+          "type": "UBIGINT"
         },
         {
           "name": "h9",
-          "type": "UBIGINT",
-          "description": "[spatial_index] H3 hex index at resolution 9"
+          "type": "UBIGINT"
         }
       ],
-      "description": "5 files sampled for this table"
+      "description": "14 files sampled for this table",
+      "bbox": [
+        -174.2006164,
+        -30.3929683,
+        107.4508036,
+        71.2905997
+      ],
+      "item_count": 2646
+    },
+    "landmark": {
+      "href": "https://data.source.coop/cboettig/indigenous/landmark/",
+      "type": "application/x-parquet",
+      "title": "landmark",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "_cng_fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OGC_FID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "identity",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "form_rec",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "doc_status",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "stat_date",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "stat_note",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "country",
+          "type": "VARCHAR",
+          "description": "[placename] Country where the territory is located"
+        },
+        {
+          "name": "category",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ethncty_1",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "populatn",
+          "type": "BIGINT"
+        },
+        {
+          "name": "pop_source",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "pop_year",
+          "type": "BIGINT"
+        },
+        {
+          "name": "area_ofcl",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "area_gis",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "scale",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "method",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "data_ctrb",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "data_src",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "data_src_s",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "data_src_l",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "data_date",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "add_note",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "more_info",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "layer",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "download",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "iso_code",
+          "type": "VARCHAR",
+          "description": "[admin_code] ISO 3166-1 alpha-3 country code"
+        },
+        {
+          "name": "geom",
+          "type": "BLOB|GEOMETRY('OGC:CRS84')",
+          "description": "[geometry] Feature geometry (polygon or point) in WGS84 (OGC:CRS84)"
+        },
+        {
+          "name": "Name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Identity",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Form_Rec",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Doc_Status",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Stat_Date",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Stat_Note",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Country",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ISO_Code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Category",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Ethncty_1",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Populatn",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Pop_Source",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Pop_Year",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Area_Ofcl",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Area_GIS",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Scale",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Method",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Data_Ctrb",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Data_Src",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Data_Src_S",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Data_Src_L",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Data_Date",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Add_Note",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "More_info",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Layer",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Download",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "description": "4 files sampled for this table"
     }
   },
   "links": [
@@ -385,13 +772,9 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "account_id": "cboettig",
-  "data_mode": "open",
-  "visibility": "public",
-  "product_id": "indigenous",
+  "updated_at": "2026-06-17T03:27:10.228Z",
+  "object_count": 365,
   "featured": 0,
-  "created_at": "2026-06-17T03:27:10.228Z",
-  "disabled": false,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -404,34 +787,40 @@
       "prefix": "cboettig/indigenous/"
     }
   },
+  "total_bytes": 22827834022,
   "exts": {
     "parquet": 319,
     "json": 5,
     "dbf": 4,
     "sbn": 4,
     "shx": 4,
-    "cpg": 4,
     "prj": 4,
-    "sbx": 4,
     "shp": 4,
-    "xml": 4,
     "xlsx": 4,
+    "cpg": 4,
+    "sbx": 4,
+    "xml": 4,
     "pmtiles": 3,
-    "md": 1,
-    "xls": 1
+    "xls": 1,
+    "md": 1
   },
-  "updated_at": "2026-06-17T03:27:10.228Z",
+  "data_mode": "open",
+  "disabled": false,
+  "created_at": "2026-06-17T03:27:10.228Z",
+  "product_id": "indigenous",
+  "visibility": "public",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "total_bytes": 23243598746,
-  "object_count": 365,
+  "account_id": "cboettig",
   "readme": "## README.md\n# LandMark: Indigenous & Community Land Rights (v202509)\n\n[LandMark](https://landmarkmap.org) provides the world's first global platform to map land rights of Indigenous Peoples and local communities. This collection covers the September 2025 (v202509) release.\n\n**License:** [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)\n**Citation:** LandMark: The Global Platform of Indigenous and Community Lands (v202509). https://landmarkmap.org\n**Source:** https://landmarkmap.org/data-methods/\n\n---\n\n## Datasets\n\n| Layer | Features | Geometry | Formats |\n|-------|----------|----------|---------|\n| IPLC Polygon | 124,616 | Polygon | GeoParquet, PMTiles, H3 hex |\n| IPLC Point | 2,646 | Point | GeoParquet, PMTiles |\n| Indicative Polygon | 17,539 | Polygon | GeoParquet, PMTiles, H3 hex |\n\n### IPLC Polygon (`iplc-poly`)\nCommunity-level polygon boundaries aggregated from local, national, and regional mapping initiatives. Each feature represents a documented indigenous or community territory.\n\n```\nhttps://s3-west.nrp-nautilus.io/public-indigenous/landmark/iplc-poly.parquet\nhttps://s3-west.nrp-nautilus.io/public-indigenous/landmark/iplc-poly.pmtiles\nhttps://s3-west.nrp-nautilus.io/public-indigenous/landmark/iplc-poly/hex/h0=*/data_0.parquet\n```\n\n**PMTiles source-layer:** `iplc-poly`\n\n### IPLC Point (`iplc-pt`)\nPoint locations (centroids or representative points) for IPLC areas. Useful for overview mapping and tabular joins.\n\n```\nhttps://s3-west.nrp-nautilus.io/public-indigenous/landmark/iplc-pt.parquet\nhttps://s3-west.nrp-nautilus.io/public-indigenous/landmark/iplc-pt.pmtiles\n```\n\n**PMTiles source-layer:** `iplc-pt`\n\n### Indicative Areas Polygon (`indicative-poly`)\nModel-estimated indicative extent of indigenous and community lands in areas where direct boundary mapping is unavailable. Derived from population surveys, national statistics, and modeling.\n\n```\nhttps://s3-west.nrp-nautilus.io/public-indigenous/landmark/indicative-poly.parquet\nhttps://s3-west.nrp-nautilus.io/public-indigenous/landmark/indicative-poly.pmtiles\nhttps://s3-west.nrp-nautilus.io/public-indigenous/landmark/indicative-poly/hex/h0=*/data_0.parquet\n```\n\n**PMTiles source-layer:** `indicative-poly`\n\n---\n\n## Field Descriptions\n\nAll polygon and point layers share the same schema:\n\n| Field | Type | Description |\n|-------|------|-------------|\n| `_cng_fid` | int64 | Internal feature ID |\n| `OGC_FID` | int64 | Original source feature ID |\n| `identity` | string | Identity type (Indigenous Peoples / Local Communities) |\n| `name` | string | Name of the community or people |\n| `form_rec` | string | Form of recognition of the land right |\n| `doc_status` | string | Documentation status |\n| `stat_date` | string | Date of status determination |\n| `stat_note` | string | Notes on status |\n| `country` | string | Country where territory is located |\n| `category` | string | Category of land right |\n| `ethncty_1` | string | Primary ethnicity/group classification |\n| `populatn` | int64 | Population estimate |\n| `pop_source` | string | Source of population estimate |\n| `pop_year` | int64 | Year of population estimate |\n| `area_ofcl` | double | Official recorded area (hectares) |\n| `area_gis` | double | GIS-computed area (hectares) |\n| `scale` | string | Scale/accuracy of mapped boundary |\n| `method` | string | Method used to delineate boundary |\n| `data_ctrb` | string | Data contributor organization |\n| `data_src` | string | Primary data source name |\n| `data_src_s` | string | Data source short name |\n| `data_src_l` | string | Data source URL |\n| `data_date` | string | Date of source data |\n| `add_note` | string | Additional notes |\n| `more_info` | string | URL for more information |\n| `layer` | string | Source layer name |\n| `download` | string | Download URL for source data |\n| `iso_code` | string | ISO 3166-1 alpha-3 country code (polygon layers) |\n| `geom` | geometry | Geometry in WGS84 (OGC:CRS84) |\n\n---\n\n## Usage Examples\n\n### DuckDB\n\n```sql\nINSTALL httpfs; LOAD httpfs;\nINSTALL spatial; LOAD spatial;\n\n-- Count IPLC territories by country\nSELECT country, COUNT(*) as n_territories, SUM(area_gis) as total_ha\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-indigenous/landmark/iplc-poly.parquet')\nGROUP BY country\nORDER BY n_territories DESC\nLIMIT 20;\n\n-- Query H3 hex index at resolution 8\nSELECT h0, h3_index, identity, COUNT(*) as n_cells\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-indigenous/landmark/iplc-poly/hex/h0=*/data_0.parquet',\n                  hive_partitioning=true)\nWHERE resolution = 8\nGROUP BY h0, h3_index, identity\nLIMIT 10;\n```\n\n### MapLibre GL JS (IPLC Polygon)\n\n```javascript\nmap.addSource('iplc-poly', {\n  type: 'vector',\n  url: 'pmtiles://https://s3-west.nrp-nautilus.io/public-indigenous/landmark/iplc-poly.pmtiles'\n});\n\nmap.addLayer({\n  id: 'iplc-poly-fill',\n  type: 'fill',\n  source: 'iplc-poly',\n  'source-layer': 'iplc-poly',   // <-- this is the source-layer name\n  paint: {\n    'fill-color': '#2196f3',\n    'fill-opacity': 0.4\n  }\n});\n```\n\n### MapLibre GL JS (Indicative Areas)\n\n```javascript\nmap.addSource('indicative-poly', {\n  type: 'vector',\n  url: 'pmtiles://https://s3-west.nrp-nautilus.io/public-indigenous/landmark/indicative-poly.pmtiles'\n});\n\nmap.addLayer({\n  id: 'indicative-poly-fill',\n  type: 'fill',\n  source: 'indicative-poly',\n  'source-layer': 'indicative-poly',   // <-- this is the source-layer name\n  paint: {\n    'fill-color': '#ff9800',\n    'fill-opacity': 0.3\n  }\n});\n```\n\n---\n\n## Processing Notes\n\n- Source: LandMark v202509 shapefiles downloaded from https://landmarkmap.org/data-methods/\n- Raw source files archived at `s3://public-indigenous/raw/`\n- Processed using `cng-datasets` on NRP Nautilus Kubernetes cluster\n- H3 hex tiling at resolution 10 with parent resolutions 9, 8, 0\n- `indicative-pt` (point layer) processing pending upstream fix for Measured 3D MultiPoint geometry\n",
   "_review": [
-    "extent.spatial.bbox: omitted; spatial reference is categorical via [landmark.geom (geometry), landmark.country (placename), landmark.iso_code (admin_code), landmark/indicative-poly/chunks-rehex.h10 (spatial_index), landmark/indicative-poly/chunks-rehex.h9 (spatial_index), landmark/indicative-poly/chunks-rehex.h8 (spatial_index), landmark/indicative-poly/chunks-rehex.h0 (spatial_index), landmark/iplc-pt/hex.country (placename), landmark/iplc-pt/hex.h10 (spatial_index), landmark/iplc-pt/hex.h9 (spatial_index), landmark/iplc-pt/hex.h8 (spatial_index), landmark/iplc-pt/hex.h0 (spatial_index)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [landmark.geom (geometry), landmark.country (placename), landmark.iso_code (admin_code), landmark/iplc-poly/hex.h0, h8, h9, h10 (spatial_index), landmark/iplc-pt/hex.h0, h8, h9, h10 (spatial_index), landmark/indicative-poly/hex.h0, h8, h9, h10 (spatial_index), landmark/indicative-poly/chunks-rehex.h0, h8, h9, h10 (spatial_index)]. Add bbox once the placename \u2192 bbox gazetteer covers it.",
+    "summaries.item_count: parts overlap, so this is max(part), not the sum \u2014 landmark/indicative-poly/ 173693328, landmark/iplc-poly/hex/ 414300119, landmark/iplc-pt/hex/ 2646. Sum them only once the parts are known to be disjoint."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-08-02T09:21:33+00:00",
+  "cataloged_at": "2026-08-21T01:34:01+00:00",
+  "objects_updated_at": "2026-08-12T22:33:48+00:00",
   "store_format": null
 }
