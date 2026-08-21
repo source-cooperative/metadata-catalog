@@ -1,15 +1,91 @@
 {
   "schema_version": 1,
-  "account_id": "dynamical",
-  "product_id": "dwd-icon-grib",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "dynamical/dwd-icon-grib",
   "title": "DWD ICON Weather Model Archive",
-  "description": "Archives of Deutscher Wetterdienst (DWD, the German Meteorological Service) ICON weather model output in grib2 format. DWD maintains only a short rolling window of files on their servers, some of which we archive here.",
-  "keywords": [],
-  "created_at": "2025-10-08T16:23:48.443Z",
-  "updated_at": "2026-02-12T14:57:43.621Z",
+  "description": "An archive of Deutscher Wetterdienst (DWD) ICON-EU numerical weather prediction model output in GRIB2 format, covering all vertical levels and variables for the 00/06/12/18 UTC runs over Europe. Files are copied unmodified from DWD's short-lived rolling archive and the collection is updated four times daily.",
+  "license": "CC-BY-4.0",
+  "keywords": [
+    "meteorology",
+    "weather",
+    "numerical-weather-prediction",
+    "weather-forecasting",
+    "atmospheric-data",
+    "grib2"
+  ],
+  "providers": [
+    {
+      "name": "Deutscher Wetterdienst (DWD)",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "dynamical.org",
+      "roles": [
+        "processor",
+        "host"
+      ]
+    },
+    {
+      "name": "Open Climate Fix",
+      "roles": [
+        "processor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/dynamical/dwd-icon-grib"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          62.5,
+          29.5,
+          -23.5,
+          70.5
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2026-02-10T00:00:00",
+          "2026-08-20T18:00:00"
+        ]
+      ]
+    }
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/dynamical/dwd-icon-grib/",
+      "type": "application/octet-stream",
+      "title": "Dataset files (58198140 x .grib2.bz2)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/dynamical/dwd-icon-grib/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/dynamical/dwd-icon-grib",
+      "title": "Source Cooperative product page"
+    }
+  ],
   "visibility": "public",
-  "disabled": false,
-  "featured": 0,
   "data_mode": "open",
   "mirrors": {
     "aws-opendata-us-west-2": {
@@ -24,21 +100,28 @@
     }
   },
   "object_count": 58198141,
-  "total_bytes": 46872130591625,
-  "exts": {
-    "grib2.bz2": 58198140,
-    "md": 1
-  },
-  "_state": "seed",
+  "disabled": false,
+  "featured": 0,
+  "account_id": "dynamical",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "id": "dynamical/dwd-icon-grib",
-  "cataloged_at": "2026-08-17T09:13:02+00:00",
-  "store_format": null,
-  "ext_bytes": {
-    "grib2.bz2": 46872130588744,
-    "md": 2881
-  }
+  "exts": {
+    "grib2.bz2": 58198140,
+    "md": 1
+  },
+  "product_id": "dwd-icon-grib",
+  "created_at": "2025-10-08T16:23:48.443Z",
+  "updated_at": "2026-02-12T14:57:43.621Z",
+  "total_bytes": 46872130591625,
+  "readme": "## README.md\n## DWD ICON Weather Model Archive\n\nArchives of NWP data from Germany's National Meteorological Service, the [Deutscher\nWetterdienst](https://www.dwd.de/EN) (DWD).\n\nDWD maintains only a 24-hour rolling window of files [on their\nservers](https://opendata.dwd.de/weather/nwp/), some of which we archive here.\n\nThe files are in GRIB (GRIdded Binary) Edition 2 (GRIB2) format, compressed with bzip2. We currently archive GRIB2 files from DWD's\n[ICON-EU](https://www.dwd.de/EN/ourservices/nwp_forecast_data/nwp_forecast_data.html) model. For\nICON-EU, we archive all vertical model levels, and all NWP variables, for 4 NWP runs per day (the runs initialised at 00, 06, 12, and 18 UTC). Each file is copied without modification from DWD. Each model run consists of 77,805 files, totalling\nabout 59 GiB or 86 TiB per year. We do not archive the pressure\nlevel files.\n\nThis archive on Source Cooperative is updated four times per day.\n\nIndividual files are added to the archive atomically (thanks to the atomicity guarantees of cloud\nobject storage). So you should never see an incomplete file. In contrast, directories are not\nupdated atomically. If you read the directory for the most recent NWP run then the directory may be\nincomplete.\n\nA subset of the variables in these files will be available in a cloud-optimized Icechunk Zarr\nformat, see [dynamical.org](https://dynamical.org) for availability.\n\nTo avoid having single directories with millions of files, we use a slightly different directory\nstructure to DWD's directory structure. Our directory structure is: \n\n- NWP model name\n- Spatial grid\n- UTC NWP initialization datetime in YYYY-MM-DDTHH format\n- NWP variable name\n- Filename `{prefix}_{init time}_{lead time hour}_{NWP variable name}.grib2.bz2`\n\nFor example: `https://data.source.coop/dynamical/dwd-icon-grib/icon-eu/regular-lat-lon/2026-02-11T00/t_2m/icon-eu_europe_regular-lat-lon_single-level_2026021100_001_T_2M.grib2.bz2`\n\nThe code that copies the files from DWD to this repository is [available on\nGitHub](https://github.com/dynamical-org/reformatters/tree/main/src/reformatters/dwd). This code was\nwritten with support from Open Climate Fix, funded by a grant from the [Patrick J McGovern\nFoundation](https://www.mcgovern.org). The compute to transfer the files is provided by\n[dynamical.org](https://dynamical.org/).\n\n*Data license*: [Creative Commons BY 4.0](https://creativecommons.org/licenses/by/4.0/). To quote\n[DWD's legal\nnotice](https://www.dwd.de/DE/service/rechtliche_hinweise/rechtliche_hinweise_node.html):\n\n> All freely accessible geodata and geodata services, as well as DWD services defined as high-value\n> datasets (HVD), may be reused under the terms of the Creative Commons BY 4.0 (CC BY 4.0) license,\n> provided the source is acknowledged. Geodata includes all provided meteorological weather and\n> climate information with a location reference.\n",
+  "_review": [
+    "providers: role [processor, host] for 'dynamical.org' is an AI guess \u2014 Provides the compute to transfer/archive files and hosts a derived Zarr subset; assumed processor/host role from README description.. Verify before flipping to _state: reviewed.",
+    "providers: role [processor] for 'Open Climate Fix' is an AI guess \u2014 README states the copying code was written with their support; inferred a processor role.. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-08-21T00:31:23+00:00",
+  "objects_updated_at": "2026-08-15T22:49:39+00:00",
+  "store_format": null
 }
