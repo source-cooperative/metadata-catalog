@@ -7,14 +7,14 @@
   ],
   "id": "dataforcanada/d4c-datapkg-environment-climate-health",
   "title": "Data for Canada - Environment, Climate, and Health Data Packages",
-  "description": "Time-series readings from a network of low-cost Enviro+ IoT air-quality and weather monitoring stations deployed across Canada, capturing particulate matter, gas concentrations, temperature, pressure, humidity, and light, paired with device-telemetry records used for quality-control filtering of the sensor data.",
+  "description": "Time-series readings from a network of low-cost Enviro+ IoT air-quality and weather monitoring stations deployed across Canada, capturing particulate matter, gas concentrations, temperature, pressure, humidity, and light, alongside paired device-telemetry records used for quality-control filtering of the sensor readings.",
   "keywords": [
     "air-quality",
     "environmental-monitoring",
     "meteorology",
     "time-series",
-    "atmospheric-data",
     "weather",
+    "atmospheric-data",
     "iot-sensors"
   ],
   "providers": [
@@ -53,11 +53,11 @@
     }
   },
   "summaries": {
-    "item_count": 309
+    "item_count": 3320
   },
   "assets": {
     "archive/opensensor.space/enviroplus-health": {
-      "href": "https://data.source.coop/dataforcanada/d4c-datapkg-environment-climate-health/archive/opensensor.space/enviroplus-health/station=019d97ff-3220-74fc-8923-f9fb69e2273d/year=2026/month=04/day=20/",
+      "href": "https://data.source.coop/dataforcanada/d4c-datapkg-environment-climate-health/archive/opensensor.space/enviroplus-health/station=019d97ff-3220-74fc-8923-f9fb69e2273d/year=2026/month=04/day=18/",
       "type": "application/x-parquet",
       "title": "archive/opensensor.space/enviroplus-health",
       "roles": [
@@ -110,19 +110,19 @@
         },
         {
           "name": "wifi_ssid",
-          "type": "INTEGER|VARCHAR"
+          "type": "VARCHAR"
         },
         {
           "name": "wifi_signal_dbm",
-          "type": "BIGINT|INTEGER"
+          "type": "BIGINT"
         },
         {
           "name": "wifi_quality_percent",
-          "type": "BIGINT|DOUBLE|INTEGER"
+          "type": "BIGINT|DOUBLE"
         },
         {
           "name": "ip_address",
-          "type": "INTEGER|VARCHAR"
+          "type": "VARCHAR"
         },
         {
           "name": "clock_synced",
@@ -130,7 +130,7 @@
         },
         {
           "name": "ntp_offset_ms",
-          "type": "DOUBLE|INTEGER"
+          "type": "DOUBLE"
         },
         {
           "name": "uptime_seconds",
@@ -151,26 +151,10 @@
         {
           "name": "throttled_hex",
           "type": "VARCHAR"
-        },
-        {
-          "name": "day",
-          "type": "BIGINT|VARCHAR"
-        },
-        {
-          "name": "month",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "station",
-          "type": "VARCHAR",
-          "description": "[placename] Identifier for the monitoring station location; likely a station name rather than coordinates."
-        },
-        {
-          "name": "year",
-          "type": "BIGINT"
         }
       ],
-      "description": "19 files sampled for this table"
+      "description": "20 files sampled for this table",
+      "item_count": 278
     },
     "archive/opensensor.space/enviroplus": {
       "href": "https://data.source.coop/dataforcanada/d4c-datapkg-environment-climate-health/archive/opensensor.space/enviroplus/station=019d97ff-3220-74fc-8923-f9fb69e2273d/year=2026/month=04/day=18/",
@@ -259,26 +243,10 @@
         {
           "name": "particles_100um",
           "type": "FLOAT"
-        },
-        {
-          "name": "day",
-          "type": "BIGINT|VARCHAR"
-        },
-        {
-          "name": "month",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "station",
-          "type": "VARCHAR",
-          "description": "[placename] Identifier for the monitoring station location; likely a station name rather than coordinates."
-        },
-        {
-          "name": "year",
-          "type": "BIGINT"
         }
       ],
-      "description": "12 files sampled for this table"
+      "description": "20 files sampled for this table",
+      "item_count": 3320
     }
   },
   "links": [
@@ -294,6 +262,8 @@
     }
   ],
   "account_id": "dataforcanada",
+  "updated_at": "2026-02-27T22:33:33.990Z",
+  "product_id": "d4c-datapkg-environment-climate-health",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -307,26 +277,26 @@
     }
   },
   "created_at": "2026-02-26T11:35:12.789Z",
-  "object_count": 21598,
-  "disabled": false,
-  "total_bytes": 213461443,
-  "data_mode": "open",
-  "visibility": "public",
-  "featured": 0,
+  "exts": {
+    "parquet": 22965
+  },
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "product_id": "d4c-datapkg-environment-climate-health",
-  "exts": {
-    "parquet": 21598
-  },
-  "updated_at": "2026-02-27T22:33:33.990Z",
+  "disabled": false,
+  "object_count": 22965,
+  "total_bytes": 226936254,
+  "visibility": "public",
+  "data_mode": "open",
+  "featured": 0,
   "_review": [
     "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
-    "extent.spatial.bbox: omitted; spatial reference is categorical via [archive/opensensor.space/enviroplus.station (placename), archive/opensensor.space/enviroplus-health.station (placename)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
+    "extent.spatial.bbox: omitted; probe found no spatial dimension and AI did not flag any column as geographic.",
+    "summaries.item_count: parts overlap, so this is max(part), not the sum \u2014 archive/opensensor.space/enviroplus-health/ 278, archive/opensensor.space/enviroplus/ 3320. Sum them only once the parts are known to be disjoint."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-08-14T09:00:26+00:00",
+  "cataloged_at": "2026-08-21T01:54:18+00:00",
+  "objects_updated_at": "2026-08-16T04:45:46+00:00",
   "store_format": null
 }
