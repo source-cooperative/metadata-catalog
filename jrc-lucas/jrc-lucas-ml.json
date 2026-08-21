@@ -1,27 +1,170 @@
 {
   "schema_version": 1,
-  "account_id": "jrc-lucas",
-  "product_id": "jrc-lucas-ml",
-  "title": "Agri-environmental Semantic Segmentation of LUCAS landscape photos",
-  "description": "This Dataset is a collection of street-level images extracted from the Land Use/Cover Area Frame Survey (LUCAS) dataset provided by Eurostat. This dataset is designed for semantic segmentation tasks, focusing on distinguishing between different land cover categories, including agricultural and natural landscapes. The dataset covers the survey year 2018 and includes north looking images with both full masks and partial masks, where certain areas are not delineated.",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "jrc-lucas/jrc-lucas-ml",
+  "title": "LUCAS ML",
+  "description": "This dataset provides pixel-level semantic segmentation masks over 1,784 north-facing street-level photographs collected during the 2018 LUCAS (Land Use/Cover Area Frame Survey) campaign across the European Union, labeled with 35 classes of agricultural and natural landscape elements (e.g. field margin, crop, cropfield, ditch). It includes the raw images/masks, an ML-ready version enriched with geolocation and ancillary Harmonised LUCAS land-cover/use metadata, and a STAC catalog for spatiotemporal access.",
+  "license": "CC-BY-SA-4.0",
   "keywords": [
-    "land-use and land-cover change",
-    "segmentation",
+    "land-cover",
+    "land-use",
+    "agriculture",
+    "machine-learning",
+    "environmental-monitoring",
     "biodiversity",
-    "ml",
-    "monitoring",
-    "vector",
-    "image",
-    "street level imagery",
-    "landscape elements",
-    "computer vision"
+    "street-level-imagery"
   ],
-  "created_at": "2023-09-08T10:39:47.899329+00:00",
-  "updated_at": "2025-08-21T16:39:55.567Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
+  "providers": [
+    {
+      "name": "European Commision - Joint Research Center",
+      "roles": [
+        "producer",
+        "processor"
+      ],
+      "url": "https://joint-research-centre.ec.europa.eu/index_en"
+    },
+    {
+      "name": "BlueGreen Labs (bv)",
+      "roles": [
+        "processor"
+      ],
+      "url": "https://bluegreenlabs.org"
+    },
+    {
+      "name": "Eurostat",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "European Commission Joint Research Centre (JRC)",
+      "roles": [
+        "producer",
+        "processor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/jrc-lucas/jrc-lucas-ml"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -9.5584472828,
+          34.72879,
+          33.36039,
+          65.82678
+        ],
+        [
+          -9.4128824,
+          37.0687278,
+          -8.8262758,
+          38.9948974
+        ],
+        [
+          -9.4049118,
+          37.1214047,
+          -8.6216271,
+          39.2631353
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2018-01-01T00:00:00Z",
+          "2018-12-15T12:00:00Z"
+        ],
+        [
+          "2018-05-28T16:53:01",
+          "2018-08-01T20:04:10"
+        ],
+        [
+          "2018-05-25T20:06:41",
+          "2018-08-01T13:17:36"
+        ]
+      ]
+    }
+  },
+  "assets": {
+    "ml_data/images": {
+      "href": "https://data.source.coop/jrc-lucas/jrc-lucas-ml/ml_data/images/",
+      "type": "application/octet-stream",
+      "title": "ml_data/images/ (1784 \u00d7 .jpg)",
+      "roles": [
+        "data"
+      ],
+      "bbox": [
+        -9.4128824,
+        37.0687278,
+        -8.8262758,
+        38.9948974
+      ]
+    },
+    "raw_data": {
+      "href": "https://data.source.coop/jrc-lucas/jrc-lucas-ml/raw_data/",
+      "type": "application/octet-stream",
+      "title": "raw_data/ (2563 \u00d7 .jpg)",
+      "roles": [
+        "data"
+      ],
+      "bbox": [
+        -9.4049118,
+        37.1214047,
+        -8.6216271,
+        39.2631353
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/jrc-lucas/jrc-lucas-ml/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/jrc-lucas/jrc-lucas-ml",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "rel": "cite-as",
+      "href": "https://doi.org/10.1038/s41597-020-00675-z"
+    }
+  ],
+  "ext_bytes": {
+    "jpg": 3223047397,
+    "png": 45414781,
+    "json": 7309217,
+    "csv": 651195,
+    "md": 5152,
+    "xml": 2427
+  },
+  "account_id": "jrc-lucas",
+  "exts": {
+    "jpg": 7915,
+    "png": 5382,
+    "json": 3597,
+    "xml": 10,
+    "csv": 4,
+    "md": 2
+  },
   "data_mode": "open",
+  "total_bytes": 3276430169,
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "visibility": "public",
+  "created_at": "2023-09-08T10:39:47.899329+00:00",
+  "object_count": 16910,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -34,29 +177,19 @@
       "prefix": "jrc-lucas/jrc-lucas-ml/"
     }
   },
-  "object_count": 16910,
-  "total_bytes": 3276430169,
-  "exts": {
-    "jpg": 7915,
-    "png": 5382,
-    "json": 3597,
-    "xml": 10,
-    "csv": 4,
-    "md": 2
-  },
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "cataloged_at": "2026-06-30T23:33:33+00:00",
-  "ext_bytes": {
-    "jpg": 3223047397,
-    "png": 45414781,
-    "json": 7309217,
-    "csv": 651195,
-    "md": 5152,
-    "xml": 2427
-  },
+  "updated_at": "2025-08-21T16:39:55.567Z",
+  "featured": 0,
+  "disabled": false,
+  "product_id": "jrc-lucas-ml",
+  "readme": "## README.md\n\nThis dataset contains a semantic segmentation delineation derived from street-level images, focusing on categorizing agricultural and natural landscapes. With 35 distinct classes, including labels such as \"field margin,\" \"crop,\" \"cropfield,\" and \"ditch,\" the dataset draws from Land Use/Cover Area Frame Survey (LUCAS) geospatial dataset.\u00a0 LUCAS images are collected using a consistent sampling framework, offering a representative view of different regions and environments of Europe.\n\nComprising a total of 1784 north looking images from 2018, this dataset contributes to land cover analysis by providing fine-grained annotations for a variety of landscape elements, as well as, a valuable resource for training and evaluating semantic segmentation models.\n\nThe dataset's potential applications span a range of domains, from land use mapping and environmental monitoring to urban planning and agricultural management. By fostering the advancement of machine learning models in accurately segmenting landscapes, this dataset contributes to sustainable land management practices and supports informed decision-making processes.\n\n## Dataset Structure\n\nWe provide two data products across three folders derived from the same raw data, for a total of three folders reported in this repository:\n\n- raw_data\n- ml_data\n- STAC\n\n### Raw data\n\nAcross the above folders the raw data is the original data and not easily useable in machine learning context, but kept as a reference. The original dataset is organised into batches, per segmentation campaign, with each batch containing three main folders:\n\n- `images`: Contains the LUCAS north-looking images captured for each theoretical point.\n- `full_masks`: Contains pixel-level annotated masks corresponding to each image, where each pixel is labelled with a class.\n- `partial_masks` (only for the first batch): Contains partial masks where some areas of the images are not delineated.\n\nIn the root of the raw_data folder is a `classes_dataset.csv` csv file containing the code and label correspondence.\n\n### ML data\n\nThe batch data is consolidated and enhanced the original labelled data with geolocation information and ancillary data derived from the Harmonized LUCAS in-situe land-cover and land use database. This meta-data can provide the necessary context within machine learning exercises or exploratory analysis.\n\nThe data is structured in two folders:\n\n- images\n- masks\n\nWith in the root of the folder a file with the meta-data called `lucas_ml_data.csv` with ancillary data. It also contains the `classes_dataset.csv` CSV file containing the code and label correspondence.\n\n### STAC\n\nThe dynamic use of the data without downloading all data, should the dataset grow, can be accomplished using the implementation of a Spatio-Temporal Assets Catalogue (STAC). The STAC format allows for easy spatio-temporal subsetting. The data can be visually browsed [using the STAC browser](https://radiantearth.github.io/stac-browser/#/external/data.source.coop/jrc-lucas/jrc-lucas-ml/stac/catalog.json?.language=en).\n\n## Data Format\n\n- Image files are provided in JPEG format.\n- Masks are provided in PNG format, where each pixel corresponds to a specific class\n\n## Data size\n\n- Each data folder is approximately ~1GB in size with the STAC being largely larger\n- Exact total 3.3 GB\n\n## Usage\n\nThis dataset can be used for various semantic segmentation tasks, including land cover analysis, environmental monitoring, and urban planning. The unique identifiers in the image names enable geospatial analysis using correspondence with the LUCAS harmonised database. The provided ML dataset provides this capability.\n\n## Citation\n\nIf you use this dataset in your work, please consider citing the following paper:\n\nAndrimont, Rapha\u00ebl d\u2019, Momchil Yordanov, Laura Martinez-Sanchez, Beatrice Eiselt, Alessandra Palmieri, Paolo Dominici, Javier Gallego, et al. \u201cHarmonised LUCAS In-Situ Land Cover and Use Database for Field Surveys from 2006 to 2018 in the European Union.\u201d Scientific Data 7, no. 1 (December 2020): 352. [[https://doi.org/10.1038/s41597-020-00675-z](https://doi.org/10.1038/s41597-020-00675-z)](https://doi.org/10.1038/s41597-020-00675-z](https://doi.org/10.1038/s41597-020-00675-z))\n\n## License\n\nThe LUCAS Semantic Segmentation Dataset is provided under CDLA-Permissive-1.0 License\n\n## Authors\n\n- Marijn Van der Velde\n- Laura Martinez-Sanchez\n- Rapha\u00ebl d\u2019Andrimont\n- Elizabeth Kearsley\n- Koen Hufkens\n\n## Release\n\n- **version**: v1.0\n- **Latest release:** 13 september 2023\n- **previous release:** 13 september 2023\n- **Temporal coverage:** 2018\n- **Update frequency:** 3-yearly for the underlying data\n- **Spatial coverage (geographic area):** European Union\n- **Spatial coverage (bounding box):** [xmin = -9.56, ymin = 34.7, xmax = 33.4, ymax = 65.8]\n",
+  "_review": [
+    "providers: role [producer, licensor] for 'Eurostat' is an AI guess \u2014 LUCAS survey imagery originates from Eurostat's LUCAS program; licensor role inferred since the README doesn't restate original LUCAS data terms.. Verify before flipping to _state: reviewed.",
+    "providers: role [producer, processor] for 'European Commission Joint Research Centre (JRC)' is an AI guess \u2014 Inferred from the dataset path (jrc-lucas) and the cited paper's authorship; not explicitly named as producer in the README.. Verify before flipping to _state: reviewed.",
+    "extent.temporal: ['2018-04-09T12:00:00Z', '2018-12-15T12:00:00Z'] (probe sample) widened to ['2018-01-01T00:00:00Z', '2018-12-15T12:00:00Z'] using README-stated coverage ['2018', '2018']."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-08-21T22:43:07+00:00",
+  "_source_format": "stac",
+  "objects_updated_at": "2023-10-18T12:27:56+00:00",
   "store_format": null
 }
