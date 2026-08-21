@@ -1,23 +1,106 @@
 {
   "schema_version": 1,
-  "account_id": "agentmorris",
-  "product_id": "lila-wildlife-desert-lion-camera-traps",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "agentmorris/lila-wildlife-desert-lion-camera-traps",
   "title": "Desert Lion Conservation Camera Traps",
-  "description": "Camera trap imagery and video collected for desert lion conservation monitoring. The dataset comprises over 63,000 photographs and nearly 200 video clips, likely from motion-triggered cameras deployed across desert terrain to observe lion presence, behavior, and movement.",
+  "description": "A collection of 65,959 camera-trap images and 199 videos of desert-adapted lions and other wildlife, captured by motion-triggered cameras deployed by the Desert Lion Conservation Project across desert terrain in Northern Namibia. Includes species-level annotations for 46 categories in COCO Camera Traps format.",
+  "license": "CDLA-Permissive-1.0",
   "keywords": [
     "camera-traps",
     "wildlife-monitoring",
-    "lions",
-    "desert",
     "conservation",
-    "carnivores"
+    "biodiversity",
+    "carnivores",
+    "lions"
   ],
+  "providers": [
+    {
+      "name": "Desert Lion Conservation",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Peter van Lunteren / Addax Data Science",
+      "roles": [
+        "processor"
+      ]
+    },
+    {
+      "name": "LILA (Labeled Information Library of Alexandria)",
+      "roles": [
+        "host"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/agentmorris/lila-wildlife-desert-lion-camera-traps"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -180.0,
+          -90.0,
+          180.0,
+          90.0
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/agentmorris/lila-wildlife-desert-lion-camera-traps/",
+      "type": "application/octet-stream",
+      "title": "Dataset files (63269 x .jpg)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/agentmorris/lila-wildlife-desert-lion-camera-traps/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/agentmorris/lila-wildlife-desert-lion-camera-traps",
+      "title": "Source Cooperative product page"
+    }
+  ],
+  "total_bytes": 154725776935,
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "exts": {
+    "jpg": 63269,
+    "avi": 199,
+    "zip": 2
+  },
+  "data_mode": "open",
+  "visibility": "public",
+  "featured": 0,
+  "disabled": false,
+  "account_id": "agentmorris",
   "created_at": null,
   "updated_at": null,
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": "open",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -30,20 +113,15 @@
       "prefix": "agentmorris/lila-wildlife/desert-lion-camera-traps/"
     }
   },
+  "product_id": "lila-wildlife-desert-lion-camera-traps",
   "object_count": 63470,
-  "total_bytes": 154725776935,
-  "exts": {
-    "jpg": 63269,
-    "avi": 199,
-    "zip": 2
-  },
-  "store_format": null,
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "cataloged_at": "2026-06-04T23:59:15+00:00",
-  "readme": "# Desert Lion Conservation Camera Traps\n\n### Desert Lion Conservation Camera Traps\n\n#### S3 base\n\n`s3://us-west-2.opendata.source.coop/agentmorris/lila-wildlife/desert-lion-camera-traps`\n\n#### Overview\n\nThis dataset contains 65,959 images and 199 videos from the [Desert Lion Conservation Project](https://www.desertlion.info) in Northern Namibia. Desert Lion Conservation is a small non-profit organisation dedicated to the conservation of desert-adapted lions. Their main focus is to collect important baseline ecological data on the lion population and to study their behaviour, biology, and adaptation to survive in the harsh environment. They use this information to collaborate with other conservation bodies in the quest to find a solution to human-lion conflict, to elevate the tourism value of lions, and to contribute to the conservation of the species.\n\nLabels are provided for 46 categories, primarily at the species level. There are no images annotated as empty.\n\n#### License and contact information\n\nFor questions about this data set, contact [Peter van Lunteren](mailto:peter@addaxdatascience.com).\n\nThis data set is released under the [Community Data License Agreement (permissive variant)](https://cdla.io/permissive-1-0/).\n\n#### Data format\n\nAnnotations (including species tags and unique location identifiers) are provided in [COCO Camera Traps](https://github.com/agentmorris/MegaDetector/blob/main/megadetector/data_management/README.md#coco-camera-traps-format) format.\n\nFor information about mapping this dataset's categories to a common taxonomy, see [this page](https://lila.science/taxonomy-mapping-for-camera-trap-data-sets/).\n\n#### Downloading the data\n\nMetadata is available [here](https://storage.googleapis.com/public-datasets-lila/desert-lion-camera-traps/desert_lion_camera_traps.json.zip).\n\nImages are available in a zipfile [here](https://storage.googleapis.com/public-datasets-lila/desert-lion-camera-traps/desert-lion-camera-traps-images.zip), and unzipped images are available in the following cloud storage folders:\n\n* gs://public-datasets-lila/desert-lion-camera-traps/annotated-imgs (GCP)\n* s3://us-west-2.opendata.source.coop/agentmorris/lila-wildlife/desert-lion-camera-traps/annotated-imgs (AWS)\n* https://lilawildlife.blob.core.windows.net/lila-wildlife/desert-lion-camera-traps/annotated-imgs (Azure)\n\nWe recommend downloading images (the whole folder, or a subset of the folder) using [gsutil](https://cloud.google.com/storage/docs/gsutil) (for GCP), [aws s3](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/index.html) (for AWS), or [AzCopy](https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10) (for Azure). For more information about using gsutil, aws s3, or AzCopy, check out our [guidelines for accessing images without using giant zipfiles](http://lila.science/image-access).\n\nIf you prefer to download individual images via http, you can. For example, the thumbnail below appears in the metadata as:\n\npanthera leo/Camera Trap/2017/02/PvL_seq_d8579c60-9f99-4779-8792-2395ab0e3afa/20170218-PICT0729.JPG\n\nThis image can be downloaded directly from any of the following URLs (one for each cloud):\n\n[https://storage.googleapis.com/public-datasets-lila/desert-lion-camera-traps/annotated-imgs/panthera%20leo/Camera Trap/2017/02/PvL_seq_d8579c60-9f99-4779-8792-2395ab0e3afa/20170218-PICT0729.JPG](https://storage.googleapis.com/public-datasets-lila/desert-lion-camera-traps/annotated-imgs/panthera%20leo/Camera%20Trap/2017/02/PvL_seq_d8579c60-9f99-4779-8792-2395ab0e3afa/20170218-PICT0729.JPG)\n\nhttp://us-west-2.opendata.source.coop.s3.amazonaws.com/agentmorris/lila-wildlife/desert-lion-camera-traps/annotated-imgs/panthera%20leo/Camera%20Trap/2017/02/PvL_seq_d8579c60-9f99-4779-8792-2395ab0e3afa/20170218-PICT0729.JPG\n\nhttps://lilawildlife.blob.core.windows.net/lila-wildlife/desert-lion-camera-traps/annotated-imgs/panthera%20leo/Camera%20Trap/2017/02/PvL_seq_d8579c60-9f99-4779-8792-2395ab0e3afa/20170218-PICT0729.JPG\n\nHaving trouble downloading? Check out our [FAQ](https://lila.science/faq#downloadtips).\n\n#### Other useful links\n\n[MegaDetector](https://github.com/agentmorris/MegaDetector/blob/main/megadetector.md) results for all camera trap datasets on LILA are available [here](https://lila.science/megadetector-results-for-camera-trap-datasets/).\n\nInformation about mapping camera trap datasets to a common taxonomy is available [here](https://lila.science/taxonomy-mapping-for-camera-trap-data-sets/).\n\n![](http://lila.science/wp-content/uploads/2024/01/desert-lion-camera-traps-thumb.jpg)\n\n",
-  "_decomposed_from": "agentmorris/lila-wildlife"
+  "_decomposed_from": "agentmorris/lila-wildlife",
+  "readme": "## README.md\n# Desert Lion Conservation Camera Traps\n\n### Desert Lion Conservation Camera Traps\n\n#### S3 base\n\n`s3://us-west-2.opendata.source.coop/agentmorris/lila-wildlife/desert-lion-camera-traps`\n\n#### Overview\n\nThis dataset contains 65,959 images and 199 videos from the [Desert Lion Conservation Project](https://www.desertlion.info) in Northern Namibia. Desert Lion Conservation is a small non-profit organisation dedicated to the conservation of desert-adapted lions. Their main focus is to collect important baseline ecological data on the lion population and to study their behaviour, biology, and adaptation to survive in the harsh environment. They use this information to collaborate with other conservation bodies in the quest to find a solution to human-lion conflict, to elevate the tourism value of lions, and to contribute to the conservation of the species.\n\nLabels are provided for 46 categories, primarily at the species level. There are no images annotated as empty.\n\n#### License and contact information\n\nFor questions about this data set, contact [Peter van Lunteren](mailto:peter@addaxdatascience.com).\n\nThis data set is released under the [Community Data License Agreement (permissive variant)](https://cdla.io/permissive-1-0/).\n\n#### Data format\n\nAnnotations (including species tags and unique location identifiers) are provided in [COCO Camera Traps](https://github.com/agentmorris/MegaDetector/blob/main/megadetector/data_management/README.md#coco-camera-traps-format) format.\n\nFor information about mapping this dataset's categories to a common taxonomy, see [this page](https://lila.science/taxonomy-mapping-for-camera-trap-data-sets/).\n\n#### Downloading the data\n\nMetadata is available [here](https://storage.googleapis.com/public-datasets-lila/desert-lion-camera-traps/desert_lion_camera_traps.json.zip).\n\nImages are available in a zipfile [here](https://storage.googleapis.com/public-datasets-lila/desert-lion-camera-traps/desert-lion-camera-traps-images.zip), and unzipped images are available in the following cloud storage folders:\n\n* gs://public-datasets-lila/desert-lion-camera-traps/annotated-imgs (GCP)\n* s3://us-west-2.opendata.source.coop/agentmorris/lila-wildlife/desert-lion-camera-traps/annotated-imgs (AWS)\n* https://lilawildlife.blob.core.windows.net/lila-wildlife/desert-lion-camera-traps/annotated-imgs (Azure)\n\nWe recommend downloading images (the whole folder, or a subset of the folder) using [gsutil](https://cloud.google.com/storage/docs/gsutil) (for GCP), [aws s3](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/index.html) (for AWS), or [AzCopy](https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10) (for Azure). For more information about using gsutil, aws s3, or AzCopy, check out our [guidelines for accessing images without using giant zipfiles](http://lila.science/image-access).\n\nIf you prefer to download individual images via http, you can. For example, the thumbnail below appears in the metadata as:\n\npanthera leo/Camera Trap/2017/02/PvL_seq_d8579c60-9f99-4779-8792-2395ab0e3afa/20170218-PICT0729.JPG\n\nThis image can be downloaded directly from any of the following URLs (one for each cloud):\n\n[https://storage.googleapis.com/public-datasets-lila/desert-lion-camera-traps/annotated-imgs/panthera%20leo/Camera Trap/2017/02/PvL_seq_d8579c60-9f99-4779-8792-2395ab0e3afa/20170218-PICT0729.JPG](https://storage.googleapis.com/public-datasets-lila/desert-lion-camera-traps/annotated-imgs/panthera%20leo/Camera%20Trap/2017/02/PvL_seq_d8579c60-9f99-4779-8792-2395ab0e3afa/20170218-PICT0729.JPG)\n\nhttp://us-west-2.opendata.source.coop.s3.amazonaws.com/agentmorris/lila-wildlife/desert-lion-camera-traps/annotated-imgs/panthera%20leo/Camera%20Trap/2017/02/PvL_seq_d8579c60-9f99-4779-8792-2395ab0e3afa/20170218-PICT0729.JPG\n\nhttps://lilawildlife.blob.core.windows.net/lila-wildlife/desert-lion-camera-traps/annotated-imgs/panthera%20leo/Camera%20Trap/2017/02/PvL_seq_d8579c60-9f99-4779-8792-2395ab0e3afa/20170218-PICT0729.JPG\n\nHaving trouble downloading? Check out our [FAQ](https://lila.science/faq#downloadtips).\n\n#### Other useful links\n\n[MegaDetector](https://github.com/agentmorris/MegaDetector/blob/main/megadetector.md) results for all camera trap datasets on LILA are available [here](https://lila.science/megadetector-results-for-camera-trap-datasets/).\n\nInformation about mapping camera trap datasets to a common taxonomy is available [here](https://lila.science/taxonomy-mapping-for-camera-trap-data-sets/).\n\n![](http://lila.science/wp-content/uploads/2024/01/desert-lion-camera-traps-thumb.jpg)\n\n",
+  "_review": [
+    "providers: role [producer, licensor] for 'Desert Lion Conservation' is an AI guess \u2014 Assumed licensor since they are the original data producer and no separate rights holder is named.. Verify before flipping to _state: reviewed.",
+    "providers: role [processor] for 'Peter van Lunteren / Addax Data Science' is an AI guess \u2014 Listed only as data set contact; assumed to have processed/prepared the annotations.. Verify before flipping to _state: reviewed.",
+    "providers: role [host] for 'LILA (Labeled Information Library of Alexandria)' is an AI guess \u2014 README links to LILA-hosted GCS/Azure mirrors and metadata, implying LILA hosts the dataset alongside Source Cooperative.. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-08-21T22:50:53+00:00"
 }
