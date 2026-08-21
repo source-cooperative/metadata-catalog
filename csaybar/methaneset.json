@@ -1,16 +1,514 @@
 {
   "schema_version": 1,
-  "account_id": "csaybar",
-  "product_id": "methaneset",
-  "title": "methaneset",
-  "description": "methaneset",
-  "keywords": [],
-  "created_at": "2025-12-16T22:01:18.619Z",
-  "updated_at": "2025-12-16T22:01:34.497Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": "open",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
+  "id": "csaybar/methaneset",
+  "title": "MethaneSET-L89: Global Landsat 8/9 Dataset for Methane Emission Detection",
+  "description": "MethaneSET is a multi-sensor family of AI-ready Earth observation datasets for satellite-based methane plume detection, pairing Sentinel-2 and Landsat-8/9 imagery chips with expert-verified plume labels, flux estimates, and auxiliary wind data (ERA5-Land, GEOS-FP) in cloud-optimized TACO format.",
+  "license": "CC-BY-NC-SA-4.0",
+  "keywords": [
+    "methane",
+    "plume-detection",
+    "remote-sensing",
+    "landsat-8",
+    "landsat-9",
+    "oli",
+    "cloudsen12",
+    "era5-land",
+    "geos-fp",
+    "mbmp",
+    "plumeviewer",
+    "ghg",
+    "earth-observation",
+    "deep-learning",
+    "machine-learning",
+    "sentinel-2",
+    "landsat",
+    "atmospheric-data",
+    "meteorology"
+  ],
+  "providers": [
+    {
+      "name": "UNEP International Methane Emissions Observatory (IMEO)",
+      "organization": null,
+      "email": null,
+      "role": "producer"
+    },
+    {
+      "name": "Research Institute of Water and Environmental Engineering (IIAMA), UPV",
+      "organization": null,
+      "email": null,
+      "role": "processor"
+    },
+    {
+      "name": "Department of Engineering, University of Cambridge",
+      "organization": null,
+      "email": null,
+      "role": "contributor"
+    },
+    {
+      "name": "Vector Institute, University of Toronto",
+      "organization": null,
+      "email": null,
+      "role": "contributor"
+    },
+    {
+      "name": "University of Valencia",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "University of Salzburg",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Universitat Polit\u00e8cnica de Val\u00e8ncia",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/csaybar/methaneset"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -121.90527689115115,
+          -50.74632213836442,
+          151.41903572121242,
+          51.35452375533172
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2018-01-05T10:02:52.340000Z",
+          "2024-12-31T17:27:23.051000Z"
+        ],
+        [
+          "2018-01-05T10:02:52.340000Z",
+          "2024-12-31T17:27:23.051000Z"
+        ],
+        [
+          "2018-01-01T10:04:09Z",
+          "2024-12-31T17:06:29Z"
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 43357
+  },
+  "assets": {
+    "l89": {
+      "href": "https://data.source.coop/csaybar/methaneset/l89/",
+      "type": "application/octet-stream",
+      "title": "l89",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "string"
+        },
+        {
+          "name": "type",
+          "type": "string"
+        },
+        {
+          "name": "stac:crs",
+          "type": "string"
+        },
+        {
+          "name": "stac:tensor_shape",
+          "type": "list<item: int64>"
+        },
+        {
+          "name": "stac:geotransform",
+          "type": "list<item: double>"
+        },
+        {
+          "name": "stac:time_start",
+          "type": "timestamp[us]"
+        },
+        {
+          "name": "stac:centroid",
+          "type": "binary",
+          "description": "[geometry] Encoded centroid point geometry of the image chip"
+        },
+        {
+          "name": "stac:time_end",
+          "type": "timestamp[us]"
+        },
+        {
+          "name": "stac:time_middle",
+          "type": "timestamp[us]"
+        },
+        {
+          "name": "methane:wind_u",
+          "type": "float"
+        },
+        {
+          "name": "methane:wind_v",
+          "type": "float"
+        },
+        {
+          "name": "methane:wind_source",
+          "type": "string"
+        },
+        {
+          "name": "methane:isplume",
+          "type": "bool"
+        },
+        {
+          "name": "methane:ch4_fluxrate",
+          "type": "float"
+        },
+        {
+          "name": "methane:ch4_fluxrate_std",
+          "type": "float"
+        },
+        {
+          "name": "methane:offshore",
+          "type": "bool"
+        },
+        {
+          "name": "methane:sector",
+          "type": "string"
+        },
+        {
+          "name": "satellite:satellite",
+          "type": "string"
+        },
+        {
+          "name": "satellite:tile",
+          "type": "string",
+          "description": "[spatial_index] Satellite tiling-grid identifier (e.g. Landsat WRS tile)"
+        },
+        {
+          "name": "satellite:vza",
+          "type": "float"
+        },
+        {
+          "name": "satellite:sza",
+          "type": "float"
+        },
+        {
+          "name": "satellite:background_image_tile",
+          "type": "string"
+        },
+        {
+          "name": "site:location_name",
+          "type": "string",
+          "description": "[placename] Named location of the methane plume site"
+        },
+        {
+          "name": "site:country",
+          "type": "string",
+          "description": "[placename] Country in which the plume site is located"
+        },
+        {
+          "name": "site:footprint",
+          "type": "binary",
+          "description": "[geometry] Encoded footprint geometry of the methane source/site"
+        },
+        {
+          "name": "site:case_study",
+          "type": "string"
+        },
+        {
+          "name": "quality:percentage_clear",
+          "type": "float"
+        },
+        {
+          "name": "quality:observability",
+          "type": "string"
+        },
+        {
+          "name": "quality:notified",
+          "type": "bool"
+        },
+        {
+          "name": "quality:last_update",
+          "type": "string"
+        },
+        {
+          "name": "quality:monitoring",
+          "type": "bool"
+        },
+        {
+          "name": "split",
+          "type": "string"
+        },
+        {
+          "name": "majortom:code",
+          "type": "string",
+          "description": "[spatial_index] Major-TOM global grid cell identifier"
+        },
+        {
+          "name": "geoenrich:elevation",
+          "type": "float"
+        },
+        {
+          "name": "geoenrich:temperature",
+          "type": "float"
+        },
+        {
+          "name": "geoenrich:population",
+          "type": "float"
+        },
+        {
+          "name": "geoenrich:admin_countries",
+          "type": "string",
+          "description": "[placename] Enriched administrative country name for the chip"
+        },
+        {
+          "name": "geoenrich:admin_states",
+          "type": "string",
+          "description": "[placename] Enriched administrative state/province name for the chip"
+        },
+        {
+          "name": "geoenrich:admin_districts",
+          "type": "string",
+          "description": "[placename] Enriched administrative district name for the chip"
+        },
+        {
+          "name": "internal:parent_id",
+          "type": "int64"
+        }
+      ],
+      "description": "20 files sampled for this table",
+      "bbox": [
+        -121.9052769,
+        -50.7463221,
+        151.4190357,
+        50.38554
+      ],
+      "item_count": 16178
+    },
+    "s2": {
+      "href": "https://data.source.coop/csaybar/methaneset/s2/",
+      "type": "application/octet-stream",
+      "title": "s2",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "string"
+        },
+        {
+          "name": "type",
+          "type": "string"
+        },
+        {
+          "name": "stac:crs",
+          "type": "string"
+        },
+        {
+          "name": "stac:tensor_shape",
+          "type": "list<item: int64>"
+        },
+        {
+          "name": "stac:geotransform",
+          "type": "list<item: double>"
+        },
+        {
+          "name": "stac:time_start",
+          "type": "timestamp[us]"
+        },
+        {
+          "name": "stac:centroid",
+          "type": "binary",
+          "description": "[geometry] Encoded centroid point geometry of the image chip"
+        },
+        {
+          "name": "stac:time_end",
+          "type": "timestamp[us]"
+        },
+        {
+          "name": "stac:time_middle",
+          "type": "timestamp[us]"
+        },
+        {
+          "name": "methane:wind_u",
+          "type": "float"
+        },
+        {
+          "name": "methane:wind_v",
+          "type": "float"
+        },
+        {
+          "name": "methane:wind_source",
+          "type": "string"
+        },
+        {
+          "name": "methane:isplume",
+          "type": "bool"
+        },
+        {
+          "name": "methane:ch4_fluxrate",
+          "type": "float"
+        },
+        {
+          "name": "methane:ch4_fluxrate_std",
+          "type": "float"
+        },
+        {
+          "name": "methane:offshore",
+          "type": "bool"
+        },
+        {
+          "name": "methane:sector",
+          "type": "string"
+        },
+        {
+          "name": "satellite:satellite",
+          "type": "string"
+        },
+        {
+          "name": "satellite:tile",
+          "type": "string",
+          "description": "[spatial_index] Satellite tiling-grid identifier (e.g. Sentinel-2 MGRS tile)"
+        },
+        {
+          "name": "satellite:vza",
+          "type": "float"
+        },
+        {
+          "name": "satellite:sza",
+          "type": "float"
+        },
+        {
+          "name": "satellite:background_image_tile",
+          "type": "string"
+        },
+        {
+          "name": "site:location_name",
+          "type": "string",
+          "description": "[placename] Named location of the methane plume site"
+        },
+        {
+          "name": "site:country",
+          "type": "string",
+          "description": "[placename] Country in which the plume site is located"
+        },
+        {
+          "name": "site:footprint",
+          "type": "binary",
+          "description": "[geometry] Encoded footprint geometry of the methane source/site"
+        },
+        {
+          "name": "site:case_study",
+          "type": "string"
+        },
+        {
+          "name": "quality:percentage_clear",
+          "type": "float"
+        },
+        {
+          "name": "quality:observability",
+          "type": "string"
+        },
+        {
+          "name": "quality:notified",
+          "type": "bool"
+        },
+        {
+          "name": "quality:last_update",
+          "type": "string"
+        },
+        {
+          "name": "quality:monitoring",
+          "type": "bool"
+        },
+        {
+          "name": "split",
+          "type": "string"
+        },
+        {
+          "name": "majortom:code",
+          "type": "string",
+          "description": "[spatial_index] Major-TOM global grid cell identifier"
+        },
+        {
+          "name": "geoenrich:elevation",
+          "type": "float"
+        },
+        {
+          "name": "geoenrich:temperature",
+          "type": "float"
+        },
+        {
+          "name": "geoenrich:population",
+          "type": "float"
+        },
+        {
+          "name": "geoenrich:admin_countries",
+          "type": "string",
+          "description": "[placename] Enriched administrative country name for the chip"
+        },
+        {
+          "name": "geoenrich:admin_states",
+          "type": "string",
+          "description": "[placename] Enriched administrative state/province name for the chip"
+        },
+        {
+          "name": "geoenrich:admin_districts",
+          "type": "string",
+          "description": "[placename] Enriched administrative district name for the chip"
+        },
+        {
+          "name": "internal:parent_id",
+          "type": "int64"
+        }
+      ],
+      "description": "20 files sampled for this table",
+      "bbox": [
+        -121.9053346,
+        -50.7462076,
+        151.4189829,
+        51.5823201
+      ],
+      "item_count": 43357
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/csaybar/methaneset/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/csaybar/methaneset",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "rel": "cite-as",
+      "href": "https://doi.org/10.48550/arXiv.2408.04745"
+    }
+  ],
+  "_citation": "Vaughan, A., Mateo-Garcia, G., Irakulis-Loitxate, I., Watine, M., Fernandez-Poblaciones, P., Turner, R. E., Requeima, J., Gorro\u00f1o, J., Randles, C., Caltagirone, M., & Cifarelli, C. (2024). AI for operational methane emitter monitoring from space. arXiv preprint arXiv:2408.04745.",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -23,30 +521,35 @@
       "prefix": "csaybar/methaneset/"
     }
   },
-  "object_count": 89,
-  "total_bytes": 62232538640,
   "exts": {
     "tacozip": 75,
     "parquet": 6,
     "md": 3,
-    "json": 2,
     "html": 2,
+    "json": 2,
     "png": 1
   },
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "id": "csaybar/methaneset",
-  "ext_bytes": {
-    "tacozip": 62169468206,
-    "parquet": 61499022,
-    "html": 1321650,
-    "png": 159700,
-    "json": 69675,
-    "md": 20387
-  },
-  "store_format": null,
-  "cataloged_at": "2026-06-30T23:19:12+00:00"
+  "data_mode": "open",
+  "product_id": "methaneset",
+  "created_at": "2025-12-16T22:01:18.619Z",
+  "updated_at": "2025-12-16T22:01:34.497Z",
+  "account_id": "csaybar",
+  "object_count": 89,
+  "visibility": "public",
+  "featured": 0,
+  "disabled": false,
+  "total_bytes": 62232538640,
+  "readme": "## README.md\n<div align=\"center\">\n  <img src=\"https://data.source.coop/csaybar/methaneset/.logo/logo.png\" alt=\"MethaneSET Logo\" width=\"400\">\n</div>\n\n# MethaneSET\n\n> \ud83d\udea7 **Under Construction** \ud83d\udea7\n\nMulti-sensor family of AI-ready datasets for satellite-based methane plume detection.\n\n## Available Versions\n\n| Version | Sensor | Status |\n|---------|--------|--------|\n| **MethaneSET-S2** | Sentinel-2 MSI | \u2705 Available |\n| **MethaneSET-L89** | Landsat-8/9 OLI | \u2705 Available |\n| **MethaneSET-L5** | Landsat-5 TM | \ud83d\udd04 Coming soon |\n| **MethaneSET-EMIT** | EMIT hyperspectral | \ud83d\udd04 Coming soon |\n| **MethaneSET-PRISMA** | PRISMA hyperspectral | \ud83d\udd04 Coming soon |\n\n## Dataset Features\n\n\u2705 Expert-verified methane plumes  \n\u2705 Auxiliary wind data (ERA5-Land, GEOS-FP)  \n\u2705 Rich metadata (flux, source type, geometry)  \n\u2705 TACO format (cloud-optimized, SQL-queryable)\n\n## Quick Start\n\n```python\nimport tacoreader\n\n# Load from Source Cooperative\ndataset = tacoreader.load(\"https://data.source.coop/csaybar/methaneset/s2\")\nprint(f\"Samples: {len(dataset.data)}\")\n```\n\n## License\n\n[CC-BY-NC-SA-4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)\n\n## Acknowledgements\n\n**Maintained by**: University of Valencia, University of Salzburg, and Universitat Polit\u00e8cnica de Val\u00e8ncia\n\n**Funded by**: [Global Methane Hub](https://www.globalmethanehub.org/)\n\n---\n\n\ud83d\udcd6 **Full documentation**: [methaneset.github.io](https://methaneset.github.io)  \n\ud83d\udcbe **Data repository**: [Source Cooperative](https://data.source.coop/csaybar/methaneset/)",
+  "_review": [
+    "providers: role [producer] for 'University of Valencia' is an AI guess \u2014 Inferred from 'Maintained by' credit in README, not an explicit producer statement.. Verify before flipping to _state: reviewed.",
+    "providers: role [producer] for 'University of Salzburg' is an AI guess \u2014 Inferred from 'Maintained by' credit in README, not an explicit producer statement.. Verify before flipping to _state: reviewed.",
+    "providers: role [producer] for 'Universitat Polit\u00e8cnica de Val\u00e8ncia' is an AI guess \u2014 Inferred from 'Maintained by' credit in README, not an explicit producer statement.. Verify before flipping to _state: reviewed.",
+    "summaries.item_count: parts overlap, so this is max(part), not the sum \u2014 l89/ 16178, s2/ 43357. Sum them only once the parts are known to be disjoint.",
+    "citation: captured publisher citation from upstream into _citation; promote to a public field once standardized with source.coop."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-08-21T00:16:43+00:00",
+  "_source_format": "taco",
+  "objects_updated_at": "2025-12-17T13:40:08+00:00",
+  "store_format": null
 }
