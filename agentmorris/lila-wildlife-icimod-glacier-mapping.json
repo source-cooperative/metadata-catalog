@@ -1,23 +1,114 @@
 {
   "schema_version": 1,
-  "account_id": "agentmorris",
-  "product_id": "lila-wildlife-icimod-glacier-mapping",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "agentmorris/lila-wildlife-icimod-glacier-mapping",
   "title": "HKH Glacier Mapping",
-  "description": "Glacier extent mapping dataset for the Hindu Kush Himalaya (HKH) region, covering one of the world's largest concentrations of glaciers outside the polar regions. The single compressed archive likely contains glacier boundary or inventory data derived from satellite or aerial observation.",
+  "description": "A machine-learning training dataset for glacier mapping in the Hindu Kush Himalaya (HKH) region, pairing 35 Landsat 7 GeoTIFF tiles (with derived NDVI/NDSI/NDWI indices and SRTM elevation/slope layers) with ICIMOD-provided glacier boundary annotations. It also includes 14,190 extracted 512x512 numpy image/mask patches distinguishing clean-ice and debris-covered glaciers.",
   "keywords": [
-    "glacier",
-    "hindu-kush-himalaya",
+    "glaciers",
     "cryosphere",
-    "mountain-glaciers",
-    "glacial-extent",
-    "remote-sensing"
+    "landsat",
+    "remote-sensing",
+    "digital-elevation-model",
+    "machine-learning",
+    "topography"
   ],
-  "created_at": null,
-  "updated_at": null,
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
+  "providers": [
+    {
+      "name": "International Centre for Integrated Mountain Development (ICIMOD)",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "United States Geological Survey (USGS)",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "NASA / CGIAR-CSI (SRTM)",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "LILA (Labeled Information Library of Alexandria)",
+      "roles": [
+        "processor",
+        "host"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/agentmorris/lila-wildlife-icimod-glacier-mapping"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -180.0,
+          -90.0,
+          180.0,
+          90.0
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2002-01-01T00:00:00Z",
+          "2008-01-01T00:00:00Z"
+        ]
+      ]
+    }
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/agentmorris/lila-wildlife-icimod-glacier-mapping/",
+      "type": "application/octet-stream",
+      "title": "Dataset files",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/agentmorris/lila-wildlife-icimod-glacier-mapping/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/agentmorris/lila-wildlife-icimod-glacier-mapping",
+      "title": "Source Cooperative product page"
+    }
+  ],
   "data_mode": "open",
+  "account_id": "agentmorris",
+  "_decomposed_from": "agentmorris/lila-wildlife",
+  "exts": {
+    "gz": 1
+  },
+  "object_count": 1,
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "disabled": false,
+  "updated_at": null,
+  "total_bytes": 73857720934,
+  "featured": 0,
+  "visibility": "public",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -30,18 +121,16 @@
       "prefix": "agentmorris/lila-wildlife/icimod-glacier-mapping/"
     }
   },
-  "object_count": 1,
-  "total_bytes": 73857720934,
-  "exts": {
-    "gz": 1
-  },
-  "store_format": null,
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "cataloged_at": "2026-06-04T23:59:15+00:00",
-  "readme": "# HKH Glacier Mapping\n\n### HKH Glacier Mapping\n\n#### S3 base\n\n`s3://us-west-2.opendata.source.coop/agentmorris/lila-wildlife/icimod-glacier-mapping`\n\n#### Overview\n\nThe Hindu Kush Himalayas (HKH) glacier mapping dataset includes imagery of the Hindu Kush Himalayas (HKH) region, along with polygons indicating the locations of glaciers. This dataset is intended to facilitate the training of models that can identify glaciers in remotely-sensed imagery.\n\nThe HKH is also known as the world\u2019s \u201cThird Pole\u201d, as it consists of one of the largest concentrations of snow and ice besides the two poles. It constitutes more than four million square kilometers of hills and mountains in the eight countries of Afghanistan, Bangladesh, Bhutan, China, India, Myanmar, Nepal, and Pakistan. Glaciers within this region have been identified and classified by experts at the International Centre for Integrated Mountain Development ([ICIMOD](https://www.icimod.org/)).\n\nThis dataset couples those annotated glacier locations with multispectral imagery from Landsat 7 [1] and digital elevation and slope data from SRTM [2]. Imagery are provided as thirty-five Landsat tiles and 14,190 extracted numpy patches. Labels are available as raw vector data in shapefile format and as multichannel numpy masks. Both the labels and the masks are cropped according to the borders of the HKH region.\n\nPython code for training and testing machine learning models using PyTorch, as well as the source for a glacier mapping web tool, can be found in the accompanying GitHub repository:\n\nhttps://github.com/krisrs1128/glacier_mapping\n\n#### Dataset organization\n\n##### Tiles\n\nAt the highest level, this dataset is organized by *tiles*. A *tile* is a spatial area measuring roughly 6km x 7.5km (with definitions that roughly match up with USGS quarter quadrangles). Each tile comes with one corresponding GeoTIFF file. The entire glacier mapping dataset contains 35 tiles from Afghanistan, Bangladesh, Bhutan, China, India, Myanmar, Nepal, and Pakistan.\n\nEach GeoTIFF tile consists of 15 channels:\n\n1. LE7 B1 (blue)\n2. LE7 B2 (green)\n3. LE7 B3 (red)\n4. LE7 B4 (near infrared)\n5. LE7 B5 (shortwave infrared 1)\n6. LE7 B6_VCID_1 (low-gain thermal infrared)\n7. LE7 B6_VCID_2 (high-gain thermal infrared)\n8. LE7 B7 (shortwave infrared 2)\n9. LE7 B8 (panchromatic)\n10. LE7 BQA (quality bitmask)\n11. NDVI (vegetation index)\n12. NDSI (snow index)\n13. NDWI (water index)\n14. SRTM 90 elevation\n15. SRTM 90 slope\n\nThese data were acquired from Google Earth Engine\u2019s [LE7](https://developers.google.com/earth-engine/datasets/catalog/LANDSAT_LE07_C01_T1_RT) and [SRTM](https://developers.google.com/earth-engine/datasets/catalog/CGIAR_SRTM90_V4) collections using this [script](https://code.earthengine.google.com/04430576383081722f303ad774fba209?accept_repo=users%2Fbibekaryal7%2Ffall2020).\n\nAll channels are aligned at 30m spatial resolution. Elevation and slope channels were upsampled from 90m to 30m resolution.\n\n##### Glacier annotations\n\nDigital polygon data indicating the status of glaciers in the HKH region from 2002 to 2008 were provided by [ICIMOD](https://www.icimod.org/) [3].\n\n##### Patches\n\nWe also provide 14190 numpy patches. The numpy patches are all of size 512 x 512 x 15 and corresponding 512 x 512 x 2 pixel-wise mask labels; the two channels in the pixel-wise masks correspond to clean-iced and debris-covered glaciers. Patches\u2019 geolocation information, time stamps, source Landsat IDs, and glacier density are available in a geojson metadata file. We show an example of the metadata below:\n\n  \"type\": \"Feature\", \"properties\":   \"img_source\": \"\\/datadrive\\/glaciers\\/unique_tiles\\/LE07_149037_20041024.tif\", \"mask_source\": \"\\/datadrive\\/glaciers\\/processed_exper\\/masks\\/mask_00.npy\", \"img_slice\": \"\\/datadrive\\/glaciers\\/processed_exper\\/slices\\/slice_0_img_003.npy\", \"mask_slice\": \"\\/datadrive\\/glaciers\\/processed_exper\\/slices\\/slice_0_mask_003.npy\", \"mask_mean_0\": 0.0, \"mask_mean_1\": 0.0, \"mask_mean_2\": 0.0, \"img_mean\": 189.76698303222656  , \"geometry\":   \"type\": \"Polygon\", \"coordinates\": [ [ [ 386932.71929824561812, 3564585.0 ], [ 386932.71929824561812, 3579767.12783851986751 ], [ 371750.78947368421359, 3579767.12783851986751 ], [ 371750.78947368421359, 3564585.0 ], [ 386932.71929824561812, 3564585.0 ] ] ]    \n#### Download links\n\n[All data (patches, polygons, images)](https://storage.googleapis.com/public-datasets-lila/icimod-glacier-mapping/hkh_patches.tar.gz) (GCP link) (29.4GB)  \n\n[All data (patches, polygons, images)](https://lilawildlife.blob.core.windows.net/lila-wildlife/icimod-glacier-mapping/hkh_patches.tar.gz) (Azure link) (29.4GB)  \n\n[All data (patches, polygons, images)](http://us-west-2.opendata.source.coop.s3.amazonaws.com/agentmorris/lila-wildlife/icimod-glacier-mapping/hkh_patches.tar.gz) (AWS link) (29.4GB)\n\nHaving trouble downloading? Check out our [FAQ](http://lila.science/faq#downloadtips).\n\n#### Citation and contact information\n\nFor questions about this dataset, contact [anthony.ortiz@microsoft.com](mailto:anthony.ortiz@microsoft.com) or [ksankaran@wisc.edu](mailto: ksankaran@wisc.edu).\n\nIf you use this dataset, please cite:\n\nBaraka S, Akera B, Aryal B, Sherpa T, Shresta F, Ortiz A, Sankaran K, Lavista Ferres J, Matin M, Bengio Y. 2020. [Machine Learning for Glacier Monitoring in the Hindu Kush Himalaya](https://arxiv.org/abs/2012.05013). NeurIPS 2020 Climate Change AI Workshop (2020).\n\n#### License\n\n*Annotations*\n\nAnnotations are released under the [Community Data License Agreement (permissive variant)](https://cdla.io/permissive-1-0/).\n\n*Images*\n\nLandsat and SRTM data have been released into the public domain. License information about SRTM and Landsat is available [here](https://lpdaac.usgs.gov/documents/13/SRTM_Quick_Guide.pdf) and [here](https://www.usgs.gov/faqs/are-there-any-restrictions-use-or-redistribution-landsat-data?qt-news_science_products=0#qt-news_science_products), respectively.\n\n#### References\n\n1. United States Geological Survey. Landsat 7. [Online](https://www.usgs.gov/core-science-systems/nli/landsat/landsat-7?qt-science_support_page_related_con=0#qt-science_support_page_related_con)\n2. SRTM 90m DEM Digital Elevation Database. [Online](http://srtm.csi.cgiar.org/)\n3. Bajracharya, S. R., & Shrestha, B. R. (2011). The status of glaciers in the Hindu Kush-Himalayan region. International Centre for Integrated Mountain Development (ICIMOD). [Online](http://rds.icimod.org/Home/DataDetail?metadataId=9359&searchlist=True)\n\n![](http://lila.science/wp-content/uploads/2020/11/glacier_thumbnail.png)\n\n",
-  "_decomposed_from": "agentmorris/lila-wildlife"
+  "created_at": null,
+  "product_id": "lila-wildlife-icimod-glacier-mapping",
+  "readme": "## README.md\n# HKH Glacier Mapping\n\n### HKH Glacier Mapping\n\n#### S3 base\n\n`s3://us-west-2.opendata.source.coop/agentmorris/lila-wildlife/icimod-glacier-mapping`\n\n#### Overview\n\nThe Hindu Kush Himalayas (HKH) glacier mapping dataset includes imagery of the Hindu Kush Himalayas (HKH) region, along with polygons indicating the locations of glaciers. This dataset is intended to facilitate the training of models that can identify glaciers in remotely-sensed imagery.\n\nThe HKH is also known as the world\u2019s \u201cThird Pole\u201d, as it consists of one of the largest concentrations of snow and ice besides the two poles. It constitutes more than four million square kilometers of hills and mountains in the eight countries of Afghanistan, Bangladesh, Bhutan, China, India, Myanmar, Nepal, and Pakistan. Glaciers within this region have been identified and classified by experts at the International Centre for Integrated Mountain Development ([ICIMOD](https://www.icimod.org/)).\n\nThis dataset couples those annotated glacier locations with multispectral imagery from Landsat 7 [1] and digital elevation and slope data from SRTM [2]. Imagery are provided as thirty-five Landsat tiles and 14,190 extracted numpy patches. Labels are available as raw vector data in shapefile format and as multichannel numpy masks. Both the labels and the masks are cropped according to the borders of the HKH region.\n\nPython code for training and testing machine learning models using PyTorch, as well as the source for a glacier mapping web tool, can be found in the accompanying GitHub repository:\n\nhttps://github.com/krisrs1128/glacier_mapping\n\n#### Dataset organization\n\n##### Tiles\n\nAt the highest level, this dataset is organized by *tiles*. A *tile* is a spatial area measuring roughly 6km x 7.5km (with definitions that roughly match up with USGS quarter quadrangles). Each tile comes with one corresponding GeoTIFF file. The entire glacier mapping dataset contains 35 tiles from Afghanistan, Bangladesh, Bhutan, China, India, Myanmar, Nepal, and Pakistan.\n\nEach GeoTIFF tile consists of 15 channels:\n\n1. LE7 B1 (blue)\n2. LE7 B2 (green)\n3. LE7 B3 (red)\n4. LE7 B4 (near infrared)\n5. LE7 B5 (shortwave infrared 1)\n6. LE7 B6_VCID_1 (low-gain thermal infrared)\n7. LE7 B6_VCID_2 (high-gain thermal infrared)\n8. LE7 B7 (shortwave infrared 2)\n9. LE7 B8 (panchromatic)\n10. LE7 BQA (quality bitmask)\n11. NDVI (vegetation index)\n12. NDSI (snow index)\n13. NDWI (water index)\n14. SRTM 90 elevation\n15. SRTM 90 slope\n\nThese data were acquired from Google Earth Engine\u2019s [LE7](https://developers.google.com/earth-engine/datasets/catalog/LANDSAT_LE07_C01_T1_RT) and [SRTM](https://developers.google.com/earth-engine/datasets/catalog/CGIAR_SRTM90_V4) collections using this [script](https://code.earthengine.google.com/04430576383081722f303ad774fba209?accept_repo=users%2Fbibekaryal7%2Ffall2020).\n\nAll channels are aligned at 30m spatial resolution. Elevation and slope channels were upsampled from 90m to 30m resolution.\n\n##### Glacier annotations\n\nDigital polygon data indicating the status of glaciers in the HKH region from 2002 to 2008 were provided by [ICIMOD](https://www.icimod.org/) [3].\n\n##### Patches\n\nWe also provide 14190 numpy patches. The numpy patches are all of size 512 x 512 x 15 and corresponding 512 x 512 x 2 pixel-wise mask labels; the two channels in the pixel-wise masks correspond to clean-iced and debris-covered glaciers. Patches\u2019 geolocation information, time stamps, source Landsat IDs, and glacier density are available in a geojson metadata file. We show an example of the metadata below:\n\n  \"type\": \"Feature\", \"properties\":   \"img_source\": \"\\/datadrive\\/glaciers\\/unique_tiles\\/LE07_149037_20041024.tif\", \"mask_source\": \"\\/datadrive\\/glaciers\\/processed_exper\\/masks\\/mask_00.npy\", \"img_slice\": \"\\/datadrive\\/glaciers\\/processed_exper\\/slices\\/slice_0_img_003.npy\", \"mask_slice\": \"\\/datadrive\\/glaciers\\/processed_exper\\/slices\\/slice_0_mask_003.npy\", \"mask_mean_0\": 0.0, \"mask_mean_1\": 0.0, \"mask_mean_2\": 0.0, \"img_mean\": 189.76698303222656  , \"geometry\":   \"type\": \"Polygon\", \"coordinates\": [ [ [ 386932.71929824561812, 3564585.0 ], [ 386932.71929824561812, 3579767.12783851986751 ], [ 371750.78947368421359, 3579767.12783851986751 ], [ 371750.78947368421359, 3564585.0 ], [ 386932.71929824561812, 3564585.0 ] ] ]    \n#### Download links\n\n[All data (patches, polygons, images)](https://storage.googleapis.com/public-datasets-lila/icimod-glacier-mapping/hkh_patches.tar.gz) (GCP link) (29.4GB)  \n\n[All data (patches, polygons, images)](https://lilawildlife.blob.core.windows.net/lila-wildlife/icimod-glacier-mapping/hkh_patches.tar.gz) (Azure link) (29.4GB)  \n\n[All data (patches, polygons, images)](http://us-west-2.opendata.source.coop.s3.amazonaws.com/agentmorris/lila-wildlife/icimod-glacier-mapping/hkh_patches.tar.gz) (AWS link) (29.4GB)\n\nHaving trouble downloading? Check out our [FAQ](http://lila.science/faq#downloadtips).\n\n#### Citation and contact information\n\nFor questions about this dataset, contact [anthony.ortiz@microsoft.com](mailto:anthony.ortiz@microsoft.com) or [ksankaran@wisc.edu](mailto: ksankaran@wisc.edu).\n\nIf you use this dataset, please cite:\n\nBaraka S, Akera B, Aryal B, Sherpa T, Shresta F, Ortiz A, Sankaran K, Lavista Ferres J, Matin M, Bengio Y. 2020. [Machine Learning for Glacier Monitoring in the Hindu Kush Himalaya](https://arxiv.org/abs/2012.05013). NeurIPS 2020 Climate Change AI Workshop (2020).\n\n#### License\n\n*Annotations*\n\nAnnotations are released under the [Community Data License Agreement (permissive variant)](https://cdla.io/permissive-1-0/).\n\n*Images*\n\nLandsat and SRTM data have been released into the public domain. License information about SRTM and Landsat is available [here](https://lpdaac.usgs.gov/documents/13/SRTM_Quick_Guide.pdf) and [here](https://www.usgs.gov/faqs/are-there-any-restrictions-use-or-redistribution-landsat-data?qt-news_science_products=0#qt-news_science_products), respectively.\n\n#### References\n\n1. United States Geological Survey. Landsat 7. [Online](https://www.usgs.gov/core-science-systems/nli/landsat/landsat-7?qt-science_support_page_related_con=0#qt-science_support_page_related_con)\n2. SRTM 90m DEM Digital Elevation Database. [Online](http://srtm.csi.cgiar.org/)\n3. Bajracharya, S. R., & Shrestha, B. R. (2011). The status of glaciers in the Hindu Kush-Himalayan region. International Centre for Integrated Mountain Development (ICIMOD). [Online](http://rds.icimod.org/Home/DataDetail?metadataId=9359&searchlist=True)\n\n![](http://lila.science/wp-content/uploads/2020/11/glacier_thumbnail.png)\n\n",
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
+    "providers: role [producer, licensor] for 'United States Geological Survey (USGS)' is an AI guess \u2014 Inferred as the source/licensor of Landsat 7 imagery, which the README states is public domain.. Verify before flipping to _state: reviewed.",
+    "providers: role [producer, licensor] for 'NASA / CGIAR-CSI (SRTM)' is an AI guess \u2014 Inferred as the source/licensor of the SRTM elevation and slope data, which the README states is public domain.. Verify before flipping to _state: reviewed.",
+    "providers: role [processor, host] for 'LILA (Labeled Information Library of Alexandria)' is an AI guess \u2014 Inferred from lila.science download links and blob storage paths as the original processor/host of this dataset.. Verify before flipping to _state: reviewed.",
+    "extent.temporal: None (probe sample) widened to ['2002-01-01T00:00:00Z', '2008-01-01T00:00:00Z'] using README-stated coverage ['2002', '2008']."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-08-21T22:33:31+00:00"
 }
