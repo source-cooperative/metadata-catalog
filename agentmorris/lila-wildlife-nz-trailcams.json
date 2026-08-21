@@ -1,23 +1,98 @@
 {
   "schema_version": 1,
-  "account_id": "agentmorris",
-  "product_id": "lila-wildlife-nz-trailcams",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "agentmorris/lila-wildlife-nz-trailcams",
   "title": "Trail Camera Images of New Zealand Animals",
-  "description": "A collection of approximately 2.45 million trail camera (camera trap) JPEG images capturing wildlife in New Zealand. The dataset also includes SQLite database files and ExifTool-derived metadata alongside the images.",
+  "description": "A collection of roughly 2.5 million camera trap images capturing wildlife across diverse habitats in New Zealand, labeled with species-level annotations (97 categories) by project staff and verified by volunteers.",
+  "license": "CDLA-Permissive-1.0",
   "keywords": [
     "wildlife",
-    "camera-trap",
-    "new-zealand",
     "biodiversity",
-    "animal-monitoring",
-    "species-detection"
+    "new-zealand",
+    "species-classification",
+    "ecology",
+    "environmental-monitoring"
   ],
-  "created_at": null,
-  "updated_at": null,
+  "providers": [
+    {
+      "name": "New Zealand Department of Conservation",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "LILA BC",
+      "roles": [
+        "processor",
+        "host"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/agentmorris/lila-wildlife-nz-trailcams"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -180.0,
+          -90.0,
+          180.0,
+          90.0
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2021-09-05T10:57:56",
+          "2023-06-10T14:52:29"
+        ]
+      ]
+    }
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/agentmorris/lila-wildlife-nz-trailcams/",
+      "type": "application/octet-stream",
+      "title": "Dataset files (2453840 x .jpg)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/agentmorris/lila-wildlife-nz-trailcams/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/agentmorris/lila-wildlife-nz-trailcams",
+      "title": "Source Cooperative product page"
+    }
+  ],
   "visibility": "public",
-  "disabled": false,
-  "featured": 0,
   "data_mode": "open",
+  "updated_at": null,
+  "created_at": null,
+  "account_id": "agentmorris",
+  "product_id": "lila-wildlife-nz-trailcams",
+  "exts": {
+    "txt": 1,
+    "zip": 1,
+    "jpg_exiftool_tmp": 49,
+    "db": 217,
+    "jpg": 2453840
+  },
+  "featured": 0,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -30,22 +105,19 @@
       "prefix": "agentmorris/lila-wildlife/nz-trailcams/"
     }
   },
-  "object_count": 2454108,
+  "disabled": false,
   "total_bytes": 2112059580802,
-  "exts": {
-    "txt": 1,
-    "zip": 1,
-    "jpg_exiftool_tmp": 49,
-    "db": 217,
-    "jpg": 2453840
-  },
-  "store_format": null,
-  "_state": "seed",
+  "_decomposed_from": "agentmorris/lila-wildlife",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "cataloged_at": "2026-06-04T23:59:15+00:00",
-  "readme": "# Trail Camera Images of New Zealand Animals\n\n### Trail Camera Images of New Zealand Animals\n\n#### S3 base\n\n`s3://us-west-2.opendata.source.coop/agentmorris/lila-wildlife/nz-trailcams`\n\n#### Overview\n\nThis data set contains approximately 2.5 million camera trap images from various projects across New Zealand. These projects were run by various organizations and took place in a diverse range of habitats using a variety of trail camera brands/models. Most images have been labeled by project staff and then verified by volunteers.\n\nLabels are provided for 97 categories, primarily at the species level. For example, the most common labels are mouse (49% of images), possum (6.7%), and rat (5.5%). No empty images are provided, but some can be made available upon request. A full list of species and associated image counts is available [here](https://storage.googleapis.com/public-datasets-lila/nz-trailcams/nz_trailcams_categories.txt).\n\nThis dataset is a subset of a larger collection; an expanded version of this data can be downloaded directly from:\n\ns3://doc-trail-camera-footage\n\nWe will periodically update the LILA dataset to keep up with the source bucket, but if you need the latest and largest, consider downloading directly from the source.\n\n#### License and contact information\n\nFor questions about this data set, contact [Joris Tinnemans](mailto:jtinnemans@doc.govt.nz).\n\nThis data set is released under the [Community Data License Agreement (permissive variant)](https://cdla.io/permissive-1-0/).\n\n#### Data format\n\nAnnotations (including species tags and unique location identifiers) are provided in [COCO Camera Traps](https://github.com/agentmorris/MegaDetector/blob/main/megadetector/data_management/README.md#coco-camera-traps-format) format.\n\nSpecies information is also present in folder names (e.g. \"AIV/yellow_eyed_penguin\"), and location identifiers are also available in the EXIF \"ImageDescription\" tag for each image.\n\nFor information about mapping this dataset's categories to a common taxonomy, see [this page](https://lila.science/taxonomy-mapping-for-camera-trap-data-sets/).\n\n#### Downloading the data\n\nMetadata is available [here](https://storage.googleapis.com/public-datasets-lila/nz-trailcams/trail_camera_images_of_new_zealand_animals_1.00.json.zip).\n\nImages are available in the following cloud storage folders:\n\n* gs://public-datasets-lila/nz-trailcams (GCP)\n* s3://us-west-2.opendata.source.coop/agentmorris/lila-wildlife/nz-trailcams (AWS)\n* https://lilawildlife.blob.core.windows.net/lila-wildlife/nz-trailcams (Azure)\n\nWe recommend downloading images (the whole folder, or a subset of the folder) using [gsutil](https://cloud.google.com/storage/docs/gsutil) (for GCP), [aws s3](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/index.html) (for AWS), or [AzCopy](https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10) (for Azure). For more information about using gsutil, aws s3, or AzCopy, check out our [guidelines for accessing images without using giant zipfiles](http://lila.science/image-access).\n\nIf you prefer to download images via http, you can. For example, the thumbnail below appears in the metadata as:\n\nAIV/yellow_eyed_penguin/7E7FAB4D-C1DB-4445-8CB0-4412AFE2C71D_000005.jpg\n\nThis image can be downloaded directly from any of the following URLs (one for each cloud):\n\nhttps://storage.googleapis.com/public-datasets-lila/nz-trailcams/AIV/yellow_eyed_penguin/7E7FAB4D-C1DB-4445-8CB0-4412AFE2C71D_000005.jpg\n\nhttp://us-west-2.opendata.source.coop.s3.amazonaws.com/agentmorris/lila-wildlife/nz-trailcams/AIV/yellow_eyed_penguin/7E7FAB4D-C1DB-4445-8CB0-4412AFE2C71D_000005.jpg\n\nhttps://lilawildlife.blob.core.windows.net/lila-wildlife/nz-trailcams/AIV/yellow_eyed_penguin/7E7FAB4D-C1DB-4445-8CB0-4412AFE2C71D_000005.jpg\n\nHaving trouble downloading? Check out our [FAQ](https://lila.science/faq#downloadtips).\n\n#### Other useful links\n\n[MegaDetector](https://github.com/agentmorris/MegaDetector/blob/main/megadetector.md) results for all camera trap datasets on LILA are available [here](https://lila.science/megadetector-results-for-camera-trap-datasets/).\n\nInformation about mapping camera trap datasets to a common taxonomy is available [here](https://lila.science/taxonomy-mapping-for-camera-trap-data-sets/).\n\n![](http://lila.science/wp-content/uploads/2024/02/nz_trailcams_thumb_7E918466-3F50-4417-9076-DFC7F928594B_000010-700.jpg)\n\n",
-  "_decomposed_from": "agentmorris/lila-wildlife"
+  "object_count": 2454108,
+  "readme": "## README.md\n# Trail Camera Images of New Zealand Animals\n\n### Trail Camera Images of New Zealand Animals\n\n#### S3 base\n\n`s3://us-west-2.opendata.source.coop/agentmorris/lila-wildlife/nz-trailcams`\n\n#### Overview\n\nThis data set contains approximately 2.5 million camera trap images from various projects across New Zealand. These projects were run by various organizations and took place in a diverse range of habitats using a variety of trail camera brands/models. Most images have been labeled by project staff and then verified by volunteers.\n\nLabels are provided for 97 categories, primarily at the species level. For example, the most common labels are mouse (49% of images), possum (6.7%), and rat (5.5%). No empty images are provided, but some can be made available upon request. A full list of species and associated image counts is available [here](https://storage.googleapis.com/public-datasets-lila/nz-trailcams/nz_trailcams_categories.txt).\n\nThis dataset is a subset of a larger collection; an expanded version of this data can be downloaded directly from:\n\ns3://doc-trail-camera-footage\n\nWe will periodically update the LILA dataset to keep up with the source bucket, but if you need the latest and largest, consider downloading directly from the source.\n\n#### License and contact information\n\nFor questions about this data set, contact [Joris Tinnemans](mailto:jtinnemans@doc.govt.nz).\n\nThis data set is released under the [Community Data License Agreement (permissive variant)](https://cdla.io/permissive-1-0/).\n\n#### Data format\n\nAnnotations (including species tags and unique location identifiers) are provided in [COCO Camera Traps](https://github.com/agentmorris/MegaDetector/blob/main/megadetector/data_management/README.md#coco-camera-traps-format) format.\n\nSpecies information is also present in folder names (e.g. \"AIV/yellow_eyed_penguin\"), and location identifiers are also available in the EXIF \"ImageDescription\" tag for each image.\n\nFor information about mapping this dataset's categories to a common taxonomy, see [this page](https://lila.science/taxonomy-mapping-for-camera-trap-data-sets/).\n\n#### Downloading the data\n\nMetadata is available [here](https://storage.googleapis.com/public-datasets-lila/nz-trailcams/trail_camera_images_of_new_zealand_animals_1.00.json.zip).\n\nImages are available in the following cloud storage folders:\n\n* gs://public-datasets-lila/nz-trailcams (GCP)\n* s3://us-west-2.opendata.source.coop/agentmorris/lila-wildlife/nz-trailcams (AWS)\n* https://lilawildlife.blob.core.windows.net/lila-wildlife/nz-trailcams (Azure)\n\nWe recommend downloading images (the whole folder, or a subset of the folder) using [gsutil](https://cloud.google.com/storage/docs/gsutil) (for GCP), [aws s3](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/index.html) (for AWS), or [AzCopy](https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10) (for Azure). For more information about using gsutil, aws s3, or AzCopy, check out our [guidelines for accessing images without using giant zipfiles](http://lila.science/image-access).\n\nIf you prefer to download images via http, you can. For example, the thumbnail below appears in the metadata as:\n\nAIV/yellow_eyed_penguin/7E7FAB4D-C1DB-4445-8CB0-4412AFE2C71D_000005.jpg\n\nThis image can be downloaded directly from any of the following URLs (one for each cloud):\n\nhttps://storage.googleapis.com/public-datasets-lila/nz-trailcams/AIV/yellow_eyed_penguin/7E7FAB4D-C1DB-4445-8CB0-4412AFE2C71D_000005.jpg\n\nhttp://us-west-2.opendata.source.coop.s3.amazonaws.com/agentmorris/lila-wildlife/nz-trailcams/AIV/yellow_eyed_penguin/7E7FAB4D-C1DB-4445-8CB0-4412AFE2C71D_000005.jpg\n\nhttps://lilawildlife.blob.core.windows.net/lila-wildlife/nz-trailcams/AIV/yellow_eyed_penguin/7E7FAB4D-C1DB-4445-8CB0-4412AFE2C71D_000005.jpg\n\nHaving trouble downloading? Check out our [FAQ](https://lila.science/faq#downloadtips).\n\n#### Other useful links\n\n[MegaDetector](https://github.com/agentmorris/MegaDetector/blob/main/megadetector.md) results for all camera trap datasets on LILA are available [here](https://lila.science/megadetector-results-for-camera-trap-datasets/).\n\nInformation about mapping camera trap datasets to a common taxonomy is available [here](https://lila.science/taxonomy-mapping-for-camera-trap-data-sets/).\n\n![](http://lila.science/wp-content/uploads/2024/02/nz_trailcams_thumb_7E918466-3F50-4417-9076-DFC7F928594B_000010-700.jpg)\n\n",
+  "_review": [
+    "providers: role [producer, licensor] for 'New Zealand Department of Conservation' is an AI guess \u2014 Inferred from the contact email domain (doc.govt.nz) and the source bucket s3://doc-trail-camera-footage; not explicitly named as the producing organization.. Verify before flipping to _state: reviewed.",
+    "providers: role [processor, host] for 'LILA BC' is an AI guess \u2014 README indicates LILA compiled this subset into COCO Camera Traps format and mirrors it on GCS/Azure/AWS, but this role is not stated explicitly as such.. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-08-21T23:18:14+00:00"
 }
