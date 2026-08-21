@@ -1,23 +1,102 @@
 {
   "schema_version": 1,
-  "account_id": "agentmorris",
-  "product_id": "lila-wildlife-uas-imagery-of-migratory-waterfowl",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "agentmorris/lila-wildlife-uas-imagery-of-migratory-waterfowl",
   "title": "UAS Imagery of Migratory Waterfowl at New Mexico Wildlife Refuges",
-  "description": "Unmanned aerial system (UAS) imagery of migratory waterfowl collected at wildlife refuges in New Mexico. The dataset consists of a single zip archive of drone imagery intended to support waterfowl population monitoring or habitat assessment.",
+  "description": "UAS (drone) imagery of migratory waterfowl collected at Bosque del Apache National Wildlife Refuge and other New Mexico wildlife areas in November and December 2018, paired with bird bounding-box annotations from both expert USFWS biologists (species-level, via Labelbox) and citizen-science volunteers (morphological class, via Zooniverse). Both raw multi-observer annotations and DBSCAN-derived consensus annotations are provided in COCO JSON format alongside the source images.",
+  "license": "CC-BY-NC-4.0",
   "keywords": [
-    "uas",
     "aerial-imagery",
+    "biodiversity",
     "waterfowl",
     "migratory-birds",
     "wildlife-refuges",
-    "new-mexico"
+    "citizen-science",
+    "machine-learning"
   ],
-  "created_at": null,
-  "updated_at": null,
-  "visibility": "public",
-  "disabled": false,
+  "providers": [
+    {
+      "name": "US Fish and Wildlife Service",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Center for the Advancement of Spatial Informatics Research and Education (ASPIRE), University of New Mexico",
+      "roles": [
+        "producer",
+        "processor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/agentmorris/lila-wildlife-uas-imagery-of-migratory-waterfowl"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -180.0,
+          -90.0,
+          180.0,
+          90.0
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2018-11-01T00:00:00Z",
+          "2018-12-01T00:00:00Z"
+        ]
+      ]
+    }
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/agentmorris/lila-wildlife-uas-imagery-of-migratory-waterfowl/",
+      "type": "application/octet-stream",
+      "title": "Dataset files",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/agentmorris/lila-wildlife-uas-imagery-of-migratory-waterfowl/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/agentmorris/lila-wildlife-uas-imagery-of-migratory-waterfowl",
+      "title": "Source Cooperative product page"
+    }
+  ],
   "featured": 0,
+  "exts": {
+    "zip": 1
+  },
   "data_mode": "open",
+  "visibility": "public",
+  "product_id": "lila-wildlife-uas-imagery-of-migratory-waterfowl",
+  "total_bytes": 337774436,
+  "disabled": false,
+  "updated_at": null,
+  "_decomposed_from": "agentmorris/lila-wildlife",
+  "account_id": "agentmorris",
+  "created_at": null,
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "object_count": 1,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -30,18 +109,11 @@
       "prefix": "agentmorris/lila-wildlife/uas-imagery-of-migratory-waterfowl/"
     }
   },
-  "object_count": 1,
-  "total_bytes": 337774436,
-  "exts": {
-    "zip": 1
-  },
-  "store_format": null,
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "cataloged_at": "2026-06-04T23:59:16+00:00",
-  "readme": "# UAS Imagery of Migratory Waterfowl at New Mexico Wildlife Refuges\n\n### UAS Imagery of Migratory Waterfowl at New Mexico Wildlife Refuges\n\n#### S3 base\n\n`s3://us-west-2.opendata.source.coop/agentmorris/lila-wildlife/uas-imagery-of-migratory-waterfowl/uas-imagery-of-migratory-waterfowl.20240220.zip`\n\n#### Overview\n\nThese data were collected as part of [Drones for Ducks](https://aspire.unm.edu/research/funded-research/ducks-and-drones.html), a co-operative agreement between the US Fish and Wildlife Service and the Center for the Advancement of Spatial Informatics Research and Education (ASPIRE) at the University of New Mexico. UAS images were collected at wildlife areas in New Mexico in November and December 2018. Fifteen biologists from the US Fish and Wildlife Service annotated a twelve-image subset of UAS imagery of waterbirds collected at Bosque del Apache National Wildlife Refuge through the online image annotation platform [Labelbox](https://labelbox.com). These benchmark images were chosen to maximize species diversity and include a variety of vegetation and habitat types in the background.\n\nEach observer drew polygons around individual birds and selected an identification from a list of twelve species names, which was derived from a previous survey at the site and refined via consultation with National Refuge System biologists. Anonymized observer ID is preserved in the raw annotations as \"labeler_id\". This dataset includes both raw annotations and consensus annotations. To derive the consensus annotations, a Density-Based Spatial Clustering of Applications with Noise (DBSCAN) clustering algorithm was used to identify groups of bounding boxes associated with individual animals; the median coordinates of the bounding boxes implicated in each cluster were used to derive the consensus bounding box. Then, the mode species classification for each cluster was used to define the classification for the cluster to produce a consensus annotation.\n\nPaired with these are annotations produced by volunteers using the participatory science platform, [Zooniverse](https://www.zooniverse.org/projects/rowan-aspire/drones-for-ducks). Instead of species categories, volunteers labeled birds by morphological class: Duck, Goose, or Crane. Raw annotations and consensus annotations derived using the process described above are provided.\n\n#### Citation, license, and contact information\n\nIf you use this dataset, please cite:\n\nConverse RC, Lippitt CD, Sesnie SE, Harris GM, Butler MG, Stewart DR. Observer variability in manual-visual interpretation of UAS imagery of wildlife, with insights for deep learning applications. In review.\n\nFor questions about this data set, contact the Center for the Advancement of Spatial Informatics Research and Education at [aspire@unm.edu](mailto:aspire@unm.edu).\n\nThis data set is released under the [CC-BY NC 4.0 license](https://creativecommons.org/licenses/by-nc/4.0/deed.en).\n\n#### Data format\n\nThe expert and volunteer datsets described above are in folders called \"experts\" and \"crowdsourced\", respectively. Each of those folders contains a folder called \"images\" and two COCO-formatted .json files, one containing the raw annotations (\"raw\"), and one containing the consensus annotations (\"refined\").\n\n#### Downloading the data\n\nThis dataset is provided as a single zipfile:\n\n[Download from GCP](https://storage.googleapis.com/public-datasets-lila/uas-imagery-of-migratory-waterfowl/uas-imagery-of-migratory-waterfowl.20240220.zip) (322MB)  \n\n[Download from AWS](http://us-west-2.opendata.source.coop.s3.amazonaws.com/agentmorris/lila-wildlife/uas-imagery-of-migratory-waterfowl/uas-imagery-of-migratory-waterfowl.20240220.zip) (322MB)  \n\n[Download from Azure](https://lilawildlife.blob.core.windows.net/lila-wildlife/uas-imagery-of-migratory-waterfowl/uas-imagery-of-migratory-waterfowl.20240220.zip) (322MB)  \n\n![](http://lila.science/wp-content/uploads/2024/02/nm_waterfowl_sample_image_annotated-800.png)\n\n",
-  "_decomposed_from": "agentmorris/lila-wildlife"
+  "readme": "## README.md\n# UAS Imagery of Migratory Waterfowl at New Mexico Wildlife Refuges\n\n### UAS Imagery of Migratory Waterfowl at New Mexico Wildlife Refuges\n\n#### S3 base\n\n`s3://us-west-2.opendata.source.coop/agentmorris/lila-wildlife/uas-imagery-of-migratory-waterfowl/uas-imagery-of-migratory-waterfowl.20240220.zip`\n\n#### Overview\n\nThese data were collected as part of [Drones for Ducks](https://aspire.unm.edu/research/funded-research/ducks-and-drones.html), a co-operative agreement between the US Fish and Wildlife Service and the Center for the Advancement of Spatial Informatics Research and Education (ASPIRE) at the University of New Mexico. UAS images were collected at wildlife areas in New Mexico in November and December 2018. Fifteen biologists from the US Fish and Wildlife Service annotated a twelve-image subset of UAS imagery of waterbirds collected at Bosque del Apache National Wildlife Refuge through the online image annotation platform [Labelbox](https://labelbox.com). These benchmark images were chosen to maximize species diversity and include a variety of vegetation and habitat types in the background.\n\nEach observer drew polygons around individual birds and selected an identification from a list of twelve species names, which was derived from a previous survey at the site and refined via consultation with National Refuge System biologists. Anonymized observer ID is preserved in the raw annotations as \"labeler_id\". This dataset includes both raw annotations and consensus annotations. To derive the consensus annotations, a Density-Based Spatial Clustering of Applications with Noise (DBSCAN) clustering algorithm was used to identify groups of bounding boxes associated with individual animals; the median coordinates of the bounding boxes implicated in each cluster were used to derive the consensus bounding box. Then, the mode species classification for each cluster was used to define the classification for the cluster to produce a consensus annotation.\n\nPaired with these are annotations produced by volunteers using the participatory science platform, [Zooniverse](https://www.zooniverse.org/projects/rowan-aspire/drones-for-ducks). Instead of species categories, volunteers labeled birds by morphological class: Duck, Goose, or Crane. Raw annotations and consensus annotations derived using the process described above are provided.\n\n#### Citation, license, and contact information\n\nIf you use this dataset, please cite:\n\nConverse RC, Lippitt CD, Sesnie SE, Harris GM, Butler MG, Stewart DR. Observer variability in manual-visual interpretation of UAS imagery of wildlife, with insights for deep learning applications. In review.\n\nFor questions about this data set, contact the Center for the Advancement of Spatial Informatics Research and Education at [aspire@unm.edu](mailto:aspire@unm.edu).\n\nThis data set is released under the [CC-BY NC 4.0 license](https://creativecommons.org/licenses/by-nc/4.0/deed.en).\n\n#### Data format\n\nThe expert and volunteer datsets described above are in folders called \"experts\" and \"crowdsourced\", respectively. Each of those folders contains a folder called \"images\" and two COCO-formatted .json files, one containing the raw annotations (\"raw\"), and one containing the consensus annotations (\"refined\").\n\n#### Downloading the data\n\nThis dataset is provided as a single zipfile:\n\n[Download from GCP](https://storage.googleapis.com/public-datasets-lila/uas-imagery-of-migratory-waterfowl/uas-imagery-of-migratory-waterfowl.20240220.zip) (322MB)  \n\n[Download from AWS](http://us-west-2.opendata.source.coop.s3.amazonaws.com/agentmorris/lila-wildlife/uas-imagery-of-migratory-waterfowl/uas-imagery-of-migratory-waterfowl.20240220.zip) (322MB)  \n\n[Download from Azure](https://lilawildlife.blob.core.windows.net/lila-wildlife/uas-imagery-of-migratory-waterfowl/uas-imagery-of-migratory-waterfowl.20240220.zip) (322MB)  \n\n![](http://lila.science/wp-content/uploads/2024/02/nm_waterfowl_sample_image_annotated-800.png)\n\n",
+  "_review": [
+    "providers: role [producer, processor] for 'Center for the Advancement of Spatial Informatics Research and Education (ASPIRE), University of New Mexico' is an AI guess \u2014 Assumed processor role since ASPIRE ran the UAS collection and derived the consensus annotations via DBSCAN clustering.. Verify before flipping to _state: reviewed.",
+    "extent.temporal: None (probe sample) widened to ['2018-11-01T00:00:00Z', '2018-12-01T00:00:00Z'] using README-stated coverage ['2018-11', '2018-12']."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-08-21T22:29:47+00:00"
 }
