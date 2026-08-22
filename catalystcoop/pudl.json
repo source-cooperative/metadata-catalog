@@ -1,28 +1,258 @@
 {
   "schema_version": 1,
-  "account_id": "catalystcoop",
-  "product_id": "pudl",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
+  "id": "catalystcoop/pudl",
   "title": "The Public Utility Data Liberation Project",
-  "description": "The PUDL Project is an open source data processing pipeline that makes US energy data easier to access and use programmatically.\n\nHundreds of gigabytes of valuable data are published by US government agencies, but it's often difficult to work with. PUDL takes the original spreadsheets, CSV files, and databases and turns them into a unified resource. This allows users to spend more time on novel analysis and less time on data preparation.",
+  "description": "The Public Utility Data Liberation (PUDL) Project is a processed, analysis-ready collection of US energy sector data, unifying utility, electricity, natural gas, and emissions records originally published as disparate spreadsheets, CSVs, and databases by US government agencies (EIA, FERC, EPA) into standardized SQLite and Parquet tables.",
   "keywords": [
     "energy",
     "electricity",
-    "climate change",
-    "united states",
-    "natural gas",
     "coal",
     "emissions",
-    "finance",
-    "eia",
-    "ferc",
-    "epa"
+    "climate"
+  ],
+  "providers": [
+    {
+      "name": "US Energy Information Administration (EIA)",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Federal Energy Regulatory Commission (FERC)",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "US Environmental Protection Agency (EPA)",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "PUDL Project",
+      "roles": [
+        "processor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/catalystcoop/pudl"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2022-03-31T19:59:11Z",
+          "2023-08-19T08:18:31Z"
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 28047,
+    "priv_flag": [
+      ""
+    ]
+  },
+  "assets": {
+    "dbf": {
+      "href": "https://data.source.coop/catalystcoop/pudl/ferc60_dbf.sqlite",
+      "type": "application/octet-stream",
+      "title": "ferc60_dbf.sqlite",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "respondent_id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "report_yr",
+          "type": "BIGINT"
+        },
+        {
+          "name": "report_prd",
+          "type": "BIGINT"
+        },
+        {
+          "name": "spplmnt_num",
+          "type": "BIGINT"
+        },
+        {
+          "name": "row_num",
+          "type": "BIGINT"
+        },
+        {
+          "name": "assoc_direct_cost",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "assoc_indirect_cost",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "assoc_tot_cost",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "non_direct_cost",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "non_indirect_cost",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "non_tot_cost",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "tot_direct_cost",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "tot_indirect_cost",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "tot_tot_cost",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "priv_flag",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "assoc_direct_cost_f",
+          "type": "BIGINT"
+        },
+        {
+          "name": "assoc_indirect_cost_f",
+          "type": "BIGINT"
+        },
+        {
+          "name": "assoc_tot_cost_f",
+          "type": "BIGINT"
+        },
+        {
+          "name": "non_direct_cost_f",
+          "type": "BIGINT"
+        },
+        {
+          "name": "non_indirect_cost_f",
+          "type": "BIGINT"
+        },
+        {
+          "name": "non_tot_cost_f",
+          "type": "BIGINT"
+        },
+        {
+          "name": "tot_direct_cost_f",
+          "type": "BIGINT"
+        },
+        {
+          "name": "tot_indirect_cost_f",
+          "type": "BIGINT"
+        },
+        {
+          "name": "tot_tot_cost_f",
+          "type": "BIGINT"
+        }
+      ],
+      "table:row_count": 24498
+    },
+    "xbrl": {
+      "href": "https://data.source.coop/catalystcoop/pudl/ferc60_xbrl.sqlite",
+      "type": "application/octet-stream",
+      "title": "ferc60_xbrl.sqlite",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "entity_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "filing_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "publication_time",
+          "type": "TIMESTAMP"
+        },
+        {
+          "name": "date",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "accounts_receivable_from_associate_companies_axis",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "accounts_receivable_from_associate_companies",
+          "type": "DOUBLE"
+        }
+      ],
+      "table:row_count": 3549
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/catalystcoop/pudl/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/catalystcoop/pudl",
+      "title": "Source Cooperative product page"
+    }
   ],
   "created_at": "2024-05-10T21:58:59.743268+00:00",
-  "updated_at": "2025-08-21T16:39:55.569Z",
-  "visibility": "public",
+  "data_mode": "open",
+  "object_count": 5,
   "disabled": false,
   "featured": 0,
-  "data_mode": "open",
+  "visibility": "public",
+  "total_bytes": 42106552,
+  "updated_at": "2025-08-21T16:39:55.569Z",
+  "exts": {
+    "sqlite": 2,
+    "json": 2,
+    "parquet": 1
+  },
+  "product_id": "pudl",
+  "ext_bytes": {
+    "sqlite": 29638656,
+    "parquet": 9861774,
+    "json": 2606122
+  },
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -35,24 +265,16 @@
       "prefix": "catalystcoop/pudl/"
     }
   },
-  "object_count": 5,
-  "total_bytes": 42106552,
-  "exts": {
-    "sqlite": 2,
-    "json": 2,
-    "parquet": 1
-  },
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "id": "catalystcoop/pudl",
-  "ext_bytes": {
-    "sqlite": 29638656,
-    "parquet": 9861774,
-    "json": 2606122
-  },
-  "store_format": null,
-  "cataloged_at": "2026-06-30T23:16:11+00:00"
+  "account_id": "catalystcoop",
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
+    "providers: role [producer] for 'US Energy Information Administration (EIA)' is an AI guess \u2014 Inferred from API tags ('eia') and description referencing US government agency source data. Verify before flipping to _state: reviewed.",
+    "providers: role [producer] for 'Federal Energy Regulatory Commission (FERC)' is an AI guess \u2014 Inferred from API tags ('ferc') and description referencing US government agency source data. Verify before flipping to _state: reviewed.",
+    "providers: role [producer] for 'US Environmental Protection Agency (EPA)' is an AI guess \u2014 Inferred from API tags ('epa') and description referencing US government agency source data. Verify before flipping to _state: reviewed.",
+    "extent.spatial.bbox: omitted; probe found no spatial dimension and AI did not flag any column as geographic."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-08-22T08:35:08+00:00",
+  "objects_updated_at": "2024-05-10T22:19:34+00:00",
+  "store_format": null
 }
