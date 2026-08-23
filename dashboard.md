@@ -1,16 +1,16 @@
 # Source Cooperative catalog — status
 
-_Updated 2026-08-22 08:35 UTC by the nightly pipeline._
+_Updated 2026-08-23 08:40 UTC by the nightly pipeline._
 
 **397 datasets cataloged**  ·  **0 queued for next run**  ·  last run handled **1**
 
 ## Last run
 
-<details><summary>✅ drafted — 1 dataset</summary>
+<details><summary>❌ step failed — 1 dataset</summary>
 
-| repo                                                       |
-| ---------------------------------------------------------- |
-| [catalystcoop/pudl](https://source.coop/catalystcoop/pudl) |
+| repo                                                         | why                                              |
+| ------------------------------------------------------------ | ------------------------------------------------ |
+| [cboettig/high-seas](https://source.coop/cboettig/high-seas) | error step=compose — backed off until 2026-08-27 |
 
 </details>
 
@@ -19,29 +19,29 @@ _Updated 2026-08-22 08:35 UTC by the nightly pipeline._
 
 | run                                                                                                    | outcome   | drafted | failed | queued | cataloged |
 | ------------------------------------------------------------------------------------------------------ | --------- | ------: | -----: | -----: | --------: |
+| [2026-08-23](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/32628587308) | ✅ success |       0 |      0 |      0 |       397 |
 | [2026-08-22](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/32562606294) | ✅ success |       1 |      0 |      0 |       397 |
 | [2026-08-21](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/32532487535) | ✅ success |      42 |      1 |      0 |       396 |
 | [2026-08-21](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/32527111256) | ✅ success |       3 |      0 |      0 |       355 |
 | [2026-08-21](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/32463860945) | ✅ success |       0 |      0 |      0 |       355 |
 | [2026-08-21](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/32424301885) | ✅ success |      44 |      6 |      0 |       355 |
 | [2026-08-17](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/32011099608) | ✅ success |       7 |      0 |     34 |       346 |
-| [2026-08-16](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/31936760237) | ✅ success |       0 |      0 |      0 |       344 |
 
 ## Persistent failures
 
-**7 datasets failing**  ·  7 open issues  ·  oldest **1d**  ·  **0** ≥30d  ·  [all open issues](https://github.com/source-cooperative/metadata-catalog/issues?q=is%3Aissue+is%3Aopen+label%3Aprobe-failure)
+**7 datasets failing**  ·  7 open issues  ·  oldest **2d**  ·  **0** ≥30d  ·  [all open issues](https://github.com/source-cooperative/metadata-catalog/issues?q=is%3Aissue+is%3Aopen+label%3Aprobe-failure)
 
 <details><summary>the 7 open issues, oldest first</summary>
 
 | repo                                 | age (d) | issue |
 | ------------------------------------ | ------: | ----: |
-| dynamical/dwd-icon-eu-forecast-5-day |       1 |  #154 |
-| cboettig/usgs-wbd                    |       1 |  #153 |
-| cboettig/padus                       |       1 |  #152 |
-| cboettig/obis                        |       1 |  #151 |
-| cboettig/fire                        |       1 |  #150 |
-| cboettig/connectivity                |       1 |  #149 |
-| wadhwani-ai/wiai-pm-open-data        |       ? |  #155 |
+| dynamical/dwd-icon-eu-forecast-5-day |       2 |  #154 |
+| cboettig/usgs-wbd                    |       2 |  #153 |
+| cboettig/padus                       |       2 |  #152 |
+| cboettig/obis                        |       2 |  #151 |
+| cboettig/fire                        |       2 |  #150 |
+| cboettig/connectivity                |       2 |  #149 |
+| wadhwani-ai/wiai-pm-open-data        |       1 |  #155 |
 
 </details>
 
