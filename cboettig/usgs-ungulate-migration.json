@@ -1,16 +1,298 @@
 {
   "schema_version": 1,
-  "account_id": "cboettig",
-  "product_id": "usgs-ungulate-migration",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
+  "id": "cboettig/usgs-ungulate-migration",
   "title": "USGS Ungulate Migrations",
-  "description": "Cloud-optimized versions of USGS Ungulate Migration data",
-  "keywords": [],
+  "description": "Cloud-native republication of the USGS Fort Collins Science Center's Ungulate Migrations of the Western United States series (Kauffman et al., Volumes 1\u20136), providing harmonized GeoParquet, PMTiles, and H3 hex-index products for migration corridors, stopovers, and seasonal ranges (polygons) plus individual per-animal-year GPS migration routes (lines). Coverage spans 106 herds of mule deer, elk, pronghorn, white-tailed deer, and moose across 8 western US states.",
+  "license": "Public Domain (U.S. Government Work)",
+  "keywords": [
+    "wildlife-monitoring",
+    "wildlife",
+    "biodiversity",
+    "conservation",
+    "geoparquet",
+    "pmtiles",
+    "h3",
+    "wildlife-migration"
+  ],
+  "providers": [
+    {
+      "name": "USGS Fort Collins Science Center",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Boettiger Lab",
+      "roles": [
+        "processor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/cboettig/usgs-ungulate-migration"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -123.5590149,
+          33.1129971,
+          -104.8182852,
+          49.1466752
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 30013223
+  },
+  "assets": {
+    ".": {
+      "href": "https://data.source.coop/cboettig/usgs-ungulate-migration/",
+      "type": "application/x-parquet",
+      "title": ".",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "_cng_fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "state",
+          "type": "VARCHAR",
+          "description": "[admin_code] US state code(s), comma-separated for multi-state herds"
+        },
+        {
+          "name": "tribal_land",
+          "type": "VARCHAR",
+          "description": "[placename] Named tribal/reservation land where applicable"
+        },
+        {
+          "name": "species",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "herd",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "data_type",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "contour",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "volume",
+          "type": "BIGINT"
+        },
+        {
+          "name": "source_release_date",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geom",
+          "type": "GEOMETRY('EPSG:4326')",
+          "description": "[geometry] Polygon or line geometry (EPSG:4326) for ranges/routes"
+        },
+        {
+          "name": "ind_year",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "first_date",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "last_date",
+          "type": "VARCHAR"
+        }
+      ],
+      "description": "2 files sampled for this table"
+    },
+    "ungulate-ranges/hex": {
+      "href": "https://data.source.coop/cboettig/usgs-ungulate-migration/ungulate-ranges/hex/h0=576812596024311807/",
+      "type": "application/x-parquet",
+      "title": "ungulate-ranges/hex",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "_cng_fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "state",
+          "type": "VARCHAR",
+          "description": "[admin_code] US state code(s) for the hex feature"
+        },
+        {
+          "name": "species",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "herd",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "data_type",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "contour",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "volume",
+          "type": "BIGINT"
+        },
+        {
+          "name": "source_release_date",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "h10",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 hex index at resolution 10 (native)"
+        },
+        {
+          "name": "h0",
+          "type": "BIGINT|UBIGINT",
+          "description": "[spatial_index] H3 hex index at resolution 0"
+        },
+        {
+          "name": "h8",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 hex index at resolution 8"
+        },
+        {
+          "name": "h9",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 hex index at resolution 9"
+        }
+      ],
+      "description": "4 files sampled for this table"
+    },
+    "ungulate-routes/hex": {
+      "href": "https://data.source.coop/cboettig/usgs-ungulate-migration/ungulate-routes/hex/h0=576812596024311807/",
+      "type": "application/x-parquet",
+      "title": "ungulate-routes/hex",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "_cng_fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "state",
+          "type": "VARCHAR",
+          "description": "[admin_code] US state code(s) for the hex feature"
+        },
+        {
+          "name": "species",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "herd",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "data_type",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ind_year",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "first_date",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "last_date",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "volume",
+          "type": "BIGINT"
+        },
+        {
+          "name": "source_release_date",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "h10",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 hex index at resolution 10 (native)"
+        },
+        {
+          "name": "h0",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 hex index at resolution 0"
+        },
+        {
+          "name": "h8",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 hex index at resolution 8"
+        },
+        {
+          "name": "h9",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 hex index at resolution 9"
+        }
+      ],
+      "description": "4 files sampled for this table"
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/cboettig/usgs-ungulate-migration/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/cboettig/usgs-ungulate-migration",
+      "title": "Source Cooperative product page"
+    }
+  ],
+  "data_mode": null,
+  "account_id": "cboettig",
   "created_at": "2026-07-25T14:38:10.916Z",
   "updated_at": "2026-07-25T14:38:10.916Z",
-  "visibility": "public",
+  "object_count": 16,
   "disabled": false,
-  "featured": 0,
-  "data_mode": null,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -19,8 +301,11 @@
       "prefix": "cboettig/usgs-ungulate-migration/"
     }
   },
-  "object_count": 16,
+  "visibility": "public",
+  "product_id": "usgs-ungulate-migration",
+  "featured": 0,
   "total_bytes": 458651110,
+  "objects_updated_at": "2026-08-20T05:50:03+00:00",
   "exts": {
     "parquet": 10,
     "json": 3,
@@ -33,12 +318,15 @@
     "json": 26102,
     "md": 5538
   },
-  "store_format": null,
-  "_state": "seed",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "cataloged_at": "2026-08-25T09:57:26+00:00",
-  "objects_updated_at": "2026-08-20T05:50:03+00:00"
+  "readme": "## README.md\n# Ungulate Migrations of the Western United States (USGS, Vols 1\u20136)\n\nCloud-native republication of the U.S. Geological Survey series **_Ungulate Migrations of\nthe Western United States_** (Kauffman et al., USGS Fort Collins Science Center, Volumes\n1\u20136, 2020\u20132026), harmonized from the per-volume ScienceBase shapefile releases into two\nanalysis-ready products in a single, uniform schema (EPSG:4326).\n\n- **`ungulate-ranges`** \u2014 aggregated Brownian-bridge utilization-distribution **polygons**:\n  migration **Corridors**, **Stopovers**, **WinterRange**, and **AnnualRange**\n  (distinguished by the `data_type` column).\n- **`ungulate-routes`** \u2014 individual per-animal-year GPS migration **routes** (lines;\n  `ind_year` identifies the animal-migration).\n\nCoverage: 106 herds across 8 states (AZ, CA, NM, NV, OR, UT, WA, WY) plus Idaho (as\nmulti-state `ID,NV` elk herds). Species: mule deer, elk, pronghorn, white-tailed deer\n(moose in routes). The `state` column is a clean US-state filter \u2014 single codes (`WY`)\nor comma-separated codes for multi-state herds (`ID,NV`, `OR,NV`, `OR,NV,CA`). Herds on\ntribal or reservation lands carry their containing state in `state`, with the tribal\nidentity recorded separately in `tribal_land` (`Wind River Reservation`, `Tesuque\nPueblo`; `null` for the large majority of features). Every feature carries `volume`\n(1\u20136) and `source_release_date` for provenance, and `_cng_fid`, the universal\nper-feature id used to join the hex index back to attributes and to dedup with\n`COUNT(DISTINCT _cng_fid)`.\n\n**License:** public domain (U.S. Government Works).\n**Source:** https://www.usgs.gov/centers/fort-collins-science-center/science/ungulate-migrations-western-united-states\n\n## Assets per collection\n\n| Asset | Description |\n|---|---|\n| `{name}.parquet` | GeoParquet (all attributes + geometry) \u2014 DuckDB/Polars |\n| `{name}.pmtiles` | Vector tiles \u2014 web maps (MapLibre) |\n| `{name}/hex/h0=*/data_0.parquet` | H3 hex index (res 10 native; `_cng_fid` + `h10/h9/h8/h0`) |\n\nThe hex asset is a **lean spatial index** (`_cng_fid` + H3 columns only). Join it back to\nthe flat GeoParquet on `_cng_fid` to attach attributes.\n\n## MapLibre GL JS\n\nThe PMTiles `source-layer` is the **last segment of the dataset name** \u2014 `ungulate-ranges`\nor `ungulate-routes` (NOT the file name):\n\n```js\nmap.addSource('ranges', {\n  type: 'vector',\n  url: 'pmtiles://https://s3-west.nrp-nautilus.io/public-usgs-ungulate-migration/ungulate-ranges.pmtiles'\n});\n// Corridors, colored by use intensity\nmap.addLayer({\n  id: 'corridors', type: 'fill', source: 'ranges', 'source-layer': 'ungulate-ranges',\n  filter: ['==', ['get', 'data_type'], 'Corridors'],\n  paint: {\n    'fill-color': ['match', ['get', 'contour'],\n      'High', '#d7301f', 'Medium', '#fc8d59', 'Low', '#fdcc8a', '#cccccc'],\n    'fill-opacity': 0.6\n  }\n});\n```\n\nIndividual routes (lines):\n\n```js\nmap.addSource('routes', {\n  type: 'vector',\n  url: 'pmtiles://https://s3-west.nrp-nautilus.io/public-usgs-ungulate-migration/ungulate-routes.pmtiles'\n});\nmap.addLayer({ id: 'routes', type: 'line', source: 'routes',\n  'source-layer': 'ungulate-routes',\n  paint: { 'line-color': '#2166ac', 'line-width': 0.5 } });\n```\n\n## DuckDB\n\n```sql\nINSTALL spatial; LOAD spatial;\n\n-- Winter range (50% contour) polygons for mule deer, all volumes\nSELECT state, herd, volume, ST_Area(geom) AS area_deg2\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-usgs-ungulate-migration/ungulate-ranges.parquet')\nWHERE species = 'MuleDeer' AND data_type = 'WinterRange' AND contour = '50';\n\n-- Count individual migration routes per herd\nSELECT state, species, herd, COUNT(DISTINCT _cng_fid) AS n_routes\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-usgs-ungulate-migration/ungulate-routes.parquet')\nGROUP BY 1, 2, 3 ORDER BY n_routes DESC;\n\n-- Hex spatial index: corridor cells for a region, attributes joined via _cng_fid\nSELECT h.h10, r.species, r.herd, r.contour\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-usgs-ungulate-migration/ungulate-ranges/hex/h0=*/data_0.parquet') h\nJOIN read_parquet('https://s3-west.nrp-nautilus.io/public-usgs-ungulate-migration/ungulate-ranges.parquet') r\n  USING (_cng_fid)\nWHERE r.data_type = 'Corridors';\n```\n\n## Notes & caveats\n\n- **`contour` semantics differ by `data_type`.** Corridors use a use-intensity class\n  (Low/Medium/High/Very high; legacy GRIDCODE 1/10/20 \u2192 Low/Medium/High); ranges use a\n  probability-contour percentile as an integer string (`50` = 50% contour). A few legacy\n  stopovers carry only a polygon index (no percentile) and are `null` by design.\n- **A herd has multiple polygons** (nested contours and several product types). Filter by\n  `data_type` + `contour` and dedup by `_cng_fid` before area/aggregation. Never `SUM` a\n  per-feature value on the hex index \u2014 use `COUNT(DISTINCT h10) \u00d7 cell_area_res10`.\n- **`state` and `tribal_land`.** `state` holds a US-state code (comma-separated for\n  multi-state herds, e.g. `ID,NV`). Where the source coded a tribal/reservation\n  designation in place of a state, the feature carries its containing US state in `state`\n  and the tribal identity in `tribal_land` (`Wind River Reservation` \u2192 WY; `Tesuque\n  Pueblo` \u2192 NM). `tribal_land` is `null` otherwise.\n- **Not present:** Colorado, Montana, and Oregon-only migratory big-game are absent from\n  the published volumes as of Vol 6 (Idaho appears only via multi-state `ID,NV` elk herds).\n- Harmonized by the Boettiger Lab `data-workflows` pipeline\n  (`catalog/usgs-ungulate-migration/`).\n",
+  "_review": [
+    "license: README states 'public domain (U.S. Government Works)', which is not a standard SPDX identifier."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-08-25T10:13:02+00:00",
+  "store_format": null
 }
