@@ -1,47 +1,40 @@
 # Source Cooperative catalog — status
 
-_Updated 2026-08-23 08:40 UTC by the nightly pipeline._
+_Updated 2026-08-25 01:10 UTC by the nightly pipeline._
 
-**397 datasets cataloged**  ·  **0 queued for next run**  ·  last run handled **1**
+**397 datasets cataloged**  ·  _queue not ranked_  ·  last run handled **0**
 
-## Last run
+_No datasets processed in the last run (no new work since the previous snapshot)._
 
-<details><summary>❌ step failed — 1 dataset</summary>
-
-| repo                                                         | why                                              |
-| ------------------------------------------------------------ | ------------------------------------------------ |
-| [cboettig/high-seas](https://source.coop/cboettig/high-seas) | error step=compose — backed off until 2026-08-27 |
-
-</details>
-
+> ⚠️ **Last run failure** (2026-08-25) — [run log](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/32792519265). Figures below are from the last *successful* run.
 
 ## Recent runs
 
 | run                                                                                                    | outcome   | drafted | failed | queued | cataloged |
 | ------------------------------------------------------------------------------------------------------ | --------- | ------: | -----: | -----: | --------: |
+| [2026-08-25](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/32792519265) | ❌ failure |       0 |      0 |   None |       397 |
+| [2026-08-24](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/32781490743) | ❌ failure |     345 |      7 |   None |       397 |
+| [2026-08-24](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/32707149190) | ❌ failure |     345 |      7 |   None |       397 |
 | [2026-08-23](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/32628587308) | ✅ success |       0 |      0 |      0 |       397 |
 | [2026-08-22](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/32562606294) | ✅ success |       1 |      0 |      0 |       397 |
 | [2026-08-21](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/32532487535) | ✅ success |      42 |      1 |      0 |       396 |
 | [2026-08-21](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/32527111256) | ✅ success |       3 |      0 |      0 |       355 |
-| [2026-08-21](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/32463860945) | ✅ success |       0 |      0 |      0 |       355 |
-| [2026-08-21](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/32424301885) | ✅ success |      44 |      6 |      0 |       355 |
-| [2026-08-17](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/32011099608) | ✅ success |       7 |      0 |     34 |       346 |
 
 ## Persistent failures
 
-**7 datasets failing**  ·  7 open issues  ·  oldest **2d**  ·  **0** ≥30d  ·  [all open issues](https://github.com/source-cooperative/metadata-catalog/issues?q=is%3Aissue+is%3Aopen+label%3Aprobe-failure)
+**7 datasets failing**  ·  7 open issues  ·  oldest **3d**  ·  **0** ≥30d  ·  [all open issues](https://github.com/source-cooperative/metadata-catalog/issues?q=is%3Aissue+is%3Aopen+label%3Aprobe-failure)
 
 <details><summary>the 7 open issues, oldest first</summary>
 
 | repo                                 | age (d) | issue |
 | ------------------------------------ | ------: | ----: |
-| dynamical/dwd-icon-eu-forecast-5-day |       2 |  #154 |
-| cboettig/usgs-wbd                    |       2 |  #153 |
-| cboettig/padus                       |       2 |  #152 |
-| cboettig/obis                        |       2 |  #151 |
-| cboettig/fire                        |       2 |  #150 |
-| cboettig/connectivity                |       2 |  #149 |
-| wadhwani-ai/wiai-pm-open-data        |       1 |  #155 |
+| wadhwani-ai/wiai-pm-open-data        |       3 |  #155 |
+| dynamical/dwd-icon-eu-forecast-5-day |       3 |  #154 |
+| cboettig/usgs-wbd                    |       3 |  #153 |
+| cboettig/padus                       |       3 |  #152 |
+| cboettig/obis                        |       3 |  #151 |
+| cboettig/fire                        |       3 |  #150 |
+| cboettig/connectivity                |       3 |  #149 |
 
 </details>
 
@@ -884,43 +877,4 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 | cboettig/connectivity | 2026-08-12 |   1.5 GB → 1.5 GB |
 
 </details>
-
-## Upload activity
-
-_Live objects by upload date, from the 2026-08-16 inventory snapshot (`make activity` refreshes)._
-
-### Top uploaders (30 days, 2026-07-18 to 2026-08-16)
-| account                                        | uploaded |       files | repos | % of bytes |
-| ---------------------------------------------- | -------: | ----------: | ----: | ---------: |
-| [tessera](https://source.coop/tessera)         | 856.7 TB |  17,347,552 |     1 |      62.6% |
-| [bkr](https://source.coop/bkr)                 | 152.3 TB |  36,880,360 |    11 |      11.1% |
-| [dynamical](https://source.coop/dynamical)     | 137.8 TB |  11,740,476 |    13 |      10.1% |
-| [geoai-ucph](https://source.coop/geoai-ucph)   | 101.7 TB |   1,822,779 |     1 |       7.4% |
-| [mvrl](https://source.coop/mvrl)               |  53.5 TB |     280,577 |     1 |       3.9% |
-| [harvard-lil](https://source.coop/harvard-lil) |  24.2 TB |   2,664,203 |     4 |       1.8% |
-| [tge-labs](https://source.coop/tge-labs)       |  15.6 TB |     166,187 |     3 |       1.1% |
-| [govscape](https://source.coop/govscape)       |  12.8 TB |  36,083,730 |     1 |       0.9% |
-| [carbonplan](https://source.coop/carbonplan)   |   8.7 TB |      40,032 |     2 |       0.6% |
-| [uos-shiver](https://source.coop/uos-shiver)   |   1.4 TB |   2,635,861 |     2 |       0.1% |
-| **top 10 total**                               |   1.4 PB | 109,661,757 |    39 |      99.8% |
-| **other 33 accounts**                          |   2.8 TB |   3,759,208 |    83 |       0.2% |
-| **all 43 accounts**                            |   1.4 PB | 113,420,965 |   122 |     100.0% |
-
-_122 repos — 36 new (188.3 TB), 86 updated (1.2 PB)_
-
-### By month (last 12)
-| month   | accounts | repos | new repos | uploaded | into new repos |
-| ------- | -------: | ----: | --------: | -------: | -------------: |
-| 2026-08 |       33 |   102 |        14 |   1.1 PB |       102.0 TB |
-| 2026-07 |       44 |   114 |        42 | 772.2 TB |        32.0 TB |
-| 2026-06 |       47 |   118 |        64 | 465.4 TB |       306.3 TB |
-| 2026-05 |       44 |    78 |        24 | 256.6 TB |        57.6 TB |
-| 2026-04 |       38 |    78 |        30 | 260.2 TB |       211.9 TB |
-| 2026-03 |       23 |    63 |        26 | 905.8 TB |       689.9 TB |
-| 2026-02 |       28 |    54 |        21 | 580.8 TB |       436.4 TB |
-| 2026-01 |       24 |    50 |        17 | 139.6 TB |        16.4 TB |
-| 2025-12 |       23 |    35 |         9 | 144.7 TB |        85.2 GB |
-| 2025-11 |       20 |    37 |        17 |   1.4 PB |         1.3 PB |
-| 2025-10 |       16 |    36 |        20 |  68.2 TB |        47.5 TB |
-| 2025-09 |       10 |    16 |         8 |  35.7 TB |        32.7 TB |
 
