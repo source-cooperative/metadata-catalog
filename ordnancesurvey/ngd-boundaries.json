@@ -2,14 +2,20 @@
   "schema_version": 1,
   "type": "Collection",
   "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
   "id": "ordnancesurvey/ngd-boundaries",
   "title": "OS National Geographic Database - Boundaries Collection in GeoParquet",
-  "description": "Ordnance Survey's National Geographic Database boundaries in GeoParquet format, containing administrative boundary data for Great Britain. This trial dataset is intended for geospatial standards development.",
+  "description": "A trial GeoParquet release of Ordnance Survey's National Geographic Database (NGD) Boundaries collection, containing administrative and electoral boundary polygons for Great Britain \u2014 countries, counties, regions, local authorities, wards, constituencies, parishes, and polling districts. Published for geospatial standards development purposes and not intended to be maintained.",
   "license": "OGL-3.0",
   "keywords": [
-    "admin-boundaries",
-    "national-boundaries",
-    "uk-boundaries"
+    "administrative-boundaries",
+    "geoparquet",
+    "great-britain",
+    "electoral-boundaries",
+    "ordnance-survey",
+    "government-data"
   ],
   "providers": [
     {
@@ -31,10 +37,10 @@
     "spatial": {
       "bbox": [
         [
-          5512.9985,
-          5333.6025,
-          655992.75,
-          1220309.8808
+          -9.2306537,
+          49.8181994,
+          2.7018608,
+          60.8654959
         ]
       ]
     },
@@ -51,13 +57,1890 @@
     "item_count": 78948
   },
   "assets": {
-    "data": {
-      "href": "https://data.source.coop/ordnancesurvey/ngd-boundaries/",
+    "boundaryhighwatermark": {
+      "href": "https://data.source.coop/ordnancesurvey/ngd-boundaries/GeoParquet/asu_bdy_boundaryhighwatermark.parquet",
       "type": "application/x-parquet",
-      "title": "Dataset files (17 x .parquet)",
+      "title": "asu_bdy_boundaryhighwatermark.parquet",
       "roles": [
         "data"
-      ]
+      ],
+      "table:columns": [
+        {
+          "name": "fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "osid",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "versiondate",
+          "type": "DATE"
+        },
+        {
+          "name": "versionavailablefromdate",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "versionavailabletodate",
+          "type": "TIMESTAMP"
+        },
+        {
+          "name": "changetype",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry_length",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "theme",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "description",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundarytype",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:27700')",
+          "description": "[geometry] Boundary polygon geometry"
+        }
+      ],
+      "table:row_count": 13208
+    },
+    "ceremonialcounty": {
+      "href": "https://data.source.coop/ordnancesurvey/ngd-boundaries/GeoParquet/asu_bdy_ceremonialcounty.parquet",
+      "type": "application/x-parquet",
+      "title": "asu_bdy_ceremonialcounty.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "osid",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "versiondate",
+          "type": "DATE"
+        },
+        {
+          "name": "versionavailablefromdate",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "versionavailabletodate",
+          "type": "TIMESTAMP"
+        },
+        {
+          "name": "changetype",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry_area",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "theme",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "description",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name1_text",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name1_language",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name2_text",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name2_language",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundarytype",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "landareahectares",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "tidalareahectares",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "totalareahectares",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:27700')",
+          "description": "[geometry] Ceremonial county boundary polygon"
+        }
+      ],
+      "table:row_count": 91
+    },
+    "country": {
+      "href": "https://data.source.coop/ordnancesurvey/ngd-boundaries/GeoParquet/asu_bdy_country.parquet",
+      "type": "application/x-parquet",
+      "title": "asu_bdy_country.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "osid",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "toid",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "versiondate",
+          "type": "DATE"
+        },
+        {
+          "name": "versionavailablefromdate",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "versionavailabletodate",
+          "type": "TIMESTAMP"
+        },
+        {
+          "name": "changetype",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry_area",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "theme",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "description",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name1_text",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name1_language",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name2_text",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name2_language",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "gsscode",
+          "type": "VARCHAR",
+          "description": "[admin_code] ONS GSS administrative code for country"
+        },
+        {
+          "name": "boundarytype",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "landareahectares",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "tidalareahectares",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "totalareahectares",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:27700')",
+          "description": "[geometry] Country boundary polygon"
+        }
+      ],
+      "table:row_count": 3
+    },
+    "devolvedparliamentconstituency": {
+      "href": "https://data.source.coop/ordnancesurvey/ngd-boundaries/GeoParquet/asu_bdy_devolvedparliamentconstituency.parquet",
+      "type": "application/x-parquet",
+      "title": "asu_bdy_devolvedparliamentconstituency.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "osid",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "toid",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "versiondate",
+          "type": "DATE"
+        },
+        {
+          "name": "versionavailablefromdate",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "versionavailabletodate",
+          "type": "TIMESTAMP"
+        },
+        {
+          "name": "changetype",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry_area",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "theme",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "description",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name1_text",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name1_language",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name2_text",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name2_language",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "gsscode",
+          "type": "VARCHAR",
+          "description": "[admin_code] ONS GSS code for devolved parliament constituency"
+        },
+        {
+          "name": "boundarytype",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference_featuretype",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference_classification",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference_name1_text",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference_name1_language",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference_name2_text",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference_name2_language",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "landareahectares",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "tidalareahectares",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "totalareahectares",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:27700')",
+          "description": "[geometry] Constituency boundary polygon"
+        }
+      ],
+      "table:row_count": 113
+    },
+    "devolvedparliamentelectoralregion": {
+      "href": "https://data.source.coop/ordnancesurvey/ngd-boundaries/GeoParquet/asu_bdy_devolvedparliamentelectoralregion.parquet",
+      "type": "application/x-parquet",
+      "title": "asu_bdy_devolvedparliamentelectoralregion.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "osid",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "toid",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "versiondate",
+          "type": "DATE"
+        },
+        {
+          "name": "versionavailablefromdate",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "versionavailabletodate",
+          "type": "TIMESTAMP"
+        },
+        {
+          "name": "changetype",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry_area",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "theme",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "description",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name1_text",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name1_language",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name2_text",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name2_language",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "gsscode",
+          "type": "VARCHAR",
+          "description": "[admin_code] ONS GSS code for electoral region"
+        },
+        {
+          "name": "boundarytype",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "landareahectares",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "tidalareahectares",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "totalareahectares",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:27700')",
+          "description": "[geometry] Electoral region boundary polygon"
+        }
+      ],
+      "table:row_count": 13
+    },
+    "electoraldivision": {
+      "href": "https://data.source.coop/ordnancesurvey/ngd-boundaries/GeoParquet/asu_bdy_electoraldivision.parquet",
+      "type": "application/x-parquet",
+      "title": "asu_bdy_electoraldivision.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "osid",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "toid",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "versiondate",
+          "type": "DATE"
+        },
+        {
+          "name": "versionavailablefromdate",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "versionavailabletodate",
+          "type": "TIMESTAMP"
+        },
+        {
+          "name": "changetype",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry_area",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "theme",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "description",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name1_text",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name1_language",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name2_text",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name2_language",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "gsscode",
+          "type": "VARCHAR",
+          "description": "[admin_code] ONS GSS code for electoral division"
+        },
+        {
+          "name": "boundarytype",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference1_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference1_featuretype",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference1_classification",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference1_name1_text",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference1_name1_language",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference1_name2_text",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference1_name2_language",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference2_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference2_featuretype",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference2_classification",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference2_name1_text",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference2_name1_language",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference2_name2_text",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference2_name2_language",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "landareahectares",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "tidalareahectares",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "totalareahectares",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "hasdetachedpart",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:27700')",
+          "description": "[geometry] Electoral division boundary polygon"
+        }
+      ],
+      "table:row_count": 2688
+    },
+    "glaassemblyconstituency": {
+      "href": "https://data.source.coop/ordnancesurvey/ngd-boundaries/GeoParquet/asu_bdy_glaassemblyconstituency.parquet",
+      "type": "application/x-parquet",
+      "title": "asu_bdy_glaassemblyconstituency.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "osid",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "toid",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "versiondate",
+          "type": "DATE"
+        },
+        {
+          "name": "versionavailablefromdate",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "versionavailabletodate",
+          "type": "TIMESTAMP"
+        },
+        {
+          "name": "changetype",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry_area",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "theme",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "description",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name1_text",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name1_language",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name2_text",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name2_language",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "gsscode",
+          "type": "VARCHAR",
+          "description": "[admin_code] ONS GSS code for GLA assembly constituency"
+        },
+        {
+          "name": "boundarytype",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference_featuretype",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference_classification",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference_name1_text",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference_name1_language",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference_name2_text",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference_name2_language",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "landareahectares",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "tidalareahectares",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "totalareahectares",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:27700')",
+          "description": "[geometry] GLA assembly constituency boundary polygon"
+        }
+      ],
+      "table:row_count": 14
+    },
+    "historiccounty": {
+      "href": "https://data.source.coop/ordnancesurvey/ngd-boundaries/GeoParquet/asu_bdy_historiccounty.parquet",
+      "type": "application/x-parquet",
+      "title": "asu_bdy_historiccounty.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "osid",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "versiondate",
+          "type": "DATE"
+        },
+        {
+          "name": "versionavailablefromdate",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "versionavailabletodate",
+          "type": "TIMESTAMP"
+        },
+        {
+          "name": "changetype",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry_area",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "theme",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "description",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name1_text",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name1_language",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name2_text",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name2_language",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundarytype",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "landareahectares",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "tidalareahectares",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "totalareahectares",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:27700')",
+          "description": "[geometry] Historic county boundary polygon"
+        }
+      ],
+      "table:row_count": 95
+    },
+    "historiceuropeanregion": {
+      "href": "https://data.source.coop/ordnancesurvey/ngd-boundaries/GeoParquet/asu_bdy_historiceuropeanregion.parquet",
+      "type": "application/x-parquet",
+      "title": "asu_bdy_historiceuropeanregion.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "osid",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "versiondate",
+          "type": "DATE"
+        },
+        {
+          "name": "versionavailablefromdate",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "versionavailabletodate",
+          "type": "TIMESTAMP"
+        },
+        {
+          "name": "changetype",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry_area",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "theme",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "description",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name1_text",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name1_language",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name2_text",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name2_language",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundarytype",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "landareahectares",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "tidalareahectares",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "totalareahectares",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:27700')",
+          "description": "[geometry] Historic European region boundary polygon"
+        }
+      ],
+      "table:row_count": 11
+    },
+    "lowertierlocalauthority": {
+      "href": "https://data.source.coop/ordnancesurvey/ngd-boundaries/GeoParquet/asu_bdy_lowertierlocalauthority.parquet",
+      "type": "application/x-parquet",
+      "title": "asu_bdy_lowertierlocalauthority.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "osid",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "toid",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "versiondate",
+          "type": "DATE"
+        },
+        {
+          "name": "versionavailablefromdate",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "versionavailabletodate",
+          "type": "TIMESTAMP"
+        },
+        {
+          "name": "changetype",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry_area",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "theme",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "description",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name1_text",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name1_language",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name2_text",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name2_language",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "gsscode",
+          "type": "VARCHAR",
+          "description": "[admin_code] ONS GSS code for lower tier local authority"
+        },
+        {
+          "name": "boundarytype",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference_featuretype",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference_classification",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference_name1_text",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference_name1_language",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference_name2_text",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference_name2_language",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "landareahectares",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "tidalareahectares",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "totalareahectares",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "isborough",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:27700')",
+          "description": "[geometry] Local authority boundary polygon"
+        }
+      ],
+      "table:row_count": 350
+    },
+    "parishorcommunity": {
+      "href": "https://data.source.coop/ordnancesurvey/ngd-boundaries/GeoParquet/asu_bdy_parishorcommunity.parquet",
+      "type": "application/x-parquet",
+      "title": "asu_bdy_parishorcommunity.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "osid",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "toid",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "versiondate",
+          "type": "DATE"
+        },
+        {
+          "name": "versionavailablefromdate",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "versionavailabletodate",
+          "type": "TIMESTAMP"
+        },
+        {
+          "name": "changetype",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry_area",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "theme",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "description",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name1_text",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name1_language",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name2_text",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name2_language",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "gsscode",
+          "type": "VARCHAR",
+          "description": "[admin_code] ONS GSS code for parish or community"
+        },
+        {
+          "name": "boundarytype",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference1_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference1_featuretype",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference1_classification",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference1_name1_text",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference1_name1_language",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference1_name2_text",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference1_name2_language",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference2_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference2_featuretype",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference2_classification",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference2_name1_text",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference2_name1_language",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference2_name2_text",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference2_name2_language",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "landareahectares",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "tidalareahectares",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "totalareahectares",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "hassharedarea",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "hasdetachedpart",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:27700')",
+          "description": "[geometry] Parish/community boundary polygon"
+        }
+      ],
+      "table:row_count": 14345
+    },
+    "pollingdistrict": {
+      "href": "https://data.source.coop/ordnancesurvey/ngd-boundaries/GeoParquet/asu_bdy_pollingdistrict.parquet",
+      "type": "application/x-parquet",
+      "title": "asu_bdy_pollingdistrict.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "osid",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "versiondate",
+          "type": "DATE"
+        },
+        {
+          "name": "versionavailablefromdate",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "versionavailabletodate",
+          "type": "TIMESTAMP"
+        },
+        {
+          "name": "changetype",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry_area",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "theme",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "description",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "pollingdistrictid",
+          "type": "VARCHAR",
+          "description": "[admin_code] Polling district identifier code"
+        },
+        {
+          "name": "boundarytype",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference1_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference1_featuretype",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference1_classification",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference1_name1_text",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference1_name1_language",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference1_name2_text",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference1_name2_language",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference2_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference2_featuretype",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference2_classification",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference2_name1_text",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference2_name1_language",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference2_name2_text",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference2_name2_language",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference3_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference3_featuretype",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference3_classification",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference3_name1_text",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference3_name1_language",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference3_name2_text",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference3_name2_language",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference4_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference4_featuretype",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference4_classification",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference4_name1_text",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference4_name1_language",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference4_name2_text",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference4_name2_language",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "landareahectares",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "tidalareahectares",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "totalareahectares",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:27700')",
+          "description": "[geometry] Polling district boundary polygon"
+        }
+      ],
+      "table:row_count": 38811
+    },
+    "region": {
+      "href": "https://data.source.coop/ordnancesurvey/ngd-boundaries/GeoParquet/asu_bdy_region.parquet",
+      "type": "application/x-parquet",
+      "title": "asu_bdy_region.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "osid",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "toid",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "versiondate",
+          "type": "DATE"
+        },
+        {
+          "name": "versionavailablefromdate",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "versionavailabletodate",
+          "type": "TIMESTAMP"
+        },
+        {
+          "name": "changetype",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry_area",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "theme",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "description",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name1_text",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name1_language",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name2_text",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name2_language",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "gsscode",
+          "type": "VARCHAR",
+          "description": "[admin_code] ONS GSS code for region"
+        },
+        {
+          "name": "boundarytype",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "landareahectares",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "tidalareahectares",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "totalareahectares",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:27700')",
+          "description": "[geometry] Region boundary polygon"
+        }
+      ],
+      "table:row_count": 11
+    },
+    "regionalauthority": {
+      "href": "https://data.source.coop/ordnancesurvey/ngd-boundaries/GeoParquet/asu_bdy_regionalauthority.parquet",
+      "type": "application/x-parquet",
+      "title": "asu_bdy_regionalauthority.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "osid",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "toid",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "versiondate",
+          "type": "DATE"
+        },
+        {
+          "name": "versionavailablefromdate",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "versionavailabletodate",
+          "type": "TIMESTAMP"
+        },
+        {
+          "name": "changetype",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry_area",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "theme",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "description",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name1_text",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name1_language",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name2_text",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name2_language",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "gsscode",
+          "type": "VARCHAR",
+          "description": "[admin_code] ONS GSS code for regional authority"
+        },
+        {
+          "name": "boundarytype",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "landareahectares",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "tidalareahectares",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "totalareahectares",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:27700')",
+          "description": "[geometry] Regional authority boundary polygon"
+        }
+      ],
+      "table:row_count": 1
+    },
+    "uppertierlocalauthority": {
+      "href": "https://data.source.coop/ordnancesurvey/ngd-boundaries/GeoParquet/asu_bdy_uppertierlocalauthority.parquet",
+      "type": "application/x-parquet",
+      "title": "asu_bdy_uppertierlocalauthority.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "osid",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "toid",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "versiondate",
+          "type": "DATE"
+        },
+        {
+          "name": "versionavailablefromdate",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "versionavailabletodate",
+          "type": "TIMESTAMP"
+        },
+        {
+          "name": "changetype",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry_area",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "theme",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "description",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name1_text",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name1_language",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name2_text",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name2_language",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "gsscode",
+          "type": "VARCHAR",
+          "description": "[admin_code] ONS GSS code for upper tier local authority"
+        },
+        {
+          "name": "boundarytype",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "landareahectares",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "tidalareahectares",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "totalareahectares",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "isborough",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:27700')",
+          "description": "[geometry] Local authority boundary polygon"
+        }
+      ],
+      "table:row_count": 207
+    },
+    "ward": {
+      "href": "https://data.source.coop/ordnancesurvey/ngd-boundaries/GeoParquet/asu_bdy_ward.parquet",
+      "type": "application/x-parquet",
+      "title": "asu_bdy_ward.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "osid",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "toid",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "versiondate",
+          "type": "DATE"
+        },
+        {
+          "name": "versionavailablefromdate",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "versionavailabletodate",
+          "type": "TIMESTAMP"
+        },
+        {
+          "name": "changetype",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry_area",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "theme",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "description",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name1_text",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name1_language",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name2_text",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name2_language",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "gsscode",
+          "type": "VARCHAR",
+          "description": "[admin_code] ONS GSS code for ward"
+        },
+        {
+          "name": "boundarytype",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference1_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference1_featuretype",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference1_classification",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference1_name1_text",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference1_name1_language",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference1_name2_text",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference1_name2_language",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference2_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference2_featuretype",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference2_classification",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference2_name1_text",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference2_name1_language",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference2_name2_text",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "boundaryparentreference2_name2_language",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "landareahectares",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "tidalareahectares",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "totalareahectares",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "hasdetachedpart",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:27700')",
+          "description": "[geometry] Ward boundary polygon"
+        }
+      ],
+      "table:row_count": 8355
+    },
+    "westminsterconstituency": {
+      "href": "https://data.source.coop/ordnancesurvey/ngd-boundaries/GeoParquet/asu_bdy_westminsterconstituency.parquet",
+      "type": "application/x-parquet",
+      "title": "asu_bdy_westminsterconstituency.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "osid",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "toid",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "versiondate",
+          "type": "DATE"
+        },
+        {
+          "name": "versionavailablefromdate",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "versionavailabletodate",
+          "type": "TIMESTAMP"
+        },
+        {
+          "name": "changetype",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry_area",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "theme",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "description",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name1_text",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name1_language",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name2_text",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name2_language",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "gsscode",
+          "type": "VARCHAR",
+          "description": "[admin_code] ONS GSS code for Westminster constituency"
+        },
+        {
+          "name": "boundarytype",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "landareahectares",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "tidalareahectares",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "totalareahectares",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:27700')",
+          "description": "[geometry] Westminster constituency boundary polygon"
+        }
+      ],
+      "table:row_count": 632
     }
   },
   "links": [
@@ -72,25 +1955,23 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "object_count": 19,
-  "exts": {
-    "parquet": 17,
-    "md": 1,
-    "txt": 1
-  },
-  "featured": 0,
+  "product_id": "ngd-boundaries",
   "visibility": "public",
-  "account_id": "ordnancesurvey",
-  "total_bytes": 1033247804,
-  "data_mode": "open",
-  "created_at": "2023-09-11T15:28:15.001366+00:00",
   "updated_at": "2025-08-21T16:39:55.569Z",
+  "object_count": 19,
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "product_id": "ngd-boundaries",
-  "disabled": false,
+  "total_bytes": 1033247804,
+  "ext_bytes": {
+    "parquet": 1033246934,
+    "md": 664,
+    "txt": 206
+  },
+  "account_id": "ordnancesurvey",
+  "data_mode": "open",
+  "created_at": "2023-09-11T15:28:15.001366+00:00",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -103,12 +1984,16 @@
       "prefix": "ordnancesurvey/ngd-boundaries/"
     }
   },
+  "disabled": false,
+  "featured": 0,
+  "exts": {
+    "parquet": 17,
+    "txt": 1,
+    "md": 1
+  },
   "readme": "## README.md\n# National Geographic Database - Boundaries Collection in Geoparquet\r\n\r\nThis is a trial version of Ordnance Survey's National Geographic Database Boundaries data in GeoParquet intended for the purposes of standards development. \r\n\r\nPlease be aware that this trial data will not be maintained.\r\n\r\n## License\r\n\r\nThis data is made available under the Open Government Licence 3.0 - https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3\r\n\r\n## Documentation and feedback\r\n\r\nFurther documentation about the National Geographic Database is available at https://osngd.gitbook.io/osngd/\r\n\r\nTo provide feedback on this dataset please email futuregeo@os.uk",
   "_state": "drafted",
-  "cataloged_at": "2026-04-24T18:43:07+00:00",
-  "ext_bytes": {
-    "parquet": 1033246934,
-    "md": 664,
-    "txt": 206
-  }
+  "cataloged_at": "2026-08-26T22:41:02+00:00",
+  "objects_updated_at": "2023-09-25T17:40:58+00:00",
+  "store_format": null
 }

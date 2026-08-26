@@ -1,6 +1,6 @@
 # Source Cooperative catalog — status
 
-_Updated 2026-08-26 22:37 UTC by the nightly pipeline._
+_Updated 2026-08-26 22:41 UTC by the nightly pipeline._
 
 **403 datasets cataloged**  ·  **1 queued for next run**  ·  last run handled **0**
 
@@ -10,13 +10,13 @@ _No datasets processed in the last run (no new work since the previous snapshot)
 
 | run                                                                                                    | outcome   | drafted | failed | queued | cataloged |
 | ------------------------------------------------------------------------------------------------------ | --------- | ------: | -----: | -----: | --------: |
+| [2026-08-26](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/33020335868) | ✅ success |       0 |      0 |      1 |       403 |
 | [2026-08-26](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/33016907154) | ✅ success |       0 |      0 |      1 |       403 |
 | [2026-08-26](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/32948543871) | ✅ success |       9 |      0 |     48 |       403 |
 | [2026-08-25](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/32827398611) | ✅ success |      10 |      0 |     62 |       403 |
 | [2026-08-25](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/32792519265) | ❌ failure |       0 |      0 |   None |       397 |
 | [2026-08-24](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/32781490743) | ❌ failure |     345 |      7 |   None |       397 |
 | [2026-08-24](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/32707149190) | ❌ failure |     345 |      7 |   None |       397 |
-| [2026-08-23](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/32628587308) | ✅ success |       0 |      0 |      0 |       397 |
 
 ## Persistent failures
 
