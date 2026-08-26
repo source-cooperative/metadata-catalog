@@ -1,84 +1,20 @@
 {
   "schema_version": 1,
-  "type": "Collection",
-  "stac_version": "1.1.0",
-  "id": "cholmes/nyc-taxi-zones",
+  "account_id": "cholmes",
+  "product_id": "nyc-taxi-zones",
   "title": "Taxi Zones from TLC Trip Record Data ",
   "description": "Geospatial boundaries of New York City taxi zones from the TLC Trip Record Data, available in cloud-native formats (GeoParquet and PMTiles) for efficient spatial analysis and visualization.",
-  "license": "other",
   "keywords": [
     "taxi-zones",
     "nyc",
     "administrative-zones"
   ],
-  "providers": [
-    {
-      "name": "New York City Taxi and Limousine Commission",
-      "roles": [
-        "producer"
-      ]
-    },
-    {
-      "name": "Cloud Native Geo",
-      "roles": [
-        "processor"
-      ]
-    },
-    {
-      "name": "Source Cooperative",
-      "roles": [
-        "host"
-      ],
-      "url": "https://source.coop/cholmes/nyc-taxi-zones"
-    }
-  ],
-  "extent": {
-    "spatial": {
-      "bbox": [
-        [
-          -74.2555921,
-          40.4961151,
-          1067382.5084052,
-          272844.2940055
-        ]
-      ]
-    },
-    "temporal": {
-      "interval": [
-        [
-          null,
-          null
-        ]
-      ]
-    }
-  },
-  "summaries": {
-    "item_count": 526
-  },
-  "assets": {
-    "data": {
-      "href": "https://data.source.coop/cholmes/nyc-taxi-zones/",
-      "type": "application/x-parquet",
-      "title": "Dataset files (2 x .parquet)",
-      "roles": [
-        "data"
-      ]
-    }
-  },
-  "links": [
-    {
-      "rel": "self",
-      "href": "https://source.coop/cholmes/nyc-taxi-zones/collection.json",
-      "type": "application/json"
-    },
-    {
-      "rel": "via",
-      "href": "https://source.coop/cholmes/nyc-taxi-zones",
-      "title": "Source Cooperative product page"
-    }
-  ],
-  "object_count": 4,
   "created_at": "2023-08-17T17:37:09.296876+00:00",
+  "updated_at": "2025-08-21T16:39:55.567Z",
+  "visibility": "public",
+  "disabled": false,
+  "featured": 0,
+  "data_mode": "open",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -91,29 +27,24 @@
       "prefix": "cholmes/nyc-taxi-zones/"
     }
   },
-  "product_id": "nyc-taxi-zones",
-  "updated_at": "2025-08-21T16:39:55.567Z",
-  "data_mode": "open",
+  "object_count": 4,
+  "objects_updated_at": null,
   "total_bytes": 3476388,
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
   "exts": {
     "parquet": 2,
     "pmtiles": 1,
     "md": 1
   },
-  "visibility": "public",
-  "disabled": false,
-  "account_id": "cholmes",
-  "featured": 0,
-  "readme": "## README.md\n# New York Taxi Zones (Cloud-Native Distribution)\n\nThis repository contains [Cloud-Native Geospatial](https://cloudnativegeo.org) versions of the Taxi Zones of the [TLC Trip Record Data](https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page). This doesn't contain all the core Parquet data - it's just to make it a bit easier for non-geospatial users to get the actual boundaries. The current web page with all the links says 'Taxi Zone Shapefile (PARQUET)', but the Shapefile is not Parquet. Hopefully the NYC site will update to actually include GeoParquet, but for now it's accessible here. There are 3 files in this repository:\n\n* [taxi_zones.parquet](https://data.source.coop/cholmes/nyc-taxi-zones/taxi_zones.parquet) - A [GeoParquet](https://geoparquet.org) file translated directly from the original Shapefile (using `ogr2ogr`). The shapefile .prj file was translated to [EPSG:2263](https://epsg.io/2263).\n* [taxi_zones_4326.parquet](https://data.source.coop/cholmes/nyc-taxi-zones/taxi_zones_4326.parquet) - The original Shapefile transformed into GeoParquet and projected into Long, Lat (EPSG:4326).\n* [taxi_zones.pmtiles](https://data.source.coop/cholmes/nyc-taxi-zones/taxi_zones.pmtiles) - The core data as [PMTiles](https://github.com/protomaps/PMTiles) for easy visualization.\n\n***Note: There is also a taxi zone lookup table CSV that seems to have a 'service zone' field. If anyone is interested I could join that to this Parquet so two files aren't needed. Leaving off that work for now to just ship this.***\n",
-  "_state": "drafted",
-  "cataloged_at": "2026-04-24T18:41:31+00:00",
   "ext_bytes": {
     "parquet": 2948752,
     "pmtiles": 526103,
     "md": 1533
-  }
+  },
+  "store_format": null,
+  "_state": "seed",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "cataloged_at": "2026-08-26T23:27:52+00:00"
 }

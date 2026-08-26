@@ -1,11 +1,9 @@
 {
   "schema_version": 1,
-  "type": "Collection",
-  "stac_version": "1.1.0",
-  "id": "planet/rapidcrops",
+  "account_id": "planet",
+  "product_id": "rapidcrops",
   "title": "RapidCrops: A pan-European label dataset for large-scale crop classification",
   "description": "99 million agricultural parcel boundaries with harmonized crop type information across seven European countries (Austria, Denmark, France, Germany, Netherlands, Portugal, Spain) covering 2018-2024. Derived from EU IACS programme cadastral and crop data with improved geometries and additional attributes for machine learning and Earth observation applications.",
-  "license": "other",
   "keywords": [
     "agriculture",
     "field-boundaries",
@@ -13,79 +11,12 @@
     "land-parcels",
     "remote-sensing"
   ],
-  "providers": [
-    {
-      "name": "EU Member States (IACS Programme)",
-      "roles": [
-        "producer"
-      ]
-    },
-    {
-      "name": "Planet Labs",
-      "roles": [
-        "processor"
-      ]
-    },
-    {
-      "name": "Source Cooperative",
-      "roles": [
-        "host"
-      ],
-      "url": "https://source.coop/planet/rapidcrops"
-    }
-  ],
-  "extent": {
-    "spatial": {
-      "bbox": [
-        [
-          2637223.8224144,
-          1735258.8060865,
-          4854611.8414282,
-          3849408.3162694
-        ]
-      ]
-    },
-    "temporal": {
-      "interval": [
-        [
-          null,
-          null
-        ]
-      ]
-    }
-  },
-  "summaries": {
-    "item_count": 184117667
-  },
-  "assets": {
-    "data": {
-      "href": "https://data.source.coop/planet/rapidcrops/",
-      "type": "application/x-parquet",
-      "title": "Dataset files (75 x .parquet)",
-      "roles": [
-        "data"
-      ]
-    }
-  },
-  "links": [
-    {
-      "rel": "self",
-      "href": "https://source.coop/planet/rapidcrops/collection.json",
-      "type": "application/json"
-    },
-    {
-      "rel": "via",
-      "href": "https://source.coop/planet/rapidcrops",
-      "title": "Source Cooperative product page"
-    },
-    {
-      "rel": "cite-as",
-      "href": "https://doi.org/10.5281/zenodo.15166359"
-    }
-  ],
-  "total_bytes": 62589609064,
-  "object_count": 81,
   "created_at": "2025-03-24T17:00:06.171Z",
+  "updated_at": "2025-08-21T16:39:55.567Z",
+  "visibility": "public",
+  "disabled": false,
+  "featured": 0,
+  "data_mode": "open",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -98,28 +29,24 @@
       "prefix": "planet/rapidcrops/"
     }
   },
-  "featured": 0,
+  "object_count": 81,
+  "objects_updated_at": null,
+  "total_bytes": 62589609064,
   "exts": {
     "parquet": 75,
     "png": 5,
     "md": 1
   },
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "product_id": "rapidcrops",
-  "updated_at": "2025-08-21T16:39:55.567Z",
-  "visibility": "public",
-  "disabled": false,
-  "account_id": "planet",
-  "data_mode": "open",
-  "readme": "## README.md\n# RapidCrops\n\n## Data coverage\n\n<img src=\"https://data.source.coop/planet/rapidcrops/docs/RapidCrops_coverage.png\" alt=\"Banner image showing geographical extent of the dataset.\" width=\"50%\"/>\n\nDense temporal coverage (2018-2022) across seven countries:\n- Austria\n- Denmark\n- Spain (partial coverage in Catalonia only)\n- France\n- Germany (partial coverage in Brandenberg, Nordrhein Westfalen & Lower Saxony)\n- Netherlands\n- Portugal\n\nAdditional years of coverage are included for:\n- Germany (2023 & 2024)\n- France (2023)\n- Netherlands (2023 & 2024)\n\nDatasets are published in two forms:\n1. \"National\": National datasets are provided individually for each year of coverage.\n2. \"Combined\": All national datasets are combined into a single partitioned (by country) dataset for a given year.\n\n## Data structure\n\nBecause all data resides within Europe, boundary geometries are all provided in `EPSG:3035`.\n\nSee below an example GeoParquet schema for the France 2020 dataset:\n\n<img src=\"https://data.source.coop/planet/rapidcrops/docs/RapidCrops_table_example.png\" alt=\"Table schema for France 2020 dataset.\" width=\"100%\"/>\n\n## Usability and efficiency\n\nRedundant vertices were removed from the boundary polygons with a tolerance of 20cm to protect the integrity of the parcel.\nThis resulted in a >25% reduction in the number of vertices, allowing for more efficient spatial queries.\n\n## Assessing suitability for combining parcels with EO products\n\nIdentifying parcels from which clean pixels can be obtained from satellite imagery depends on both the size of a parcel and the regularity of its shape.\nRapidCrops provides attributes to help quantify these properties:\n- `parcel_width`: The length of the shortest edge on the parcel boundary's minimum rotated rectangle\n- `area_ratio_hull`: The ratio between the area of the parcel boundary, and that of its convex hull\n- `max_contained_radius`: The radius of the parcel boundary's maximum inscribed circle\nKnowing this can help to filter out parcels from which meaningful analysis cannot be performed, or to help explain variation in performance across parcels.\n\nThese metrics can be used to identify suitable parcels for analysis by a given EO sensor, as highlighted below:\n\n<img src=\"https://data.source.coop/planet/rapidcrops/docs/eo_suitability_metrics.png\" alt=\"Table schema for France 2020 dataset.\" width=\"80%\"/>\n\n## Facilitating spatial stratification\n\nGrid cell IDs from two popular spatial gridding systems (Quadkey & H3) are included for each boundary to allow for spatially-stratified sampling. The gridding systems are hierarchical and coarser grid resolutions can be derived form the values provided according to the user\u2019s need.\n\nBelow is the quadkey spatial gridding at the resolution provided:\n\n<img src=\"https://data.source.coop/planet/rapidcrops/docs/spatial_stratification_fine.png\" alt=\"Quadbin keys at fine resolution.\" width=\"30%\"/>\n\n\nBut coarser resolution gridding can be derived by reading a subset of the leftmost characters in the key:\n\n<img src=\"https://data.source.coop/planet/rapidcrops/docs/spatial_stratification_coarse.png\" alt=\"Quadbin keys at coarser resolution.\" width=\"30%\"/>\n\n## Accessing the data\n\n```python\nimport geopandas as gpd\n\nurl = \"s3://planet/rapidcrops/national/AUT/rapidcrops_2018_aut.geo.parquet\"\n\n# Retrieve a full dataset\ndf = gpd.read_parquet(url)\n\n# OR, filter the dataset on a bbox for faster retrieval\ndf = gpd.read_parquet(url, bbox=bbox)\n```\n\n## Underlying data licenses\n\nThe data is made available subject to the licenses associated with the underlying source datasets. No additional limitations or conditions are applied. See below for links to the underlying license information for each source dataset:\n\n| Source dataset        | Dataset license       |\n|-----------------------|-----------------------|\n| Austria               | [INSPIRE public access license](http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/noLimitations) & [CC-BY-AT 4.0](https://creativecommons.org/licenses/by/4.0/)                     |\n| Denmark               |   [INSPIRE public access license](http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/noLimitations) & [INSPIRE no conditions](http://inspire.ec.europa.eu/metadata-codelist/ConditionsApplyingToAccessAndUse/noConditionsApply) & [CC0 1.0 Universal](https://creativecommons.org/publicdomain/zero/1.0/deed.en)                   |\n| France                |   [Custom open license](https://www.etalab.gouv.fr/wp-content/uploads/2014/05/Open_Licence.pdf)                    |\n| Germany               |   Custom open licenses: [NRW](http://dcat-ap.de/def/licenses/dl-by-de/2.0), [Brandenberg](https://www.govdata.de/dl-de/by-2-0), [LS](http://dcat-ap.de/def/licenses/dl-by-de/2.0)                    |\n| Netherlands           |   [INSPIRE public access license](http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/noLimitations) & [INSPIRE no conditions](http://inspire.ec.europa.eu/metadata-codelist/ConditionsApplyingToAccessAndUse/noConditionsApply) & [Dutch creative commons license](http://creativecommons.org/publicdomain/mark/1.0/deed.nl)                    |\n| Portugal              |  [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)                     |\n| Spain                 |  [Custom open license](https://administraciodigital.gencat.cat/ca/dades/dades-obertes/informacio-practica/llicencies/#limitacio-de-responsabilitat)                     |\n\n## Suggested citation\n\n```\nHolden, P., Davis, T., Holmes, C., Senaras, C., & Wania, A. (2025). RapidCrops: A pan-European label dataset for large-scale crop classification (v1.0) [Data set]. Zenodo. https://doi.org/10.5281/zenodo.15166359\n```\n\nIn BibTeX format:\n\n```\n@dataset{rapidcrops,\n  title = {RapidCrops: A pan-European label dataset for large-scale crop classification},\n  publisher = {Zenodo},\n  doi = {https://doi.org/10.5281/zenodo.15166359},\n  year = {2025},\n  urldate = {<date of access, ISO>},\n  author = {\n    Holden, Piers and\n    Davis, Timothy and\n    Holmes, Christopher and\n    Senaras, Caglar and\n    Wania, Annett\n  },\n  version = {1.0},\n}\n```",
-  "_state": "drafted",
-  "cataloged_at": "2026-04-24T18:55:11+00:00",
   "ext_bytes": {
     "parquet": 62586108572,
     "png": 3494355,
     "md": 6137
-  }
+  },
+  "store_format": null,
+  "_state": "seed",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "cataloged_at": "2026-08-26T23:27:51+00:00"
 }
