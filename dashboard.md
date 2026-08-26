@@ -1,25 +1,32 @@
 # Source Cooperative catalog — status
 
-_Updated 2026-08-25 10:47 UTC by the nightly pipeline._
+_Updated 2026-08-26 09:04 UTC by the nightly pipeline._
 
-**403 datasets cataloged**  ·  **62 queued for next run**  ·  last run handled **10**
+**403 datasets cataloged**  ·  **48 queued for next run**  ·  last run handled **10**
 
 ## Last run
 
-<details><summary>✅ drafted — 10 datasets</summary>
+<details><summary>✅ drafted — 9 datasets</summary>
 
-| repo                                                                                             |
-| ------------------------------------------------------------------------------------------------ |
-| [bkr/geo](https://source.coop/bkr/geo)                                                           |
-| [bkr/icon](https://source.coop/bkr/icon)                                                         |
-| [cboettig/usgs-ungulate-migration](https://source.coop/cboettig/usgs-ungulate-migration)         |
-| [dynamical/dwd-icon-eu-forecast-5-day](https://source.coop/dynamical/dwd-icon-eu-forecast-5-day) |
-| [dynamical/ecmwf-ifs-grib](https://source.coop/dynamical/ecmwf-ifs-grib)                         |
-| [dynamical/noaa-gefs-forecast-35-day](https://source.coop/dynamical/noaa-gefs-forecast-35-day)   |
-| [ftw/harmonized-field-data](https://source.coop/ftw/harmonized-field-data)                       |
-| [ftw/trazo-fiboa](https://source.coop/ftw/trazo-fiboa)                                           |
-| [nlebovits/ghsl](https://source.coop/nlebovits/ghsl)                                             |
-| [nlebovits/moldova-geodata](https://source.coop/nlebovits/moldova-geodata)                       |
+| repo                                                                                                                           |
+| ------------------------------------------------------------------------------------------------------------------------------ |
+| [bkr/dmi](https://source.coop/bkr/dmi)                                                                                         |
+| [bkr/ifs](https://source.coop/bkr/ifs)                                                                                         |
+| [bkr/mrms](https://source.coop/bkr/mrms)                                                                                       |
+| [bkr/precipradar](https://source.coop/bkr/precipradar)                                                                         |
+| [bkr/silam-dust](https://source.coop/bkr/silam-dust)                                                                           |
+| [dynamical/dwd-icon-grib](https://source.coop/dynamical/dwd-icon-grib)                                                         |
+| [dynamical/ecmwf-ifs-ens-forecast-15-day-0-25-degree](https://source.coop/dynamical/ecmwf-ifs-ens-forecast-15-day-0-25-degree) |
+| [dynamical/noaa-gfs-forecast](https://source.coop/dynamical/noaa-gfs-forecast)                                                 |
+| [englacial/zagg](https://source.coop/englacial/zagg)                                                                           |
+
+</details>
+
+<details><summary>⏭️ incomplete (gap) — 1 dataset</summary>
+
+| repo                                                       | why           |
+| ---------------------------------------------------------- | ------------- |
+| [cboettig/usgs-nhd](https://source.coop/cboettig/usgs-nhd) | no_probe .zip |
 
 </details>
 
@@ -28,23 +35,28 @@ _Updated 2026-08-25 10:47 UTC by the nightly pipeline._
 
 | run                                                                                                    | outcome   | drafted | failed | queued | cataloged |
 | ------------------------------------------------------------------------------------------------------ | --------- | ------: | -----: | -----: | --------: |
+| [2026-08-26](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/32948543871) | ✅ success |       9 |      0 |     48 |       403 |
 | [2026-08-25](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/32827398611) | ✅ success |      10 |      0 |     62 |       403 |
 | [2026-08-25](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/32792519265) | ❌ failure |       0 |      0 |   None |       397 |
 | [2026-08-24](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/32781490743) | ❌ failure |     345 |      7 |   None |       397 |
 | [2026-08-24](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/32707149190) | ❌ failure |     345 |      7 |   None |       397 |
 | [2026-08-23](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/32628587308) | ✅ success |       0 |      0 |      0 |       397 |
 | [2026-08-22](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/32562606294) | ✅ success |       1 |      0 |      0 |       397 |
-| [2026-08-21](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/32532487535) | ✅ success |      42 |      1 |      0 |       396 |
 
 ## Persistent failures
 
-**1 dataset failing**  ·  1 open issue  ·  oldest **3d**  ·  **0** ≥30d  ·  [all open issues](https://github.com/source-cooperative/metadata-catalog/issues?q=is%3Aissue+is%3Aopen+label%3Aprobe-failure)
+**6 datasets failing**  ·  6 open issues  ·  oldest **4d**  ·  **0** ≥30d  ·  [all open issues](https://github.com/source-cooperative/metadata-catalog/issues?q=is%3Aissue+is%3Aopen+label%3Aprobe-failure)
 
-<details><summary>the 1 open issues, oldest first</summary>
+<details><summary>the 6 open issues, oldest first</summary>
 
-| repo                          | age (d) | issue |
-| ----------------------------- | ------: | ----: |
-| wadhwani-ai/wiai-pm-open-data |       3 |  #155 |
+| repo                                                                               | age (d) |                                                                     issue |
+| ---------------------------------------------------------------------------------- | ------: | ------------------------------------------------------------------------: |
+| [wadhwani-ai/wiai-pm-open-data](https://source.coop/wadhwani-ai/wiai-pm-open-data) |       4 | [#155](https://github.com/source-cooperative/metadata-catalog/issues/155) |
+| [cboettig/usgs-wbd](https://source.coop/cboettig/usgs-wbd)                         |       ? | [#162](https://github.com/source-cooperative/metadata-catalog/issues/162) |
+| [cboettig/padus](https://source.coop/cboettig/padus)                               |       ? | [#161](https://github.com/source-cooperative/metadata-catalog/issues/161) |
+| [cboettig/obis](https://source.coop/cboettig/obis)                                 |       ? | [#160](https://github.com/source-cooperative/metadata-catalog/issues/160) |
+| [cboettig/fire](https://source.coop/cboettig/fire)                                 |       ? | [#159](https://github.com/source-cooperative/metadata-catalog/issues/159) |
+| [cboettig/connectivity](https://source.coop/cboettig/connectivity)                 |       ? | [#158](https://github.com/source-cooperative/metadata-catalog/issues/158) |
 
 </details>
 
@@ -52,19 +64,20 @@ _Updated 2026-08-25 10:47 UTC by the nightly pipeline._
 
 **1 dataset** re-queued every run without progress — each retry fetched the repo's keys and hit the same gap.
 
-| repo          | gap                 | runs | since      | retries                     |
-| ------------- | ------------------- | ---: | ---------- | --------------------------- |
-| cboettig/obis | all_failed .parquet |   21 | 2026-04-24 | backed off until 2026-09-20 |
+| repo                                               | gap                 | runs | since      | retries                     |
+| -------------------------------------------------- | ------------------- | ---: | ---------- | --------------------------- |
+| [cboettig/obis](https://source.coop/cboettig/obis) | all_failed .parquet |   21 | 2026-04-24 | backed off until 2026-09-20 |
 
-## 11 datasets need a prober
+## 12 datasets need a prober
 
 <details><summary>by format — ranked by bytes unlocked if built</summary>
 
-<details><summary>.zip — 4 datasets · 17.9 TB</summary>
+<details><summary>.zip — 5 datasets · 18.0 TB</summary>
 
 | repo                                                                                                                           |   bytes |
 | ------------------------------------------------------------------------------------------------------------------------------ | ------: |
 | [harvard-lil/gov-data](https://source.coop/harvard-lil/gov-data)                                                               | 17.9 TB |
+| [cboettig/usgs-nhd](https://source.coop/cboettig/usgs-nhd)                                                                     | 49.7 GB |
 | [taco/darktom](https://source.coop/taco/darktom)                                                                               |  3.0 GB |
 | [symbotic-computing-lab/chesapeake-land-cover-subset](https://source.coop/symbotic-computing-lab/chesapeake-land-cover-subset) |  2.2 GB |
 | [asterisk-labs/cozip](https://source.coop/asterisk-labs/cozip)                                                                 | 98.5 KB |
@@ -819,128 +832,119 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 
 <details><summary>ghosts (catalog entry, no S3 data) — 50 datasets (29.8 TB)</summary>
 
-| repo                                                            | state   | catalog claims |
-| --------------------------------------------------------------- | ------- | -------------: |
-| agentmorris/lila-wildlife-snapshotserengeti-unzipped            | drafted |         6.1 TB |
-| agentmorris/lila-wildlife-snapshot-safari-2024-expansion        | drafted |         5.0 TB |
-| agentmorris/lila-wildlife-idaho-camera-traps                    | drafted |         3.1 TB |
-| agentmorris/lila-wildlife-swg-camera-traps                      | drafted |         2.8 TB |
-| agentmorris/lila-wildlife-nz-trailcams                          | drafted |         2.1 TB |
-| agentmorris/lila-wildlife-noaa-kotz                             | drafted |         1.7 TB |
-| agentmorris/lila-wildlife-nacti-unzipped                        | drafted |         1.5 TB |
-| agentmorris/lila-wildlife-lcmcvpr2019                           | drafted |       886.7 GB |
-| agentmorris/lila-wildlife-california-small-animals              | drafted |       790.5 GB |
-| agentmorris/lila-wildlife-geolifeclef-2020                      | drafted |       780.3 GB |
-| agentmorris/lila-wildlife-nz-thermal                            | drafted |       677.4 GB |
-| agentmorris/lila-wildlife-wcs-unzipped                          | drafted |       594.6 GB |
-| agentmorris/lila-wildlife-snapshot-safari                       | drafted |       542.3 GB |
-| agentmorris/lila-wildlife-nkhotakota-camera-traps               | drafted |       337.5 GB |
-| agentmorris/lila-wildlife-seattleish-camera-traps               | drafted |       321.2 GB |
-| agentmorris/lila-wildlife-izembek-lagoon-birds                  | drafted |       265.4 GB |
-| agentmorris/lila-wildlife-community-fish-detection-dataset      | drafted |       261.1 GB |
-| agentmorris/lila-wildlife-lindenthal-camera-traps               | drafted |       213.1 GB |
-| agentmorris/lila-wildlife-wni-giraffes                          | drafted |       200.7 GB |
-| agentmorris/lila-wildlife-wellington-unzipped                   | drafted |       198.4 GB |
-| agentmorris/lila-wildlife-channel-islands-camera-traps          | drafted |       186.4 GB |
-| agentmorris/lila-wildlife-islandconservationcameratraps         | drafted |       164.0 GB |
-| agentmorris/lila-wildlife-desert-lion-camera-traps              | drafted |       154.7 GB |
-| agentmorris/lila-wildlife-orinoquia-camera-traps                | drafted |       154.5 GB |
-| agentmorris/lila-wildlife-unsw-predators                        | drafted |       130.4 GB |
-| agentmorris/lila-wildlife-caltech-unzipped                      | drafted |       112.4 GB |
-| agentmorris/lila-wildlife-conservationdrones                    | drafted |        98.3 GB |
-| agentmorris/lila-wildlife-icimod-glacier-mapping                | drafted |        73.9 GB |
-| agentmorris/lila-wildlife-biome-health-project-maasai-mara-2018 | drafted |        64.0 GB |
-| agentmorris/lila-wildlife-boise-state-vegetation                | drafted |        62.9 GB |
-| agentmorris/lila-wildlife-osu-small-animals                     | drafted |        60.8 GB |
-| agentmorris/lila-wildlife-wild-me                               | drafted |        29.6 GB |
-| ftw/financial-times                                             | seed    |        22.8 GB |
-| agentmorris/lila-wildlife-missouricameratraps                   | drafted |        20.5 GB |
-| agentmorris/lila-wildlife-ena24                                 | drafted |         7.8 GB |
-| agentmorris/lila-wildlife-noaa-psnf                             | drafted |         7.7 GB |
-| harvard-lil/duckdb-test                                         | seed    |         5.3 GB |
-| agentmorris/lila-wildlife-cvwc2019                              | drafted |         4.4 GB |
-| dataforcanada/ca-orthoimagery-labs                              | seed    |         4.3 GB |
-| agentmorris/lila-wildlife-larch-casebearer                      | drafted |         3.5 GB |
-| agentmorris/lila-wildlife-aerial-birds-west-africa              | drafted |         2.4 GB |
-| agentmorris/lila-wildlife-boxes-on-bees                         | drafted |         2.1 GB |
-| agentmorris/lila-wildlife-sea-star-re-id                        | drafted |         1.9 GB |
-| tge-labs/tessera                                                | seed    |         1.1 GB |
-| agentmorris/lila-wildlife-uas-imagery-of-migratory-waterfowl    | drafted |       337.8 MB |
-| agentmorris/lila-wildlife-adkres-invasive                       | drafted |       158.7 MB |
-| tge-labs/trazo-fiboa                                            | drafted |        22.1 MB |
-| major-tom/copernicusdem                                         | seed    |        13.1 MB |
-| tge-labs/terrabit                                               | seed    |         6.6 MB |
-| dataforcanada/ca-foundation-labs                                | seed    |        86.9 KB |
+| repo                                                                                                                                                   | state   | catalog claims |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------- | -------------: |
+| [agentmorris/lila-wildlife-snapshotserengeti-unzipped](https://source.coop/agentmorris/lila-wildlife-snapshotserengeti-unzipped)                       | drafted |         6.1 TB |
+| [agentmorris/lila-wildlife-snapshot-safari-2024-expansion](https://source.coop/agentmorris/lila-wildlife-snapshot-safari-2024-expansion)               | drafted |         5.0 TB |
+| [agentmorris/lila-wildlife-idaho-camera-traps](https://source.coop/agentmorris/lila-wildlife-idaho-camera-traps)                                       | drafted |         3.1 TB |
+| [agentmorris/lila-wildlife-swg-camera-traps](https://source.coop/agentmorris/lila-wildlife-swg-camera-traps)                                           | drafted |         2.8 TB |
+| [agentmorris/lila-wildlife-nz-trailcams](https://source.coop/agentmorris/lila-wildlife-nz-trailcams)                                                   | drafted |         2.1 TB |
+| [agentmorris/lila-wildlife-noaa-kotz](https://source.coop/agentmorris/lila-wildlife-noaa-kotz)                                                         | drafted |         1.7 TB |
+| [agentmorris/lila-wildlife-nacti-unzipped](https://source.coop/agentmorris/lila-wildlife-nacti-unzipped)                                               | drafted |         1.5 TB |
+| [agentmorris/lila-wildlife-lcmcvpr2019](https://source.coop/agentmorris/lila-wildlife-lcmcvpr2019)                                                     | drafted |       886.7 GB |
+| [agentmorris/lila-wildlife-california-small-animals](https://source.coop/agentmorris/lila-wildlife-california-small-animals)                           | drafted |       790.5 GB |
+| [agentmorris/lila-wildlife-geolifeclef-2020](https://source.coop/agentmorris/lila-wildlife-geolifeclef-2020)                                           | drafted |       780.3 GB |
+| [agentmorris/lila-wildlife-nz-thermal](https://source.coop/agentmorris/lila-wildlife-nz-thermal)                                                       | drafted |       677.4 GB |
+| [agentmorris/lila-wildlife-wcs-unzipped](https://source.coop/agentmorris/lila-wildlife-wcs-unzipped)                                                   | drafted |       594.6 GB |
+| [agentmorris/lila-wildlife-snapshot-safari](https://source.coop/agentmorris/lila-wildlife-snapshot-safari)                                             | drafted |       542.3 GB |
+| [agentmorris/lila-wildlife-nkhotakota-camera-traps](https://source.coop/agentmorris/lila-wildlife-nkhotakota-camera-traps)                             | drafted |       337.5 GB |
+| [agentmorris/lila-wildlife-seattleish-camera-traps](https://source.coop/agentmorris/lila-wildlife-seattleish-camera-traps)                             | drafted |       321.2 GB |
+| [agentmorris/lila-wildlife-izembek-lagoon-birds](https://source.coop/agentmorris/lila-wildlife-izembek-lagoon-birds)                                   | drafted |       265.4 GB |
+| [agentmorris/lila-wildlife-community-fish-detection-dataset](https://source.coop/agentmorris/lila-wildlife-community-fish-detection-dataset)           | drafted |       261.1 GB |
+| [agentmorris/lila-wildlife-lindenthal-camera-traps](https://source.coop/agentmorris/lila-wildlife-lindenthal-camera-traps)                             | drafted |       213.1 GB |
+| [agentmorris/lila-wildlife-wni-giraffes](https://source.coop/agentmorris/lila-wildlife-wni-giraffes)                                                   | drafted |       200.7 GB |
+| [agentmorris/lila-wildlife-wellington-unzipped](https://source.coop/agentmorris/lila-wildlife-wellington-unzipped)                                     | drafted |       198.4 GB |
+| [agentmorris/lila-wildlife-channel-islands-camera-traps](https://source.coop/agentmorris/lila-wildlife-channel-islands-camera-traps)                   | drafted |       186.4 GB |
+| [agentmorris/lila-wildlife-islandconservationcameratraps](https://source.coop/agentmorris/lila-wildlife-islandconservationcameratraps)                 | drafted |       164.0 GB |
+| [agentmorris/lila-wildlife-desert-lion-camera-traps](https://source.coop/agentmorris/lila-wildlife-desert-lion-camera-traps)                           | drafted |       154.7 GB |
+| [agentmorris/lila-wildlife-orinoquia-camera-traps](https://source.coop/agentmorris/lila-wildlife-orinoquia-camera-traps)                               | drafted |       154.5 GB |
+| [agentmorris/lila-wildlife-unsw-predators](https://source.coop/agentmorris/lila-wildlife-unsw-predators)                                               | drafted |       130.4 GB |
+| [agentmorris/lila-wildlife-caltech-unzipped](https://source.coop/agentmorris/lila-wildlife-caltech-unzipped)                                           | drafted |       112.4 GB |
+| [agentmorris/lila-wildlife-conservationdrones](https://source.coop/agentmorris/lila-wildlife-conservationdrones)                                       | drafted |        98.3 GB |
+| [agentmorris/lila-wildlife-icimod-glacier-mapping](https://source.coop/agentmorris/lila-wildlife-icimod-glacier-mapping)                               | drafted |        73.9 GB |
+| [agentmorris/lila-wildlife-biome-health-project-maasai-mara-2018](https://source.coop/agentmorris/lila-wildlife-biome-health-project-maasai-mara-2018) | drafted |        64.0 GB |
+| [agentmorris/lila-wildlife-boise-state-vegetation](https://source.coop/agentmorris/lila-wildlife-boise-state-vegetation)                               | drafted |        62.9 GB |
+| [agentmorris/lila-wildlife-osu-small-animals](https://source.coop/agentmorris/lila-wildlife-osu-small-animals)                                         | drafted |        60.8 GB |
+| [agentmorris/lila-wildlife-wild-me](https://source.coop/agentmorris/lila-wildlife-wild-me)                                                             | drafted |        29.6 GB |
+| [ftw/financial-times](https://source.coop/ftw/financial-times)                                                                                         | seed    |        22.8 GB |
+| [agentmorris/lila-wildlife-missouricameratraps](https://source.coop/agentmorris/lila-wildlife-missouricameratraps)                                     | drafted |        20.5 GB |
+| [agentmorris/lila-wildlife-ena24](https://source.coop/agentmorris/lila-wildlife-ena24)                                                                 | drafted |         7.8 GB |
+| [agentmorris/lila-wildlife-noaa-psnf](https://source.coop/agentmorris/lila-wildlife-noaa-psnf)                                                         | drafted |         7.7 GB |
+| [harvard-lil/duckdb-test](https://source.coop/harvard-lil/duckdb-test)                                                                                 | seed    |         5.3 GB |
+| [agentmorris/lila-wildlife-cvwc2019](https://source.coop/agentmorris/lila-wildlife-cvwc2019)                                                           | drafted |         4.4 GB |
+| [dataforcanada/ca-orthoimagery-labs](https://source.coop/dataforcanada/ca-orthoimagery-labs)                                                           | seed    |         4.3 GB |
+| [agentmorris/lila-wildlife-larch-casebearer](https://source.coop/agentmorris/lila-wildlife-larch-casebearer)                                           | drafted |         3.5 GB |
+| [agentmorris/lila-wildlife-aerial-birds-west-africa](https://source.coop/agentmorris/lila-wildlife-aerial-birds-west-africa)                           | drafted |         2.4 GB |
+| [agentmorris/lila-wildlife-boxes-on-bees](https://source.coop/agentmorris/lila-wildlife-boxes-on-bees)                                                 | drafted |         2.1 GB |
+| [agentmorris/lila-wildlife-sea-star-re-id](https://source.coop/agentmorris/lila-wildlife-sea-star-re-id)                                               | drafted |         1.9 GB |
+| [tge-labs/tessera](https://source.coop/tge-labs/tessera)                                                                                               | seed    |         1.1 GB |
+| [agentmorris/lila-wildlife-uas-imagery-of-migratory-waterfowl](https://source.coop/agentmorris/lila-wildlife-uas-imagery-of-migratory-waterfowl)       | drafted |       337.8 MB |
+| [agentmorris/lila-wildlife-adkres-invasive](https://source.coop/agentmorris/lila-wildlife-adkres-invasive)                                             | drafted |       158.7 MB |
+| [tge-labs/trazo-fiboa](https://source.coop/tge-labs/trazo-fiboa)                                                                                       | drafted |        22.1 MB |
+| [major-tom/copernicusdem](https://source.coop/major-tom/copernicusdem)                                                                                 | seed    |        13.1 MB |
+| [tge-labs/terrabit](https://source.coop/tge-labs/terrabit)                                                                                             | seed    |         6.6 MB |
+| [dataforcanada/ca-foundation-labs](https://source.coop/dataforcanada/ca-foundation-labs)                                                               | seed    |        86.9 KB |
 
 </details>
 
-<details><summary>stale (catalog bytes ≠ S3; fixed by <code>make process-all</code>) — 63 datasets (1.1 PB)</summary>
+<details><summary>stale (catalog bytes ≠ S3; fixed by <code>make process-all</code>) — 54 datasets (915.5 TB)</summary>
 
-| repo                                                 | updated    |        catalog → S3 |
-| ---------------------------------------------------- | ---------- | ------------------: |
-| bkr/precipradar                                      | 2026-08-23 |     7.0 TB → 7.4 TB |
-| walkthru-earth/opensensor-space                      | 2026-08-23 |     1.5 GB → 1.5 GB |
-| dynamical/noaa-gefs-analysis                         | 2026-08-23 |     1.1 TB → 1.1 TB |
-| dynamical/asos-parquet                               | 2026-08-23 |   20.2 GB → 20.2 GB |
-| dataforcanada/d4c-datapkg-environment-climate-health | 2026-08-23 | 226.9 MB → 239.9 MB |
-| dynamical/noaa-gfs-analysis                          | 2026-08-23 | 655.8 GB → 658.3 GB |
-| bkr/mrms                                             | 2026-08-23 |     6.3 TB → 6.6 TB |
-| dynamical/noaa-mrms-conus-analysis-hourly            | 2026-08-23 | 252.0 GB → 252.4 GB |
-| walkthru-earth/indices                               | 2026-08-23 | 624.8 GB → 638.4 GB |
-| alukach/firesmoke                                    | 2026-08-23 | 907.1 MB → 990.4 MB |
-| dynamical/noaa-hrrr-forecast-48-hour                 | 2026-08-23 |   13.0 TB → 13.0 TB |
-| ausantarctic/ghrsst-mur-v2                           | 2026-08-23 |     4.3 TB → 4.3 TB |
-| dynamical/ecmwf-aifs-single-forecast                 | 2026-08-23 |     2.0 TB → 2.0 TB |
-| dynamical/noaa-gfs-forecast                          | 2026-08-22 |   29.0 TB → 29.1 TB |
-| dynamical/dwd-icon-grib                              | 2026-08-22 |   46.9 TB → 48.5 TB |
-| giswqs/opengeos                                      | 2026-08-22 |   19.2 GB → 19.2 GB |
-| root-geospatial/flight-tracks                        | 2026-08-22 |     1.5 TB → 1.5 TB |
-| portolan/portolan-pipeline                           | 2026-08-22 |   45.4 MB → 86.1 MB |
-| smartmaps/japan-geotiff-dem                          | 2026-08-22 | 334.0 GB → 376.7 GB |
-| tristangruppwri/mapbiomas                            | 2026-08-22 |    3.1 GB → 14.7 GB |
-| bkr/silam-dust                                       | 2026-08-22 |   25.9 TB → 26.1 TB |
-| source/metadata-catalog                              | 2026-08-22 |     4.4 MB → 5.3 MB |
-| dynamical/ecmwf-ifs-ens-forecast-15-day-0-25-degree  | 2026-08-22 |   48.4 TB → 48.7 TB |
-| bkr/dmi                                              | 2026-08-22 |   24.7 TB → 25.4 TB |
-| harvard-lil/smithsonian-open-access                  | 2026-08-21 | 851.0 TB → 851.1 TB |
-| planet/disasterdata                                  | 2026-08-20 |  88.8 GB → 155.1 GB |
-| earthgenome/storm-events-db                          | 2026-08-20 | 373.7 MB → 373.7 MB |
-| earthgenome/amazon-mining-watch                      | 2026-08-20 |     3.3 GB → 1.8 GB |
-| tristangruppwri/cadastral                            | 2026-08-20 |     3.6 GB → 3.6 GB |
-| tristangruppwri/soft-commodity-infrastructure        | 2026-08-20 |   14.4 MB → 13.9 MB |
-| cboettig/wetlands                                    | 2026-08-20 | 190.7 GB → 109.7 GB |
-| cboettig/usgs-wbd                                    | 2026-08-20 |   15.2 GB → 12.1 GB |
-| cboettig/usgs-nhd                                    | 2026-08-20 |  149.1 GB → 49.7 GB |
-| cboettig/usfws                                       | 2026-08-20 | 447.2 MB → 330.2 MB |
-| cboettig/trails                                      | 2026-08-20 | 923.5 MB → 542.2 MB |
-| cboettig/social-vulnerability                        | 2026-08-20 |   13.3 GB → 13.0 GB |
-| cboettig/rivers                                      | 2026-08-20 |     4.0 GB → 2.7 GB |
-| cboettig/rap                                         | 2026-08-20 |  140.4 GB → 63.4 GB |
-| cboettig/padus                                       | 2026-08-20 |   46.7 GB → 35.2 GB |
-| cboettig/overturemaps                                | 2026-08-20 |   69.8 GB → 64.6 GB |
-| cboettig/mappinginequality                           | 2026-08-20 |   32.7 MB → 28.2 MB |
-| cboettig/land-cover                                  | 2026-08-20 | 249.7 GB → 221.3 GB |
-| cboettig/indigenous                                  | 2026-08-20 |   22.8 GB → 20.2 GB |
-| cboettig/inat                                        | 2026-08-20 |    13.1 GB → 6.5 GB |
-| cboettig/high-seas                                   | 2026-08-20 |   40.5 GB → 47.3 GB |
-| cboettig/hazard                                      | 2026-08-20 |   40.7 GB → 40.7 GB |
-| cboettig/gfw                                         | 2026-08-20 |     2.8 GB → 1.7 GB |
-| cboettig/gbif                                        | 2026-08-20 | 169.0 GB → 169.0 GB |
-| cboettig/fire                                        | 2026-08-20 |     6.7 GB → 3.2 GB |
-| cboettig/facts                                       | 2026-08-20 |   22.7 GB → 15.1 GB |
-| cboettig/epa-water                                   | 2026-08-20 |     2.8 GB → 1.6 GB |
-| cboettig/ecoregion                                   | 2026-08-20 |     3.3 GB → 3.3 GB |
-| cboettig/cpad                                        | 2026-08-20 |     1.4 GB → 1.4 GB |
-| cboettig/connectivity                                | 2026-08-20 |   1.5 GB → 222.7 MB |
-| cboettig/cgs                                         | 2026-08-20 | 228.4 MB → 135.2 MB |
-| cboettig/census                                      | 2026-08-20 |   44.3 GB → 42.8 GB |
-| cboettig/ca-dac                                      | 2026-08-20 |     1.6 GB → 1.4 GB |
-| smartmaps/cogenerate                                 | 2026-08-19 | 415.7 GB → 427.7 GB |
-| hdx/cod-ab                                           | 2026-08-19 |   26.6 GB → 27.3 GB |
-| englacial/zagg                                       | 2026-08-19 |   1.5 GB → 358.8 GB |
-| cboettig/fishbase                                    | 2026-08-18 |     4.1 GB → 4.3 GB |
-| bkr/geos                                             | 2026-08-16 |   39.0 TB → 39.0 TB |
-| bkr/ifs                                              | 2026-08-16 |   37.1 TB → 37.3 TB |
+| repo                                                                                                                             | updated    |        catalog → S3 |
+| -------------------------------------------------------------------------------------------------------------------------------- | ---------- | ------------------: |
+| [walkthru-earth/opensensor-space](https://source.coop/walkthru-earth/opensensor-space)                                           | 2026-08-23 |     1.5 GB → 1.5 GB |
+| [dynamical/noaa-gefs-analysis](https://source.coop/dynamical/noaa-gefs-analysis)                                                 | 2026-08-23 |     1.1 TB → 1.1 TB |
+| [dynamical/asos-parquet](https://source.coop/dynamical/asos-parquet)                                                             | 2026-08-23 |   20.2 GB → 20.2 GB |
+| [dataforcanada/d4c-datapkg-environment-climate-health](https://source.coop/dataforcanada/d4c-datapkg-environment-climate-health) | 2026-08-23 | 226.9 MB → 239.9 MB |
+| [dynamical/noaa-gfs-analysis](https://source.coop/dynamical/noaa-gfs-analysis)                                                   | 2026-08-23 | 655.8 GB → 658.3 GB |
+| [dynamical/noaa-mrms-conus-analysis-hourly](https://source.coop/dynamical/noaa-mrms-conus-analysis-hourly)                       | 2026-08-23 | 252.0 GB → 252.4 GB |
+| [walkthru-earth/indices](https://source.coop/walkthru-earth/indices)                                                             | 2026-08-23 | 624.8 GB → 638.4 GB |
+| [alukach/firesmoke](https://source.coop/alukach/firesmoke)                                                                       | 2026-08-23 | 907.1 MB → 990.4 MB |
+| [dynamical/noaa-hrrr-forecast-48-hour](https://source.coop/dynamical/noaa-hrrr-forecast-48-hour)                                 | 2026-08-23 |   13.0 TB → 13.0 TB |
+| [ausantarctic/ghrsst-mur-v2](https://source.coop/ausantarctic/ghrsst-mur-v2)                                                     | 2026-08-23 |     4.3 TB → 4.3 TB |
+| [dynamical/ecmwf-aifs-single-forecast](https://source.coop/dynamical/ecmwf-aifs-single-forecast)                                 | 2026-08-23 |     2.0 TB → 2.0 TB |
+| [giswqs/opengeos](https://source.coop/giswqs/opengeos)                                                                           | 2026-08-22 |   19.2 GB → 19.2 GB |
+| [root-geospatial/flight-tracks](https://source.coop/root-geospatial/flight-tracks)                                               | 2026-08-22 |     1.5 TB → 1.5 TB |
+| [portolan/portolan-pipeline](https://source.coop/portolan/portolan-pipeline)                                                     | 2026-08-22 |   45.4 MB → 86.1 MB |
+| [smartmaps/japan-geotiff-dem](https://source.coop/smartmaps/japan-geotiff-dem)                                                   | 2026-08-22 | 334.0 GB → 376.7 GB |
+| [tristangruppwri/mapbiomas](https://source.coop/tristangruppwri/mapbiomas)                                                       | 2026-08-22 |    3.1 GB → 14.7 GB |
+| [source/metadata-catalog](https://source.coop/source/metadata-catalog)                                                           | 2026-08-22 |     4.4 MB → 5.3 MB |
+| [harvard-lil/smithsonian-open-access](https://source.coop/harvard-lil/smithsonian-open-access)                                   | 2026-08-21 | 851.0 TB → 851.1 TB |
+| [planet/disasterdata](https://source.coop/planet/disasterdata)                                                                   | 2026-08-20 |  88.8 GB → 155.1 GB |
+| [earthgenome/storm-events-db](https://source.coop/earthgenome/storm-events-db)                                                   | 2026-08-20 | 373.7 MB → 373.7 MB |
+| [earthgenome/amazon-mining-watch](https://source.coop/earthgenome/amazon-mining-watch)                                           | 2026-08-20 |     3.3 GB → 1.8 GB |
+| [tristangruppwri/cadastral](https://source.coop/tristangruppwri/cadastral)                                                       | 2026-08-20 |     3.6 GB → 3.6 GB |
+| [tristangruppwri/soft-commodity-infrastructure](https://source.coop/tristangruppwri/soft-commodity-infrastructure)               | 2026-08-20 |   14.4 MB → 13.9 MB |
+| [cboettig/wetlands](https://source.coop/cboettig/wetlands)                                                                       | 2026-08-20 | 190.7 GB → 109.7 GB |
+| [cboettig/usgs-wbd](https://source.coop/cboettig/usgs-wbd)                                                                       | 2026-08-20 |   15.2 GB → 12.1 GB |
+| [cboettig/usgs-nhd](https://source.coop/cboettig/usgs-nhd)                                                                       | 2026-08-20 |  149.1 GB → 49.7 GB |
+| [cboettig/usfws](https://source.coop/cboettig/usfws)                                                                             | 2026-08-20 | 447.2 MB → 330.2 MB |
+| [cboettig/trails](https://source.coop/cboettig/trails)                                                                           | 2026-08-20 | 923.5 MB → 542.2 MB |
+| [cboettig/social-vulnerability](https://source.coop/cboettig/social-vulnerability)                                               | 2026-08-20 |   13.3 GB → 13.0 GB |
+| [cboettig/rivers](https://source.coop/cboettig/rivers)                                                                           | 2026-08-20 |     4.0 GB → 2.7 GB |
+| [cboettig/rap](https://source.coop/cboettig/rap)                                                                                 | 2026-08-20 |  140.4 GB → 63.4 GB |
+| [cboettig/padus](https://source.coop/cboettig/padus)                                                                             | 2026-08-20 |   46.7 GB → 35.2 GB |
+| [cboettig/overturemaps](https://source.coop/cboettig/overturemaps)                                                               | 2026-08-20 |   69.8 GB → 64.6 GB |
+| [cboettig/mappinginequality](https://source.coop/cboettig/mappinginequality)                                                     | 2026-08-20 |   32.7 MB → 28.2 MB |
+| [cboettig/land-cover](https://source.coop/cboettig/land-cover)                                                                   | 2026-08-20 | 249.7 GB → 221.3 GB |
+| [cboettig/indigenous](https://source.coop/cboettig/indigenous)                                                                   | 2026-08-20 |   22.8 GB → 20.2 GB |
+| [cboettig/inat](https://source.coop/cboettig/inat)                                                                               | 2026-08-20 |    13.1 GB → 6.5 GB |
+| [cboettig/high-seas](https://source.coop/cboettig/high-seas)                                                                     | 2026-08-20 |   40.5 GB → 47.3 GB |
+| [cboettig/hazard](https://source.coop/cboettig/hazard)                                                                           | 2026-08-20 |   40.7 GB → 40.7 GB |
+| [cboettig/gfw](https://source.coop/cboettig/gfw)                                                                                 | 2026-08-20 |     2.8 GB → 1.7 GB |
+| [cboettig/gbif](https://source.coop/cboettig/gbif)                                                                               | 2026-08-20 | 169.0 GB → 169.0 GB |
+| [cboettig/fire](https://source.coop/cboettig/fire)                                                                               | 2026-08-20 |     6.7 GB → 3.2 GB |
+| [cboettig/facts](https://source.coop/cboettig/facts)                                                                             | 2026-08-20 |   22.7 GB → 15.1 GB |
+| [cboettig/epa-water](https://source.coop/cboettig/epa-water)                                                                     | 2026-08-20 |     2.8 GB → 1.6 GB |
+| [cboettig/ecoregion](https://source.coop/cboettig/ecoregion)                                                                     | 2026-08-20 |     3.3 GB → 3.3 GB |
+| [cboettig/cpad](https://source.coop/cboettig/cpad)                                                                               | 2026-08-20 |     1.4 GB → 1.4 GB |
+| [cboettig/connectivity](https://source.coop/cboettig/connectivity)                                                               | 2026-08-20 |   1.5 GB → 222.7 MB |
+| [cboettig/cgs](https://source.coop/cboettig/cgs)                                                                                 | 2026-08-20 | 228.4 MB → 135.2 MB |
+| [cboettig/census](https://source.coop/cboettig/census)                                                                           | 2026-08-20 |   44.3 GB → 42.8 GB |
+| [cboettig/ca-dac](https://source.coop/cboettig/ca-dac)                                                                           | 2026-08-20 |     1.6 GB → 1.4 GB |
+| [smartmaps/cogenerate](https://source.coop/smartmaps/cogenerate)                                                                 | 2026-08-19 | 415.7 GB → 427.7 GB |
+| [hdx/cod-ab](https://source.coop/hdx/cod-ab)                                                                                     | 2026-08-19 |   26.6 GB → 27.3 GB |
+| [cboettig/fishbase](https://source.coop/cboettig/fishbase)                                                                       | 2026-08-18 |     4.1 GB → 4.3 GB |
+| [bkr/geos](https://source.coop/bkr/geos)                                                                                         | 2026-08-16 |   39.0 TB → 39.0 TB |
 
 </details>
 
