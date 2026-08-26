@@ -1,62 +1,32 @@
 # Source Cooperative catalog — status
 
-_Updated 2026-08-26 09:04 UTC by the nightly pipeline._
+_Updated 2026-08-26 22:37 UTC by the nightly pipeline._
 
-**403 datasets cataloged**  ·  **48 queued for next run**  ·  last run handled **10**
+**403 datasets cataloged**  ·  **1 queued for next run**  ·  last run handled **0**
 
-## Last run
-
-<details><summary>✅ drafted — 9 datasets</summary>
-
-| repo                                                                                                                           |
-| ------------------------------------------------------------------------------------------------------------------------------ |
-| [bkr/dmi](https://source.coop/bkr/dmi)                                                                                         |
-| [bkr/ifs](https://source.coop/bkr/ifs)                                                                                         |
-| [bkr/mrms](https://source.coop/bkr/mrms)                                                                                       |
-| [bkr/precipradar](https://source.coop/bkr/precipradar)                                                                         |
-| [bkr/silam-dust](https://source.coop/bkr/silam-dust)                                                                           |
-| [dynamical/dwd-icon-grib](https://source.coop/dynamical/dwd-icon-grib)                                                         |
-| [dynamical/ecmwf-ifs-ens-forecast-15-day-0-25-degree](https://source.coop/dynamical/ecmwf-ifs-ens-forecast-15-day-0-25-degree) |
-| [dynamical/noaa-gfs-forecast](https://source.coop/dynamical/noaa-gfs-forecast)                                                 |
-| [englacial/zagg](https://source.coop/englacial/zagg)                                                                           |
-
-</details>
-
-<details><summary>⏭️ incomplete (gap) — 1 dataset</summary>
-
-| repo                                                       | why           |
-| ---------------------------------------------------------- | ------------- |
-| [cboettig/usgs-nhd](https://source.coop/cboettig/usgs-nhd) | no_probe .zip |
-
-</details>
-
+_No datasets processed in the last run (no new work since the previous snapshot)._
 
 ## Recent runs
 
 | run                                                                                                    | outcome   | drafted | failed | queued | cataloged |
 | ------------------------------------------------------------------------------------------------------ | --------- | ------: | -----: | -----: | --------: |
+| [2026-08-26](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/33016907154) | ✅ success |       0 |      0 |      1 |       403 |
 | [2026-08-26](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/32948543871) | ✅ success |       9 |      0 |     48 |       403 |
 | [2026-08-25](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/32827398611) | ✅ success |      10 |      0 |     62 |       403 |
 | [2026-08-25](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/32792519265) | ❌ failure |       0 |      0 |   None |       397 |
 | [2026-08-24](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/32781490743) | ❌ failure |     345 |      7 |   None |       397 |
 | [2026-08-24](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/32707149190) | ❌ failure |     345 |      7 |   None |       397 |
 | [2026-08-23](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/32628587308) | ✅ success |       0 |      0 |      0 |       397 |
-| [2026-08-22](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/32562606294) | ✅ success |       1 |      0 |      0 |       397 |
 
 ## Persistent failures
 
-**6 datasets failing**  ·  6 open issues  ·  oldest **4d**  ·  **0** ≥30d  ·  [all open issues](https://github.com/source-cooperative/metadata-catalog/issues?q=is%3Aissue+is%3Aopen+label%3Aprobe-failure)
+**1 dataset failing**  ·  1 open issue  ·  oldest **4d**  ·  **0** ≥30d  ·  [all open issues](https://github.com/source-cooperative/metadata-catalog/issues?q=is%3Aissue+is%3Aopen+label%3Aprobe-failure)
 
-<details><summary>the 6 open issues, oldest first</summary>
+<details><summary>the 1 open issues, oldest first</summary>
 
 | repo                                                                               | age (d) |                                                                     issue |
 | ---------------------------------------------------------------------------------- | ------: | ------------------------------------------------------------------------: |
 | [wadhwani-ai/wiai-pm-open-data](https://source.coop/wadhwani-ai/wiai-pm-open-data) |       4 | [#155](https://github.com/source-cooperative/metadata-catalog/issues/155) |
-| [cboettig/usgs-wbd](https://source.coop/cboettig/usgs-wbd)                         |       ? | [#162](https://github.com/source-cooperative/metadata-catalog/issues/162) |
-| [cboettig/padus](https://source.coop/cboettig/padus)                               |       ? | [#161](https://github.com/source-cooperative/metadata-catalog/issues/161) |
-| [cboettig/obis](https://source.coop/cboettig/obis)                                 |       ? | [#160](https://github.com/source-cooperative/metadata-catalog/issues/160) |
-| [cboettig/fire](https://source.coop/cboettig/fire)                                 |       ? | [#159](https://github.com/source-cooperative/metadata-catalog/issues/159) |
-| [cboettig/connectivity](https://source.coop/cboettig/connectivity)                 |       ? | [#158](https://github.com/source-cooperative/metadata-catalog/issues/158) |
 
 </details>
 
