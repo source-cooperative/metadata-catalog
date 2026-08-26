@@ -1,32 +1,34 @@
 # Source Cooperative catalog — status
 
-_Updated 2026-08-26 22:41 UTC by the nightly pipeline._
+_Updated 2026-08-26 23:28 UTC by the nightly pipeline._
 
-**403 datasets cataloged**  ·  **1 queued for next run**  ·  last run handled **0**
+**403 datasets cataloged**  ·  _queue not ranked_  ·  last run handled **0**
 
 _No datasets processed in the last run (no new work since the previous snapshot)._
 
+> ⚠️ **Last run cancelled** (2026-08-26) — [run log](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/33023409593). Figures below are from the last *successful* run.
+
 ## Recent runs
 
-| run                                                                                                    | outcome   | drafted | failed | queued | cataloged |
-| ------------------------------------------------------------------------------------------------------ | --------- | ------: | -----: | -----: | --------: |
-| [2026-08-26](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/33020335868) | ✅ success |       0 |      0 |      1 |       403 |
-| [2026-08-26](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/33016907154) | ✅ success |       0 |      0 |      1 |       403 |
-| [2026-08-26](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/32948543871) | ✅ success |       9 |      0 |     48 |       403 |
-| [2026-08-25](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/32827398611) | ✅ success |      10 |      0 |     62 |       403 |
-| [2026-08-25](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/32792519265) | ❌ failure |       0 |      0 |   None |       397 |
-| [2026-08-24](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/32781490743) | ❌ failure |     345 |      7 |   None |       397 |
-| [2026-08-24](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/32707149190) | ❌ failure |     345 |      7 |   None |       397 |
+| run                                                                                                    | outcome     | drafted | failed | queued | cataloged |
+| ------------------------------------------------------------------------------------------------------ | ----------- | ------: | -----: | -----: | --------: |
+| [2026-08-26](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/33023409593) | ❌ cancelled |       0 |      0 |   None |       403 |
+| [2026-08-26](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/33020335868) | ✅ success   |       0 |      0 |      1 |       403 |
+| [2026-08-26](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/33016907154) | ✅ success   |       0 |      0 |      1 |       403 |
+| [2026-08-26](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/32948543871) | ✅ success   |       9 |      0 |     48 |       403 |
+| [2026-08-25](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/32827398611) | ✅ success   |      10 |      0 |     62 |       403 |
+| [2026-08-25](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/32792519265) | ❌ failure   |       0 |      0 |   None |       397 |
+| [2026-08-24](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/32781490743) | ❌ failure   |     345 |      7 |   None |       397 |
 
 ## Persistent failures
 
-**1 dataset failing**  ·  1 open issue  ·  oldest **4d**  ·  **0** ≥30d  ·  [all open issues](https://github.com/source-cooperative/metadata-catalog/issues?q=is%3Aissue+is%3Aopen+label%3Aprobe-failure)
+**1 dataset failing**  ·  1 open issue  ·  oldest **5d**  ·  **0** ≥30d  ·  [all open issues](https://github.com/source-cooperative/metadata-catalog/issues?q=is%3Aissue+is%3Aopen+label%3Aprobe-failure)
 
 <details><summary>the 1 open issues, oldest first</summary>
 
 | repo                                                                               | age (d) |                                                                     issue |
 | ---------------------------------------------------------------------------------- | ------: | ------------------------------------------------------------------------: |
-| [wadhwani-ai/wiai-pm-open-data](https://source.coop/wadhwani-ai/wiai-pm-open-data) |       4 | [#155](https://github.com/source-cooperative/metadata-catalog/issues/155) |
+| [wadhwani-ai/wiai-pm-open-data](https://source.coop/wadhwani-ai/wiai-pm-open-data) |       5 | [#155](https://github.com/source-cooperative/metadata-catalog/issues/155) |
 
 </details>
 
@@ -917,43 +919,4 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 | [bkr/geos](https://source.coop/bkr/geos)                                                                                         | 2026-08-16 |   39.0 TB → 39.0 TB |
 
 </details>
-
-## Upload activity
-
-_Live objects by upload date, from the 2026-08-23 inventory snapshot (`make activity` refreshes)._
-
-### Top uploaders (30 days, 2026-07-25 to 2026-08-23)
-| account                                            | uploaded |      files | repos | % of bytes |
-| -------------------------------------------------- | -------: | ---------: | ----: | ---------: |
-| [tessera](https://source.coop/tessera)             |   1.0 PB | 21,372,314 |     1 |      71.5% |
-| [bkr](https://source.coop/bkr)                     | 108.5 TB | 33,448,831 |    11 |       7.6% |
-| [dynamical](https://source.coop/dynamical)         | 102.3 TB | 11,614,757 |    13 |       7.2% |
-| [geoai-ucph](https://source.coop/geoai-ucph)       | 101.7 TB |  1,822,779 |     1 |       7.1% |
-| [mvrl](https://source.coop/mvrl)                   |  53.5 TB |    280,577 |     1 |       3.8% |
-| [tge-labs](https://source.coop/tge-labs)           |  15.7 TB |    272,209 |     3 |       1.1% |
-| [carbonplan](https://source.coop/carbonplan)       |   8.7 TB |     39,974 |     2 |       0.6% |
-| [harvard-lil](https://source.coop/harvard-lil)     |   6.0 TB |  2,513,968 |     4 |       0.4% |
-| [e4drr-project](https://source.coop/e4drr-project) |   5.0 TB |  1,774,933 |     1 |       0.4% |
-| [uos-shiver](https://source.coop/uos-shiver)       |   1.4 TB |  2,635,861 |     2 |       0.1% |
-| **top 10 total**                                   |   1.4 PB | 75,776,203 |    39 |      99.8% |
-| **other 36 accounts**                              |   2.6 TB |  3,979,987 |    91 |       0.2% |
-| **all 46 accounts**                                |   1.4 PB | 79,756,190 |   130 |     100.0% |
-
-_130 repos — 35 new (166.7 TB), 95 updated (1.3 PB)_
-
-### By month (last 12)
-| month   | accounts | repos | new repos | uploaded | into new repos |
-| ------- | -------: | ----: | --------: | -------: | -------------: |
-| 2026-08 |       40 |   120 |        20 |   1.3 PB |       102.0 TB |
-| 2026-07 |       44 |   114 |        42 | 772.1 TB |        31.9 TB |
-| 2026-06 |       47 |   118 |        64 | 465.2 TB |       306.0 TB |
-| 2026-05 |       44 |    78 |        24 | 256.6 TB |        57.6 TB |
-| 2026-04 |       37 |    77 |        30 | 260.2 TB |       211.9 TB |
-| 2026-03 |       23 |    63 |        26 | 905.7 TB |       689.9 TB |
-| 2026-02 |       28 |    54 |        21 | 580.8 TB |       436.4 TB |
-| 2026-01 |       24 |    49 |        17 | 139.6 TB |        16.4 TB |
-| 2025-12 |       23 |    35 |         9 | 144.7 TB |        85.2 GB |
-| 2025-11 |       20 |    37 |        17 |   1.4 PB |         1.3 PB |
-| 2025-10 |       16 |    36 |        20 |  68.2 TB |        47.5 TB |
-| 2025-09 |       10 |    16 |         8 |  35.3 TB |        32.2 TB |
 
