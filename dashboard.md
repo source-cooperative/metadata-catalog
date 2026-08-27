@@ -1,24 +1,40 @@
 # Source Cooperative catalog — status
 
-_Updated 2026-08-26 23:28 UTC by the nightly pipeline._
+_Updated 2026-08-27 12:08 UTC by the nightly pipeline._
 
-**403 datasets cataloged**  ·  _queue not ranked_  ·  last run handled **0**
+**402 datasets cataloged**  ·  **52 queued for next run**  ·  last run handled **10**
 
-_No datasets processed in the last run (no new work since the previous snapshot)._
+## Last run
 
-> ⚠️ **Last run cancelled** (2026-08-26) — [run log](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/33023409593). Figures below are from the last *successful* run.
+<details><summary>✅ drafted — 10 datasets</summary>
+
+| repo                                                                     |
+| ------------------------------------------------------------------------ |
+| [cboettig/wetlands](https://source.coop/cboettig/wetlands)               |
+| [cholmes/nyc-taxi-zones](https://source.coop/cholmes/nyc-taxi-zones)     |
+| [fiboa/at-crop](https://source.coop/fiboa/at-crop)                       |
+| [geographyis/wb-gad](https://source.coop/geographyis/wb-gad)             |
+| [giswqs/depressions](https://source.coop/giswqs/depressions)             |
+| [giswqs/giw](https://source.coop/giswqs/giw)                             |
+| [giswqs/nwi](https://source.coop/giswqs/nwi)                             |
+| [giswqs/playa](https://source.coop/giswqs/playa)                         |
+| [krishnaglodha/ksrsac-gis](https://source.coop/krishnaglodha/ksrsac-gis) |
+| [planet/rapidcrops](https://source.coop/planet/rapidcrops)               |
+
+</details>
+
 
 ## Recent runs
 
 | run                                                                                                    | outcome     | drafted | failed | queued | cataloged |
 | ------------------------------------------------------------------------------------------------------ | ----------- | ------: | -----: | -----: | --------: |
+| [2026-08-27](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/33069036341) | ✅ success   |      10 |      0 |     52 |       402 |
 | [2026-08-26](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/33023409593) | ❌ cancelled |       0 |      0 |   None |       403 |
 | [2026-08-26](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/33020335868) | ✅ success   |       0 |      0 |      1 |       403 |
 | [2026-08-26](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/33016907154) | ✅ success   |       0 |      0 |      1 |       403 |
 | [2026-08-26](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/32948543871) | ✅ success   |       9 |      0 |     48 |       403 |
 | [2026-08-25](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/32827398611) | ✅ success   |      10 |      0 |     62 |       403 |
 | [2026-08-25](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/32792519265) | ❌ failure   |       0 |      0 |   None |       397 |
-| [2026-08-24](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/32781490743) | ❌ failure   |     345 |      7 |   None |       397 |
 
 ## Persistent failures
 
@@ -40,7 +56,7 @@ _No datasets processed in the last run (no new work since the previous snapshot)
 | -------------------------------------------------- | ------------------- | ---: | ---------- | --------------------------- |
 | [cboettig/obis](https://source.coop/cboettig/obis) | all_failed .parquet |   21 | 2026-04-24 | backed off until 2026-09-20 |
 
-## 12 datasets need a prober
+## 13 datasets need a prober
 
 <details><summary>by format — ranked by bytes unlocked if built</summary>
 
@@ -81,6 +97,14 @@ _No datasets processed in the last run (no new work since the previous snapshot)
 | [youssef-harby/overture-maps-stac](https://source.coop/youssef-harby/overture-maps-stac)           | 718.0 KB |
 | [fish-pace/chla-z](https://source.coop/fish-pace/chla-z)                                           |  12.0 KB |
 | [cboettig/glen](https://source.coop/cboettig/glen)                                                 |  10.9 KB |
+
+</details>
+
+<details><summary>(no format) — 1 dataset · 75.7 MB</summary>
+
+| repo                                                                   |   bytes |
+| ---------------------------------------------------------------------- | ------: |
+| [pangeo/geozarr-examples](https://source.coop/pangeo/geozarr-examples) | 75.7 MB |
 
 </details>
 
@@ -859,7 +883,7 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 
 </details>
 
-<details><summary>stale (catalog bytes ≠ S3; fixed by <code>make process-all</code>) — 54 datasets (915.5 TB)</summary>
+<details><summary>stale (catalog bytes ≠ S3; fixed by <code>make process-all</code>) — 53 datasets (915.4 TB)</summary>
 
 | repo                                                                                                                             | updated    |        catalog → S3 |
 | -------------------------------------------------------------------------------------------------------------------------------- | ---------- | ------------------: |
@@ -886,7 +910,6 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 | [earthgenome/amazon-mining-watch](https://source.coop/earthgenome/amazon-mining-watch)                                           | 2026-08-20 |     3.3 GB → 1.8 GB |
 | [tristangruppwri/cadastral](https://source.coop/tristangruppwri/cadastral)                                                       | 2026-08-20 |     3.6 GB → 3.6 GB |
 | [tristangruppwri/soft-commodity-infrastructure](https://source.coop/tristangruppwri/soft-commodity-infrastructure)               | 2026-08-20 |   14.4 MB → 13.9 MB |
-| [cboettig/wetlands](https://source.coop/cboettig/wetlands)                                                                       | 2026-08-20 | 190.7 GB → 109.7 GB |
 | [cboettig/usgs-wbd](https://source.coop/cboettig/usgs-wbd)                                                                       | 2026-08-20 |   15.2 GB → 12.1 GB |
 | [cboettig/usgs-nhd](https://source.coop/cboettig/usgs-nhd)                                                                       | 2026-08-20 |  149.1 GB → 49.7 GB |
 | [cboettig/usfws](https://source.coop/cboettig/usfws)                                                                             | 2026-08-20 | 447.2 MB → 330.2 MB |
@@ -919,4 +942,43 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 | [bkr/geos](https://source.coop/bkr/geos)                                                                                         | 2026-08-16 |   39.0 TB → 39.0 TB |
 
 </details>
+
+## Upload activity
+
+_Live objects by upload date, from the 2026-08-23 inventory snapshot (`make activity` refreshes)._
+
+### Top uploaders (30 days, 2026-07-25 to 2026-08-23)
+| account                                            | uploaded |      files | repos | % of bytes |
+| -------------------------------------------------- | -------: | ---------: | ----: | ---------: |
+| [tessera](https://source.coop/tessera)             |   1.0 PB | 21,372,314 |     1 |      71.5% |
+| [bkr](https://source.coop/bkr)                     | 108.5 TB | 33,448,831 |    11 |       7.6% |
+| [dynamical](https://source.coop/dynamical)         | 102.3 TB | 11,614,757 |    13 |       7.2% |
+| [geoai-ucph](https://source.coop/geoai-ucph)       | 101.7 TB |  1,822,779 |     1 |       7.1% |
+| [mvrl](https://source.coop/mvrl)                   |  53.5 TB |    280,577 |     1 |       3.8% |
+| [tge-labs](https://source.coop/tge-labs)           |  15.7 TB |    272,209 |     3 |       1.1% |
+| [carbonplan](https://source.coop/carbonplan)       |   8.7 TB |     39,974 |     2 |       0.6% |
+| [harvard-lil](https://source.coop/harvard-lil)     |   6.0 TB |  2,513,968 |     4 |       0.4% |
+| [e4drr-project](https://source.coop/e4drr-project) |   5.0 TB |  1,774,933 |     1 |       0.4% |
+| [uos-shiver](https://source.coop/uos-shiver)       |   1.4 TB |  2,635,861 |     2 |       0.1% |
+| **top 10 total**                                   |   1.4 PB | 75,776,203 |    39 |      99.8% |
+| **other 36 accounts**                              |   2.6 TB |  3,979,987 |    91 |       0.2% |
+| **all 46 accounts**                                |   1.4 PB | 79,756,190 |   130 |     100.0% |
+
+_130 repos — 35 new (166.7 TB), 95 updated (1.3 PB)_
+
+### By month (last 12)
+| month   | accounts | repos | new repos | uploaded | into new repos |
+| ------- | -------: | ----: | --------: | -------: | -------------: |
+| 2026-08 |       40 |   120 |        20 |   1.3 PB |       102.0 TB |
+| 2026-07 |       44 |   114 |        42 | 772.1 TB |        31.9 TB |
+| 2026-06 |       47 |   118 |        64 | 465.2 TB |       306.0 TB |
+| 2026-05 |       44 |    78 |        24 | 256.6 TB |        57.6 TB |
+| 2026-04 |       37 |    77 |        30 | 260.2 TB |       211.9 TB |
+| 2026-03 |       23 |    63 |        26 | 905.7 TB |       689.9 TB |
+| 2026-02 |       28 |    54 |        21 | 580.8 TB |       436.4 TB |
+| 2026-01 |       24 |    49 |        17 | 139.6 TB |        16.4 TB |
+| 2025-12 |       23 |    35 |         9 | 144.7 TB |        85.2 GB |
+| 2025-11 |       20 |    37 |        17 |   1.4 PB |         1.3 PB |
+| 2025-10 |       16 |    36 |        20 |  68.2 TB |        47.5 TB |
+| 2025-09 |       10 |    16 |         8 |  35.3 TB |        32.2 TB |
 
