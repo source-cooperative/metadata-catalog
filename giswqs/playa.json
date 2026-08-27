@@ -1,22 +1,556 @@
 {
   "schema_version": 1,
-  "account_id": "giswqs",
-  "product_id": "playa",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
+  "id": "giswqs/playa",
   "title": "Playa Wetlands",
-  "description": "Geospatial dataset of playa wetlands\u2014shallow, seasonal water bodies characteristic of arid and semi-arid regions. Contains over 5 million features across multiple file formats including parquet, GeoPackage, and PMTiles.",
+  "description": "A compilation of playa wetland datasets for the United States, covering shallow, seasonal water bodies typical of arid and semi-arid regions. It combines watershed boundary (HUC8), National Wetlands Inventory, conservation easement, and derived playa morphometry (area, volume, depth) layers spanning over 5 million features, distributed as GeoPackage, GeoParquet, and PMTiles.",
   "keywords": [
     "wetlands",
     "biodiversity",
-    "land-use",
-    "water-bodies",
-    "arid-lands"
+    "playas",
+    "hydrology",
+    "conservation",
+    "administrative-boundaries",
+    "geoparquet",
+    "pmtiles"
   ],
-  "created_at": "2026-02-04T16:58:42.487Z",
-  "updated_at": "2026-02-04T16:58:42.487Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
+  "providers": [
+    {
+      "name": "U.S. Geological Survey",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "U.S. Fish and Wildlife Service",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "USDA Natural Resources Conservation Service",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/giswqs/playa"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -159.33266,
+          21.09291,
+          -62.9893881,
+          64.8957781
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 5092209
+  },
+  "assets": {
+    "WBDHU8": {
+      "href": "https://data.source.coop/giswqs/playa/WBDHU8.gpkg",
+      "type": "application/octet-stream",
+      "title": "WBDHU8.gpkg",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "objectid",
+          "type": "Integer64"
+        },
+        {
+          "name": "tnmid",
+          "type": "String"
+        },
+        {
+          "name": "metasourceid",
+          "type": "String"
+        },
+        {
+          "name": "sourcedatadesc",
+          "type": "String"
+        },
+        {
+          "name": "sourceoriginator",
+          "type": "String"
+        },
+        {
+          "name": "sourcefeatureid",
+          "type": "String"
+        },
+        {
+          "name": "loaddate",
+          "type": "DateTime"
+        },
+        {
+          "name": "referencegnis_ids",
+          "type": "String"
+        },
+        {
+          "name": "areaacres",
+          "type": "Real"
+        },
+        {
+          "name": "areasqkm",
+          "type": "Real"
+        },
+        {
+          "name": "states",
+          "type": "String",
+          "description": "[placename] States intersecting the watershed"
+        },
+        {
+          "name": "huc8",
+          "type": "String",
+          "description": "[admin_code] 8-digit Hydrologic Unit Code identifying the watershed"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "globalid",
+          "type": "String"
+        },
+        {
+          "name": "shape_Length",
+          "type": "Real"
+        },
+        {
+          "name": "shape_Area",
+          "type": "Real"
+        }
+      ],
+      "table:row_count": 452
+    },
+    "Simplified": {
+      "href": "https://data.source.coop/giswqs/playa/WBDHU8_5070_CONUS_Simplified.gpkg",
+      "type": "application/octet-stream",
+      "title": "WBDHU8_5070_CONUS_Simplified.gpkg",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "objectid",
+          "type": "Integer64"
+        },
+        {
+          "name": "tnmid",
+          "type": "String"
+        },
+        {
+          "name": "metasourceid",
+          "type": "String"
+        },
+        {
+          "name": "sourcedatadesc",
+          "type": "String"
+        },
+        {
+          "name": "sourceoriginator",
+          "type": "String"
+        },
+        {
+          "name": "sourcefeatureid",
+          "type": "String"
+        },
+        {
+          "name": "loaddate",
+          "type": "DateTime"
+        },
+        {
+          "name": "referencegnis_ids",
+          "type": "String"
+        },
+        {
+          "name": "areaacres",
+          "type": "Real"
+        },
+        {
+          "name": "areasqkm",
+          "type": "Real"
+        },
+        {
+          "name": "states",
+          "type": "String",
+          "description": "[placename] States intersecting the watershed"
+        },
+        {
+          "name": "huc8",
+          "type": "String",
+          "description": "[admin_code] 8-digit Hydrologic Unit Code identifying the watershed"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "globalid",
+          "type": "String"
+        },
+        {
+          "name": "shape_Length",
+          "type": "Real"
+        },
+        {
+          "name": "shape_Area",
+          "type": "Real"
+        },
+        {
+          "name": "layer",
+          "type": "String"
+        },
+        {
+          "name": "path",
+          "type": "String"
+        }
+      ],
+      "table:row_count": 1
+    },
+    "dissolved": {
+      "href": "https://data.source.coop/giswqs/playa/WBDHU8_dissolved.gpkg",
+      "type": "application/octet-stream",
+      "title": "WBDHU8_dissolved.gpkg",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "objectid",
+          "type": "Real"
+        },
+        {
+          "name": "tnmid",
+          "type": "String"
+        },
+        {
+          "name": "metasource",
+          "type": "String"
+        },
+        {
+          "name": "sourcedata",
+          "type": "String"
+        },
+        {
+          "name": "sourceorig",
+          "type": "String"
+        },
+        {
+          "name": "sourcefeat",
+          "type": "String"
+        },
+        {
+          "name": "loaddate",
+          "type": "String"
+        },
+        {
+          "name": "referenceg",
+          "type": "String"
+        },
+        {
+          "name": "areaacres",
+          "type": "Real"
+        },
+        {
+          "name": "areasqkm",
+          "type": "Real"
+        },
+        {
+          "name": "states",
+          "type": "String",
+          "description": "[placename] States intersecting the watershed"
+        },
+        {
+          "name": "huc8",
+          "type": "String",
+          "description": "[admin_code] 8-digit Hydrologic Unit Code identifying the watershed"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "globalid",
+          "type": "String"
+        },
+        {
+          "name": "shape_Leng",
+          "type": "Real"
+        },
+        {
+          "name": "shape_Area",
+          "type": "Real"
+        }
+      ],
+      "table:row_count": 2
+    },
+    "10m": {
+      "href": "https://data.source.coop/giswqs/playa/depressions_10m.gpkg",
+      "type": "application/octet-stream",
+      "title": "depressions_10m.gpkg",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "region-id",
+          "type": "Integer64"
+        },
+        {
+          "name": "count",
+          "type": "Real"
+        },
+        {
+          "name": "area",
+          "type": "Real"
+        },
+        {
+          "name": "volume",
+          "type": "Real"
+        },
+        {
+          "name": "avg-depth",
+          "type": "Real"
+        },
+        {
+          "name": "max-depth",
+          "type": "Real"
+        },
+        {
+          "name": "min-elev",
+          "type": "Real"
+        },
+        {
+          "name": "max-elev",
+          "type": "Real"
+        },
+        {
+          "name": "perimeter",
+          "type": "Real"
+        },
+        {
+          "name": "major-axis",
+          "type": "Real"
+        },
+        {
+          "name": "minor-axis",
+          "type": "Real"
+        },
+        {
+          "name": "elongatedness",
+          "type": "Real"
+        },
+        {
+          "name": "eccentricity",
+          "type": "Real"
+        },
+        {
+          "name": "orientation",
+          "type": "Real"
+        },
+        {
+          "name": "area-bbox-ratio",
+          "type": "Real"
+        }
+      ],
+      "table:row_count": 2393661
+    },
+    "2024": {
+      "href": "https://data.source.coop/giswqs/playa/easements_12_11_2024.gpkg",
+      "type": "application/octet-stream",
+      "title": "easements_12_11_2024.gpkg",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "OBJECTID",
+          "type": "Integer64"
+        },
+        {
+          "name": "NEST_AGREE",
+          "type": "DateTime"
+        },
+        {
+          "name": "Method_202",
+          "type": "String"
+        },
+        {
+          "name": "Protracts_",
+          "type": "String"
+        },
+        {
+          "name": "Protracts1",
+          "type": "String"
+        },
+        {
+          "name": "Protract_1",
+          "type": "Integer"
+        },
+        {
+          "name": "State",
+          "type": "String",
+          "description": "[placename] US state of the easement/parcel"
+        },
+        {
+          "name": "County",
+          "type": "String",
+          "description": "[placename] US county of the easement/parcel"
+        },
+        {
+          "name": "Program",
+          "type": "String"
+        },
+        {
+          "name": "ClosingDat",
+          "type": "DateTime"
+        },
+        {
+          "name": "AdminFIPS",
+          "type": "String",
+          "description": "[admin_code] FIPS administrative area code"
+        },
+        {
+          "name": "Admin_Area",
+          "type": "String"
+        },
+        {
+          "name": "Method",
+          "type": "String"
+        },
+        {
+          "name": "COMMENT",
+          "type": "String"
+        },
+        {
+          "name": "DataEntryU",
+          "type": "String"
+        },
+        {
+          "name": "DataEntryD",
+          "type": "DateTime"
+        },
+        {
+          "name": "CalcAcres",
+          "type": "Real"
+        },
+        {
+          "name": "NESTID",
+          "type": "String"
+        },
+        {
+          "name": "NEST_LEGAC",
+          "type": "String"
+        },
+        {
+          "name": "NEST_EASEM",
+          "type": "String"
+        },
+        {
+          "name": "NEST_AGR_1",
+          "type": "Integer"
+        },
+        {
+          "name": "NEST_RESTO",
+          "type": "DateTime"
+        },
+        {
+          "name": "NEST_Acres",
+          "type": "Real"
+        },
+        {
+          "name": "LocationFI",
+          "type": "String"
+        },
+        {
+          "name": "easement_s",
+          "type": "Integer"
+        },
+        {
+          "name": "Shape_Length",
+          "type": "Real"
+        },
+        {
+          "name": "Shape_Area",
+          "type": "Real"
+        }
+      ],
+      "table:row_count": 23924
+    },
+    "nwi": {
+      "href": "https://data.source.coop/giswqs/playa/nwi.gpkg",
+      "type": "application/octet-stream",
+      "title": "nwi.gpkg",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "OBJECTID",
+          "type": "Integer64"
+        },
+        {
+          "name": "ATTRIBUTE",
+          "type": "String"
+        },
+        {
+          "name": "WETLAND_TYPE",
+          "type": "String"
+        },
+        {
+          "name": "ACRES",
+          "type": "Real"
+        },
+        {
+          "name": "SHAPE_Length",
+          "type": "Real"
+        },
+        {
+          "name": "SHAPE_Area",
+          "type": "Real"
+        }
+      ],
+      "table:row_count": 2674169
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/giswqs/playa/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/giswqs/playa",
+      "title": "Source Cooperative product page"
+    }
+  ],
   "data_mode": "open",
+  "disabled": false,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -29,24 +563,36 @@
       "prefix": "giswqs/playa/"
     }
   },
-  "object_count": 28,
-  "objects_updated_at": null,
+  "account_id": "giswqs",
   "total_bytes": 17820960768,
-  "exts": {
-    "gpkg": 6,
-    "parquet": 12,
-    "pmtiles": 10
-  },
+  "product_id": "playa",
+  "updated_at": "2026-02-04T16:58:42.487Z",
   "ext_bytes": {
     "gpkg": 8900968448,
     "parquet": 5327664321,
     "pmtiles": 3592327999
   },
-  "store_format": null,
-  "_state": "seed",
+  "featured": 0,
+  "exts": {
+    "parquet": 12,
+    "pmtiles": 10,
+    "gpkg": 6
+  },
+  "object_count": 28,
+  "created_at": "2026-02-04T16:58:42.487Z",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "cataloged_at": "2026-08-26T23:27:51+00:00"
+  "objects_updated_at": "2026-02-05T16:11:03+00:00",
+  "visibility": "public",
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
+    "providers: role [producer] for 'U.S. Geological Survey' is an AI guess \u2014 Inferred from Watershed Boundary Dataset column naming (tnmid, sourceoriginator, globalid, huc8) in the WBDHU8/Simplified/dissolved assets.. Verify before flipping to _state: reviewed.",
+    "providers: role [producer] for 'U.S. Fish and Wildlife Service' is an AI guess \u2014 Inferred from National Wetlands Inventory-style columns (ATTRIBUTE, WETLAND_TYPE, ACRES) in the nwi asset.. Verify before flipping to _state: reviewed.",
+    "providers: role [producer] for 'USDA Natural Resources Conservation Service' is an AI guess \u2014 Inferred from conservation easement-style columns (NEST_AGREE, easement_s, Program, ClosingDat) in the 2024 asset.. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-08-27T11:56:46+00:00",
+  "store_format": null
 }
