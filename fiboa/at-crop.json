@@ -1,22 +1,213 @@
 {
   "schema_version": 1,
-  "account_id": "fiboa",
-  "product_id": "at-crop",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
+  "id": "fiboa/at-crop",
   "title": "Crop Fields for Austria",
-  "description": "Crop field boundaries for Austria from the INVEKOS system, recording all field uses submitted for Common Agricultural Policy funding. Each field is a contiguous area with a single crop type and uniform management requirements, digitized as polygons or points.",
+  "description": "Annual crop field boundary polygons for Austria (2020\u20132024), derived from the INVEKOS integrated administration and control system used to process Common Agricultural Policy subsidy declarations. Each record is a single-crop, single-management field with crop type, area, and determination date.",
   "keywords": [
     "field-boundaries",
     "crop-classification",
     "agriculture",
     "land-parcels",
-    "lpis"
+    "lpis",
+    "fiboa"
   ],
-  "created_at": "2025-03-07T10:43:45.920Z",
+  "providers": [
+    {
+      "name": "INVEKOS (Austria)",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/fiboa/at-crop"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          9.4052903,
+          46.345878,
+          17.2322379,
+          49.0299231
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2020-01-01T00:00:00Z",
+          "2024-01-01T00:00:00Z"
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 13729352
+  },
+  "assets": {
+    "2020": {
+      "href": "https://data.source.coop/fiboa/at-crop/at_crop_2020.parquet",
+      "type": "application/x-parquet",
+      "title": "at_crop_2020.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "inspire:id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('{\"$schema\":\"https://proj.org/schemas/v0.7/projjson.schema.json\",\"type\":\"ProjectedCRS\",\"name\":\"MGI / Austria Lambert\",\"base_crs\":{\"name\":\"MGI\",\"datum\":{\"type\":\"GeodeticReferenceFrame\",\"name\":\"Militar-Geographische Institut\",\"ellipsoid\":{\"name\":\"Bessel 1841\",\"semi_major_axis\":6377397.155,\"inverse_flattening\":299.1528128},\"id\":{\"authority\":\"EPSG\",\"code\":6312}},\"coordinate_system\":{\"subtype\":\"ellipsoidal\",\"axis\":[{\"name\":\"Longitude\",\"abbreviation\":\"lon\",\"direction\":\"east\",\"unit\":{\"type\":\"AngularUnit\",\"name\":\"Decimal Degree\",\"conversion_factor\":0.0174532925199433}},{\"name\":\"Latitude\",\"abbreviation\":\"lat\",\"direction\":\"north\",\"unit\":{\"type\":\"AngularUnit\",\"name\":\"Decimal Degree\",\"conversion_factor\":0.0174532925199433}}]}},\"conversion\":{\"name\":\"unnamed\",\"method\":{\"name\":\"Lambert Conic Conformal (2SP)\",\"id\":{\"authority\":\"EPSG\",\"code\":9802}},\"parameters\":[{\"name\":\"Latitude of false origin\",\"value\":47.5,\"unit\":{\"type\":\"AngularUnit\",\"name\":\"Decimal Degree\",\"conversion_factor\":0.0174532925199433},\"id\":{\"authority\":\"EPSG\",\"code\":8821}},{\"name\":\"Longitude of false origin\",\"value\":13.3333333333333,\"unit\":{\"type\":\"AngularUnit\",\"name\":\"Decimal Degree\",\"conversion_factor\":0.0174532925199433},\"id\":{\"authority\":\"EPSG\",\"code\":8822}},{\"name\":\"Latitude of 1st standard parallel\",\"value\":49,\"unit\":{\"type\":\"AngularUnit\",\"name\":\"Decimal Degree\",\"conversion_factor\":0.0174532925199433},\"id\":{\"authority\":\"EPSG\",\"code\":8823}},{\"name\":\"Latitude of 2nd standard parallel\",\"value\":46,\"unit\":{\"type\":\"AngularUnit\",\"name\":\"Decimal Degree\",\"conversion_factor\":0.0174532925199433},\"id\":{\"authority\":\"EPSG\",\"code\":8824}},{\"name\":\"Easting at false origin\",\"value\":400000,\"unit\":{\"type\":\"LinearUnit\",\"name\":\"Meter\",\"conversion_factor\":1},\"id\":{\"authority\":\"EPSG\",\"code\":8826}},{\"name\":\"Northing at false origin\",\"value\":400000,\"unit\":{\"type\":\"LinearUnit\",\"name\":\"Meter\",\"conversion_factor\":1},\"id\":{\"authority\":\"EPSG\",\"code\":8827}}]},\"coordinate_system\":{\"subtype\":\"Cartesian\",\"axis\":[{\"name\":\"Easting\",\"abbreviation\":\"\",\"direction\":\"east\",\"unit\":{\"type\":\"LinearUnit\",\"name\":\"Meter\",\"conversion_factor\":1}},{\"name\":\"Northing\",\"abbreviation\":\"\",\"direction\":\"north\",\"unit\":{\"type\":\"LinearUnit\",\"name\":\"Meter\",\"conversion_factor\":1}}]}}')",
+          "description": "[geometry] Field boundary polygon/point geometry"
+        },
+        {
+          "name": "crop:code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "crop:name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "area",
+          "type": "FLOAT"
+        },
+        {
+          "name": "determination_datetime",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "admin:country_code",
+          "type": "VARCHAR",
+          "description": "[admin_code] ISO country code for the field"
+        },
+        {
+          "name": "crop:code_list",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 2614636
+    },
+    "2021": {
+      "href": "https://data.source.coop/fiboa/at-crop/at_crop_2021.parquet",
+      "type": "application/x-parquet",
+      "title": "at_crop_2021.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:row_count": 2610511
+    },
+    "2022": {
+      "href": "https://data.source.coop/fiboa/at-crop/at_crop_2022.parquet",
+      "type": "application/x-parquet",
+      "title": "at_crop_2022.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:row_count": 2600002
+    },
+    "2023": {
+      "href": "https://data.source.coop/fiboa/at-crop/at_crop_2023.parquet",
+      "type": "application/x-parquet",
+      "title": "at_crop_2023.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:row_count": 2947754
+    },
+    "2024": {
+      "href": "https://data.source.coop/fiboa/at-crop/at_crop_2024.parquet",
+      "type": "application/x-parquet",
+      "title": "at_crop_2024.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:row_count": 2956449
+    }
+  },
+  "table:columns": [
+    {
+      "name": "id",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "inspire:id",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "geometry",
+      "type": "GEOMETRY('EPSG:31287')",
+      "description": "[geometry] Field boundary polygon/point geometry"
+    },
+    {
+      "name": "crop:code",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "crop:name",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "area",
+      "type": "FLOAT"
+    },
+    {
+      "name": "determination_datetime",
+      "type": "TIMESTAMP WITH TIME ZONE"
+    },
+    {
+      "name": "admin:country_code",
+      "type": "VARCHAR",
+      "description": "[admin_code] ISO country code for the field"
+    },
+    {
+      "name": "crop:code_list",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "bbox",
+      "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+    }
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/fiboa/at-crop/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/fiboa/at-crop",
+      "title": "Source Cooperative product page"
+    }
+  ],
   "updated_at": "2025-08-21T16:39:55.568Z",
+  "account_id": "fiboa",
   "visibility": "public",
-  "disabled": false,
-  "featured": 0,
   "data_mode": "open",
+  "object_count": 9,
+  "featured": 0,
+  "disabled": false,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -29,22 +220,28 @@
       "prefix": "fiboa/at-crop/"
     }
   },
-  "object_count": 9,
-  "objects_updated_at": null,
-  "total_bytes": 3432877327,
-  "exts": {
-    "parquet": 5,
-    "json": 4
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
   },
   "ext_bytes": {
     "parquet": 3432864147,
     "json": 13180
   },
-  "store_format": null,
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
+  "created_at": "2025-03-07T10:43:45.920Z",
+  "objects_updated_at": "2025-03-07T11:23:11+00:00",
+  "exts": {
+    "parquet": 5,
+    "json": 4
   },
-  "cataloged_at": "2026-08-26T23:27:51+00:00"
+  "product_id": "at-crop",
+  "total_bytes": 3432877327,
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
+    "providers: role [producer] for 'INVEKOS (Austria)' is an AI guess \u2014 Assumed producer since fields are declared and maintained through Austria's INVEKOS agricultural administration system; no specific publishing agency named in context.. Verify before flipping to _state: reviewed.",
+    "extent.temporal: None (probe sample) widened to ['2020-01-01T00:00:00Z', '2024-01-01T00:00:00Z'] using README-stated coverage ['2020', '2024']."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-08-27T11:51:27+00:00",
+  "store_format": null
 }
