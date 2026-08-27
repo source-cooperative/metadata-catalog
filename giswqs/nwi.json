@@ -1,23 +1,775 @@
 {
   "schema_version": 1,
-  "account_id": "giswqs",
-  "product_id": "nwi",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
+  "id": "giswqs/nwi",
   "title": "National Wetlands Inventory",
-  "description": "Comprehensive inventory of US wetlands with detailed information on their abundance, characteristics, and geographic distribution. The dataset has been converted from the original Geodatabase format to cloud-optimized Parquet files for efficient access and analysis.",
+  "description": "A national-scale copy of the U.S. Fish and Wildlife Service's National Wetlands Inventory, providing vector delineations of wetlands, riparian areas, and related survey/project boundaries across the United States, converted from the original Esri Geodatabase distribution into cloud-native GeoParquet files.",
   "keywords": [
     "wetlands",
     "biodiversity",
-    "water",
+    "hydrology",
     "conservation",
     "land-use",
+    "administrative-boundaries",
+    "geoparquet",
     "remote-sensing"
   ],
-  "created_at": "2023-11-10T00:49:00.629996+00:00",
-  "updated_at": "2025-08-21T16:39:55.568Z",
-  "visibility": "public",
-  "disabled": false,
+  "providers": [
+    {
+      "name": "U.S. Fish and Wildlife Service",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "giswqs",
+      "roles": [
+        "processor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/giswqs/nwi"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -171.4724062,
+          22.7624044,
+          -64.0624389,
+          71.4549876
+        ],
+        [
+          -97.6987327,
+          27.2952366,
+          -78.468096,
+          47.1515571
+        ],
+        [
+          -97.6969221,
+          27.3136639,
+          -78.517972,
+          46.755479
+        ],
+        [
+          -122.0874744,
+          30.7013118,
+          -94.6361953,
+          49.2423602
+        ],
+        [
+          -122.2648669,
+          30.6845184,
+          -94.6191925,
+          49.4297286
+        ],
+        [
+          -125.2626747,
+          25.2755982,
+          -71.2295593,
+          71.4549876
+        ],
+        [
+          -171.4724062,
+          25.3685328,
+          -71.2325459,
+          71.4533486
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 11470603
+  },
+  "assets": {
+    "historic_metadata": {
+      "href": "https://data.source.coop/giswqs/nwi/historic_metadata/",
+      "type": "application/x-parquet",
+      "title": "historic_metadata",
+      "roles": [
+        "metadata"
+      ],
+      "table:columns": [
+        {
+          "name": "PROJECT_NAME",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "STATUS",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "SUPPMAPINFO",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FGDC_METADATA",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "DATA_SOURCE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "IMAGE_YR",
+          "type": "INTEGER|SMALLINT"
+        },
+        {
+          "name": "IMAGE_DATE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "IMAGE_SCALE",
+          "type": "INTEGER"
+        },
+        {
+          "name": "ALL_SCALES",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "EMULSION",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "COMMENTS",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "SOURCE_TYPE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "SHAPE_Length",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "SHAPE_Area",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:5070')",
+          "description": "[geometry] Survey/project boundary geometry (EPSG:5070)"
+        },
+        {
+          "name": "PROJECT_NA",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "SUPPMAPINF",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FGDC_METAD",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "DATA_SOURC",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "IMAGE_SCAL",
+          "type": "INTEGER"
+        },
+        {
+          "name": "SOURCE_TYP",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "SHAPE_Leng",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Shape_Length",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Shape_Area",
+          "type": "DOUBLE"
+        }
+      ],
+      "description": "16 files sampled for this table",
+      "bbox": [
+        -97.6987327,
+        27.2952366,
+        -78.468096,
+        47.1515571
+      ],
+      "item_count": 15
+    },
+    "historic_wetlands": {
+      "href": "https://data.source.coop/giswqs/nwi/historic_wetlands/",
+      "type": "application/x-parquet",
+      "title": "historic_wetlands",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "ATTRIBUTE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "QAQC_CODE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "WETLAND_TYPE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ACRES",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "SHAPE_Length",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "SHAPE_Area",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:5070')",
+          "description": "[geometry] Historic wetland polygon geometry (EPSG:5070)"
+        },
+        {
+          "name": "WETLAND_TY",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "SHAPE_Leng",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Shape_Length",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Shape_Area",
+          "type": "DOUBLE"
+        }
+      ],
+      "description": "16 files sampled for this table",
+      "bbox": [
+        -97.6969221,
+        27.3136639,
+        -78.517972,
+        46.755479
+      ],
+      "item_count": 87590
+    },
+    "riparian": {
+      "href": "https://data.source.coop/giswqs/nwi/riparian/",
+      "type": "application/x-parquet",
+      "title": "riparian",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "ATTRIBUTE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "QAQC_CODE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "WETLAND_TY",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ACRES",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Shape_Leng",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Shape_Length",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Shape_Area",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:5070')",
+          "description": "[geometry] Riparian area polygon geometry (EPSG:5070)"
+        },
+        {
+          "name": "WETLAND_TYPE",
+          "type": "VARCHAR"
+        }
+      ],
+      "description": "16 files sampled for this table",
+      "bbox": [
+        -122.0874744,
+        30.7013118,
+        -94.6361953,
+        49.2423602
+      ],
+      "item_count": 143681
+    },
+    "riparian_metadata": {
+      "href": "https://data.source.coop/giswqs/nwi/riparian_metadata/",
+      "type": "application/x-parquet",
+      "title": "riparian_metadata",
+      "roles": [
+        "metadata"
+      ],
+      "table:columns": [
+        {
+          "name": "PROJECT_ID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PROJECT_NA",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FY",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "REGION",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "STATUS",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ACRES",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "SUPPMAPINF",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FGDC_METAD",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "DATA_TYPE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "IMAGE_YR",
+          "type": "INTEGER|SMALLINT"
+        },
+        {
+          "name": "IMAGE_DATE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "IMAGE_SCAL",
+          "type": "INTEGER"
+        },
+        {
+          "name": "ALL_SCALES",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "EMULSION",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "COMMENTS",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "SOURCE_TYP",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "SHAPE_Leng",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Shape_Length",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Shape_Area",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:5070')",
+          "description": "[geometry] Riparian project boundary geometry (EPSG:5070)"
+        },
+        {
+          "name": "PROJECT_NAME",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "SUPPMAPINFO",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FGDC_METADATA",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "DATA_SOURCE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "IMAGE_SCALE",
+          "type": "INTEGER"
+        },
+        {
+          "name": "SOURCE_TYPE",
+          "type": "VARCHAR"
+        }
+      ],
+      "description": "16 files sampled for this table",
+      "bbox": [
+        -122.2648669,
+        30.6845184,
+        -94.6191925,
+        49.4297286
+      ],
+      "item_count": 103
+    },
+    "state_boundary": {
+      "href": "https://data.source.coop/giswqs/nwi/state_boundary/",
+      "type": "application/x-parquet",
+      "title": "state_boundary",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "STATUS",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Acres",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Shape_Length",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Shape_Area",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:3338')|GEOMETRY('EPSG:5070')",
+          "description": "[geometry] State boundary polygon geometry"
+        },
+        {
+          "name": "ST_NAME1",
+          "type": "VARCHAR",
+          "description": "[placename] State name"
+        },
+        {
+          "name": "ST_ABBV",
+          "type": "VARCHAR",
+          "description": "[admin_code] State abbreviation code"
+        },
+        {
+          "name": "AreaAcres",
+          "type": "DOUBLE"
+        }
+      ],
+      "description": "16 files sampled for this table",
+      "bbox": [
+        -125.2626747,
+        25.2755982,
+        -71.2295593,
+        71.4549876
+      ],
+      "item_count": 16
+    },
+    "wetlands": {
+      "href": "https://data.source.coop/giswqs/nwi/wetlands/",
+      "type": "application/x-parquet",
+      "title": "wetlands",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "ATTRIBUTE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "WETLAND_TYPE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ACRES",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "GLOBALID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Shape_Length",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Shape_Area",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:3338')|GEOMETRY('EPSG:5070')",
+          "description": "[geometry] Wetland polygon geometry"
+        },
+        {
+          "name": "SHAPE_Length",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "SHAPE_Area",
+          "type": "DOUBLE"
+        }
+      ],
+      "description": "16 files sampled for this table",
+      "bbox": [
+        -171.4724062,
+        25.3685328,
+        -71.2325459,
+        71.4533486
+      ],
+      "item_count": 11470603
+    },
+    "hu8_boundary": {
+      "href": "https://data.source.coop/giswqs/nwi/hu8_boundary/CONUS_HU8.parquet",
+      "type": "application/x-parquet",
+      "title": "CONUS_HU8.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "TNMID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "METASOURCE",
+          "type": "INTEGER"
+        },
+        {
+          "name": "SOURCEDATA",
+          "type": "INTEGER"
+        },
+        {
+          "name": "SOURCEORIG",
+          "type": "INTEGER"
+        },
+        {
+          "name": "SOURCEFEAT",
+          "type": "INTEGER"
+        },
+        {
+          "name": "LOADDATE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "GNIS_ID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "AREAACRES",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "AREASQKM",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "STATES",
+          "type": "VARCHAR",
+          "description": "[placename] States intersecting the hydrologic unit"
+        },
+        {
+          "name": "HUC8",
+          "type": "VARCHAR",
+          "description": "[admin_code] 8-digit Hydrologic Unit Code"
+        },
+        {
+          "name": "NAME",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "GLOBALID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "SHAPE_Leng",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "SHAPE_Area",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('{\"$schema\":\"https://proj.org/schemas/v0.7/projjson.schema.json\",\"type\":\"ProjectedCRS\",\"name\":\"NAD_1983_Albers_CONUS\",\"base_crs\":{\"name\":\"NAD83\",\"datum\":{\"type\":\"GeodeticReferenceFrame\",\"name\":\"North American Datum 1983\",\"ellipsoid\":{\"name\":\"GRS 1980\",\"semi_major_axis\":6378137,\"inverse_flattening\":298.257222101},\"id\":{\"authority\":\"EPSG\",\"code\":6269}},\"coordinate_system\":{\"subtype\":\"ellipsoidal\",\"axis\":[{\"name\":\"Longitude\",\"abbreviation\":\"lon\",\"direction\":\"east\",\"unit\":{\"type\":\"AngularUnit\",\"name\":\"Degree\",\"conversion_factor\":0.0174532925199433}},{\"name\":\"Latitude\",\"abbreviation\":\"lat\",\"direction\":\"north\",\"unit\":{\"type\":\"AngularUnit\",\"name\":\"Degree\",\"conversion_factor\":0.0174532925199433}}]}},\"conversion\":{\"name\":\"unnamed\",\"method\":{\"name\":\"Albers Equal Area\",\"id\":{\"authority\":\"EPSG\",\"code\":9822}},\"parameters\":[{\"name\":\"Latitude of false origin\",\"value\":23,\"unit\":{\"type\":\"AngularUnit\",\"name\":\"Degree\",\"conversion_factor\":0.0174532925199433},\"id\":{\"authority\":\"EPSG\",\"code\":8821}},{\"name\":\"Longitude of false origin\",\"value\":-96,\"unit\":{\"type\":\"AngularUnit\",\"name\":\"Degree\",\"conversion_factor\":0.0174532925199433},\"id\":{\"authority\":\"EPSG\",\"code\":8822}},{\"name\":\"Latitude of 1st standard parallel\",\"value\":29.5,\"unit\":{\"type\":\"AngularUnit\",\"name\":\"Degree\",\"conversion_factor\":0.0174532925199433},\"id\":{\"authority\":\"EPSG\",\"code\":8823}},{\"name\":\"Latitude of 2nd standard parallel\",\"value\":45.5,\"unit\":{\"type\":\"AngularUnit\",\"name\":\"Degree\",\"conversion_factor\":0.0174532925199433},\"id\":{\"authority\":\"EPSG\",\"code\":8824}},{\"name\":\"Easting at false origin\",\"value\":0,\"unit\":\"metre\",\"id\":{\"authority\":\"EPSG\",\"code\":8826}},{\"name\":\"Northing at false origin\",\"value\":0,\"unit\":\"metre\",\"id\":{\"authority\":\"EPSG\",\"code\":8827}}]},\"coordinate_system\":{\"subtype\":\"Cartesian\",\"axis\":[{\"name\":\"Easting\",\"abbreviation\":\"\",\"direction\":\"east\",\"unit\":\"metre\"},{\"name\":\"Northing\",\"abbreviation\":\"\",\"direction\":\"north\",\"unit\":\"metre\"}]}}')",
+          "description": "[geometry] Hydrologic Unit (HUC8) boundary geometry"
+        }
+      ],
+      "table:row_count": 2119
+    },
+    "metadata": {
+      "href": "https://data.source.coop/giswqs/nwi/metadata/",
+      "type": "application/x-parquet",
+      "title": "metadata",
+      "roles": [
+        "metadata"
+      ],
+      "table:columns": [
+        {
+          "name": "PROJECT_NAME",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "STATUS",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "SUPPMAPINFO",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FGDC_METADATA",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "IMAGE_YR",
+          "type": "INTEGER|SMALLINT"
+        },
+        {
+          "name": "IMAGE_DATE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "IMAGE_SCALE",
+          "type": "INTEGER"
+        },
+        {
+          "name": "ALL_SCALES",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "EMULSION",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "COMMENTS",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "SOURCE_TYPE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Shape_Length",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Shape_Area",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:3338')|GEOMETRY('EPSG:5070')",
+          "description": "[geometry] Survey/project boundary geometry"
+        },
+        {
+          "name": "SHAPE_Length",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "SHAPE_Area",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "PROJECT_NA",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "SUPPMAPINF",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FGDC_METAD",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "IMAGE_SCAL",
+          "type": "INTEGER"
+        },
+        {
+          "name": "SOURCE_TYP",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "SHAPE_Leng",
+          "type": "DOUBLE"
+        }
+      ],
+      "description": "15 files sampled for this table"
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/giswqs/nwi/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/giswqs/nwi",
+      "title": "Source Cooperative product page"
+    }
+  ],
+  "account_id": "giswqs",
+  "product_id": "nwi",
   "featured": 1,
+  "objects_updated_at": "2023-11-29T03:36:30+00:00",
+  "visibility": "public",
+  "exts": {
+    "parquet": 270,
+    "md": 1
+  },
+  "ext_bytes": {
+    "parquet": 82437875708,
+    "md": 8836
+  },
   "data_mode": "open",
+  "disabled": false,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -30,22 +782,21 @@
       "prefix": "giswqs/nwi/"
     }
   },
-  "object_count": 271,
-  "objects_updated_at": null,
-  "total_bytes": 82437884544,
-  "exts": {
-    "parquet": 270,
-    "md": 1
-  },
-  "ext_bytes": {
-    "parquet": 82437875708,
-    "md": 8836
-  },
-  "store_format": null,
-  "_state": "seed",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "cataloged_at": "2026-08-26T23:27:51+00:00"
+  "created_at": "2023-11-10T00:49:00.629996+00:00",
+  "total_bytes": 82437884544,
+  "updated_at": "2025-08-21T16:39:55.568Z",
+  "object_count": 271,
+  "readme": "## README.md\n---\njupytext:\n  text_representation:\n    extension: .md\n    format_name: myst\n    format_version: 0.13\n    jupytext_version: 1.15.2\n---\n\n# National Wetlands Inventory\n\n[![image](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/opengeos/source-coop-readme/blob/main/nwi/README.ipynb)\n\n## Description\n\nThis dataset is a copy of the [National Wetlands Inventory](https://www.fws.gov/program/national-wetlands-inventory), offering the data in more GIS-friendly and [cloud-native geospatial](https://cloudnativegeo.org) formats. The original dataset is distributed as zipped Geodatabase files, and is available for download from [here](https://www.fws.gov/program/national-wetlands-inventory/download-state-wetlands-data).\n\n## Data download\n\nThe script below was used to download the data from the National Wetlands Inventory in Geodatabase format from [here](https://www.fws.gov/program/national-wetlands-inventory/download-state-wetlands-data). The script uses the [leafmap](https://leafmap.org) Python package.\n\nFirst, create a conda environment with the required packages:\n\n```bash\nconda create -n gdal python=3.11\nconda activate gdal\nconda install -c conda-forge mamba\nmamba install -c conda-forge libgdal-arrow-parquet gdal leafmap\n```\n\nIf you are using Google Colab, you can install the packages as follows:\n\n```{code-cell} ipython3\n# %pip install leafmap lonboard==0.3.0\n```\n\nThen, run the script below:\n\n```{code-cell} ipython3\nimport leafmap\nimport pandas as pd\n\nurl = 'https://open.gishub.org/data/us/us_states.csv'\ndf = pd.read_csv(url)\nids = df['id'].tolist()\nids.sort()\nurls = [f\"https://documentst.ecosphere.fws.gov/wetlands/data/State-Downloads/{id}_geodatabase_wetlands.zip\" for id in ids]\nleafmap.download_files(urls, out_dir='.', unzip=True)\n```\n\n## Data conversion\n\nThe script below was used to convert the data from the original Geodatabase format to [Parquet](https://parquet.apache.org) format. The script uses the [leafmap](https://leafmap.org) Python package.\n\n```{code-cell} ipython3\nimport leafmap\nimport pandas as pd\n\nurl = 'https://open.gishub.org/data/us/us_states.csv'\ndf = pd.read_csv(url)\nids = df['id'].tolist()\n\nfor index, state in enumerate(ids):\n    print(f'Processing {state} ({index+1}/{len(ids)})')\n    gdb = f\"{state}_geodatabase_wetlands.gdb/\"\n    layer_name = f'{state}_Wetlands'\n    leafmap.gdb_to_vector(gdb, \".\", gdal_driver=\"Parquet\", layers=[layer_name])\n```\n\nThe total file size of the Geodatabase files is 32.5 GB. The total file size of the Parquet files is 75.8 GB.\n\n## Data access\n\nThe script below can be used to access the data using [DuckDB](https://duckdb.org). The script uses the [duckdb](https://duckdb.org) Python package.\n\n```{code-cell} ipython3\nimport duckdb\n\ncon = duckdb.connect()\ncon.install_extension(\"spatial\")\ncon.load_extension(\"spatial\")\n\nstate = \"DC\"    # Change to the US State of your choice\nurl = f\"https://data.source.coop/giswqs/nwi/wetlands/{state}_Wetlands.parquet\"\ncon.sql(f\"SELECT * EXCLUDE geometry, ST_GeomFromWKB(geometry) FROM '{url}'\")\n```\n\nAlternatively, you can use the aws cli to access the data directly from the S3 bucket:\n\n```bash\naws s3 ls s3://us-west-2.opendata.source.coop/giswqs/nwi/wetlands/\n```\n\n## Data visualization\n\nTo visualize the data, you can use the [leafmap](https://leafmap.org) Python package with the [lonboard](https://github.com/developmentseed/lonboard) backend. The script below shows how to visualize the data.\n\n```{code-cell} ipython3\nimport leafmap\n\nstate = \"DC\"   # Change to the US State of your choice\nurl = f\"https://data.source.coop/giswqs/nwi/wetlands/{state}_Wetlands.parquet\"\ngdf = leafmap.read_parquet(url, return_type='gdf', src_crs='EPSG:5070', dst_crs='EPSG:4326')\nleafmap.view_vector(gdf, get_fill_color=[0, 0, 255, 128])\n```\n\n![vector](https://i.imgur.com/HRtpiVd.png)\n\nAlternatively, you can specify a color map to visualize the data.\n\n```{code-cell} ipython3\ncolor_map =  {\n        \"Freshwater Forested/Shrub Wetland\": (0, 136, 55),\n        \"Freshwater Emergent Wetland\": (127, 195, 28),\n        \"Freshwater Pond\": (104, 140, 192),\n        \"Estuarine and Marine Wetland\": (102, 194, 165),\n        \"Riverine\": (1, 144, 191),\n        \"Lake\": (19, 0, 124),\n        \"Estuarine and Marine Deepwater\": (0, 124, 136),\n        \"Other\": (178, 134, 86),\n    }\nleafmap.view_vector(gdf, color_column='WETLAND_TYPE', color_map=color_map, opacity=0.5)\n```\n\n![vector-color](https://i.imgur.com/Ejh8hK6.png)\n\nDisplay a legend for the data.\n\n```{code-cell} ipython3\nleafmap.Legend(title=\"Wetland Type\", legend_dict=color_map)\n```\n\n![legend](https://i.imgur.com/fxzHHFN.png)\n\n## Data analysis\n\nFind out the total number of wetlands in the United States by aggregating the 51 parquet files.\n\n```{code-cell} ipython3\ncon.sql(f\"\"\"\nSELECT COUNT(*) AS Count\nFROM 's3://us-west-2.opendata.source.coop/giswqs/nwi/wetlands/*.parquet'\n\"\"\")\n```\n\nFind out the number of wetlands in each state. Note that the NWI datasets do not contain a field for state names. The `filename` argument can be used to add an extra `filename` column to the result that indicates which row came from which file.\n\n```{code-cell} ipython3\ndf = con.sql(f\"\"\"\nSELECT filename, COUNT(*) AS Count\nFROM read_parquet('s3://us-west-2.opendata.source.coop/giswqs/nwi/wetlands/*.parquet', filename=true)\nGROUP BY filename\nORDER BY COUNT(*) DESC;\n\"\"\").df()\ndf.head()\n```\n\nInspect the list of filenames.\n\n```{code-cell} ipython3\ndf['filename'].tolist()\n```\n\nCreate a `State` column based on the `filename` column by extracting the state name from the filename.\n\n```{code-cell} ipython3\ncount_df = con.sql(f\"\"\"\nSELECT SUBSTRING(filename, LENGTH(filename) - 18, 2) AS State, COUNT(*) AS Count\nFROM read_parquet('s3://us-west-2.opendata.source.coop/giswqs/nwi/wetlands/*.parquet', filename=true)\nGROUP BY State\nORDER BY COUNT(*) DESC;\n\"\"\").df()\ncount_df.head(10)\n```\n\nCreate a `wetlands` table from the DataFrame above.\n\n```{code-cell} ipython3\ncon.sql(\"CREATE OR REPLACE TABLE wetlands AS FROM count_df\")\ncon.sql(\"FROM wetlands\")\n```\n\nTo visualize the data on the map, we need a GeoDataFrame. Let's create a `states` table from the [us_states.parquet](https://open.gishub.org/data/us/us_states.parquet) file.\n\n```{code-cell} ipython3\nurl = 'https://open.gishub.org/data/us/us_states.parquet'\ncon.sql(\n    f\"\"\"\nCREATE OR REPLACE TABLE states AS\nSELECT * EXCLUDE geometry, ST_GeomFromWKB(geometry)\nAS geometry FROM '{url}'\n\"\"\"\n)\ncon.sql(\"FROM states\")\n```\n\nJoin the `wetlands` table with the `states` table.\n\n```{code-cell} ipython3\ncon.sql(\"\"\"\nSELECT * FROM states INNER JOIN wetlands ON states.id = wetlands.State\n\"\"\")\n```\n\nExport the joined table as a Pandas DataFrame.\n\n```{code-cell} ipython3\ndf = con.sql(\"\"\"\nSELECT name, State, Count, ST_AsText(geometry) as geometry\nFROM states INNER JOIN wetlands ON states.id = wetlands.State\n\"\"\").df()\ndf.head()\n```\n\nConvert the Pandas DataFrame to a GeoDataFrame.\n\n```{code-cell} ipython3\ngdf = leafmap.df_to_gdf(df, src_crs=\"EPSG:4326\")\n```\n\nVisualize the data on the map.\n\n```{code-cell} ipython3\nm = leafmap.Map()\nm.add_data(\n    gdf, column='Count', scheme='Quantiles', cmap='Greens', legend_title='Wetland Count'\n)\nm\n```\n\n![](https://i.imgur.com/x9nJWZR.png)\n\nCreate a pie chart to show the percentage of wetlands in each state.\n\n```{code-cell} ipython3\nleafmap.pie_chart(count_df, 'State', 'Count', height=800, title='Number of Wetlands by State')\n```\n\n![](https://i.imgur.com/EQFZW4x.png)\n\nCreate a bar chart to show the number of wetlands in each state.\n\n```{code-cell} ipython3\nleafmap.bar_chart(count_df, 'State', 'Count', title='Number of Wetlands by State')\n```\n\n![](https://i.imgur.com/dNjh9lp.png)\n\nCalculate the total area of wetlands in the United States. It takes about 3 minutes to run this query. Please be patient.\n\n```{code-cell} ipython3\ncon.sql(f\"\"\"\nSELECT SUM(Shape_Area) /  1000000 AS Area_SqKm\nFROM 's3://us-west-2.opendata.source.coop/giswqs/nwi/wetlands/*.parquet'\n\"\"\")\n```\n\nCalculate the total area of wetlands in each state. It takes about 3 minutes to run this query. Please be patient.\n\n```{code-cell} ipython3\narea_df = con.sql(f\"\"\"\nSELECT SUBSTRING(filename, LENGTH(filename) - 18, 2) AS State, SUM(Shape_Area) /  1000000 AS Area_SqKm\nFROM read_parquet('s3://us-west-2.opendata.source.coop/giswqs/nwi/wetlands/*.parquet', filename=true)\nGROUP BY State\nORDER BY COUNT(*) DESC;\n\"\"\").df()\narea_df.head(10)\n```\n\nCreate a pie chart to show the percentage of wetlands in each state.\n\n```{code-cell} ipython3\nleafmap.pie_chart(area_df, 'State', 'Area_SqKm', height=900, title='Wetland Area by State')\n```\n\n![](https://i.imgur.com/tIy2fLt.png)\n\nCreate a bar chart to show the wetland area in each state.\n\n```{code-cell} ipython3\nleafmap.bar_chart(area_df, 'State', 'Area_SqKm', title='Wetland Area by State')\n```\n\n![](https://i.imgur.com/EyJQZNP.png)\n",
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
+    "providers: role [processor] for 'giswqs' is an AI guess \u2014 Inferred from the data.source.coop/giswqs/nwi path and the leafmap-based conversion scripts authored by the leafmap maintainer.. Verify before flipping to _state: reviewed.",
+    "summaries.item_count: parts overlap, so this is max(part), not the sum \u2014 historic_metadata/ 15, historic_wetlands/ 87590, riparian/ 143681, riparian_metadata/ 103, state_boundary/ 16, wetlands/ 11470603. Sum them only once the parts are known to be disjoint."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-08-27T12:03:56+00:00",
+  "store_format": null
 }
