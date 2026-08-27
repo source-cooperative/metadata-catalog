@@ -4,17 +4,17 @@
   "stac_version": "1.1.0",
   "id": "cboettig/wetlands",
   "title": "Wetlands",
-  "description": "A collection of three wetland datasets providing global and regional coverage: polygon boundaries of Ramsar Convention-designated wetlands of international importance, the WWF/GWSP Global Lakes and Wetlands Database (a global raster of lakes, reservoirs, rivers, and wetland types), and the U.S. Fish & Wildlife Service National Wetlands Inventory (primarily served as an H3 spatial index due to data size). Data is provided as GeoParquet, Cloud-Optimized GeoTIFF, PMTiles, and H3-indexed formats.",
+  "description": "A collection of three independently sourced wetland datasets: polygon boundaries of Ramsar Convention-designated wetlands of international importance, the WWF/GWSP Global Lakes and Wetlands Database (a global raster of lakes, reservoirs, rivers, and wetland types), and the U.S. Fish & Wildlife Service National Wetlands Inventory (served primarily as an H3 spatial index due to data size). Together they provide global and U.S.-regional coverage of wetland extent, type, and protection status.",
   "keywords": [
+    "wetlands",
+    "biodiversity",
     "hydrology",
     "conservation",
     "h3",
     "geoparquet",
-    "pmtiles",
     "cloud-optimized-geotiff",
-    "global-coverage",
-    "wetlands",
-    "biodiversity"
+    "pmtiles",
+    "global-coverage"
   ],
   "providers": [
     {
@@ -119,11 +119,40 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "data_mode": "open",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "exts": {
+    "parquet": 2642,
+    "gdbtablx": 459,
+    "gdbtable": 459,
+    "gdbindexes": 456,
+    "atx": 360,
+    "tif": 108,
+    "freelist": 75,
+    "horizon": 75,
+    "spx": 75,
+    "ovr": 72,
+    "dbf": 72,
+    "cpg": 72,
+    "tfw": 72,
+    "": 6,
+    "json": 4,
+    "csv": 3,
+    "md": 3,
+    "pmtiles": 2,
+    "html": 1,
+    "pdf": 1
+  },
   "account_id": "cboettig",
   "product_id": "wetlands",
-  "total_bytes": 190653453369,
+  "data_mode": "open",
+  "created_at": "2026-06-17T03:33:35.440Z",
+  "total_bytes": 109662646040,
+  "objects_updated_at": "2026-08-20T05:50:14+00:00",
   "visibility": "public",
+  "object_count": 5017,
   "featured": 0,
   "disabled": false,
   "mirrors": {
@@ -138,43 +167,7 @@
       "prefix": "cboettig/wetlands/"
     }
   },
-  "created_at": "2026-06-17T03:33:35.440Z",
-  "exts": {
-    "parquet": 2694,
-    "gdbtablx": 459,
-    "gdbtable": 459,
-    "gdbindexes": 456,
-    "atx": 360,
-    "tif": 108,
-    "horizon": 75,
-    "spx": 75,
-    "freelist": 75,
-    "dbf": 72,
-    "ovr": 72,
-    "cpg": 72,
-    "tfw": 72,
-    "": 6,
-    "json": 4,
-    "csv": 3,
-    "md": 3,
-    "pmtiles": 2,
-    "html": 1,
-    "pdf": 1
-  },
   "updated_at": "2026-06-17T03:33:35.441Z",
-  "object_count": 5069,
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "readme": "## README.md\n# Global Wetlands Data\n\nThis collection hosts three distinct wetland datasets, providing global and regional coverage of wetland distribution, types, and protection status.\n\n## 1. Ramsar Sites of International Importance\n**Source:** [Ramsar Sites Information Service](https://rsis.ramsar.org/)  \n**Type:** Vector (Global)  \n**Description:** Polygons of wetlands designated as internally important under the Ramsar Convention.\n\n### Assets\n- **GeoParquet:** `ramsar/ramsar_wetlands.parquet` (Full dataset)\n- **PMTiles:** `ramsar/ramsar_wetlands.pmtiles` (Web-optimized tiles, Layer: `ramsar`)\n- **H3 Hexagons:** `ramsar/hex/` (Partitioned by H3 resolution 0)\n\n### Schema (Ramsar)\n| Column | Type | Description |\n|--------|------|-------------|\n| `ramsarid` | Integer | Unique Site ID |\n| `Site name` | String | Official Name |\n| `Country` | String | Country Name |\n| `Area (ha)` | Float | Official Area in Hectares |\n| `Wetland Type` | String | Classification Code |\n\n---\n\n## 2. Global Lakes and Wetlands Database (GLWD)\n**Source:** [World Wildlife Fund / GWSP](https://www.worldwildlife.org/pages/global-lakes-and-wetlands-database)  \n**Type:** Raster & H3 Index (Global)  \n**Description:** Level 3 product combining lakes, reservoirs, rivers, and different wetland types into a global raster map.\n\n### Assets\n- **Cloud-Optimized GeoTIFF (COG):** `GLWD_v2_0/GLWD_v2_0_area_ha_x10_cog.tif`  \n  *Pixel value = Wetland Area in Hectares * 10*\n- **H3 Hexagons:** `glwd/hex/` (Partitioned by H3 resolution 0)\n\n---\n\n## 3. National Wetlands Inventory (NWI)\n**Source:** [U.S. Fish & Wildlife Service](https://www.fws.gov/program/national-wetlands-inventory)  \n**Type:** Vector/H3 Index (USA Only)  \n**Description:** Detailed wetland classification for the United States. Due to the massive size of the original vector data, this dataset is primarily served here as an H3 spatial index.\n\n### Assets\n- **H3 Hexagons:** `nwi/hex/` (Partitioned by H3 resolution 0)\n\n### Schema (NWI Hex)\n| Column | Type | Description |\n|--------|------|-------------|\n| `h3_index` | String | H3 Cell ID |\n| `measure` | Double | Area or Count (verify in data) |\n| `...` | ... | (Schema varies, check parquet footer) |\n\n## Access\nAll data is hosted on the NRP Nautilus S3 bucket `public-wetlands`.\n\n```python\nimport pandas as pd\n# Example: Read NWI Hex Data\ndf = pd.read_parquet(\"s3://public-wetlands/nwi/hex/h0=8027fffffffffff/data_0.parquet\", \n                     storage_options={\"anon\": True, \"client_kwargs\": {\"endpoint_url\": \"https://s3-west.nrp-nautilus.io\"}})\n```\n",
-  "_review": [
-    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed."
-  ],
-  "_state": "drafted",
-  "cataloged_at": "2026-08-21T00:22:24+00:00",
-  "objects_updated_at": "2026-08-12T22:37:50+00:00",
-  "store_format": "filegdb",
   "ext_bytes": {
     "parquet": 163729978863,
     "pmtiles": 13522664432,
@@ -196,5 +189,12 @@
     "horizon": 2400,
     "": 1212,
     "cpg": 360
-  }
+  },
+  "readme": "## README.md\n# Global Wetlands Data\n\nThis collection hosts three distinct wetland datasets, providing global and regional coverage of wetland distribution, types, and protection status.\n\n## 1. Ramsar Sites of International Importance\n**Source:** [Ramsar Sites Information Service](https://rsis.ramsar.org/)  \n**Type:** Vector (Global)  \n**Description:** Polygons of wetlands designated as internally important under the Ramsar Convention.\n\n### Assets\n- **GeoParquet:** `ramsar/ramsar_wetlands.parquet` (Full dataset)\n- **PMTiles:** `ramsar/ramsar_wetlands.pmtiles` (Web-optimized tiles, Layer: `ramsar`)\n- **H3 Hexagons:** `ramsar/hex/` (Partitioned by H3 resolution 0)\n\n### Schema (Ramsar)\n| Column | Type | Description |\n|--------|------|-------------|\n| `ramsarid` | Integer | Unique Site ID |\n| `Site name` | String | Official Name |\n| `Country` | String | Country Name |\n| `Area (ha)` | Float | Official Area in Hectares |\n| `Wetland Type` | String | Classification Code |\n\n---\n\n## 2. Global Lakes and Wetlands Database (GLWD)\n**Source:** [World Wildlife Fund / GWSP](https://www.worldwildlife.org/pages/global-lakes-and-wetlands-database)  \n**Type:** Raster & H3 Index (Global)  \n**Description:** Level 3 product combining lakes, reservoirs, rivers, and different wetland types into a global raster map.\n\n### Assets\n- **Cloud-Optimized GeoTIFF (COG):** `GLWD_v2_0/GLWD_v2_0_area_ha_x10_cog.tif`  \n  *Pixel value = Wetland Area in Hectares * 10*\n- **H3 Hexagons:** `glwd/hex/` (Partitioned by H3 resolution 0)\n\n---\n\n## 3. National Wetlands Inventory (NWI)\n**Source:** [U.S. Fish & Wildlife Service](https://www.fws.gov/program/national-wetlands-inventory)  \n**Type:** Vector/H3 Index (USA Only)  \n**Description:** Detailed wetland classification for the United States. Due to the massive size of the original vector data, this dataset is primarily served here as an H3 spatial index.\n\n### Assets\n- **H3 Hexagons:** `nwi/hex/` (Partitioned by H3 resolution 0)\n\n### Schema (NWI Hex)\n| Column | Type | Description |\n|--------|------|-------------|\n| `h3_index` | String | H3 Cell ID |\n| `measure` | Double | Area or Count (verify in data) |\n| `...` | ... | (Schema varies, check parquet footer) |\n\n## Access\nAll data is hosted on the NRP Nautilus S3 bucket `public-wetlands`.\n\n```python\nimport pandas as pd\n# Example: Read NWI Hex Data\ndf = pd.read_parquet(\"s3://public-wetlands/nwi/hex/h0=8027fffffffffff/data_0.parquet\", \n                     storage_options={\"anon\": True, \"client_kwargs\": {\"endpoint_url\": \"https://s3-west.nrp-nautilus.io\"}})\n```\n",
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-08-27T12:08:00+00:00",
+  "store_format": "filegdb"
 }
