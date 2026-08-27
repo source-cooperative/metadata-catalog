@@ -1,23 +1,335 @@
 {
   "schema_version": 1,
-  "account_id": "giswqs",
-  "product_id": "giw",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
+  "id": "giswqs/giw",
   "title": "Non-Floodplain Wetlands",
-  "description": "Geographically isolated wetlands (non-floodplain wetlands) of the conterminous United States, identified and mapped based on their geographic isolation from NHD aquatic systems and coastal features.",
+  "description": "Vector dataset delineating geographically isolated wetlands (non-floodplain wetlands, GIWs/NFWs) across the conterminous United States, derived from the National Wetlands Inventory and their distance-based isolation from NHD aquatic systems and coastlines. Provided in two versions: the original Lane & D'Amico (2016) attribute set, and an expanded version with 10-m resolution wetland depression (storage volume, area, morphology) attributes.",
   "keywords": [
     "wetlands",
     "biodiversity",
-    "conservation",
     "hydrology",
-    "ecosystem",
-    "environmental-monitoring"
+    "conservation",
+    "environmental-monitoring",
+    "geoparquet"
   ],
-  "created_at": "2023-11-11T06:01:26.575979+00:00",
-  "updated_at": "2025-08-21T16:39:55.568Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
+  "providers": [
+    {
+      "name": "U.S. Environmental Protection Agency",
+      "roles": [
+        "producer",
+        "host"
+      ]
+    },
+    {
+      "name": "Qiusheng Wu",
+      "roles": [
+        "processor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/giswqs/giw"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -125.1171461,
+          24.3736447,
+          -71.3952605,
+          49.993638
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 3224395
+  },
+  "assets": {
+    "wetlands": {
+      "href": "https://data.source.coop/giswqs/giw/wetlands/",
+      "type": "application/x-parquet",
+      "title": "wetlands",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "Final_ID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "AdjRiverine",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "AdjBuffer",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Isolated",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "InState",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Acres",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "hectares",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Shape_Length",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Shape_Area",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:5070')",
+          "description": "[geometry] Wetland polygon geometry in EPSG:5070"
+        },
+        {
+          "name": "acres",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "inState",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Hectares",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "inPPR",
+          "type": "VARCHAR"
+        }
+      ],
+      "description": "20 files sampled for this table",
+      "bbox": [
+        -125.1171461,
+        24.3736447,
+        -71.3952605,
+        49.993638
+      ],
+      "item_count": 2920784
+    },
+    "wetlands_v2": {
+      "href": "https://data.source.coop/giswqs/giw/wetlands_v2/",
+      "type": "application/x-parquet",
+      "title": "wetlands_v2",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "Final_ID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "AdjRiverine",
+          "type": "INTEGER"
+        },
+        {
+          "name": "AdjBuffer",
+          "type": "INTEGER"
+        },
+        {
+          "name": "Isolated",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "InState",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Acres",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "hectares",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Shape_Length",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Shape_Area",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:5070')",
+          "description": "[geometry] Wetland polygon geometry in EPSG:5070"
+        },
+        {
+          "name": "index_right",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "region-id",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "count",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "area",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "volume",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "avg-depth",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "max-depth",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "min-elev",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "max-elev",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "perimeter",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "major-axis",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "minor-axis",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "elongatedness",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "eccentricity",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "orientation",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "area-bbox-ratio",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "huc8",
+          "type": "VARCHAR",
+          "description": "[admin_code] 8-digit Hydrologic Unit Code identifying the containing watershed"
+        },
+        {
+          "name": "__index_level_0__",
+          "type": "BIGINT"
+        },
+        {
+          "name": "acres",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "inState",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Hectares",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "inPPR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "SHAPE_Length",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "SHAPE_Area",
+          "type": "DOUBLE"
+        }
+      ],
+      "description": "20 files sampled for this table",
+      "bbox": [
+        -125.1171461,
+        24.3736447,
+        -71.3952605,
+        49.993638
+      ],
+      "item_count": 3224395
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/giswqs/giw/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/giswqs/giw",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "rel": "cite-as",
+      "href": "https://doi.org/10.1111/1752-1688.12421"
+    }
+  ],
   "data_mode": "open",
+  "visibility": "public",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "exts": {
+    "parquet": 97,
+    "md": 1
+  },
+  "featured": 0,
+  "objects_updated_at": "2024-06-06T02:47:48+00:00",
+  "ext_bytes": {
+    "parquet": 146619783110,
+    "md": 9165
+  },
+  "account_id": "giswqs",
+  "object_count": 98,
+  "product_id": "giw",
+  "total_bytes": 146619792275,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -30,22 +342,17 @@
       "prefix": "giswqs/giw/"
     }
   },
-  "object_count": 98,
-  "objects_updated_at": null,
-  "total_bytes": 146619792275,
-  "exts": {
-    "parquet": 97,
-    "md": 1
-  },
-  "ext_bytes": {
-    "parquet": 146619783110,
-    "md": 9165
-  },
-  "store_format": null,
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "cataloged_at": "2026-08-26T23:27:51+00:00"
+  "disabled": false,
+  "created_at": "2023-11-11T06:01:26.575979+00:00",
+  "updated_at": "2025-08-21T16:39:55.568Z",
+  "readme": "## README.md\n---\njupytext:\n  text_representation:\n    extension: .md\n    format_name: myst\n    format_version: 0.13\n    jupytext_version: 1.16.2\nkernelspec:\n  display_name: Python 3\n  language: python\n  name: python3\n---\n\n# Non-Floodplain Wetlands\n\n[![image](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/opengeos/source-coop-readme/blob/main/giw/README.ipynb)\n\n## Introduction\n\nThe datasets represent the extent and approximate location of [Geographically Isolated Wetlands](https://catalog.data.gov/dataset/geographically-isolated-wetlands-non-floodplain-wetlands-of-the-conterminous-united-states1) (GIWs), also known as non-floodplain wetlands (NFWs), in the conterminous United States. National Wetlands Inventory (NWI) lacustrine systems and palustrine wetlands were determined to be \u201cisolated\u201d based on their geographic location (i.e., unconnected, based on a distance measure, to specific classes of NHD aquatic systems). GIWs were here considered geographically isolated when they were outside of 10 meters from select NHD lines and polygons or were not adjacent to NWI Riverine or Estuarine wetlands and (where applicable) outside of 10 meters from a coastline (e.g., oceans or Great Lakes).\n\nThe datasets have two versions:\n\n- [Version 1](https://beta.source.coop/giswqs/giw/wetlands) (46.37 GB): The original Lane & D'Amico (2016) dataset with the original attributes. We call this dataset **NFW**.\n- [Version 2](https://beta.source.coop/giswqs/giw/wetlands_v2) (90.18 GB): The original Lane & D'Amico (2016) dataset with additional attributes from the 10-m resolution depression dataset. We call this dataset **Wetland Depressions**.\n\n## Reference\n\n- Lane, C. R., & D'Amico, E. (2016). Identification of putative geographically isolated wetlands of the conterminous United States. _JAWRA Journal of the American Water Resources Association_, 52(3), 705-722. https://doi.org/10.1111/1752-1688.12421\n\n## Environment setup\n\nFirst, create a conda environment with the required packages:\n\n```bash\nconda create -n gdal python=3.11\nconda activate gdal\nconda install -c conda-forge mamba\nmamba install -c conda-forge libgdal-arrow-parquet gdal leafmap lonboard\n```\n\nIf you are using Google Colab, you can uncomment the following to install the packages and restart the runtime after installation.\n\n```{code-cell} ipython3\n# %pip install leafmap lonboard\n```\n\n## Data download\n\nClick on this [link](https://gaftp.epa.gov/EPADataCommons/ORD/CONUS_NFWs/Geographically_Isolated_Wetlands_of_ConterminousUnitedStates.gdb.zip) to download the data to your computer and unzip it.\n\n## Data conversion\n\nThe script below was used to convert the data from the original Geodatabase format to [Parquet](https://parquet.apache.org) format. The script uses the [leafmap](https://leafmap.org) Python package.\n\n```{code-cell} ipython3\nimport leafmap\n```\n\n```{code-cell} ipython3\ngdb = \"Geographically_Isolated_Wetlands_of_ConterminousUnitedStates.gdb\"\n# leafmap.gdb_to_vector(gdb, \".\", gdal_driver=\"Parquet\")\n```\n\nThe total file size of the Geodatabase files is 4.4 GB. The total file size of the Parquet files is 46.37 GB.\n\n## Data access\n\nThe script below can be used to access the data using [DuckDB](https://duckdb.org). The script uses the [duckdb](https://duckdb.org) Python package.\n\n```{code-cell} ipython3\nimport duckdb\n\ncon = duckdb.connect()\ncon.install_extension(\"spatial\")\ncon.load_extension(\"spatial\")\n\nstate = \"IA\"  # Change to the US State of your choice\nurl = f\"https://data.source.coop/giswqs/giw/wetlands/{state}_IW.parquet\"\n# con.sql(f\"SELECT * EXCLUDE geometry, ST_GeomFromWKB(geometry) as geometry FROM '{url}'\")\n```\n\nFind out the total number non-floodplain wetlands in the selected state:\n\n```{code-cell} ipython3\ncon.sql(f\"SELECT COUNT(*) FROM '{url}'\")\n```\n\nAlternatively, you can use the aws cli to access the data directly from the S3 bucket:\n\n```bash\naws s3 ls s3://us-west-2.opendata.source.coop/giswqs/giw/wetlands/\n```\n\n## Data visualization\n\nTo visualize the data, you can use the [leafmap](https://leafmap.org) Python package with the [lonboard](https://github.com/developmentseed/lonboard) backend. The script below shows how to visualize the data.\n\n```{code-cell} ipython3\nimport leafmap\n\nstate = \"DC\"  # Change to the US State of your choice\nurl = f\"https://data.source.coop/giswqs/giw/wetlands/{state}_IW.parquet\"\ngdf = leafmap.read_parquet(\n    url, return_type=\"gdf\", src_crs=\"EPSG:5070\", dst_crs=\"EPSG:4326\"\n)\nleafmap.view_vector(gdf, get_fill_color=[0, 0, 255, 128])\n```\n\n## Data analysis\n\nFind out the total number of NFWs in CONUS:\n\n```{code-cell} ipython3\ncon.sql(\n    f\"\"\"\nSELECT COUNT(*) AS Count\nFROM 's3://us-west-2.opendata.source.coop/giswqs/giw/wetlands/*.parquet'\n\"\"\"\n)\n```\n\nThe total number of NFWs in CONUS is 8,380,620.\n\n+++\n\nFind out the number of NFWs in each state and order them by the number of NFWs:\n\n```{code-cell} ipython3\ngiw_count_df = con.sql(\n    f\"\"\"\nSELECT inState AS State, COUNT(*) AS Count\nFROM 's3://us-west-2.opendata.source.coop/giswqs/giw/wetlands/*.parquet'\nGROUP BY inState\nORDER BY COUNT(*) DESC;\n\"\"\"\n).df()\ngiw_count_df.head()\n```\n\nCreate a pie chart showing the number of NFWs in each state:\n\n```{code-cell} ipython3\nleafmap.pie_chart(\n    giw_count_df,\n    \"State\",\n    \"Count\",\n    height=700,\n    title=\"Number of Non-Floodplain Wetlands (NFWs) by State\",\n)\n```\n\n![](https://i.imgur.com/SNpVzcC.png)\n\nCreate a bar chart showing the number of NFWs in each state:\n\n```{code-cell} ipython3\nleafmap.bar_chart(\n    giw_count_df, \"State\", \"Count\", title=\"Number of Non-Floodplain Wetlands (NFWs) by State\"\n)\n```\n\n![](https://i.imgur.com/19gxoBE.png)\n\nCalculate the total area of NFWs in each state and order them by the area of wetlands:\n\n```{code-cell} ipython3\nsum_df = con.sql(\n    f\"\"\"\nSELECT inState AS State, Sum(hectares) AS Hectares\nFROM 's3://us-west-2.opendata.source.coop/giswqs/giw/wetlands/*.parquet'\nGROUP BY inState\nORDER BY Sum(hectares) DESC;\n\"\"\"\n).df()\nsum_df.head()\n```\n\nCreate a pie chart showing the total area of NFWs in each state:\n\n```{code-cell} ipython3\nleafmap.pie_chart(\n    sum_df,\n    \"State\",\n    \"Hectares\",\n    height=700,\n    title=\"Percentage Area of Non-Floodplain Wetlands (NFWs) by State\",\n)\n```\n\n![](https://i.imgur.com/dayPfZY.png)\n\nCreate a pie chart showing the total area of NFWs in each state:\n\n```{code-cell} ipython3\nleafmap.bar_chart(\n    sum_df, \"State\", \"Hectares\", title=\"Total Area of Non-Floodplain Wetlands (NFWs) by State\"\n)\n```\n\n```{code-cell} ipython3\nmedian_df = con.sql(\n    f\"\"\"\nSELECT inState AS State, median(hectares)*10000 AS Meters\nFROM 's3://us-west-2.opendata.source.coop/giswqs/giw/wetlands/*.parquet'\nGROUP BY inState\nORDER BY median(hectares) DESC;\n\"\"\"\n).df()\nmedian_df.head(10)\n```\n\nCreate a bar chart showing the median area of NFWs in each state:\n\n```{code-cell} ipython3\nleafmap.bar_chart(\n    median_df,\n    \"State\",\n    \"Meters\",\n    title=\"Median Area of Non-Floodplain Wetlands (NFWs) by State\",\n)\n```\n\n![](https://i.imgur.com/OZahOKx.png)\n\n+++\n\nCalculate the number of NFWs intersecting surface depressions (i.e., wetland depressions) in each state:\n\n```{code-cell} ipython3\ngiw_dep_count_stat = con.sql(\n    f\"\"\"\nSELECT inState AS State, COUNT(DISTINCT Final_ID) AS Count\nFROM 's3://us-west-2.opendata.source.coop/giswqs/giw/wetlands_v2/*.parquet'\nWHERE area IS NOT NULL\nGROUP BY inState\nORDER BY COUNT(*) DESC;\n\"\"\"\n).df()\ngiw_dep_count_stat.head()\n```\n\nMerge the NFW table with the wetland depressions table:\n\n```{code-cell} ipython3\nmerged_df = giw_count_df.merge(giw_dep_count_stat, on=\"State\")\nmerged_df.columns = [\"State\", \"GIW_Count\", \"DEP_Count\"]\nmerged_df[\"Percent\"] = merged_df[\"DEP_Count\"] / merged_df[\"GIW_Count\"] * 100\nmerged_df.head()\n```\n\nCompare the number of NFWs and wetland depressions in each state:\n\n```{code-cell} ipython3\nleafmap.bar_chart(\n    merged_df,\n    \"State\",\n    [\"GIW_Count\", \"DEP_Count\"],\n    title=\"Number of NFWs and Wetland Depressions by State\",\n)\n```\n\n![](https://i.imgur.com/BsPdZ82.png)\n\n+++\n\nCompute the statistics of the area of NFWs and wetland depressions in each state:\n\n```{code-cell} ipython3\ngiw_dep_count_stat = con.sql(\n    f\"\"\"\nSELECT inState AS State, COUNT(DISTINCT Final_ID) AS Count,\nSUM(area) / 1e6 AS Total_Area_km2,\nSUM(volume) / 1e9 AS Total_Volume_km3,\nMedian(area) AS Median_Area_m2,\nMedian(volume) AS Median_Volume_m3\nFROM 's3://us-west-2.opendata.source.coop/giswqs/giw/wetlands_v2/*.parquet'\nWHERE area IS NOT NULL\nGROUP BY inState\nORDER BY COUNT(*) DESC;\n\"\"\"\n).df()\ngiw_dep_count_stat.head(10)\n```\n\nThe median size of wetland depressions in each state:\n\n```{code-cell} ipython3\nleafmap.bar_chart(\n    giw_dep_count_stat[giw_dep_count_stat['State'] != \"NV\"],\n    \"State\",\n    \"Median_Area_m2\",\n    title=\"The Median Size of Maximum Depression Area by State\",\n)\n```\n\n![](https://i.imgur.com/nkD0NSM.png)\n\n+++\n\nThe median maximum storage volume of wetland depressions in each state:\n\n```{code-cell} ipython3\nleafmap.bar_chart(\n    giw_dep_count_stat,\n    \"State\",\n    \"Median_Volume_m3\",\n    title=\"The Median Maximum Storage Volume of Wetlands Depressions by State\",\n)\n```\n\n![](https://i.imgur.com/OLohMJ9.png)\n",
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
+    "providers: role [producer, host] for 'U.S. Environmental Protection Agency' is an AI guess \u2014 Inferred from the original data being hosted for download at gaftp.epa.gov/EPADataCommons; not explicitly labeled as producer in the README.. Verify before flipping to _state: reviewed.",
+    "providers: role [processor] for 'Qiusheng Wu' is an AI guess \u2014 Assumed based on being the account (giswqs) that converted the geodatabase to Parquet and authored the README/notebook.. Verify before flipping to _state: reviewed.",
+    "summaries.item_count: parts overlap, so this is max(part), not the sum \u2014 wetlands/ 2920784, wetlands_v2/ 3224395. Sum them only once the parts are known to be disjoint."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-08-27T12:00:17+00:00",
+  "store_format": null
 }
