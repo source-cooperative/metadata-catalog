@@ -1,21 +1,668 @@
 {
   "schema_version": 1,
-  "account_id": "giswqs",
-  "product_id": "depressions",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
+  "id": "giswqs/depressions",
   "title": "National Surface Depressions",
-  "description": "A national dataset of surface depressions delineated from 10-meter elevation data from the USGS 3D Elevation Program. The depressions were identified using level-set algorithms applied at the HU8 watershed scale and aggregated to HU2 scale. Two variants are provided: all depressions and non-floodplain depressions.",
+  "description": "A national dataset of surface depressions across the contiguous United States, delineated from 10-meter resolution USGS 3D Elevation Program (3DEP) digital elevation data using a level-set algorithm applied at the HU8 watershed scale. It includes two variants (all depressions and non-floodplain depressions) with per-depression morphometric attributes such as area, volume, depth, and shape indices.",
   "keywords": [
     "hydrology",
     "topography",
+    "digital-elevation-model",
     "watershed",
-    "digital-elevation-model"
+    "wetlands",
+    "biodiversity"
   ],
-  "created_at": "2023-11-15T23:30:12.743186+00:00",
-  "updated_at": "2025-08-21T16:39:55.568Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": "open",
+  "providers": [
+    {
+      "name": "U.S. Geological Survey 3D Elevation Program (3DEP)",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Qiusheng Wu",
+      "roles": [
+        "processor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/giswqs/depressions"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -128.4289149,
+          22.7624044,
+          -64.0624389,
+          79.270392
+        ],
+        [
+          -127.2585894,
+          23.8957333,
+          -65.4173504,
+          51.0790066
+        ],
+        [
+          -118.9179428,
+          32.4478855,
+          -67.6411018,
+          47.5481772
+        ],
+        [
+          -118.9238178,
+          32.4467456,
+          -66.7817835,
+          48.1662598
+        ],
+        [
+          -125.2894562,
+          24.1570248,
+          -71.3869649,
+          79.270392
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 36983053
+  },
+  "assets": {
+    "all_dep": {
+      "href": "https://data.source.coop/giswqs/depressions/all_dep/",
+      "type": "application/x-parquet",
+      "title": "all_dep",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "BIGINT|VARCHAR"
+        },
+        {
+          "name": "count",
+          "type": "BIGINT|VARCHAR"
+        },
+        {
+          "name": "area",
+          "type": "DOUBLE|VARCHAR"
+        },
+        {
+          "name": "volume",
+          "type": "DOUBLE|VARCHAR"
+        },
+        {
+          "name": "avg_depth",
+          "type": "DOUBLE|VARCHAR"
+        },
+        {
+          "name": "max_depth",
+          "type": "DOUBLE|VARCHAR"
+        },
+        {
+          "name": "min_elev",
+          "type": "DOUBLE|VARCHAR"
+        },
+        {
+          "name": "max_elev",
+          "type": "DOUBLE|VARCHAR"
+        },
+        {
+          "name": "perimeter",
+          "type": "DOUBLE|VARCHAR"
+        },
+        {
+          "name": "major_axis",
+          "type": "DOUBLE|VARCHAR"
+        },
+        {
+          "name": "minor_axis",
+          "type": "DOUBLE|VARCHAR"
+        },
+        {
+          "name": "elongatedn",
+          "type": "DOUBLE|VARCHAR"
+        },
+        {
+          "name": "eccentrici",
+          "type": "DOUBLE|VARCHAR"
+        },
+        {
+          "name": "orientatio",
+          "type": "DOUBLE|VARCHAR"
+        },
+        {
+          "name": "area_bbox_",
+          "type": "DOUBLE|VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:5070')",
+          "description": "[geometry] Depression polygon geometry (EPSG:5070)"
+        }
+      ],
+      "description": "18 files sampled for this table",
+      "bbox": [
+        -127.2585894,
+        23.8957333,
+        -65.4173504,
+        51.0790066
+      ],
+      "item_count": 36983053
+    },
+    "hu8_all_dep": {
+      "href": "https://data.source.coop/giswqs/depressions/hu8_all_dep/",
+      "type": "application/x-parquet",
+      "title": "hu8_all_dep",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count",
+          "type": "BIGINT"
+        },
+        {
+          "name": "area",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "volume",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "avg_depth",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "max_depth",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "min_elev",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "max_elev",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "perimeter",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "major_axis",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "minor_axis",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "elongatedn",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "eccentrici",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "orientatio",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "area_bbox_",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "index_righ",
+          "type": "BIGINT"
+        },
+        {
+          "name": "ATTRIBUTE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "WETLAND_TY",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ACRES",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Shape_Leng",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Shape_Area",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:5070')",
+          "description": "[geometry] Depression polygon geometry (EPSG:5070)"
+        },
+        {
+          "name": "SHAPE_Leng",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "SHAPE_Area",
+          "type": "DOUBLE"
+        }
+      ],
+      "description": "20 files sampled for this table",
+      "bbox": [
+        -118.9179428,
+        32.4478855,
+        -67.6411018,
+        47.5481772
+      ],
+      "item_count": 41204
+    },
+    "hu8_nfp_dep": {
+      "href": "https://data.source.coop/giswqs/depressions/hu8_nfp_dep/",
+      "type": "application/x-parquet",
+      "title": "hu8_nfp_dep",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count",
+          "type": "BIGINT"
+        },
+        {
+          "name": "area",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "volume",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "avg_depth",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "max_depth",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "min_elev",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "max_elev",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "perimeter",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "major_axis",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "minor_axis",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "elongatedn",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "eccentrici",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "orientatio",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "area_bbox_",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "savedindex",
+          "type": "BIGINT"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:5070')",
+          "description": "[geometry] Non-floodplain depression polygon geometry (EPSG:5070)"
+        }
+      ],
+      "description": "20 files sampled for this table",
+      "bbox": [
+        -118.9238178,
+        32.4467456,
+        -66.7817835,
+        48.1662598
+      ],
+      "item_count": 127494
+    },
+    "nfp_dep": {
+      "href": "https://data.source.coop/giswqs/depressions/nfp_dep/",
+      "type": "application/x-parquet",
+      "title": "nfp_dep",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "BIGINT|VARCHAR"
+        },
+        {
+          "name": "count",
+          "type": "BIGINT|VARCHAR"
+        },
+        {
+          "name": "area",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "volume",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "avg_depth",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "max_depth",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "min_elev",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "max_elev",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "perimeter",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "major_axis",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "minor_axis",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "elongatedn",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "eccentrici",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "orientatio",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "area_bbox_",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "savedindex",
+          "type": "BIGINT|VARCHAR"
+        },
+        {
+          "name": "geom",
+          "type": "BLOB",
+          "description": "[geometry] Non-floodplain depression geometry blob"
+        },
+        {
+          "name": "index",
+          "type": "VARCHAR"
+        }
+      ],
+      "description": "18 files sampled for this table",
+      "item_count": 26863907
+    },
+    "state": {
+      "href": "https://data.source.coop/giswqs/depressions/state/",
+      "type": "application/x-parquet",
+      "title": "state",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "region-id",
+          "type": "BIGINT|VARCHAR"
+        },
+        {
+          "name": "count",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "area",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "volume",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "avg-depth",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "max-depth",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "min-elev",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "max-elev",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "perimeter",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "major-axis",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "minor-axis",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "elongatedness",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "eccentricity",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "orientation",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "area-bbox-ratio",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "huc8",
+          "type": "VARCHAR",
+          "description": "[admin_code] 8-digit Hydrologic Unit Code identifying the watershed"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:5070')",
+          "description": "[geometry] Depression polygon geometry aggregated by region (EPSG:5070)"
+        }
+      ],
+      "description": "20 files sampled for this table",
+      "bbox": [
+        -125.2894562,
+        24.1570248,
+        -71.3869649,
+        79.270392
+      ],
+      "item_count": 13493150
+    },
+    "floodplain": {
+      "href": "https://data.source.coop/giswqs/depressions/floodplain/GFP250m.parquet",
+      "type": "application/x-parquet",
+      "title": "GFP250m.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "count",
+          "type": "BIGINT"
+        },
+        {
+          "name": "label",
+          "type": "BIGINT"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('{\"$schema\":\"https://proj.org/schemas/v0.7/projjson.schema.json\",\"type\":\"GeographicCRS\",\"name\":\"WGS 84\",\"datum\":{\"type\":\"GeodeticReferenceFrame\",\"name\":\"World Geodetic System 1984\",\"ellipsoid\":{\"name\":\"WGS 84\",\"semi_major_axis\":6378137,\"inverse_flattening\":298.257223563},\"id\":{\"authority\":\"EPSG\",\"code\":6326}},\"coordinate_system\":{\"subtype\":\"ellipsoidal\",\"axis\":[{\"name\":\"Longitude\",\"abbreviation\":\"lon\",\"direction\":\"east\",\"unit\":\"degree\"},{\"name\":\"Latitude\",\"abbreviation\":\"lat\",\"direction\":\"north\",\"unit\":\"degree\"}]}}')",
+          "description": "[geometry] Floodplain polygon geometry (WGS84)"
+        }
+      ],
+      "table:row_count": 2424
+    },
+    "hu8_boundary": {
+      "href": "https://data.source.coop/giswqs/depressions/hu8_boundary/CONUS_HU8.parquet",
+      "type": "application/x-parquet",
+      "title": "CONUS_HU8.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "TNMID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "METASOURCE",
+          "type": "INTEGER"
+        },
+        {
+          "name": "SOURCEDATA",
+          "type": "INTEGER"
+        },
+        {
+          "name": "SOURCEORIG",
+          "type": "INTEGER"
+        },
+        {
+          "name": "SOURCEFEAT",
+          "type": "INTEGER"
+        },
+        {
+          "name": "LOADDATE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "GNIS_ID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "AREAACRES",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "AREASQKM",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "STATES",
+          "type": "VARCHAR",
+          "description": "[placename] State abbreviation(s) intersecting the watershed"
+        },
+        {
+          "name": "HUC8",
+          "type": "VARCHAR",
+          "description": "[admin_code] 8-digit Hydrologic Unit Code identifying the watershed"
+        },
+        {
+          "name": "NAME",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "GLOBALID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "SHAPE_Leng",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "SHAPE_Area",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('{\"$schema\":\"https://proj.org/schemas/v0.7/projjson.schema.json\",\"type\":\"ProjectedCRS\",\"name\":\"NAD_1983_Albers_CONUS\",\"base_crs\":{\"name\":\"NAD83\",\"datum\":{\"type\":\"GeodeticReferenceFrame\",\"name\":\"North American Datum 1983\",\"ellipsoid\":{\"name\":\"GRS 1980\",\"semi_major_axis\":6378137,\"inverse_flattening\":298.257222101},\"id\":{\"authority\":\"EPSG\",\"code\":6269}},\"coordinate_system\":{\"subtype\":\"ellipsoidal\",\"axis\":[{\"name\":\"Longitude\",\"abbreviation\":\"lon\",\"direction\":\"east\",\"unit\":{\"type\":\"AngularUnit\",\"name\":\"Degree\",\"conversion_factor\":0.0174532925199433}},{\"name\":\"Latitude\",\"abbreviation\":\"lat\",\"direction\":\"north\",\"unit\":{\"type\":\"AngularUnit\",\"name\":\"Degree\",\"conversion_factor\":0.0174532925199433}}]}},\"conversion\":{\"name\":\"unnamed\",\"method\":{\"name\":\"Albers Equal Area\",\"id\":{\"authority\":\"EPSG\",\"code\":9822}},\"parameters\":[{\"name\":\"Latitude of false origin\",\"value\":23,\"unit\":{\"type\":\"AngularUnit\",\"name\":\"Degree\",\"conversion_factor\":0.0174532925199433},\"id\":{\"authority\":\"EPSG\",\"code\":8821}},{\"name\":\"Longitude of false origin\",\"value\":-96,\"unit\":{\"type\":\"AngularUnit\",\"name\":\"Degree\",\"conversion_factor\":0.0174532925199433},\"id\":{\"authority\":\"EPSG\",\"code\":8822}},{\"name\":\"Latitude of 1st standard parallel\",\"value\":29.5,\"unit\":{\"type\":\"AngularUnit\",\"name\":\"Degree\",\"conversion_factor\":0.0174532925199433},\"id\":{\"authority\":\"EPSG\",\"code\":8823}},{\"name\":\"Latitude of 2nd standard parallel\",\"value\":45.5,\"unit\":{\"type\":\"AngularUnit\",\"name\":\"Degree\",\"conversion_factor\":0.0174532925199433},\"id\":{\"authority\":\"EPSG\",\"code\":8824}},{\"name\":\"Easting at false origin\",\"value\":0,\"unit\":\"metre\",\"id\":{\"authority\":\"EPSG\",\"code\":8826}},{\"name\":\"Northing at false origin\",\"value\":0,\"unit\":\"metre\",\"id\":{\"authority\":\"EPSG\",\"code\":8827}}]},\"coordinate_system\":{\"subtype\":\"Cartesian\",\"axis\":[{\"name\":\"Easting\",\"abbreviation\":\"\",\"direction\":\"east\",\"unit\":\"metre\"},{\"name\":\"Northing\",\"abbreviation\":\"\",\"direction\":\"north\",\"unit\":\"metre\"}]}}')",
+          "description": "[geometry] HU8 watershed boundary geometry"
+        }
+      ],
+      "table:row_count": 2119
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/giswqs/depressions/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/giswqs/depressions",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "rel": "cite-as",
+      "href": "https://doi.org/10.1111/1752-1688.12689"
+    }
+  ],
+  "product_id": "depressions",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -28,9 +675,20 @@
       "prefix": "giswqs/depressions/"
     }
   },
-  "object_count": 4289,
-  "objects_updated_at": null,
+  "data_mode": "open",
+  "created_at": "2023-11-15T23:30:12.743186+00:00",
+  "disabled": false,
+  "featured": 0,
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
   "total_bytes": 27639269257,
+  "visibility": "public",
+  "objects_updated_at": "2024-03-28T03:49:04+00:00",
+  "account_id": "giswqs",
+  "updated_at": "2025-08-21T16:39:55.568Z",
+  "object_count": 4289,
   "exts": {
     "parquet": 4288,
     "md": 1
@@ -39,11 +697,13 @@
     "parquet": 27639264408,
     "md": 4849
   },
-  "store_format": null,
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "cataloged_at": "2026-08-26T23:27:51+00:00"
+  "readme": "## README.md\n---\njupytext:\n  text_representation:\n    extension: .md\n    format_name: myst\n    format_version: 0.13\n    jupytext_version: 1.15.2\nkernelspec:\n  display_name: geo\n  language: python\n  name: python3\n---\n\n# National Surface Depressions\n\n[![image](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/opengeos/source-coop-readme/blob/main/depressions/README.ipynb)\n\n## Description\n\nThis dataset represents the extent and location of surface depressions derived from the 10-m resolution dataset from the 3D Elevation Program ([3DEP](https://www.usgs.gov/3d-elevation-program)). The levet-set algorithm available through the [lidar](https://lidar.gishub.org) Python package was used the process the DEM and delineate surface depressions at the HU8 watershed scale.\n\n## Reference\n\n- Wu, Q., Lane, C. R., Wang, L., Vanderhoof, M. K., Christensen, J. R., & Liu, H. (2019). Efficient Delineation of Nested Depression Hierarchy in Digital Elevation Models for Hydrological Analysis Using Level\u2010Set Method. JAWRA Journal of the American Water Resources Association , 55(2), 354-368. https://doi.org/10.1111/1752-1688.12689\n\n## Environment setup\n\nFirst, create a conda environment with the required packages:\n\n```bash\nconda create -n gdal python=3.11\nconda activate gdal\nconda install -c conda-forge mamba\nmamba install -c conda-forge libgdal-arrow-parquet gdal leafmap\npip install lonboard\n```\n\nIf you are using Google Colab, you can uncomment the following to install the packages and restart the runtime after installation.\n\n```{code-cell} ipython3\n# %pip install leafmap lonboard\n```\n\n## Data access\n\nThe dataset was derived from the 10-m resolution dataset from the 3D Elevation Program ([3DEP](https://www.usgs.gov/3d-elevation-program)) at HU8 watershed scale. The results were then merged at the HU2 watershed scale. Below is a map of the National Hydrography Dataset ([NHD](https://www.usgs.gov/media/images/watershed-boundary-dataset-structure-visualization)) watershed boundary structure.\n\n![](https://i.imgur.com/UFivxid.png)\n\nThe script below can be used to access the data using [DuckDB](https://duckdb.org). The script uses the [duckdb](https://duckdb.org) Python package.\n\n```{code-cell} ipython3\nimport duckdb\n\ncon = duckdb.connect()\ncon.install_extension(\"spatial\")\ncon.load_extension(\"spatial\")\n\nhu2 = \"06\"    # Change to the HU2 of your choice\nurl = f\"https://data.source.coop/giswqs/depressions/all_dep/HU2_{hu2}.parquet\"\ncon.sql(f\"SELECT * EXCLUDE geometry, ST_GeomFromWKB(geometry) as geometry FROM '{url}'\")\n```\n\nFind out the total number non-floodplain wetlands in the selected watershed:\n\n```{code-cell} ipython3\ncon.sql(f\"SELECT COUNT(*) FROM '{url}'\")\n```\n\nAlternatively, you can use the aws cli to access the data directly from the S3 bucket:\n\n```bash\naws s3 ls s3://us-west-2.opendata.source.coop/giswqs/depressions/all_dep/\n```\n\n## Data visualization\n\nTo visualize the data, you can use the [leafmap](https://leafmap.org) Python package with the [lonboard](https://github.com/developmentseed/lonboard) backend. The script below shows how to visualize the data.\n\n```{code-cell} ipython3\nimport leafmap\n\nhu2 = \"06\"    # Change to the HU2 of your choice\nurl = f\"https://data.source.coop/giswqs/depressions/all_dep/HU2_{hu2}.parquet\"\ngdf = leafmap.read_parquet(url, return_type='gdf', src_crs='EPSG:5070', dst_crs='EPSG:4326')\n# leafmap.view_vector(gdf, get_fill_color=[0, 0, 255, 128])\n```\n\n## Data analysis\n\nThe depression dataset has two variations: `all_dep` and `nfp_dep`. The `all_dep` dataset contains all depressions, while the `nfp` dataset contains non-floodplain depressions.\n\n### All depressions\n\nFind out the total number of surface depression in the contiguous United States (CONUS):\n\n```{code-cell} ipython3\ncon.sql(f\"\"\"\nSELECT COUNT(*) AS Count\nFROM 's3://us-west-2.opendata.source.coop/giswqs/depressions/all_dep/*.parquet'\n\"\"\")\n```\n\nCalculate some descriptive statistics of all surface depressions:\n\n```{code-cell} ipython3\ncon.sql(f\"\"\"\nSELECT sum(area) as total_area, median(area) AS median_area, median(volume) AS median_volume, median(avg_depth) AS median_depth\nFROM 's3://us-west-2.opendata.source.coop/giswqs/depressions/all_dep/*.parquet'\n\"\"\")\n```\n\n### Non-floodplain depressions\n\nFind out the total number non-floodplain depressions in the contiguous United States (CONUS):\n\n```{code-cell} ipython3\ncon.sql(f\"\"\"\nSELECT COUNT(*) AS Count\nFROM 's3://us-west-2.opendata.source.coop/giswqs/depressions/nfp_dep/*.parquet'\n\"\"\")\n```\n\nCalculate some descriptive statistics of non-floodplain surface depressions:\n\n```{code-cell} ipython3\ncon.sql(f\"\"\"\nSELECT sum(area) as total_area, median(area) AS median_area, median(volume) AS median_volume, median(avg_depth) AS median_depth\nFROM 's3://us-west-2.opendata.source.coop/giswqs/depressions/nfp_dep/*.parquet'\n\"\"\")\n```\n",
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
+    "providers: role [processor] for 'Qiusheng Wu' is an AI guess \u2014 Inferred as processor from the S3/GitHub path (giswqs) and authorship of the lidar/leafmap Python packages used to derive the depressions.. Verify before flipping to _state: reviewed.",
+    "summaries.item_count: parts overlap, so this is max(part), not the sum \u2014 all_dep/ 36983053, hu8_all_dep/ 41204, hu8_nfp_dep/ 127494, nfp_dep/ 26863907, state/ 13493150. Sum them only once the parts are known to be disjoint."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-08-27T12:07:21+00:00",
+  "store_format": null
 }
