@@ -4,7 +4,7 @@
   "stac_version": "1.1.0",
   "id": "harvard-lil/smithsonian-open-access",
   "title": "Smithsonian Open Access Archive",
-  "description": "A mirror of the Smithsonian Institution's Open Access collection, containing public domain 3D models, images (JPEG/TIFF), and newline-delimited JSON metadata records for millions of objects sourced from more than 20 Smithsonian museums, libraries, and research centers, along with derived Parquet search catalogs for querying files, metadata, and their linkages.",
+  "description": "Mirror of the Smithsonian Institution's Open Access collection, containing millions of public domain 3D models, images (JPEG/TIFF), and newline-delimited JSON metadata records sourced from over 20 Smithsonian museums, libraries, and research centers, along with derived Parquet catalogs for searching files, metadata, and their linkages.",
   "license": "CC0-1.0",
   "keywords": [
     "cultural-heritage",
@@ -13,7 +13,7 @@
     "3d-models",
     "digitization",
     "historical-archives",
-    "open-access"
+    "points-of-interest"
   ],
   "providers": [
     {
@@ -61,8 +61,8 @@
   "assets": {
     "data": {
       "href": "https://data.source.coop/harvard-lil/smithsonian-open-access/",
-      "type": "image/tiff; application=geotiff",
-      "title": "Dataset files (4377376 x .tif)",
+      "type": "application/octet-stream",
+      "title": "Dataset files (4835215 x .jpg)",
       "roles": [
         "data"
       ]
@@ -80,19 +80,11 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "data_mode": "open",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "featured": 0,
-  "disabled": false,
-  "total_bytes": 851049252700446,
   "created_at": "2025-11-20T19:27:31.110Z",
-  "updated_at": "2026-03-27T19:06:22.330Z",
+  "objects_updated_at": "2026-08-21T18:07:07+00:00",
   "exts": {
     "jpg": 4835216,
-    "tif": 4377376,
+    "tif": 4377398,
     "json": 28175,
     "glb": 14650,
     "txt": 13645,
@@ -102,8 +94,8 @@
     "obj": 4425,
     "ply": 4257,
     "fbx": 2181,
-    "xml": 2173,
     "lua": 2173,
+    "xml": 2173,
     "tiff": 1955,
     "mtl": 1204,
     "pdf": 1076,
@@ -111,17 +103,22 @@
     "zip": 778,
     "html": 392,
     "usdz": 376,
-    "ptif": 252,
+    "ptif": 255,
     "": 5,
     "jpeg": 4,
     "old": 4,
     "parquet": 3,
+    "wrl": 2,
     "stl": 2,
     "db": 2,
-    "wrl": 2,
     "md": 1,
     "ds_store": 1
   },
+  "updated_at": "2026-03-27T19:06:22.330Z",
+  "featured": 0,
+  "object_count": 9310737,
+  "total_bytes": 851066477800556,
+  "account_id": "harvard-lil",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -135,12 +132,15 @@
     }
   },
   "visibility": "public",
-  "account_id": "harvard-lil",
   "product_id": "smithsonian-open-access",
-  "object_count": 9310712,
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "data_mode": "open",
+  "disabled": false,
   "readme": "## README.md\n# Smithsonian Open Access Archive\n\nThis is a mirror of public domain data archived from the Smithsonian Institution's [Open Access S3 bucket](https://registry.opendata.aws/smithsonian-open-access/). The source data can also be searched via the Smithsonian's [Collections Search Center](https://collections.si.edu/search/) by [limiting results to CC0 media](https://collections.si.edu/search/results.htm?q=&media.CC0=true). We look forward to enhancing the usability and discoverability of this data in the coming months.\n\nThis repository is maintained by the [Library Innovation Lab](https://lil.law.harvard.edu/) at Harvard Law School Library as part of our [Public Data Project](https://lil.law.harvard.edu/our-work/public-data-project/).\n\n![Logo for the Public Data Project at Harvard Law School Library](https://lil-blog-media.s3.amazonaws.com/pdp-logo-hlsl.svg)\n\n## Contents\n\n- [Navigation](#navigation)\n  - [3D models](#3d-models)\n  - [Images](#images)\n  - [Metadata](#metadata)\n- [Search](#search)\n  - [Files catalog](#files-catalog)\n  - [Metadata catalog](#metadata-catalog)\n  - [Linkages table](#linkages-table)\n- [Downloading data](#downloading-data)\n- [Update frequency](#update-frequency)\n- [Smithsonian unit codes](#smithsonian-unit-codes)\n\n## Navigation\n\nAt present, this repository mirrors the directory structure used by the Smithsonian:\n\n```\nroot\n\u251c\u2500\u2500 3d/\n\u2502   \u251c\u2500\u2500 002f2567-7384-4027-9b99-bcb7a7e6361e/\n\u2502   \u251c\u2500\u2500 00416a1c-358a-4f5b-9a90-053df0d6fd31/\n\u2502   \u2514\u2500\u2500 \u2026\n\u251c\u2500\u2500 media/\n\u2502   \u251c\u2500\u2500 aaa/\n\u2502   \u251c\u2500\u2500 acm/\n\u2502   \u2514\u2500\u2500 \u2026\n\u251c\u2500\u2500 metadata/edan/\n\u2502   \u251c\u2500\u2500 aaa/\n\u2502   \u251c\u2500\u2500 aag/\n\u2502   \u2514\u2500\u2500 \u2026\n\u251c\u2500\u2500 \u2026\n\u2514\u2500\u2500 README.md\n```\n\nEach root-level directory contains a different type of data: `3d` contains 3D models, `media` contains images, and `metadata` contains metadata for all objects. For more information on working with a given type of data, please read the corresponding section below.\n\n### 3D models\n\n3D models are organized solely by identifier. Unlike images and metadata, they are not grouped by [Smithsonian unit code](#smithsonian-unit-codes). Each subdirectory under `3d` matches an object identifier, and may contain a number of objects including 3D geometry files (GLB, GLTF, OBJ) and other material:\n\n```\n3d/\n\u251c\u2500\u2500 d8c62f94-4ebc-11ea-b77f-2e728ce88125/\n\u2502   \u251c\u2500\u2500 articles/\n\u2502   \u251c\u2500\u2500 resources/\n\u2502   \u251c\u2500\u2500 f1930_54-combined_std.usdz\n\u2502   \u251c\u2500\u2500 f1930_54-combined-100K-2048_std.glb\n\u2502   \u251c\u2500\u2500 \u2026\n\u2502   \u2514\u2500\u2500 scene.svx.json\n\u2514\u2500\u2500 \u2026\n```\n\nAlso included in each `3d` subdirectory is `scene.svx.json`, an [SVX file](https://smithsonian.github.io/dpo-voyager/document/) comprising [Smithsonian Voyager](https://smithsonian.github.io/dpo-voyager/) scene data as well as general object metadata. This metadata typically includes the object's name, description, and accession number, as well as associated links and identifiers.\n\n### Images\n\nImages are organized by [Smithsonian unit code](#smithsonian-unit-codes). Each subdirectory under `media` is named for a Smithsonian unit and contains JPEG and TIFF images for that unit:\n\n```\nmedia/\n\u251c\u2500\u2500 npg/\n\u2502   \u251c\u2500\u2500 NPG-6500034A_1.jpg\n\u2502   \u251c\u2500\u2500 NPG-6500034A_1.tif\n\u2502   \u251c\u2500\u2500 NPG-6500100A_1.jpg\n\u2502   \u251c\u2500\u2500 NPG-6500100A_1.tif\n\u2502   \u2514\u2500\u2500 \u2026\n\u2514\u2500\u2500 \u2026\n```\n\nThere is typically, though not always, a high-resolution TIFF for every JPEG and vice versa. Each image file is referenced in an associated metadata record.\n\n### Metadata\n\nMetadata is organized by [Smithsonian unit code](#smithsonian-unit-codes) and collected in large text files containing newline-delimited JSON records:\n\n```\nmetadata/edan/\n\u251c\u2500\u2500 nasm/\n\u2502   \u251c\u2500\u2500 00.txt\n\u2502   \u251c\u2500\u2500 01.txt\n\u2502   \u251c\u2500\u2500 02.txt\n\u2502   \u251c\u2500\u2500 \u2026\n\u2502   \u2514\u2500\u2500 index.txt\n\u2514\u2500\u2500 \u2026\n```\n\nAlso included in each subdirectory is `index.txt`, an index file listing all the metadata files for that directory.\n\nMore than 17 million metadata records, constituting over 47 GB, are included. As a consequence, the metadata files are very large and querying them is memory- and time-intensive. If you want to search or analyze the archive, consider using our [search catalogs](#search) as a starting point.\n\n## Search\n\nAs a convenience, we've generated lightweight Parquet-based search catalogs for this collection under the `search` directory:\n\n```\nsearch/\n\u251c\u2500\u2500 files.parquet\n\u251c\u2500\u2500 linkages.parquet\n\u2514\u2500\u2500 metadata.parquet\n```\n\nThese catalogs can be readily searched or analyzed using tools like [DuckDB](https://duckdb.org). Further information on the catalog files is included below.\n\n### Files catalog\n\nThe files catalog lists all assets (that is, 3D model and image files) in the collection. `files.parquet` includes the following fields:\n\n- `url`: Web URL for the file\n- `size`: Size of the file in bytes\n- `last_modified`: Timestamp for the file's last modified time in UTC\n\nAs an example, here's a DuckDB SQL query for computing aggregate image counts and sizes by directory from `files.parquet`:\n\n```sql\nSELECT\n  parse_path(url)[-2] AS dir_name,\n  count(*) AS file_count,\n  sum(size) / 1e12 AS dir_size_tb\nFROM 'files.parquet'\nWHERE starts_with(url, 'https://source.coop/harvard-lil/smithsonian-open-access/media/')\nGROUP BY dir_name\nORDER BY file_count DESC\n```\n\nResults:\n\n| dir_name | file_count | dir_size_tb |\n| -------- | ---------: | ----------: |\n| nmnh     |    8446674 |      801.23 |\n| chsdm    |     118231 |        3.04 |\n| nmah     |      88614 |        2.94 |\n| \u2026        |          \u2026 |           \u2026 |\n\n### Metadata catalog\n\n`metadata.parquet` lists all metadata records that are associated with one or more files in the collection. This catalog is generated from the [newline-delimited JSON files](#metadata) described above. Note that the metadata files also include many records not associated with an asset (that is, an image or 3D model file); such records are excluded from the catalog. `metadata.parquet` includes the following fields:\n\n- `unit_code`: [Smithsonian unit code](#smithsonian-unit-codes) representing the contributing unit or project\n- `record_id`: Unique identifier for the record in its home system\n- `title`: Primary or descriptive title for the record\n- `guid`: DOI or ARK number associated with the record\n- `metadata_url`: Web URL for the newline-delimited JSON file from which the record was sourced\n\nAs an example, here's a DuckDB SQL query for aggregating record counts by unit code from `metadata.parquet`:\n\n```sql\nSELECT\n  unit_code,\n  count(*) AS record_count\nFROM 'metadata.parquet'\nGROUP BY unit_code\nORDER BY record_count DESC\n```\n\nResults:\n\n| unit_code   | record_count |\n| ----------- | -----------: |\n| NMNHBOTANY  |      3207356 |\n| NMNHMAMMALS |       542004 |\n| NMNHBIRDS   |       513952 |\n| \u2026           |            \u2026 |\n\n### Linkages table\n\n`linkages.parquet` is an association table representing the many-to-many relation between files and metadata records in this collection. Use this table when you want to join asset files with their associated metadata. `linkages.parquet` includes the following foreign key fields:\n\n- `url`: Web URL for the file\n- `record_id`: Unique identifier for the record in its home system\n\nAs an example, let's say we want to find public domain images of Sojourner Truth from the National Portrait Gallery. We'll query for matching metadata records and join them to the files catalog via the linkages table. Here's a DuckDB SQL query we might try:\n\n```sql\nSELECT\n  metadata.record_id,\n  metadata.title,\n  files.url\nFROM 'files.parquet' AS files\nJOIN 'linkages.parquet' ON files.url = linkages.url\nJOIN 'metadata.parquet' AS metadata ON linkages.record_id = metadata.record_id\nWHERE\n  unit_code = 'NPG' AND\n  contains(lower(title), 'sojourner truth')\n```\n\nResults:\n\n| record_id       | title           | guid                                                              | url                                                                                              |\n| --------------- | --------------- | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |\n| npg_NPG.2002.90 | Sojourner Truth | http://n2t.net/ark:/65665/sm4b7cf126e-6d65-4fc4-8488-5c78a148edae | https://source.coop/harvard-lil/smithsonian-open-access/media/npg/NPG-NPG_2002_90Truth_d1.jpg    |\n| npg_NPG.2002.90 | Sojourner Truth | http://n2t.net/ark:/65665/sm4b7cf126e-6d65-4fc4-8488-5c78a148edae | https://source.coop/harvard-lil/smithsonian-open-access/media/npg/NPG-NPG_2002_90Truth_d1.tif    |\n| npg_NPG.78.207  | Sojourner Truth | http://n2t.net/ark:/65665/sm4f871361b-4eeb-4322-9b59-ba9405b2b135 | https://source.coop/harvard-lil/smithsonian-open-access/media/npg/NPG-NPG_78_207_inex-000001.jpg |\n| \u2026               | \u2026               | \u2026                                                                 | \u2026                                                                                                |\n\n## Downloading data\n\nTo download a data object by name, access its source URL from the Source Cooperative user interface:\n\n```\nhttps://data.source.coop/harvard-lil/smithsonian-open-access/3d/d8c62f94-4ebc-11ea-b77f-2e728ce88125/f1930_54-combined-100K-2048_std.glb\n\nhttps://data.source.coop/harvard-lil/smithsonian-open-access/media/npg/NPG-NPG_79_209Truth_d1.jpg\n\nhttps://data.source.coop/harvard-lil/smithsonian-open-access/metadata/edan/nasm/02.txt\n```\n\nTo download large numbers of files, we recommend using tools such as the [AWS CLI](https://aws.amazon.com/cli/) or [Rclone](https://rclone.org/) to access the S3 endpoint directly:\n\n```sh\naws s3 cp s3://us-west-2.opendata.source.coop/harvard-lil/smithsonian-open-access/metadata/edan/nasm/02.txt --no-sign-request\n```\n\n## Update frequency\n\nThe files in this repository were first collected beginning in August 2025. The repository is updated weekly to mirror additions to the Smithsonian Institution's [Open Access S3 bucket](https://registry.opendata.aws/smithsonian-open-access/).\n\n## Smithsonian unit codes\n\nHere is a list of Smithsonian Institution unit codes used to organize parts of this collection:\n\n| Code          | Unit                                                                                    |\n| ------------- | --------------------------------------------------------------------------------------- |\n| AAA           | Archives of American Art                                                                |\n| ACM           | Anacostia Community Museum                                                              |\n| CFCHFOLKLIFE  | Ralph Rinzler Folklife Archives and Collections                                         |\n| CHNDM         | Cooper Hewitt, Smithsonian Design Museum                                                |\n| EEPA          | Eliot Elisofon Photographic Archives                                                    |\n| FBR           | Smithsonian Field Book Project                                                          |\n| FSG           | Freer Gallery of Art and Arthur M. Sackler Gallery (National Museum of Asian Art)       |\n| HAC           | Smithsonian Gardens                                                                     |\n| HMSG          | Hirshhorn Museum and Sculpture Garden                                                   |\n| HSFA          | Human Studies Film Archives                                                             |\n| NAA           | National Anthropological Archives                                                       |\n| NASM          | National Air and Space Museum                                                           |\n| NMAAHC        | National Museum of African American History and Culture                                 |\n| NMAH          | National Museum of American History                                                     |\n| NMAI          | National Museum of the American Indian                                                  |\n| NMAfA         | National Museum of African Art                                                          |\n| NMNH          | National Museum of Natural History                                                      |\n| NMNHANTHRO    | National Museum of Natural History: Anthropology Department                             |\n| NMNHBIRDS     | National Museum of Natural History: Vertebrate Zoology Department, Birds Division       |\n| NMNHBOTANY    | National Museum of Natural History: Botany Department                                   |\n| NMNHEDUCATION | National Museum of Natural History: Education and Outreach                              |\n| NMNHENTO      | National Museum of Natural History: Entomology Department                               |\n| NMNHFISHES    | National Museum of Natural History: Vertebrate Zoology Department, Fishes Division      |\n| NMNHHERPS     | National Museum of Natural History: Vertebrate Zoology Department, Herpetology Division |\n| NMNHINV       | National Museum of Natural History: Invertebrate Zoology Department                     |\n| NMNHMAMMALS   | National Museum of Natural History: Vertebrate Zoology Department, Mammals Division     |\n| NMNHMINSCI    | National Museum of Natural History: Mineral Sciences Department                         |\n| NMNHPALEO     | National Museum of Natural History: Paleobiology Department                             |\n| NPG           | National Portrait Gallery                                                               |\n| NPM           | National Postal Museum                                                                  |\n| NZP           | Smithsonian's National Zoo and Conservation Biology Institute                           |\n| SAAM          | Smithsonian American Art Museum                                                         |\n| SIA           | Smithsonian Institution Archives                                                        |\n| SIL           | Smithsonian Libraries                                                                   |\n",
   "_state": "drafted",
-  "cataloged_at": "2026-08-21T21:24:39+00:00",
-  "objects_updated_at": "2026-08-14T18:37:10+00:00",
+  "cataloged_at": "2026-08-28T12:36:00+00:00",
   "store_format": null
 }
