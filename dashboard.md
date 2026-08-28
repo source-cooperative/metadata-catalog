@@ -1,24 +1,22 @@
 # Source Cooperative catalog — status
 
-_Updated 2026-08-28 18:03 UTC by the nightly pipeline._
+_Updated 2026-08-28 18:20 UTC by the nightly pipeline._
 
 **402 datasets cataloged**  ·  **1 queued for next run**  ·  last run handled **0**
 
 _No datasets processed in the last run (no new work since the previous snapshot)._
 
-> ⚠️ **Last run failure** (2026-08-28) — [run log](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/33197421526). Figures below are from the last *successful* run.
-
 ## Recent runs
 
 | run                                                                                                    | outcome     |    drafted | manual resets | failed | queued | cataloged |
 | ------------------------------------------------------------------------------------------------------ | ----------- | ---------: | ------------: | -----: | -----: | --------: |
+| [2026-08-28](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/33197562704) | ✅ success   |          0 |               |      0 |      1 |       402 |
 | [2026-08-28](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/33197421526) | ❌ failure   |          0 |               |      0 |      1 |       402 |
 | [2026-08-28](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/33170171623) | ✅ success   | 10 (10 re) |               |      0 |     42 |       402 |
 | [2026-08-27](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/33069036341) | ✅ success   |  10 (1 re) |            10 |      0 |     52 |       402 |
 | [2026-08-26](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/33023409593) | ❌ cancelled |          0 |               |      0 |   None |       403 |
 | [2026-08-26](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/33020335868) | ✅ success   |          0 |               |      0 |      1 |       403 |
 | [2026-08-26](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/33016907154) | ✅ success   |          0 |               |      0 |      1 |       403 |
-| [2026-08-26](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/32948543871) | ✅ success   |   9 (9 re) |               |      0 |     48 |       403 |
 
 ## Persistent failures
 
@@ -867,7 +865,7 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 
 </details>
 
-<details><summary>stale (catalog bytes ≠ S3; fixed by <code>make process-all</code>) — 43 datasets (7.3 TB)</summary>
+<details><summary>stale (catalog bytes ≠ S3; fixed by <code>make process-all</code>) — 42 datasets (7.3 TB)</summary>
 
 | repo                                                                                                                             | updated    |        catalog → S3 |
 | -------------------------------------------------------------------------------------------------------------------------------- | ---------- | ------------------: |
@@ -893,7 +891,6 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 | [cboettig/trails](https://source.coop/cboettig/trails)                                                                           | 2026-08-20 | 923.5 MB → 542.2 MB |
 | [cboettig/social-vulnerability](https://source.coop/cboettig/social-vulnerability)                                               | 2026-08-20 |   13.3 GB → 13.0 GB |
 | [cboettig/rivers](https://source.coop/cboettig/rivers)                                                                           | 2026-08-20 |     4.0 GB → 2.7 GB |
-| [cboettig/padus](https://source.coop/cboettig/padus)                                                                             | 2026-08-20 |   46.7 GB → 35.2 GB |
 | [cboettig/overturemaps](https://source.coop/cboettig/overturemaps)                                                               | 2026-08-20 |   69.8 GB → 64.6 GB |
 | [cboettig/mappinginequality](https://source.coop/cboettig/mappinginequality)                                                     | 2026-08-20 |   32.7 MB → 28.2 MB |
 | [cboettig/indigenous](https://source.coop/cboettig/indigenous)                                                                   | 2026-08-20 |   22.8 GB → 20.2 GB |
