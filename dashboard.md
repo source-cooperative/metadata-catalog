@@ -1,40 +1,24 @@
 # Source Cooperative catalog — status
 
-_Updated 2026-08-28 12:39 UTC by the nightly pipeline._
+_Updated 2026-08-28 18:03 UTC by the nightly pipeline._
 
-**402 datasets cataloged**  ·  **42 queued for next run**  ·  last run handled **10**
+**402 datasets cataloged**  ·  **1 queued for next run**  ·  last run handled **0**
 
-## Last run
+_No datasets processed in the last run (no new work since the previous snapshot)._
 
-<details><summary>✅ drafted — 10 datasets</summary>
-
-| repo                                                                                             |
-| ------------------------------------------------------------------------------------------------ |
-| [bkr/geos](https://source.coop/bkr/geos)                                                         |
-| [cboettig/land-cover](https://source.coop/cboettig/land-cover)                                   |
-| [cboettig/rap](https://source.coop/cboettig/rap)                                                 |
-| [dynamical/ecmwf-aifs-single-forecast](https://source.coop/dynamical/ecmwf-aifs-single-forecast) |
-| [dynamical/noaa-hrrr-forecast-48-hour](https://source.coop/dynamical/noaa-hrrr-forecast-48-hour) |
-| [harvard-lil/smithsonian-open-access](https://source.coop/harvard-lil/smithsonian-open-access)   |
-| [planet/disasterdata](https://source.coop/planet/disasterdata)                                   |
-| [root-geospatial/flight-tracks](https://source.coop/root-geospatial/flight-tracks)               |
-| [smartmaps/japan-geotiff-dem](https://source.coop/smartmaps/japan-geotiff-dem)                   |
-| [walkthru-earth/indices](https://source.coop/walkthru-earth/indices)                             |
-
-</details>
-
+> ⚠️ **Last run failure** (2026-08-28) — [run log](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/33197421526). Figures below are from the last *successful* run.
 
 ## Recent runs
 
 | run                                                                                                    | outcome     |    drafted | manual resets | failed | queued | cataloged |
 | ------------------------------------------------------------------------------------------------------ | ----------- | ---------: | ------------: | -----: | -----: | --------: |
+| [2026-08-28](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/33197421526) | ❌ failure   |          0 |               |      0 |      1 |       402 |
 | [2026-08-28](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/33170171623) | ✅ success   | 10 (10 re) |               |      0 |     42 |       402 |
 | [2026-08-27](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/33069036341) | ✅ success   |  10 (1 re) |            10 |      0 |     52 |       402 |
 | [2026-08-26](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/33023409593) | ❌ cancelled |          0 |               |      0 |   None |       403 |
 | [2026-08-26](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/33020335868) | ✅ success   |          0 |               |      0 |      1 |       403 |
 | [2026-08-26](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/33016907154) | ✅ success   |          0 |               |      0 |      1 |       403 |
 | [2026-08-26](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/32948543871) | ✅ success   |   9 (9 re) |               |      0 |     48 |       403 |
-| [2026-08-25](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/32827398611) | ✅ success   |  10 (4 re) |               |      0 |     62 |       403 |
 
 ## Persistent failures
 
