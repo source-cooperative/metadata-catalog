@@ -1,6 +1,6 @@
 # Source Cooperative catalog — status
 
-_Updated 2026-08-28 18:20 UTC by the nightly pipeline._
+_Updated 2026-08-28 22:49 UTC by the nightly pipeline._
 
 **402 datasets cataloged**  ·  **1 queued for next run**  ·  last run handled **0**
 
@@ -10,13 +10,13 @@ _No datasets processed in the last run (no new work since the previous snapshot)
 
 | run                                                                                                    | outcome     |    drafted | manual resets | failed | queued | cataloged |
 | ------------------------------------------------------------------------------------------------------ | ----------- | ---------: | ------------: | -----: | -----: | --------: |
+| [2026-08-28](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/33218082077) | ✅ success   |          0 |               |      0 |      1 |       402 |
 | [2026-08-28](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/33197562704) | ✅ success   |          0 |               |      0 |      1 |       402 |
 | [2026-08-28](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/33197421526) | ❌ failure   |          0 |               |      0 |      1 |       402 |
 | [2026-08-28](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/33170171623) | ✅ success   | 10 (10 re) |               |      0 |     42 |       402 |
 | [2026-08-27](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/33069036341) | ✅ success   |  10 (1 re) |            10 |      0 |     52 |       402 |
 | [2026-08-26](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/33023409593) | ❌ cancelled |          0 |               |      0 |   None |       403 |
 | [2026-08-26](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/33020335868) | ✅ success   |          0 |               |      0 |      1 |       403 |
-| [2026-08-26](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/33016907154) | ✅ success   |          0 |               |      0 |      1 |       403 |
 
 ## Persistent failures
 
@@ -38,7 +38,7 @@ _No datasets processed in the last run (no new work since the previous snapshot)
 | -------------------------------------------------- | ------------------- | ---: | ---------- | --------------------------- |
 | [cboettig/obis](https://source.coop/cboettig/obis) | all_failed .parquet |   21 | 2026-04-24 | backed off until 2026-09-20 |
 
-## 13 datasets need a prober
+## 12 datasets need a prober
 
 <details><summary>by format — ranked by bytes unlocked if built</summary>
 
@@ -79,14 +79,6 @@ _No datasets processed in the last run (no new work since the previous snapshot)
 | [youssef-harby/overture-maps-stac](https://source.coop/youssef-harby/overture-maps-stac)           | 718.0 KB |
 | [fish-pace/chla-z](https://source.coop/fish-pace/chla-z)                                           |  12.0 KB |
 | [cboettig/glen](https://source.coop/cboettig/glen)                                                 |  10.9 KB |
-
-</details>
-
-<details><summary>(no format) — 1 dataset · 75.7 MB</summary>
-
-| repo                                                                   |   bytes |
-| ---------------------------------------------------------------------- | ------: |
-| [pangeo/geozarr-examples](https://source.coop/pangeo/geozarr-examples) | 75.7 MB |
 
 </details>
 
@@ -865,7 +857,7 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 
 </details>
 
-<details><summary>stale (catalog bytes ≠ S3; fixed by <code>make process-all</code>) — 42 datasets (7.3 TB)</summary>
+<details><summary>stale (catalog bytes ≠ S3; fixed by <code>make process-all</code>) — 41 datasets (7.3 TB)</summary>
 
 | repo                                                                                                                             | updated    |        catalog → S3 |
 | -------------------------------------------------------------------------------------------------------------------------------- | ---------- | ------------------: |
@@ -899,7 +891,6 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 | [cboettig/hazard](https://source.coop/cboettig/hazard)                                                                           | 2026-08-20 |   40.7 GB → 40.7 GB |
 | [cboettig/gfw](https://source.coop/cboettig/gfw)                                                                                 | 2026-08-20 |     2.8 GB → 1.7 GB |
 | [cboettig/gbif](https://source.coop/cboettig/gbif)                                                                               | 2026-08-20 | 169.0 GB → 169.0 GB |
-| [cboettig/fire](https://source.coop/cboettig/fire)                                                                               | 2026-08-20 |     6.7 GB → 3.2 GB |
 | [cboettig/facts](https://source.coop/cboettig/facts)                                                                             | 2026-08-20 |   22.7 GB → 15.1 GB |
 | [cboettig/epa-water](https://source.coop/cboettig/epa-water)                                                                     | 2026-08-20 |     2.8 GB → 1.6 GB |
 | [cboettig/ecoregion](https://source.coop/cboettig/ecoregion)                                                                     | 2026-08-20 |     3.3 GB → 3.3 GB |
