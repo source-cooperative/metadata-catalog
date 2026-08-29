@@ -1,42 +1,47 @@
 # Source Cooperative catalog — status
 
-_Updated 2026-08-28 22:49 UTC by the nightly pipeline._
+_Updated 2026-08-29 08:46 UTC by the nightly pipeline._
 
-**402 datasets cataloged**  ·  **1 queued for next run**  ·  last run handled **0**
+**405 datasets cataloged**  ·  **34 queued for next run**  ·  last run handled **10**
 
-_No datasets processed in the last run (no new work since the previous snapshot)._
+## Last run
+
+<details><summary>✅ drafted — 9 datasets</summary>
+
+| repo                                                                               |
+| ---------------------------------------------------------------------------------- |
+| [cboettig/connectivity](https://source.coop/cboettig/connectivity)                 |
+| [cboettig/facts](https://source.coop/cboettig/facts)                               |
+| [cboettig/obis](https://source.coop/cboettig/obis)                                 |
+| [cboettig/usgs-wbd](https://source.coop/cboettig/usgs-wbd)                         |
+| [cholmes/eurocrops](https://source.coop/cholmes/eurocrops)                         |
+| [pangeo/geozarr-examples](https://source.coop/pangeo/geozarr-examples)             |
+| [smartmaps/cogenerate](https://source.coop/smartmaps/cogenerate)                   |
+| [tristangruppwri/mapbiomas](https://source.coop/tristangruppwri/mapbiomas)         |
+| [wadhwani-ai/wiai-pm-open-data](https://source.coop/wadhwani-ai/wiai-pm-open-data) |
+
+</details>
+
+<details><summary>❌ step failed — 1 dataset</summary>
+
+| repo                                                         | why                                              |
+| ------------------------------------------------------------ | ------------------------------------------------ |
+| [cboettig/high-seas](https://source.coop/cboettig/high-seas) | error step=compose — backed off until 2026-09-06 |
+
+</details>
+
 
 ## Recent runs
 
 | run                                                                                                    | outcome     |    drafted | manual resets | failed | queued | cataloged |
 | ------------------------------------------------------------------------------------------------------ | ----------- | ---------: | ------------: | -----: | -----: | --------: |
+| [2026-08-29](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/33243315063) | ✅ success   |   9 (3 re) |             4 |      0 |     34 |       405 |
 | [2026-08-28](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/33218082077) | ✅ success   |          0 |               |      0 |      1 |       402 |
 | [2026-08-28](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/33197562704) | ✅ success   |          0 |               |      0 |      1 |       402 |
 | [2026-08-28](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/33197421526) | ❌ failure   |          0 |               |      0 |      1 |       402 |
 | [2026-08-28](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/33170171623) | ✅ success   | 10 (10 re) |               |      0 |     42 |       402 |
 | [2026-08-27](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/33069036341) | ✅ success   |  10 (1 re) |            10 |      0 |     52 |       402 |
 | [2026-08-26](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/33023409593) | ❌ cancelled |          0 |               |      0 |   None |       403 |
-| [2026-08-26](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/33020335868) | ✅ success   |          0 |               |      0 |      1 |       403 |
-
-## Persistent failures
-
-**1 dataset failing**  ·  1 open issue  ·  oldest **6d**  ·  **0** ≥30d  ·  [all open issues](https://github.com/source-cooperative/metadata-catalog/issues?q=is%3Aissue+is%3Aopen+label%3Aprobe-failure)
-
-<details><summary>the 1 open issues, oldest first</summary>
-
-| repo                                                                               | age (d) |                                                                     issue |
-| ---------------------------------------------------------------------------------- | ------: | ------------------------------------------------------------------------: |
-| [wadhwani-ai/wiai-pm-open-data](https://source.coop/wadhwani-ai/wiai-pm-open-data) |       6 | [#155](https://github.com/source-cooperative/metadata-catalog/issues/155) |
-
-</details>
-
-## Perpetual gaps
-
-**1 dataset** re-queued every run without progress — each retry fetched the repo's keys and hit the same gap.
-
-| repo                                               | gap                 | runs | since      | retries                     |
-| -------------------------------------------------- | ------------------- | ---: | ---------- | --------------------------- |
-| [cboettig/obis](https://source.coop/cboettig/obis) | all_failed .parquet |   21 | 2026-04-24 | backed off until 2026-09-20 |
 
 ## 12 datasets need a prober
 
@@ -90,12 +95,10 @@ _Each bucket links to its datasets under [Datasets per category](#datasets-per-c
 
 | group                       | agg count | agg bytes | count |    bytes |
 | --------------------------- | --------: | --------: | ----: | -------: |
-| [CATALOGED](#cataloged)     |       361 |    4.2 PB |       |          |
-|   drafted                   |           |           |   361 |   4.2 PB |
-| [BACKLOG](#backlog)         |         4 |  219.1 GB |       |          |
-|   all_failed .jpg           |           |           |     1 |  91.8 GB |
-|   amended (no format)       |           |           |     1 |  65.7 GB |
-|   all_failed .parquet       |           |           |     1 |  61.6 GB |
+| [CATALOGED](#cataloged)     |       363 |    4.2 PB |       |          |
+|   drafted                   |           |           |   363 |   4.2 PB |
+| [BACKLOG](#backlog)         |         2 |   49.7 GB |       |          |
+|   no_probe .zip             |           |           |     1 |  49.7 GB |
 |   in s3, not yet seeded     |           |           |     1 |    3.0 B |
 | [SKIPPED](#skipped)         |       205 |    1.8 PB |       |          |
 |   unlisted                  |           |           |   162 |   1.8 PB |
@@ -112,7 +115,7 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 
 ### CATALOGED
 
-<details><summary>drafted — 361 datasets (4.2 PB)</summary>
+<details><summary>drafted — 363 datasets (4.2 PB)</summary>
 
 | repo                                                                                                                                                 |    bytes |
 | ---------------------------------------------------------------------------------------------------------------------------------------------------- | -------: |
@@ -221,17 +224,20 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 | [alexgleith/tasmania-dem-2m](https://source.coop/alexgleith/tasmania-dem-2m)                                                                         |  95.2 GB |
 | [pacificspatial/field-polygon-jp](https://source.coop/pacificspatial/field-polygon-jp)                                                               |  94.8 GB |
 | [englacial/demogorgn](https://source.coop/englacial/demogorgn)                                                                                       |  93.0 GB |
+| [wadhwani-ai/wiai-pm-open-data](https://source.coop/wadhwani-ai/wiai-pm-open-data)                                                                   |  91.8 GB |
 | [cholmes/portolan-nl](https://source.coop/cholmes/portolan-nl)                                                                                       |  83.6 GB |
 | [giswqs/nwi](https://source.coop/giswqs/nwi)                                                                                                         |  82.4 GB |
 | [planet/venezuela-earthquake-2026-06-24](https://source.coop/planet/venezuela-earthquake-2026-06-24)                                                 |  74.0 GB |
 | [youssef-harby/egms-copernicus](https://source.coop/youssef-harby/egms-copernicus)                                                                   |  73.0 GB |
 | [nlebovits/jrc-glofas](https://source.coop/nlebovits/jrc-glofas)                                                                                     |  70.8 GB |
 | [vizzuality/hfp-100](https://source.coop/vizzuality/hfp-100)                                                                                         |  70.4 GB |
+| [cholmes/eurocrops](https://source.coop/cholmes/eurocrops)                                                                                           |  65.7 GB |
 | [cboettig/overturemaps](https://source.coop/cboettig/overturemaps)                                                                                   |  64.6 GB |
 | [cboettig/rap](https://source.coop/cboettig/rap)                                                                                                     |  63.4 GB |
 | [pacificspatial/flateau](https://source.coop/pacificspatial/flateau)                                                                                 |  63.3 GB |
 | [planet/rapidcrops](https://source.coop/planet/rapidcrops)                                                                                           |  62.6 GB |
 | [csaybar/methaneset](https://source.coop/csaybar/methaneset)                                                                                         |  62.2 GB |
+| [cboettig/obis](https://source.coop/cboettig/obis)                                                                                                   |  61.6 GB |
 | [avikertesz/002](https://source.coop/avikertesz/002)                                                                                                 |  61.4 GB |
 | [planet/eu-field-boundaries](https://source.coop/planet/eu-field-boundaries)                                                                         |  61.3 GB |
 | [fused/fsq-os-places](https://source.coop/fused/fsq-os-places)                                                                                       |  60.3 GB |
@@ -239,7 +245,6 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 | [dataforcanada/d4c-datapkg-foundation](https://source.coop/dataforcanada/d4c-datapkg-foundation)                                                     |  52.8 GB |
 | [cboettig/nc-frontiers](https://source.coop/cboettig/nc-frontiers)                                                                                   |  52.0 GB |
 | [fiboa/data](https://source.coop/fiboa/data)                                                                                                         |  49.9 GB |
-| [cboettig/usgs-nhd](https://source.coop/cboettig/usgs-nhd)                                                                                           |  49.7 GB |
 | [cboettig/high-seas](https://source.coop/cboettig/high-seas)                                                                                         |  47.3 GB |
 | [reflective/geomipzarr](https://source.coop/reflective/geomipzarr)                                                                                   |  47.3 GB |
 | [tge-labs/mgrs](https://source.coop/tge-labs/mgrs)                                                                                                   |  45.6 GB |
@@ -482,27 +487,11 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 
 ### BACKLOG
 
-<details><summary>all_failed .jpg — 1 dataset (91.8 GB)</summary>
-
-| repo                                                                               |   bytes |
-| ---------------------------------------------------------------------------------- | ------: |
-| [wadhwani-ai/wiai-pm-open-data](https://source.coop/wadhwani-ai/wiai-pm-open-data) | 91.8 GB |
-
-</details>
-
-<details><summary>amended (no format) — 1 dataset (65.7 GB)</summary>
+<details><summary>no_probe .zip — 1 dataset (49.7 GB)</summary>
 
 | repo                                                       |   bytes |
 | ---------------------------------------------------------- | ------: |
-| [cholmes/eurocrops](https://source.coop/cholmes/eurocrops) | 65.7 GB |
-
-</details>
-
-<details><summary>all_failed .parquet — 1 dataset (61.6 GB)</summary>
-
-| repo                                               |   bytes |
-| -------------------------------------------------- | ------: |
-| [cboettig/obis](https://source.coop/cboettig/obis) | 61.6 GB |
+| [cboettig/usgs-nhd](https://source.coop/cboettig/usgs-nhd) | 49.7 GB |
 
 </details>
 
@@ -857,7 +846,7 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 
 </details>
 
-<details><summary>stale (catalog bytes ≠ S3; fixed by <code>make process-all</code>) — 41 datasets (7.3 TB)</summary>
+<details><summary>stale (catalog bytes ≠ S3; fixed by <code>make process-all</code>) — 35 datasets (6.8 TB)</summary>
 
 | repo                                                                                                                             | updated    |        catalog → S3 |
 | -------------------------------------------------------------------------------------------------------------------------------- | ---------- | ------------------: |
@@ -871,13 +860,11 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 | [ausantarctic/ghrsst-mur-v2](https://source.coop/ausantarctic/ghrsst-mur-v2)                                                     | 2026-08-23 |     4.3 TB → 4.3 TB |
 | [giswqs/opengeos](https://source.coop/giswqs/opengeos)                                                                           | 2026-08-22 |   19.2 GB → 19.2 GB |
 | [portolan/portolan-pipeline](https://source.coop/portolan/portolan-pipeline)                                                     | 2026-08-22 |   45.4 MB → 86.1 MB |
-| [tristangruppwri/mapbiomas](https://source.coop/tristangruppwri/mapbiomas)                                                       | 2026-08-22 |    3.1 GB → 14.7 GB |
 | [source/metadata-catalog](https://source.coop/source/metadata-catalog)                                                           | 2026-08-22 |     4.4 MB → 5.3 MB |
 | [earthgenome/storm-events-db](https://source.coop/earthgenome/storm-events-db)                                                   | 2026-08-20 | 373.7 MB → 373.7 MB |
 | [earthgenome/amazon-mining-watch](https://source.coop/earthgenome/amazon-mining-watch)                                           | 2026-08-20 |     3.3 GB → 1.8 GB |
 | [tristangruppwri/cadastral](https://source.coop/tristangruppwri/cadastral)                                                       | 2026-08-20 |     3.6 GB → 3.6 GB |
 | [tristangruppwri/soft-commodity-infrastructure](https://source.coop/tristangruppwri/soft-commodity-infrastructure)               | 2026-08-20 |   14.4 MB → 13.9 MB |
-| [cboettig/usgs-wbd](https://source.coop/cboettig/usgs-wbd)                                                                       | 2026-08-20 |   15.2 GB → 12.1 GB |
 | [cboettig/usgs-nhd](https://source.coop/cboettig/usgs-nhd)                                                                       | 2026-08-20 |  149.1 GB → 49.7 GB |
 | [cboettig/usfws](https://source.coop/cboettig/usfws)                                                                             | 2026-08-20 | 447.2 MB → 330.2 MB |
 | [cboettig/trails](https://source.coop/cboettig/trails)                                                                           | 2026-08-20 | 923.5 MB → 542.2 MB |
@@ -887,19 +874,15 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 | [cboettig/mappinginequality](https://source.coop/cboettig/mappinginequality)                                                     | 2026-08-20 |   32.7 MB → 28.2 MB |
 | [cboettig/indigenous](https://source.coop/cboettig/indigenous)                                                                   | 2026-08-20 |   22.8 GB → 20.2 GB |
 | [cboettig/inat](https://source.coop/cboettig/inat)                                                                               | 2026-08-20 |    13.1 GB → 6.5 GB |
-| [cboettig/high-seas](https://source.coop/cboettig/high-seas)                                                                     | 2026-08-20 |   40.5 GB → 47.3 GB |
 | [cboettig/hazard](https://source.coop/cboettig/hazard)                                                                           | 2026-08-20 |   40.7 GB → 40.7 GB |
 | [cboettig/gfw](https://source.coop/cboettig/gfw)                                                                                 | 2026-08-20 |     2.8 GB → 1.7 GB |
 | [cboettig/gbif](https://source.coop/cboettig/gbif)                                                                               | 2026-08-20 | 169.0 GB → 169.0 GB |
-| [cboettig/facts](https://source.coop/cboettig/facts)                                                                             | 2026-08-20 |   22.7 GB → 15.1 GB |
 | [cboettig/epa-water](https://source.coop/cboettig/epa-water)                                                                     | 2026-08-20 |     2.8 GB → 1.6 GB |
 | [cboettig/ecoregion](https://source.coop/cboettig/ecoregion)                                                                     | 2026-08-20 |     3.3 GB → 3.3 GB |
 | [cboettig/cpad](https://source.coop/cboettig/cpad)                                                                               | 2026-08-20 |     1.4 GB → 1.4 GB |
-| [cboettig/connectivity](https://source.coop/cboettig/connectivity)                                                               | 2026-08-20 |   1.5 GB → 222.7 MB |
 | [cboettig/cgs](https://source.coop/cboettig/cgs)                                                                                 | 2026-08-20 | 228.4 MB → 135.2 MB |
 | [cboettig/census](https://source.coop/cboettig/census)                                                                           | 2026-08-20 |   44.3 GB → 42.8 GB |
 | [cboettig/ca-dac](https://source.coop/cboettig/ca-dac)                                                                           | 2026-08-20 |     1.6 GB → 1.4 GB |
-| [smartmaps/cogenerate](https://source.coop/smartmaps/cogenerate)                                                                 | 2026-08-19 | 415.7 GB → 427.7 GB |
 | [hdx/cod-ab](https://source.coop/hdx/cod-ab)                                                                                     | 2026-08-19 |   26.6 GB → 27.3 GB |
 | [cboettig/fishbase](https://source.coop/cboettig/fishbase)                                                                       | 2026-08-18 |     4.1 GB → 4.3 GB |
 
