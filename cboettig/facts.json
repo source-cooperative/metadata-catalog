@@ -7,17 +7,17 @@
   ],
   "id": "cboettig/facts",
   "title": "USFS Forest Activity Tracking System (FACTS)",
-  "description": "A national dataset of over 7.3 million forest-management activity records (fire/fuels, silviculture, timber, range, invasive species, watershed, recreation, and more) tracked by the US Forest Service's FACTS system on National Forest System lands, merged across all 9 USFS administrative regions.",
+  "description": "A national, USFS-wide compilation of the Forest Service Activity Tracking System (FACTS) Common Attributes layer, recording over 7.3 million planned, accomplished, and completed land-management activities (fire/fuels, silviculture, timber, range, invasive species, watershed, recreation, and more) on US National Forest System lands, merged across all 9 USFS administrative regions.",
   "license": "Public Domain",
   "keywords": [
     "forest-management",
     "wildfire",
     "conservation",
     "administrative-boundaries",
+    "land-use",
     "geoparquet",
     "pmtiles",
-    "h3",
-    "land-use"
+    "h3"
   ],
   "providers": [
     {
@@ -44,18 +44,18 @@
     "spatial": {
       "bbox": [
         [
-          null,
-          null,
-          null,
-          null
+          -180.0,
+          -83.0,
+          -1.0,
+          90.0
         ]
       ]
     },
     "temporal": {
       "interval": [
         [
-          null,
-          null
+          "1820-01-01T00:00:00Z",
+          "2100-12-31T23:59:59Z"
         ]
       ]
     }
@@ -376,7 +376,7 @@
         {
           "name": "STATE_ABBR",
           "type": "VARCHAR",
-          "description": "[placename] US state abbreviation of the activity location"
+          "description": "[admin_code] US state abbreviation of the activity"
         },
         {
           "name": "PRODUCTIVITY_CLASS",
@@ -389,7 +389,7 @@
         {
           "name": "COUNTY_NAME",
           "type": "VARCHAR",
-          "description": "[placename] US county name of the activity location"
+          "description": "[placename] US county name of the activity"
         },
         {
           "name": "CONG_DIST_NAME",
@@ -397,13 +397,11 @@
         },
         {
           "name": "LATITUDE",
-          "type": "DOUBLE",
-          "description": "[latlon] Point latitude of the activity site (paired with LONGITUDE)"
+          "type": "DOUBLE"
         },
         {
           "name": "LONGITUDE",
-          "type": "DOUBLE",
-          "description": "[latlon] Point longitude of the activity site (paired with LATITUDE)"
+          "type": "DOUBLE"
         },
         {
           "name": "LEGAL_LOCATION",
@@ -524,7 +522,7 @@
         {
           "name": "geom",
           "type": "GEOMETRY('OGC:CRS84')",
-          "description": "[geometry] Polygon/MultiPolygon activity geometry, EPSG:4326"
+          "description": "[geometry] Polygon/MultiPolygon activity-unit geometry, EPSG:4326"
         }
       ],
       "table:row_count": 7324720
@@ -984,19 +982,22 @@
         {
           "name": "h10",
           "type": "UBIGINT",
-          "description": "[spatial_index] H3 resolution-10 hexagon cell ID"
+          "description": "[spatial_index] H3 resolution-10 cell index; one row per (feature, cell) pair"
         },
         {
           "name": "h0",
-          "type": "BIGINT"
+          "type": "BIGINT|UBIGINT",
+          "description": "[spatial_index] H3 resolution-0 cell index"
         },
         {
           "name": "h8",
-          "type": "UBIGINT"
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution-8 cell index"
         },
         {
           "name": "h9",
-          "type": "UBIGINT"
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution-9 cell index"
         }
       ],
       "description": "11 files sampled for this table"
@@ -1014,24 +1015,17 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "account_id": "cboettig",
-  "created_at": "2026-07-25T14:31:18.450Z",
-  "featured": 0,
   "exts": {
     "parquet": 12,
-    "zip": 9,
     "json": 2,
     "md": 1,
     "pmtiles": 1
   },
-  "object_count": 25,
-  "total_bytes": 22651678317,
-  "visibility": "public",
+  "total_bytes": 15102449007,
   "disabled": false,
+  "updated_at": "2026-07-25T14:31:18.450Z",
+  "visibility": "public",
+  "data_mode": null,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -1040,23 +1034,24 @@
       "prefix": "cboettig/facts/"
     }
   },
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "featured": 0,
+  "account_id": "cboettig",
   "product_id": "facts",
-  "data_mode": null,
-  "updated_at": "2026-07-25T14:31:18.450Z",
-  "readme": "## README.md\n# USFS FACTS Common Attributes (National, 2026-06)\n\nThe **Forest Service Activity Tracking System (FACTS) Common Attributes** layer \u2014 the\ncomprehensive record of planned, accomplished, and completed land-management activities\n(fire/fuels, silviculture, timber, range, invasive species, watershed, recreation, and\nmore) on US National Forest System lands.\n\nThis is a **single national dataset** merged from all 9 USFS regions (01\u201306, 08, 09, 10;\nthere is no Region 07), downloaded from the FS Enterprise Data Warehouse (EDW) on\n**2026-06-24**.\n\n- **Records:** 7,324,720 activity records (6,057,664 with geometry; ~17 % are aspatial \u2014 see below)\n- **Geometry:** Polygon / MultiPolygon, EPSG:4326 (reprojected from source NAD83 / EPSG:4269)\n- **Region field:** `ADMIN_REGION` (values `01`\u2013`10`)\n- **License:** Public domain (US Government work)\n- **Source:** https://data.fs.usda.gov/geodata/edw/datasets.php?xmlKeyword=FACTS\n\n## Assets\n\n| Asset | URL |\n|---|---|\n| GeoParquet | `https://s3-west.nrp-nautilus.io/public-facts/common-attributes-2026-06.parquet` |\n| PMTiles | `https://s3-west.nrp-nautilus.io/public-facts/common-attributes-2026-06.pmtiles` |\n| H3 hex (res 10) | `https://s3-west.nrp-nautilus.io/public-facts/common-attributes-2026-06/hex/h0=*/data_0.parquet` |\n| STAC | `https://s3-west.nrp-nautilus.io/public-facts/common-attributes-2026-06/stac-collection.json` |\n\n## Important notes\n\n- **Aspatial records:** ~17 % of records (1,267,056) have **NULL geometry** \u2014 FACTS activities\n  recorded without a mapped spatial unit. They are present in the GeoParquet but absent from the\n  hex and PMTiles assets. Add `WHERE geom IS NOT NULL` to restrict to mapped features.\n- **Hex aggregation:** one hex row = one (feature, H3 cell) pair. Per-feature attributes\n  (`GIS_ACRES`, `NBR_UNITS_*`, `COST_PER_UNIT`, \u2026) are **repeated on every cell a feature covers** \u2014\n  never `SUM` them on the hex asset without first deduplicating on `_cng_fid`. Estimate area from\n  hex with `COUNT(DISTINCT h10) \u00d7 cell_area_at_resolution_10`.\n- **Coded fields:** `ACTIVITY_CODE` / `METHOD_CODE` / `EQUIPMENT_CODE` each have a paired\n  human-readable column (`ACTIVITY` / `METHOD` / `EQUIPMENT`). See the STAC `table:columns`\n  for value definitions of `ADMIN_REGION`, `PURPOSE_CODE`, `UOM`, `FEATURE_TYPE`, etc.\n- **Upstream data quality:** FACTS contains a few data-entry errors \u2014 ~35 features have\n  coordinates outside the US, and ~1,271 records have implausible fiscal years (e.g. 1820, 2050).\n  These are preserved as-is from the source.\n\n## MapLibre GL JS\n\nThe PMTiles **source-layer** is **`common-attributes-2026-06`** (this is what MapLibre needs;\nit is the last path segment of the dataset name, not the source feature-class name).\n\n```html\n<script src=\"https://unpkg.com/maplibre-gl/dist/maplibre-gl.js\"></script>\n<script src=\"https://unpkg.com/pmtiles/dist/pmtiles.js\"></script>\n<script>\n  const protocol = new pmtiles.Protocol();\n  maplibregl.addProtocol(\"pmtiles\", protocol.tile);\n\n  const map = new maplibregl.Map({\n    container: \"map\",\n    style: \"https://demotiles.maplibre.org/style.json\",\n    center: [-113, 45],\n    zoom: 5,\n  });\n\n  map.on(\"load\", () => {\n    map.addSource(\"facts\", {\n      type: \"vector\",\n      url: \"pmtiles://https://s3-west.nrp-nautilus.io/public-facts/common-attributes-2026-06.pmtiles\",\n    });\n    map.addLayer({\n      id: \"facts-fill\",\n      type: \"fill\",\n      source: \"facts\",\n      \"source-layer\": \"common-attributes-2026-06\",\n      paint: { \"fill-color\": \"#2e7d32\", \"fill-opacity\": 0.4, \"fill-outline-color\": \"#1b5e20\" },\n    });\n  });\n</script>\n```\n\nFields available in the tiles (for styling/filtering): `ADMIN_REGION`, `ACTIVITY`, `METHOD`,\n`EQUIPMENT`, `NFPORS_CATEGORY`, `PURPOSE_CODE`, `FISCAL_YEAR_COMPLETED`, `GIS_ACRES`,\n`STATE_ABBR`, `COUNTY_NAME`, `NAME`, `TREATMENT_NAME`, `NEPA_PROJECT_NAME`, `_cng_fid`\n(join key to the full 110-column GeoParquet). See the STAC PMTiles asset for the full list.\n\n## DuckDB\n\n```sql\nINSTALL spatial; LOAD spatial;\nINSTALL httpfs; LOAD httpfs;\n\n-- Activities in Region 5 (Pacific Southwest) completed in FY2023, by activity type\nSELECT ACTIVITY, COUNT(*) AS n, ROUND(SUM(GIS_ACRES)) AS acres\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-facts/common-attributes-2026-06.parquet')\nWHERE ADMIN_REGION = '05'\n  AND FISCAL_YEAR_COMPLETED = 2023\n  AND geom IS NOT NULL\nGROUP BY ACTIVITY\nORDER BY n DESC\nLIMIT 20;\n```\n\n```sql\n-- Hex: area treated per H3 res-10 cell is NOT SUM(GIS_ACRES) (repeated per cell).\n-- Estimate treated area from distinct cells instead:\nSELECT ADMIN_REGION, COUNT(DISTINCT h10) AS res10_cells\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-facts/common-attributes-2026-06/hex/h0=*/data_0.parquet')\nGROUP BY ADMIN_REGION\nORDER BY res10_cells DESC;\n```\n\n## Processing\n\nGenerated with [`cng-datasets`](https://github.com/boettiger-lab/datasets); pipeline manifests in\n[`boettiger-lab/data-workflows`](https://github.com/boettiger-lab/data-workflows) under\n`catalog/facts/k8s/common-attributes-2026-06/`. See issue\n[#299](https://github.com/boettiger-lab/data-workflows/issues/299).\n",
-  "_review": [
-    "license: README states 'Public domain (US Government work)' \u2014 US federal government works are not subject to copyright in the US, so no standard SPDX license identifier applies.",
-    "providers: role [processor] for 'Boettiger Lab' is an AI guess \u2014 Inferred from the cng-datasets / data-workflows pipeline credited for generating and merging this dataset from FS Enterprise Data Warehouse downloads.. Verify before flipping to _state: reviewed.",
-    "extent.spatial.bbox: omitted; spatial reference is categorical via [..geom (geometry), ..LATITUDE (latlon), ..LONGITUDE (latlon), ..ADMIN_REGION (admin_code), ..STATE_ABBR (placename), ..COUNTY_NAME (placename), common-attributes-2026-06/hex.h10 (spatial_index)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
-  ],
-  "_state": "drafted",
-  "cataloged_at": "2026-08-17T09:44:51+00:00",
-  "store_format": null,
+  "object_count": 16,
+  "objects_updated_at": "2026-08-20T05:48:33+00:00",
+  "created_at": "2026-07-25T14:31:18.450Z",
   "ext_bytes": {
     "parquet": 13752124778,
-    "zip": 7549229880,
     "pmtiles": 1350222944,
-    "json": 95595,
+    "json": 96165,
     "md": 5120
-  }
+  },
+  "readme": "## README.md\n# USFS FACTS Common Attributes (National, 2026-06)\n\nThe **Forest Service Activity Tracking System (FACTS) Common Attributes** layer \u2014 the\ncomprehensive record of planned, accomplished, and completed land-management activities\n(fire/fuels, silviculture, timber, range, invasive species, watershed, recreation, and\nmore) on US National Forest System lands.\n\nThis is a **single national dataset** merged from all 9 USFS regions (01\u201306, 08, 09, 10;\nthere is no Region 07), downloaded from the FS Enterprise Data Warehouse (EDW) on\n**2026-06-24**.\n\n- **Records:** 7,324,720 activity records (6,057,664 with geometry; ~17 % are aspatial \u2014 see below)\n- **Geometry:** Polygon / MultiPolygon, EPSG:4326 (reprojected from source NAD83 / EPSG:4269)\n- **Region field:** `ADMIN_REGION` (values `01`\u2013`10`)\n- **License:** Public domain (US Government work)\n- **Source:** https://data.fs.usda.gov/geodata/edw/datasets.php?xmlKeyword=FACTS\n\n## Assets\n\n| Asset | URL |\n|---|---|\n| GeoParquet | `https://s3-west.nrp-nautilus.io/public-facts/common-attributes-2026-06.parquet` |\n| PMTiles | `https://s3-west.nrp-nautilus.io/public-facts/common-attributes-2026-06.pmtiles` |\n| H3 hex (res 10) | `https://s3-west.nrp-nautilus.io/public-facts/common-attributes-2026-06/hex/h0=*/data_0.parquet` |\n| STAC | `https://s3-west.nrp-nautilus.io/public-facts/common-attributes-2026-06/stac-collection.json` |\n\n## Important notes\n\n- **Aspatial records:** ~17 % of records (1,267,056) have **NULL geometry** \u2014 FACTS activities\n  recorded without a mapped spatial unit. They are present in the GeoParquet but absent from the\n  hex and PMTiles assets. Add `WHERE geom IS NOT NULL` to restrict to mapped features.\n- **Hex aggregation:** one hex row = one (feature, H3 cell) pair. Per-feature attributes\n  (`GIS_ACRES`, `NBR_UNITS_*`, `COST_PER_UNIT`, \u2026) are **repeated on every cell a feature covers** \u2014\n  never `SUM` them on the hex asset without first deduplicating on `_cng_fid`. Estimate area from\n  hex with `COUNT(DISTINCT h10) \u00d7 cell_area_at_resolution_10`.\n- **Coded fields:** `ACTIVITY_CODE` / `METHOD_CODE` / `EQUIPMENT_CODE` each have a paired\n  human-readable column (`ACTIVITY` / `METHOD` / `EQUIPMENT`). See the STAC `table:columns`\n  for value definitions of `ADMIN_REGION`, `PURPOSE_CODE`, `UOM`, `FEATURE_TYPE`, etc.\n- **Upstream data quality:** FACTS contains a few data-entry errors \u2014 ~35 features have\n  coordinates outside the US, and ~1,271 records have implausible fiscal years (e.g. 1820, 2050).\n  These are preserved as-is from the source.\n\n## MapLibre GL JS\n\nThe PMTiles **source-layer** is **`common-attributes-2026-06`** (this is what MapLibre needs;\nit is the last path segment of the dataset name, not the source feature-class name).\n\n```html\n<script src=\"https://unpkg.com/maplibre-gl/dist/maplibre-gl.js\"></script>\n<script src=\"https://unpkg.com/pmtiles/dist/pmtiles.js\"></script>\n<script>\n  const protocol = new pmtiles.Protocol();\n  maplibregl.addProtocol(\"pmtiles\", protocol.tile);\n\n  const map = new maplibregl.Map({\n    container: \"map\",\n    style: \"https://demotiles.maplibre.org/style.json\",\n    center: [-113, 45],\n    zoom: 5,\n  });\n\n  map.on(\"load\", () => {\n    map.addSource(\"facts\", {\n      type: \"vector\",\n      url: \"pmtiles://https://s3-west.nrp-nautilus.io/public-facts/common-attributes-2026-06.pmtiles\",\n    });\n    map.addLayer({\n      id: \"facts-fill\",\n      type: \"fill\",\n      source: \"facts\",\n      \"source-layer\": \"common-attributes-2026-06\",\n      paint: { \"fill-color\": \"#2e7d32\", \"fill-opacity\": 0.4, \"fill-outline-color\": \"#1b5e20\" },\n    });\n  });\n</script>\n```\n\nFields available in the tiles (for styling/filtering): `ADMIN_REGION`, `ACTIVITY`, `METHOD`,\n`EQUIPMENT`, `NFPORS_CATEGORY`, `PURPOSE_CODE`, `FISCAL_YEAR_COMPLETED`, `GIS_ACRES`,\n`STATE_ABBR`, `COUNTY_NAME`, `NAME`, `TREATMENT_NAME`, `NEPA_PROJECT_NAME`, `_cng_fid`\n(join key to the full 110-column GeoParquet). See the STAC PMTiles asset for the full list.\n\n## DuckDB\n\n```sql\nINSTALL spatial; LOAD spatial;\nINSTALL httpfs; LOAD httpfs;\n\n-- Activities in Region 5 (Pacific Southwest) completed in FY2023, by activity type\nSELECT ACTIVITY, COUNT(*) AS n, ROUND(SUM(GIS_ACRES)) AS acres\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-facts/common-attributes-2026-06.parquet')\nWHERE ADMIN_REGION = '05'\n  AND FISCAL_YEAR_COMPLETED = 2023\n  AND geom IS NOT NULL\nGROUP BY ACTIVITY\nORDER BY n DESC\nLIMIT 20;\n```\n\n```sql\n-- Hex: area treated per H3 res-10 cell is NOT SUM(GIS_ACRES) (repeated per cell).\n-- Estimate treated area from distinct cells instead:\nSELECT ADMIN_REGION, COUNT(DISTINCT h10) AS res10_cells\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-facts/common-attributes-2026-06/hex/h0=*/data_0.parquet')\nGROUP BY ADMIN_REGION\nORDER BY res10_cells DESC;\n```\n\n## Processing\n\nGenerated with [`cng-datasets`](https://github.com/boettiger-lab/datasets); pipeline manifests in\n[`boettiger-lab/data-workflows`](https://github.com/boettiger-lab/data-workflows) under\n`catalog/facts/k8s/common-attributes-2026-06/`. See issue\n[#299](https://github.com/boettiger-lab/data-workflows/issues/299).\n",
+  "_state": "drafted",
+  "cataloged_at": "2026-08-29T08:41:14+00:00",
+  "store_format": null
 }
