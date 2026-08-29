@@ -1,23 +1,96 @@
 {
   "schema_version": 1,
-  "account_id": "wadhwani-ai",
-  "product_id": "wiai-pm-open-data",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "wadhwani-ai/wiai-pm-open-data",
   "title": "Wadhwani AI Pest Management Open Data for Pink Bollworms and American Bollworms",
-  "description": "This repository acts as a gateway to the Wadhwani Institute for Artificial Intelligence (Wadhwani AI) pest data set. The data set is primarily intended for training pest recognition models. Such models are used by Wadhwani AI to help cotton farmers make better pest management decisions.\nPlease view our github repository (https://github.com/WadhwaniAI/pest-management-opendata) which provides detailed documentation about the data and also contains scripts to format the data for consumption by popular modelling frameworks.\n",
+  "description": "A collection of field images and associated bounding-box annotations of cotton pests (pink bollworm and American bollworm) captured via pheromone traps and a mobile application, used to train and test object detection models for automated pest identification and pesticide recommendation.",
   "keywords": [
-    "computer vision",
     "agriculture",
     "cotton",
-    "pink bollworms",
-    "american bollworms",
-    "wadhwaniai"
+    "object-detection",
+    "machine-learning",
+    "pest-management",
+    "insect-monitoring"
   ],
-  "created_at": "2025-01-09T11:56:58.039Z",
-  "updated_at": "2026-08-27T22:29:13.270Z",
-  "visibility": "public",
+  "providers": [
+    {
+      "name": "Wadhwani Institute for Artificial Intelligence (Wadhwani AI)",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/wadhwani-ai/wiai-pm-open-data"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -180.0,
+          -90.0,
+          180.0,
+          90.0
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2018-10-06T12:05:14",
+          "2019-08-13T13:14:23"
+        ]
+      ]
+    }
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/wadhwani-ai/wiai-pm-open-data/",
+      "type": "application/octet-stream",
+      "title": "Dataset files (40305 x .jpg)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/wadhwani-ai/wiai-pm-open-data/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/wadhwani-ai/wiai-pm-open-data",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "rel": "cite-as",
+      "href": "https://doi.org/10.1145/3394486.3403363"
+    }
+  ],
   "disabled": false,
-  "featured": 0,
+  "exts": {
+    "jpg": 40305,
+    "jpeg": 10,
+    "csv.gz": 6,
+    "png": 2,
+    "md": 1
+  },
+  "visibility": "public",
   "data_mode": "open",
+  "featured": 0,
+  "product_id": "wiai-pm-open-data",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
   "mirrors": {
     "aws-opendata-ap-south-1": {
       "prefix": "wadhwani-ai/wiai-pm-open-data/",
@@ -35,16 +108,11 @@
       "is_primary": true
     }
   },
-  "object_count": 40324,
   "objects_updated_at": "2025-01-09T19:16:08+00:00",
   "total_bytes": 91792517205,
-  "exts": {
-    "jpg": 40305,
-    "jpeg": 10,
-    "csv.gz": 6,
-    "png": 2,
-    "md": 1
-  },
+  "created_at": "2025-01-09T11:56:58.039Z",
+  "account_id": "wadhwani-ai",
+  "updated_at": "2026-08-27T22:29:13.270Z",
   "ext_bytes": {
     "jpg": 91726506297,
     "csv.gz": 34940141,
@@ -52,11 +120,13 @@
     "png": 1763180,
     "md": 7394
   },
-  "store_format": null,
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "cataloged_at": "2026-08-28T18:01:50+00:00"
+  "object_count": 40324,
+  "readme": "## README.md\n# Wadhwani AI Pest Management Open Data\n\nThis repository acts as a gateway to the Wadhwani Institute for\nArtificial Intelligence (Wadhwani AI) pest data set. The data set is\nprimarily intended for training pest recognition models. Such models\nare used by Wadhwani AI to help cotton farmers make better pest\nmanagement decisions.\n\n# Background\n\nThe pest management project at the Wadhwani Institute for Artificial\nIntelligence (Wadhwani AI) is an effort to help cotton farmers make\nbetter pest management decisions. The project works by asking farmers\nto install pheromone traps throughout their field designed to capture\nvarious types of bollworms. Farmers and farming extension workers\nperiodically empty the trap and use a mobile application developed by\nthe institute to take photos of what they find. The application then\nuses those photos to provide an action recommendation: whether a\npesticide spray is required, and if so the ideal composition and\nconcentration.\n\nTo go from mobile phone image to pesticide recommentation, the project\nuses an object detection model trained to localise and label relevant\npests within an image. The S3 bucket around which this repository is\ndesigned contains the data used to train and test that model.\n\n## Further reading\n\n* [Pest Management for Cotton\n  Farming](https://www.wadhwaniai.org/programs/pest-management/)\n* [Pest Management In Cotton Farms: An AI-System Case Study from the Global South](https://doi.org/10.1145/3394486.3403363)\n  * An [open\n  access](https://www.kdd.org/kdd2020/accepted-papers/view/pest-management-in-cotton-farms-an-ai-system-case-study-from-the-global-sou)\n    version of this article is provided by ACM SIGKDD\n\n\n# Data Access\n\n## Source Cooperative\nThe data has been made available via Source Cooperative. Please visit [Access Data](https://source.coop/repositories/wadhwani-ai/wiai-pm-open-data/access) page and follow instructions from there.\n\nThe data directory will house images along with compressed CSVs\ncontaining bounding box information for pests in those images. Because\nof their format, it is unlikely that the CSVs are directly usable by\npopular modelling toolkits. Users are free to write their own parsers\nto bridge that gap, or to use one of the parsers provided in this\nrepository. Details on the data format, and the conversion scripts,\ncan be found in the\n[wiki](https://github.com/WadhwaniAI/pest-management-opendata/wiki).\n\n## Wadhwani AI Github Repository\nWe make the data available through our Github repository too.\nIn addition to providing documentation about the data, this repository\ncontains scripts to format the data for consumption by popular\nmodelling frameworks. Please see the\n[wiki](https://github.com/WadhwaniAI/pest-management-opendata/wiki)\nfor more information.\n\n1. Ensure you have [Git](https://git-scm.com/downloads) and the [AWS\n   CLI](https://aws.amazon.com/cli/) installed.\n2. Clone the [repository](https://github.com/WadhwaniAI/pest-management-opendata) and download the data (10s of GB); within\n   a terminal emulator:\n\n   ```bash\n   $> git clone https://github.com/WadhwaniAI/pest-management-opendata.git\n   $> cd pest-management-opendata\n   $> aws s3 sync --no-progress s3://wadhwaniai-agri-opendata/ data/\n   ```\n\n## Hugging Face\n\nThe dataset is also accesible via Hugging Face\n[datasets](https://huggingface.co/docs/datasets):\n\n```python\nfrom datasets import load_dataset\ndataset = load_dataset('wadhwani-ai/pest-management-opendata', streaming=True)\n```\n\nMore information can be found in our [wiki](https://github.com/WadhwaniAI/pest-management-opendata/wiki/HuggingFace), and in the Hugging Face\n[dataset\nrepository](https://huggingface.co/datasets/wadhwani-ai/pest-management-opendata).\n\n\n# Data Structure\n## Images\n\nMost images (`data/images/*`) were captured using the pest management\nmobile application during actual app deployments. This means the\nimages come with a range of characteristics, both with respect to the\nnumber of pests they contain, and to their contents overall.\n\nImage EXIF information has been generated using\n[ExifTool](https://exiftool.org/). Aside from the default values it\ngenerates, EXIF info in this data set includes:\n\n* Date the image was captured (\"DateTimeOriginal\")\n* Copyright (\"Copyright\")\n* Image license (\"UserComment\")\n\n## Metadata\n\nImages meant for both model development and model testing are present\nin this dataset. There are two CSV files to describe each. Pest\nlocations are only present in the development CSV, acting as a\nresource for training pipelines. The test CSV is meant only to\nidenfity which images are part of the test set. It is void of any pest\ninformation.\n\n### Versioning\n\nThe metadata folder is divided into sub-directories, below each are\nthe development and test CSVs previously described:\n\n```bash\n$> tree data/metadata/\ndata/metadata/\n\u2514\u2500\u2500 20220629-1312\n    \u251c\u2500\u2500 dev.csv.gz\n    \u2514\u2500\u2500 test.csv.gz\n\n1 directory, 2 files\n```\n\nIn this case, the development and test CSVs would be considered to be\nunder version 20220629-1312.\n\n### Format\n\n#### Overview\n\nThe CSV files are GZIP'd, containing one line per bounding box\n(pest). The files are structured as follows:\n\n| Header | In \"dev\" | In \"test\" | Description\n|---     | ---   | ---    | ---\n| url | Yes | Yes | S3 URL of the image\n| split | Yes | Yes | Split for which the image is meant\n| label | Yes | No | The pest contained in this box\n| geometry | Yes | No | The bounding box of the pest, as [WKT](https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry)\n\nSome rows in the dev CSV contain empty label and geometry\nvalues. These images come from user user submissions that did not\ncontain pests.\n\n#### Manipulation\n\nThe metadata format is designed to be minimal. It only assumes that\npotential downstream pipelines require bounding boxes and\ncorresponding box labels. Example of potential manipulations:\n\n* __Information not in the metadata__: If additional information about\n  the image is required, the image can be read to obtain it:\n\n  ```python\n  import cv2\n  import pandas as pd\n\n  def get_shapes(df):\n\t  for i in df['path'].unique():\n\t\t  img = cv2.imread(img, cv2.IMREAD_IGNORE_ORIENTATION)\n\t\t  shape = zip(('height', 'width'), img.shape)\n\t\t  yield dict(shape, path=i)\n\n  df = pd.read_csv('data/metadata/dev.csv.gz', compression='gzip')\n  shapes = pd.DataFrame.from_records(get_shapes(df))\n  ```\n\n* __Pest counts__: To train models based on pest counts instead of\n  bounding boxes, the file can be manipulated as follows:\n\n  ```python\n  import pandas as pd\n\n  df = (pd\n\t\t.read_csv('data/metadata/dev.csv.gz', compression='gzip')\n\t\t.groupby(['path', 'label', 'split'], sort=False, dropna=False)['geometry']\n\t\t.count()\n\t\t.reset_index())\n  ```\n\nThis minimal approach to data formatting makes it unlikely that a\nmodelling framework will be able to work with the files directly. For\nconvenience, we provide scripts to go from our minimal format to other\nframeworks. See our documentation on how to use those tools; pay\nattention to their source code (Python scripts in `src/`) for further\nguidance.\n\n\n# Questions, Comments, Issues\n\nIf something is not clear, or does not seem correct, please let us\nknow! This goes for all aspects of this repository: code, data, and\ndocumentation. Issues and pull requests are welcome. You can also\nreach out through email:\n[agri-ai@wadhwaniai.org](mailto:agri-ai@wadhwaniai.org).\n",
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
+    "providers: role [producer, licensor] for 'Wadhwani Institute for Artificial Intelligence (Wadhwani AI)' is an AI guess \u2014 Assumed licensor because Wadhwani AI distributes the data via its own GitHub repo, Hugging Face, and Source Cooperative, but no explicit license/rights statement is given.. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-08-29T08:37:00+00:00",
+  "store_format": null
 }
