@@ -1,16 +1,141 @@
 {
   "schema_version": 1,
-  "account_id": "ftw",
-  "product_id": "ai4sf-ml",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
+  "id": "ftw/ai4sf-ml",
   "title": "AI4SF ML Field Boundaries",
-  "description": "Provisional publication of ai4sf_ml.parquet, a field-boundary Parquet file with 439,013 records. Source, license, processing history, and intended use are TODO.",
-  "keywords": [],
-  "created_at": "2026-08-18T18:36:00.776Z",
-  "updated_at": "2026-08-18T18:36:00.776Z",
+  "description": "Field boundary polygons for smallholder farms in Cambodia and Vietnam, derived from the AI4SmallFarms dataset, with a fixed train/validation/test partition for machine learning model benchmarking. Delivered as a single GeoParquet file conforming to the fiboa 0.3.0 specification, projected in EPSG:32648 (UTM zone 48N).",
+  "license": "CC-BY-4.0",
+  "keywords": [
+    "field-boundaries",
+    "agriculture",
+    "machine-learning",
+    "geoparquet",
+    "fiboa",
+    "crop-classification",
+    "arable-land",
+    "land-use"
+  ],
+  "providers": [
+    {
+      "name": "DATA Archiving and Networked Services (DANS)",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/ftw/ai4sf-ml"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          102.8079357,
+          9.6203326,
+          109.2101888,
+          21.346814
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 439013
+  },
+  "assets": {
+    "ml": {
+      "href": "https://data.source.coop/ftw/ai4sf-ml/ai4sf_ml.parquet",
+      "type": "application/x-parquet",
+      "title": "ai4sf_ml.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:32648')",
+          "description": "[geometry] Field boundary polygon geometry (WKB, EPSG:32648)"
+        },
+        {
+          "name": "group",
+          "type": "UTINYINT"
+        },
+        {
+          "name": "split",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "collection",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "admin:country_code",
+          "type": "VARCHAR",
+          "description": "[admin_code] ISO 3166-1 alpha-2 country code"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 439013
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/ftw/ai4sf-ml/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/ftw/ai4sf-ml",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "rel": "cite-as",
+      "href": "https://doi.org/10.1109/LGRS.2023.3323095"
+    }
+  ],
   "visibility": "public",
-  "disabled": false,
-  "featured": 0,
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "total_bytes": 35544860,
   "data_mode": null,
+  "ext_bytes": {
+    "parquet": 35542797,
+    "md": 2063
+  },
+  "objects_updated_at": "2026-08-25T17:02:28+00:00",
+  "account_id": "ftw",
+  "exts": {
+    "md": 1,
+    "parquet": 1
+  },
+  "updated_at": "2026-08-18T18:36:00.776Z",
+  "product_id": "ai4sf-ml",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "is_primary": true,
@@ -19,21 +144,14 @@
     }
   },
   "object_count": 2,
-  "objects_updated_at": "2026-08-25T17:02:28+00:00",
-  "total_bytes": 35544860,
-  "exts": {
-    "md": 1,
-    "parquet": 1
-  },
-  "ext_bytes": {
-    "parquet": 35542797,
-    "md": 2063
-  },
-  "store_format": null,
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "cataloged_at": "2026-08-31T09:07:32+00:00"
+  "created_at": "2026-08-18T18:36:00.776Z",
+  "featured": 0,
+  "disabled": false,
+  "readme": "## README.md\n# AI4SmallFarms Field Boundaries with ML Splits\n\nField boundaries across smallholder farms in Cambodia and Vietnam, with a fixed train/val/test partition for machine learning.\n\n## Contents\n\n- `ai4sf_ml.parquet`, 439,013 polygon features\n\n## Splits\n\n| Split | Features |\n| ----- | -------- |\n| `train` | 304,784 |\n| `val` | 83,069 |\n| `test` | 51,160 |\n| **total** | **439,013** |\n\nThe `split` column carries this partition. Use it as given, so that results stay comparable across models trained on this dataset.\n\n## Format\n\n- GeoParquet 1.1.0, geometry encoded as WKB, all features are Polygons\n- Coordinate reference system: EPSG:32648 (WGS 84 / UTM zone 48N)\n- Conforms to the fiboa 0.3.0 specification\n\n## Columns\n\n| Column | Notes |\n| ------ | ----- |\n| `id` | Unique feature identifier |\n| `geometry` | Field boundary polygon |\n| `group` | Source tile group used when building the splits |\n| `split` | Machine learning partition, see above |\n| `collection` | Collection identifier carried from the source |\n| `admin:country_code` | ISO 3166-1 alpha-2 country code |\n| `bbox` | Bounding box struct, enables spatial row group pruning |\n\n## Notes\n\nThe `group` column preserves the source tile grouping used when the splits were built. Fields that share a tile stay in the same split, which prevents neighbouring fields from leaking information between training and test.\n\nThis dataset is stored in EPSG:32648 rather than EPSG:4326. Reproject before combining it with datasets in geographic coordinates.\n\n## Provenance and licence\n\n- Licence: CC-BY-4.0\n- Source data provider: DATA Archiving and Networked Services (DANS)\n\nPlease cite the original authors:\n\n> Persello, C., Grift, J., Fan, X., Paris, C., Hansch, R., Koeva, M., & Nelson, A. (2023). AI4SmallFarms: A Dataset for Crop Field Delineation in Southeast Asian Smallholder Farms. IEEE Geoscience and Remote Sensing Letters, 20, 2505705. https://doi.org/10.1109/LGRS.2023.3323095\n\n## Related\n\nOther field boundary datasets from this organisation are listed at [source.coop/ftw](https://source.coop/ftw).\n",
+  "_review": [
+    "providers: role [producer, licensor] for 'DATA Archiving and Networked Services (DANS)' is an AI guess \u2014 README names DANS as 'source data provider' but does not explicitly state their role as producer/licensor of this derived split.. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-08-31T09:12:07+00:00",
+  "store_format": null
 }
