@@ -1,15 +1,110 @@
 {
   "schema_version": 1,
-  "account_id": "nlebovits",
-  "product_id": "phl-housing-demo",
-  "title": "Philadelphia Housing Data",
-  "description": "Ten collections describing property, zoning, vacancy, and affordable housing in Philadelphia, mirrored from the City of Philadelphia's ArcGIS services via OpenDataPhilly.",
-  "keywords": [],
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "nlebovits/phl-housing-demo",
+  "title": "Philadelphia Housing and Land Use",
+  "description": "A collection of ten geospatial datasets covering property parcels, land use, zoning base districts and overlays, building footprints, vacancy indicators, affordable housing production, and city council districts for Philadelphia, Pennsylvania, mirrored from the City of Philadelphia's ArcGIS services via OpenDataPhilly.",
+  "keywords": [
+    "land-parcels",
+    "land-use",
+    "building-footprints",
+    "administrative-boundaries",
+    "zoning",
+    "affordable-housing",
+    "geoparquet",
+    "pmtiles"
+  ],
+  "providers": [
+    {
+      "name": "City of Philadelphia",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "OpenDataPhilly",
+      "roles": [
+        "host"
+      ]
+    },
+    {
+      "name": "Nissim Lebovits",
+      "roles": [
+        "processor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/nlebovits/phl-housing-demo"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -75.2843919,
+          39.859589,
+          -74.955486,
+          40.137935
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/nlebovits/phl-housing-demo/",
+      "type": "application/octet-stream",
+      "title": "Dataset files (9 x .pmtiles)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/nlebovits/phl-housing-demo/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/nlebovits/phl-housing-demo",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "rel": "agents",
+      "href": "./AGENTS.md",
+      "type": "text/markdown",
+      "title": "Agent/LLM usage guide"
+    },
+    {
+      "rel": "describedby",
+      "href": "./README.md",
+      "type": "text/markdown",
+      "title": "Human-readable documentation"
+    }
+  ],
+  "object_count": 91,
   "created_at": "2026-08-26T12:01:43.439Z",
+  "product_id": "phl-housing-demo",
   "updated_at": "2026-08-26T12:02:19.686Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
   "data_mode": null,
   "mirrors": {
     "aws-opendata-us-west-2": {
@@ -17,18 +112,6 @@
       "prefix": "nlebovits/phl-housing-demo/",
       "is_primary": true
     }
-  },
-  "object_count": 91,
-  "objects_updated_at": "2026-08-26T12:33:50+00:00",
-  "total_bytes": 744975863,
-  "exts": {
-    "json": 39,
-    "md": 22,
-    "parquet": 10,
-    "pmtiles": 9,
-    "jpg": 9,
-    "txt": 1,
-    "gitignore": 1
   },
   "ext_bytes": {
     "pmtiles": 461673909,
@@ -39,11 +122,29 @@
     "txt": 4112,
     "gitignore": 5
   },
-  "store_format": null,
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
+  "account_id": "nlebovits",
+  "featured": 0,
+  "objects_updated_at": "2026-08-26T12:33:50+00:00",
+  "total_bytes": 744975863,
+  "disabled": false,
+  "visibility": "public",
+  "exts": {
+    "json": 39,
+    "md": 22,
+    "parquet": 10,
+    "pmtiles": 9,
+    "jpg": 9,
+    "txt": 1,
+    "gitignore": 1
   },
-  "cataloged_at": "2026-08-31T09:08:31+00:00"
+  "readme": "## README.md\n# Philadelphia Housing and Land Use\n\n![philadelphia](https://img.shields.io/badge/philadelphia-blue) ![pennsylvania](https://img.shields.io/badge/pennsylvania-blue) ![housing](https://img.shields.io/badge/housing-blue) ![zoning](https://img.shields.io/badge/zoning-blue) ![land use](https://img.shields.io/badge/land_use-blue) ![parcels](https://img.shields.io/badge/parcels-blue) ![vacancy](https://img.shields.io/badge/vacancy-blue) ![affordable housing](https://img.shields.io/badge/affordable_housing-blue) ![building footprints](https://img.shields.io/badge/building_footprints-blue) ![urban planning](https://img.shields.io/badge/urban_planning-blue)\n\nTen collections describing property, zoning, vacancy, and affordable housing in Philadelphia, mirrored from the City of Philadelphia's ArcGIS services via [OpenDataPhilly](https://opendataphilly.org/). Together they answer what exists on a parcel, what the zoning code permits there, whether the city believes it is empty, and what publicly funded housing has been built.\n\nThe catalog holds 1,780,845 features. Property parcels (607,957), land use (559,077), and building footprints (546,083) cover the whole city. Zoning base districts (29,205) and overlays (195) record what the code allows, and a 39-row lookup table decodes every zoning code. The city's vacancy model flags 28,737 likely-vacant lots and 9,041 likely-vacant buildings. Affordable housing production lists 501 DHCD-funded projects delivering 19,249 units since 1994.\n\nEach collection ships as GeoParquet in the source CRS, EPSG:3857, with PMTiles for rendering and two to three verified map styles. Start at the catalog [AGENTS.md](AGENTS.md) for join keys, worked queries, and the data quirks that cause most wrong answers.\n\n## Collections\n\n<details>\n<summary>\ud83d\udcc1 10 collections (click to expand)</summary>\n\n### [Affordable Housing Production](phl-housing-demo/affordable_housing/)\n\nAffordable housing projects funded by the Division of Housing and Community Development and completed since 1994. DHCD funds developers to build and maintain affordable units across the city.\n\n501 ...\n\n### [City Council Districts (2024)](phl-housing-demo/council_districts_2024/)\n\nThe ten Philadelphia City Council districts as redrawn after the 2020 census. Each district elects one council member, and the city also seats seven at-large members who represent no district.\n\nUse...\n\n### [Property Parcels](phl-housing-demo/dor_parcel/)\n\nBoundaries of every real estate property parcel in Philadelphia, drawn from legally recorded deed documents. The Department of Records maintains the layer and republishes it weekly.\n\n607,957 polygo...\n\n### [Land Use](phl-housing-demo/land_use/)\n\nLand use assigned to each parcel in Philadelphia, maintained by the City Planning Commission. Land use records the activity on the ground, such as residential, commercial, or industrial, rather tha...\n\n### [Building Footprints](phl-housing-demo/li_building_footprints/)\n\nOutlines of buildings and related structures across Philadelphia, captured photogrammetrically from aerial imagery. The layer covers residential, commercial, and industrial buildings, along with is...\n\n### [Vacant Property Indicators \u2014 Buildings](phl-housing-demo/vacant_indicators_bldg/)\n\nParcels across Philadelphia that the city's Vacant Property Indicators model flags as holding a likely vacant building. It is the structural counterpart to [vacant_indicators_land](../vacant_indica...\n\n### [Vacant Property Indicators \u2014 Land](phl-housing-demo/vacant_indicators_land/)\n\nParcels across Philadelphia that the city's Vacant Property Indicators model flags as likely vacant land. The model was built by the Office of Innovation and Technology with Licenses and Inspection...\n\n### [Zoning Base Districts](phl-housing-demo/zoning_basedistricts/)\n\nBoundaries of Philadelphia's zoning base districts under the zoning code enacted in December 2011 and effective 22 August 2012. A base district sets what may be built on a parcel and how it may be ...\n\n### [Zoning Code Descriptions](phl-housing-demo/zoning_descriptions/)\n\nThe city's own decoder for Philadelphia zoning district codes. 39 rows pair a code such as `RSA-5` with its written name, \"Residential Single-Family Attached-5\".\n\nThis is a lookup table with no geo...\n\n### [Zoning Overlays](phl-housing-demo/zoning_overlays/)\n\nBoundaries of Philadelphia's zoning overlay districts, enacted 15 December 2011 and effective 22 August 2012. An overlay adds rules on top of the base district beneath it, so a parcel can sit under...\n\n</details>\n\n## Coverage\n\n**Spatial Extent**\n\n- West: -75.2844, South: 39.8596, East: -74.9555, North: 40.1379\n\n## Source\n\n[https://opendataphilly.org/](https://opendataphilly.org/)\n\n## Processing Notes\n\nExtracted from City of Philadelphia ArcGIS FeatureServer endpoints on 2026-08-26 using `portolan extract arcgis`, one service per collection. Every layer is served from the city's ArcGIS Online organization fLeGjb7u4uXqeF9q. Feature counts were checked against each service's returnCountOnly response, and all ten collections match their source exactly.\nGeoParquet keeps the source CRS, EPSG:3857 (Web Mercator), for all collections. PMTiles are reprojected to Web Mercator for rendering.\nColumn meanings come from three sources. ArcGIS field aliases supplied attested names such as `basereg` = \"Base Registry Number\". The [PASDA metadata record](https://www.pasda.psu.edu/uci/FullMetadataDisplay.aspx?file=PhiladelphiaBuildings2017.xml) supplied the building footprint FCODE key, which states \"1810 = Building 1830 = Tank\". The city data team's [post on the OpenDataPhilly forum](https://groups.google.com/g/opendataphilly/c/anMKnNH3pqc) supplied the vacancy rank semantics. Land use category labels were derived from the data; see AGENTS.md for the query.\n`zoning_descriptions` is a non-spatial lookup table. `portolan extract arcgis` reports \"0/0 layers\" for services that advertise a table rather than a layer, so that parquet was written with DuckDB from the same FeatureServer query endpoint. See [portolan-cli#812](https://github.com/portolan-sdi/portolan-cli/issues/812).\nLand use was reordered with `gpio sort hilbert` to give its row groups spatial locality.\n\n\n## Citation\n\nCity of Philadelphia (2026). Philadelphia Housing and Land Use. Retrieved from OpenDataPhilly. Mirrored on Source Cooperative at https://source.coop/nlebovits/phl-housing-demo.\n\n\n## Attribution\n\nCity of Philadelphia\n\n## License\n\n[other](https://metadata.phila.gov/#help/help-faqs/what-are-the-terms-of-use/)\n\n## Contact\n\nNissim Lebovits <nissim.lebovits@radiant.earth>\n\n---\n\n*Generated by [Portolan](https://github.com/portolan-sdi/portolan-cli) from STAC metadata and .portolan/metadata.yaml*\n",
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
+    "providers: role [host] for 'OpenDataPhilly' is an AI guess \u2014 Described as the portal through which the city's ArcGIS services are mirrored; not explicitly stated as a distinct host role.. Verify before flipping to _state: reviewed.",
+    "providers: role [processor] for 'Nissim Lebovits' is an AI guess \u2014 Listed as contact and Source Cooperative account owner; assumed to have performed the extraction/mirroring via Portolan.. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-08-31T09:14:13+00:00",
+  "_source_format": "stac",
+  "store_format": null
 }
