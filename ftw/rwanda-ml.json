@@ -1,0 +1,125 @@
+{
+  "schema_version": 1,
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
+  "id": "ftw/rwanda-ml",
+  "title": "Rwanda ML Field Boundaries",
+  "description": "Polygon field boundary dataset for Rwanda (1,532 features) distributed as a single GeoParquet file, with a fixed train/test partition intended for machine learning benchmarking.",
+  "keywords": [
+    "field-boundaries",
+    "machine-learning",
+    "geoparquet",
+    "fiboa",
+    "agriculture"
+  ],
+  "providers": [
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/ftw/rwanda-ml"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          30.291994,
+          -1.590079,
+          30.423433,
+          -1.39177
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 1532
+  },
+  "assets": {
+    "ml": {
+      "href": "https://data.source.coop/ftw/rwanda-ml/rw_rwanda_ml.parquet",
+      "type": "application/x-parquet",
+      "title": "rw_rwanda_ml.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:4326')",
+          "description": "[geometry] Field boundary polygon geometry, WKB-encoded, EPSG:4326"
+        },
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "split",
+          "type": "VARCHAR"
+        }
+      ],
+      "table:row_count": 1532
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/ftw/rwanda-ml/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/ftw/rwanda-ml",
+      "title": "Source Cooperative product page"
+    }
+  ],
+  "total_bytes": 157989,
+  "objects_updated_at": "2026-08-25T17:02:40+00:00",
+  "data_mode": null,
+  "account_id": "ftw",
+  "visibility": "public",
+  "mirrors": {
+    "aws-opendata-us-west-2": {
+      "is_primary": true,
+      "connection_id": "aws-opendata-us-west-2",
+      "prefix": "ftw/rwanda-ml/"
+    }
+  },
+  "featured": 0,
+  "disabled": false,
+  "object_count": 2,
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "exts": {
+    "md": 1,
+    "parquet": 1
+  },
+  "created_at": "2026-08-18T18:36:07.034Z",
+  "updated_at": "2026-08-18T18:36:07.034Z",
+  "ext_bytes": {
+    "parquet": 156576,
+    "md": 1413
+  },
+  "product_id": "rwanda-ml",
+  "readme": "## README.md\n# Rwanda Field Boundaries with ML Splits\n\nField boundaries in Rwanda with a fixed train/test partition for machine learning.\n\n## Contents\n\n- `rw_rwanda_ml.parquet`, 1,532 polygon features\n\n## Splits\n\n| Split | Features |\n| ----- | -------- |\n| `train` | 1,223 |\n| `test` | 309 |\n| **total** | **1,532** |\n\nThe `split` column carries this partition. Use it as given, so that results stay comparable across models trained on this dataset.\n\n## Format\n\n- GeoParquet 1.0.0, geometry encoded as WKB, all features are Polygons\n- Coordinate reference system: EPSG:4326 (WGS 84)\n- Column names follow fiboa conventions, but the file does not carry the fiboa schema declaration or collection level metadata, so fiboa validation does not apply to it\n\n## Columns\n\n| Column | Notes |\n| ------ | ----- |\n| `geometry` | Field boundary polygon |\n| `id` | Unique feature identifier |\n| `split` | Machine learning partition, see above |\n\n## Provenance and licence\n\n- Licence: **not recorded in the source file.** Fill this in before the dataset is relied on for redistribution.\n- Source data provider: **not recorded in the source file.**\n\nThe polygons and the split assignment are preserved exactly as received. No licence, provider or citation metadata was embedded in the file, so none is asserted here.\n\n## Related\n\nOther field boundary datasets from this organisation are listed at [source.coop/ftw](https://source.coop/ftw).\n",
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-08-31T09:10:13+00:00",
+  "store_format": null
+}
