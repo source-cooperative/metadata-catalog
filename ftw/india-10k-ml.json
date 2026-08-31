@@ -1,26 +1,124 @@
 {
   "schema_version": 1,
-  "account_id": "ftw",
-  "product_id": "india-10k-ml",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
+  "id": "ftw/india-10k-ml",
   "title": "India 10K ML Field Boundaries",
-  "description": "Provisional publication of india_10k_ml.parquet, a field-boundary Parquet file with 10,013 records. Source, license, processing history, and intended use are TODO.",
-  "keywords": [],
-  "created_at": "2026-08-18T18:36:03.962Z",
-  "updated_at": "2026-08-18T18:36:03.962Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": null,
-  "mirrors": {
-    "aws-opendata-us-west-2": {
-      "is_primary": true,
-      "connection_id": "aws-opendata-us-west-2",
-      "prefix": "ftw/india-10k-ml/"
+  "description": "Polygon dataset of 10,013 manually delineated crop field boundaries across India, provided as a GeoParquet file with a fixed train/validation/test split for machine learning benchmarking. Conforms to the fiboa 0.3.0 field-boundary specification.",
+  "license": "CC-BY-4.0",
+  "keywords": [
+    "field-boundaries",
+    "agriculture",
+    "crop-classification",
+    "machine-learning",
+    "fiboa",
+    "geoparquet",
+    "land-parcels",
+    "arable-land",
+    "land-use"
+  ],
+  "providers": [
+    {
+      "name": "Zenodo",
+      "roles": [
+        "producer",
+        "host"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/ftw/india-10k-ml"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          68.7969686,
+          9.248617,
+          96.2368808,
+          34.5325093
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
     }
   },
-  "object_count": 2,
-  "objects_updated_at": "2026-08-25T17:02:34+00:00",
+  "summaries": {
+    "item_count": 10013
+  },
+  "assets": {
+    "ml": {
+      "href": "https://data.source.coop/ftw/india-10k-ml/india_10k_ml.parquet",
+      "type": "application/x-parquet",
+      "title": "india_10k_ml.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:4326')",
+          "description": "[geometry] WKB-encoded polygon geometry of each crop field boundary in EPSG:4326"
+        },
+        {
+          "name": "collection",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "metrics:area",
+          "type": "FLOAT"
+        },
+        {
+          "name": "split",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 10013
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/ftw/india-10k-ml/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/ftw/india-10k-ml",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "rel": "cite-as",
+      "href": "https://doi.org/10.5281/zenodo.7315090"
+    }
+  ],
+  "updated_at": "2026-08-18T18:36:03.962Z",
+  "visibility": "public",
+  "created_at": "2026-08-18T18:36:03.962Z",
   "total_bytes": 7991300,
+  "data_mode": null,
+  "disabled": false,
   "exts": {
     "md": 1,
     "parquet": 1
@@ -29,11 +127,27 @@
     "parquet": 7989749,
     "md": 1551
   },
-  "store_format": null,
-  "_state": "seed",
+  "account_id": "ftw",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "cataloged_at": "2026-08-31T09:07:37+00:00"
+  "featured": 0,
+  "mirrors": {
+    "aws-opendata-us-west-2": {
+      "is_primary": true,
+      "connection_id": "aws-opendata-us-west-2",
+      "prefix": "ftw/india-10k-ml/"
+    }
+  },
+  "object_count": 2,
+  "product_id": "india-10k-ml",
+  "objects_updated_at": "2026-08-25T17:02:34+00:00",
+  "readme": "## README.md\n# 10,000 Crop Field Boundaries across India with ML Splits\n\nManually delineated crop fields across India, with a fixed train/val/test partition for machine learning.\n\n## Contents\n\n- `india_10k_ml.parquet`, 10,013 polygon features\n\n## Splits\n\n| Split | Features |\n| ----- | -------- |\n| `train` | 6,495 |\n| `val` | 1,510 |\n| `test` | 2,008 |\n| **total** | **10,013** |\n\nThe `split` column carries this partition. Use it as given, so that results stay comparable across models trained on this dataset.\n\n## Format\n\n- GeoParquet 1.1.0, geometry encoded as WKB, all features are Polygons\n- Coordinate reference system: EPSG:4326 (WGS 84)\n- Conforms to the fiboa 0.3.0 specification\n\n## Columns\n\n| Column | Notes |\n| ------ | ----- |\n| `geometry` | Field boundary polygon |\n| `collection` | Collection identifier carried from the source |\n| `metrics:area` | Field area in square metres |\n| `split` | Machine learning partition, see above |\n| `id` | Unique feature identifier |\n| `bbox` | Bounding box struct, enables spatial row group pruning |\n\n## Notes\n\nThe `collection` value stored inside the file is `in_10k_ml`, which differs from the product name.\n\n## Provenance and licence\n\n- Licence: CC-BY-4.0\n- Source data provider: Zenodo\n\nPlease cite the original authors:\n\n> Unlocking large-scale crop field delineation in smallholder farming systems with transfer learning and weak supervision. https://doi.org/10.5281/zenodo.7315090\n\n## Related\n\nOther field boundary datasets from this organisation are listed at [source.coop/ftw](https://source.coop/ftw).\n",
+  "_review": [
+    "providers: role [producer, host] for 'Zenodo' is an AI guess \u2014 README states 'Source data provider: Zenodo', but Zenodo is a repository host rather than the original field-delineation research team named in the citation.. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-08-31T09:11:36+00:00",
+  "store_format": null
 }
