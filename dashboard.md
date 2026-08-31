@@ -1,40 +1,22 @@
 # Source Cooperative catalog — status
 
-_Updated 2026-08-31 09:21 UTC by the nightly pipeline._
+_Updated 2026-08-31 18:09 UTC by the nightly pipeline._
 
-**415 datasets cataloged**  ·  **59 queued for next run**  ·  last run handled **10**
+**415 datasets cataloged**  ·  **1 queued for next run**  ·  last run handled **0**
 
-## Last run
-
-<details><summary>✅ drafted — 10 datasets</summary>
-
-| repo                                                                         |
-| ---------------------------------------------------------------------------- |
-| [cboettig/usgs-nhd](https://source.coop/cboettig/usgs-nhd)                   |
-| [fish-pace/coastwatch](https://source.coop/fish-pace/coastwatch)             |
-| [ftw/ai4sf-ml](https://source.coop/ftw/ai4sf-ml)                             |
-| [ftw/germany-fusion-ml](https://source.coop/ftw/germany-fusion-ml)           |
-| [ftw/india-10k-ml](https://source.coop/ftw/india-10k-ml)                     |
-| [ftw/rwanda-ml](https://source.coop/ftw/rwanda-ml)                           |
-| [ftw/south-africa-fusion-ml](https://source.coop/ftw/south-africa-fusion-ml) |
-| [ismip/ismip7-ais-forcing](https://source.coop/ismip/ismip7-ais-forcing)     |
-| [nlebovits/phl-housing-demo](https://source.coop/nlebovits/phl-housing-demo) |
-| [ocean-icechunks/noaa-ohc](https://source.coop/ocean-icechunks/noaa-ohc)     |
-
-</details>
-
+_No datasets processed in the last run (no new work since the previous snapshot)._
 
 ## Recent runs
 
 | run                                                                                                    | outcome   |    drafted | manual resets | failed | queued | cataloged |
 | ------------------------------------------------------------------------------------------------------ | --------- | ---------: | ------------: | -----: | -----: | --------: |
+| [2026-08-31](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/33420378819) | ✅ success |          0 |               |      0 |      1 |       415 |
 | [2026-08-31](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/33373919605) | ✅ success |         10 |               |      0 |     59 |       415 |
 | [2026-08-30](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/33301794369) | ✅ success | 10 (10 re) |               |      0 |     24 |       405 |
 | [2026-08-29](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/33243315063) | ✅ success |   9 (3 re) |             4 |      0 |     34 |       405 |
 | [2026-08-28](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/33218082077) | ✅ success |          0 |               |      0 |      1 |       402 |
 | [2026-08-28](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/33197562704) | ✅ success |          0 |               |      0 |      1 |       402 |
 | [2026-08-28](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/33197421526) | ❌ failure |          0 |               |      0 |      1 |       402 |
-| [2026-08-28](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/33170171623) | ✅ success | 10 (10 re) |               |      0 |     42 |       402 |
 
 ## 11 datasets need a prober
 
