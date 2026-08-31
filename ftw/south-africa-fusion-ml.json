@@ -1,16 +1,131 @@
 {
   "schema_version": 1,
-  "account_id": "ftw",
-  "product_id": "south-africa-fusion-ml",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
+  "id": "ftw/south-africa-fusion-ml",
   "title": "South Africa Fusion ML Field Boundaries",
-  "description": "Provisional publication of za_fusion_ml.parquet, a field-boundary Parquet file with 6,576 records. Source, license, processing history, and intended use are TODO.",
-  "keywords": [],
+  "description": "Polygon dataset of 6,576 crop field boundaries in South Africa, each labeled with a crop code/name and assigned to a fixed train/test split for machine learning benchmarking.",
+  "keywords": [
+    "field-boundaries",
+    "crop-classification",
+    "machine-learning",
+    "geoparquet",
+    "agriculture",
+    "fiboa",
+    "land-parcels"
+  ],
+  "providers": [
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/ftw/south-africa-fusion-ml"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          20.5214924,
+          -34.3992236,
+          21.0434145,
+          -33.9805062
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 6576
+  },
+  "assets": {
+    "ml": {
+      "href": "https://data.source.coop/ftw/south-africa-fusion-ml/za_fusion_ml.parquet",
+      "type": "application/x-parquet",
+      "title": "za_fusion_ml.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "metrics:area",
+          "type": "FLOAT"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:4326')",
+          "description": "[geometry] Field boundary polygon geometry, WKB-encoded, EPSG:4326"
+        },
+        {
+          "name": "crop:code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "collection",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "crop:name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "split",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        }
+      ],
+      "table:row_count": 6576
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/ftw/south-africa-fusion-ml/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/ftw/south-africa-fusion-ml",
+      "title": "Source Cooperative product page"
+    }
+  ],
   "created_at": "2026-08-18T18:36:09.321Z",
-  "updated_at": "2026-08-18T18:36:09.321Z",
-  "visibility": "public",
   "disabled": false,
-  "featured": 0,
   "data_mode": null,
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "ext_bytes": {
+    "parquet": 2233172,
+    "md": 1664
+  },
+  "objects_updated_at": "2026-08-25T17:02:38+00:00",
+  "object_count": 2,
+  "total_bytes": 2234836,
+  "featured": 0,
+  "account_id": "ftw",
+  "updated_at": "2026-08-18T18:36:09.321Z",
+  "exts": {
+    "parquet": 1,
+    "md": 1
+  },
+  "visibility": "public",
+  "product_id": "south-africa-fusion-ml",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "is_primary": true,
@@ -18,22 +133,11 @@
       "prefix": "ftw/south-africa-fusion-ml/"
     }
   },
-  "object_count": 2,
-  "objects_updated_at": "2026-08-25T17:02:38+00:00",
-  "total_bytes": 2234836,
-  "exts": {
-    "parquet": 1,
-    "md": 1
-  },
-  "ext_bytes": {
-    "parquet": 2233172,
-    "md": 1664
-  },
-  "store_format": null,
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "cataloged_at": "2026-08-31T09:07:39+00:00"
+  "readme": "## README.md\n# South Africa Field Boundaries with ML Splits\n\nCrop field boundaries in South Africa with crop labels and a fixed train/test partition for machine learning.\n\n## Contents\n\n- `za_fusion_ml.parquet`, 6,576 polygon features\n\n## Splits\n\n| Split | Features |\n| ----- | -------- |\n| `train` | 4,156 |\n| `test` | 2,420 |\n| **total** | **6,576** |\n\nThe `split` column carries this partition. Use it as given, so that results stay comparable across models trained on this dataset.\n\n## Format\n\n- GeoParquet 1.0.0, geometry encoded as WKB, all features are Polygons\n- Coordinate reference system: EPSG:4326 (WGS 84)\n- Column names follow fiboa conventions, but the file does not carry the fiboa schema declaration or collection level metadata, so fiboa validation does not apply to it\n\n## Columns\n\n| Column | Notes |\n| ------ | ----- |\n| `metrics:area` | Field area in square metres |\n| `geometry` | Field boundary polygon |\n| `crop:code` | Crop code as given by the source |\n| `collection` | Collection identifier carried from the source |\n| `crop:name` | Crop name as given by the source |\n| `split` | Machine learning partition, see above |\n| `id` | Unique feature identifier |\n\n## Provenance and licence\n\n- Licence: **not recorded in the source file.** Fill this in before the dataset is relied on for redistribution.\n- Source data provider: **not recorded in the source file.**\n\nThe polygons and the split assignment are preserved exactly as received. No licence, provider or citation metadata was embedded in the file, so none is asserted here.\n\n## Related\n\nOther field boundary datasets from this organisation are listed at [source.coop/ftw](https://source.coop/ftw).\n",
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-08-31T09:10:35+00:00",
+  "store_format": null
 }
