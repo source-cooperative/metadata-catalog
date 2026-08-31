@@ -1,16 +1,115 @@
 {
   "schema_version": 1,
-  "account_id": "ftw",
-  "product_id": "germany-fusion-ml",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
+  "id": "ftw/germany-fusion-ml",
   "title": "Germany Fusion ML Field Boundaries",
-  "description": "Provisional publication of de_fusion_ml.parquet, a field-boundary Parquet file with 4,634 records. Source, license, processing history, and intended use are TODO.",
-  "keywords": [],
-  "created_at": "2026-08-18T18:36:12.118Z",
-  "updated_at": "2026-08-18T18:36:12.118Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": null,
+  "description": "Field boundary polygons for cropland in Germany (4,634 features), each labeled with a crop code and name and assigned to a fixed train/test machine-learning split, distributed as GeoParquet with WKB geometry in EPSG:4326.",
+  "keywords": [
+    "field-boundaries",
+    "crop-classification",
+    "agriculture",
+    "machine-learning",
+    "geoparquet",
+    "arable-land",
+    "land-use",
+    "land-parcels"
+  ],
+  "providers": [
+    {
+      "name": "ftw",
+      "roles": [
+        "processor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/ftw/germany-fusion-ml"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          13.6353346,
+          52.4181455,
+          14.3527043,
+          52.8494688
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 4634
+  },
+  "assets": {
+    "ml": {
+      "href": "https://data.source.coop/ftw/germany-fusion-ml/de_fusion_ml.parquet",
+      "type": "application/x-parquet",
+      "title": "de_fusion_ml.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:4326')",
+          "description": "[geometry] Field boundary polygon, WKB-encoded, EPSG:4326"
+        },
+        {
+          "name": "crop:code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "metrics:area",
+          "type": "FLOAT"
+        },
+        {
+          "name": "crop:name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "collection",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "split",
+          "type": "VARCHAR"
+        }
+      ],
+      "table:row_count": 4634
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/ftw/germany-fusion-ml/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/ftw/germany-fusion-ml",
+      "title": "Source Cooperative product page"
+    }
+  ],
   "mirrors": {
     "aws-opendata-us-west-2": {
       "is_primary": true,
@@ -18,22 +117,35 @@
       "prefix": "ftw/germany-fusion-ml/"
     }
   },
-  "object_count": 2,
-  "objects_updated_at": "2026-08-25T17:02:36+00:00",
   "total_bytes": 6492177,
-  "exts": {
-    "md": 1,
-    "parquet": 1
-  },
+  "object_count": 2,
   "ext_bytes": {
     "parquet": 6490523,
     "md": 1654
   },
-  "store_format": null,
-  "_state": "seed",
+  "created_at": "2026-08-18T18:36:12.118Z",
+  "product_id": "germany-fusion-ml",
+  "objects_updated_at": "2026-08-25T17:02:36+00:00",
+  "featured": 0,
+  "account_id": "ftw",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "cataloged_at": "2026-08-31T09:07:35+00:00"
+  "updated_at": "2026-08-18T18:36:12.118Z",
+  "visibility": "public",
+  "disabled": false,
+  "exts": {
+    "md": 1,
+    "parquet": 1
+  },
+  "data_mode": null,
+  "readme": "## README.md\n# Germany Field Boundaries with ML Splits\n\nCrop field boundaries in Germany with crop labels and a fixed train/test partition for machine learning.\n\n## Contents\n\n- `de_fusion_ml.parquet`, 4,634 polygon features\n\n## Splits\n\n| Split | Features |\n| ----- | -------- |\n| `train` | 2,550 |\n| `test` | 2,084 |\n| **total** | **4,634** |\n\nThe `split` column carries this partition. Use it as given, so that results stay comparable across models trained on this dataset.\n\n## Format\n\n- GeoParquet 1.0.0, geometry encoded as WKB, all features are Polygons\n- Coordinate reference system: EPSG:4326 (WGS 84)\n- Column names follow fiboa conventions, but the file does not carry the fiboa schema declaration or collection level metadata, so fiboa validation does not apply to it\n\n## Columns\n\n| Column | Notes |\n| ------ | ----- |\n| `geometry` | Field boundary polygon |\n| `crop:code` | Crop code as given by the source |\n| `id` | Unique feature identifier |\n| `metrics:area` | Field area in square metres |\n| `crop:name` | Crop name as given by the source |\n| `collection` | Collection identifier carried from the source |\n| `split` | Machine learning partition, see above |\n\n## Provenance and licence\n\n- Licence: **not recorded in the source file.** Fill this in before the dataset is relied on for redistribution.\n- Source data provider: **not recorded in the source file.**\n\nThe polygons and the split assignment are preserved exactly as received. No licence, provider or citation metadata was embedded in the file, so none is asserted here.\n\n## Related\n\nOther field boundary datasets from this organisation are listed at [source.coop/ftw](https://source.coop/ftw).\n",
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
+    "providers: role [processor] for 'ftw' is an AI guess \u2014 README says the original data provider is not recorded, but links related datasets to the source.coop/ftw account, suggesting ftw assembled/published this fused ML dataset.. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-08-31T09:11:03+00:00",
+  "store_format": null
 }
