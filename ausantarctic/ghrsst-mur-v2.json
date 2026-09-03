@@ -4,7 +4,7 @@
   "stac_version": "1.1.0",
   "id": "ausantarctic/ghrsst-mur-v2",
   "title": "GHRSST Level 4 MUR Global Foundation Sea Surface Temperature Analysis (v4.1)",
-  "description": "A daily, global, 1-km-resolution analysis of sea surface temperature (GHRSST Level 4 MUR v4.1) produced by fusing infrared and microwave satellite radiometer data with in situ ocean observations, repackaged here as cloud-optimized GeoTIFFs with STAC item JSON and a Parquet STAC catalog without altering the underlying source values.",
+  "description": "GHRSST Level 4 MUR (Multi-scale Ultra-high Resolution) Global Foundation Sea Surface Temperature Analysis v4.1, a daily, global, 1-km-resolution sea surface temperature product produced by fusing infrared and microwave satellite radiometer data with in situ ocean observations. This repackaging distributes the source data unmodified as cloud-optimized GeoTIFFs with STAC item JSON and a Parquet STAC catalog, organized by date.",
   "keywords": [
     "oceanography",
     "remote-sensing",
@@ -67,7 +67,7 @@
     "data": {
       "href": "https://data.source.coop/ausantarctic/ghrsst-mur-v2/",
       "type": "image/tiff; application=geotiff",
-      "title": "Dataset files (38025 x .tif)",
+      "title": "Dataset files (38045 x .tif)",
       "roles": [
         "data"
       ]
@@ -86,24 +86,11 @@
     }
   ],
   "exts": {
-    "tif": 37990,
-    "json": 8848,
+    "tif": 38025,
+    "json": 8855,
     "parquet": 1,
     "md": 1
   },
-  "featured": 1,
-  "total_bytes": 4263717294374,
-  "disabled": false,
-  "objects_updated_at": "2026-08-23T01:01:02+00:00",
-  "created_at": "2023-11-23T21:16:12.517639+00:00",
-  "object_count": 46840,
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "product_id": "ghrsst-mur-v2",
-  "data_mode": "open",
-  "visibility": "public",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -116,19 +103,32 @@
       "prefix": "ausantarctic/ghrsst-mur-v2/"
     }
   },
-  "account_id": "ausantarctic",
+  "disabled": false,
+  "product_id": "ghrsst-mur-v2",
+  "created_at": "2023-11-23T21:16:12.517639+00:00",
+  "data_mode": "open",
+  "visibility": "public",
+  "featured": 1,
+  "objects_updated_at": "2026-08-30T01:01:03+00:00",
+  "object_count": 46882,
   "ext_bytes": {
-    "tif": 4263668772888,
-    "json": 39326798,
-    "parquet": 9189678,
+    "tif": 4268814675440,
+    "json": 39360230,
+    "parquet": 9197629,
     "md": 5010
   },
   "updated_at": "2025-11-15T00:15:25.061Z",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "total_bytes": 4268863238309,
+  "account_id": "ausantarctic",
   "readme": "## README.md\n# GHRSST Sea Surface Temperature Analysis\n\nThe GHRSST Level 4 MUR (Multi-scale Ultra-high Resolution) Global Foundation Sea Surface Temperature Analysis (v4.1) provides\na high-resolution, daily global assessment of ocean surface temperature. This dataset fuses observations from multiple\nsatellite-borne sensors (including infrared and microwave radiometers) and in situ measurements, offering a robust and\nconsistent picture of sea surface temperature conditions. The algorithm employs advanced interpolation and blending\ntechniques to fill gaps caused by cloud cover and sensor discrepancies, resulting in a seamless, 1-kilometer-resolution\nglobal field. The \u201cfoundation\u201d temperature represents the sea surface temperature free of diurnal warming effects,\nmaking it particularly valuable for climate studies, numerical weather prediction, and a variety of marine applications.\nThe dataset is distributed by NASA\u2019s Jet Propulsion Laboratory in collaboration with the Group for High Resolution Sea Surface\nTemperature (GHRSST), and is widely used by researchers, operational agencies, and policy-makers for informed decision-making\nin fields such as marine resource management, weather forecasting, and climate monitoring.\n\nFor more information, please refer to the [documentation](https://podaac.jpl.nasa.gov/dataset/MUR-JPL-L4-GLOB-v4.1).\n\n## About this repository\n\nThe [code used to repackage this data is accessible here](https://github.com/auspatious/ghrsst-cogger).\n\nCare has been taken to not change the source data, but just to repackage it into cloud optimised geotiffs with\nSTAC metadata. Each daily dataset is accessible in a `<year>/<month>/<day>` path, and file names are consistent with the\nsource data, e.g., `\"{$Y%m%d}090000-JPL-L4_GHRSST-SSTfnd-MUR-GLOB-v02.0-fv04.1.stac-item.json`.\n\n## Accessing data\n\n### Using Python\n\nTo load a single day, you can do something like the following using Python:\n\n```python\nfrom pystac import Item\nfrom odc.stac import load\n\npath = \"https://data.source.coop/ausantarctic/ghrsst-mur-v2/2025/02/09/20250209090000-JPL-L4_GHRSST-SSTfnd-MUR-GLOB-v02.0-fv04.1.stac-item.json\"\nitem = Item.from_file(path)\n\ndata = load([item], chunks={}, anchor=\"center\")\ndata\n```\n\nAnd then to plot it, do:\n\n```python\nsst_loaded = data[\"analysed_sst\"].squeeze().compute()\nsst_masked = sst_loaded.where(sst_loaded != -32768)\n\n# Extract the scale and offset from the metadata\nmeta = item.assets[\"analysed_sst\"].extra_fields[\"raster:bands\"][0]\nscale = meta[\"scale\"]\noffset = meta[\"offset\"]\nk_to_c = -273.15\n\nsst_scaled = sst_masked * scale + offset + k_to_c\nsst_scaled.plot.imshow(size=8, robust=True, cmap=\"inferno\")\n```\n\n### Reading from STAC Parquet file\n\nAlternately, you can use the STAC Parquet file as an index to all the STAC docs.\n\n```python\nimport stacrs\nimport pystac\nfrom odc.stac import load\n\nurl = \"https://data.source.coop/ausantarctic/ghrsst-mur-v2/ghrsst-mur-v2.parquet\"\n\ncenter = 13, -61\nbuffer = 5\n\nbbox = (\n    center[1] - buffer,\n    center[0] - buffer,\n    center[1] + buffer,\n    center[0] + buffer,\n)\n\nitems = await stacrs.read(url)\n\n# Or use .search to filter by time\n# year = 2024\n# items = stacrs.search(\n#     url,\n#     bbox=bbox,\n#     datetime=f\"{year}-01-01T00:00:00.000Z/{year}-12-31T23:59:59.999Z\",\n# )\n\nitems = [pystac.Item.from_dict(i) for i in items[\"features\"]]\n\ndata = load(items, bbox=bbox, chunks={})\ndata\n```\n\n### Using R\n\nThe 'analysed_sst' files are templated by:\n\n``` r\ntemplate <- \"https://data.source.coop/ausantarctic/ghrsst-mur-v2/{format(date, '%Y/%m/%d')}/{format(date, '%Y%m%d')}090000-JPL-L4_GHRSST-SSTfnd-MUR-GLOB-v02.0-fv04.1_analysed_sst.tif\"\n```\n\nExample for a specific date:\n\n``` r\ndate <- as.Date(\"2025-02-14\")\n(url <- glue::glue(template))\n```\n\nStrictly, we should check the catalogue first:\n\n``` r\ncatalog <- arrow::read_parquet(\"https://data.source.coop/ausantarctic/ghrsst-mur-v2/ghrsst-mur-v2.parquet\")\n\nif (!url %in% catalog$assets$analysed_sst$href) {\n  message(\"file does not exist, check available dates\")\n} else {\n  dsn <- glue::glue(\"/vsicurl/{url}\")\n}\n```\n\nRead using the terra package:\n\n``` r\nlibrary(terra)\n(sst <- rast(dsn))\n```\n\nOr alternatively, using gdalraster:\n\n``` r\nlibrary(gdalraster)\n(ds <- new(GDALRaster, dsn))\n```\n\nOr with stars:\n\n``` r\nlibrary(stars)\n(sstars <- read_stars(dsn, proxy = TRUE))\n```\n\nTo crop with the terra package:\n\n``` r\ncrop(sst, ext(130, 150, -55, -42))\n```\n\nOr, more generally, project (by_util is very important for COG efficiency):\n\n``` r\nproject(sst, rast(ext(130, 150, -55, -42), res = res(sst)), by_util = TRUE)\n```\n\nWe can also change CRS and resolution as desired:\n\n``` r\ntarget <- rast(\n  ext(c(-1, 1, -1, 1) * 6e5),\n  res = 1000,\n  crs = \"+proj=laea +lon_0=147 +lat_0=-45\"\n)\nproject(sst, target, by_util = TRUE)\n```\n\n## License\n\nSee: [https://podaac.jpl.nasa.gov/CitingPODAAC](https://podaac.jpl.nasa.gov/CitingPODAAC)\n\n> Data hosted by the PO.DAAC is openly shared, without restriction, in accordance with NASA's Earth Science program Data and Information Policy.\n",
   "_review": [
     "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-08-30T08:36:02+00:00",
+  "cataloged_at": "2026-09-03T08:50:21+00:00",
   "store_format": null
 }
