@@ -7,14 +7,13 @@
   ],
   "id": "cboettig/taxadb",
   "title": "Taxonomic names",
-  "description": "A consolidated dataset of taxonomic naming authorities drawn from multiple biodiversity databases, including Catalogue of Life (COL), GBIF, IUCN, ITIS, NCBI, and Open Tree of Life (OTT). Each record links scientific names, vernacular (common) names, taxonomic rank, and taxonomic status across the full Linnaean hierarchy (kingdom through infraspecific epithet). The dataset contains over 27 million records distributed across 9 Parquet files in both Darwin Core and simplified common-name formats.",
+  "description": "Taxonomic name tables (accepted names, synonyms, and vernacular names) for seven naming authorities \u2014 Catalogue of Life, FishBase, GBIF Backbone Taxonomy, ITIS, NCBI Taxonomy, Open Tree Taxonomy, and SeaLifeBase \u2014 normalized to a common Darwin Core schema and distributed as Parquet, built by the taxadb R package. Includes both a current snapshot and a byte-identical archival republication of an earlier (22.12) release for reproducibility.",
   "keywords": [
     "taxonomy",
     "biodiversity",
-    "species-names",
+    "species-classification",
     "nomenclature",
-    "taxonomic-classification",
-    "vernacular-names"
+    "darwin-core"
   ],
   "providers": [
     {
@@ -82,13 +81,13 @@
     }
   },
   "summaries": {
-    "item_count": 27355015
+    "item_count": 28515808
   },
   "assets": {
-    "common_col_part_0": {
-      "href": "https://data.source.coop/cboettig/taxadb/2026/common_col_part_0.parquet",
+    "2026": {
+      "href": "https://data.source.coop/cboettig/taxadb/2026/",
       "type": "application/x-parquet",
-      "title": "common_col_part_0.parquet",
+      "title": "2026",
       "roles": [
         "data"
       ],
@@ -98,11 +97,11 @@
           "type": "VARCHAR"
         },
         {
-          "name": "language",
+          "name": "vernacularName",
           "type": "VARCHAR"
         },
         {
-          "name": "vernacularName",
+          "name": "language",
           "type": "VARCHAR"
         },
         {
@@ -114,11 +113,11 @@
           "type": "VARCHAR"
         },
         {
-          "name": "taxonomicStatus",
+          "name": "taxonRank",
           "type": "VARCHAR"
         },
         {
-          "name": "taxonRank",
+          "name": "taxonomicStatus",
           "type": "VARCHAR"
         },
         {
@@ -155,292 +154,18 @@
         },
         {
           "name": "cultivarEpithet",
-          "type": "VARCHAR"
-        }
-      ],
-      "table:row_count": 126395
-    },
-    "common_gbif_part_0": {
-      "href": "https://data.source.coop/cboettig/taxadb/2026/common_gbif_part_0.parquet",
-      "type": "application/x-parquet",
-      "title": "common_gbif_part_0.parquet",
-      "roles": [
-        "data"
-      ],
-      "table:columns": [
-        {
-          "name": "taxonID",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "vernacularName",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "language",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "country",
-          "type": "VARCHAR",
-          "description": "[placename] Country name associated with a vernacular name usage in GBIF"
-        },
-        {
-          "name": "countryCode",
-          "type": "VARCHAR",
-          "description": "[admin_code] ISO 3166-1 alpha-2 country code associated with a vernacular name usage in GBIF"
-        },
-        {
-          "name": "sex",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "lifeStage",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "source",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "scientificName",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "taxonRank",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "taxonomicStatus",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "acceptedNameUsageID",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "kingdom",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "phylum",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "class",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "order",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "family",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "genus",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "specificEpithet",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "infraspecificEpithet",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "parentNameUsageID",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "originalNameUsageID",
           "type": "VARCHAR"
         },
         {
           "name": "scientificNameAuthorship",
           "type": "VARCHAR"
-        }
-      ],
-      "table:row_count": 369944
-    },
-    "common_itis_part_0": {
-      "href": "https://data.source.coop/cboettig/taxadb/2026/common_itis_part_0.parquet",
-      "type": "application/x-parquet",
-      "title": "common_itis_part_0.parquet",
-      "roles": [
-        "data"
-      ],
-      "table:columns": [
+        },
         {
-          "name": "vernacularName",
+          "name": "nomenclaturalCode",
           "type": "VARCHAR"
         },
         {
-          "name": "language",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "update_date",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "acceptedNameUsageID",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "taxonID",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "scientificName",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "taxonRank",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "taxonomicStatus",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "kingdom",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "phylum",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "class",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "order",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "family",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "genus",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "specificEpithet",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "infraspecificEpithet",
-          "type": "VARCHAR"
-        }
-      ],
-      "table:row_count": 338400
-    },
-    "common_ncbi_part_0": {
-      "href": "https://data.source.coop/cboettig/taxadb/2026/common_ncbi_part_0.parquet",
-      "type": "application/x-parquet",
-      "title": "common_ncbi_part_0.parquet",
-      "roles": [
-        "data"
-      ],
-      "table:columns": [
-        {
-          "name": "vernacularName",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "scientificName",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "taxonRank",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "taxonID",
-          "type": "INTEGER"
-        },
-        {
-          "name": "acceptedNameUsageID",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "taxonomicStatus",
-          "type": "VARCHAR"
-        }
-      ],
-      "table:row_count": 2210230
-    },
-    "dwc_col_part_0": {
-      "href": "https://data.source.coop/cboettig/taxadb/2026/dwc_col_part_0.parquet",
-      "type": "application/x-parquet",
-      "title": "dwc_col_part_0.parquet",
-      "roles": [
-        "data"
-      ],
-      "table:columns": [
-        {
-          "name": "taxonID",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "acceptedNameUsageID",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "scientificName",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "taxonomicStatus",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "taxonRank",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "kingdom",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "phylum",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "class",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "order",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "family",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "genus",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "specificEpithet",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "infraspecificEpithet",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "cultivarEpithet",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "datasetID",
+          "name": "nomenclaturalStatus",
           "type": "VARCHAR"
         },
         {
@@ -456,14 +181,6 @@
           "type": "VARCHAR"
         },
         {
-          "name": "nomenclaturalStatus",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "nomenclaturalCode",
-          "type": "VARCHAR"
-        },
-        {
           "name": "parentNameUsageID",
           "type": "VARCHAR"
         },
@@ -472,8 +189,44 @@
           "type": "VARCHAR"
         },
         {
-          "name": "dcterms:references",
+          "name": "datasetID",
           "type": "VARCHAR"
+        },
+        {
+          "name": "references",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "synonymID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "update_date",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "sourceinfo",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "flags",
+          "type": "VARCHAR"
+        }
+      ],
+      "description": "13 files sampled for this table",
+      "item_count": 28515808
+    },
+    "22.12": {
+      "href": "https://data.source.coop/cboettig/taxadb/22.12/",
+      "type": "application/x-parquet",
+      "title": "22.12",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "taxonID",
+          "type": "INTEGER|VARCHAR"
         },
         {
           "name": "language",
@@ -482,20 +235,9 @@
         {
           "name": "vernacularName",
           "type": "VARCHAR"
-        }
-      ],
-      "table:row_count": 5302873
-    },
-    "dwc_gbif_part_0": {
-      "href": "https://data.source.coop/cboettig/taxadb/2026/dwc_gbif_part_0.parquet",
-      "type": "application/x-parquet",
-      "title": "dwc_gbif_part_0.parquet",
-      "roles": [
-        "data"
-      ],
-      "table:columns": [
+        },
         {
-          "name": "taxonID",
+          "name": "acceptedNameUsageID",
           "type": "VARCHAR"
         },
         {
@@ -503,15 +245,11 @@
           "type": "VARCHAR"
         },
         {
-          "name": "taxonRank",
-          "type": "VARCHAR"
-        },
-        {
           "name": "taxonomicStatus",
           "type": "VARCHAR"
         },
         {
-          "name": "acceptedNameUsageID",
+          "name": "taxonRank",
           "type": "VARCHAR"
         },
         {
@@ -544,6 +282,32 @@
         },
         {
           "name": "infraspecificEpithet",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "cultivarEpithet",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "country",
+          "type": "VARCHAR",
+          "description": "[placename] Country associated with a vernacular name entry"
+        },
+        {
+          "name": "countryCode",
+          "type": "VARCHAR",
+          "description": "[admin_code] ISO country code associated with a vernacular name entry"
+        },
+        {
+          "name": "sex",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "lifeStage",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "source",
           "type": "VARCHAR"
         },
         {
@@ -559,208 +323,12 @@
           "type": "VARCHAR"
         },
         {
-          "name": "vernacularName",
-          "type": "VARCHAR"
-        }
-      ],
-      "table:row_count": 7446477
-    },
-    "dwc_itis_part_0": {
-      "href": "https://data.source.coop/cboettig/taxadb/2026/dwc_itis_part_0.parquet",
-      "type": "application/x-parquet",
-      "title": "dwc_itis_part_0.parquet",
-      "roles": [
-        "data"
-      ],
-      "table:columns": [
-        {
-          "name": "taxonID",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "scientificName",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "taxonRank",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "acceptedNameUsageID",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "taxonomicStatus",
-          "type": "VARCHAR"
-        },
-        {
           "name": "update_date",
           "type": "VARCHAR"
-        },
-        {
-          "name": "kingdom",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "phylum",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "class",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "order",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "family",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "genus",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "specificEpithet",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "infraspecificEpithet",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "vernacularName",
-          "type": "VARCHAR"
         }
       ],
-      "table:row_count": 982299
-    },
-    "dwc_ncbi_part_0": {
-      "href": "https://data.source.coop/cboettig/taxadb/2026/dwc_ncbi_part_0.parquet",
-      "type": "application/x-parquet",
-      "title": "dwc_ncbi_part_0.parquet",
-      "roles": [
-        "data"
-      ],
-      "table:columns": [
-        {
-          "name": "taxonID",
-          "type": "INTEGER"
-        },
-        {
-          "name": "scientificName",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "taxonRank",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "taxonomicStatus",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "acceptedNameUsageID",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "kingdom",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "phylum",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "class",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "order",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "family",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "genus",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "specificEpithet",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "vernacularName",
-          "type": "VARCHAR"
-        }
-      ],
-      "table:row_count": 3822452
-    },
-    "dwc_ott_part_0": {
-      "href": "https://data.source.coop/cboettig/taxadb/2026/dwc_ott_part_0.parquet",
-      "type": "application/x-parquet",
-      "title": "dwc_ott_part_0.parquet",
-      "roles": [
-        "data"
-      ],
-      "table:columns": [
-        {
-          "name": "taxonID",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "scientificName",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "taxonRank",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "acceptedNameUsageID",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "taxonomicStatus",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "kingdom",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "phylum",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "class",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "order",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "family",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "genus",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "specificEpithet",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "infraspecificEpithet",
-          "type": "VARCHAR"
-        }
-      ],
-      "table:row_count": 6755945
+      "description": "20 files sampled for this table",
+      "item_count": 3542071
     }
   },
   "links": [
@@ -775,21 +343,6 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "product_id": "taxadb",
-  "visibility": "public",
-  "disabled": false,
-  "account_id": "cboettig",
-  "exts": {
-    "parquet": 9
-  },
-  "object_count": 9,
-  "featured": 0,
-  "total_bytes": 1206887869,
-  "created_at": "2025-12-19T17:41:50.509Z",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -802,18 +355,38 @@
       "prefix": "cboettig/taxadb/"
     }
   },
-  "data_mode": "open",
+  "product_id": "taxadb",
+  "disabled": false,
+  "visibility": "public",
+  "featured": 0,
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "objects_updated_at": "2026-08-25T17:03:13+00:00",
+  "total_bytes": 2193787852,
+  "created_at": "2025-12-19T17:41:50.509Z",
   "updated_at": "2025-12-19T17:41:50.509Z",
+  "ext_bytes": {
+    "parquet": 2193749883,
+    "md": 19694,
+    "csv": 18275
+  },
+  "account_id": "cboettig",
+  "data_mode": "open",
+  "object_count": 149,
+  "exts": {
+    "parquet": 145,
+    "md": 2,
+    "csv": 2
+  },
+  "readme": "## 2026__README.md\n---\nlicenses:\n  - dataset: common_col\n    license: CC-BY-4.0\n    authority: Catalogue of Life\n    url: https://www.catalogueoflife.org\n  - dataset: dwc_col\n    license: CC-BY-4.0\n    authority: Catalogue of Life\n    url: https://www.catalogueoflife.org\n  - dataset: common_fb\n    license: CC-BY-NC-4.0\n    authority: FishBase\n    url: https://fishbase.org\n  - dataset: dwc_fb\n    license: CC-BY-NC-4.0\n    authority: FishBase\n    url: https://fishbase.org\n  - dataset: common_gbif\n    license: CC-BY-4.0\n    authority: GBIF Backbone Taxonomy\n    url: https://www.gbif.org\n  - dataset: dwc_gbif\n    license: CC-BY-4.0\n    authority: GBIF Backbone Taxonomy\n    url: https://www.gbif.org\n  - dataset: common_itis\n    license: CC0-1.0\n    authority: Integrated Taxonomic Information System\n    url: https://www.itis.gov\n  - dataset: dwc_itis\n    license: CC0-1.0\n    authority: Integrated Taxonomic Information System\n    url: https://www.itis.gov\n  - dataset: common_ncbi\n    license: CC0-1.0\n    authority: NCBI Taxonomy\n    url: https://www.ncbi.nlm.nih.gov/taxonomy\n  - dataset: dwc_ncbi\n    license: CC0-1.0\n    authority: NCBI Taxonomy\n    url: https://www.ncbi.nlm.nih.gov/taxonomy\n  - dataset: dwc_ott\n    license: CC0-1.0\n    authority: Open Tree Taxonomy\n    url: https://tree.opentreeoflife.org\n  - dataset: common_slb\n    license: CC-BY-NC-4.0\n    authority: SeaLifeBase\n    url: https://www.sealifebase.org\n  - dataset: dwc_slb\n    license: CC-BY-NC-4.0\n    authority: SeaLifeBase\n    url: https://www.sealifebase.org\n---\n\n# taxadb 2026\n\nTaxonomic name tables for 7 naming authorities, normalized to a common Darwin Core schema.\n\nBuilt by the [taxadb](https://github.com/ropensci/taxadb) R package. Generated 2026-08-24.\n\n## Reading the data\n\nEach table is one or more Parquet files, named\n`2026/<schema>_<provider>_part_<n>.parquet`.\nNo special client is needed; anything that reads Parquet will do.\n\n```r\nlibrary(taxadb)\nfilter_name(\"Homo sapiens\", provider = \"itis\")\n```\n\n```r\n# or without the package\nlibrary(duckdbfs)\nlibrary(dplyr)\nopen_dataset(\"https://data.source.coop/cboettig/taxadb/2026/dwc_itis_part_0.parquet\") |>\n  filter(scientificName == \"Homo sapiens\")\n```\n\n```sql\n-- or in plain SQL\nSELECT * FROM read_parquet(\n  'https://data.source.coop/cboettig/taxadb/2026/dwc_itis_part_0.parquet')\nWHERE scientificName = 'Homo sapiens';\n```\n\n## Schema\n\nThere are two kinds of table. `dwc_<provider>` is the complete name list:\none row per name, accepted names and synonyms together. `common_<provider>`\nis the vernacular names, one row per name with the language it is in.\nA provider that publishes no vernacular names has no `common` table; `ott`\nis the one such provider here.\n\nEvery `dwc` table carries these columns, with the same meaning throughout:\n\n| column | meaning |\n|---|---|\n| `taxonID` | Identifier for this name, prefixed by the provider, e.g. `ITIS:180092`. Empty where the provider mints no identifier for a synonym, which is the case for NCBI, OTT, FishBase and SeaLifeBase. |\n| `scientificName` | The name, without authorship. Present at every rank: `Animalia` is a scientificName just as `Homo sapiens` is. |\n| `taxonRank` | The rank the provider gives this name. Not limited to the seven below: NCBI and OTT recognize over forty. |\n| `acceptedNameUsageID` | The `taxonID` of the accepted name. **Always populated**, on accepted names as well as synonyms, where it repeats the row's own `taxonID`. |\n| `taxonomicStatus` | `accepted`, or what kind of synonym or other usage this is. Provider-specific terms are kept rather than flattened. |\n| `kingdom`, `phylum`, `class`, `order`, `family`, `genus` | The classification, flattened from the provider's hierarchy. |\n| `specificEpithet`, `infraspecificEpithet` | Epithets, where the name has them. |\n| `vernacularName` | One common name, where the provider has one. |\n\nProviders add their own columns beyond these; see `columns` in\n`manifest.csv` for exactly what each table holds.\n\n### The one place this is stricter than Darwin Core\n\nDarwin Core leaves `acceptedNameUsageID` optional on an accepted name, and\nmost providers omit it there, reasoning that an accepted name is its own\naccepted name. These tables always populate it, repeating the `taxonID`.\nThat way resolving any name to its accepted identifier is a single column\nread with no special case, whether the name turned out to be a synonym or\nnot. Relatedly, a name the provider redirects nowhere is its own accepted\nname even where the provider hedges about it, so GBIF's `doubtful` and\nCOL's `provisionally accepted` names are self-referencing too.\n\n## Providers\n\nThese are **not** interchangeable, and should not be combined. Providers\nrepresent independent taxonomic theories: the same name can be accepted by\none and a synonym of something else in another, so two providers can\ncontradict each other in ways that merging silently discards.\n`col`, `gbif` and `ott` are themselves synthesis projects integrating other\nchecklists; the rest are primary authorities.\n\n| provider | authority | upstream release | licence |\n|---|---|---|---|\n| `col` | [Catalogue of Life](https://www.catalogueoflife.org) | 2026-08-20 | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |\n| `fb` | [FishBase](https://fishbase.org) | v26.07 | [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/) |\n| `gbif` | [GBIF Backbone Taxonomy](https://www.gbif.org) | 2023-08-28 | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |\n| `itis` | [Integrated Taxonomic Information System](https://www.itis.gov) | 2026-07-28 | [public domain](https://www.itis.gov/what_itis.html) |\n| `ncbi` | [NCBI Taxonomy](https://www.ncbi.nlm.nih.gov/taxonomy) | 2026-08-24 | [public domain](https://www.ncbi.nlm.nih.gov/home/about/policies/) |\n| `ott` | [Open Tree Taxonomy](https://tree.opentreeoflife.org) | 3.7draft3 | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) |\n| `slb` | [SeaLifeBase](https://www.sealifebase.org) | v26.04 | [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/) |\n\nEach dataset carries its provider's terms. There is no repository-wide\nlicence, and none of these datasets inherits terms from any other:\n\n| dataset | licence | commercial use |\n|---|---|---|\n| `common_col` | [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/) | yes |\n| `dwc_col` | [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/) | yes |\n| `common_fb` | [CC-BY-NC-4.0](https://creativecommons.org/licenses/by-nc/4.0/) | **no** |\n| `dwc_fb` | [CC-BY-NC-4.0](https://creativecommons.org/licenses/by-nc/4.0/) | **no** |\n| `common_gbif` | [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/) | yes |\n| `dwc_gbif` | [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/) | yes |\n| `common_itis` | [CC0-1.0](https://www.itis.gov/what_itis.html) | yes |\n| `dwc_itis` | [CC0-1.0](https://www.itis.gov/what_itis.html) | yes |\n| `common_ncbi` | [CC0-1.0](https://www.ncbi.nlm.nih.gov/home/about/policies/) | yes |\n| `dwc_ncbi` | [CC0-1.0](https://www.ncbi.nlm.nih.gov/home/about/policies/) | yes |\n| `dwc_ott` | [CC0-1.0](https://creativecommons.org/publicdomain/zero/1.0/) | yes |\n| `common_slb` | [CC-BY-NC-4.0](https://creativecommons.org/licenses/by-nc/4.0/) | **no** |\n| `dwc_slb` | [CC-BY-NC-4.0](https://creativecommons.org/licenses/by-nc/4.0/) | **no** |\n\n`CC0-1.0` covers both the CC0 dedications and the works placed in the public\ndomain by their producing agency (ITIS and NCBI), which impose no conditions\neither way. The two FishBase datasets are the only non-commercial ones here;\nthe other eleven permit commercial use, `CC-BY-4.0` ones with attribution.\nAttribution means citing the provider -- see Citation below.\n\n## Tables in this release\n\n| table | rows | size | parts |\n|---|---|---|---|\n| `common_col` | 176,481 | 4.97 MB | 1 |\n| `dwc_col` | 5,425,409 | 306 MB | 1 |\n| `common_fb` | 333,251 | 6.62 MB | 1 |\n| `dwc_fb` | 103,970 | 2.82 MB | 1 |\n| `common_gbif` | 1,500,815 | 27 MB | 1 |\n| `dwc_gbif` | 7,746,724 | 362 MB | 1 |\n| `common_itis` | 166,832 | 3.83 MB | 1 |\n| `dwc_itis` | 993,617 | 17.9 MB | 1 |\n| `common_ncbi` | 46,524 | 1.69 MB | 1 |\n| `dwc_ncbi` | 5,071,168 | 141 MB | 1 |\n| `dwc_ott` | 6,755,945 | 224 MB | 1 |\n| `common_slb` | 60,214 | 1.22 MB | 1 |\n| `dwc_slb` | 134,858 | 3.99 MB | 1 |\n\n## Provenance and checksums\n\n`manifest.csv` records, for every table, the upstream release it was built\nfrom, its row count, its full column list, and a SHA-256 of each Parquet\npart.\n\nThe provider abbreviation and this release's version do not by themselves\nsay what went in, which is why the upstream release is recorded separately:\nthe GBIF table here is built from the most recent backbone GBIF has\npublished, which is dated 2023-08-28, and is therefore older than this\nsnapshot's version suggests.\n\n## How this was built\n\nEvery table is derived from the provider's own distribution by\n`taxadb::td_build()`, and checked against the schema rules above by\n`taxadb::td_validate()` before publication. Both are ordinary exported\nfunctions, so a table can be rebuilt or re-checked independently:\n\n```r\ntd_build(\"itis\", version = \"2026\")\ntd_validate(\"itis\")\n```\n\n## Citation\n\nCite the underlying provider, not this redistribution:\n\n- **col**: B\u00e1nki O, et al. Catalogue of Life. https://doi.org/10.48580/dfz8\n- **fb**: Froese R, Pauly D (eds). FishBase. https://www.fishbase.org\n- **gbif**: GBIF Secretariat. GBIF Backbone Taxonomy. https://doi.org/10.15468/39omei\n- **itis**: Retrieved from the Integrated Taxonomic Information System on-line database, https://www.itis.gov\n- **ncbi**: Schoch CL, et al. NCBI Taxonomy: a comprehensive update on curation, resources and tools. Database (2020). doi:10.1093/database/baaa062\n- **ott**: Rees JA, Cranston K. Automated assembly of a reference taxonomy for phylogenetic data synthesis. Biodiversity Data Journal (2017). doi:10.3897/BDJ.5.e12581\n- **slb**: Palomares MLD, Pauly D (eds). SeaLifeBase. https://www.sealifebase.org\n\nFor the package and the schema:\n\n- Norman KEA, Chamberlain S, Boettiger C (2020). taxadb: A high-performance\n  local taxonomic database interface. *Methods in Ecology and Evolution*,\n  11(9), 1153-1159. doi:10.1111/2041-210X.13440\n\n\n\n## 22.12__README.md\n---\nlicenses:\n  - dataset: common_col\n    license: CC-BY-4.0\n    authority: Catalogue of Life\n    url: https://www.catalogueoflife.org\n  - dataset: dwc_col\n    license: CC-BY-4.0\n    authority: Catalogue of Life\n    url: https://www.catalogueoflife.org\n  - dataset: common_gbif\n    license: CC-BY-4.0\n    authority: GBIF Backbone Taxonomy\n    url: https://www.gbif.org\n  - dataset: dwc_gbif\n    license: CC-BY-4.0\n    authority: GBIF Backbone Taxonomy\n    url: https://www.gbif.org\n  - dataset: common_itis\n    license: CC0-1.0\n    authority: Integrated Taxonomic Information System\n    url: https://www.itis.gov\n  - dataset: dwc_itis\n    license: CC0-1.0\n    authority: Integrated Taxonomic Information System\n    url: https://www.itis.gov\n  - dataset: common_ncbi\n    license: CC0-1.0\n    authority: NCBI Taxonomy\n    url: https://www.ncbi.nlm.nih.gov/taxonomy\n  - dataset: dwc_ncbi\n    license: CC0-1.0\n    authority: NCBI Taxonomy\n    url: https://www.ncbi.nlm.nih.gov/taxonomy\n  - dataset: dwc_ott\n    license: CC0-1.0\n    authority: Open Tree Taxonomy\n    url: https://tree.opentreeoflife.org\n---\n\n# taxadb 22.12\n\nTaxonomic name tables for 5 naming authorities, normalized to a common Darwin Core schema.\n\n**This is an archival release.** It republishes taxadb 22.12 exactly as it was, so that analyses which pinned this version keep\nresolving. The files are byte-identical to the original release; they have\ndeliberately **not** been corrected. A silently repaired snapshot would\nreturn different results to a script written against the real one, which is\nworse than leaving it as it was.\n\nFor current work use the newest version -- see\n`taxadb::available_versions()`. Tables in this release violate schema rules\nthat postdate it, listed per table in `manifest.csv` under\n`rules_violated` (7 of 9 tables here violate at least one).\n\nKnown issues in this release, since fixed in later ones: `ncbi` carries no\n`taxonID` on accepted names; `col` and `gbif` leave `scientificName` empty\nfor many higher taxa; `ott` synonyms have no `taxonomicStatus`. See the\n[taxadb NEWS](https://github.com/ropensci/taxadb/blob/master/NEWS.md).\n\n## Reading the data\n\nEach table is one or more Parquet files, named\n`22.12/<schema>_<provider>_part_<n>.parquet`.\nNo special client is needed; anything that reads Parquet will do.\n\n```r\nlibrary(taxadb)\nfilter_name(\"Homo sapiens\", provider = \"itis\")\n```\n\n```r\n# or without the package\nlibrary(duckdbfs)\nlibrary(dplyr)\nopen_dataset(\"https://data.source.coop/cboettig/taxadb/22.12/dwc_itis_part_0.parquet\") |>\n  filter(scientificName == \"Homo sapiens\")\n```\n\n```sql\n-- or in plain SQL\nSELECT * FROM read_parquet(\n  'https://data.source.coop/cboettig/taxadb/22.12/dwc_itis_part_0.parquet')\nWHERE scientificName = 'Homo sapiens';\n```\n\n## Schema\n\nThere are two kinds of table. `dwc_<provider>` is the complete name list:\none row per name, accepted names and synonyms together. `common_<provider>`\nis the vernacular names, one row per name with the language it is in.\nA provider that publishes no vernacular names has no `common` table; `ott`\nis the one such provider here.\n\nEvery `dwc` table carries these columns, with the same meaning throughout:\n\n| column | meaning |\n|---|---|\n| `taxonID` | Identifier for this name, prefixed by the provider, e.g. `ITIS:180092`. Empty where the provider mints no identifier for a synonym, which is the case for NCBI, OTT, FishBase and SeaLifeBase. |\n| `scientificName` | The name, without authorship. Present at every rank: `Animalia` is a scientificName just as `Homo sapiens` is. |\n| `taxonRank` | The rank the provider gives this name. Not limited to the seven below: NCBI and OTT recognize over forty. |\n| `acceptedNameUsageID` | The `taxonID` of the accepted name. **Always populated**, on accepted names as well as synonyms, where it repeats the row's own `taxonID`. |\n| `taxonomicStatus` | `accepted`, or what kind of synonym or other usage this is. Provider-specific terms are kept rather than flattened. |\n| `kingdom`, `phylum`, `class`, `order`, `family`, `genus` | The classification, flattened from the provider's hierarchy. |\n| `specificEpithet`, `infraspecificEpithet` | Epithets, where the name has them. |\n| `vernacularName` | One common name, where the provider has one. |\n\nProviders add their own columns beyond these; see `columns` in\n`manifest.csv` for exactly what each table holds.\n\n### The one place this is stricter than Darwin Core\n\nDarwin Core leaves `acceptedNameUsageID` optional on an accepted name, and\nmost providers omit it there, reasoning that an accepted name is its own\naccepted name. These tables always populate it, repeating the `taxonID`.\nThat way resolving any name to its accepted identifier is a single column\nread with no special case, whether the name turned out to be a synonym or\nnot. Relatedly, a name the provider redirects nowhere is its own accepted\nname even where the provider hedges about it, so GBIF's `doubtful` and\nCOL's `provisionally accepted` names are self-referencing too.\n\n## Providers\n\nThese are **not** interchangeable, and should not be combined. Providers\nrepresent independent taxonomic theories: the same name can be accepted by\none and a synonym of something else in another, so two providers can\ncontradict each other in ways that merging silently discards.\n`col`, `gbif` and `ott` are themselves synthesis projects integrating other\nchecklists; the rest are primary authorities.\n\n| provider | authority | upstream release | licence |\n|---|---|---|---|\n| `col` | [Catalogue of Life](https://www.catalogueoflife.org) | as released in taxadb-cache 22.12 (2022-12-20) | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |\n| `gbif` | [GBIF Backbone Taxonomy](https://www.gbif.org) | as released in taxadb-cache 22.12 (2022-12-20) | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |\n| `itis` | [Integrated Taxonomic Information System](https://www.itis.gov) | as released in taxadb-cache 22.12 (2022-12-20) | [public domain](https://www.itis.gov/what_itis.html) |\n| `ncbi` | [NCBI Taxonomy](https://www.ncbi.nlm.nih.gov/taxonomy) | as released in taxadb-cache 22.12 (2022-12-20) | [public domain](https://www.ncbi.nlm.nih.gov/home/about/policies/) |\n| `ott` | [Open Tree Taxonomy](https://tree.opentreeoflife.org) | as released in taxadb-cache 22.12 (2022-12-20) | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) |\n\nEach dataset carries its provider's terms. There is no repository-wide\nlicence, and none of these datasets inherits terms from any other:\n\n| dataset | licence | commercial use |\n|---|---|---|\n| `common_col` | [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/) | yes |\n| `dwc_col` | [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/) | yes |\n| `common_gbif` | [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/) | yes |\n| `dwc_gbif` | [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/) | yes |\n| `common_itis` | [CC0-1.0](https://www.itis.gov/what_itis.html) | yes |\n| `dwc_itis` | [CC0-1.0](https://www.itis.gov/what_itis.html) | yes |\n| `common_ncbi` | [CC0-1.0](https://www.ncbi.nlm.nih.gov/home/about/policies/) | yes |\n| `dwc_ncbi` | [CC0-1.0](https://www.ncbi.nlm.nih.gov/home/about/policies/) | yes |\n| `dwc_ott` | [CC0-1.0](https://creativecommons.org/publicdomain/zero/1.0/) | yes |\n\n`CC0-1.0` covers both the CC0 dedications and the works placed in the public\ndomain by their producing agency (ITIS and NCBI), which impose no conditions\neither way. The two FishBase datasets are the only non-commercial ones here;\nthe other eleven permit commercial use, `CC-BY-4.0` ones with attribution.\nAttribution means citing the provider -- see Citation below.\n\n## Tables in this release\n\n| table | rows | size | parts |\n|---|---|---|---|\n| `common_col` | 449,651 | 9.98 MB | 3 |\n| `dwc_col` | 4,716,121 | 264 MB | 24 |\n| `common_gbif` | 457,301 | 17.4 MB | 3 |\n| `dwc_gbif` | 6,682,450 | 384 MB | 34 |\n| `common_itis` | 281,295 | 7.51 MB | 2 |\n| `dwc_itis` | 899,937 | 32.4 MB | 5 |\n| `common_ncbi` | 2,005,618 | 42.7 MB | 11 |\n| `dwc_ncbi` | 3,129,801 | 127 MB | 16 |\n| `dwc_ott` | 6,753,824 | 189 MB | 34 |\n\n## Provenance and checksums\n\n`manifest.csv` records, for every table, the upstream release it was built\nfrom, its row count, its full column list, and a SHA-256 of each Parquet\npart.\n\nThe provider abbreviation and this release's version do not by themselves\nsay what went in, which is why the upstream release is recorded separately:\nthe GBIF table here is built from the most recent backbone GBIF has\npublished, which is dated 2023-08-28, and is therefore older than this\nsnapshot's version suggests.\n\n## Citation\n\nCite the underlying provider, not this redistribution:\n\n- **col**: B\u00e1nki O, et al. Catalogue of Life. https://doi.org/10.48580/dfz8\n- **gbif**: GBIF Secretariat. GBIF Backbone Taxonomy. https://doi.org/10.15468/39omei\n- **itis**: Retrieved from the Integrated Taxonomic Information System on-line database, https://www.itis.gov\n- **ncbi**: Schoch CL, et al. NCBI Taxonomy: a comprehensive update on curation, resources and tools. Database (2020). doi:10.1093/database/baaa062\n- **ott**: Rees JA, Cranston K. Automated assembly of a reference taxonomy for phylogenetic data synthesis. Biodiversity Data Journal (2017). doi:10.3897/BDJ.5.e12581\n\nFor the package and the schema:\n\n- Norman KEA, Chamberlain S, Boettiger C (2020). taxadb: A high-performance\n  local taxonomic database interface. *Methods in Ecology and Evolution*,\n  11(9), 1153-1159. doi:10.1111/2041-210X.13440\n\n",
   "_review": [
     "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
-    "providers: role [producer] for 'International Union for Conservation of Nature (IUCN)' is an AI guess \u2014 Listed in API description as a source but no IUCN-specific asset is visible in the file listing.. Verify before flipping to _state: reviewed.",
-    "providers: role [producer] for 'Integrated Taxonomic Information System (ITIS)' is an AI guess \u2014 Inferred as producer from asset names (common_itis, dwc_itis); not explicitly named in the API description.. Verify before flipping to _state: reviewed.",
-    "providers: role [producer] for 'Open Tree of Life Taxonomy (OTT)' is an AI guess \u2014 Inferred as producer from asset name (dwc_ott); not explicitly named in the API description.. Verify before flipping to _state: reviewed.",
-    "extent.spatial.bbox: omitted; spatial reference is categorical via [common_gbif_part_0.country (placename), common_gbif_part_0.countryCode (admin_code)]. Add bbox once a placename \u2192 bbox gazetteer is available."
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [22.12.country (placename), 22.12.countryCode (admin_code)]. Add bbox once the placename \u2192 bbox gazetteer covers it.",
+    "summaries.item_count: parts overlap, so this is max(part), not the sum \u2014 2026/ 28515808, 22.12/ 3542071. Sum them only once the parts are known to be disjoint."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-05-26T18:31:36+00:00",
-  "ext_bytes": {
-    "parquet": 1206887869
-  }
+  "cataloged_at": "2026-09-03T08:55:15+00:00",
+  "store_format": null
 }
