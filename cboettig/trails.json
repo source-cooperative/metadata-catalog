@@ -7,15 +7,16 @@
   ],
   "id": "cboettig/trails",
   "title": "US Federal Trails Network",
-  "description": "A harmonized, single-table composite of 127,619 U.S. federal trail segments combining the Forest Service's National Forest System Trails, National Park Service's public trails, and Bureau of Land Management's GTLF Public Managed Trails, with a common schema, recomputed segment lengths, and a derived National Trail System designation flag.",
+  "description": "A harmonized composite of U.S. federal agency-managed trail segments, combining the Forest Service's National Forest System Trails, National Park Service's public trails, and Bureau of Land Management's GTLF Public Managed Trails into a single schema with recomputed segment lengths and a derived National Trail System designation flag. Distributed as GeoParquet, PMTiles, an H3 hex aggregation, and a STAC collection.",
+  "license": "CC-PDDC",
   "keywords": [
-    "trails",
-    "federal-lands",
-    "national-scenic-trails",
-    "recreation",
     "geoparquet",
     "pmtiles",
-    "h3"
+    "h3",
+    "trails",
+    "federal-lands",
+    "recreation",
+    "national-scenic-trails"
   ],
   "providers": [
     {
@@ -57,10 +58,10 @@
     "spatial": {
       "bbox": [
         [
-          null,
-          null,
-          null,
-          null
+          -170.77379,
+          -14.3658254,
+          145.7317626,
+          67.2542799
         ]
       ]
     },
@@ -132,7 +133,7 @@
         {
           "name": "geometry",
           "type": "GEOMETRY('OGC:CRS84')",
-          "description": "[geometry] Trail segment geometry in EPSG:4326 (OGC:CRS84)."
+          "description": "[geometry] Per-segment trail line geometry in EPSG:4326."
         }
       ],
       "table:row_count": 127619
@@ -192,12 +193,12 @@
         {
           "name": "h8",
           "type": "UBIGINT",
-          "description": "[spatial_index] H3 hexagon cell ID at resolution 8, from line-buffered polyfill of trail segments."
+          "description": "[spatial_index] H3 resolution-8 hex cell ID from line-buffered polyfill of each segment."
         },
         {
           "name": "h0",
-          "type": "BIGINT",
-          "description": "[spatial_index] H3 resolution-0 parent cell ID used as the hive-partitioning key for the hex asset."
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution-0 parent cell ID used for hive partitioning of the hex asset."
         }
       ],
       "description": "13 files sampled for this table"
@@ -215,25 +216,24 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "data_mode": "open",
-  "exts": {
-    "parquet": 14,
-    "json": 2,
-    "geojson": 2,
-    "zip": 1,
-    "pmtiles": 1,
-    "md": 1
-  },
-  "featured": 0,
-  "object_count": 21,
-  "total_bytes": 923469158,
   "visibility": "public",
+  "updated_at": "2026-06-17T03:33:57.150Z",
+  "object_count": 18,
+  "product_id": "trails",
+  "created_at": "2026-06-17T03:33:57.150Z",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "updated_at": "2026-06-17T03:33:57.150Z",
+  "objects_updated_at": "2026-08-23T10:31:57+00:00",
+  "account_id": "cboettig",
   "disabled": false,
+  "exts": {
+    "parquet": 14,
+    "json": 2,
+    "pmtiles": 1,
+    "md": 1
+  },
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -246,23 +246,20 @@
       "prefix": "cboettig/trails/"
     }
   },
-  "account_id": "cboettig",
-  "product_id": "trails",
-  "created_at": "2026-06-17T03:33:57.150Z",
-  "readme": "## federal-trails-2026__README.md\n# Federal Trails Network 2026\n\nA composite of U.S. federal-agency-managed trails in a single harmonized table:\n\n- **U.S. Forest Service** \u2014 National Forest System Trails (NFST), 82,687 segments\n- **National Park Service** \u2014 Public Trails (filtered to publicly-displayable rows), 31,386 segments\n- **Bureau of Land Management** \u2014 National GTLF Public Managed Trails, 19,104 segments\n\n**Total: 127,619 segments.** One row per published trail segment, harmonized schema, recomputed `length_miles`, and a `nts_designation` column flagging the 11 National Scenic Trails, 19 National Historic Trails, and National Recreation Trails where applicable.\n\n## Data assets\n\n| Asset | URL |\n|---|---|\n| GeoParquet (per-segment) | `https://s3-west.nrp-nautilus.io/public-trails/federal-trails-2026.parquet` |\n| PMTiles (rendering)       | `https://s3-west.nrp-nautilus.io/public-trails/federal-trails-2026.pmtiles` |\n| H3 hex (native res 8)     | `https://s3-west.nrp-nautilus.io/public-trails/federal-trails-2026/hex/h0=*/data_0.parquet` |\n| STAC                      | `https://s3-west.nrp-nautilus.io/public-trails/federal-trails-2026/stac-collection.json` |\n\n## Query examples\n\n### How many miles of PCT are within a polygon? (use GeoParquet, not hex)\n\n```sql\nLOAD spatial;\nSELECT ROUND(SUM(length_miles), 1) AS pct_miles\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-trails/federal-trails-2026.parquet')\nWHERE nts_designation = 'PCT'\n  AND ST_Intersects(geometry, ST_GeomFromText('POLYGON((...))'));\n```\n\n### Which hex cells does the AT pass through?\n\n```sql\nSELECT DISTINCT h8\nFROM read_parquet(\n  'https://s3-west.nrp-nautilus.io/public-trails/federal-trails-2026/hex/h0=*/data_0.parquet',\n  hive_partitioning = true\n)\nWHERE nts_designation = 'AT';\n```\n\n> **Do not** `SUM(length_miles)` on the hex asset. Each segment's `length_miles` is repeated on every hex cell it touches after circumradius buffering, so SUM overcounts by the cell-per-segment factor.\n\n### MapLibre\n\n```js\nmap.addSource('trails', {\n  type: 'vector',\n  url: 'pmtiles://https://s3-west.nrp-nautilus.io/public-trails/federal-trails-2026.pmtiles'\n});\nmap.addLayer({\n  id: 'trails-line',\n  source: 'trails',\n  'source-layer': 'federal-trails-2026',   // = last segment of cng-datasets --dataset\n  type: 'line',\n  paint: { 'line-color': '#7a4d24', 'line-width': 1 }\n});\n```\n\nHighlight the National Scenic Trails:\n\n```js\nmap.addLayer({\n  id: 'nst-line',\n  source: 'trails',\n  'source-layer': 'federal-trails-2026',\n  type: 'line',\n  filter: ['in', ['get', 'nts_designation'], ['literal', ['PCT', 'AT', 'CDT', 'PNT', 'ANT', 'NCT', 'NET', 'FNST', 'IANST', 'NTNST', 'PHT']]],\n  paint: { 'line-color': '#b9302a', 'line-width': 2 }\n});\n```\n\n## Sources & licensing\n\n- **USFS NFST** \u2014 https://data.fs.usda.gov/geodata/edw/datasets.php (S_USA.TrailNFS_Publish). U.S. federal-government work; public domain.\n- **NPS Public Trails** \u2014 https://public-nps.opendata.arcgis.com/, FeatureServer at `mapservices.nps.gov/arcgis/rest/services/NationalDatasets/NPS_Public_Trails_Geographic/FeatureServer/0`. U.S. federal-government work; public domain. **Filtered to `DATAACCESS='Unrestricted' AND PUBLICDISPLAY='Public Map Display'`** to respect agency visibility flags.\n- **BLM GTLF Public Managed Trails** \u2014 https://gbp-blm-egis.hub.arcgis.com/datasets/BLM-EGIS::blm-natl-gtlf-public-managed-trails, FeatureServer at `services1.arcgis.com/KbxwQRRfWyEYLgp4/arcgis/rest/services/BLM_Natl_GTLF_Public_Managed_Trails/FeatureServer/2`. U.S. federal-government work; public domain (with BLM \"as is\" disclaimer in the dataset license).\n\nPipeline source: https://github.com/boettiger-lab/data-workflows/tree/main/catalog/trails\n\n## Methods\n\n1. USFS GDB downloaded; NPS and BLM FeatureServers paged (2000 rows / page) into single GeoJSONs. Raw cached to `s3://public-trails/raw/`.\n2. All three layers reprojected to EPSG:4326 via `ogr2ogr -t_srs EPSG:4326 -lco GEOMETRY_NAME=geometry`.\n3. Schema harmonized in DuckDB; common columns aliased; `admin_agency`, `nts_designation`, `source_dataset` added.\n4. **NTS-designation derivation**: USFS's `NATIONAL_TRAIL_DESIGNATION` integer code is mapped (1 = not designated, 2 = NRT, 3 = NST/NHT). For all three sources, trail-name patterns (`%PACIFIC CREST%`, `%CONTINENTAL DIVIDE%`, `%APPALACHIAN%`, etc.) identify the specific named NST/NHT. BLM uses `ROUTE_SCNDRY_SPCL_DSGNTN_NM` for the canonical designation name, which carries the same patterns.\n5. `length_miles` recomputed by reprojecting to EPSG:5070 (USA Contiguous Albers Equal Area, meters) and dividing `ST_Length` by 1609.344. CONUS-accurate; AK/HI/PR/VI lengths are approximate.\n6. Final GeoParquet written; cng-datasets workflow produced PMTiles + line-buffered H3 hex at native resolution 8.\n\n## Caveats\n\n- **Line-buffered hex semantics**: each line segment is buffered by the H3 res-8 circumradius before polyfill. A hex row means \"a trail passes near this cell\" not \"within\". Good for presence/access queries; not for distance/miles queries.\n- **NPS public-display filter** removes segments the agency has marked as not for public release (sensitive resources, trail closures, etc.). Counts will be lower than the raw FeatureServer response.\n- **NTS designation** is derived from trail-name patterns and the USFS `NATIONAL_TRAIL_DESIGNATION` numeric code. The 11 National Scenic Trails are matched by name; non-PCT/AT-class connectors that share part of an NST name may be tagged with that NST's code (rare).\n- **No BLM**: see scope note above.\n\n## Roadmap\n\n- v2: incorporate BLM trails when a unified source is identified\n- v2: split into per-NST sibling collections if downstream apps want them separately\n",
-  "_review": [
-    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
-    "extent.spatial.bbox: omitted; spatial reference is categorical via [..geometry (geometry), federal-trails-2026/hex.h8 (spatial_index), federal-trails-2026/hex.h0 (spatial_index)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
-  ],
-  "_state": "drafted",
-  "cataloged_at": "2026-07-25T09:35:05+00:00",
-  "store_format": null,
+  "featured": 0,
+  "data_mode": "open",
   "ext_bytes": {
     "parquet": 352652822,
-    "geojson": 270309268,
     "pmtiles": 189567917,
-    "zip": 110914251,
-    "json": 19226,
+    "json": 19834,
     "md": 5674
-  }
+  },
+  "total_bytes": 542246247,
+  "readme": "## federal-trails-2026__README.md\n# Federal Trails Network 2026\n\nA composite of U.S. federal-agency-managed trails in a single harmonized table:\n\n- **U.S. Forest Service** \u2014 National Forest System Trails (NFST), 82,687 segments\n- **National Park Service** \u2014 Public Trails (filtered to publicly-displayable rows), 31,386 segments\n- **Bureau of Land Management** \u2014 National GTLF Public Managed Trails, 19,104 segments\n\n**Total: 127,619 segments.** One row per published trail segment, harmonized schema, recomputed `length_miles`, and a `nts_designation` column flagging the 11 National Scenic Trails, 19 National Historic Trails, and National Recreation Trails where applicable.\n\n## Data assets\n\n| Asset | URL |\n|---|---|\n| GeoParquet (per-segment) | `https://s3-west.nrp-nautilus.io/public-trails/federal-trails-2026.parquet` |\n| PMTiles (rendering)       | `https://s3-west.nrp-nautilus.io/public-trails/federal-trails-2026.pmtiles` |\n| H3 hex (native res 8)     | `https://s3-west.nrp-nautilus.io/public-trails/federal-trails-2026/hex/h0=*/data_0.parquet` |\n| STAC                      | `https://s3-west.nrp-nautilus.io/public-trails/federal-trails-2026/stac-collection.json` |\n\n## Query examples\n\n### How many miles of PCT are within a polygon? (use GeoParquet, not hex)\n\n```sql\nLOAD spatial;\nSELECT ROUND(SUM(length_miles), 1) AS pct_miles\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-trails/federal-trails-2026.parquet')\nWHERE nts_designation = 'PCT'\n  AND ST_Intersects(geometry, ST_GeomFromText('POLYGON((...))'));\n```\n\n### Which hex cells does the AT pass through?\n\n```sql\nSELECT DISTINCT h8\nFROM read_parquet(\n  'https://s3-west.nrp-nautilus.io/public-trails/federal-trails-2026/hex/h0=*/data_0.parquet',\n  hive_partitioning = true\n)\nWHERE nts_designation = 'AT';\n```\n\n> **Do not** `SUM(length_miles)` on the hex asset. Each segment's `length_miles` is repeated on every hex cell it touches after circumradius buffering, so SUM overcounts by the cell-per-segment factor.\n\n### MapLibre\n\n```js\nmap.addSource('trails', {\n  type: 'vector',\n  url: 'pmtiles://https://s3-west.nrp-nautilus.io/public-trails/federal-trails-2026.pmtiles'\n});\nmap.addLayer({\n  id: 'trails-line',\n  source: 'trails',\n  'source-layer': 'federal-trails-2026',   // = last segment of cng-datasets --dataset\n  type: 'line',\n  paint: { 'line-color': '#7a4d24', 'line-width': 1 }\n});\n```\n\nHighlight the National Scenic Trails:\n\n```js\nmap.addLayer({\n  id: 'nst-line',\n  source: 'trails',\n  'source-layer': 'federal-trails-2026',\n  type: 'line',\n  filter: ['in', ['get', 'nts_designation'], ['literal', ['PCT', 'AT', 'CDT', 'PNT', 'ANT', 'NCT', 'NET', 'FNST', 'IANST', 'NTNST', 'PHT']]],\n  paint: { 'line-color': '#b9302a', 'line-width': 2 }\n});\n```\n\n## Sources & licensing\n\n- **USFS NFST** \u2014 https://data.fs.usda.gov/geodata/edw/datasets.php (S_USA.TrailNFS_Publish). U.S. federal-government work; public domain.\n- **NPS Public Trails** \u2014 https://public-nps.opendata.arcgis.com/, FeatureServer at `mapservices.nps.gov/arcgis/rest/services/NationalDatasets/NPS_Public_Trails_Geographic/FeatureServer/0`. U.S. federal-government work; public domain. **Filtered to `DATAACCESS='Unrestricted' AND PUBLICDISPLAY='Public Map Display'`** to respect agency visibility flags.\n- **BLM GTLF Public Managed Trails** \u2014 https://gbp-blm-egis.hub.arcgis.com/datasets/BLM-EGIS::blm-natl-gtlf-public-managed-trails, FeatureServer at `services1.arcgis.com/KbxwQRRfWyEYLgp4/arcgis/rest/services/BLM_Natl_GTLF_Public_Managed_Trails/FeatureServer/2`. U.S. federal-government work; public domain (with BLM \"as is\" disclaimer in the dataset license).\n\nPipeline source: https://github.com/boettiger-lab/data-workflows/tree/main/catalog/trails\n\n## Methods\n\n1. USFS GDB downloaded; NPS and BLM FeatureServers paged (2000 rows / page) into single GeoJSONs. Raw cached to `s3://public-trails/raw/`.\n2. All three layers reprojected to EPSG:4326 via `ogr2ogr -t_srs EPSG:4326 -lco GEOMETRY_NAME=geometry`.\n3. Schema harmonized in DuckDB; common columns aliased; `admin_agency`, `nts_designation`, `source_dataset` added.\n4. **NTS-designation derivation**: USFS's `NATIONAL_TRAIL_DESIGNATION` integer code is mapped (1 = not designated, 2 = NRT, 3 = NST/NHT). For all three sources, trail-name patterns (`%PACIFIC CREST%`, `%CONTINENTAL DIVIDE%`, `%APPALACHIAN%`, etc.) identify the specific named NST/NHT. BLM uses `ROUTE_SCNDRY_SPCL_DSGNTN_NM` for the canonical designation name, which carries the same patterns.\n5. `length_miles` recomputed by reprojecting to EPSG:5070 (USA Contiguous Albers Equal Area, meters) and dividing `ST_Length` by 1609.344. CONUS-accurate; AK/HI/PR/VI lengths are approximate.\n6. Final GeoParquet written; cng-datasets workflow produced PMTiles + line-buffered H3 hex at native resolution 8.\n\n## Caveats\n\n- **Line-buffered hex semantics**: each line segment is buffered by the H3 res-8 circumradius before polyfill. A hex row means \"a trail passes near this cell\" not \"within\". Good for presence/access queries; not for distance/miles queries.\n- **NPS public-display filter** removes segments the agency has marked as not for public release (sensitive resources, trail closures, etc.). Counts will be lower than the raw FeatureServer response.\n- **NTS designation** is derived from trail-name patterns and the USFS `NATIONAL_TRAIL_DESIGNATION` numeric code. The 11 National Scenic Trails are matched by name; non-PCT/AT-class connectors that share part of an NST name may be tagged with that NST's code (rare).\n- **No BLM**: see scope note above.\n\n## Roadmap\n\n- v2: incorporate BLM trails when a unified source is identified\n- v2: split into per-NST sibling collections if downstream apps want them separately\n",
+  "_review": [
+    "license: README states each source is a U.S. federal-government work in the public domain (not a formal SPDX license grant); BLM data additionally carries an 'as is' disclaimer from the source agency."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-09-04T08:56:05+00:00",
+  "store_format": null
 }
