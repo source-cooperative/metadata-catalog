@@ -7,7 +7,7 @@
   ],
   "id": "cboettig/gbif",
   "title": "H3-Indexed cloud-optimized snapshots of GBIF ",
-  "description": "Cloud-optimized, H3-indexed snapshots of GBIF (Global Biodiversity Information Facility) occurrence records \u2014 over 3.4 billion global biodiversity observations from the 2026-06 snapshot, deduplicated and partitioned by H3 resolution-0 hexagon with hex indices at resolutions 0-10. Includes derived products: per-hexagon taxonomic aggregation counts, a spatial join of occurrences with historical US redlining ('Mapping Inequality') polygons, and a reference taxa list.",
+  "description": "Cloud-optimized, H3-indexed snapshots of GBIF (Global Biodiversity Information Facility) occurrence records, covering over 3.4 billion global biodiversity observations from the 2026-06 GBIF snapshot, deduplicated and partitioned by H3 resolution-0 hexagon with hex indices at resolutions 0-10. Includes derived products: per-hexagon taxonomic aggregation counts, a spatial join of occurrences with historical US redlining ('Mapping Inequality') polygons, and a reference taxa list.",
   "keywords": [
     "biodiversity",
     "h3",
@@ -43,18 +43,18 @@
     "spatial": {
       "bbox": [
         [
-          null,
-          null,
-          null,
-          null
+          -180.0,
+          25.70537,
+          180.0,
+          90.0
         ]
       ]
     },
     "temporal": {
       "interval": [
         [
-          null,
-          null
+          "1520-01-01T00:00:00Z",
+          "2026-12-31T23:59:59Z"
         ]
       ]
     }
@@ -68,7 +68,7 @@
       "type": "application/x-parquet",
       "title": "dataset-publishers.parquet",
       "roles": [
-        "data"
+        "metadata"
       ],
       "table:columns": [
         {
@@ -97,13 +97,11 @@
         },
         {
           "name": "publishing_country",
-          "type": "VARCHAR",
-          "description": "[admin_code] ISO country code of the publishing organization"
+          "type": "VARCHAR"
         },
         {
           "name": "hosting_country",
-          "type": "VARCHAR",
-          "description": "[admin_code] ISO country code of the hosting organization"
+          "type": "VARCHAR"
         },
         {
           "name": "occurrence_records_count",
@@ -183,17 +181,17 @@
         {
           "name": "countrycode",
           "type": "VARCHAR",
-          "description": "[admin_code] ISO country code of the occurrence location"
+          "description": "[admin_code] ISO country code of occurrence"
         },
         {
           "name": "locality",
           "type": "VARCHAR",
-          "description": "[placename] Free-text locality description"
+          "description": "[placename] Free-text locality name"
         },
         {
           "name": "stateprovince",
           "type": "VARCHAR",
-          "description": "[placename] State or province name of the occurrence"
+          "description": "[placename] State/province name of occurrence"
         },
         {
           "name": "occurrencestatus",
@@ -209,11 +207,13 @@
         },
         {
           "name": "decimallatitude",
-          "type": "DOUBLE"
+          "type": "DOUBLE",
+          "description": "[latlon] Occurrence latitude"
         },
         {
           "name": "decimallongitude",
-          "type": "DOUBLE"
+          "type": "DOUBLE",
+          "description": "[latlon] Occurrence longitude"
         },
         {
           "name": "coordinateuncertaintyinmeters",
@@ -325,7 +325,8 @@
         },
         {
           "name": "h1",
-          "type": "UBIGINT"
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution-1 hex index"
         },
         {
           "name": "h2",
@@ -361,11 +362,13 @@
         },
         {
           "name": "h10",
-          "type": "UBIGINT"
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution-10 (native) hex index"
         },
         {
           "name": "h0",
-          "type": "BIGINT"
+          "type": "BIGINT",
+          "description": "[spatial_index] H3 resolution-0 hex index (partition key)"
         }
       ],
       "description": "4 files sampled for this table"
@@ -432,8 +435,8 @@
         },
         {
           "name": "h0",
-          "type": "BIGINT",
-          "description": "[spatial_index] H3 resolution-0 hexagon partition key for taxa aggregation counts"
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution-0 hex index (partition key)"
         }
       ],
       "description": "3 files sampled for this table"
@@ -452,11 +455,13 @@
         },
         {
           "name": "city",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[placename] Redlined city name"
         },
         {
           "name": "state",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[placename] US state name"
         },
         {
           "name": "city_survey",
@@ -493,7 +498,7 @@
         {
           "name": "geom",
           "type": "GEOMETRY('OGC:CRS84')",
-          "description": "[geometry] Redlining ('Mapping Inequality') polygon geometry"
+          "description": "[geometry] Redlining polygon geometry"
         },
         {
           "name": "area",
@@ -569,7 +574,8 @@
         },
         {
           "name": "stateprovince",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[placename] State/province name of occurrence"
         },
         {
           "name": "occurrencestatus",
@@ -585,11 +591,13 @@
         },
         {
           "name": "decimallatitude",
-          "type": "DOUBLE"
+          "type": "DOUBLE",
+          "description": "[latlon] Occurrence latitude"
         },
         {
           "name": "decimallongitude",
-          "type": "DOUBLE"
+          "type": "DOUBLE",
+          "description": "[latlon] Occurrence longitude"
         },
         {
           "name": "coordinateuncertaintyinmeters",
@@ -702,11 +710,12 @@
         {
           "name": "geom_right",
           "type": "GEOMETRY('OGC:CRS84')",
-          "description": "[geometry] Joined occurrence point geometry from the spatial join"
+          "description": "[geometry] Joined occurrence-side geometry"
         },
         {
           "name": "h0",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[spatial_index] H3 resolution-0 hex index"
         },
         {
           "name": "h1",
@@ -750,7 +759,8 @@
         },
         {
           "name": "h11",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[spatial_index] H3 resolution-11 hex index"
         },
         {
           "name": "n",
@@ -772,19 +782,30 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "object_count": 250,
-  "product_id": "gbif",
-  "total_bytes": 169048314424,
-  "data_mode": "open",
-  "featured": 0,
+  "visibility": "public",
+  "disabled": false,
+  "account_id": "cboettig",
+  "exts": {
+    "parquet": 248,
+    "md": 1,
+    "json": 1
+  },
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "account_id": "cboettig",
+  "objects_updated_at": "2026-08-23T10:27:34+00:00",
+  "featured": 0,
+  "ext_bytes": {
+    "parquet": 169048285775,
+    "json": 25681,
+    "md": 4506
+  },
+  "product_id": "gbif",
   "created_at": "2024-07-14T03:32:28.794985+00:00",
-  "visibility": "public",
-  "disabled": false,
+  "total_bytes": 169048315962,
+  "data_mode": "open",
+  "updated_at": "2025-08-21T16:39:55.567Z",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -797,23 +818,12 @@
       "prefix": "cboettig/gbif/"
     }
   },
-  "exts": {
-    "parquet": 248,
-    "md": 1,
-    "json": 1
-  },
-  "updated_at": "2025-08-21T16:39:55.567Z",
+  "object_count": 250,
   "readme": "## README.md\n# GBIF Occurrence Data & Derived Products\n\nProcessed GBIF occurrence data hexed at H3 resolutions 0-10, plus derived products.\n\nGBIF releases new snapshots periodically. Releases are versioned by `year-month` (e.g., `2026-06`) so multiple versions can coexist in the bucket during transitions. **Always use the most recent release for new work.**\n\n## Current Release: 2026-06\n\n**Path:** `s3://public-gbif/2026-06/hex/`\n\nGlobal GBIF occurrences (GBIF 2026-06-01 snapshot, **3,499,090,951 records**) partitioned by H3 resolution-0 cell \u2014 **122 h0 partitions, one `data_0.parquet` file each**. One row per occurrence; deduplicated by `gbifid`.\n\n### Schema\n\n- Taxonomic columns: `gbifid`, `datasetkey`, `occurrenceid`, `kingdom`, `phylum`, `class`, `order`, `family`, `genus`, `species`, `infraspecificepithet`, `taxonrank`, `scientificname`, `verbatimscientificname`, `verbatimscientificnameauthorship`\n- Spatial/occurrence columns: `countrycode`, `locality`, `stateprovince`, `occurrencestatus`, `individualcount`, `decimallatitude`, `decimallongitude`, `coordinateuncertaintyinmeters`, `coordinateprecision`, `elevation`, `depth`, `eventdate`, `day`, `month`, `year`, `taxonkey`, `specieskey`, `basisofrecord`, `institutioncode`, `collectioncode`, `catalognumber`, `recordnumber`, `identifiedby`, `dateidentified`, `license`, `rightsholder`, `recordedby`, `typestatus`, `establishmentmeans`, `lastinterpreted`, `mediatype`, `issue`\n- H3 hex columns: `h0` (INT64/UBIGINT, partition key), `h1`\u2013`h10` (UBIGINT). Native resolution is `h10` (one ~15 m\u00b2 cell per point); `h0`\u2013`h9` are parent rollups.\n\n### DuckDB Example\n\n```sql\nINSTALL h3 FROM community; LOAD h3;\nINSTALL httpfs; LOAD httpfs;\nSET s3_endpoint = 's3-west.nrp-nautilus.io';\nSET s3_url_style = 'path';\n\n-- Count occurrences by family in a single h0 cell\nSELECT family, COUNT(*) AS n\nFROM read_parquet('s3://public-gbif/2026-06/hex/h0=577762574070710271/data_0.parquet')\nGROUP BY family\nORDER BY n DESC\nLIMIT 20;\n```\n\n### Fast single-species reads (sidecar)\n\nThe hex is partitioned by `h0` (geography), not species, so a bare `WHERE specieskey=\u2026` scans all 122 files. The tiny **`species-h0-index.parquet`** sidecar (`(specieskey, species, h0)`, ~22 MB) scopes the species' partitions in one query \u2014 DuckDB turns the subquery into a dynamic partition filter and reads only those h0 files (median 1/122; ~2s):\n\n```sql\nSELECT h8, COUNT(*) AS n\nFROM read_parquet('s3://public-gbif/2026-06/hex/h0=*/data_0.parquet', hive_partitioning=true)\nWHERE h0 IN (\n    SELECT h0 FROM read_parquet('s3://public-gbif/2026-06/species-h0-index.parquet')\n    WHERE specieskey = 2969135\n)\nAND specieskey = 2969135\nGROUP BY h8;\n```\n\n`species` is NULL for genus-or-coarser records and excluded from the sidecar (it keys on `specieskey IS NOT NULL`).\n\n## Deprecated: Legacy Hex (pre-2025) and 2025-06\n\n- `s3://public-gbif/hex/` \u2014 original VARCHAR-keyed hex, **deprecated**.\n- `s3://public-gbif/2025-06/hex/` \u2014 superseded by 2026-06; retained temporarily for backward compatibility, scheduled for removal once dependent apps repoint.\n\n## Other Assets\n\n### Taxonomic Aggregations by H3 Hexagon\n**Prefix:** `s3://public-gbif/2026-06/taxonomy/` (partitioned by `h0`)\n\nAggregated counts of taxa within H3 resolution-0 hexagons.\n\n**Schema:** `kingdom`, `phylum`, `class`, `order`, `family`, `genus`, `species`, `infraspecificepithet`, `taxonrank`, `scientificname`, `verbatimscientificname`, `verbatimscientificnameauthorship`, `n` (count), `h0`\n\n### GBIF Occurrences in Redlined Cities\n**File:** `s3://public-gbif/redlined_cities_gbif.parquet`\n\nSpatial join of GBIF occurrences with \"Mapping Inequality\" (Redlining) polygons for US cities.\n\n**Schema:** `gbifid`, `scientificname`, `kingdom`, `phylum`, `class`, `order`, `family`, `genus`, `species`, `recordedby`, `date`, `coordinateuncertaintyinmeters`, `city`, `state`, `grade` (A-D), `residential`, `commercial`, `industrial`\n\n### Taxa List\n**File:** `s3://public-gbif/taxa.parquet`\n\nReference list of all taxa found in the dataset.\n\n## Source & Citation\n\n- **Producer:** Global Biodiversity Information Facility (GBIF)\n- GBIF.org (2026). GBIF Occurrence Download. <https://www.gbif.org/>\n- Nelson, R. K., et al. (2023). Mapping Inequality. (for redlined cities asset)\n\n## License\n\n- **GBIF Data:** See [GBIF Data Use Agreement](https://www.gbif.org/terms). Individual records may have specific licenses (CC0, CC-BY, CC-BY-NC); the aggregate is treated **NonCommercial**.\n- **Redlining Data:** CC-BY-NC-SA 4.0.\n",
   "_review": [
-    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
-    "extent.spatial.bbox: omitted; spatial reference is categorical via [2026-06.publishing_country (admin_code), 2026-06.hosting_country (admin_code), 2026-06/hex.decimallatitude, decimallongitude (latlon), 2026-06/hex.countrycode (admin_code), 2026-06/hex.stateprovince (placename), 2026-06/hex.locality (placename), 2026-06/hex.h0-h10 (spatial_index), 2026-06/taxonomy.h0 (spatial_index), ..geom (geometry), ..geom_right (geometry), ..city, state (placename), ..decimallatitude, decimallongitude (latlon), ..h0-h11 (spatial_index)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-08-04T09:38:22+00:00",
-  "store_format": null,
-  "ext_bytes": {
-    "parquet": 169048285775,
-    "json": 24143,
-    "md": 4506
-  }
+  "cataloged_at": "2026-09-06T08:47:45+00:00",
+  "store_format": null
 }
