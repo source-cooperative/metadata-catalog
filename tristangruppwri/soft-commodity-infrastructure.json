@@ -7,16 +7,16 @@
   ],
   "id": "tristangruppwri/soft-commodity-infrastructure",
   "title": "Soft Commodity Infrastructure (Brazil)",
-  "description": "Geolocated database of the midstream facilities that connect Brazilian farms to markets \u2014 grain silos, slaughterhouses, dairy plants, and sugar/ethanol mills \u2014 plus a municipality-level measure of cooperative membership, compiled from government registries to support deforestation traceability and supply-chain due diligence.",
+  "description": "Geolocated database of midstream agricultural infrastructure in Brazil \u2014 grain silos, slaughterhouses, dairy plants, sugar/ethanol mills, and municipality-level cooperative membership density \u2014 linking farms to the buyers and cooperatives they connect to, compiled from government registries to support deforestation traceability.",
   "license": "CC-BY-4.0",
   "keywords": [
     "agriculture",
-    "traceability",
     "deforestation",
     "conservation",
+    "land-parcels",
     "points-of-interest",
     "administrative-boundaries",
-    "cooperatives"
+    "geoparquet"
   ],
   "providers": [
     {
@@ -68,10 +68,10 @@
     "spatial": {
       "bbox": [
         [
-          null,
-          null,
-          null,
-          null
+          -73.9904,
+          -33.7508,
+          -29.299,
+          5.2718
         ]
       ]
     },
@@ -116,7 +116,7 @@
         {
           "name": "uf",
           "type": "VARCHAR",
-          "description": "[placename] Brazilian state abbreviation"
+          "description": "[admin_code] Brazilian state (UF) code"
         },
         {
           "name": "logradouro",
@@ -125,7 +125,7 @@
         {
           "name": "cep",
           "type": "VARCHAR",
-          "description": "[zipcode] Brazilian postal code (CEP) of the facility address"
+          "description": "[zipcode] Brazilian postal code"
         },
         {
           "name": "capacity_band",
@@ -141,11 +141,13 @@
         },
         {
           "name": "lat",
-          "type": "DOUBLE"
+          "type": "DOUBLE",
+          "description": "[latlon] Latitude of facility point"
         },
         {
           "name": "lon",
-          "type": "DOUBLE"
+          "type": "DOUBLE",
+          "description": "[latlon] Longitude of facility point"
         },
         {
           "name": "geom_method",
@@ -158,7 +160,11 @@
         {
           "name": "geometry",
           "type": "GEOMETRY('OGC:CRS84')",
-          "description": "[geometry] Point geometry for each facility"
+          "description": "[geometry] Point geometry (WGS84) for facility location"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
         },
         {
           "name": "cda",
@@ -271,7 +277,11 @@
         {
           "name": "geometry",
           "type": "GEOMETRY('OGC:CRS84')",
-          "description": "[geometry] Point geometry for the unified facility/cooperative layer"
+          "description": "[geometry] Point or polygon geometry (WGS84) per entity"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
         }
       ],
       "table:row_count": 40669
@@ -301,12 +311,16 @@
         {
           "name": "uf",
           "type": "VARCHAR",
-          "description": "[placename] Brazilian state abbreviation"
+          "description": "[admin_code] Brazilian state (UF) code"
         },
         {
           "name": "geometry",
           "type": "GEOMETRY('OGC:CRS84')",
-          "description": "[geometry] Municipality boundary polygon"
+          "description": "[geometry] Municipality boundary polygon (WGS84)"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
         },
         {
           "name": "cx",
@@ -332,8 +346,6 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "updated_at": "2026-07-23T13:12:13.991Z",
-  "product_id": "soft-commodity-infrastructure",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -342,35 +354,37 @@
       "prefix": "tristangruppwri/soft-commodity-infrastructure/"
     }
   },
+  "exts": {
+    "parquet": 7,
+    "md": 4,
+    "json": 4,
+    "png": 1,
+    "txt": 1
+  },
+  "object_count": 17,
+  "ext_bytes": {
+    "parquet": 13293543,
+    "png": 536546,
+    "json": 39169,
+    "md": 28146,
+    "txt": 7706
+  },
+  "updated_at": "2026-07-23T13:12:13.991Z",
+  "product_id": "soft-commodity-infrastructure",
   "featured": 0,
-  "object_count": 13,
+  "total_bytes": 13905110,
   "account_id": "tristangruppwri",
+  "disabled": false,
+  "created_at": "2026-07-23T09:48:38.887Z",
+  "visibility": "public",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "exts": {
-    "parquet": 7,
-    "json": 4,
-    "md": 2
-  },
-  "created_at": "2026-07-23T09:48:38.887Z",
-  "visibility": "public",
-  "disabled": false,
   "data_mode": null,
-  "total_bytes": 14413007,
-  "readme": "## README.md\n# Soft Commodity Infrastructure (Brazil)\r\n\r\n![brazil](https://img.shields.io/badge/brazil-blue) ![soft commodities](https://img.shields.io/badge/soft_commodities-blue) ![supply chain](https://img.shields.io/badge/supply_chain-blue) ![traceability](https://img.shields.io/badge/traceability-blue) ![EUDR](https://img.shields.io/badge/EUDR-blue) ![deforestation](https://img.shields.io/badge/deforestation-blue) ![cooperatives](https://img.shields.io/badge/cooperatives-blue) ![slaughterhouses](https://img.shields.io/badge/slaughterhouses-blue) ![grain silos](https://img.shields.io/badge/grain_silos-blue) ![sugar ethanol](https://img.shields.io/badge/sugar_ethanol-blue) ![agriculture](https://img.shields.io/badge/agriculture-blue)\r\n\r\nWhere Brazilian farms connect to markets. This is the geolocated midstream of\r\nBrazilian agriculture: the silos, slaughterhouses, dairy plants, and sugar/ethanol\r\nmills that farms sell into, plus the cooperatives that farms belong to. It exists\r\nto answer, for any rural property, **who to contact** about deforestation on the\r\nland \u2014 the cooperative that has the farmer as a member, or the buyer that receives\r\ntheir grain, cattle, or cane.\r\n\r\n## How it was made\r\n\r\nEvery point comes from a government registry, or is geocoded from one. Nothing is\r\nguessed from satellite imagery.\r\n\r\n- **Grain silos** \u2014 CONAB's national warehouse registry (`ArmazensCadastrados`),\r\n  which every grain warehouse must register with. It ships real GPS coordinates,\r\n  so these are exact. Includes cooperative, trader/private, and official silos.\r\n- **Slaughterhouses & dairy plants, federal** \u2014 MAPA's SIF (federal meat/dairy\r\n  inspection) registry. Has the company, tax ID, and address but no coordinates,\r\n  so we geocoded the addresses ourselves. Beef, poultry, pork, dairy.\r\n- **Slaughterhouses & dairy plants, state/municipal** \u2014 the smaller local plants\r\n  (SIE/SIM/CONSORCIO) that a frontier producer often delivers to, which the\r\n  federal list misses. These live in MAPA's SISBI system, which has no bulk\r\n  download; Trase pulled the SISBI records and geocoded them from the registry\r\n  addresses, and we use that subset. Registry-derived, not AI-detected.\r\n- **Sugar/ethanol mills** \u2014 ANP's ethanol producer list (company, tax ID, town,\r\n  capacity). No street address, so each mill sits at its town's center.\r\n- **Cooperative membership** \u2014 IBGE's Censo Agropecu\u00e1rio 2017, which counts how\r\n  many farms in each munic\u00edpio belong to a cooperative. A density signal, not a\r\n  named cooperative \u2014 but it works even in remote frontier towns.\r\n- **Municipality geometry** \u2014 IBGE's official munic\u00edpio boundaries.\r\n\r\n## Trust labels on every row\r\n\r\nBecause not every point is equally precise, each carries two labels. **`basis`**\r\nis `observed` (someone official recorded it) or `modelled` (we calculated it \u2014 only\r\nthe gravity-catchment rows). **`geom_method`** is `registered` (the source gave us\r\nthe GPS coordinate \u2014 CONAB silos), `geocoded` (we turned an address into a point \u2014\r\ncan be off), or `municipality_centroid` (all we had was the town). A user can see\r\nat a glance how good each location is.\r\n\r\n## Full methodology & source\r\n\r\nPipeline, tests, and a plain-language writeup live at\r\nhttps://github.com/wri/rural-land (see `soft_commodity_infrastructure/METHODOLOGY.md`).\r\nBrazil only. Rice, cotton, and coffee are not covered \u2014 no authoritative open\r\ngeolocated source exists for them.\r\n\r\n\r\n## Collections\r\n\r\n### [facilities](./facilities/)\r\n\r\nFacility and membership layers for Brazilian soft-commodity supply chains. One\r\nunified layer plus the components it's built from. Geometry is WGS84 (EPSG:4326).\r\n\r\n## The files\r\n\r\n- **`BR_facilities`**...\r\n\r\n## Coverage\r\n\r\n**Spatial Extent**\r\n\r\n- West: -73.9904, South: -33.7508, East: -29.2990, North: 5.2718\r\n\r\n## Source\r\n\r\n[https://github.com/wri/rural-land](https://github.com/wri/rural-land)\r\n\r\n## Processing Notes\r\n\r\nFacilities compiled from government registries. Grain silos: CONAB national warehouse registry (registered coordinates), cooperative + trader + official. Slaughterhouses & dairy plants: MAPA SIF (federal, address-geocoded) plus Trase SISBI (state/municipal, registry-geocoded). Sugar/ethanol mills: ANP producers, municipality-centroid. Cooperative membership: IBGE Censo Agropecu\u00e1rio 2017 by munic\u00edpio. Every geometry carries a `basis` (observed | modelled) and `geom_method` (registered | geocoded | municipality_centroid) so precision is explicit. No AI-detected geometry. BR_facilities.parquet is the unified layer (all tiers); the other files are the component layers. See METHODOLOGY.md in the source repo for full detail.\r\n\r\n## Attribution\r\n\r\nSoft Commodity Infrastructure (Brazil), WRI. Sources: CONAB, MAPA/SIF, ANP, IBGE, Trase (SISBI) \u2014 CC-BY 4.0.\r\n\r\n## License\r\n\r\n[CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/)\r\n\r\n## Contact\r\n\r\nTristan Grupp (WRI) <tristan.grupp@gmail.com>\r\n\r\n---\r\n\r\n*Generated by [Portolan](https://github.com/portolan-sdi/portolan-cli) from STAC metadata and .portolan/metadata.yaml*\r\n",
-  "_review": [
-    "providers: role [processor, licensor] for 'World Resources Institute (WRI)' is an AI guess \u2014 Attribution credits WRI for the compiled dataset and lists CC-BY-4.0 alongside it, implying WRI both compiled/geocoded the data and licenses the result.. Verify before flipping to _state: reviewed.",
-    "extent.spatial.bbox: omitted; spatial reference is categorical via [points.lat, lon (latlon), points.geometry (geometry), points.cep (zipcode), points.municipio_nome (placename), points.uf (placename), points.cod_ibge (admin_code), facilities.geometry (geometry), muni.geometry (geometry), muni.cod_ibge (admin_code), muni.municipio_nome (placename), muni.uf (placename), muni.cx, cy (latlon)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
-  ],
+  "objects_updated_at": "2026-08-20T12:14:10+00:00",
+  "readme": "## README.md\n# Soft Commodity Infrastructure (Brazil)\r\n\r\nWhere Brazilian farms connect to markets. This is the geolocated midstream of\r\nBrazilian agriculture: the silos, slaughterhouses, dairy plants, and\r\nsugar/ethanol mills that farms sell into, plus the cooperatives that farms\r\nbelong to. It exists to answer, for any rural property, **who to contact** about\r\ndeforestation on the land \u2014 the cooperative that has the farmer as a member, or\r\nthe buyer that receives their grain, cattle, or cane.\r\n\r\nBrazil only. 83,811 rows across seven GeoParquet files, describing 40,669\r\ndistinct entities. All geometry is WGS84 (EPSG:4326).\r\n\r\n## What is here\r\n\r\nOne collection,\r\n[facilities](https://data.source.coop/tristangruppwri/soft-commodity-infrastructure/facilities/collection.json),\r\nwith seven files.\r\n\r\n| File | Rows | What it is |\r\n|---|---:|---|\r\n| `BR_facilities` | 40,669 | The unified layer. Every entity, one row, all five tiers. **Start here.** |\r\n| `BR_intake_points` | 18,802 | Grain silos from CONAB, with source GPS coordinates and capacity in tonnes |\r\n| `BR_sisbi_points` | 11,582 | State and municipal slaughterhouses and dairy plants (SIE/SIM/CONSORCIO) |\r\n| `BR_muni` | 5,570 | IBGE municipality boundaries |\r\n| `BR_membership_muni` | 5,257 | Cooperative-member farm counts per municipality (IBGE 2017) |\r\n| `BR_buyer_points` | 1,514 | Federally inspected (SIF) slaughterhouses and dairy plants |\r\n| `BR_mill_points` | 417 | Sugar and ethanol mills from ANP |\r\n\r\n`BR_facilities` is a union of the other six plus 3,103 modelled catchment\r\npolygons, so the seven row counts overlap. Do not add them together and call the\r\nresult a facility count.\r\n\r\nTiers inside `BR_facilities`, measured over all 40,669 rows:\r\n\r\n| `tier` | Rows | |\r\n|---|---:|---|\r\n| `intake_point` | 18,796 | grain silos |\r\n| `slaughter_point` | 13,096 | animal-product buyers, SIF plus SISBI |\r\n| `membership_muni` | 5,257 | cooperative-member density, as municipality polygons |\r\n| `gravity_catchment` | 3,103 | modelled silo draw-areas \u2014 the only `modelled` rows |\r\n| `mill_point` | 417 | sugar and ethanol mills |\r\n\r\n## How it was made\r\n\r\nEvery point comes from a government registry, or is geocoded from one. Nothing\r\nis guessed from satellite imagery.\r\n\r\n- **Grain silos** \u2014 CONAB's national warehouse registry\r\n  (`ArmazensCadastrados`), which every grain warehouse must register with. It\r\n  ships real GPS coordinates, so these are exact.\r\n- **Slaughterhouses and dairy plants, federal** \u2014 MAPA's SIF registry. It has\r\n  the company, tax ID, and address but no coordinates, so the addresses were\r\n  geocoded.\r\n- **Slaughterhouses and dairy plants, state and municipal** \u2014 the smaller local\r\n  plants the federal list misses. These live in MAPA's SISBI system, which has\r\n  no bulk download. Trase pulled the SISBI records and geocoded them from the\r\n  registry addresses.\r\n- **Sugar and ethanol mills** \u2014 ANP's ethanol producer list. No street address,\r\n  so each mill sits at its town's centre.\r\n- **Cooperative membership** \u2014 IBGE's Censo Agropecu\u00e1rio 2017, counting how many\r\n  farms in each munic\u00edpio belong to a cooperative. A density signal, not a named\r\n  cooperative, but it works even in remote frontier towns.\r\n- **Municipality geometry** \u2014 IBGE's official munic\u00edpio boundaries.\r\n\r\n## Trust labels on every row\r\n\r\nNot every point is equally precise, so each row carries two labels.\r\n\r\n`basis` is `observed` (37,566 rows) or `modelled` (3,103 rows, the gravity\r\ncatchments only).\r\n\r\n`geom_method` records how the coordinate was set. Five values occur:\r\n\r\n| `geom_method` | Rows | Meaning |\r\n|---|---:|---|\r\n| `registered` | 18,796 | the source supplied the GPS coordinate |\r\n| `geocoded` | 12,007 | an address was turned into a point, and can be off |\r\n| `municipality` | 5,257 | the row is the municipality polygon itself |\r\n| `derived` | 3,103 | a modelled catchment area |\r\n| `municipality_centroid` | 1,506 | all that was available was the town |\r\n\r\n## Access\r\n\r\nNo credentials. The files are plain HTTPS GeoParquet, so DuckDB reads them in\r\nplace. This query was run against the published files:\r\n\r\n```sql\r\nINSTALL spatial; LOAD spatial; INSTALL httpfs; LOAD httpfs;\r\n\r\nSELECT tier, count(*) AS n\r\nFROM 'https://data.source.coop/tristangruppwri/soft-commodity-infrastructure/facilities/BR_facilities.parquet'\r\nGROUP BY tier\r\nORDER BY n DESC;\r\n```\r\n\r\n```\r\n             tier     n\r\n     intake_point 18796\r\n  slaughter_point 13096\r\n  membership_muni  5257\r\ngravity_catchment  3103\r\n       mill_point   417\r\n```\r\n\r\nThe five nearest grain silos to Sinop, Mato Grosso:\r\n\r\n```sql\r\nSELECT operator, municipio_nome, uf, capacity_t,\r\n       round(ST_Distance_Sphere(geometry, ST_Point(-55.5024, -11.8642)) / 1000, 1) AS km\r\nFROM 'https://data.source.coop/tristangruppwri/soft-commodity-infrastructure/facilities/BR_intake_points.parquet'\r\nORDER BY km\r\nLIMIT 5;\r\n```\r\n\r\n```\r\n                           operator municipio_nome uf  capacity_t  km\r\nC.VALE - COOPERATIVA AGROINDUSTRIAL       SINOP-MT MT     33070.0 2.5\r\nC.VALE - COOPERATIVA AGROINDUSTRIAL       SINOP-MT MT     33950.0 2.5\r\n             AGENOR VICENTE PELISSA       SINOP-MT MT      7430.0 3.3\r\n               CARGILL AGRICOLA S A       SINOP-MT MT     63620.0 4.2\r\n               CARGILL AGRICOLA S A       SINOP-MT MT     63450.0 4.2\r\n```\r\n\r\n**Do not wrap `geometry` in `ST_GeomFromWKB`.** DuckDB's spatial extension reads\r\nthe GeoParquet geometry column as `GEOMETRY('OGC:CRS84')` already, and\r\n`ST_GeomFromWKB` on it raises a binder error. Use the column directly.\r\n\r\nMore worked queries, the join keys, and the traps are in\r\n[AGENTS.md](https://data.source.coop/tristangruppwri/soft-commodity-infrastructure/AGENTS.md).\r\n\r\n## Provenance\r\n\r\nThis is the official publication from the World Resources Institute, not a\r\nmirror. WRI compiled, geocoded, unified and published it. The underlying records\r\nbelong to CONAB, MAPA (SIF and SISBI), ANP, IBGE, and Trase, each credited as a\r\nproducer in the collection metadata.\r\n\r\nPipeline, tests, and a plain-language writeup live at\r\n[github.com/wri/rural-land](https://github.com/wri/rural-land), under\r\n`soft_commodity_infrastructure/METHODOLOGY.md`.\r\n\r\nThe snapshot was compiled on 2026-07-23. CONAB's registry drifts daily; exact\r\nsource snapshot dates are recorded in the pipeline repository.\r\n\r\n## Known limits\r\n\r\n- Geocoded and municipality-centroid points are approximate. A geocode can land\r\n  on the wrong lot, and a centroid sits at the middle of the town.\r\n- Cooperative membership is a per-munic\u00edpio count, not a named cooperative.\r\n  313 of the 5,570 municipalities carry no membership row at all.\r\n- Rice, cotton, and coffee are not covered. No authoritative open geolocated\r\n  source exists for them.\r\n- Three municipality geometries fail an OGC validity test (self-intersection).\r\n  They are published unrepaired, as received from IBGE.\r\n\r\n## License\r\n\r\n[CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/).\r\n\r\nAttribution: Soft Commodity Infrastructure (Brazil), WRI. Sources: CONAB,\r\nMAPA/SIF, ANP, IBGE, Trase (SISBI).\r\n\r\n## Contact\r\n\r\nTristan Grupp (WRI), tristan.grupp@gmail.com.\r\nCatalog metadata, the data pipeline, and issues all live in\r\n[github.com/wri/rural-land](https://github.com/wri/rural-land) (private as of\r\n2026-08-20).\r\n\r\nAn LLM-oriented summary of this catalog, with the join keys and the traps, is at\r\n[llms.txt](https://data.source.coop/tristangruppwri/soft-commodity-infrastructure/llms.txt).\r\n",
   "_state": "drafted",
-  "cataloged_at": "2026-07-29T00:52:08+00:00",
-  "_source_format": "stac",
-  "store_format": null,
-  "ext_bytes": {
-    "parquet": 14382162,
-    "json": 18393,
-    "md": 12452
-  }
+  "cataloged_at": "2026-09-06T08:41:53+00:00",
+  "store_format": null
 }
