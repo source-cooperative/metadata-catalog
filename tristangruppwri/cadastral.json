@@ -7,14 +7,13 @@
   ],
   "id": "tristangruppwri/cadastral",
   "title": "South American Rural Cadastral Boundaries",
-  "description": "Cadastral (land parcel) boundary data for Uruguay, Brazil, and Paraguay, compiled to support rural land use and agricultural supply chain analysis. Includes parcel-level unique identifiers, administrative attributes, and polygon geometries served as optimized GeoParquet collections; the Brazilian portion is drawn from the national Rural Environmental Registry (CAR) and further classified into environmental land-use themes such as legal reserves and permanent preservation areas.",
+  "description": "Cadastral (land parcel) boundary polygons for rural land in Brazil, Paraguay, and Uruguay, mirrored from each country's national cadastre and republished as cloud-native GeoParquet for supply-chain and rural land-use analysis. The three national collections (Brazil's CAR property boundaries, Paraguay's active cadastral parcels, and Uruguay's rural cadastral parcels) use different schemas and none has a unique parcel identifier, so they do not join to one another.",
   "keywords": [
     "land-parcels",
     "agriculture",
     "administrative-boundaries",
-    "conservation",
-    "environmental-monitoring",
-    "geoparquet"
+    "geoparquet",
+    "land-use"
   ],
   "providers": [
     {
@@ -116,12 +115,12 @@
         {
           "name": "municipio",
           "type": "VARCHAR",
-          "description": "[placename] Name of the municipality containing the parcel."
+          "description": "[placename] Municipality name where the parcel is located"
         },
         {
           "name": "cod_estado",
           "type": "VARCHAR",
-          "description": "[admin_code] Two-character Brazilian state identifier."
+          "description": "[admin_code] Brazilian state (federative unit) code"
         },
         {
           "name": "dat_criaca",
@@ -138,7 +137,7 @@
         {
           "name": "geometry",
           "type": "GEOMETRY('EPSG:4326')|GEOMETRY('EPSG:4674')",
-          "description": "[geometry] Polygon geometry of each cadastral parcel/theme area, EPSG:4326 or EPSG:4674."
+          "description": "[geometry] Rural property (\u00c1rea do Im\u00f3vel) boundary polygon, EPSG:4326 (EPSG:4674 in the suspect sidecar)"
         }
       ],
       "description": "2 files sampled for this table"
@@ -166,7 +165,7 @@
         {
           "name": "dpto",
           "type": "VARCHAR",
-          "description": "[placename] Name of the department containing the parcel."
+          "description": "[admin_code] Single-letter department code (not a department name)"
         },
         {
           "name": "dist",
@@ -259,7 +258,7 @@
         {
           "name": "geometry",
           "type": "GEOMETRY('EPSG:4326')",
-          "description": "[geometry] Polygon geometry of each cadastral parcel, EPSG:4326."
+          "description": "[geometry] Cadastral parcel boundary polygon, EPSG:4326"
         }
       ],
       "table:row_count": 2192890
@@ -282,8 +281,7 @@
         },
         {
           "name": "geometry",
-          "type": "GEOMETRY('EPSG:3857')",
-          "description": "[geometry] Polygon geometry, EPSG:3857."
+          "type": "GEOMETRY('EPSG:3857')"
         }
       ],
       "table:row_count": 1
@@ -299,12 +297,12 @@
         {
           "name": "NOMDEPTO",
           "type": "VARCHAR",
-          "description": "[placename] Name of the department containing the parcel."
+          "description": "[placename] Department name"
         },
         {
           "name": "CODDEPTO",
           "type": "VARCHAR",
-          "description": "[admin_code] Department administrative code."
+          "description": "[admin_code] Department code"
         },
         {
           "name": "NOMOFIDEL",
@@ -345,7 +343,7 @@
         {
           "name": "geometry",
           "type": "GEOMETRY('EPSG:4326')",
-          "description": "[geometry] Polygon geometry of each cadastral parcel, EPSG:4326."
+          "description": "[geometry] Cadastral parcel boundary polygon, EPSG:4326"
         }
       ],
       "table:row_count": 250074
@@ -363,10 +361,25 @@
       "title": "Source Cooperative product page"
     }
   ],
+  "objects_updated_at": "2026-08-20T12:17:21+00:00",
+  "product_id": "cadastral",
+  "total_bytes": 3636933912,
+  "visibility": "public",
+  "ext_bytes": {
+    "parquet": 3633007964,
+    "png": 3854029,
+    "md": 36006,
+    "json": 28116,
+    "csv": 6663,
+    "yaml": 1134
+  },
+  "created_at": "2026-07-17T07:11:01.839Z",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
+  "data_mode": null,
+  "updated_at": "2026-07-23T13:11:01.065Z",
   "featured": 0,
   "mirrors": {
     "aws-opendata-us-west-2": {
@@ -376,37 +389,24 @@
       "prefix": "tristangruppwri/cadastral/"
     }
   },
-  "data_mode": null,
+  "object_count": 29,
   "account_id": "tristangruppwri",
-  "product_id": "cadastral",
-  "exts": {
-    "json": 8,
-    "parquet": 5,
-    "png": 3,
-    "yaml": 1,
-    "md": 1,
-    "csv": 1
-  },
-  "object_count": 19,
-  "created_at": "2026-07-17T07:11:01.839Z",
-  "total_bytes": 3636429803,
   "disabled": false,
-  "visibility": "public",
-  "updated_at": "2026-07-23T13:11:01.065Z",
-  "readme": "## README.md\n## Overview\n\n### Rural Land\n\nThis is a dataset of cadasters for rural land use analysis and supply chain analysis, intended to be used alongside datasets like [Trazo](https://source.coop/wri-data-lab/trazofields) for South American cadastral boundaries and [Fields of The World (FTW)](https://source.coop/ftw/global-data) for other locations in the world.\n\n> *Use case: For parcel-level, multi-parcel analysis \u2014 for example, supply chain sourcing \u2014 the unique ID column of each cadastral dataset is the most important field. In some cases, it is missing.*\n\n### Uruguay Parcels and Trazo Fields\n\n![Uruguay Parcels and Trazo4 Fields](https://data.source.coop/tristangruppwri/cadastral/pageresources/Uruguay%20Parcels%20and%20Trazo4%20Fields.png)\n\n![Uruguay Parcels and Trazo4 Fields Zoom In](https://data.source.coop/tristangruppwri/cadastral/pageresources/Uruguay%20Parcels%20and%20Trazo4%20Fields%20Zoom%20In.png)\n![Uruguay Parcels and Trazo4 Fields Zoom In 2](https://data.source.coop/tristangruppwri/cadastral/pageresources/Uruguay%20Parcels%20and%20Trazo4%20Fields%20Zoom%20In%202.png)\nUruguayan cadsatral parcels in black overlayed with upcoming 2025 Trazo4 agricultural fields. \n\n## Dataset Composition\n\n### uruguay-pais-rural/uruguay_pais_rural.parquet\n\nThe Uruguayan cadastral dataset, updated as of February 2, 2025. Served as an optimized GeoParquet collection (reprojected to EPSG:4326, with a bbox covering column for range-request queries); this replaces the former root-level `Uruguay_PaisRural.parquet`.\n\n- `NOMDEPTO`: name of the department\n\n### brazil-car-area-imovel/brazil_car_area_imovel.parquet\n\nThe Brazilian cadastral dataset, updated as of July 16, 2026. Served as an optimized GeoParquet collection (reprojected to EPSG:4326, with a bbox covering column for range-request queries); this replaces the former root-level `Brazil_CAR_AREA_IMOVEL.parquet`. It holds 8,453,552 polygons; two source records with corrupt coordinates were moved, unmodified, to the sidecar `brazil-car-area-imovel/brazil_car_area_imovel_suspect.parquet` so no `cod_imovel` is lost.\n\nEvery geometry is an \"Area do Imovel\" of `nom_tema`, the name of the theme that makes up the registry (Permanent Preservation Area, Trail, Remnant of Native Vegetation, Restricted Use Area, Administrative Easement, Legal Reserve, Hydrography, Wetlands, Consolidated Rural Area, Areas with Altitude Higher than 1800 meters, Areas with Slopes Greater than 45 degrees, Hilltops, Plateau Edges, Fallow Area, Mangrove and Restinga). These other themes will be uploaded in subsequent releases and are important for Brazilian rural land use and environmental compliance.\n\n- `cod_imovel`: unique identifier of each cadastral geometry\n- `cod_estado`: two-character state identifier\n- `municipio`: name of the municipality\n- `des_condic`: stage of cadastral normalization the cadaster is in \u2014 the condition of the registry in the analysis flow of the competent agency (see table below; this may be a good quality column)\n- `ind_tipo`: type of rural property \u2014 `IRU` (Rural Property), `AST` (Agrarian Reform Settlements), `PCT` (Traditional Territory of Traditional Peoples and Communities)\n- `mod_fiscal`: number of fiscal modules of the rural property\n\n#### `des_condic` values\n\n`des_condic` gives the administrative evaluation status of the CAR submission.\n\n| Portuguese | English |\n|---|---|\n| Aguardando analise | Waiting for analysis |\n| Analisado, aguardando atendimento a notificacao | Analyzed, awaiting notification |\n| Analisado, aguardando regularizacao ambiental (Lei n 12.651/2012) | Analyzed, awaiting environmental regularization (Law No. 12,651/2012) |\n| Analisado, em conformidade com a Lei n 12.651/2012 | Analyzed, in accordance with Law No. 12,651/2012 |\n| Analisado, em regularizacao ambiental (Lei n 12.651/2012) | Analyzed, in environmental regularization (Law No. 12,651/2012) |\n| Cancelado por alteracao na base de municipios | Canceled due to change in the municipality base |\n| Cancelado por decisao administrativa | Canceled from an administrative decision |\n| Cancelado por decisao judicial | Canceled from a judicial decision |\n| Cancelado por duplicidade | Canceled because of duplication |\n| Em analise | Under analysis |\n\nIt is advisable to use polygons for supply chain analysis regardless of their administrative status review. In any reporting on this data, flag parcels that are labeled as \"Caoncelado\" but do not remove the geomtries, especially if no regularized geometry exists in that area. Omitting geometries, even when they may be under review, causes sourcing area omission. \n",
+  "exts": {
+    "md": 8,
+    "json": 8,
+    "png": 6,
+    "parquet": 5,
+    "csv": 1,
+    "yaml": 1
+  },
+  "readme": "## README.md\n# South American Rural Cadastral Boundaries\r\n\r\nCadastral parcel boundaries for South American rural land use and supply chain\r\nanalysis, as cloud-native GeoParquet. Three national collections: Brazil,\r\nParaguay, and Uruguay.\r\n\r\nIntended for use alongside [Trazo](https://source.coop/wri-data-lab/trazofields)\r\nagricultural field boundaries and\r\n[Fields of The World](https://source.coop/ftw/global-data).\r\n\r\n> *Use case: for parcel-level, multi-parcel analysis \u2014 supply chain sourcing,\r\n> for example \u2014 the unique ID column of each cadastral dataset is the most\r\n> important field. In some cases it is missing.*\r\n\r\n| Collection | Parcels | Currency | Parcel number | Is it unique? |\r\n|---|---:|---|---|---|\r\n| [Brazil \u2014 CAR property boundaries](https://data.source.coop/tristangruppwri/cadastral/brazil-car-area-imovel/README.md) | 8,453,552 | 16 July 2026 | `cod_imovel` | No: 8,437,938 distinct |\r\n| [Paraguay \u2014 active cadastral parcels](https://data.source.coop/tristangruppwri/cadastral/paraguay-parcelas-activas/README.md) | 2,192,890 | downloaded 17 July 2026 | `padron`, `ccatastral` | No: 1,107,044 distinct at best |\r\n| [Uruguay \u2014 rural cadastral parcels](https://data.source.coop/tristangruppwri/cadastral/uruguay-pais-rural/README.md) | 250,074 | 2 February 2025 | `PADRON` | No: 65,605 distinct |\r\n\r\n**No collection here has a unique parcel identifier**, and the three do not\r\njoin to each other. Deduplicate before you count, and read the collection\r\nREADME before you join.\r\n\r\nEvery number on this page was measured over every row of the published file.\r\nNothing here is a sample or an estimate.\r\n\r\n## Uruguay Parcels And Trazo Fields\r\n\r\n![Uruguay parcels and Trazo4 fields](https://data.source.coop/tristangruppwri/cadastral/pageresources/Uruguay%20Parcels%20and%20Trazo4%20Fields.png)\r\n\r\n![Uruguay parcels and Trazo4 fields, zoomed in](https://data.source.coop/tristangruppwri/cadastral/pageresources/Uruguay%20Parcels%20and%20Trazo4%20Fields%20Zoom%20In.png)\r\n\r\n![Uruguay parcels and Trazo4 fields, zoomed in further](https://data.source.coop/tristangruppwri/cadastral/pageresources/Uruguay%20Parcels%20and%20Trazo4%20Fields%20Zoom%20In%202.png)\r\n\r\nUruguayan cadastral parcels in black, with upcoming 2025 Trazo4 agricultural\r\nfields.\r\n\r\n## License\r\n\r\n**Each collection declares `other`, and each links its own terms. Read that\r\nlink before you redistribute.** No SPDX identifier fits any of the three.\r\n\r\n| Collection | What the source publishes |\r\n|---|---|\r\n| Brazil, SICAR | Nothing. The AREA_IMOVEL download is gated by a captcha and no terms. Lei 12.651/2012 Art. 29 makes CAR a public electronic registry and says nothing about reuse. |\r\n| Paraguay, SNC | Nothing. The layer's GeoServer capabilities carry unedited defaults, and the layer is not on `datos.gov.py`, so the national open data licence does not attach. |\r\n| Uruguay, DNC | [Licencia de Datos Abiertos \u2014 Uruguay v0.1](https://www.gub.uy/agencia-gobierno-electronico-sociedad-informacion-conocimiento/sites/agencia-gobierno-electronico-sociedad-informacion-conocimiento/files/documentos/publicaciones/licencia_de_datos_abiertos_0.pdf). It permits redistribution outright, commercially and non-commercially, with attribution. It is a bespoke national instrument, not on the SPDX list. |\r\n\r\nAn earlier version of this catalog declared `CC-BY-4.0` on all three. No\r\nupstream source states that. Attribute the producing agency named in each\r\ncollection's `providers`. If you need a licence warranty, go to that agency.\r\n\r\n## Provenance\r\n\r\nThis catalog is a **mirror**. None of the three cadastres originate here.\r\n\r\n| Collection | Producer | Upstream |\r\n|---|---|---|\r\n| `brazil-car-area-imovel` | Servi\u00e7o Florestal Brasileiro (SICAR) | [consultapublica.car.gov.br](https://consultapublica.car.gov.br/publico/estados/downloads) |\r\n| `paraguay-parcelas-activas` | Servicio Nacional de Catastro | [catastro.gov.py viewer](https://www.catastro.gov.py/visor/?snc=geo) |\r\n| `uruguay-pais-rural` | Direcci\u00f3n Nacional de Catastro | [catalogodatos.gub.uy](https://catalogodatos.gub.uy/dataset/direccion-nacional-de-catastro-shapes-del-parcelario-rural-y-urbano) |\r\n\r\nEach collection carries `updated`, the time its data last reached this bucket.\r\nThere is no automatic sync. A refresh is a manual re-download and re-upload.\r\n\r\nEvery collection was reprojected to EPSG:4326 and rewritten as GeoParquet 1.1\r\nwith a bbox covering column and ZSTD compression. No row was filtered, and no\r\nattribute was renamed or dropped.\r\n\r\nThe catalog metadata is generated from a repository, linked as `rel:vcs` on\r\n`catalog.json`. That repository is private, so the link resolves only for\r\npeople who already have access.\r\n\r\n## Access\r\n\r\nNothing here needs credentials. Each collection is a single Parquet object\r\nserved over plain HTTPS with range support, so a query reads only the row\r\ngroups it needs. There is no `partition:glob` anywhere in this catalog, so\r\nnothing here needs `s3://`.\r\n\r\n```sql\r\nINSTALL httpfs; LOAD httpfs;\r\n\r\n-- Parcel counts by Uruguayan department, over all 250,074 rows.\r\nSELECT NOMDEPTO, count(*) AS parcels, round(sum(AREAHA)) AS hectares\r\nFROM 'https://data.source.coop/tristangruppwri/cadastral/uruguay-pais-rural/uruguay_pais_rural.parquet'\r\nGROUP BY NOMDEPTO\r\nORDER BY parcels DESC\r\nLIMIT 5;\r\n-- CANELONES 41650 407925 | ROCHA 20458 1112034 | MALDONADO 18598 471220\r\n-- COLONIA 17177 613094 | LAVALLEJA 16462 1067110\r\n```\r\n\r\n```sql\r\n-- Brazilian CAR parcels inside a bounding box. The bbox covering column lets\r\n-- DuckDB skip row groups, so this reads a fraction of the 3.26 GB file.\r\nSELECT count(*)\r\nFROM 'https://data.source.coop/tristangruppwri/cadastral/brazil-car-area-imovel/brazil_car_area_imovel.parquet'\r\nWHERE bbox.xmin > -47.5 AND bbox.xmax < -47.0\r\n  AND bbox.ymin > -16.5 AND bbox.ymax < -16.0;\r\n-- 1470\r\n```\r\n\r\n```sql\r\n-- Paraguayan parcels by department, over all 2,192,890 rows.\r\nSELECT dpto, count(*) AS parcels\r\nFROM 'https://data.source.coop/tristangruppwri/cadastral/paraguay-parcelas-activas/paraguay_parcelas_activas.parquet'\r\nGROUP BY dpto\r\nORDER BY parcels DESC\r\nLIMIT 5;\r\n-- L 625210 | K 322064 | D 218172 | H 195289 | F 125765\r\n```\r\n\r\nEvery query above was run against the published files before it was written\r\nhere, and each one carries the output it produced.\r\n\r\n## Dataset Composition\r\n\r\n### `brazil-car-area-imovel/brazil_car_area_imovel.parquet`\r\n\r\n8,453,552 polygons, national coverage, as of 16 July 2026. It replaces the\r\nformer root-level `Brazil_CAR_AREA_IMOVEL.parquet`.\r\n\r\nEvery row carries the single theme `Area do Imovel`, the property perimeter.\r\nCAR also holds theme layers for Permanent Preservation Area, Legal Reserve,\r\nRemnant of Native Vegetation, Consolidated Rural Area, Hydrography and others.\r\n**None of those are in this catalog.** They matter for Brazilian rural land\r\nuse and environmental compliance, and a later release can add them.\r\n\r\nTwo source records with corrupt coordinates moved, unmodified, into the\r\nsidecar `brazil-car-area-imovel/brazil_car_area_imovel_suspect.parquet`, so no\r\n`cod_imovel` is lost. That sidecar is EPSG:4674, not EPSG:4326.\r\n\r\n`des_condic` gives the administrative status of the submission and has 16\r\ndistinct values, not the 10 an earlier version of this page listed. The full\r\ntable with counts is in\r\n[the collection README](https://data.source.coop/tristangruppwri/cadastral/brazil-car-area-imovel/README.md).\r\nUse the polygons whatever their status: flag parcels labelled \"Cancelado\" but\r\ndo not remove them, especially where no regularized geometry exists in that\r\narea. If you omit geometries that are under review, you omit sourcing area.\r\n\r\n### `paraguay-parcelas-activas/paraguay_parcelas_activas.parquet`\r\n\r\n2,192,890 polygons, downloaded 17 July 2026. The source publishes no capture\r\ndate for this layer.\r\n\r\n`dpto` is a single-letter department code, not a name. `obs` is uncontrolled\r\nfree text carried over from the source registry, and the same text repeats\r\ninside `clave_comparacion`, so a filter on `obs` alone does not remove it.\r\n\r\n### `uruguay-pais-rural/uruguay_pais_rural.parquet`\r\n\r\n250,074 polygons, as of 2 February 2025. It replaces the former root-level\r\n`Uruguay_PaisRural.parquet`. `AREAHA` is an integer, so a parcel under one\r\nhectare rounds; `AREAMC` is a double in square metres.\r\n\r\n## Older Objects Still Served\r\n\r\nTwo prefixes under this product predate the catalog and are not part of it:\r\n\r\n- `temp/` \u2014 a Goi\u00e1s sample CSV and a subset Parquet left from the build\r\n- `pageresources/` \u2014 the three images this page embeds\r\n\r\n`pageresources/` is in use. `temp/` is referenced by nothing.\r\n",
   "_review": [
     "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
-    "extent.spatial.bbox: omitted; spatial reference is categorical via [brazil-car-area-imovel.geometry (geometry), brazil-car-area-imovel.municipio (placename), brazil-car-area-imovel.cod_estado (admin_code), paraguay-parcelas-activas.geometry (geometry), paraguay-parcelas-activas.dpto (placename), temp.geometry (geometry), uruguay-pais-rural.geometry (geometry), uruguay-pais-rural.NOMDEPTO (placename), uruguay-pais-rural.CODDEPTO (admin_code)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
+    "extent.spatial.bbox: probed bbox [-73.800745, -35.031525, 44888087.0, 239074544.0] is outside the WGS84 lon/lat domain; omitted rather than published.",
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [brazil-car-area-imovel.geometry (geometry), brazil-car-area-imovel.municipio (placename), brazil-car-area-imovel.cod_estado (admin_code), paraguay-parcelas-activas.geometry (geometry), paraguay-parcelas-activas.dpto (admin_code), uruguay-pais-rural.geometry (geometry), uruguay-pais-rural.NOMDEPTO (placename), uruguay-pais-rural.CODDEPTO (admin_code)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-08-13T09:09:06+00:00",
-  "store_format": null,
-  "ext_bytes": {
-    "parquet": 3633006643,
-    "png": 3396172,
-    "json": 14591,
-    "csv": 6663,
-    "md": 4600,
-    "yaml": 1134
-  }
+  "cataloged_at": "2026-09-06T08:42:47+00:00",
+  "store_format": null
 }
