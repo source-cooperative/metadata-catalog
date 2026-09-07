@@ -1,0 +1,315 @@
+{
+  "schema_version": 1,
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
+  "id": "nthh/snotel",
+  "title": "snotel",
+  "description": "A cloud-native, quality-controlled daily archive of USDA NRCS's SNOTEL, SNOWLITE, and SCAN automated snow and soil telemetry networks: 145 million daily observations across 1,219 US stations, alongside station metadata, sensor inventory, and 30-year normals.",
+  "license": "CC0-1.0",
+  "keywords": [
+    "hydrology",
+    "meteorology",
+    "cryosphere",
+    "climate",
+    "time-series",
+    "geoparquet",
+    "environmental-monitoring"
+  ],
+  "providers": [
+    {
+      "name": "USDA Natural Resources Conservation Service (NRCS)",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/nthh/snotel"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -165.12042,
+          17.71833,
+          -64.75,
+          70.28062
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "1978-01-01T00:00:00Z",
+          "2026-09-01T00:00:00Z"
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 145801886
+  },
+  "assets": {
+    "daily": {
+      "href": "https://data.source.coop/nthh/snotel/daily/",
+      "type": "application/x-parquet",
+      "title": "daily",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "station_triplet",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "network",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "state",
+          "type": "VARCHAR",
+          "description": "[admin_code] Two-letter US state code for the observation's station"
+        },
+        {
+          "name": "element",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "depth_in",
+          "type": "SMALLINT"
+        },
+        {
+          "name": "date",
+          "type": "DATE"
+        },
+        {
+          "name": "value",
+          "type": "FLOAT"
+        },
+        {
+          "name": "qc_flag",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "qa_flag",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "orig_value",
+          "type": "FLOAT"
+        },
+        {
+          "name": "orig_qc_flag",
+          "type": "VARCHAR"
+        }
+      ],
+      "description": "2 files sampled for this table"
+    },
+    ".": {
+      "href": "https://data.source.coop/nthh/snotel/",
+      "type": "application/x-parquet",
+      "title": ".",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "station_triplet",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "network",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "state",
+          "type": "VARCHAR",
+          "description": "[admin_code] Two-letter US state code for the station"
+        },
+        {
+          "name": "element",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "depth_in",
+          "type": "SMALLINT"
+        },
+        {
+          "name": "datetime",
+          "type": "TIMESTAMP"
+        },
+        {
+          "name": "duration",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "value",
+          "type": "FLOAT"
+        },
+        {
+          "name": "qc_flag",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ordinal",
+          "type": "INTEGER"
+        },
+        {
+          "name": "begin_date",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "end_date",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "station_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "latitude",
+          "type": "DOUBLE",
+          "description": "[latlon] Station latitude, paired with longitude"
+        },
+        {
+          "name": "longitude",
+          "type": "DOUBLE",
+          "description": "[latlon] Station longitude, paired with latitude"
+        },
+        {
+          "name": "elevation_ft",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "county",
+          "type": "VARCHAR",
+          "description": "[placename] County name of the station"
+        },
+        {
+          "name": "huc",
+          "type": "VARCHAR",
+          "description": "[admin_code] Hydrologic Unit Code for the station's watershed"
+        },
+        {
+          "name": "timezone",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')",
+          "description": "[geometry] Station point geometry (WKB, OGC:CRS84)"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)",
+          "description": "[geometry] Bounding box struct for the station geometry"
+        }
+      ],
+      "description": "3 files sampled for this table"
+    },
+    "normals": {
+      "href": "https://data.source.coop/nthh/snotel/normals/",
+      "type": "application/x-parquet",
+      "title": "normals",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "station_triplet",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "element",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "month",
+          "type": "TINYINT"
+        },
+        {
+          "name": "day",
+          "type": "TINYINT"
+        },
+        {
+          "name": "median",
+          "type": "FLOAT"
+        },
+        {
+          "name": "average",
+          "type": "FLOAT"
+        },
+        {
+          "name": "stat",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "value_in",
+          "type": "FLOAT"
+        }
+      ],
+      "description": "2 files sampled for this table"
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/nthh/snotel/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/nthh/snotel",
+      "title": "Source Cooperative product page"
+    }
+  ],
+  "object_count": 8,
+  "updated_at": "2026-09-01T01:03:47.819Z",
+  "created_at": "2026-09-01T01:03:47.819Z",
+  "data_mode": null,
+  "mirrors": {
+    "aws-opendata-us-west-2": {
+      "is_primary": true,
+      "prefix": "nthh/snotel/",
+      "connection_id": "aws-opendata-us-west-2"
+    }
+  },
+  "account_id": "nthh",
+  "objects_updated_at": "2026-09-02T06:49:45+00:00",
+  "featured": 0,
+  "disabled": false,
+  "product_id": "snotel",
+  "ext_bytes": {
+    "parquet": 183111567,
+    "md": 11743
+  },
+  "visibility": "public",
+  "exts": {
+    "parquet": 7,
+    "md": 1
+  },
+  "total_bytes": 183123310,
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "readme": "## README.md\n# SNOTEL and SCAN station archive (USDA NRCS)\n\nThe USDA Natural Resources Conservation Service's automated snow and soil station\nnetworks (SNOTEL snow telemetry, its SNOWLITE satellites, and SCAN soil climate)\nas a self-contained cloud-native archive: the complete daily observational record with\nNRCS's quality-control history on every row, the station map, the sensor inventory, and\nthe 30-year normals. Everything needed to use these networks without touching an API.\n\n145 million daily values across 1,219 telemetry stations, 184 MB total. Thirteen\nelements: WTEQ (snow water equivalent, inches), SNWD (snow depth), SNDN (snow density,\npct), SNRR (snow/rain ratio), PREC (accumulated precipitation), PRCP (daily\nprecipitation increment), PRCPSA (snow-adjusted increment), TOBS / TMAX / TMIN / TAVG\n(air temperature, \u00b0F), and, at every installed sensor depth, SMS (soil moisture, pct)\nand STO (soil temperature, \u00b0F). Values as served by the AWDB REST API v1; no resampling,\nno gap filling. Where NRCS revised a reading during quality control, both the\ncurrent and the original value are here.\n\n## Layout\n\n```\nstations.parquet           3,929 stations (includes 2,708 manual snow courses whose\n                           semi-monthly history is coming in a follow-up pass).\n                           GeoParquet 1.1: WKB points, covering bbox column,\n                           dataset extent, OGC:CRS84.\nstation_elements.parquet   the sensor inventory: one row per (station, element,\n                           duration, depth, ordinal) with its period of record,\n                           i.e. what each station can answer, and since when.\nlatest.parquet             the newest reading of every live series (48 KB): one row\n                           per (station, element, depth), with a datetime and a\n                           duration column. The fast lane for any \"current\n                           conditions\" map. Today it is fed from the daily record;\n                           the planned refresh feeds it from hourly telemetry\n                           (same schema, fresher rows).\nnormals/daily_normals.parquet   30-year (1991-2020) day-of-year median and average\n                           (WTEQ, SNWD, PREC) for the 781 stations NRCS computes\n                           them for.\nnormals/swe_timing.parquet median snowpack peak / onset / melt-out date and SWE\n                           per station.\ndaily/archive.parquet      the daily record through the last completed water year\n                           (Sep 30). Rewritten only quarterly, when a full re-crawl\n                           picks up older revisions.\ndaily/current.parquet      the current water year; the daily refresh rewrites this\n                           small file.\n```\n\nBoth daily files share one long schema: station_triplet, network, state, element,\ndepth_in (int16, inches below surface, negative; NULL for non-soil elements),\ndate (date32), value (float32), qc_flag, qa_flag, orig_value, orig_qc_flag\n(orig_* non-NULL means NRCS revised this reading; NULL means never revised).\nSorted (element, depth, station, date), zstd, 200k row groups. For any query,\nread the pair: `read_parquet(['daily/archive.parquet', 'daily/current.parquet'])`.\nEvery file has a fixed name and URL; there is nothing to list or glob.\n\n## Example queries (DuckDB, tested against this tree)\n\nOne station, any window, full history (the archive/current pair reads as one table):\n\n```sql\nSELECT date, value AS swe_in\nFROM read_parquet(['daily/archive.parquet', 'daily/current.parquet'])\nWHERE station_triplet = '766:UT:SNTL' AND element = 'WTEQ'\n  AND date BETWEEN DATE '2026-05-15' AND DATE '2026-05-25' ORDER BY date;\n-- Snowbird's 2026 melt-out: SWE hits zero on May 22.\n```\n\nCurrent conditions, every station, one 48 KB read:\n\n```sql\nSELECT station_triplet, state, datetime, value AS swe_in\nFROM read_parquet('latest.parquet')\nWHERE element = 'WTEQ' AND network = 'SNTL' ORDER BY value DESC LIMIT 10;\n```\n\nThe whole network (network and state are ordinary columns):\n\n```sql\nSELECT state, round(avg(value), 1) AS mean_april_swe_in\nFROM read_parquet(['daily/archive.parquet', 'daily/current.parquet'])\nWHERE network = 'SNTL' AND element = 'WTEQ' AND month(date) = 4\nGROUP BY state ORDER BY 2 DESC;\n```\n\nThe quality-control history: what did NRCS revise, and from what?\n\n```sql\nSELECT station_triplet, date, orig_value, orig_qc_flag, value, qc_flag\nFROM read_parquet(['daily/archive.parquet', 'daily/current.parquet'])\nWHERE element = 'WTEQ' AND orig_value IS NOT NULL AND abs(orig_value - value) > 5\nORDER BY date DESC LIMIT 5;\n-- e.g. a failed sensor reporting 72\" of SWE in August, flagged S(uspect),\n-- corrected to 0.0 E(dited). 43% of WTEQ rows carry a revision; 0.5% of TOBS.\n```\n\nSoil moisture with the station map: the latest 2-inch reading at every Alabama SCAN station.\n\n```sql\nINSTALL spatial; LOAD spatial;\nSELECT s.name, round(st_x(s.geometry), 3) AS lon, round(st_y(s.geometry), 3) AS lat,\n       a.datetime, a.value AS sms_pct\nFROM read_parquet('latest.parquet') a\nJOIN read_parquet('stations.parquet') s USING (station_triplet)\nWHERE a.element = 'SMS' AND a.depth_in = -2 AND a.network = 'SCAN' AND a.state = 'AL'\nORDER BY 1;\n```\n\nPercent of normal, the axis every SNOTEL plot uses:\n\n```sql\nSELECT d.date, d.value AS swe_in, n.median AS median_swe_in,\n       round(100 * d.value / nullif(n.median, 0)) AS pct_of_median\nFROM read_parquet(['daily/archive.parquet', 'daily/current.parquet']) d\nJOIN read_parquet('normals/daily_normals.parquet') n\n  ON n.station_triplet = d.station_triplet AND n.element = d.element\n AND n.month = month(d.date) AND n.day = day(d.date)\nWHERE d.station_triplet = '766:UT:SNTL' AND d.element = 'WTEQ'\n  AND d.date >= DATE '2026-04-01' ORDER BY d.date LIMIT 10;\n```\n\nSpatial join, stations near a point (the geometry column loads as a typed\nGEOMETRY('OGC:CRS84') in DuckDB spatial; geopandas.read_parquet works unchanged):\n\n```sql\nINSTALL spatial; LOAD spatial;\nWITH near AS (\n  SELECT station_triplet, name,\n         ST_Distance_Sphere(geometry, ST_Point(-111.638, 40.591)) / 1000 AS km\n  FROM read_parquet('stations.parquet')\n  WHERE ST_Distance_Sphere(geometry, ST_Point(-111.638, 40.591)) < 15000)\nSELECT n.name, round(n.km, 1) AS km, max(d.value) AS peak_swe_in\nFROM near n\nJOIN read_parquet(['daily/archive.parquet', 'daily/current.parquet']) d USING (station_triplet)\nWHERE d.element = 'WTEQ' AND d.date >= DATE '2025-10-01'\nGROUP BY 1, 2 ORDER BY km;\n```\n\n## Reading without DuckDB\n\npyarrow prunes and pushes filters down over HTTP (a station query moves a few hundred\nKB, not the file):\n\n```python\nimport fsspec, pyarrow.dataset as ds, pyarrow.compute as pc\nbase = \"https://data.source.coop/nthh/snotel/\"\nd = ds.dataset(base + \"daily/archive.parquet\", filesystem=fsspec.filesystem(\"https\"))\ndf = d.to_table(columns=[\"date\", \"value\"],\n    filter=(pc.field(\"station_triplet\") == \"766:UT:SNTL\") &\n           (pc.field(\"element\") == \"WTEQ\")).to_pandas()\n```\n\n```python\nimport fsspec, geopandas as gpd\nwith fsspec.open(base + \"stations.parquet\") as f:\n    stations = gpd.read_parquet(f)   # typed geometry, OGC:CRS84\n```\n\nTwo stdlib traps to avoid: `pd.read_parquet(url)` and bare `urllib` fail with 403\n(the CDN rejects the `Python-urllib` user agent on full-object requests; ranged\nrequests and fsspec/aiohttp are fine), and `gpd.read_parquet(url)` does not accept\nhttps URLs directly (wrap with `fsspec.open` as above).\n\n## Provenance and license\n\nFetched from the AWDB REST API v1 (`wcc.sc.egov.usda.gov/awdbRestApi`), full period of\nrecord through 2026-09-01, crawled 2026-09-01/02 (all 1,219 stations, zero skips).\nUpstream data is a US Government work (public domain); this compilation is released\nunder CC0. The first consumer was a Sentinel-2 melt-out climatology validated against\nAtwater and Snowbird, whose predicted June melt-out matches both the daily record here\nand the medianMeltout normal (June 14 at Snowbird).\n\nPrior art, gratefully: egagli/snotel_ccss_stations (daily CSVs on GitHub) and\nscottyhq/snotel (the 2022 station-metadata groundwork).\n\n## Design notes (why it is the way it is)\n\n- **Why daily leads, and hourly is absent (for now).** The daily values are NRCS's\n  edited, quality-controlled tier and run the full period of record (1978 onward);\n  hourly is raw telemetry, dense only since ~2005, with sensor spikes and no editing.\n  Nearly all snow science (melt-out dates, SWE peaks, climatology) runs on daily. An\n  `hourly/` tree with the same archive/current shape will be added if there is demand.\n- **Why archive + current instead of one file or append-only.** NRCS revises past\n  values during quality control, so an append-only mirror would slowly diverge from\n  the source of truth. Splitting at the water-year boundary means the daily refresh\n  rewrites only the small current file, while a quarterly full re-crawl refreshes the\n  frozen history to pick up older revisions.\n- **Why a few single files instead of a partitioned tree.** At this size (184 MB),\n  partitioning adds cost without benefit: the CDN serves files, not directory\n  listings, so many files means hand-enumerated URLs, while row-group statistics on\n  the sorted single file already prune any station/element/date query to one or two\n  small range reads. Partitioning earns its keep at gigabytes; sorting does the work\n  at megabytes. The global sort also compresses 2.4x better than the same rows split\n  into 64 files.\n- **Why fixed names.** Every file here has a stable, meaningful URL (no `part-0000`\n  style names, which exist for listing-based readers). Queries and notebooks can\n  hardcode paths and survive every refresh.\n- **Why long format.** Elements start in different decades and soil sensors sit at\n  25 distinct depths; as columns this would be a ragged, ever-migrating schema. As\n  rows, adding an element is just more rows.\n- **Why latest.parquet exists.** Date statistics cannot prune row groups that each\n  span decades, so \"every station right now\" would otherwise scan the whole element\n  section. One small file answers it in a single read, and its schema (datetime +\n  duration) is ready to be fed from hourly telemetry without breaking consumers.\n\n## Caveats\n\n- The 2,708 manual snow-course stations (network SNOW) have no daily telemetry; their\n  semi-monthly historical record (1930s onward) lands in a follow-up pass.\n- `qc_flag` / `qa_flag` are NRCS's codes as served (V valid, E edited, S suspect,\n  C composite, K estimated, ...). SNDN and SNRR are derived products and carry no\n  revisions by construction.\n- Soil depths follow each site's installation: -2 / -8 / -20 inches carry most of the\n  record, with a long tail of site-specific depths (25 distinct values down to -80).\n  Where a station has more than one sensor at the same depth, AWDB's default (ordinal 1)\n  is what's here.\n- Normals cover the 781 stations with a sufficient 1991-2020 record; newer stations have\n  none. Leap day is absent from the day-of-year table.\n- `end_date` of 2100-01-01 in the station table means \"active\".\n- Units are AWDB-native (inches, \u00b0F, percent).\n\n## Refresh\n\nA daily job is planned; until it lands, treat this as a point-in-time snapshot dated in\nthe repo description. The refresh design: each day, refetch a trailing window (90 days),\nmerge last-write-wins, and rewrite `daily/current.parquet` and `latest.parquet` (a few\nMB). Because NRCS revises past values during quality control (43% of all SWE rows have\nbeen revised at least once), a quarterly full re-crawl rewrites `daily/archive.parquet`\nto catch revisions older than the window. Files are replaced whole, never patched, and\nnever renamed. An `hourly/` tree with the same archive/current pair may follow if there\nis demand.\n",
+  "_review": [
+    "extent.temporal: ['2024-08-28T00:00:00', '2026-08-31T00:00:00'] (probe sample) widened to ['1978-01-01T00:00:00Z', '2026-09-01T00:00:00Z'] using README-stated coverage ['1978', '2026-09-01']."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-09-07T09:40:41+00:00",
+  "store_format": null
+}
