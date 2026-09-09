@@ -7,7 +7,7 @@
   ],
   "id": "cboettig/census",
   "title": "US Census Geographic Boundaries",
-  "description": "A collection of US Census Bureau geographic boundary and demographic datasets centered on a 2022 census tract-to-H3 hexagon spatial crosswalk, extended with ACS block-group demographics, county/state H3 hex aggregations, and legislative district and road boundaries, delivered as cloud-optimized GeoParquet and PMTiles.",
+  "description": "A collection of US Census Bureau geographic boundary datasets \u2014 census tracts, block groups, congressional districts, state legislative districts, and roads \u2014 crosswalked to H3 spatial indices and extended with ACS demographic attributes, delivered as cloud-optimized GeoParquet and PMTiles.",
   "keywords": [
     "census",
     "h3",
@@ -97,7 +97,7 @@
         {
           "name": "GEOID",
           "type": "VARCHAR",
-          "description": "[admin_code] Census block-group FIPS identifier"
+          "description": "[admin_code] Census block group FIPS-based geographic identifier"
         },
         {
           "name": "GEOIDFQ",
@@ -126,17 +126,17 @@
         {
           "name": "INTPTLAT",
           "type": "VARCHAR",
-          "description": "[latlon] Internal point latitude of the block group"
+          "description": "[latlon] Internal point latitude (paired with INTPTLON)"
         },
         {
           "name": "INTPTLON",
           "type": "VARCHAR",
-          "description": "[latlon] Internal point longitude of the block group"
+          "description": "[latlon] Internal point longitude (paired with INTPTLAT)"
         },
         {
           "name": "geom",
           "type": "GEOMETRY('OGC:CRS84')",
-          "description": "[geometry] Block group polygon geometry"
+          "description": "[geometry] OGC:CRS84 geometry of the block group"
         },
         {
           "name": "TotPop",
@@ -211,7 +211,7 @@
         {
           "name": "GEOID",
           "type": "VARCHAR",
-          "description": "[admin_code] Census block-group FIPS identifier"
+          "description": "[admin_code] Census block group FIPS-based geographic identifier"
         },
         {
           "name": "GEOIDFQ",
@@ -239,13 +239,11 @@
         },
         {
           "name": "INTPTLAT",
-          "type": "VARCHAR",
-          "description": "[latlon] Internal point latitude of the block group"
+          "type": "VARCHAR"
         },
         {
           "name": "INTPTLON",
-          "type": "VARCHAR",
-          "description": "[latlon] Internal point longitude of the block group"
+          "type": "VARCHAR"
         },
         {
           "name": "TotPop",
@@ -278,22 +276,22 @@
         {
           "name": "h10",
           "type": "UBIGINT",
-          "description": "[spatial_index] H3 resolution-10 index intersecting the block group"
+          "description": "[spatial_index] H3 resolution 10 index"
         },
         {
           "name": "h0",
           "type": "UBIGINT",
-          "description": "[spatial_index] H3 resolution-0 partition index"
+          "description": "[spatial_index] H3 resolution 0 index"
         },
         {
           "name": "h8",
           "type": "UBIGINT",
-          "description": "[spatial_index] H3 resolution-8 index"
+          "description": "[spatial_index] H3 resolution 8 index"
         },
         {
           "name": "h9",
           "type": "UBIGINT",
-          "description": "[spatial_index] H3 resolution-9 index"
+          "description": "[spatial_index] H3 resolution 9 index"
         }
       ],
       "description": "15 files sampled for this table"
@@ -325,7 +323,7 @@
         {
           "name": "GEOID",
           "type": "VARCHAR",
-          "description": "[admin_code] Congressional district FIPS identifier"
+          "description": "[admin_code] Congressional district FIPS-based geographic identifier"
         },
         {
           "name": "GEOIDFQ",
@@ -362,22 +360,21 @@
         {
           "name": "INTPTLAT",
           "type": "VARCHAR",
-          "description": "[latlon] Internal point latitude of the district"
+          "description": "[latlon] Internal point latitude (paired with INTPTLON)"
         },
         {
           "name": "INTPTLON",
           "type": "VARCHAR",
-          "description": "[latlon] Internal point longitude of the district"
+          "description": "[latlon] Internal point longitude (paired with INTPTLAT)"
         },
         {
           "name": "geom",
           "type": "GEOMETRY('OGC:CRS84')",
-          "description": "[geometry] Congressional district polygon geometry"
+          "description": "[geometry] OGC:CRS84 geometry of the congressional district"
         },
         {
           "name": "bbox",
-          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)",
-          "description": "[geometry] Bounding box of the district geometry"
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
         }
       ],
       "table:row_count": 444,
@@ -404,17 +401,15 @@
         {
           "name": "h10",
           "type": "UBIGINT",
-          "description": "[spatial_index] H3 resolution-10 index intersecting the district"
+          "description": "[spatial_index] H3 resolution 10 index"
         },
         {
           "name": "h8",
-          "type": "UBIGINT",
-          "description": "[spatial_index] H3 resolution-8 index"
+          "type": "UBIGINT"
         },
         {
           "name": "h9",
-          "type": "UBIGINT",
-          "description": "[spatial_index] H3 resolution-9 index"
+          "type": "UBIGINT"
         },
         {
           "name": "OGC_FID",
@@ -431,7 +426,7 @@
         {
           "name": "GEOID",
           "type": "VARCHAR",
-          "description": "[admin_code] Congressional district FIPS identifier"
+          "description": "[admin_code] Congressional district FIPS-based geographic identifier"
         },
         {
           "name": "GEOIDFQ",
@@ -467,18 +462,15 @@
         },
         {
           "name": "INTPTLAT",
-          "type": "VARCHAR",
-          "description": "[latlon] Internal point latitude of the district"
+          "type": "VARCHAR"
         },
         {
           "name": "INTPTLON",
-          "type": "VARCHAR",
-          "description": "[latlon] Internal point longitude of the district"
+          "type": "VARCHAR"
         },
         {
           "name": "bbox",
-          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)",
-          "description": "[geometry] Bounding box of the district geometry"
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
         }
       ],
       "description": "9 files sampled for this table"
@@ -498,17 +490,15 @@
         {
           "name": "h10",
           "type": "UBIGINT",
-          "description": "[spatial_index] H3 resolution-10 index intersecting the tract"
+          "description": "[spatial_index] H3 resolution 10 index"
         },
         {
           "name": "h8",
-          "type": "UBIGINT",
-          "description": "[spatial_index] H3 resolution-8 index"
+          "type": "UBIGINT"
         },
         {
           "name": "h9",
-          "type": "UBIGINT",
-          "description": "[spatial_index] H3 resolution-9 index"
+          "type": "UBIGINT"
         },
         {
           "name": "OGC_FID",
@@ -529,7 +519,7 @@
         {
           "name": "GEOID",
           "type": "VARCHAR",
-          "description": "[admin_code] Census tract FIPS identifier"
+          "description": "[admin_code] Census tract FIPS-based geographic identifier"
         },
         {
           "name": "GEOIDFQ",
@@ -562,17 +552,16 @@
         {
           "name": "INTPTLAT",
           "type": "VARCHAR",
-          "description": "[latlon] Internal point latitude of the tract"
+          "description": "[latlon] Internal point latitude (paired with INTPTLON)"
         },
         {
           "name": "INTPTLON",
           "type": "VARCHAR",
-          "description": "[latlon] Internal point longitude of the tract"
+          "description": "[latlon] Internal point longitude (paired with INTPTLAT)"
         },
         {
           "name": "bbox",
-          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)",
-          "description": "[geometry] Bounding box of the tract geometry"
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
         }
       ],
       "description": "10 files sampled for this table"
@@ -613,7 +602,7 @@
         {
           "name": "geometry",
           "type": "GEOMETRY('OGC:CRS84')",
-          "description": "[geometry] Road segment line geometry"
+          "description": "[geometry] OGC:CRS84 geometry of the road segment"
         }
       ],
       "table:row_count": 16490899,
@@ -655,18 +644,17 @@
         },
         {
           "name": "GEOID_COUNTY",
-          "type": "VARCHAR",
-          "description": "[admin_code] County FIPS code associated with the road segment"
+          "type": "VARCHAR"
         },
         {
           "name": "h8",
           "type": "UBIGINT",
-          "description": "[spatial_index] H3 resolution-8 index intersecting the road segment"
+          "description": "[spatial_index] H3 resolution 8 index"
         },
         {
           "name": "h0",
           "type": "UBIGINT",
-          "description": "[spatial_index] H3 resolution-0 partition index"
+          "description": "[spatial_index] H3 resolution 0 index"
         }
       ],
       "description": "9 files sampled for this table"
@@ -686,17 +674,15 @@
         {
           "name": "h10",
           "type": "UBIGINT",
-          "description": "[spatial_index] H3 resolution-10 index intersecting the district"
+          "description": "[spatial_index] H3 resolution 10 index"
         },
         {
           "name": "h8",
-          "type": "UBIGINT",
-          "description": "[spatial_index] H3 resolution-8 index"
+          "type": "UBIGINT"
         },
         {
           "name": "h9",
-          "type": "UBIGINT",
-          "description": "[spatial_index] H3 resolution-9 index"
+          "type": "UBIGINT"
         },
         {
           "name": "OGC_FID",
@@ -713,7 +699,7 @@
         {
           "name": "GEOID",
           "type": "VARCHAR",
-          "description": "[admin_code] State legislative (upper chamber) district FIPS identifier"
+          "description": "[admin_code] State legislative district (upper) FIPS-based geographic identifier"
         },
         {
           "name": "GEOIDFQ",
@@ -750,17 +736,16 @@
         {
           "name": "INTPTLAT",
           "type": "VARCHAR",
-          "description": "[latlon] Internal point latitude of the district"
+          "description": "[latlon] Internal point latitude (paired with INTPTLON)"
         },
         {
           "name": "INTPTLON",
           "type": "VARCHAR",
-          "description": "[latlon] Internal point longitude of the district"
+          "description": "[latlon] Internal point longitude (paired with INTPTLAT)"
         },
         {
           "name": "bbox",
-          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)",
-          "description": "[geometry] Bounding box of the district geometry"
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
         }
       ],
       "description": "10 files sampled for this table"
@@ -778,33 +763,31 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "objects_updated_at": "2026-08-20T05:48:14+00:00",
   "created_at": "2026-06-16T04:09:32.812Z",
-  "account_id": "cboettig",
+  "total_bytes": 52267033642,
+  "visibility": "public",
+  "ext_bytes": {
+    "parquet": 44721577256,
+    "pmtiles": 7545200782,
+    "json": 185644,
+    "md": 69960
+  },
+  "data_mode": "open",
+  "exts": {
+    "parquet": 146,
+    "json": 17,
+    "md": 13,
+    "pmtiles": 9
+  },
+  "featured": 0,
+  "object_count": 185,
+  "objects_updated_at": "2026-08-30T11:58:37+00:00",
+  "disabled": false,
+  "updated_at": "2026-06-16T04:09:32.812Z",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "updated_at": "2026-06-16T04:09:32.812Z",
-  "visibility": "public",
-  "disabled": false,
-  "product_id": "census",
-  "object_count": 166,
-  "data_mode": "open",
-  "total_bytes": 42750204473,
-  "ext_bytes": {
-    "parquet": 40045109705,
-    "pmtiles": 2704855852,
-    "json": 168956,
-    "md": 69960
-  },
-  "exts": {
-    "parquet": 129,
-    "json": 16,
-    "md": 13,
-    "pmtiles": 8
-  },
-  "featured": 0,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -817,12 +800,14 @@
       "prefix": "cboettig/census/"
     }
   },
+  "account_id": "cboettig",
+  "product_id": "census",
   "readme": "## README.md\n# US Census 2022 - Spatial Crosswalk (Tracts to H3)\n\nThis dataset provides a spatial index crosswalk between US Census Tracts (2022) and the H3 geospatial indexing system. It allows for efficient integration of census data with other H3-indexed datasets.\n\n**Note:** This dataset currently contains only the **geometry and identifiers** (FIPS codes). It does *not* contain demographic attributes (population, income, etc.), which should be joined by FIPS code from the appropriate Census API or table.\n\n## Source\n\n- **Producer:** US Census Bureau (TIGER/Line Shapefiles)\n- **Year:** 2022\n- **Level:** Census Tract\n- **Processing:** Boettiger Lab (H3 Indexing)\n\n## Data Format\n\nThe dataset is partitioned by H3 resolution 0 index for efficient global querying.\n\n- **Parquet:** `s3://public-census/year=2022/tracts-hex-z10.parquet`\n- **H3 Resolution:** 10 (Average area ~0.015 km\u00b2)\n\n## Data Dictionary\n\n| Column | Type | Description |\n|--------|------|-------------|\n| `FIPS` | String | 11-digit Federal Information Processing Standards code uniquely identifying the census tract (State+County+Tract) |\n| `h10` | List(String) | List of H3 resolution 10 indices that intersect with this tract |\n| `STATE` | String | FIPS State Code |\n| `COUNTY` | String | FIPS County Code |\n| `year` | Integer | Census year (2022) |\n| `geom` | Binary | WKB Geometry of the tract |\n\n## Usage\n\nUse this dataset as a \"spine\" to map tabular Census data to H3 hexagons.\n\n1. **Get Census Data:** Download demographic data (e.g., ACS 5-year estimates) for 2022 tracts using the Census API or libraries like `tidycensus` / `cenpy`.\n2. **Join:** Join your tabular data to this dataset on the `FIPS` column (ensure FIPS codes are formatted consistently as 11-character strings).\n3. **Spatial Analysis:** Use the `h10` column to aggregate or correlate with other H3 datasets.\n\n## Citation\n\nU.S. Census Bureau. (2022). TIGER/Line Shapefiles. Retrieved from https://www.census.gov/geographies/mapping-files/time-series/geo/tiger-line-file.html\n",
   "_review": [
     "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
     "summaries.item_count: parts overlap, so this is max(part), not the sum \u2014 acs-2020-2024/ 646688146, census-2024/ 890986994, census-2025/ 570599876. Sum them only once the parts are known to be disjoint."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-08-30T08:57:30+00:00",
+  "cataloged_at": "2026-09-09T09:01:41+00:00",
   "store_format": null
 }
