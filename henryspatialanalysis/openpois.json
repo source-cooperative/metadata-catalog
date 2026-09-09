@@ -7,7 +7,7 @@
   ],
   "id": "henryspatialanalysis/openpois",
   "title": "OpenPOIs",
-  "description": "OpenPOIs is a unified, open dataset of over 4.5 million points of interest across the United States, produced by conflating OpenStreetMap and Overture Maps data and attaching calibrated confidence scores estimating whether each POI still exists and is open. It is distributed as versioned, hive-partitioned GeoParquet files (conflated and OSM-only snapshots) plus PMTiles vector tiles.",
+  "description": "OpenPOIs is a nationwide dataset of U.S. points of interest formed by conflating OpenStreetMap and Overture Maps records, with each POI assigned a calibrated confidence score for whether it still exists and is open. It is published as versioned, hive-partitioned GeoParquet snapshots (conflated and OSM-only) alongside PMTiles vector tiles.",
   "license": "ODbL-1.0",
   "keywords": [
     "points-of-interest",
@@ -52,10 +52,46 @@
     "spatial": {
       "bbox": [
         [
-          null,
-          null,
-          null,
-          null
+          -179.2833333,
+          -15.386094,
+          179.698336,
+          71.3862916
+        ],
+        [
+          -179.2833333,
+          17.8813241,
+          179.6759109,
+          71.3862916
+        ],
+        [
+          -179.2833333,
+          -15.386094,
+          179.6759109,
+          71.3862916
+        ],
+        [
+          -179.2833333,
+          -14.5471782,
+          179.6759109,
+          71.3862916
+        ],
+        [
+          -179.2833333,
+          -14.5471782,
+          179.6759109,
+          71.3862916
+        ],
+        [
+          -177.389167,
+          -14.5471782,
+          179.698336,
+          71.3862916
+        ],
+        [
+          -177.389167,
+          -14.5471782,
+          179.698336,
+          71.3862916
         ]
       ]
     },
@@ -69,7 +105,7 @@
     }
   },
   "summaries": {
-    "item_count": 3682431
+    "item_count": 9887966
   },
   "assets": {
     "2026-04-23-v0/conflated-parquet": {
@@ -154,29 +190,1181 @@
         },
         {
           "name": "geometry",
-          "type": "GEOMETRY('EPSG:4326')",
-          "description": "[geometry] WKB point location (EPSG:4326) of the POI"
+          "type": "GEOMETRY('EPSG:4326')"
         },
         {
           "name": "geohash",
-          "type": "VARCHAR",
-          "description": "[spatial_index] Within-partition geohash sort key (precision 6)"
+          "type": "VARCHAR"
+        },
+        {
+          "name": "__index_level_0__",
+          "type": "BIGINT"
+        }
+      ],
+      "description": "8 files sampled for this table"
+    },
+    "2026-04-23-v0/osm-parquet": {
+      "href": "https://data.source.coop/henryspatialanalysis/openpois/2026-04-23-v0/osm-parquet/primary_tag=amenity/",
+      "type": "application/x-parquet",
+      "title": "2026-04-23-v0/osm-parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "addr:housename",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "opening_date",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "wikipedia",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "bicycle",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "historic",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "addr:street",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "service",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "short_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "bar",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "website",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "tourism",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "addr:state",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "bicycle_parking",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "cuisine",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "description",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "official_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "leisure",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "building",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "self_service",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "old_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "craft",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:4326')"
+        },
+        {
+          "name": "healthcare:speciality",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "type",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "shop",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "religion",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "sport",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "preschool",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "social_facility",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "brand",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "addr:housenumber",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "check_date:opening_hours",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "social_facility:for",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "shelter",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "addr:postcode",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "email",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "fountain",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "office",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "url",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "check_date",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "emergency",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "wikidata",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "healthcare",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "addr:city",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "landuse",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "phone",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "amenity",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "brand:wikidata",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "source",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "opening_hours",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "image",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "addr:country",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "atm",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "education",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "addr:unit",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "playground",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "recycling_type",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "nursery",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "osm_type",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "osm_id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "last_edited",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "t2_years",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "conf_mean",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "conf_lower",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "conf_upper",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "model_version",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "model_group",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geohash",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "__index_level_0__",
+          "type": "BIGINT"
+        }
+      ],
+      "description": "8 files sampled for this table"
+    },
+    "2026-05-21-v0/conflated-parquet": {
+      "href": "https://data.source.coop/henryspatialanalysis/openpois/2026-05-21-v0/conflated-parquet/shared_label=/",
+      "type": "application/x-parquet",
+      "title": "2026-05-21-v0/conflated-parquet",
+      "roles": [
+        "data"
+      ],
+      "description": "8 files sampled for this table"
+    },
+    "2026-05-21-v0/osm-parquet": {
+      "href": "https://data.source.coop/henryspatialanalysis/openpois/2026-05-21-v0/osm-parquet/primary_tag=amenity/",
+      "type": "application/x-parquet",
+      "title": "2026-05-21-v0/osm-parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "healthcare:speciality",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "description",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "shelter",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "addr:unit",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "landuse",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "addr:state",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "check_date:opening_hours",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "opening_date",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "source",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "type",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "bicycle",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "leisure",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "website",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "education",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "official_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "self_service",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "email",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:4326')"
+        },
+        {
+          "name": "addr:housename",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "brand",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "craft",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "opening_hours",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "wikidata",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "sport",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "atm",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "amenity",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "osm_type",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "nursery",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "phone",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "access",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "osm_id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "recycling_type",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "old_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "brand:wikidata",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "cuisine",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "fountain",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "social_facility",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "tourism",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "addr:postcode",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "shop",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "bar",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "addr:street",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "image",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "check_date",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "office",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "bicycle_parking",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "addr:housenumber",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "playground",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "service",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "social_facility:for",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "url",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "religion",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "short_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "preschool",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "wikipedia",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "addr:country",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "emergency",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "addr:city",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "healthcare",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "historic",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "building",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "last_edited",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "t2_years",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "conf_mean",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "conf_lower",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "conf_upper",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "model_version",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "model_group",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geohash",
+          "type": "VARCHAR"
         },
         {
           "name": "__index_level_0__",
           "type": "BIGINT"
         },
         {
-          "name": "shared_label",
-          "type": "VARCHAR"
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
         }
       ],
-      "description": "3 files sampled for this table"
+      "description": "8 files sampled for this table"
     },
-    "latest/osm-parquet": {
-      "href": "https://data.source.coop/henryspatialanalysis/openpois/latest/osm-parquet/primary_tag=landuse/",
+    "2026-06-27-v0/conflated-parquet": {
+      "href": "https://data.source.coop/henryspatialanalysis/openpois/2026-06-27-v0/conflated-parquet/shared_label=ATM/",
       "type": "application/x-parquet",
-      "title": "latest/osm-parquet",
+      "title": "2026-06-27-v0/conflated-parquet",
+      "roles": [
+        "data"
+      ],
+      "description": "8 files sampled for this table"
+    },
+    "2026-06-27-v0/osm-parquet": {
+      "href": "https://data.source.coop/henryspatialanalysis/openpois/2026-06-27-v0/osm-parquet/primary_tag=craft/",
+      "type": "application/x-parquet",
+      "title": "2026-06-27-v0/osm-parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "fountain",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "description",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "emergency",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "social_facility:for",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "nursery",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "building",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "historic",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "check_date",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "office",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "url",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "bicycle_parking",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "addr:housenumber",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "website",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "short_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "source",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "addr:unit",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "wikipedia",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "addr:housename",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "healthcare:speciality",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "opening_hours",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "official_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "tourism",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "email",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "education",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "wikidata",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "service",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "access",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "leisure",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "social_facility",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "osm_id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "check_date:opening_hours",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "atm",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "addr:country",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "self_service",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "addr:city",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "addr:postcode",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "bicycle",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "type",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "healthcare",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "addr:street",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "playground",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "addr:state",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "recycling_type",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "religion",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "osm_type",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "shelter",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "amenity",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "preschool",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "bar",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "sport",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "phone",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "old_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "craft",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "cuisine",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "image",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "brand:wikidata",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "brand",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "shop",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:4326')"
+        },
+        {
+          "name": "opening_date",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "landuse",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "last_edited",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "t2_years",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "conf_mean",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "conf_lower",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "conf_upper",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "model_version",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "model_group",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geohash",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "__index_level_0__",
+          "type": "BIGINT"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "description": "8 files sampled for this table"
+    },
+    "2026-07-30-v0/conflated-parquet": {
+      "href": "https://data.source.coop/henryspatialanalysis/openpois/2026-07-30-v0/conflated-parquet/shared_label=ATM/",
+      "type": "application/x-parquet",
+      "title": "2026-07-30-v0/conflated-parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "unified_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "source",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "osm_id",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "osm_type",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "overture_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "brand",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "conf_mean",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "conf_lower",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "conf_upper",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "match_score",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "match_distance_m",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "addr_housenumber",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "addr_street",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "addr_unit",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "addr_city",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "addr_state",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "addr_postcode",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "addr_country",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "phone",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "website",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "opening_hours",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "access",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "overture_socials",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "overture_categories_alternate",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "osm_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "overture_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "osm_brand",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "overture_brand",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "osm_addr_housenumber",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "osm_addr_street",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "osm_addr_unit",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "osm_addr_city",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "osm_addr_state",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "osm_addr_postcode",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "osm_addr_country",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "overture_addr_street",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "overture_addr_city",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "overture_addr_state",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "overture_addr_postcode",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "overture_addr_country",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "osm_phone",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "overture_phones",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "osm_website",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "overture_websites",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "osm_conf_mean",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "overture_confidence",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:4326')"
+        },
+        {
+          "name": "shadow_matched",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "shadow_ghost_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "shadow_event_type",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "shadow_event_timestamp",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "shadow_score",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "shadow_distance_m",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "original_conf_mean",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "conf_mean_uncalibrated",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "calibration_flag",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geohash",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "__index_level_0__",
+          "type": "BIGINT"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "description": "8 files sampled for this table"
+    },
+    "2026-07-30-v0/osm-parquet": {
+      "href": "https://data.source.coop/henryspatialanalysis/openpois/2026-07-30-v0/osm-parquet/primary_tag=craft/",
+      "type": "application/x-parquet",
+      "title": "2026-07-30-v0/osm-parquet",
       "roles": [
         "data"
       ],
@@ -291,8 +1479,7 @@
         },
         {
           "name": "geometry",
-          "type": "GEOMETRY('EPSG:4326')",
-          "description": "[geometry] WKB point location (EPSG:4326) of the OSM feature"
+          "type": "GEOMETRY('EPSG:4326')"
         },
         {
           "name": "playground",
@@ -300,8 +1487,7 @@
         },
         {
           "name": "addr:state",
-          "type": "VARCHAR",
-          "description": "[placename] State name/abbreviation from OSM address tags"
+          "type": "VARCHAR"
         },
         {
           "name": "email",
@@ -345,8 +1531,7 @@
         },
         {
           "name": "addr:country",
-          "type": "VARCHAR",
-          "description": "[placename] Country from OSM address tags"
+          "type": "VARCHAR"
         },
         {
           "name": "bicycle",
@@ -406,8 +1591,7 @@
         },
         {
           "name": "addr:postcode",
-          "type": "VARCHAR",
-          "description": "[zipcode] Postal/ZIP code from OSM address tags"
+          "type": "VARCHAR"
         },
         {
           "name": "emergency",
@@ -427,12 +1611,1123 @@
         },
         {
           "name": "addr:city",
-          "type": "VARCHAR",
-          "description": "[placename] City name from OSM address tags"
+          "type": "VARCHAR"
         },
         {
           "name": "addr:unit",
           "type": "VARCHAR"
+        },
+        {
+          "name": "last_edited",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "t2_years",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "conf_mean",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "conf_lower",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "conf_upper",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "model_version",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "model_group",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geohash",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "__index_level_0__",
+          "type": "BIGINT"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "description": "8 files sampled for this table"
+    },
+    "2026-09-02-v0/conflated-parquet": {
+      "href": "https://data.source.coop/henryspatialanalysis/openpois/2026-09-02-v0/conflated-parquet/shared_label=ATM/",
+      "type": "application/x-parquet",
+      "title": "2026-09-02-v0/conflated-parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "unified_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "source",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "osm_id",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "osm_type",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "overture_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "brand",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "conf_mean",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "conf_lower",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "conf_upper",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "match_score",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "match_distance_m",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "addr_housenumber",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "addr_street",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "addr_unit",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "addr_city",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "addr_state",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "addr_postcode",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "addr_country",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "phone",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "website",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "opening_hours",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "access",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "overture_socials",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "overture_categories_alternate",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "osm_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "overture_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "osm_brand",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "overture_brand",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "osm_addr_housenumber",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "osm_addr_street",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "osm_addr_unit",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "osm_addr_city",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "osm_addr_state",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "osm_addr_postcode",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "osm_addr_country",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "overture_addr_street",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "overture_addr_city",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "overture_addr_state",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "overture_addr_postcode",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "overture_addr_country",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "osm_phone",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "overture_phones",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "osm_website",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "overture_websites",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "osm_conf_mean",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "overture_confidence",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:4326')"
+        },
+        {
+          "name": "shadow_matched",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "shadow_ghost_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "shadow_event_type",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "shadow_event_timestamp",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "shadow_score",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "shadow_distance_m",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "original_conf_mean",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "conf_mean_uncalibrated",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "calibration_flag",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geohash",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "__index_level_0__",
+          "type": "BIGINT"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "description": "8 files sampled for this table"
+    },
+    "2026-09-02-v0/osm-parquet": {
+      "href": "https://data.source.coop/henryspatialanalysis/openpois/2026-09-02-v0/osm-parquet/primary_tag=craft/",
+      "type": "application/x-parquet",
+      "title": "2026-09-02-v0/osm-parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "website",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "shelter",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "wikidata",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "bicycle_parking",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "bicycle",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "healthcare:speciality",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "addr:housenumber",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "opening_hours",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "playground",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "craft",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "landuse",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "wikipedia",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "healthcare",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "official_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "addr:housename",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "atm",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "leisure",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "social_facility:for",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "emergency",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "addr:country",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "office",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "religion",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "old_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "social_facility",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "addr:postcode",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "addr:city",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "url",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "brand:wikidata",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "image",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "sport",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "opening_date",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "addr:unit",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "addr:street",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "phone",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "fountain",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "brand",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "type",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "description",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "education",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "check_date:opening_hours",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "recycling_type",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "preschool",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "osm_id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "source",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "nursery",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "email",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "service",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "bar",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "access",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:4326')"
+        },
+        {
+          "name": "check_date",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "osm_type",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "short_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "cuisine",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "tourism",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "building",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "self_service",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "historic",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "amenity",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "shop",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "addr:state",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "last_edited",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "t2_years",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "conf_mean",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "conf_lower",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "conf_upper",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "model_version",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "model_group",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geohash",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "__index_level_0__",
+          "type": "BIGINT"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "description": "8 files sampled for this table"
+    },
+    "latest/conflated-parquet": {
+      "href": "https://data.source.coop/henryspatialanalysis/openpois/latest/conflated-parquet/shared_label=ATM/",
+      "type": "application/x-parquet",
+      "title": "latest/conflated-parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "unified_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "source",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "osm_id",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "osm_type",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "overture_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "brand",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "conf_mean",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "conf_lower",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "conf_upper",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "match_score",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "match_distance_m",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "addr_housenumber",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "addr_street",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "addr_unit",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "addr_city",
+          "type": "VARCHAR",
+          "description": "[placename] Address city name"
+        },
+        {
+          "name": "addr_state",
+          "type": "VARCHAR",
+          "description": "[placename] Address state name/abbreviation"
+        },
+        {
+          "name": "addr_postcode",
+          "type": "VARCHAR",
+          "description": "[zipcode] Address postal/ZIP code"
+        },
+        {
+          "name": "addr_country",
+          "type": "VARCHAR",
+          "description": "[placename] Address country"
+        },
+        {
+          "name": "phone",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "website",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "opening_hours",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "access",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "overture_socials",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "overture_categories_alternate",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "osm_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "overture_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "osm_brand",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "overture_brand",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "osm_addr_housenumber",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "osm_addr_street",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "osm_addr_unit",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "osm_addr_city",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "osm_addr_state",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "osm_addr_postcode",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "osm_addr_country",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "overture_addr_street",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "overture_addr_city",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "overture_addr_state",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "overture_addr_postcode",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "overture_addr_country",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "osm_phone",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "overture_phones",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "osm_website",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "overture_websites",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "osm_conf_mean",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "overture_confidence",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:4326')",
+          "description": "[geometry] WKB point geometry, EPSG:4326"
+        },
+        {
+          "name": "shadow_matched",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "shadow_ghost_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "shadow_event_type",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "shadow_event_timestamp",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "shadow_score",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "shadow_distance_m",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "original_conf_mean",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "conf_mean_uncalibrated",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "calibration_flag",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geohash",
+          "type": "VARCHAR",
+          "description": "[spatial_index] Within-partition geohash sort key (precision 6)"
+        },
+        {
+          "name": "__index_level_0__",
+          "type": "BIGINT"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)",
+          "description": "[geometry] GeoParquet 1.1 covering bbox struct for row-group pruning"
+        }
+      ],
+      "description": "8 files sampled for this table"
+    },
+    "latest/osm-parquet": {
+      "href": "https://data.source.coop/henryspatialanalysis/openpois/latest/osm-parquet/primary_tag=craft/",
+      "type": "application/x-parquet",
+      "title": "latest/osm-parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "website",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "shelter",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "wikidata",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "bicycle_parking",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "bicycle",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "healthcare:speciality",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "addr:housenumber",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "opening_hours",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "playground",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "craft",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "landuse",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "wikipedia",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "healthcare",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "official_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "addr:housename",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "atm",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "leisure",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "social_facility:for",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "emergency",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "addr:country",
+          "type": "VARCHAR",
+          "description": "[placename] OSM address country tag"
+        },
+        {
+          "name": "office",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "religion",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "old_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "social_facility",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "addr:postcode",
+          "type": "VARCHAR",
+          "description": "[zipcode] OSM address postal code tag"
+        },
+        {
+          "name": "addr:city",
+          "type": "VARCHAR",
+          "description": "[placename] OSM address city tag"
+        },
+        {
+          "name": "url",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "brand:wikidata",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "image",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "sport",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "opening_date",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "addr:unit",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "addr:street",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "phone",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "fountain",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "brand",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "type",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "description",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "education",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "check_date:opening_hours",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "recycling_type",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "preschool",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "osm_id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "source",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "nursery",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "email",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "service",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "bar",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "access",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:4326')",
+          "description": "[geometry] WKB point geometry, EPSG:4326"
+        },
+        {
+          "name": "check_date",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "osm_type",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "short_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "cuisine",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "tourism",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "building",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "self_service",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "historic",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "amenity",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "shop",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "addr:state",
+          "type": "VARCHAR",
+          "description": "[placename] OSM address state tag"
         },
         {
           "name": "last_edited",
@@ -474,16 +2769,246 @@
         {
           "name": "bbox",
           "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)",
-          "description": "[geometry] GeoParquet covering bounding-box struct for spatial row-group pruning"
-        },
-        {
-          "name": "primary_tag",
-          "type": "VARCHAR"
+          "description": "[geometry] GeoParquet 1.1 covering bbox struct for row-group pruning"
         }
       ],
-      "description": "5 files sampled for this table"
+      "description": "8 files sampled for this table"
     }
   },
+  "table:columns": [
+    {
+      "name": "unified_id",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "source",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "osm_id",
+      "type": "DOUBLE"
+    },
+    {
+      "name": "osm_type",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "overture_id",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "name",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "brand",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "conf_mean",
+      "type": "DOUBLE"
+    },
+    {
+      "name": "conf_lower",
+      "type": "DOUBLE"
+    },
+    {
+      "name": "conf_upper",
+      "type": "DOUBLE"
+    },
+    {
+      "name": "match_score",
+      "type": "DOUBLE"
+    },
+    {
+      "name": "match_distance_m",
+      "type": "DOUBLE"
+    },
+    {
+      "name": "addr_housenumber",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "addr_street",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "addr_unit",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "addr_city",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "addr_state",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "addr_postcode",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "addr_country",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "phone",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "website",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "opening_hours",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "access",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "overture_socials",
+      "type": "INTEGER"
+    },
+    {
+      "name": "overture_categories_alternate",
+      "type": "INTEGER"
+    },
+    {
+      "name": "osm_name",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "overture_name",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "osm_brand",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "overture_brand",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "osm_addr_housenumber",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "osm_addr_street",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "osm_addr_unit",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "osm_addr_city",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "osm_addr_state",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "osm_addr_postcode",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "osm_addr_country",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "overture_addr_street",
+      "type": "INTEGER"
+    },
+    {
+      "name": "overture_addr_city",
+      "type": "INTEGER"
+    },
+    {
+      "name": "overture_addr_state",
+      "type": "INTEGER"
+    },
+    {
+      "name": "overture_addr_postcode",
+      "type": "INTEGER"
+    },
+    {
+      "name": "overture_addr_country",
+      "type": "INTEGER"
+    },
+    {
+      "name": "osm_phone",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "overture_phones",
+      "type": "INTEGER"
+    },
+    {
+      "name": "osm_website",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "overture_websites",
+      "type": "INTEGER"
+    },
+    {
+      "name": "osm_conf_mean",
+      "type": "DOUBLE"
+    },
+    {
+      "name": "overture_confidence",
+      "type": "DOUBLE"
+    },
+    {
+      "name": "geometry",
+      "type": "GEOMETRY('EPSG:4326')"
+    },
+    {
+      "name": "shadow_matched",
+      "type": "BOOLEAN"
+    },
+    {
+      "name": "shadow_ghost_id",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "shadow_event_type",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "shadow_event_timestamp",
+      "type": "TIMESTAMP_NS"
+    },
+    {
+      "name": "shadow_score",
+      "type": "DOUBLE"
+    },
+    {
+      "name": "shadow_distance_m",
+      "type": "DOUBLE"
+    },
+    {
+      "name": "original_conf_mean",
+      "type": "DOUBLE"
+    },
+    {
+      "name": "geohash",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "__index_level_0__",
+      "type": "BIGINT"
+    },
+    {
+      "name": "bbox",
+      "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+    }
+  ],
   "links": [
     {
       "rel": "self",
@@ -496,13 +3021,18 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "product_id": "openpois",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
+  "featured": 0,
+  "exts": {
+    "parquet": 637,
+    "pmtiles": 12,
+    "md": 8,
+    "": 1
   },
+  "account_id": "henryspatialanalysis",
+  "data_mode": "open",
   "updated_at": "2026-04-24T00:38:20.784Z",
-  "visibility": "public",
+  "total_bytes": 42271031823,
+  "object_count": 658,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -515,30 +3045,26 @@
       "prefix": "henryspatialanalysis/openpois/"
     }
   },
-  "exts": {
-    "parquet": 526,
-    "pmtiles": 10,
-    "md": 7,
-    "": 1
+  "ext_bytes": {
+    "parquet": 30425064188,
+    "pmtiles": 11845911332,
+    "md": 30946,
+    "": 25357
   },
-  "total_bytes": 34461905770,
-  "object_count": 544,
-  "disabled": false,
+  "visibility": "public",
+  "objects_updated_at": "2026-09-02T13:16:16+00:00",
   "created_at": "2026-04-23T17:57:16.237Z",
-  "account_id": "henryspatialanalysis",
-  "data_mode": "open",
-  "featured": 0,
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "product_id": "openpois",
+  "disabled": false,
   "readme": "## README.md\n# OpenPOIs\n\nA unified, open dataset for points of interest across the United States. Built from [OpenStreetMap](https://www.openstreetmap.org) and\n[Overture Maps](https://overturemaps.org), with per-POI confidence scores\ncalibrated against a verified validation sample so they read as probabilities\nthat a place exists and is currently open.\n\n- \ud83c\udf10 **Interactive map:** <https://openpois.org/>\n- \ud83d\udcbb **Source code:** <https://github.com/henryspatialanalysis/openpois>\n- \ud83d\udcd8 **Data license:** [Open Database License v.1.0](./LICENSE). For more details, see the [Open Data Commons](https://opendatacommons.org/licenses/odbl/1-0/).\n\n## Repository layout\n\nEach refresh writes a new versioned folder. Inside every version:\n\n```\n<YYYY-MM-DD-vN>/\n\u251c\u2500\u2500 README.md                     # version metadata (OSM date, Overture release, model)\n\u251c\u2500\u2500 osm-parquet/                  # OSM-only snapshot, hive-partitioned by primary_tag\n\u251c\u2500\u2500 osm-pmtiles/osm.pmtiles       # OSM snapshot as a single PMTiles archive\n\u251c\u2500\u2500 conflated-parquet/            # OSM \u00d7 Overture conflated snapshot, hive-partitioned by shared_label\n\u2514\u2500\u2500 conflated-pmtiles/conflated.pmtiles\n```\n\n`latest/` is a server-side mirror of the most recently published version \u2014\nuse it for live demos and tutorials, and pin a dated folder\n(e.g. `2026-04-23-v0/`) when you need a stable, reproducible reference.\n\nBrowse all versions at\n<https://source.coop/henryspatialanalysis/openpois>.\n\n## What's in the conflated dataset\n\nOne row per real-world POI after matching OpenStreetMap features against\nOverture Maps places. Key columns:\n\n| Column | Description |\n|---|---|\n| `unified_id` | Stable ID for the conflated POI |\n| `source` | `matched` (in both sources), `osm`, or `overture` |\n| `osm_id`, `osm_type` | Source OSM feature (when present) |\n| `overture_id` | Source Overture ID (when present) |\n| `name`, `brand` | Preferred display names |\n| `shared_label` | Harmonised category across the two source taxonomies |\n| `conf_mean` | **Calibrated probability that the POI exists and is currently open to the public** (see Confidence, below) |\n| `conf_lower`, `conf_upper` | 95% interval for the calibrated confidence |\n| `conf_mean_uncalibrated` | The pre-calibration model value, retained for comparison |\n| `calibration_flag` | Null for the ordinary case; otherwise why this row was handled specially (see Confidence) |\n| `match_score`, `match_distance_m` | Diagnostics for the OSM \u00d7 Overture link |\n| `osm_conf_mean`, `overture_confidence` | The two raw per-source inputs to the calibration |\n| `bbox` | GeoParquet 1.1 covering struct, for spatial row-group pruning |\n| `geohash` | Within-partition sort key (precision 6) |\n| `geometry` | WKB point (EPSG:4326) |\n\nThe `osm-parquet/` files contain the same OSM rows before conflation. This data retains the original OSM tags.\n\n## Confidence\n\n`conf_mean` on the conflated dataset is a **calibrated probability that the place\nexists and is open to the public**, not a raw model score. It is produced by\nmapping each POI's source score(s) through a curve estimated from an independent\nvalidation sample of POIs whose real-world status was established by research\nand human review. Curves are fitted separately for each detection pattern \u2014 in\nboth sources, OpenStreetMap only, Overture only \u2014 because those populations\nbehave very differently.\n\nThree consequences worth knowing before you filter on it:\n\n- **It is not comparable to previous releases before 2026-07-30.** Earlier\n  versions published an uncalibrated blend, and Overture-only rows carried a\n  flat downweight. `conf_mean_uncalibrated` holds the old-style value if you\n  need to reproduce prior behaviour.\n- **The achievable range is narrower than 0\u20131**, because the calibration\n  reports the existence rate actually observed in each score band rather than\n  the source's nominal score. Overture-only rows, for example, span roughly\n  0.54\u20130.84.\n- **`conf_mean` means something different in `osm-parquet/`.** There it is the\n  OpenStreetMap turnover-model posterior \u2014 the probability the feature is still\n  current given its edit history \u2014 and it is *not* calibrated against verified\n  ground truth. Do not compare the two columns numerically across the two\n  datasets.\n\n`calibration_flag` records the exceptions:\n\n| Flag | Meaning |\n|---|---|\n| *(null)* | Ordinary case: confidence read from the segment's calibration curve |\n| `shadow_cd` | Overture row demoted by OpenStreetMap-history change detection; keeps that value, no interval |\n| `missing_conf` | Overture supplied no confidence upstream; a placeholder was imputed before calibration |\n| `unnamed_extrapolated` | Unnamed feature, outside the validation sample; calibrated by extrapolation |\n\n## Quickstart\n\nRead directly from Source Cooperative's S3 mirror (no authentication):\n\n- **pyarrow / GeoPandas** use `pyarrow.fs.S3FileSystem(anonymous=True)` and a\n  bucket-qualified path (no scheme prefix).\n- **DuckDB** uses an `s3://` URL plus an anonymous `SECRET` so its glob\n  expansion works over the bucket listing.\n\nEvery example uses `VERSION = \"latest\"`; swap in a dated folder (e.g.\n`\"2026-04-23-v0\"`) when you need a reproducible pin.\n\n### Python: pyarrow\n\n```python\nimport pyarrow.dataset as ds\nimport pyarrow.fs as pafs\n\nBASE = \"us-west-2.opendata.source.coop/henryspatialanalysis/openpois\"\nVERSION = \"latest\"   # or pin a specific dated folder, e.g. \"2026-04-23-v0\"\n\nfs = pafs.S3FileSystem(anonymous = True, region = \"us-west-2\")\npois = ds.dataset(\n    f\"{BASE}/{VERSION}/conflated-parquet/\",\n    filesystem = fs,\n    format = \"parquet\",\n    partitioning = \"hive\",\n)\nprint(pois.schema)\nprint(f\"{pois.count_rows():,} POIs\")\n```\n\n### Python: DuckDB\n\n```python\nimport duckdb\n\nBASE = \"s3://us-west-2.opendata.source.coop/henryspatialanalysis/openpois\"\nVERSION = \"latest\"   # or pin a specific dated folder, e.g. \"2026-04-23-v0\"\n\ncon = duckdb.connect()\ncon.execute(\"INSTALL httpfs; LOAD httpfs;\")\ncon.execute(\"\"\"\n    CREATE OR REPLACE SECRET srccoop (\n        TYPE s3, PROVIDER config,\n        REGION 'us-west-2', URL_STYLE 'path',\n        KEY_ID '', SECRET ''\n    );\n\"\"\")\ndf = con.execute(f\"\"\"\n    SELECT shared_label, COUNT(*) AS n\n    FROM read_parquet('{BASE}/{VERSION}/conflated-parquet/**/*.parquet',\n                      hive_partitioning = true)\n    GROUP BY shared_label\n    ORDER BY n DESC\n    LIMIT 20\n\"\"\").df()\nprint(df)\n```\n\n### Python: GeoPandas\n\n```python\nimport geopandas as gpd\nimport pyarrow.fs as pafs\n\nBASE = \"us-west-2.opendata.source.coop/henryspatialanalysis/openpois\"\nVERSION = \"latest\"   # or pin a specific dated folder, e.g. \"2026-04-23-v0\"\n\nfs = pafs.S3FileSystem(anonymous = True, region = \"us-west-2\")\n# conflated-parquet is hive-partitioned by shared_label.\ngdf = gpd.read_parquet(\n    f\"{BASE}/{VERSION}/conflated-parquet/shared_label=Cafe/part-0.parquet\",\n    filesystem = fs,\n)\nprint(gdf.head())\n```\n\n### Browser / vector-tile map\n\nThe `*-pmtiles/*.pmtiles` archives can be loaded directly by any PMTiles\nclient (MapLibre + `pmtiles://`, OpenLayers + `ol-pmtiles`, etc.). See\n`site/` in the GitHub repo for a working example.\n\nThe snippet below is a self-contained HTML page that renders the conflated\nPMTiles over MapLibre, coloured by the model's `conf_mean`. Save it as\n`openpois.html` and open it in a browser \u2014 no build step, no server needed.\nPMTiles are authored at zoom 14, so zoom in past z14 to see points.\n\n```html\n<!doctype html>\n<meta charset=\"utf-8\" />\n<title>OpenPOIs \u2014 conflated</title>\n<link href=\"https://unpkg.com/maplibre-gl@4/dist/maplibre-gl.css\" rel=\"stylesheet\" />\n<style>html, body, #map { height: 100%; margin: 0; }</style>\n<div id=\"map\"></div>\n<script src=\"https://unpkg.com/maplibre-gl@4/dist/maplibre-gl.js\"></script>\n<script src=\"https://unpkg.com/pmtiles@3/dist/pmtiles.js\"></script>\n<script>\n  const BASE = \"https://data.source.coop/henryspatialanalysis/openpois\";\n  const VERSION = \"latest\";   // or pin a specific dated folder, e.g. \"2026-04-23-v0\"\n\n  const protocol = new pmtiles.Protocol();\n  maplibregl.addProtocol(\"pmtiles\", protocol.tile);\n\n  const map = new maplibregl.Map({\n    container: \"map\",\n    style: \"https://tiles.openfreemap.org/styles/positron\",\n    center: [-73.9855, 40.758],   // Times Square\n    zoom: 16,\n  });\n\n  map.on(\"load\", () => {\n    map.addSource(\"openpois\", {\n      type: \"vector\",\n      url: `pmtiles://${BASE}/${VERSION}/conflated-pmtiles/conflated.pmtiles`,\n      minzoom: 14,\n    });\n    map.addLayer({\n      id: \"openpois-points\",\n      type: \"circle\",\n      source: \"openpois\",\n      \"source-layer\": \"conflated_pois\",   // set by publish.pmtiles.conflated_layer_name\n      paint: {\n        \"circle-radius\": 4,\n        \"circle-stroke-width\": 1,\n        \"circle-stroke-color\": \"#ffffff\",\n        // Red when stale (conf_mean \u2248 0), green when fresh (\u2248 1).\n        \"circle-color\": [\n          \"interpolate\", [\"linear\"], [\"get\", \"conf_mean\"],\n          0.0, \"#d73027\",\n          0.3, \"#fee08b\",\n          0.7, \"#1a9850\",\n        ],\n      },\n    });\n    map.on(\"click\", \"openpois-points\", (e) => {\n      const p = e.features[0].properties;\n      new maplibregl.Popup()\n        .setLngLat(e.lngLat)\n        .setHTML(\n          `<b>${p.name ?? \"(no name)\"}</b><br>` +\n          `${p.shared_label} \u00b7 source=${p.source}<br>` +\n          `conf_mean = ${Number(p.conf_mean).toFixed(3)}`\n        )\n        .addTo(map);\n    });\n  });\n</script>\n```\n\n\n## License & attribution\n\nThe OpenPOIs dataset is released under the [Open Database License (ODbL) v.1.0](./LICENSE). Any public use must credit OpenStreetMap contributors, the Overture Maps Foundation, and OpenPOIs. Any derivative database must be shared under the same license. See <https://www.openstreetmap.org/copyright> and <https://docs.overturemaps.org/attribution/> for upstream attribution\nrequirements.\n\n## Citation\n\nIf you use this data in research, please cite:\n\n> Henry Spatial Analysis (2026). *OpenPOIs: a unified, confidence-scored\n> dataset of U.S. points of interest.* <https://openpois.henryspatialanalysis.com>\n\n## Contact\n\nQuestions, bug reports, and contributions welcome via <https://github.com/henryspatialanalysis/openpois/issues>.\n",
   "_review": [
-    "extent.spatial.bbox: omitted; spatial reference is categorical via [2026-04-23-v0/conflated-parquet.geometry (geometry), 2026-04-23-v0/conflated-parquet.geohash (spatial_index), latest/osm-parquet.geometry (geometry), latest/osm-parquet.geohash (spatial_index), latest/osm-parquet.bbox (geometry), latest/osm-parquet.addr:postcode (zipcode), latest/osm-parquet.addr:city (placename), latest/osm-parquet.addr:state (placename), latest/osm-parquet.addr:country (placename)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
+    "summaries.item_count: parts overlap, so this is max(part), not the sum \u2014 2026-04-23-v0/ 9810932, 2026-05-21-v0/ 9887966, 2026-06-27-v0/ 4330321, 2026-07-30-v0/ 3752914, 2026-09-02-v0/ 3573329, latest/ 3573329. Sum them only once the parts are known to be disjoint."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-08-06T09:41:05+00:00",
-  "store_format": null,
-  "ext_bytes": {
-    "parquet": 24675514892,
-    "pmtiles": 9786338830,
-    "md": 26691,
-    "": 25357
-  }
+  "cataloged_at": "2026-09-09T09:05:40+00:00",
+  "store_format": null
 }
