@@ -1,25 +1,23 @@
 # Source Cooperative catalog — status
 
-_Updated 2026-09-09 09:09 UTC by the nightly pipeline._
+_Updated 2026-09-10 08:54 UTC by the nightly pipeline._
 
-**417 datasets cataloged**  ·  **8 queued for next run**  ·  last run handled **10**
+**417 datasets cataloged**  ·  **0 queued for next run**  ·  last run handled **8**
 
 ## Last run
 
-<details><summary>✅ drafted — 10 datasets</summary>
+<details><summary>✅ drafted — 8 datasets</summary>
 
-| repo                                                                                                       |
-| ---------------------------------------------------------------------------------------------------------- |
-| [ausantarctic/ghrsst-mur-v2](https://source.coop/ausantarctic/ghrsst-mur-v2)                               |
-| [cboettig/census](https://source.coop/cboettig/census)                                                     |
-| [cboettig/ecoregion](https://source.coop/cboettig/ecoregion)                                               |
-| [dynamical/noaa-gefs-analysis](https://source.coop/dynamical/noaa-gefs-analysis)                           |
-| [dynamical/noaa-gfs-analysis](https://source.coop/dynamical/noaa-gfs-analysis)                             |
-| [dynamical/noaa-mrms-conus-analysis-hourly](https://source.coop/dynamical/noaa-mrms-conus-analysis-hourly) |
-| [giswqs/opengeos](https://source.coop/giswqs/opengeos)                                                     |
-| [henryspatialanalysis/openpois](https://source.coop/henryspatialanalysis/openpois)                         |
-| [root-geospatial/flight-tracks](https://source.coop/root-geospatial/flight-tracks)                         |
-| [walkthru-earth/indices](https://source.coop/walkthru-earth/indices)                                       |
+| repo                                                                                   |
+| -------------------------------------------------------------------------------------- |
+| [alukach/firesmoke](https://source.coop/alukach/firesmoke)                             |
+| [cboettig/land-cover](https://source.coop/cboettig/land-cover)                         |
+| [cholmes/portolan-nl](https://source.coop/cholmes/portolan-nl)                         |
+| [dynamical/asos-parquet](https://source.coop/dynamical/asos-parquet)                   |
+| [hdx/cod-ab](https://source.coop/hdx/cod-ab)                                           |
+| [portolan/portolan-pipeline](https://source.coop/portolan/portolan-pipeline)           |
+| [source/metadata-catalog](https://source.coop/source/metadata-catalog)                 |
+| [walkthru-earth/opensensor-space](https://source.coop/walkthru-earth/opensensor-space) |
 
 </details>
 
@@ -28,13 +26,13 @@ _Updated 2026-09-09 09:09 UTC by the nightly pipeline._
 
 | run                                                                                                    | outcome | drafted | redraft | resets | failed | queued | cataloged |
 | ------------------------------------------------------------------------------------------------------ | ------- | ------: | ------: | -----: | -----: | -----: | --------: |
+| [2026-09-10](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/34456092266) | ✅       |         |       8 |        |        |      0 |       417 |
 | [2026-09-09](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/34329940345) | ✅       |         |      10 |        |        |      0 |       417 |
 | [2026-09-08](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/34205408636) | ✅       |         |       9 |        |        |      8 |       417 |
 | [2026-09-07](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/34101835253) | ✅       |       1 |       9 |        |        |     18 |       417 |
 | [2026-09-06](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/34022124267) | ✅       |         |      10 |        |        |      0 |       416 |
 | [2026-09-05](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/33955497339) | ✅       |         |       8 |        |        |      0 |       416 |
 | [2026-09-04](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/33854270194) | ✅       |         |       9 |        |        |      9 |       416 |
-| [2026-09-03](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/33734354124) | ✅       |         |      10 |        |        |     19 |       416 |
 
 ## 12 datasets need a prober
 
@@ -851,21 +849,6 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 | [major-tom/copernicusdem](https://source.coop/major-tom/copernicusdem)                                                                                 | seed    |        13.1 MB |
 | [tge-labs/terrabit](https://source.coop/tge-labs/terrabit)                                                                                             | seed    |         6.6 MB |
 | [dataforcanada/ca-foundation-labs](https://source.coop/dataforcanada/ca-foundation-labs)                                                               | seed    |        86.9 KB |
-
-</details>
-
-<details><summary>stale (catalog bytes ≠ S3; fixed by <code>make process-all</code>) — 8 datasets (354.7 GB)</summary>
-
-| repo                                                                                   | updated    |        catalog → S3 |
-| -------------------------------------------------------------------------------------- | ---------- | ------------------: |
-| [dynamical/asos-parquet](https://source.coop/dynamical/asos-parquet)                   | 2026-09-06 |   20.2 GB → 20.2 GB |
-| [walkthru-earth/opensensor-space](https://source.coop/walkthru-earth/opensensor-space) | 2026-09-06 |     1.5 GB → 1.5 GB |
-| [alukach/firesmoke](https://source.coop/alukach/firesmoke)                             | 2026-09-05 |     1.1 GB → 1.1 GB |
-| [portolan/portolan-pipeline](https://source.coop/portolan/portolan-pipeline)           | 2026-09-05 | 125.1 MB → 280.4 MB |
-| [source/metadata-catalog](https://source.coop/source/metadata-catalog)                 | 2026-09-05 |     5.6 MB → 5.6 MB |
-| [hdx/cod-ab](https://source.coop/hdx/cod-ab)                                           | 2026-09-03 |   27.3 GB → 27.1 GB |
-| [cboettig/land-cover](https://source.coop/cboettig/land-cover)                         | 2026-08-30 | 221.3 GB → 221.3 GB |
-| [cholmes/portolan-nl](https://source.coop/cholmes/portolan-nl)                         | 2026-08-30 |   83.6 GB → 83.1 GB |
 
 </details>
 
