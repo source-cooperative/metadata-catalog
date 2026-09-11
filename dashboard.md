@@ -1,38 +1,22 @@
 # Source Cooperative catalog — status
 
-_Updated 2026-09-10 08:54 UTC by the nightly pipeline._
+_Updated 2026-09-11 08:37 UTC by the nightly pipeline._
 
-**417 datasets cataloged**  ·  **0 queued for next run**  ·  last run handled **8**
+**417 datasets cataloged**  ·  **0 queued for next run**  ·  last run handled **0**
 
-## Last run
-
-<details><summary>✅ drafted — 8 datasets</summary>
-
-| repo                                                                                   |
-| -------------------------------------------------------------------------------------- |
-| [alukach/firesmoke](https://source.coop/alukach/firesmoke)                             |
-| [cboettig/land-cover](https://source.coop/cboettig/land-cover)                         |
-| [cholmes/portolan-nl](https://source.coop/cholmes/portolan-nl)                         |
-| [dynamical/asos-parquet](https://source.coop/dynamical/asos-parquet)                   |
-| [hdx/cod-ab](https://source.coop/hdx/cod-ab)                                           |
-| [portolan/portolan-pipeline](https://source.coop/portolan/portolan-pipeline)           |
-| [source/metadata-catalog](https://source.coop/source/metadata-catalog)                 |
-| [walkthru-earth/opensensor-space](https://source.coop/walkthru-earth/opensensor-space) |
-
-</details>
-
+_No datasets processed in the last run (no new work since the previous snapshot)._
 
 ## Recent runs
 
 | run                                                                                                    | outcome | drafted | redraft | resets | failed | queued | cataloged |
 | ------------------------------------------------------------------------------------------------------ | ------- | ------: | ------: | -----: | -----: | -----: | --------: |
+| [2026-09-11](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/34579992943) | ✅       |         |         |        |        |      0 |       417 |
 | [2026-09-10](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/34456092266) | ✅       |         |       8 |        |        |      0 |       417 |
 | [2026-09-09](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/34329940345) | ✅       |         |      10 |        |        |      0 |       417 |
 | [2026-09-08](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/34205408636) | ✅       |         |       9 |        |        |      8 |       417 |
 | [2026-09-07](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/34101835253) | ✅       |       1 |       9 |        |        |     18 |       417 |
 | [2026-09-06](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/34022124267) | ✅       |         |      10 |        |        |      0 |       416 |
 | [2026-09-05](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/33955497339) | ✅       |         |       8 |        |        |      0 |       416 |
-| [2026-09-04](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/33854270194) | ✅       |         |       9 |        |        |      9 |       416 |
 
 ## 12 datasets need a prober
 
