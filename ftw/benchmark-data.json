@@ -1,36 +1,664 @@
 {
   "schema_version": 1,
-  "account_id": "ftw",
-  "product_id": "benchmark-data",
-  "title": "FTW Benchmark Data (2.0-alpha)",
-  "description": "The FTW benchmark data includes all the chips and associated imagery to train field boundary models. This repo is starting as a demonstration of how to organize it, and will evolve to be alpha and beta releases of the 2.0 dataset. This catalog is a 'git-backed' Portolan catalog, backed by https://github.com/fieldsoftheworld/benchmark-data-catalog",
-  "keywords": [],
-  "created_at": "2026-09-07T19:08:04.340Z",
-  "updated_at": "2026-09-07T19:08:04.340Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": null,
-  "mirrors": {
-    "aws-opendata-us-west-2": {
-      "prefix": "ftw/benchmark-data/",
-      "connection_id": "aws-opendata-us-west-2",
-      "is_primary": true
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
+  "id": "ftw/benchmark-data",
+  "title": "Fields of the World Benchmark Data",
+  "description": "Fields of the World (FTW) v2 benchmark dataset for training and evaluating agricultural field-boundary segmentation models: 2 km MGRS-grid chips with instance/semantic/DECODE label masks, train/val/test splits, and (for most collections) paired Sentinel-2 imagery, published as one STAC collection per country.",
+  "keywords": [
+    "field-boundaries",
+    "agriculture",
+    "crop-classification",
+    "sentinel-2",
+    "land-parcels",
+    "machine-learning",
+    "arable-land",
+    "land-use",
+    "remote-sensing"
+  ],
+  "providers": [
+    {
+      "name": "Fields of the World (FTW)",
+      "roles": [
+        "producer",
+        "processor"
+      ]
+    },
+    {
+      "name": "National land parcel / cadastral agencies (Austria, Luxembourg, Slovenia)",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Copernicus / European Space Agency",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/ftw/benchmark-data"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          5.7237798,
+          45.4053358,
+          17.1730578,
+          50.190903
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2024-01-01T00:00:00Z",
+          "2025-12-31T23:59:59Z"
+        ]
+      ]
     }
   },
-  "object_count": 93874,
-  "objects_updated_at": "2026-09-11T17:01:15+00:00",
-  "total_bytes": 3994871987,
-  "exts": {
-    "tif": 64547,
-    "json": 24249,
-    "jpg": 4968,
-    "md": 84,
-    "parquet": 13,
-    "pmtiles": 6,
-    "txt": 4,
-    "webp": 3
+  "summaries": {
+    "item_count": 6093039
   },
+  "assets": {
+    "at": {
+      "href": "https://data.source.coop/ftw/benchmark-data/at/",
+      "type": "application/x-parquet",
+      "title": "at",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "metrics:area",
+          "type": "FLOAT"
+        },
+        {
+          "name": "hcat:code",
+          "type": "UINTEGER"
+        },
+        {
+          "name": "hcat:name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "crop:name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "hcat:name_en",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "crop:code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "collection",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "determination:datetime",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')",
+          "description": "[geometry] Chip/field footprint geometry"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        },
+        {
+          "name": "gzd",
+          "type": "VARCHAR",
+          "description": "[spatial_index] MGRS grid zone designator"
+        },
+        {
+          "name": "mgrs_10km",
+          "type": "VARCHAR",
+          "description": "[spatial_index] MGRS 10km grid cell identifier"
+        },
+        {
+          "name": "field_coverage_pct",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "hcat_dominant_code",
+          "type": "BIGINT"
+        },
+        {
+          "name": "hcat_dominant_name_en",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "hcat_dominant_pct",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "hcat_top",
+          "type": "STRUCT(code BIGINT, name_en VARCHAR, pct DOUBLE)[]"
+        },
+        {
+          "name": "split",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "type",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "stac_version",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "stac_extensions",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "ftw:hcat_top",
+          "type": "STRUCT(code BIGINT, name_en VARCHAR, pct DOUBLE)[]"
+        },
+        {
+          "name": "ftw:hcat_dominant_pct",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "links",
+          "type": "STRUCT(href VARCHAR, rel VARCHAR, \"type\" VARCHAR, title VARCHAR)[]"
+        },
+        {
+          "name": "assets",
+          "type": "STRUCT(instance_mask STRUCT(href VARCHAR, title VARCHAR, \"type\" VARCHAR, roles VARCHAR[], \"file:size\" BIGINT, \"raster:bands\" STRUCT(data_type VARCHAR, spatial_resolution DOUBLE, \"statistics\" STRUCT(minimum DOUBLE, maximum DOUBLE, mean DOUBLE, stddev DOUBLE), description VARCHAR)[]), semantic_2class_mask STRUCT(href VARCHAR, title VARCHAR, \"type\" VARCHAR, roles VARCHAR[], \"file:size\" BIGINT, \"raster:bands\" STRUCT(data_type VARCHAR, spatial_resolution DOUBLE, \"statistics\" STRUCT(minimum DOUBLE, maximum DOUBLE, mean DOUBLE, stddev DOUBLE), \"classification:classes\" STRUCT(\"value\" BIGINT, \"name\" VARCHAR, description VARCHAR)[])[]), semantic_3class_mask STRUCT(href VARCHAR, title VARCHAR, \"type\" VARCHAR, roles VARCHAR[], \"file:size\" BIGINT, \"raster:bands\" STRUCT(data_type VARCHAR, spatial_resolution DOUBLE, \"statistics\" STRUCT(minimum DOUBLE, maximum DOUBLE, mean DOUBLE, stddev DOUBLE), \"classification:classes\" STRUCT(\"value\" BIGINT, \"name\" VARCHAR, description VARCHAR)[])[]))"
+        },
+        {
+          "name": "datetime",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "start_datetime",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "end_datetime",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "ftw:calendar_year",
+          "type": "BIGINT"
+        },
+        {
+          "name": "ftw:split",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ftw:field_coverage_pct",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "ftw:hcat_dominant_code",
+          "type": "BIGINT"
+        },
+        {
+          "name": "ftw:hcat_dominant_name_en",
+          "type": "VARCHAR"
+        }
+      ],
+      "description": "5 files sampled for this table"
+    },
+    "lu": {
+      "href": "https://data.source.coop/ftw/benchmark-data/lu/",
+      "type": "application/x-parquet",
+      "title": "lu",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "type",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "stac_version",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "stac_extensions",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ftw:harvest_cloud_cover",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "ftw:planting_cloud_cover",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "links",
+          "type": "STRUCT(href VARCHAR, rel VARCHAR, \"type\" VARCHAR, title VARCHAR)[]"
+        },
+        {
+          "name": "assets",
+          "type": "STRUCT(instance_mask STRUCT(href VARCHAR, title VARCHAR, \"type\" VARCHAR, roles VARCHAR[], \"file:size\" BIGINT, \"raster:bands\" STRUCT(data_type VARCHAR, spatial_resolution DOUBLE, \"statistics\" STRUCT(minimum DOUBLE, maximum DOUBLE, mean DOUBLE, stddev DOUBLE), description VARCHAR)[]), semantic_2class_mask STRUCT(href VARCHAR, title VARCHAR, \"type\" VARCHAR, roles VARCHAR[], \"file:size\" BIGINT, \"raster:bands\" STRUCT(data_type VARCHAR, spatial_resolution DOUBLE, \"statistics\" STRUCT(minimum DOUBLE, maximum DOUBLE, mean DOUBLE, stddev DOUBLE), \"classification:classes\" STRUCT(\"value\" BIGINT, \"name\" VARCHAR, description VARCHAR, color_hint VARCHAR)[])[]), semantic_3class_mask STRUCT(href VARCHAR, title VARCHAR, \"type\" VARCHAR, roles VARCHAR[], \"file:size\" BIGINT, \"raster:bands\" STRUCT(data_type VARCHAR, spatial_resolution DOUBLE, \"statistics\" STRUCT(minimum DOUBLE, maximum DOUBLE, mean DOUBLE, stddev DOUBLE), \"classification:classes\" STRUCT(\"value\" BIGINT, \"name\" VARCHAR, description VARCHAR, color_hint VARCHAR)[])[]), decode_boundary_mask STRUCT(href VARCHAR, title VARCHAR, \"type\" VARCHAR, roles VARCHAR[], \"file:size\" BIGINT, \"raster:bands\" STRUCT(data_type VARCHAR, spatial_resolution DOUBLE, \"statistics\" STRUCT(minimum DOUBLE, maximum DOUBLE, mean DOUBLE, stddev DOUBLE), \"classification:classes\" STRUCT(\"value\" BIGINT, \"name\" VARCHAR, description VARCHAR, color_hint VARCHAR)[])[]), decode_distance_mask STRUCT(href VARCHAR, title VARCHAR, \"type\" VARCHAR, roles VARCHAR[], \"file:size\" BIGINT, \"raster:bands\" STRUCT(data_type VARCHAR, spatial_resolution DOUBLE, \"statistics\" STRUCT(minimum DOUBLE, maximum DOUBLE, mean DOUBLE, stddev DOUBLE), description VARCHAR)[]), planting_visual STRUCT(href VARCHAR, title VARCHAR, \"type\" VARCHAR, roles VARCHAR[], \"ftw:scene\" VARCHAR, datetime VARCHAR), planting_image STRUCT(href VARCHAR, title VARCHAR, \"type\" VARCHAR, roles VARCHAR[], \"file:size\" BIGINT, \"raster:bands\" STRUCT(nodata DOUBLE, data_type VARCHAR, spatial_resolution DOUBLE, \"statistics\" STRUCT(minimum DOUBLE, maximum DOUBLE, mean DOUBLE, stddev DOUBLE, valid_percent DOUBLE), description VARCHAR)[]), harvest_visual STRUCT(href VARCHAR, title VARCHAR, \"type\" VARCHAR, roles VARCHAR[], \"ftw:scene\" VARCHAR, datetime VARCHAR), harvest_image STRUCT(href VARCHAR, title VARCHAR, \"type\" VARCHAR, roles VARCHAR[], \"file:size\" BIGINT, \"raster:bands\" STRUCT(nodata DOUBLE, data_type VARCHAR, spatial_resolution DOUBLE, \"statistics\" STRUCT(minimum DOUBLE, maximum DOUBLE, mean DOUBLE, stddev DOUBLE, valid_percent DOUBLE), description VARCHAR)[]), thumbnail STRUCT(href VARCHAR, title VARCHAR, \"type\" VARCHAR, roles VARCHAR[], \"file:size\" BIGINT), scl STRUCT(href VARCHAR, title VARCHAR, \"type\" VARCHAR, roles VARCHAR[], gsd BIGINT, \"proj:shape\" BIGINT[], \"proj:transform\" BIGINT[], \"raster:bands\" STRUCT(nodata BIGINT, data_type VARCHAR, spatial_resolution BIGINT)[], \"file:checksum\" VARCHAR, \"file:size\" BIGINT), visual STRUCT(href VARCHAR, title VARCHAR, \"type\" VARCHAR, roles VARCHAR[], \"eo:bands\" STRUCT(\"name\" VARCHAR, common_name VARCHAR, center_wavelength DOUBLE, full_width_half_max DOUBLE)[], \"raster:bands\" STRUCT(nodata BIGINT, data_type VARCHAR, spatial_resolution BIGINT)[], gsd BIGINT, \"proj:shape\" BIGINT[], \"proj:transform\" BIGINT[], \"file:checksum\" VARCHAR, \"file:size\" BIGINT), cloud_probability STRUCT(href VARCHAR, title VARCHAR, \"type\" VARCHAR, roles VARCHAR[], gsd BIGINT, \"proj:shape\" BIGINT[], \"proj:transform\" BIGINT[], \"raster:bands\" STRUCT(nodata BIGINT, data_type VARCHAR, spatial_resolution BIGINT)[], \"file:checksum\" VARCHAR, \"file:size\" BIGINT), image STRUCT(href VARCHAR, title VARCHAR, \"type\" VARCHAR, roles VARCHAR[], \"file:size\" BIGINT, \"raster:bands\" STRUCT(nodata DOUBLE, data_type VARCHAR, spatial_resolution DOUBLE, \"statistics\" STRUCT(minimum DOUBLE, maximum DOUBLE, mean DOUBLE, stddev DOUBLE, valid_percent DOUBLE), description VARCHAR)[]))"
+        },
+        {
+          "name": "collection",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "datetime",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "start_datetime",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "end_datetime",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "ftw:calendar_year",
+          "type": "BIGINT"
+        },
+        {
+          "name": "ftw:split",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ftw:field_coverage_pct",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "renders",
+          "type": "STRUCT(semantic_2class STRUCT(title VARCHAR, assets VARCHAR[], nodata BIGINT), semantic_3class STRUCT(title VARCHAR, assets VARCHAR[], nodata BIGINT), decode_boundary STRUCT(title VARCHAR, assets VARCHAR[], nodata BIGINT), decode_distance STRUCT(title VARCHAR, assets VARCHAR[], rescale BIGINT[][], nodata BIGINT, colormap_name VARCHAR), instance STRUCT(title VARCHAR, assets VARCHAR[], rescale DOUBLE[][], nodata BIGINT, colormap_name VARCHAR), planting_rgb STRUCT(title VARCHAR, assets VARCHAR[], bidx BIGINT[], rescale DOUBLE[][], nodata BIGINT), harvest_rgb STRUCT(title VARCHAR, assets VARCHAR[], bidx BIGINT[], rescale DOUBLE[][], nodata BIGINT))"
+        },
+        {
+          "name": "portolan:render_order",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "ftw:planting_day",
+          "type": "BIGINT"
+        },
+        {
+          "name": "ftw:harvest_day",
+          "type": "BIGINT"
+        },
+        {
+          "name": "ftw:stac_host",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ftw:cloud_cover_chip_threshold",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "ftw:buffer_days",
+          "type": "BIGINT"
+        },
+        {
+          "name": "ftw:num_buffer_expansions",
+          "type": "BIGINT"
+        },
+        {
+          "name": "ftw:buffer_expansion_size",
+          "type": "BIGINT"
+        },
+        {
+          "name": "ftw:planting_buffer_used",
+          "type": "BIGINT"
+        },
+        {
+          "name": "ftw:harvest_buffer_used",
+          "type": "BIGINT"
+        },
+        {
+          "name": "ftw:expansions_performed",
+          "type": "BIGINT"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        },
+        {
+          "name": "eo:cloud_cover",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "ftw:season",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ftw:source",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')",
+          "description": "[geometry] Chip/field footprint geometry"
+        },
+        {
+          "name": "gzd",
+          "type": "VARCHAR",
+          "description": "[spatial_index] MGRS grid zone designator"
+        },
+        {
+          "name": "mgrs_10km",
+          "type": "VARCHAR",
+          "description": "[spatial_index] MGRS 10km grid cell identifier"
+        },
+        {
+          "name": "field_coverage_pct",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "split",
+          "type": "VARCHAR"
+        }
+      ],
+      "description": "4 files sampled for this table"
+    },
+    "si": {
+      "href": "https://data.source.coop/ftw/benchmark-data/si/",
+      "type": "application/x-parquet",
+      "title": "si",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "type",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "stac_version",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "stac_extensions",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ftw:harvest_cloud_cover",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "ftw:planting_cloud_cover",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "links",
+          "type": "STRUCT(href VARCHAR, rel VARCHAR, \"type\" VARCHAR, title VARCHAR)[]"
+        },
+        {
+          "name": "assets",
+          "type": "STRUCT(instance_mask STRUCT(href VARCHAR, title VARCHAR, \"type\" VARCHAR, roles VARCHAR[], \"file:size\" BIGINT, \"raster:bands\" STRUCT(data_type VARCHAR, spatial_resolution DOUBLE, \"statistics\" STRUCT(minimum DOUBLE, maximum DOUBLE, mean DOUBLE, stddev DOUBLE), description VARCHAR)[]), semantic_2class_mask STRUCT(href VARCHAR, title VARCHAR, \"type\" VARCHAR, roles VARCHAR[], \"file:size\" BIGINT, \"raster:bands\" STRUCT(data_type VARCHAR, spatial_resolution DOUBLE, \"statistics\" STRUCT(minimum DOUBLE, maximum DOUBLE, mean DOUBLE, stddev DOUBLE), \"classification:classes\" STRUCT(\"value\" BIGINT, \"name\" VARCHAR, description VARCHAR, color_hint VARCHAR)[])[]), semantic_3class_mask STRUCT(href VARCHAR, title VARCHAR, \"type\" VARCHAR, roles VARCHAR[], \"file:size\" BIGINT, \"raster:bands\" STRUCT(data_type VARCHAR, spatial_resolution DOUBLE, \"statistics\" STRUCT(minimum DOUBLE, maximum DOUBLE, mean DOUBLE, stddev DOUBLE), \"classification:classes\" STRUCT(\"value\" BIGINT, \"name\" VARCHAR, description VARCHAR, color_hint VARCHAR)[])[]), decode_boundary_mask STRUCT(href VARCHAR, title VARCHAR, \"type\" VARCHAR, roles VARCHAR[], \"file:size\" BIGINT, \"raster:bands\" STRUCT(data_type VARCHAR, spatial_resolution DOUBLE, \"statistics\" STRUCT(minimum DOUBLE, maximum DOUBLE, mean DOUBLE, stddev DOUBLE), \"classification:classes\" STRUCT(\"value\" BIGINT, \"name\" VARCHAR, description VARCHAR, color_hint VARCHAR)[])[]), decode_distance_mask STRUCT(href VARCHAR, title VARCHAR, \"type\" VARCHAR, roles VARCHAR[], \"file:size\" BIGINT, \"raster:bands\" STRUCT(data_type VARCHAR, spatial_resolution DOUBLE, \"statistics\" STRUCT(minimum DOUBLE, maximum DOUBLE, mean DOUBLE, stddev DOUBLE), description VARCHAR)[]), planting_visual STRUCT(href VARCHAR, title VARCHAR, \"type\" VARCHAR, roles VARCHAR[], \"ftw:scene\" VARCHAR, datetime VARCHAR), planting_image STRUCT(href VARCHAR, title VARCHAR, \"type\" VARCHAR, roles VARCHAR[], \"file:size\" BIGINT, \"raster:bands\" STRUCT(nodata DOUBLE, data_type VARCHAR, spatial_resolution DOUBLE, \"statistics\" STRUCT(minimum DOUBLE, maximum DOUBLE, mean DOUBLE, stddev DOUBLE, valid_percent DOUBLE), description VARCHAR)[]), harvest_visual STRUCT(href VARCHAR, title VARCHAR, \"type\" VARCHAR, roles VARCHAR[], \"ftw:scene\" VARCHAR, datetime VARCHAR), harvest_image STRUCT(href VARCHAR, title VARCHAR, \"type\" VARCHAR, roles VARCHAR[], \"file:size\" BIGINT, \"raster:bands\" STRUCT(nodata DOUBLE, data_type VARCHAR, spatial_resolution DOUBLE, \"statistics\" STRUCT(minimum DOUBLE, maximum DOUBLE, mean DOUBLE, stddev DOUBLE, valid_percent DOUBLE), description VARCHAR)[]), thumbnail STRUCT(href VARCHAR, title VARCHAR, \"type\" VARCHAR, roles VARCHAR[], \"file:size\" BIGINT), scl STRUCT(href VARCHAR, title VARCHAR, \"type\" VARCHAR, roles VARCHAR[], gsd BIGINT, \"proj:shape\" BIGINT[], \"proj:transform\" BIGINT[], \"raster:bands\" STRUCT(nodata BIGINT, data_type VARCHAR, spatial_resolution BIGINT)[], \"file:checksum\" VARCHAR, \"file:size\" BIGINT), visual STRUCT(href VARCHAR, title VARCHAR, \"type\" VARCHAR, roles VARCHAR[], \"eo:bands\" STRUCT(\"name\" VARCHAR, common_name VARCHAR, center_wavelength DOUBLE, full_width_half_max DOUBLE)[], \"raster:bands\" STRUCT(nodata BIGINT, data_type VARCHAR, spatial_resolution BIGINT)[], gsd BIGINT, \"proj:shape\" BIGINT[], \"proj:transform\" BIGINT[], \"file:checksum\" VARCHAR, \"file:size\" BIGINT), cloud_probability STRUCT(href VARCHAR, title VARCHAR, \"type\" VARCHAR, roles VARCHAR[], gsd BIGINT, \"proj:shape\" BIGINT[], \"proj:transform\" BIGINT[], \"raster:bands\" STRUCT(nodata BIGINT, data_type VARCHAR, spatial_resolution BIGINT)[], \"file:checksum\" VARCHAR, \"file:size\" BIGINT), image STRUCT(href VARCHAR, title VARCHAR, \"type\" VARCHAR, roles VARCHAR[], \"file:size\" BIGINT, \"raster:bands\" STRUCT(nodata DOUBLE, data_type VARCHAR, spatial_resolution DOUBLE, \"statistics\" STRUCT(minimum DOUBLE, maximum DOUBLE, mean DOUBLE, stddev DOUBLE, valid_percent DOUBLE), description VARCHAR)[]), red STRUCT(href VARCHAR, title VARCHAR, \"type\" VARCHAR, roles VARCHAR[], \"eo:bands\" STRUCT(\"name\" VARCHAR, common_name VARCHAR, center_wavelength DOUBLE, full_width_half_max DOUBLE)[], gsd BIGINT, \"proj:shape\" BIGINT[], \"proj:transform\" BIGINT[], \"raster:bands\" STRUCT(nodata BIGINT, data_type VARCHAR, spatial_resolution BIGINT, scale DOUBLE, \"offset\" DOUBLE)[], \"file:checksum\" VARCHAR, \"file:size\" BIGINT), green STRUCT(href VARCHAR, title VARCHAR, \"type\" VARCHAR, roles VARCHAR[], \"eo:bands\" STRUCT(\"name\" VARCHAR, common_name VARCHAR, center_wavelength DOUBLE, full_width_half_max DOUBLE)[], gsd BIGINT, \"proj:shape\" BIGINT[], \"proj:transform\" BIGINT[], \"raster:bands\" STRUCT(nodata BIGINT, data_type VARCHAR, spatial_resolution BIGINT, scale DOUBLE, \"offset\" DOUBLE)[], \"file:checksum\" VARCHAR, \"file:size\" BIGINT), blue STRUCT(href VARCHAR, title VARCHAR, \"type\" VARCHAR, roles VARCHAR[], \"eo:bands\" STRUCT(\"name\" VARCHAR, common_name VARCHAR, center_wavelength DOUBLE, full_width_half_max DOUBLE)[], gsd BIGINT, \"proj:shape\" BIGINT[], \"proj:transform\" BIGINT[], \"raster:bands\" STRUCT(nodata BIGINT, data_type VARCHAR, spatial_resolution BIGINT, scale DOUBLE, \"offset\" DOUBLE)[], \"file:checksum\" VARCHAR, \"file:size\" BIGINT), nir STRUCT(href VARCHAR, title VARCHAR, \"type\" VARCHAR, roles VARCHAR[], \"eo:bands\" STRUCT(\"name\" VARCHAR, common_name VARCHAR, center_wavelength DOUBLE, full_width_half_max DOUBLE)[], gsd BIGINT, \"proj:shape\" BIGINT[], \"proj:transform\" BIGINT[], \"raster:bands\" STRUCT(nodata BIGINT, data_type VARCHAR, spatial_resolution BIGINT, scale DOUBLE, \"offset\" DOUBLE)[], \"file:checksum\" VARCHAR, \"file:size\" BIGINT))"
+        },
+        {
+          "name": "collection",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "datetime",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "start_datetime",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "end_datetime",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "ftw:calendar_year",
+          "type": "BIGINT"
+        },
+        {
+          "name": "ftw:split",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ftw:field_coverage_pct",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "ftw:hcat_dominant_code",
+          "type": "BIGINT"
+        },
+        {
+          "name": "ftw:hcat_dominant_name_en",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ftw:hcat_dominant_pct",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "ftw:hcat_top",
+          "type": "STRUCT(code BIGINT, name_en VARCHAR, pct DOUBLE)[]"
+        },
+        {
+          "name": "renders",
+          "type": "STRUCT(semantic_2class STRUCT(title VARCHAR, assets VARCHAR[], nodata BIGINT), semantic_3class STRUCT(title VARCHAR, assets VARCHAR[], nodata BIGINT), decode_boundary STRUCT(title VARCHAR, assets VARCHAR[], nodata BIGINT), decode_distance STRUCT(title VARCHAR, assets VARCHAR[], rescale BIGINT[][], nodata BIGINT, colormap_name VARCHAR), instance STRUCT(title VARCHAR, assets VARCHAR[], rescale DOUBLE[][], nodata BIGINT, colormap_name VARCHAR), planting_rgb STRUCT(title VARCHAR, assets VARCHAR[], bidx BIGINT[], rescale DOUBLE[][], nodata BIGINT), harvest_rgb STRUCT(title VARCHAR, assets VARCHAR[], bidx BIGINT[], rescale DOUBLE[][], nodata BIGINT))"
+        },
+        {
+          "name": "portolan:render_order",
+          "type": "VARCHAR[]"
+        },
+        {
+          "name": "ftw:planting_day",
+          "type": "BIGINT"
+        },
+        {
+          "name": "ftw:harvest_day",
+          "type": "BIGINT"
+        },
+        {
+          "name": "ftw:stac_host",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ftw:cloud_cover_chip_threshold",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "ftw:buffer_days",
+          "type": "BIGINT"
+        },
+        {
+          "name": "ftw:num_buffer_expansions",
+          "type": "BIGINT"
+        },
+        {
+          "name": "ftw:buffer_expansion_size",
+          "type": "BIGINT"
+        },
+        {
+          "name": "ftw:planting_buffer_used",
+          "type": "BIGINT"
+        },
+        {
+          "name": "ftw:harvest_buffer_used",
+          "type": "BIGINT"
+        },
+        {
+          "name": "ftw:expansions_performed",
+          "type": "BIGINT"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        },
+        {
+          "name": "eo:cloud_cover",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "ftw:season",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ftw:source",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')",
+          "description": "[geometry] Chip/field footprint geometry"
+        },
+        {
+          "name": "crop:name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "crop:name_en",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "block_id",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "hcat:name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "metrics:area",
+          "type": "FLOAT"
+        },
+        {
+          "name": "hcat:name_en",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "crop:code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "hcat:code",
+          "type": "UINTEGER"
+        },
+        {
+          "name": "gzd",
+          "type": "VARCHAR",
+          "description": "[spatial_index] MGRS grid zone designator"
+        },
+        {
+          "name": "mgrs_10km",
+          "type": "VARCHAR",
+          "description": "[spatial_index] MGRS 10km grid cell identifier"
+        },
+        {
+          "name": "field_coverage_pct",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "hcat_dominant_code",
+          "type": "BIGINT"
+        },
+        {
+          "name": "hcat_dominant_name_en",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "hcat_dominant_pct",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "hcat_top",
+          "type": "STRUCT(code BIGINT, name_en VARCHAR, pct DOUBLE)[]"
+        },
+        {
+          "name": "split",
+          "type": "VARCHAR"
+        }
+      ],
+      "description": "4 files sampled for this table"
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/ftw/benchmark-data/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/ftw/benchmark-data",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "rel": "describedby",
+      "href": "./README.md",
+      "type": "text/markdown",
+      "title": "Catalog README"
+    },
+    {
+      "rel": "agents",
+      "href": "./AGENTS.md",
+      "type": "text/markdown",
+      "title": "Catalog agent guide"
+    },
+    {
+      "rel": "llms",
+      "href": "./llms.txt",
+      "type": "text/plain",
+      "title": "llms.txt"
+    },
+    {
+      "rel": "about",
+      "href": "https://fieldsofthe.world",
+      "type": "text/html",
+      "title": "Fields of the World"
+    },
+    {
+      "rel": "cite-as",
+      "href": "https://doi.org/10.48550/arXiv.2409.16252",
+      "type": "text/html",
+      "title": "Fields of The World: A Machine Learning Benchmark Dataset For Global Agricultural Field Boundary Segmentation"
+    },
+    {
+      "rel": "vcs",
+      "href": "https://github.com/fieldsoftheworld/benchmark-data-catalog",
+      "title": "Source repository"
+    },
+    {
+      "rel": "issues",
+      "href": "https://github.com/fieldsoftheworld/benchmark-data-catalog/issues",
+      "title": "Issue tracker"
+    },
+    {
+      "rel": "cite-as",
+      "href": "https://doi.org/10.1609/aaai.v39i27.35034"
+    }
+  ],
   "ext_bytes": {
     "parquet": 2637085343,
     "tif": 863198241,
@@ -41,11 +669,46 @@
     "webp": 51312,
     "txt": 5005
   },
-  "store_format": null,
-  "_state": "seed",
+  "data_mode": null,
+  "created_at": "2026-09-07T19:08:04.340Z",
+  "account_id": "ftw",
+  "disabled": false,
+  "visibility": "public",
+  "updated_at": "2026-09-07T19:08:04.340Z",
+  "product_id": "benchmark-data",
+  "exts": {
+    "tif": 64547,
+    "json": 24249,
+    "jpg": 4968,
+    "md": 84,
+    "parquet": 13,
+    "pmtiles": 6,
+    "txt": 4,
+    "webp": 3
+  },
+  "objects_updated_at": "2026-09-11T17:01:15+00:00",
+  "featured": 0,
+  "object_count": 93874,
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "cataloged_at": "2026-09-14T09:09:35+00:00"
+  "mirrors": {
+    "aws-opendata-us-west-2": {
+      "prefix": "ftw/benchmark-data/",
+      "connection_id": "aws-opendata-us-west-2",
+      "is_primary": true
+    }
+  },
+  "total_bytes": 3994871987,
+  "readme": "## README.md\n# Fields of the World Benchmark Data\n\nTraining and evaluation data for models that delineate agricultural field\nboundaries. Each chip is a fixed 2 km cell of a shared, MGRS-derived grid,\ncarrying label masks rasterized from official field boundary declarations, a\ntrain / validation / test assignment, and \u2014 in most collections \u2014 paired\nSentinel-2 imagery. One collection per country or region.\n\nThis is version 2 of the benchmark introduced in [Fields of The World\n(AAAI 2025)](https://doi.org/10.1609/aaai.v39i27.35034). The boundaries come\nfrom the [harmonized field boundary\ncatalog](https://source.coop/ftw/harmonized-field-data), which republishes each\ncountry's own parcel declarations in one schema; the chips, masks and imagery\nhere are cut from it with\n[ftw-dataset-tools](https://github.com/fieldsoftheworld/ftw-dataset-tools)\n(`ftwd`) from a recipe committed in the [source\nrepository](https://github.com/fieldsoftheworld/benchmark-data-catalog/tree/main/datasets),\nso any collection can be rebuilt from the harmonized edition it names.\n\n[Browse the whole catalog](https://browser.portolan-sdi.org/#/external/data.source.coop/ftw/benchmark-data/catalog.json)\n\u00b7 [agent guide](https://source.coop/ftw/benchmark-data/AGENTS.md)\n\u00b7 [the paper](https://arxiv.org/abs/2409.16252)\n\u00b7 [version 1.0](https://source.coop/kerner-lab/fields-of-the-world)\n\n## Collections\n\n<!-- collections:start -->\n**3 collections \u00b7 17,120 chips \u00b7 1,553,660 field polygons**\n\n| Thumbnail | Collection | Chips | Splits (train/val/test) | Imagery | License | Source | Browse |\n| --- | --- | --- | --- | --- | --- | --- | --- |\n| <img src=\"https://data.source.coop/ftw/benchmark-data/at/thumbnail.webp\" alt=\"Austria\" width=\"120\"> | [Austria](https://source.coop/ftw/benchmark-data/at) | 11,242 | 9,018/1,153/1,071 | 1,022 linked | [CC-BY-4.0](https://spdx.org/licenses/CC-BY-4.0.html) | [harmonized/at](https://source.coop/ftw/harmonized-field-data/at) | [browse](https://browser.portolan-sdi.org/#/external/data.source.coop/ftw/benchmark-data/at/collection.json) |\n| <img src=\"https://data.source.coop/ftw/benchmark-data/lu/thumbnail.webp\" alt=\"Luxembourg\" width=\"120\"> | [Luxembourg](https://source.coop/ftw/benchmark-data/lu) | 775 | 601/79/95 | 680 stored | [CC-BY-4.0](https://spdx.org/licenses/CC-BY-4.0.html) | [harmonized/lu](https://source.coop/ftw/harmonized-field-data/lu) | [browse](https://browser.portolan-sdi.org/#/external/data.source.coop/ftw/benchmark-data/lu/collection.json) |\n| <img src=\"https://data.source.coop/ftw/benchmark-data/si/thumbnail.webp\" alt=\"Slovenia\" width=\"120\"> | [Slovenia](https://source.coop/ftw/benchmark-data/si) | 5,103 | 4,078/512/513 | 2,857 stored | [License](https://rkg.gov.si/vstop/) | [harmonized/si](https://source.coop/ftw/harmonized-field-data/si) | [browse](https://browser.portolan-sdi.org/#/external/data.source.coop/ftw/benchmark-data/si/collection.json) |\n\n### What each collection carries\n\n| Collection | Label masks | Sentinel-2 imagery | HCAT crop labels |\n| --- | --- | --- | --- |\n| [Austria](https://source.coop/ftw/benchmark-data/at) | 11,242 | 1,022 linked | 11,242 |\n| [Luxembourg](https://source.coop/ftw/benchmark-data/lu) | 775 | 680 stored | none |\n| [Slovenia](https://source.coop/ftw/benchmark-data/si) | 5,103 | 2,857 stored | 5,103 |\n\n`stored` means a four-band GeoTIFF clipped to the chip and published with it; `linked` means the chip's season item points at the whole Sentinel-2 scene on the source STAC API, for a reader to window. A chip with no scene still carries its masks and its split \u2014 pair it with imagery of your own, on the footprint in `items.parquet`.\n<!-- collections:end -->\n\n## Quick start\n\nEverything here runs against the published files over HTTPS: no download, no\ncredentials, no catalog walk.\n\nEach collection publishes `items.parquet`, a\n[stac-geoparquet](https://github.com/stac-utils/stac-geoparquet) mirror of every\nSTAC item it holds, carrying a public URL for every asset. One query is\ntherefore enough to build a training list \u2014 chip id, split, and the URLs of the\nrasters themselves:\n\n```sql\nINSTALL httpfs; LOAD httpfs;\n\nSELECT id,\n       \"ftw:split\",\n       \"ftw:field_coverage_pct\",\n       assets.semantic_2class_mask.href AS mask,\n       assets.planting_image.href       AS planting_image\nFROM read_parquet('https://data.source.coop/ftw/benchmark-data/lu/items.parquet')\nWHERE \"ftw:split\" = 'train'\nLIMIT 5;\n```\n\nSwap `lu` for any collection id in the table above. `assets` is a struct, so\n`DESCRIBE SELECT assets.* FROM read_parquet(...)` lists what a given\ncollection's chips actually carry: where imagery is `linked` rather than\n`stored`, ask for `assets.planting_visual.href` and window the scene yourself.\n\nTo look before you query, open the [data\nbrowser](https://browser.portolan-sdi.org/#/external/data.source.coop/ftw/benchmark-data/catalog.json).\nIt renders the collections, their chip footprints and the map styles each one\nships; the Browse column above opens a single collection in it.\n\n## What a chip carries\n\nEvery chip is a STAC item on the FTW grid, so a cell id is the same square of\nground in every collection. Each chip carries:\n\n- **Instance masks** \u2014 one integer label per field polygon, for instance\n  segmentation.\n- **Semantic masks** \u2014 2-class (field / not field) and 3-class (interior /\n  boundary / not field), the two semantic label forms the FTW paper benchmarks.\n- **DECODE masks** \u2014 a boundary mask and a normalized distance-to-boundary map,\n  after [Waldner et al. (2021)](https://doi.org/10.3390/rs13112197). A distance\n  surface lets a watershed separate touching fields that a binary extent mask\n  merges into one. New in 2.0.\n- **A split assignment** \u2014 `train`, `val` or `test`, drawn in 3\u00d73 spatial blocks\n  (80 / 10 / 10) so that neighbouring chips do not straddle two splits and a\n  model cannot learn a test chip from its training neighbour.\n- **Field coverage**, the share of the chip's area that is mapped field, and \u2014\n  where the harmonized source carries\n  [EuroCrops HCAT](https://github.com/maja601/EuroCrops) codes \u2014 the crop\n  composition of the fields inside it.\n- **Sentinel-2 scenes**, in the collections that have them: one from the\n  planting window and one from the harvest window of the region's crop\n  calendar, published as child items alongside the chip. Which collections\n  carry imagery, and in what shape, is in the coverage table above.\n\n## What a collection carries\n\nAlongside the chip items, each collection publishes the tables the chips were\ncut from and a mirror of the items themselves:\n\n- `<id>_fields.parquet`, the field polygons used, and\n  `<id>_boundary_lines.parquet`, their boundaries as lines.\n- `<id>_chips.parquet`: every chip with its footprint, split assignment and\n  field coverage.\n- `items.parquet`: the stac-geoparquet mirror the quick start queries.\n- `chips.pmtiles` and `fields.pmtiles`, with ready-made map styles under\n  `styles/`, for looking at a collection before training on it.\n- `README.md`, `AGENTS.md`, `llms.txt` and a thumbnail. A collection's README\n  carries the numbers measured for that collection \u2014 split counts, the\n  field-coverage distribution, imagery dates and cloud cover; its agent guide\n  documents every column and ships worked queries with their results.\n\n## Limitations\n\nWorth reading before publishing a number from this benchmark.\n\n- **Imagery is not uniform.** See the coverage table above. A labels-only\n  collection is still usable \u2014 every chip's footprint and grid cell are in\n  `items.parquet` \u2014 but it is not a drop-in substitute for one with scenes.\n- **Labels are declarations, not observations.** Masks come from parcels\n  declared for one year, and the declaration year differs between collections.\n  Parcels subdivided, merged or reshaped after that declaration are not\n  reflected.\n- **Empty means unmapped, not fieldless.** Area inside a chip with no polygon\n  may be a field nobody declared. Chips on the edge of a source dataset may be\n  only partly covered by it.\n- **Field coverage is skewed.** Filter on `ftw:field_coverage_pct` when sparse\n  chips would distort an evaluation; each collection's README gives its own\n  distribution.\n- **Respect the splits.** They are spatially blocked. Resampling chips at\n  random leaks information between train and test.\n- **Cloud-free is not guaranteed.** Scenes are selected against a crop calendar\n  within a cloud threshold, so acquisition dates and residual cloud vary\n  between chips \u2014 check `ftw:planting_cloud_cover` and\n  `ftw:harvest_cloud_cover`.\n\n## Compared with Fields of the World 1.0\n\nVersion 1.0 remains published, unchanged, at\n[kerner-lab/fields-of-the-world](https://source.coop/kerner-lab/fields-of-the-world):\n24 countries, some 70,000 chips and 1.6 million field polygons, one zipped\nfolder per country. Version 2 is a rebuild rather than a re-release. It cuts\nevery collection from the harmonized field boundary catalog instead of a\none-off per-country conversion, so a collection can be regenerated when its\nsource publishes a new edition; it adds the DECODE boundary and distance masks;\nand it publishes the chips as STAC with a queryable item mirror rather than\nfolders of files. Each collection's own README states, in measured numbers, how\nit compares with the 1.0 folder it supersedes.\n\nVersion 2 is still being built out and does not yet cover everything 1.0 does \u2014\nthe collections table above is the whole of it. Use 1.0 for anything version 2\nhas not published yet.\n\n## Versioning\n\nThis edition is `2.0.0-alpha.1`. While it is in alpha, collections are updated\nin place: a rebuild replaces the published files at the same URLs, and the\n`updated` stamp in a collection's `collection.json` says when that last\nhappened. Treat any collection here as a moving target until 2.0.0 is released.\n\n## License\n\nThere is no single license for this catalog. Each collection carries the\nlicense of the field boundary data it was cut from \u2014 the License column above,\nand the collection's own page \u2014 and the masks derived from those boundaries are\npublished under the same terms as their source. Check the collection you intend\nto use before redistributing it or the models trained on it. Sentinel-2 imagery\nis Copernicus data, free and open.\n\n## Citation\n\nIf you use this data in published work, please cite the benchmark paper and\nname the release you used.\n\n```bibtex\n@article{kerner2025fields,\n  title   = {Fields of The World: A Machine Learning Benchmark Dataset for Global Agricultural Field Boundary Segmentation},\n  author  = {Kerner, Hannah and Chaudhari, Snehal and Ghosh, Aninda and Robinson, Caleb and Ahmad, Adeel and Choi, Eddie and Jacobs, Nathan and Holmes, Chris and Mohr, Matthias and Dodhia, Rahul and Lavista Ferres, Juan M and Marcus, Jennifer},\n  journal = {Proceedings of the AAAI Conference on Artificial Intelligence},\n  volume  = {39},\n  number  = {27},\n  pages   = {28151--28159},\n  year    = {2025},\n  doi     = {10.1609/aaai.v39i27.35034},\n  url     = {https://ojs.aaai.org/index.php/AAAI/article/view/35034}\n}\n```\n\nFor the data itself: *Fields of the World Benchmark Data*, version\n`2.0.0-alpha.1`, [Source Cooperative](https://source.coop/ftw/benchmark-data),\naccessed *YYYY-MM-DD*. Collections are updated in place while in alpha, so\nrecord the date you took them, and the `updated` stamp of each collection you\nused.\n\n## Contact\n\nOpen an\n[issue](https://github.com/fieldsoftheworld/benchmark-data-catalog/issues) for a\nproblem with the data or a request for a country. Agents should start from the\n[agent guide](https://source.coop/ftw/benchmark-data/AGENTS.md), the\nmachine-readable tour of the same material;\n[llms.txt](https://data.source.coop/ftw/benchmark-data/llms.txt) is the short\nindex.\n",
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
+    "providers: role [producer, licensor] for 'National land parcel / cadastral agencies (Austria, Luxembourg, Slovenia)' is an AI guess \u2014 README states boundaries come from each country's own official parcel declarations, republished via the harmonized field boundary catalog, but does not name the specific national agencies.. Verify before flipping to _state: reviewed.",
+    "providers: role [producer] for 'Copernicus / European Space Agency' is an AI guess \u2014 Sentinel-2 imagery paired with chips is stated to be Copernicus data; the specific provider is inferred from standard Sentinel-2 attribution, not spelled out in the README.. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-09-14T09:30:19+00:00",
+  "_source_format": "stac",
+  "store_format": null
 }
