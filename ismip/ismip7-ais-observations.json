@@ -1,0 +1,173 @@
+{
+  "schema_version": 1,
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "ismip/ismip7-ais-observations",
+  "title": "ISMIP7 Antarctic Observational Datasets",
+  "description": "A curated collection of third-party Antarctic observational datasets assembled for the ISMIP7 ice-sheet modelling protocol (the \"Observational MIPkit\"), comprising a merged NetCDF of bed/surface topography, ice masks, thickness-change rates, geothermal heat flux, and surface velocity on a common 500 m polar-stereographic grid, plus regridded ocean topography and drainage basins, a Southern Ocean hydrographic climatology, and glacier calving-front, velocity, and cliff-height observations.",
+  "keywords": [
+    "cryosphere",
+    "topography",
+    "oceanography",
+    "digital-elevation-model",
+    "climate",
+    "lidar"
+  ],
+  "providers": [
+    {
+      "name": "ISMIP7 Observations Focus Group",
+      "roles": [
+        "producer",
+        "processor"
+      ]
+    },
+    {
+      "name": "Mathieu Morlighem",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "NASA MEaSUREs / NSIDC DAAC",
+      "roles": [
+        "producer",
+        "licensor",
+        "host"
+      ]
+    },
+    {
+      "name": "UK Polar Data Centre (Bedmap3)",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Zhou et al. / SEANOE",
+      "roles": [
+        "producer",
+        "host"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/ismip/ismip7-ais-observations"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -180.0,
+          -90.0,
+          180.0,
+          -51.8495669
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "1972-01-01T00:00:00Z",
+          "2024-01-01T00:00:00Z"
+        ]
+      ]
+    }
+  },
+  "assets": {
+    "data/calving/velocities": {
+      "href": "https://data.source.coop/ismip/ismip7-ais-observations/data/calving/velocities/",
+      "type": "application/x-netcdf",
+      "title": "data/calving/velocities/ (13 \u00d7 .nc)",
+      "roles": [
+        "data"
+      ]
+    },
+    "data/ocean": {
+      "href": "https://data.source.coop/ismip/ismip7-ais-observations/data/ocean/",
+      "type": "application/x-netcdf",
+      "title": "data/ocean/ (6 \u00d7 .nc)",
+      "roles": [
+        "data"
+      ],
+      "bbox": [
+        -180.0,
+        -90.0,
+        179.849222,
+        -51.8495669
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/ismip/ismip7-ais-observations/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/ismip/ismip7-ais-observations",
+      "title": "Source Cooperative product page"
+    }
+  ],
+  "featured": 0,
+  "updated_at": "2026-09-11T10:07:27.256Z",
+  "account_id": "ismip",
+  "data_mode": null,
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "ext_bytes": {
+    "nc": 9518640227,
+    "txt": 18657,
+    "md": 11797,
+    "shp": 10592,
+    "qmd": 4356,
+    "prj": 1559,
+    "csv": 1098,
+    "dbf": 828,
+    "shx": 688,
+    "cpg": 30
+  },
+  "object_count": 53,
+  "visibility": "public",
+  "exts": {
+    "nc": 20,
+    "md": 6,
+    "csv": 4,
+    "prj": 4,
+    "shp": 4,
+    "dbf": 4,
+    "shx": 4,
+    "cpg": 4,
+    "qmd": 2,
+    "txt": 1
+  },
+  "total_bytes": 9518689832,
+  "mirrors": {
+    "aws-opendata-us-west-2": {
+      "connection_id": "aws-opendata-us-west-2",
+      "prefix": "ismip/ismip7-ais-observations/",
+      "is_primary": true
+    }
+  },
+  "product_id": "ismip7-ais-observations",
+  "created_at": "2026-09-11T10:07:27.256Z",
+  "disabled": false,
+  "objects_updated_at": "2026-09-11T10:27:43+00:00",
+  "readme": "## data__README.md\n# ISMIP7 Antarctic observational datasets\n\nObservational datasets collected for the ISMIP7 Antarctic experiments, provided as a\nconvenience for ice-sheet modellers rather than as part of the ISMIP7 protocol. This is\nthe collection the protocol refers to as the **Observational MIPkit**. Nothing here is\nrequired: modellers are free to initialise and calibrate from other data.\n\nEverything in this collection is third-party. **Each dataset carries its own licence and\ncitation**, given in the `README.md` of its directory and summarised here. Licence\ntexts are in [`LICENSES/`](LICENSES/).\n\n| Directory | Contents | Licence |\n| --- | --- | --- |\n| `mipkit/` | `AntarcticaObsISMIP7-v1.2.nc` \u2014 the ISMIP7 observations MIPkit: topography and masks (BedMachine, Bedmap3), ice-presence mask, thickness-change rates, geothermal heat flux, surface velocity mosaics and time series, and drainage basins, on a common 500 m polar-stereographic grid | Compiled by the ISMIP7 observations group, who state no restrictions on access or use; each component has its own citation \u2014 see the directory README |\n| `ocean/topography/` | Bedmap3 and BedMachine Antarctica v3 regridded to the ISMIP7 8 km ocean grid | Bedmap3: CC-BY-4.0. BedMachine: no restrictions on access or use |\n| `ocean/IMBIE-basins/` | IMBIE drainage basins on the ISMIP7 8 km ocean grid, from the MEaSUREs Antarctic Boundaries dataset | NASA MEaSUREs product, no licence stated; cite Mouginot et al. (2017) |\n| `ocean/climatology/zhou_annual_06_nov/` | The OCEAN ICE Southern Ocean climatology (Zhou et al.) on the ISMIP7 8 km / 60 m grid \u2014 the reference the ISMIP7 AIS ocean forcing is bias-corrected to | CC-BY-4.0 |\n| `calving/` | Ice-front positions, velocities and cliff heights for four glaciers with tall calving cliffs, from a manuscript in review \u2014 see `calving/README.md` by its authors | The authors have not yet attached a licence; please contact them before reuse beyond ISMIP7 |\n\n## Citing\n\nCite the original dataset for anything you use, as given in each directory's README. The\nobservations MIPkit itself will receive a DOI and a publication; until then, see the\nISMIP7 observations focus group page for the current guidance on citing and\nacknowledging it: https://www.ismip.org/participants/focus-groups/observations\n\n## Licences\n\n- `LICENSES/CC-BY-4.0.txt` \u2014 Creative Commons Attribution 4.0 International,\n  https://creativecommons.org/licenses/by/4.0/\n\n## Contact\n\nISMIP7 observations focus group, via the ISMIP discussion board:\nhttps://github.com/orgs/ismip/discussions\n\n\n## data__calving__README.md\n# High-end calving calibration data\n\nThe files provided contain part of the dataset generated for the submitted manuscript, \u201cEmpirical constraints on ice-cliff calving.\u201d [(preprint)](https://doi.org/10.21203/rs.3.rs-7133627/v1).\nThe dataset includes ice front positions, velocities, and cliff heights for four glaciers where we observed ice cliff heights above 90 m using ICESat-2 and that undergo ice-front retreat from 2019-2023. \n\n## Dataset context\nThese observations include four glaciers where the calving of tall cliffs resulted in rapid but short-lived retreat. Eventually, all cliffs subsequently advanced, during which dynamic thinning either rapidly reduced the cliff height, or the cliffs re-advanced with little/no change in height. Contrary to existing parameterizations of MICI, calving rates did not always monotonically increase with cliff height, even after very tall cliffs formed and retreat into thicker ice occurred. Nonetheless, the data should be useful to calibrate calving rates in locations where tall cliffs retreat rapidly.\n\n### Glaciers\nFrost Glacier, East Antarctica<br>\nFleming Glacier, Antarctic Peninsula<br>\nCommandant Charcot Glacier, East Antarctica<br>\nTuttulikassaap Sermia (Hayes Glacier), Greenland<br>\n\n## Variables \n\n### ice_fronts\nEach folder (labeled by glacier name) contains a shapefile of the ice front positions over the survey period. Each shapefile contains two columns:\n\n'id': the date of the ice front trace in YYYYMMDD<br>\n'geometry': a linestring of the ice front in x,y polar stereographic coordinates (EPSG 3031/3413)\n\n### velocities\nEach folder (labeled by glacier name) contains netcdf files with velocity data generated using auto-RIFT (Gardner et al., 2018) and provided by the NASA MEaSUREs ITS_LIVE project, cropped to the glacier area.\n\n'v': mean annual velocity (m/y)<br>\n'x': x-coordinate (EPSG 3031/3413)<br>\n'y': y-coordinate (EPSG 3031/3413)<br>\n\n### cliff_heights\nThis folder contains a .csv file for each glacier. Ice cliff coordinates and heights were collected by ICESat-2 and are therefore point (not gridded) data.\n\n'x': x-coordinate of ice cliff (EPSG 3031/3413)<br>\n'y': y-coordinate of ice cliff(EPSG 3031/3413)<br>\n'cliff_height': elevation of ice cliff above the waterline (m)<br>\n'date': date of ice cliff measurement (YYYY-MM-DD)\n\n\n## data__mipkit__README.md\n# ISMIP7 observations MIPkit for Antarctica\n\n`AntarcticaObsISMIP7-v1.2.nc` (v1.2, 12 May 2026), compiled by Mathieu Morlighem on\nbehalf of the ISMIP7 observations group. One file, 500 m polar-stereographic grid\n(EPSG:3031), with the sources below recorded in each variable's `source` attribute.\n\nThe file states `license: No restrictions on access or use`. It will receive a DOI and\nbe presented in a publication; for the current guidance on citing or acknowledging it,\nsee https://www.ismip.org/participants/focus-groups/observations. Please also cite the\noriginal dataset for each variable you use.\n\n## Contents and sources\n\n| Variables | Source |\n| --- | --- |\n| `mask_bedmachine`, `surface_bedmachine`, `thickness_bedmachine`, `bed_bedmachine` | BedMachine Antarctica v4.1 (Morlighem et al., 2020) |\n| `mask_bedmap3`, `surface_bedmap3`, `thickness_bedmap3`, `bed_bedmap3` | Bedmap3 (Pritchard et al., 2025) \u2014 CC-BY-4.0 |\n| `icemask_greene` | Ice-presence mask, Greene et al. (2022) |\n| `dhdt_smith` | Thickness change from ICESat and ICESat-2, Smith et al. (2020) |\n| `dhdt_cpom` | Thickness change from radar altimetry (ERS-1, ERS-2, Envisat, CryoSat-2, Sentinel-3A/B), CPOM |\n| `geothermal_heat_flux1` | St\u00e5l et al. (2021) |\n| `geothermal_heat_flux2` | L\u00f6sing and Ebbing (2021) |\n| `vx_mosaic`, `vy_mosaic` | MEaSUREs InSAR-based Antarctica ice velocity map, version 2 (Rignot et al., 2017) |\n| `vx_timeseries`, `vy_timeseries` | Annual velocity time series (source not recorded in the file) |\n| `mouginot_basins` | Drainage basins of Mouginot et al. (2017), extrapolated |\n| `geoid` | EIGEN-6C4 geoid minus WGS84 ellipsoid |\n\n## Citations\n\n- Morlighem, M. et al. (2020). Deep glacial troughs and stabilizing ridges unveiled beneath the margins of the Antarctic ice sheet. *Nature Geoscience*, 13, 132\u2013137. https://doi.org/10.1038/s41561-019-0510-8\n- Pritchard, H. D. et al. (2025). Bedmap3 updated ice bed, surface and thickness gridded datasets for Antarctica. *Scientific Data*, 12, 414. https://doi.org/10.1038/s41597-025-04672-y\n- Greene, C. A., Gardner, A. S., Schlegel, N.-J. and Fraser, A. D. (2022). Antarctic calving loss rivals ice-shelf thinning. *Nature*, 609, 948\u2013953. https://doi.org/10.1038/s41586-022-05037-w\n- Smith, B. et al. (2020). Pervasive ice sheet mass loss reflects competing ocean and atmosphere processes. *Science*, 368, 1239\u20131242. https://doi.org/10.1126/science.aaz5845\n- St\u00e5l, T., Reading, A. M., Halpin, J. A. and Whittaker, J. M. (2021). Antarctic geothermal heat flow model: Aq1. *Geochemistry, Geophysics, Geosystems*, 22, e2020GC009428. https://doi.org/10.1029/2020GC009428\n- L\u00f6sing, M. and Ebbing, J. (2021). Predicting geothermal heat flow in Antarctica with a machine learning approach. *Journal of Geophysical Research: Solid Earth*, 126, e2020JB021499. https://doi.org/10.1029/2020JB021499\n- Rignot, E., Mouginot, J. and Scheuchl, B. (2017). MEaSUREs InSAR-Based Antarctica Ice Velocity Map, Version 2 [Data set]. NASA National Snow and Ice Data Center Distributed Active Archive Center. https://doi.org/10.5067/D7GK8F5J8M8R\n- Mouginot, J., Scheuchl, B. and Rignot, E. (2017). MEaSUREs Antarctic Boundaries for IPY 2007\u20132009 from Satellite Radar, Version 2 [Data set]. NASA National Snow and Ice Data Center Distributed Active Archive Center. https://doi.org/10.5067/AXE4121732AD\n\n\n## data__ocean__IMBIE-basins__README.md\n# IMBIE drainage basins on the ISMIP7 8 km ocean grid\n\n`IMBIE-basins_AIS_obs_ocean_v3.nc`: the IMBIE Antarctic drainage basins from the\nMEaSUREs Antarctic Boundaries dataset of Mouginot, Scheuchl and Rignot, rasterised onto\nthe ISMIP7 8 km grid by the ISMIP7 AIS ocean focus group. The same basins on the other\nISMIP7 grids are in the melt-calibration collection (`imbie2/`).\n\n## Licence\n\nNASA MEaSUREs product. The data are freely available; the provider states no licence.\nPlease cite:\n\n- Mouginot, J., Scheuchl, B. and Rignot, E. (2017). MEaSUREs Antarctic Boundaries for IPY 2007\u20132009 from Satellite Radar, Version 2 [Data set]. NASA National Snow and Ice Data Center Distributed Active Archive Center. https://doi.org/10.5067/AXE4121732AD\n\n\n## data__ocean__climatology__zhou_annual_06_nov__README.md\n# OCEAN ICE Southern Ocean climatology on the ISMIP7 grid\n\nAnnual climatology (1972\u20132024) of practical salinity (`so/`), thermal forcing (`tf/`)\nand potential temperature (`thetao/`) from the OCEAN ICE Southern Ocean Climatology of\nZhou et al., regridded to the ISMIP7 8 km / 60 m grid and extrapolated under the ice\nshelves by the ISMIP7 AIS ocean focus group. This is the climatology the ISMIP7 AIS\nocean forcing is bias-corrected to (reference period 1995\u20132024).\n\n## Licence\n\nCC-BY-4.0 (Creative Commons Attribution 4.0 International), as attached to the source\ndatasets on SEANOE. The licence text is in `LICENSES/CC-BY-4.0.txt` at the top of the `obs/` collection.\n\n## Citations\n\n- Zhou, S., Dutrieux, P. and Giulivi, C. (2024). The OCEAN ICE Southern Ocean Climatology [Data set]. SEANOE. https://doi.org/10.17882/103946\n- Zhou, S., Dutrieux, P., Giulivi, C., Lee, W. S., Kim, T.-W., Hattermann, T. and Janout, M. (2026). Southern Ocean (90\u00b0S\u201345\u00b0S) conservative temperature and absolute salinity profiles compilation (OCEAN ICE D1.1) [Data set]. SEANOE. https://doi.org/10.17882/99787\n- Zhou, S., Dutrieux, P., Giulivi, C., Meijers, A., Lee, W. S., Kim, T.-W., Hattermann, T. and Janout, M. (2026). The OCEAN ICE hydrography profiles compilation and climatology. *Earth System Science Data Discussions* [preprint], in review. https://doi.org/10.5194/essd-2025-727\n\n\n## data__ocean__topography__README.md\n# Topography on the ISMIP7 8 km ocean grid\n\nBedmap3 and BedMachine Antarctica v3, conservatively regridded to the ISMIP7 8 km grid\nby the ISMIP7 AIS ocean focus group, with floating and grounded fractions per cell.\nEach file keeps the global attributes of its source.\n\n## Licences and citations\n\n**`bedmap3/bedmap3_AIS_obs_ocean_topography_v3.nc`** \u2014 CC-BY-4.0 (Creative Commons\nAttribution 4.0 International), as stated by the UK Polar Data Centre. Licence text in\n`../../LICENSES/CC-BY-4.0.txt`.\n\n- Pritchard, H. D. et al. (2025). Bedmap3 updated ice bed, surface and thickness gridded datasets for Antarctica. *Scientific Data*, 12, 414. https://doi.org/10.1038/s41597-025-04672-y\n- Pritchard, H. et al. (2024). BEDMAP3 \u2013 Ice thickness, bed and surface elevation for Antarctica \u2013 gridding products [Data set]. NERC EDS UK Polar Data Centre. https://doi.org/10.5285/2d0e4791-8e20-46a3-80e4-f5f6716025d2\n\n**`BedMachineAntarctica-v3/BedMachineAntarctica-v3_AIS_obs_ocean_topography_v3.nc`** \u2014\nthe source file states \"No restrictions on access or use\".\n\n- Morlighem, M. et al. (2020). Deep glacial troughs and stabilizing ridges unveiled beneath the margins of the Antarctic ice sheet. *Nature Geoscience*, 13, 132\u2013137. https://doi.org/10.1038/s41561-019-0510-8\n- Morlighem, M. (2022). MEaSUREs BedMachine Antarctica, Version 3 [Data set]. NASA National Snow and Ice Data Center Distributed Active Archive Center. https://doi.org/10.5067/FPSU0V1MWUB6\n",
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
+    "providers: role [producer] for 'Mathieu Morlighem' is an AI guess \u2014 Credited as the individual who compiled the MIPkit NetCDF on behalf of the ISMIP7 observations group.. Verify before flipping to _state: reviewed.",
+    "providers: role [producer, licensor, host] for 'NASA MEaSUREs / NSIDC DAAC' is an AI guess \u2014 Original distributor of BedMachine Antarctica, MEaSUREs Antarctic Boundaries (IMBIE basins), and the InSAR-based ice velocity mosaic used as inputs.. Verify before flipping to _state: reviewed.",
+    "providers: role [producer, host] for 'Zhou et al. / SEANOE' is an AI guess \u2014 SEANOE hosts the OCEAN ICE Southern Ocean Climatology that was regridded for this collection.. Verify before flipping to _state: reviewed.",
+    "extent.temporal: ['1993-07-02T00:00:00', '2019-07-02T00:00:00'] (probe sample) widened to ['1972-01-01T00:00:00Z', '2024-01-01T00:00:00Z'] using README-stated coverage ['1972', '2024']."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-09-14T09:23:01+00:00",
+  "store_format": null
+}
