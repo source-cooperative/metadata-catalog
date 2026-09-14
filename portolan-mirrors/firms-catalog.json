@@ -1,33 +1,2785 @@
 {
   "schema_version": 1,
-  "account_id": "portolan-mirrors",
-  "product_id": "firms-catalog",
-  "title": "NASA FIRMS Portolan Catalog",
-  "description": "Cloud-native Mirror (GeoParquet & PMTiles, organized with Portolan) of NASA FIRMS:\r\n\r\n'The Fire Information for Resource Management System (FIRMS) distributes Near Real-Time (NRT) active fire data from the Moderate Resolution Imaging Spectroradiometer (MODIS) aboard the Aqua and Terra satellites, and the Visible Infrared Imaging Radiometer Suite (VIIRS) aboard S-NPP, NOAA 20 and NOAA 21 (formally known as JPSS-1 and JPSS-2). Globally these data are available within 3 hours of satellite observation, but for the US and Canada active fire detections are available in real-time.'",
-  "keywords": [],
-  "created_at": "2026-09-08T06:42:47.821Z",
-  "updated_at": "2026-09-08T06:42:47.821Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": null,
-  "mirrors": {
-    "aws-opendata-us-west-2": {
-      "connection_id": "aws-opendata-us-west-2",
-      "is_primary": true,
-      "prefix": "portolan-mirrors/firms-catalog/"
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
+  "id": "portolan-mirrors/firms-catalog",
+  "title": "NASA FIRMS Active Fire Detections",
+  "description": "Global active fire and thermal anomaly detections from NASA's Fire Information for Resource Management System (FIRMS), combining MODIS (since November 2000) and VIIRS (since January 2012) satellite observations into a single cloud-native GeoParquet table, updated hourly with near-real-time detections that are later replaved by science-quality data. This is a direct mirror of the FIRMS area API output, not a derived or filtered product.",
+  "license": "CC0-1.0",
+  "keywords": [
+    "wildfire",
+    "conservation",
+    "remote-sensing",
+    "satellite-imagery",
+    "earth-observation",
+    "geoparquet",
+    "global-coverage",
+    "time-series",
+    "environmental-monitoring"
+  ],
+  "providers": [
+    {
+      "name": "NASA LANCE FIRMS",
+      "description": "Fire Information for Resource Management System, part of NASA's Earth Observing System Data and Information System (EOSDIS).",
+      "roles": [
+        "producer",
+        "licensor"
+      ],
+      "url": "https://firms.modaps.eosdis.nasa.gov/"
+    },
+    {
+      "name": "Portolan Mirrors",
+      "roles": [
+        "host"
+      ],
+      "url": "https://github.com/portolan-mirrors/firms-catalog"
+    },
+    {
+      "name": "NASA FIRMS (LANCE)",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "portolan-mirrors",
+      "roles": [
+        "processor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/portolan-mirrors/firms-catalog"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -179.99501,
+          -89.69073,
+          179.99673,
+          87.4687
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2000-11-01T00:00:00Z",
+          null
+        ]
+      ]
     }
   },
-  "object_count": 71,
-  "objects_updated_at": "2026-09-11T11:47:29+00:00",
-  "total_bytes": 12164309448,
-  "exts": {
-    "json": 35,
-    "parquet": 28,
-    "md": 4,
-    "pmtiles": 3,
-    "jpg": 1
+  "summaries": {
+    "item_count": 111040
   },
+  "assets": {
+    "detections/stats-r5": {
+      "href": "https://data.source.coop/portolan-mirrors/firms-catalog/detections/stats-r5/",
+      "type": "application/x-parquet",
+      "title": "detections/stats-r5",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "a5_cell",
+          "type": "UBIGINT",
+          "description": "[spatial_index] A5 hexagonal spatial index cell identifier (finer resolution) for aggregated monthly detection counts."
+        },
+        {
+          "name": "w",
+          "type": "DOUBLE",
+          "description": "[latlon] Western bounding longitude of the A5 cell."
+        },
+        {
+          "name": "s",
+          "type": "DOUBLE",
+          "description": "[latlon] Southern bounding latitude of the A5 cell."
+        },
+        {
+          "name": "e",
+          "type": "DOUBLE",
+          "description": "[latlon] Eastern bounding longitude of the A5 cell."
+        },
+        {
+          "name": "n",
+          "type": "DOUBLE",
+          "description": "[latlon] Northern bounding latitude of the A5 cell."
+        },
+        {
+          "name": "count_200011",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200012",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200101",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200102",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200103",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200104",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200105",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200106",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200107",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200108",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200109",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200110",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200111",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200112",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200201",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200202",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200203",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200204",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200205",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200206",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200207",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200208",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200209",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200210",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200211",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200212",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200301",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200302",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200303",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200304",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200305",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200306",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200307",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200308",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200309",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200310",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200311",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200312",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200401",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200402",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200403",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200404",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200405",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200406",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200407",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200408",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200409",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200410",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200411",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200412",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200501",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200502",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200503",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200504",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200505",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200506",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200507",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200508",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200509",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200510",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200511",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200512",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200601",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200602",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200603",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200604",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200605",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200606",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200607",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200608",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200609",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200610",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200611",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200612",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200701",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200702",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200703",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200704",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200705",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200706",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200707",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200708",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200709",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200710",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200711",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200712",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200801",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200802",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200803",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200804",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200805",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200806",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200807",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200808",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200809",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200810",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200811",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200812",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200901",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200902",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200903",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200904",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200905",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200906",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200907",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200908",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200909",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200910",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200911",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200912",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201001",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201002",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201003",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201004",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201005",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201006",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201007",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201008",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201009",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201010",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201011",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201012",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201101",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201102",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201103",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201104",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201105",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201106",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201107",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201108",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201109",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201110",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201111",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201112",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201201",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201202",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201203",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201204",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201205",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201206",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201207",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201208",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201209",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201210",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201211",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201212",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201301",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201302",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201303",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201304",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201305",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201306",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201307",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201308",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201309",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201310",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201311",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201312",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201401",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201402",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201403",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201404",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201405",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201406",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201407",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201408",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201409",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201410",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201411",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201412",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201501",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201502",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201503",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201504",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201505",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201506",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201507",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201508",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201509",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201510",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201511",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201512",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201601",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201602",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201603",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201604",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201605",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201606",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201607",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201608",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201609",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201610",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201611",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201612",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201701",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201702",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201703",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201704",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201705",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201706",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201707",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201708",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201709",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201710",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201711",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201712",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201801",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201802",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201803",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201804",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201805",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201806",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201807",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201808",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201809",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201810",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201811",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201812",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201901",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201902",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201903",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201904",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201905",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201906",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201907",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201908",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201909",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201910",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201911",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201912",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202001",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202002",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202003",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202004",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202005",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202006",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202007",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202008",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202009",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202010",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202011",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202012",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202101",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202102",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202103",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202104",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202105",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202106",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202107",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202108",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202109",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202110",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202111",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202112",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202201",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202202",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202203",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202204",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202205",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202206",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202207",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202208",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202209",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202210",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202211",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202212",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202301",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202302",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202303",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202304",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202305",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202306",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202307",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202308",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202309",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202310",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202311",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202312",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202401",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202402",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202403",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202404",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202405",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202406",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202407",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202408",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202409",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202410",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202411",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202412",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202501",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202502",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202503",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202504",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202505",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202506",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202507",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202508",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202509",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202510",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202511",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202512",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202601",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202602",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202603",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202604",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202605",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202606",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202607",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202608",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202609",
+          "type": "BIGINT"
+        }
+      ],
+      "description": "5 files sampled for this table",
+      "item_count": 37960
+    },
+    "detections/stats": {
+      "href": "https://data.source.coop/portolan-mirrors/firms-catalog/detections/stats/",
+      "type": "application/x-parquet",
+      "title": "detections/stats",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "a5_cell",
+          "type": "UBIGINT",
+          "description": "[spatial_index] A5 hexagonal spatial index cell identifier for aggregated monthly detection counts."
+        },
+        {
+          "name": "w",
+          "type": "DOUBLE",
+          "description": "[latlon] Western bounding longitude of the A5 cell."
+        },
+        {
+          "name": "s",
+          "type": "DOUBLE",
+          "description": "[latlon] Southern bounding latitude of the A5 cell."
+        },
+        {
+          "name": "e",
+          "type": "DOUBLE",
+          "description": "[latlon] Eastern bounding longitude of the A5 cell."
+        },
+        {
+          "name": "n",
+          "type": "DOUBLE",
+          "description": "[latlon] Northern bounding latitude of the A5 cell."
+        },
+        {
+          "name": "count_200011",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200012",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200101",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200102",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200103",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200104",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200105",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200106",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200107",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200108",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200109",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200110",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200111",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200112",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200201",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200202",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200203",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200204",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200205",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200206",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200207",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200208",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200209",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200210",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200211",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200212",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200301",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200302",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200303",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200304",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200305",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200306",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200307",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200308",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200309",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200310",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200311",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200312",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200401",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200402",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200403",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200404",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200405",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200406",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200407",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200408",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200409",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200410",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200411",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200412",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200501",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200502",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200503",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200504",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200505",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200506",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200507",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200508",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200509",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200510",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200511",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200512",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200601",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200602",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200603",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200604",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200605",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200606",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200607",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200608",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200609",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200610",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200611",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200612",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200701",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200702",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200703",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200704",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200705",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200706",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200707",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200708",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200709",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200710",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200711",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200712",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200801",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200802",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200803",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200804",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200805",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200806",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200807",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200808",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200809",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200810",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200811",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200812",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200901",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200902",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200903",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200904",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200905",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200906",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200907",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200908",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200909",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200910",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200911",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_200912",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201001",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201002",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201003",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201004",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201005",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201006",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201007",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201008",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201009",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201010",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201011",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201012",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201101",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201102",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201103",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201104",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201105",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201106",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201107",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201108",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201109",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201110",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201111",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201112",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201201",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201202",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201203",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201204",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201205",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201206",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201207",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201208",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201209",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201210",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201211",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201212",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201301",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201302",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201303",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201304",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201305",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201306",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201307",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201308",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201309",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201310",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201311",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201312",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201401",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201402",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201403",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201404",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201405",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201406",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201407",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201408",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201409",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201410",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201411",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201412",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201501",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201502",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201503",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201504",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201505",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201506",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201507",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201508",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201509",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201510",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201511",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201512",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201601",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201602",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201603",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201604",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201605",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201606",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201607",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201608",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201609",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201610",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201611",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201612",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201701",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201702",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201703",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201704",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201705",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201706",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201707",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201708",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201709",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201710",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201711",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201712",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201801",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201802",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201803",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201804",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201805",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201806",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201807",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201808",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201809",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201810",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201811",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201812",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201901",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201902",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201903",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201904",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201905",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201906",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201907",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201908",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201909",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201910",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201911",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_201912",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202001",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202002",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202003",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202004",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202005",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202006",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202007",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202008",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202009",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202010",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202011",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202012",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202101",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202102",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202103",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202104",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202105",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202106",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202107",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202108",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202109",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202110",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202111",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202112",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202201",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202202",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202203",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202204",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202205",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202206",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202207",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202208",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202209",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202210",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202211",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202212",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202301",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202302",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202303",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202304",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202305",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202306",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202307",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202308",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202309",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202310",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202311",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202312",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202401",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202402",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202403",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202404",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202405",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202406",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202407",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202408",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202409",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202410",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202411",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202412",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202501",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202502",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202503",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202504",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202505",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202506",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202507",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202508",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202509",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202510",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202511",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202512",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202601",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202602",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202603",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202604",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202605",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202606",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202607",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202608",
+          "type": "BIGINT"
+        },
+        {
+          "name": "count_202609",
+          "type": "BIGINT"
+        }
+      ],
+      "description": "5 files sampled for this table",
+      "item_count": 111040
+    },
+    "detections": {
+      "href": "https://data.source.coop/portolan-mirrors/firms-catalog/detections/year=2000/",
+      "type": "application/x-parquet",
+      "title": "detections",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "acq_datetime",
+          "type": "TIMESTAMP"
+        },
+        {
+          "name": "acq_date",
+          "type": "DATE"
+        },
+        {
+          "name": "sensor",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "satellite",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "instrument",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "quality",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "version",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "brightness",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "bright_t31",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "bright_ti4",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "bright_ti5",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "scan",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "track",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "frp",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "daynight",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "confidence",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "confidence_pct",
+          "type": "INTEGER"
+        },
+        {
+          "name": "type",
+          "type": "INTEGER"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')",
+          "description": "[geometry] Point geometry of the fire/thermal anomaly detection (OGC:CRS84)."
+        }
+      ],
+      "description": "20 files sampled for this table"
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/portolan-mirrors/firms-catalog/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/portolan-mirrors/firms-catalog",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "rel": "describedby",
+      "href": "./README.md",
+      "type": "text/markdown",
+      "title": "Catalog README"
+    },
+    {
+      "rel": "agents",
+      "href": "./AGENTS.md",
+      "type": "text/markdown",
+      "title": "Catalog agent guide"
+    },
+    {
+      "rel": "vcs",
+      "href": "https://github.com/portolan-mirrors/firms-catalog",
+      "title": "Source repository"
+    },
+    {
+      "rel": "issues",
+      "href": "https://github.com/portolan-mirrors/firms-catalog/issues",
+      "title": "Issue tracker"
+    },
+    {
+      "rel": "via",
+      "href": "https://firms.modaps.eosdis.nasa.gov/",
+      "type": "text/html",
+      "title": "NASA FIRMS"
+    },
+    {
+      "rel": "preview",
+      "href": "https://portolan-mirrors.github.io/firms-catalog/",
+      "type": "text/html",
+      "title": "Interactive fire map"
+    }
+  ],
+  "created_at": "2026-09-08T06:42:47.821Z",
   "ext_bytes": {
     "parquet": 10713091845,
     "pmtiles": 1451061793,
@@ -35,11 +2787,42 @@
     "jpg": 64637,
     "md": 19345
   },
-  "store_format": null,
-  "_state": "seed",
+  "product_id": "firms-catalog",
+  "disabled": false,
+  "objects_updated_at": "2026-09-11T11:47:29+00:00",
+  "exts": {
+    "json": 35,
+    "parquet": 28,
+    "md": 4,
+    "pmtiles": 3,
+    "jpg": 1
+  },
+  "total_bytes": 12164309448,
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "cataloged_at": "2026-09-14T09:10:19+00:00"
+  "updated_at": "2026-09-08T06:42:47.821Z",
+  "object_count": 71,
+  "visibility": "public",
+  "featured": 0,
+  "mirrors": {
+    "aws-opendata-us-west-2": {
+      "connection_id": "aws-opendata-us-west-2",
+      "is_primary": true,
+      "prefix": "portolan-mirrors/firms-catalog/"
+    }
+  },
+  "data_mode": null,
+  "account_id": "portolan-mirrors",
+  "readme": "## README.md\n# NASA FIRMS Active Fire Detections\n\nGlobal satellite active fire and thermal anomaly detections from NASA's Fire\nInformation for Resource Management System (FIRMS), republished as cloud-native\nGeoParquet 2.0 that you can query in place without downloading anything.\n\nThis is a **mirror**. NASA LANCE FIRMS produces the data and remains the\nauthoritative source.\n\n## What is here\n\nOne collection, `detections`, holding every FIRMS active fire detection from\n**MODIS** (Terra and Aqua, 1 km, since November 2000) and **VIIRS**\n(Suomi-NPP since January 2012, NOAA-20 since April 2018, NOAA-21 since January\n2024). Coverage is global.\n\nThe data is one table, partitioned by year, so a single glob spans the whole\nrecord from 2000 to today. Near-real-time detections are appended hourly and are\nreplaced by science-quality data as NASA finalizes it, roughly three to four\nmonths behind. A `quality` column tells you which you are looking at.\n\nGOES and Landsat fire products are published by FIRMS but are not mirrored here.\n\nFor column meanings, the sort order, and the traps, read\n[AGENTS.md](AGENTS.md) \u2014 it is written for machine clients but the quirks\nsection is worth a human's time too.\n\n## License\n\n**CC0-1.0.** NASA's Earth Science Data and Information System states that data\nfrom NASA-led missions carries no restrictions on use or redistribution. See the\n[ESDIS data use policy](https://www.earthdata.nasa.gov/engage/open-data-services-software-policies/data-use-policy).\n\nNASA asks that you acknowledge the source, and so do we:\n\n> We acknowledge the use of data and/or imagery from NASA's Fire Information for\n> Resource Management System (FIRMS) (https://earthdata.nasa.gov/firms), part of\n> NASA's Earth Observing System Data and Information System (EOSDIS).\n\n## Provenance\n\nEvery detection comes from the\n[FIRMS area API](https://firms.modaps.eosdis.nasa.gov/api/area/), requested as\nwhole-globe windows and normalized into a single schema. Nothing is interpolated,\nfiltered, or reclassified. The columns FIRMS publishes are carried through\nverbatim; the only additions are a UTC timestamp, expanded satellite names, and\ntwo sort-key columns, all documented in [AGENTS.md](AGENTS.md).\n\nFIRMS also offers yearly per-country archive zips, which download far faster than\nthe API. **This catalog does not use them.** They are clipped to country\nboundaries and drop offshore detections. Measured against the API for\n2000-11-05, the country archive held 3 offshore (`type = 3`) detections where the\nAPI returned 58, and 2,615 rows against the API's 2,670. A mirror that silently\nlost every gas flare and most volcanoes would not be a mirror.\n\nThe pipeline that builds this catalog is open, and each step is a script:\n[firms_fetch.py](https://github.com/portolan-mirrors/firms-catalog/blob/main/tools/firms_fetch.py)\nfetches and normalizes,\n[firms_build.py](https://github.com/portolan-mirrors/firms-catalog/blob/main/tools/firms_build.py)\ncompacts to per-year GeoParquet. See the\n[repository README](https://github.com/portolan-mirrors/firms-catalog) for the\noverview.\n\n## Access\n\nQuery the whole record without downloading it:\n\n```sql\nINSTALL spatial; LOAD spatial; INSTALL httpfs; LOAD httpfs;\n\nSELECT sensor, count(*) AS detections, round(avg(frp), 1) AS mean_frp_mw\nFROM read_parquet(\n  's3://us-west-2.opendata.source.coop/portolan-mirrors/firms-catalog/detections/year=*/detections.parquet',\n  hive_partitioning = true)\nWHERE year = 2020 AND _month = 8\nGROUP BY sensor\nORDER BY detections DESC;\n```\n",
+  "_review": [
+    "providers: role [processor] for 'portolan-mirrors' is an AI guess \u2014 Inferred as the pipeline/mirror builder from the linked GitHub repository (firms-catalog) that fetches, normalizes, and compacts the data.. Verify before flipping to _state: reviewed.",
+    "extent.temporal: None (probe sample) widened to ['2000-11-01T00:00:00Z', None] using README-stated coverage ['2000-11', None].",
+    "summaries.item_count: parts overlap, so this is max(part), not the sum \u2014 detections/stats-r5/ 37960, detections/stats/ 111040. Sum them only once the parts are known to be disjoint."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-09-14T09:24:49+00:00",
+  "_source_format": "stac",
+  "store_format": null
 }
