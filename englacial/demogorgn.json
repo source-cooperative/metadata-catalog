@@ -4,13 +4,14 @@
   "stac_version": "1.1.0",
   "id": "englacial/demogorgn",
   "title": "DEMOGORGN",
-  "description": "A collection of Digital Elevation Model (DEM) realizations covering Antarctica, stored in IceChunk format. The dataset spans approximately 93 GB across roughly 2,200 files and includes NetCDF assets.",
+  "description": "A collection of Digital Elevation Model (DEM) realizations covering Antarctica, distributed as NetCDF-derived assets packaged in IceChunk (Zarr-based) format, spanning roughly 93 GB across approximately 2,200 files.",
   "keywords": [
     "digital-elevation-model",
     "topography",
-    "ice-sheet",
     "cryosphere",
-    "elevation"
+    "elevation",
+    "icechunk",
+    "zarr"
   ],
   "providers": [
     {
@@ -26,9 +27,9 @@
       "bbox": [
         [
           -180.0,
-          -90.0,
+          -89.9986991,
           180.0,
-          90.0
+          -54.6735292
         ]
       ]
     },
@@ -42,10 +43,24 @@
     }
   },
   "assets": {
-    "data": {
-      "href": "https://data.source.coop/englacial/demogorgn/",
+    "icechunk/antarctica_fast_flow_mask_50m.icechunk": {
+      "href": "https://data.source.coop/englacial/demogorgn/icechunk/antarctica_fast_flow_mask_50m.icechunk/",
       "type": "application/octet-stream",
-      "title": "Dataset files (2 x .icechunk)",
+      "title": "icechunk/antarctica_fast_flow_mask_50m.icechunk/ (1 \u00d7 .icechunk)",
+      "roles": [
+        "data"
+      ],
+      "bbox": [
+        -180.0,
+        -89.9986991,
+        180.0,
+        -54.6735292
+      ]
+    },
+    "icechunk/realizations.icechunk": {
+      "href": "https://data.source.coop/englacial/demogorgn/icechunk/realizations.icechunk/",
+      "type": "application/octet-stream",
+      "title": "icechunk/realizations.icechunk/ (1 \u00d7 .icechunk)",
       "roles": [
         "data"
       ]
@@ -63,11 +78,29 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "updated_at": "2026-03-25T06:39:16.852Z",
+  "created_at": "2026-03-25T06:39:16.852Z",
+  "exts": {
+    "": 2189,
+    "75s2ja0v2ftsg4z0grsg": 1,
+    "pbescsexqsqna0wqq9v0": 1,
+    "4f342brs1176ajsnaqag": 1,
+    "d9e7jzcn56vg67scmqxg": 1,
+    "nc": 1,
+    "vzsrqgwp5fdphg6spj80": 1
+  },
+  "visibility": "public",
+  "object_count": 2195,
   "data_mode": "open",
-  "account_id": "englacial",
-  "total_bytes": 92952780640,
+  "updated_at": "2026-03-25T06:39:16.852Z",
+  "objects_updated_at": "2026-04-24T20:03:19+00:00",
+  "featured": 0,
   "disabled": false,
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "total_bytes": 21834441784,
+  "account_id": "englacial",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -80,36 +113,20 @@
       "prefix": "englacial/demogorgn/"
     }
   },
-  "exts": {
-    "d9e7jzcn56vg67scmqxg": 1,
-    "": 2189,
-    "4f342brs1176ajsnaqag": 1,
-    "nc": 2,
-    "75s2ja0v2ftsg4z0grsg": 1,
-    "pbescsexqsqna0wqq9v0": 1,
-    "vzsrqgwp5fdphg6spj80": 1
-  },
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "product_id": "demogorgn",
-  "object_count": 2196,
-  "featured": 0,
-  "visibility": "public",
-  "created_at": "2026-03-25T06:39:16.852Z",
-  "_review": [
-    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed."
-  ],
-  "_state": "drafted",
-  "cataloged_at": "2026-06-04T01:11:49+00:00",
   "ext_bytes": {
-    "nc": 74835622569,
     "": 18117155908,
+    "nc": 3717283713,
     "4f342brs1176ajsnaqag": 587,
     "d9e7jzcn56vg67scmqxg": 563,
     "vzsrqgwp5fdphg6spj80": 464,
     "pbescsexqsqna0wqq9v0": 275,
     "75s2ja0v2ftsg4z0grsg": 274
-  }
+  },
+  "product_id": "demogorgn",
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-09-15T09:22:39+00:00",
+  "store_format": "icechunk"
 }
