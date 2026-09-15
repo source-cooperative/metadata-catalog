@@ -4,13 +4,13 @@
   "stac_version": "1.1.0",
   "id": "ismip/ismip7-gris-forcing",
   "title": "ISMIP7 Greenland Ice Sheet Forcing",
-  "description": "Downscaled atmospheric and oceanic forcing data for the Greenland Ice Sheet, prepared for the ISMIP7 ice sheet model intercomparison project. Includes surface forcing derived from CESM2-WACCM and MRI-ESM2-0 for control and historical periods and five SSP scenarios at 1 km and 4 km resolution via three downscaling methods, ocean thermal forcing and salinity, and reanalysis-driven forcing from RACMO2.3p2-ERA and EN4.",
+  "description": "Downscaled atmospheric and oceanic forcing data for the Greenland Ice Sheet, prepared for the ISMIP7 ice sheet model intercomparison project. It includes surface forcing derived from the CESM2-WACCM and MRI-ESM2-0 climate models (control, historical, and five SSP scenarios) at 1 km and 4 km resolution via three downscaling methods, ocean thermal forcing and salinity fields, and reanalysis-driven forcing from RACMO2.3p2-ERA and EN4.",
   "keywords": [
     "cryosphere",
     "climate",
-    "atmospheric-modeling",
     "meteorology",
     "oceanography",
+    "atmospheric-data",
     "ice-sheet-modeling"
   ],
   "providers": [
@@ -49,8 +49,12 @@
     "temporal": {
       "interval": [
         [
-          "1950-01-16T00:00:00",
+          "1850-01-16T00:00:00",
           "2300-12-16T00:00:00"
+        ],
+        [
+          "1850-01-16T00:00:00",
+          "2100-12-16T00:00:00"
         ],
         [
           "2015-01-16T00:00:00",
@@ -64,10 +68,80 @@
     }
   },
   "assets": {
+    "data/ACCESS-CM2": {
+      "href": "https://data.source.coop/ismip/ismip7-gris-forcing/data/ACCESS-CM2/",
+      "type": "application/x-netcdf",
+      "title": "data/ACCESS-CM2/ (1004 \u00d7 .nc)",
+      "roles": [
+        "data"
+      ],
+      "bbox": [
+        -96.6325146,
+        57.7842675,
+        14.3002774,
+        84.7330656
+      ]
+    },
     "data/CESM2-WACCM": {
       "href": "https://data.source.coop/ismip/ismip7-gris-forcing/data/CESM2-WACCM/",
       "type": "application/x-netcdf",
-      "title": "data/CESM2-WACCM/ (62568 \u00d7 .nc)",
+      "title": "data/CESM2-WACCM/ (65930 \u00d7 .nc)",
+      "roles": [
+        "data"
+      ],
+      "bbox": [
+        -96.6325146,
+        57.7842675,
+        14.3002774,
+        84.7330656
+      ]
+    },
+    "data/CanESM5": {
+      "href": "https://data.source.coop/ismip/ismip7-gris-forcing/data/CanESM5/",
+      "type": "application/x-netcdf",
+      "title": "data/CanESM5/ (1004 \u00d7 .nc)",
+      "roles": [
+        "data"
+      ],
+      "bbox": [
+        -96.6325146,
+        57.7842675,
+        14.3002774,
+        84.7330656
+      ]
+    },
+    "data/GFDL-ESM4": {
+      "href": "https://data.source.coop/ismip/ismip7-gris-forcing/data/GFDL-ESM4/",
+      "type": "application/x-netcdf",
+      "title": "data/GFDL-ESM4/ (1004 \u00d7 .nc)",
+      "roles": [
+        "data"
+      ],
+      "bbox": [
+        -96.6325146,
+        57.7842675,
+        14.3002774,
+        84.7330656
+      ]
+    },
+    "data/IPSL-CM6A-LR": {
+      "href": "https://data.source.coop/ismip/ismip7-gris-forcing/data/IPSL-CM6A-LR/",
+      "type": "application/x-netcdf",
+      "title": "data/IPSL-CM6A-LR/ (1004 \u00d7 .nc)",
+      "roles": [
+        "data"
+      ],
+      "bbox": [
+        -96.6325146,
+        57.7842675,
+        14.3002774,
+        84.7330656
+      ]
+    },
+    "data/MPI-ESM1-2-HR": {
+      "href": "https://data.source.coop/ismip/ismip7-gris-forcing/data/MPI-ESM1-2-HR/",
+      "type": "application/x-netcdf",
+      "title": "data/MPI-ESM1-2-HR/ (1004 \u00d7 .nc)",
       "roles": [
         "data"
       ],
@@ -81,7 +155,7 @@
     "data/MRI-ESM2-0": {
       "href": "https://data.source.coop/ismip/ismip7-gris-forcing/data/MRI-ESM2-0/",
       "type": "application/x-netcdf",
-      "title": "data/MRI-ESM2-0/ (65339 \u00d7 .nc)",
+      "title": "data/MRI-ESM2-0/ (68987 \u00d7 .nc)",
       "roles": [
         "data"
       ],
@@ -119,14 +193,14 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "exts": {
-    "nc": 129575
-  },
-  "account_id": "ismip",
+  "disabled": false,
   "product_id": "ismip7-gris-forcing",
-  "objects_updated_at": "2026-08-29T15:35:49+00:00",
-  "total_bytes": 2287835020341,
-  "updated_at": "2026-08-29T12:05:13.128Z",
+  "data_mode": null,
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "visibility": "public",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "is_primary": true,
@@ -134,25 +208,23 @@
       "connection_id": "aws-opendata-us-west-2"
     }
   },
-  "disabled": false,
-  "data_mode": null,
   "ext_bytes": {
-    "nc": 2287835020341
+    "nc": 2397312679145
   },
+  "objects_updated_at": "2026-09-11T10:57:29+00:00",
+  "object_count": 141605,
+  "exts": {
+    "nc": 141605
+  },
+  "account_id": "ismip",
+  "total_bytes": 2397312679145,
+  "updated_at": "2026-08-29T12:05:13.128Z",
   "created_at": "2026-08-29T12:05:13.128Z",
-  "visibility": "public",
   "featured": 0,
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "object_count": 129575,
   "_review": [
-    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
-    "providers: role [producer, processor] for 'ISMIP7' is an AI guess \u2014 Data was prepared for the ISMIP7 project; assumed as producer/processor since no separate authoring organization is named.. Verify before flipping to _state: reviewed.",
-    "providers: role [host] for 'University at Buffalo (ISMIP7 GHub)' is an AI guess \u2014 Described as hosting the ISMIP7 GHub collection and remaining the archive of record this dataset is mirrored from.. Verify before flipping to _state: reviewed."
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-09-01T09:02:57+00:00",
+  "cataloged_at": "2026-09-15T09:20:27+00:00",
   "store_format": null
 }
