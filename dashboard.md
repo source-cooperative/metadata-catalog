@@ -1,25 +1,25 @@
 # Source Cooperative catalog — status
 
-_Updated 2026-09-15 09:32 UTC by the nightly pipeline._
+_Updated 2026-09-16 08:53 UTC by the nightly pipeline._
 
-**421 datasets cataloged**  ·  **14 queued for next run**  ·  last run handled **10**
+**421 datasets cataloged**  ·  **4 queued for next run**  ·  last run handled **10**
 
 ## Last run
 
 <details><summary>✅ drafted — 10 datasets</summary>
 
-| repo                                                                                                                           |
-| ------------------------------------------------------------------------------------------------------------------------------ |
-| [bkr/mrms](https://source.coop/bkr/mrms)                                                                                       |
-| [bkr/silam-dust](https://source.coop/bkr/silam-dust)                                                                           |
-| [dynamical/ecmwf-aifs-single-forecast](https://source.coop/dynamical/ecmwf-aifs-single-forecast)                               |
-| [dynamical/ecmwf-ifs-ens-forecast-15-day-0-25-degree](https://source.coop/dynamical/ecmwf-ifs-ens-forecast-15-day-0-25-degree) |
-| [dynamical/noaa-gfs-forecast](https://source.coop/dynamical/noaa-gfs-forecast)                                                 |
-| [dynamical/noaa-hrrr-forecast-48-hour](https://source.coop/dynamical/noaa-hrrr-forecast-48-hour)                               |
-| [englacial/demogorgn](https://source.coop/englacial/demogorgn)                                                                 |
-| [ismip/ismip7-ais-forcing](https://source.coop/ismip/ismip7-ais-forcing)                                                       |
-| [ismip/ismip7-gris-forcing](https://source.coop/ismip/ismip7-gris-forcing)                                                     |
-| [walkthru-earth/indices](https://source.coop/walkthru-earth/indices)                                                           |
+| repo                                                                                                       |
+| ---------------------------------------------------------------------------------------------------------- |
+| [alukach/firesmoke](https://source.coop/alukach/firesmoke)                                                 |
+| [ausantarctic/ghrsst-mur-v2](https://source.coop/ausantarctic/ghrsst-mur-v2)                               |
+| [dynamical/asos-parquet](https://source.coop/dynamical/asos-parquet)                                       |
+| [dynamical/noaa-gefs-analysis](https://source.coop/dynamical/noaa-gefs-analysis)                           |
+| [dynamical/noaa-gfs-analysis](https://source.coop/dynamical/noaa-gfs-analysis)                             |
+| [dynamical/noaa-mrms-conus-analysis-hourly](https://source.coop/dynamical/noaa-mrms-conus-analysis-hourly) |
+| [ftw/harmonized-field-data](https://source.coop/ftw/harmonized-field-data)                                 |
+| [harvard-lil/smithsonian-open-access](https://source.coop/harvard-lil/smithsonian-open-access)             |
+| [hdx/cod-ab](https://source.coop/hdx/cod-ab)                                                               |
+| [portolan/portolan-pipeline](https://source.coop/portolan/portolan-pipeline)                               |
 
 </details>
 
@@ -28,13 +28,13 @@ _Updated 2026-09-15 09:32 UTC by the nightly pipeline._
 
 | run                                                                                                    | outcome | drafted | redraft | resets | failed | queued | cataloged |
 | ------------------------------------------------------------------------------------------------------ | ------- | ------: | ------: | -----: | -----: | -----: | --------: |
+| [2026-09-16](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/35074837829) | ✅       |         |      10 |        |        |      0 |       421 |
 | [2026-09-15](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/34948023238) | ✅       |         |      10 |        |        |      4 |       421 |
 | [2026-09-14](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/34823945938) | ✅       |       4 |       6 |        |        |     14 |       421 |
 | [2026-09-13](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/34747979249) | ✅       |         |         |        |        |      0 |       417 |
 | [2026-09-12](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/34683522863) | ✅       |         |         |        |        |      0 |       417 |
 | [2026-09-11](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/34579992943) | ✅       |         |         |        |        |      0 |       417 |
 | [2026-09-10](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/34456092266) | ✅       |         |       8 |        |        |      0 |       417 |
-| [2026-09-09](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/34329940345) | ✅       |         |      10 |        |        |      0 |       417 |
 
 ## 16 datasets need a prober
 
@@ -882,24 +882,14 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 
 </details>
 
-<details><summary>stale (catalog bytes ≠ S3; fixed by <code>make process-all</code>) — 14 datasets (1.4 PB)</summary>
+<details><summary>stale (catalog bytes ≠ S3; fixed by <code>make process-all</code>) — 4 datasets (553.4 TB)</summary>
 
-| repo                                                                                                       | updated    |        catalog → S3 |
-| ---------------------------------------------------------------------------------------------------------- | ---------- | ------------------: |
-| [dynamical/asos-parquet](https://source.coop/dynamical/asos-parquet)                                       | 2026-09-13 |   20.2 GB → 20.3 GB |
-| [dynamical/noaa-mrms-conus-analysis-hourly](https://source.coop/dynamical/noaa-mrms-conus-analysis-hourly) | 2026-09-13 | 253.7 GB → 254.3 GB |
-| [dynamical/noaa-gefs-analysis](https://source.coop/dynamical/noaa-gefs-analysis)                           | 2026-09-13 |     1.1 TB → 1.1 TB |
-| [dynamical/noaa-gfs-analysis](https://source.coop/dynamical/noaa-gfs-analysis)                             | 2026-09-13 | 662.9 GB → 665.3 GB |
-| [alukach/firesmoke](https://source.coop/alukach/firesmoke)                                                 | 2026-09-12 |     1.1 GB → 1.2 GB |
-| [ftw/harmonized-field-data](https://source.coop/ftw/harmonized-field-data)                                 | 2026-09-12 | 219.2 GB → 224.9 GB |
-| [ausantarctic/ghrsst-mur-v2](https://source.coop/ausantarctic/ghrsst-mur-v2)                               | 2026-09-12 |     4.3 TB → 4.3 TB |
-| [harvard-lil/smithsonian-open-access](https://source.coop/harvard-lil/smithsonian-open-access)             | 2026-09-11 | 851.1 TB → 851.1 TB |
-| [portolan/portolan-pipeline](https://source.coop/portolan/portolan-pipeline)                               | 2026-09-11 | 280.4 MB → 260.9 MB |
-| [hdx/cod-ab](https://source.coop/hdx/cod-ab)                                                               | 2026-09-10 |   27.1 GB → 22.9 GB |
-| [source/metadata-catalog](https://source.coop/source/metadata-catalog)                                     | 2026-09-10 |     5.6 MB → 5.7 MB |
-| [walkthru-earth/opensensor-space](https://source.coop/walkthru-earth/opensensor-space)                     | 2026-09-09 |     1.5 GB → 1.5 GB |
-| [wildland-almanac/california](https://source.coop/wildland-almanac/california)                             | 2026-09-09 | 550.6 GB → 550.6 GB |
-| [tge-labs/aef-mosaic](https://source.coop/tge-labs/aef-mosaic)                                             | 2026-09-06 | 552.9 TB → 552.9 TB |
+| repo                                                                                   | updated    |        catalog → S3 |
+| -------------------------------------------------------------------------------------- | ---------- | ------------------: |
+| [source/metadata-catalog](https://source.coop/source/metadata-catalog)                 | 2026-09-10 |     5.6 MB → 5.7 MB |
+| [walkthru-earth/opensensor-space](https://source.coop/walkthru-earth/opensensor-space) | 2026-09-09 |     1.5 GB → 1.5 GB |
+| [wildland-almanac/california](https://source.coop/wildland-almanac/california)         | 2026-09-09 | 550.6 GB → 550.6 GB |
+| [tge-labs/aef-mosaic](https://source.coop/tge-labs/aef-mosaic)                         | 2026-09-06 | 552.9 TB → 552.9 TB |
 
 </details>
 
