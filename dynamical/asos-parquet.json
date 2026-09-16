@@ -7,7 +7,7 @@
   ],
   "id": "dynamical/asos-parquet",
   "title": "Global Airport Weather GeoParquet (1940-present)",
-  "description": "A global archive of decoded METAR surface weather observations from airport ASOS and AWOS stations, spanning 1940 to the present with approximately 1.8 billion records. Each record captures temperature, dewpoint, humidity, wind, precipitation, visibility, and pressure at a station's point location, distributed as year-partitioned GeoParquet files.",
+  "description": "A global archive of decoded METAR surface weather observations from airport ASOS and AWOS stations, covering 1940 to the present with approximately 1.8 billion records. Each record gives station-level measurements of temperature, dewpoint, humidity, wind, precipitation, visibility, and pressure, distributed as year-partitioned GeoParquet files.",
   "license": "CC-BY-NC-SA-4.0",
   "keywords": [
     "weather",
@@ -54,14 +54,14 @@
     "temporal": {
       "interval": [
         [
-          null,
-          null
+          "1940-01-01T00:00:00Z",
+          "2026-09-01T00:00:00Z"
         ]
       ]
     }
   },
   "summaries": {
-    "item_count": 1767236647
+    "item_count": 1768225429
   },
   "assets": {
     "data": {
@@ -156,7 +156,7 @@
         {
           "name": "country",
           "type": "VARCHAR",
-          "description": "[placename] Country of the reporting station"
+          "description": "[placename] Country name of the reporting station"
         },
         {
           "name": "county",
@@ -174,7 +174,7 @@
         {
           "name": "geometry",
           "type": "GEOMETRY('EPSG:4326')",
-          "description": "[geometry] Station point geometry (EPSG:4326)"
+          "description": "[geometry] Station point location as GeoParquet geometry (EPSG:4326)"
         },
         {
           "name": "bbox",
@@ -196,10 +196,8 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "exts": {
-    "parquet": 88
-  },
-  "data_mode": "open",
+  "object_count": 88,
+  "created_at": "2026-02-05T18:50:19.484Z",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -212,24 +210,29 @@
       "prefix": "dynamical/asos-parquet/"
     }
   },
-  "total_bytes": 20238623905,
-  "visibility": "public",
-  "ext_bytes": {
-    "parquet": 20238623905
-  },
-  "featured": 0,
-  "objects_updated_at": "2026-09-06T06:23:10+00:00",
-  "object_count": 88,
-  "created_at": "2026-02-05T18:50:19.484Z",
-  "account_id": "dynamical",
   "product_id": "asos-parquet",
+  "ext_bytes": {
+    "parquet": 20252381284
+  },
+  "total_bytes": 20252381284,
   "disabled": false,
-  "updated_at": "2026-02-09T17:07:41.515Z",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
+  "exts": {
+    "parquet": 88
+  },
+  "data_mode": "open",
+  "featured": 0,
+  "visibility": "public",
+  "updated_at": "2026-02-09T17:07:41.515Z",
+  "objects_updated_at": "2026-09-13T04:23:22+00:00",
+  "account_id": "dynamical",
+  "_review": [
+    "extent.temporal: None (probe sample) widened to ['1940-01-01T00:00:00Z', '2026-09-01T00:00:00Z'] using README-stated coverage ['1940', '2026-09']."
+  ],
   "_state": "drafted",
-  "cataloged_at": "2026-09-10T08:50:15+00:00",
+  "cataloged_at": "2026-09-16T08:53:34+00:00",
   "store_format": null
 }
