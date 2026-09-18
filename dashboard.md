@@ -1,34 +1,22 @@
 # Source Cooperative catalog — status
 
-_Updated 2026-09-17 08:49 UTC by the nightly pipeline._
+_Updated 2026-09-18 08:37 UTC by the nightly pipeline._
 
-**421 datasets cataloged**  ·  **0 queued for next run**  ·  last run handled **4**
+**421 datasets cataloged**  ·  **0 queued for next run**  ·  last run handled **0**
 
-## Last run
-
-<details><summary>✅ drafted — 4 datasets</summary>
-
-| repo                                                                                   |
-| -------------------------------------------------------------------------------------- |
-| [source/metadata-catalog](https://source.coop/source/metadata-catalog)                 |
-| [tge-labs/aef-mosaic](https://source.coop/tge-labs/aef-mosaic)                         |
-| [walkthru-earth/opensensor-space](https://source.coop/walkthru-earth/opensensor-space) |
-| [wildland-almanac/california](https://source.coop/wildland-almanac/california)         |
-
-</details>
-
+_No datasets processed in the last run (no new work since the previous snapshot)._
 
 ## Recent runs
 
 | run                                                                                                    | outcome | drafted | redraft | resets | failed | queued | cataloged |
 | ------------------------------------------------------------------------------------------------------ | ------- | ------: | ------: | -----: | -----: | -----: | --------: |
+| [2026-09-18](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/35325237601) | ✅       |         |         |        |        |      0 |       421 |
 | [2026-09-17](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/35200663918) | ✅       |         |       4 |        |        |      0 |       421 |
 | [2026-09-16](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/35074837829) | ✅       |         |      10 |        |        |      0 |       421 |
 | [2026-09-15](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/34948023238) | ✅       |         |      10 |        |        |      4 |       421 |
 | [2026-09-14](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/34823945938) | ✅       |       4 |       6 |        |        |     14 |       421 |
 | [2026-09-13](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/34747979249) | ✅       |         |         |        |        |      0 |       417 |
 | [2026-09-12](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/34683522863) | ✅       |         |         |        |        |      0 |       417 |
-| [2026-09-11](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/34579992943) | ✅       |         |         |        |        |      0 |       417 |
 
 ## 16 datasets need a prober
 
