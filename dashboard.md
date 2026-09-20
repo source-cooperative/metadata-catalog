@@ -1,6 +1,6 @@
 # Source Cooperative catalog — status
 
-_Updated 2026-09-19 08:34 UTC by the nightly pipeline._
+_Updated 2026-09-20 08:35 UTC by the nightly pipeline._
 
 **421 datasets cataloged**  ·  **0 queued for next run**  ·  last run handled **0**
 
@@ -10,13 +10,13 @@ _No datasets processed in the last run (no new work since the previous snapshot)
 
 | run                                                                                                    | outcome | drafted | redraft | resets | failed | queued | cataloged |
 | ------------------------------------------------------------------------------------------------------ | ------- | ------: | ------: | -----: | -----: | -----: | --------: |
+| [2026-09-20](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/35499902497) | ✅       |         |         |        |        |      0 |       421 |
 | [2026-09-19](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/35432303499) | ✅       |         |         |        |        |      0 |       421 |
 | [2026-09-18](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/35325237601) | ✅       |         |         |        |        |      0 |       421 |
 | [2026-09-17](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/35200663918) | ✅       |         |       4 |        |        |      0 |       421 |
 | [2026-09-16](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/35074837829) | ✅       |         |      10 |        |        |      0 |       421 |
 | [2026-09-15](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/34948023238) | ✅       |         |      10 |        |        |      4 |       421 |
 | [2026-09-14](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/34823945938) | ✅       |       4 |       6 |        |        |     14 |       421 |
-| [2026-09-13](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/34747979249) | ✅       |         |         |        |        |      0 |       417 |
 
 ## 16 datasets need a prober
 
