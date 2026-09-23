@@ -4,7 +4,7 @@
   "stac_version": "1.1.0",
   "id": "hackl/euroflood-index",
   "title": "EuroFlood Index - Satellite-Derived Flood Depth Maps for Europe",
-  "description": "A cloud-native spatial index derived from the JRC/Copernicus CEMS-EFAS Satellite-Derived Flood Depth Maps, mapping each ~90 m grid cell across Europe (2015\u20132024) to the historic flood events that inundated it via a sparse COG plus Parquet lookup tables, so users can identify which floods hit a location without downloading the underlying depth rasters.",
+  "description": "EuroFlood Index is a cloud-native spatial index derived from the JRC/Copernicus CEMS-EFAS Satellite-Derived Flood Depth Maps for Europe, mapping each ~90 m grid cell to the set of historic flood events (2015\u20132025) that inundated it via a sparse Cloud-Optimized GeoTIFF plus Parquet lookup tables. It lets users identify which floods hit a given location and when, without downloading the full flood-depth rasters.",
   "license": "CC-BY-4.0",
   "keywords": [
     "hydrology",
@@ -52,7 +52,7 @@
       "interval": [
         [
           "2015-01-01T00:00:00Z",
-          "2024-01-01T00:00:00Z"
+          "2025-01-01T00:00:00Z"
         ]
       ]
     }
@@ -61,7 +61,7 @@
     "data": {
       "href": "https://data.source.coop/hackl/euroflood-index/",
       "type": "image/tiff; application=geotiff",
-      "title": "Dataset files (1 x .tif)",
+      "title": "Dataset files (2 x .tif)",
       "roles": [
         "data"
       ]
@@ -79,24 +79,8 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "account_id": "hackl",
-  "exts": {
-    "parquet": 2,
-    "json": 2,
-    "tif": 1,
-    "md": 1,
-    "png": 1
-  },
-  "created_at": "2026-07-08T12:16:45.181Z",
-  "data_mode": null,
-  "product_id": "euroflood-index",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "disabled": false,
   "updated_at": "2026-07-08T12:16:45.181Z",
-  "total_bytes": 138774138,
+  "objects_updated_at": "2026-09-18T17:39:20+00:00",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -106,21 +90,37 @@
     }
   },
   "visibility": "public",
-  "object_count": 7,
+  "ext_bytes": {
+    "tif": 266622888,
+    "parquet": 33395044,
+    "png": 549824,
+    "md": 3443,
+    "json": 3351
+  },
+  "disabled": false,
+  "total_bytes": 300574550,
+  "exts": {
+    "json": 4,
+    "parquet": 4,
+    "png": 2,
+    "tif": 2,
+    "md": 1
+  },
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "account_id": "hackl",
   "featured": 0,
-  "readme": "## README.md\n# EuroFlood Index \u2014 Satellite-Derived Flood Depth Maps for Europe\n\n![Flood-recurrence over Zutphen (river IJssel), built from this index \u2014 how often each ~90 m pixel flooded, 2015\u20132024.](https://data.source.coop/hackl/euroflood-index/hero.png)\n\nA queryable, cloud-native **spatial index** over the JRC / Copernicus **CEMS-EFAS\nSatellite-Derived Flood Depth Maps for Europe** (Betterle & Salamon, 2025). It answers\n*which historic floods hit a location, and when* \u2014 across Europe, 2015\u20132024 \u2014 **without\ndownloading the depth rasters**, so a tool can then fetch only the specific flood-depth\nGeoTIFFs it actually needs.\n\n- **Coverage:** Europe \u00b7 2015\u20132024 \u00b7 ~3,280 flood events \u00b7 ~90 m grid\n- **License:** CC-BY-4.0 (see *Attribution* below)\n- **Built with:** the open-source [`euroflood`](https://github.com/cisgroup/CODE-EuroFlood) Python library\n- **Latest version:** `v1.0.0/`\n\n## Layout\n\nEach release is an immutable `vX.Y.Z/` prefix (so a library release always reads the exact\nindex it was built against):\n\n```\neuroflood-index/\n  README.md                     \u2190 this file\n  v1.0.0/\n    europe_flood_index.tif        sparse Cloud-Optimized GeoTIFF (uint32, EPSG:4326)\n    flood_dictionary.parquet      combo_id \u2192 flood_ids\n    events.parquet                one row per flood event (dates, source URL, \u2026)\n    dictionary_meta.json          dictionary metadata\n    manifest.json                 schema versions, grid fingerprint, per-file SHA-256\n```\n\n## Data model\n\nThe index is a **sparse COG** whose pixel values are `combo_id`s \u2014 each identifies the\n*set* of flood events that inundated that ~90 m cell. `flood_dictionary.parquet` maps\n`combo_id \u2192 [flood_id, \u2026]`, and `events.parquet` maps `flood_id \u2192 {start_date, end_date,\nyear, source download_url, \u2026}`. So *\"which floods hit this area?\"* is a spatial mask plus\ntwo joins \u2014 **no depth raster download required**.\n\n## Use it\n\n**With the library (recommended):**\n\n```python\nimport euroflood as ef\n\ncat = ef.floods(\"Zutphen, Netherlands\")  # or a bbox / point+radius / shapefile, + year or period\ncat.plot()                         # flood-recurrence heatmap \u2014 no download\ncat.download().stats()             # fetch depth rasters + max depth / flooded area / volume\n```\n\n**Directly (any HTTP / S3 tool \u2014 public, no credentials):**\n\n```python\nimport pandas as pd\nbase = \"https://data.source.coop/hackl/euroflood-index/v1.0.0\"\nevents = pd.read_parquet(f\"{base}/events.parquet\")\n# GDAL / rasterio: /vsicurl/https://data.source.coop/hackl/euroflood-index/v1.0.0/europe_flood_index.tif\n```\n\n## Provenance & reproducibility\n\n`manifest.json` pins the grid fingerprint, schema versions, and per-file SHA-256 checksums\nfor the release. You can rebuild the index yourself from the source maps with `euroflood`.\n\n## Attribution & license\n\nThis **derived index** is licensed **CC-BY-4.0**. The underlying flood-depth maps are:\n\n> Betterle, A. & Salamon, P. (2025). *Satellite-Derived Flood Depth Maps for Europe.*\n> European Commission, Joint Research Centre (JRC) / Copernicus Emergency Management Service.\n> Licensed CC-BY-4.0. <https://data.jrc.ec.europa.eu/dataset/0bc96690-b89c-4909-9166-c2c322a20130>\n\nPlease cite **both** the source dataset above and this index.\n\n---\n\n*Maintained via <https://github.com/cisgroup/CODE-EuroFlood>.*\n",
+  "data_mode": null,
+  "product_id": "euroflood-index",
+  "created_at": "2026-07-08T12:16:45.181Z",
+  "object_count": 13,
+  "readme": "## README.md\n# EuroFlood Index \u2014 Satellite-Derived Flood Depth Maps for Europe\n\n![Flood-recurrence over Zutphen (river IJssel), built from this index \u2014 how often each ~90 m pixel flooded across a decade.](https://data.source.coop/hackl/euroflood-index/v1.1.0/hero.png)\n\nA queryable, cloud-native **spatial index** over the JRC / Copernicus **CEMS-EFAS\nSatellite-Derived Flood Depth Maps for Europe** (Betterle & Salamon, 2025). It answers\n*which historic floods hit a location, and when* \u2014 across Europe, 2015\u20132025 \u2014 **without\ndownloading the depth rasters**, so a tool can then fetch only the specific flood-depth\nGeoTIFFs it actually needs.\n\n- **Coverage:** Europe \u00b7 2015\u20132025 \u00b7 ~3,610 flood events \u00b7 ~90 m grid\n- **License:** CC-BY-4.0 (see *Attribution* below)\n- **Built with:** the open-source [`euroflood`](https://github.com/cisgroup/euroflood) Python library\n- **Latest version:** `v1.1.0/`\n- **Cite:** [10.5281/zenodo.21284459](https://doi.org/10.5281/zenodo.21284459), the citable Zenodo archive (all versions)\n\n## Layout\n\nEach release is an immutable `vX.Y.Z/` prefix (so a library release always reads the exact\nindex it was built against):\n\n```\neuroflood-index/\n  README.md                     \u2190 this file\n  v1.1.0/\n    europe_flood_index.tif        sparse Cloud-Optimized GeoTIFF (uint32, EPSG:4326)\n    flood_dictionary.parquet      combo_id \u2192 flood_ids\n    events.parquet                one row per flood event (dates, source URL, \u2026)\n    dictionary_meta.json          dictionary metadata\n    manifest.json                 schema versions, grid fingerprint, per-file SHA-256\n```\n\n## Data model\n\nThe index is a **sparse COG** whose pixel values are `combo_id`s \u2014 each identifies the\n*set* of flood events that inundated that ~90 m cell. `flood_dictionary.parquet` maps\n`combo_id \u2192 [flood_id, \u2026]`, and `events.parquet` maps `flood_id \u2192 {start_date, end_date,\nyear, source download_url, \u2026}`. So *\"which floods hit this area?\"* is a spatial mask plus\ntwo joins \u2014 **no depth raster download required**.\n\n## Use it\n\n**With the library (recommended):**\n\n```python\nimport euroflood as ef\n\ncat = ef.floods(\"Zutphen, Netherlands\")  # or a bbox / point+radius / shapefile, + year or period\ncat.plot()                         # flood-recurrence heatmap \u2014 no download\ncat.download().stats()             # fetch depth rasters + max depth / flooded area / volume\n```\n\n**Directly (any HTTP / S3 tool \u2014 public, no credentials):**\n\n```python\nimport pandas as pd\nbase = \"https://data.source.coop/hackl/euroflood-index/v1.1.0\"\nevents = pd.read_parquet(f\"{base}/events.parquet\")\n# GDAL / rasterio: /vsicurl/https://data.source.coop/hackl/euroflood-index/v1.1.0/europe_flood_index.tif\n```\n\n## Provenance & reproducibility\n\n`manifest.json` pins the grid fingerprint, schema versions, and per-file SHA-256 checksums\nfor the release. You can rebuild the index yourself from the source maps with `euroflood`.\n\n## Attribution & license\n\nThis **derived index** is licensed **CC-BY-4.0**. The underlying flood-depth maps are:\n\n> Betterle, A. & Salamon, P. (2025). *Satellite-Derived Flood Depth Maps for Europe.*\n> European Commission, Joint Research Centre (JRC) / Copernicus Emergency Management Service.\n> Licensed CC-BY-4.0. <https://data.jrc.ec.europa.eu/dataset/0bc96690-b89c-4909-9166-c2c322a20130>\n\nPlease cite **both** the source dataset above and this index.\n\n---\n\n*Maintained via <https://github.com/cisgroup/euroflood>.*\n",
   "_review": [
-    "providers: role [processor] for 'CIS Group (EuroFlood)' is an AI guess \u2014 Inferred as processor/builder of this derived index since they maintain the euroflood library and this dataset per the linked GitHub repo.. Verify before flipping to _state: reviewed.",
-    "extent.temporal: None (probe sample) widened to ['2015-01-01T00:00:00Z', '2024-01-01T00:00:00Z'] using README-stated coverage ['2015', '2024']."
+    "extent.temporal: None (probe sample) widened to ['2015-01-01T00:00:00Z', '2025-01-01T00:00:00Z'] using README-stated coverage ['2015', '2025']."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-07-29T00:53:23+00:00",
-  "store_format": null,
-  "ext_bytes": {
-    "tif": 124239612,
-    "parquet": 14254605,
-    "png": 274912,
-    "md": 3321,
-    "json": 1688
-  }
+  "cataloged_at": "2026-09-23T08:47:31+00:00",
+  "store_format": null
 }
