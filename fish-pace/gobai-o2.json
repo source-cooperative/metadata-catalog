@@ -4,11 +4,10 @@
   "stac_version": "1.1.0",
   "id": "fish-pace/gobai-o2",
   "title": "GOBAI-O2 Icechunk",
-  "description": "GOBAI-O2 is a global, gridded (mapped) product of dissolved oxygen concentrations in the ocean, produced by applying machine learning methods to in-situ ocean profile observations (e.g., Argo floats and shipboard casts) and interpolating them onto a regular latitude/longitude/depth/time grid. This copy is distributed as an Icechunk-formatted Zarr store, archived by NOAA's National Centers for Environmental Information.",
+  "description": "GOBAI-O2 v2.3 is a global, gridded monthly dataset of ocean-interior dissolved oxygen concentration (with uncertainty, temperature, and salinity) on a 1\u00b0\u00d71\u00b0 grid across 58 pressure levels from 2004 to 2024, produced by applying machine-learning models to shipboard and autonomous oxygen observations. This copy is a materialized Icechunk/Zarr store built from the NOAA NCEI-archived source NetCDF file, with added CF/ACDD metadata.",
+  "license": "CC0-1.0",
   "keywords": [
     "oceanography",
-    "ocean-biogeochemistry",
-    "biodiversity",
     "machine-learning",
     "zarr",
     "icechunk",
@@ -37,9 +36,9 @@
     "spatial": {
       "bbox": [
         [
-          -179.5,
+          20.5,
           -64.5,
-          179.5,
+          -0.5,
           79.5
         ]
       ]
@@ -48,7 +47,7 @@
       "interval": [
         [
           "2004-01-15T00:00:00",
-          "2024-12-15T00:00:00"
+          "2024-12-15T00:00:00Z"
         ]
       ]
     }
@@ -75,23 +74,32 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "data_mode": null,
-  "created_at": "2026-08-06T02:43:07.791Z",
   "updated_at": "2026-08-06T02:43:07.791Z",
-  "total_bytes": 5589188526,
+  "product_id": "gobai-o2",
   "exts": {
-    "": 12859,
+    "": 12858,
+    "webp": 58,
+    "js": 33,
+    "json": 7,
+    "geojson": 5,
+    "woff2": 4,
+    "wasm": 3,
+    "jpg": 1,
+    "ico": 1,
+    "rtz2saet9geswb4nachg": 1,
+    "txt": 1,
+    "css": 1,
+    "md": 1,
+    "py": 1,
+    "html": 1,
+    "ipynb": 1,
     "gazrhcp7nefhvvep2qng": 1,
     "e1v87tsyp5n0xbzsvc00": 1
   },
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "object_count": 12861,
+  "visibility": "public",
+  "object_count": 12979,
   "featured": 0,
-  "disabled": false,
-  "account_id": "fish-pace",
+  "data_mode": null,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "is_primary": true,
@@ -99,18 +107,40 @@
       "prefix": "fish-pace/gobai-o2/"
     }
   },
-  "visibility": "public",
-  "product_id": "gobai-o2",
-  "_review": [
-    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
-    "providers: role [producer, host] for 'NOAA National Centers for Environmental Information' is an AI guess \u2014 Inferred from the NCEI ISO metadata landing page ID (gov.noaa.nodc:0259304) referenced in the API description; no README was available to confirm exact provider roles.. Verify before flipping to _state: reviewed."
-  ],
-  "_state": "drafted",
-  "cataloged_at": "2026-08-10T10:05:40+00:00",
-  "store_format": "icechunk",
+  "total_bytes": 5615706287,
+  "disabled": false,
+  "objects_updated_at": "2026-09-19T00:52:40+00:00",
   "ext_bytes": {
-    "": 5589187805,
+    "": 5589190592,
+    "geojson": 14110795,
+    "js": 5009908,
+    "wasm": 4137382,
+    "jpg": 1586751,
+    "css": 842696,
+    "ipynb": 458507,
+    "woff2": 258588,
+    "json": 59314,
+    "ico": 13094,
+    "md": 11496,
+    "webp": 10236,
+    "py": 8045,
+    "html": 5662,
+    "txt": 1983,
+    "rtz2saet9geswb4nachg": 517,
     "gazrhcp7nefhvvep2qng": 449,
     "e1v87tsyp5n0xbzsvc00": 272
-  }
+  },
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "created_at": "2026-08-06T02:43:07.791Z",
+  "account_id": "fish-pace",
+  "readme": "## README.md\n# GOBAI-O2 v2.3 (monthly) \u2014 Icechunk\n\n**[\ud83c\udf10 View data in browser](https://data.source.coop/fish-pace/gobai-o2/viewer/index.html#icechunk+https://data.source.coop/fish-pace/gobai-o2/monthly::varname=oxy)** \u00b7 **[\ud83d\udcbb Data access (code)](#how-to-open-it)** \u00b7 **[\ud83d\udce6 Data access (NCEI)](https://www.ncei.noaa.gov/access/metadata/landing-page/bin/iso?id=gov.noaa.nodc:0259304)**\n\nAn [Icechunk](https://icechunk.io) store of the complete **GOBAI-O2 v2.3** monthly\ndataset: global gridded ocean-interior dissolved oxygen, its uncertainty, temperature and\nsalinity, **2004-01 through 2024-12**, on a 1\u00b0 \u00d7 1\u00b0 \u00d7 58-level pressure grid.\n\n```\nhttps://data.source.coop/fish-pace/gobai-o2/monthly\n```\n\nUnlike the other stores in this repository, this one is **materialized**: it holds real\nZarr v3 chunks, not byte-range references. Nothing is fetched from NCEI at read time and\nthe store is self-contained. The source is a single 12 GB contiguous, uncompressed NetCDF\nfile, which offers no chunk boundaries worth referencing; rechunked and Zstd-compressed it\nis 5.59 GB in 12,858 objects.\n\nThe dataset is complete and static \u2014 GOBAI-O2 v2.3 is a finished archive version, not a\ngrowing feed \u2014 so this store needs no update pipeline. A later GOBAI-O2 version would be a\nnew store.\n\n## View it in a browser\n\nNo install, no account, no download \u2014 the viewer streams chunks straight from the store:\n\n| Field | Viewer |\n|---|---|\n| Dissolved oxygen | [Open `oxy` in the viewer](https://data.source.coop/fish-pace/gobai-o2/viewer/index.html#icechunk+https://data.source.coop/fish-pace/gobai-o2/monthly::varname=oxy) |\n| Total uncertainty | [Open `uncer` in the viewer](https://data.source.coop/fish-pace/gobai-o2/viewer/index.html#icechunk+https://data.source.coop/fish-pace/gobai-o2/monthly::varname=uncer) |\n| Temperature | [Open `temp` in the viewer](https://data.source.coop/fish-pace/gobai-o2/viewer/index.html#icechunk+https://data.source.coop/fish-pace/gobai-o2/monthly::varname=temp) |\n| Salinity | [Open `sal` in the viewer](https://data.source.coop/fish-pace/gobai-o2/viewer/index.html#icechunk+https://data.source.coop/fish-pace/gobai-o2/monthly::varname=sal) |\n\nThe viewer is [gridlook](https://github.com/eeholmes/gridlook), a WebGL globe for\ncloud-hosted Zarr and Icechunk stores, published alongside the data at\n[`gobai-o2/viewer/`](https://data.source.coop/fish-pace/gobai-o2/viewer/index.html). The store to open is in the URL *fragment* after `#`, so any\nstore can be swapped into the same link \u2014 nothing about the viewer is specific to this\ndataset. Give it a moment on first load: it fetches the store's metadata before drawing.\n\nIt is a browser rendering a multi-gigabyte store over the network, so treat it as a look,\nnot an analysis. For anything quantitative use the code path below.\n\n## How to open it\n\nNeeds `icechunk >= 2.1` and `xarray`. No credentials, no account, and \u2014 because the chunks\nare materialized \u2014 no virtual-chunk authorization step.\n\n> **icechunk 1.x will not work.** `icechunk.http_storage` does not exist in icechunk 1.x\n> (it arrived in 2.0). Every icechunk 2.x release needs **Python 3.12 or newer**, so on an\n> older Python `pip install icechunk` quietly installs 1.1.x, and the code below fails with\n> `AttributeError: module 'icechunk' has no attribute 'http_storage'`. Check what you have:\n> `python -c \"import icechunk; print(icechunk.__version__)\"`.\n\n```python\nimport icechunk\nimport xarray as xr\n\nurl = \"https://data.source.coop/fish-pace/gobai-o2/monthly\"\nrepo = icechunk.Repository.open(icechunk.http_storage(url))\nstore = repo.readonly_session(\"main\").store\n\n# chunks={} gives lazy, dask-backed arrays. The full dataset is 12 GB uncompressed,\n# so do not load it whole.\nds = xr.open_zarr(store, consolidated=False, chunks={})\n\nprint(ds)\nprint(ds.oxy.isel(time=0, pres=0).mean().compute())      # surface map, Jan 2004\nprint(ds.oxy.sel(lat=0, lon=180, method=\"nearest\").isel(pres=0))  # equatorial time series\n```\n\nThe snapshot that built the store is also tagged, so `readonly_session(tag=\"v2.3\")` pins\nyou to it regardless of later commits.\n\n**Longitudes run 20.5 \u2192 379.5**, not 0 \u2192 360 or \u2212180 \u2192 180: the grid starts at 20.5\u00b0E and\ncontinues past the dateline into a second lap. This comes from the source file and is kept\nas is. Selecting the Pacific near 200 is therefore `sel(lon=200)`, and a plot of a full\nmap is centred on the Atlantic. To get a conventional axis:\n\n```python\nds = ds.assign_coords(lon=(ds.lon - 360) % 360).sortby(\"lon\")   # 0 \u2192 360\n```\n\nLand and below-bottom cells are `NaN` (about 39 % of the surface layer). There is no\n`_FillValue` or `missing_value` to unmask \u2014 the source declares none, and float NaN\nsurvives the round trip.\n\n## About the data\n\nGOBAI-O2 (Gridded Ocean Biogeochemistry from Artificial Intelligence \u2014 Oxygen) reconstructs\nocean interior dissolved oxygen by training machine-learning models on shipboard bottle and\nprofiling-float oxygen observations, then applying them to temperature and salinity fields\nfrom the Roemmich and Gilson (2009) Argo climatology. The method is described in\n[Sharp et al. (2023)](https://doi.org/10.5194/essd-15-4481-2023).\n\n- **Grid:** 1\u00b0 latitude \u00d7 1\u00b0 longitude, 58 pressure levels from 2.5 to 1975 dbar\n- **Extent:** lat \u221264.5 \u2192 79.5, lon 20.5 \u2192 379.5, monthly mid-month time stamps\n  (2004-01-15 \u2192 2024-12-15, 252 steps)\n- **Conventions:** CF-1.12, ACDD-1.3 (added here; see \"How this was built\")\n- **Product page:** <https://www.pmel.noaa.gov/gobai/>\n- **Archive:** NCEI accession\n  [0259304](https://www.ncei.noaa.gov/access/metadata/landing-page/bin/iso?id=gov.noaa.nodc:0259304),\n  DOI [10.25921/z72m-yz67](https://doi.org/10.25921/z72m-yz67)\n\n### Variables\n\n| Variable | Long name | Units | CF `standard_name` |\n|---|---|---|---|\n| `oxy` | dissolved molecular oxygen concentration | \u00b5mol kg\u207b\u00b9 | `moles_of_oxygen_per_unit_mass_in_sea_water` |\n| `uncer` | total uncertainty in `oxy` | \u00b5mol kg\u207b\u00b9 | \u2014 (no exact CF name; linked to `oxy` as `ancillary_variables`) |\n| `temp` | sea water temperature | \u00b0C | `sea_water_temperature` |\n| `sal` | sea water practical salinity | 1 | `sea_water_practical_salinity` |\n\nAll four are `float32` on `(time, pres, lat, lon)`. `temp` and `sal` are the Roemmich and\nGilson (2009) fields the oxygen reconstruction was driven with, carried along for\nconvenience \u2014 they are not an independent product.\n\n### Chunking\n\nChunks are `(time: 14, pres: 2, lat: 73, lon: 120)` \u2014 0.98 MB of float32 each, Zstd\ncompressed. That is a deliberate compromise between the two access patterns, neither of\nwhich it favours: a global map at one time and pressure touches 6 chunks, a 252-month time\nseries at one point and depth touches 18, and a full-depth profile at one time touches 29.\nMeasured anonymously over the public endpoint, those three reads take about 0.4 s, 0.8 s\nand 1.3 s.\n\n## How this was built\n\nThe viewer is published by `publish_viewer.py` in the\n[GitHub repository](https://github.com/ocean-icechunks/icechunks)\n(`python publish_viewer.py --product gobai-o2 --build ~/gridlook`); it is a plain static\nbuild of gridlook, and holds no data of its own.\n\nThe notebook that built it sits next to this README:\n**`gobai-o2-monthly-icechunk-sc.ipynb`** (also in the GitHub repository\n<https://github.com/ocean-icechunks/icechunks>, directory `gobai-o2-monthly/`). It downloads or\nstreams the NCEI file, adds CF and ACDD metadata, rechunks, writes with\n`Dataset.to_zarr`, and validates the published store against the source.\n\nIt runs end to end **without credentials and without writing anything**: `RUN_WRITE`\ndefaults to `False`, so it opens the source, builds the same metadata and encoding, skips\nthe write, and validates. Set `RUN_WRITE = True` (with Source Cooperative write\ncredentials) to rebuild. `requirements.txt` beside it lists the package floors; Python 3.12\nor newer is required, because `icechunk` 2.x is published `requires_python = \">=3.12\"`.\n\nThe source file is one 12 GB NetCDF at\n\n```\nhttps://www.ncei.noaa.gov/data/oceans/archive/arc0207/0259304/5.5/data/0-data/GOBAI-O2-v2.3.nc\n```\n\n(accession 0259304, archive version 5.5, 12,207,313,813 bytes). NCEI's landing-page\ndownload button currently redirects in a loop, but that archive path serves the file\ndirectly and honours HTTP range requests, so the notebook can read it without downloading\nit \u2014 `engine=\"netcdf4\"` plus a `#mode=bytes` URL suffix. Downloading it first is still much\nfaster for a full rebuild, because the source is contiguous and uncompressed and the write\nreads it in a strided pattern.\n\n### What was changed from the source\n\n**Metadata only. No data value was altered.** The source file carries per-variable\ndescriptions but no global attributes at all, and free-text units (`\"micromoles per\nkilogram\"`, `\"degrees Celcius\"`, `\"N/A\"` for salinity). The build added `Conventions`,\n`title`, `summary`, `source`, `history`, creator and citation fields, the DOI, the license\nand `product_version`; CF `standard_name`, `units` and axis attributes on the coordinates;\nCF standard names and udunits-style units on the variables; and `ancillary_variables`\nlinking `uncer` to `oxy`.\n\n### Provenance\n\n| When | What |\n|---|---|\n| 2026-08-06 | Built and committed, snapshot `8DKFSNN3G386BXJS8X6G`, tagged `v2.3` (icechunk 2.1.2) |\n| 2026-09-17 | Metadata-only commit `3A41NX29VSPEXA94ES9G`: corrected `license` from CC BY 4.0 to CC0 1.0, which is what NCEI distributes with the source. No chunk was rewritten |\n\nBoth are in the repository's `ancestry()`, and every code block on this page was executed\nagainst the live store before it was published.\n\n## Reuse and citation\n\n**Code.** The notebook and helpers are released under\n[Apache-2.0](https://github.com/ocean-icechunks/icechunks/blob/main/LICENSE) and are free to use,\ncopy, adapt and redistribute, commercially or not \u2014 no attribution required.\n\n**Data.** The data is not ours. GOBAI-O2 is released by its authors under\n[CC0 1.0](https://www.ncei.noaa.gov/data/oceans/archive/arc0207/0259304/5.5/data/0-data/GOBAI-O2-v2.3-license.txt),\nwhich waives all copyright and imposes no legal obligation to cite. Scholarly practice\nstill asks that you do:\n\n> Sharp, J. D., Fassbender, A. J., Carter, B. R., Johnson, G. C., Schultz, C., & Dunne,\n> J. P. (2022). GOBAI-O2: A Global Gridded Monthly Dataset of Ocean Interior Dissolved\n> Oxygen Concentrations Based on Shipboard and Autonomous Observations (NCEI Accession\n> 0259304). NOAA National Centers for Environmental Information.\n> <https://doi.org/10.25921/z72m-yz67>\n\nand cite the method paper:\n\n> Sharp, J. D., Fassbender, A. J., Carter, B. R., Johnson, G. C., Schultz, C., & Dunne,\n> J. P. (2023). GOBAI-O2: temporally and spatially resolved fields of ocean interior\n> dissolved oxygen over nearly 2 decades. *Earth System Science Data*, 15, 4481\u20134518.\n> <https://doi.org/10.5194/essd-15-4481-2023>\n\n## Credits\n\n- **Data:** Jonathan D. Sharp, Andrea J. Fassbender, Brendan R. Carter, Gregory C. Johnson,\n  Cristina Schultz and John P. Dunne \u2014 NOAA Pacific Marine Environmental Laboratory,\n  CICOES/University of Washington, and NOAA GFDL. Archived by NOAA NCEI.\n- **Temperature and salinity fields:** Roemmich, D., & Gilson, J. (2009), the Scripps\n  Argo climatology, <https://sio-argo.ucsd.edu/RG_Climatology.html>.\n- **Icechunk packaging:** built with [Icechunk](https://icechunk.io) and\n  [Xarray](https://xarray.dev), hosted on\n  [Source Cooperative](https://source.coop/fish-pace/gobai-o2).\n",
+  "_review": [
+    "extent.temporal: ['2004-01-15T00:00:00', '2024-12-15T00:00:00'] (probe sample) widened to ['2004-01-15T00:00:00', '2024-12-15T00:00:00Z'] using README-stated coverage ['2004-01-15', '2024-12-15']."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-09-23T08:50:06+00:00",
+  "store_format": "icechunk"
 }
