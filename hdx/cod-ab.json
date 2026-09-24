@@ -7,7 +7,7 @@
   ],
   "id": "hdx/cod-ab",
   "title": "COD-AB Administrative Boundaries",
-  "description": "COD-AB (Common Operational Dataset for Administrative Boundaries) is a global, country-by-country collection of administrative boundary layers (admin0-admin4 polygons, boundary lines, and settlement/place points) with P-codes, multilingual names, and centroids for every country. Maintained by UN OCHA for humanitarian coordination, it is distributed here as versioned per-country GeoParquet/PMTiles alongside a merged global layer.",
+  "description": "COD-AB (Common Operational Dataset for Administrative Boundaries) is a global, country-by-country collection of administrative boundary layers (admin0-admin4 polygons, boundary lines, and settlement/place points) with P-codes, multilingual names, and centroids for every country, maintained by UN OCHA for humanitarian coordination. It is distributed here as versioned per-country GeoParquet and PMTiles, alongside a merged global layer by admin level.",
   "license": "CC-BY-3.0-IGO",
   "keywords": [
     "administrative-boundaries",
@@ -3178,8 +3178,7 @@
         },
         {
           "name": "adm0_name",
-          "type": "VARCHAR",
-          "description": "[placename] Country name"
+          "type": "VARCHAR"
         },
         {
           "name": "adm0_name1",
@@ -3195,8 +3194,7 @@
         },
         {
           "name": "adm0_pcode",
-          "type": "VARCHAR",
-          "description": "[admin_code] Country P-code"
+          "type": "VARCHAR"
         },
         {
           "name": "valid_on",
@@ -3236,11 +3234,13 @@
         },
         {
           "name": "center_lat",
-          "type": "DOUBLE"
+          "type": "DOUBLE",
+          "description": "[latlon] Latitude of the country centroid"
         },
         {
           "name": "center_lon",
-          "type": "DOUBLE"
+          "type": "DOUBLE",
+          "description": "[latlon] Longitude of the country centroid"
         },
         {
           "name": "SHAPE__Length",
@@ -3256,8 +3256,7 @@
         },
         {
           "name": "geometry",
-          "type": "GEOMETRY",
-          "description": "[geometry] Admin0 boundary polygon"
+          "type": "GEOMETRY"
         }
       ],
       "table:row_count": 1
@@ -3276,8 +3275,7 @@
         },
         {
           "name": "adm1_name",
-          "type": "VARCHAR",
-          "description": "[placename] Admin1 region name"
+          "type": "VARCHAR"
         },
         {
           "name": "adm1_name1",
@@ -3293,8 +3291,7 @@
         },
         {
           "name": "adm1_pcode",
-          "type": "VARCHAR",
-          "description": "[admin_code] Admin1 region P-code"
+          "type": "VARCHAR"
         },
         {
           "name": "adm0_name",
@@ -3386,8 +3383,7 @@
         },
         {
           "name": "geometry",
-          "type": "GEOMETRY",
-          "description": "[geometry] Admin1 boundary polygon"
+          "type": "GEOMETRY"
         }
       ],
       "table:row_count": 34
@@ -3406,8 +3402,7 @@
         },
         {
           "name": "adm2_name",
-          "type": "VARCHAR",
-          "description": "[placename] Admin2 region name"
+          "type": "VARCHAR"
         },
         {
           "name": "adm2_name1",
@@ -3423,8 +3418,7 @@
         },
         {
           "name": "adm2_pcode",
-          "type": "VARCHAR",
-          "description": "[admin_code] Admin2 region P-code"
+          "type": "VARCHAR"
         },
         {
           "name": "adm1_name",
@@ -3540,8 +3534,7 @@
         },
         {
           "name": "geometry",
-          "type": "GEOMETRY",
-          "description": "[geometry] Admin2 boundary polygon"
+          "type": "GEOMETRY"
         }
       ],
       "table:row_count": 401
@@ -3564,8 +3557,7 @@
         },
         {
           "name": "name",
-          "type": "VARCHAR",
-          "description": "[placename] Capital/settlement name"
+          "type": "VARCHAR"
         },
         {
           "name": "name_1",
@@ -3581,16 +3573,17 @@
         },
         {
           "name": "loc_pcode",
-          "type": "VARCHAR",
-          "description": "[admin_code] Capital location P-code"
+          "type": "VARCHAR"
         },
         {
           "name": "x_coord",
-          "type": "DOUBLE"
+          "type": "DOUBLE",
+          "description": "[latlon] Longitude of administrative capital point"
         },
         {
           "name": "y_coord",
-          "type": "DOUBLE"
+          "type": "DOUBLE",
+          "description": "[latlon] Latitude of administrative capital point"
         },
         {
           "name": "adm3_name",
@@ -3706,8 +3699,7 @@
         },
         {
           "name": "geometry",
-          "type": "GEOMETRY",
-          "description": "[geometry] Capital point location"
+          "type": "GEOMETRY"
         }
       ],
       "table:row_count": 401
@@ -3762,8 +3754,7 @@
         },
         {
           "name": "geometry",
-          "type": "GEOMETRY",
-          "description": "[geometry] Administrative boundary line"
+          "type": "GEOMETRY"
         }
       ],
       "table:row_count": 1215
@@ -3786,8 +3777,7 @@
         },
         {
           "name": "name",
-          "type": "VARCHAR",
-          "description": "[placename] Settlement/place name"
+          "type": "VARCHAR"
         },
         {
           "name": "name1",
@@ -3827,8 +3817,7 @@
         },
         {
           "name": "adm4_pcode",
-          "type": "VARCHAR",
-          "description": "[admin_code] Lowest-level admin P-code"
+          "type": "VARCHAR"
         },
         {
           "name": "adm3_name",
@@ -3944,8 +3933,7 @@
         },
         {
           "name": "geometry",
-          "type": "GEOMETRY",
-          "description": "[geometry] Settlement point location"
+          "type": "GEOMETRY"
         }
       ],
       "table:row_count": 401
@@ -4000,8 +3988,7 @@
         },
         {
           "name": "geometry",
-          "type": "GEOMETRY",
-          "description": "[geometry] Region boundary line"
+          "type": "GEOMETRY"
         }
       ],
       "table:row_count": 16
@@ -4184,8 +4171,7 @@
         },
         {
           "name": "region_pcode",
-          "type": "VARCHAR",
-          "description": "[admin_code] Custom region P-code"
+          "type": "VARCHAR"
         },
         {
           "name": "bbox",
@@ -4193,8 +4179,7 @@
         },
         {
           "name": "geometry",
-          "type": "GEOMETRY",
-          "description": "[geometry] Region point location"
+          "type": "GEOMETRY"
         }
       ],
       "table:row_count": 8
@@ -4213,8 +4198,7 @@
         },
         {
           "name": "region_name",
-          "type": "VARCHAR",
-          "description": "[placename] Custom region name"
+          "type": "VARCHAR"
         },
         {
           "name": "region_name1",
@@ -4230,8 +4214,7 @@
         },
         {
           "name": "region_pcode",
-          "type": "VARCHAR",
-          "description": "[admin_code] Custom region P-code"
+          "type": "VARCHAR"
         },
         {
           "name": "adm0_name",
@@ -4299,8 +4282,7 @@
         },
         {
           "name": "geometry",
-          "type": "GEOMETRY",
-          "description": "[geometry] Region boundary polygon"
+          "type": "GEOMETRY"
         }
       ],
       "table:row_count": 8
@@ -5689,7 +5671,7 @@
         {
           "name": "adm1_pcode",
           "type": "VARCHAR",
-          "description": "[admin_code] Global merged admin1 P-code"
+          "description": "[admin_code] P-code identifying the admin1 region"
         },
         {
           "name": "adm0_name",
@@ -5713,7 +5695,8 @@
         },
         {
           "name": "adm1_name",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[placename] Admin1 region name"
         },
         {
           "name": "adm1_name1",
@@ -5766,7 +5749,7 @@
         {
           "name": "geometry",
           "type": "GEOMETRY",
-          "description": "[geometry] Admin1 boundary polygon"
+          "description": "[geometry] Admin1 boundary polygon geometry"
         }
       ],
       "table:row_count": 1898
@@ -5786,7 +5769,7 @@
         {
           "name": "adm2_pcode",
           "type": "VARCHAR",
-          "description": "[admin_code] Global merged admin2 P-code"
+          "description": "[admin_code] P-code identifying the admin2 region"
         },
         {
           "name": "adm0_name",
@@ -5883,7 +5866,7 @@
         {
           "name": "geometry",
           "type": "GEOMETRY",
-          "description": "[geometry] Admin2 boundary polygon"
+          "description": "[geometry] Admin2 boundary polygon geometry"
         }
       ],
       "table:row_count": 19890
@@ -5903,7 +5886,7 @@
         {
           "name": "adm3_pcode",
           "type": "VARCHAR",
-          "description": "[admin_code] Global merged admin3 P-code"
+          "description": "[admin_code] P-code identifying the admin3 region"
         },
         {
           "name": "adm0_name",
@@ -6020,7 +6003,7 @@
         {
           "name": "geometry",
           "type": "GEOMETRY",
-          "description": "[geometry] Admin3 boundary polygon"
+          "description": "[geometry] Admin3 boundary polygon geometry"
         }
       ],
       "table:row_count": 58486
@@ -6168,7 +6151,7 @@
         {
           "name": "adm4_pcode",
           "type": "VARCHAR",
-          "description": "[admin_code] Global merged admin4 P-code"
+          "description": "[admin_code] P-code identifying the admin4 region"
         },
         {
           "name": "adm_lvl",
@@ -6177,7 +6160,7 @@
         {
           "name": "geometry",
           "type": "GEOMETRY",
-          "description": "[geometry] Admin4 boundary polygon"
+          "description": "[geometry] Admin4 boundary polygon geometry"
         }
       ],
       "table:row_count": 217271
@@ -6277,28 +6260,8 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "object_count": 28882,
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
+  "total_bytes": 22902082271,
   "featured": 0,
-  "visibility": "public",
-  "exts": {
-    "json": 10860,
-    "md": 8596,
-    "parquet": 3144,
-    "pmtiles": 3141,
-    "jpg": 3141
-  },
-  "updated_at": "2026-06-22T15:38:42.401Z",
-  "disabled": false,
-  "created_at": "2026-06-22T15:31:11.638Z",
-  "objects_updated_at": "2026-09-10T13:36:54+00:00",
-  "account_id": "hdx",
-  "total_bytes": 22902037909,
-  "product_id": "cod-ab",
-  "data_mode": "open",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -6311,18 +6274,38 @@
       "prefix": "hdx/cod-ab/"
     }
   },
+  "objects_updated_at": "2026-09-16T20:14:56+00:00",
+  "exts": {
+    "json": 10860,
+    "md": 8596,
+    "parquet": 3144,
+    "pmtiles": 3141,
+    "jpg": 3141
+  },
+  "data_mode": "open",
+  "object_count": 28882,
+  "visibility": "public",
+  "created_at": "2026-06-22T15:31:11.638Z",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "disabled": false,
   "ext_bytes": {
     "parquet": 13609073428,
     "pmtiles": 9217924944,
     "jpg": 38693163,
-    "json": 27000804,
-    "md": 9345570
+    "json": 27045022,
+    "md": 9345714
   },
+  "product_id": "cod-ab",
+  "updated_at": "2026-06-22T15:38:42.401Z",
+  "account_id": "hdx",
   "readme": "## extended__README.md\n# COD-AB Administrative Boundaries\n\nA Portolan-managed STAC catalog\n\n---\n\n*Generated by [Portolan](https://github.com/portolan-sdi/portolan-cli) from STAC metadata and .portolan/metadata.yaml*\n\n\n## extended__afg__README.md\n# Afg\n\nCatalog: afg\n\n---\n\n*Generated by [Portolan](https://github.com/portolan-sdi/portolan-cli) from STAC metadata and .portolan/metadata.yaml*\n\n\n## extended__ago__README.md\n# Ago\n\nCatalog: ago\n\n---\n\n*Generated by [Portolan](https://github.com/portolan-sdi/portolan-cli) from STAC metadata and .portolan/metadata.yaml*\n\n\n## extended__are__README.md\n# Are\n\nCatalog: are\n\n---\n\n*Generated by [Portolan](https://github.com/portolan-sdi/portolan-cli) from STAC metadata and .portolan/metadata.yaml*\n\n\n## extended__arm__README.md\n# Arm\n\nCatalog: arm\n\n---\n\n*Generated by [Portolan](https://github.com/portolan-sdi/portolan-cli) from STAC metadata and .portolan/metadata.yaml*\n\n\n## extended__aze__README.md\n# Aze\n\nCatalog: aze\n\n---\n\n*Generated by [Portolan](https://github.com/portolan-sdi/portolan-cli) from STAC metadata and .portolan/metadata.yaml*\n\n\n## extended__bdi__README.md\n# Bdi\n\nCatalog: bdi\n\n---\n\n*Generated by [Portolan](https://github.com/portolan-sdi/portolan-cli) from STAC metadata and .portolan/metadata.yaml*\n\n\n## extended__ben__README.md\n# Ben\n\nCatalog: ben\n\n---\n\n*Generated by [Portolan](https://github.com/portolan-sdi/portolan-cli) from STAC metadata and .portolan/metadata.yaml*\n\n\n## extended__bfa__README.md\n# Bfa\n\nCatalog: bfa\n\n---\n\n*Generated by [Portolan](https://github.com/portolan-sdi/portolan-cli) from STAC metadata and .portolan/metadata.yaml*\n\n\n## extended__bgd__README.md\n# Bgd\n\nCatalog: bgd\n\n---\n\n*Generated by [Portolan](https://github.com/portolan-sdi/portolan-cli) from STAC metadata and .portolan/metadata.yaml*\n\n\n## extended__bgr__README.md\n# Bgr\n\nCatalog: bgr\n\n---\n\n*Generated by [Portolan](https://github.com/portolan-sdi/portolan-cli) from STAC metadata and .portolan/metadata.yaml*\n\n\n## extended__blr__README.md\n# Blr\n\nCatalog: blr\n\n---\n\n*Generated by [Portolan](https://github.com/portolan-sdi/portolan-cli) from STAC metadata and .portolan/metadata.yaml*\n\n\n## extended__blz__README.md\n# Blz\n\nCatalog: blz\n\n---\n\n*Generated by [Portolan](https://github.com/portolan-sdi/portolan-cli) from STAC metadata and .portolan/metadata.yaml*\n\n\n## extended__bol__README.md\n# Bol\n\nCatalog: bol\n\n---\n\n*Generated by [Portolan](https://github.com/portolan-sdi/portolan-cli) from STAC metadata and .portolan/metadata.yaml*\n\n\n## extended__btn__README.md\n# Btn\n\nCatalog: btn\n\n---\n\n*Generated by [Portolan](https://github.com/portolan-sdi/portolan-cli) from STAC metadata and .portolan/metadata.yaml*\n\n\n## extended__caf__README.md\n# Caf\n\nCatalog: caf\n\n---\n\n*Generated by [Portolan](https://github.com/portolan-sdi/portolan-cli) from STAC metadata and .portolan/metadata.yaml*\n\n\n## extended__chl__README.md\n# Chl\n\nCatalog: chl\n\n---\n\n*Generated by [Portolan](https://github.com/portolan-sdi/portolan-cli) from STAC metadata and .portolan/metadata.yaml*\n\n\n## extended__civ__README.md\n# Civ\n\nCatalog: civ\n\n---\n\n*Generated by [Portolan](https://github.com/portolan-sdi/portolan-cli) from STAC metadata and .portolan/metadata.yaml*\n\n\n## extended__cmr__README.md\n# Cmr\n\nCatalog: cmr\n\n---\n\n*Generated by [Portolan](https://github.com/portolan-sdi/portolan-cli) from STAC metadata and .portolan/metadata.yaml*\n\n\n## extended__cod__README.md\n# Cod\n\nCatalog: cod\n\n---\n\n*Generated by [Portolan](https://github.com/portolan-sdi/portolan-cli) from STAC metadata and .portolan/metadata.yaml*\n\n\n## extended__cog__README.md\n# Cog\n\nCatalog: cog\n\n---\n\n*Generated by [Portolan](https://github.com/portolan-sdi/portolan-cli) from STAC metadata and .portolan/metadata.yaml*\n\n\n## extended__col__README.md\n# Col\n\nCatalog: col\n\n---\n\n*Generated by [Portolan](https://github.com/portolan-sdi/portolan-cli) from STAC metadata and .portolan/metadata.yaml*\n\n\n## global__README.md\n# COD-AB Administrative Boundaries\n\n![administrative boundaries](https://img.shields.io/badge/administrative_boundaries-blue) ![COD-AB](https://img.shields.io/badge/COD--AB-blue) ![humanitarian](https://img.shields.io/badge/humanitarian-blue) ![OCHA](https://img.shields.io/badge/OCHA-blue) ![HDX](https://img.shields.io/badge/HDX-blue) ![GeoParquet](https://img.shields.io/badge/GeoParquet-blue) ![cloud-native](https://img.shields.io/badge/cloud--native-blue)\n\nA Portolan-managed STAC catalog\n\n## Collections\n\n### [Admin1](global/admin1/)\n\nAdmin1\n\n### [Admin2](global/admin2/)\n\nAdmin2\n\n### [Admin3](global/admin3/)\n\nAdmin3\n\n### [Admin4](global/admin4/)\n\nAdmin4\n\n## Coverage\n\n**Spatial Extent**\n\n- West: -118.3651, South: -55.9795, East: 170.2383, North: 56.1725\n\n## Source\n\n[https://gis.unocha.org/server/rest/services/Hosted](https://gis.unocha.org/server/rest/services/Hosted)\n\n## Attribution\n\nUN OCHA Information Systems Section (ISS)\n\n## License\n\nCC-BY-3.0-IGO\n\n## Contact\n\nHDX Data Systems Team <hdx@un.org>\n\n---\n\n*Generated by [Portolan](https://github.com/portolan-sdi/portolan-cli) from STAC metadata and .portolan/metadata.yaml*\n\n\n## matched__README.md\n# COD-AB Administrative Boundaries\n\nA Portolan-managed STAC catalog\n\n---\n\n*Generated by [Portolan](https://github.com/portolan-sdi/portolan-cli) from STAC metadata and .portolan/metadata.yaml*\n\n\n## original__README.md\n# COD-AB Administrative Boundaries\n\nA Portolan-managed STAC catalog\n\n---\n\n*Generated by [Portolan](https://github.com/portolan-sdi/portolan-cli) from STAC metadata and .portolan/metadata.yaml*\n",
   "_review": [
     "summaries.item_count: parts overlap, so this is max(part), not the sum \u2014 extended/ 7442, matched/ 8176, original/ 22305. Sum them only once the parts are known to be disjoint."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-09-16T08:46:15+00:00",
+  "cataloged_at": "2026-09-24T08:47:02+00:00",
   "store_format": null
 }
