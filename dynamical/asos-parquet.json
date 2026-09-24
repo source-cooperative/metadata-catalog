@@ -7,7 +7,7 @@
   ],
   "id": "dynamical/asos-parquet",
   "title": "Global Airport Weather GeoParquet (1940-present)",
-  "description": "A global archive of decoded METAR surface weather observations from airport ASOS and AWOS stations, covering 1940 to the present with approximately 1.8 billion records. Each record gives station-level measurements of temperature, dewpoint, humidity, wind, precipitation, visibility, and pressure, distributed as year-partitioned GeoParquet files.",
+  "description": "A global archive of decoded METAR surface weather observations from airport ASOS and AWOS stations, spanning 1940 to the present with roughly 1.8 billion station-level records of temperature, dewpoint, humidity, wind, precipitation, visibility, and pressure, distributed as year-partitioned GeoParquet files.",
   "license": "CC-BY-NC-SA-4.0",
   "keywords": [
     "weather",
@@ -55,13 +55,13 @@
       "interval": [
         [
           "1940-01-01T00:00:00Z",
-          "2026-09-01T00:00:00Z"
+          null
         ]
       ]
     }
   },
   "summaries": {
-    "item_count": 1768225429
+    "item_count": 1769519182
   },
   "assets": {
     "data": {
@@ -82,11 +82,13 @@
         },
         {
           "name": "longitude",
-          "type": "DOUBLE"
+          "type": "DOUBLE",
+          "description": "[latlon] Station longitude, paired with latitude"
         },
         {
           "name": "latitude",
-          "type": "DOUBLE"
+          "type": "DOUBLE",
+          "description": "[latlon] Station latitude, paired with longitude"
         },
         {
           "name": "tmpf",
@@ -143,7 +145,7 @@
         {
           "name": "state",
           "type": "VARCHAR",
-          "description": "[placename] State/province of the reporting station"
+          "description": "[admin_code] State/province code of the observing station"
         },
         {
           "name": "name",
@@ -156,12 +158,12 @@
         {
           "name": "country",
           "type": "VARCHAR",
-          "description": "[placename] Country name of the reporting station"
+          "description": "[placename] Country of the observing station"
         },
         {
           "name": "county",
           "type": "VARCHAR",
-          "description": "[placename] County of the reporting station"
+          "description": "[admin_code] County of the observing station"
         },
         {
           "name": "wfo",
@@ -174,7 +176,7 @@
         {
           "name": "geometry",
           "type": "GEOMETRY('EPSG:4326')",
-          "description": "[geometry] Station point location as GeoParquet geometry (EPSG:4326)"
+          "description": "[geometry] Point geometry of the observing station location"
         },
         {
           "name": "bbox",
@@ -196,8 +198,14 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "object_count": 88,
-  "created_at": "2026-02-05T18:50:19.484Z",
+  "disabled": false,
+  "visibility": "public",
+  "ext_bytes": {
+    "parquet": 20263558271
+  },
+  "objects_updated_at": "2026-09-20T03:23:28+00:00",
+  "account_id": "dynamical",
+  "featured": 0,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -210,12 +218,9 @@
       "prefix": "dynamical/asos-parquet/"
     }
   },
-  "product_id": "asos-parquet",
-  "ext_bytes": {
-    "parquet": 20252381284
-  },
-  "total_bytes": 20252381284,
-  "disabled": false,
+  "updated_at": "2026-02-09T17:07:41.515Z",
+  "created_at": "2026-02-05T18:50:19.484Z",
+  "total_bytes": 20263558271,
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
@@ -224,15 +229,12 @@
     "parquet": 88
   },
   "data_mode": "open",
-  "featured": 0,
-  "visibility": "public",
-  "updated_at": "2026-02-09T17:07:41.515Z",
-  "objects_updated_at": "2026-09-13T04:23:22+00:00",
-  "account_id": "dynamical",
+  "product_id": "asos-parquet",
+  "object_count": 88,
   "_review": [
-    "extent.temporal: None (probe sample) widened to ['1940-01-01T00:00:00Z', '2026-09-01T00:00:00Z'] using README-stated coverage ['1940', '2026-09']."
+    "extent.temporal: None (probe sample) widened to ['1940-01-01T00:00:00Z', None] using README-stated coverage ['1940', None]."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-09-16T08:53:34+00:00",
+  "cataloged_at": "2026-09-24T08:44:03+00:00",
   "store_format": null
 }
