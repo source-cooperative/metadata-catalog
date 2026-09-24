@@ -4,16 +4,16 @@
   "stac_version": "1.1.0",
   "id": "fish-pace/pace-oci",
   "title": "PACE-OCI Icechunks",
-  "description": "An Icechunk virtual-reference store providing Zarr-compatible access to NASA PACE OCI Level-3 mapped ocean color products, including chlorophyll-a concentration (CHL), remote-sensing reflectance (RRS), and diffuse attenuation coefficient (KD). The underlying data remain in NASA's original S3 bucket and are exposed via virtual references at daily, monthly, and 8-day intervals across two spatial grids (0.1deg and 4km), avoiding data duplication for in-region AWS access.",
+  "description": "An Icechunk repository providing Zarr-compatible virtual-reference access to NASA PACE OCI Level-3 mapped ocean color products, covering chlorophyll-a concentration, remote-sensing reflectance, and diffuse attenuation coefficient. Data stay in NASA's original S3 bucket and are exposed at daily, monthly, and 8-day intervals across two spatial grids (0.1deg and 4km) for in-region AWS access.",
   "keywords": [
     "oceanography",
     "remote-sensing",
     "satellite-imagery",
     "zarr",
     "icechunk",
+    "time-series",
     "chlorophyll",
-    "ocean-color",
-    "time-series"
+    "ocean-color"
   ],
   "providers": [
     {
@@ -51,19 +51,65 @@
     "temporal": {
       "interval": [
         [
+          "2024-03-01T00:00:00",
+          "2026-04-30T00:00:00"
+        ],
+        [
+          "2024-03-01T00:00:00",
+          "2026-01-01T00:00:00"
+        ],
+        [
           "2024-03-05T00:00:00",
-          "2026-04-23T00:00:00"
+          "2026-04-30T00:00:00"
+        ],
+        [
+          "2024-03-05T00:00:00",
+          "2026-02-28T00:00:00"
         ]
       ]
     }
   },
   "assets": {
-    "data": {
-      "href": "https://data.source.coop/fish-pace/pace-oci/",
+    "inregion/PACE_OCI_L3M_CHL": {
+      "href": "https://data.source.coop/fish-pace/pace-oci/inregion/PACE_OCI_L3M_CHL/",
       "type": "application/octet-stream",
-      "title": "Dataset files (3 x .icechunk)",
+      "title": "inregion/PACE_OCI_L3M_CHL/ (1 \u00d7 .icechunk)",
       "roles": [
         "data"
+      ],
+      "bbox": [
+        -179.75,
+        -89.9500046,
+        -179.8500061,
+        89.9499969
+      ]
+    },
+    "inregion/PACE_OCI_L3M_KD": {
+      "href": "https://data.source.coop/fish-pace/pace-oci/inregion/PACE_OCI_L3M_KD/",
+      "type": "application/octet-stream",
+      "title": "inregion/PACE_OCI_L3M_KD/ (1 \u00d7 .icechunk)",
+      "roles": [
+        "data"
+      ],
+      "bbox": [
+        -179.75,
+        -89.9500046,
+        -179.8500061,
+        89.9499969
+      ]
+    },
+    "inregion/PACE_OCI_L3M_RRS": {
+      "href": "https://data.source.coop/fish-pace/pace-oci/inregion/PACE_OCI_L3M_RRS/",
+      "type": "application/octet-stream",
+      "title": "inregion/PACE_OCI_L3M_RRS/ (1 \u00d7 .icechunk)",
+      "roles": [
+        "data"
+      ],
+      "bbox": [
+        -179.75,
+        -89.9500046,
+        -179.8500061,
+        89.9499969
       ]
     }
   },
@@ -79,13 +125,70 @@
       "title": "Source Cooperative product page"
     }
   ],
+  "created_at": "2026-06-27T03:10:05.513Z",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "disabled": false,
+  "visibility": "public",
+  "data_mode": "open",
+  "product_id": "pace-oci",
   "account_id": "fish-pace",
-  "updated_at": "2026-06-27T07:26:31.390Z",
+  "exts": {
+    "": 18124,
+    "ipynb": 4,
+    "bgqdrmxp2hj9xs922mmg": 1,
+    "rpd5cbm1cmgfwdzjnxeg": 1,
+    "k1j9zfhpk7cjqgd15sw0": 1,
+    "pdcx0xhswyezg2v4kwgg": 1,
+    "x0nwfffy3c47h02anqq0": 1,
+    "dx8epr2ggy8nd86p9g00": 1,
+    "17fbfz0h1w23e8s7r990": 1,
+    "kb8yqxsrtt3qh5jjbnmg": 1,
+    "ys4qw0yty9777k4vf54g": 1,
+    "j0cyh2zkfh14gy2pj4t0": 1,
+    "0mk0dyy7s41ekzwyfp50": 1,
+    "ffvbd7ypa51xpgs2aq20": 1,
+    "qsbenhm467q17d5j78mg": 1,
+    "gzj93y25465me8w0r4s0": 1,
+    "wxzayp3hyk470s8zj7r0": 1,
+    "svjfj6mfdhakesf0vha0": 1,
+    "vep6a2zhc9qxfgmdvymg": 1,
+    "8dakyea8m639kzpacyjg": 1,
+    "1r8t4496ne7ebqghg5s0": 1,
+    "p4jyk5xz0cset3tpgz9g": 1,
+    "fhzdp3rs2f1qy19j2dr0": 1,
+    "7b1m37nayqwdh69jq4zg": 1,
+    "c996axq48rmkr3s66av0": 1,
+    "x4753gnsdj2jb4cqjv40": 1,
+    "w85sn2bf5cvjff3zc0a0": 1,
+    "twp5ycb7bjwq2dmjzf70": 1,
+    "2bzmk4gjq9c1egpn05tg": 1,
+    "g2pz12f2gh371cswe5qg": 1,
+    "evcp96x1wjv649hn6tng": 1,
+    "exz535k2e4skvzr6wqng": 1,
+    "753nrvnbn2t69ek51jp0": 1,
+    "wmvry5gbp2qva4ch96xg": 1,
+    "8x52zq28pqf7jpfmvg40": 1,
+    "6e6k9xqq7be692ft3y9g": 1,
+    "hn59hj8zsnz75jjhbc2g": 1,
+    "fx5w8fpdr0c0m65sfzyg": 1,
+    "25sk9af6ck7bdab2ydr0": 1,
+    "m5f7s3htesy4d8vt33jg": 1,
+    "4awknev8scxm5csfkbk0": 1,
+    "dyj7knda2yhjwwe1g6y0": 1,
+    "wqyj7hk43geq88yzthc0": 1,
+    "34vwcxe04tevzj1785k0": 1,
+    "kw7jzqygc2vsa2azmgr0": 1,
+    "2jdjvzv1k37xjsa2yr40": 1,
+    "ftxmytkgtedq92qm10z0": 1,
+    "dc4pbmeyywmpzkc4t9ag": 1,
+    "k2ytyw3qfysmvf9nnzzg": 1,
+    "8ta8hjhbefjtaptww6dg": 1
+  },
+  "featured": 0,
+  "disabled": false,
+  "total_bytes": 4488391244,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -98,72 +201,9 @@
       "prefix": "fish-pace/pace-oci/"
     }
   },
-  "visibility": "public",
-  "exts": {
-    "": 18124,
-    "ipynb": 4,
-    "yml": 1,
-    "md3e3vd581yxzjtnmnfg": 1,
-    "dzbm36w953ny0aw8e0n0": 1,
-    "ndaj4t61afgqhr5192gg": 1,
-    "mk842c624ydh8mv3wt00": 1,
-    "qcwg7b1x775t1t6ashb0": 1,
-    "re53sv43b61qbmk0qvz0": 1,
-    "f6n951wep3v429s1qnm0": 1,
-    "gvbzr61ez4jr0phcbrv0": 1,
-    "eaf2eskdzzxjpqx16k50": 1,
-    "6823vwmehw14bxxb3z00": 1,
-    "tefpw3k30yvyfs5rmee0": 1,
-    "bp0zqj5vk0b9gcv47zr0": 1,
-    "5fm2y90339088f7j80kg": 1,
-    "5smk38s64rs35zsq2akg": 1,
-    "6n7tpf3kp4z8p9m3kcw0": 1,
-    "cxp1ywcv7k91sk795gwg": 1,
-    "34jh5d15dd5my1zz4dr0": 1,
-    "3nt8v0qhv1e14atpkqpg": 1,
-    "73en710tgngde0g8n530": 1,
-    "9y2x1b0p0qy0wkew4sc0": 1,
-    "kzw2fz0dq41e1c2dzmbg": 1,
-    "r7n63gm1mxzw6a1pw8e0": 1,
-    "nphmfd1jh0mm47dpzpbg": 1,
-    "73vvamw2ycar18kf0p8g": 1,
-    "bp9tqpj217vrdxj78890": 1,
-    "r1y9x4dtenf5jedntp00": 1,
-    "5k02vgp8er1p1ex5930g": 1,
-    "3tbkwhhf09zp2k7rhdb0": 1,
-    "4mx1xq4dawaj3etgr150": 1,
-    "z49m9fdbwqv4661jtypg": 1,
-    "yr2ycd3d06v9xa1t0pjg": 1,
-    "7w302zqrjqbawamxkbvg": 1,
-    "qtpr8ahqt247ey8ttpqg": 1,
-    "vf1py63wnqaqf7kepq90": 1,
-    "k6aa37dzkv6tbpcq4xq0": 1,
-    "rpvkbn072pgp79evz0rg": 1,
-    "f2446nj1sfcg0h8bbgsg": 1,
-    "vnfqfhs8z7d18atmdm6g": 1,
-    "4aaxjzap7q8ewbkgcvy0": 1,
-    "cgen834e1fw17fjd9250": 1,
-    "0r81fazq97bzyzy2j660": 1,
-    "8shq6h9hjm2cc2fc3d4g": 1,
-    "a2swvkaaqeb9az4qjyhg": 1,
-    "8gjesrga8a3tjfqh3y0g": 1,
-    "773v1pn3mdkwjbz1hd50": 1,
-    "jvwecpr5hz5avr0axpp0": 1,
-    "6xyn3xbxd33k42j4zwag": 1
-  },
-  "data_mode": "open",
   "object_count": 18697,
-  "featured": 0,
-  "product_id": "pace-oci",
-  "total_bytes": 4488390802,
-  "created_at": "2026-06-27T03:10:05.513Z",
-  "readme": "## README.md\n# PACE OCI Level-3 Chlorophyll Icechunk Store\n\nThis Icechunk repository provides virtual access to NASA PACE OCI Level-3  products for **in-region AWS access**. The data remain in the original NASA S3 bucket and are accessed through virtual references, avoiding duplication while providing a Zarr-compatible interface.\n\nThere are the following Icechunk stores:\n* `PACE_OCI_L3M_CHL`\n* `PACE_OCI_L3M_RRS`\n* `PACE_OCI_L3M_KD`\n\nEach L3 product has daily, monthly, and 8D at 2 different grids 0p1deg and 4km. The group names are: \n* `daily/0p1deg` `daily/4km`\n* `monthly/0p1deg` `monthly/4km`\n* `8Day/0p1deg` `8Day/4km`\n\nThe `PACE_OCI_L3M_CHL` daily groups are separated into subgroups based on differences in chunking before 2026-02 and afterwards.\n* `daily/0p1deg/chunks_512` +  `daily/0p1deg/chunks_16` and `daily/4km/chunks_512` +  `daily/4km/chunks_16`\n\n- **`chunks_512`**: Files with chlorophyll chunked as `(time=1, lat=512, lon=1024)`.\n- **`chunks_16`**: Files with chlorophyll chunked as `(time=1, lat=16, lon=1024)`.\n\nEach dataset includes a `time` coordinate derived from the start date in the filename, allowing it to be opened as a standard xarray dataset with `xr.open_zarr()`.\n\n## Read in a dataset (requires you are in AWS us-west-2)\n\nSee `pace-icechunk-examples.ipynb` for more examples and plot examples. See `environment.yml` for the basic environment needed. NASA Earthdata requires authentication. Use `earthaccess` to get the s3 credentials.\n\n```\nds = create_ds(\"PACE_OCI_L3M_RRS\", \"daily/0p1deg\")\nds\n```\nUsing the function below:\n```\nimport earthaccess\nimport icechunk as ic\nimport xarray as xr\n\ndef create_ds(\n    product=\"PACE_OCI_L3M_RRS\",\n    group=\"daily/0p1deg\",\n):\n    url = f\"https://data.source.coop/fish-pace/pace-oci/inregion/{product}\"\n    \n    storage = ic.http_storage(url)\n    \n    auth = earthaccess.login()\n    s3_credentials = auth.get_s3_credentials(daac=\"OBDAAC\")\n    \n    url_prefix = \"s3://ob-cumulus-prod-public/\"\n    \n    virtual_creds = ic.credentials.containers_credentials({\n        url_prefix: ic.credentials.s3_credentials(\n            access_key_id=s3_credentials[\"accessKeyId\"],\n            secret_access_key=s3_credentials[\"secretAccessKey\"],\n            session_token=s3_credentials[\"sessionToken\"],\n        )\n    })\n    \n    store = repo = ic.Repository.open(\n        storage,\n        authorize_virtual_chunk_access=virtual_creds,\n    ).readonly_session(\"main\").store\n\n    ds = xr.open_zarr(\n        store,\n        consolidated=False,\n        group=group,\n    )\n\n    return ds\n```\n\n\n\n\n",
-  "_review": [
-    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed."
-  ],
-  "_state": "drafted",
-  "cataloged_at": "2026-07-18T09:18:28+00:00",
-  "store_format": "icechunk",
+  "objects_updated_at": "2026-09-19T00:52:41+00:00",
+  "updated_at": "2026-06-27T07:26:31.390Z",
   "ext_bytes": {
     "": 4482208928,
     "ipynb": 1848075,
@@ -215,5 +255,12 @@
     "f6n951wep3v429s1qnm0": 13510,
     "byrjrh9ea3ejccdackcg": 13486,
     "kceqjfyyecyyabm8eme0": 13463
-  }
+  },
+  "readme": "## README.md\n# PACE OCI Icechunk Stores\n\nThis Icechunk repository provides virtual access to NASA PACE OCI Level-3  products for **in-region AWS access**. The data remain in the original NASA S3 bucket and are accessed through virtual references, avoiding duplication while providing a Zarr-compatible interface.\n\nThere are the following Icechunk stores:\n* `PACE_OCI_L3M_CHL` (note has been changed to `_BGS`)\n* `PACE_OCI_L3M_RRS`\n* `PACE_OCI_L3M_KD`\n\nEach L3 product has daily, monthly, and 8D at 2 different grids 0p1deg and 4km. The group names are: \n* `daily/0p1deg` `daily/4km`\n* `monthly/0p1deg` `monthly/4km`\n* `8Day/0p1deg` `8Day/4km`\n\nThe `PACE_OCI_L3M_CHL` daily groups are separated into subgroups based on differences in chunking before 2026-02 and afterwards.\n* `daily/0p1deg/chunks_512` +  `daily/0p1deg/chunks_16` and `daily/4km/chunks_512` +  `daily/4km/chunks_16`\n\n- **`chunks_512`**: Files with chlorophyll chunked as `(time=1, lat=512, lon=1024)`.\n- **`chunks_16`**: Files with chlorophyll chunked as `(time=1, lat=16, lon=1024)`.\n\nEach dataset includes a `time` coordinate derived from the start date in the filename, allowing it to be opened as a standard xarray dataset with `xr.open_zarr()`.\n\n## Read in a dataset (requires you are in AWS us-west-2)\n\nSee `pace-icechunk-examples.ipynb` for more examples and plot examples. See `environment.yml` for the basic environment needed. NASA Earthdata requires authentication. Use `earthaccess` to get the s3 credentials.\n\n```\nds = create_ds(\"PACE_OCI_L3M_RRS\", \"daily/0p1deg\")\nds\n```\nUsing the function below:\n> **icechunk 1.x will not work.** `icechunk.http_storage` does not exist in icechunk 1.x\n> (it arrived in 2.0). Every icechunk 2.x release needs **Python 3.12 or newer**, so on an\n> older Python `pip install icechunk` quietly installs 1.1.x, and the code below fails with\n> `AttributeError: module 'icechunk' has no attribute 'http_storage'`. Check what you have:\n> `python -c \"import icechunk; print(icechunk.__version__)\"`.\n\n```\nimport earthaccess\nimport icechunk as ic\nimport xarray as xr\n\ndef create_ds(\n    product=\"PACE_OCI_L3M_RRS\",\n    group=\"daily/0p1deg\",\n):\n    url = f\"https://data.source.coop/fish-pace/pace-oci/inregion/{product}\"\n    \n    storage = ic.http_storage(url)\n    \n    auth = earthaccess.login()\n    s3_credentials = auth.get_s3_credentials(daac=\"OBDAAC\")\n    \n    url_prefix = \"s3://ob-cumulus-prod-public/\"\n    \n    virtual_creds = ic.credentials.containers_credentials({\n        url_prefix: ic.credentials.s3_credentials(\n            access_key_id=s3_credentials[\"accessKeyId\"],\n            secret_access_key=s3_credentials[\"secretAccessKey\"],\n            session_token=s3_credentials[\"sessionToken\"],\n        )\n    })\n    \n    store = repo = ic.Repository.open(\n        storage,\n        authorize_virtual_chunk_access=virtual_creds,\n    ).readonly_session(\"main\").store\n\n    ds = xr.open_zarr(\n        store,\n        consolidated=False,\n        group=group,\n    )\n\n    return ds\n```\n\n\n\n\n",
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-09-24T08:47:29+00:00",
+  "store_format": "icechunk"
 }
