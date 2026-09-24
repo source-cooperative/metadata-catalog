@@ -1,49 +1,46 @@
 # Source Cooperative catalog — status
 
-_Updated 2026-09-23 08:50 UTC by the nightly pipeline._
+_Updated 2026-09-24 08:47 UTC by the nightly pipeline._
 
-**422 datasets cataloged**  ·  **4 queued for next run**  ·  last run handled **10**
+**422 datasets cataloged**  ·  **0 queued for next run**  ·  last run handled **4**
 
 ## Last run
 
-<details><summary>✅ drafted — 9 datasets</summary>
+<details><summary>✅ drafted — 4 datasets</summary>
 
-| repo                                                                                                       |
-| ---------------------------------------------------------------------------------------------------------- |
-| [ausantarctic/ghrsst-mur-v2](https://source.coop/ausantarctic/ghrsst-mur-v2)                               |
-| [dynamical/noaa-gefs-analysis](https://source.coop/dynamical/noaa-gefs-analysis)                           |
-| [dynamical/noaa-gfs-analysis](https://source.coop/dynamical/noaa-gfs-analysis)                             |
-| [dynamical/noaa-mrms-conus-analysis-hourly](https://source.coop/dynamical/noaa-mrms-conus-analysis-hourly) |
-| [fish-pace/gobai-o2](https://source.coop/fish-pace/gobai-o2)                                               |
-| [hackl/euroflood-index](https://source.coop/hackl/euroflood-index)                                         |
-| [major-tom/index](https://source.coop/major-tom/index)                                                     |
-| [ocean-icechunks/noaa-ohc](https://source.coop/ocean-icechunks/noaa-ohc)                                   |
-| [walkthru-earth/indices](https://source.coop/walkthru-earth/indices)                                       |
+| repo                                                                   |
+| ---------------------------------------------------------------------- |
+| [dynamical/asos-parquet](https://source.coop/dynamical/asos-parquet)   |
+| [fish-pace/pace-oci](https://source.coop/fish-pace/pace-oci)           |
+| [hdx/cod-ab](https://source.coop/hdx/cod-ab)                           |
+| [source/metadata-catalog](https://source.coop/source/metadata-catalog) |
 
 </details>
 
-<details><summary>⚠️ probe failed (issue filed) — 1 dataset</summary>
-
-| repo                                                       | why              |
-| ---------------------------------------------------------- | ---------------- |
-| [alukach/firesmoke](https://source.coop/alukach/firesmoke) | all_failed .zarr |
-
-</details>
-
-
-See [open probe-failure issues](https://github.com/source-cooperative/metadata-catalog/issues?q=is%3Aissue+is%3Aopen+label%3Aprobe-failure).
 
 ## Recent runs
 
 | run                                                                                                    | outcome | drafted | redraft | resets | failed | queued | cataloged |
 | ------------------------------------------------------------------------------------------------------ | ------- | ------: | ------: | -----: | -----: | -----: | --------: |
+| [2026-09-24](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/35976449471) | ✅       |         |       4 |        |        |      0 |       422 |
 | [2026-09-23](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/35838191599) | ✅       |         |       9 |        |      1 |      0 |       422 |
 | [2026-09-22](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/35705837755) | ✅       |         |      10 |        |        |      4 |       422 |
 | [2026-09-21](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/35579144454) | ✅       |       1 |       8 |        |        |     14 |       422 |
 | [2026-09-20](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/35499902497) | ✅       |         |         |        |        |      0 |       421 |
 | [2026-09-19](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/35432303499) | ✅       |         |         |        |        |      0 |       421 |
 | [2026-09-18](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/35325237601) | ✅       |         |         |        |        |      0 |       421 |
-| [2026-09-17](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/35200663918) | ✅       |         |       4 |        |        |      0 |       421 |
+
+## Persistent failures
+
+**1 dataset failing**  ·  1 open issue  ·  oldest **0d**  ·  **0** ≥30d  ·  [all open issues](https://github.com/source-cooperative/metadata-catalog/issues?q=is%3Aissue+is%3Aopen+label%3Aprobe-failure)
+
+<details><summary>the 1 open issues, oldest first</summary>
+
+| repo                                                       | age (d) |                                                                     issue |
+| ---------------------------------------------------------- | ------: | ------------------------------------------------------------------------: |
+| [alukach/firesmoke](https://source.coop/alukach/firesmoke) |       ? | [#166](https://github.com/source-cooperative/metadata-catalog/issues/166) |
+
+</details>
 
 ## 20 datasets need a prober
 
@@ -905,15 +902,11 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 
 </details>
 
-<details><summary>stale (catalog bytes ≠ S3; fixed by <code>make process-all</code>) — 5 datasets (48.9 GB)</summary>
+<details><summary>stale (catalog bytes ≠ S3; fixed by <code>make process-all</code>) — 1 dataset (1.2 GB)</summary>
 
-| repo                                                                   | updated    |      catalog → S3 |
-| ---------------------------------------------------------------------- | ---------- | ----------------: |
-| [dynamical/asos-parquet](https://source.coop/dynamical/asos-parquet)   | 2026-09-20 | 20.3 GB → 20.3 GB |
-| [alukach/firesmoke](https://source.coop/alukach/firesmoke)             | 2026-09-19 |   1.2 GB → 1.2 GB |
-| [fish-pace/pace-oci](https://source.coop/fish-pace/pace-oci)           | 2026-09-19 |   4.5 GB → 4.5 GB |
-| [source/metadata-catalog](https://source.coop/source/metadata-catalog) | 2026-09-17 |   5.7 MB → 5.8 MB |
-| [hdx/cod-ab](https://source.coop/hdx/cod-ab)                           | 2026-09-16 | 22.9 GB → 22.9 GB |
+| repo                                                       | updated    |    catalog → S3 |
+| ---------------------------------------------------------- | ---------- | --------------: |
+| [alukach/firesmoke](https://source.coop/alukach/firesmoke) | 2026-09-19 | 1.2 GB → 1.2 GB |
 
 </details>
 
