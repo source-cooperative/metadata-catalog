@@ -4,16 +4,17 @@
   "stac_version": "1.1.0",
   "id": "cboettig/rap",
   "title": "Rangeland vegetation cover (RAP / rangeland-s2) ",
-  "description": "Fractional vegetation cover estimates for rangelands across the contiguous United States, derived from Sentinel-2 satellite imagery via the Rangeland Analysis Platform (RAP). Provides high-resolution cloud-optimized GeoTIFFs of cover metrics including bare ground, annual/perennial forbs and grasses, shrubs, and trees.",
+  "description": "Rangeland vegetation-cover estimates from the Rangeland Analysis Platform (NTSG, University of Montana), aggregated to H3 resolution 10 as GeoParquet-style hex layers and provided as cloud-optimized GeoTIFFs. Covers annual and perennial forb and grass cover across the contiguous US, plus sagebrush and invasive annual grass cover across the western US.",
+  "license": "CC0-1.0",
   "keywords": [
     "remote-sensing",
-    "earth-observation",
-    "sentinel-2",
     "land-cover",
-    "environmental-monitoring",
+    "h3",
     "cloud-optimized-geotiff",
-    "rangeland",
-    "vegetation-cover"
+    "sentinel-2",
+    "environmental-monitoring",
+    "agriculture",
+    "earth-observation"
   ],
   "providers": [
     {
@@ -55,7 +56,7 @@
     "data": {
       "href": "https://data.source.coop/cboettig/rap/",
       "type": "image/tiff; application=geotiff",
-      "title": "Dataset files (4 x .tif)",
+      "title": "Dataset files (5 x .tif)",
       "roles": [
         "data"
       ]
@@ -73,14 +74,32 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "updated_at": "2026-06-17T03:32:00.968Z",
-  "object_count": 17,
-  "total_bytes": 63377601208,
+  "ext_bytes": {
+    "tif": 56456989535,
+    "parquet": 17714381992,
+    "json": 41811,
+    "md": 4143
+  },
   "product_id": "rap",
+  "updated_at": "2026-06-17T03:32:00.968Z",
+  "exts": {
+    "parquet": 26,
+    "json": 6,
+    "tif": 5,
+    "md": 1
+  },
+  "object_count": 38,
+  "created_at": "2026-06-17T03:32:00.968Z",
+  "visibility": "public",
+  "data_mode": "open",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
+  "objects_updated_at": "2026-09-20T12:33:00+00:00",
+  "disabled": false,
+  "featured": 0,
+  "account_id": "cboettig",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -93,29 +112,9 @@
       "prefix": "cboettig/rap/"
     }
   },
-  "disabled": false,
-  "exts": {
-    "parquet": 8,
-    "tif": 4,
-    "json": 4,
-    "xml": 1
-  },
-  "ext_bytes": {
-    "tif": 136475958813,
-    "parquet": 3954982492,
-    "json": 14388,
-    "xml": 2319
-  },
-  "data_mode": "open",
-  "featured": 0,
-  "created_at": "2026-06-17T03:32:00.968Z",
-  "account_id": "cboettig",
-  "visibility": "public",
-  "_review": [
-    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed."
-  ],
+  "total_bytes": 74171417481,
+  "readme": "## README.md\n# public-rap \u2014 rangeland vegetation cover\n\nRangeland vegetation-cover products from NTSG at the University of Montana, aggregated to H3.\nEverything here is licensed **CC0 1.0 Universal** (public domain dedication) by the producers;\nplease cite Allred et al. (2021), <https://doi.org/10.1111/2041-210X.13564>.\n\n## Collections\n\nTwo different upstream products live in this bucket, and they do **not** cover the same area.\n\n| collection | variable | extent | source product |\n|---|---|---|---|\n| `rap-afg-cover` | annual forb & grass cover, % | CONUS | RAP Vegetation Cover v3, band 1 |\n| `rap-pfg-cover` | perennial forb & grass cover, % | CONUS | RAP Vegetation Cover v3, band 4 |\n| `rap-arte` | sagebrush (*Artemisia*) cover, % | western US | rangeland-s2, UTM zones 10\u201313 |\n| `rap-iag` | invasive annual grass cover, % | western US | rangeland-s2, UTM zones 10\u201313 |\n\n**Annual vs perennial.** Annual forbs and grasses include invasive annuals such as cheatgrass;\nperennial forbs and grasses are the native perennial herbaceous cover that invasion tends to\ndisplace. The two are close to ecological opposites, so check which one you are reading.\n\n**The two extents differ.** `rap-afg-cover` and `rap-pfg-cover` cover the conterminous United\nStates (6 h0 partitions). `rap-arte` and `rap-iag` come from a 10 m Sentinel-2 product published\nonly for UTM zones 10\u201313, so they cover the western US out to about 101\u00b0 W (4 h0 partitions) and\nhave no data further east. An empty result east of that line is the product's extent, not a gap.\n\n**Suitability.** The producers note these estimates are produced across a broad region but are\nprimarily intended for rangeland ecosystems, and may be less reliable in other ecosystems such as\nforests and agricultural land.\n\n## Query the hex layers with DuckDB\n\nEach collection has one row per H3 cell at resolution 10, holding the area-weighted mean percent\ncover. Parent columns `h9`, `h8` and `h0` are present for rollups and joins; `h8` is the resolution\nshared with the rest of the catalog.\n\n```sql\nINSTALL httpfs; LOAD httpfs;\nINSTALL h3 FROM community; LOAD h3;\n\n-- Mean annual forb & grass cover by resolution-8 cell over one partition.\n-- Weight by cell area: H3 cells are not equal-area, so a plain AVG is biased.\nSELECT h8,\n       SUM(afg * h3_cell_area(h10, 'km^2')) / SUM(h3_cell_area(h10, 'km^2')) AS mean_afg\nFROM read_parquet(\n  'https://s3-west.nrp-nautilus.io/public-rap/rap-afg-cover/hex/h0=*/data_0.parquet',\n  hive_partitioning = true)\nWHERE h0 = 577199624117288959\nGROUP BY h8;\n```\n\nCompare the two vegetation-cover variables cell by cell:\n\n```sql\nSELECT a.h8,\n       AVG(a.afg) AS annual,\n       AVG(p.pfg) AS perennial\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-rap/rap-afg-cover/hex/h0=*/data_0.parquet') a\nJOIN read_parquet('https://s3-west.nrp-nautilus.io/public-rap/rap-pfg-cover/hex/h0=*/data_0.parquet') p\n  USING (h10)\nGROUP BY a.h8;\n```\n\n## Display the COGs in MapLibre GL JS\n\nThese are single-band rasters, so they render as a raster source through TiTiler with a colormap.\nThere is no PMTiles layer and therefore no `source-layer` to set.\n\n```js\nconst cog = 'https://s3-west.nrp-nautilus.io/public-rap/rap-afg-cover-cog.tif';\n\nmap.addSource('rap-afg', {\n  type: 'raster',\n  tiles: [\n    'https://titiler.nrp-nautilus.io/cog/tiles/WebMercatorQuad/{z}/{x}/{y}.png' +\n    `?url=${encodeURIComponent(cog)}&colormap_name=viridis&rescale=0,100`\n  ],\n  tileSize: 256,\n});\n\nmap.addLayer({\n  id: 'rap-afg',\n  type: 'raster',\n  source: 'rap-afg',\n  paint: { 'raster-opacity': 0.85 },\n});\n```\n\nSwap the filename for `rap-pfg-cover-cog.tif`, `rap-arte-cog.tif` or `rap-iag-cog.tif` for the other\nlayers. Values are percent cover from 0 to 100, so `rescale=0,100` is the right range for all four;\n255 marks no data and renders transparent.\n\n## Provenance\n\n`raw/` holds the staged upstream files these layers were built from. Upstream republishes each\nannual edition in place at a stable URL with no dated archive, so the staged copies plus their\nchecksums are the citable record. Access dates, sizes and checksums are recorded in each\ncollection's STAC description.\n",
   "_state": "drafted",
-  "cataloged_at": "2026-08-28T12:26:40+00:00",
-  "objects_updated_at": "2026-08-20T05:49:36+00:00",
+  "cataloged_at": "2026-09-29T09:05:43+00:00",
   "store_format": null
 }
