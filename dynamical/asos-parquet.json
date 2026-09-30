@@ -7,7 +7,7 @@
   ],
   "id": "dynamical/asos-parquet",
   "title": "Global Airport Weather GeoParquet (1940-present)",
-  "description": "A global archive of decoded METAR surface weather observations from airport ASOS and AWOS stations, spanning 1940 to the present with roughly 1.8 billion station-level records of temperature, dewpoint, humidity, wind, precipitation, visibility, and pressure, distributed as year-partitioned GeoParquet files.",
+  "description": "A global archive of decoded METAR surface weather observations from airport ASOS and AWOS stations, spanning 1940 to the present with roughly 1.8 billion station-level records. Includes temperature, dewpoint, humidity, wind, precipitation, visibility, and pressure, distributed as year-partitioned GeoParquet files.",
   "license": "CC-BY-NC-SA-4.0",
   "keywords": [
     "weather",
@@ -16,8 +16,7 @@
     "geoparquet",
     "climate",
     "atmospheric-data",
-    "global-coverage",
-    "aviation-weather"
+    "global-coverage"
   ],
   "providers": [
     {
@@ -54,14 +53,14 @@
     "temporal": {
       "interval": [
         [
-          "1940-01-01T00:00:00Z",
+          null,
           null
         ]
       ]
     }
   },
   "summaries": {
-    "item_count": 1769519182
+    "item_count": 1770870672
   },
   "assets": {
     "data": {
@@ -83,12 +82,12 @@
         {
           "name": "longitude",
           "type": "DOUBLE",
-          "description": "[latlon] Station longitude, paired with latitude"
+          "description": "[latlon] Station longitude in decimal degrees (paired with latitude)"
         },
         {
           "name": "latitude",
           "type": "DOUBLE",
-          "description": "[latlon] Station latitude, paired with longitude"
+          "description": "[latlon] Station latitude in decimal degrees (paired with longitude)"
         },
         {
           "name": "tmpf",
@@ -145,11 +144,12 @@
         {
           "name": "state",
           "type": "VARCHAR",
-          "description": "[admin_code] State/province code of the observing station"
+          "description": "[admin_code] State or province code of the station"
         },
         {
           "name": "name",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[placename] Station name"
         },
         {
           "name": "elevation",
@@ -158,16 +158,17 @@
         {
           "name": "country",
           "type": "VARCHAR",
-          "description": "[placename] Country of the observing station"
+          "description": "[admin_code] Country code of the station"
         },
         {
           "name": "county",
           "type": "VARCHAR",
-          "description": "[admin_code] County of the observing station"
+          "description": "[placename] County of the station"
         },
         {
           "name": "wfo",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[admin_code] National Weather Service Weather Forecast Office identifier"
         },
         {
           "name": "tzname",
@@ -176,7 +177,7 @@
         {
           "name": "geometry",
           "type": "GEOMETRY('EPSG:4326')",
-          "description": "[geometry] Point geometry of the observing station location"
+          "description": "[geometry] Station point geometry in EPSG:4326"
         },
         {
           "name": "bbox",
@@ -198,14 +199,11 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "disabled": false,
-  "visibility": "public",
+  "objects_updated_at": "2026-09-27T05:23:26+00:00",
   "ext_bytes": {
-    "parquet": 20263558271
+    "parquet": 20276480847
   },
-  "objects_updated_at": "2026-09-20T03:23:28+00:00",
-  "account_id": "dynamical",
-  "featured": 0,
+  "product_id": "asos-parquet",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -219,22 +217,22 @@
     }
   },
   "updated_at": "2026-02-09T17:07:41.515Z",
-  "created_at": "2026-02-05T18:50:19.484Z",
-  "total_bytes": 20263558271,
+  "account_id": "dynamical",
+  "object_count": 88,
+  "featured": 0,
+  "disabled": false,
+  "data_mode": "open",
+  "total_bytes": 20276480847,
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
+  "visibility": "public",
   "exts": {
     "parquet": 88
   },
-  "data_mode": "open",
-  "product_id": "asos-parquet",
-  "object_count": 88,
-  "_review": [
-    "extent.temporal: None (probe sample) widened to ['1940-01-01T00:00:00Z', None] using README-stated coverage ['1940', None]."
-  ],
+  "created_at": "2026-02-05T18:50:19.484Z",
   "_state": "drafted",
-  "cataloged_at": "2026-09-24T08:44:03+00:00",
+  "cataloged_at": "2026-09-30T08:52:54+00:00",
   "store_format": null
 }
