@@ -1,25 +1,25 @@
 # Source Cooperative catalog — status
 
-_Updated 2026-09-29 09:05 UTC by the nightly pipeline._
+_Updated 2026-09-30 08:57 UTC by the nightly pipeline._
 
-**423 datasets cataloged**  ·  **12 queued for next run**  ·  last run handled **10**
+**423 datasets cataloged**  ·  **2 queued for next run**  ·  last run handled **10**
 
 ## Last run
 
 <details><summary>✅ drafted — 10 datasets</summary>
 
-| repo                                                                                             |
-| ------------------------------------------------------------------------------------------------ |
-| [bkr/silam-dust](https://source.coop/bkr/silam-dust)                                             |
-| [cboettig/fire](https://source.coop/cboettig/fire)                                               |
-| [cboettig/rap](https://source.coop/cboettig/rap)                                                 |
-| [dynamical/ecmwf-aifs-single-forecast](https://source.coop/dynamical/ecmwf-aifs-single-forecast) |
-| [dynamical/noaa-gfs-forecast](https://source.coop/dynamical/noaa-gfs-forecast)                   |
-| [dynamical/noaa-hrrr-forecast-48-hour](https://source.coop/dynamical/noaa-hrrr-forecast-48-hour) |
-| [harvard-lil/smithsonian-open-access](https://source.coop/harvard-lil/smithsonian-open-access)   |
-| [ismip/ismip7-ais-forcing](https://source.coop/ismip/ismip7-ais-forcing)                         |
-| [root-geospatial/flight-tracks](https://source.coop/root-geospatial/flight-tracks)               |
-| [walkthru-earth/indices](https://source.coop/walkthru-earth/indices)                             |
+| repo                                                                                                       |
+| ---------------------------------------------------------------------------------------------------------- |
+| [ausantarctic/ghrsst-mur-v2](https://source.coop/ausantarctic/ghrsst-mur-v2)                               |
+| [cboettig/cpad](https://source.coop/cboettig/cpad)                                                         |
+| [cboettig/land-cover](https://source.coop/cboettig/land-cover)                                             |
+| [dynamical/asos-parquet](https://source.coop/dynamical/asos-parquet)                                       |
+| [dynamical/noaa-gefs-analysis](https://source.coop/dynamical/noaa-gefs-analysis)                           |
+| [dynamical/noaa-gfs-analysis](https://source.coop/dynamical/noaa-gfs-analysis)                             |
+| [dynamical/noaa-mrms-conus-analysis-hourly](https://source.coop/dynamical/noaa-mrms-conus-analysis-hourly) |
+| [ftw/harmonized-field-data](https://source.coop/ftw/harmonized-field-data)                                 |
+| [geospatialml/terrabit](https://source.coop/geospatialml/terrabit)                                         |
+| [portolan-mirrors/firms-catalog](https://source.coop/portolan-mirrors/firms-catalog)                       |
 
 </details>
 
@@ -28,23 +28,23 @@ _Updated 2026-09-29 09:05 UTC by the nightly pipeline._
 
 | run                                                                                                    | outcome | drafted | redraft | resets | failed | queued | cataloged |
 | ------------------------------------------------------------------------------------------------------ | ------- | ------: | ------: | -----: | -----: | -----: | --------: |
+| [2026-09-30](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/36691268701) | ✅       |         |      10 |        |        |      0 |       423 |
 | [2026-09-29](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/36544218087) | ✅       |         |      10 |        |        |      2 |       423 |
 | [2026-09-28](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/36399513867) | ✅       |       1 |       9 |        |        |     12 |       423 |
 | [2026-09-27](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/36306697334) | ✅       |         |         |        |        |      0 |       422 |
 | [2026-09-26](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/36230214508) | ✅       |         |         |        |        |      0 |       422 |
 | [2026-09-25](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/36114042555) | ✅       |         |         |        |        |      0 |       422 |
 | [2026-09-24](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/35976449471) | ✅       |         |       4 |        |        |      0 |       422 |
-| [2026-09-23](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/35838191599) | ✅       |         |       9 |        |      1 |      0 |       422 |
 
 ## Persistent failures
 
-**1 dataset failing**  ·  1 open issue  ·  oldest **6d**  ·  **0** ≥30d  ·  [all open issues](https://github.com/source-cooperative/metadata-catalog/issues?q=is%3Aissue+is%3Aopen+label%3Aprobe-failure)
+**1 dataset failing**  ·  1 open issue  ·  oldest **7d**  ·  **0** ≥30d  ·  [all open issues](https://github.com/source-cooperative/metadata-catalog/issues?q=is%3Aissue+is%3Aopen+label%3Aprobe-failure)
 
 <details><summary>the 1 open issues, oldest first</summary>
 
 | repo                                                       | age (d) |                                                                     issue |
 | ---------------------------------------------------------- | ------: | ------------------------------------------------------------------------: |
-| [alukach/firesmoke](https://source.coop/alukach/firesmoke) |       6 | [#166](https://github.com/source-cooperative/metadata-catalog/issues/166) |
+| [alukach/firesmoke](https://source.coop/alukach/firesmoke) |       7 | [#166](https://github.com/source-cooperative/metadata-catalog/issues/166) |
 
 </details>
 
@@ -915,23 +915,13 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 
 </details>
 
-<details><summary>stale (catalog bytes ≠ S3; fixed by <code>make process-all</code>) — 13 datasets (7.5 TB)</summary>
+<details><summary>stale (catalog bytes ≠ S3; fixed by <code>make process-all</code>) — 3 datasets (16.3 GB)</summary>
 
-| repo                                                                                                       | updated    |        catalog → S3 |
-| ---------------------------------------------------------------------------------------------------------- | ---------- | ------------------: |
-| [dynamical/asos-parquet](https://source.coop/dynamical/asos-parquet)                                       | 2026-09-27 |   20.3 GB → 20.3 GB |
-| [portolan-mirrors/firms-catalog](https://source.coop/portolan-mirrors/firms-catalog)                       | 2026-09-27 |   26.9 GB → 26.9 GB |
-| [dynamical/noaa-mrms-conus-analysis-hourly](https://source.coop/dynamical/noaa-mrms-conus-analysis-hourly) | 2026-09-27 | 254.9 GB → 255.6 GB |
-| [ausantarctic/ghrsst-mur-v2](https://source.coop/ausantarctic/ghrsst-mur-v2)                               | 2026-09-27 |     4.3 TB → 4.3 TB |
-| [dynamical/noaa-gefs-analysis](https://source.coop/dynamical/noaa-gefs-analysis)                           | 2026-09-26 |     1.1 TB → 1.1 TB |
-| [dynamical/noaa-gfs-analysis](https://source.coop/dynamical/noaa-gfs-analysis)                             | 2026-09-26 | 667.6 GB → 669.9 GB |
-| [alukach/firesmoke](https://source.coop/alukach/firesmoke)                                                 | 2026-09-26 |     1.2 GB → 1.2 GB |
-| [source/metadata-catalog](https://source.coop/source/metadata-catalog)                                     | 2026-09-24 |     5.8 MB → 5.8 MB |
-| [ftw/harmonized-field-data](https://source.coop/ftw/harmonized-field-data)                                 | 2026-09-21 | 249.4 GB → 253.5 GB |
-| [cboettig/land-cover](https://source.coop/cboettig/land-cover)                                             | 2026-09-20 | 221.3 GB → 221.3 GB |
-| [cboettig/facts](https://source.coop/cboettig/facts)                                                       | 2026-09-20 |   15.1 GB → 15.1 GB |
-| [cboettig/cpad](https://source.coop/cboettig/cpad)                                                         | 2026-09-20 |     1.4 GB → 1.6 GB |
-| [geospatialml/terrabit](https://source.coop/geospatialml/terrabit)                                         | 2026-06-03 | 626.2 GB → 626.2 GB |
+| repo                                                                   | updated    |      catalog → S3 |
+| ---------------------------------------------------------------------- | ---------- | ----------------: |
+| [alukach/firesmoke](https://source.coop/alukach/firesmoke)             | 2026-09-26 |   1.2 GB → 1.2 GB |
+| [source/metadata-catalog](https://source.coop/source/metadata-catalog) | 2026-09-24 |   5.8 MB → 5.8 MB |
+| [cboettig/facts](https://source.coop/cboettig/facts)                   | 2026-09-20 | 15.1 GB → 15.1 GB |
 
 </details>
 
