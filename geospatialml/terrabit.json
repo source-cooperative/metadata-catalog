@@ -2,16 +2,19 @@
   "schema_version": 1,
   "type": "Collection",
   "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
   "id": "geospatialml/terrabit",
   "title": "terrabit",
-  "description": "Terrabit is a near-global raster (gridded) dataset spanning approximately -180\u00b0 to 180\u00b0 longitude and -83\u00b0 to 84\u00b0 latitude. It is stored as a Zarr archive composed of roughly 42,000 Parquet files totaling approximately 7.4 GB. Its specific subject matter, methodology, and provenance are undocumented.",
+  "description": "Terrabit is a near-global collection of geospatial embedding vectors stored as Parquet files, with each record tied to a bounding box and tile identifiers. The assets include Clay v1.5 and LGND embeddings derived from Sentinel-2 imagery, the latter at 256-pixel chip size on a monthly basis. Further provenance and methodology are not documented.",
   "keywords": [
-    "land-use",
-    "remote-sensing",
-    "agriculture",
-    "zarr",
-    "global-coverage",
-    "earth-observation"
+    "embeddings",
+    "machine-learning",
+    "sentinel-2",
+    "foundation-model",
+    "earth-observation",
+    "remote-sensing"
   ],
   "providers": [
     {
@@ -26,10 +29,22 @@
     "spatial": {
       "bbox": [
         [
-          -180.0,
-          -83.3628035,
-          180.2213439,
-          83.6857053
+          -179.921523,
+          -21.788566,
+          -78.738342,
+          73.1267966
+        ],
+        [
+          -179.921523,
+          0.0,
+          -78.738342,
+          72.0873786
+        ],
+        [
+          -176.038819,
+          -21.788566,
+          -123.7308998,
+          73.1267966
         ]
       ]
     },
@@ -42,14 +57,155 @@
       ]
     }
   },
+  "summaries": {
+    "item_count": 425205
+  },
   "assets": {
-    "data": {
-      "href": "https://data.source.coop/geospatialml/terrabit/",
-      "type": "application/vnd+zarr",
-      "title": "Dataset files (1 x .zarr)",
+    "clay-v1_5-binary-sentinel-2": {
+      "href": "https://data.source.coop/geospatialml/terrabit/clay-v1_5-binary-sentinel-2/",
+      "type": "application/x-parquet",
+      "title": "clay-v1_5-binary-sentinel-2",
       "roles": [
         "data"
-      ]
+      ],
+      "table:columns": [
+        {
+          "name": "path",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "rows",
+          "type": "BIGINT"
+        },
+        {
+          "name": "xmin",
+          "type": "DOUBLE",
+          "description": "[latlon] Western bounding box longitude of the chip"
+        },
+        {
+          "name": "ymin",
+          "type": "DOUBLE",
+          "description": "[latlon] Southern bounding box latitude of the chip"
+        },
+        {
+          "name": "xmax",
+          "type": "DOUBLE",
+          "description": "[latlon] Eastern bounding box longitude of the chip"
+        },
+        {
+          "name": "ymax",
+          "type": "DOUBLE",
+          "description": "[latlon] Northern bounding box latitude of the chip"
+        },
+        {
+          "name": "tile_x",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "tile_y",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "year",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "chips_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "embedding",
+          "type": "UTINYINT[]"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)",
+          "description": "[geometry] Bounding box struct (xmin, ymin, xmax, ymax) for each embedding chip"
+        }
+      ],
+      "description": "20 files sampled for this table",
+      "bbox": [
+        -179.921523,
+        0.0,
+        -78.738342,
+        72.0873786
+      ],
+      "item_count": 66778
+    },
+    "lgnd-binary-sentinel-2-256-monthly": {
+      "href": "https://data.source.coop/geospatialml/terrabit/lgnd-binary-sentinel-2-256-monthly/",
+      "type": "application/x-parquet",
+      "title": "lgnd-binary-sentinel-2-256-monthly",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "path",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "rows",
+          "type": "BIGINT"
+        },
+        {
+          "name": "xmin",
+          "type": "DOUBLE",
+          "description": "[latlon] Western bounding box longitude of the chip"
+        },
+        {
+          "name": "ymin",
+          "type": "DOUBLE",
+          "description": "[latlon] Southern bounding box latitude of the chip"
+        },
+        {
+          "name": "xmax",
+          "type": "DOUBLE",
+          "description": "[latlon] Eastern bounding box longitude of the chip"
+        },
+        {
+          "name": "ymax",
+          "type": "DOUBLE",
+          "description": "[latlon] Northern bounding box latitude of the chip"
+        },
+        {
+          "name": "tile_x",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "tile_y",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "year",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "month",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "chips_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "embedding",
+          "type": "UTINYINT[]"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)",
+          "description": "[geometry] Bounding box struct (xmin, ymin, xmax, ymax) for each embedding chip"
+        }
+      ],
+      "description": "20 files sampled for this table",
+      "bbox": [
+        -176.038819,
+        -21.788566,
+        -123.7308998,
+        73.1267966
+      ],
+      "item_count": 425205
     }
   },
   "links": [
@@ -64,23 +220,18 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "object_count": 366101,
-  "visibility": "public",
-  "account_id": "geospatialml",
-  "updated_at": "2026-04-06T03:09:29.773Z",
-  "product_id": "terrabit",
-  "created_at": "2026-04-06T03:09:29.773Z",
+  "total_bytes": 626162427962,
+  "object_count": 366090,
+  "data_mode": "open",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "total_bytes": 626169047616,
-  "exts": {
-    "parquet": 366090,
-    "json": 7,
-    "": 4
-  },
   "featured": 0,
+  "visibility": "public",
+  "ext_bytes": {
+    "parquet": 626162427962
+  },
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -93,17 +244,20 @@
       "prefix": "geospatialml/terrabit/"
     }
   },
-  "data_mode": "open",
+  "objects_updated_at": "2026-06-03T13:34:33+00:00",
   "disabled": false,
+  "updated_at": "2026-04-06T03:09:29.773Z",
+  "product_id": "terrabit",
+  "exts": {
+    "parquet": 366090
+  },
+  "created_at": "2026-04-06T03:09:29.773Z",
+  "account_id": "geospatialml",
   "_review": [
-    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed."
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
+    "summaries.item_count: parts overlap, so this is max(part), not the sum \u2014 clay-v1_5-binary-sentinel-2/ 66778, lgnd-binary-sentinel-2-256-monthly/ 425205. Sum them only once the parts are known to be disjoint."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-06-17T18:18:08+00:00",
-  "store_format": null,
-  "ext_bytes": {
-    "parquet": 626162427962,
-    "": 6611148,
-    "json": 8506
-  }
+  "cataloged_at": "2026-09-30T08:54:50+00:00",
+  "store_format": null
 }
