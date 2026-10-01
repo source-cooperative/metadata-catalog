@@ -1,25 +1,17 @@
 # Source Cooperative catalog — status
 
-_Updated 2026-09-30 08:57 UTC by the nightly pipeline._
+_Updated 2026-10-01 08:44 UTC by the nightly pipeline._
 
-**423 datasets cataloged**  ·  **2 queued for next run**  ·  last run handled **10**
+**423 datasets cataloged**  ·  **0 queued for next run**  ·  last run handled **2**
 
 ## Last run
 
-<details><summary>✅ drafted — 10 datasets</summary>
+<details><summary>✅ drafted — 2 datasets</summary>
 
-| repo                                                                                                       |
-| ---------------------------------------------------------------------------------------------------------- |
-| [ausantarctic/ghrsst-mur-v2](https://source.coop/ausantarctic/ghrsst-mur-v2)                               |
-| [cboettig/cpad](https://source.coop/cboettig/cpad)                                                         |
-| [cboettig/land-cover](https://source.coop/cboettig/land-cover)                                             |
-| [dynamical/asos-parquet](https://source.coop/dynamical/asos-parquet)                                       |
-| [dynamical/noaa-gefs-analysis](https://source.coop/dynamical/noaa-gefs-analysis)                           |
-| [dynamical/noaa-gfs-analysis](https://source.coop/dynamical/noaa-gfs-analysis)                             |
-| [dynamical/noaa-mrms-conus-analysis-hourly](https://source.coop/dynamical/noaa-mrms-conus-analysis-hourly) |
-| [ftw/harmonized-field-data](https://source.coop/ftw/harmonized-field-data)                                 |
-| [geospatialml/terrabit](https://source.coop/geospatialml/terrabit)                                         |
-| [portolan-mirrors/firms-catalog](https://source.coop/portolan-mirrors/firms-catalog)                       |
+| repo                                                                   |
+| ---------------------------------------------------------------------- |
+| [cboettig/facts](https://source.coop/cboettig/facts)                   |
+| [source/metadata-catalog](https://source.coop/source/metadata-catalog) |
 
 </details>
 
@@ -28,13 +20,13 @@ _Updated 2026-09-30 08:57 UTC by the nightly pipeline._
 
 | run                                                                                                    | outcome | drafted | redraft | resets | failed | queued | cataloged |
 | ------------------------------------------------------------------------------------------------------ | ------- | ------: | ------: | -----: | -----: | -----: | --------: |
+| [2026-10-01](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/36837980153) | ✅       |         |       2 |        |        |      0 |       423 |
 | [2026-09-30](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/36691268701) | ✅       |         |      10 |        |        |      0 |       423 |
 | [2026-09-29](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/36544218087) | ✅       |         |      10 |        |        |      2 |       423 |
 | [2026-09-28](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/36399513867) | ✅       |       1 |       9 |        |        |     12 |       423 |
 | [2026-09-27](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/36306697334) | ✅       |         |         |        |        |      0 |       422 |
 | [2026-09-26](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/36230214508) | ✅       |         |         |        |        |      0 |       422 |
 | [2026-09-25](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/36114042555) | ✅       |         |         |        |        |      0 |       422 |
-| [2026-09-24](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/35976449471) | ✅       |         |       4 |        |        |      0 |       422 |
 
 ## Persistent failures
 
@@ -915,13 +907,11 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 
 </details>
 
-<details><summary>stale (catalog bytes ≠ S3; fixed by <code>make process-all</code>) — 3 datasets (16.3 GB)</summary>
+<details><summary>stale (catalog bytes ≠ S3; fixed by <code>make process-all</code>) — 1 dataset (1.2 GB)</summary>
 
-| repo                                                                   | updated    |      catalog → S3 |
-| ---------------------------------------------------------------------- | ---------- | ----------------: |
-| [alukach/firesmoke](https://source.coop/alukach/firesmoke)             | 2026-09-26 |   1.2 GB → 1.2 GB |
-| [source/metadata-catalog](https://source.coop/source/metadata-catalog) | 2026-09-24 |   5.8 MB → 5.8 MB |
-| [cboettig/facts](https://source.coop/cboettig/facts)                   | 2026-09-20 | 15.1 GB → 15.1 GB |
+| repo                                                       | updated    |    catalog → S3 |
+| ---------------------------------------------------------- | ---------- | --------------: |
+| [alukach/firesmoke](https://source.coop/alukach/firesmoke) | 2026-09-26 | 1.2 GB → 1.2 GB |
 
 </details>
 
