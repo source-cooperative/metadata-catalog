@@ -1,42 +1,32 @@
 # Source Cooperative catalog — status
 
-_Updated 2026-10-01 08:44 UTC by the nightly pipeline._
+_Updated 2026-10-02 08:40 UTC by the nightly pipeline._
 
-**423 datasets cataloged**  ·  **0 queued for next run**  ·  last run handled **2**
+**423 datasets cataloged**  ·  **0 queued for next run**  ·  last run handled **0**
 
-## Last run
-
-<details><summary>✅ drafted — 2 datasets</summary>
-
-| repo                                                                   |
-| ---------------------------------------------------------------------- |
-| [cboettig/facts](https://source.coop/cboettig/facts)                   |
-| [source/metadata-catalog](https://source.coop/source/metadata-catalog) |
-
-</details>
-
+_No datasets processed in the last run (no new work since the previous snapshot)._
 
 ## Recent runs
 
 | run                                                                                                    | outcome | drafted | redraft | resets | failed | queued | cataloged |
 | ------------------------------------------------------------------------------------------------------ | ------- | ------: | ------: | -----: | -----: | -----: | --------: |
+| [2026-10-02](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/36985218615) | ✅       |         |         |        |        |      0 |       423 |
 | [2026-10-01](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/36837980153) | ✅       |         |       2 |        |        |      0 |       423 |
 | [2026-09-30](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/36691268701) | ✅       |         |      10 |        |        |      0 |       423 |
 | [2026-09-29](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/36544218087) | ✅       |         |      10 |        |        |      2 |       423 |
 | [2026-09-28](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/36399513867) | ✅       |       1 |       9 |        |        |     12 |       423 |
 | [2026-09-27](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/36306697334) | ✅       |         |         |        |        |      0 |       422 |
 | [2026-09-26](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/36230214508) | ✅       |         |         |        |        |      0 |       422 |
-| [2026-09-25](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/36114042555) | ✅       |         |         |        |        |      0 |       422 |
 
 ## Persistent failures
 
-**1 dataset failing**  ·  1 open issue  ·  oldest **7d**  ·  **0** ≥30d  ·  [all open issues](https://github.com/source-cooperative/metadata-catalog/issues?q=is%3Aissue+is%3Aopen+label%3Aprobe-failure)
+**1 dataset failing**  ·  1 open issue  ·  oldest **8d**  ·  **0** ≥30d  ·  [all open issues](https://github.com/source-cooperative/metadata-catalog/issues?q=is%3Aissue+is%3Aopen+label%3Aprobe-failure)
 
 <details><summary>the 1 open issues, oldest first</summary>
 
 | repo                                                       | age (d) |                                                                     issue |
 | ---------------------------------------------------------- | ------: | ------------------------------------------------------------------------: |
-| [alukach/firesmoke](https://source.coop/alukach/firesmoke) |       7 | [#166](https://github.com/source-cooperative/metadata-catalog/issues/166) |
+| [alukach/firesmoke](https://source.coop/alukach/firesmoke) |       8 | [#166](https://github.com/source-cooperative/metadata-catalog/issues/166) |
 
 </details>
 
