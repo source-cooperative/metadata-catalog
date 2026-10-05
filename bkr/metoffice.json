@@ -4,7 +4,7 @@
   "stac_version": "1.1.0",
   "id": "bkr/metoffice",
   "title": "MetOffice Global 10km and UK 2km Deterministic Analysis",
-  "description": "A rolling two-year archive of hourly deterministic atmospheric analysis fields from the UK Met Office, covering a global 10 km model and a higher-resolution UK 2 km model, with the global model also providing short-range (5-hour) forecast output. Data is stored in Icechunk (Zarr-based) format for cloud-native multidimensional array access.",
+  "description": "A rolling two-year archive of hourly deterministic atmospheric analysis fields from the UK Met Office, covering a global 10 km model and a higher-resolution UK 2 km model. The global model also provides short-range (5-hour) forecast output. Data is stored in Icechunk (Zarr-based) format for cloud-native multidimensional array access.",
   "keywords": [
     "numerical-weather-prediction",
     "meteorology",
@@ -35,29 +35,69 @@
     "spatial": {
       "bbox": [
         [
-          -180.0,
+          -179.9296875,
           -89.953125,
           179.9296875,
           89.953125
+        ],
+        [
+          -179.9296875,
+          -89.953125,
+          179.9296875,
+          89.953125
+        ],
+        [
+          -24.5099247,
+          44.5171528,
+          15.2797692,
+          63.0041417
         ]
       ]
     },
     "temporal": {
       "interval": [
         [
-          "2024-11-14T06:00:00",
-          "2026-07-29T23:00:00"
+          "2024-03-01T00:00:00",
+          "2026-06-12T07:00:00"
+        ],
+        [
+          "2024-03-01T00:00:00",
+          "2025-08-01T18:00:00"
+        ],
+        [
+          "2024-06-09T18:00:00",
+          "2026-06-12T07:00:00"
         ]
       ]
     }
   },
   "assets": {
-    "data": {
-      "href": "https://data.source.coop/bkr/metoffice/",
-      "type": "application/octet-stream",
-      "title": "Dataset files (8 x .icechunk)",
+    "raw/global": {
+      "href": "https://data.source.coop/bkr/metoffice/raw/global/",
+      "type": "application/x-netcdf",
+      "title": "raw/global/ (962297 \u00d7 .nc)",
       "roles": [
         "data"
+      ],
+      "bbox": [
+        -179.9296875,
+        -89.953125,
+        179.9296875,
+        89.953125
+      ]
+    },
+    "raw/uk": {
+      "href": "https://data.source.coop/bkr/metoffice/raw/uk/",
+      "type": "application/x-netcdf",
+      "title": "raw/uk/ (760340 \u00d7 .nc)",
+      "roles": [
+        "data"
+      ],
+      "bbox": [
+        -24.5099247,
+        44.5171528,
+        15.2797692,
+        63.0041417
       ]
     }
   },
@@ -73,29 +113,11 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "disabled": false,
   "created_at": "2026-01-08T14:54:44.009Z",
-  "featured": 0,
-  "total_bytes": 61739363211422,
-  "exts": {
-    "": 3546944,
-    "nc": 1722637,
-    "json": 8,
-    "scxqs0whst2gg9r04hj0": 1,
-    "ej7rgem9mzqqtrxj3tw0": 1,
-    "bcaf368e": 1,
-    "a4d3cd3c": 1
-  },
-  "account_id": "bkr",
-  "data_mode": "open",
-  "object_count": 5269593,
-  "product_id": "metoffice",
-  "visibility": "public",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "updated_at": "2026-01-16T08:21:06.677Z",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -108,19 +130,124 @@
       "prefix": "bkr/metoffice/"
     }
   },
+  "featured": 0,
+  "disabled": false,
+  "exts": {
+    "": 4054693,
+    "nc": 1722637,
+    "json": 8,
+    "q3kf4wwfs8j83wfn4ctg": 1,
+    "qta4bty14dzy625kb7ag": 1,
+    "nfhfywv59dq417nphad0": 1,
+    "crk2s13yrf5pn9x5y0pg": 1,
+    "zda2ywp75j0bv97a16eg": 1,
+    "qyshm39yk68vbcr04gcg": 1,
+    "t6h2dg5m87snk9d1rzg0": 1,
+    "3135d26d3mz4vwypfkpg": 1,
+    "ttakt1jnc05bwhq1j3vg": 1,
+    "kn12qcnreq32wqc4z1y0": 1,
+    "5s38pew0b3tsr8d08fgg": 1,
+    "7kfdndwe2g9y9nccmq80": 1,
+    "wsm74mn0ymnjcvyctp00": 1,
+    "et9gjtgpwp0brkyss5rg": 1,
+    "bz0vyw6kcx775gn0hs80": 1,
+    "5r8rhfa01kbew36b0j4g": 1,
+    "b5ccpfv7w0gqz3b5gt70": 1,
+    "knb6rdja4nxmj34xdc9g": 1,
+    "k1kvdyy81k2z946nav20": 1,
+    "s57e4svkzn65qr6r47h0": 1,
+    "eaey8q8tk4vbdgmfa3mg": 1,
+    "bfm5zbha4tq9q7b6hzdg": 1,
+    "823akbsaz0sksgj2qae0": 1,
+    "z8dc40rnwjnadfref37g": 1,
+    "2tznb2gey93jqwm8f7s0": 1,
+    "44xn89462n5thbar6dz0": 1,
+    "m4mdt1e3mbmgy9wt1xv0": 1,
+    "cwxdxkn9p2d2kyjsvt8g": 1,
+    "5vb4x9mzh6g11pd7j2gg": 1,
+    "y5pqhskdzxyw5dvb63rg": 1,
+    "69avhdnvnsx651jp1czg": 1,
+    "3ct9at90xwsbzv776780": 1,
+    "w2wmkfhksxyxn4jvva50": 1,
+    "exxbn73rw9arrh3hjwb0": 1,
+    "0rj7frp6fac6g7m88g2g": 1,
+    "7e2pfpens7bpkj48ksbg": 1,
+    "hm5dj2mrkcnpsd925zh0": 1,
+    "z3bjx2x5g9wcffd9jgc0": 1,
+    "kng0yfarfj8qp92g38v0": 1,
+    "th3bd2ws1rzddyc10gs0": 1,
+    "f8pkjfyyn5r80jydppgg": 1,
+    "e1nhh7fmkp0mn77g9bhg": 1,
+    "y5rdsgxsef026ern3mj0": 1,
+    "htzybvdm1bq04syensm0": 1,
+    "2x90a7rzxyt6qmaf8r70": 1,
+    "6xq9ke74y1gxcvq0ns10": 1,
+    "e4zsezvcsy1dzzqjf1rg": 1
+  },
+  "total_bytes": 63836183286834,
+  "objects_updated_at": "2026-10-03T08:33:10+00:00",
+  "data_mode": "open",
+  "object_count": 5783601,
+  "ext_bytes": {
+    "nc": 46208997808796,
+    "": 17626599296698,
+    "bcaf368e": 151519232,
+    "a4d3cd3c": 90439680,
+    "e85xnje1ht1svjen1tp0": 136217,
+    "n8adz3kww49zkh6z9kgg": 136085,
+    "q3kf4wwfs8j83wfn4ctg": 136062,
+    "fczahzp04k5jaqkr34mg": 135932,
+    "jgb73ekf28vewrzzepmg": 135910,
+    "75vqjcv5rpb2ezcfaz1g": 135897,
+    "kkz60644jxj9j8s4b4yg": 135895,
+    "qta4bty14dzy625kb7ag": 135850,
+    "8r9xrv6hzn0mfjqmecf0": 135785,
+    "sxb35srbq7fsq6jx2k3g": 135766,
+    "hqcmq53pxfadmfxkmvdg": 135738,
+    "mq6wrz9gem4vgn82nskg": 135709,
+    "grw0qr5yrfadq1xzs1s0": 135673,
+    "zwaatrhkzep7f1t34yh0": 135617,
+    "2z4yrt59jbyvewmxkp90": 135549,
+    "hwb991h4qcpa9vs234t0": 135471,
+    "cjnrsc4y6nej18d49vj0": 135426,
+    "gaeamk15pkzcz6p3zna0": 135420,
+    "crk2s13yrf5pn9x5y0pg": 135381,
+    "mb4j37qh4r8ede6ehchg": 135320,
+    "qgdbfpjb6ay0ks66scq0": 135301,
+    "nfhfywv59dq417nphad0": 135291,
+    "23r98d61r73gws4bjkd0": 135242,
+    "9rb2t9tjkxhvrjnqedy0": 135234,
+    "05x18qx197ym6vseje2g": 135219,
+    "1afehv3j140a2p6c1prg": 135197,
+    "3p4amj0cg17ahk4z2zs0": 135159,
+    "v6papnxky6rdqap2jejg": 135119,
+    "zda2ywp75j0bv97a16eg": 135079,
+    "0hj4h8na9e23491ewrz0": 135060,
+    "fn4mgtphqbtn1xdwzefg": 135041,
+    "93yp11348fm3tn4jbnw0": 135028,
+    "z4tkbhftnhyna9yrenbg": 134989,
+    "1j4w16x2x6fbmn2w7d8g": 134925,
+    "p8638ffy9t65p73mr54g": 134912,
+    "ejm6j73n758668a8w3mg": 134842,
+    "ke4bpg1tcrp4tv1tyky0": 134713,
+    "z5rpk7e7h56ht4kpc89g": 134636,
+    "t6h2dg5m87snk9d1rzg0": 134616,
+    "qyshm39yk68vbcr04gcg": 134598,
+    "r37cf1zpbpnsvc5zqvv0": 134538,
+    "qvkm9hhz8czcs344vc5g": 134525,
+    "pbbr1w3xvbsr9bnwejag": 134494,
+    "brcfgg3yzpbvkrhhnasg": 134493,
+    "2rh5cmysa176frvzzbw0": 134473,
+    "ycb05ta0ffn52jn9mr0g": 134472
+  },
+  "account_id": "bkr",
+  "product_id": "metoffice",
+  "visibility": "public",
+  "updated_at": "2026-01-16T08:21:06.677Z",
   "_review": [
     "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-08-04T09:41:31+00:00",
-  "store_format": "icechunk",
-  "ext_bytes": {
-    "nc": 46208997808796,
-    "": 15530123442747,
-    "bcaf368e": 151519232,
-    "a4d3cd3c": 90439680,
-    "ej7rgem9mzqqtrxj3tw0": 411,
-    "json": 280,
-    "scxqs0whst2gg9r04hj0": 276
-  }
+  "cataloged_at": "2026-10-05T11:28:41+00:00",
+  "store_format": "icechunk"
 }
