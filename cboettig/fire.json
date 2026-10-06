@@ -4,7 +4,7 @@
   "stac_version": "1.1.0",
   "id": "cboettig/fire",
   "title": "Wildfire Boundary Polygons from USGS and CalFire in cloud native formats",
-  "description": "A compilation of 1,491,072 fuel treatment and land management polygons across the United States (50 states, Puerto Rico and Guam), assembled by the Southwest Ecological Restoration Institutes from five federal and state reporting systems. It covers US Forest Service activity data alongside Department of the Interior, state forester and interagency fuel-treatment records, distributed as GeoParquet, PMTiles and H3 hex-aggregated Parquet.",
+  "description": "A compilation of 1,491,072 fuel treatment and land management polygons across the United States (50 states, Puerto Rico and Guam), assembled by the Southwest Ecological Restoration Institutes from five federal and state reporting systems. It combines US Forest Service activity data with Department of the Interior, state forester and interagency fuel-treatment records, distributed as GeoParquet, PMTiles and H3 hex-aggregated Parquet.",
   "license": "CC-BY-4.0",
   "keywords": [
     "wildfire",
@@ -122,35 +122,26 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "visibility": "public",
-  "total_bytes": 72931566556,
-  "created_at": "2024-03-19T17:13:53.608378+00:00",
-  "exts": {
-    "parquet": 683,
-    "tif": 85,
-    "json": 19,
-    "pmtiles": 10,
-    "md": 2
-  },
-  "ext_bytes": {
-    "tif": 47797103354,
-    "parquet": 19352238747,
-    "pmtiles": 5781415883,
-    "json": 795506,
-    "md": 13066
-  },
+  "account_id": "cboettig",
+  "data_mode": "open",
+  "object_count": 856,
+  "featured": 0,
+  "total_bytes": 158689923694,
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "data_mode": "open",
-  "object_count": 799,
-  "product_id": "fire",
-  "updated_at": "2025-08-21T16:39:55.567Z",
-  "featured": 0,
-  "objects_updated_at": "2026-09-20T12:31:03+00:00",
-  "account_id": "cboettig",
   "disabled": false,
+  "updated_at": "2025-08-21T16:39:55.567Z",
+  "ext_bytes": {
+    "tif": 117859958469,
+    "parquet": 35047557082,
+    "pmtiles": 5781415883,
+    "json": 979194,
+    "md": 13066
+  },
+  "objects_updated_at": "2026-09-27T12:32:42+00:00",
+  "created_at": "2024-03-19T17:13:53.608378+00:00",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -163,8 +154,17 @@
       "prefix": "cboettig/fire/"
     }
   },
+  "exts": {
+    "parquet": 723,
+    "tif": 91,
+    "json": 30,
+    "pmtiles": 10,
+    "md": 2
+  },
+  "product_id": "fire",
+  "visibility": "public",
   "readme": "## README.md\n# TWIG Interagency Fuel Treatments, United States\n\nFuel treatments and related land management activities across the United States, compiled by the\nSouthwest Ecological Restoration Institutes (SWERI) from five federal and state reporting systems.\n1,491,072 treatment polygons covering the 50 states, Puerto Rico and Guam.\n\nThis is the **interagency** record: US Forest Service activity data alongside Department of the\nInterior, state forester and interagency fuel-treatment records.\n\n- **Source:** [TWIG Data Resources](https://reshapewildfire.org/resources/twig-data-resources/), ReSHAPE\n- **Licence:** [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/)\n- **Citation:** Call, A., et al. (2025). A new geodatabase of fuel treatments across federal lands in\n  the USA. *Scientific Data* **12**, 1485. <https://doi.org/10.1038/s41597-025-05859-z>\n- **Accessed:** 2026-09-17 (publisher last edited the service 2026-09-02)\n\n## Assets\n\n| Asset | URL |\n|---|---|\n| GeoParquet | `https://s3-west.nrp-nautilus.io/public-fire/twig-treatment-index-2026-08.parquet` |\n| PMTiles | `https://s3-west.nrp-nautilus.io/public-fire/twig-treatment-index-2026-08.pmtiles` |\n| H3 hex | `https://s3-west.nrp-nautilus.io/public-fire/twig-treatment-index-2026-08/hex/h0=*/data_0.parquet` |\n\n## Read it with DuckDB\n\n```sql\nINSTALL spatial; LOAD spatial;\nINSTALL httpfs; LOAD httpfs;\n\nSELECT twig_category, COUNT(*) AS treatments, ROUND(SUM(acres)) AS reported_acres\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-fire/twig-treatment-index-2026-08.parquet')\nWHERE status = 'Completed'\n  AND treatment_date BETWEEN DATE '1980-01-01' AND DATE '2026-09-17'\nGROUP BY twig_category\nORDER BY reported_acres DESC;\n```\n\n## Show it on a map\n\nThe MapLibre `source-layer` is **`twig-treatment-index-2026-08`** (the last segment of the dataset\nname, not the source layer name).\n\n```js\nmap.addSource('twig', {\n  type: 'vector',\n  url: 'pmtiles://https://s3-west.nrp-nautilus.io/public-fire/twig-treatment-index-2026-08.pmtiles'\n});\nmap.addLayer({\n  id: 'twig-fill',\n  type: 'fill',\n  source: 'twig',\n  'source-layer': 'twig-treatment-index-2026-08',\n  filter: ['==', ['get', 'status'], 'Completed'],\n  paint: {\n    'fill-color': [\n      'match', ['get', 'twig_category'],\n      'Mechanical', '#8c6d3f',\n      'Planned Ignition', '#c4622d',\n      'Unplanned Ignition', '#a03030',\n      'Chemical', '#4a7fa5',\n      'Biological', '#5a8f5a',\n      '#888888'\n    ],\n    'fill-opacity': 0.6\n  }\n});\n```\n\n## Four things to get right\n\n### 1. Summing `acres` does not give treated ground\n\nThe same stand is thinned, piled, pile-burned, then re-entered years later. Each is its own polygon\nwith its own acres, so the acreage column counts that ground several times. Repeat treatment is real\nand worth measuring, but it is not additional area.\n\n```sql\n-- reported activity: how many acres of treatment were recorded\nSELECT SUM(acres) FROM read_parquet('.../twig-treatment-index-2026-08.parquet')\nWHERE status = 'Completed';\n\n-- treated ground: distinct H3 cells, which collapses the overlap\nSELECT COUNT(DISTINCT h8) FROM read_parquet('.../twig-treatment-index-2026-08/hex/h0=*/data_0.parquet');\n```\n\nReport both and say which is which.\n\n### 2. Planned work is included\n\n| status | treatments | acres |\n|---|---:|---:|\n| Completed | 1,249,074 | 121,205,444 |\n| Planned | 240,404 | 50,596,043 |\n| Other | 1,321 | 688,625 |\n| Started | 273 | 352,605 |\n\nAn unfiltered total overstates accomplished work by roughly 42%. Every tabulation must state its\nstatus filter.\n\n### 3. Dates need a sanity window\n\n`treatment_date` runs from **1202-02-10 to 2926-10-03**.\n\n| window | records |\n|---|---:|\n| 1980-01-01 to 2026-09-17 | 1,429,746 |\n| after 2026-09-17 | 61,314 |\n| before 1980 | 12 |\n\nNothing has been removed. Apply an explicit window and report how many records you discarded.\n\n### 4. On the hex, join on `h8`\n\nResolution varies with polygon size. 1,490,993 treatments are indexed at resolution 10, the 71\nlargest at 9, and the 7 largest at 8; `native_res` records which. A single 21,000 km\u00b2 polygon would\ngenerate roughly 1.4 billion cells at resolution 10, so the largest are held coarser deliberately.\n\n`h8` is populated on every row. `h10` is empty for the 78 treatments held at 9 or 8, so joining on\nthe finest column silently drops them.\n\n```sql\n-- correct\nSELECT * FROM twig t JOIN other o ON t.h8 = o.h8;\n-- wrong: the 78 largest treatments vanish\nSELECT * FROM twig t JOIN other o ON t.h10 = o.h10;\n```\n\nPer-treatment totals (`acres`, `total_cost`, `cost_per_uom`, `SHAPE__Area`, `SHAPE__Length`) are\nrepeated on every cell a treatment covers. Reduce to one row per treatment before adding them up:\n\n```sql\nSELECT SUM(acres) FROM (SELECT DISTINCT unique_id, acres FROM twig WHERE status = 'Completed');\n```\n\n## Relationship to `facts-common-attributes-2026-06`\n\n737,013 of these records come from the same Forest Service source as the\n`facts-common-attributes-2026-06` collection, but carry a reduced attribute set (no `SUID`,\n`FACTS_ID`, method/equipment codes, fund codes or per-unit costs) while adding four other source\nsystems. **Keep both, but do not union them** \u2014 the Forest Service treatments would be counted twice.\n\n| source system | records |\n|---|---:|\n| FACTS Common Attributes | 737,013 |\n| FACTS Hazardous Fuels | 608,983 |\n| NFPORS | 64,365 |\n| NASF | 52,136 |\n| IFPRS | 28,575 |\n\n## Known data quirks\n\n- **`error` is multi-valued**, semicolon-separated, so test with a containment match rather than\n  equality: `WHERE error LIKE '%DUPLICATE_DROP%'`. 85,997 records carry at least one flag. Parsed\n  counts: `DUPLICATE_DROP` 34,634, `DUPLICATE_KEEP` 30,473, `BUFFERED_LINE` 15,561,\n  `MODIFIED_SHAPE` 2,694, `BUFFERED_POINT` 2,108, `SPATIAL` 815, `HIGH_COST` 550, `CHECK_UOM` 65,\n  `LARGE_AREA` 4. `DUPLICATE_KEEP` records are the ones the publisher chose to retain; do not drop\n  them.\n- **`BUFFERED_LINE` and `BUFFERED_POINT` geometries were synthesized** from a line or a point, so\n  their acres are not a measured footprint. 17,669 records.\n- **One record has no geometry.** It is present in the GeoParquet and absent from the hex and tiles.\n- **One record is mislocated.** A 1.9-acre Virginia treatment is mapped into the Atlantic off South\n  America, flagged `SPATIAL` by the publisher. It is what stretches the bounding box east to 51\u00b0W.\n- **Guam is included** (2 NPS treatments near 144.8\u00b0E), so a naive bounding box spans most of the\n  globe. The collection publishes separate sub-bounding-boxes for the two clusters.\n- **`SHAPE__Area` and `SHAPE__Length` are in square degrees and degrees**, not square metres and\n  metres, because the source service computed them in longitude and latitude. Use `acres` for area.\n- **Stray whitespace was trimmed** during conversion: 70,516 records in `activity` and 96,713 in\n  `equipment` carried trailing spaces that would otherwise break equality filters. Ten records in\n  the free-text `name` column retain theirs.\n- **`uom` is not always acres.** 33 records are in miles and 32 are per-each; they cannot enter an\n  acreage-based cost total. 145,076 carry no unit, which the publisher treats as acres.\n",
   "_state": "drafted",
-  "cataloged_at": "2026-09-29T09:04:45+00:00",
+  "cataloged_at": "2026-10-06T08:53:38+00:00",
   "store_format": null
 }
