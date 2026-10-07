@@ -2,19 +2,22 @@
   "schema_version": 1,
   "type": "Collection",
   "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
   "id": "cboettig/connectivity",
   "title": "Habitat Connectivity",
-  "description": "A compilation of landscape-connectivity and climate-resilience GIS layers for California, combining California Department of Fish and Wildlife (CDFW) wildlife-connectivity and barrier datasets with published climate-adaptation connectivity models (Beier 2006, Schloss 2022, Cameron 2022). Products include vector connectivity linkages and movement-barrier segments plus raster connectivity/climate indices, each distributed as cloud-native GeoParquet/PMTiles/COG with a matching H3 hexagon aggregation.",
+  "description": "A compilation of landscape-connectivity and climate-resilience GIS layers, mostly for California, combining CDFW wildlife-connectivity and barrier datasets with published climate-adaptation connectivity models (Beier 2006, Schloss 2022, Cameron 2022). It also includes TNC's continental Resilient and Connected Network raster covering the conterminous US and adjacent Canada. Products are distributed as GeoParquet, PMTiles, and COG with matching H3 hexagon aggregations.",
   "keywords": [
-    "landscape-connectivity",
     "conservation",
-    "wildlife",
     "biodiversity",
+    "wildlife",
     "climate",
     "h3",
     "pmtiles",
     "geoparquet",
-    "cloud-optimized-geotiff"
+    "cloud-optimized-geotiff",
+    "land-use"
   ],
   "providers": [
     {
@@ -62,30 +65,494 @@
     "spatial": {
       "bbox": [
         [
-          -125.0131171,
-          31.4316197,
-          -113.8035342,
-          43.4548357
+          -124.2163999,
+          32.6186848,
+          -114.5960004,
+          42.0054822
         ]
       ]
     },
     "temporal": {
       "interval": [
         [
-          null,
-          null
+          "2017-01-01T00:00:00Z",
+          "2022-12-31T23:59:59Z"
         ]
       ]
     }
   },
+  "summaries": {
+    "item_count": 1329380226
+  },
   "assets": {
-    "data": {
-      "href": "https://data.source.coop/cboettig/connectivity/",
-      "type": "image/tiff; application=geotiff",
-      "title": "Dataset files (3 x .tif)",
+    "climate-migration-routes/hex-fractions": {
+      "href": "https://data.source.coop/cboettig/connectivity/climate-migration-routes/hex-fractions/h0=577199624117288959/",
+      "type": "application/x-parquet",
+      "title": "climate-migration-routes/hex-fractions",
       "roles": [
         "data"
-      ]
+      ],
+      "table:columns": [
+        {
+          "name": "connectivity_class",
+          "type": "INTEGER"
+        },
+        {
+          "name": "frac",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "h9",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 cell at resolution 9"
+        },
+        {
+          "name": "h0",
+          "type": "UBIGINT"
+        }
+      ],
+      "description": "2 files sampled for this table"
+    },
+    "climate-migration-routes/hex": {
+      "href": "https://data.source.coop/cboettig/connectivity/climate-migration-routes/hex/h0=577199624117288959/",
+      "type": "application/x-parquet",
+      "title": "climate-migration-routes/hex",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "connectivity_class",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "h9",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 cell at resolution 9"
+        },
+        {
+          "name": "h0",
+          "type": "UBIGINT"
+        }
+      ],
+      "description": "2 files sampled for this table"
+    },
+    "present-day-connectivity-categories/hex-fractions": {
+      "href": "https://data.source.coop/cboettig/connectivity/present-day-connectivity-categories/hex-fractions/h0=577199624117288959/",
+      "type": "application/x-parquet",
+      "title": "present-day-connectivity-categories/hex-fractions",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "connectivity_category",
+          "type": "INTEGER"
+        },
+        {
+          "name": "frac",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "h9",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 cell at resolution 9"
+        },
+        {
+          "name": "h0",
+          "type": "UBIGINT"
+        }
+      ],
+      "description": "2 files sampled for this table"
+    },
+    "present-day-connectivity-categories/hex": {
+      "href": "https://data.source.coop/cboettig/connectivity/present-day-connectivity-categories/hex/h0=577199624117288959/",
+      "type": "application/x-parquet",
+      "title": "present-day-connectivity-categories/hex",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "connectivity_category",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "h9",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 cell at resolution 9"
+        },
+        {
+          "name": "h0",
+          "type": "UBIGINT"
+        }
+      ],
+      "description": "2 files sampled for this table"
+    },
+    "present-day-connectivity-flow/hex": {
+      "href": "https://data.source.coop/cboettig/connectivity/present-day-connectivity-flow/hex/h0=577199624117288959/",
+      "type": "application/x-parquet",
+      "title": "present-day-connectivity-flow/hex",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "current_flow",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "h9",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 cell at resolution 9"
+        },
+        {
+          "name": "h0",
+          "type": "UBIGINT"
+        }
+      ],
+      "description": "2 files sampled for this table"
+    },
+    "rcn-national/hex-fractions": {
+      "href": "https://data.source.coop/cboettig/connectivity/rcn-national/hex-fractions/h0=576742227280134143/",
+      "type": "application/x-parquet",
+      "title": "rcn-national/hex-fractions",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "rcn_class",
+          "type": "INTEGER"
+        },
+        {
+          "name": "frac",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "h10",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 cell at native resolution 10"
+        },
+        {
+          "name": "h0",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h5",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h6",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h7",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h8",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h9",
+          "type": "UBIGINT"
+        }
+      ],
+      "description": "7 files sampled for this table"
+    },
+    "rcn-national/hex": {
+      "href": "https://data.source.coop/cboettig/connectivity/rcn-national/hex/h0=576742227280134143/",
+      "type": "application/x-parquet",
+      "title": "rcn-national/hex",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "rcn_class",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "h10",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 cell at native resolution 10"
+        },
+        {
+          "name": "h0",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h5",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h6",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h7",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h8",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h9",
+          "type": "UBIGINT"
+        }
+      ],
+      "description": "7 files sampled for this table"
+    },
+    ".": {
+      "href": "https://data.source.coop/cboettig/connectivity/",
+      "type": "application/x-parquet",
+      "title": ".",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "_cng_fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OBJECTID",
+          "type": "BIGINT|INTEGER"
+        },
+        {
+          "name": "Proj_Name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Proj_Desc",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Area_acres",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Area_ha",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Shape_Length",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Shape_Area",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Shape",
+          "type": "GEOMETRY('OGC:CRS84')",
+          "description": "[geometry] Vector geometry (polygons/lines) in OGC:CRS84"
+        },
+        {
+          "name": "OGC_FID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "Barrier_ID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Priority_2022",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "County",
+          "type": "VARCHAR",
+          "description": "[placename] California county of the barrier segment"
+        },
+        {
+          "name": "Segment_Name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Target_Species",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Update_Notes",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Remediation_Year",
+          "type": "INTEGER"
+        },
+        {
+          "name": "Priority_2020",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Priority_2024",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "CDFW_Region",
+          "type": "VARCHAR",
+          "description": "[admin_code] CDFW region number 1-6 (comma-joined if spanning several)"
+        },
+        {
+          "name": "Length_kilometers",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "SUMMARY_LINK",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Shape__Length",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "geom",
+          "type": "GEOMETRY('EPSG:4326')",
+          "description": "[geometry] Vector geometry in EPSG:4326"
+        }
+      ],
+      "description": "2 files sampled for this table"
+    },
+    "regional-connectivity-linkages/hex": {
+      "href": "https://data.source.coop/cboettig/connectivity/regional-connectivity-linkages/hex/h0=577199624117288959/data_0.parquet",
+      "type": "application/x-parquet",
+      "title": "data_0.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "_cng_fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OBJECTID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "Proj_Name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Proj_Desc",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Area_acres",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Area_ha",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Shape_Length",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Shape_Area",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "h8",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 cell at resolution 8"
+        },
+        {
+          "name": "h0",
+          "type": "BIGINT"
+        }
+      ],
+      "table:row_count": 9648
+    },
+    "wildlife-movement-barriers/hex": {
+      "href": "https://data.source.coop/cboettig/connectivity/wildlife-movement-barriers/hex/h0=577199624117288959/",
+      "type": "application/x-parquet",
+      "title": "wildlife-movement-barriers/hex",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "_cng_fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OGC_FID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OBJECTID",
+          "type": "INTEGER"
+        },
+        {
+          "name": "Barrier_ID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Priority_2022",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "County",
+          "type": "VARCHAR",
+          "description": "[placename] California county of the barrier segment"
+        },
+        {
+          "name": "Segment_Name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Target_Species",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Update_Notes",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Remediation_Year",
+          "type": "INTEGER"
+        },
+        {
+          "name": "Priority_2020",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Priority_2024",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "CDFW_Region",
+          "type": "VARCHAR",
+          "description": "[admin_code] CDFW region number 1-6"
+        },
+        {
+          "name": "Length_kilometers",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "SUMMARY_LINK",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Shape__Length",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "h8",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 cell at resolution 8"
+        },
+        {
+          "name": "h0",
+          "type": "UBIGINT"
+        }
+      ],
+      "description": "2 files sampled for this table"
     }
   },
   "links": [
@@ -100,25 +567,26 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "disabled": false,
+  "total_bytes": 8508192801,
   "updated_at": "2026-07-25T14:37:25.587Z",
-  "created_at": "2026-07-25T14:37:25.587Z",
   "exts": {
-    "parquet": 15,
-    "json": 6,
-    "tif": 3,
+    "parquet": 29,
+    "json": 7,
+    "tif": 4,
     "pmtiles": 2,
     "md": 1
   },
+  "object_count": 43,
+  "data_mode": null,
   "account_id": "cboettig",
   "featured": 0,
-  "objects_updated_at": "2026-08-20T05:48:23+00:00",
-  "visibility": "public",
+  "created_at": "2026-07-25T14:37:25.587Z",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "data_mode": null,
+  "product_id": "connectivity",
+  "objects_updated_at": "2026-09-27T12:31:34+00:00",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -127,25 +595,20 @@
       "prefix": "cboettig/connectivity/"
     }
   },
-  "total_bytes": 222683372,
-  "object_count": 27,
-  "product_id": "connectivity",
+  "disabled": false,
+  "visibility": "public",
   "ext_bytes": {
-    "parquet": 135498347,
-    "tif": 81859367,
+    "parquet": 7606611825,
+    "tif": 896234404,
     "pmtiles": 5259817,
-    "json": 58581,
-    "md": 7260
+    "json": 76833,
+    "md": 9922
   },
-  "readme": "## README.md\n# public-connectivity\n\nLandscape **connectivity & climate-resilience** datasets for California, from the California Biodiversity Network (CBN) and partners. All products are cloud-native and served from NRP S3 (`https://s3-west.nrp-nautilus.io/public-connectivity/`).\n\n| Dataset | Source | Products | License |\n|---|---|---|---|\n| `regional-connectivity-linkages` | Beier et al. 2006 \u2014 South Coast Missing Linkages (CDFW BIOS ds419) | GeoParquet, PMTiles, H3 hex (res 8) | CC-BY-4.0 |\n| `wildlife-movement-barriers` | CDFW 2024 \u2014 Terrestrial Wildlife Connectivity Barriers (BIOS ds2867) | GeoParquet, PMTiles, H3 hex (res 8) | CC-BY-4.0 |\n| `climate-migration-routes` | Schloss et al. 2022 (Dryad `d7wm37q1m`) | COG, H3 hex (res 9) | CC0-1.0 |\n| `present-day-connectivity/flow` | Cameron et al. 2022 (Dryad `7sqv9s4v3`) | COG, H3 hex (res 9) | CC0-1.0 |\n| `present-day-connectivity/categories` | Cameron et al. 2022 (Dryad `7sqv9s4v3`) | COG, H3 hex (res 9) | CC0-1.0 |\n\nAll layers are in **OGC:CRS84 / EPSG:4326**. The three raster sources were reprojected from their native ESRI:102003 (USA Contiguous Albers) / sphere Web-Mercator projections to EPSG:4326 (categorical layers with nearest-neighbor; the continuous flow index with bilinear).\n\n---\n\n## Vector \u2014 regional-connectivity-linkages (Beier 2006)\n\n11 South Coast Missing Linkages polygons (e.g. Tehachapi, Sierra Madre \u2013 Castaic).\n\n**DuckDB:**\n```sql\nINSTALL spatial; LOAD spatial;\nSELECT Proj_Name, Area_ha\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-connectivity/regional-connectivity-linkages.parquet')\nORDER BY Area_ha DESC;\n```\n\n**MapLibre GL JS** (PMTiles \u2014 note the `source-layer` is `regional-connectivity-linkages`):\n```js\nmap.addSource('linkages', { type: 'vector', url: 'pmtiles://https://s3-west.nrp-nautilus.io/public-connectivity/regional-connectivity-linkages.pmtiles' });\nmap.addLayer({\n  id: 'linkages-fill', type: 'fill',\n  source: 'linkages',\n  'source-layer': 'regional-connectivity-linkages',\n  paint: { 'fill-color': '#2c7fb8', 'fill-opacity': 0.5 }\n});\n```\n\n**H3 hex** (res 8). Area columns are per-feature totals repeated on every cell \u2014 never `SUM` them on hex; dedup by `_cng_fid`, or compute area from `COUNT(DISTINCT h8) \u00d7 cell_area_at_res_8`:\n```sql\nSELECT Proj_Name, COUNT(DISTINCT h8) AS cells\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-connectivity/regional-connectivity-linkages/hex/h0=*/data_0.parquet')\nGROUP BY 1 ORDER BY 2 DESC;\n```\n\n---\n\n## Vector \u2014 wildlife-movement-barriers (CDFW 2024)\n\n204 linear infrastructure segments (roads/highways) that CDFW identified as barriers to terrestrial wildlife movement across California, with priority rankings for 2020/2022/2024 and remediation status. Source: CDFW BIOS **ds2867** (priorities as of June 2024). Geometry is **lines** (LineString / MultiLineString); each segment was hexed to H3 resolution 8 by buffering it by the H3 cell circumradius before polyfill.\n\n**DuckDB** \u2014 top-priority barriers by length:\n```sql\nINSTALL spatial; LOAD spatial;\nSELECT Barrier_ID, Segment_Name, County, Priority_2024, Length_kilometers\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-connectivity/wildlife-movement-barriers.parquet')\nWHERE Priority_2024 = 'Top Priority Barrier'\nORDER BY Length_kilometers DESC;\n```\n\n**MapLibre GL JS** (PMTiles \u2014 note the `source-layer` is `wildlife-movement-barriers`):\n```js\nmap.addSource('barriers', { type: 'vector', url: 'pmtiles://https://s3-west.nrp-nautilus.io/public-connectivity/wildlife-movement-barriers.pmtiles' });\nmap.addLayer({\n  id: 'barriers-line', type: 'line',\n  source: 'barriers',\n  'source-layer': 'wildlife-movement-barriers',\n  paint: {\n    'line-width': 2,\n    'line-color': [\n      'match', ['get', 'Priority_2024'],\n      'Top Priority Barrier', '#d7301f',\n      'Priority Barrier', '#fc8d59',\n      'Barrier', '#fdcc8a',\n      'Remediated', '#2c7fb8',\n      '#cccccc'\n    ]\n  }\n});\n```\n\n**H3 hex** (res 8). `Length_kilometers` is a per-feature total **repeated on every cell** a barrier covers \u2014 never `SUM` it on hex; dedup by `Barrier_ID` (one row per barrier) or `_cng_fid` first, or count barriers with `COUNT(DISTINCT Barrier_ID)`:\n```sql\n-- barriers per H3 cell (where wildlife corridors are most pinched)\nSELECT h8, COUNT(DISTINCT Barrier_ID) AS n_barriers\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-connectivity/wildlife-movement-barriers/hex/h0=*/data_0.parquet')\nGROUP BY h8 ORDER BY n_barriers DESC;\n```\n\n`Priority_2020`/`Priority_2022`/`Priority_2024` take values `Barrier`, `Priority Barrier`, `Top Priority Barrier`, `Remediated` (NULL = not assessed that cycle). `Target_Species` is a free-text, comma-separated list of focal species. `CDFW_Region` is 1\u20136 (comma-joined for barriers spanning multiple regions). `SUMMARY_LINK` is a per-barrier CDFW summary PDF.\n\n---\n\n## Rasters\n\nH3 hex tables have columns `<value>`, `h9` (native res 9), `h0` (partition key). One row per H3 cell.\n\n### climate-migration-routes (Schloss 2022) \u2014 categorical, 13 classes\nConnectivity class per cell (`mode` reducer). Classes: `0` limited/none; `100\u2013103` Diffuse (intact); `200\u2013203` Intensified (multiple linkages); `300\u2013303` Channelized (present-day linkage); `+1/+2/+3` = HADGEM2-ES / CNRM-CM5 / both climate-model linkages. See `classification:classes` on the COG band.\n\n```sql\nSELECT connectivity_class, COUNT(*) n\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-connectivity/climate-migration-routes/hex/h0=*/data_0.parquet')\nGROUP BY 1 ORDER BY 1;\n```\nCOG (titiler / categorical colormap): `https://s3-west.nrp-nautilus.io/public-connectivity/climate-migration-routes-cog.tif`\n\n### present-day-connectivity/flow (Cameron 2022) \u2014 continuous index 0\u2013100\nCurrent-flow connectivity index (`mean` reducer).\n```sql\nSELECT MIN(current_flow), MAX(current_flow), AVG(current_flow)\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-connectivity/present-day-connectivity-flow/hex/h0=*/data_0.parquet');\n```\nCOG: `https://s3-west.nrp-nautilus.io/public-connectivity/present-day-connectivity-flow-cog.tif`\n\n### present-day-connectivity/categories (Cameron 2022) \u2014 categorical, 12 classes\nConnectivity-strategy category per cell (`mode` reducer). Classes: `3` Limited movement potential; `4` Permeable (local movement); `19` Impeded; `25,29` Diffuse; `31,35,39` Intensified; `41,45,49` Channelized; `0` background (undocumented in source). See `classification:classes` on the COG band.\nCOG: `https://s3-west.nrp-nautilus.io/public-connectivity/present-day-connectivity-categories-cog.tif`\n\n---\n\n## Citations\n- California Department of Fish and Wildlife (2024). Terrestrial Wildlife Connectivity Barriers (Wildlife Movement Barriers). CDFW BIOS ds2867. https://wildlife.ca.gov/Data/BIOS\n- Beier, P., et al. (2006). South Coast Missing Linkages. South Coast Wildlands. (CDFW BIOS ds419)\n- Cameron, D. R., Schloss, C. A., Theobald, D. M., & Morrison, S. A. (2022). A framework to select strategies for conserving and restoring habitat connectivity. *Conservation Science and Practice*, e12698. https://doi.org/10.1111/csp2.12698\n- Schloss, C. A., et al. (2022). \"No-regrets\" pathways for navigating climate change. *Ecological Applications*. https://doi.org/10.1002/eap.2468\n",
+  "readme": "## README.md\n# public-connectivity\n\nLandscape **connectivity & climate-resilience** datasets. Most cover California, from the California Biodiversity Network (CBN) and partners; `rcn-national` is continental, covering the conterminous US and adjacent Canada. All products are cloud-native and served from NRP S3 (`https://s3-west.nrp-nautilus.io/public-connectivity/`).\n\n| Dataset | Source | Products | License |\n|---|---|---|---|\n| `regional-connectivity-linkages` | Beier et al. 2006 \u2014 South Coast Missing Linkages (CDFW BIOS ds419) | GeoParquet, PMTiles, H3 hex (res 8) | CC-BY-4.0 |\n| `wildlife-movement-barriers` | CDFW 2024 \u2014 Terrestrial Wildlife Connectivity Barriers (BIOS ds2867) | GeoParquet, PMTiles, H3 hex (res 8) | CC-BY-4.0 |\n| `climate-migration-routes` | Schloss et al. 2022 (Dryad `d7wm37q1m`) | COG, H3 hex (res 9) | CC0-1.0 |\n| `present-day-connectivity/flow` | Cameron et al. 2022 (Dryad `7sqv9s4v3`) | COG, H3 hex (res 9) | CC0-1.0 |\n| `present-day-connectivity/categories` | Cameron et al. 2022 (Dryad `7sqv9s4v3`) | COG, H3 hex (res 9) | CC0-1.0 |\n| `rcn-national` | TNC 2024 - Resilient and Connected Network (Anderson et al. 2023) | COG, H3 hex (res 10, mode + fractions) | TNC non-commercial |\n\nAll layers are in **OGC:CRS84 / EPSG:4326**. The California raster sources were reprojected from their native ESRI:102003 (USA Contiguous Albers) / sphere Web-Mercator projections to EPSG:4326 (categorical layers with nearest-neighbor; the continuous flow index with bilinear).\n\n---\n\n## Vector \u2014 regional-connectivity-linkages (Beier 2006)\n\n11 South Coast Missing Linkages polygons (e.g. Tehachapi, Sierra Madre \u2013 Castaic).\n\n**DuckDB:**\n```sql\nINSTALL spatial; LOAD spatial;\nSELECT Proj_Name, Area_ha\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-connectivity/regional-connectivity-linkages.parquet')\nORDER BY Area_ha DESC;\n```\n\n**MapLibre GL JS** (PMTiles \u2014 note the `source-layer` is `regional-connectivity-linkages`):\n```js\nmap.addSource('linkages', { type: 'vector', url: 'pmtiles://https://s3-west.nrp-nautilus.io/public-connectivity/regional-connectivity-linkages.pmtiles' });\nmap.addLayer({\n  id: 'linkages-fill', type: 'fill',\n  source: 'linkages',\n  'source-layer': 'regional-connectivity-linkages',\n  paint: { 'fill-color': '#2c7fb8', 'fill-opacity': 0.5 }\n});\n```\n\n**H3 hex** (res 8). Area columns are per-feature totals repeated on every cell \u2014 never `SUM` them on hex; dedup by `_cng_fid`, or compute area from `COUNT(DISTINCT h8) \u00d7 cell_area_at_res_8`:\n```sql\nSELECT Proj_Name, COUNT(DISTINCT h8) AS cells\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-connectivity/regional-connectivity-linkages/hex/h0=*/data_0.parquet')\nGROUP BY 1 ORDER BY 2 DESC;\n```\n\n---\n\n## Vector \u2014 wildlife-movement-barriers (CDFW 2024)\n\n204 linear infrastructure segments (roads/highways) that CDFW identified as barriers to terrestrial wildlife movement across California, with priority rankings for 2020/2022/2024 and remediation status. Source: CDFW BIOS **ds2867** (priorities as of June 2024). Geometry is **lines** (LineString / MultiLineString); each segment was hexed to H3 resolution 8 by buffering it by the H3 cell circumradius before polyfill.\n\n**DuckDB** \u2014 top-priority barriers by length:\n```sql\nINSTALL spatial; LOAD spatial;\nSELECT Barrier_ID, Segment_Name, County, Priority_2024, Length_kilometers\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-connectivity/wildlife-movement-barriers.parquet')\nWHERE Priority_2024 = 'Top Priority Barrier'\nORDER BY Length_kilometers DESC;\n```\n\n**MapLibre GL JS** (PMTiles \u2014 note the `source-layer` is `wildlife-movement-barriers`):\n```js\nmap.addSource('barriers', { type: 'vector', url: 'pmtiles://https://s3-west.nrp-nautilus.io/public-connectivity/wildlife-movement-barriers.pmtiles' });\nmap.addLayer({\n  id: 'barriers-line', type: 'line',\n  source: 'barriers',\n  'source-layer': 'wildlife-movement-barriers',\n  paint: {\n    'line-width': 2,\n    'line-color': [\n      'match', ['get', 'Priority_2024'],\n      'Top Priority Barrier', '#d7301f',\n      'Priority Barrier', '#fc8d59',\n      'Barrier', '#fdcc8a',\n      'Remediated', '#2c7fb8',\n      '#cccccc'\n    ]\n  }\n});\n```\n\n**H3 hex** (res 8). `Length_kilometers` is a per-feature total **repeated on every cell** a barrier covers \u2014 never `SUM` it on hex; dedup by `Barrier_ID` (one row per barrier) or `_cng_fid` first, or count barriers with `COUNT(DISTINCT Barrier_ID)`:\n```sql\n-- barriers per H3 cell (where wildlife corridors are most pinched)\nSELECT h8, COUNT(DISTINCT Barrier_ID) AS n_barriers\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-connectivity/wildlife-movement-barriers/hex/h0=*/data_0.parquet')\nGROUP BY h8 ORDER BY n_barriers DESC;\n```\n\n`Priority_2020`/`Priority_2022`/`Priority_2024` take values `Barrier`, `Priority Barrier`, `Top Priority Barrier`, `Remediated` (NULL = not assessed that cycle). `Target_Species` is a free-text, comma-separated list of focal species. `CDFW_Region` is 1\u20136 (comma-joined for barriers spanning multiple regions). `SUMMARY_LINK` is a per-barrier CDFW summary PDF.\n\n---\n\n## Rasters\n\nH3 hex tables have columns `<value>`, `h9` (native res 9), `h0` (partition key). One row per H3 cell.\n\n### climate-migration-routes (Schloss 2022) \u2014 categorical, 13 classes\nConnectivity class per cell (`mode` reducer). Classes: `0` limited/none; `100\u2013103` Diffuse (intact); `200\u2013203` Intensified (multiple linkages); `300\u2013303` Channelized (present-day linkage); `+1/+2/+3` = HADGEM2-ES / CNRM-CM5 / both climate-model linkages. See `classification:classes` on the COG band.\n\n```sql\nSELECT connectivity_class, COUNT(*) n\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-connectivity/climate-migration-routes/hex/h0=*/data_0.parquet')\nGROUP BY 1 ORDER BY 1;\n```\nCOG (titiler / categorical colormap): `https://s3-west.nrp-nautilus.io/public-connectivity/climate-migration-routes-cog.tif`\n\n### present-day-connectivity/flow (Cameron 2022) \u2014 continuous index 0\u2013100\nCurrent-flow connectivity index (`mean` reducer).\n```sql\nSELECT MIN(current_flow), MAX(current_flow), AVG(current_flow)\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-connectivity/present-day-connectivity-flow/hex/h0=*/data_0.parquet');\n```\nCOG: `https://s3-west.nrp-nautilus.io/public-connectivity/present-day-connectivity-flow-cog.tif`\n\n### present-day-connectivity/categories (Cameron 2022) \u2014 categorical, 12 classes\nConnectivity-strategy category per cell (`mode` reducer). Classes: `3` Limited movement potential; `4` Permeable (local movement); `19` Impeded; `25,29` Diffuse; `31,35,39` Intensified; `41,45,49` Channelized; `0` background (undocumented in source). See `classification:classes` on the COG band.\nCOG: `https://s3-west.nrp-nautilus.io/public-connectivity/present-day-connectivity-categories-cog.tif`\n\n---\n\n## Citations\n- California Department of Fish and Wildlife (2024). Terrestrial Wildlife Connectivity Barriers (Wildlife Movement Barriers). CDFW BIOS ds2867. https://wildlife.ca.gov/Data/BIOS\n- Beier, P., et al. (2006). South Coast Missing Linkages. South Coast Wildlands. (CDFW BIOS ds419)\n- Cameron, D. R., Schloss, C. A., Theobald, D. M., & Morrison, S. A. (2022). A framework to select strategies for conserving and restoring habitat connectivity. *Conservation Science and Practice*, e12698. https://doi.org/10.1111/csp2.12698\n- Schloss, C. A., et al. (2022). \"No-regrets\" pathways for navigating climate change. *Ecological Applications*. https://doi.org/10.1002/eap.2468\n\n---\n\n## Raster - rcn-national (TNC Resilient and Connected Network 2024)\n\nThe Nature Conservancy's Resilient and Connected Network at 30 m: the sites and corridors\nthat together would sustain biodiversity under a changing climate, classified into 14\nclasses. **Footprint is the conterminous US plus adjacent Canada** (the prairie provinces\nnorth to about 52.7 degrees, and New Brunswick, Nova Scotia and Prince Edward Island), so\na US statistic needs a national mask. Alaska and Hawaii are separate source rasters and\nare not included.\n\n`rcn_class` values: 0=Not in Network, 1=Resilient Not in Network, 10=Resilient, Diffuse Flow (Climate Informed), Recognized Biodiversity Value, 20=Resilient, Diffuse Flow (Climate Informed), 30=Resilient, Diffuse Flow, Recognized Biodiversity, 40=Resilient, Diffuse Flow, 50=Resilient, Concentrated Flow (Climate Informed), Recognized Biodiversity, 60=Resilient, Concentrated Flow (Climate Informed), 70=Mostly Resilient, Concentrated Flow, Recognized Biodiversity, 80=Mostly Resilient, Concentrated Flow, 90=Resilient Coastal Migration Space, 91=Resilient, Recognized Biodiversity, Secured, 92=Additional Resilient Secured (GAP 3), 93=Resilient, Recognized Biodiversity. **0 and 1 are real classes** (mapped land outside the\nnetwork, together about 62% of the footprint) - only **255** is no data.\n\n**Licence: TNC non-commercial.** That restriction carries to anyone using these products.\n\n**COG** (titiler, categorical colormap from the STAC `classification:classes`):\n```\nhttps://s3-west.nrp-nautilus.io/public-connectivity/rcn-national-cog.tif\n```\n\n**H3 hex** (native resolution 10, mode reducer) - dominant class per cell:\n```sql\nSELECT rcn_class, COUNT(*) AS cells\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-connectivity/rcn-national/hex/h0=*/data_0.parquet')\nWHERE rcn_class <> 255\nGROUP BY 1 ORDER BY 2 DESC;\n```\n\n**H3 hex, fractional coverage** (one row per cell and class present) - use this, not the\nmode layer, for class **areas**; weight each `frac` by its own cell's ground area (see the\nh3-guide) rather than counting cells:\n```sql\nSELECT rcn_class, SUM(frac) AS cell_equivalents\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-connectivity/rcn-national/hex-fractions/h0=*/data_0.parquet')\nWHERE rcn_class <> 255\nGROUP BY 1 ORDER BY 2 DESC;\n```\n\nThere is no PMTiles or GeoParquet for this dataset: raster ingests produce a COG and hex\nonly.\n",
   "_review": [
-    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
-    "providers: role [producer, licensor] for 'California Department of Fish and Wildlife (CDFW)' is an AI guess \u2014 Stated as source for BIOS ds419 and ds2867; licensor role inferred from the CC-BY-4.0 license listed for these two products.. Verify before flipping to _state: reviewed.",
-    "providers: role [producer, licensor] for 'Cameron, D. R., Schloss, C. A., Theobald, D. M., & Morrison, S. A.' is an AI guess \u2014 Cited as data authors (Dryad 7sqv9s4v3); licensor role inferred from the CC0-1.0 license listed for this dataset.. Verify before flipping to _state: reviewed.",
-    "providers: role [producer, licensor] for 'Schloss, C. A., et al.' is an AI guess \u2014 Cited as data authors (Dryad d7wm37q1m); licensor role inferred from the CC0-1.0 license listed for this dataset.. Verify before flipping to _state: reviewed.",
-    "providers: role [processor] for 'California Biodiversity Network (CBN)' is an AI guess \u2014 README states products come 'from the California Biodiversity Network (CBN) and partners', suggesting CBN compiled/reprojected these into the cloud-native formats.. Verify before flipping to _state: reviewed."
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-08-29T08:34:57+00:00",
+  "cataloged_at": "2026-10-07T09:20:41+00:00",
   "store_format": null
 }
