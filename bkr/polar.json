@@ -4,14 +4,17 @@
   "stac_version": "1.1.0",
   "id": "bkr/polar",
   "title": "Polar-Orbiting Satellite Imagery",
-  "description": "Polar-orbiting satellite imagery from the JPSS (Joint Polar Satellite System) and MetOp satellite series, stored in Icechunk format. Data was converted from original instrument output using Satpy and covers weather, climate, and environmental observation use cases. The archive is continually expanding but is noted as incomplete.",
+  "description": "Polar-orbiting satellite imagery from the JPSS (Joint Polar Satellite System) and MetOp satellite series, converted from original instrument output with Satpy and stored in Icechunk format. Supports weather, climate, and environmental observation; the archive is continually expanding but incomplete.",
   "keywords": [
     "satellite-imagery",
-    "polar-orbiting",
-    "jpss",
-    "metop",
+    "icechunk",
+    "zarr",
+    "remote-sensing",
+    "earth-observation",
     "weather",
-    "climate"
+    "climate",
+    "global-coverage",
+    "environmental-monitoring"
   ],
   "providers": [
     {
@@ -41,28 +44,116 @@
       "bbox": [
         [
           -180.0,
-          -90.0,
+          -87.265639,
           180.0,
-          90.0
+          87.790108
+        ],
+        [
+          -116.155537,
+          -87.265639,
+          -121.805072,
+          87.790108
+        ],
+        [
+          26.6247815,
+          -69.3012368,
+          -77.9128534,
+          81.807158
         ]
       ]
     },
     "temporal": {
       "interval": [
         [
-          null,
-          null
+          "2026-09-30T06:00:11",
+          "2026-10-02T05:59:59"
+        ],
+        [
+          "2026-10-02T05:00:00",
+          "2026-10-02T05:59:59"
+        ],
+        [
+          "2026-09-30T06:00:11",
+          "2026-09-30T06:44:30"
         ]
       ]
     }
   },
   "assets": {
-    "data": {
-      "href": "https://data.source.coop/bkr/polar/",
+    "jpss_atms.icechunk": {
+      "href": "https://data.source.coop/bkr/polar/jpss_atms.icechunk/",
       "type": "application/octet-stream",
-      "title": "Dataset files (6 x .icechunk)",
+      "title": "jpss_atms.icechunk/ (1 \u00d7 .icechunk)",
       "roles": [
         "data"
+      ]
+    },
+    "jpss_atms.icechunk/jpss_atms.icechunk": {
+      "href": "https://data.source.coop/bkr/polar/jpss_atms.icechunk/jpss_atms.icechunk/",
+      "type": "application/octet-stream",
+      "title": "jpss_atms.icechunk/jpss_atms.icechunk/ (1 \u00d7 .icechunk)",
+      "roles": [
+        "data"
+      ]
+    },
+    "metop_amsua.icechunk": {
+      "href": "https://data.source.coop/bkr/polar/metop_amsua.icechunk/",
+      "type": "application/octet-stream",
+      "title": "metop_amsua.icechunk/ (1 \u00d7 .icechunk)",
+      "roles": [
+        "data"
+      ]
+    },
+    "metop_avhrr.icechunk": {
+      "href": "https://data.source.coop/bkr/polar/metop_avhrr.icechunk/",
+      "type": "application/octet-stream",
+      "title": "metop_avhrr.icechunk/ (1 \u00d7 .icechunk)",
+      "roles": [
+        "data"
+      ]
+    },
+    "metop_gome.icechunk": {
+      "href": "https://data.source.coop/bkr/polar/metop_gome.icechunk/",
+      "type": "application/octet-stream",
+      "title": "metop_gome.icechunk/ (1 \u00d7 .icechunk)",
+      "roles": [
+        "data"
+      ],
+      "bbox": [
+        -116.155537,
+        -87.265639,
+        -121.805072,
+        87.790108
+      ]
+    },
+    "metop_iasi.icechunk": {
+      "href": "https://data.source.coop/bkr/polar/metop_iasi.icechunk/",
+      "type": "application/octet-stream",
+      "title": "metop_iasi.icechunk/ (1 \u00d7 .icechunk)",
+      "roles": [
+        "data"
+      ]
+    },
+    "metop_mhs.icechunk": {
+      "href": "https://data.source.coop/bkr/polar/metop_mhs.icechunk/",
+      "type": "application/octet-stream",
+      "title": "metop_mhs.icechunk/ (1 \u00d7 .icechunk)",
+      "roles": [
+        "data"
+      ]
+    },
+    "metop_sg_ro.icechunk": {
+      "href": "https://data.source.coop/bkr/polar/metop_sg_ro.icechunk/",
+      "type": "application/octet-stream",
+      "title": "metop_sg_ro.icechunk/ (1 \u00d7 .icechunk)",
+      "roles": [
+        "data"
+      ],
+      "bbox": [
+        26.6247815,
+        -69.3012368,
+        -77.9128534,
+        81.807158
       ]
     }
   },
@@ -78,11 +169,24 @@
       "title": "Source Cooperative product page"
     }
   ],
+  "account_id": "bkr",
+  "featured": 0,
+  "total_bytes": 10908122123421,
+  "disabled": false,
+  "created_at": "2025-07-10T09:57:25.116Z",
+  "exts": {
+    "": 1310281,
+    "json": 6,
+    "amhw6a308djyj8xesy6g": 1,
+    "yda477nf8rdgw7cq1jng": 1,
+    "ak8tyr11xdnsg2ydesjg": 1,
+    "ch5xekhnq5y8syhsxpf0": 1
+  },
+  "objects_updated_at": "2026-10-02T12:07:46+00:00",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "visibility": "public",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -95,28 +199,23 @@
       "prefix": "bkr/polar/"
     }
   },
-  "featured": 0,
-  "created_at": "2025-07-10T09:57:25.116Z",
-  "product_id": "polar",
-  "data_mode": "open",
-  "account_id": "bkr",
-  "updated_at": "2025-08-21T16:39:55.568Z",
-  "exts": {
-    "": 1309659,
-    "json": 6
+  "visibility": "public",
+  "ext_bytes": {
+    "": 10908122121844,
+    "ak8tyr11xdnsg2ydesjg": 413,
+    "amhw6a308djyj8xesy6g": 409,
+    "ch5xekhnq5y8syhsxpf0": 273,
+    "yda477nf8rdgw7cq1jng": 272,
+    "json": 210
   },
-  "disabled": false,
-  "total_bytes": 10904711767158,
-  "object_count": 1309665,
+  "data_mode": "open",
+  "object_count": 1310291,
+  "product_id": "polar",
+  "updated_at": "2025-08-21T16:39:55.568Z",
   "_review": [
-    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
-    "providers: role [producer, licensor] for 'NOAA / NASA (JPSS Program)' is an AI guess \u2014 JPSS is a joint NOAA/NASA program; producer and licensor roles assumed as the originating government agencies for the raw instrument data. Verify before flipping to _state: reviewed.",
-    "providers: role [producer, licensor] for 'EUMETSAT (MetOp)' is an AI guess \u2014 MetOp is an EUMETSAT/ESA series; producer and licensor roles assumed as the originating agency for raw data. Verify before flipping to _state: reviewed."
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-06-04T01:33:16+00:00",
-  "ext_bytes": {
-    "": 10904711766948,
-    "json": 210
-  }
+  "cataloged_at": "2026-10-07T09:40:14+00:00",
+  "store_format": "icechunk"
 }
