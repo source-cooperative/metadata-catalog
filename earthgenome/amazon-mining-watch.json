@@ -4,17 +4,17 @@
   "stac_version": "1.1.0",
   "id": "earthgenome/amazon-mining-watch",
   "title": "Amazon Mining Watch",
-  "description": "Automated detections of artisanal gold mine scars across the Amazon basin, derived from a convolutional neural network ensemble applied to Sentinel-2 imagery, provided as cumulative patch-level GeoJSON detections (yearly since 2018 and quarterly since 2025) plus SAM2-derived pixelwise mining-scar mask rasters.",
+  "description": "Automated detections of artisanal gold mine scars across the Amazon basin, produced by a convolutional neural network ensemble applied to Sentinel-2 imagery. Provided as cumulative patch-level GeoJSON detections (annual since 2018, quarterly provisional) plus SAM2-derived pixelwise mining-scar mask rasters.",
   "license": "CC-BY-4.0",
   "keywords": [
-    "gold-mining",
-    "amazon-basin",
     "remote-sensing",
     "machine-learning",
-    "environmental-monitoring",
+    "sentinel-2",
     "deforestation",
     "conservation",
-    "sentinel-2"
+    "environmental-monitoring",
+    "gold-mining",
+    "amazon-basin"
   ],
   "providers": [
     {
@@ -53,13 +53,13 @@
       "interval": [
         [
           "2018-01-01T00:00:00Z",
-          "2026-06-01T00:00:00Z"
+          "2026-Q3-01T00:00:00Z"
         ]
       ]
     }
   },
   "summaries": {
-    "item_count": 1621451
+    "item_count": 1749502
   },
   "assets": {
     "archived/48px_v0.X-SSL4EO-MLPensemble": {
@@ -80,7 +80,7 @@
     "postprocessed": {
       "href": "https://data.source.coop/earthgenome/amazon-mining-watch/postprocessed/",
       "type": "application/geo+json",
-      "title": "postprocessed/ (14 \u00d7 .geojson)",
+      "title": "postprocessed/ (15 \u00d7 .geojson)",
       "roles": [
         "data"
       ],
@@ -90,12 +90,12 @@
         -44.016719,
         8.590777
       ],
-      "item_count": 1621451
+      "item_count": 1749502
     },
     "raw_detections": {
       "href": "https://data.source.coop/earthgenome/amazon-mining-watch/raw_detections/",
       "type": "application/geo+json",
-      "title": "raw_detections/ (28 \u00d7 .geojson)",
+      "title": "raw_detections/ (30 \u00d7 .geojson)",
       "roles": [
         "data"
       ],
@@ -105,7 +105,7 @@
         -43.840639,
         9.52979
       ],
-      "item_count": 1397912
+      "item_count": 1397990
     }
   },
   "links": [
@@ -120,15 +120,31 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "created_at": "2026-01-23T18:28:57.186Z",
-  "updated_at": "2026-01-23T18:28:57.186Z",
-  "ext_bytes": {
-    "geojson": 1624040182,
-    "tif": 161253546,
-    "md": 5124,
-    "txt": 506,
-    "xml": 367
+  "objects_updated_at": "2026-10-03T12:16:41+00:00",
+  "exts": {
+    "geojson": 59,
+    "tif": 3,
+    "txt": 2,
+    "md": 1,
+    "xml": 1
   },
+  "featured": 0,
+  "ext_bytes": {
+    "geojson": 1727631044,
+    "tif": 163186095,
+    "md": 5124,
+    "txt": 504,
+    "xml": 366
+  },
+  "account_id": "earthgenome",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "created_at": "2026-01-23T18:28:57.186Z",
+  "total_bytes": 1890823133,
+  "updated_at": "2026-01-23T18:28:57.186Z",
+  "data_mode": "open",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -141,32 +157,16 @@
       "prefix": "earthgenome/amazon-mining-watch/"
     }
   },
-  "total_bytes": 1785299725,
-  "data_mode": "open",
+  "object_count": 66,
   "visibility": "public",
-  "object_count": 63,
-  "objects_updated_at": "2026-08-20T13:07:19+00:00",
-  "account_id": "earthgenome",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
   "disabled": false,
   "product_id": "amazon-mining-watch",
-  "featured": 0,
-  "exts": {
-    "geojson": 56,
-    "tif": 3,
-    "txt": 2,
-    "md": 1,
-    "xml": 1
-  },
-  "readme": "## README.md\n![EarthGenome](https://data.source.coop/earthgenome/earthindexembeddings/logo.png)\n# Amazon Mining Watch\n\n[![CC-4 license](https://img.shields.io/badge/License-CC--4-blue.svg)](https://creativecommons.org/licenses/by/4.0/)\n[![Sensor](https://img.shields.io/badge/Sensor%F0%9F%9B%B0%EF%B8%8F-Sentinel2-blue)](https://www.esa.int/Applications/Observing_the_Earth/Copernicus/Sentinel-2)\n[![Format](https://img.shields.io/badge/Format-GeoJSON%20%F0%9F%8C%8E%EF%B8%8F-blue)](https://geojson.org/)\n\n**Updated 20 August 2026.** Model `48px_v4.10b-18d-20g-21a-22bc-ensemble`, annual periods 2018\u20132025 and quarters Q125\u2013Q226.\n\nThis repository contains automated detections of artisanal gold mine scars in\nSentinel-2 satellite imagery.\n\nThe data is licensed under the [creative commons 4.0](https://creativecommons.org/licenses/by/4.0/)\ninternational license which, in essence, only requires attribution.\n\nCode, description of the machine-learning models that generated the detections,\nand additional versions of this data are available at the\n[Amazon Mining Watch Github repository](https://github.com/earthrise-media/mining-detector).\n\n## Data\n\nCoverage is yearly from 2018. The current and previous calendar year\nare covered by provisional quarterly detections.\n\n### Patch detections\n\n**Patch detections are the primary product.** They are derived from a\n machine learning model that makes probabilistic assessments on 480 m\n \u00d7 480 m patches of the Earth's surface as to whether traces of mining\n activity are visible within a patch. The model canvases over 100\n million patches across the Amazon basin at each time step.\n\n| file | what it is |\n| --- | --- |\n| `amazon_basin_detections.geojson` | One entry per location, carrying model confidence, the period in which mining was first confirmed, and a confirmed or provisional status. |\n\nThis file replaces the per-period cumulative files published earlier in 2026, which have been removed.\n\n\n### Mining scar masks\n\nThe mining scar raster masks are still in development. They provide\n mine footprints and mined area estimates for the Amazon Mining Watch\n website.\n\n| file | what it is |\n| --- | --- |\n| `amazon_basin_mining_scar_masks.tif` | Pixelwise mine-scar extent at 10 m Sentinel-2 resolution, from a fine-tuned [SAM2](https://ai.meta.com/research/sam2/) model prompted by the detections above. |\n| `amazon_basin_mining_scar_masks.tif.aux.xml` | Precomputed statistics to help with rendering in GIS software.|\n\n\n### Confirmed and provisional detections\n\nThe patch detections are a cumulative historical record of lands that\nhave been mined since the beginning of monitoring in 2018. A detection\nenters the record as **confirmed** once it appears in two annual\nperiods within a two-year window. The period recorded is the first of\nthose.  A confirmed detection is never withdrawn by a later update.\n\nRecent quarterly data are marked **provisional** and are held to a\nstricter confidence threshold. Provisional data will be\nreplaced by annual data once the corroborating year arrives.\n\nFor the mining scar masks, pixel values indicate the time period. For\nexample, 2024 takes the raster value `2024` and Q1 2025 takes the\nvalue `20251`. Zero indicates no confirmed mining. The two-year\npersistence rule is applied to annual data also at the pixel level.\n\nSegmentation is the least mature part of this pipeline and areas are\nknown to run large compared to hand-drawn\nboundaries. Comparisons *between* periods are more trustworthy than\nany single total. More details can be found on our [Github\nrepository](https://github.com/earthrise-media/mining-detector).\n\n\n### Single-period data\n\nThe individual yearly and quarterly assessments are for users who want the\nunaggregated model output:\n\n- `raw_detections/` \u2014 direct model output, every patch at or above a confidence of\n  0.4, before any filtering.\n- `postprocessed/` \u2014 the recommended single-period product. Mining activity\n  clusters in space, so isolated candidate detections are held to a higher\n  confidence than clustered ones (`t_main = 0.43`, `t_iso = 0.75`). This is also\n  the set the segmentation model is prompted from.\n\n### Archive\n\n`archived/` data were published here in January, 2026, from an\nexperimental model that has since been superseded by the current model\nversion. We include them here for the record. The data have the limitation\nand the virtue of having been extensively cleaned by hand prior to\npublication.\n\n## Models\n\nThe primary mining activity detector is [an ensemble of convolutional neural\nnetworks](https://github.com/earthrise-media/mining-detector/blob/main/models/48px_v4.10b-18d-20g-21a-22bc-ensemble.h5),\ntrained on a dataset of approximately 20,000 locations labeled as mines or\nmine-free areas. This model was wholly redeveloped in 2026 and the data recomputed\nstarting from year 2018.\n\nMining scar masks are computed by a fine-tuned [SAM2 (Segment\nAnything)](https://ai.meta.com/research/sam2/) model applied in the\nnear field of view surrounding the cumulative detections.\n\n## Contact\n\nUsing this? Want to work together? Ping us @ info@earthgenome.org or info@earthindex.ai\n",
+  "readme": "## README.md\n![EarthGenome](https://data.source.coop/earthgenome/earthindexembeddings/logo.png)\n# Amazon Mining Watch\n\n[![CC-4 license](https://img.shields.io/badge/License-CC--4-blue.svg)](https://creativecommons.org/licenses/by/4.0/)\n[![Sensor](https://img.shields.io/badge/Sensor%F0%9F%9B%B0%EF%B8%8F-Sentinel2-blue)](https://www.esa.int/Applications/Observing_the_Earth/Copernicus/Sentinel-2)\n[![Format](https://img.shields.io/badge/Format-GeoJSON%20%F0%9F%8C%8E%EF%B8%8F-blue)](https://geojson.org/)\n\n**Updated 3 October 2026.** Model `48px_v4.10b-18d-20g-21a-22bc-ensemble`, annual periods 2018\u20132025 and quarters Q125\u2013Q326.\n\nThis repository contains automated detections of artisanal gold mine scars in\nSentinel-2 satellite imagery.\n\nThe data is licensed under the [creative commons 4.0](https://creativecommons.org/licenses/by/4.0/)\ninternational license which, in essence, only requires attribution.\n\nCode, description of the machine-learning models that generated the detections,\nand additional versions of this data are available at the\n[Amazon Mining Watch Github repository](https://github.com/earthrise-media/mining-detector).\n\n## Data\n\nCoverage is yearly from 2018. The current and previous calendar year\nare covered by provisional quarterly detections.\n\n### Patch detections\n\n**Patch detections are the primary product.** They are derived from a\n machine learning model that makes probabilistic assessments on 480 m\n \u00d7 480 m patches of the Earth's surface as to whether traces of mining\n activity are visible within a patch. The model canvases over 100\n million patches across the Amazon basin at each time step.\n\n| file | what it is |\n| --- | --- |\n| `amazon_basin_detections.geojson` | One entry per location, carrying model confidence, the period in which mining was first confirmed, and a confirmed or provisional status. |\n\nThis file replaces the per-period cumulative files published earlier in 2026, which have been removed.\n\n\n### Mining scar masks\n\nThe mining scar raster masks are still in development. They provide\n mine footprints and mined area estimates for the Amazon Mining Watch\n website.\n\n| file | what it is |\n| --- | --- |\n| `amazon_basin_mining_scar_masks.tif` | Pixelwise mine-scar extent at 10 m Sentinel-2 resolution, from a fine-tuned [SAM2](https://ai.meta.com/research/sam2/) model prompted by the detections above. |\n| `amazon_basin_mining_scar_masks.tif.aux.xml` | Precomputed statistics to help with rendering in GIS software.|\n\n\n### Confirmed and provisional detections\n\nThe patch detections are a cumulative historical record of lands that\nhave been mined since the beginning of monitoring in 2018. A detection\nenters the record as **confirmed** once it appears in two annual\nperiods within a two-year window. The period recorded is the first of\nthose.  A confirmed detection is never withdrawn by a later update.\n\nRecent quarterly data are marked **provisional** and are held to a\nstricter confidence threshold. Provisional data will be\nreplaced by annual data once the corroborating year arrives.\n\nFor the mining scar masks, pixel values indicate the time period. For\nexample, 2024 takes the raster value `2024` and Q1 2025 takes the\nvalue `20251`. Zero indicates no confirmed mining. The two-year\npersistence rule is applied to annual data also at the pixel level.\n\nSegmentation is the least mature part of this pipeline and areas are\nknown to run large compared to hand-drawn\nboundaries. Comparisons *between* periods are more trustworthy than\nany single total. More details can be found on our [Github\nrepository](https://github.com/earthrise-media/mining-detector).\n\n\n### Single-period data\n\nThe individual yearly and quarterly assessments are for users who want the\nunaggregated model output:\n\n- `raw_detections/` \u2014 direct model output, every patch at or above a confidence of\n  0.4, before any filtering.\n- `postprocessed/` \u2014 the recommended single-period product. Mining activity\n  clusters in space, so isolated candidate detections are held to a higher\n  confidence than clustered ones (`t_main = 0.43`, `t_iso = 0.75`). This is also\n  the set the segmentation model is prompted from.\n\n### Archive\n\n`archived/` data were published here in January, 2026, from an\nexperimental model that has since been superseded by the current model\nversion. We include them here for the record. The data have the limitation\nand the virtue of having been extensively cleaned by hand prior to\npublication.\n\n## Models\n\nThe primary mining activity detector is [an ensemble of convolutional neural\nnetworks](https://github.com/earthrise-media/mining-detector/blob/main/models/48px_v4.10b-18d-20g-21a-22bc-ensemble.h5),\ntrained on a dataset of approximately 20,000 locations labeled as mines or\nmine-free areas. This model was wholly redeveloped in 2026 and the data recomputed\nstarting from year 2018.\n\nMining scar masks are computed by a fine-tuned [SAM2 (Segment\nAnything)](https://ai.meta.com/research/sam2/) model applied in the\nnear field of view surrounding the cumulative detections.\n\n## Contact\n\nUsing this? Want to work together? Ping us @ info@earthgenome.org or info@earthindex.ai\n",
   "_review": [
-    "extent.temporal: None (probe sample) widened to ['2018-01-01T00:00:00Z', '2026-06-01T00:00:00Z'] using README-stated coverage ['2018', '2026-06'].",
-    "summaries.item_count: parts overlap, so this is max(part), not the sum \u2014 archived/48px_v0.X-SSL4EO-MLPensemble/ 587473, postprocessed/ 1621451, raw_detections/ 1397912. Sum them only once the parts are known to be disjoint."
+    "extent.temporal: None (probe sample) widened to ['2018-01-01T00:00:00Z', '2026-Q3-01T00:00:00Z'] using README-stated coverage ['2018', '2026-Q3'].",
+    "summaries.item_count: parts overlap, so this is max(part), not the sum \u2014 archived/48px_v0.X-SSL4EO-MLPensemble/ 587473, postprocessed/ 1749502, raw_detections/ 1397990. Sum them only once the parts are known to be disjoint."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-08-30T08:44:07+00:00",
+  "cataloged_at": "2026-10-08T08:57:38+00:00",
   "store_format": null
 }
