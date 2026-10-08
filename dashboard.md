@@ -1,25 +1,25 @@
 # Source Cooperative catalog — status
 
-_Updated 2026-10-07 09:53 UTC by the nightly pipeline._
+_Updated 2026-10-08 09:02 UTC by the nightly pipeline._
 
-**425 datasets cataloged**  ·  **12 queued for next run**  ·  last run handled **10**
+**425 datasets cataloged**  ·  **2 queued for next run**  ·  last run handled **10**
 
 ## Last run
 
 <details><summary>✅ drafted — 10 datasets</summary>
 
-| repo                                                                               |
-| ---------------------------------------------------------------------------------- |
-| [ausantarctic/ghrsst-mur-v2](https://source.coop/ausantarctic/ghrsst-mur-v2)       |
-| [bkr/mrms](https://source.coop/bkr/mrms)                                           |
-| [bkr/polar](https://source.coop/bkr/polar)                                         |
-| [cboettig/connectivity](https://source.coop/cboettig/connectivity)                 |
-| [cboettig/land-cover](https://source.coop/cboettig/land-cover)                     |
-| [dynamical/noaa-gfs-analysis](https://source.coop/dynamical/noaa-gfs-analysis)     |
-| [hdx/cod-ab](https://source.coop/hdx/cod-ab)                                       |
-| [root-geospatial/flight-tracks](https://source.coop/root-geospatial/flight-tracks) |
-| [rseg/sentinel1-lfmc](https://source.coop/rseg/sentinel1-lfmc)                     |
-| [walkthru-earth/indices](https://source.coop/walkthru-earth/indices)               |
+| repo                                                                                                       |
+| ---------------------------------------------------------------------------------------------------------- |
+| [bkr/precipradar](https://source.coop/bkr/precipradar)                                                     |
+| [dynamical/asos-parquet](https://source.coop/dynamical/asos-parquet)                                       |
+| [dynamical/noaa-gefs-analysis](https://source.coop/dynamical/noaa-gefs-analysis)                           |
+| [dynamical/noaa-mrms-conus-analysis-hourly](https://source.coop/dynamical/noaa-mrms-conus-analysis-hourly) |
+| [earthgenome/amazon-mining-watch](https://source.coop/earthgenome/amazon-mining-watch)                     |
+| [englacial/zagg](https://source.coop/englacial/zagg)                                                       |
+| [giswqs/opengeos](https://source.coop/giswqs/opengeos)                                                     |
+| [portolan-mirrors/firms-catalog](https://source.coop/portolan-mirrors/firms-catalog)                       |
+| [scar/distant](https://source.coop/scar/distant)                                                           |
+| [source/metadata-catalog](https://source.coop/source/metadata-catalog)                                     |
 
 </details>
 
@@ -28,23 +28,23 @@ _Updated 2026-10-07 09:53 UTC by the nightly pipeline._
 
 | run                                                                                                    | outcome | drafted | redraft | resets | failed | queued | cataloged |
 | ------------------------------------------------------------------------------------------------------ | ------- | ------: | ------: | -----: | -----: | -----: | --------: |
+| [2026-10-08](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/37751722653) | ✅       |         |      10 |        |        |      0 |       425 |
 | [2026-10-07](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/37595531626) | ✅       |         |      10 |        |        |      2 |       425 |
 | [2026-10-06](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/37437642000) | ✅       |         |      10 |        |        |     12 |       425 |
 | [2026-10-05](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/37286286011) | ✅       |       2 |       8 |        |        |     22 |       425 |
 | [2026-10-04](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/37195411401) | ✅       |         |         |        |        |      0 |       423 |
 | [2026-10-03](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/37110275637) | ✅       |         |         |        |        |      0 |       423 |
 | [2026-10-02](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/36985218615) | ✅       |         |         |        |        |      0 |       423 |
-| [2026-10-01](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/36837980153) | ✅       |         |       2 |        |        |      0 |       423 |
 
 ## Persistent failures
 
-**1 dataset failing**  ·  1 open issue  ·  oldest **14d**  ·  **0** ≥30d  ·  [all open issues](https://github.com/source-cooperative/metadata-catalog/issues?q=is%3Aissue+is%3Aopen+label%3Aprobe-failure)
+**1 dataset failing**  ·  1 open issue  ·  oldest **15d**  ·  **0** ≥30d  ·  [all open issues](https://github.com/source-cooperative/metadata-catalog/issues?q=is%3Aissue+is%3Aopen+label%3Aprobe-failure)
 
 <details><summary>the 1 open issues, oldest first</summary>
 
 | repo                                                       | age (d) |                                                                     issue |
 | ---------------------------------------------------------- | ------: | ------------------------------------------------------------------------: |
-| [alukach/firesmoke](https://source.coop/alukach/firesmoke) |      14 | [#166](https://github.com/source-cooperative/metadata-catalog/issues/166) |
+| [alukach/firesmoke](https://source.coop/alukach/firesmoke) |      15 | [#166](https://github.com/source-cooperative/metadata-catalog/issues/166) |
 
 </details>
 
@@ -926,23 +926,13 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 
 </details>
 
-<details><summary>stale (catalog bytes ≠ S3; fixed by <code>make process-all</code>) — 13 datasets (10.2 TB)</summary>
+<details><summary>stale (catalog bytes ≠ S3; fixed by <code>make process-all</code>) — 3 datasets (528.4 GB)</summary>
 
-| repo                                                                                                       | updated    |        catalog → S3 |
-| ---------------------------------------------------------------------------------------------------------- | ---------- | ------------------: |
-| [alukach/firesmoke](https://source.coop/alukach/firesmoke)                                                 | 2026-10-04 |     1.2 GB → 1.3 GB |
-| [dynamical/asos-parquet](https://source.coop/dynamical/asos-parquet)                                       | 2026-10-04 |   20.3 GB → 20.3 GB |
-| [dynamical/noaa-mrms-conus-analysis-hourly](https://source.coop/dynamical/noaa-mrms-conus-analysis-hourly) | 2026-10-04 | 255.6 GB → 256.3 GB |
-| [portolan-mirrors/firms-catalog](https://source.coop/portolan-mirrors/firms-catalog)                       | 2026-10-04 |   26.9 GB → 27.0 GB |
-| [dynamical/noaa-gefs-analysis](https://source.coop/dynamical/noaa-gefs-analysis)                           | 2026-10-04 |     1.1 TB → 1.1 TB |
-| [earthgenome/amazon-mining-watch](https://source.coop/earthgenome/amazon-mining-watch)                     | 2026-10-03 |     1.8 GB → 1.9 GB |
-| [bkr/precipradar](https://source.coop/bkr/precipradar)                                                     | 2026-10-03 |     7.4 TB → 7.4 TB |
-| [englacial/zagg](https://source.coop/englacial/zagg)                                                       | 2026-10-02 | 891.3 GB → 891.4 GB |
-| [giswqs/opengeos](https://source.coop/giswqs/opengeos)                                                     | 2026-10-02 |   21.2 GB → 21.3 GB |
-| [scar/distant](https://source.coop/scar/distant)                                                           | 2026-10-02 |     1.9 GB → 2.2 GB |
-| [source/metadata-catalog](https://source.coop/source/metadata-catalog)                                     | 2026-10-01 |     5.8 MB → 5.8 MB |
-| [fika/waternet](https://source.coop/fika/waternet)                                                         | 2026-09-30 | 527.0 GB → 527.0 GB |
-| [ocean-icechunks/hycom](https://source.coop/ocean-icechunks/hycom)                                         | 2026-09-29 | 180.1 MB → 180.1 MB |
+| repo                                                               | updated    |        catalog → S3 |
+| ------------------------------------------------------------------ | ---------- | ------------------: |
+| [alukach/firesmoke](https://source.coop/alukach/firesmoke)         | 2026-10-04 |     1.2 GB → 1.3 GB |
+| [fika/waternet](https://source.coop/fika/waternet)                 | 2026-09-30 | 527.0 GB → 527.0 GB |
+| [ocean-icechunks/hycom](https://source.coop/ocean-icechunks/hycom) | 2026-09-29 | 180.1 MB → 180.1 MB |
 
 </details>
 
