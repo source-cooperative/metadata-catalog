@@ -1,25 +1,17 @@
 # Source Cooperative catalog — status
 
-_Updated 2026-10-08 09:02 UTC by the nightly pipeline._
+_Updated 2026-10-09 08:45 UTC by the nightly pipeline._
 
-**425 datasets cataloged**  ·  **2 queued for next run**  ·  last run handled **10**
+**425 datasets cataloged**  ·  **0 queued for next run**  ·  last run handled **2**
 
 ## Last run
 
-<details><summary>✅ drafted — 10 datasets</summary>
+<details><summary>✅ drafted — 2 datasets</summary>
 
-| repo                                                                                                       |
-| ---------------------------------------------------------------------------------------------------------- |
-| [bkr/precipradar](https://source.coop/bkr/precipradar)                                                     |
-| [dynamical/asos-parquet](https://source.coop/dynamical/asos-parquet)                                       |
-| [dynamical/noaa-gefs-analysis](https://source.coop/dynamical/noaa-gefs-analysis)                           |
-| [dynamical/noaa-mrms-conus-analysis-hourly](https://source.coop/dynamical/noaa-mrms-conus-analysis-hourly) |
-| [earthgenome/amazon-mining-watch](https://source.coop/earthgenome/amazon-mining-watch)                     |
-| [englacial/zagg](https://source.coop/englacial/zagg)                                                       |
-| [giswqs/opengeos](https://source.coop/giswqs/opengeos)                                                     |
-| [portolan-mirrors/firms-catalog](https://source.coop/portolan-mirrors/firms-catalog)                       |
-| [scar/distant](https://source.coop/scar/distant)                                                           |
-| [source/metadata-catalog](https://source.coop/source/metadata-catalog)                                     |
+| repo                                                               |
+| ------------------------------------------------------------------ |
+| [fika/waternet](https://source.coop/fika/waternet)                 |
+| [ocean-icechunks/hycom](https://source.coop/ocean-icechunks/hycom) |
 
 </details>
 
@@ -28,13 +20,13 @@ _Updated 2026-10-08 09:02 UTC by the nightly pipeline._
 
 | run                                                                                                    | outcome | drafted | redraft | resets | failed | queued | cataloged |
 | ------------------------------------------------------------------------------------------------------ | ------- | ------: | ------: | -----: | -----: | -----: | --------: |
+| [2026-10-09](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/37906678647) | ✅       |         |       2 |        |        |      0 |       425 |
 | [2026-10-08](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/37751722653) | ✅       |         |      10 |        |        |      0 |       425 |
 | [2026-10-07](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/37595531626) | ✅       |         |      10 |        |        |      2 |       425 |
 | [2026-10-06](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/37437642000) | ✅       |         |      10 |        |        |     12 |       425 |
 | [2026-10-05](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/37286286011) | ✅       |       2 |       8 |        |        |     22 |       425 |
 | [2026-10-04](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/37195411401) | ✅       |         |         |        |        |      0 |       423 |
 | [2026-10-03](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/37110275637) | ✅       |         |         |        |        |      0 |       423 |
-| [2026-10-02](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/36985218615) | ✅       |         |         |        |        |      0 |       423 |
 
 ## Persistent failures
 
@@ -926,13 +918,11 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 
 </details>
 
-<details><summary>stale (catalog bytes ≠ S3; fixed by <code>make process-all</code>) — 3 datasets (528.4 GB)</summary>
+<details><summary>stale (catalog bytes ≠ S3; fixed by <code>make process-all</code>) — 1 dataset (1.3 GB)</summary>
 
-| repo                                                               | updated    |        catalog → S3 |
-| ------------------------------------------------------------------ | ---------- | ------------------: |
-| [alukach/firesmoke](https://source.coop/alukach/firesmoke)         | 2026-10-04 |     1.2 GB → 1.3 GB |
-| [fika/waternet](https://source.coop/fika/waternet)                 | 2026-09-30 | 527.0 GB → 527.0 GB |
-| [ocean-icechunks/hycom](https://source.coop/ocean-icechunks/hycom) | 2026-09-29 | 180.1 MB → 180.1 MB |
+| repo                                                       | updated    |    catalog → S3 |
+| ---------------------------------------------------------- | ---------- | --------------: |
+| [alukach/firesmoke](https://source.coop/alukach/firesmoke) | 2026-10-04 | 1.2 GB → 1.3 GB |
 
 </details>
 
