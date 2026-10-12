@@ -4,24 +4,17 @@
   "stac_version": "1.1.0",
   "id": "major-tom/elliot-pretrain",
   "title": "MajorTOM Burst",
-  "description": "ELLIOT-Pretrain is a multi-modal Earth Observation dataset for pre-training AI foundation models, built on the MajorTOM global 10 km grid. It provides co-registered 10.56 km tiles across four sensors (Sentinel-2 L1C, Landsat 8/9 OLI-TIRS, Copernicus DEM GLO-30, ESA WorldCover) in three temporal regimes: monotemporal (250k tiles), monthly time series (12.5k \u00d7 12 timesteps), and burst/rapid-event (16.7k \u00d7 6 timesteps at ~5-day cadence). Tile locations were selected via hierarchical spherical k-means clustering to maximise global environmental diversity.",
+  "description": "ELLIOT-Pretrain is a multi-modal Earth Observation dataset for fast pre-training of AI foundation models, built on the Major TOM global 10 km grid. It provides co-registered 10.56 km tiles with Sentinel-2, Landsat 8/9, Sentinel-1 RTC, Copernicus DEM, ESA WorldCover, cloud masks, ERA5 weather and OpenStreetMap features in three temporal regimes: monotemporal, monthly, and burst. This burst sub-dataset covers 16,666 tiles with 6 timesteps at ~5-day cadence for rapid events.",
   "license": "CC-BY-SA-4.0",
   "keywords": [
-    "taco",
-    "majortom",
-    "sentinel-2",
-    "landsat-8",
-    "landsat",
     "earth-observation",
     "remote-sensing",
-    "global-coverage",
-    "elliot",
-    "multitemporal",
+    "sentinel-2",
+    "landsat",
+    "satellite-imagery",
+    "foundation-model",
     "time-series",
-    "burst",
-    "change-detection",
-    "land-use",
-    "foundation-model"
+    "global-coverage"
   ],
   "providers": [
     {
@@ -107,7 +100,7 @@
     "data": {
       "href": "https://data.source.coop/major-tom/elliot-pretrain/",
       "type": "image/tiff; application=geotiff",
-      "title": "Dataset files (1808324 x .tif)",
+      "title": "Dataset files (2058320 x .tif)",
       "roles": [
         "data"
       ]
@@ -123,13 +116,23 @@
       "rel": "via",
       "href": "https://source.coop/major-tom/elliot-pretrain",
       "title": "Source Cooperative product page"
-    },
-    {
-      "rel": "cite-as",
-      "href": "https://doi.org/10.1109/IGARSS53475.2024.10640760"
     }
   ],
-  "created_at": "2026-04-14T23:10:09.348Z",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "data_mode": "open",
+  "object_count": 3616957,
+  "exts": {
+    "tif": 2058320,
+    "png": 999992,
+    "parquet": 558639,
+    "json": 3,
+    "ipynb": 2,
+    "md": 1
+  },
+  "account_id": "major-tom",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -142,40 +145,24 @@
       "prefix": "major-tom/elliot-pretrain/"
     }
   },
-  "product_id": "elliot-pretrain",
-  "exts": {
-    "parquet": 18,
-    "tif": 1808324,
-    "ipynb": 1,
-    "json": 3,
-    "md": 1
-  },
-  "object_count": 1808347,
-  "total_bytes": 4167000148844,
-  "disabled": false,
+  "objects_updated_at": "2026-10-10T00:46:10+00:00",
   "featured": 0,
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "account_id": "major-tom",
-  "visibility": "public",
-  "data_mode": "open",
+  "created_at": "2026-04-14T23:10:09.348Z",
   "updated_at": "2026-04-14T23:10:09.348Z",
-  "readme": "## README.md\n# Major TOM ELLIOT-Pretrain\n\n[![Source Cooperative](https://img.shields.io/badge/Source_Cooperative-elliot--pretrain-blue)](https://source.coop/major-tom/elliot-pretrain)\n[![TACO v3](https://img.shields.io/badge/format-TACO_v3-green)](https://github.com/asterisk-labs/taco/blob/main/spec/main.md)\n[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1_hJWZ9rvBcIIrG5zHD1xsz11LZIJfwxB)\n[![License](https://img.shields.io/badge/license-CC--BY--SA--4.0-orange)](https://creativecommons.org/licenses/by-sa/4.0/)\n\nELLIOT-Pretrain is a Major TOM expansion focused on **fast pre-training** of multi-modal AI foundation models on Earth Observation data.\n\n* Built on the original [MajorTOM](https://github.com/ESA-PhiLab/Major-TOM) global 10 km grid\n* 10.56 km tiles with harmonised 10 m resolution across all sensors for fast access\n* Four co-registered modalities in every tile, optical, thermal, elevation, and land cover\n* Three sub-datasets covering complementary temporal regimes\n\nTile locations were selected using hierarchical spherical k-means clustering over [AlphaEarth Foundation](https://huggingface.co/Major-TOM/AlphaEarth-Foundations) embeddings to maximise global environmental diversity. The dataset follows the [TACO v3 specification](https://github.com/asterisk-labs/taco/blob/main/spec/main.md).\n\n## Sub-datasets\n\n| Part | Name | Tiles | Timesteps | Cadence | Purpose |\n|------|------|-------|-----------|---------|---------|\n| A | Monotemporal | 250,000 | 1 | n/a | Global coverage, spatial diversity |\n| B | Monthly | 12,500 | 12 | monthly | Seasonal dynamics, phenology |\n| C | Burst | 16,666 | 6 | ~5-day | Rapid events, floods, fires, landslides |\n\nAll three parts share the same four sensors.\n\n| Modality | Source | Resolution | Bands |\n|----------|--------|------------|-------|\n| Sentinel-2 L1C | ESA Copernicus | 10 m | 13 spectral |\n| Landsat 8/9 OLI-TIRS | USGS | 30 m | 11 (9 OLI + 2 TIRS) |\n| Copernicus DEM GLO-30 | ESA / TanDEM-X | 30 m | 1 (elevation) |\n| ESA WorldCover | ESA | 10 m | 1 (land cover class) |\n\n## Quick Start\n\nPick a tile index from Part A (monotemporal) and visualize all four modalities.\n\n```python\nimport numpy as np\nimport rasterio\nimport matplotlib.pyplot as plt\n\nBASE = \"https://data.source.coop/major-tom/elliot-pretrain\"\nIDX = 42  # change this to explore different tiles\n\nMODS = [\"s2\", \"l8\", \"dem\", \"lc\"]\nfig, axes = plt.subplots(1, 4, figsize=(20, 5))\n\nfor j, mod in enumerate(MODS):\n    url = f\"/vsicurl/{BASE}/monotemporal/DATA/{IDX}/{mod}/data.tif\"\n    with rasterio.open(url) as src:\n        if mod in (\"s2\", \"l8\"):\n            rgb = src.read([4, 3, 2]).astype(np.float32)\n            axes[j].imshow(np.clip(rgb / 3000, 0, 1).transpose(1, 2, 0))\n        elif mod == \"dem\":\n            axes[j].imshow(src.read(1), cmap=\"terrain\")\n        else:\n            axes[j].imshow(src.read(1), cmap=\"tab20\")\n    axes[j].set_title(mod)\n    axes[j].axis(\"off\")\n\nplt.tight_layout()\nplt.show()\n```\n\n## Reproducible Example\n\nFull notebook covering all three parts, metadata queries with filtering, and a streaming PyTorch DataLoader with parallel fetching.\n\n**[Open in Colab](https://colab.research.google.com/drive/1_hJWZ9rvBcIIrG5zHD1xsz11LZIJfwxB)**\n\n## Dataset Structure\n\n```\nelliot-pretrain/\n\u251c\u2500\u2500 monotemporal/          # Part A, 250k tiles, 1 timestep\n\u2502   \u251c\u2500\u2500 COLLECTION.json\n\u2502   \u251c\u2500\u2500 METADATA/\n\u2502   \u2502   \u251c\u2500\u2500 collection.parquet\n\u2502   \u2502   \u251c\u2500\u2500 sample__s2.parquet\n\u2502   \u2502   \u251c\u2500\u2500 sample__l8.parquet\n\u2502   \u2502   \u251c\u2500\u2500 sample__dem.parquet\n\u2502   \u2502   \u2514\u2500\u2500 sample__lc.parquet\n\u2502   \u2514\u2500\u2500 DATA/{tile_id}/\n\u2502       \u251c\u2500\u2500 s2/data.tif\n\u2502       \u251c\u2500\u2500 l8/data.tif\n\u2502       \u251c\u2500\u2500 dem/data.tif\n\u2502       \u2514\u2500\u2500 lc/data.tif\n\u251c\u2500\u2500 monthly/               # Part B, 12.5k tiles, 12 timesteps\n\u2502   \u251c\u2500\u2500 COLLECTION.json\n\u2502   \u251c\u2500\u2500 METADATA/          # same 5 parquet files\n\u2502   \u2514\u2500\u2500 DATA/{tile_id}/\n\u2502       \u251c\u2500\u2500 s2/img_00.tif ... img_11.tif\n\u2502       \u251c\u2500\u2500 l8/img_00.tif ... img_11.tif\n\u2502       \u251c\u2500\u2500 dem/main.tif\n\u2502       \u2514\u2500\u2500 lc/main.tif\n\u2514\u2500\u2500 burst/                 # Part C, 16.7k tiles, 6 timesteps (~5-day)\n    \u251c\u2500\u2500 COLLECTION.json\n    \u251c\u2500\u2500 METADATA/          # same 5 parquet files\n    \u2514\u2500\u2500 DATA/{tile_id}/\n        \u251c\u2500\u2500 s2/img_00.tif ... img_05.tif\n        \u251c\u2500\u2500 l8/img_00.tif ... img_05.tif\n        \u251c\u2500\u2500 dem/main.tif\n        \u2514\u2500\u2500 lc/main.tif\n```\n\nJoin key across metadata files is `internal:parent_id`, which points back to `internal:current_id` in `collection.parquet`.\n\n## Citation\n\n```bibtex\n@inproceedings{francis2024majortom,\n  title={Major TOM: Expandable Datasets for Earth Observation},\n  author={Francis, Alistair and Czerkawski, Mikolaj},\n  booktitle={IGARSS 2024},\n  pages={2935--2940},\n  year={2024},\n  doi={10.1109/IGARSS53475.2024.10640760}\n}\n```\n\n## License\n\nCC-BY-SA-4.0\n\n## Acknowledgements\n\nELLIOT-Pretrain has been made possible thanks to [Asterisk Labs](https://asterisk.coop), the [ELLIOT](https://elliot-earth.eu) project (European Commission, Horizon Europe, Grant 101214398), and the [Image and Signal Processing Group (ISP)](https://isp.uv.es) at Universitat de Valencia.\n\n<div align=\"center\">\n  <a href=\"https://elliot-earth.eu\"><img src=\"https://data.source.coop/major-tom/index/images/elliot.png\" height=\"80\"></a>\n  &nbsp;&nbsp;&nbsp;&nbsp;\n  <a href=\"https://asterisk.coop\"><img src=\"https://data.source.coop/major-tom/index/images/asterisk.png\" height=\"80\"></a>\n  &nbsp;&nbsp;&nbsp;&nbsp;\n  <a href=\"https://isp.uv.es\"><img src=\"https://data.source.coop/major-tom/index/images/isp.png\" height=\"80\"></a>\n</div>",
-  "_review": [
-    "providers: role [producer] for 'ESA Copernicus' is an AI guess \u2014 Upstream data provider for Sentinel-2 and Copernicus DEM; role inferred from sensor table. Verify before flipping to _state: reviewed.",
-    "providers: role [producer] for 'USGS' is an AI guess \u2014 Upstream data provider for Landsat 8/9; role inferred from sensor table. Verify before flipping to _state: reviewed.",
-    "providers: role [licensor] for 'ELLIOT Project (European Commission Horizon Europe)' is an AI guess \u2014 Funding body acknowledged; licensor role inferred from grant association. Verify before flipping to _state: reviewed."
-  ],
-  "_state": "drafted",
-  "cataloged_at": "2026-05-27T01:50:48+00:00",
-  "_source_format": "taco",
+  "visibility": "public",
   "ext_bytes": {
-    "tif": 4166908961759,
-    "parquet": 79836453,
-    "ipynb": 11316766,
-    "json": 28174,
-    "md": 5692
-  }
+    "tif": 6237547001289,
+    "parquet": 26567917333,
+    "png": 7147020352,
+    "ipynb": 21654129,
+    "json": 159863,
+    "md": 10247
+  },
+  "total_bytes": 6271283763213,
+  "product_id": "elliot-pretrain",
+  "disabled": false,
+  "readme": "## README.md\n# Major TOM ELLIOT-Pretrain\n\n[![Source Cooperative](https://img.shields.io/badge/Source_Cooperative-elliot--pretrain-blue)](https://source.coop/major-tom/elliot-pretrain)\n[![TACO v3](https://img.shields.io/badge/format-TACO_v3-green)](https://github.com/asterisk-labs/taco/blob/main/spec/main.md)\n[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/elliot-project/majortom-elliot-tasks/blob/main/examples/release/example.ipynb)\n[![License](https://img.shields.io/badge/license-CC--BY--SA--4.0%20%2B%20ODbL--1.0-orange)](https://creativecommons.org/licenses/by-sa/4.0/)\n\nELLIOT-Pretrain is a Major TOM expansion focused on **fast pre-training** of multi-modal AI foundation models on Earth Observation data.\n\n* Built on the original [MajorTOM](https://github.com/ESA-PhiLab/Major-TOM) global 10 km grid\n* 10.56 km tiles with harmonised 10 m resolution across all sensors for fast access\n* Co-registered optical, thermal, radar, elevation and land cover in every tile, with a cloud mask for every optical acquisition, the weather at each acquisition, and the tile's OpenStreetMap features\n* Three sub-datasets covering complementary temporal regimes\n\nTile locations were selected using hierarchical spherical k-means clustering over [AlphaEarth Foundation](https://huggingface.co/Major-TOM/AlphaEarth-Foundations) embeddings to maximise global environmental diversity. The dataset follows the [TACO v3 specification](https://github.com/asterisk-labs/taco/blob/main/spec/main.md).\n\n## Sub-datasets\n\n| Part | Name | Tiles | Timesteps | Cadence | Purpose |\n|------|------|-------|-----------|---------|---------|\n| A | Monotemporal | 250,000 | 1 | n/a | Global coverage, spatial diversity |\n| B | Monthly | 12,500 | 12 | one per calendar month, from different years | Seasonal dynamics, phenology |\n| C | Burst | 16,666 | 6 | ~5-day (Sentinel-2) | Rapid events, floods, fires, landslides |\n\nAll three parts share the same layers.\n\n| Layer | Source | Resolution | Content |\n|----------|--------|------------|-------|\n| Sentinel-2 L1C | ESA Copernicus | 10 m | 13 spectral bands |\n| Landsat 8/9 OLI-TIRS | USGS | 30 m | 11 bands (9 OLI + 2 TIRS) |\n| Copernicus DEM GLO-30 | ESA / TanDEM-X | 30 m | elevation |\n| ESA WorldCover | ESA | 10 m | land cover class |\n| Sentinel-1 RTC | Catalyst, via Microsoft Planetary Computer | 10 m | VV, VH (linear gamma-0), one image per Sentinel-2 frame, acquired as close to it as possible |\n| Cloud and shadow masks | OmniCloudMask | 10 m | one per Sentinel-2 and Landsat frame: 0 clear, 1 thick cloud, 2 thin cloud, 3 shadow |\n| ERA5 | Copernicus Climate Change Service | \u2014 | 2 m temperature and dewpoint, humidity, precipitation, cloud cover and 10 m wind at each acquisition |\n| OpenStreetMap | \u00a9 OpenStreetMap contributors | vector | the tile's features and administrative units, as GeoParquet |\n\nEach tile also carries its WorldCover histogram, DEM statistics, cloud summaries and its climate, soil, socioeconomic and administrative context.\n\n## Quick Start\n\nPick a tile index from Part A (monotemporal) and visualize its layers.\n\n```python\nimport numpy as np\nimport rasterio\nimport matplotlib.pyplot as plt\n\nBASE = \"https://data.source.coop/major-tom/elliot-pretrain\"\nIDX = 42  # change this to explore different tiles\n\nMODS = [\"s2\", \"l8\", \"s1\", \"dem\", \"lc\"]\nfig, axes = plt.subplots(1, 5, figsize=(25, 5))\n\nfor j, mod in enumerate(MODS):\n    url = f\"/vsicurl/{BASE}/monotemporal/DATA/{IDX}/{mod}/data.tif\"\n    with rasterio.open(url) as src:\n        if mod in (\"s2\", \"l8\"):\n            rgb = src.read([4, 3, 2]).astype(np.float32)\n            axes[j].imshow(np.clip(rgb / 3000, 0, 1).transpose(1, 2, 0))\n        elif mod == \"s1\":\n            vv = src.read(1)\n            axes[j].imshow(10 * np.log10(np.where(vv > 0, vv, np.nan)), cmap=\"gray\", vmin=-25, vmax=0)\n        elif mod == \"dem\":\n            axes[j].imshow(src.read(1), cmap=\"terrain\")\n        else:\n            axes[j].imshow(src.read(1), cmap=\"tab20\")\n    axes[j].set_title(mod)\n    axes[j].axis(\"off\")\n\nplt.tight_layout()\nplt.show()\n```\n\n## Notebooks\n\n* [`example.ipynb`](https://data.source.coop/major-tom/elliot-pretrain/example.ipynb) ([open in Colab](https://colab.research.google.com/github/elliot-project/majortom-elliot-tasks/blob/main/examples/release/example.ipynb)): all three parts with general-purpose libraries (`pandas`, `rasterio`, `geopandas`): metadata queries with filtering, every layer, and a streaming PyTorch DataLoader with parallel fetching.\n* [`example_taco.ipynb`](https://data.source.coop/major-tom/elliot-pretrain/example_taco.ipynb) ([open in Colab](https://colab.research.google.com/github/elliot-project/majortom-elliot-tasks/blob/main/examples/release/example_taco.ipynb)): the same data through the [TACO](https://github.com/OscarPellicer/taco) reader, which decodes every layer of a tile in one call from the dataset's own contract (bands, units, scaling, frame times).\n\nFor vision-language tasks built from these layers (captions, grounding, grids, phenology and change questions, with scorers and a PyTorch loader), see [majortom-elliot-tasks](https://github.com/elliot-project/majortom-elliot-tasks).\n\n## Dataset Structure\n\n```\nelliot-pretrain/\n\u251c\u2500\u2500 monotemporal/          # Part A, 250k tiles, 1 timestep\n\u2502   \u251c\u2500\u2500 COLLECTION.json    # structure, column descriptions, ml:contract\n\u2502   \u251c\u2500\u2500 METADATA/\n\u2502   \u2502   \u251c\u2500\u2500 sample.parquet              # one row per tile\n\u2502   \u2502   \u251c\u2500\u2500 children.parquet            # one row per top-level entry of a tile\n\u2502   \u2502   \u251c\u2500\u2500 children__s2.parquet        # one row per Sentinel-2 file, with ERA5\n\u2502   \u2502   \u251c\u2500\u2500 children__l8.parquet        # one row per Landsat file, with ERA5\n\u2502   \u2502   \u251c\u2500\u2500 children__s1.parquet        # one row per Sentinel-1 file\n\u2502   \u2502   \u251c\u2500\u2500 children__cloud_s2.parquet  # one row per Sentinel-2 cloud mask\n\u2502   \u2502   \u251c\u2500\u2500 children__cloud_l8.parquet  # one row per Landsat cloud mask\n\u2502   \u2502   \u251c\u2500\u2500 children__dem.parquet\n\u2502   \u2502   \u2514\u2500\u2500 children__lc.parquet\n\u2502   \u2514\u2500\u2500 DATA/{tile_id}/\n\u2502       \u251c\u2500\u2500 s2/data.tif   l8/data.tif   s1/data.tif   dem/data.tif   lc/data.tif\n\u2502       \u251c\u2500\u2500 cloud_s2/data.png   cloud_l8/data.png\n\u2502       \u251c\u2500\u2500 osm.parquet\n\u2502       \u2514\u2500\u2500 admin.parquet\n\u251c\u2500\u2500 monthly/               # Part B, 12.5k tiles, 12 timesteps\n\u2502   \u251c\u2500\u2500 COLLECTION.json\n\u2502   \u251c\u2500\u2500 METADATA/          # same levels\n\u2502   \u2514\u2500\u2500 DATA/{tile_id}/\n\u2502       \u251c\u2500\u2500 s2/img_00.tif ... img_11.tif   l8/...   s1/...\n\u2502       \u251c\u2500\u2500 cloud_s2/img_00.png ... img_11.png   cloud_l8/...\n\u2502       \u251c\u2500\u2500 dem/main.tif   lc/main.tif\n\u2502       \u2514\u2500\u2500 osm.parquet   admin.parquet\n\u251c\u2500\u2500 burst/                 # Part C, 16.7k tiles, 6 timesteps (~5-day)\n\u2502   \u2514\u2500\u2500 ...                # same as monthly, img_00 ... img_05\n\u2514\u2500\u2500 facts/                 # precomputed per-tile facts, see below\n```\n\nA row of a per-file table belongs to the tile whose index starts its `internal:relative_path` (`400/s2/img_03.tif` is tile 400). The tile centroid in `sample.parquet` is `ml:geometry`, WKB in EPSG:4326.\n\n`facts/<part>/facts-NNNNNN.parquet` holds, for every tile, the measured fact sheet, the series facts of a monthly or burst tile, and NDVI and land-cover grids, as written by [majortom-elliot-tasks](https://github.com/elliot-project/majortom-elliot-tasks), so its tasks and captions can be built without reading a pixel.\n\n## Changes in this version\n\n* **Corrected metadata.** In `burst`, the per-tile columns and the per-acquisition rows were attached to the wrong tiles; monotemporal Sentinel-2 timestamps were partly in microseconds and its Sentinel-2 geotransforms were wrong; several unit descriptions were wrong. All are corrected, each correction is listed in every `COLLECTION.json` under `ml:metadata_revision`, and the pixels are unchanged.\n* **New layers.** Sentinel-1, cloud and shadow masks, ERA5, OpenStreetMap and per-tile statistics, added by the Image and Signal Processing Group (ISP), Universitat de Val\u00e8ncia.\n* **TACO 0.14.** Every part is written by the TACO 0.14 writer, with an `ml:contract` declaring each layer's bands, units and scaling, and validates with it. Metadata files follow the TACO v3 level names (`sample.parquet`, `children__*.parquet`, formerly `collection.parquet` and `sample__*.parquet`).\n* **`wc/` removed.** `monotemporal/DATA/{tile_id}/wc/data.tif` was a byte-identical copy of `lc/data.tif` on every tile.\n\n## Citation\n\n```bibtex\n@inproceedings{francis2024majortom,\n  title={Major TOM: Expandable Datasets for Earth Observation},\n  author={Francis, Alistair and Czerkawski, Mikolaj},\n  booktitle={IGARSS 2024},\n  pages={2935--2940},\n  year={2024},\n  doi={10.1109/IGARSS53475.2024.10640760}\n}\n```\n\n## License\n\nCC-BY-SA-4.0, except the OpenStreetMap files (`osm.parquet`, `admin.parquet`) and `facts/`, which holds OpenStreetMap names and geometries: those are under the [Open Database License (ODbL-1.0)](https://opendatacommons.org/licenses/odbl/1-0/), \u00a9 OpenStreetMap contributors.\n\nRequired credits: contains modified Copernicus Sentinel data; contains modified Copernicus Climate Change Service information (ERA5); Sentinel-1 RTC by Catalyst, as published on Microsoft Planetary Computer (CC-BY-4.0); ESA WorldCover (CC-BY-4.0); Copernicus DEM; Landsat courtesy of the U.S. Geological Survey; cloud masks computed with OmniCloudMask; \u00a9 OpenStreetMap contributors.\n\n## Acknowledgements\n\nELLIOT-Pretrain has been made possible thanks to [Asterisk Labs](https://asterisk.coop), the [ELLIOT](https://elliot-ai.eu) project (European Commission, Horizon Europe, Grant 101214398), and the [Image and Signal Processing Group (ISP)](https://isp.uv.es) at Universitat de Valencia.\n\n<div align=\"center\">\n  <a href=\"https://elliot-ai.eu\"><img src=\"https://data.source.coop/major-tom/index/images/elliot.png\" height=\"80\"></a>\n  &nbsp;&nbsp;&nbsp;&nbsp;\n  <a href=\"https://asterisk.coop\"><img src=\"https://data.source.coop/major-tom/index/images/asterisk.png\" height=\"80\"></a>\n  &nbsp;&nbsp;&nbsp;&nbsp;\n  <a href=\"https://isp.uv.es\"><img src=\"https://data.source.coop/major-tom/index/images/isp.png\" height=\"80\"></a>\n</div>\n",
+  "_state": "drafted",
+  "cataloged_at": "2026-10-12T10:29:32+00:00",
+  "store_format": null
 }
