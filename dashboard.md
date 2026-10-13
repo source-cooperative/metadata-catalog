@@ -1,32 +1,25 @@
 # Source Cooperative catalog — status
 
-_Updated 2026-10-12 10:35 UTC by the nightly pipeline._
+_Updated 2026-10-13 10:39 UTC by the nightly pipeline._
 
-**429 datasets cataloged**  ·  **40 queued for next run**  ·  last run handled **10**
+**429 datasets cataloged**  ·  **30 queued for next run**  ·  last run handled **10**
 
 ## Last run
 
-<details><summary>✅ drafted — 9 datasets</summary>
+<details><summary>✅ drafted — 10 datasets</summary>
 
-| repo                                                                                                                     |
-| ------------------------------------------------------------------------------------------------------------------------ |
-| [alukach/bc-open-data](https://source.coop/alukach/bc-open-data)                                                         |
-| [bkr/dmi](https://source.coop/bkr/dmi)                                                                                   |
-| [bkr/icon](https://source.coop/bkr/icon)                                                                                 |
-| [bkr/ifs](https://source.coop/bkr/ifs)                                                                                   |
-| [dynamical/dwd-icon-grib](https://source.coop/dynamical/dwd-icon-grib)                                                   |
-| [major-tom/elliot-pretrain](https://source.coop/major-tom/elliot-pretrain)                                               |
-| [opsis-oxford/st-lucia-imagery-2022](https://source.coop/opsis-oxford/st-lucia-imagery-2022)                             |
-| [portolan-mirrors/forest-data-partnership-catalog](https://source.coop/portolan-mirrors/forest-data-partnership-catalog) |
-| [portolan-mirrors/sandy-utah-catalog](https://source.coop/portolan-mirrors/sandy-utah-catalog)                           |
-
-</details>
-
-<details><summary>⏭️ incomplete (gap) — 1 dataset</summary>
-
-| repo                                                       | why          |
-| ---------------------------------------------------------- | ------------ |
-| [opengeos/geolibre](https://source.coop/opengeos/geolibre) | no_probe .h5 |
+| repo                                                                                                                           |
+| ------------------------------------------------------------------------------------------------------------------------------ |
+| [bkr/geo](https://source.coop/bkr/geo)                                                                                         |
+| [bkr/gmgi](https://source.coop/bkr/gmgi)                                                                                       |
+| [bkr/metoffice](https://source.coop/bkr/metoffice)                                                                             |
+| [bkr/silam-dust](https://source.coop/bkr/silam-dust)                                                                           |
+| [cboettig/overturemaps](https://source.coop/cboettig/overturemaps)                                                             |
+| [dynamical/ecmwf-ifs-ens-forecast-15-day-0-25-degree](https://source.coop/dynamical/ecmwf-ifs-ens-forecast-15-day-0-25-degree) |
+| [dynamical/ecmwf-ifs-grib](https://source.coop/dynamical/ecmwf-ifs-grib)                                                       |
+| [dynamical/noaa-gefs-forecast-35-day](https://source.coop/dynamical/noaa-gefs-forecast-35-day)                                 |
+| [dynamical/noaa-gfs-forecast](https://source.coop/dynamical/noaa-gfs-forecast)                                                 |
+| [ftw/harmonized-field-data](https://source.coop/ftw/harmonized-field-data)                                                     |
 
 </details>
 
@@ -35,23 +28,23 @@ _Updated 2026-10-12 10:35 UTC by the nightly pipeline._
 
 | run                                                                                                    | outcome | drafted | redraft | resets | failed | queued | cataloged |
 | ------------------------------------------------------------------------------------------------------ | ------- | ------: | ------: | -----: | -----: | -----: | --------: |
+| [2026-10-13](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/38371038049) | ✅       |         |      10 |        |        |     20 |       429 |
 | [2026-10-12](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/38225263641) | ✅       |       4 |       5 |        |        |     30 |       429 |
 | [2026-10-11](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/38125361746) | ✅       |         |         |        |        |      0 |       425 |
 | [2026-10-10](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/38038354985) | ✅       |         |         |        |        |      0 |       425 |
 | [2026-10-09](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/37906678647) | ✅       |         |       2 |        |        |      0 |       425 |
 | [2026-10-08](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/37751722653) | ✅       |         |      10 |        |        |      0 |       425 |
 | [2026-10-07](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/37595531626) | ✅       |         |      10 |        |        |      2 |       425 |
-| [2026-10-06](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/37437642000) | ✅       |         |      10 |        |        |     12 |       425 |
 
 ## Persistent failures
 
-**1 dataset failing**  ·  1 open issue  ·  oldest **19d**  ·  **0** ≥30d  ·  [all open issues](https://github.com/source-cooperative/metadata-catalog/issues?q=is%3Aissue+is%3Aopen+label%3Aprobe-failure)
+**1 dataset failing**  ·  1 open issue  ·  oldest **20d**  ·  **0** ≥30d  ·  [all open issues](https://github.com/source-cooperative/metadata-catalog/issues?q=is%3Aissue+is%3Aopen+label%3Aprobe-failure)
 
 <details><summary>the 1 open issues, oldest first</summary>
 
 | repo                                                       | age (d) |                                                                     issue |
 | ---------------------------------------------------------- | ------: | ------------------------------------------------------------------------: |
-| [alukach/firesmoke](https://source.coop/alukach/firesmoke) |      19 | [#166](https://github.com/source-cooperative/metadata-catalog/issues/166) |
+| [alukach/firesmoke](https://source.coop/alukach/firesmoke) |      20 | [#166](https://github.com/source-cooperative/metadata-catalog/issues/166) |
 
 </details>
 
@@ -959,51 +952,41 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 
 </details>
 
-<details><summary>stale (catalog bytes ≠ S3; fixed by <code>make process-all</code>) — 41 datasets (2.0 PB)</summary>
+<details><summary>stale (catalog bytes ≠ S3; fixed by <code>make process-all</code>) — 31 datasets (1.0 PB)</summary>
 
-| repo                                                                                                                           | updated    |        catalog → S3 |
-| ------------------------------------------------------------------------------------------------------------------------------ | ---------- | ------------------: |
-| [alukach/firesmoke](https://source.coop/alukach/firesmoke)                                                                     | 2026-10-11 |     1.2 GB → 1.3 GB |
-| [bkr/precipradar](https://source.coop/bkr/precipradar)                                                                         | 2026-10-11 |     7.4 TB → 7.4 TB |
-| [bkr/geo](https://source.coop/bkr/geo)                                                                                         | 2026-10-11 | 265.0 TB → 266.0 TB |
-| [dynamical/ecmwf-ifs-grib](https://source.coop/dynamical/ecmwf-ifs-grib)                                                       | 2026-10-11 | 247.9 TB → 249.1 TB |
-| [dynamical/noaa-mrms-conus-analysis-hourly](https://source.coop/dynamical/noaa-mrms-conus-analysis-hourly)                     | 2026-10-11 | 256.3 GB → 256.9 GB |
-| [dynamical/noaa-gefs-analysis](https://source.coop/dynamical/noaa-gefs-analysis)                                               | 2026-10-11 |     1.1 TB → 1.1 TB |
-| [dynamical/asos-parquet](https://source.coop/dynamical/asos-parquet)                                                           | 2026-10-11 |   20.3 GB → 20.3 GB |
-| [dynamical/noaa-gfs-analysis](https://source.coop/dynamical/noaa-gfs-analysis)                                                 | 2026-10-11 | 672.4 GB → 674.8 GB |
-| [dynamical/noaa-hrrr-forecast-48-hour](https://source.coop/dynamical/noaa-hrrr-forecast-48-hour)                               | 2026-10-11 |   13.2 TB → 13.2 TB |
-| [bkr/metoffice](https://source.coop/bkr/metoffice)                                                                             | 2026-10-11 |   63.8 TB → 65.1 TB |
-| [bkr/gmgi](https://source.coop/bkr/gmgi)                                                                                       | 2026-10-11 |     4.0 TB → 4.1 TB |
-| [ausantarctic/ghrsst-mur-v2](https://source.coop/ausantarctic/ghrsst-mur-v2)                                                   | 2026-10-11 |     4.3 TB → 4.3 TB |
-| [dynamical/ecmwf-aifs-single-forecast](https://source.coop/dynamical/ecmwf-aifs-single-forecast)                               | 2026-10-11 |     2.1 TB → 2.1 TB |
-| [portolan-mirrors/firms-catalog](https://source.coop/portolan-mirrors/firms-catalog)                                           | 2026-10-10 |   27.0 GB → 27.0 GB |
-| [dynamical/noaa-gfs-forecast](https://source.coop/dynamical/noaa-gfs-forecast)                                                 | 2026-10-10 |   29.6 TB → 29.7 TB |
-| [root-geospatial/flight-tracks](https://source.coop/root-geospatial/flight-tracks)                                             | 2026-10-10 |     1.6 TB → 1.6 TB |
-| [walkthru-earth/indices](https://source.coop/walkthru-earth/indices)                                                           | 2026-10-10 | 742.7 GB → 751.8 GB |
-| [bkr/polar](https://source.coop/bkr/polar)                                                                                     | 2026-10-10 |   10.9 TB → 10.9 TB |
-| [dynamical/ecmwf-ifs-ens-forecast-15-day-0-25-degree](https://source.coop/dynamical/ecmwf-ifs-ens-forecast-15-day-0-25-degree) | 2026-10-10 |   51.1 TB → 51.5 TB |
-| [bkr/silam-dust](https://source.coop/bkr/silam-dust)                                                                           | 2026-10-10 |   27.0 TB → 27.2 TB |
-| [dynamical/noaa-gefs-forecast-35-day](https://source.coop/dynamical/noaa-gefs-forecast-35-day)                                 | 2026-10-10 | 214.9 TB → 215.4 TB |
-| [tge-labs/s2-stac-geoparquet](https://source.coop/tge-labs/s2-stac-geoparquet)                                                 | 2026-10-10 |   62.0 GB → 62.1 GB |
-| [bkr/geos](https://source.coop/bkr/geos)                                                                                       | 2026-10-10 |   39.1 TB → 39.1 TB |
-| [englacial/zagg](https://source.coop/englacial/zagg)                                                                           | 2026-10-09 | 891.4 GB → 918.3 GB |
-| [harvard-lil/smithsonian-open-access](https://source.coop/harvard-lil/smithsonian-open-access)                                 | 2026-10-09 | 851.3 TB → 851.3 TB |
-| [source/metadata-catalog](https://source.coop/source/metadata-catalog)                                                         | 2026-10-09 |     5.8 MB → 5.9 MB |
-| [ismip/ismip7-ais-forcing](https://source.coop/ismip/ismip7-ais-forcing)                                                       | 2026-10-09 |     3.0 TB → 3.0 TB |
-| [bkr/mrms](https://source.coop/bkr/mrms)                                                                                       | 2026-10-08 |     7.4 TB → 7.4 TB |
-| [ftw/harmonized-field-data](https://source.coop/ftw/harmonized-field-data)                                                     | 2026-10-08 | 277.9 GB → 308.6 GB |
-| [bkr/nsrdb](https://source.coop/bkr/nsrdb)                                                                                     | 2026-10-07 | 636.9 GB → 641.0 GB |
-| [geoai-ucph/gvsm](https://source.coop/geoai-ucph/gvsm)                                                                         | 2026-10-07 | 101.7 TB → 101.7 TB |
-| [nlebovits/phl-housing-demo](https://source.coop/nlebovits/phl-housing-demo)                                                   | 2026-10-06 | 745.0 MB → 947.7 MB |
-| [planet/disasterdata](https://source.coop/planet/disasterdata)                                                                 | 2026-10-05 | 197.3 GB → 212.8 GB |
-| [cboettig/wetlands](https://source.coop/cboettig/wetlands)                                                                     | 2026-10-04 | 109.7 GB → 132.5 GB |
-| [cboettig/social-vulnerability](https://source.coop/cboettig/social-vulnerability)                                             | 2026-10-04 |   13.0 GB → 14.2 GB |
-| [cboettig/overturemaps](https://source.coop/cboettig/overturemaps)                                                             | 2026-10-04 |  64.6 GB → 118.2 GB |
-| [cboettig/land-cover](https://source.coop/cboettig/land-cover)                                                                 | 2026-10-04 | 211.6 GB → 223.9 GB |
-| [cboettig/high-seas](https://source.coop/cboettig/high-seas)                                                                   | 2026-10-04 |   60.9 GB → 61.8 GB |
-| [cboettig/hazard](https://source.coop/cboettig/hazard)                                                                         | 2026-10-04 |   40.7 GB → 42.4 GB |
-| [cboettig/ecoregion](https://source.coop/cboettig/ecoregion)                                                                   | 2026-10-04 |     4.1 GB → 6.6 GB |
-| [cboettig/cgs](https://source.coop/cboettig/cgs)                                                                               | 2026-10-04 | 135.2 MB → 307.6 MB |
+| repo                                                                                                       | updated    |        catalog → S3 |
+| ---------------------------------------------------------------------------------------------------------- | ---------- | ------------------: |
+| [alukach/firesmoke](https://source.coop/alukach/firesmoke)                                                 | 2026-10-11 |     1.2 GB → 1.3 GB |
+| [bkr/precipradar](https://source.coop/bkr/precipradar)                                                     | 2026-10-11 |     7.4 TB → 7.4 TB |
+| [dynamical/noaa-mrms-conus-analysis-hourly](https://source.coop/dynamical/noaa-mrms-conus-analysis-hourly) | 2026-10-11 | 256.3 GB → 256.9 GB |
+| [dynamical/noaa-gefs-analysis](https://source.coop/dynamical/noaa-gefs-analysis)                           | 2026-10-11 |     1.1 TB → 1.1 TB |
+| [dynamical/asos-parquet](https://source.coop/dynamical/asos-parquet)                                       | 2026-10-11 |   20.3 GB → 20.3 GB |
+| [dynamical/noaa-gfs-analysis](https://source.coop/dynamical/noaa-gfs-analysis)                             | 2026-10-11 | 672.4 GB → 674.8 GB |
+| [dynamical/noaa-hrrr-forecast-48-hour](https://source.coop/dynamical/noaa-hrrr-forecast-48-hour)           | 2026-10-11 |   13.2 TB → 13.2 TB |
+| [ausantarctic/ghrsst-mur-v2](https://source.coop/ausantarctic/ghrsst-mur-v2)                               | 2026-10-11 |     4.3 TB → 4.3 TB |
+| [dynamical/ecmwf-aifs-single-forecast](https://source.coop/dynamical/ecmwf-aifs-single-forecast)           | 2026-10-11 |     2.1 TB → 2.1 TB |
+| [portolan-mirrors/firms-catalog](https://source.coop/portolan-mirrors/firms-catalog)                       | 2026-10-10 |   27.0 GB → 27.0 GB |
+| [root-geospatial/flight-tracks](https://source.coop/root-geospatial/flight-tracks)                         | 2026-10-10 |     1.6 TB → 1.6 TB |
+| [walkthru-earth/indices](https://source.coop/walkthru-earth/indices)                                       | 2026-10-10 | 742.7 GB → 751.8 GB |
+| [bkr/polar](https://source.coop/bkr/polar)                                                                 | 2026-10-10 |   10.9 TB → 10.9 TB |
+| [tge-labs/s2-stac-geoparquet](https://source.coop/tge-labs/s2-stac-geoparquet)                             | 2026-10-10 |   62.0 GB → 62.1 GB |
+| [bkr/geos](https://source.coop/bkr/geos)                                                                   | 2026-10-10 |   39.1 TB → 39.1 TB |
+| [englacial/zagg](https://source.coop/englacial/zagg)                                                       | 2026-10-09 | 891.4 GB → 918.3 GB |
+| [harvard-lil/smithsonian-open-access](https://source.coop/harvard-lil/smithsonian-open-access)             | 2026-10-09 | 851.3 TB → 851.3 TB |
+| [source/metadata-catalog](https://source.coop/source/metadata-catalog)                                     | 2026-10-09 |     5.8 MB → 5.9 MB |
+| [ismip/ismip7-ais-forcing](https://source.coop/ismip/ismip7-ais-forcing)                                   | 2026-10-09 |     3.0 TB → 3.0 TB |
+| [bkr/mrms](https://source.coop/bkr/mrms)                                                                   | 2026-10-08 |     7.4 TB → 7.4 TB |
+| [bkr/nsrdb](https://source.coop/bkr/nsrdb)                                                                 | 2026-10-07 | 636.9 GB → 641.0 GB |
+| [geoai-ucph/gvsm](https://source.coop/geoai-ucph/gvsm)                                                     | 2026-10-07 | 101.7 TB → 101.7 TB |
+| [nlebovits/phl-housing-demo](https://source.coop/nlebovits/phl-housing-demo)                               | 2026-10-06 | 745.0 MB → 947.7 MB |
+| [planet/disasterdata](https://source.coop/planet/disasterdata)                                             | 2026-10-05 | 197.3 GB → 212.8 GB |
+| [cboettig/wetlands](https://source.coop/cboettig/wetlands)                                                 | 2026-10-04 | 109.7 GB → 132.5 GB |
+| [cboettig/social-vulnerability](https://source.coop/cboettig/social-vulnerability)                         | 2026-10-04 |   13.0 GB → 14.2 GB |
+| [cboettig/land-cover](https://source.coop/cboettig/land-cover)                                             | 2026-10-04 | 211.6 GB → 223.9 GB |
+| [cboettig/high-seas](https://source.coop/cboettig/high-seas)                                               | 2026-10-04 |   60.9 GB → 61.8 GB |
+| [cboettig/hazard](https://source.coop/cboettig/hazard)                                                     | 2026-10-04 |   40.7 GB → 42.4 GB |
+| [cboettig/ecoregion](https://source.coop/cboettig/ecoregion)                                               | 2026-10-04 |     4.1 GB → 6.6 GB |
+| [cboettig/cgs](https://source.coop/cboettig/cgs)                                                           | 2026-10-04 | 135.2 MB → 307.6 MB |
 
 </details>
 
