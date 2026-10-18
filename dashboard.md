@@ -1,20 +1,22 @@
 # Source Cooperative catalog — status
 
-_Updated 2026-10-17 08:57 UTC by the nightly pipeline._
+_Updated 2026-10-18 09:02 UTC by the nightly pipeline._
 
-**429 datasets cataloged**  ·  **0 queued for next run**  ·  last run handled **5**
+**429 datasets cataloged**  ·  **0 queued for next run**  ·  last run handled **7**
 
 ## Last run
 
-<details><summary>❌ step failed — 5 datasets</summary>
+<details><summary>❌ step failed — 7 datasets</summary>
 
-| repo                                                                           | why                                              |
-| ------------------------------------------------------------------------------ | ------------------------------------------------ |
-| [ausantarctic/ghrsst-mur-v2](https://source.coop/ausantarctic/ghrsst-mur-v2)   | error step=compose — backed off until 2026-10-19 |
-| [cboettig/ecoregion](https://source.coop/cboettig/ecoregion)                   | error step=compose — backed off until 2026-10-19 |
-| [cboettig/hazard](https://source.coop/cboettig/hazard)                         | error step=compose — backed off until 2026-10-19 |
-| [dynamical/noaa-gfs-analysis](https://source.coop/dynamical/noaa-gfs-analysis) | error step=compose — backed off until 2026-10-19 |
-| [walkthru-earth/indices](https://source.coop/walkthru-earth/indices)           | error step=compose — backed off until 2026-10-19 |
+| repo                                                                                                       | why                                              |
+| ---------------------------------------------------------------------------------------------------------- | ------------------------------------------------ |
+| [dynamical/asos-parquet](https://source.coop/dynamical/asos-parquet)                                       | error step=compose — backed off until 2026-10-20 |
+| [dynamical/noaa-gefs-analysis](https://source.coop/dynamical/noaa-gefs-analysis)                           | error step=compose — backed off until 2026-10-20 |
+| [dynamical/noaa-mrms-conus-analysis-hourly](https://source.coop/dynamical/noaa-mrms-conus-analysis-hourly) | error step=compose — backed off until 2026-10-20 |
+| [geoai-ucph/gvsm](https://source.coop/geoai-ucph/gvsm)                                                     | error step=compose — backed off until 2026-10-20 |
+| [portolan-mirrors/firms-catalog](https://source.coop/portolan-mirrors/firms-catalog)                       | error step=compose — backed off until 2026-10-20 |
+| [source/metadata-catalog](https://source.coop/source/metadata-catalog)                                     | error step=compose — backed off until 2026-10-20 |
+| [tge-labs/s2-stac-geoparquet](https://source.coop/tge-labs/s2-stac-geoparquet)                             | error step=compose — backed off until 2026-10-20 |
 
 </details>
 
@@ -23,23 +25,23 @@ _Updated 2026-10-17 08:57 UTC by the nightly pipeline._
 
 | run                                                                                                    | outcome | drafted | redraft | resets | failed | queued | cataloged |
 | ------------------------------------------------------------------------------------------------------ | ------- | ------: | ------: | -----: | -----: | -----: | --------: |
+| [2026-10-18](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/39112850510) | ✅       |         |         |        |        |      0 |       429 |
 | [2026-10-17](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/39018717561) | ✅       |         |         |        |        |      0 |       429 |
 | [2026-10-16](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/38876820705) | ✅       |         |         |        |        |      0 |       429 |
 | [2026-10-15](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/38709154171) | ✅       |         |         |        |        |      0 |       429 |
 | [2026-10-14](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/38538508690) | ✅       |         |      10 |        |        |     10 |       429 |
 | [2026-10-13](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/38371038049) | ✅       |         |      10 |        |        |     20 |       429 |
 | [2026-10-12](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/38225263641) | ✅       |       4 |       5 |        |        |     30 |       429 |
-| [2026-10-11](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/38125361746) | ✅       |         |         |        |        |      0 |       425 |
 
 ## Persistent failures
 
-**1 dataset failing**  ·  1 open issue  ·  oldest **24d**  ·  **0** ≥30d  ·  [all open issues](https://github.com/source-cooperative/metadata-catalog/issues?q=is%3Aissue+is%3Aopen+label%3Aprobe-failure)
+**1 dataset failing**  ·  1 open issue  ·  oldest **25d**  ·  **0** ≥30d  ·  [all open issues](https://github.com/source-cooperative/metadata-catalog/issues?q=is%3Aissue+is%3Aopen+label%3Aprobe-failure)
 
 <details><summary>the 1 open issues, oldest first</summary>
 
 | repo                                                       | age (d) |                                                                     issue |
 | ---------------------------------------------------------- | ------: | ------------------------------------------------------------------------: |
-| [alukach/firesmoke](https://source.coop/alukach/firesmoke) |      24 | [#166](https://github.com/source-cooperative/metadata-catalog/issues/166) |
+| [alukach/firesmoke](https://source.coop/alukach/firesmoke) |      25 | [#166](https://github.com/source-cooperative/metadata-catalog/issues/166) |
 
 </details>
 
@@ -952,7 +954,7 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 | repo                                                                                                       | updated    |        catalog → S3 |
 | ---------------------------------------------------------------------------------------------------------- | ---------- | ------------------: |
 | [alukach/firesmoke](https://source.coop/alukach/firesmoke)                                                 | 2026-10-11 |     1.2 GB → 1.3 GB |
-| [dynamical/noaa-mrms-conus-analysis-hourly](https://source.coop/dynamical/noaa-mrms-conus-analysis-hourly) | 2026-10-11 | 257.3 GB → 256.9 GB |
+| [dynamical/noaa-mrms-conus-analysis-hourly](https://source.coop/dynamical/noaa-mrms-conus-analysis-hourly) | 2026-10-11 | 257.5 GB → 256.9 GB |
 | [dynamical/noaa-gefs-analysis](https://source.coop/dynamical/noaa-gefs-analysis)                           | 2026-10-11 |     1.1 TB → 1.1 TB |
 | [dynamical/asos-parquet](https://source.coop/dynamical/asos-parquet)                                       | 2026-10-11 |   20.3 GB → 20.3 GB |
 | [dynamical/noaa-gfs-analysis](https://source.coop/dynamical/noaa-gfs-analysis)                             | 2026-10-11 | 676.8 GB → 674.8 GB |
