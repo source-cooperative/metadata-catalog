@@ -1,25 +1,25 @@
 # Source Cooperative catalog — status
 
-_Updated 2026-10-19 11:21 UTC by the nightly pipeline._
+_Updated 2026-10-20 11:16 UTC by the nightly pipeline._
 
-**429 datasets cataloged**  ·  **75 queued for next run**  ·  last run handled **10**
+**429 datasets cataloged**  ·  **67 queued for next run**  ·  last run handled **10**
 
 ## Last run
 
 <details><summary>❌ step failed — 10 datasets</summary>
 
-| repo                                                                                               | why                                              |
-| -------------------------------------------------------------------------------------------------- | ------------------------------------------------ |
-| [bkr/dmi](https://source.coop/bkr/dmi)                                                             | error step=compose — backed off until 2026-10-20 |
-| [bkr/icon](https://source.coop/bkr/icon)                                                           | error step=compose — backed off until 2026-10-20 |
-| [bkr/ifs](https://source.coop/bkr/ifs)                                                             | error step=compose — backed off until 2026-10-20 |
-| [bkr/metoffice](https://source.coop/bkr/metoffice)                                                 | error step=compose — backed off until 2026-10-20 |
-| [bkr/polar](https://source.coop/bkr/polar)                                                         | error step=compose — backed off until 2026-10-20 |
-| [dynamical/ecmwf-ifs-grib](https://source.coop/dynamical/ecmwf-ifs-grib)                           | error step=compose — backed off until 2026-10-20 |
-| [mdsumner/thelist-opendata](https://source.coop/mdsumner/thelist-opendata)                         | error step=compose — backed off until 2026-10-20 |
-| [portolan-mirrors/east-hampton-catalog](https://source.coop/portolan-mirrors/east-hampton-catalog) | error step=compose — backed off until 2026-10-20 |
-| [portolan-mirrors/wb-fwi](https://source.coop/portolan-mirrors/wb-fwi)                             | error step=compose — backed off until 2026-10-20 |
-| [redcastle-resources/treemap](https://source.coop/redcastle-resources/treemap)                     | error step=compose — backed off until 2026-10-20 |
+| repo                                                                                                                           | why                                              |
+| ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------ |
+| [bkr/geo](https://source.coop/bkr/geo)                                                                                         | error step=compose — backed off until 2026-10-21 |
+| [bkr/mrms](https://source.coop/bkr/mrms)                                                                                       | error step=compose — backed off until 2026-10-22 |
+| [bkr/precipradar](https://source.coop/bkr/precipradar)                                                                         | error step=compose — backed off until 2026-10-21 |
+| [bkr/silam-dust](https://source.coop/bkr/silam-dust)                                                                           | error step=compose — backed off until 2026-10-21 |
+| [dynamical/dwd-icon-grib](https://source.coop/dynamical/dwd-icon-grib)                                                         | error step=compose — backed off until 2026-10-21 |
+| [dynamical/ecmwf-ifs-ens-forecast-15-day-0-25-degree](https://source.coop/dynamical/ecmwf-ifs-ens-forecast-15-day-0-25-degree) | error step=compose — backed off until 2026-10-21 |
+| [dynamical/noaa-gefs-forecast-35-day](https://source.coop/dynamical/noaa-gefs-forecast-35-day)                                 | error step=compose — backed off until 2026-10-21 |
+| [dynamical/noaa-gfs-forecast](https://source.coop/dynamical/noaa-gfs-forecast)                                                 | error step=compose — backed off until 2026-10-21 |
+| [englacial/zagg](https://source.coop/englacial/zagg)                                                                           | error step=compose — backed off until 2026-10-21 |
+| [planet/disasterdata](https://source.coop/planet/disasterdata)                                                                 | error step=compose — backed off until 2026-10-21 |
 
 </details>
 
@@ -28,23 +28,23 @@ _Updated 2026-10-19 11:21 UTC by the nightly pipeline._
 
 | run                                                                                                    | outcome | drafted | redraft | resets | failed | queued | cataloged |
 | ------------------------------------------------------------------------------------------------------ | ------- | ------: | ------: | -----: | -----: | -----: | --------: |
+| [2026-10-20](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/39396852820) | ✅       |         |         |        |        |     57 |       429 |
 | [2026-10-19](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/39226611266) | ✅       |         |         |        |        |     65 |       429 |
 | [2026-10-18](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/39112850510) | ✅       |         |         |        |        |      0 |       429 |
 | [2026-10-17](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/39018717561) | ✅       |         |         |        |        |      0 |       429 |
 | [2026-10-16](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/38876820705) | ✅       |         |         |        |        |      0 |       429 |
 | [2026-10-15](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/38709154171) | ✅       |         |         |        |        |      0 |       429 |
 | [2026-10-14](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/38538508690) | ✅       |         |      10 |        |        |     10 |       429 |
-| [2026-10-13](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/38371038049) | ✅       |         |      10 |        |        |     20 |       429 |
 
 ## Persistent failures
 
-**1 dataset failing**  ·  1 open issue  ·  oldest **26d**  ·  **0** ≥30d  ·  [all open issues](https://github.com/source-cooperative/metadata-catalog/issues?q=is%3Aissue+is%3Aopen+label%3Aprobe-failure)
+**1 dataset failing**  ·  1 open issue  ·  oldest **27d**  ·  **0** ≥30d  ·  [all open issues](https://github.com/source-cooperative/metadata-catalog/issues?q=is%3Aissue+is%3Aopen+label%3Aprobe-failure)
 
 <details><summary>the 1 open issues, oldest first</summary>
 
 | repo                                                       | age (d) |                                                                     issue |
 | ---------------------------------------------------------- | ------: | ------------------------------------------------------------------------: |
-| [alukach/firesmoke](https://source.coop/alukach/firesmoke) |      26 | [#166](https://github.com/source-cooperative/metadata-catalog/issues/166) |
+| [alukach/firesmoke](https://source.coop/alukach/firesmoke) |      27 | [#166](https://github.com/source-cooperative/metadata-catalog/issues/166) |
 
 </details>
 
@@ -971,34 +971,29 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 
 </details>
 
-<details><summary>stale (catalog bytes ≠ S3; fixed by <code>make process-all</code>) — 81 datasets (1.9 PB)</summary>
+<details><summary>stale (catalog bytes ≠ S3; fixed by <code>make process-all</code>) — 75 datasets (1.5 PB)</summary>
 
 | repo                                                                                                                           | updated    |        catalog → S3 |
 | ------------------------------------------------------------------------------------------------------------------------------ | ---------- | ------------------: |
-| [bkr/precipradar](https://source.coop/bkr/precipradar)                                                                         | 2026-10-18 |     7.4 TB → 7.6 TB |
-| [bkr/mrms](https://source.coop/bkr/mrms)                                                                                       | 2026-10-18 |     7.4 TB → 7.4 TB |
 | [dynamical/asos-parquet](https://source.coop/dynamical/asos-parquet)                                                           | 2026-10-18 |   20.3 GB → 20.3 GB |
 | [bkr/aoml](https://source.coop/bkr/aoml)                                                                                       | 2026-10-18 |  91.6 GB → 123.4 GB |
 | [bkr/geos](https://source.coop/bkr/geos)                                                                                       | 2026-10-18 |   39.1 TB → 39.1 TB |
 | [bkr/gmgi](https://source.coop/bkr/gmgi)                                                                                       | 2026-10-18 |     4.1 TB → 4.1 TB |
 | [portolan-mirrors/firms-catalog](https://source.coop/portolan-mirrors/firms-catalog)                                           | 2026-10-18 |   27.0 GB → 27.0 GB |
 | [ausantarctic/ghrsst-mur-v2](https://source.coop/ausantarctic/ghrsst-mur-v2)                                                   | 2026-10-18 |     4.3 TB → 4.3 TB |
-| [bkr/geo](https://source.coop/bkr/geo)                                                                                         | 2026-10-18 | 266.0 TB → 268.8 TB |
 | [dynamical/ecmwf-ifs-grib](https://source.coop/dynamical/ecmwf-ifs-grib)                                                       | 2026-10-18 | 258.6 TB → 257.0 TB |
 | [dynamical/ecmwf-aifs-single-forecast](https://source.coop/dynamical/ecmwf-aifs-single-forecast)                               | 2026-10-18 |     2.1 TB → 2.1 TB |
 | [dynamical/noaa-mrms-conus-analysis-hourly](https://source.coop/dynamical/noaa-mrms-conus-analysis-hourly)                     | 2026-10-18 | 257.5 GB → 257.5 GB |
-| [dynamical/noaa-gfs-forecast](https://source.coop/dynamical/noaa-gfs-forecast)                                                 | 2026-10-17 |   29.7 TB → 29.8 TB |
-| [dynamical/dwd-icon-grib](https://source.coop/dynamical/dwd-icon-grib)                                                         | 2026-10-17 |   62.1 TB → 64.4 TB |
+| [dynamical/noaa-gfs-forecast](https://source.coop/dynamical/noaa-gfs-forecast)                                                 | 2026-10-17 |   29.8 TB → 29.8 TB |
 | [dynamical/noaa-gefs-analysis](https://source.coop/dynamical/noaa-gefs-analysis)                                               | 2026-10-17 |     1.1 TB → 1.1 TB |
 | [dynamical/noaa-gfs-analysis](https://source.coop/dynamical/noaa-gfs-analysis)                                                 | 2026-10-17 | 676.8 GB → 677.1 GB |
 | [dynamical/noaa-hrrr-forecast-48-hour](https://source.coop/dynamical/noaa-hrrr-forecast-48-hour)                               | 2026-10-17 |   13.2 TB → 13.2 TB |
-| [planet/disasterdata](https://source.coop/planet/disasterdata)                                                                 | 2026-10-17 | 212.8 GB → 296.9 GB |
+| [planet/disasterdata](https://source.coop/planet/disasterdata)                                                                 | 2026-10-17 | 296.9 GB → 296.9 GB |
 | [root-geospatial/flight-tracks](https://source.coop/root-geospatial/flight-tracks)                                             | 2026-10-17 |     1.6 TB → 1.7 TB |
 | [alukach/firesmoke](https://source.coop/alukach/firesmoke)                                                                     | 2026-10-17 |     1.2 GB → 1.3 GB |
 | [walkthru-earth/indices](https://source.coop/walkthru-earth/indices)                                                           | 2026-10-17 | 762.0 GB → 762.0 GB |
-| [bkr/silam-dust](https://source.coop/bkr/silam-dust)                                                                           | 2026-10-17 |   27.2 TB → 27.4 TB |
-| [dynamical/ecmwf-ifs-ens-forecast-15-day-0-25-degree](https://source.coop/dynamical/ecmwf-ifs-ens-forecast-15-day-0-25-degree) | 2026-10-17 |   51.5 TB → 51.9 TB |
-| [dynamical/noaa-gefs-forecast-35-day](https://source.coop/dynamical/noaa-gefs-forecast-35-day)                                 | 2026-10-17 | 215.4 TB → 216.0 TB |
+| [dynamical/ecmwf-ifs-ens-forecast-15-day-0-25-degree](https://source.coop/dynamical/ecmwf-ifs-ens-forecast-15-day-0-25-degree) | 2026-10-17 |   52.1 TB → 51.9 TB |
+| [dynamical/noaa-gefs-forecast-35-day](https://source.coop/dynamical/noaa-gefs-forecast-35-day)                                 | 2026-10-17 | 216.3 TB → 216.0 TB |
 | [agentmorris/lila-wildlife](https://source.coop/agentmorris/lila-wildlife)                                                     | 2026-10-16 |   45.6 TB → 45.6 TB |
 | [ismip/ismip7-ais-forcing](https://source.coop/ismip/ismip7-ais-forcing)                                                       | 2026-10-16 |     3.0 TB → 3.1 TB |
 | [earthgenome/amazon-mining-watch](https://source.coop/earthgenome/amazon-mining-watch)                                         | 2026-10-16 |     1.9 GB → 1.9 GB |
@@ -1007,7 +1002,6 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 | [harvard-lil/smithsonian-open-access](https://source.coop/harvard-lil/smithsonian-open-access)                                 | 2026-10-16 | 851.3 TB → 851.3 TB |
 | [giswqs/opengeos](https://source.coop/giswqs/opengeos)                                                                         | 2026-10-15 |   21.3 GB → 21.3 GB |
 | [rseg/sentinel1-lfmc](https://source.coop/rseg/sentinel1-lfmc)                                                                 | 2026-10-15 | 169.8 GB → 170.3 GB |
-| [englacial/zagg](https://source.coop/englacial/zagg)                                                                           | 2026-10-14 |   918.3 GB → 1.4 TB |
 | [fiboa/slovenia](https://source.coop/fiboa/slovenia)                                                                           | 2026-10-13 | 354.6 MB → 354.6 MB |
 | [fiboa/slovenia-ec](https://source.coop/fiboa/slovenia-ec)                                                                     | 2026-10-13 | 393.3 MB → 393.3 MB |
 | [fiboa/slovakia](https://source.coop/fiboa/slovakia)                                                                           | 2026-10-13 | 468.2 MB → 468.2 MB |
