@@ -1,25 +1,25 @@
 # Source Cooperative catalog — status
 
-_Updated 2026-10-21 10:56 UTC by the nightly pipeline._
+_Updated 2026-10-21 19:41 UTC by the nightly pipeline._
 
-**429 datasets cataloged**  ·  **64 queued for next run**  ·  last run handled **10**
+**429 datasets cataloged**  ·  **58 queued for next run**  ·  last run handled **10**
 
 ## Last run
 
-<details><summary>❌ step failed — 10 datasets</summary>
+<details><summary>✅ drafted — 10 datasets</summary>
 
-| repo                                                                                               | why                                              |
-| -------------------------------------------------------------------------------------------------- | ------------------------------------------------ |
-| [bkr/aoml](https://source.coop/bkr/aoml)                                                           | error step=compose — backed off until 2026-10-22 |
-| [bkr/gmgi](https://source.coop/bkr/gmgi)                                                           | error step=compose — backed off until 2026-10-22 |
-| [dynamical/ecmwf-ifs-grib](https://source.coop/dynamical/ecmwf-ifs-grib)                           | error step=compose — backed off until 2026-10-23 |
-| [dynamical/noaa-hrrr-forecast-48-hour](https://source.coop/dynamical/noaa-hrrr-forecast-48-hour)   | error step=compose — backed off until 2026-10-22 |
-| [ftw/harmonized-field-data](https://source.coop/ftw/harmonized-field-data)                         | error step=compose — backed off until 2026-10-22 |
-| [ismip/ismip7-ais-forcing](https://source.coop/ismip/ismip7-ais-forcing)                           | error step=compose — backed off until 2026-10-23 |
-| [mdsumner/thelist-opendata](https://source.coop/mdsumner/thelist-opendata)                         | error step=compose — backed off until 2026-10-23 |
-| [portolan-mirrors/east-hampton-catalog](https://source.coop/portolan-mirrors/east-hampton-catalog) | error step=compose — backed off until 2026-10-23 |
-| [portolan-mirrors/wb-fwi](https://source.coop/portolan-mirrors/wb-fwi)                             | error step=compose — backed off until 2026-10-23 |
-| [redcastle-resources/treemap](https://source.coop/redcastle-resources/treemap)                     | error step=compose — backed off until 2026-10-23 |
+| repo                                                                                                                           |
+| ------------------------------------------------------------------------------------------------------------------------------ |
+| [ausantarctic/ghrsst-mur-v2](https://source.coop/ausantarctic/ghrsst-mur-v2)                                                   |
+| [bkr/geos](https://source.coop/bkr/geos)                                                                                       |
+| [dynamical/ecmwf-aifs-single-forecast](https://source.coop/dynamical/ecmwf-aifs-single-forecast)                               |
+| [dynamical/ecmwf-ifs-ens-forecast-15-day-0-25-degree](https://source.coop/dynamical/ecmwf-ifs-ens-forecast-15-day-0-25-degree) |
+| [dynamical/noaa-gefs-forecast-35-day](https://source.coop/dynamical/noaa-gefs-forecast-35-day)                                 |
+| [dynamical/noaa-gfs-forecast](https://source.coop/dynamical/noaa-gfs-forecast)                                                 |
+| [harvard-lil/smithsonian-open-access](https://source.coop/harvard-lil/smithsonian-open-access)                                 |
+| [root-geospatial/flight-tracks](https://source.coop/root-geospatial/flight-tracks)                                             |
+| [rseg/sentinel1-lfmc](https://source.coop/rseg/sentinel1-lfmc)                                                                 |
+| [tsnow03/antarctic-landsat8-sea-surface-temp](https://source.coop/tsnow03/antarctic-landsat8-sea-surface-temp)                 |
 
 </details>
 
@@ -28,13 +28,13 @@ _Updated 2026-10-21 10:56 UTC by the nightly pipeline._
 
 | run                                                                                                    | outcome | drafted | redraft | resets | failed | queued | cataloged |
 | ------------------------------------------------------------------------------------------------------ | ------- | ------: | ------: | -----: | -----: | -----: | --------: |
+| [2026-10-21](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/39657887906) | ✅       |         |      10 |        |        |     48 |       429 |
 | [2026-10-21](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/39573042577) | ✅       |         |         |        |        |     54 |       429 |
 | [2026-10-20](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/39396852820) | ✅       |         |         |        |        |     57 |       429 |
 | [2026-10-19](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/39226611266) | ✅       |         |         |        |        |     65 |       429 |
 | [2026-10-18](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/39112850510) | ✅       |         |         |        |        |      0 |       429 |
 | [2026-10-17](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/39018717561) | ✅       |         |         |        |        |      0 |       429 |
 | [2026-10-16](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/38876820705) | ✅       |         |         |        |        |      0 |       429 |
-| [2026-10-15](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/38709154171) | ✅       |         |         |        |        |      0 |       429 |
 
 ## Persistent failures
 
@@ -971,82 +971,72 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 
 </details>
 
-<details><summary>stale (catalog bytes ≠ S3; fixed by <code>make process-all</code>) — 72 datasets (1.5 PB)</summary>
+<details><summary>stale (catalog bytes ≠ S3; fixed by <code>make process-all</code>) — 62 datasets (319.2 TB)</summary>
 
-| repo                                                                                                                           | updated    |        catalog → S3 |
-| ------------------------------------------------------------------------------------------------------------------------------ | ---------- | ------------------: |
-| [dynamical/asos-parquet](https://source.coop/dynamical/asos-parquet)                                                           | 2026-10-18 |   20.3 GB → 20.3 GB |
-| [bkr/aoml](https://source.coop/bkr/aoml)                                                                                       | 2026-10-18 | 159.0 GB → 123.4 GB |
-| [bkr/geos](https://source.coop/bkr/geos)                                                                                       | 2026-10-18 |   39.1 TB → 39.1 TB |
-| [portolan-mirrors/firms-catalog](https://source.coop/portolan-mirrors/firms-catalog)                                           | 2026-10-18 |   27.0 GB → 27.0 GB |
-| [ausantarctic/ghrsst-mur-v2](https://source.coop/ausantarctic/ghrsst-mur-v2)                                                   | 2026-10-18 |     4.3 TB → 4.3 TB |
-| [dynamical/ecmwf-ifs-grib](https://source.coop/dynamical/ecmwf-ifs-grib)                                                       | 2026-10-18 | 263.4 TB → 257.0 TB |
-| [dynamical/ecmwf-aifs-single-forecast](https://source.coop/dynamical/ecmwf-aifs-single-forecast)                               | 2026-10-18 |     2.1 TB → 2.1 TB |
-| [dynamical/noaa-mrms-conus-analysis-hourly](https://source.coop/dynamical/noaa-mrms-conus-analysis-hourly)                     | 2026-10-18 | 257.5 GB → 257.5 GB |
-| [dynamical/noaa-gfs-forecast](https://source.coop/dynamical/noaa-gfs-forecast)                                                 | 2026-10-17 |   29.8 TB → 29.8 TB |
-| [dynamical/noaa-gefs-analysis](https://source.coop/dynamical/noaa-gefs-analysis)                                               | 2026-10-17 |     1.1 TB → 1.1 TB |
-| [dynamical/noaa-gfs-analysis](https://source.coop/dynamical/noaa-gfs-analysis)                                                 | 2026-10-17 | 676.8 GB → 677.1 GB |
-| [dynamical/noaa-hrrr-forecast-48-hour](https://source.coop/dynamical/noaa-hrrr-forecast-48-hour)                               | 2026-10-17 |   13.2 TB → 13.2 TB |
-| [planet/disasterdata](https://source.coop/planet/disasterdata)                                                                 | 2026-10-17 | 296.9 GB → 296.9 GB |
-| [root-geospatial/flight-tracks](https://source.coop/root-geospatial/flight-tracks)                                             | 2026-10-17 |     1.6 TB → 1.7 TB |
-| [alukach/firesmoke](https://source.coop/alukach/firesmoke)                                                                     | 2026-10-17 |     1.2 GB → 1.3 GB |
-| [walkthru-earth/indices](https://source.coop/walkthru-earth/indices)                                                           | 2026-10-17 | 762.0 GB → 762.0 GB |
-| [dynamical/ecmwf-ifs-ens-forecast-15-day-0-25-degree](https://source.coop/dynamical/ecmwf-ifs-ens-forecast-15-day-0-25-degree) | 2026-10-17 |   52.1 TB → 51.9 TB |
-| [dynamical/noaa-gefs-forecast-35-day](https://source.coop/dynamical/noaa-gefs-forecast-35-day)                                 | 2026-10-17 | 216.3 TB → 216.0 TB |
-| [agentmorris/lila-wildlife](https://source.coop/agentmorris/lila-wildlife)                                                     | 2026-10-16 |   45.6 TB → 45.6 TB |
-| [earthgenome/amazon-mining-watch](https://source.coop/earthgenome/amazon-mining-watch)                                         | 2026-10-16 |     1.9 GB → 1.9 GB |
-| [portolan/portolan-pipeline](https://source.coop/portolan/portolan-pipeline)                                                   | 2026-10-16 | 260.9 MB → 259.8 MB |
-| [harvard-lil/smithsonian-open-access](https://source.coop/harvard-lil/smithsonian-open-access)                                 | 2026-10-16 | 851.3 TB → 851.3 TB |
-| [giswqs/opengeos](https://source.coop/giswqs/opengeos)                                                                         | 2026-10-15 |   21.3 GB → 21.3 GB |
-| [rseg/sentinel1-lfmc](https://source.coop/rseg/sentinel1-lfmc)                                                                 | 2026-10-15 | 169.8 GB → 170.3 GB |
-| [fiboa/slovenia](https://source.coop/fiboa/slovenia)                                                                           | 2026-10-13 | 354.6 MB → 354.6 MB |
-| [fiboa/slovenia-ec](https://source.coop/fiboa/slovenia-ec)                                                                     | 2026-10-13 | 393.3 MB → 393.3 MB |
-| [fiboa/slovakia](https://source.coop/fiboa/slovakia)                                                                           | 2026-10-13 | 468.2 MB → 468.2 MB |
-| [fiboa/portugal](https://source.coop/fiboa/portugal)                                                                           | 2026-10-13 |     2.4 GB → 2.4 GB |
-| [fiboa/nl-ref](https://source.coop/fiboa/nl-ref)                                                                               | 2026-10-13 | 676.2 MB → 676.2 MB |
-| [fiboa/nl-crop](https://source.coop/fiboa/nl-crop)                                                                             | 2026-10-13 |     2.0 GB → 2.0 GB |
-| [fiboa/newzealand](https://source.coop/fiboa/newzealand)                                                                       | 2026-10-13 |   23.4 MB → 23.4 MB |
-| [fiboa/luxembourg](https://source.coop/fiboa/luxembourg)                                                                       | 2026-10-13 |   39.3 MB → 39.3 MB |
-| [fiboa/latvia](https://source.coop/fiboa/latvia)                                                                               | 2026-10-13 | 684.4 MB → 684.4 MB |
-| [fiboa/lacunalabels](https://source.coop/fiboa/lacunalabels)                                                                   | 2026-10-13 | 109.6 MB → 109.6 MB |
-| [fiboa/japan](https://source.coop/fiboa/japan)                                                                                 | 2026-10-13 |     6.7 GB → 6.7 GB |
-| [fiboa/ireland](https://source.coop/fiboa/ireland)                                                                             | 2026-10-13 | 805.5 MB → 805.5 MB |
-| [fiboa/france-ec](https://source.coop/fiboa/france-ec)                                                                         | 2026-10-13 |     6.5 GB → 6.5 GB |
-| [fiboa/finland](https://source.coop/fiboa/finland)                                                                             | 2026-10-13 | 558.1 MB → 558.1 MB |
-| [fiboa/estonia-ec](https://source.coop/fiboa/estonia-ec)                                                                       | 2026-10-13 |     1.4 GB → 1.4 GB |
-| [fiboa/es-vc](https://source.coop/fiboa/es-vc)                                                                                 | 2026-10-13 |     3.2 GB → 3.2 GB |
-| [fiboa/es-pv](https://source.coop/fiboa/es-pv)                                                                                 | 2026-10-13 | 203.7 MB → 203.7 MB |
-| [fiboa/es-pm](https://source.coop/fiboa/es-pm)                                                                                 | 2026-10-13 | 612.0 MB → 612.0 MB |
-| [fiboa/es-nc](https://source.coop/fiboa/es-nc)                                                                                 | 2026-10-13 | 293.8 MB → 293.8 MB |
-| [fiboa/es-md](https://source.coop/fiboa/es-md)                                                                                 | 2026-10-13 | 356.3 MB → 356.3 MB |
-| [fiboa/es-ga](https://source.coop/fiboa/es-ga)                                                                                 | 2026-10-13 |     1.8 GB → 1.8 GB |
-| [fiboa/es-ex](https://source.coop/fiboa/es-ex)                                                                                 | 2026-10-13 |     2.3 GB → 2.3 GB |
-| [fiboa/es-cn](https://source.coop/fiboa/es-cn)                                                                                 | 2026-10-13 | 179.6 MB → 179.6 MB |
-| [fiboa/es-cm](https://source.coop/fiboa/es-cm)                                                                                 | 2026-10-13 |     3.4 GB → 3.4 GB |
-| [fiboa/es-cl](https://source.coop/fiboa/es-cl)                                                                                 | 2026-10-13 |     4.2 GB → 4.2 GB |
-| [fiboa/es-cb](https://source.coop/fiboa/es-cb)                                                                                 | 2026-10-13 | 551.1 MB → 551.1 MB |
-| [fiboa/es-cat](https://source.coop/fiboa/es-cat)                                                                               | 2026-10-13 |     2.2 GB → 2.2 GB |
-| [fiboa/es-ar](https://source.coop/fiboa/es-ar)                                                                                 | 2026-10-13 |     2.4 GB → 2.4 GB |
-| [fiboa/es-an](https://source.coop/fiboa/es-an)                                                                                 | 2026-10-13 |     2.3 GB → 2.3 GB |
-| [fiboa/ec-lv](https://source.coop/fiboa/ec-lv)                                                                                 | 2026-10-13 | 864.9 MB → 864.9 MB |
-| [fiboa/denmark](https://source.coop/fiboa/denmark)                                                                             | 2026-10-13 | 570.1 MB → 570.1 MB |
-| [fiboa/de-th](https://source.coop/fiboa/de-th)                                                                                 | 2026-10-13 | 179.7 MB → 179.7 MB |
-| [fiboa/de-sl](https://source.coop/fiboa/de-sl)                                                                                 | 2026-10-13 |   47.5 MB → 47.5 MB |
-| [fiboa/de-sh](https://source.coop/fiboa/de-sh)                                                                                 | 2026-10-13 |   87.6 MB → 87.6 MB |
-| [fiboa/de-sax](https://source.coop/fiboa/de-sax)                                                                               | 2026-10-13 | 127.2 MB → 127.2 MB |
-| [fiboa/de-nrw](https://source.coop/fiboa/de-nrw)                                                                               | 2026-10-13 | 273.9 MB → 273.9 MB |
-| [fiboa/de-nds](https://source.coop/fiboa/de-nds)                                                                               | 2026-10-13 | 252.2 MB → 252.2 MB |
-| [fiboa/de-mv](https://source.coop/fiboa/de-mv)                                                                                 | 2026-10-13 | 150.8 MB → 150.8 MB |
-| [fiboa/de-bb](https://source.coop/fiboa/de-bb)                                                                                 | 2026-10-13 | 102.8 MB → 102.8 MB |
-| [fiboa/czech](https://source.coop/fiboa/czech)                                                                                 | 2026-10-13 | 458.2 MB → 458.2 MB |
-| [fiboa/croatia](https://source.coop/fiboa/croatia)                                                                             | 2026-10-13 | 481.2 MB → 481.2 MB |
-| [fiboa/be-wa](https://source.coop/fiboa/be-wa)                                                                                 | 2026-10-13 | 126.2 MB → 126.2 MB |
-| [fiboa/be-vlg](https://source.coop/fiboa/be-vlg)                                                                               | 2026-10-13 | 719.2 MB → 719.2 MB |
-| [fiboa/austria](https://source.coop/fiboa/austria)                                                                             | 2026-10-13 | 831.3 MB → 831.3 MB |
-| [fiboa/ai4sf](https://source.coop/fiboa/ai4sf)                                                                                 | 2026-10-13 |   53.3 MB → 53.3 MB |
-| [fiboa/data](https://source.coop/fiboa/data)                                                                                   | 2026-10-13 |   49.9 GB → 49.9 GB |
-| [tsnow03/antarctic-landsat8-sea-surface-temp](https://source.coop/tsnow03/antarctic-landsat8-sea-surface-temp)                 | 2026-10-12 |   44.2 GB → 24.8 GB |
-| [walkthru-earth/opensensor-space](https://source.coop/walkthru-earth/opensensor-space)                                         | 2026-10-11 |     1.5 GB → 1.7 GB |
+| repo                                                                                                       | updated    |        catalog → S3 |
+| ---------------------------------------------------------------------------------------------------------- | ---------- | ------------------: |
+| [dynamical/asos-parquet](https://source.coop/dynamical/asos-parquet)                                       | 2026-10-18 |   20.3 GB → 20.3 GB |
+| [bkr/aoml](https://source.coop/bkr/aoml)                                                                   | 2026-10-18 | 159.0 GB → 123.4 GB |
+| [portolan-mirrors/firms-catalog](https://source.coop/portolan-mirrors/firms-catalog)                       | 2026-10-18 |   27.0 GB → 27.0 GB |
+| [dynamical/ecmwf-ifs-grib](https://source.coop/dynamical/ecmwf-ifs-grib)                                   | 2026-10-18 | 263.4 TB → 257.0 TB |
+| [dynamical/noaa-mrms-conus-analysis-hourly](https://source.coop/dynamical/noaa-mrms-conus-analysis-hourly) | 2026-10-18 | 257.5 GB → 257.5 GB |
+| [dynamical/noaa-gefs-analysis](https://source.coop/dynamical/noaa-gefs-analysis)                           | 2026-10-17 |     1.1 TB → 1.1 TB |
+| [dynamical/noaa-gfs-analysis](https://source.coop/dynamical/noaa-gfs-analysis)                             | 2026-10-17 | 676.8 GB → 677.1 GB |
+| [dynamical/noaa-hrrr-forecast-48-hour](https://source.coop/dynamical/noaa-hrrr-forecast-48-hour)           | 2026-10-17 |   13.2 TB → 13.2 TB |
+| [planet/disasterdata](https://source.coop/planet/disasterdata)                                             | 2026-10-17 | 296.9 GB → 296.9 GB |
+| [alukach/firesmoke](https://source.coop/alukach/firesmoke)                                                 | 2026-10-17 |     1.2 GB → 1.3 GB |
+| [walkthru-earth/indices](https://source.coop/walkthru-earth/indices)                                       | 2026-10-17 | 762.0 GB → 762.0 GB |
+| [agentmorris/lila-wildlife](https://source.coop/agentmorris/lila-wildlife)                                 | 2026-10-16 |   45.6 TB → 45.6 TB |
+| [earthgenome/amazon-mining-watch](https://source.coop/earthgenome/amazon-mining-watch)                     | 2026-10-16 |     1.9 GB → 1.9 GB |
+| [portolan/portolan-pipeline](https://source.coop/portolan/portolan-pipeline)                               | 2026-10-16 | 260.9 MB → 259.8 MB |
+| [giswqs/opengeos](https://source.coop/giswqs/opengeos)                                                     | 2026-10-15 |   21.3 GB → 21.3 GB |
+| [fiboa/slovenia](https://source.coop/fiboa/slovenia)                                                       | 2026-10-13 | 354.6 MB → 354.6 MB |
+| [fiboa/slovenia-ec](https://source.coop/fiboa/slovenia-ec)                                                 | 2026-10-13 | 393.3 MB → 393.3 MB |
+| [fiboa/slovakia](https://source.coop/fiboa/slovakia)                                                       | 2026-10-13 | 468.2 MB → 468.2 MB |
+| [fiboa/portugal](https://source.coop/fiboa/portugal)                                                       | 2026-10-13 |     2.4 GB → 2.4 GB |
+| [fiboa/nl-ref](https://source.coop/fiboa/nl-ref)                                                           | 2026-10-13 | 676.2 MB → 676.2 MB |
+| [fiboa/nl-crop](https://source.coop/fiboa/nl-crop)                                                         | 2026-10-13 |     2.0 GB → 2.0 GB |
+| [fiboa/newzealand](https://source.coop/fiboa/newzealand)                                                   | 2026-10-13 |   23.4 MB → 23.4 MB |
+| [fiboa/luxembourg](https://source.coop/fiboa/luxembourg)                                                   | 2026-10-13 |   39.3 MB → 39.3 MB |
+| [fiboa/latvia](https://source.coop/fiboa/latvia)                                                           | 2026-10-13 | 684.4 MB → 684.4 MB |
+| [fiboa/lacunalabels](https://source.coop/fiboa/lacunalabels)                                               | 2026-10-13 | 109.6 MB → 109.6 MB |
+| [fiboa/japan](https://source.coop/fiboa/japan)                                                             | 2026-10-13 |     6.7 GB → 6.7 GB |
+| [fiboa/ireland](https://source.coop/fiboa/ireland)                                                         | 2026-10-13 | 805.5 MB → 805.5 MB |
+| [fiboa/france-ec](https://source.coop/fiboa/france-ec)                                                     | 2026-10-13 |     6.5 GB → 6.5 GB |
+| [fiboa/finland](https://source.coop/fiboa/finland)                                                         | 2026-10-13 | 558.1 MB → 558.1 MB |
+| [fiboa/estonia-ec](https://source.coop/fiboa/estonia-ec)                                                   | 2026-10-13 |     1.4 GB → 1.4 GB |
+| [fiboa/es-vc](https://source.coop/fiboa/es-vc)                                                             | 2026-10-13 |     3.2 GB → 3.2 GB |
+| [fiboa/es-pv](https://source.coop/fiboa/es-pv)                                                             | 2026-10-13 | 203.7 MB → 203.7 MB |
+| [fiboa/es-pm](https://source.coop/fiboa/es-pm)                                                             | 2026-10-13 | 612.0 MB → 612.0 MB |
+| [fiboa/es-nc](https://source.coop/fiboa/es-nc)                                                             | 2026-10-13 | 293.8 MB → 293.8 MB |
+| [fiboa/es-md](https://source.coop/fiboa/es-md)                                                             | 2026-10-13 | 356.3 MB → 356.3 MB |
+| [fiboa/es-ga](https://source.coop/fiboa/es-ga)                                                             | 2026-10-13 |     1.8 GB → 1.8 GB |
+| [fiboa/es-ex](https://source.coop/fiboa/es-ex)                                                             | 2026-10-13 |     2.3 GB → 2.3 GB |
+| [fiboa/es-cn](https://source.coop/fiboa/es-cn)                                                             | 2026-10-13 | 179.6 MB → 179.6 MB |
+| [fiboa/es-cm](https://source.coop/fiboa/es-cm)                                                             | 2026-10-13 |     3.4 GB → 3.4 GB |
+| [fiboa/es-cl](https://source.coop/fiboa/es-cl)                                                             | 2026-10-13 |     4.2 GB → 4.2 GB |
+| [fiboa/es-cb](https://source.coop/fiboa/es-cb)                                                             | 2026-10-13 | 551.1 MB → 551.1 MB |
+| [fiboa/es-cat](https://source.coop/fiboa/es-cat)                                                           | 2026-10-13 |     2.2 GB → 2.2 GB |
+| [fiboa/es-ar](https://source.coop/fiboa/es-ar)                                                             | 2026-10-13 |     2.4 GB → 2.4 GB |
+| [fiboa/es-an](https://source.coop/fiboa/es-an)                                                             | 2026-10-13 |     2.3 GB → 2.3 GB |
+| [fiboa/ec-lv](https://source.coop/fiboa/ec-lv)                                                             | 2026-10-13 | 864.9 MB → 864.9 MB |
+| [fiboa/denmark](https://source.coop/fiboa/denmark)                                                         | 2026-10-13 | 570.1 MB → 570.1 MB |
+| [fiboa/de-th](https://source.coop/fiboa/de-th)                                                             | 2026-10-13 | 179.7 MB → 179.7 MB |
+| [fiboa/de-sl](https://source.coop/fiboa/de-sl)                                                             | 2026-10-13 |   47.5 MB → 47.5 MB |
+| [fiboa/de-sh](https://source.coop/fiboa/de-sh)                                                             | 2026-10-13 |   87.6 MB → 87.6 MB |
+| [fiboa/de-sax](https://source.coop/fiboa/de-sax)                                                           | 2026-10-13 | 127.2 MB → 127.2 MB |
+| [fiboa/de-nrw](https://source.coop/fiboa/de-nrw)                                                           | 2026-10-13 | 273.9 MB → 273.9 MB |
+| [fiboa/de-nds](https://source.coop/fiboa/de-nds)                                                           | 2026-10-13 | 252.2 MB → 252.2 MB |
+| [fiboa/de-mv](https://source.coop/fiboa/de-mv)                                                             | 2026-10-13 | 150.8 MB → 150.8 MB |
+| [fiboa/de-bb](https://source.coop/fiboa/de-bb)                                                             | 2026-10-13 | 102.8 MB → 102.8 MB |
+| [fiboa/czech](https://source.coop/fiboa/czech)                                                             | 2026-10-13 | 458.2 MB → 458.2 MB |
+| [fiboa/croatia](https://source.coop/fiboa/croatia)                                                         | 2026-10-13 | 481.2 MB → 481.2 MB |
+| [fiboa/be-wa](https://source.coop/fiboa/be-wa)                                                             | 2026-10-13 | 126.2 MB → 126.2 MB |
+| [fiboa/be-vlg](https://source.coop/fiboa/be-vlg)                                                           | 2026-10-13 | 719.2 MB → 719.2 MB |
+| [fiboa/austria](https://source.coop/fiboa/austria)                                                         | 2026-10-13 | 831.3 MB → 831.3 MB |
+| [fiboa/ai4sf](https://source.coop/fiboa/ai4sf)                                                             | 2026-10-13 |   53.3 MB → 53.3 MB |
+| [fiboa/data](https://source.coop/fiboa/data)                                                               | 2026-10-13 |   49.9 GB → 49.9 GB |
+| [walkthru-earth/opensensor-space](https://source.coop/walkthru-earth/opensensor-space)                     | 2026-10-11 |     1.5 GB → 1.7 GB |
 
 </details>
 
