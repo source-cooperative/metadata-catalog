@@ -20,8 +20,11 @@ curl -LO https://github.com/source-cooperative/metadata-catalog/releases/latest/
 
 # or from Source Cooperative itself — served brotli-encoded (Content-Encoding: br),
 # so --compressed is required or you get the compressed bytes. macOS's built-in
-# curl lacks brotli (error 61); use the release URL above or Homebrew's curl.
+# curl lacks brotli (error 61); use the release URL above, Homebrew's curl, or uvx.
 curl --compressed -O https://data.source.coop/source/metadata-catalog/catalog.jsonl
+
+# no brotli-capable curl? httpx decodes it, via uvx (https://docs.astral.sh/uv/)
+uvx --from 'httpx[cli,brotli]' httpx https://data.source.coop/source/metadata-catalog/catalog.jsonl --download catalog.jsonl
 ```
 
 ```sql
