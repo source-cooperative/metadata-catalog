@@ -19,7 +19,8 @@ The whole catalog as one JSON-Lines file (one entry per line), rebuilt daily:
 curl -LO https://github.com/source-cooperative/metadata-catalog/releases/latest/download/catalog.jsonl
 
 # or from Source Cooperative itself — served brotli-encoded (Content-Encoding: br),
-# so --compressed is required or you get the compressed bytes
+# so --compressed is required or you get the compressed bytes. macOS's built-in
+# curl lacks brotli (error 61); use the release URL above or Homebrew's curl.
 curl --compressed -O https://data.source.coop/source/metadata-catalog/catalog.jsonl
 ```
 
