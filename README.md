@@ -18,8 +18,9 @@ The whole catalog as one JSON-Lines file (one entry per line), rebuilt daily:
 # stable "latest" URL, from the metadata-catalog GitHub release
 curl -LO https://github.com/source-cooperative/metadata-catalog/releases/latest/download/catalog.jsonl
 
-# or from Source Cooperative itself
-curl -O https://data.source.coop/source/metadata-catalog/catalog.jsonl
+# or from Source Cooperative itself — served brotli-encoded (Content-Encoding: br),
+# so --compressed is required or you get the compressed bytes
+curl --compressed -O https://data.source.coop/source/metadata-catalog/catalog.jsonl
 ```
 
 ```sql
