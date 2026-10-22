@@ -7,15 +7,17 @@
   ],
   "id": "walkthru-earth/opensensor-space",
   "title": "OpenSensor.Space",
-  "description": "Continuous time-series sensor readings (temperature, pressure, humidity, gas concentrations, ambient light, and particulate matter) collected from a network of low-cost Raspberry Pi units fitted with Enviro+ sensors deployed across the Cairo/Nile Delta region of Egypt, along with device health telemetry and a geospatial layer of candidate sites for additional air quality monitoring stations.",
+  "description": "Cloud-native GeoParquet mirror of OpenAQ air quality station measurements, with hourly/daily/yearly station aggregates and H3 map cells, alongside time-series readings from a low-cost Raspberry Pi Enviro+ sensor network in the Cairo/Nile Delta region of Egypt. Also includes device health telemetry and a layer of candidate sites for new air quality monitoring stations.",
   "license": "proprietary",
   "keywords": [
     "air-quality",
     "environmental-monitoring",
     "time-series",
+    "h3",
+    "geoparquet",
     "meteorology",
-    "weather",
-    "sensor-network"
+    "sensor-network",
+    "atmospheric-data"
   ],
   "providers": [
     {
@@ -37,24 +39,44 @@
     "spatial": {
       "bbox": [
         [
-          30.370783,
-          29.750265,
+          -2.50828,
+          4.89993,
           31.839662,
-          30.394885
+          31.23378
+        ],
+        [
+          -2.50828,
+          4.89993,
+          31.6385017,
+          31.23378
+        ],
+        [
+          -1.7713889,
+          5.651,
+          -0.1858553,
+          6.7569444
         ]
       ]
     },
     "temporal": {
       "interval": [
         [
-          null,
-          null
+          "2023-01-01T00:00:00Z",
+          "2026-12-31T23:59:59Z"
+        ],
+        [
+          "2023-01-01T00:00:00Z",
+          "2026-12-31T23:59:59Z"
+        ],
+        [
+          "2023-01-01T00:00:00Z",
+          "2024-12-31T23:59:59Z"
         ]
       ]
     }
   },
   "summaries": {
-    "item_count": 127600
+    "item_count": 1262604
   },
   "assets": {
     "enviroplus-health": {
@@ -139,11 +161,11 @@
         },
         {
           "name": "power_source",
-          "type": "INTEGER"
+          "type": "\"NULL\""
         },
         {
           "name": "battery_percent",
-          "type": "INTEGER"
+          "type": "\"NULL\""
         },
         {
           "name": "cpu_voltage_v",
@@ -249,6 +271,500 @@
       "description": "20 files sampled for this table",
       "item_count": 127600
     },
+    "openaq-aggregates": {
+      "href": "https://data.source.coop/walkthru-earth/opensensor-space/openaq-aggregates/",
+      "type": "application/x-parquet",
+      "title": "openaq-aggregates",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "locationid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "parameter",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "unit",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "year",
+          "type": "INTEGER"
+        },
+        {
+          "name": "h3_r1",
+          "type": "BIGINT",
+          "description": "[spatial_index] H3 cell at resolution 1"
+        },
+        {
+          "name": "h3_r2",
+          "type": "BIGINT",
+          "description": "[spatial_index] H3 cell at resolution 2"
+        },
+        {
+          "name": "h3_r3",
+          "type": "BIGINT",
+          "description": "[spatial_index] H3 cell at resolution 3"
+        },
+        {
+          "name": "h3_r4",
+          "type": "BIGINT",
+          "description": "[spatial_index] H3 cell at resolution 4"
+        },
+        {
+          "name": "h3_r5",
+          "type": "BIGINT",
+          "description": "[spatial_index] H3 cell at resolution 5"
+        },
+        {
+          "name": "h3_r6",
+          "type": "BIGINT",
+          "description": "[spatial_index] H3 cell at resolution 6"
+        },
+        {
+          "name": "h3_r7",
+          "type": "BIGINT",
+          "description": "[spatial_index] H3 cell at resolution 7"
+        },
+        {
+          "name": "h3_r8",
+          "type": "BIGINT",
+          "description": "[spatial_index] H3 cell at resolution 8"
+        },
+        {
+          "name": "h3_r9",
+          "type": "BIGINT",
+          "description": "[spatial_index] H3 cell at resolution 9"
+        },
+        {
+          "name": "latitude",
+          "type": "DOUBLE",
+          "description": "[latlon] Station latitude"
+        },
+        {
+          "name": "longitude",
+          "type": "DOUBLE",
+          "description": "[latlon] Station longitude"
+        },
+        {
+          "name": "sensor_class",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "complete_days",
+          "type": "INTEGER"
+        },
+        {
+          "name": "days_in_year",
+          "type": "INTEGER"
+        },
+        {
+          "name": "completeness",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "mean",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "p98_daily",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "p99_daily",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "days_over_who_24h",
+          "type": "INTEGER"
+        },
+        {
+          "name": "days_over_eu_24h",
+          "type": "INTEGER"
+        },
+        {
+          "name": "who_annual",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "who_24h_p99",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "date_local",
+          "type": "DATE"
+        },
+        {
+          "name": "hours",
+          "type": "INTEGER"
+        },
+        {
+          "name": "readings",
+          "type": "INTEGER"
+        },
+        {
+          "name": "min_hourly",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "max_hourly",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "who_24h",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "us_aqi",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "hour_utc",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "sensors",
+          "type": "INTEGER"
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR",
+          "description": "[placename] Station name"
+        },
+        {
+          "name": "country",
+          "type": "VARCHAR",
+          "description": "[placename] Country of the station"
+        },
+        {
+          "name": "timezone",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "provider",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "owner",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "license",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "license_spdx",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "license_url",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "attribution",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "parameters",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "first_utc",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "last_utc",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "pm25_latest_date",
+          "type": "DATE"
+        },
+        {
+          "name": "pm25_latest_mean",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "pm25_latest_who_24h",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "pm25_latest_us_aqi",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "pm25_days_30d",
+          "type": "INTEGER"
+        },
+        {
+          "name": "pm25_mean_30d",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "pm25_days_365d",
+          "type": "INTEGER"
+        },
+        {
+          "name": "pm25_mean_365d",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "pm25_p99_365d",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "pm25_days_over_who_365d",
+          "type": "INTEGER"
+        },
+        {
+          "name": "pm25_who_annual_365d",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')",
+          "description": "[geometry] Station point geometry (CRS84)"
+        }
+      ],
+      "description": "4 files sampled for this table",
+      "bbox": [
+        -2.50828,
+        4.89993,
+        31.6385017,
+        31.23378
+      ],
+      "item_count": 1262604
+    },
+    "openaq-aggregates/cells": {
+      "href": "https://data.source.coop/walkthru-earth/opensensor-space/openaq-aggregates/cells/h3_res=1/",
+      "type": "application/x-parquet",
+      "title": "openaq-aggregates/cells",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "h3_index",
+          "type": "BIGINT",
+          "description": "[spatial_index] H3 cell index for map aggregates"
+        },
+        {
+          "name": "date",
+          "type": "DATE"
+        },
+        {
+          "name": "devices",
+          "type": "INTEGER"
+        },
+        {
+          "name": "pm25__n",
+          "type": "INTEGER"
+        },
+        {
+          "name": "pm25__mean",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "pm25__min",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "pm25__max",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "pm10__n",
+          "type": "INTEGER"
+        },
+        {
+          "name": "pm10__mean",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "pm10__min",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "pm10__max",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "pm1__n",
+          "type": "INTEGER"
+        },
+        {
+          "name": "pm1__mean",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "pm1__min",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "pm1__max",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "no2__n",
+          "type": "INTEGER"
+        },
+        {
+          "name": "no2__mean",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "no2__min",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "no2__max",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "temperature__n",
+          "type": "INTEGER"
+        },
+        {
+          "name": "temperature__mean",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "temperature__min",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "temperature__max",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "humidity__n",
+          "type": "INTEGER"
+        },
+        {
+          "name": "humidity__mean",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "humidity__min",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "humidity__max",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "um003__n",
+          "type": "INTEGER"
+        },
+        {
+          "name": "um003__mean",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "um003__min",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "um003__max",
+          "type": "DOUBLE"
+        }
+      ],
+      "description": "9 files sampled for this table"
+    },
+    "openaq": {
+      "href": "https://data.source.coop/walkthru-earth/opensensor-space/openaq/locationid=1008918/year=2023/month=6/",
+      "type": "application/x-parquet",
+      "title": "openaq",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "observation_id",
+          "type": "BLOB"
+        },
+        {
+          "name": "provider",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "locationid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "year",
+          "type": "BIGINT"
+        },
+        {
+          "name": "month",
+          "type": "BIGINT"
+        },
+        {
+          "name": "sensor_id",
+          "type": "BIGINT"
+        },
+        {
+          "name": "location",
+          "type": "VARCHAR",
+          "description": "[placename] Station/location name"
+        },
+        {
+          "name": "parameter",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "unit",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "event_time_utc",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "utc_offset_minutes",
+          "type": "SMALLINT"
+        },
+        {
+          "name": "value",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "latitude",
+          "type": "DOUBLE",
+          "description": "[latlon] Station latitude"
+        },
+        {
+          "name": "longitude",
+          "type": "DOUBLE",
+          "description": "[latlon] Station longitude"
+        },
+        {
+          "name": "source_key",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "source_row_index",
+          "type": "INTEGER"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')",
+          "description": "[geometry] Point geometry (CRS84) of the measurement location"
+        }
+      ],
+      "description": "20 files sampled for this table",
+      "bbox": [
+        -1.7713889,
+        5.651,
+        -0.1858553,
+        6.7569444
+      ],
+      "item_count": 159434
+    },
     "share": {
       "href": "https://data.source.coop/walkthru-earth/opensensor-space/share/suitability_analysis_of_aq.parquet",
       "type": "application/x-parquet",
@@ -259,7 +775,8 @@
       "table:columns": [
         {
           "name": "name",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[placename] Candidate site name"
         },
         {
           "name": "type",
@@ -284,7 +801,7 @@
         {
           "name": "geom",
           "type": "GEOMETRY('OGC:CRS84')",
-          "description": "[geometry] Point geometry for candidate sites for additional air quality monitoring stations"
+          "description": "[geometry] Geometry of candidate monitoring sites"
         }
       ],
       "table:row_count": 65
@@ -302,6 +819,7 @@
       "title": "Source Cooperative product page"
     }
   ],
+  "objects_updated_at": "2026-10-11T23:37:22+00:00",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -314,31 +832,37 @@
       "prefix": "walkthru-earth/opensensor-space/"
     }
   },
-  "objects_updated_at": "2026-09-09T17:47:13+00:00",
-  "created_at": "2025-11-24T18:13:45.589Z",
+  "product_id": "opensensor-space",
   "account_id": "walkthru-earth",
-  "object_count": 90755,
-  "visibility": "public",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "ext_bytes": {
-    "parquet": 1516844254
-  },
-  "data_mode": "open",
-  "product_id": "opensensor-space",
-  "updated_at": "2025-11-24T18:13:45.589Z",
-  "disabled": false,
-  "total_bytes": 1516844254,
-  "exts": {
-    "parquet": 90755
-  },
+  "total_bytes": 1719713991,
   "featured": 0,
+  "exts": {
+    "parquet": 92277,
+    "json": 1191,
+    "md": 6,
+    "png": 1
+  },
+  "ext_bytes": {
+    "parquet": 1687201024,
+    "json": 32481026,
+    "md": 29227,
+    "png": 2714
+  },
+  "created_at": "2025-11-24T18:13:45.589Z",
+  "visibility": "public",
+  "data_mode": "open",
+  "updated_at": "2025-11-24T18:13:45.589Z",
+  "object_count": 93475,
+  "disabled": false,
+  "readme": "## README.md\n# Air Quality Archive\n\nCloud-native copies of air quality observations, preserved independently of\nthird-party dashboards. This is a [Portolan](https://github.com/portolan-sdi/portolan-spec)\nv0.2.0 catalog on STAC 1.1.0. Machines start at `catalog.json`.\n\nPublished at https://data.source.coop/walkthru-earth/opensensor-space/catalog.json and s3://us-west-2.opendata.source.coop/walkthru-earth/opensensor-space/ (anonymous, us-west-2).\n\n| Collection | Description |\n| --- | --- |\n| [OpenAQ Station Measurements](openaq/README.md) | OpenAQ archive measurements as GeoParquet, partitioned by location, year and month |\n| [OpenAQ Station Aggregates and H3 Cells](openaq-aggregates/README.md) | Hourly, daily and yearly station means with WHO, US EPA and EU levels, plus H3 resolution 1 to 9 map cells |\n\n## License\n\nEach collection and item declares its own license. OpenAQ data licenses differ per\nsource provider, see [OpenAQ licenses](https://docs.openaq.org/resources/licenses).\n\n## Provenance\n\nThis catalog is a mirror. Data comes from the public\n[OpenAQ archive](https://registry.opendata.aws/openaq/). It is maintained by Walkthru Earth (https://github.com/walkthru-earth).\n",
   "_review": [
-    "summaries.item_count: parts overlap, so this is max(part), not the sum \u2014 enviroplus-health/ 250, enviroplus/ 127600. Sum them only once the parts are known to be disjoint."
+    "summaries.item_count: parts overlap, so this is max(part), not the sum \u2014 enviroplus-health/ 250, enviroplus/ 127600, openaq-aggregates/ 1262604, openaq/ 159434. Sum them only once the parts are known to be disjoint."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-09-17T08:46:55+00:00",
+  "cataloged_at": "2026-10-22T09:09:23+00:00",
   "store_format": null
 }
