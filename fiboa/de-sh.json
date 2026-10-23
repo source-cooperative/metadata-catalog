@@ -7,7 +7,7 @@
   ],
   "id": "fiboa/de-sh",
   "title": "Field boundaries for Schleswig-Holstein (SH), Germany",
-  "description": "Approximately 200,000 official agricultural field block boundaries for the German federal state of Schleswig-Holstein, sourced from the state's open geodata catalog. Each record includes a FLIK identifier, area in hectares, determination date, and a main land-use category (HBN) covering arable land, permanent crops, grassland, and non-agricultural areas. Distributed as fiboa-compliant GeoParquet and PMTiles.",
+  "description": "Approximately 200,000 official agricultural field block (Feldblock) boundaries for the German federal state of Schleswig-Holstein, converted to fiboa GeoParquet from the state's open geodata. Each record has a FLIK identifier, area in hectares, determination date, and a main land-use category (HBN). The dataset has moved to the Harmonized Field Boundary Data catalog and is no longer updated here.",
   "license": "proprietary",
   "keywords": [
     "field-boundaries",
@@ -15,7 +15,10 @@
     "land-use",
     "lpis",
     "land-parcels",
-    "arable-land"
+    "arable-land",
+    "fiboa",
+    "geoparquet",
+    "pmtiles"
   ],
   "providers": [
     {
@@ -58,18 +61,18 @@
     "spatial": {
       "bbox": [
         [
-          7.868514562,
-          53.3590675115,
-          11.3132037822,
-          55.0573747014
+          7.8481093,
+          53.3502171,
+          11.3481859,
+          55.0473077
         ]
       ]
     },
     "temporal": {
       "interval": [
         [
-          "2024-01-01T00:00:00Z",
-          "2024-01-01T00:00:00Z"
+          null,
+          null
         ]
       ]
     }
@@ -78,40 +81,40 @@
     "item_count": 197673
   },
   "assets": {
-    "data": {
+    "2024": {
       "href": "https://data.source.coop/fiboa/de-sh/Feldbloecke_2024.parquet",
-      "title": "Field Boundaries",
-      "type": "application/vnd.apache.parquet",
+      "type": "application/x-parquet",
+      "title": "Feldbloecke_2024.parquet",
       "roles": [
         "data"
       ],
       "table:columns": [
         {
           "name": "geometry",
-          "type": "binary"
+          "type": "GEOMETRY('EPSG:4647')",
+          "description": "[geometry] Field block polygon geometry in EPSG:4647 (ETRS89 / UTM zone 32N)"
         },
         {
           "name": "determination_datetime",
-          "type": "timestamp[ms, tz=UTC]"
+          "type": "TIMESTAMP WITH TIME ZONE"
         },
         {
           "name": "flik",
-          "type": "string"
+          "type": "VARCHAR"
         },
         {
           "name": "id",
-          "type": "string"
+          "type": "VARCHAR"
         },
         {
           "name": "area",
-          "type": "float"
+          "type": "FLOAT"
         },
         {
           "name": "hbn",
-          "type": "string"
+          "type": "VARCHAR"
         }
       ],
-      "table:primary_geometry": "geometry",
       "table:row_count": 197673
     }
   },
@@ -125,37 +128,18 @@
       "rel": "via",
       "href": "https://source.coop/fiboa/de-sh",
       "title": "Source Cooperative product page"
-    },
-    {
-      "href": "https://www.govdata.de/dl-de/zero-2-0",
-      "title": "Data licence Germany - Zero - Version 2.0",
-      "type": "text/html",
-      "rel": "license"
-    },
-    {
-      "href": "https://data.source.coop/fiboa/de-sh/Feldbloecke_2024.pmtiles",
-      "type": "application/vnd.pmtiles",
-      "rel": "pmtiles"
     }
   ],
-  "account_id": "fiboa",
   "data_mode": "open",
-  "created_at": "2024-04-11T22:48:43.388199+00:00",
-  "exts": {
-    "parquet": 1,
-    "pmtiles": 1,
-    "json": 1,
-    "md": 1,
-    "txt": 2
+  "ext_bytes": {
+    "parquet": 60609849,
+    "pmtiles": 26976813,
+    "json": 2752,
+    "md": 2653,
+    "txt": 1158
   },
-  "visibility": "public",
-  "updated_at": "2025-08-21T16:39:55.568Z",
-  "object_count": 6,
-  "featured": 0,
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
+  "total_bytes": 87593225,
+  "disabled": false,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -168,18 +152,27 @@
       "prefix": "fiboa/de-sh/"
     }
   },
-  "disabled": false,
+  "featured": 0,
+  "account_id": "fiboa",
+  "visibility": "public",
+  "object_count": 6,
+  "created_at": "2024-04-11T22:48:43.388199+00:00",
+  "objects_updated_at": "2026-10-13T12:02:04+00:00",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "updated_at": "2025-08-21T16:39:55.568Z",
+  "exts": {
+    "txt": 2,
+    "pmtiles": 1,
+    "md": 1,
+    "parquet": 1,
+    "json": 1
+  },
   "product_id": "de-sh",
-  "total_bytes": 87592908,
-  "readme": "## README.md\n# Field boundaries for Schleswig-Holstein (SH), Germany\r\n\r\nProvides ca. 200.000 official field boundaries from the federal state of Schleswig-Holstein (SH) in Germany.\r\nIt has been converted to a fiboa GeoParquet file from a GeoPackage that was provided by the state.\r\n\r\n- **Source Data Provider:** [Land Schleswig-Holstein](https://sh-mis.gdi-sh.de/catalog/?lang=en#/datasets/iso/21f67269-780f-4f3c-8f66-03dde27acfe7)\r\n- **Converted by:** [Matthias Mohr](https://mohr.ws)\r\n- **License:** [Deutschland \u2013 Zero \u2013 Version 2.0](https://www.govdata.de/dl-de/zero-2-0)\r\n- **Projection:** EPSG:4647 - ETRS89 / UTM zone 32N\r\n\r\n---\r\n\r\n- **[Download the data as fiboa GeoParquet](https://data.source.coop/fiboa/de-sh/Feldbloecke_2024.parquet)**\r\n- [STAC Browser](https://radiantearth.github.io/stac-browser/#/external/data.source.coop/fiboa/de-sh/stac/collection.json)\r\n- [STAC Collection](https://data.source.coop/fiboa/de-sh/stac/collection.json)\r\n- [PMTiles](https://data.source.coop/fiboa/de-sh/Feldbloecke_2024.pmtiles)\r\n\r\n## Columns\r\n\r\n| Property               | Data Type | Description                                                  |\r\n| ---------------------- | --------- | ------------------------------------------------------------ |\r\n| id                     | string    | Area identifier for field blocks, same as `flik`. Example: `DENWLI0552020444` |\r\n| flik                   | string    | Area identifier for field blocks, same as `id`.              |\r\n| area                   | float     | Area in ha                                                   |\r\n| determination_datetime | datetime  | Valid since the given date.                                  |\r\n| hbn                    | string    | Category of main land use (see below)                        |\r\n\r\nValues for `HBN`:\r\n\r\n- `Ackerland` (arable land)\r\n- `Dauerkultur` (permanent crops)\r\n- `Dauergr\u00fcnland` (permanent grassland)\r\n- `Nicht landwirtschaftliche f\u00f6rderf\u00e4hige Fl\u00e4chen` (Areas not eligible for agricultural subsidies)\r\n- `Sonstige nicht ldw. genutzte Fl\u00e4chen` (Other non-agricultural land)\r\n\r\n## Lineage \r\n\r\n- Data downloaded on 2024-04-12 from https://service.gdi-sh.de/SH_OpenGBD/feeds/Atom_SH_Feldblockfinder_OpenGBD/data/Feldbloecke_2024_GPKG.zip.\r\n- Converted to GeoParquet using [fiboa-cli](https://github.com/fiboa/cli), version 0.3.2-dev.\r\n",
+  "readme": "## README.md\n> **This dataset has moved.** It is now published, updated and extended as [Field blocks for Schleswig-Holstein (SH), Germany](https://source.coop/ftw/harmonized-field-data/de_sh) in the [Harmonized Field Boundary Data](https://source.coop/ftw/harmonized-field-data) catalog. The files here are no longer updated.\r\n\r\n# Field boundaries for Schleswig-Holstein (SH), Germany\r\n\r\nProvides ca. 200.000 official field boundaries from the federal state of Schleswig-Holstein (SH) in Germany.\r\nIt has been converted to a fiboa GeoParquet file from a GeoPackage that was provided by the state.\r\n\r\n- **Source Data Provider:** [Land Schleswig-Holstein](https://sh-mis.gdi-sh.de/catalog/?lang=en#/datasets/iso/21f67269-780f-4f3c-8f66-03dde27acfe7)\r\n- **Converted by:** [Matthias Mohr](https://mohr.ws)\r\n- **License:** [Deutschland \u2013 Zero \u2013 Version 2.0](https://www.govdata.de/dl-de/zero-2-0)\r\n- **Projection:** EPSG:4647 - ETRS89 / UTM zone 32N\r\n\r\n---\r\n\r\n- **[Download the data as fiboa GeoParquet](https://data.source.coop/fiboa/de-sh/Feldbloecke_2024.parquet)**\r\n- [STAC Browser](https://radiantearth.github.io/stac-browser/#/external/data.source.coop/fiboa/de-sh/stac/collection.json)\r\n- [STAC Collection](https://data.source.coop/fiboa/de-sh/stac/collection.json)\r\n- [PMTiles](https://data.source.coop/fiboa/de-sh/Feldbloecke_2024.pmtiles)\r\n\r\n## Columns\r\n\r\n| Property               | Data Type | Description                                                  |\r\n| ---------------------- | --------- | ------------------------------------------------------------ |\r\n| id                     | string    | Area identifier for field blocks, same as `flik`. Example: `DENWLI0552020444` |\r\n| flik                   | string    | Area identifier for field blocks, same as `id`.              |\r\n| area                   | float     | Area in ha                                                   |\r\n| determination_datetime | datetime  | Valid since the given date.                                  |\r\n| hbn                    | string    | Category of main land use (see below)                        |\r\n\r\nValues for `HBN`:\r\n\r\n- `Ackerland` (arable land)\r\n- `Dauerkultur` (permanent crops)\r\n- `Dauergr\u00fcnland` (permanent grassland)\r\n- `Nicht landwirtschaftliche f\u00f6rderf\u00e4hige Fl\u00e4chen` (Areas not eligible for agricultural subsidies)\r\n- `Sonstige nicht ldw. genutzte Fl\u00e4chen` (Other non-agricultural land)\r\n\r\n## Lineage \r\n\r\n- Data downloaded on 2024-04-12 from https://service.gdi-sh.de/SH_OpenGBD/feeds/Atom_SH_Feldblockfinder_OpenGBD/data/Feldbloecke_2024_GPKG.zip.\r\n- Converted to GeoParquet using [fiboa-cli](https://github.com/fiboa/cli), version 0.3.2-dev.\r\n",
   "_state": "drafted",
-  "cataloged_at": "2026-05-27T01:18:11+00:00",
-  "_source_format": "stac",
-  "ext_bytes": {
-    "parquet": 60609849,
-    "pmtiles": 26976813,
-    "json": 2752,
-    "md": 2336,
-    "txt": 1158
-  }
+  "cataloged_at": "2026-10-23T10:12:05+00:00",
+  "store_format": null
 }
