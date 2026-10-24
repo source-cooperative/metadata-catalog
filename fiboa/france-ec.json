@@ -7,7 +7,7 @@
   ],
   "id": "fiboa/france-ec",
   "title": "Field boundaries for France from Eurocrops (2018)",
-  "description": "Approximately 9.5 million official agricultural field boundaries for France (2018), converted to fiboa GeoParquet format from the Eurocrops Shapefile. Includes harmonized European crop classification codes (EC_hcat_n, EC_trans_n) derived from the original French government LPIS data.",
+  "description": "Approximately 9.5 million official agricultural field boundaries for France for 2018, converted to fiboa GeoParquet from the Eurocrops Shapefile. Includes harmonized European crop classification codes derived from the French government LPIS data. The dataset has moved to the Harmonized Field Boundary Data catalog and is no longer updated here.",
   "license": "CC-BY-SA-4.0",
   "keywords": [
     "field-boundaries",
@@ -15,9 +15,9 @@
     "crop-classification",
     "lpis",
     "land-parcels",
-    "arable-land",
-    "land-use",
-    "france"
+    "fiboa",
+    "geoparquet",
+    "pmtiles"
   ],
   "providers": [
     {
@@ -66,18 +66,18 @@
     "spatial": {
       "bbox": [
         [
-          -5.1422,
-          41.3641,
-          9.5616,
-          51.0902
+          -5.2954832,
+          41.3166239,
+          10.694271,
+          51.0755194
         ]
       ]
     },
     "temporal": {
       "interval": [
         [
-          "2018-01-15T00:00:00Z",
-          "2018-01-15T00:00:00Z"
+          "2018-01-01T00:00:00Z",
+          "2018-01-01T00:00:00Z"
         ]
       ]
     }
@@ -86,53 +86,53 @@
     "item_count": 19035756
   },
   "assets": {
-    "data": {
-      "href": "https://data.source.coop/fiboa/france-ec/france_eurocrops_2018_fiboa.parquet",
-      "title": "Field Boundaries",
-      "type": "application/vnd.apache.parquet",
+    "fiboa": {
+      "href": "https://data.source.coop/fiboa/france-ec/",
+      "type": "application/x-parquet",
+      "title": "fiboa",
       "roles": [
         "data"
       ],
       "table:columns": [
         {
           "name": "geometry",
-          "type": "binary"
+          "type": "GEOMETRY('{\"$schema\":\"https://proj.org/schemas/v0.7/projjson.schema.json\",\"type\":\"ProjectedCRS\",\"name\":\"RGF93 Lambert 93\",\"base_crs\":{\"name\":\"RGF93 geographiques (dms)\",\"datum\":{\"type\":\"GeodeticReferenceFrame\",\"name\":\"Reseau Geodesique Francais 1993 v1\",\"ellipsoid\":{\"name\":\"GRS 1980\",\"semi_major_axis\":6378137,\"inverse_flattening\":298.257222101}},\"coordinate_system\":{\"subtype\":\"ellipsoidal\",\"axis\":[{\"name\":\"Geodetic longitude\",\"abbreviation\":\"Lon\",\"direction\":\"east\",\"unit\":\"degree\"},{\"name\":\"Geodetic latitude\",\"abbreviation\":\"Lat\",\"direction\":\"north\",\"unit\":\"degree\"}]},\"id\":{\"authority\":\"IGNF\",\"code\":\"RGF93G\"}},\"conversion\":{\"name\":\"unnamed\",\"method\":{\"name\":\"Lambert Conic Conformal (2SP)\",\"id\":{\"authority\":\"EPSG\",\"code\":9802}},\"parameters\":[{\"name\":\"Latitude of false origin\",\"value\":46.5,\"unit\":\"degree\",\"id\":{\"authority\":\"EPSG\",\"code\":8821}},{\"name\":\"Longitude of false origin\",\"value\":3,\"unit\":\"degree\",\"id\":{\"authority\":\"EPSG\",\"code\":8822}},{\"name\":\"Latitude of 1st standard parallel\",\"value\":44,\"unit\":\"degree\",\"id\":{\"authority\":\"EPSG\",\"code\":8823}},{\"name\":\"Latitude of 2nd standard parallel\",\"value\":49,\"unit\":\"degree\",\"id\":{\"authority\":\"EPSG\",\"code\":8824}},{\"name\":\"Easting at false origin\",\"value\":700000,\"unit\":\"metre\",\"id\":{\"authority\":\"EPSG\",\"code\":8826}},{\"name\":\"Northing at false origin\",\"value\":6600000,\"unit\":\"metre\",\"id\":{\"authority\":\"EPSG\",\"code\":8827}}]},\"coordinate_system\":{\"subtype\":\"Cartesian\",\"axis\":[{\"name\":\"Easting\",\"abbreviation\":\"\",\"direction\":\"east\",\"unit\":\"metre\"},{\"name\":\"Northing\",\"abbreviation\":\"\",\"direction\":\"north\",\"unit\":\"metre\"}]},\"id\":{\"authority\":\"IGNF\",\"code\":\"LAMB93\"}}')",
+          "description": "[geometry] Field boundary geometries in RGF93 Lambert 93 (IGNF:LAMB93) projection"
         },
         {
           "name": "id",
-          "type": "string"
+          "type": "VARCHAR"
         },
         {
           "name": "area",
-          "type": "float"
+          "type": "FLOAT"
         },
         {
           "name": "code_culture",
-          "type": "string"
+          "type": "VARCHAR"
         },
         {
           "name": "code_group",
-          "type": "uint16"
-        },
-        {
-          "name": "EC_trans_n",
-          "type": "string"
-        },
-        {
-          "name": "EC_hcat_n",
-          "type": "string"
-        },
-        {
-          "name": "EC_hcat_c",
-          "type": "uint32"
+          "type": "USMALLINT"
         },
         {
           "name": "determination_datetime",
-          "type": "timestamp[ms, tz=UTC]"
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "EC_trans_n",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "EC_hcat_n",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "EC_hcat_c",
+          "type": "UINTEGER"
         }
       ],
-      "table:primary_geometry": "geometry",
-      "table:row_count": 9517878
+      "description": "2 files sampled for this table"
     }
   },
   "links": [
@@ -145,28 +145,9 @@
       "rel": "via",
       "href": "https://source.coop/fiboa/france-ec",
       "title": "Source Cooperative product page"
-    },
-    {
-      "href": "https://data.source.coop/fiboa/france-ec/france_eurocrops_2018.pmtiles",
-      "type": "application/vnd.pmtiles",
-      "rel": "pmtiles"
-    },
-    {
-      "rel": "cite-as",
-      "href": "https://doi.org/10.5281/zenodo.8229128"
     }
   ],
-  "account_id": "fiboa",
-  "data_mode": "open",
   "object_count": 5,
-  "total_bytes": 6472321836,
-  "product_id": "france-ec",
-  "visibility": "public",
-  "featured": 0,
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -179,26 +160,37 @@
       "prefix": "fiboa/france-ec/"
     }
   },
-  "exts": {
-    "parquet": 2,
-    "pmtiles": 1,
-    "md": 1,
-    "json": 1
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
   },
-  "updated_at": "2025-08-21T16:39:55.569Z",
-  "created_at": "2024-05-06T04:07:28.924329+00:00",
-  "disabled": false,
-  "readme": "## README.md\n# Field boundaries for France\r\n\r\nProvides ca. 9,500,000 official field boundaries of France for 2018. It has been converted to a fiboa GeoParquet file from the Eurocrops Shapefile that provides crop classification values that are harmonized across Europe. The data was provided to Eurocrops under an open license from the French government.\r\n\r\n- **Source Data Provider:** [Eurcrops](https://github.com/maja601/EuroCrops/wiki/France)\r\n- **Converted by:** [Chris Holmes](https://tgengine.org/)\r\n- **License:** CC-BY-4.0\r\n- **Projection:** IGNF:LAMB93 (RGF93 Lambert 93)\r\n\r\n---\r\n\r\n- **[Download the data as fiboa GeoParquet](https://data.source.coop/fiboa/france-ec/france_eurocrops_2018_fiboa.parquet)**\r\n- [STAC Browser](https://radiantearth.github.io/stac-browser/#/external/data.source.coop/fiboa/france-ec/stac/collection.json)\r\n- [STAC Collection](https://data.source.coop/fiboa/france-ec/stac/collection.json)\r\n- [PMTiles](https://data.source.coop/fiboa/france-ec/france_eurocrops_2018.pmtiles)\r\n\r\n## Columns\r\n\r\n| Property               | Data Type | Description                                                  |\r\n| ---------------------- | --------- | ------------------------------------------------------------ |\r\n| id                     | string    | Identifier                                         |\r\n| determination_datetime | datetime  | Valid since the given date.                                  |\r\n| area                   | float     | Area in ha                                                   |\r\n                                            |\r\n\r\nTODO: Finish columns\r\n\r\n## Lineage \r\n\r\n- Data downloaded on 2024-05-03 from https://zenodo.org/records/8229128/files/FR_2018.zip.\r\n- Converted to GeoParquet using [fiboa-cli](https://github.com/fiboa/cli), version 0.3.9-dev.\r\n",
-  "_review": [
-    "providers: role [processor] for 'Eurocrops' is an AI guess \u2014 Eurocrops harmonized and redistributed the French government data; treated as processor since the French government is the original licensor.. Verify before flipping to _state: reviewed."
-  ],
-  "_state": "drafted",
-  "cataloged_at": "2026-05-27T01:34:47+00:00",
-  "_source_format": "stac",
+  "product_id": "france-ec",
+  "data_mode": "open",
+  "visibility": "public",
+  "featured": 0,
+  "account_id": "fiboa",
   "ext_bytes": {
     "parquet": 5353693742,
     "pmtiles": 1118622917,
     "json": 3381,
-    "md": 1796
-  }
+    "md": 2111
+  },
+  "updated_at": "2025-08-21T16:39:55.569Z",
+  "created_at": "2024-05-06T04:07:28.924329+00:00",
+  "objects_updated_at": "2026-10-13T12:02:49+00:00",
+  "total_bytes": 6472322151,
+  "disabled": false,
+  "exts": {
+    "parquet": 2,
+    "md": 1,
+    "json": 1,
+    "pmtiles": 1
+  },
+  "readme": "## README.md\n> **This dataset has moved.** It is now published, updated and extended as [Registre Parcellaire Graphique; Crop Fields France](https://source.coop/ftw/harmonized-field-data/fr) in the [Harmonized Field Boundary Data](https://source.coop/ftw/harmonized-field-data) catalog. The files here are no longer updated.\r\n\r\n# Field boundaries for France\r\n\r\nProvides ca. 9,500,000 official field boundaries of France for 2018. It has been converted to a fiboa GeoParquet file from the Eurocrops Shapefile that provides crop classification values that are harmonized across Europe. The data was provided to Eurocrops under an open license from the French government.\r\n\r\n- **Source Data Provider:** [Eurcrops](https://github.com/maja601/EuroCrops/wiki/France)\r\n- **Converted by:** [Chris Holmes](https://tgengine.org/)\r\n- **License:** CC-BY-4.0\r\n- **Projection:** IGNF:LAMB93 (RGF93 Lambert 93)\r\n\r\n---\r\n\r\n- **[Download the data as fiboa GeoParquet](https://data.source.coop/fiboa/france-ec/france_eurocrops_2018_fiboa.parquet)**\r\n- [STAC Browser](https://radiantearth.github.io/stac-browser/#/external/data.source.coop/fiboa/france-ec/stac/collection.json)\r\n- [STAC Collection](https://data.source.coop/fiboa/france-ec/stac/collection.json)\r\n- [PMTiles](https://data.source.coop/fiboa/france-ec/france_eurocrops_2018.pmtiles)\r\n\r\n## Columns\r\n\r\n| Property               | Data Type | Description                                                  |\r\n| ---------------------- | --------- | ------------------------------------------------------------ |\r\n| id                     | string    | Identifier                                         |\r\n| determination_datetime | datetime  | Valid since the given date.                                  |\r\n| area                   | float     | Area in ha                                                   |\r\n                                            |\r\n\r\nTODO: Finish columns\r\n\r\n## Lineage \r\n\r\n- Data downloaded on 2024-05-03 from https://zenodo.org/records/8229128/files/FR_2018.zip.\r\n- Converted to GeoParquet using [fiboa-cli](https://github.com/fiboa/cli), version 0.3.9-dev.\r\n",
+  "_review": [
+    "extent.temporal: None (probe sample) widened to ['2018-01-01T00:00:00Z', '2018-01-01T00:00:00Z'] using README-stated coverage ['2018', '2018']."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-10-24T08:56:28+00:00",
+  "store_format": null
 }
