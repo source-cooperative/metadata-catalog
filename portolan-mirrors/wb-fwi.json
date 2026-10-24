@@ -1,16 +1,126 @@
 {
   "schema_version": 1,
-  "account_id": "portolan-mirrors",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "portolan-mirrors/wb-fwi",
+  "title": "World Bank global wildfire hazard",
+  "description": "A mirror of the World Bank's global wildfire hazard dataset, published as cloud-optimized GeoTIFFs. It provides the yearly maximum Fire Weather Index (FWI) expected for 2-, 10- and 30-year return periods on a global 0.5\u00b0 grid, computed by CSIRO from NASA's Global Fire Weather Database for 1981 to 2016.",
+  "license": "CC-BY-4.0",
+  "keywords": [
+    "wildfire",
+    "conservation",
+    "climate",
+    "global-coverage",
+    "cloud-optimized-geotiff",
+    "meteorology",
+    "emergency-management"
+  ],
+  "providers": [
+    {
+      "name": "CSIRO",
+      "roles": [
+        "producer",
+        "processor"
+      ]
+    },
+    {
+      "name": "World Bank",
+      "roles": [
+        "licensor"
+      ]
+    },
+    {
+      "name": "NASA Goddard Institute for Space Studies",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Portolan",
+      "roles": [
+        "processor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/portolan-mirrors/wb-fwi"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -180.3125,
+          -58.25,
+          179.6875,
+          75.25
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "1981-01-01T00:00:00Z",
+          "2016-01-01T00:00:00Z"
+        ]
+      ]
+    }
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/portolan-mirrors/wb-fwi/",
+      "type": "image/tiff; application=geotiff",
+      "title": "Dataset files (3 x .tif)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/portolan-mirrors/wb-fwi/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/portolan-mirrors/wb-fwi",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "rel": "describedby",
+      "href": "./README.md",
+      "type": "text/markdown",
+      "title": "Catalog README"
+    },
+    {
+      "rel": "agents",
+      "href": "./AGENTS.md",
+      "type": "text/markdown",
+      "title": "Catalog agent guide"
+    },
+    {
+      "rel": "vcs",
+      "href": "https://github.com/nlebovits/wb-fwi",
+      "title": "Source repository"
+    },
+    {
+      "rel": "issues",
+      "href": "https://github.com/nlebovits/wb-fwi/issues",
+      "title": "Issue tracker"
+    }
+  ],
+  "ext_bytes": {
+    "tif": 711166,
+    "png": 464484,
+    "json": 21777,
+    "md": 20983
+  },
+  "object_count": 18,
   "product_id": "wb-fwi",
-  "title": "Fire Weather Index (FWI) via World Bank/GFDRR",
-  "description": "",
-  "keywords": [],
-  "created_at": "2026-10-12T12:23:31.020Z",
-  "updated_at": "2026-10-12T12:23:31.020Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": null,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "prefix": "portolan-mirrors/wb-fwi/",
@@ -18,26 +128,34 @@
       "is_primary": true
     }
   },
-  "object_count": 18,
+  "visibility": "public",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "featured": 0,
+  "disabled": false,
+  "created_at": "2026-10-12T12:23:31.020Z",
+  "account_id": "portolan-mirrors",
   "objects_updated_at": "2026-10-12T13:23:09+00:00",
   "total_bytes": 1218410,
+  "data_mode": null,
   "exts": {
     "md": 8,
     "json": 4,
     "png": 3,
     "tif": 3
   },
-  "ext_bytes": {
-    "tif": 711166,
-    "png": 464484,
-    "json": 21777,
-    "md": 20983
-  },
-  "store_format": null,
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "cataloged_at": "2026-10-19T09:39:19+00:00"
+  "updated_at": "2026-10-12T12:23:31.020Z",
+  "readme": "## README.md\n# World Bank global wildfire hazard\n\n<!-- vale Google.Exclamation = NO -->\n\nA Portolan mirror of the World Bank's\n[global wildfire hazard](https://datacatalog.worldbank.org/search/dataset/0066912/global-wildfire-hazard)\ndataset, published as cloud-optimized GeoTIFFs.\n\n## What is here\n\nThe catalog has one collection per return period. Each collection stores the yearly maximum Fire Weather\nIndex (FWI) expected once in that period, on a global 0.5\u00b0 grid.\n[CSIRO](https://www.csiro.au/) computed the grids for the\n[ThinkHazard!](https://thinkhazard.org/) wildfire layer, from daily FWI in\nNASA's [Global Fire Weather Database](https://data.giss.nasa.gov/impacts/gfwed/)\nfor 1981 to 2016.\n\n- [FWI, 2-year return period](fwi-rp2/README.md)\n- [FWI, 10-year return period](fwi-rp10/README.md)\n- [FWI, 30-year return period](fwi-rp30/README.md)\n\n## License\n\n[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), as the World Bank\nData Catalog lists it. Attribute the World Bank and CSIRO when you reuse the\ndata.\n\n## Provenance\n\nThis catalog is a mirror, not the official publication. The World Bank\npublishes the original GeoTIFFs and the technical basis PDF. The World Bank\nlists the dataset as \"No further updates planned\". The mirror converts each\nGeoTIFF to a COG with embedded statistics and leaves every pixel value\nunchanged. The build is in\n[nlebovits/wb-fwi](https://github.com/nlebovits/wb-fwi). It pins each source\nfile by SHA-256, so a changed upstream file stops the build.\n\n## Access\n\nRead the 2-year return level at one point with\n[rasterio](https://rasterio.readthedocs.io/):\n\n```python\nimport rasterio\n\nURL = (\"https://data.source.coop/portolan-mirrors/wb-fwi\"\n       \"/fwi-rp2/csiro_wf_max_fwi_rp2.tif\")\nwith rasterio.open(URL) as src:\n    print(next(src.sample([(150.3, -33.7)]))[0])\n```\n\nRead the [agent guide](AGENTS.md) before you query. It lists the quirks that\nproduce wrong answers. One example: 0 marks masked oceans and deserts as well\nas cells with no fire weather.\n",
+  "_review": [
+    "providers: role [licensor] for 'World Bank' is an AI guess \u2014 The README says the World Bank publishes the original GeoTIFFs and lists the license, so I assumed it is the licensor.. Verify before flipping to _state: reviewed.",
+    "providers: role [producer] for 'NASA Goddard Institute for Space Studies' is an AI guess \u2014 The README names NASA's Global Fire Weather Database as the source of the daily FWI input. I assumed NASA produced that database.. Verify before flipping to _state: reviewed.",
+    "providers: role [processor] for 'Portolan' is an AI guess \u2014 The README says the Portolan mirror converts the GeoTIFFs to COGs, so I assumed it is the processor.. Verify before flipping to _state: reviewed.",
+    "extent.temporal: None (probe sample) widened to ['1981-01-01T00:00:00Z', '2016-01-01T00:00:00Z'] using README-stated coverage ['1981', '2016']."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-10-24T08:52:57+00:00",
+  "_source_format": "stac",
+  "store_format": null
 }
