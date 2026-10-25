@@ -7,7 +7,7 @@
   ],
   "id": "fiboa/es-pm",
   "title": "Spain Balearic Islands Crop fields",
-  "description": "Official agricultural field boundaries for Spain's Balearic Islands, derived from the SIGPAC (Geographic Information System of the Common Agricultural Policy) dataset published by the Govern de les Illes Balears. Contains 1,256 field parcels with crop classification, administrative codes, and geometry, converted to fiboa GeoParquet format at EPSG:4326.",
+  "description": "Official agricultural field boundaries for Spain's Balearic Islands, derived from the SIGPAC dataset published by the Govern de les Illes Balears. Contains 1,256 field parcels with crop classification, administrative codes, and geometry, converted to fiboa GeoParquet at EPSG:4326. The dataset has moved to the Harmonized Field Boundary Data catalog.",
   "license": "CC-BY-4.0",
   "keywords": [
     "field-boundaries",
@@ -15,8 +15,9 @@
     "crop-classification",
     "lpis",
     "land-parcels",
-    "balearic-islands",
-    "sigpac"
+    "fiboa",
+    "geoparquet",
+    "administrative-boundaries"
   ],
   "providers": [
     {
@@ -59,18 +60,18 @@
     "spatial": {
       "bbox": [
         [
-          1.2142638768656953,
-          38.64095127661525,
-          4.326674124179003,
-          40.09333162675111
+          1.2133388,
+          38.6409513,
+          4.3266741,
+          40.0933316
         ]
       ]
     },
     "temporal": {
       "interval": [
         [
-          "2024-01-01T00:00:00Z",
-          "2024-01-01T00:00:00Z"
+          null,
+          null
         ]
       ]
     }
@@ -79,67 +80,148 @@
     "item_count": 1451074
   },
   "assets": {
-    "data": {
-      "href": "https://data.source.coop/fiboa/es_pm/es_pm.parquet",
-      "title": "Field Boundaries",
-      "type": "application/vnd.apache.parquet",
+    "pm": {
+      "href": "https://data.source.coop/fiboa/es-pm/es_pm.parquet",
+      "type": "application/x-parquet",
+      "title": "es_pm.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:row_count": 394623
+    },
+    "2022": {
+      "href": "https://data.source.coop/fiboa/es-pm/es_pm_2022.parquet",
+      "type": "application/x-parquet",
+      "title": "es_pm_2022.parquet",
       "roles": [
         "data"
       ],
       "table:columns": [
         {
-          "name": "id",
-          "type": "string"
-        },
-        {
           "name": "geometry",
-          "type": "binary"
+          "type": "GEOMETRY('EPSG:4326')",
+          "description": "[geometry] Field parcel polygon geometry in EPSG:4326"
         },
         {
           "name": "admin_province_code",
-          "type": "string"
+          "type": "VARCHAR",
+          "description": "[admin_code] Administrative province code"
         },
         {
           "name": "admin_municipality_code",
-          "type": "string"
+          "type": "VARCHAR",
+          "description": "[admin_code] Administrative municipality code"
         },
         {
           "name": "area",
-          "type": "float"
+          "type": "FLOAT"
         },
         {
           "name": "crop:code",
-          "type": "string"
+          "type": "VARCHAR"
         },
         {
           "name": "crop:name",
-          "type": "string"
+          "type": "VARCHAR"
         },
         {
           "name": "crop:name_en",
-          "type": "string"
+          "type": "VARCHAR"
         },
         {
           "name": "determination_datetime",
-          "type": "timestamp[ms, tz=UTC]"
+          "type": "TIMESTAMP WITH TIME ZONE"
         },
         {
           "name": "admin:country_code",
-          "type": "string"
+          "type": "VARCHAR",
+          "description": "[admin_code] Country code"
         },
         {
           "name": "crop:code_list",
-          "type": "string"
+          "type": "VARCHAR"
         },
         {
           "name": "admin:subdivision_code",
-          "type": "string"
+          "type": "VARCHAR",
+          "description": "[admin_code] ISO 3166-2 subdivision code"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
         }
       ],
-      "table:primary_geometry": "geometry",
-      "table:row_count": 394623
+      "table:row_count": 593293
+    },
+    "2023": {
+      "href": "https://data.source.coop/fiboa/es-pm/es_pm_2023.parquet",
+      "type": "application/x-parquet",
+      "title": "es_pm_2023.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:row_count": 463158
     }
   },
+  "table:columns": [
+    {
+      "name": "id",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "geometry",
+      "type": "GEOMETRY('EPSG:4326')",
+      "description": "[geometry] Field parcel polygon geometry in EPSG:4326"
+    },
+    {
+      "name": "admin_province_code",
+      "type": "VARCHAR",
+      "description": "[admin_code] Administrative province code"
+    },
+    {
+      "name": "admin_municipality_code",
+      "type": "VARCHAR",
+      "description": "[admin_code] Administrative municipality code"
+    },
+    {
+      "name": "area",
+      "type": "FLOAT"
+    },
+    {
+      "name": "crop:code",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "crop:name",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "crop:name_en",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "determination_datetime",
+      "type": "TIMESTAMP WITH TIME ZONE"
+    },
+    {
+      "name": "admin:country_code",
+      "type": "VARCHAR",
+      "description": "[admin_code] Country code"
+    },
+    {
+      "name": "crop:code_list",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "admin:subdivision_code",
+      "type": "VARCHAR",
+      "description": "[admin_code] ISO 3166-2 subdivision code"
+    },
+    {
+      "name": "bbox",
+      "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+    }
+  ],
   "links": [
     {
       "rel": "self",
@@ -150,22 +232,14 @@
       "rel": "via",
       "href": "https://source.coop/fiboa/es-pm",
       "title": "Source Cooperative product page"
-    },
-    {
-      "href": "https://data.source.coop/fiboa/es-pm/es_pm.pmtiles",
-      "type": "application/vnd.pmtiles",
-      "rel": "pmtiles"
     }
   ],
-  "account_id": "fiboa",
-  "updated_at": "2025-08-21T16:39:55.568Z",
-  "exts": {
-    "parquet": 3,
-    "pmtiles": 1,
-    "json": 1,
-    "txt": 1,
-    "md": 1
-  },
+  "total_bytes": 611980088,
+  "visibility": "public",
+  "objects_updated_at": "2026-10-13T12:02:36+00:00",
+  "disabled": false,
+  "object_count": 7,
+  "created_at": "2024-12-26T00:05:02.443Z",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -178,27 +252,31 @@
       "prefix": "fiboa/es-pm/"
     }
   },
-  "product_id": "es-pm",
-  "visibility": "public",
-  "data_mode": "open",
   "featured": 0,
-  "total_bytes": 611979788,
-  "disabled": false,
-  "created_at": "2024-12-26T00:05:02.443Z",
+  "data_mode": "open",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "object_count": 7,
-  "readme": "## README.md\n# Field boundaries for Spain Balearic Islands\n\nProvides 1256 official field boundaries from Spain Balearic Islands.\nIt has been converted to a fiboa GeoParquet file from data obtained from Govern de les Illes Balears.\n\n- **Source Data Provider:** [Govern de les Illes Balears](https://www.caib.es/webgoib/)\n- **Converted by:** Ivor Bosloper\n- **License:** CC-BY-4.0 ( http://www.opendefinition.org/licenses/cc-by )\n- **Projection:** EPSG:4326\n\n---\n\n- [Download the data as fiboa GeoParquet](https://data.source.coop/fiboa/es-pm/es_pm.parquet)\n- [STAC Browser](https://radiantearth.github.io/stac-browser/#/external/data.source.coop/fiboa/es-pm/stac/collection.json)\n- [STAC Collection](https://data.source.coop/fiboa/es-pm/stac/collection.json)\n- [PMTiles](https://data.source.coop/fiboa/es-pm/es_pm.pmtiles)\n\n## Columns\n\n| Property                | **Data Type** | Description |\n|-------------------------|---------------|-------------|\n| id                      | string        |             |\n| admin_province_code     | string        |             |\n| admin_municipality_code | string        |             |\n| area                    | float         |             |\n| crop:code               | string        |             |\n| crop:name               | string        |             |\n| crop:name_en            | string        |             |\n| determination_datetime  | timestamp     |             |\n| admin:country_code      | string        |             |\n| crop:code_list          | string        |             |\n| admin:subdivision_code  | string        |             |\n\n## Lineage\n\n- Data downloaded on 2024-12-26 from:\n  - https://ideib.caib.es/geoserveis/rest/services/public/GOIB_SIGPAC_IB/MapServer/0/query?where=OBJECTID+%3E+0&&outFields=*&returnGeometry=true&f=geojson\n- Converted to GeoParquet using [fiboa-cli](https://github.com/fiboa/cli), version 0.8.0\n",
-  "_state": "drafted",
-  "cataloged_at": "2026-05-27T01:28:36+00:00",
-  "_source_format": "stac",
+  "account_id": "fiboa",
+  "exts": {
+    "parquet": 3,
+    "txt": 1,
+    "md": 1,
+    "pmtiles": 1,
+    "json": 1
+  },
+  "product_id": "es-pm",
   "ext_bytes": {
     "parquet": 528215991,
     "pmtiles": 83759870,
+    "md": 2171,
     "json": 2047,
-    "md": 1871,
     "txt": 9
-  }
+  },
+  "updated_at": "2025-08-21T16:39:55.568Z",
+  "readme": "## README.md\n> **This dataset has moved.** It is now published, updated and extended as [Spain Balearic Islands Crop fields](https://source.coop/ftw/harmonized-field-data/es_ib) in the [Harmonized Field Boundary Data](https://source.coop/ftw/harmonized-field-data) catalog. The files here are no longer updated.\n\n# Field boundaries for Spain Balearic Islands\n\nProvides 1256 official field boundaries from Spain Balearic Islands.\nIt has been converted to a fiboa GeoParquet file from data obtained from Govern de les Illes Balears.\n\n- **Source Data Provider:** [Govern de les Illes Balears](https://www.caib.es/webgoib/)\n- **Converted by:** Ivor Bosloper\n- **License:** CC-BY-4.0 ( http://www.opendefinition.org/licenses/cc-by )\n- **Projection:** EPSG:4326\n\n---\n\n- [Download the data as fiboa GeoParquet](https://data.source.coop/fiboa/es-pm/es_pm.parquet)\n- [STAC Browser](https://radiantearth.github.io/stac-browser/#/external/data.source.coop/fiboa/es-pm/stac/collection.json)\n- [STAC Collection](https://data.source.coop/fiboa/es-pm/stac/collection.json)\n- [PMTiles](https://data.source.coop/fiboa/es-pm/es_pm.pmtiles)\n\n## Columns\n\n| Property                | **Data Type** | Description |\n|-------------------------|---------------|-------------|\n| id                      | string        |             |\n| admin_province_code     | string        |             |\n| admin_municipality_code | string        |             |\n| area                    | float         |             |\n| crop:code               | string        |             |\n| crop:name               | string        |             |\n| crop:name_en            | string        |             |\n| determination_datetime  | timestamp     |             |\n| admin:country_code      | string        |             |\n| crop:code_list          | string        |             |\n| admin:subdivision_code  | string        |             |\n\n## Lineage\n\n- Data downloaded on 2024-12-26 from:\n  - https://ideib.caib.es/geoserveis/rest/services/public/GOIB_SIGPAC_IB/MapServer/0/query?where=OBJECTID+%3E+0&&outFields=*&returnGeometry=true&f=geojson\n- Converted to GeoParquet using [fiboa-cli](https://github.com/fiboa/cli), version 0.8.0\n",
+  "_state": "drafted",
+  "cataloged_at": "2026-10-25T08:54:35+00:00",
+  "store_format": null
 }
