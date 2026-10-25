@@ -2,16 +2,22 @@
   "schema_version": 1,
   "type": "Collection",
   "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
   "id": "fiboa/be-vlg",
   "title": "Field boundaries for Flanders, Belgium (2021)",
-  "description": "Official field boundaries for approximately 588,000 agricultural parcels in Flanders, Belgium, including parcel specialization typology. Converted to fiboa GeoParquet format from data provided by the Department of Agriculture and Fisheries, with specialization categories including arable farming, horticulture, livestock, and mixed farms.",
+  "description": "Official field boundaries for approximately 588,000 agricultural parcels in Flanders, Belgium, converted to fiboa GeoParquet from data provided by the Agentschap Landbouw & Zeevisserij. Includes parcel crop codes and names and a specialization typology. The dataset has moved to the Harmonized Field Boundary Data catalog and is no longer updated here.",
   "license": "proprietary",
   "keywords": [
     "field-boundaries",
     "agriculture",
     "land-parcels",
-    "land-use",
-    "arable-land"
+    "fiboa",
+    "geoparquet",
+    "crop-classification",
+    "pmtiles",
+    "land-use"
   ],
   "providers": [
     {
@@ -54,10 +60,10 @@
     "spatial": {
       "bbox": [
         [
-          2.531029700947351,
-          50.6742114946426,
-          5.932736829503416,
-          51.49545715218195
+          2.5310279,
+          50.6742101,
+          5.9327384,
+          51.5057911
         ]
       ]
     },
@@ -74,47 +80,230 @@
     "item_count": 3980413
   },
   "assets": {
-    "data": {
-      "href": "https://data.source.coop/fiboa/be-vlg/be_vlg_2021.parquet",
-      "title": "Field Boundaries",
-      "type": "application/vnd.apache.parquet",
+    "vlg": {
+      "href": "https://data.source.coop/fiboa/be-vlg/be_vlg.parquet",
+      "type": "application/x-parquet",
+      "title": "be_vlg.parquet",
       "roles": [
         "data"
       ],
       "table:columns": [
         {
           "name": "geometry",
-          "type": "binary"
+          "type": "GEOMETRY('EPSG:31370')",
+          "description": "[geometry] Parcel polygon geometry in EPSG:31370 (Belgian Lambert 72)"
+        },
+        {
+          "name": "source",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "typology",
+          "type": "VARCHAR"
         },
         {
           "name": "area",
-          "type": "float"
+          "type": "FLOAT"
         },
         {
           "name": "id",
-          "type": "string"
+          "type": "VARCHAR"
         },
         {
           "name": "crop_code",
-          "type": "string"
+          "type": "VARCHAR"
         },
         {
           "name": "crop_name",
-          "type": "string"
+          "type": "VARCHAR"
+        },
+        {
+          "name": "determination_datetime",
+          "type": "TIMESTAMP WITH TIME ZONE"
+        }
+      ],
+      "table:row_count": 588193
+    },
+    "2018": {
+      "href": "https://data.source.coop/fiboa/be-vlg/be_vlg_2018.parquet",
+      "type": "application/x-parquet",
+      "title": "be_vlg_2018.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:row_count": 515747
+    },
+    "2019": {
+      "href": "https://data.source.coop/fiboa/be-vlg/be_vlg_2019.parquet",
+      "type": "application/x-parquet",
+      "title": "be_vlg_2019.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:row_count": 521395
+    },
+    "2021": {
+      "href": "https://data.source.coop/fiboa/be-vlg/be_vlg_2021.parquet",
+      "type": "application/x-parquet",
+      "title": "be_vlg_2021.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:row_count": 591904
+    },
+    "2022": {
+      "href": "https://data.source.coop/fiboa/be-vlg/be_vlg_2022.parquet",
+      "type": "application/x-parquet",
+      "title": "be_vlg_2022.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:row_count": 585083
+    },
+    "2023": {
+      "href": "https://data.source.coop/fiboa/be-vlg/be_vlg_2023.parquet",
+      "type": "application/x-parquet",
+      "title": "be_vlg_2023.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:31370')",
+          "description": "[geometry] Parcel polygon geometry in EPSG:31370"
+        },
+        {
+          "name": "source",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "typology",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "area",
+          "type": "FLOAT"
+        },
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "crop_code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "crop_name",
+          "type": "VARCHAR"
         },
         {
           "name": "admin:country_code",
-          "type": "string"
+          "type": "VARCHAR",
+          "description": "[admin_code] ISO country code of the parcel"
         },
         {
           "name": "admin:subdivision_code",
-          "type": "string"
+          "type": "VARCHAR",
+          "description": "[admin_code] ISO 3166-2 subdivision code of the parcel"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
         }
       ],
-      "table:primary_geometry": "geometry",
-      "table:row_count": 591904
+      "table:row_count": 588193
+    },
+    "2024": {
+      "href": "https://data.source.coop/fiboa/be-vlg/be_vlg_2024.parquet",
+      "type": "application/x-parquet",
+      "title": "be_vlg_2024.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:31370')",
+          "description": "[geometry] Parcel polygon geometry in EPSG:31370"
+        },
+        {
+          "name": "source",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "typology",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "area",
+          "type": "FLOAT"
+        },
+        {
+          "name": "id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "crop_code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "crop_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "admin:country_code",
+          "type": "VARCHAR",
+          "description": "[admin_code] ISO country code of the parcel"
+        },
+        {
+          "name": "admin:subdivision_code",
+          "type": "VARCHAR",
+          "description": "[admin_code] ISO 3166-2 subdivision code of the parcel"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        }
+      ],
+      "table:row_count": 589898
     }
   },
+  "table:columns": [
+    {
+      "name": "geometry",
+      "type": "GEOMETRY('EPSG:31370')",
+      "description": "[geometry] Parcel polygon geometry in EPSG:31370"
+    },
+    {
+      "name": "area",
+      "type": "FLOAT"
+    },
+    {
+      "name": "id",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "crop_code",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "crop_name",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "admin:country_code",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "admin:subdivision_code",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "bbox",
+      "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+    }
+  ],
   "links": [
     {
       "rel": "self",
@@ -125,17 +314,21 @@
       "rel": "via",
       "href": "https://source.coop/fiboa/be-vlg",
       "title": "Source Cooperative product page"
-    },
-    {
-      "title": "Licentie modellicentie-gratis-hergebruik/v1.0",
-      "href": "https://data.vlaanderen.be/id/licentie/modellicentie-gratis-hergebruik/v1.0",
-      "type": "text/html",
-      "rel": "license"
     }
   ],
-  "product_id": "be-vlg",
-  "total_bytes": 719207262,
+  "ext_bytes": {
+    "parquet": 654716077,
+    "pmtiles": 64484207,
+    "json": 5767,
+    "md": 1516
+  },
+  "created_at": "2024-08-13T16:54:22.660485+00:00",
+  "object_count": 11,
+  "objects_updated_at": "2026-10-13T12:01:38+00:00",
+  "disabled": false,
   "featured": 0,
+  "product_id": "be-vlg",
+  "updated_at": "2025-08-21T16:39:55.568Z",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -148,30 +341,22 @@
       "prefix": "fiboa/be-vlg/"
     }
   },
-  "object_count": 11,
+  "visibility": "public",
   "exts": {
     "parquet": 7,
-    "pmtiles": 1,
     "json": 2,
-    "md": 1
+    "md": 1,
+    "pmtiles": 1
   },
+  "data_mode": "open",
   "account_id": "fiboa",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "visibility": "public",
-  "data_mode": "open",
-  "disabled": false,
-  "created_at": "2024-08-13T16:54:22.660485+00:00",
-  "updated_at": "2025-08-21T16:39:55.568Z",
-  "readme": "## README.md\n# Field boundaries for Flanders, Belgium\n\nProvides ca. 588.000 official field boundaries from Flanders in Belgium.\nIt has been converted to a fiboa GeoParquet file from a file that was provided by the Agentschap Landbouw & Zeevisserij.\n\n- **Source Data Provider:** [Agentschap Landbouw & Zeevisserij](https://landbouwcijfers.vlaanderen.be/open-geodata-landbouwgebruikspercelen)\n- **Converted by:** [Matthias Mohr](https://mohr.ws)\n- **License:** [Licentie modellicentie-gratis-hergebruik/v1.0](https://data.vlaanderen.be/id/licentie/modellicentie-gratis-hergebruik/v1.0)\n\n---\n\n- **[Download the data as fiboa GeoParquet](https://data.source.coop/fiboa/be-vlg/be_vlg.parquet)**\n- [STAC Browser](https://radiantearth.github.io/stac-browser/#/external/data.source.coop/fiboa/be-vlg/stac/collection.json)\n- [STAC Collection](https://data.source.coop/fiboa/be-vlg/stac/collection.json)\n- [PMTiles](https://data.source.coop/fiboa/be-vlg/be_vlg.pmtiles)\n\n## Lineage\n\n- Data downloaded on 2024-08-13 from https://www.landbouwvlaanderen.be/bestanden/gis/Landbouwgebruikspercelen_2023_-_Definitief_(extractie_28-03-2024)_GPKG.zip.\n- Converted to GeoParquet using [fiboa-cli](https://github.com/fiboa/cli), version 0.6.0.\n",
+  "total_bytes": 719207567,
+  "readme": "## README.md\n> **This dataset has moved.** It is now published, updated and extended as [Field boundaries for Flanders, Belgium](https://source.coop/ftw/harmonized-field-data/be_vlg) in the [Harmonized Field Boundary Data](https://source.coop/ftw/harmonized-field-data) catalog. The files here are no longer updated.\n\n# Field boundaries for Flanders, Belgium\n\nProvides ca. 588.000 official field boundaries from Flanders in Belgium.\nIt has been converted to a fiboa GeoParquet file from a file that was provided by the Agentschap Landbouw & Zeevisserij.\n\n- **Source Data Provider:** [Agentschap Landbouw & Zeevisserij](https://landbouwcijfers.vlaanderen.be/open-geodata-landbouwgebruikspercelen)\n- **Converted by:** [Matthias Mohr](https://mohr.ws)\n- **License:** [Licentie modellicentie-gratis-hergebruik/v1.0](https://data.vlaanderen.be/id/licentie/modellicentie-gratis-hergebruik/v1.0)\n\n---\n\n- **[Download the data as fiboa GeoParquet](https://data.source.coop/fiboa/be-vlg/be_vlg.parquet)**\n- [STAC Browser](https://radiantearth.github.io/stac-browser/#/external/data.source.coop/fiboa/be-vlg/stac/collection.json)\n- [STAC Collection](https://data.source.coop/fiboa/be-vlg/stac/collection.json)\n- [PMTiles](https://data.source.coop/fiboa/be-vlg/be_vlg.pmtiles)\n\n## Lineage\n\n- Data downloaded on 2024-08-13 from https://www.landbouwvlaanderen.be/bestanden/gis/Landbouwgebruikspercelen_2023_-_Definitief_(extractie_28-03-2024)_GPKG.zip.\n- Converted to GeoParquet using [fiboa-cli](https://github.com/fiboa/cli), version 0.6.0.\n",
   "_state": "drafted",
-  "cataloged_at": "2026-04-24T02:11:31+00:00",
-  "ext_bytes": {
-    "parquet": 654716077,
-    "pmtiles": 64484207,
-    "json": 5767,
-    "md": 1211
-  }
+  "cataloged_at": "2026-10-25T08:53:17+00:00",
+  "store_format": null
 }
