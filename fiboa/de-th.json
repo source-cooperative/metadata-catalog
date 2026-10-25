@@ -7,7 +7,7 @@
   ],
   "id": "fiboa/de-th",
   "title": "Field boundaries for Thuringia, Germany",
-  "description": "Approximately 100,000 official agricultural field boundaries for the German federal state of Thuringia (TH), sourced from state authorities and published as fiboa-compliant GeoParquet. Each boundary includes FLIK parcel identifiers, area measurements, and administrative attributes.",
+  "description": "Approximately 100,000 official agricultural field boundaries for the German federal state of Thuringia, converted to fiboa GeoParquet from state-provided data. Each boundary carries FLIK parcel identifiers, area measurements and administrative attributes. The dataset has moved to the Harmonized Field Boundary Data catalog and is no longer updated here.",
   "license": "proprietary",
   "keywords": [
     "field-boundaries",
@@ -16,7 +16,9 @@
     "lpis",
     "arable-land",
     "land-use",
-    "fiboa"
+    "fiboa",
+    "geoparquet",
+    "pmtiles"
   ],
   "providers": [
     {
@@ -59,18 +61,18 @@
     "spatial": {
       "bbox": [
         [
-          9.870286176309087,
-          50.16579691789659,
-          12.70812350749261,
-          51.65252530677689
+          9.8702862,
+          50.1657969,
+          12.7081235,
+          51.6525253
         ]
       ]
     },
     "temporal": {
       "interval": [
         [
-          "2007-02-16T00:00:00Z",
-          "2024-08-02T00:00:00Z"
+          "2024-01-01T00:00:00Z",
+          "2024-12-31T23:59:59Z"
         ]
       ]
     }
@@ -79,68 +81,68 @@
     "item_count": 101216
   },
   "assets": {
-    "data": {
+    "de-th": {
       "href": "https://data.source.coop/fiboa/de-th/de-th.parquet",
-      "title": "Field Boundaries",
-      "type": "application/vnd.apache.parquet",
+      "type": "application/x-parquet",
+      "title": "de-th.parquet",
       "roles": [
         "data"
       ],
       "table:columns": [
         {
           "name": "geometry",
-          "type": "binary"
+          "type": "GEOMETRY('EPSG:25832')",
+          "description": "[geometry] Field boundary polygons in EPSG:25832"
         },
         {
           "name": "valid_year",
-          "type": "int16"
+          "type": "SMALLINT"
         },
         {
           "name": "flik",
-          "type": "string"
+          "type": "VARCHAR"
         },
         {
           "name": "id",
-          "type": "string"
+          "type": "VARCHAR"
         },
         {
           "name": "area",
-          "type": "float"
+          "type": "FLOAT"
         },
         {
           "name": "flik_last_year",
-          "type": "list<item: string>"
+          "type": "VARCHAR[]"
         },
         {
           "name": "area_last_year",
-          "type": "float"
+          "type": "FLOAT"
         },
         {
           "name": "tk10",
-          "type": "string"
+          "type": "VARCHAR"
         },
         {
           "name": "afo",
-          "type": "bool"
+          "type": "BOOLEAN"
         },
         {
           "name": "bnk",
-          "type": "string"
+          "type": "VARCHAR"
         },
         {
           "name": "kond_le",
-          "type": "bool"
+          "type": "BOOLEAN"
         },
         {
           "name": "change",
-          "type": "bool"
+          "type": "BOOLEAN"
         },
         {
           "name": "determination_datetime",
-          "type": "timestamp[ms, tz=UTC]"
+          "type": "TIMESTAMP WITH TIME ZONE"
         }
       ],
-      "table:primary_geometry": "geometry",
       "table:row_count": 101216
     }
   },
@@ -154,24 +156,8 @@
       "rel": "via",
       "href": "https://source.coop/fiboa/de-th",
       "title": "Source Cooperative product page"
-    },
-    {
-      "href": "https://www.govdata.de/dl-de/by-2-0",
-      "title": "Data licence Germany - attribution - Version 2.0",
-      "type": "text/html",
-      "rel": "license"
-    },
-    {
-      "href": "https://data.source.coop/fiboa/de-th/de-th.pmtiles",
-      "type": "application/vnd.pmtiles",
-      "rel": "pmtiles"
     }
   ],
-  "updated_at": "2025-08-21T16:39:55.568Z",
-  "product_id": "de-th",
-  "object_count": 6,
-  "total_bytes": 179677252,
-  "disabled": false,
   "featured": 0,
   "mirrors": {
     "aws-opendata-us-west-2": {
@@ -185,30 +171,36 @@
       "prefix": "fiboa/de-th/"
     }
   },
-  "created_at": "2024-08-13T15:28:43.571209+00:00",
-  "visibility": "public",
-  "account_id": "fiboa",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "exts": {
-    "md": 1,
-    "txt": 2,
-    "parquet": 1,
-    "json": 1,
-    "pmtiles": 1
-  },
-  "data_mode": "open",
-  "readme": "## README.md\n# Field boundaries for Thuringia (TH), Germany\n\nProvides ca. 100.000 official field boundaries from the federal state of Thuringia (TH) in Germany.\nIt has been converted to a fiboa GeoParquet file from a file that was provided by the state.\n\n- **Source Data Provider:** [Th\u00fcringer Landesamt f\u00fcr Landwirtschaft und L\u00e4ndlichen Raum](https://geomis.geoportal-th.de/geonetwork/srv/ger/catalog.search#/metadata/D872F2D6-60BC-11D6-B67D-00E0290F5BA0)\n- **Converted by:** [Matthias Mohr](https://mohr.ws)\n- **License:** [Germany - attribution - Version 2.0](https://www.govdata.de/dl-de/by-2-0)\n\n---\n\n- **[Download the data as fiboa GeoParquet](https://data.source.coop/fiboa/de-th/de-th.parquet)**\n- [STAC Browser](https://radiantearth.github.io/stac-browser/#/external/data.source.coop/fiboa/de-th/stac/collection.json)\n- [STAC Collection](https://data.source.coop/fiboa/de-th/stac/collection.json)\n- [PMTiles](https://data.source.coop/fiboa/de-th/de-th.pmtiles)\n\n## Lineage\n\n- Data downloaded on 2024-08-13 from https://www.geoproxy.geoportal-th.de/download-service/opendata/agrar/DGK_Thue.zip.\n- Converted to GeoParquet using [fiboa-cli](https://github.com/fiboa/cli), version 0.6.0.\n",
-  "_state": "drafted",
-  "cataloged_at": "2026-05-27T01:21:25+00:00",
-  "_source_format": "stac",
+  "total_bytes": 179677553,
   "ext_bytes": {
     "parquet": 141690324,
     "pmtiles": 37978245,
     "json": 5017,
     "txt": 2483,
-    "md": 1183
-  }
+    "md": 1484
+  },
+  "objects_updated_at": "2026-10-13T12:02:08+00:00",
+  "account_id": "fiboa",
+  "visibility": "public",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "created_at": "2024-08-13T15:28:43.571209+00:00",
+  "product_id": "de-th",
+  "disabled": false,
+  "exts": {
+    "txt": 2,
+    "pmtiles": 1,
+    "parquet": 1,
+    "md": 1,
+    "json": 1
+  },
+  "updated_at": "2025-08-21T16:39:55.568Z",
+  "data_mode": "open",
+  "object_count": 6,
+  "readme": "## README.md\n> **This dataset has moved.** It is now published, updated and extended as [Field blocks for Thuringia, Germany](https://source.coop/ftw/harmonized-field-data/de_th) in the [Harmonized Field Boundary Data](https://source.coop/ftw/harmonized-field-data) catalog. The files here are no longer updated.\n\n# Field boundaries for Thuringia (TH), Germany\n\nProvides ca. 100.000 official field boundaries from the federal state of Thuringia (TH) in Germany.\nIt has been converted to a fiboa GeoParquet file from a file that was provided by the state.\n\n- **Source Data Provider:** [Th\u00fcringer Landesamt f\u00fcr Landwirtschaft und L\u00e4ndlichen Raum](https://geomis.geoportal-th.de/geonetwork/srv/ger/catalog.search#/metadata/D872F2D6-60BC-11D6-B67D-00E0290F5BA0)\n- **Converted by:** [Matthias Mohr](https://mohr.ws)\n- **License:** [Germany - attribution - Version 2.0](https://www.govdata.de/dl-de/by-2-0)\n\n---\n\n- **[Download the data as fiboa GeoParquet](https://data.source.coop/fiboa/de-th/de-th.parquet)**\n- [STAC Browser](https://radiantearth.github.io/stac-browser/#/external/data.source.coop/fiboa/de-th/stac/collection.json)\n- [STAC Collection](https://data.source.coop/fiboa/de-th/stac/collection.json)\n- [PMTiles](https://data.source.coop/fiboa/de-th/de-th.pmtiles)\n\n## Lineage\n\n- Data downloaded on 2024-08-13 from https://www.geoproxy.geoportal-th.de/download-service/opendata/agrar/DGK_Thue.zip.\n- Converted to GeoParquet using [fiboa-cli](https://github.com/fiboa/cli), version 0.6.0.\n",
+  "_state": "drafted",
+  "cataloged_at": "2026-10-25T08:53:47+00:00",
+  "store_format": null
 }
