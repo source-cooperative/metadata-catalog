@@ -1,16 +1,85 @@
 {
   "schema_version": 1,
-  "account_id": "earthgenome",
-  "product_id": "earthindeximagery-v7",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "earthgenome/earthindeximagery-v7",
   "title": "Earth Index Imagery V7",
-  "description": "",
-  "keywords": [],
-  "created_at": "2026-10-19T19:16:14.676Z",
-  "updated_at": "2026-10-20T15:21:53.591Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": null,
+  "description": "A global, cloud-free yearly mosaic of Sentinel-2 L2A imagery covering 16 August 2025 to 16 August 2026, produced by Earth Genome for Earth Index. It spans 17,849 MGRS tiles between roughly 60.5\u00b0S and 70.3\u00b0N, with all Sentinel-2 bands (except B10) at native resolution, plus a true-colour image and a per-pixel source-scene map, stored as cloud-optimized GeoTIFFs.",
+  "license": "CC-BY-4.0",
+  "keywords": [
+    "satellite-imagery",
+    "sentinel-2",
+    "remote-sensing",
+    "earth-observation",
+    "cloud-optimized-geotiff",
+    "global-coverage",
+    "land-cover"
+  ],
+  "providers": [
+    {
+      "name": "Earth Genome",
+      "roles": [
+        "producer",
+        "licensor",
+        "processor"
+      ]
+    },
+    {
+      "name": "European Space Agency (Copernicus Sentinel-2)",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/earthgenome/earthindeximagery-v7"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -178.254855,
+          -44.3414673,
+          179.581589,
+          67.6155271
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2025-08-16T00:00:00Z",
+          "2026-08-16T00:00:00Z"
+        ]
+      ]
+    }
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/earthgenome/earthindeximagery-v7/",
+      "type": "image/tiff; application=geotiff",
+      "title": "Dataset files (249886 x .tif)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/earthgenome/earthindeximagery-v7/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/earthgenome/earthindeximagery-v7",
+      "title": "Source Cooperative product page"
+    }
+  ],
   "mirrors": {
     "aws-opendata-us-west-2": {
       "connection_id": "aws-opendata-us-west-2",
@@ -18,24 +87,38 @@
       "prefix": "earthgenome/earthindeximagery-v7/"
     }
   },
-  "object_count": 267736,
-  "objects_updated_at": "2026-10-20T15:03:19+00:00",
-  "total_bytes": 32841712791505,
-  "exts": {
-    "tif": 249886,
-    "json": 17849,
-    "md": 1
-  },
   "ext_bytes": {
     "tif": 32841458864619,
     "json": 253921905,
     "md": 4981
   },
-  "store_format": null,
-  "_state": "seed",
+  "updated_at": "2026-10-20T15:21:53.591Z",
+  "object_count": 267736,
+  "account_id": "earthgenome",
+  "data_mode": null,
+  "total_bytes": 32841712791505,
+  "objects_updated_at": "2026-10-20T15:03:19+00:00",
+  "disabled": false,
+  "exts": {
+    "tif": 249886,
+    "json": 17849,
+    "md": 1
+  },
+  "created_at": "2026-10-19T19:16:14.676Z",
+  "product_id": "earthindeximagery-v7",
+  "featured": 0,
+  "visibility": "public",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "cataloged_at": "2026-10-26T09:43:25+00:00"
+  "readme": "## README.md\n![EarthGenome](https://data.source.coop/earthgenome/earthindexembeddings/logo.png)\n# Earth Index Imagery V7\n\n[![CC-BY-4.0 license](https://img.shields.io/badge/License-CC--BY--4.0-blue.svg)](https://creativecommons.org/licenses/by/4.0/)\n[![Sensor](https://img.shields.io/badge/Sensor%F0%9F%9B%B0%EF%B8%8F-Sentinel2-blue)](https://www.esa.int/Applications/Observing_the_Earth/Copernicus/Sentinel-2)\n[![Format](https://img.shields.io/badge/Format-COG%20%E2%9A%99%EF%B8%8F-purple)](https://www.cogeo.org/)\n\nA global, cloud-free yearly mosaic of Sentinel-2 L2A imagery for **16 August 2025 to 16 August 2026**, produced by [Earth Genome](https://earthgenome.org) for [Earth Index](https://earthindex.ai). It covers 17,849 MGRS tiles between roughly 60.5\u00b0S and 70.3\u00b0N. All bands except B10 (not present in L2A) are available at their original native resolution.\n\nThis is the V7 generation and supersedes [`earthindeximagery`](https://source.coop/earthgenome/earthindeximagery). The [V7 embeddings](https://source.coop/earthgenome/earthindex-embeddings-v7) were computed from this imagery.\n\nThis data is licensed under the [Creative Commons Attribution 4.0](https://creativecommons.org/licenses/by/4.0/) international license, which, in summary, only requires attribution. It is derived from Copernicus Sentinel-2 data.\n\n## Resources\n- [Earth Index](https://earthindex.ai): explore and search this imagery in the browser\n- [Earth Genome](https://earthgenome.org)\n- **STAC API:** <https://stac.earthgenome.org>, collection [`sentinel2-yearly-mosaics-v7`](https://stac.earthgenome.org/collections/sentinel2-yearly-mosaics-v7). Search by place, MGRS tile or date.\n- [STAC Browser](https://browser.stac.earthgenome.org/collections/sentinel2-yearly-mosaics-v7), a human-friendly interface to the same catalog\n- Embeddings computed from this imagery: [`earthindex-embeddings-v7`](https://source.coop/earthgenome/earthindex-embeddings-v7)\n\n> The `href` of each STAC asset points to Earth Genome's own S3 bucket (`s3://ei-imagery-sentinel2-prd/v7_global_2025-08-16_2026-08-16/\u2026`). The identical files are in this repository under the same relative path.\n\n## How it is made\nEach tile is built with the [`s2mosaic`](https://github.com/DPIRD-DMA/S2Mosaic) library from [Sentinel-2 L2A Collection 1](https://element84.com/earth-search/) scenes (Earth Search STAC):\n- Cloud masking with OmniCloudMask (`OCM`).\n- A **medoid** composite, so each pixel is a real observation and spectral relationships between bands are preserved (not a per-band median).\n- Seasonal-first scene selection with vegetation weighting (`veg_weight` 0.25). Geographic overlays adjust the selection for snow, rainforest and corn-belt regions. Up to 25 scenes are used per tile.\n\nThe exact parameters, the scenes that contributed, and the coverage are recorded on every STAC item (`composite:*` properties) and in each tile's `scene_metadata.json`.\n\n## Naming\nEach tile is a directory named by MGRS tile, then start and end date: `31TDF_2025-08-16_2026-08-16/` holds the bands for the Barcelona tile (31TDF). The directory name equals the STAC item id.\n\n## Files in each tile directory (15)\n| File | Description |\n|---|---|\n| `B01.tif`, `B02.tif`, `B03.tif`, `B04.tif`, `B05.tif`, `B06.tif`, `B07.tif`, `B08.tif`, `B8A.tif`, `B09.tif`, `B11.tif`, `B12.tif` | Sentinel-2 reflectance bands, UInt16, no-data 0 |\n| `TCI.tif` | True-colour 8-bit RGB image |\n| `PIXEL_MAP.tif` | Raster giving, per pixel, the index of the source scene used |\n| `scene_metadata.json` | Decodes `PIXEL_MAP.tif`: scene id, date, cloud cover and STAC link of each source scene |\n\nAll rasters are cloud-optimized GeoTIFFs (512 \u00d7 512 blocks), on the **native 10 m grid** of the tile (10,980 \u00d7 10,980 px, one UTM zone per tile, e.g. EPSG:32631 for 31TDF). Lower-resolution bands (20 m, 60 m) are resampled to 10 m, so every band in a tile shares the same grid. The CRS of each tile is in its STAC item as `proj:code`.\n\n> Unlike the original `earthindeximagery`, V7 is **not** reprojected to Web Mercator.\n\n## STAC properties worth knowing\n- `composite:scene_ids`, `composite:scene_dates`, `generated_from`: the Sentinel-2 L2A scenes used\n- `composite:scene_count`, `composite:valid_pixels`, `composite:coverage_pct`: how much of the tile has data\n- `composite:cloud_mask`, `composite:library`, `composite:veg_weight`, `composite:snow_weight`: how it was built\n- `processing:software`, `processing:git_commit`: the code that produced the tile\n\n## Example\n```python\nimport rasterio\n\nurl = \"https://data.source.coop/earthgenome/earthindeximagery-v7/31TDF_2025-08-16_2026-08-16/TCI.tif\"\nwith rasterio.open(url) as src:\n    print(src.crs, src.shape)\n    window = rasterio.windows.Window(0, 0, 1024, 1024)\n    rgb = src.read(window=window)\n```\nThe same objects are readable over S3: `s3://us-west-2.opendata.source.coop/earthgenome/earthindeximagery-v7/`.\n\n## Contact\nUsing this? Want to work together? Ping us at info@earthgenome.org or info@earthindex.ai\n",
+  "_review": [
+    "providers: role [producer, licensor, processor] for 'Earth Genome' is an AI guess \u2014 Stated as producer; licensor and processor roles inferred from Earth Genome producing the mosaic and publishing it under CC-BY-4.0.. Verify before flipping to _state: reviewed.",
+    "providers: role [producer] for 'European Space Agency (Copernicus Sentinel-2)' is an AI guess \u2014 README says the data is derived from Copernicus Sentinel-2 data; the producer role for the source imagery is inferred.. Verify before flipping to _state: reviewed.",
+    "extent.temporal: None (probe sample) widened to ['2025-08-16T00:00:00Z', '2026-08-16T00:00:00Z'] using README-stated coverage ['2025-08-16', '2026-08-16']."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-10-26T10:05:06+00:00",
+  "store_format": null
 }
