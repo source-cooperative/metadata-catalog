@@ -1,15 +1,107 @@
 {
   "schema_version": 1,
-  "account_id": "cboettig",
-  "product_id": "cdfw",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "cboettig/cdfw",
   "title": "California Dept of Fish and Wildlife",
-  "description": "Cloud-optimized mirrors of various public data sets prepared by CDFW",
-  "keywords": [],
-  "created_at": "2026-10-12T22:56:26.539Z",
-  "updated_at": "2026-10-12T22:56:26.539Z",
+  "description": "A statewide grid of about 63,890 hexagons (~2.5 mi\u00b2 each) summarizing terrestrial biodiversity value across California, from the CDFW Areas of Conservation Emphasis (ACE) v3.0 program. Includes composite biological-value, rare-richness, native-richness and Rarity-Weighted-Index ranks and scores, plus per-taxon richness counts for amphibians, reptiles, birds, mammals and plants.",
+  "license": "CC-BY-4.0",
+  "keywords": [
+    "biodiversity",
+    "conservation",
+    "geoparquet",
+    "pmtiles",
+    "h3",
+    "ecology",
+    "wildlife"
+  ],
+  "providers": [
+    {
+      "name": "California Department of Fish and Wildlife",
+      "roles": [
+        "producer",
+        "licensor",
+        "processor"
+      ]
+    },
+    {
+      "name": "ACE 3 Working Group and ACE 3 Development Team",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/cboettig/cdfw"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -124.409784,
+          32.534293,
+          -114.131225,
+          42.97893
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/cboettig/cdfw/",
+      "type": "application/octet-stream",
+      "title": "Dataset files (2 x .pmtiles)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/cboettig/cdfw/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/cboettig/cdfw",
+      "title": "Source Cooperative product page"
+    }
+  ],
   "visibility": "public",
+  "updated_at": "2026-10-12T22:56:26.539Z",
+  "product_id": "cdfw",
+  "exts": {
+    "parquet": 6,
+    "json": 3,
+    "pmtiles": 2,
+    "md": 2
+  },
   "disabled": false,
   "featured": 0,
+  "created_at": "2026-10-12T22:56:26.539Z",
+  "account_id": "cboettig",
+  "object_count": 13,
+  "objects_updated_at": "2026-10-18T17:15:48+00:00",
+  "ext_bytes": {
+    "pmtiles": 240226068,
+    "parquet": 54796900,
+    "json": 76208,
+    "md": 7043
+  },
+  "total_bytes": 295106219,
   "data_mode": null,
   "mirrors": {
     "aws-opendata-us-west-2": {
@@ -18,26 +110,15 @@
       "connection_id": "aws-opendata-us-west-2"
     }
   },
-  "object_count": 13,
-  "objects_updated_at": "2026-10-18T17:15:48+00:00",
-  "total_bytes": 295106219,
-  "exts": {
-    "parquet": 6,
-    "json": 3,
-    "pmtiles": 2,
-    "md": 2
-  },
-  "ext_bytes": {
-    "pmtiles": 240226068,
-    "parquet": 54796900,
-    "json": 76208,
-    "md": 7043
-  },
-  "store_format": null,
-  "_state": "seed",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "cataloged_at": "2026-10-26T09:43:08+00:00"
+  "readme": "## README.md\n# California Department of Fish and Wildlife (CDFW) Datasets \u2014 `public-cdfw`\n\nCloud-native mirrors of California Department of Fish and Wildlife (CDFW) conservation\nand biodiversity data products, published from the CDFW [BIOS](https://wildlife.ca.gov/Data/BIOS)\nportal. Datasets are provided as GeoParquet + PMTiles + H3-indexed parquet.\n\nSTAC catalog: <https://s3-west.nrp-nautilus.io/public-cdfw/stac-collection.json>\n\n---\n\n## Areas of Conservation Emphasis (ACE) v3.0 \u2014 Terrestrial Biodiversity Summary (`ds2739`)\n\nA statewide ~2.5 mi\u00b2 hexagon grid (**63,890** hexagons) summarizing terrestrial\nbiodiversity value: composite biological-value, rare-richness, native-richness, and\nRarity-Weighted-Index ranks/scores (statewide- and ecoregion-normalized) plus per-taxon\nrichness counts (native / rare / endemic for amphibians, reptiles, birds, mammals, plants).\n\n- **Program version:** 3.0 (released Feb 2018); this layer last revised **2024-07-08**.\n- **License:** [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/) \u2014 attribution required.\n- **Source:** CDFW ACE, BIOS layer ds2739 (`biosds2739_fpu`). Program page:\n  <https://wildlife.ca.gov/Data/Analysis/ACE>.\n- **Caveat:** ACE is a coarse-scale decision-support product. Values describe broad\n  landscape patterns and should not be interpreted at the individual-hexagon level or used\n  in place of site-specific evaluation.\n\n**Attribution / citation:** ACE 3 Working Group and ACE 3 Development Team, California\nDepartment of Fish and Wildlife. Using the recommended BIOS citation satisfies the\nCC-BY-4.0 attribution requirement.\n\n### Assets\n\n| Format | URL |\n|---|---|\n| GeoParquet | `https://s3-west.nrp-nautilus.io/public-cdfw/ace/terrestrial-biodiversity-summary.parquet` |\n| PMTiles | `https://s3-west.nrp-nautilus.io/public-cdfw/ace/terrestrial-biodiversity-summary.pmtiles` |\n| H3 hex | `https://s3-west.nrp-nautilus.io/public-cdfw/ace/terrestrial-biodiversity-summary/hex/h0=*/data_0.parquet` |\n\n### MapLibre GL JS\n\nThe PMTiles **`source-layer` is `terrestrial-biodiversity-summary`** (the last segment of\nthe dataset path \u2014 **not** the BIOS layer name).\n\n```js\n// import { Protocol } from \"pmtiles\"; maplibregl.addProtocol(\"pmtiles\", new Protocol().tile);\nmap.addSource(\"ace-terr\", {\n  type: \"vector\",\n  url: \"pmtiles://https://s3-west.nrp-nautilus.io/public-cdfw/ace/terrestrial-biodiversity-summary.pmtiles\"\n});\n\nmap.addLayer({\n  id: \"ace-biorank-sw\",\n  type: \"fill\",\n  source: \"ace-terr\",\n  \"source-layer\": \"terrestrial-biodiversity-summary\",   // <-- required\n  paint: {\n    \"fill-color\": [\n      \"match\", [\"get\", \"BioRankSW\"],\n      5, \"#006837\", 4, \"#31a354\", 3, \"#78c679\", 2, \"#c2e699\", 1, \"#ffffcc\",\n      \"#cccccc\"   // 0 / excluded\n    ],\n    \"fill-opacity\": 0.8\n  }\n});\n```\n\n### DuckDB\n\n```sql\nINSTALL spatial; LOAD spatial;\nINSTALL httpfs;  LOAD httpfs;\n\n-- Statewide GeoParquet (one row per ACE hexagon)\nSELECT Hex_ID, County, BioRankSW, RareCount, NtvBird, geom\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-cdfw/ace/terrestrial-biodiversity-summary.parquet')\nWHERE County = 'SAN DIEGO'\nLIMIT 10;\n\n-- Distribution of statewide BioRank\nSELECT BioRankSW, COUNT(*) AS hexes\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-cdfw/ace/terrestrial-biodiversity-summary.parquet')\nGROUP BY 1 ORDER BY 1;\n```\n\n#### H3 hex \u2014 read the aggregation caveat\n\nOne hex row = one `(ACE-hexagon, H3-cell)` pair. Every attribute is a **per-hexagon**\nvalue repeated on each of the ~9 resolution-8 cells a hexagon covers.\n\n```sql\n-- \u2705 Dedup by Hex_ID before aggregating any count / rank / score\nSELECT BioRankSW, COUNT(*) AS hexes FROM (\n  SELECT DISTINCT Hex_ID, BioRankSW\n  FROM read_parquet('https://s3-west.nrp-nautilus.io/public-cdfw/ace/terrestrial-biodiversity-summary/hex/h0=*/data_0.parquet')\n) GROUP BY 1 ORDER BY 1;\n\n-- \u274c Never SUM Shape__Are (or any count) across hex rows \u2014 it multiplies by ~9.\n-- For area use: COUNT(DISTINCT h8) \u00d7 cell_area_at_resolution_8.\n```\n\nNative H3 resolution **8**; parent resolution **0** (the partition key). The geometry\ncolumn is present only on the GeoParquet asset, not on the hex parquet.\n",
+  "_review": [
+    "providers: role [producer, licensor, processor] for 'California Department of Fish and Wildlife' is an AI guess \u2014 Producer and licensor are stated (CDFW ACE, CC-BY-4.0); processor role is assumed because CDFW publishes the cloud-native GeoParquet/PMTiles/H3 mirrors from BIOS.. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-10-26T09:56:56+00:00",
+  "store_format": null
 }
