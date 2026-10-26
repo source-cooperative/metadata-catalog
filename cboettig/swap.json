@@ -1,16 +1,1169 @@
 {
   "schema_version": 1,
-  "account_id": "cboettig",
-  "product_id": "swap",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
+  "id": "cboettig/swap",
   "title": "State Wildlife Action Plans",
-  "description": "",
-  "keywords": [],
-  "created_at": "2026-10-12T22:55:34.134Z",
-  "updated_at": "2026-10-12T22:55:34.134Z",
+  "description": "Cloud-native mirror of the finalized California State Wildlife Action Plan (SWAP) 2025 from the California Department of Fish and Wildlife, covering spatial framework layers (provinces, conservation units, Species of Greatest Conservation Need ranges, marine bioregions, NOAA ESU/DPS units), plus conservation target, strategy, and species tables. Also includes related wildlife action plan layers for Missouri (2022) and Nevada (2022).",
+  "license": "CC-BY-4.0",
+  "keywords": [
+    "conservation",
+    "biodiversity",
+    "wildlife",
+    "geoparquet",
+    "pmtiles",
+    "h3",
+    "ecology",
+    "species-classification"
+  ],
+  "providers": [
+    {
+      "name": "California Department of Fish and Wildlife",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/cboettig/swap"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -125.4232858,
+          32.4782854,
+          -89.0990319,
+          43.1386215
+        ],
+        [
+          -125.4232858,
+          32.4782854,
+          -114.073044,
+          43.1386215
+        ],
+        [
+          -95.8889619,
+          34.9543164,
+          -89.0990319,
+          41.0541231
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 51613026
+  },
+  "assets": {
+    "california/swap-2025": {
+      "href": "https://data.source.coop/cboettig/swap/california/swap-2025/",
+      "type": "application/x-parquet",
+      "title": "california/swap-2025",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "_cng_fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OGC_FID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OBJECTID",
+          "type": "BIGINT|INTEGER"
+        },
+        {
+          "name": "Id",
+          "type": "INTEGER"
+        },
+        {
+          "name": "Bay_Delta",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Shape__Area",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Shape__Length",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "geom",
+          "type": "GEOMETRY('EPSG:4326')",
+          "description": "[geometry] Feature geometry in EPSG:4326 (polygons for provinces, conservation units, species ranges, etc.)"
+        },
+        {
+          "name": "Name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ConsUnitType",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ParentProvinceID",
+          "type": "INTEGER"
+        },
+        {
+          "name": "OBJECTID_1",
+          "type": "INTEGER"
+        },
+        {
+          "name": "ESU_DPS",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Status",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Class",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ESU_or_DPS",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Province",
+          "type": "VARCHAR",
+          "description": "[placename] Name of the SWAP province"
+        },
+        {
+          "name": "ProvinceID",
+          "type": "INTEGER"
+        },
+        {
+          "name": "Taxonomic_Group",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "SWAP_Scientific",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "SWAP_Common",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "BIOS_ds_",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ParentSpeciesKey",
+          "type": "INTEGER"
+        },
+        {
+          "name": "ConUnit",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ParentProvSpeciesKey",
+          "type": "BIGINT"
+        },
+        {
+          "name": "ScientificName",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "TaxonomicGroup",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "CommonName",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ListingStatus",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Climate",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "SpeciesKey",
+          "type": "BIGINT"
+        },
+        {
+          "name": "RangePresent",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "LIfeHistoryLink",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "RangeMap",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FREQUENCY",
+          "type": "BIGINT"
+        },
+        {
+          "name": "StrategyCategory",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Action",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "SampleAction",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Threat",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ParentTargetID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "summarizefieldstrategies",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "summarizefield",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ConsUnit",
+          "type": "VARCHAR",
+          "description": "[placename] Name of the conservation unit"
+        },
+        {
+          "name": "TargetType",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "TargetHab",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "TargetDesc",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "GlobalID",
+          "type": "UUID"
+        },
+        {
+          "name": "TargetID",
+          "type": "BIGINT"
+        }
+      ],
+      "description": "10 files sampled for this table",
+      "bbox": [
+        -125.4232858,
+        32.4782854,
+        -114.073044,
+        43.1386215
+      ],
+      "item_count": 51613026
+    },
+    "california/swap-2025/bay-delta-conservation-unit/hex": {
+      "href": "https://data.source.coop/cboettig/swap/california/swap-2025/bay-delta-conservation-unit/hex/h0=577199624117288959/data_0.parquet",
+      "type": "application/x-parquet",
+      "title": "data_0.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "_cng_fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OGC_FID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OBJECTID",
+          "type": "INTEGER"
+        },
+        {
+          "name": "Id",
+          "type": "INTEGER"
+        },
+        {
+          "name": "Bay_Delta",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Shape__Area",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Shape__Length",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "h8",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 cell at resolution 8"
+        },
+        {
+          "name": "h0",
+          "type": "UBIGINT"
+        }
+      ],
+      "table:row_count": 5077
+    },
+    "california/swap-2025/conservation-units/hex": {
+      "href": "https://data.source.coop/cboettig/swap/california/swap-2025/conservation-units/hex/h0=577199624117288959/",
+      "type": "application/x-parquet",
+      "title": "california/swap-2025/conservation-units/hex",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "_cng_fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OGC_FID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OBJECTID",
+          "type": "INTEGER"
+        },
+        {
+          "name": "Name",
+          "type": "VARCHAR",
+          "description": "[placename] Conservation unit name"
+        },
+        {
+          "name": "ConsUnitType",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ParentProvinceID",
+          "type": "INTEGER"
+        },
+        {
+          "name": "Shape__Area",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Shape__Length",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "h8",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 cell at resolution 8"
+        },
+        {
+          "name": "h0",
+          "type": "BIGINT"
+        }
+      ],
+      "description": "2 files sampled for this table"
+    },
+    "california/swap-2025/marine-bioregions/hex": {
+      "href": "https://data.source.coop/cboettig/swap/california/swap-2025/marine-bioregions/hex/h0=577199624117288959/",
+      "type": "application/x-parquet",
+      "title": "california/swap-2025/marine-bioregions/hex",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "_cng_fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OGC_FID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OBJECTID",
+          "type": "INTEGER"
+        },
+        {
+          "name": "Name",
+          "type": "VARCHAR",
+          "description": "[placename] Marine bioregion name"
+        },
+        {
+          "name": "Shape__Area",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Shape__Length",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "h8",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 cell at resolution 8"
+        },
+        {
+          "name": "h0",
+          "type": "BIGINT"
+        }
+      ],
+      "description": "2 files sampled for this table"
+    },
+    "california/swap-2025/noaa-esu-dps/hex": {
+      "href": "https://data.source.coop/cboettig/swap/california/swap-2025/noaa-esu-dps/hex/h0=577199624117288959/data_0.parquet",
+      "type": "application/x-parquet",
+      "title": "data_0.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "_cng_fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OGC_FID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OBJECTID_1",
+          "type": "INTEGER"
+        },
+        {
+          "name": "ESU_DPS",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Status",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Class",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ESU_or_DPS",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Shape__Area",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Shape__Length",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "h8",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 cell at resolution 8"
+        },
+        {
+          "name": "h0",
+          "type": "UBIGINT"
+        }
+      ],
+      "table:row_count": 867154
+    },
+    "california/swap-2025/provinces/hex": {
+      "href": "https://data.source.coop/cboettig/swap/california/swap-2025/provinces/hex/h0=577199624117288959/",
+      "type": "application/x-parquet",
+      "title": "california/swap-2025/provinces/hex",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "_cng_fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OGC_FID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OBJECTID",
+          "type": "INTEGER"
+        },
+        {
+          "name": "Province",
+          "type": "VARCHAR",
+          "description": "[placename] Province name"
+        },
+        {
+          "name": "ProvinceID",
+          "type": "INTEGER"
+        },
+        {
+          "name": "Shape__Area",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Shape__Length",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "h8",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 cell at resolution 8"
+        },
+        {
+          "name": "h0",
+          "type": "UBIGINT"
+        }
+      ],
+      "description": "2 files sampled for this table"
+    },
+    "california/swap-2025/sgcn-ranges/hex": {
+      "href": "https://data.source.coop/cboettig/swap/california/swap-2025/sgcn-ranges/hex/h0=577199624117288959/",
+      "type": "application/x-parquet",
+      "title": "california/swap-2025/sgcn-ranges/hex",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "_cng_fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OGC_FID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OBJECTID",
+          "type": "INTEGER"
+        },
+        {
+          "name": "Taxonomic_Group",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "SWAP_Scientific",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "SWAP_Common",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "BIOS_ds_",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ParentSpeciesKey",
+          "type": "INTEGER"
+        },
+        {
+          "name": "Shape__Area",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Shape__Length",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "h10",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 cell at resolution 10"
+        },
+        {
+          "name": "h8",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 cell at resolution 8"
+        },
+        {
+          "name": "h9",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 cell at resolution 9"
+        },
+        {
+          "name": "h0",
+          "type": "BIGINT"
+        }
+      ],
+      "description": "2 files sampled for this table"
+    },
+    "missouri/ccs-2022": {
+      "href": "https://data.source.coop/cboettig/swap/missouri/ccs-2022/",
+      "type": "application/x-parquet",
+      "title": "missouri/ccs-2022",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "_cng_fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OGC_FID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "Shape.STArea()",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Shape.STLength()",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "OBJECTID",
+          "type": "INTEGER"
+        },
+        {
+          "name": "Name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geom",
+          "type": "GEOMETRY('EPSG:4326')",
+          "description": "[geometry] Feature geometry in EPSG:4326"
+        },
+        {
+          "name": "NAME",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "GIS_Acres",
+          "type": "DOUBLE"
+        }
+      ],
+      "description": "7 files sampled for this table",
+      "bbox": [
+        -95.8889619,
+        34.9543164,
+        -89.0990319,
+        41.0541231
+      ],
+      "item_count": 59984
+    },
+    "missouri/ccs-2022/cave-karst-coa/hex": {
+      "href": "https://data.source.coop/cboettig/swap/missouri/ccs-2022/cave-karst-coa/hex/h0=577164439745200127/data_0.parquet",
+      "type": "application/x-parquet",
+      "title": "data_0.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "_cng_fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OGC_FID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "Shape.STArea()",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Shape.STLength()",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "OBJECTID",
+          "type": "INTEGER"
+        },
+        {
+          "name": "Name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "h8",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 cell at resolution 8"
+        },
+        {
+          "name": "h0",
+          "type": "UBIGINT"
+        }
+      ],
+      "table:row_count": 6554
+    },
+    "missouri/ccs-2022/forest-woodland-coa/hex": {
+      "href": "https://data.source.coop/cboettig/swap/missouri/ccs-2022/forest-woodland-coa/hex/h0=577164439745200127/data_0.parquet",
+      "type": "application/x-parquet",
+      "title": "data_0.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:row_count": 13689
+    },
+    "missouri/ccs-2022/glade-coa/hex": {
+      "href": "https://data.source.coop/cboettig/swap/missouri/ccs-2022/glade-coa/hex/h0=577164439745200127/data_0.parquet",
+      "type": "application/x-parquet",
+      "title": "data_0.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:row_count": 11288
+    },
+    "missouri/ccs-2022/grassland-prairie-savanna-coa/hex": {
+      "href": "https://data.source.coop/cboettig/swap/missouri/ccs-2022/grassland-prairie-savanna-coa/hex/h0=577164439745200127/data_0.parquet",
+      "type": "application/x-parquet",
+      "title": "data_0.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:row_count": 7627
+    },
+    "missouri/ccs-2022/priority-geographies/hex": {
+      "href": "https://data.source.coop/cboettig/swap/missouri/ccs-2022/priority-geographies/hex/h0=577164439745200127/data_0.parquet",
+      "type": "application/x-parquet",
+      "title": "data_0.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "_cng_fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OGC_FID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "GIS_Acres",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Shape.STArea()",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Shape.STLength()",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "OBJECTID",
+          "type": "INTEGER"
+        },
+        {
+          "name": "NAME",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "h8",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 cell at resolution 8"
+        },
+        {
+          "name": "h0",
+          "type": "UBIGINT"
+        }
+      ],
+      "table:row_count": 5979
+    },
+    "missouri/ccs-2022/stream-reach-coa/hex": {
+      "href": "https://data.source.coop/cboettig/swap/missouri/ccs-2022/stream-reach-coa/hex/h0=577164439745200127/data_0.parquet",
+      "type": "application/x-parquet",
+      "title": "data_0.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "_cng_fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OGC_FID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "Shape.STLength()",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "OBJECTID",
+          "type": "INTEGER"
+        },
+        {
+          "name": "NAME",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "h8",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 cell at resolution 8"
+        },
+        {
+          "name": "h0",
+          "type": "UBIGINT"
+        }
+      ],
+      "table:row_count": 8684
+    },
+    "missouri/ccs-2022/wetland-coa/hex": {
+      "href": "https://data.source.coop/cboettig/swap/missouri/ccs-2022/wetland-coa/hex/h0=577164439745200127/data_0.parquet",
+      "type": "application/x-parquet",
+      "title": "data_0.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "_cng_fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OGC_FID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "Shape.STArea()",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Shape.STLength()",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "OBJECTID",
+          "type": "INTEGER"
+        },
+        {
+          "name": "Name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "h8",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 cell at resolution 8"
+        },
+        {
+          "name": "h0",
+          "type": "UBIGINT"
+        }
+      ],
+      "table:row_count": 5964
+    },
+    "nevada/swap-2022": {
+      "href": "https://data.source.coop/cboettig/swap/nevada/swap-2022/",
+      "type": "application/x-parquet",
+      "title": "nevada/swap-2022",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "_cng_fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OGC_FID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "FID",
+          "type": "INTEGER"
+        },
+        {
+          "name": "Id",
+          "type": "INTEGER"
+        },
+        {
+          "name": "gridcode",
+          "type": "INTEGER"
+        },
+        {
+          "name": "KEYHABCLAS",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCode",
+          "type": "INTEGER"
+        },
+        {
+          "name": "StateProvi",
+          "type": "VARCHAR",
+          "description": "[placename] State/province name"
+        },
+        {
+          "name": "Shape_Leng",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Shape_Area",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Shape__Area",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Shape__Length",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Area_in_Acres",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "geom",
+          "type": "GEOMETRY('EPSG:4326')",
+          "description": "[geometry] Feature geometry in EPSG:4326"
+        },
+        {
+          "name": "OBJECTID",
+          "type": "INTEGER"
+        },
+        {
+          "name": "Scientific_Name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Common_Name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Minor_Group",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Major_Group",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Occupancy",
+          "type": "VARCHAR"
+        }
+      ],
+      "description": "2 files sampled for this table"
+    },
+    "nevada/swap-2022/key-habitats/hex": {
+      "href": "https://data.source.coop/cboettig/swap/nevada/swap-2022/key-habitats/hex/h0=577199624117288959/data_0.parquet",
+      "type": "application/x-parquet",
+      "title": "data_0.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "_cng_fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OGC_FID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "FID",
+          "type": "INTEGER"
+        },
+        {
+          "name": "Id",
+          "type": "INTEGER"
+        },
+        {
+          "name": "gridcode",
+          "type": "INTEGER"
+        },
+        {
+          "name": "KEYHABCLAS",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FCode",
+          "type": "INTEGER"
+        },
+        {
+          "name": "StateProvi",
+          "type": "VARCHAR",
+          "description": "[placename] State/province name"
+        },
+        {
+          "name": "Shape_Leng",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Shape_Area",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Shape__Area",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Shape__Length",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Area_in_Acres",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "h8",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 cell at resolution 8"
+        },
+        {
+          "name": "h0",
+          "type": "BIGINT"
+        }
+      ],
+      "table:row_count": 530710
+    },
+    "nevada/swap-2022/species-distributions/hex": {
+      "href": "https://data.source.coop/cboettig/swap/nevada/swap-2022/species-distributions/hex/h0=577199624117288959/data_0.parquet",
+      "type": "application/x-parquet",
+      "title": "data_0.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "_cng_fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OGC_FID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OBJECTID",
+          "type": "INTEGER"
+        },
+        {
+          "name": "Scientific_Name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Common_Name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Minor_Group",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Major_Group",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Occupancy",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Shape__Area",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Shape__Length",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "h10",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 cell at resolution 10"
+        },
+        {
+          "name": "h8",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 cell at resolution 8"
+        },
+        {
+          "name": "h9",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 cell at resolution 9"
+        },
+        {
+          "name": "h0",
+          "type": "BIGINT"
+        }
+      ],
+      "table:row_count": 35671807
+    }
+  },
+  "table:columns": [
+    {
+      "name": "_cng_fid",
+      "type": "BIGINT"
+    },
+    {
+      "name": "OGC_FID",
+      "type": "BIGINT"
+    },
+    {
+      "name": "Shape.STArea()",
+      "type": "DOUBLE"
+    },
+    {
+      "name": "Shape.STLength()",
+      "type": "DOUBLE"
+    },
+    {
+      "name": "OBJECTID",
+      "type": "INTEGER"
+    },
+    {
+      "name": "NAME",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "h8",
+      "type": "UBIGINT",
+      "description": "[spatial_index] H3 cell at resolution 8"
+    },
+    {
+      "name": "h0",
+      "type": "UBIGINT"
+    }
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/cboettig/swap/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/cboettig/swap",
+      "title": "Source Cooperative product page"
+    }
+  ],
+  "exts": {
+    "parquet": 39,
+    "json": 23,
+    "pmtiles": 15,
+    "md": 1
+  },
   "visibility": "public",
+  "object_count": 78,
+  "objects_updated_at": "2026-10-18T17:20:59+00:00",
   "disabled": false,
-  "featured": 0,
-  "data_mode": null,
+  "created_at": "2026-10-12T22:55:34.134Z",
+  "ext_bytes": {
+    "parquet": 1127543185,
+    "pmtiles": 88442029,
+    "json": 141593,
+    "md": 4711
+  },
   "mirrors": {
     "aws-opendata-us-west-2": {
       "prefix": "cboettig/swap/",
@@ -18,26 +1171,21 @@
       "is_primary": true
     }
   },
-  "object_count": 78,
-  "objects_updated_at": "2026-10-18T17:20:59+00:00",
-  "total_bytes": 1216131518,
-  "exts": {
-    "parquet": 39,
-    "json": 23,
-    "pmtiles": 15,
-    "md": 1
-  },
-  "ext_bytes": {
-    "parquet": 1127543185,
-    "pmtiles": 88442029,
-    "json": 141593,
-    "md": 4711
-  },
-  "store_format": null,
-  "_state": "seed",
+  "data_mode": null,
+  "product_id": "swap",
+  "updated_at": "2026-10-12T22:55:34.134Z",
+  "featured": 0,
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "cataloged_at": "2026-10-26T09:43:13+00:00"
+  "account_id": "cboettig",
+  "total_bytes": 1216131518,
+  "readme": "## california__swap-2025__README.md\n# California State Wildlife Action Plan (SWAP) 2025\n\nCloud-native mirror of the finalized **California SWAP 2025** (CDFW, adopted\nOctober 2025) spatial framework, species ranges, and conservation\ntarget/strategy tables, under `s3://public-swap/california/swap-2025/`.\n\n> SWAP 2025 supersedes the SWAP 2015 companion layers previously published here;\n> the 2015 raw sources remain under `public-cdfw/raw/swap-2015-*` for reference.\n\n## Collections\n\n**Spatial layers** (GeoParquet + PMTiles + H3 hex at resolution 8):\n\n| Collection | `source-layer` / path | Features | Notes |\n|---|---|---|---|\n| Provinces | `provinces` | 8 | adds an **Anadromous** province vs. 2015's 7 |\n| Conservation Units | `conservation-units` | 46 | `ConsUnitType`: Terrestrial / Freshwater Aquatic / Marine / Anadromous |\n| SGCN Species Ranges (v4) | `sgcn-ranges` | 422 | species range polygons |\n| Marine Bioregions | `marine-bioregions` | 3 | reference geography |\n| NOAA ESU/DPS | `noaa-esu-dps` | 37 | anadromous salmonid units |\n| Bay-Delta Conservation Unit | `bay-delta-conservation-unit` | 1 | reference geography |\n\n**Non-spatial tables** (Parquet):\n\n| Collection | path | Rows |\n|---|---|---|\n| Conservation Targets | `targets` | 460 |\n| Conservation Strategies | `strategies` | 525 |\n| SGCN Species list | `sgcn-species` | 1,437 |\n| SGCN Species \u00d7 Conservation Unit | `sgcn-species-units` | 4,268 |\n\nPublic base URL: `https://s3-west.nrp-nautilus.io/public-swap/california/swap-2025/`\n\n## Data model (joins)\n\n```\nProvinces.ProvinceID \u2500\u2500< ConservationUnits.ParentProvinceID\nConservationUnits.Name \u2500\u2500< Targets.ConsUnit         (also Targets.Province)\nTargets.TargetID \u2500\u2500< Strategies.ParentTargetID\nSpecies.SpeciesKey \u2500\u2500< SgcnRanges.ParentSpeciesKey\nSgcnSpeciesUnits.ConUnit \u2192 ConservationUnits.Name   (after name normalization)\n# SgcnSpeciesUnits.ParentProvSpeciesKey does NOT join to Species.SpeciesKey --\n# it indexes a separate species-by-province table that CDFW has not published.\n```\n\n## MapLibre GL JS (PMTiles)\n\nThe MapLibre **`source-layer` is the last path segment** (`provinces`,\n`conservation-units`, `sgcn-ranges`, \u2026), not the source service name.\n\n```js\nimport { Protocol } from \"pmtiles\";\nconst protocol = new Protocol();\nmaplibregl.addProtocol(\"pmtiles\", protocol.tile);\n\nmap.addSource(\"cu\", {\n  type: \"vector\",\n  url: \"pmtiles://https://s3-west.nrp-nautilus.io/public-swap/california/swap-2025/conservation-units.pmtiles\",\n});\nmap.addLayer({\n  id: \"cu-fill\", type: \"fill\", source: \"cu\",\n  \"source-layer\": \"conservation-units\",       // <-- last segment of the dataset\n  paint: {\n    \"fill-color\": [\"match\", [\"get\", \"ConsUnitType\"],\n      \"Marine\", \"#2c7fb8\", \"Freshwater Aquatic\", \"#41b6c4\",\n      \"Anadromous\", \"#7fcdbb\", \"Terrestrial\", \"#31a354\", \"#cccccc\"],\n    \"fill-opacity\": 0.5, \"fill-outline-color\": \"#333\",\n  },\n});\n```\n\n## DuckDB\n\n```sql\nINSTALL spatial; LOAD spatial;\n\n-- Conservation units by type\nSELECT ConsUnitType, COUNT(*) FROM read_parquet(\n  'https://s3-west.nrp-nautilus.io/public-swap/california/swap-2025/conservation-units.parquet')\nGROUP BY 1 ORDER BY 2 DESC;\n\n-- Targets + their strategies for one conservation unit\nSELECT t.ConsUnit, t.TargetHab, s.Action\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-swap/california/swap-2025/targets.parquet') t\nJOIN read_parquet('https://s3-west.nrp-nautilus.io/public-swap/california/swap-2025/strategies.parquet') s\n  ON s.ParentTargetID = t.TargetID\nWHERE t.ConsUnit = 'Klamath Mountains';\n\n-- SGCN species (with mapped range) in a taxonomic group\nSELECT SWAP_Common, SWAP_Scientific\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-swap/california/swap-2025/sgcn-ranges.parquet')\nWHERE Taxonomic_Group = 'Amphibians'\nORDER BY SWAP_Common;\n```\n\n### H3 hex\n\nSpatial layers carry `h8` (native resolution 8) and `h0` (partition key), one\nrow per (feature, cell) pair. **`Shape__Area`/`Shape__Length` are per-feature\ntotals repeated on every hex cell \u2014 never `SUM` them on hex**; for coverage area\nuse `SUM(h3_cell_area(h8, 'km^2'))` over the distinct cells (H3 cells are not equal area, so a per-resolution constant is not a substitute). `_cng_fid`/`h8`/`h0` are\nsafe keys.\n\n## Provenance & license\n\n- **Source:** CDFW BIOS / ArcGIS (org `Uq9r85Potqm3MfRV`), services\n  `SWAP_target_strategy_v3_gdb`, `SWAP_SGCN_V4_gdb`, `SWAP_Reference_Layers_WFL1`,\n  paginated from their FeatureServers to GeoJSON (the Hub `downloads/data` export\n  is not enabled for these services).\n- **Plan:** [California State Wildlife Action Plan 2025](https://wildlife.ca.gov/SWAP/Final)\n  (finalized October 2025).\n- **License:** CC-BY-4.0 (CDFW attribution terms). Attribute the California\n  Department of Fish and Wildlife.\n",
+  "_review": [
+    "summaries.item_count: parts overlap, so this is max(part), not the sum \u2014 california/swap-2025/ 51613026, missouri/ccs-2022/ 59984. Sum them only once the parts are known to be disjoint."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-10-26T09:59:46+00:00",
+  "store_format": null
 }
