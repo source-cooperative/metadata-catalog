@@ -1,16 +1,334 @@
 {
   "schema_version": 1,
-  "account_id": "gishub",
-  "product_id": "parquet",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
+  "id": "gishub/parquet",
   "title": "parquet",
-  "description": "Parquet/ Geoparquet DGGS",
-  "keywords": [],
-  "created_at": "2026-10-23T18:03:26.615Z",
-  "updated_at": "2026-10-23T18:03:26.615Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
+  "description": "A collection of Discrete Global Grid System (DGGS) cell geometries and quality metrics in GeoParquet format, covering multiple grid systems (A5, HEALPix, H3, S2, ISEA, IVEA, Fuller, IGEO7, rHEALPix) at various resolutions. Each record describes a grid cell's area, perimeter, and shape-quality statistics (e.g., isoperimetric quotient, zonal scale compactness, convex hull ratio).",
+  "keywords": [
+    "geoparquet",
+    "h3",
+    "global-coverage",
+    "administrative-boundaries"
+  ],
+  "providers": [
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/gishub/parquet"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 5512464
+  },
+  "assets": {
+    "a5": {
+      "href": "https://data.source.coop/gishub/parquet/a5.parquet",
+      "type": "application/x-parquet",
+      "title": "a5.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:row_count": 326541
+    },
+    "healpix": {
+      "href": "https://data.source.coop/gishub/parquet/dggal_healpix.parquet",
+      "type": "application/x-parquet",
+      "title": "dggal_healpix.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:row_count": 261828
+    },
+    "ivea3h": {
+      "href": "https://data.source.coop/gishub/parquet/dggal_ivea3h.parquet",
+      "type": "application/x-parquet",
+      "title": "dggal_ivea3h.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:row_count": 294101
+    },
+    "ivea4r": {
+      "href": "https://data.source.coop/gishub/parquet/dggal_ivea4r.parquet",
+      "type": "application/x-parquet",
+      "title": "dggal_ivea4r.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:row_count": 217600
+    },
+    "ivea7h": {
+      "href": "https://data.source.coop/gishub/parquet/dggal_ivea7h.parquet",
+      "type": "application/x-parquet",
+      "title": "dggal_ivea7h.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:row_count": 195311
+    },
+    "ivea9r": {
+      "href": "https://data.source.coop/gishub/parquet/dggal_ivea9r.parquet",
+      "type": "application/x-parquet",
+      "title": "dggal_ivea9r.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:row_count": 663050
+    },
+    "rhealpix": {
+      "href": "https://data.source.coop/gishub/parquet/dggal_rhealpix.parquet",
+      "type": "application/x-parquet",
+      "title": "dggal_rhealpix.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "dggs_type",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "resolution",
+          "type": "BIGINT"
+        },
+        {
+          "name": "cell_id",
+          "type": "\"NULL\""
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:4326')",
+          "description": "[geometry] DGGS cell polygon geometry in EPSG:4326"
+        },
+        {
+          "name": "cell_area",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "cell_perimeter",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "crossed",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "norm_area",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "ipq",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "zsc",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "cvh",
+          "type": "DOUBLE"
+        }
+      ],
+      "table:row_count": 398146
+    },
+    "fuller4d": {
+      "href": "https://data.source.coop/gishub/parquet/dggrid_fuller4d.parquet",
+      "type": "application/x-parquet",
+      "title": "dggrid_fuller4d.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:row_count": 217600
+    },
+    "fuller4t": {
+      "href": "https://data.source.coop/gishub/parquet/dggrid_fuller4t.parquet",
+      "type": "application/x-parquet",
+      "title": "dggrid_fuller4t.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:row_count": 435300
+    },
+    "fuller7h": {
+      "href": "https://data.source.coop/gishub/parquet/dggrid_fuller7h.parquet",
+      "type": "application/x-parquet",
+      "title": "dggrid_fuller7h.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:row_count": 167146
+    },
+    "igeo7": {
+      "href": "https://data.source.coop/gishub/parquet/dggrid_igeo7.parquet",
+      "type": "application/x-parquet",
+      "title": "dggrid_igeo7.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:row_count": 195318
+    },
+    "isea4d": {
+      "href": "https://data.source.coop/gishub/parquet/dggrid_isea4d.parquet",
+      "type": "application/x-parquet",
+      "title": "dggrid_isea4d.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:row_count": 217600
+    },
+    "isea4t": {
+      "href": "https://data.source.coop/gishub/parquet/",
+      "type": "application/x-parquet",
+      "title": "isea4t",
+      "roles": [
+        "data"
+      ],
+      "description": "2 files sampled for this table"
+    },
+    "isea7h": {
+      "href": "https://data.source.coop/gishub/parquet/dggrid_isea7h.parquet",
+      "type": "application/x-parquet",
+      "title": "dggrid_isea7h.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:row_count": 195318
+    },
+    "h3": {
+      "href": "https://data.source.coop/gishub/parquet/h3.parquet",
+      "type": "application/x-parquet",
+      "title": "h3.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:row_count": 334263
+    },
+    "s2": {
+      "href": "https://data.source.coop/gishub/parquet/s2.parquet",
+      "type": "application/x-parquet",
+      "title": "s2.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:row_count": 523233
+    }
+  },
+  "table:columns": [
+    {
+      "name": "dggs_type",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "resolution",
+      "type": "BIGINT"
+    },
+    {
+      "name": "cell_id",
+      "type": "VARCHAR",
+      "description": "[spatial_index] DGGS cell identifier"
+    },
+    {
+      "name": "cell_area",
+      "type": "DOUBLE"
+    },
+    {
+      "name": "cell_perimeter",
+      "type": "DOUBLE"
+    },
+    {
+      "name": "crossed",
+      "type": "BOOLEAN"
+    },
+    {
+      "name": "norm_area",
+      "type": "DOUBLE"
+    },
+    {
+      "name": "ipq",
+      "type": "DOUBLE"
+    },
+    {
+      "name": "zsc",
+      "type": "DOUBLE"
+    },
+    {
+      "name": "cvh",
+      "type": "DOUBLE"
+    },
+    {
+      "name": "layer",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "path",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "geometry",
+      "type": "GEOMETRY('OGC:CRS84')",
+      "description": "[geometry] DGGS cell polygon geometry in CRS84"
+    },
+    {
+      "name": "geometry_bbox",
+      "type": "STRUCT(xmin FLOAT, ymin FLOAT, xmax FLOAT, ymax FLOAT)"
+    }
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/gishub/parquet/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/gishub/parquet",
+      "title": "Source Cooperative product page"
+    }
+  ],
+  "total_bytes": 6586362631,
+  "object_count": 15,
   "data_mode": null,
+  "account_id": "gishub",
+  "exts": {
+    "parquet": 15
+  },
+  "visibility": "public",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "product_id": "parquet",
+  "ext_bytes": {
+    "parquet": 6586362631
+  },
+  "disabled": false,
+  "updated_at": "2026-10-23T18:03:26.615Z",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "connection_id": "aws-opendata-us-west-2",
@@ -18,20 +336,15 @@
       "prefix": "gishub/parquet/"
     }
   },
-  "object_count": 15,
   "objects_updated_at": "2026-10-23T18:46:30+00:00",
-  "total_bytes": 6586362631,
-  "exts": {
-    "parquet": 15
-  },
-  "ext_bytes": {
-    "parquet": 6586362631
-  },
-  "store_format": null,
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "cataloged_at": "2026-10-26T09:43:45+00:00"
+  "created_at": "2026-10-23T18:03:26.615Z",
+  "featured": 0,
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
+    "extent.spatial.bbox: probed bbox [-258.8, -90.0, 267.0, 90.0] is outside the WGS84 lon/lat domain; omitted rather than published.",
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [a5.geometry (geometry), a5.cell_id (spatial_index), healpix.geometry (geometry), healpix.cell_id (spatial_index), ivea3h.geometry (geometry), ivea3h.cell_id (spatial_index), ivea4r.geometry (geometry), ivea4r.cell_id (spatial_index), ivea7h.geometry (geometry), ivea7h.cell_id (spatial_index), ivea9r.geometry (geometry), ivea9r.cell_id (spatial_index), rhealpix.geometry (geometry), fuller4d.geometry (geometry), fuller4d.cell_id (spatial_index), fuller4t.geometry (geometry), fuller4t.cell_id (spatial_index), fuller7h.geometry (geometry), fuller7h.cell_id (spatial_index), igeo7.geometry (geometry), igeo7.cell_id (spatial_index), isea4d.geometry (geometry), isea4d.cell_id (spatial_index), isea4t.geometry (geometry), isea4t.cell_id (spatial_index), isea7h.geometry (geometry), isea7h.cell_id (spatial_index), h3.geometry (geometry), h3.cell_id (spatial_index), s2.geometry (geometry), s2.cell_id (spatial_index)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-10-26T09:58:03+00:00",
+  "store_format": null
 }
