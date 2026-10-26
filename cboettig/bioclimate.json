@@ -1,16 +1,731 @@
 {
   "schema_version": 1,
-  "account_id": "cboettig",
-  "product_id": "bioclimate",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
+  "id": "cboettig/bioclimate",
   "title": "bioclimate",
-  "description": "",
-  "keywords": [],
-  "created_at": "2026-10-13T01:58:27.969Z",
+  "description": "Bioclimatic variables from CHELSA v2.1 (baseline and CMIP6 future projections under SSP1-2.6, SSP3-7.0 and SSP5-8.5), aggregated to H3 hexagonal cells over the global land surface. Future projections keep five climate models as separate columns plus their median, minimum and maximum, for seven bioclimatic temperature and precipitation variables.",
+  "license": "CC0-1.0",
+  "keywords": [
+    "climate",
+    "h3",
+    "geoparquet",
+    "global-coverage",
+    "meteorology",
+    "biodiversity"
+  ],
+  "providers": [
+    {
+      "name": "CHELSA (Karger et al.)",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "NRP Nautilus",
+      "roles": [
+        "host"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/cboettig/bioclimate"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 22484532
+  },
+  "assets": {
+    "chelsa-2-1/baseline-1981-2010/hex": {
+      "href": "https://data.source.coop/cboettig/bioclimate/chelsa-2-1/baseline-1981-2010/hex/h0=576495936675512319/",
+      "type": "application/x-parquet",
+      "title": "chelsa-2-1/baseline-1981-2010/hex",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "h8",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h5",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h4",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h0",
+          "type": "BIGINT"
+        },
+        {
+          "name": "bio1",
+          "type": "FLOAT"
+        },
+        {
+          "name": "bio4",
+          "type": "FLOAT"
+        },
+        {
+          "name": "bio5",
+          "type": "FLOAT"
+        },
+        {
+          "name": "bio6",
+          "type": "FLOAT"
+        },
+        {
+          "name": "bio12",
+          "type": "FLOAT"
+        },
+        {
+          "name": "bio15",
+          "type": "FLOAT"
+        },
+        {
+          "name": "bio17",
+          "type": "FLOAT"
+        }
+      ],
+      "description": "10 files sampled for this table",
+      "item_count": 22484532
+    },
+    "chelsa-2-1/ssp126-2011-2040/hex": {
+      "href": "https://data.source.coop/cboettig/bioclimate/chelsa-2-1/ssp126-2011-2040/hex/h0=576495936675512319/",
+      "type": "application/x-parquet",
+      "title": "chelsa-2-1/ssp126-2011-2040/hex",
+      "roles": [
+        "data"
+      ],
+      "description": "10 files sampled for this table",
+      "item_count": 22484532
+    },
+    "chelsa-2-1/ssp126-2041-2070/hex": {
+      "href": "https://data.source.coop/cboettig/bioclimate/chelsa-2-1/ssp126-2041-2070/hex/h0=576495936675512319/",
+      "type": "application/x-parquet",
+      "title": "chelsa-2-1/ssp126-2041-2070/hex",
+      "roles": [
+        "data"
+      ],
+      "description": "10 files sampled for this table",
+      "item_count": 22484532
+    },
+    "chelsa-2-1/ssp126-2071-2100/hex": {
+      "href": "https://data.source.coop/cboettig/bioclimate/chelsa-2-1/ssp126-2071-2100/hex/h0=576495936675512319/",
+      "type": "application/x-parquet",
+      "title": "chelsa-2-1/ssp126-2071-2100/hex",
+      "roles": [
+        "data"
+      ],
+      "description": "10 files sampled for this table",
+      "item_count": 22484532
+    },
+    "chelsa-2-1/ssp370-2011-2040/hex": {
+      "href": "https://data.source.coop/cboettig/bioclimate/chelsa-2-1/ssp370-2011-2040/hex/h0=576495936675512319/",
+      "type": "application/x-parquet",
+      "title": "chelsa-2-1/ssp370-2011-2040/hex",
+      "roles": [
+        "data"
+      ],
+      "description": "10 files sampled for this table",
+      "item_count": 22484532
+    },
+    "chelsa-2-1/ssp370-2041-2070/hex": {
+      "href": "https://data.source.coop/cboettig/bioclimate/chelsa-2-1/ssp370-2041-2070/hex/h0=576495936675512319/",
+      "type": "application/x-parquet",
+      "title": "chelsa-2-1/ssp370-2041-2070/hex",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "h8",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution 8 cell index (native resolution, primary join key)"
+        },
+        {
+          "name": "h5",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution 5 parent cell for coarser joins"
+        },
+        {
+          "name": "h4",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution 4 parent cell for coarser joins"
+        },
+        {
+          "name": "h0",
+          "type": "BIGINT",
+          "description": "[spatial_index] H3 resolution 0 parent cell used as partition key"
+        },
+        {
+          "name": "bio1_gfdl_esm4",
+          "type": "FLOAT"
+        },
+        {
+          "name": "bio1_ipsl_cm6a_lr",
+          "type": "FLOAT"
+        },
+        {
+          "name": "bio1_mpi_esm1_2_hr",
+          "type": "FLOAT"
+        },
+        {
+          "name": "bio1_mri_esm2_0",
+          "type": "FLOAT"
+        },
+        {
+          "name": "bio1_ukesm1_0_ll",
+          "type": "FLOAT"
+        },
+        {
+          "name": "bio1_median",
+          "type": "FLOAT"
+        },
+        {
+          "name": "bio1_min",
+          "type": "FLOAT"
+        },
+        {
+          "name": "bio1_max",
+          "type": "FLOAT"
+        },
+        {
+          "name": "bio4_gfdl_esm4",
+          "type": "FLOAT"
+        },
+        {
+          "name": "bio4_ipsl_cm6a_lr",
+          "type": "FLOAT"
+        },
+        {
+          "name": "bio4_mpi_esm1_2_hr",
+          "type": "FLOAT"
+        },
+        {
+          "name": "bio4_mri_esm2_0",
+          "type": "FLOAT"
+        },
+        {
+          "name": "bio4_ukesm1_0_ll",
+          "type": "FLOAT"
+        },
+        {
+          "name": "bio4_median",
+          "type": "FLOAT"
+        },
+        {
+          "name": "bio4_min",
+          "type": "FLOAT"
+        },
+        {
+          "name": "bio4_max",
+          "type": "FLOAT"
+        },
+        {
+          "name": "bio5_gfdl_esm4",
+          "type": "FLOAT"
+        },
+        {
+          "name": "bio5_ipsl_cm6a_lr",
+          "type": "FLOAT"
+        },
+        {
+          "name": "bio5_mpi_esm1_2_hr",
+          "type": "FLOAT"
+        },
+        {
+          "name": "bio5_mri_esm2_0",
+          "type": "FLOAT"
+        },
+        {
+          "name": "bio5_ukesm1_0_ll",
+          "type": "FLOAT"
+        },
+        {
+          "name": "bio5_median",
+          "type": "FLOAT"
+        },
+        {
+          "name": "bio5_min",
+          "type": "FLOAT"
+        },
+        {
+          "name": "bio5_max",
+          "type": "FLOAT"
+        },
+        {
+          "name": "bio6_gfdl_esm4",
+          "type": "FLOAT"
+        },
+        {
+          "name": "bio6_ipsl_cm6a_lr",
+          "type": "FLOAT"
+        },
+        {
+          "name": "bio6_mpi_esm1_2_hr",
+          "type": "FLOAT"
+        },
+        {
+          "name": "bio6_mri_esm2_0",
+          "type": "FLOAT"
+        },
+        {
+          "name": "bio6_ukesm1_0_ll",
+          "type": "FLOAT"
+        },
+        {
+          "name": "bio6_median",
+          "type": "FLOAT"
+        },
+        {
+          "name": "bio6_min",
+          "type": "FLOAT"
+        },
+        {
+          "name": "bio6_max",
+          "type": "FLOAT"
+        },
+        {
+          "name": "bio12_gfdl_esm4",
+          "type": "FLOAT"
+        },
+        {
+          "name": "bio12_ipsl_cm6a_lr",
+          "type": "FLOAT"
+        },
+        {
+          "name": "bio12_mpi_esm1_2_hr",
+          "type": "FLOAT"
+        },
+        {
+          "name": "bio12_mri_esm2_0",
+          "type": "FLOAT"
+        },
+        {
+          "name": "bio12_ukesm1_0_ll",
+          "type": "FLOAT"
+        },
+        {
+          "name": "bio12_median",
+          "type": "FLOAT"
+        },
+        {
+          "name": "bio12_min",
+          "type": "FLOAT"
+        },
+        {
+          "name": "bio12_max",
+          "type": "FLOAT"
+        },
+        {
+          "name": "bio15_gfdl_esm4",
+          "type": "FLOAT"
+        },
+        {
+          "name": "bio15_ipsl_cm6a_lr",
+          "type": "FLOAT"
+        },
+        {
+          "name": "bio15_mpi_esm1_2_hr",
+          "type": "FLOAT"
+        },
+        {
+          "name": "bio15_mri_esm2_0",
+          "type": "FLOAT"
+        },
+        {
+          "name": "bio15_ukesm1_0_ll",
+          "type": "FLOAT"
+        },
+        {
+          "name": "bio15_median",
+          "type": "FLOAT"
+        },
+        {
+          "name": "bio15_min",
+          "type": "FLOAT"
+        },
+        {
+          "name": "bio15_max",
+          "type": "FLOAT"
+        },
+        {
+          "name": "bio17_gfdl_esm4",
+          "type": "FLOAT"
+        },
+        {
+          "name": "bio17_ipsl_cm6a_lr",
+          "type": "FLOAT"
+        },
+        {
+          "name": "bio17_mpi_esm1_2_hr",
+          "type": "FLOAT"
+        },
+        {
+          "name": "bio17_mri_esm2_0",
+          "type": "FLOAT"
+        },
+        {
+          "name": "bio17_ukesm1_0_ll",
+          "type": "FLOAT"
+        },
+        {
+          "name": "bio17_median",
+          "type": "FLOAT"
+        },
+        {
+          "name": "bio17_min",
+          "type": "FLOAT"
+        },
+        {
+          "name": "bio17_max",
+          "type": "FLOAT"
+        }
+      ],
+      "description": "10 files sampled for this table",
+      "item_count": 22484532
+    },
+    "chelsa-2-1/ssp370-2071-2100/hex": {
+      "href": "https://data.source.coop/cboettig/bioclimate/chelsa-2-1/ssp370-2071-2100/hex/h0=576495936675512319/",
+      "type": "application/x-parquet",
+      "title": "chelsa-2-1/ssp370-2071-2100/hex",
+      "roles": [
+        "data"
+      ],
+      "description": "10 files sampled for this table",
+      "item_count": 22484532
+    },
+    "chelsa-2-1/ssp585-2011-2040/hex": {
+      "href": "https://data.source.coop/cboettig/bioclimate/chelsa-2-1/ssp585-2011-2040/hex/h0=576495936675512319/",
+      "type": "application/x-parquet",
+      "title": "chelsa-2-1/ssp585-2011-2040/hex",
+      "roles": [
+        "data"
+      ],
+      "description": "10 files sampled for this table",
+      "item_count": 22484532
+    },
+    "chelsa-2-1/ssp585-2041-2070/hex": {
+      "href": "https://data.source.coop/cboettig/bioclimate/chelsa-2-1/ssp585-2041-2070/hex/h0=576495936675512319/",
+      "type": "application/x-parquet",
+      "title": "chelsa-2-1/ssp585-2041-2070/hex",
+      "roles": [
+        "data"
+      ],
+      "description": "10 files sampled for this table",
+      "item_count": 22484532
+    },
+    "chelsa-2-1/ssp585-2071-2100/hex": {
+      "href": "https://data.source.coop/cboettig/bioclimate/chelsa-2-1/ssp585-2071-2100/hex/h0=576495936675512319/",
+      "type": "application/x-parquet",
+      "title": "chelsa-2-1/ssp585-2071-2100/hex",
+      "roles": [
+        "data"
+      ],
+      "description": "10 files sampled for this table",
+      "item_count": 22484532
+    }
+  },
+  "table:columns": [
+    {
+      "name": "h8",
+      "type": "UBIGINT"
+    },
+    {
+      "name": "h5",
+      "type": "UBIGINT"
+    },
+    {
+      "name": "h4",
+      "type": "UBIGINT"
+    },
+    {
+      "name": "h0",
+      "type": "BIGINT"
+    },
+    {
+      "name": "bio1_gfdl_esm4",
+      "type": "FLOAT"
+    },
+    {
+      "name": "bio1_ipsl_cm6a_lr",
+      "type": "FLOAT"
+    },
+    {
+      "name": "bio1_mpi_esm1_2_hr",
+      "type": "FLOAT"
+    },
+    {
+      "name": "bio1_mri_esm2_0",
+      "type": "FLOAT"
+    },
+    {
+      "name": "bio1_ukesm1_0_ll",
+      "type": "FLOAT"
+    },
+    {
+      "name": "bio1_median",
+      "type": "FLOAT"
+    },
+    {
+      "name": "bio1_min",
+      "type": "FLOAT"
+    },
+    {
+      "name": "bio1_max",
+      "type": "FLOAT"
+    },
+    {
+      "name": "bio4_gfdl_esm4",
+      "type": "FLOAT"
+    },
+    {
+      "name": "bio4_ipsl_cm6a_lr",
+      "type": "FLOAT"
+    },
+    {
+      "name": "bio4_mpi_esm1_2_hr",
+      "type": "FLOAT"
+    },
+    {
+      "name": "bio4_mri_esm2_0",
+      "type": "FLOAT"
+    },
+    {
+      "name": "bio4_ukesm1_0_ll",
+      "type": "FLOAT"
+    },
+    {
+      "name": "bio4_median",
+      "type": "FLOAT"
+    },
+    {
+      "name": "bio4_min",
+      "type": "FLOAT"
+    },
+    {
+      "name": "bio4_max",
+      "type": "FLOAT"
+    },
+    {
+      "name": "bio5_gfdl_esm4",
+      "type": "FLOAT"
+    },
+    {
+      "name": "bio5_ipsl_cm6a_lr",
+      "type": "FLOAT"
+    },
+    {
+      "name": "bio5_mpi_esm1_2_hr",
+      "type": "FLOAT"
+    },
+    {
+      "name": "bio5_mri_esm2_0",
+      "type": "FLOAT"
+    },
+    {
+      "name": "bio5_ukesm1_0_ll",
+      "type": "FLOAT"
+    },
+    {
+      "name": "bio5_median",
+      "type": "FLOAT"
+    },
+    {
+      "name": "bio5_min",
+      "type": "FLOAT"
+    },
+    {
+      "name": "bio5_max",
+      "type": "FLOAT"
+    },
+    {
+      "name": "bio6_gfdl_esm4",
+      "type": "FLOAT"
+    },
+    {
+      "name": "bio6_ipsl_cm6a_lr",
+      "type": "FLOAT"
+    },
+    {
+      "name": "bio6_mpi_esm1_2_hr",
+      "type": "FLOAT"
+    },
+    {
+      "name": "bio6_mri_esm2_0",
+      "type": "FLOAT"
+    },
+    {
+      "name": "bio6_ukesm1_0_ll",
+      "type": "FLOAT"
+    },
+    {
+      "name": "bio6_median",
+      "type": "FLOAT"
+    },
+    {
+      "name": "bio6_min",
+      "type": "FLOAT"
+    },
+    {
+      "name": "bio6_max",
+      "type": "FLOAT"
+    },
+    {
+      "name": "bio12_gfdl_esm4",
+      "type": "FLOAT"
+    },
+    {
+      "name": "bio12_ipsl_cm6a_lr",
+      "type": "FLOAT"
+    },
+    {
+      "name": "bio12_mpi_esm1_2_hr",
+      "type": "FLOAT"
+    },
+    {
+      "name": "bio12_mri_esm2_0",
+      "type": "FLOAT"
+    },
+    {
+      "name": "bio12_ukesm1_0_ll",
+      "type": "FLOAT"
+    },
+    {
+      "name": "bio12_median",
+      "type": "FLOAT"
+    },
+    {
+      "name": "bio12_min",
+      "type": "FLOAT"
+    },
+    {
+      "name": "bio12_max",
+      "type": "FLOAT"
+    },
+    {
+      "name": "bio15_gfdl_esm4",
+      "type": "FLOAT"
+    },
+    {
+      "name": "bio15_ipsl_cm6a_lr",
+      "type": "FLOAT"
+    },
+    {
+      "name": "bio15_mpi_esm1_2_hr",
+      "type": "FLOAT"
+    },
+    {
+      "name": "bio15_mri_esm2_0",
+      "type": "FLOAT"
+    },
+    {
+      "name": "bio15_ukesm1_0_ll",
+      "type": "FLOAT"
+    },
+    {
+      "name": "bio15_median",
+      "type": "FLOAT"
+    },
+    {
+      "name": "bio15_min",
+      "type": "FLOAT"
+    },
+    {
+      "name": "bio15_max",
+      "type": "FLOAT"
+    },
+    {
+      "name": "bio17_gfdl_esm4",
+      "type": "FLOAT"
+    },
+    {
+      "name": "bio17_ipsl_cm6a_lr",
+      "type": "FLOAT"
+    },
+    {
+      "name": "bio17_mpi_esm1_2_hr",
+      "type": "FLOAT"
+    },
+    {
+      "name": "bio17_mri_esm2_0",
+      "type": "FLOAT"
+    },
+    {
+      "name": "bio17_ukesm1_0_ll",
+      "type": "FLOAT"
+    },
+    {
+      "name": "bio17_median",
+      "type": "FLOAT"
+    },
+    {
+      "name": "bio17_min",
+      "type": "FLOAT"
+    },
+    {
+      "name": "bio17_max",
+      "type": "FLOAT"
+    }
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/cboettig/bioclimate/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/cboettig/bioclimate",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "rel": "cite-as",
+      "href": "https://doi.org/10.1038/sdata.2017.122"
+    }
+  ],
+  "objects_updated_at": "2026-10-18T17:15:04+00:00",
+  "account_id": "cboettig",
   "updated_at": "2026-10-13T01:58:27.969Z",
-  "visibility": "public",
-  "disabled": false,
   "featured": 0,
+  "product_id": "bioclimate",
   "data_mode": null,
+  "object_count": 1092,
+  "ext_bytes": {
+    "parquet": 288215831410,
+    "json": 221561,
+    "md": 5361
+  },
   "mirrors": {
     "aws-opendata-us-west-2": {
       "is_primary": true,
@@ -18,24 +733,26 @@
       "connection_id": "aws-opendata-us-west-2"
     }
   },
-  "object_count": 1092,
-  "objects_updated_at": "2026-10-18T17:15:04+00:00",
-  "total_bytes": 288216058332,
+  "disabled": false,
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
   "exts": {
     "parquet": 1080,
     "json": 11,
     "md": 1
   },
-  "ext_bytes": {
-    "parquet": 288215831410,
-    "json": 221561,
-    "md": 5361
-  },
-  "store_format": null,
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "cataloged_at": "2026-10-26T09:43:07+00:00"
+  "total_bytes": 288216058332,
+  "visibility": "public",
+  "created_at": "2026-10-13T01:58:27.969Z",
+  "readme": "## README.md\n# public-bioclimate\n\nBioclimatic variables aggregated to H3 hexagonal cells, for climate-exposure and\nspecies-distribution work.\n\n## CHELSA 2.1 future bioclimate \u2014 SSP3-7.0, 2041\u20132070\n\nDownscaled CMIP6 bioclimatic variables from [CHELSA v2.1](https://chelsa-climate.org/),\naggregated to **H3 resolution 8** (cells of about 0.74 km\u00b2) over the **global land surface**.\n\n- **195,048,994 cells** across 108 hive partitions\n- **Five climate models kept as separate columns**, plus their median, minimum and maximum\n- **Seven bioclimatic variables**, temperature in \u00b0C and precipitation in mm\n- License: **CC0-1.0**\n\n### Variables\n\nSeven bioclimatic variables, each with five climate model columns plus `median`, `min` and `max`\n(60 columns in all):\n\n| variable | meaning | units | observed range |\n|---|---|---|---|\n| `bio1` | annual mean temperature | \u00b0C | \u221251.95 \u2013 38.05 |\n| `bio4` | temperature seasonality (SD of monthly mean \u00d7 100) | \u00b0C \u00d7 100 | 4.6 \u2013 2318 |\n| `bio5` | max temperature of warmest month | \u00b0C | \u221231.85 \u2013 52.05 |\n| `bio6` | min temperature of coldest month | \u00b0C | \u221265.45 \u2013 29.55 |\n| `bio12` | annual precipitation | mm | 0.4 \u2013 6553.5 |\n| `bio15` | precipitation seasonality (CV) | % | 3.36 \u2013 265.68 |\n| `bio17` | precipitation of driest quarter | mm | 0 \u2013 4966.7 |\n\nColumn names follow `<variable>_<model>`, e.g. `bio1_gfdl_esm4`, plus `bio1_median`,\n`bio1_min`, `bio1_max`. The five models are GFDL-ESM4, IPSL-CM6A-LR, MPI-ESM1-2-HR,\nMRI-ESM2-0 and UKESM1-0-LL.\n\nH3 index columns: `h8` (native, the usual join key), `h5` and `h4` for coarser joins, and `h0`\nas the partition key.\n\nAll five models are kept so any summary can be computed directly, and so the disagreement\nbetween models stays visible. For annual mean temperature the models differ by **2.0 \u00b0C on\naverage**, and by as much as **10.4 \u00b0C** where they agree least.\n\n### \u26a0\ufe0f Annual precipitation is clipped at 6553.5 mm\n\nThe source stores precipitation as a 16-bit integer at 0.1 mm resolution, so `bio12` cannot\nexceed **6553.5 mm** \u2014 below the ~11,900 mm reached in the wettest places on Earth. Cells at\nthat value are a **lower bound**, not a measurement: **247,217 cells** hit it in the median and\n**348,969** in at least one model. Exclude them from any analysis of precipitation extremes:\n\n```sql\nSELECT ... WHERE bio12_median < 6553.5\n```\n\n### Query with DuckDB\n\n```sql\nINSTALL httpfs; LOAD httpfs;\nINSTALL h3 FROM community; LOAD h3;\n\n-- projected annual mean temperature near Berkeley, California\nSELECT bio1_median, bio1_min, bio1_max\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-bioclimate/chelsa-2-1/ssp370-2041-2070/hex/h0=*/data_0.parquet')\nWHERE h8 = h3_latlng_to_cell(37.87, -122.27, 8);\n```\n\nRestrict to a single partition when you know the region \u2014 it reads far less data:\n\n```sql\nSELECT AVG(bio1_median)\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-bioclimate/chelsa-2-1/ssp370-2041-2070/hex/h0=578923658349641727/data_0.parquet');\n```\n\n### Joining against other datasets\n\nJoin on `h8`, which is the resolution this dataset is stored at and the one most of the\ncatalog shares:\n\n```sql\nSELECT p.Unit_Nm, AVG(c.bio1_median) AS mean_temp_c\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-padus/padus-4-1/fee/hex/h0=*/data_0.parquet') p\nJOIN read_parquet('https://s3-west.nrp-nautilus.io/public-bioclimate/chelsa-2-1/ssp370-2041-2070/hex/h0=*/data_0.parquet') c\n  USING (h8)\nGROUP BY p.Unit_Nm;\n```\n\nDatasets held at coarser resolutions can be joined on `h5` or `h4` instead.\n\n### Visualising in MapLibre GL JS\n\nThis dataset ships as H3 hex parquet only \u2014 there is no PMTiles layer and therefore no\n`source-layer` to set. To draw it, query the cells you need and convert them to polygons\nwith `h3_cell_to_boundary_wkt()`, then add the result as a GeoJSON source:\n\n```js\nmap.addSource('bioclim', { type: 'geojson', data: featureCollectionFromQuery });\nmap.addLayer({\n  id: 'bioclim-fill',\n  type: 'fill',\n  source: 'bioclim',\n  paint: {\n    'fill-color': [\n      'interpolate', ['linear'], ['get', 'bio1_median'],\n      -20, '#2c7bb6',  0, '#abd9e9',  10, '#ffffbf',  20, '#fdae61',  35, '#d7191c'\n    ],\n    'fill-opacity': 0.8\n  }\n});\n```\n\n### Important to know\n\n- These are **projections, not observations**. Every value is conditional on the SSP3-7.0\n  scenario and on the model that produced it.\n- Values are **already means** over the source pixels in each cell. Combining cells means\n  averaging again, weighted by cell area \u2014 not adding. H3 cell area varies with latitude.\n- **Footprint is global land.** The CHELSA source also covers the ocean; this dataset is\n  restricted to cells intersecting the WWF Terrestrial Ecoregions of the World, which\n  includes Antarctica.\n\n### Scenarios and periods\n\nThis collection is SSP3-7.0 for 2041\u20132070. Further scenario and period combinations\n(SSP1-2.6, SSP3-7.0 and SSP5-8.5 across 2011\u20132040, 2041\u20132070 and 2071\u20132100) are being added as\nsibling collections in this bucket.\n\n## Source and citation\n\nKarger, D.N., Conrad, O., B\u00f6hner, J., Kawohl, T., Kreft, H., Soria-Auza, R.W., Zimmermann,\nN.E., Linder, H.P., Kessler, M. (2017). *Climatologies at high resolution for the earth's\nland surface areas.* Scientific Data 4, 170122. <https://doi.org/10.1038/sdata.2017.122>\n\nData: <https://chelsa-climate.org/> \u2014 released under CC0 1.0.\n",
+  "_review": [
+    "providers: role [host] for 'NRP Nautilus' is an AI guess \u2014 Inferred from the s3-west.nrp-nautilus.io endpoint in the README; hosting is not explicitly stated.. Verify before flipping to _state: reviewed.",
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [chelsa-2-1/ssp370-2041-2070/hex.h8 (spatial_index), chelsa-2-1/ssp370-2041-2070/hex.h5 (spatial_index), chelsa-2-1/ssp370-2041-2070/hex.h4 (spatial_index), chelsa-2-1/ssp370-2041-2070/hex.h0 (spatial_index)]. Add bbox once the placename \u2192 bbox gazetteer covers it.",
+    "summaries.item_count: parts overlap, so this is max(part), not the sum \u2014 chelsa-2-1/baseline-1981-2010/hex/ 22484532, chelsa-2-1/ssp126-2011-2040/hex/ 22484532, chelsa-2-1/ssp126-2041-2070/hex/ 22484532, chelsa-2-1/ssp126-2071-2100/hex/ 22484532, chelsa-2-1/ssp370-2011-2040/hex/ 22484532, chelsa-2-1/ssp370-2041-2070/hex/ 22484532, chelsa-2-1/ssp370-2071-2100/hex/ 22484532, chelsa-2-1/ssp585-2011-2040/hex/ 22484532, chelsa-2-1/ssp585-2041-2070/hex/ 22484532, chelsa-2-1/ssp585-2071-2100/hex/ 22484532. Sum them only once the parts are known to be disjoint."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-10-26T10:03:40+00:00",
+  "store_format": null
 }
