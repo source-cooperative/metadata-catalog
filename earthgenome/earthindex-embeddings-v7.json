@@ -1,16 +1,118 @@
 {
   "schema_version": 1,
-  "account_id": "earthgenome",
-  "product_id": "earthindex-embeddings-v7",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
+  "id": "earthgenome/earthindex-embeddings-v7",
   "title": "Earth Index Embeddings V7",
-  "description": "Latest generation of EarthIndex Embeddings ",
-  "keywords": [],
+  "description": "Chip-level vector embeddings (384-dimension, SSL4EO-S12 DINO ViT-S/16) of yearly cloud-free Sentinel-2 mosaics, covering the globe between roughly 60.5\u00b0S and 70.3\u00b0N. Produced by Earth Genome for Earth Index, with one GeoParquet file per MGRS tile and yearly period (2024 and 2025-26), each holding embeddings for ~320 m MajorTom grid cells.",
+  "license": "CC-BY-4.0",
+  "keywords": [
+    "embeddings",
+    "machine-learning",
+    "sentinel-2",
+    "geoparquet",
+    "earth-observation",
+    "foundation-model",
+    "global-coverage",
+    "remote-sensing"
+  ],
+  "providers": [
+    {
+      "name": "Earth Genome",
+      "roles": [
+        "producer",
+        "licensor",
+        "processor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/earthgenome/earthindex-embeddings-v7"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -178.2648528,
+          -45.2513328,
+          179.5915348,
+          67.6255267
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 2019373
+  },
+  "assets": {
+    "2025-01-01": {
+      "href": "https://data.source.coop/earthgenome/earthindex-embeddings-v7/",
+      "type": "application/x-parquet",
+      "title": "2025-01-01",
+      "roles": [
+        "data"
+      ],
+      "description": "5 files sampled for this table"
+    },
+    "2026-08-16": {
+      "href": "https://data.source.coop/earthgenome/earthindex-embeddings-v7/",
+      "type": "application/x-parquet",
+      "title": "2026-08-16",
+      "roles": [
+        "data"
+      ],
+      "description": "5 files sampled for this table"
+    }
+  },
+  "table:columns": [
+    {
+      "name": "id",
+      "type": "UBIGINT"
+    },
+    {
+      "name": "embedding",
+      "type": "FLOAT[]"
+    },
+    {
+      "name": "geometry",
+      "type": "GEOMETRY('OGC:CRS84')",
+      "description": "[geometry] WKB point at the centre of each MajorTom grid cell (EPSG:4326)"
+    }
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/earthgenome/earthindex-embeddings-v7/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/earthgenome/earthindex-embeddings-v7",
+      "title": "Source Cooperative product page"
+    }
+  ],
   "created_at": "2026-10-19T15:34:42.736Z",
   "updated_at": "2026-10-20T15:21:39.262Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": null,
+  "product_id": "earthindex-embeddings-v7",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
   "mirrors": {
     "aws-opendata-us-west-2": {
       "connection_id": "aws-opendata-us-west-2",
@@ -18,22 +120,27 @@
       "prefix": "earthgenome/earthindex-embeddings-v7/"
     }
   },
-  "object_count": 35697,
-  "objects_updated_at": "2026-10-20T16:40:59+00:00",
-  "total_bytes": 11992274294833,
   "exts": {
     "parquet": 35696,
     "md": 1
   },
+  "total_bytes": 11992274294833,
   "ext_bytes": {
     "parquet": 11992274288433,
     "md": 6400
   },
-  "store_format": null,
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "cataloged_at": "2026-10-26T09:43:24+00:00"
+  "object_count": 35697,
+  "disabled": false,
+  "account_id": "earthgenome",
+  "objects_updated_at": "2026-10-20T16:40:59+00:00",
+  "visibility": "public",
+  "data_mode": null,
+  "featured": 0,
+  "readme": "## README.md\n![EarthGenome](https://data.source.coop/earthgenome/earthindexembeddings/logo.png)\n# Earth Index Embeddings V7\n\n[![CC-BY-4.0 license](https://img.shields.io/badge/License-CC--BY--4.0-blue.svg)](https://creativecommons.org/licenses/by/4.0/)\n[![Sensor](https://img.shields.io/badge/Sensor%F0%9F%9B%B0%EF%B8%8F-Sentinel2-blue)](https://www.esa.int/Applications/Observing_the_Earth/Copernicus/Sentinel-2)\n[![Format](https://img.shields.io/badge/Format-GeoParquet%20%F0%9F%8C%8E%EF%B8%8F-blue)](https://geoparquet.org/)\n\nChip-level vector embeddings of yearly, cloud-free Sentinel-2 mosaics, covering the globe between roughly 60.5\u00b0S and 70.3\u00b0N. They are produced by [Earth Genome](https://earthgenome.org) for [Earth Index](https://earthindex.ai), a search engine for the Earth's surface: find places that look like a place you already know.\n\nThis is the V7 generation and supersedes [`earthindexembeddings`](https://source.coop/earthgenome/earthindexembeddings). It holds two yearly periods, side by side:\n\n| Period | Files | Imagery it was computed from |\n|---|---|---|\n| `2025-08-16_2026-08-16` | 17,849 (one per MGRS tile) | [`earthindeximagery-v7`](https://source.coop/earthgenome/earthindeximagery-v7) (STAC `sentinel2-yearly-mosaics-v7`) |\n| `2024-01-01_2025-01-01` | 17,847 | the earlier V4 yearly mosaics (STAC `sentinel2-yearly-mosaics-v4`) |\n\nBoth periods use the same model and chip layout. The 2024 files were generated from V4 mosaics (a different compositing run from V7), so differences between the two periods can reflect imagery processing as well as real change on the ground. The imagery behind the 2024 embeddings is **not** part of the V7 imagery product.\n\nThis data is licensed under the [Creative Commons Attribution 4.0](https://creativecommons.org/licenses/by/4.0/) international license, which, in summary, only requires attribution.\n\n## Standards\nThe per-file metadata in this product follows the emerging [geo-embeddings STAC embeddings specification](https://github.com/geo-embeddings/embeddings-stac-specification) (the STAC `emb:` extension, schema `https://stac-extensions.github.io/embeddings/v0.0.1/schema.json`). We validated it against the specification's JSON Schema:\n- **GeoParquet files** embed a STAC item in their footer metadata under the `emb` key (next to the standard GeoParquet `geo` key), declaring the extension with `emb:preprocessing`, `emb:runtime_parameters` (bands, chip size, stride, intended uses), `emb:quantization` and `emb:energy`, and an `embeddings` asset. This item validates against the schema, so files stay self-describing when separated from the catalog.\n- **STAC items** in `ssl4eo_yearly_embeddings_v7` carry the same extension and fields and validate, with one caveat: the schema pins `stac_version` to `1.0.0`, while our STAC API serves STAC `1.1.0`.\n\nThe specification is a proposal and may change, so field names may be updated in later releases.\n\n## Resources\n- [Earth Index](https://earthindex.ai): search these embeddings in the browser\n- [Earth Genome](https://earthgenome.org)\n- **STAC API:** <https://stac.earthgenome.org>, collection [`ssl4eo_yearly_embeddings_v7`](https://stac.earthgenome.org/collections/ssl4eo_yearly_embeddings_v7). Search by place, MGRS tile or date, and follow each item's `generated_from` link to the imagery it came from.\n- [STAC Browser](https://browser.stac.earthgenome.org/collections/ssl4eo_yearly_embeddings_v7), a human-friendly interface to the same catalog\n- Source imagery: [`earthindeximagery-v7`](https://source.coop/earthgenome/earthindeximagery-v7)\n\n> The `href` of each STAC asset points to Earth Genome's own S3 bucket (`ei-ssl4eo-embeddings`), not to Source Cooperative. The identical files are in this repository under the same name, so replace that prefix with `https://data.source.coop/earthgenome/earthindex-embeddings-v7/` to read them from here.\n\n## Model\nEmbeddings come from the **SSL4EO-S12 DINO ViT-S/16** model (self-supervised pretraining on Sentinel-2 L2A, from the [SSL4EO-S12](https://github.com/zhu-xlab/SSL4EO-S12) project, loaded through [TorchGeo](https://torchgeo.readthedocs.io/)). Each embedding is 384 dimensions, float32, not quantized.\n\nThis differs from the original `earthindexembeddings` product, which used the SoftCon model. Vectors from the two products are not comparable.\n\n## How the chips are made\n- The mosaic is chipped with the [MajorTom](https://huggingface.co/datasets/Major-TOM/Core-S2L2A) grid: cells of about 320 \u00d7 320 m, one embedding per cell.\n- Each cell is read from the 10 m mosaic, upsampled bilinearly to 224 \u00d7 224 pixels, stacked into 13 bands (B01, B02, B03, B04, B05, B06, B07, B08, B8A, B09, B10, B11, B12), and divided by 10,000. Sentinel-2 L2A has no B10, so it is zero-filled.\n- Cells only partly inside the tile, or touching no-data pixels, are skipped, and so are chips that are entirely empty.\n\n## Naming\nFiles are named by MGRS tile, then start and end date: `31TDF_2025-08-16_2026-08-16.parquet` holds the embeddings for the Barcelona tile (31TDF) over the year ending 16 August 2026. The file name equals the STAC item id.\n\n## File format\nEach file is [GeoParquet](https://geoparquet.org/) 1.1 in WGS 84 (EPSG:4326), with one row group. Rows are not sorted by `id`. A full tile has up to roughly 235,000 rows (`31TDF` has 234,208); tiles that are partly ocean or no-data have fewer.\n\n| Column | Type | Description |\n|---|---|---|\n| `id` | uint64 | MajorTom cell id |\n| `embedding` | fixed_size_list&lt;float32&gt;[384] | the embedding vector |\n| `geometry` | binary (WKB) | point at the centre of the cell |\n\nThe Parquet key-value metadata carries a complete STAC item under the `emb` key, so every file is self-describing, following the [embeddings STAC specification](https://github.com/geo-embeddings/embeddings-stac-specification) (see [Standards](#standards)). It includes preprocessing, bands, chip size, stride, quantization, and the energy used for inference.\n\n## Example\n```python\nimport duckdb\n\ndf = duckdb.sql(\"\"\"\n    SELECT id, embedding\n    FROM read_parquet('https://data.source.coop/earthgenome/earthindex-embeddings-v7/31TDF_2025-08-16_2026-08-16.parquet')\n    LIMIT 5\n\"\"\").df()\n```\n\nThe same objects are readable over S3: `s3://us-west-2.opendata.source.coop/earthgenome/earthindex-embeddings-v7/`.\n\n## Contact\nUsing this? Want to work together? Ping us at info@earthgenome.org or info@earthindex.ai\n",
+  "_review": [
+    "providers: role [producer, licensor, processor] for 'Earth Genome' is an AI guess \u2014 README states Earth Genome produces the embeddings and licenses under CC-BY-4.0 terms; the processor and licensor roles are inferred from that.. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-10-26T10:04:24+00:00",
+  "store_format": null
 }
