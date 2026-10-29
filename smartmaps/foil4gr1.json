@@ -4,11 +4,16 @@
   "stac_version": "1.1.0",
   "id": "smartmaps/foil4gr1",
   "title": "FOIL4G Data Pack Release 1",
-  "description": "FOIL4G (Free and Open Information Library for Geospatial) Data Pack Release 1 is a collection of seven global-extent PMTiles files covering the full Web Mercator range. The pack totals approximately 25 GB and appears to be a curated release of open geospatial tile data.",
+  "description": "Daily, cloud-aware snow-cover records for Hokkaido, Japan, derived from Sentinel-2 L2A imagery on a z18 XYZ-tile grid (112 m cells). Includes per-pass cloud-optimized GeoTIFF observations, per-municipality class counts and state summaries in Parquet, and raster PMTiles for a dashboard.",
+  "license": "CC-BY-4.0",
   "keywords": [
+    "remote-sensing",
+    "sentinel-2",
+    "cryosphere",
+    "time-series",
     "pmtiles",
-    "vector-tiles",
-    "global-coverage"
+    "cloud-optimized-geotiff",
+    "earth-observation"
   ],
   "providers": [
     {
@@ -50,7 +55,7 @@
     "data": {
       "href": "https://data.source.coop/smartmaps/foil4gr1/",
       "type": "application/octet-stream",
-      "title": "Dataset files (7 x .pmtiles)",
+      "title": "Dataset files (1620 x .pmtiles)",
       "roles": [
         "data"
       ]
@@ -68,21 +73,17 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "updated_at": "2025-08-21T16:39:55.567Z",
-  "created_at": "2024-07-01T13:08:25.209513+00:00",
+  "ext_bytes": {
+    "pmtiles": 25423924644,
+    "tif": 249573139,
+    "parquet": 5058839,
+    "json": 8674,
+    "md": 1827
+  },
   "visibility": "public",
-  "total_bytes": 25047196961,
-  "exts": {
-    "pmtiles": 7
-  },
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "product_id": "foil4gr1",
-  "account_id": "smartmaps",
   "data_mode": "open",
-  "object_count": 7,
+  "object_count": 1120,
+  "updated_at": "2025-08-21T16:39:55.567Z",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -95,16 +96,26 @@
       "prefix": "smartmaps/foil4gr1/"
     }
   },
+  "account_id": "smartmaps",
+  "total_bytes": 25678567123,
+  "exts": {
+    "pmtiles": 517,
+    "parquet": 302,
+    "tif": 299,
+    "md": 1,
+    "json": 1
+  },
+  "objects_updated_at": "2026-10-25T02:16:17+00:00",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
   "featured": 0,
   "disabled": false,
-  "_review": [
-    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
-    "providers: role [producer, licensor] for 'FOIL4G' is an AI guess \u2014 No README; assumed producer/licensor from the project name (Free and Open Information Library for Geospatial). Verify before flipping to _state: reviewed."
-  ],
+  "created_at": "2024-07-01T13:08:25.209513+00:00",
+  "product_id": "foil4gr1",
+  "readme": "## snow-hokkaido__README.md\n# snow-hokkaido data\n\nDaily, cloud-aware snow-cover records for Hokkaido, built from Sentinel-2 L2A on a z18 XYZ-tile cell grid\n(112 m cells). Code, documentation and the dashboard: https://github.com/dwg7/snow-hokkaido\n\n## Layout\n\n- `obs/season=YYYY/<JST date>/<datatake_id>.tif`  obs-lite, one COG per pass: band 1 class (0 not scanned, 1 cloud,\n  2 shadow, 3 green = clear and no snow, 4 snow), band 2 clear_pct. EPSG:3857, z18 cells, 7168 x 4608 cells\n  (z9 tiles x 454..467, y 183..191). Not every pass covers all of Hokkaido: uncovered cells are 0.\n- `events/`  per municipality and pass: counts of cells by class (Parquet)\n- `derived/state/`  per municipality and date: last-known state counts (Parquet)\n- `derived/daily/`  per municipality and observed day: counts of that day's observation (one observation per cell per day; same columns as events)\n- `pixel/season=YYYY/latest.tif`  latest cell ledger (6 bands, uint16); a cache that can be rebuilt from `obs`\n- `view/`  raster PMTiles for the dashboard (z4-z10; a z10 pixel is a cell) and `dates.json`\n\nMunicipality boundary geometry is not included. Rebuild the cell-to-municipality map yourself (`just fetch-n03`,\n`just cellmap` in the repository).\n\n## License and attribution\n\nCC BY 4.0. Please credit:\n\n- Contains modified Copernicus Sentinel data 2026 (Sentinel-2 L2A, via Earth Search by Element 84).\n- Municipality codes and aggregation use \u300c\u56fd\u571f\u6570\u5024\u60c5\u5831(\u884c\u653f\u533a\u57df\u30c7\u30fc\u30bf)\u300d(\u56fd\u571f\u4ea4\u901a\u7701)\n  (https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-N03-2026.html) as the basis; the data were processed\n  (assignment to cells, aggregation). This is not a product made by the national government.\n- Snow classes are provisional (algorithm version in each file's tags); see the repository's `docs/stage1-checks.md`\n  for what was and was not verified.\n",
   "_state": "drafted",
-  "cataloged_at": "2026-05-26T18:33:06+00:00",
-  "ext_bytes": {
-    "pmtiles": 25047196961
-  },
-  "objects_updated_at": "2026-10-25T02:16:17+00:00"
+  "cataloged_at": "2026-10-29T09:37:15+00:00",
+  "store_format": null
 }
