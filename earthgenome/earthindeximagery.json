@@ -4,14 +4,16 @@
   "stac_version": "1.1.0",
   "id": "earthgenome/earthindeximagery",
   "title": "Earth Index Imagery",
-  "description": "Global collection of cloudless Sentinel-2 yearly imagery mosaics, covering all spectral bands except B10 at their native resolution. Assets are Cloud-Optimized GeoTIFFs (COGs) in Web Mercator (EPSG:3857) projection, organized by UTM grid tile and annual date range. Each asset includes quality metadata (good pixel percentage) and provenance references to the contributing Sentinel-2 L2A scenes.",
+  "description": "Deprecated Earth Index yearly cloudless Sentinel-2 mosaics (calendar-year 2022-2025, partial 2018-2021, plus some quarterly and half-year windows) as Cloud-Optimized GeoTIFFs in Web Mercator, organized by UTM grid tile. Includes all Sentinel-2 L2A bands except B10 at native resolution, with quality and provenance metadata. Superseded by Earth Index Imagery V7.",
   "license": "CC-BY-4.0",
   "keywords": [
     "remote-sensing",
     "satellite-imagery",
     "sentinel-2",
-    "multispectral",
-    "mosaics"
+    "cloud-optimized-geotiff",
+    "earth-observation",
+    "land-cover",
+    "global-coverage"
   ],
   "providers": [
     {
@@ -77,25 +79,31 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "featured": 0,
-  "total_bytes": 171247621619981,
-  "account_id": "earthgenome",
-  "visibility": "public",
-  "object_count": 1045279,
-  "data_mode": "open",
-  "disabled": false,
-  "updated_at": "2025-08-21T16:39:55.569Z",
-  "created_at": "2025-04-01T16:10:26.849Z",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
+  "featured": 0,
+  "product_id": "earthindeximagery",
+  "total_bytes": 171247621620835,
   "exts": {
     "tif": 1045277,
-    "md": 1,
-    "xml": 1
+    "xml": 1,
+    "md": 1
   },
-  "product_id": "earthindeximagery",
+  "account_id": "earthgenome",
+  "objects_updated_at": "2026-10-20T15:18:21+00:00",
+  "object_count": 1045279,
+  "data_mode": "open",
+  "disabled": false,
+  "visibility": "public",
+  "updated_at": "2025-08-21T16:39:55.569Z",
+  "ext_bytes": {
+    "tif": 171247621616853,
+    "md": 2956,
+    "xml": 1026
+  },
+  "created_at": "2025-04-01T16:10:26.849Z",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -108,17 +116,8 @@
       "prefix": "earthgenome/earthindeximagery/"
     }
   },
-  "readme": "## README.md\n\n![EarthGenome](https://data.source.coop/earthgenome/earthindexembeddings/logo.png)\n# Earth Index yearly imagery mosaics\n\n[![CC-4 license](https://img.shields.io/badge/License-CC--4-blue.svg)](https://creativecommons.org/licenses/by/4.0/)\n[![Sensor](https://img.shields.io/badge/Sensor%F0%9F%9B%B0%EF%B8%8F-Sentinel2-blue)](https://www.esa.int/Applications/Observing_the_Earth/Copernicus/Sentinel-2)\n[![Format](https://img.shields.io/badge/Format-COG%20%E2%9A%99%EF%B8%8F-purple)](https://www.cogeo.org/)\n\nThis repository holds a large (and growing!) collection of cloudless Senitnel 2 data. All bands (except B10 as this was generated from L2A) are available at their original native resolution.\n\nThis data is licensed under the creative commons 4.0 international license which, in summary, only requires attribution.\n\nYou can read more about how this was created [here](https://medium.com/earthrisemedia/earth-index-imagery-v2-40674f18b4d2).\n\n### Resources\n- [Earth Genome STAC](https://stac.earthgenome.org/collections/sentinel2-yearly-mosaics) instance for searching this collection\n- [STAC Browser](https://browser.stac.earthgenome.org/collections/sentinel2-yearly-mosaics), human friendly interface\n\n### Naming\nArtifacts are name according to their original UTM grid number, concatenated with the start and end dates.  For example the `31TDF_2024-01-01_2025-01-01/` directory will give you bands over for Barcelona (31TDF) over the course of 2024.\n\n### Artifacts and Metadata\nAll assets are COG encoded GeoTiffs in Web Mercator (EPSG:3857) projection. Besides the item id itself, the STAC catalog has the original UTM infornmation so you can calculate and then reproject to the original EPSG code, if needed.\n\nThe STAC assets also have 2 properties to help better understand the provience and quality of the images:\n\n- `good_pxl_pct` is a the estimated percentage of \"good\" (non masked) pixels\n- `generated_from` is an array of references to the Sentinel L2A assets which contributed to this asset\n\n\n### Contact\nUsing this? Want work together? Ping us @ info@earthgenome.org or info@earthindex.ai",
-  "_review": [
-    "providers: role [producer, processor] for 'Earth Genome' is an AI guess \u2014 Credited as dataset owner/publisher; README contact and STAC catalog are earthgenome.org, but the processing pipeline is described under the Earth Index brand. Verify before flipping to _state: reviewed.",
-    "providers: role [producer] for 'European Space Agency (ESA)' is an AI guess \u2014 Sentinel-2 L2A imagery is the upstream source; ESA is not explicitly named as provider in the README but is the originating satellite operator. Verify before flipping to _state: reviewed."
-  ],
+  "readme": "## README.md\n> [!WARNING]\n> **Deprecated.** This product is no longer updated, but it is kept because it holds the **only copies of earlier imagery**: calendar-year mosaics for 2022, 2023, 2024 and 2025, partial coverage for 2018-2021, and some shorter (quarterly and half-year) windows from 2024-2025. None of these are in V7. The latest generation is **[Earth Index Imagery V7](https://source.coop/earthgenome/earthindeximagery-v7)** (`earthgenome/earthindeximagery-v7`), a global mosaic for the single window 2025-08-16 \u2192 2026-08-16, on the native 10 m UTM grid of each tile (not Web Mercator). Use V7 for current imagery; use this product for historical years.\n>\n> Explore at [earthindex.ai](https://earthindex.ai) \u00b7 Produced by [earthgenome.org](https://earthgenome.org) \u00b7 STAC: <https://stac.earthgenome.org> (V7 collection: `sentinel2-yearly-mosaics-v7`)\n\n\n![EarthGenome](https://data.source.coop/earthgenome/earthindexembeddings/logo.png)\n# Earth Index yearly imagery mosaics\n\n[![CC-4 license](https://img.shields.io/badge/License-CC--4-blue.svg)](https://creativecommons.org/licenses/by/4.0/)\n[![Sensor](https://img.shields.io/badge/Sensor%F0%9F%9B%B0%EF%B8%8F-Sentinel2-blue)](https://www.esa.int/Applications/Observing_the_Earth/Copernicus/Sentinel-2)\n[![Format](https://img.shields.io/badge/Format-COG%20%E2%9A%99%EF%B8%8F-purple)](https://www.cogeo.org/)\n\nThis repository holds a large (and growing!) collection of cloudless Senitnel 2 data. All bands (except B10 as this was generated from L2A) are available at their original native resolution.\n\nThis data is licensed under the creative commons 4.0 international license which, in summary, only requires attribution.\n\nYou can read more about how this was created [here](https://medium.com/earthrisemedia/earth-index-imagery-v2-40674f18b4d2).\n\n### Resources\n- [Earth Genome STAC](https://stac.earthgenome.org/collections/sentinel2-yearly-mosaics) instance for searching this collection\n- [STAC Browser](https://browser.stac.earthgenome.org/collections/sentinel2-yearly-mosaics), human friendly interface\n\n### Naming\nArtifacts are name according to their original UTM grid number, concatenated with the start and end dates.  For example the `31TDF_2024-01-01_2025-01-01/` directory will give you bands over for Barcelona (31TDF) over the course of 2024.\n\n### Artifacts and Metadata\nAll assets are COG encoded GeoTiffs in Web Mercator (EPSG:3857) projection. Besides the item id itself, the STAC catalog has the original UTM infornmation so you can calculate and then reproject to the original EPSG code, if needed.\n\nThe STAC assets also have 2 properties to help better understand the provience and quality of the images:\n\n- `good_pxl_pct` is a the estimated percentage of \"good\" (non masked) pixels\n- `generated_from` is an array of references to the Sentinel L2A assets which contributed to this asset\n\n\n### Contact\nUsing this? Want work together? Ping us @ info@earthgenome.org or info@earthindex.ai",
   "_state": "drafted",
-  "cataloged_at": "2026-05-27T01:52:04+00:00",
-  "ext_bytes": {
-    "tif": 171247621616853,
-    "md": 2102,
-    "xml": 1026
-  },
-  "objects_updated_at": "2026-10-20T15:18:21+00:00"
+  "cataloged_at": "2026-10-30T09:30:47+00:00",
+  "store_format": null
 }
