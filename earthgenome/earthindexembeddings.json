@@ -2,16 +2,22 @@
   "schema_version": 1,
   "type": "Collection",
   "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
   "id": "earthgenome/earthindexembeddings",
   "title": "Earth Index Embeddings",
-  "description": "Global-coverage machine learning embeddings derived from Sentinel-2 satellite temporal mosaics using the SoftCon Model. Each embedding is a 384-dimensional vector capturing Earth surface characteristics at specific UTM grid locations and time periods.",
+  "description": "Global-coverage dataset of machine learning embeddings (384-dimensional vectors) derived from Sentinel-2 temporal mosaics using the SoftCon model, stored as GeoParquet point files per UTM grid cell and date range. Deprecated and superseded by Earth Index Embeddings V7, and kept as a historical archive.",
   "license": "CC-BY-4.0",
   "keywords": [
-    "remote-sensing",
-    "sentinel-2",
     "embeddings",
     "machine-learning",
-    "earth-observation"
+    "sentinel-2",
+    "earth-observation",
+    "geoparquet",
+    "foundation-model",
+    "global-coverage",
+    "remote-sensing"
   ],
   "providers": [
     {
@@ -59,13 +65,29 @@
     "item_count": 2208150
   },
   "assets": {
-    "data": {
-      "href": "https://data.source.coop/earthgenome/earthindexembeddings/",
+    "2025-01-01": {
+      "href": "https://data.source.coop/earthgenome/earthindexembeddings/2024/",
       "type": "application/x-parquet",
-      "title": "Dataset files (17722 x .parquet)",
+      "title": "2025-01-01",
       "roles": [
         "data"
-      ]
+      ],
+      "table:columns": [
+        {
+          "name": "id",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "embedding",
+          "type": "FLOAT[]"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('EPSG:4326')",
+          "description": "[geometry] Point geometry in WKB, EPSG:4326, one per embedding"
+        }
+      ],
+      "description": "10 files sampled for this table"
     }
   },
   "links": [
@@ -80,24 +102,17 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "object_count": 17724,
-  "exts": {
-    "parquet": 17722,
-    "png": 1,
-    "md": 1
-  },
-  "data_mode": "open",
   "account_id": "earthgenome",
+  "disabled": false,
+  "product_id": "earthindexembeddings",
+  "object_count": 17724,
   "featured": 0,
-  "total_bytes": 8457990361189,
-  "created_at": "2025-03-31T15:34:21.380Z",
+  "visibility": "public",
+  "updated_at": "2025-08-21T16:39:55.569Z",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "product_id": "earthindexembeddings",
-  "visibility": "public",
-  "updated_at": "2025-08-21T16:39:55.569Z",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -110,14 +125,22 @@
       "prefix": "earthgenome/earthindexembeddings/"
     }
   },
-  "disabled": false,
-  "readme": "## README.md\n\n![EarthGenome](https://data.source.coop/earthgenome/earthindexembeddings/logo.png)\n# EarthIndex Embeddings from Sentinel2 Temporal Mosaics \n\n[![CC-4 license](https://img.shields.io/badge/License-CC--4-blue.svg)](https://creativecommons.org/licenses/by/4.0/)\n[![Sensor](https://img.shields.io/badge/Sensor%F0%9F%9B%B0%EF%B8%8F-Sentinel2-blue)](https://www.esa.int/Applications/Observing_the_Earth/Copernicus/Sentinel-2)\n[![Format](https://img.shields.io/badge/Format-GeoParquet%20%F0%9F%8C%8E%EF%B8%8F-blue)](https://geoparquet.org/)\n\nThis repository holds embeddings generated the entire globe for the given date ranges.\n\nThis data is licensed under the [creative commons 4.0](https://creativecommons.org/licenses/by/4.0/) international license which, in summary, only requires attribution.\n\n### Model\nThese embeddings are generated from the [SoftCon Model](https://github.com/zhu-xlab/softcon/tree/main) published by [Zhu Labs](https://www.asg.ed.tum.de/sipeo/home/)\n\n### Naming\nArtifacts are name according to their original UTM grid number, concatenated with the start and end dates.  For example `31TDF_2024-01-01_2025-01-01.parquet` will give you embeddings for Barcelona (31TDF) over the course of 2024.\n\n### Artifacts and Metadata\nAll assets are Geoparquet in EPSG:4626 projection with point geometries. The fields are as follows:\n- id: uint64\n- embedding: float[384]\n- geometry: Point in WKB\n\n\n### Contact\nUsing this? Want work together? Ping us @ info@earthgenome.org or info@earthindex.ai",
-  "_state": "drafted",
-  "cataloged_at": "2026-04-24T19:15:36+00:00",
+  "data_mode": "open",
+  "created_at": "2025-03-31T15:34:21.380Z",
+  "total_bytes": 8457990361892,
+  "exts": {
+    "parquet": 17722,
+    "md": 1,
+    "png": 1
+  },
+  "objects_updated_at": "2026-10-20T15:17:36+00:00",
   "ext_bytes": {
     "parquet": 8457990353719,
     "png": 5971,
-    "md": 1499
+    "md": 2202
   },
-  "objects_updated_at": "2026-10-20T15:17:36+00:00"
+  "readme": "## README.md\n> [!WARNING]\n> **Deprecated.** This product is no longer updated. The latest generation is **[Earth Index Embeddings V7](https://source.coop/earthgenome/earthindex-embeddings-v7)** (`earthgenome/earthindex-embeddings-v7`), which covers 2024 and 2025-08-16 \u2192 2026-08-16 and should be used for new work.\n>\n> V7 uses a different model (SSL4EO-S12 DINO ViT-S/16; this product uses SoftCon), so **vectors from the two products are not comparable and must not be mixed** in one index or similarity search. This repository is kept as a historical archive.\n>\n> Search at [earthindex.ai](https://earthindex.ai) \u00b7 Produced by [earthgenome.org](https://earthgenome.org) \u00b7 STAC: <https://stac.earthgenome.org>\n\n\n![EarthGenome](https://data.source.coop/earthgenome/earthindexembeddings/logo.png)\n# EarthIndex Embeddings from Sentinel2 Temporal Mosaics \n\n[![CC-4 license](https://img.shields.io/badge/License-CC--4-blue.svg)](https://creativecommons.org/licenses/by/4.0/)\n[![Sensor](https://img.shields.io/badge/Sensor%F0%9F%9B%B0%EF%B8%8F-Sentinel2-blue)](https://www.esa.int/Applications/Observing_the_Earth/Copernicus/Sentinel-2)\n[![Format](https://img.shields.io/badge/Format-GeoParquet%20%F0%9F%8C%8E%EF%B8%8F-blue)](https://geoparquet.org/)\n\nThis repository holds embeddings generated the entire globe for the given date ranges.\n\nThis data is licensed under the [creative commons 4.0](https://creativecommons.org/licenses/by/4.0/) international license which, in summary, only requires attribution.\n\n### Model\nThese embeddings are generated from the [SoftCon Model](https://github.com/zhu-xlab/softcon/tree/main) published by [Zhu Labs](https://www.asg.ed.tum.de/sipeo/home/)\n\n### Naming\nArtifacts are name according to their original UTM grid number, concatenated with the start and end dates.  For example `31TDF_2024-01-01_2025-01-01.parquet` will give you embeddings for Barcelona (31TDF) over the course of 2024.\n\n### Artifacts and Metadata\nAll assets are Geoparquet in EPSG:4626 projection with point geometries. The fields are as follows:\n- id: uint64\n- embedding: float[384]\n- geometry: Point in WKB\n\n\n### Contact\nUsing this? Want work together? Ping us @ info@earthgenome.org or info@earthindex.ai",
+  "_state": "drafted",
+  "cataloged_at": "2026-10-30T09:31:15+00:00",
+  "store_format": null
 }
