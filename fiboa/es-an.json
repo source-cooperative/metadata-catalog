@@ -7,7 +7,7 @@
   ],
   "id": "fiboa/es-an",
   "title": "Spain Andalusia Crop fields",
-  "description": "Official field boundaries for the Andalusia region of Spain, derived from SIGPAC (Geographic Information System for the Identification of Agricultural Plots), a public administrative register of agricultural parcels and their subdivisions. Contains 4,381,464 enclosures with crop classifications and administrative codes, converted to fiboa GeoParquet format.",
+  "description": "Field boundaries for Andalusia, Spain: 4,381,464 official agricultural parcels from the SIGPAC register, with crop classifications and administrative codes, converted to fiboa GeoParquet. This dataset has moved to the Harmonized Field Boundary Data catalog and is no longer updated.",
   "license": "proprietary",
   "keywords": [
     "field-boundaries",
@@ -15,7 +15,9 @@
     "crop-classification",
     "lpis",
     "land-parcels",
-    "land-use"
+    "fiboa",
+    "geoparquet",
+    "pmtiles"
   ],
   "providers": [
     {
@@ -58,18 +60,18 @@
     "spatial": {
       "bbox": [
         [
-          -7.590391168925642,
-          35.958339278725965,
-          -1.6047633260974639,
-          38.73847669833676
+          -7.5903912,
+          35.9583393,
+          -1.6047633,
+          38.7467989
         ]
       ]
     },
     "temporal": {
       "interval": [
         [
-          "2024-03-28T00:00:00Z",
-          "2024-03-28T00:00:00Z"
+          null,
+          null
         ]
       ]
     }
@@ -78,64 +80,72 @@
     "item_count": 4381464
   },
   "assets": {
-    "data": {
-      "href": "https://data.source.coop/fiboa/es_an/es_an.parquet",
-      "title": "Field Boundaries",
-      "type": "application/vnd.apache.parquet",
+    "an": {
+      "href": "https://data.source.coop/fiboa/es-an/es_an.parquet",
+      "type": "application/x-parquet",
+      "title": "es_an.parquet",
       "roles": [
         "data"
       ],
       "table:columns": [
         {
           "name": "geometry",
-          "type": "binary"
+          "type": "GEOMETRY('EPSG:25830')",
+          "description": "[geometry] Field boundary polygon geometry (EPSG:25830 per the file schema; the README states EPSG:4258)"
         },
         {
           "name": "id",
-          "type": "string"
+          "type": "VARCHAR"
         },
         {
           "name": "admin_province_code",
-          "type": "string"
+          "type": "VARCHAR",
+          "description": "[admin_code] Province administrative code"
         },
         {
           "name": "admin_municipality_code",
-          "type": "string"
+          "type": "VARCHAR",
+          "description": "[admin_code] Municipality administrative code"
         },
         {
           "name": "area",
-          "type": "float"
+          "type": "FLOAT"
         },
         {
           "name": "crop:code",
-          "type": "string"
+          "type": "VARCHAR"
         },
         {
           "name": "crop:name",
-          "type": "string"
+          "type": "VARCHAR"
         },
         {
           "name": "crop:name_en",
-          "type": "string"
+          "type": "VARCHAR"
         },
         {
           "name": "crop:code_list",
-          "type": "string"
+          "type": "VARCHAR"
         },
         {
           "name": "determination_datetime",
-          "type": "timestamp[ms, tz=UTC]"
+          "type": "TIMESTAMP WITH TIME ZONE"
         },
         {
           "name": "admin:country_code",
-          "type": "string"
+          "type": "VARCHAR",
+          "description": "[admin_code] Country code"
         },
         {
           "name": "admin:subdivision_code",
-          "type": "string"
+          "type": "VARCHAR",
+          "description": "[admin_code] Subdivision (region) code"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
         }
       ],
-      "table:primary_geometry": "geometry",
       "table:row_count": 4381464
     }
   },
@@ -149,23 +159,8 @@
       "rel": "via",
       "href": "https://source.coop/fiboa/es-an",
       "title": "Source Cooperative product page"
-    },
-    {
-      "title": "Pursuant to Law 37/2007 of 16 November on the reuse of public sector information and Law 3/2013 of 24 July approving the Statistical and Cartographic Plan of Andalusia 2013-2017, the geographic information of SIGPAC is made available to the public.",
-      "href": "https://www.juntadeandalucia.es/organismos/agriculturapescaaguaydesarrollorural/servicios/sigpac/visor/paginas/sigpac-descarga-informacion-geografica-shapes-provincias.html#toc-condiciones-de-uso-para-la-licencia-de-uso-comercial",
-      "type": "text/html",
-      "rel": "license"
-    },
-    {
-      "href": "https://data.source.coop/fiboa/es-an/es_an.pmtiles",
-      "type": "application/vnd.pmtiles",
-      "rel": "pmtiles"
     }
   ],
-  "visibility": "public",
-  "updated_at": "2025-08-21T16:39:55.568Z",
-  "featured": 0,
-  "created_at": "2024-12-24T13:28:09.710Z",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -178,33 +173,37 @@
       "prefix": "fiboa/es-an/"
     }
   },
-  "exts": {
-    "parquet": 1,
-    "json": 1,
-    "pmtiles": 1,
-    "md": 1,
-    "txt": 1
-  },
-  "disabled": false,
-  "total_bytes": 2318039279,
-  "product_id": "es-an",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "data_mode": "open",
-  "account_id": "fiboa",
-  "object_count": 5,
-  "readme": "## README.md\n# Field boundaries for Spain Andalusia\n\nProvides 4381464 official field boundaries from Spain Andalusia.\nIt has been converted to a fiboa GeoParquet file from data obtained from Junta de Andalucia - La consejer\u00eda de Agricultura, Pesca, Agua y Desarollo Rural.\n\n- **Source Data Provider:** [Junta de Andalucia - La consejer\u00eda de Agricultura, Pesca, Agua y Desarollo Rural](https://www.juntadeandalucia.es/organismos/agriculturapescaaguaydesarrollorural.html)\n- **Converted by:** Ivor Bosloper\n- **License:** https://www.juntadeandalucia.es/organismos/agriculturapescaaguaydesarrollorural/servicios/sigpac/visor/paginas/sigpac-descarga-informacion-geografica-shapes-provincias.html#toc-condiciones-de-uso-para-la-licencia-de-uso-comercial\n- **Projection:** EPSG:4258\n\n---\n\n- [Download the data as fiboa GeoParquet](https://data.source.coop/fiboa/es-an/es_an.parquet)\n- [STAC Browser](https://radiantearth.github.io/stac-browser/#/external/data.source.coop/fiboa/es-an/stac/collection.json)\n- [STAC Collection](https://data.source.coop/fiboa/es-an/stac/collection.json)\n- [PMTiles](https://data.source.coop/fiboa/es-an/es_an.pmtiles)\n\n## Columns\n\n| Property                | **Data Type** | Description |\n|-------------------------|---------------|-------------|\n| id                      | string        |             |\n| admin_province_code     | string        |             |\n| admin_municipality_code | string        |             |\n| area                    | float         |             |\n| crop:code               | string        |             |\n| crop:name               | string        |             |\n| crop:name_en            | string        |             |\n| crop:code_list          | string        |             |\n| determination_datetime  | timestamp     |             |\n| admin:country_code      | string        |             |\n| admin:subdivision_code  | string        |             |\n\n## Lineage\n\n- Data downloaded on 2024-12-24 from https://www.juntadeandalucia.es/ssdigitales/festa/agriculturapescaaguaydesarrollorural/2024/SP24_REC_04.zip .\n- Converted to GeoParquet using [fiboa-cli](https://github.com/fiboa/cli), version 0.8.0\n",
-  "_state": "drafted",
-  "cataloged_at": "2026-05-27T01:31:04+00:00",
-  "_source_format": "stac",
   "ext_bytes": {
     "parquet": 1747571180,
     "pmtiles": 570462973,
     "json": 2729,
-    "md": 2149,
+    "md": 2442,
     "txt": 248
   },
-  "objects_updated_at": "2026-10-13T12:02:18+00:00"
+  "created_at": "2024-12-24T13:28:09.710Z",
+  "total_bytes": 2318039572,
+  "product_id": "es-an",
+  "exts": {
+    "txt": 1,
+    "parquet": 1,
+    "md": 1,
+    "pmtiles": 1,
+    "json": 1
+  },
+  "object_count": 5,
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "objects_updated_at": "2026-10-13T12:02:18+00:00",
+  "featured": 0,
+  "data_mode": "open",
+  "updated_at": "2025-08-21T16:39:55.568Z",
+  "account_id": "fiboa",
+  "visibility": "public",
+  "disabled": false,
+  "readme": "## README.md\n> **This dataset has moved.** It is now published, updated and extended as [Spain Andalusia Crop fields](https://source.coop/ftw/harmonized-field-data/es_an) in the [Harmonized Field Boundary Data](https://source.coop/ftw/harmonized-field-data) catalog. The files here are no longer updated.\n\n# Field boundaries for Spain Andalusia\n\nProvides 4381464 official field boundaries from Spain Andalusia.\nIt has been converted to a fiboa GeoParquet file from data obtained from Junta de Andalucia - La consejer\u00eda de Agricultura, Pesca, Agua y Desarollo Rural.\n\n- **Source Data Provider:** [Junta de Andalucia - La consejer\u00eda de Agricultura, Pesca, Agua y Desarollo Rural](https://www.juntadeandalucia.es/organismos/agriculturapescaaguaydesarrollorural.html)\n- **Converted by:** Ivor Bosloper\n- **License:** https://www.juntadeandalucia.es/organismos/agriculturapescaaguaydesarrollorural/servicios/sigpac/visor/paginas/sigpac-descarga-informacion-geografica-shapes-provincias.html#toc-condiciones-de-uso-para-la-licencia-de-uso-comercial\n- **Projection:** EPSG:4258\n\n---\n\n- [Download the data as fiboa GeoParquet](https://data.source.coop/fiboa/es-an/es_an.parquet)\n- [STAC Browser](https://radiantearth.github.io/stac-browser/#/external/data.source.coop/fiboa/es-an/stac/collection.json)\n- [STAC Collection](https://data.source.coop/fiboa/es-an/stac/collection.json)\n- [PMTiles](https://data.source.coop/fiboa/es-an/es_an.pmtiles)\n\n## Columns\n\n| Property                | **Data Type** | Description |\n|-------------------------|---------------|-------------|\n| id                      | string        |             |\n| admin_province_code     | string        |             |\n| admin_municipality_code | string        |             |\n| area                    | float         |             |\n| crop:code               | string        |             |\n| crop:name               | string        |             |\n| crop:name_en            | string        |             |\n| crop:code_list          | string        |             |\n| determination_datetime  | timestamp     |             |\n| admin:country_code      | string        |             |\n| admin:subdivision_code  | string        |             |\n\n## Lineage\n\n- Data downloaded on 2024-12-24 from https://www.juntadeandalucia.es/ssdigitales/festa/agriculturapescaaguaydesarrollorural/2024/SP24_REC_04.zip .\n- Converted to GeoParquet using [fiboa-cli](https://github.com/fiboa/cli), version 0.8.0\n",
+  "_state": "drafted",
+  "cataloged_at": "2026-10-31T09:04:26+00:00",
+  "store_format": null
 }
