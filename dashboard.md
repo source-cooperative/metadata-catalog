@@ -1,25 +1,25 @@
 # Source Cooperative catalog — status
 
-_Updated 2026-10-30 09:32 UTC by the nightly pipeline._
+_Updated 2026-10-31 09:05 UTC by the nightly pipeline._
 
-**441 datasets cataloged**  ·  **23 queued for next run**  ·  last run handled **10**
+**441 datasets cataloged**  ·  **14 queued for next run**  ·  last run handled **10**
 
 ## Last run
 
 <details><summary>✅ drafted — 10 datasets</summary>
 
-| repo                                                                                     |
-| ---------------------------------------------------------------------------------------- |
-| [cboettig/gbif](https://source.coop/cboettig/gbif)                                       |
-| [cboettig/land-cover](https://source.coop/cboettig/land-cover)                           |
-| [dynamical/asos-parquet](https://source.coop/dynamical/asos-parquet)                     |
-| [earthgenome/earthindexembeddings](https://source.coop/earthgenome/earthindexembeddings) |
-| [earthgenome/earthindeximagery](https://source.coop/earthgenome/earthindeximagery)       |
-| [englacial/zagg](https://source.coop/englacial/zagg)                                     |
-| [fiboa/de-sax](https://source.coop/fiboa/de-sax)                                         |
-| [fiboa/es-pv](https://source.coop/fiboa/es-pv)                                           |
-| [portolan-mirrors/firms-catalog](https://source.coop/portolan-mirrors/firms-catalog)     |
-| [source/metadata-catalog](https://source.coop/source/metadata-catalog)                   |
+| repo                                                                               |
+| ---------------------------------------------------------------------------------- |
+| [fiboa/austria](https://source.coop/fiboa/austria)                                 |
+| [fiboa/denmark](https://source.coop/fiboa/denmark)                                 |
+| [fiboa/es-an](https://source.coop/fiboa/es-an)                                     |
+| [fiboa/es-cb](https://source.coop/fiboa/es-cb)                                     |
+| [fiboa/es-ex](https://source.coop/fiboa/es-ex)                                     |
+| [fiboa/es-vc](https://source.coop/fiboa/es-vc)                                     |
+| [fiboa/estonia-ec](https://source.coop/fiboa/estonia-ec)                           |
+| [fiboa/finland](https://source.coop/fiboa/finland)                                 |
+| [fiboa/portugal](https://source.coop/fiboa/portugal)                               |
+| [root-geospatial/flight-tracks](https://source.coop/root-geospatial/flight-tracks) |
 
 </details>
 
@@ -28,23 +28,23 @@ _Updated 2026-10-30 09:32 UTC by the nightly pipeline._
 
 | run                                                                                                    | outcome | drafted | redraft | resets | failed | queued | cataloged |
 | ------------------------------------------------------------------------------------------------------ | ------- | ------: | ------: | -----: | -----: | -----: | --------: |
+| [2026-10-31](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/41186728291) | ✅       |         |      10 |        |        |      4 |       441 |
 | [2026-10-30](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/41031394113) | ✅       |         |      10 |        |        |     13 |       441 |
 | [2026-10-29](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/40847478314) | ✅       |         |       9 |        |        |     23 |       441 |
 | [2026-10-28](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/40661845352) | ✅       |         |      10 |        |        |     33 |       441 |
 | [2026-10-27](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/40477503609) | ✅       |         |      10 |        |        |     43 |       441 |
 | [2026-10-26](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/40296643268) | ✅       |       8 |       2 |        |        |     53 |       441 |
 | [2026-10-25](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/40178234893) | ✅       |         |      10 |        |        |     16 |       433 |
-| [2026-10-24](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/40079647686) | ✅       |       4 |       5 |        |        |     26 |       433 |
 
 ## Persistent failures
 
-**1 dataset failing**  ·  1 open issue  ·  oldest **37d**  ·  **1** ≥30d  ·  [all open issues](https://github.com/source-cooperative/metadata-catalog/issues?q=is%3Aissue+is%3Aopen+label%3Aprobe-failure)
+**1 dataset failing**  ·  1 open issue  ·  oldest **38d**  ·  **1** ≥30d  ·  [all open issues](https://github.com/source-cooperative/metadata-catalog/issues?q=is%3Aissue+is%3Aopen+label%3Aprobe-failure)
 
 <details><summary>the 1 open issues, oldest first</summary>
 
 | repo                                                       | age (d) |                                                                     issue |
 | ---------------------------------------------------------- | ------: | ------------------------------------------------------------------------: |
-| [alukach/firesmoke](https://source.coop/alukach/firesmoke) |      37 | [#166](https://github.com/source-cooperative/metadata-catalog/issues/166) |
+| [alukach/firesmoke](https://source.coop/alukach/firesmoke) |      38 | [#166](https://github.com/source-cooperative/metadata-catalog/issues/166) |
 
 </details>
 
@@ -990,36 +990,26 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 
 </details>
 
-<details><summary>stale (catalog bytes ≠ S3; fixed by <code>make process-all</code>) — 26 datasets (31.0 TB)</summary>
+<details><summary>stale (catalog bytes ≠ S3; fixed by <code>make process-all</code>) — 16 datasets (29.3 TB)</summary>
 
-| repo                                                                               | updated    |        catalog → S3 |
-| ---------------------------------------------------------------------------------- | ---------- | ------------------: |
-| [alukach/firesmoke](https://source.coop/alukach/firesmoke)                         | 2026-10-25 |     1.2 GB → 1.4 GB |
-| [root-geospatial/flight-tracks](https://source.coop/root-geospatial/flight-tracks) | 2026-10-24 |     1.7 TB → 1.7 TB |
-| [mapterhorn/mapterhorn](https://source.coop/mapterhorn/mapterhorn)                 | 2026-10-23 |   30.4 TB → 29.3 TB |
-| [cboettig/hazard](https://source.coop/cboettig/hazard)                             | 2026-10-18 |   44.2 GB → 44.2 GB |
-| [fiboa/slovenia](https://source.coop/fiboa/slovenia)                               | 2026-10-13 | 354.6 MB → 354.6 MB |
-| [fiboa/portugal](https://source.coop/fiboa/portugal)                               | 2026-10-13 |     2.4 GB → 2.4 GB |
-| [fiboa/newzealand](https://source.coop/fiboa/newzealand)                           | 2026-10-13 |   23.4 MB → 23.4 MB |
-| [fiboa/luxembourg](https://source.coop/fiboa/luxembourg)                           | 2026-10-13 |   39.3 MB → 39.3 MB |
-| [fiboa/latvia](https://source.coop/fiboa/latvia)                                   | 2026-10-13 | 684.4 MB → 684.4 MB |
-| [fiboa/lacunalabels](https://source.coop/fiboa/lacunalabels)                       | 2026-10-13 | 109.6 MB → 109.6 MB |
-| [fiboa/japan](https://source.coop/fiboa/japan)                                     | 2026-10-13 |     6.7 GB → 6.7 GB |
-| [fiboa/finland](https://source.coop/fiboa/finland)                                 | 2026-10-13 | 558.1 MB → 558.1 MB |
-| [fiboa/estonia-ec](https://source.coop/fiboa/estonia-ec)                           | 2026-10-13 |     1.4 GB → 1.4 GB |
-| [fiboa/es-vc](https://source.coop/fiboa/es-vc)                                     | 2026-10-13 |     3.2 GB → 3.2 GB |
-| [fiboa/es-nc](https://source.coop/fiboa/es-nc)                                     | 2026-10-13 | 293.8 MB → 293.8 MB |
-| [fiboa/es-md](https://source.coop/fiboa/es-md)                                     | 2026-10-13 | 356.3 MB → 356.3 MB |
-| [fiboa/es-ga](https://source.coop/fiboa/es-ga)                                     | 2026-10-13 |     1.8 GB → 1.8 GB |
-| [fiboa/es-ex](https://source.coop/fiboa/es-ex)                                     | 2026-10-13 |     2.3 GB → 2.3 GB |
-| [fiboa/es-cb](https://source.coop/fiboa/es-cb)                                     | 2026-10-13 | 551.1 MB → 551.1 MB |
-| [fiboa/es-ar](https://source.coop/fiboa/es-ar)                                     | 2026-10-13 |     2.4 GB → 2.4 GB |
-| [fiboa/es-an](https://source.coop/fiboa/es-an)                                     | 2026-10-13 |     2.3 GB → 2.3 GB |
-| [fiboa/denmark](https://source.coop/fiboa/denmark)                                 | 2026-10-13 | 570.1 MB → 570.1 MB |
-| [fiboa/czech](https://source.coop/fiboa/czech)                                     | 2026-10-13 | 458.2 MB → 458.2 MB |
-| [fiboa/croatia](https://source.coop/fiboa/croatia)                                 | 2026-10-13 | 481.2 MB → 481.2 MB |
-| [fiboa/austria](https://source.coop/fiboa/austria)                                 | 2026-10-13 | 831.3 MB → 831.3 MB |
-| [fiboa/ai4sf](https://source.coop/fiboa/ai4sf)                                     | 2026-10-13 |   53.3 MB → 53.3 MB |
+| repo                                                               | updated    |        catalog → S3 |
+| ------------------------------------------------------------------ | ---------- | ------------------: |
+| [alukach/firesmoke](https://source.coop/alukach/firesmoke)         | 2026-10-25 |     1.2 GB → 1.4 GB |
+| [mapterhorn/mapterhorn](https://source.coop/mapterhorn/mapterhorn) | 2026-10-23 |   30.4 TB → 29.3 TB |
+| [cboettig/hazard](https://source.coop/cboettig/hazard)             | 2026-10-18 |   44.2 GB → 44.2 GB |
+| [fiboa/slovenia](https://source.coop/fiboa/slovenia)               | 2026-10-13 | 354.6 MB → 354.6 MB |
+| [fiboa/newzealand](https://source.coop/fiboa/newzealand)           | 2026-10-13 |   23.4 MB → 23.4 MB |
+| [fiboa/luxembourg](https://source.coop/fiboa/luxembourg)           | 2026-10-13 |   39.3 MB → 39.3 MB |
+| [fiboa/latvia](https://source.coop/fiboa/latvia)                   | 2026-10-13 | 684.4 MB → 684.4 MB |
+| [fiboa/lacunalabels](https://source.coop/fiboa/lacunalabels)       | 2026-10-13 | 109.6 MB → 109.6 MB |
+| [fiboa/japan](https://source.coop/fiboa/japan)                     | 2026-10-13 |     6.7 GB → 6.7 GB |
+| [fiboa/es-nc](https://source.coop/fiboa/es-nc)                     | 2026-10-13 | 293.8 MB → 293.8 MB |
+| [fiboa/es-md](https://source.coop/fiboa/es-md)                     | 2026-10-13 | 356.3 MB → 356.3 MB |
+| [fiboa/es-ga](https://source.coop/fiboa/es-ga)                     | 2026-10-13 |     1.8 GB → 1.8 GB |
+| [fiboa/es-ar](https://source.coop/fiboa/es-ar)                     | 2026-10-13 |     2.4 GB → 2.4 GB |
+| [fiboa/czech](https://source.coop/fiboa/czech)                     | 2026-10-13 | 458.2 MB → 458.2 MB |
+| [fiboa/croatia](https://source.coop/fiboa/croatia)                 | 2026-10-13 | 481.2 MB → 481.2 MB |
+| [fiboa/ai4sf](https://source.coop/fiboa/ai4sf)                     | 2026-10-13 |   53.3 MB → 53.3 MB |
 
 </details>
 
