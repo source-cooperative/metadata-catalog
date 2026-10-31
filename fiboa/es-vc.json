@@ -7,7 +7,7 @@
   ],
   "id": "fiboa/es-vc",
   "title": "Spain Valencia Crop Fields",
-  "description": "Official agricultural field boundaries for Spain's Valencian Community, sourced from the SIGPAC Geographic Information System for the 2024 campaign (data dated 2024-01-15), with additional vintages for 2022 and 2023. Contains 2,319,893 field enclosures with crop classification codes and administrative identifiers, converted to fiboa GeoParquet format from FEGA shapefiles.",
+  "description": "Official agricultural field boundaries for Spain's Valencian Community from the SIGPAC system, converted to fiboa GeoParquet from FEGA data. Contains about 2.3 million field enclosures with crop codes and administrative identifiers; the dataset has moved to the Harmonized Field Boundary Data catalog and is no longer updated here.",
   "license": "CC-BY-4.0",
   "keywords": [
     "field-boundaries",
@@ -15,9 +15,9 @@
     "crop-classification",
     "land-parcels",
     "lpis",
-    "arable-land",
-    "land-use",
-    "sigpac"
+    "fiboa",
+    "geoparquet",
+    "pmtiles"
   ],
   "providers": [
     {
@@ -66,18 +66,18 @@
     "spatial": {
       "bbox": [
         [
-          -1.5582586774443787,
-          37.816320625978314,
-          0.5275381360135427,
-          40.80966734131276
+          -1.5582587,
+          37.8163206,
+          0.5276222,
+          40.8112578
         ]
       ]
     },
     "temporal": {
       "interval": [
         [
-          "2024-01-01T00:00:00Z",
-          "2024-01-01T00:00:00Z"
+          null,
+          null
         ]
       ]
     }
@@ -86,67 +86,92 @@
     "item_count": 7786874
   },
   "assets": {
-    "data": {
-      "href": "https://data.source.coop/fiboa/es_vc/es_vc.parquet",
-      "title": "Field Boundaries",
-      "type": "application/vnd.apache.parquet",
+    "vc": {
+      "href": "https://data.source.coop/fiboa/es-vc/es_vc.parquet",
+      "type": "application/x-parquet",
+      "title": "es_vc.parquet",
       "roles": [
         "data"
       ],
-      "table:columns": [
-        {
-          "name": "id",
-          "type": "string"
-        },
-        {
-          "name": "geometry",
-          "type": "binary"
-        },
-        {
-          "name": "admin_province_code",
-          "type": "string"
-        },
-        {
-          "name": "admin_municipality_code",
-          "type": "string"
-        },
-        {
-          "name": "area",
-          "type": "float"
-        },
-        {
-          "name": "crop:code",
-          "type": "string"
-        },
-        {
-          "name": "crop:name",
-          "type": "string"
-        },
-        {
-          "name": "crop:name_en",
-          "type": "string"
-        },
-        {
-          "name": "admin:country_code",
-          "type": "string"
-        },
-        {
-          "name": "crop:code_list",
-          "type": "string"
-        },
-        {
-          "name": "admin:subdivision_code",
-          "type": "string"
-        },
-        {
-          "name": "determination_datetime",
-          "type": "timestamp[ms, tz=UTC]"
-        }
-      ],
-      "table:primary_geometry": "geometry",
       "table:row_count": 2319893
+    },
+    "2022": {
+      "href": "https://data.source.coop/fiboa/es-vc/es_vc_2022.parquet",
+      "type": "application/x-parquet",
+      "title": "es_vc_2022.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:row_count": 3158580
+    },
+    "2023": {
+      "href": "https://data.source.coop/fiboa/es-vc/es_vc_2023.parquet",
+      "type": "application/x-parquet",
+      "title": "es_vc_2023.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:row_count": 2308401
     }
   },
+  "table:columns": [
+    {
+      "name": "id",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "geometry",
+      "type": "GEOMETRY('EPSG:25830')",
+      "description": "[geometry] Field boundary polygons in EPSG:25830"
+    },
+    {
+      "name": "admin_province_code",
+      "type": "VARCHAR",
+      "description": "[admin_code] Province code"
+    },
+    {
+      "name": "admin_municipality_code",
+      "type": "VARCHAR",
+      "description": "[admin_code] Municipality code"
+    },
+    {
+      "name": "area",
+      "type": "FLOAT"
+    },
+    {
+      "name": "crop:code",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "crop:name",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "crop:name_en",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "admin:country_code",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "crop:code_list",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "admin:subdivision_code",
+      "type": "VARCHAR",
+      "description": "[admin_code] Subdivision code"
+    },
+    {
+      "name": "determination_datetime",
+      "type": "TIMESTAMP WITH TIME ZONE"
+    },
+    {
+      "name": "bbox",
+      "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+    }
+  ],
   "links": [
     {
       "rel": "self",
@@ -157,29 +182,34 @@
       "rel": "via",
       "href": "https://source.coop/fiboa/es-vc",
       "title": "Source Cooperative product page"
-    },
-    {
-      "href": "https://data.source.coop/fiboa/es-vc/es_vc.pmtiles",
-      "type": "application/vnd.pmtiles",
-      "rel": "pmtiles"
     }
   ],
-  "data_mode": "open",
+  "featured": 0,
+  "exts": {
+    "parquet": 3,
+    "json": 1,
+    "md": 1,
+    "pmtiles": 1,
+    "txt": 1
+  },
+  "total_bytes": 3216984130,
+  "created_at": "2024-12-27T22:53:52.547Z",
+  "visibility": "public",
+  "product_id": "es-vc",
+  "objects_updated_at": "2026-10-13T12:02:44+00:00",
+  "disabled": false,
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "account_id": "fiboa",
-  "object_count": 7,
-  "total_bytes": 3216983838,
-  "exts": {
-    "parquet": 3,
-    "txt": 1,
-    "pmtiles": 1,
-    "md": 1,
-    "json": 1
+  "ext_bytes": {
+    "parquet": 2816528438,
+    "pmtiles": 400446016,
+    "txt": 4824,
+    "md": 2551,
+    "json": 2301
   },
-  "disabled": false,
+  "data_mode": "open",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -192,24 +222,11 @@
       "prefix": "fiboa/es-vc/"
     }
   },
-  "product_id": "es-vc",
-  "created_at": "2024-12-27T22:53:52.547Z",
+  "account_id": "fiboa",
   "updated_at": "2025-08-21T16:39:55.569Z",
-  "visibility": "public",
-  "featured": 0,
-  "readme": "## README.md\n# Field boundaries for Spain Valencia\n\nProvides 2319893 official field boundaries from Spain Valencia.\nIt has been converted to a fiboa GeoParquet file from data obtained from Spanish Agricultural Guarantee Fund (FEGA) of the Ministry of Agriculture, Fisheries and Food.\n\n- **Source Data Provider:** [Spanish Agricultural Guarantee Fund (FEGA) of the Ministry of Agriculture, Fisheries and Food](https://www.fega.gob.es/es/PwfGcp/es/el_fega/index.jsp)\n- **Converted by:** Ivor Bosloper\n- **License:** CC-BY-4.0 (taken from http://www.icv.gva.es/condiciones-de-uso-de-la-geoinformacion-icv )\n- **Projection:** EPSG:25830  /EPSG:3042\n\n---\n\n- [Download the data as fiboa GeoParquet](https://data.source.coop/fiboa/es-vc/es_vc.parquet)\n- [STAC Browser](https://radiantearth.github.io/stac-browser/#/external/data.source.coop/fiboa/es-vc/stac/collection.json)\n- [STAC Collection](https://data.source.coop/fiboa/es-vc/stac/collection.json)\n- [PMTiles](https://data.source.coop/fiboa/es-vc/es_vc.pmtiles)\n\n## Columns\n\n| Property                | **Data Type** | Description |\n|-------------------------|---------------|-------------|\n| id                      | string        |             |\n| admin_province_code     | string        |             |\n| admin_municipality_code | string        |             |\n| area                    | float         |             |\n| crop:code               | string        |             |\n| crop:name               | string        |             |\n| crop:name_en            | string        |             |\n| admin:country_code      | string        |             |\n| crop:code_list          | string        |             |\n| admin:subdivision_code  | string        |             |\n| determination_datetime  | timestamp     |             |\n\n## Lineage\n\n- Data downloaded on 2024-12-28 from:\n  - https://descargas.icv.gva.es/dcd/14_mediorural/03_pac/2024_SIGPAC_0050/1403_2024PALI_SIGPAC_RECINTOS_25830_SHP.7z\n  - https://descargas.icv.gva.es/dcd/14_mediorural/03_pac/2024_SIGPAC_0050/1403_2024PCAS_SIGPAC_RECINTOS_25830_SHP.7z\n  - https://descargas.icv.gva.es/dcd/14_mediorural/03_pac/2024_SIGPAC_0050/1403_2024PVAL_SIGPAC_RECINTOS_25830_SHP.7z\n- Converted to GeoParquet using [fiboa-cli](https://github.com/fiboa/cli), version 0.8.0\n",
-  "_review": [
-    "providers: role [producer, licensor] for 'Institut Cartogr\u00e0fic Valenci\u00e0 (ICV)' is an AI guess \u2014 ICV hosts the source shapefiles and the CC-BY-4.0 terms page; treated as regional producer and licensor for the Valencia SIGPAC data. Verify before flipping to _state: reviewed."
-  ],
+  "object_count": 7,
+  "readme": "## README.md\n> **This dataset has moved.** It is now published, updated and extended as [Spain Valencia Crop Fields](https://source.coop/ftw/harmonized-field-data/es_vc) in the [Harmonized Field Boundary Data](https://source.coop/ftw/harmonized-field-data) catalog. The files here are no longer updated.\n\n# Field boundaries for Spain Valencia\n\nProvides 2319893 official field boundaries from Spain Valencia.\nIt has been converted to a fiboa GeoParquet file from data obtained from Spanish Agricultural Guarantee Fund (FEGA) of the Ministry of Agriculture, Fisheries and Food.\n\n- **Source Data Provider:** [Spanish Agricultural Guarantee Fund (FEGA) of the Ministry of Agriculture, Fisheries and Food](https://www.fega.gob.es/es/PwfGcp/es/el_fega/index.jsp)\n- **Converted by:** Ivor Bosloper\n- **License:** CC-BY-4.0 (taken from http://www.icv.gva.es/condiciones-de-uso-de-la-geoinformacion-icv )\n- **Projection:** EPSG:25830  /EPSG:3042\n\n---\n\n- [Download the data as fiboa GeoParquet](https://data.source.coop/fiboa/es-vc/es_vc.parquet)\n- [STAC Browser](https://radiantearth.github.io/stac-browser/#/external/data.source.coop/fiboa/es-vc/stac/collection.json)\n- [STAC Collection](https://data.source.coop/fiboa/es-vc/stac/collection.json)\n- [PMTiles](https://data.source.coop/fiboa/es-vc/es_vc.pmtiles)\n\n## Columns\n\n| Property                | **Data Type** | Description |\n|-------------------------|---------------|-------------|\n| id                      | string        |             |\n| admin_province_code     | string        |             |\n| admin_municipality_code | string        |             |\n| area                    | float         |             |\n| crop:code               | string        |             |\n| crop:name               | string        |             |\n| crop:name_en            | string        |             |\n| admin:country_code      | string        |             |\n| crop:code_list          | string        |             |\n| admin:subdivision_code  | string        |             |\n| determination_datetime  | timestamp     |             |\n\n## Lineage\n\n- Data downloaded on 2024-12-28 from:\n  - https://descargas.icv.gva.es/dcd/14_mediorural/03_pac/2024_SIGPAC_0050/1403_2024PALI_SIGPAC_RECINTOS_25830_SHP.7z\n  - https://descargas.icv.gva.es/dcd/14_mediorural/03_pac/2024_SIGPAC_0050/1403_2024PCAS_SIGPAC_RECINTOS_25830_SHP.7z\n  - https://descargas.icv.gva.es/dcd/14_mediorural/03_pac/2024_SIGPAC_0050/1403_2024PVAL_SIGPAC_RECINTOS_25830_SHP.7z\n- Converted to GeoParquet using [fiboa-cli](https://github.com/fiboa/cli), version 0.8.0\n",
   "_state": "drafted",
-  "cataloged_at": "2026-05-27T01:34:09+00:00",
-  "_source_format": "stac",
-  "ext_bytes": {
-    "parquet": 2816528438,
-    "pmtiles": 400446016,
-    "txt": 4824,
-    "json": 2301,
-    "md": 2259
-  },
-  "objects_updated_at": "2026-10-13T12:02:44+00:00"
+  "cataloged_at": "2026-10-31T09:05:07+00:00",
+  "store_format": null
 }
