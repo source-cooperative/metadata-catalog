@@ -7,7 +7,7 @@
   ],
   "id": "fiboa/latvia",
   "title": "Latvia Lauki Parcels",
-  "description": "Official field boundary dataset for Latvia containing 420,863 parcels sourced from the Rural Support Service Republic of Latvia (Lauku atbalsta dienests) for the 2024 reference year. Parcels include crop classification codes and names, converted to fiboa-compliant GeoParquet format projected in EPSG:3059.",
+  "description": "Official field boundary dataset for Latvia containing 420,863 agricultural field parcels from the Rural Support Service (Lauku atbalsta dienests), with crop classification codes and names. Converted to fiboa-compliant GeoParquet in EPSG:3059. The dataset has moved to the Harmonized Field Boundary Data catalog and is no longer updated here.",
   "license": "CC-BY-SA-4.0",
   "keywords": [
     "field-boundaries",
@@ -15,7 +15,9 @@
     "land-parcels",
     "crop-classification",
     "lpis",
-    "fiboa"
+    "fiboa",
+    "geoparquet",
+    "pmtiles"
   ],
   "providers": [
     {
@@ -58,18 +60,18 @@
     "spatial": {
       "bbox": [
         [
-          20.840485097534085,
-          55.632225325103605,
-          28.42496785755307,
-          58.04388882364091
+          20.8404851,
+          55.6322253,
+          28.4249679,
+          58.0830769
         ]
       ]
     },
     "temporal": {
       "interval": [
         [
-          "2024-04-22T11:56:20Z",
-          "2024-12-02T21:26:03Z"
+          null,
+          null
         ]
       ]
     }
@@ -78,52 +80,57 @@
     "item_count": 420863
   },
   "assets": {
-    "data": {
+    "latvia": {
       "href": "https://data.source.coop/fiboa/latvia/latvia.parquet",
-      "title": "Field Boundaries",
-      "type": "application/vnd.apache.parquet",
+      "type": "application/x-parquet",
+      "title": "latvia.parquet",
       "roles": [
         "data"
       ],
       "table:columns": [
         {
           "name": "id",
-          "type": "string"
+          "type": "VARCHAR"
         },
         {
           "name": "parcel_id",
-          "type": "uint64"
+          "type": "UBIGINT"
         },
         {
           "name": "geometry",
-          "type": "binary"
+          "type": "GEOMETRY('EPSG:3059')",
+          "description": "[geometry] Parcel polygon geometry in EPSG:3059"
         },
         {
           "name": "determination_datetime",
-          "type": "timestamp[ms, tz=UTC]"
+          "type": "TIMESTAMP WITH TIME ZONE"
         },
         {
           "name": "area",
-          "type": "float"
+          "type": "FLOAT"
         },
         {
           "name": "crop:code_list",
-          "type": "string"
+          "type": "VARCHAR"
         },
         {
           "name": "crop:code",
-          "type": "string"
+          "type": "VARCHAR"
         },
         {
           "name": "crop:name",
-          "type": "string"
+          "type": "VARCHAR"
         },
         {
           "name": "crop:name_en",
-          "type": "string"
+          "type": "VARCHAR"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)",
+          "description": "[geometry] Bounding box struct (xmin, ymin, xmax, ymax) for each parcel"
         }
       ],
-      "table:primary_geometry": "geometry",
       "table:row_count": 420863
     }
   },
@@ -137,14 +144,36 @@
       "rel": "via",
       "href": "https://source.coop/fiboa/latvia",
       "title": "Source Cooperative product page"
-    },
-    {
-      "href": "https://data.source.coop/fiboa/latvia/latvia.pmtiles",
-      "type": "application/vnd.pmtiles",
-      "rel": "pmtiles"
     }
   ],
+  "object_count": 5,
+  "total_bytes": 684425426,
+  "created_at": "2024-12-03T14:32:46.052Z",
+  "ext_bytes": {
+    "parquet": 495635646,
+    "pmtiles": 188785249,
+    "json": 2505,
+    "md": 1909,
+    "txt": 117
+  },
+  "visibility": "public",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "exts": {
+    "md": 1,
+    "pmtiles": 1,
+    "parquet": 1,
+    "json": 1,
+    "txt": 1
+  },
+  "disabled": false,
   "account_id": "fiboa",
+  "featured": 0,
+  "updated_at": "2025-08-21T16:39:55.569Z",
+  "product_id": "latvia",
+  "objects_updated_at": "2026-10-13T12:02:56+00:00",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -157,36 +186,9 @@
       "prefix": "fiboa/latvia/"
     }
   },
-  "disabled": false,
-  "visibility": "public",
-  "object_count": 5,
-  "product_id": "latvia",
-  "total_bytes": 684425143,
   "data_mode": "open",
-  "updated_at": "2025-08-21T16:39:55.569Z",
-  "featured": 0,
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "created_at": "2024-12-03T14:32:46.052Z",
-  "exts": {
-    "parquet": 1,
-    "md": 1,
-    "json": 1,
-    "pmtiles": 1,
-    "txt": 1
-  },
-  "readme": "## README.md\n# Field boundaries for Latvia\n\nProvides 420863 official field boundaries from Latvia.\nIt has been converted to a fiboa GeoParquet file from data obtained from Rural Support \nSurvice Republic of Latvia (Lauku atbalsta dienests).\n\n- **Source Data Provider:** [Rural Support Survice Republic of Latvia (Lauku atbalsta dienests)](https://www.lad.gov.lv/lv/lauku-registra-dati)\n- **Converted by:** Ivor Bosloper\n- **License:** CC-BY-SA-4.0\n- **Projection:** EPSG:3059\n\n---\n\n- [Download the data as fiboa GeoParquet](https://data.source.coop/fiboa/latvia/latvia.parquet)\n- [STAC Browser](https://radiantearth.github.io/stac-browser/#/external/data.source.coop/fiboa/latvia/stac/collection.json)\n- [STAC Collection](https://data.source.coop/fiboa/latvia/stac/collection.json)\n- [PMTiles](https://data.source.coop/fiboa/latvia/latvia.pmtiles)\n\n## Columns\n\n| Property               | **Data Type** | Description |\n|------------------------|---------------|-------------|\n| id                     | string        |             |\n| parcel_id              | uint64        |             |\n| determination_datetime | timestamp     |             |\n| area                   | float         |             |\n| crop:code_list         | string        |             |\n| crop:code              | string        |             |\n| crop:name              | string        |             |\n| crop:name_en           | string        |             |\n\n## Lineage\n\n- Data downloaded on 2024-12-03 from https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer .\n- Converted to GeoParquet using [fiboa-cli](https://github.com/fiboa/cli), version 0.8.0\n",
+  "readme": "## README.md\n> **This dataset has moved.** It is now published, updated and extended as [Latvia Lauki Parcels](https://source.coop/ftw/harmonized-field-data/lv) in the [Harmonized Field Boundary Data](https://source.coop/ftw/harmonized-field-data) catalog. The files here are no longer updated.\n\n# Field boundaries for Latvia\n\nProvides 420863 official field boundaries from Latvia.\nIt has been converted to a fiboa GeoParquet file from data obtained from Rural Support \nSurvice Republic of Latvia (Lauku atbalsta dienests).\n\n- **Source Data Provider:** [Rural Support Survice Republic of Latvia (Lauku atbalsta dienests)](https://www.lad.gov.lv/lv/lauku-registra-dati)\n- **Converted by:** Ivor Bosloper\n- **License:** CC-BY-SA-4.0\n- **Projection:** EPSG:3059\n\n---\n\n- [Download the data as fiboa GeoParquet](https://data.source.coop/fiboa/latvia/latvia.parquet)\n- [STAC Browser](https://radiantearth.github.io/stac-browser/#/external/data.source.coop/fiboa/latvia/stac/collection.json)\n- [STAC Collection](https://data.source.coop/fiboa/latvia/stac/collection.json)\n- [PMTiles](https://data.source.coop/fiboa/latvia/latvia.pmtiles)\n\n## Columns\n\n| Property               | **Data Type** | Description |\n|------------------------|---------------|-------------|\n| id                     | string        |             |\n| parcel_id              | uint64        |             |\n| determination_datetime | timestamp     |             |\n| area                   | float         |             |\n| crop:code_list         | string        |             |\n| crop:code              | string        |             |\n| crop:name              | string        |             |\n| crop:name_en           | string        |             |\n\n## Lineage\n\n- Data downloaded on 2024-12-03 from https://karte.lad.gov.lv/arcgis/services/lauki/MapServer/WFSServer .\n- Converted to GeoParquet using [fiboa-cli](https://github.com/fiboa/cli), version 0.8.0\n",
   "_state": "drafted",
-  "cataloged_at": "2026-05-27T01:25:49+00:00",
-  "_source_format": "stac",
-  "ext_bytes": {
-    "parquet": 495635646,
-    "pmtiles": 188785249,
-    "json": 2505,
-    "md": 1626,
-    "txt": 117
-  },
-  "objects_updated_at": "2026-10-13T12:02:56+00:00"
+  "cataloged_at": "2026-11-01T09:05:39+00:00",
+  "store_format": null
 }
