@@ -7,7 +7,7 @@
   ],
   "id": "fiboa/czech",
   "title": "Field boundaries for Czech",
-  "description": "Official field boundary dataset for the Czech Republic containing 426,584 agricultural parcels sourced from the Czech Ministry of Agriculture (Ministr Zem\u011bd\u011blstv\u00ed) LPIS system. Each record includes crop code, crop name, field area, and determination date. Released under the EU INSPIRE directive and converted to fiboa GeoParquet format.",
+  "description": "Official field boundary dataset for the Czech Republic containing 426,584 agricultural parcels from the Czech Ministry of Agriculture LPIS system, converted to fiboa GeoParquet format. Each record includes crop code, crop name, field area, and determination date. This dataset has moved to the Harmonized Field Boundary Data catalog and is no longer updated.",
   "license": "CC-0",
   "keywords": [
     "field-boundaries",
@@ -17,7 +17,8 @@
     "land-parcels",
     "arable-land",
     "land-use",
-    "fiboa"
+    "fiboa",
+    "geoparquet"
   ],
   "providers": [
     {
@@ -60,18 +61,18 @@
     "spatial": {
       "bbox": [
         [
-          12.103851898578336,
-          48.55252480513993,
-          18.854199419451792,
-          51.04386998504791
+          12.1038519,
+          48.5525248,
+          18.8541994,
+          51.04387
         ]
       ]
     },
     "temporal": {
       "interval": [
         [
-          "2024-04-15T00:00:00Z",
-          "2024-09-26T00:00:00Z"
+          null,
+          null
         ]
       ]
     }
@@ -80,44 +81,48 @@
     "item_count": 426584
   },
   "assets": {
-    "data": {
+    "czech": {
       "href": "https://data.source.coop/fiboa/czech/czech.parquet",
-      "title": "Field Boundaries",
-      "type": "application/vnd.apache.parquet",
+      "type": "application/x-parquet",
+      "title": "czech.parquet",
       "roles": [
         "data"
       ],
       "table:columns": [
         {
           "name": "geometry",
-          "type": "binary"
+          "type": "GEOMETRY('EPSG:4258')",
+          "description": "[geometry] Field boundary polygons in EPSG:4258"
         },
         {
           "name": "id",
-          "type": "string"
+          "type": "VARCHAR"
         },
         {
           "name": "block_id",
-          "type": "string"
+          "type": "VARCHAR"
         },
         {
           "name": "crop_code",
-          "type": "string"
+          "type": "VARCHAR"
         },
         {
           "name": "crop_name",
-          "type": "string"
+          "type": "VARCHAR"
         },
         {
           "name": "area",
-          "type": "float"
+          "type": "FLOAT"
         },
         {
           "name": "determination_datetime",
-          "type": "timestamp[ms, tz=UTC]"
+          "type": "TIMESTAMP WITH TIME ZONE"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
         }
       ],
-      "table:primary_geometry": "geometry",
       "table:row_count": 426584
     }
   },
@@ -131,20 +136,22 @@
       "rel": "via",
       "href": "https://source.coop/fiboa/czech",
       "title": "Source Cooperative product page"
-    },
-    {
-      "href": "https://data.source.coop/fiboa/czech/czech.pmtiles",
-      "type": "application/vnd.pmtiles",
-      "rel": "pmtiles"
     }
   ],
-  "updated_at": "2025-08-21T16:39:55.568Z",
+  "objects_updated_at": "2026-10-13T12:01:47+00:00",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
   "featured": 0,
+  "created_at": "2024-11-15T15:34:31.021Z",
+  "data_mode": "open",
+  "disabled": false,
+  "updated_at": "2025-08-21T16:39:55.568Z",
+  "account_id": "fiboa",
   "object_count": 5,
+  "visibility": "public",
+  "total_bytes": 458175402,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -157,30 +164,23 @@
       "prefix": "fiboa/czech/"
     }
   },
-  "visibility": "public",
-  "total_bytes": 458175113,
-  "data_mode": "open",
-  "disabled": false,
-  "product_id": "czech",
   "exts": {
-    "md": 1,
-    "parquet": 1,
     "txt": 1,
+    "parquet": 1,
     "pmtiles": 1,
-    "json": 1
+    "json": 1,
+    "md": 1
   },
-  "account_id": "fiboa",
-  "created_at": "2024-11-15T15:34:31.021Z",
-  "readme": "## README.md\n# Field boundaries for Czech\n\nProvides 426584 official field boundaries from Czech.\nIt has been converted to a fiboa GeoParquet file from data obtained from Czech Ministry of Agriculture (Ministr Zem\u011bd\u011blstv\u00ed).\n\n- **Source Data Provider:** [Czech Ministry of Agriculture (Ministr Zem\u011bd\u011blstv\u00ed)](https://mze.gov.cz/public/portal/mze/farmar/LPIS)\n- **Converted by:** Ivor Bosloper\n- **License:** CC-0 (Publicly distributed as part of the Inspire directive)\n- **Projection:** EPSG:5514 or EPSG:4258\n\n---\n\n- [Download the data as fiboa GeoParquet](https://data.source.coop/fiboa/czech/czech.parquet)\n- [STAC Browser](https://radiantearth.github.io/stac-browser/#/external/data.source.coop/fiboa/czech/stac/collection.json)\n- [STAC Collection](https://data.source.coop/fiboa/czech/stac/collection.json)\n- [PMTiles](https://data.source.coop/fiboa/czech/czech.pmtiles)\n\n## Columns\n\n| Property               | **Data Type** | Description |\n|------------------------|---------------|-------------|\n| id                     | string        |             |\n| block_id               | string        |             |\n| crop_code              | string        |             |\n| crop_name              | string        |             |\n| area                   | float         |             |\n| determination_datetime | timestamp     |             |\n\n## Lineage\n\n- Data downloaded on 2024-11-15 from https://mze.gov.cz/public/app/eagriapp/Files/geoprostor_zadosti23_2024-08-01_202409261243_epsg4258.zip.\n- Converted to GeoParquet using [fiboa-cli](https://github.com/fiboa/cli), version 0.8.0\n",
-  "_state": "drafted",
-  "cataloged_at": "2026-05-27T01:23:26+00:00",
-  "_source_format": "stac",
   "ext_bytes": {
     "parquet": 308390630,
     "pmtiles": 149781275,
+    "md": 1867,
     "json": 1626,
-    "md": 1578,
     "txt": 4
   },
-  "objects_updated_at": "2026-10-13T12:01:47+00:00"
+  "product_id": "czech",
+  "readme": "## README.md\n> **This dataset has moved.** It is now published, updated and extended as [Field boundaries for Czech](https://source.coop/ftw/harmonized-field-data/cz) in the [Harmonized Field Boundary Data](https://source.coop/ftw/harmonized-field-data) catalog. The files here are no longer updated.\n\n# Field boundaries for Czech\n\nProvides 426584 official field boundaries from Czech.\nIt has been converted to a fiboa GeoParquet file from data obtained from Czech Ministry of Agriculture (Ministr Zem\u011bd\u011blstv\u00ed).\n\n- **Source Data Provider:** [Czech Ministry of Agriculture (Ministr Zem\u011bd\u011blstv\u00ed)](https://mze.gov.cz/public/portal/mze/farmar/LPIS)\n- **Converted by:** Ivor Bosloper\n- **License:** CC-0 (Publicly distributed as part of the Inspire directive)\n- **Projection:** EPSG:5514 or EPSG:4258\n\n---\n\n- [Download the data as fiboa GeoParquet](https://data.source.coop/fiboa/czech/czech.parquet)\n- [STAC Browser](https://radiantearth.github.io/stac-browser/#/external/data.source.coop/fiboa/czech/stac/collection.json)\n- [STAC Collection](https://data.source.coop/fiboa/czech/stac/collection.json)\n- [PMTiles](https://data.source.coop/fiboa/czech/czech.pmtiles)\n\n## Columns\n\n| Property               | **Data Type** | Description |\n|------------------------|---------------|-------------|\n| id                     | string        |             |\n| block_id               | string        |             |\n| crop_code              | string        |             |\n| crop_name              | string        |             |\n| area                   | float         |             |\n| determination_datetime | timestamp     |             |\n\n## Lineage\n\n- Data downloaded on 2024-11-15 from https://mze.gov.cz/public/app/eagriapp/Files/geoprostor_zadosti23_2024-08-01_202409261243_epsg4258.zip.\n- Converted to GeoParquet using [fiboa-cli](https://github.com/fiboa/cli), version 0.8.0\n",
+  "_state": "drafted",
+  "cataloged_at": "2026-11-01T09:05:18+00:00",
+  "store_format": null
 }
