@@ -7,7 +7,7 @@
   ],
   "id": "fiboa/es-ga",
   "title": "Spain Galicia Crop fields",
-  "description": "Official field boundaries for the Galicia region of Spain, sourced from the SIXPAC Geographic Information System for Agricultural Plots. Contains 4,963,127 parcels with crop classification and administrative codes, converted to fiboa GeoParquet format. SIXPAC is the mandatory EU Common Agricultural Policy (CAP) reference database for identifying agricultural plots eligible for direct aid subsidies.",
+  "description": "Field boundaries for the Galicia region of Spain: 4,963,127 official agricultural parcels from the SIXPAC system, with crop classification and administrative codes, converted to fiboa GeoParquet. This dataset has moved to the Harmonized Field Boundary Data catalog and is no longer updated.",
   "license": "CC-BY-4.0",
   "keywords": [
     "field-boundaries",
@@ -15,8 +15,9 @@
     "crop-classification",
     "lpis",
     "land-parcels",
-    "land-use",
-    "arable-land"
+    "fiboa",
+    "geoparquet",
+    "pmtiles"
   ],
   "providers": [
     {
@@ -59,10 +60,10 @@
     "spatial": {
       "bbox": [
         [
-          -9.293154171488618,
-          41.80741815120018,
-          -6.736396848091039,
-          43.78663774439935
+          -9.2931542,
+          41.8074182,
+          -6.7363968,
+          43.7866377
         ]
       ]
     },
@@ -79,60 +80,68 @@
     "item_count": 4963127
   },
   "assets": {
-    "data": {
-      "href": "https://data.source.coop/fiboa/es_ga/es_ga.parquet",
-      "title": "Field Boundaries",
-      "type": "application/vnd.apache.parquet",
+    "ga": {
+      "href": "https://data.source.coop/fiboa/es-ga/es_ga.parquet",
+      "type": "application/x-parquet",
+      "title": "es_ga.parquet",
       "roles": [
         "data"
       ],
       "table:columns": [
         {
           "name": "id",
-          "type": "string"
+          "type": "VARCHAR"
         },
         {
           "name": "geometry",
-          "type": "binary"
+          "type": "GEOMETRY('EPSG:4326')",
+          "description": "[geometry] Parcel polygon geometry (EPSG:4326)"
         },
         {
           "name": "admin_province_code",
-          "type": "string"
+          "type": "VARCHAR",
+          "description": "[admin_code] Province administrative code"
         },
         {
           "name": "admin_municipality_code",
-          "type": "string"
+          "type": "VARCHAR",
+          "description": "[admin_code] Municipality administrative code"
         },
         {
           "name": "area",
-          "type": "float"
+          "type": "FLOAT"
         },
         {
           "name": "crop:code",
-          "type": "string"
+          "type": "VARCHAR"
         },
         {
           "name": "crop:name",
-          "type": "string"
+          "type": "VARCHAR"
         },
         {
           "name": "crop:name_en",
-          "type": "string"
+          "type": "VARCHAR"
         },
         {
           "name": "admin:country_code",
-          "type": "string"
+          "type": "VARCHAR",
+          "description": "[admin_code] Country code"
         },
         {
           "name": "crop:code_list",
-          "type": "string"
+          "type": "VARCHAR"
         },
         {
           "name": "admin:subdivision_code",
-          "type": "string"
+          "type": "VARCHAR",
+          "description": "[admin_code] ISO subdivision code"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
         }
       ],
-      "table:primary_geometry": "geometry",
       "table:row_count": 4963127
     }
   },
@@ -146,31 +155,9 @@
       "rel": "via",
       "href": "https://source.coop/fiboa/es-ga",
       "title": "Source Cooperative product page"
-    },
-    {
-      "href": "https://data.source.coop/fiboa/es-ga/es_ga.pmtiles",
-      "type": "application/vnd.pmtiles",
-      "rel": "pmtiles"
     }
   ],
-  "created_at": "2024-12-29T14:49:27.812Z",
-  "exts": {
-    "parquet": 1,
-    "json": 1,
-    "pmtiles": 1,
-    "md": 1,
-    "txt": 1
-  },
-  "featured": 0,
-  "visibility": "public",
-  "disabled": false,
-  "data_mode": "open",
-  "object_count": 5,
-  "updated_at": "2025-08-21T16:39:55.568Z",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
+  "objects_updated_at": "2026-10-13T12:02:31+00:00",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -183,19 +170,36 @@
       "prefix": "fiboa/es-ga/"
     }
   },
-  "total_bytes": 1828707326,
-  "product_id": "es-ga",
+  "object_count": 5,
+  "created_at": "2024-12-29T14:49:27.812Z",
+  "disabled": false,
   "account_id": "fiboa",
-  "readme": "## README.md\n# Field boundaries for Spain Galicia\n\nProvides 4963127 official field boundaries from Spain Galicia\nIt has been converted to a fiboa GeoParquet file from data obtained from Xunta de Galicia - Oficina Virtual del Medio Rural.\n\n- **Source Data Provider:** [Xunta de Galicia - Oficina Virtual del Medio Rural](https://ovmediorural.xunta.gal/es/consultas-publicas/sixpac)\n- **Converted by:** Ivor Bosloper\n- **License:** CC-BY-4.0 (See https://mapas.xunta.gal/gl/aviso-legal , https://medioambiente.xunta.gal/seccion-organizacion/c/CMAOT_Instituto_Estudos_Territorio?content=Direccion_Xeral_Sostibilidade_Paisaxe/Informacion_publica/seccion.html&std=pgcix_2022_2025.html)\n- **Projection:** EPSG:25829\n\n---\n\n- [Download the data as fiboa GeoParquet](https://data.source.coop/fiboa/es-ga/es_ga.parquet)\n- [STAC Browser](https://radiantearth.github.io/stac-browser/#/external/data.source.coop/fiboa/es-ga/stac/collection.json)\n- [STAC Collection](https://data.source.coop/fiboa/es-ga/stac/collection.json)\n- [PMTiles](https://data.source.coop/fiboa/es-ga/es_ga.pmtiles)\n\n## Columns\n\n| Property                | **Data Type** | Description |\n|-------------------------|---------------|-------------|\n| id                      | string        |             |\n| admin_province_code     | string        |             |\n| admin_municipality_code | string        |             |\n| area                    | float         |             |\n| crop:code               | string        |             |\n| crop:name               | string        |             |\n| crop:name_en            | string        |             |\n| admin:country_code      | string        |             |\n| crop:code_list          | string        |             |\n| admin:subdivision_code  | string        |             |\n\n## Lineage\n\n- Data downloaded on 2024-12-29 from:\n  - REST\n- Converted to GeoParquet using [fiboa-cli](https://github.com/fiboa/cli), version 0.8.0\n",
-  "_state": "drafted",
-  "cataloged_at": "2026-05-27T01:28:59+00:00",
-  "_source_format": "unknown",
+  "data_mode": "open",
+  "exts": {
+    "md": 1,
+    "pmtiles": 1,
+    "json": 1,
+    "txt": 1,
+    "parquet": 1
+  },
+  "product_id": "es-ga",
+  "total_bytes": 1828707617,
   "ext_bytes": {
     "parquet": 1237933134,
     "pmtiles": 590758328,
     "txt": 11505,
     "json": 2438,
-    "md": 1921
+    "md": 2212
   },
-  "objects_updated_at": "2026-10-13T12:02:31+00:00"
+  "visibility": "public",
+  "featured": 0,
+  "updated_at": "2025-08-21T16:39:55.568Z",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "readme": "## README.md\n> **This dataset has moved.** It is now published, updated and extended as [Spain Galicia Crop fields](https://source.coop/ftw/harmonized-field-data/es_ga) in the [Harmonized Field Boundary Data](https://source.coop/ftw/harmonized-field-data) catalog. The files here are no longer updated.\n\n# Field boundaries for Spain Galicia\n\nProvides 4963127 official field boundaries from Spain Galicia\nIt has been converted to a fiboa GeoParquet file from data obtained from Xunta de Galicia - Oficina Virtual del Medio Rural.\n\n- **Source Data Provider:** [Xunta de Galicia - Oficina Virtual del Medio Rural](https://ovmediorural.xunta.gal/es/consultas-publicas/sixpac)\n- **Converted by:** Ivor Bosloper\n- **License:** CC-BY-4.0 (See https://mapas.xunta.gal/gl/aviso-legal , https://medioambiente.xunta.gal/seccion-organizacion/c/CMAOT_Instituto_Estudos_Territorio?content=Direccion_Xeral_Sostibilidade_Paisaxe/Informacion_publica/seccion.html&std=pgcix_2022_2025.html)\n- **Projection:** EPSG:25829\n\n---\n\n- [Download the data as fiboa GeoParquet](https://data.source.coop/fiboa/es-ga/es_ga.parquet)\n- [STAC Browser](https://radiantearth.github.io/stac-browser/#/external/data.source.coop/fiboa/es-ga/stac/collection.json)\n- [STAC Collection](https://data.source.coop/fiboa/es-ga/stac/collection.json)\n- [PMTiles](https://data.source.coop/fiboa/es-ga/es_ga.pmtiles)\n\n## Columns\n\n| Property                | **Data Type** | Description |\n|-------------------------|---------------|-------------|\n| id                      | string        |             |\n| admin_province_code     | string        |             |\n| admin_municipality_code | string        |             |\n| area                    | float         |             |\n| crop:code               | string        |             |\n| crop:name               | string        |             |\n| crop:name_en            | string        |             |\n| admin:country_code      | string        |             |\n| crop:code_list          | string        |             |\n| admin:subdivision_code  | string        |             |\n\n## Lineage\n\n- Data downloaded on 2024-12-29 from:\n  - REST\n- Converted to GeoParquet using [fiboa-cli](https://github.com/fiboa/cli), version 0.8.0\n",
+  "_state": "drafted",
+  "cataloged_at": "2026-11-01T09:04:26+00:00",
+  "store_format": null
 }
