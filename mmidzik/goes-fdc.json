@@ -1,26 +1,131 @@
 {
   "schema_version": 1,
-  "account_id": "mmidzik",
-  "product_id": "goes-fdc",
-  "title": "NOAA GOES Fire Detections Portolan Catalog",
-  "description": "A demo for the Palisades and Eaton fires near Los Angeles in January 2025: GOES-18 ABI Fire/Hot Spot Characterization from 2025-01-07 to 2025-01-20 (UTC), as a cloud-native mirror (virtual Zarr in Icechunk, organized with Portolan). The cube references NOAA\u2019s public S3 files in place, so no pixels are copied and reads need no credentials. The time range may be extended.",
-  "keywords": [],
-  "created_at": "2026-10-30T08:52:20.079Z",
-  "updated_at": "2026-10-30T10:35:57.388Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": null,
-  "mirrors": {
-    "aws-opendata-us-west-2": {
-      "connection_id": "aws-opendata-us-west-2",
-      "is_primary": true,
-      "prefix": "mmidzik/goes-fdc/"
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "mmidzik/goes-fdc",
+  "title": "GOES ABI Fire/Hot Spot Characterization",
+  "description": "A virtual Zarr (Icechunk) cube of NOAA GOES-18 ABI Level 2 Fire/Hot Spot Characterization (FDC) for the CONUS sector, covering every pixel of each ~5-minute scan from 2025-01-07 to 2025-01-20. It references NOAA's public S3 files in place and was built as a demo for the January 2025 Palisades and Eaton fires near Los Angeles.",
+  "license": "CC0-1.0",
+  "keywords": [
+    "remote-sensing",
+    "satellite-imagery",
+    "earth-observation",
+    "wildfire",
+    "conservation",
+    "zarr",
+    "icechunk",
+    "time-series",
+    "noaa",
+    "meteorology"
+  ],
+  "providers": [
+    {
+      "name": "NOAA NESDIS",
+      "roles": [
+        "producer",
+        "licensor"
+      ],
+      "url": "https://www.goes-r.gov/"
+    },
+    {
+      "name": "Maya Midzik",
+      "roles": [
+        "host",
+        "processor"
+      ],
+      "url": "https://github.com/mmidzik/goes-fdc-catalog"
+    },
+    {
+      "name": "NOAA",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "NESDIS",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "NOAA Open Data Dissemination (NODD)",
+      "roles": [
+        "host"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/mmidzik/goes-fdc"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -180.0,
+          -90.0,
+          180.0,
+          90.0
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2025-01-07T00:00:00Z",
+          "2025-01-20T00:00:00Z"
+        ]
+      ]
     }
   },
-  "object_count": 902,
-  "objects_updated_at": "2026-10-30T21:31:57+00:00",
-  "total_bytes": 21238133,
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/mmidzik/goes-fdc/",
+      "type": "application/octet-stream",
+      "title": "Dataset files (1 x .icechunk)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/mmidzik/goes-fdc/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/mmidzik/goes-fdc",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "rel": "describedby",
+      "href": "./README.md",
+      "type": "text/markdown",
+      "title": "Catalog README"
+    },
+    {
+      "rel": "agents",
+      "href": "./AGENTS.md",
+      "type": "text/markdown",
+      "title": "Catalog agent guide"
+    },
+    {
+      "rel": "vcs",
+      "href": "https://github.com/mmidzik/goes-fdc-catalog",
+      "title": "Source repository"
+    },
+    {
+      "rel": "issues",
+      "href": "https://github.com/mmidzik/goes-fdc-catalog/issues",
+      "title": "Issue tracker"
+    }
+  ],
   "exts": {
     "": 881,
     "md": 4,
@@ -41,6 +146,10 @@
     "mnfze75ds9hj6ybpprj0": 1,
     "j0c4mbrp93aehmqykcrg": 1
   },
+  "product_id": "goes-fdc",
+  "visibility": "public",
+  "featured": 0,
+  "data_mode": null,
   "ext_bytes": {
     "": 21169604,
     "md": 23332,
@@ -61,11 +170,31 @@
     "j0c4mbrp93aehmqykcrg": 1029,
     "7d38xe2mk89mg15hcqh0": 874
   },
-  "store_format": "icechunk",
-  "_state": "seed",
+  "objects_updated_at": "2026-10-30T21:31:57+00:00",
+  "account_id": "mmidzik",
+  "disabled": false,
+  "created_at": "2026-10-30T08:52:20.079Z",
+  "total_bytes": 21238133,
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "cataloged_at": "2026-11-02T10:07:33+00:00"
+  "updated_at": "2026-10-30T10:35:57.388Z",
+  "mirrors": {
+    "aws-opendata-us-west-2": {
+      "connection_id": "aws-opendata-us-west-2",
+      "is_primary": true,
+      "prefix": "mmidzik/goes-fdc/"
+    }
+  },
+  "object_count": 902,
+  "readme": "## README.md\n# Fire/hot spot characterization from GOES satellites\n\nFire detections from the Advanced Baseline Imager (ABI) on NOAA's GOES\nsatellites, as virtual Zarr cubes. Each collection covers one satellite and one\nscan sector. The first collection is GOES-18 CONUS. Every pixel of every scan is in the cube:\nfire, clear land, cloud, water and the pixels the algorithm could not process.\nThe cube holds byte-range references and metadata. The pixel data stays in\nNOAA's public `noaa-goes18` bucket on AWS S3.\n\n> **Demo.** The cube covers only a short part of the GOES-18 record. The\n> collection's description and `extent` give the dates. The time range may be\n> extended.\n\nNOAA and NESDIS produce the data and remain the authoritative source. This\ncatalog is a **mirror** of it.\n\n- **Get the files**: the [Source Cooperative product](https://source.coop/mmidzik/goes-fdc)\n- **Browse the metadata**: the catalog in\n  [STAC Browser](https://radiantearth.github.io/stac-browser/#/external/data.source.coop/mmidzik/goes-fdc/catalog.json)\n- **Read the build**:\n  [the repository on GitHub](https://github.com/mmidzik/goes-fdc-catalog)\n- **The collection**: the [goes-18-fdcc README](goes-18-fdcc/README.md)\n\n## What is here\n\nOne collection so far, `goes-18-fdcc`: NOAA's Level 2 Fire/Hot Spot Characterization\nproduct (FDC) for the GOES-18 CONUS sector.\n\n|            |                                                                       |\n| ---------- | --------------------------------------------------------------------- |\n| Satellite  | GOES-18, GOES-West, at 137.0\u00b0 W                                       |\n| Instrument | ABI                                                                   |\n| Product    | `ABI-L2-FDCC`, Level 2 Fire/Hot Spot Characterization, CONUS sector   |\n| Time range | The collection's temporal `extent`                                    |\n| Scans      | About one every 5 minutes, about 288 per day                          |\n| Grid       | 1500 \u00d7 2500 pixels on the ABI geostationary fixed grid, 2 km at nadir |\n| Extent     | 14.6\u00b0 N to 53.5\u00b0 N, 175.6\u00b0 E across the antimeridian to 89.6\u00b0 W       |\n| Variables  | `Mask`, `DQF`, `Power`, `Temp`, `Area`                                |\n\nThe FDC algorithm uses the ABI 3.89 \u00b5m and 11.19 \u00b5m bands of each scan, with\nother bands for its cloud tests. For each pixel it assigns a fire mask code, and for some fire pixels it estimates the fire's radiative power,\ntemperature and area. NOAA writes one netCDF file per scan. The cube stacks\nthose files along `time` and reads them in place.\n\nThe `gsd` of 2000 m in the collection is the pixel size at nadir. Pixels are\nlarger toward the edges of the sector.\n\nThe GOES-18 CONUS sector is sometimes called PACUS. The extent above is NOAA's\n`geospatial_lat_lon_extent` for the sector.\n\n## Variables\n\nMeasured from the file headers. Each variable is a `time` \u00d7 `y` \u00d7 `x` array.\n\n| Variable | Description          | dtype   | Units | Fill value | Scaling                                     |\n| -------- | -------------------- | ------- | ----- | ---------- | ------------------------------------------- |\n| `Mask`   | Fire Mask            | int16   |       | -99        |                                             |\n| `DQF`    | Data quality flag    | uint8   |       | 255        |                                             |\n| `Power`  | Fire Radiative Power | float32 | MW    | -9         |                                             |\n| `Temp`   | Fire Temperature     | uint16  | K     | 65535      | `scale_factor` 0.05493667, `add_offset` 400 |\n| `Area`   | Fire Area            | uint16  | m2    | 65535      | `scale_factor` 60.98, `add_offset` 4000     |\n\n`Temp` and `Area` are stored as scaled integers. Most readers apply the scaling\nand the fill value on read. The collection [agent guide](goes-18-fdcc/AGENTS.md#quirks) says how to get\nthe raw integers.\n\nEach scan also has NOAA's own summary values, stored as variables along\n`time`. They include the number of fire pixels and the outlier counts. They\nalso include the minimum, maximum, mean and standard deviation of fire\ntemperature, area and radiative power. The\ncollection has no statistics of its own, because they would change with every\nscan the cube gains.\n\n### Fire mask codes\n\n`Mask` assigns each pixel one code. The codes and names come from the\n`flag_values` and `flag_meanings` attributes in the file.\n\n| Codes      | Meaning                                                                              |\n| ---------- | ------------------------------------------------------------------------------------ |\n| 0          | Unprocessed pixel                                                                    |\n| 10         | Good fire pixel                                                                      |\n| 11         | Saturated fire pixel                                                                 |\n| 12         | Cloud-contaminated fire pixel                                                        |\n| 13, 14, 15 | High, medium and low probability fire pixel                                          |\n| 30 to 35   | The same six fire categories as 10 to 15, temporally filtered                        |\n| 40         | Off-earth pixel                                                                      |\n| 50         | Local zenith angle block-out zone                                                    |\n| 60         | Solar zenith angle or sun glint block-out zone                                       |\n| 100        | Processed pixel, no fire                                                             |\n| 120 to 127 | Missing, saturated, invalid or below-threshold input radiance at 3.89 \u00b5m or 11.19 \u00b5m |\n| 150 to 153 | Surface type not processed: sea water, coastline, inland water, bright desert        |\n| 170 to 188 | No background value, or a conversion or fire-retrieval computation failed            |\n| 200 to 245 | Cloud, detected by one of ten threshold tests                                        |\n\nThe file lists one name for each of the 45 codes. A fire pixel is a code from 10\nto 15 or from 30 to 35.\n\n### Data quality flag\n\n| `DQF` | Meaning                                                                                     |\n| ----- | ------------------------------------------------------------------------------------------- |\n| 0     | Good quality fire pixel                                                                     |\n| 1     | Good quality fire-free land pixel                                                           |\n| 2     | Invalid, opaque cloud                                                                       |\n| 3     | Invalid, surface type, sun glint, local zenith angle threshold, off earth, or missing input |\n| 4     | Invalid, bad input data                                                                     |\n| 5     | Invalid, algorithm failure                                                                  |\n\n## Time\n\nThe `time` coordinate is the `t` value in each file. It falls in the middle of\nthe scan, between the start and end stamps in the file name. When a file's `t`\nis missing or not usable, `time` is the midpoint of the file-name stamps.\n\nNOAA's bucket can have gaps where no file exists for a scan. The cube has no\ntime step for a missing scan, so the spacing along `time` is not always 5\nminutes.\n\n## License\n\n**CC0-1.0.** NOAA releases the data that its Open Data Dissemination (NODD)\nprogram distributes, including the `noaa-goes18` bucket, under the\n[Creative Commons CC0 1.0 Universal Public Domain Dedication](https://creativecommons.org/publicdomain/zero/1.0/).\nNODD states that this license applies to each NOAA dataset it makes available\n([NODD license text](https://registry.opendata.aws/noaa-ghcnh/)). The GOES\nregistry page says the data \"can be used as desired\".\n\nNOAA also makes these requests:\n\n- Attribute unaltered NOAA data to NOAA.\n- Do not state or imply endorsement by or affiliation with NOAA.\n- Do not present modified NOAA data as original, unaltered NOAA data.\n\n## Provenance\n\nEvery scan comes from the `ABI-L2-FDCC` prefix of the `noaa-goes18` bucket,\nlisted in the\n[AWS Registry of Open Data](https://registry.opendata.aws/noaa-goes/). Nothing\nis resampled, reprojected, filtered or reclassified. The cube keeps NOAA's grid,\nchunks, compression, codes, scaling and fill values. The cube includes the pixel\nvariables and the per-scan summary values in the files.\n\nThe methods are in the repository\n[design document](https://github.com/mmidzik/goes-fdc-catalog/blob/main/docs/architecture.md).\nThe update workflow has not run yet.\n\n## Access\n\nOpen the Icechunk repository with `icechunk`, `zarr` and `xarray`, and authorize\nNOAA's bucket as a virtual chunk container. The tested recipe is in the\n[collection README](goes-18-fdcc/README.md#access). For a worked example that\nstarts from this catalog, see `examples/palisades-frp.ipynb` in the\n[source repository](https://github.com/mmidzik/goes-fdc-catalog).\n\nThe Zarr asset is outside the Portolan conformance surface. The Portolan\nspecification defers Zarr support until real Zarr datasets have been tested in\ncatalogs\n([portolan-spec#132](https://github.com/portolan-sdi/portolan-spec/issues/132)).\nThis catalog is one of those test cases.\n\n## Catalog structure\n\nAssets and structural links resolve relative to the object that carries them.\nCatalogs here have no `self` link, so a client tracks its own location. The\ndata assets use absolute `https` hrefs built from the public base URL.\n",
+  "_review": [
+    "providers: role [host] for 'NOAA Open Data Dissemination (NODD)' is an AI guess \u2014 Assumed NODD hosts the original files in the public noaa-goes18 S3 bucket; the README names the program as the licensor and the bucket as the data location.. Verify before flipping to _state: reviewed.",
+    "extent.temporal: None (probe sample) widened to ['2025-01-07T00:00:00Z', '2025-01-20T00:00:00Z'] using README-stated coverage ['2025-01-07', '2025-01-20']."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-11-02T10:22:44+00:00",
+  "_source_format": "stac",
+  "store_format": "icechunk"
 }
