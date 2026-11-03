@@ -4,15 +4,17 @@
   "stac_version": "1.1.0",
   "id": "geoai-ucph/gvsm",
   "title": "3D vegetation structure of the Earth",
-  "description": "A global raster dataset that models the full three-dimensional vertical structure of vegetation across Earth's land surface, going beyond canopy-top height to characterize structure at high spatial resolution for use in carbon and biodiversity monitoring.",
+  "description": "A global 10 m raster dataset of the vertical structure of vegetation, providing 101 relative height metrics (RH0\u2013RH100) with predictive quantiles for uncertainty. Predictions are made by a deep learning model that translates Sentinel-2 imagery, trained on 178 million GEDI lidar observations, and published as Cloud Optimized GeoTIFFs for 2020 with 2024 in preparation.",
+  "license": "CC-BY-4.0",
   "keywords": [
     "remote-sensing",
     "earth-observation",
     "biodiversity",
-    "conservation",
+    "lidar",
+    "sentinel-2",
+    "cloud-optimized-geotiff",
     "global-coverage",
-    "vegetation-structure",
-    "canopy-height"
+    "machine-learning"
   ],
   "providers": [
     {
@@ -31,6 +33,24 @@
           -56.0370814,
           180.0,
           82.8529186
+        ],
+        [
+          -177.0002548,
+          -45.2413329,
+          179.581589,
+          67.6155271
+        ],
+        [
+          20.9998199,
+          2.6253009,
+          21.9884738,
+          3.6190581
+        ],
+        [
+          -180.0,
+          -56.0370814,
+          180.0,
+          82.8529186
         ]
       ]
     },
@@ -44,12 +64,46 @@
     }
   },
   "assets": {
-    "data": {
-      "href": "https://data.source.coop/geoai-ucph/gvsm/",
+    "2020": {
+      "href": "https://data.source.coop/geoai-ucph/gvsm/2020/",
       "type": "image/tiff; application=geotiff",
-      "title": "Dataset files (1822779 x .tif)",
+      "title": "2020/ (1829009 \u00d7 .tif)",
       "roles": [
         "data"
+      ],
+      "bbox": [
+        -177.0002548,
+        -45.2413329,
+        179.581589,
+        67.6155271
+      ]
+    },
+    "experiments/profile-stack/2020": {
+      "href": "https://data.source.coop/geoai-ucph/gvsm/experiments/profile-stack/2020/",
+      "type": "image/tiff; application=geotiff",
+      "title": "experiments/profile-stack/2020/ (13 \u00d7 .tif)",
+      "roles": [
+        "data"
+      ],
+      "bbox": [
+        20.9998199,
+        2.6253009,
+        21.9884738,
+        3.6190581
+      ]
+    },
+    "mosaics/2020": {
+      "href": "https://data.source.coop/geoai-ucph/gvsm/mosaics/2020/",
+      "type": "image/tiff; application=geotiff",
+      "title": "mosaics/2020/ (101 \u00d7 .tif)",
+      "roles": [
+        "data"
+      ],
+      "bbox": [
+        -180.0,
+        -56.0370814,
+        180.0,
+        82.8529186
       ]
     }
   },
@@ -65,24 +119,9 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "visibility": "public",
   "featured": 0,
-  "data_mode": "open",
-  "exts": {
-    "tif": 1822779,
-    "md": 1
-  },
-  "object_count": 1822780,
-  "updated_at": "2026-05-05T08:42:15.890Z",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
   "created_at": "2026-05-05T08:42:15.890Z",
-  "total_bytes": 101748335712239,
-  "disabled": false,
-  "product_id": "gvsm",
-  "account_id": "geoai-ucph",
+  "total_bytes": 102242364014824,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -95,15 +134,32 @@
       "prefix": "geoai-ucph/gvsm/"
     }
   },
-  "_review": [
-    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed."
-  ],
-  "_state": "drafted",
-  "cataloged_at": "2026-10-16T09:19:45+00:00",
-  "store_format": null,
+  "data_mode": "open",
+  "disabled": false,
+  "updated_at": "2026-05-05T08:42:15.890Z",
+  "exts": {
+    "tif": 1829123,
+    "vrt": 28,
+    "md": 1,
+    "ovr": 1
+  },
   "ext_bytes": {
-    "tif": 101748335703878,
+    "tif": 102238639464284,
+    "ovr": 3724464346,
+    "vrt": 77833,
     "md": 8361
   },
-  "objects_updated_at": "2026-10-29T09:12:29+00:00"
+  "product_id": "gvsm",
+  "account_id": "geoai-ucph",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "object_count": 1829153,
+  "visibility": "public",
+  "objects_updated_at": "2026-10-29T09:12:29+00:00",
+  "readme": "## README.md\n# VSM: A Vertical Vegetation Structure Model of the Earth\n\n<p align=\"center\">\n  <a href=\"https://huizhml.github.io/map-explorer/\">\n    <img src=\"https://raw.githubusercontent.com/huizhml/global-vegetation-structure/master/docs/assets/vsm_global_every2rhs_black_bg_v7.png\" alt=\"Global map of GVSM vertical vegetation structure, with RH layers stacked as a 3-D datacube (height in metres, 0\u201350)\" width=\"100%\">\n  </a>\n</p>\n\nThe VSM brings a vertical dimension to global vegetation mapping, extending beyond canopy height to characterzing vegetation structure at 10 m resolution. \nTrained with 178 million sparse [GEDI](https://gedi.umd.edu/) lidar observations, a deep learning model translates Sentinel-2 imagery into continuous maps of 101 relative height metrics (RH0\u2013RH100), each with predictive quantiles that describe its uncertainty.\nBy capturing vegetation structure beyond canopy height, VSM supports applications in forest monitoring, biodiversity assessment, and ecosystem research.\n\n## Explore\n\n- \ud83d\udcc4 **Preprint:** [eartharxiv.org/repository/view/15380](https://eartharxiv.org/repository/view/15380/)\n- \ud83d\uddfa\ufe0f **Interactive map:** [huizhml.github.io/map-explorer](https://huizhml.github.io/map-explorer/)\n- \ud83d\udcbb **Code:** [github.com/huizhml/global-vegetation-structure](https://github.com/huizhml/global-vegetation-structure) \n- \ud83d\udce6 **Storage:** `s3://geoai-ucph/gvsm/` on the endpoint `https://data.source.coop`\n\n## Key facts\n\n| | |\n|---|---|\n| Variable | Relative height profile (RH0 - RH100) , in decimeters |\n| Uncertainty | Median (Q1) available; 5th percentile (Q2) and 95th percentile (Q0) coming soon |\n| Resolution | 10 m (main product), 1 km (global mosaics) |\n| Coverage | Global land |\n| Years | 2020 (available), 2024 (in preparation) |\n| Input | Sentinel-2 L2A |\n| Reference data | GEDI L2A, 178 million height profiles |\n| Format | Cloud Optimized GeoTIFF, Int16, lossless LERC+ZSTD (tiles) / ZSTD (mosaics) |\n| Volume | \u2248 360 TB per year (full RH profile \u00d7 3 quantiles) |\n| License | CC BY 4.0 |\n\n## What is an RH metric?\n\nGEDI records laser energy reflected by vegetation and the ground within each footprint. **RHn** is the height above ground below which *n* % of that returned energy has accumulated.\n\n- **RH98\u2013RH100**: approximate canopy top height, comparable to conventional canopy height products.\n- **RH50**: the height below which half of the total returned energy has accumulated.\n- **Low RHs (RH0\u2013RH25)**: describe the lower portion of the cumulative return, influenced by both vegetation and ground returns.\n\nTaken together, RH0 \u2026 RH100 for a pixel make a cumulative vertical profile. You can use it to study canopy layering, understory density and structural diversity, not only the top height.\n\n<img src=\"https://raw.githubusercontent.com/huizhml/global-vegetation-structure/master/docs/assets/1a_vertical_structure.png\" alt=\"Global map of VSM vertical vegetation structure, with RH layers stacked as a 3-D datacube (height in metres, 0\u201350)\" width=\"100%\">\n\n## Data organization\n\n```\ngvsm/\n\u251c\u2500\u2500 <year>/                      # acquisition year, e.g. 2020\n\u2502   \u2514\u2500\u2500 <MGRS tile>/             # Sentinel-2 MGRS tile ID, e.g. 32UNG\n\u2502       \u251c\u2500\u2500 RH0_Q1.tif\n\u2502       \u251c\u2500\u2500 RH1_Q1.tif\n\u2502       \u251c\u2500\u2500 \u2026\n\u2502       \u2514\u2500\u2500 RH100_Q1.tif\n\u2514\u2500\u2500 mosaics/\n    \u2514\u2500\u2500 <year>/\n        \u251c\u2500\u2500 RH0_Q1.tif\n        \u251c\u2500\u2500 \u2026\n        \u2514\u2500\u2500 RH100_Q1.tif\n```\n\nFile names follow `RH{level}_Q{quantile}.tif`, with `level` from 0 to 100 and `quantile` from 0 to 2.\n\n| Path | Content | Grid |\n|---|---|---|\n| `<year>/<tile>/` | Full-resolution predictions. One folder per Sentinel-2 MGRS tile, one file per RH level and quantile. | Native UTM zone of the tile, 10 m, 10 980 \u00d7 10 980 px |\n| `mosaics/<year>/` | Global overview mosaics (10 m tiles averaged to 0.01\u00b0), for browsing and continental- to global-scale analysis | EPSG:4326, 0.01\u00b0, 36 000 \u00d7 13 889 px |\n\nTo find the tile that covers your area, use the [Sentinel-2 MGRS tiling grid](https://sentiwiki.copernicus.eu/web/s2-products). Neighbouring tiles overlap by about 10 km.\n\n## Quantiles: Q0, Q1, Q2\n\nThe model is trained with quantile regression, so each RH level is predicted at three quantiles:\n\n| Suffix | Quantile | Use |\n|---|---|---|\n| `Q1` | 50th percentile (median) | **The main prediction.** Use this by default. |\n| `Q2` | 5th percentile | Lower bound of the prediction interval |\n| `Q0` | 95th percentile | Upper bound of the prediction interval |\n\n`Q0` and `Q2` together give a **90 % prediction interval** for each pixel and RH level. The interval is calibrated with conformal prediction, so it reaches the target coverage against held-out GEDI data. The interval width (`Q0 \u2212 Q2`) is a simple per-pixel uncertainty measure.\n\n> **Note:** Only `Q1` (the median) is published at the moment. `Q0` and `Q2` will be uploaded to the same folders soon.\n\n## Pixel values\n\n- Data type `Int16`. **Values are in decimetres**: divide by 10 to get metres.\n- NoData = `32767`. This marks pixels without a valid prediction, such as water, snow and ice, persistent cloud.\n- Low RH levels can be **negative**. This follows the GEDI convention: the lowest part of the return waveform lies below the detected ground elevation.\n\n## Quick start\n\n**GDAL**: inspect a file over HTTP without downloading it:\n\n```bash\ngdalinfo /vsicurl/https://data.source.coop/geoai-ucph/gvsm/2020/32UNG/RH98_Q1.tif\n```\n\n**Python**: read the vertical profile at a point:\n\n```python\nimport numpy as np\nimport rasterio\nfrom pyproj import Transformer\n\nbase = \"https://data.source.coop/geoai-ucph/gvsm/2020/32UNG\"\nlon, lat = 9.7915, 55.4934\n\nprofile = []\nfor rh in range(101):\n    with rasterio.open(f\"{base}/RH{rh}_Q1.tif\") as src:\n        x, y = Transformer.from_crs(\"EPSG:4326\", src.crs, always_xy=True).transform(lon, lat)\n        v = next(src.sample([(x, y)]))[0]\n        profile.append(np.nan if v == src.nodata else v / 10)  # decimetres -> metres\n```\n\n**AWS CLI**: list or download data:\n\n```bash\naws s3 ls --no-sign-request --endpoint-url https://data.source.coop s3://geoai-ucph/gvsm/2020/32UNG/\naws s3 sync --no-sign-request --endpoint-url https://data.source.coop s3://geoai-ucph/gvsm/mosaics/2020/ ./gvsm_mosaics_2020/\n```\n\nThe COGs also open directly in QGIS (*Layer \u2192 Add Raster Layer \u2192 Protocol: HTTP(S)*) and in `rioxarray`/`xarray`.\n\n## Caveats\n\n- **These are model predictions, not lidar measurements.** Accuracy varies with biome, terrain slope and canopy density. In dense tall forests, predicted heights tend to be biased toward the mean.\n- **GEDI only samples between about 51.6\u00b0 N and 51.6\u00b0 S.** Predictions further north and south rely on the model extrapolating beyond its training data, so treat them with extra caution.\n- **RH metrics are not the same as airborne-lidar canopy height.** GEDI's RH metrics come from a ~25 m footprint waveform. They are related to, but not identical to, canopy height models derived from airborne laser scanning (ALS).\n- Each year's map is built from Sentinel-2 imagery of that year. Differences between years mix real change with differences in the input imagery, so change analysis needs care.\n- The global mosaics are 10 m predictions averaged to ~1 km. They smooth out fine-scale structure, so use the 10 m tiles for quantitative work.\n\n## License\n\n[Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/)\n\n## Citation\n\nZhang, Hui, Nico Lang, Mikolaj Mazurczyk, Stefan Oehmcke, Ke Huang, Martin Brandt, Rasmus Fensholt, Ankit Kariryaa, and Christian Igel. \"A vertical vegetation structure model of the Earth.\" EarthArXiv preprint (2026). [https://doi.org/10.31223/X5M22F](https://doi.org/10.31223/X5M22F)\n\n```bibtex\n@misc{zhang2026vertical,\n  title     = {A vertical vegetation structure model of the {Earth}},\n  author    = {Zhang, Hui and Lang, Nico and Mazurczyk, Mikolaj and Oehmcke, Stefan and Huang, Ke and Brandt, Martin and Fensholt, Rasmus and Kariryaa, Ankit and Igel, Christian},\n  year      = {2026},\n  publisher = {EarthArXiv},\n  note      = {Preprint},\n  doi       = {10.31223/X5M22F},\n  url       = {https://doi.org/10.31223/X5M22F}\n}\n```\n\n## Contact\n\nManaged by GeoAI@UCPH, [University of Copenhagen](https://www.ku.dk).\n\nHui Zhang (huzh@di.ku.dk) \u00b7 Nico Lang (nila@di.ku.dk) \u00b7 Christian Igel (igel@di.ku.dk)\n",
+  "_state": "drafted",
+  "cataloged_at": "2026-11-03T09:35:53+00:00",
+  "store_format": null
 }
