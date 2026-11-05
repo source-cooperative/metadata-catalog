@@ -7,15 +7,14 @@
   ],
   "id": "tge-labs/s2-stac-geoparquet",
   "title": "Sentinel-2 L2A STAC-GeoParquet Mirror",
-  "description": "A STAC-GeoParquet mirror of the AWS Earth Search Sentinel-2 L2A item indexes, with one row per scene (about 30 million in Collection 1 and 51 million in the original index). Includes per-MGRS-tile monthly cloud-cover aggregates; the imagery COGs remain in AWS buckets and each row carries their URLs.",
+  "description": "A STAC-GeoParquet mirror of the AWS Earth Search Sentinel-2 L2A item indexes, with one row per scene (about 30 million in Collection 1 and 51 million in the original index), plus per-MGRS-tile monthly cloud-cover aggregates. The imagery COGs remain in AWS buckets; each row carries their URLs.",
   "license": "CC-BY-SA-3.0-IGO",
   "keywords": [
     "sentinel-2",
-    "stac",
     "geoparquet",
-    "earth-observation",
     "satellite-imagery",
     "remote-sensing",
+    "earth-observation",
     "global-coverage",
     "time-series"
   ],
@@ -73,7 +72,7 @@
         ],
         [
           "2015-10-22T10:16:59.598000Z",
-          "2026-10-29T01:14:56.513000Z"
+          "2026-11-05T01:46:35.579000Z"
         ],
         [
           "2016-11-01T08:52:23.012000Z",
@@ -91,7 +90,7 @@
     }
   },
   "summaries": {
-    "item_count": 30931302
+    "item_count": 31022632
   },
   "assets": {
     "sentinel-2-c1-l2a": {
@@ -124,7 +123,8 @@
         },
         {
           "name": "bbox",
-          "type": "DOUBLE[]"
+          "type": "DOUBLE[]",
+          "description": "[geometry] Scene bounding box as a DOUBLE array"
         },
         {
           "name": "links",
@@ -160,8 +160,7 @@
         },
         {
           "name": "grid:code",
-          "type": "VARCHAR",
-          "description": "[admin_code] MGRS grid code"
+          "type": "VARCHAR"
         },
         {
           "name": "mgrs:utm_zone",
@@ -182,7 +181,7 @@
         {
           "name": "proj:centroid",
           "type": "STRUCT(lat DOUBLE, lon DOUBLE)",
-          "description": "[latlon] Scene centroid as lat/lon struct"
+          "description": "[latlon] Scene centroid as struct of lat and lon"
         },
         {
           "name": "eo:cloud_cover",
@@ -190,7 +189,8 @@
         },
         {
           "name": "s2:tile_id",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[admin_code] Sentinel-2 tile identifier"
         },
         {
           "name": "s2:degraded_msi_data_percentage",
@@ -323,27 +323,27 @@
         {
           "name": "_hilbert",
           "type": "UINTEGER",
-          "description": "[spatial_index] Hilbert curve spatial sort index"
+          "description": "[spatial_index] Hilbert curve spatial index for sorting"
         },
         {
           "name": "_tile",
           "type": "VARCHAR",
-          "description": "[admin_code] MGRS tile code"
+          "description": "[admin_code] MGRS tile identifier"
         },
         {
           "name": "geometry",
           "type": "BLOB|GEOMETRY('OGC:CRS84')",
-          "description": "[geometry] Scene footprint geometry in OGC:CRS84"
+          "description": "[geometry] Scene footprint geometry (OGC:CRS84)"
         }
       ],
-      "description": "15 files sampled for this table",
+      "description": "17 files sampled for this table",
       "bbox": [
         -180.0,
         -82.852918,
         180.0,
         82.8223451
       ],
-      "item_count": 30931302
+      "item_count": 31022632
     },
     "sentinel-2-l2a": {
       "href": "https://data.source.coop/tge-labs/s2-stac-geoparquet/sentinel-2-l2a/year=2016/",
@@ -375,7 +375,8 @@
         },
         {
           "name": "bbox",
-          "type": "DOUBLE[]"
+          "type": "DOUBLE[]",
+          "description": "[geometry] Scene bounding box as a DOUBLE array"
         },
         {
           "name": "links",
@@ -404,7 +405,7 @@
         {
           "name": "s2:mgrs_tile",
           "type": "VARCHAR",
-          "description": "[admin_code] MGRS tile code"
+          "description": "[admin_code] MGRS tile identifier"
         },
         {
           "name": "constellation",
@@ -529,12 +530,12 @@
         {
           "name": "_hilbert",
           "type": "UINTEGER",
-          "description": "[spatial_index] Hilbert curve spatial sort index"
+          "description": "[spatial_index] Hilbert curve spatial index for sorting"
         },
         {
           "name": "geometry",
           "type": "GEOMETRY('OGC:CRS84')",
-          "description": "[geometry] Scene footprint geometry in OGC:CRS84"
+          "description": "[geometry] Scene footprint geometry (OGC:CRS84)"
         }
       ],
       "description": "11 files sampled for this table",
@@ -554,7 +555,7 @@
         "data"
       ],
       "description": "2 files sampled for this table",
-      "item_count": 2852410
+      "item_count": 2874108
     },
     "stats-c1/months": {
       "href": "https://data.source.coop/tge-labs/s2-stac-geoparquet/stats-c1/months/",
@@ -599,7 +600,7 @@
         "data"
       ],
       "description": "2 files sampled for this table",
-      "item_count": 3575887
+      "item_count": 3597304
     },
     "stats/months": {
       "href": "https://data.source.coop/tge-labs/s2-stac-geoparquet/stats/months/",
@@ -641,7 +642,7 @@
     {
       "name": "mgrs_tile",
       "type": "VARCHAR",
-      "description": "[admin_code] MGRS tile code"
+      "description": "[admin_code] MGRS tile identifier for aggregates"
     },
     {
       "name": "year",
@@ -700,32 +701,19 @@
     "source_coop_api": true,
     "s3_inventory": true
   },
+  "product_id": "s2-stac-geoparquet",
+  "disabled": false,
+  "featured": 0,
   "ext_bytes": {
-    "parquet": 62495505329,
-    "json": 8960697,
+    "parquet": 62629675854,
+    "json": 8961074,
     "pmtiles": 1326483,
     "png": 107028,
     "md": 91201,
     "svg": 505
   },
-  "account_id": "tge-labs",
-  "featured": 0,
-  "product_id": "s2-stac-geoparquet",
-  "object_count": 371,
-  "exts": {
-    "parquet": 312,
-    "json": 42,
-    "md": 10,
-    "png": 4,
-    "pmtiles": 2,
-    "svg": 1
-  },
-  "total_bytes": 62505991243,
-  "updated_at": "2026-10-03T15:29:26.834Z",
-  "disabled": false,
-  "visibility": "public",
   "data_mode": null,
-  "created_at": "2026-10-03T15:29:26.834Z",
+  "updated_at": "2026-10-03T15:29:26.834Z",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "connection_id": "aws-opendata-us-west-2",
@@ -733,12 +721,25 @@
       "prefix": "tge-labs/s2-stac-geoparquet/"
     }
   },
+  "visibility": "public",
+  "exts": {
+    "parquet": 313,
+    "json": 42,
+    "md": 10,
+    "png": 4,
+    "pmtiles": 2,
+    "svg": 1
+  },
+  "object_count": 372,
+  "account_id": "tge-labs",
+  "total_bytes": 62640162145,
   "objects_updated_at": "2026-10-31T04:52:52+00:00",
+  "created_at": "2026-10-03T15:29:26.834Z",
   "readme": "## README.md\n# Sentinel-2 L2A STAC-GeoParquet mirror\n\nEvery Sentinel-2 L2A scene that AWS Earth Search indexes, republished as\ncloud-native GeoParquet you query in place over HTTP. No API and no key stand\nbetween a client and the data.\n\n## Ways in\n\n| To do this | Go here |\n|---|---|\n| Search scenes on a map, and draw any band from its COGs in the browser | [Scene explorer](https://research.taylorgeospatial.org/s2-stac-geoparquet/) |\n| Browse the collections, their items and their assets | [Portolan browser](https://browser.portolan-sdi.org/#/external/data.source.coop/tge-labs/s2-stac-geoparquet/catalog.json) |\n| Read the catalog page and list the published files | [Source Cooperative](https://source.coop/tge-labs/s2-stac-geoparquet) |\n| Fetch the metadata root | [`catalog.json`](https://data.source.coop/tge-labs/s2-stac-geoparquet/catalog.json) |\n| Query it as an agent | [`AGENTS.md`](AGENTS.md) |\n| Report a problem or send a change | [Issues](https://github.com/taylor-geospatial/s2-stac-geoparquet/issues), [repository](https://github.com/taylor-geospatial/s2-stac-geoparquet) |\n\nThe explorer opens on Collection 1. Its sidebar switch, or\n[`?collection=sentinel-2-l2a`](https://research.taylorgeospatial.org/s2-stac-geoparquet/?collection=sentinel-2-l2a),\nshows the original index on the same page.\n\nEarth Search, run by [Element 84](https://element84.com/) on the\n[AWS Registry of Open Data](https://registry.opendata.aws/sentinel-2-l2a-cogs/),\nproduces the item indexes this catalog republishes, and Copernicus Sentinel-2\nis the imagery behind them. This catalog mirrors those indexes without\nfiltering, reclassifying or interpolating anything in them.\n\n## The collections\n\nNo imagery is published here. The Sentinel-2 Cloud-Optimized GeoTIFFs remain in\ntheir AWS buckets, and each item row reproduces their URLs verbatim. What\npublishes here is the item index, one GeoParquet row per scene, with small\nper-MGRS-tile aggregates that make it practical to plan a query before running\nit.\n\n| Collection | Contents | Browse | Upstream |\n|---|---|---|---|\n| [`sentinel-2-c1-l2a`](sentinel-2-c1-l2a/README.md) | **Collection 1**, ESA's uniform reprocessing of the archive. 30 million scenes from 2015 on, one `items.parquet` per year. Start here, and the explorer does too. | [browser](https://browser.portolan-sdi.org/#/external/data.source.coop/tge-labs/s2-stac-geoparquet/sentinel-2-c1-l2a/collection.json) \u00b7 [explorer](https://research.taylorgeospatial.org/s2-stac-geoparquet/) | [Earth Search collection](https://earth-search.aws.element84.com/v1/collections/sentinel-2-c1-l2a) |\n| [`stats-c1`](stats-c1/README.md) | MGRS tile by month aggregates over Collection 1, and a tile-footprint tileset. | [browser](https://browser.portolan-sdi.org/#/external/data.source.coop/tge-labs/s2-stac-geoparquet/stats-c1/collection.json) | derived here |\n| [`sentinel-2-l2a`](sentinel-2-l2a/README.md) | The **original** Earth Search index. 51 million scenes from November 2016 on, in zone-partitioned year parts. Its record reflects Earth Search's own history, including duplicate items in early years. | [browser](https://browser.portolan-sdi.org/#/external/data.source.coop/tge-labs/s2-stac-geoparquet/sentinel-2-l2a/collection.json) \u00b7 [explorer](https://research.taylorgeospatial.org/s2-stac-geoparquet/?collection=sentinel-2-l2a) | [Earth Search collection](https://earth-search.aws.element84.com/v1/collections/sentinel-2-l2a) |\n| [`stats`](stats/README.md) | The same aggregates over the original index. | [browser](https://browser.portolan-sdi.org/#/external/data.source.coop/tge-labs/s2-stac-geoparquet/stats/collection.json) | derived here |\n\nEach collection's `table:row_count` and temporal extent state what it includes\nright now, and each `year=YYYY/YYYY.json` item states its year's. Those fields\nare the authority, where this page describes what is mirrored and how to read\nit.\n\nEach collection has a README and an agent guide beside it:\n[`sentinel-2-c1-l2a`](sentinel-2-c1-l2a/README.md)\n([agents](sentinel-2-c1-l2a/AGENTS.md)),\n[`stats-c1`](stats-c1/README.md) ([agents](stats-c1/AGENTS.md)),\n[`sentinel-2-l2a`](sentinel-2-l2a/README.md)\n([agents](sentinel-2-l2a/AGENTS.md)), and\n[`stats`](stats/README.md) ([agents](stats/AGENTS.md)).\n\n## Access\n\nA client reads the Parquet over HTTP, with range requests, straight from the\nbucket:\n\n```sql\nINSTALL httpfs; LOAD httpfs;\nSET TimeZone = 'UTC';\n\nSELECT id, datetime, \"eo:cloud_cover\" AS cloud\nFROM read_parquet('https://data.source.coop/tge-labs/s2-stac-geoparquet/sentinel-2-c1-l2a/year=2025/items.parquet')\nWHERE _tile = '31UFU'\n  AND \"eo:cloud_cover\" <= 10\nORDER BY \"eo:cloud_cover\" LIMIT 10;\n```\n\nThe parts are sorted by tile, so a tile filter reads a few row groups instead\nof the file. To scan many years at once, use the anonymous `s3://` door with a\nglob, because DuckDB can list a bucket but cannot expand a glob over plain\n`https://`:\n\n```sql\nSET s3_region = 'us-west-2';\nSET s3_url_style = 'path';\n\nSELECT year, count(*) AS scenes\nFROM read_parquet('s3://us-west-2.opendata.source.coop/tge-labs/s2-stac-geoparquet/sentinel-2-c1-l2a/year=*/items.parquet',\n                  hive_partitioning = true)\nGROUP BY year ORDER BY year;\n```\n\nThe collection READMEs give the full query patterns, including the one that\nfinds cloud-free scenes over a field and the COG URL for each.\n\n## Provenance\n\nEach item comes from the\n[Earth Search STAC API](https://earth-search.aws.element84.com/v1), fetched and\nnormalized to one schema per collection. Months the API could not serve during\nits outage windows were read instead from the static item JSON in the\n`sentinel-cogs` bucket, which contains the same items. Each archive is one\nqueryable table, and a row means the same thing in 2019 as it does today.\n\nColumn meanings and query patterns are documented per collection, in\n[`sentinel-2-c1-l2a`](sentinel-2-c1-l2a/README.md) and\n[`sentinel-2-l2a`](sentinel-2-l2a/README.md), each with an agent guide beside\nit.\n\n## License\n\nSentinel-2 data and its derivatives fall under the\n[Copernicus Sentinel Data Terms and Conditions](https://sentinels.copernicus.eu/documents/247904/690755/Sentinel_Data_Legal_Notice),\nwhich grant free, full and open access for any use (SPDX `CC-BY-SA-3.0-IGO`).\nThe citation for the upstream COGs, from their\n[AWS Registry of Open Data entry](https://registry.opendata.aws/sentinel-2-l2a-cogs/):\n\n> Sentinel-2 Cloud-Optimized GeoTIFFs, accessed on [DATE] from\n> https://registry.opendata.aws/sentinel-2-l2a-cogs.\n\nCite this catalog itself as the item index derived from that archive. Contains\nmodified Copernicus Sentinel data.\n",
   "_review": [
-    "summaries.item_count: parts overlap, so this is max(part), not the sum \u2014 sentinel-2-c1-l2a/ 30931302, sentinel-2-l2a/ 11971574, stats-c1/ 2852410, stats/ 3575887. Sum them only once the parts are known to be disjoint."
+    "summaries.item_count: parts overlap, so this is max(part), not the sum \u2014 sentinel-2-c1-l2a/ 31022632, sentinel-2-l2a/ 11971574, stats-c1/ 2874108, stats/ 3597304. Sum them only once the parts are known to be disjoint."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-10-29T09:41:42+00:00",
+  "cataloged_at": "2026-11-05T09:34:09+00:00",
   "store_format": null
 }
