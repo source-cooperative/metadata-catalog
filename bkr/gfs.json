@@ -4,16 +4,16 @@
   "stac_version": "1.1.0",
   "id": "bkr/gfs",
   "title": "GFS Analysis and Forecast",
-  "description": "Global Forecast System (GFS) analysis and forecast data stored in Icechunk (Zarr-based) format, covering global extent at 0.25-degree resolution. Includes both operational GFS analysis fields and a pseudo-reanalysis dataset constructed from the most recent available real-time forecast step. Temporal coverage spans 2016-01-01 through at least October 2025.",
+  "description": "Global Forecast System (GFS) analysis and forecast data at 0.25-degree global resolution, stored in Icechunk (Zarr-based) format. Includes operational GFS analysis fields and a pseudo-reanalysis built from the most recent available real-time forecast step.",
   "keywords": [
     "numerical-weather-prediction",
+    "weather-forecasting",
     "weather",
     "meteorology",
-    "reanalysis",
-    "gfs",
     "icechunk",
     "zarr",
-    "global-coverage"
+    "global-coverage",
+    "atmospheric-modeling"
   ],
   "providers": [
     {
@@ -47,17 +47,81 @@
         [
           "2016-01-01T00:00:00",
           "2025-10-25T07:00:00"
+        ],
+        [
+          "2022-01-01T00:00:00",
+          "2025-10-25T07:00:00"
+        ],
+        [
+          "2022-01-01T06:00:00",
+          "2025-10-21T12:00:00"
+        ],
+        [
+          "2016-01-01T00:00:00",
+          "2016-01-03T06:00:00"
+        ],
+        [
+          "2016-01-01T00:00:00",
+          "2017-10-01T18:00:00"
         ]
       ]
     }
   },
   "assets": {
-    "data": {
-      "href": "https://data.source.coop/bkr/gfs/",
+    "gfs.icechunk": {
+      "href": "https://data.source.coop/bkr/gfs/gfs.icechunk/",
       "type": "application/octet-stream",
-      "title": "Dataset files (4 x .icechunk)",
+      "title": "gfs.icechunk/ (1 \u00d7 .icechunk)",
       "roles": [
         "data"
+      ],
+      "bbox": [
+        -180.0,
+        -90.0,
+        179.75,
+        90.0
+      ]
+    },
+    "gfs_analysis.icechunk": {
+      "href": "https://data.source.coop/bkr/gfs/gfs_analysis.icechunk/",
+      "type": "application/octet-stream",
+      "title": "gfs_analysis.icechunk/ (1 \u00d7 .icechunk)",
+      "roles": [
+        "data"
+      ],
+      "bbox": [
+        -180.0,
+        -90.0,
+        179.75,
+        90.0
+      ]
+    },
+    "gfs_forecast_6hr.icechunk": {
+      "href": "https://data.source.coop/bkr/gfs/gfs_forecast_6hr.icechunk/",
+      "type": "application/octet-stream",
+      "title": "gfs_forecast_6hr.icechunk/ (1 \u00d7 .icechunk)",
+      "roles": [
+        "data"
+      ],
+      "bbox": [
+        -180.0,
+        -90.0,
+        179.75,
+        90.0
+      ]
+    },
+    "gfs_forecast_6hr_1deg.icechunk": {
+      "href": "https://data.source.coop/bkr/gfs/gfs_forecast_6hr_1deg.icechunk/",
+      "type": "application/octet-stream",
+      "title": "gfs_forecast_6hr_1deg.icechunk/ (1 \u00d7 .icechunk)",
+      "roles": [
+        "data"
+      ],
+      "bbox": [
+        -180.0,
+        -90.0,
+        179.0,
+        90.0
       ]
     }
   },
@@ -73,15 +137,41 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "object_count": 2176764,
-  "product_id": "gfs",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
+  "data_mode": "open",
+  "objects_updated_at": "2026-10-29T12:25:50+00:00",
+  "exts": {
+    "": 2176777,
+    "z79cb3w8xwfggzk8gze0": 1,
+    "055def7c": 1,
+    "bccafdb7": 1,
+    "azcx1vsz276c49mfnv2g": 1,
+    "b8663a89": 1,
+    "d852aadd": 1,
+    "n2jyj7bzh3t1q6g29r9g": 1,
+    "json": 1,
+    "csxk9r7nvebs91ggc6tg": 1,
+    "74jkr1962ys2kfhwg11g": 1,
+    "81r4v50egx3f3v3fdaxg": 1,
+    "qckrsbgswwr2ky8n2xj0": 1,
+    "c06p3trs486g5cx5dw70": 1
   },
-  "account_id": "bkr",
-  "featured": 0,
-  "updated_at": "2025-10-30T13:37:51.997Z",
+  "ext_bytes": {
+    "": 3798043412940,
+    "b8663a89": 17997330,
+    "055def7c": 17563837,
+    "bccafdb7": 14155776,
+    "d852aadd": 3407872,
+    "z79cb3w8xwfggzk8gze0": 1877046,
+    "azcx1vsz276c49mfnv2g": 1875683,
+    "81r4v50egx3f3v3fdaxg": 259602,
+    "n2jyj7bzh3t1q6g29r9g": 259270,
+    "qckrsbgswwr2ky8n2xj0": 119485,
+    "csxk9r7nvebs91ggc6tg": 119394,
+    "c06p3trs486g5cx5dw70": 1004,
+    "74jkr1962ys2kfhwg11g": 839,
+    "json": 35
+  },
+  "disabled": false,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -94,32 +184,22 @@
       "prefix": "bkr/gfs/"
     }
   },
-  "created_at": "2025-10-21T17:00:22.256Z",
-  "data_mode": "open",
+  "updated_at": "2025-10-30T13:37:51.997Z",
   "visibility": "public",
-  "exts": {
-    "": 2176755,
-    "json": 5,
-    "bccafdb7": 1,
-    "055def7c": 1,
-    "b8663a89": 1,
-    "d852aadd": 1
+  "total_bytes": 3798101050113,
+  "featured": 0,
+  "account_id": "bkr",
+  "product_id": "gfs",
+  "object_count": 2176790,
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
   },
-  "total_bytes": 3798094166115,
-  "disabled": false,
+  "created_at": "2025-10-21T17:00:22.256Z",
   "_review": [
-    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
-    "providers: role [producer, licensor] for 'NOAA National Centers for Environmental Prediction (NCEP)' is an AI guess \u2014 GFS is operationally produced by NOAA/NCEP; assumed producer and licensor as US government data, but not stated in README. Verify before flipping to _state: reviewed."
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-06-04T01:36:46+00:00",
-  "ext_bytes": {
-    "": 3798041041125,
-    "b8663a89": 17997330,
-    "055def7c": 17563837,
-    "bccafdb7": 14155776,
-    "d852aadd": 3407872,
-    "json": 175
-  },
-  "objects_updated_at": "2026-10-29T12:25:50+00:00"
+  "cataloged_at": "2026-11-06T09:44:08+00:00",
+  "store_format": "icechunk"
 }
