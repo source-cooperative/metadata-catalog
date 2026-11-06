@@ -4,14 +4,16 @@
   "stac_version": "1.1.0",
   "id": "bkr/nsrdb",
   "title": "Cloud-Optimized NREL National Solar Radiation Database",
-  "description": "International solar radiation data from the NREL National Solar Radiation Database (NSRDB), reformatted into Icechunk/Zarr format and optimized for reading full spatial extents at single timesteps. The initial release covers India; the full dataset spans hourly and sub-hourly satellite-derived solar resource variables globally. Intended for photovoltaic modeling and climate/weather applications.",
+  "description": "International solar radiation data from the NREL National Solar Radiation Database (NSRDB), reformatted into Icechunk/Zarr format and optimized for reading full spatial extents at single timesteps. The initial release covers India, with the full dataset spanning hourly and sub-hourly satellite-derived solar resource variables globally.",
   "keywords": [
-    "solar-radiation",
     "climate",
     "weather",
     "remote-sensing",
     "zarr",
-    "icechunk"
+    "icechunk",
+    "satellite-imagery",
+    "time-series",
+    "global-coverage"
   ],
   "providers": [
     {
@@ -40,28 +42,180 @@
       "bbox": [
         [
           -180.0,
-          -90.0,
+          -59.7200012,
           180.0,
-          90.0
+          86.9772797
+        ],
+        [
+          -179.9900055,
+          -59.7200012,
+          -22.4899998,
+          59.9799995
+        ],
+        [
+          74.6200027,
+          -54.9900017,
+          -153.6999969,
+          59.9700012
+        ],
+        [
+          74.6100006,
+          -55.0,
+          -153.6900024,
+          59.9799995
+        ],
+        [
+          -24.2600002,
+          -54.6699982,
+          107.9800034,
+          59.9700012
+        ],
+        [
+          -25.3400002,
+          -54.6699982,
+          64.2200012,
+          59.9700012
+        ],
+        [
+          -180.0,
+          60.0227318,
+          180.0,
+          86.9772797
         ]
       ]
     },
     "temporal": {
       "interval": [
         [
-          null,
-          null
+          "2002-01-01T00:00:00",
+          "2025-12-31T23:50:00"
+        ],
+        [
+          "2018-01-01T00:00:00",
+          "2025-12-31T23:50:00"
+        ],
+        [
+          "2011-01-01T00:00:00",
+          "2019-12-31T23:30:00"
+        ],
+        [
+          "2015-03-17T00:00:00",
+          "2020-12-31T23:50:00"
+        ],
+        [
+          "2017-01-01T00:00:00",
+          "2019-12-31T23:45:00"
+        ],
+        [
+          "2005-01-01T00:00:00",
+          "2022-12-31T23:45:00"
+        ],
+        [
+          "2002-01-01T00:00:00",
+          "2025-12-31T23:00:00"
         ]
       ]
     }
   },
   "assets": {
-    "data": {
-      "href": "https://data.source.coop/bkr/nsrdb/",
+    "goes_full_disc_v4.icechunk": {
+      "href": "https://data.source.coop/bkr/nsrdb/goes_full_disc_v4.icechunk/",
       "type": "application/octet-stream",
-      "title": "Dataset files (2 x .icechunk)",
+      "title": "goes_full_disc_v4.icechunk/ (1 \u00d7 .icechunk)",
       "roles": [
         "data"
+      ],
+      "bbox": [
+        -179.9900055,
+        -59.7200012,
+        -22.4899998,
+        59.9799995
+      ]
+    },
+    "himawari7.icechunk": {
+      "href": "https://data.source.coop/bkr/nsrdb/himawari7.icechunk/",
+      "type": "application/octet-stream",
+      "title": "himawari7.icechunk/ (1 \u00d7 .icechunk)",
+      "roles": [
+        "data"
+      ],
+      "bbox": [
+        74.6200027,
+        -54.9900017,
+        -153.6999969,
+        59.9700012
+      ]
+    },
+    "himawari8.icechunk": {
+      "href": "https://data.source.coop/bkr/nsrdb/himawari8.icechunk/",
+      "type": "application/octet-stream",
+      "title": "himawari8.icechunk/ (1 \u00d7 .icechunk)",
+      "roles": [
+        "data"
+      ],
+      "bbox": [
+        74.6100006,
+        -55.0,
+        -153.6900024,
+        59.9799995
+      ]
+    },
+    "meteosat.icechunk": {
+      "href": "https://data.source.coop/bkr/nsrdb/meteosat.icechunk/",
+      "type": "application/octet-stream",
+      "title": "meteosat.icechunk/ (1 \u00d7 .icechunk)",
+      "roles": [
+        "data"
+      ],
+      "bbox": [
+        -24.2600002,
+        -54.6699982,
+        107.9800034,
+        59.9700012
+      ]
+    },
+    "msg_v4.icechunk": {
+      "href": "https://data.source.coop/bkr/nsrdb/msg_v4.icechunk/",
+      "type": "application/octet-stream",
+      "title": "msg_v4.icechunk/ (1 \u00d7 .icechunk)",
+      "roles": [
+        "data"
+      ],
+      "bbox": [
+        -25.3400002,
+        -54.6699982,
+        64.2200012,
+        59.9700012
+      ]
+    },
+    "nsrdb_himawari7.icechunk": {
+      "href": "https://data.source.coop/bkr/nsrdb/nsrdb_himawari7.icechunk/",
+      "type": "application/octet-stream",
+      "title": "nsrdb_himawari7.icechunk/ (1 \u00d7 .icechunk)",
+      "roles": [
+        "data"
+      ]
+    },
+    "nsrdb_india.icechunk": {
+      "href": "https://data.source.coop/bkr/nsrdb/nsrdb_india.icechunk/",
+      "type": "application/octet-stream",
+      "title": "nsrdb_india.icechunk/ (1 \u00d7 .icechunk)",
+      "roles": [
+        "data"
+      ]
+    },
+    "polar_v4.icechunk": {
+      "href": "https://data.source.coop/bkr/nsrdb/polar_v4.icechunk/",
+      "type": "application/octet-stream",
+      "title": "polar_v4.icechunk/ (1 \u00d7 .icechunk)",
+      "roles": [
+        "data"
+      ],
+      "bbox": [
+        -180.0,
+        60.0227318,
+        180.0,
+        86.9772797
       ]
     }
   },
@@ -77,8 +231,62 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "total_bytes": 641007565107,
+  "exts": {
+    "": 2420386,
+    "vy484p92f2z6afdjxdkg": 1,
+    "xkzatdfx1detswj511mg": 1,
+    "3xcd2364ns18v4nz64vg": 1,
+    "xck9dmpvvkesvpgb7pa0": 1,
+    "14t7b0fa5q94b19vpy1g": 1,
+    "sayat0dnxjza75ja91c0": 1,
+    "g06v35cgdz0qrxwtheng": 1,
+    "wqv9ktbw863xnb15e1tg": 1,
+    "ywvv3ysrq32x54mpy970": 1,
+    "j2pys5epcya8v3xa25w0": 1,
+    "76x6ab54x4nq0zphmt20": 1,
+    "whx5ppff21avxqrmrc90": 1,
+    "nfdaxfsz7wztea7v8azg": 1,
+    "cwevgywxyrab4b9ecqt0": 1,
+    "xtr5brkzf331wefgw0yg": 1,
+    "rzges35c22tknheq99a0": 1,
+    "e97vd5ycm6v29hn5gqe0": 1,
+    "6rfedqak81gn4k97ms80": 1,
+    "zp2p6w8722qxyggemdag": 1,
+    "w13kv7m6zzhs6xf20t1g": 1,
+    "yn4dfkgmbdv6wtmzd40g": 1,
+    "bxwfyw8mk8r9qwa58w4g": 1,
+    "pctcd3smxx4pzkkmxpjg": 1,
+    "p03e7wvbfq24tnb2kvp0": 1,
+    "r1qzy20m6xgwr0n3q9vg": 1,
+    "avjy6gk0bsxj2zy7tgv0": 1,
+    "ac6908eeawq6c23711zg": 1,
+    "c3q4j8yeq7nycm9kp310": 1,
+    "fgy2p560heyt3a2jtyqg": 1,
+    "190jp8e2dstxa1034c9g": 1,
+    "876q8g7f4k2dajdbms9g": 1,
+    "vf00vy70sbnv6s2gg1bg": 1,
+    "15xmw2b0bc7x2xa96vt0": 1,
+    "69fym09t4b2n13792p7g": 1,
+    "ddqrd7qfgg8stqdn3q3g": 1,
+    "w5djm3n7hapz0n3q0wr0": 1,
+    "ryjs9ryxzj8dhf1vgc70": 1,
+    "4ymxgamhd4jc5xm2nq0g": 1,
+    "cn5qk6pmky35pq45tn40": 1,
+    "ssgk9bezywbtdybzepa0": 1,
+    "e31yhmj2tnqhz4sqn7b0": 1,
+    "962tmw46smqagrw7jk8g": 1,
+    "p2nde3hjmj66yff61a5g": 1,
+    "wdfft0ft05ek3ve36cd0": 1,
+    "cb2901e2xvwdmct0zw4g": 1,
+    "38qqtkmqyw8j8hank9w0": 1,
+    "72hg80k1b5gq3jnjthxg": 1,
+    "4epvngjpbxd3dgy10290": 1,
+    "xs5krjnvncq4786mr96g": 1
+  },
   "product_id": "nsrdb",
+  "updated_at": "2025-08-21T16:39:55.567Z",
+  "objects_updated_at": "2026-10-29T12:25:29+00:00",
+  "featured": 0,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -91,82 +299,18 @@
       "prefix": "bkr/nsrdb/"
     }
   },
-  "disabled": false,
-  "exts": {
-    "": 2420352,
-    "json": 2,
-    "xkzatdfx1detswj511mg": 1,
-    "3xcd2364ns18v4nz64vg": 1,
-    "xck9dmpvvkesvpgb7pa0": 1,
-    "2p503370xns6e8n8varg": 1,
-    "14t7b0fa5q94b19vpy1g": 1,
-    "sayat0dnxjza75ja91c0": 1,
-    "hbn0nwvx261mnvqqv6t0": 1,
-    "g06v35cgdz0qrxwtheng": 1,
-    "wqv9ktbw863xnb15e1tg": 1,
-    "40tccvqs05wa32h6bc70": 1,
-    "3z7vzx8kn715k2qknnyg": 1,
-    "ywvv3ysrq32x54mpy970": 1,
-    "j2pys5epcya8v3xa25w0": 1,
-    "76x6ab54x4nq0zphmt20": 1,
-    "qbm5dy7fna0gt9zcykwg": 1,
-    "whx5ppff21avxqrmrc90": 1,
-    "892kqczmd8eqzsvra8g0": 1,
-    "0sj4b5p5b8akn0dt3z50": 1,
-    "cvrhj9pta5t7wnbasbj0": 1,
-    "nfdaxfsz7wztea7v8azg": 1,
-    "cwevgywxyrab4b9ecqt0": 1,
-    "d0k7btggcbszf48d4hv0": 1,
-    "qdxnj5q395fnydb42e0g": 1,
-    "xtr5brkzf331wefgw0yg": 1,
-    "pwktk00pyhapess97ktg": 1,
-    "zr3sy2sr645fqx2kqsng": 1,
-    "9pzr9yaxrfjv0eyntr60": 1,
-    "e539345312rkdessd0wg": 1,
-    "g6q9y26met8y7s4v1s40": 1,
-    "4b4wpsyg0ck1wwwgvd00": 1,
-    "rzges35c22tknheq99a0": 1,
-    "e97vd5ycm6v29hn5gqe0": 1,
-    "6rfedqak81gn4k97ms80": 1,
-    "zp2p6w8722qxyggemdag": 1,
-    "w13kv7m6zzhs6xf20t1g": 1,
-    "gh23bv61mskwvrehrqe0": 1,
-    "yn4dfkgmbdv6wtmzd40g": 1,
-    "x4rpe5a4s1jfcm52rgsg": 1,
-    "n4ft67s1301pj7j16nvg": 1,
-    "a9mx30vbx770fyed5sg0": 1,
-    "pctcd3smxx4pzkkmxpjg": 1,
-    "0hwx4dznzrwhbqwksqf0": 1,
-    "jsmydvqmf057y9gn3xmg": 1,
-    "p03e7wvbfq24tnb2kvp0": 1,
-    "r1qzy20m6xgwr0n3q9vg": 1,
-    "ac6908eeawq6c23711zg": 1,
-    "c3q4j8yeq7nycm9kp310": 1,
-    "1r3aqc0bq77m50zjga1g": 1
-  },
-  "visibility": "public",
-  "featured": 0,
   "created_at": "2025-05-30T13:31:41.003Z",
-  "data_mode": "open",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "account_id": "bkr",
-  "updated_at": "2025-08-21T16:39:55.567Z",
-  "object_count": 2420653,
-  "_review": [
-    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
-    "providers: role [host] for 'OpenEI' is an AI guess \u2014 OpenEI S3 bucket (nrel-pds-nsrdb) cited as upstream source; assumed host/distributor of original files. Verify before flipping to _state: reviewed."
-  ],
-  "_state": "drafted",
-  "cataloged_at": "2026-10-15T09:36:11+00:00",
+  "object_count": 2420701,
   "ext_bytes": {
-    "": 641006584934,
+    "": 641006890161,
+    "f88748y64h6738kv7ce0": 6914,
+    "vy484p92f2z6afdjxdkg": 6783,
     "kg5v0ff812wyxn4mapm0": 6645,
+    "kgvhkhyy5c5h4pba3650": 6592,
     "xkzatdfx1detswj511mg": 6514,
     "f82gyrv3jdd4v25d2120": 6497,
     "qbxy6hyw2cmk7h3fsqrg": 6446,
+    "esdr2z0tmzwz2wz3zcf0": 6428,
     "3xcd2364ns18v4nz64vg": 6373,
     "4ed5h8w03gnw1cybgnx0": 6327,
     "sf7jqpem427mgzyejq20": 6304,
@@ -192,10 +336,12 @@
     "3wtyr5e625e1g5hx8c0g": 5645,
     "xs5krjnvncq4786mr96g": 5628,
     "znpzmmhxcf80j8d4peeg": 5614,
+    "avjy6gk0bsxj2zy7tgv0": 5611,
     "z7kdk8xrb5z0x212b92g": 5584,
     "sayat0dnxjza75ja91c0": 5560,
     "nr8yfg478wxf17882240": 5506,
     "hbn0nwvx261mnvqqv6t0": 5497,
+    "3an7kzyccrwxkxb1c8q0": 5476,
     "dsfecem8hm1grqy7306g": 5431,
     "g2zjtkqzbfayt9zvza6g": 5431,
     "e4xp3x7hhpzg48n8ycy0": 5358,
@@ -205,14 +351,21 @@
     "nj40jq8mbpme285navsg": 5304,
     "g06v35cgdz0qrxwtheng": 5261,
     "kq1g73vp15k48jpjz53g": 5232,
-    "fzx4z3mzvvqqcd8e4eq0": 5210,
-    "gf3d39nbef1z9rhdhsg0": 5209,
-    "c3q4j8yeq7nycm9kp310": 5197,
-    "q8n8c0rxxj9zqwsntym0": 5182,
-    "b3cmhy9ghfay83kjm330": 5163,
-    "0972m4s182wsj19tk7h0": 5148,
-    "cj9tdxn8ss89hfqks9hg": 5145
+    "fzx4z3mzvvqqcd8e4eq0": 5210
   },
-  "objects_updated_at": "2026-10-29T12:25:29+00:00",
+  "visibility": "public",
+  "total_bytes": 641007928403,
+  "disabled": false,
+  "account_id": "bkr",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "data_mode": "open",
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-11-06T09:48:55+00:00",
   "store_format": "icechunk"
 }
