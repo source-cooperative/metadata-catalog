@@ -4,15 +4,16 @@
   "stac_version": "1.1.0",
   "id": "bkr/imerg",
   "title": "GPM IMERG Early and Final Half-Hourly Precipitation Datasets",
-  "description": "Global Precipitation Measurement (GPM) Integrated Multi-satellitE Retrievals (IMERG) Early and Final Half-Hourly precipitation products, stored as Zarr arrays with global coverage. The dataset spans from 2000-01-01 to present at 30-minute temporal resolution. Early run provides near-real-time estimates; Final run is a research-quality, latency-adjusted product.",
+  "description": "Global Precipitation Measurement (GPM) IMERG Early and Final Run half-hourly global precipitation estimates, derived from multi-satellite retrievals and stored as Zarr arrays. Coverage is global at 30-minute temporal resolution, with the Early run providing near-real-time estimates and the Final run providing a research-quality, latency-adjusted product.",
   "keywords": [
-    "precipitation",
-    "gpm",
-    "imerg",
     "remote-sensing",
     "zarr",
     "climate",
-    "satellite-rainfall"
+    "satellite-imagery",
+    "global-coverage",
+    "time-series",
+    "meteorology",
+    "precipitation"
   ],
   "providers": [
     {
@@ -52,17 +53,59 @@
         [
           "2000-01-01T00:00:00",
           "2026-12-31T00:00:00"
+        ],
+        [
+          "2000-01-01T00:00:00",
+          "2025-12-31T00:00:00"
+        ],
+        [
+          "2000-01-01T00:00:00",
+          "2026-12-31T00:00:00"
         ]
       ]
     }
   },
   "assets": {
-    "data": {
-      "href": "https://data.source.coop/bkr/imerg/",
+    "gpm_early.zarr": {
+      "href": "https://data.source.coop/bkr/imerg/gpm_early.zarr/",
       "type": "application/vnd+zarr",
-      "title": "Dataset files (3 x .zarr)",
+      "title": "gpm_early.zarr/ (1 \u00d7 .zarr)",
       "roles": [
         "data"
+      ],
+      "bbox": [
+        -179.9499969,
+        -89.9499969,
+        179.9499969,
+        89.9499969
+      ]
+    },
+    "gpm_final.zarr": {
+      "href": "https://data.source.coop/bkr/imerg/gpm_final.zarr/",
+      "type": "application/vnd+zarr",
+      "title": "gpm_final.zarr/ (1 \u00d7 .zarr)",
+      "roles": [
+        "data"
+      ],
+      "bbox": [
+        -179.9499969,
+        -89.9499969,
+        179.9499969,
+        89.9499969
+      ]
+    },
+    "imerg_final.zarr": {
+      "href": "https://data.source.coop/bkr/imerg/imerg_final.zarr/",
+      "type": "application/vnd+zarr",
+      "title": "imerg_final.zarr/ (1 \u00d7 .zarr)",
+      "roles": [
+        "data"
+      ],
+      "bbox": [
+        -179.9499969,
+        -89.9499969,
+        179.9499969,
+        89.9499969
       ]
     }
   },
@@ -78,12 +121,10 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "exts": {
-    "": 3466215,
-    "json": 25
-  },
-  "disabled": false,
-  "account_id": "bkr",
+  "featured": 0,
+  "visibility": "public",
+  "object_count": 3466246,
+  "created_at": "2024-11-30T11:22:29.804Z",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -96,27 +137,33 @@
       "prefix": "bkr/imerg/"
     }
   },
-  "updated_at": "2025-08-21T16:39:55.567Z",
-  "visibility": "public",
-  "data_mode": "open",
-  "object_count": 3466240,
-  "featured": 0,
+  "total_bytes": 3951739610081,
+  "product_id": "imerg",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "product_id": "imerg",
-  "created_at": "2024-11-30T11:22:29.804Z",
-  "total_bytes": 3951738415739,
+  "exts": {
+    "": 3466220,
+    "json": 24,
+    "rkg82s9t8ztxv64j1mw0": 1,
+    "9sy9q4xe9eafn83yfk3g": 1
+  },
+  "objects_updated_at": "2026-10-29T12:25:30+00:00",
+  "updated_at": "2025-08-21T16:39:55.567Z",
+  "ext_bytes": {
+    "": 3951738788978,
+    "9sy9q4xe9eafn83yfk3g": 396563,
+    "rkg82s9t8ztxv64j1mw0": 396261,
+    "json": 28279
+  },
+  "disabled": false,
+  "account_id": "bkr",
+  "data_mode": "open",
   "_review": [
-    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
-    "providers: role [producer] for 'JAXA' is an AI guess \u2014 JAXA is the co-lead agency on the GPM mission and contributes the core satellite; producer role inferred from mission structure, not stated in context.. Verify before flipping to _state: reviewed."
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-06-04T01:36:08+00:00",
-  "ext_bytes": {
-    "": 3951738387425,
-    "json": 28314
-  },
-  "objects_updated_at": "2026-10-29T12:25:30+00:00"
+  "cataloged_at": "2026-11-06T09:47:32+00:00",
+  "store_format": "zarr"
 }
