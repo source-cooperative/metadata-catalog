@@ -4,15 +4,15 @@
   "stac_version": "1.1.0",
   "id": "bkr/marine",
   "title": "Copernicus Marine Wave and Ocean Products",
-  "description": "A global collection of Copernicus Marine Service wave and ocean reanalysis and near-real-time analysis products at native model resolution, stored in Icechunk format. Temporal coverage spans 1980 to 2026 with near-global spatial extent. Select variables were rescaled to float16 to reduce storage footprint with minimal loss of precision.",
+  "description": "A global collection of Copernicus Marine Service wave and ocean reanalysis and near-real-time analysis products at native model resolution, stored in Icechunk format. Select variables are rescaled to float16 to reduce storage footprint.",
   "keywords": [
     "oceanography",
-    "reanalysis",
-    "meteorology",
-    "wave-modeling",
-    "copernicus-marine",
-    "sea-state",
-    "ocean-analysis"
+    "icechunk",
+    "zarr",
+    "numerical-weather-prediction",
+    "global-coverage",
+    "time-series",
+    "climate"
   ],
   "providers": [
     {
@@ -34,10 +34,28 @@
     "spatial": {
       "bbox": [
         [
-          -179.8333282,
+          -180.0,
+          -89.8000031,
+          180.0,
+          90.0
+        ],
+        [
+          -180.0,
+          -80.0,
+          180.0,
+          90.0
+        ],
+        [
+          -180.0,
+          -80.0,
+          180.0,
+          90.0
+        ],
+        [
+          -179.3999939,
           -89.8000031,
           -179.6000061,
-          90.0
+          89.8000031
         ]
       ]
     },
@@ -46,17 +64,63 @@
         [
           "1980-01-01T00:00:00",
           "2026-01-01T18:00:00"
+        ],
+        [
+          "2022-09-01T00:30:00",
+          "2025-12-30T23:30:00"
+        ],
+        [
+          "2022-06-01T00:00:00",
+          "2026-01-01T18:00:00"
+        ],
+        [
+          "1980-01-01T00:00:00",
+          "1986-12-31T21:00:00"
         ]
       ]
     }
   },
   "assets": {
-    "data": {
-      "href": "https://data.source.coop/bkr/marine/",
+    "copernicus_global_ocean_forecast.icechunk": {
+      "href": "https://data.source.coop/bkr/marine/copernicus_global_ocean_forecast.icechunk/",
       "type": "application/octet-stream",
-      "title": "Dataset files (3 x .icechunk)",
+      "title": "copernicus_global_ocean_forecast.icechunk/ (1 \u00d7 .icechunk)",
       "roles": [
         "data"
+      ],
+      "bbox": [
+        -180.0,
+        -80.0,
+        180.0,
+        90.0
+      ]
+    },
+    "copernicus_global_ocean_forecast_6h.icechunk": {
+      "href": "https://data.source.coop/bkr/marine/copernicus_global_ocean_forecast_6h.icechunk/",
+      "type": "application/octet-stream",
+      "title": "copernicus_global_ocean_forecast_6h.icechunk/ (1 \u00d7 .icechunk)",
+      "roles": [
+        "data"
+      ],
+      "bbox": [
+        -180.0,
+        -80.0,
+        180.0,
+        90.0
+      ]
+    },
+    "copernicus_wave_reanalysis.icechunk": {
+      "href": "https://data.source.coop/bkr/marine/copernicus_wave_reanalysis.icechunk/",
+      "type": "application/octet-stream",
+      "title": "copernicus_wave_reanalysis.icechunk/ (1 \u00d7 .icechunk)",
+      "roles": [
+        "data"
+      ],
+      "bbox": [
+        -179.3999939,
+        -89.8000031,
+        -179.6000061,
+        89.8000031
       ]
     }
   },
@@ -72,18 +136,15 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "account_id": "bkr",
-  "created_at": "2026-01-17T09:06:09.257Z",
-  "featured": 0,
-  "disabled": false,
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
+  "ext_bytes": {
+    "": 12094787271573,
+    "wqxaq76gn6fnzns6wwkg": 352323,
+    "k0sbzscmswx5yccykcfg": 351291,
+    "fawad75sw621s5dz23v0": 94671,
+    "1asn2wphegg9b1pxw0mg": 94554,
+    "3mzs7tdb1hm1yt3aaz4g": 71231,
+    "att3gsaz04nqe8w8svjg": 70917
   },
-  "data_mode": "open",
-  "product_id": "marine",
-  "object_count": 3952152,
-  "total_bytes": 12094786719221,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -96,21 +157,34 @@
       "prefix": "bkr/marine/"
     }
   },
+  "account_id": "bkr",
+  "data_mode": "open",
   "exts": {
-    "": 3952149,
-    "json": 3
+    "": 3952164,
+    "1asn2wphegg9b1pxw0mg": 1,
+    "att3gsaz04nqe8w8svjg": 1,
+    "fawad75sw621s5dz23v0": 1,
+    "3mzs7tdb1hm1yt3aaz4g": 1,
+    "k0sbzscmswx5yccykcfg": 1,
+    "wqxaq76gn6fnzns6wwkg": 1
   },
+  "object_count": 3952170,
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "created_at": "2026-01-17T09:06:09.257Z",
+  "total_bytes": 12094788306560,
   "updated_at": "2026-01-17T09:06:09.257Z",
+  "disabled": false,
+  "objects_updated_at": "2026-10-29T12:25:26+00:00",
   "visibility": "public",
+  "product_id": "marine",
+  "featured": 0,
   "_review": [
-    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
-    "providers: role [producer, licensor] for 'Copernicus Marine Service (CMEMS)' is an AI guess \u2014 CMEMS is the named source of these products; licensor role inferred from standard Copernicus Marine Service open-data terms, not explicitly stated here.. Verify before flipping to _state: reviewed."
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-06-04T01:39:52+00:00",
-  "ext_bytes": {
-    "": 12094786719116,
-    "json": 105
-  },
-  "objects_updated_at": "2026-10-29T12:25:26+00:00"
+  "cataloged_at": "2026-11-06T09:46:51+00:00",
+  "store_format": "icechunk"
 }
