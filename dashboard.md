@@ -1,59 +1,51 @@
 # Source Cooperative catalog — status
 
-_Updated 2026-11-05 09:35 UTC by the nightly pipeline._
+_Updated 2026-11-06 09:50 UTC by the nightly pipeline._
 
-**443 datasets cataloged**  ·  **13 queued for next run**  ·  last run handled **10**
+**443 datasets cataloged**  ·  **3 queued for next run**  ·  last run handled **10**
 
 ## Last run
 
-<details><summary>✅ drafted — 9 datasets</summary>
+<details><summary>✅ drafted — 10 datasets</summary>
 
-| repo                                                                                                       |
-| ---------------------------------------------------------------------------------------------------------- |
-| [dynamical/noaa-gefs-analysis](https://source.coop/dynamical/noaa-gefs-analysis)                           |
-| [dynamical/noaa-gfs-analysis](https://source.coop/dynamical/noaa-gfs-analysis)                             |
-| [dynamical/noaa-mrms-conus-analysis-hourly](https://source.coop/dynamical/noaa-mrms-conus-analysis-hourly) |
-| [ftw/harmonized-field-data](https://source.coop/ftw/harmonized-field-data)                                 |
-| [hdx/cod-ab](https://source.coop/hdx/cod-ab)                                                               |
-| [portolan-mirrors/firms-catalog](https://source.coop/portolan-mirrors/firms-catalog)                       |
-| [rseg/sentinel1-lfmc](https://source.coop/rseg/sentinel1-lfmc)                                             |
-| [smartmaps/foil4gr1](https://source.coop/smartmaps/foil4gr1)                                               |
-| [tge-labs/s2-stac-geoparquet](https://source.coop/tge-labs/s2-stac-geoparquet)                             |
-
-</details>
-
-<details><summary>⚠️ probe failed (issue filed) — 1 dataset</summary>
-
-| repo                                                                         | why                 |
-| ---------------------------------------------------------------------------- | ------------------- |
-| [portolan/portolan-pipeline](https://source.coop/portolan/portolan-pipeline) | all_failed .parquet |
+| repo                                                                   |
+| ---------------------------------------------------------------------- |
+| [bkr/cams](https://source.coop/bkr/cams)                               |
+| [bkr/err](https://source.coop/bkr/err)                                 |
+| [bkr/gfs](https://source.coop/bkr/gfs)                                 |
+| [bkr/imerg](https://source.coop/bkr/imerg)                             |
+| [bkr/marine](https://source.coop/bkr/marine)                           |
+| [bkr/nsrdb](https://source.coop/bkr/nsrdb)                             |
+| [bkr/weatherreal](https://source.coop/bkr/weatherreal)                 |
+| [dynamical/asos-parquet](https://source.coop/dynamical/asos-parquet)   |
+| [fiboa/japan](https://source.coop/fiboa/japan)                         |
+| [source/metadata-catalog](https://source.coop/source/metadata-catalog) |
 
 </details>
 
-
-See [open probe-failure issues](https://github.com/source-cooperative/metadata-catalog/issues?q=is%3Aissue+is%3Aopen+label%3Aprobe-failure).
 
 ## Recent runs
 
 | run                                                                                                    | outcome | drafted | redraft | resets | failed | queued | cataloged |
 | ------------------------------------------------------------------------------------------------------ | ------- | ------: | ------: | -----: | -----: | -----: | --------: |
+| [2026-11-06](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/42193537131) | ✅       |         |      10 |        |        |      0 |       443 |
 | [2026-11-05](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/42001513281) | ✅       |         |       9 |        |      1 |      3 |       443 |
 | [2026-11-04](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/41805960667) | ❌       |         |      10 |        |        |     13 |       443 |
 | [2026-11-03](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/41608757995) | ✅       |         |      10 |        |        |     23 |       443 |
 | [2026-11-02](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/41420382809) | ✅       |       2 |       7 |        |        |     33 |       443 |
 | [2026-11-01](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/41291376753) | ✅       |         |      10 |        |        |      0 |       441 |
 | [2026-10-31](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/41186728291) | ✅       |         |      10 |        |        |      4 |       441 |
-| [2026-10-30](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/41031394113) | ✅       |         |      10 |        |        |     13 |       441 |
 
 ## Persistent failures
 
-**1 dataset failing**  ·  1 open issue  ·  oldest **43d**  ·  **1** ≥30d  ·  [all open issues](https://github.com/source-cooperative/metadata-catalog/issues?q=is%3Aissue+is%3Aopen+label%3Aprobe-failure)
+**2 datasets failing**  ·  2 open issues  ·  oldest **44d**  ·  **1** ≥30d  ·  [all open issues](https://github.com/source-cooperative/metadata-catalog/issues?q=is%3Aissue+is%3Aopen+label%3Aprobe-failure)
 
-<details><summary>the 1 open issues, oldest first</summary>
+<details><summary>the 2 open issues, oldest first</summary>
 
-| repo                                                       | age (d) |                                                                     issue |
-| ---------------------------------------------------------- | ------: | ------------------------------------------------------------------------: |
-| [alukach/firesmoke](https://source.coop/alukach/firesmoke) |      43 | [#166](https://github.com/source-cooperative/metadata-catalog/issues/166) |
+| repo                                                                         | age (d) |                                                                     issue |
+| ---------------------------------------------------------------------------- | ------: | ------------------------------------------------------------------------: |
+| [alukach/firesmoke](https://source.coop/alukach/firesmoke)                   |      44 | [#166](https://github.com/source-cooperative/metadata-catalog/issues/166) |
+| [portolan/portolan-pipeline](https://source.coop/portolan/portolan-pipeline) |       1 | [#169](https://github.com/source-cooperative/metadata-catalog/issues/169) |
 
 </details>
 
@@ -1004,25 +996,15 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 
 </details>
 
-<details><summary>stale (catalog bytes ≠ S3; fixed by <code>make process-all</code>) — 15 datasets (51.8 TB)</summary>
+<details><summary>stale (catalog bytes ≠ S3; fixed by <code>make process-all</code>) — 5 datasets (29.6 TB)</summary>
 
-| repo                                                                   | updated    |        catalog → S3 |
-| ---------------------------------------------------------------------- | ---------- | ------------------: |
-| [dynamical/asos-parquet](https://source.coop/dynamical/asos-parquet)   | 2026-11-01 |   20.3 GB → 20.4 GB |
-| [alukach/firesmoke](https://source.coop/alukach/firesmoke)             | 2026-10-31 |     1.2 GB → 1.4 GB |
-| [source/metadata-catalog](https://source.coop/source/metadata-catalog) | 2026-10-31 | 792.2 KB → 812.2 KB |
-| [bkr/weatherreal](https://source.coop/bkr/weatherreal)                 | 2026-10-29 | 399.2 GB → 399.2 GB |
-| [bkr/gfs](https://source.coop/bkr/gfs)                                 | 2026-10-29 |     3.8 TB → 3.8 TB |
-| [bkr/imerg](https://source.coop/bkr/imerg)                             | 2026-10-29 |     4.0 TB → 4.0 TB |
-| [bkr/nsrdb](https://source.coop/bkr/nsrdb)                             | 2026-10-29 | 641.0 GB → 641.0 GB |
-| [bkr/marine](https://source.coop/bkr/marine)                           | 2026-10-29 |   12.1 TB → 12.1 TB |
-| [bkr/err](https://source.coop/bkr/err)                                 | 2026-10-29 | 288.6 GB → 288.6 GB |
-| [bkr/cams](https://source.coop/bkr/cams)                               | 2026-10-29 |     1.0 TB → 1.0 TB |
-| [mapterhorn/mapterhorn](https://source.coop/mapterhorn/mapterhorn)     | 2026-10-28 |   30.4 TB → 29.5 TB |
-| [cboettig/hazard](https://source.coop/cboettig/hazard)                 | 2026-10-25 |   44.2 GB → 44.2 GB |
-| [fiboa/lacunalabels](https://source.coop/fiboa/lacunalabels)           | 2026-10-13 | 109.6 MB → 109.6 MB |
-| [fiboa/japan](https://source.coop/fiboa/japan)                         | 2026-10-13 |     6.7 GB → 6.7 GB |
-| [fiboa/ai4sf](https://source.coop/fiboa/ai4sf)                         | 2026-10-13 |   53.3 MB → 53.3 MB |
+| repo                                                               | updated    |        catalog → S3 |
+| ------------------------------------------------------------------ | ---------- | ------------------: |
+| [alukach/firesmoke](https://source.coop/alukach/firesmoke)         | 2026-10-31 |     1.2 GB → 1.4 GB |
+| [mapterhorn/mapterhorn](https://source.coop/mapterhorn/mapterhorn) | 2026-10-28 |   30.4 TB → 29.5 TB |
+| [cboettig/hazard](https://source.coop/cboettig/hazard)             | 2026-10-25 |   44.2 GB → 44.2 GB |
+| [fiboa/lacunalabels](https://source.coop/fiboa/lacunalabels)       | 2026-10-13 | 109.6 MB → 109.6 MB |
+| [fiboa/ai4sf](https://source.coop/fiboa/ai4sf)                     | 2026-10-13 |   53.3 MB → 53.3 MB |
 
 </details>
 
