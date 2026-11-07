@@ -1,25 +1,18 @@
 # Source Cooperative catalog — status
 
-_Updated 2026-11-06 09:50 UTC by the nightly pipeline._
+_Updated 2026-11-07 09:10 UTC by the nightly pipeline._
 
-**443 datasets cataloged**  ·  **3 queued for next run**  ·  last run handled **10**
+**443 datasets cataloged**  ·  **0 queued for next run**  ·  last run handled **3**
 
 ## Last run
 
-<details><summary>✅ drafted — 10 datasets</summary>
+<details><summary>✅ drafted — 3 datasets</summary>
 
-| repo                                                                   |
-| ---------------------------------------------------------------------- |
-| [bkr/cams](https://source.coop/bkr/cams)                               |
-| [bkr/err](https://source.coop/bkr/err)                                 |
-| [bkr/gfs](https://source.coop/bkr/gfs)                                 |
-| [bkr/imerg](https://source.coop/bkr/imerg)                             |
-| [bkr/marine](https://source.coop/bkr/marine)                           |
-| [bkr/nsrdb](https://source.coop/bkr/nsrdb)                             |
-| [bkr/weatherreal](https://source.coop/bkr/weatherreal)                 |
-| [dynamical/asos-parquet](https://source.coop/dynamical/asos-parquet)   |
-| [fiboa/japan](https://source.coop/fiboa/japan)                         |
-| [source/metadata-catalog](https://source.coop/source/metadata-catalog) |
+| repo                                                         |
+| ------------------------------------------------------------ |
+| [cboettig/hazard](https://source.coop/cboettig/hazard)       |
+| [fiboa/ai4sf](https://source.coop/fiboa/ai4sf)               |
+| [fiboa/lacunalabels](https://source.coop/fiboa/lacunalabels) |
 
 </details>
 
@@ -28,23 +21,23 @@ _Updated 2026-11-06 09:50 UTC by the nightly pipeline._
 
 | run                                                                                                    | outcome | drafted | redraft | resets | failed | queued | cataloged |
 | ------------------------------------------------------------------------------------------------------ | ------- | ------: | ------: | -----: | -----: | -----: | --------: |
+| [2026-11-07](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/42358317216) | ✅       |         |       3 |        |        |      0 |       443 |
 | [2026-11-06](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/42193537131) | ✅       |         |      10 |        |        |      0 |       443 |
 | [2026-11-05](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/42001513281) | ✅       |         |       9 |        |      1 |      3 |       443 |
 | [2026-11-04](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/41805960667) | ❌       |         |      10 |        |        |     13 |       443 |
 | [2026-11-03](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/41608757995) | ✅       |         |      10 |        |        |     23 |       443 |
 | [2026-11-02](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/41420382809) | ✅       |       2 |       7 |        |        |     33 |       443 |
 | [2026-11-01](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/41291376753) | ✅       |         |      10 |        |        |      0 |       441 |
-| [2026-10-31](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/41186728291) | ✅       |         |      10 |        |        |      4 |       441 |
 
 ## Persistent failures
 
-**2 datasets failing**  ·  2 open issues  ·  oldest **44d**  ·  **1** ≥30d  ·  [all open issues](https://github.com/source-cooperative/metadata-catalog/issues?q=is%3Aissue+is%3Aopen+label%3Aprobe-failure)
+**2 datasets failing**  ·  2 open issues  ·  oldest **45d**  ·  **1** ≥30d  ·  [all open issues](https://github.com/source-cooperative/metadata-catalog/issues?q=is%3Aissue+is%3Aopen+label%3Aprobe-failure)
 
 <details><summary>the 2 open issues, oldest first</summary>
 
 | repo                                                                         | age (d) |                                                                     issue |
 | ---------------------------------------------------------------------------- | ------: | ------------------------------------------------------------------------: |
-| [alukach/firesmoke](https://source.coop/alukach/firesmoke)                   |      44 | [#166](https://github.com/source-cooperative/metadata-catalog/issues/166) |
+| [alukach/firesmoke](https://source.coop/alukach/firesmoke)                   |      45 | [#166](https://github.com/source-cooperative/metadata-catalog/issues/166) |
 | [portolan/portolan-pipeline](https://source.coop/portolan/portolan-pipeline) |       1 | [#169](https://github.com/source-cooperative/metadata-catalog/issues/169) |
 
 </details>
@@ -996,15 +989,12 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 
 </details>
 
-<details><summary>stale (catalog bytes ≠ S3; fixed by <code>make process-all</code>) — 5 datasets (29.6 TB)</summary>
+<details><summary>stale (catalog bytes ≠ S3; fixed by <code>make process-all</code>) — 2 datasets (29.5 TB)</summary>
 
-| repo                                                               | updated    |        catalog → S3 |
-| ------------------------------------------------------------------ | ---------- | ------------------: |
-| [alukach/firesmoke](https://source.coop/alukach/firesmoke)         | 2026-10-31 |     1.2 GB → 1.4 GB |
-| [mapterhorn/mapterhorn](https://source.coop/mapterhorn/mapterhorn) | 2026-10-28 |   30.4 TB → 29.5 TB |
-| [cboettig/hazard](https://source.coop/cboettig/hazard)             | 2026-10-25 |   44.2 GB → 44.2 GB |
-| [fiboa/lacunalabels](https://source.coop/fiboa/lacunalabels)       | 2026-10-13 | 109.6 MB → 109.6 MB |
-| [fiboa/ai4sf](https://source.coop/fiboa/ai4sf)                     | 2026-10-13 |   53.3 MB → 53.3 MB |
+| repo                                                               | updated    |      catalog → S3 |
+| ------------------------------------------------------------------ | ---------- | ----------------: |
+| [alukach/firesmoke](https://source.coop/alukach/firesmoke)         | 2026-10-31 |   1.2 GB → 1.4 GB |
+| [mapterhorn/mapterhorn](https://source.coop/mapterhorn/mapterhorn) | 2026-10-28 | 30.4 TB → 29.5 TB |
 
 </details>
 
