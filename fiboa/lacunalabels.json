@@ -7,13 +7,14 @@
   ],
   "id": "fiboa/lacunalabels",
   "title": "A region-wide, multi-year set of crop field boundary labels for Africa",
-  "description": "825,395 official crop field boundary labels for Africa, sourced from the Agricultural Impacts Research Group's Lacuna Labels dataset. Covers a region-wide, multi-year collection across sub-Saharan Africa with crop category classifications. Distributed as a fiboa-compliant GeoParquet file converted from the original source.",
+  "description": "Provides 825,395 crop field boundary labels across sub-Saharan Africa, derived from the Agricultural Impacts Research Group's Lacuna Labels dataset, with crop category classifications. Distributed as a fiboa-compliant GeoParquet file; the dataset is no longer updated.",
   "license": "proprietary",
   "keywords": [
     "field-boundaries",
     "crop-classification",
     "agriculture",
-    "smallholder-farming",
+    "fiboa",
+    "geoparquet",
     "remote-sensing",
     "land-use"
   ],
@@ -64,10 +65,10 @@
     "spatial": {
       "bbox": [
         [
-          -17.141327261859264,
-          -29.980445746332407,
-          47.24923431873322,
-          18.270690478384495
+          -17.1413273,
+          -29.9804457,
+          47.2492343,
+          18.2706905
         ]
       ]
     },
@@ -84,28 +85,33 @@
     "item_count": 825395
   },
   "assets": {
-    "data": {
+    "lacunalabels": {
       "href": "https://data.source.coop/fiboa/lacunalabels/lacunalabels.parquet",
-      "title": "Field Boundaries",
-      "type": "application/vnd.apache.parquet",
+      "type": "application/x-parquet",
+      "title": "lacunalabels.parquet",
       "roles": [
         "data"
       ],
       "table:columns": [
         {
           "name": "geometry",
-          "type": "binary"
+          "type": "GEOMETRY('EPSG:4326')",
+          "description": "[geometry] Field boundary polygons in EPSG:4326"
         },
         {
           "name": "id",
-          "type": "string"
+          "type": "VARCHAR"
         },
         {
           "name": "category",
-          "type": "string"
+          "type": "VARCHAR"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)",
+          "description": "[geometry] Bounding box struct (xmin, ymin, xmax, ymax) of each field geometry"
         }
       ],
-      "table:primary_geometry": "geometry",
       "table:row_count": 825395
     }
   },
@@ -119,39 +125,14 @@
       "rel": "via",
       "href": "https://source.coop/fiboa/lacunalabels",
       "title": "Source Cooperative product page"
-    },
-    {
-      "title": "PLANET NICFI PARTICIPANT LICENSE AGREEMENT",
-      "href": "https://university.planet.com/nicfi-resources/1219786",
-      "type": "text/html",
-      "rel": "license"
-    },
-    {
-      "href": "https://data.source.coop/fiboa/lacunalabels/lacunalabels.pmtiles",
-      "type": "application/vnd.pmtiles",
-      "rel": "pmtiles"
-    },
-    {
-      "rel": "cite-as",
-      "href": "https://doi.org/10.5281/zenodo.11060871"
     }
   ],
-  "visibility": "public",
-  "product_id": "lacunalabels",
   "exts": {
     "parquet": 1,
-    "txt": 1,
-    "pmtiles": 1,
     "md": 1,
-    "json": 1
-  },
-  "data_mode": "open",
-  "featured": 0,
-  "updated_at": "2025-08-21T16:39:55.569Z",
-  "total_bytes": 109562314,
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
+    "pmtiles": 1,
+    "json": 1,
+    "txt": 1
   },
   "mirrors": {
     "aws-opendata-us-west-2": {
@@ -165,20 +146,30 @@
       "prefix": "fiboa/lacunalabels/"
     }
   },
-  "created_at": "2024-11-12T13:44:03.253Z",
-  "account_id": "fiboa",
+  "featured": 0,
+  "product_id": "lacunalabels",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
   "disabled": false,
-  "object_count": 5,
-  "readme": "## README.md\n# Field boundaries for Lacuna Labels\n\nProvides 825,395 official field boundaries from Lacuna Labels.\nIt has been converted to a fiboa GeoParquet file from data obtained from Agricultural Impacts Research Group.\n\n- **Source Data Provider:** [Agricultural Impacts Research Group](https://github.com/agroimpacts/lacunalabels)\n- **Converted by:** Ivor Bosloper\n- **License:** Planet\u2019s [participant license agreement for the NICFI contract](https://assets.planet.com/docs/Planet_ParticipantLicenseAgreement_NICFI.pdf).\n- **Projection:** epsg:4326 (WGS 84)\n\n---\n\n- [Download the data as fiboa GeoParquet](https://source.coop/fiboa/lacunalabels/lacunalabels.parquet)\n- [STAC Browser](https://radiantearth.github.io/stac-browser/#/external/data.source.coop/fiboa/lacunalabels/stac/collection.json)\n- [STAC Collection](https://data.source.coop/fiboa/lacunalabels/stac/collection.json)\n- [PMTiles](https://data.source.coop/fiboa/lacunalabels/lacunalabels.pmtiles)\n\n## Columns\n\n| Property | **Data Type** | Description                                                               |\n|----------|---------------|---------------------------------------------------------------------------|\n| id       | string        | Field Identifier                                                          |\n| category | string        | Course category; annualcropland, cloudshadow, fallow, treecrop, unsure1/2 |\n\n## Lineage\n\n- Data downloaded on 2024-11-12 from https://zenodo.org/records/11060871 .\n- Converted to GeoParquet using [fiboa-cli](https://github.com/fiboa/cli), version 0.7.0\n",
-  "_state": "drafted",
-  "cataloged_at": "2026-05-27T01:17:38+00:00",
-  "_source_format": "unknown",
   "ext_bytes": {
     "parquet": 63788285,
     "pmtiles": 45748034,
     "txt": 21613,
     "json": 2816,
-    "md": 1566
+    "md": 1766
   },
-  "objects_updated_at": "2026-10-13T12:02:54+00:00"
+  "visibility": "public",
+  "objects_updated_at": "2026-10-13T12:02:54+00:00",
+  "total_bytes": 109562514,
+  "account_id": "fiboa",
+  "data_mode": "open",
+  "created_at": "2024-11-12T13:44:03.253Z",
+  "updated_at": "2025-08-21T16:39:55.569Z",
+  "object_count": 5,
+  "readme": "## README.md\n> **This dataset is no longer updated.** Field boundary datasets in the fiboa format are now published in the [Harmonized Field Boundary Data](https://source.coop/ftw/harmonized-field-data) catalog.\n\n# Field boundaries for Lacuna Labels\n\nProvides 825,395 official field boundaries from Lacuna Labels.\nIt has been converted to a fiboa GeoParquet file from data obtained from Agricultural Impacts Research Group.\n\n- **Source Data Provider:** [Agricultural Impacts Research Group](https://github.com/agroimpacts/lacunalabels)\n- **Converted by:** Ivor Bosloper\n- **License:** Planet\u2019s [participant license agreement for the NICFI contract](https://assets.planet.com/docs/Planet_ParticipantLicenseAgreement_NICFI.pdf).\n- **Projection:** epsg:4326 (WGS 84)\n\n---\n\n- [Download the data as fiboa GeoParquet](https://source.coop/fiboa/lacunalabels/lacunalabels.parquet)\n- [STAC Browser](https://radiantearth.github.io/stac-browser/#/external/data.source.coop/fiboa/lacunalabels/stac/collection.json)\n- [STAC Collection](https://data.source.coop/fiboa/lacunalabels/stac/collection.json)\n- [PMTiles](https://data.source.coop/fiboa/lacunalabels/lacunalabels.pmtiles)\n\n## Columns\n\n| Property | **Data Type** | Description                                                               |\n|----------|---------------|---------------------------------------------------------------------------|\n| id       | string        | Field Identifier                                                          |\n| category | string        | Course category; annualcropland, cloudshadow, fallow, treecrop, unsure1/2 |\n\n## Lineage\n\n- Data downloaded on 2024-11-12 from https://zenodo.org/records/11060871 .\n- Converted to GeoParquet using [fiboa-cli](https://github.com/fiboa/cli), version 0.7.0\n",
+  "_state": "drafted",
+  "cataloged_at": "2026-11-07T09:09:47+00:00",
+  "store_format": null
 }
