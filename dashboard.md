@@ -1,44 +1,33 @@
 # Source Cooperative catalog — status
 
-_Updated 2026-11-07 09:10 UTC by the nightly pipeline._
+_Updated 2026-11-08 09:08 UTC by the nightly pipeline._
 
-**443 datasets cataloged**  ·  **0 queued for next run**  ·  last run handled **3**
+**443 datasets cataloged**  ·  **0 queued for next run**  ·  last run handled **0**
 
-## Last run
-
-<details><summary>✅ drafted — 3 datasets</summary>
-
-| repo                                                         |
-| ------------------------------------------------------------ |
-| [cboettig/hazard](https://source.coop/cboettig/hazard)       |
-| [fiboa/ai4sf](https://source.coop/fiboa/ai4sf)               |
-| [fiboa/lacunalabels](https://source.coop/fiboa/lacunalabels) |
-
-</details>
-
+_No datasets processed in the last run (no new work since the previous snapshot)._
 
 ## Recent runs
 
 | run                                                                                                    | outcome | drafted | redraft | resets | failed | queued | cataloged |
 | ------------------------------------------------------------------------------------------------------ | ------- | ------: | ------: | -----: | -----: | -----: | --------: |
+| [2026-11-08](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/42465803623) | ✅       |         |         |        |        |      0 |       443 |
 | [2026-11-07](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/42358317216) | ✅       |         |       3 |        |        |      0 |       443 |
 | [2026-11-06](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/42193537131) | ✅       |         |      10 |        |        |      0 |       443 |
 | [2026-11-05](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/42001513281) | ✅       |         |       9 |        |      1 |      3 |       443 |
 | [2026-11-04](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/41805960667) | ❌       |         |      10 |        |        |     13 |       443 |
 | [2026-11-03](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/41608757995) | ✅       |         |      10 |        |        |     23 |       443 |
 | [2026-11-02](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/41420382809) | ✅       |       2 |       7 |        |        |     33 |       443 |
-| [2026-11-01](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/41291376753) | ✅       |         |      10 |        |        |      0 |       441 |
 
 ## Persistent failures
 
-**2 datasets failing**  ·  2 open issues  ·  oldest **45d**  ·  **1** ≥30d  ·  [all open issues](https://github.com/source-cooperative/metadata-catalog/issues?q=is%3Aissue+is%3Aopen+label%3Aprobe-failure)
+**2 datasets failing**  ·  2 open issues  ·  oldest **46d**  ·  **1** ≥30d  ·  [all open issues](https://github.com/source-cooperative/metadata-catalog/issues?q=is%3Aissue+is%3Aopen+label%3Aprobe-failure)
 
 <details><summary>the 2 open issues, oldest first</summary>
 
 | repo                                                                         | age (d) |                                                                     issue |
 | ---------------------------------------------------------------------------- | ------: | ------------------------------------------------------------------------: |
-| [alukach/firesmoke](https://source.coop/alukach/firesmoke)                   |      45 | [#166](https://github.com/source-cooperative/metadata-catalog/issues/166) |
-| [portolan/portolan-pipeline](https://source.coop/portolan/portolan-pipeline) |       1 | [#169](https://github.com/source-cooperative/metadata-catalog/issues/169) |
+| [alukach/firesmoke](https://source.coop/alukach/firesmoke)                   |      46 | [#166](https://github.com/source-cooperative/metadata-catalog/issues/166) |
+| [portolan/portolan-pipeline](https://source.coop/portolan/portolan-pipeline) |       2 | [#169](https://github.com/source-cooperative/metadata-catalog/issues/169) |
 
 </details>
 
