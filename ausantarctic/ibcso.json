@@ -1,26 +1,121 @@
 {
   "schema_version": 1,
-  "account_id": "ausantarctic",
-  "product_id": "ibcso",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "ausantarctic/ibcso",
   "title": "IBCSO: International Bathymetric Chart of the Southern Ocean",
-  "description": "Cloud-optimized copies of the International Bathymetric Chart of the Southern Ocean grids, with virtual multidimensional indexes (GDAL VRT, Kerchunk, Icechunk, STAC). 500 m polar stereographic grids south of 50\u00b0S: bed and ice surface elevation, with source and type identifiers. Holds Version 1.0 (doi:10.1594/PANGAEA.805734), Version 2 (doi:10.1594/PANGAEA.937574) and archived snapshots of the rolling annual releases, each under its own prefix, with georeferenced copies of the printed charts. Repackaged from the AWI and IBCSO releases, CC BY 4.0 (Version 1.0: CC BY 3.0). Not for navigation.\r\n",
-  "keywords": [],
-  "created_at": "2026-11-03T02:28:46.081Z",
-  "updated_at": "2026-11-03T04:36:17.069Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": null,
-  "mirrors": {
-    "aws-opendata-us-west-2": {
-      "connection_id": "aws-opendata-us-west-2",
-      "is_primary": true,
-      "prefix": "ausantarctic/ibcso/"
+  "description": "International Bathymetric Chart of the Southern Ocean (IBCSO): cloud-optimized copies of 500 m polar stereographic grids south of 50\u00b0S giving bed elevation (including sub-ice topography), ice surface elevation, and source/type identifiers. Includes Version 2 and archived annual releases, with virtual multidimensional indexes (GDAL VRT, Kerchunk, Icechunk, STAC) over the COGs.",
+  "license": "CC-BY-4.0",
+  "keywords": [
+    "oceanography",
+    "topography",
+    "cryosphere",
+    "cloud-optimized-geotiff",
+    "icechunk",
+    "zarr",
+    "global-coverage",
+    "digital-elevation-model",
+    "elevation"
+  ],
+  "providers": [
+    {
+      "name": "Alfred Wegener Institute (AWI)",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "IBCSO (International Bathymetric Chart of the Southern Ocean project)",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Australian Antarctic Data Centre / raad (mdsumner)",
+      "roles": [
+        "processor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/ausantarctic/ibcso"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -180.0,
+          -90.0,
+          180.0,
+          90.0
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
     }
   },
-  "object_count": 549,
-  "objects_updated_at": "2026-11-03T23:57:10+00:00",
-  "total_bytes": 3047755488,
+  "assets": {
+    "virtual/ibcso-annual-2024/icechunk": {
+      "href": "https://data.source.coop/ausantarctic/ibcso/virtual/ibcso-annual-2024/icechunk/",
+      "type": "application/octet-stream",
+      "title": "virtual/ibcso-annual-2024/icechunk/ (1 \u00d7 .icechunk)",
+      "roles": [
+        "data"
+      ]
+    },
+    "virtual/ibcso-annual-2025/icechunk": {
+      "href": "https://data.source.coop/ausantarctic/ibcso/virtual/ibcso-annual-2025/icechunk/",
+      "type": "application/octet-stream",
+      "title": "virtual/ibcso-annual-2025/icechunk/ (1 \u00d7 .icechunk)",
+      "roles": [
+        "data"
+      ]
+    },
+    "virtual/ibcso-v1/icechunk": {
+      "href": "https://data.source.coop/ausantarctic/ibcso/virtual/ibcso-v1/icechunk/",
+      "type": "application/octet-stream",
+      "title": "virtual/ibcso-v1/icechunk/ (1 \u00d7 .icechunk)",
+      "roles": [
+        "data"
+      ]
+    },
+    "virtual/ibcso-v2/icechunk": {
+      "href": "https://data.source.coop/ausantarctic/ibcso/virtual/ibcso-v2/icechunk/",
+      "type": "application/octet-stream",
+      "title": "virtual/ibcso-v2/icechunk/ (1 \u00d7 .icechunk)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/ausantarctic/ibcso/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/ausantarctic/ibcso",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "rel": "cite-as",
+      "href": "https://doi.org/10.1038/s41597-022-01366-7"
+    }
+  ],
   "exts": {
     "": 225,
     "parq": 131,
@@ -44,6 +139,19 @@
     "46s8qp4hdc0brw8p9x8g": 1,
     "6qtt0hvzqs9n2yj4st50": 1
   },
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "mirrors": {
+    "aws-opendata-us-west-2": {
+      "connection_id": "aws-opendata-us-west-2",
+      "is_primary": true,
+      "prefix": "ausantarctic/ibcso/"
+    }
+  },
+  "updated_at": "2026-11-03T04:36:17.069Z",
+  "object_count": 549,
   "ext_bytes": {
     "tif": 3030967537,
     "parq": 11766275,
@@ -67,11 +175,23 @@
     "tv99ehbtryg8fz6b1gg0": 840,
     "tsv": 418
   },
-  "store_format": "icechunk",
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "cataloged_at": "2026-11-09T10:38:26+00:00"
+  "objects_updated_at": "2026-11-03T23:57:10+00:00",
+  "visibility": "public",
+  "product_id": "ibcso",
+  "disabled": false,
+  "data_mode": null,
+  "created_at": "2026-11-03T02:28:46.081Z",
+  "featured": 0,
+  "total_bytes": 3047755488,
+  "account_id": "ausantarctic",
+  "readme": "## README.md\n# IBCSO\n\nCloud-optimized copies of the International Bathymetric Chart of the Southern\nOcean (IBCSO) grids, with virtual multidimensional indexes over them. Each\nrelease has its own prefix. This is a repackaged copy; the authoritative\nreleases are those of AWI and IBCSO, cited below.\n\nIBCSO products are not for navigation or any other purpose involving safety\nat sea. They are provided as is, and their accuracy and completeness are not\nguaranteed (IBCSO release readme).\n\n## Releases\n\n| Prefix | Release | Source |\n|---|---|---|\n| `v2/` | Version 2, 2022 | PANGAEA, doi:10.1594/PANGAEA.937574 |\n| `annual-2024/` | 2024 annual release | raad mirror of ibcso.org, 2024-12-03; no longer distributed by IBCSO |\n| `annual-2025/` | 2025 annual release, 2025-09-19 | ibcso.org |\n\nThe annual release is a rolling product: each replaces the previous one at\nthe same address. The annual prefixes here keep each release as it was\npublished.\n\n## Grids\n\n19,200 x 19,200 cells at 500 m in EPSG:9354 (IBCSO Polar Stereographic),\nInt16, nodata -32768, one Cloud Optimized GeoTIFF per grid.\n\n| Array | Content |\n|---|---|\n| `bed` | bed elevation, with sub-ice topography (metres) |\n| `ice_surface` | ice surface elevation (metres) |\n| `rid` | regional identifier of the source dataset |\n| `tid` | type identifier of the source data |\n\nIdentifier codes and nodata differ between releases: v2 `tid` has no nodata\ncells, the annual releases have about 122.7 million.\n\nLayout:\n\n```\n<release>/cog/<array>.tif             COGs\n<release>/cog/provenance.json         checksums and source record\nvirtual/catalog.json                  STAC catalog\nvirtual/ibcso-<release>/mdim.vrt      GDAL multidimensional VRT\nvirtual/ibcso-<release>/kerchunk/     Kerchunk Parquet\nvirtual/ibcso-<release>/icechunk/     Icechunk repository\nvirtual/ibcso-<release>/flat/         flat reference tables\nvirtual/ibcso-<release>/stac/         STAC collection, its one item, stac-geoparquet\nvirtual/ibcso-<release>/thumbnail.png overview of bed\nvirtual/ibcso-<release>/store.sqlite  byterefs/0.1 store\n```\n\n## Provenance\n\nThe COGs are written from the GeoTIFFs of each release with values, type and\nnodata unchanged, and compared with them pixel by pixel; v2 is also compared\nwith the netCDF of the same release, which is stored south-up. Checksums of\nevery source file are in `provenance.json`.\n\nThe annual `bed` and `ice-surface` GeoTIFFs state an origin of\n(-4800018.55, 4800018.55), 18.55 m off the grid of their own RID and TID and of\nv2. A regression of the difference from v2 on the v2 terrain gradient gives a\nshift of at most 0.005 cells, against 0.037 for 18.55 m, so the values lie on\nthe v2 grid. These COGs take the v2 origin (-4800000, 4800000); the pixels are\nunchanged, and the correction is recorded in the tag `GEOTRANSFORM_CORRECTED`\nand in `provenance.json`.\n\n## Citation\n\nUse of these data requires citation, under\n[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/):\n\nDorschel, B., Hehemann, L., Viquerat, S., et al. (2022). The International\nBathymetric Chart of the Southern Ocean Version 2. Scientific Data, 9(1), 275.\n<https://doi.org/10.1038/s41597-022-01366-7>\n\nFor Version 2 also: Dorschel, B., et al. (2022). The International\nBathymetric Chart of the Southern Ocean Version 2 (IBCSO v2). PANGAEA.\n<https://doi.org/10.1594/PANGAEA.937574>\n\n## Previews\n\n![IBCSO Version 2](https://data.source.coop/ausantarctic/ibcso/virtual/ibcso-v2/thumbnail.png)\n\n*IBCSO Version 2*\n\n![IBCSO 2024 annual release](https://data.source.coop/ausantarctic/ibcso/virtual/ibcso-annual-2024/thumbnail.png)\n\n*IBCSO 2024 annual release*\n\n![IBCSO 2025 annual release](https://data.source.coop/ausantarctic/ibcso/virtual/ibcso-annual-2025/thumbnail.png)\n\n*IBCSO 2025 annual release*\n\n## Links\n\n- Code: [mdsumner/raad.virtualize](https://github.com/mdsumner/raad.virtualize)\n- Site (how the stores are built and read, worked examples): https://mdsumner.github.io/raad.virtualize/\n- Each dataset on the site's Published page, with the URL of every form:\n  - [`ibcso-v2`](https://mdsumner.github.io/raad.virtualize/published.html#ibcso-v2): IBCSO Version 2\n  - [`ibcso-annual-2024`](https://mdsumner.github.io/raad.virtualize/published.html#ibcso-annual-2024): IBCSO 2024 annual release\n  - [`ibcso-annual-2025`](https://mdsumner.github.io/raad.virtualize/published.html#ibcso-annual-2025): IBCSO 2025 annual release\n",
+  "_review": [
+    "providers: role [producer, licensor] for 'Alfred Wegener Institute (AWI)' is an AI guess \u2014 README names AWI as the source of the authoritative releases; assumed producer and licensor.. Verify before flipping to _state: reviewed.",
+    "providers: role [producer, licensor] for 'IBCSO (International Bathymetric Chart of the Southern Ocean project)' is an AI guess \u2014 README cites ibcso.org as the authoritative release source; assumed producer and licensor.. Verify before flipping to _state: reviewed.",
+    "providers: role [processor] for 'Australian Antarctic Data Centre / raad (mdsumner)' is an AI guess \u2014 README says this is a repackaged copy with COGs and virtual indexes built via raad.virtualize; assumed processor.. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-11-09T10:47:39+00:00",
+  "_source_format": "stac",
+  "store_format": "icechunk"
 }
