@@ -1,16 +1,117 @@
 {
   "schema_version": 1,
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "nthh/hydrolakes",
+  "title": "HydroLAKES v1.0: Polygons",
+  "description": "Global dataset of HydroLAKES v1.0 lake polygons, covering lakes compiled from multiple legacy shoreline sources, distributed as spatially ordered GeoParquet with producer attributes and WKB geometry preserved. A separate PMTiles layer provides generalized map display.",
+  "license": "CC-BY-4.0",
+  "keywords": [
+    "geoparquet",
+    "pmtiles",
+    "hydrology",
+    "global-coverage",
+    "land-cover"
+  ],
+  "providers": [
+    {
+      "name": "Lehner and Messager / HydroSHEDS",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Folia",
+      "roles": [
+        "processor",
+        "host"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/nthh/hydrolakes"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -180.0,
+          -55.865139,
+          180.0,
+          83.575951
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/nthh/hydrolakes/",
+      "type": "application/octet-stream",
+      "title": "Dataset files (1 x .pmtiles)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/nthh/hydrolakes/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/nthh/hydrolakes",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "href": "README.md",
+      "rel": "describedby",
+      "type": "text/markdown"
+    },
+    {
+      "href": "AGENTS.md",
+      "rel": "agents",
+      "type": "text/markdown"
+    },
+    {
+      "href": "display/thumbnail.png",
+      "rel": "thumbnail",
+      "type": "image/png"
+    },
+    {
+      "href": "https://data.hydrosheds.org/file/hydrolakes/HydroLAKES_polys_v10_shp.zip",
+      "rel": "via",
+      "title": "HydroLAKES v1 polygon dataset",
+      "type": "text/html"
+    },
+    {
+      "href": "https://creativecommons.org/licenses/by/4.0/",
+      "rel": "license",
+      "type": "text/html"
+    },
+    {
+      "rel": "cite-as",
+      "href": "https://doi.org/10.1038/ncomms13603"
+    }
+  ],
   "account_id": "nthh",
-  "product_id": "hydrolakes",
-  "title": "HydroLAKES v1.0 \u2014 global lake polygons",
-  "description": "The complete HydroLAKES v1.0 polygon layer in spatially ordered GeoParquet, preserving producer fields and geometry for lake analysis and joins. A separately versioned PMTiles layer provides generalized map display and source-ID attribute lookup.",
-  "keywords": [],
-  "created_at": "2026-11-06T23:43:09.231Z",
+  "total_bytes": 2074248783,
   "updated_at": "2026-11-07T22:02:50.195Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": null,
+  "product_id": "hydrolakes",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "connection_id": "aws-opendata-us-west-2",
@@ -18,9 +119,9 @@
       "prefix": "nthh/hydrolakes/"
     }
   },
-  "object_count": 77,
   "objects_updated_at": "2026-11-07T02:41:06+00:00",
-  "total_bytes": 2074248783,
+  "visibility": "public",
+  "object_count": 77,
   "exts": {
     "json": 38,
     "py": 17,
@@ -35,6 +136,13 @@
     "parquet": 1,
     "pdf": 1
   },
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "created_at": "2026-11-06T23:43:09.231Z",
+  "data_mode": null,
+  "featured": 0,
   "ext_bytes": {
     "pmtiles": 1122881121,
     "parquet": 949598607,
@@ -49,11 +157,13 @@
     "toml": 576,
     "txt": 0
   },
-  "store_format": null,
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "cataloged_at": "2026-11-09T10:39:59+00:00"
+  "disabled": false,
+  "readme": "## README.md\n# HydroLAKES v1.0 \u2014 global lake polygons\n\nThe complete HydroLAKES v1.0 polygon layer in spatially ordered GeoParquet, preserving producer fields and geometry for lake analysis and joins. A separately versioned PMTiles layer provides generalized map display and source-ID attribute lookup.\n\n**Validated hosted release:** `v1-local-r3`. The canonical record binds the public Source Cooperative package and its completed hosting checks.\n\n## Scope and formats\n\nStatic global lake polygons derived from composite legacy shoreline sources. This is not a 2026 shoreline observation; no GEE parity or independent scientific-accuracy claim is made. The packaged GeoParquet is spatially ordered and preserves source attributes and raw WKB.\n\nFormats: `application/json`, `application/pdf`, `application/vnd.apache.parquet`, `application/vnd.pmtiles`, `image/png`.\n\n## Producer, source, and license\n\n- Producer attribution: Lehner and Messager / HydroSHEDS. Cite Messager et al. (2016), DOI 10.1038/ncomms13603. Original conversion evidence retains Folia attribution.\n- License: Producer license: CC BY 4.0. Retain attribution and technical-document notices, including the producer request concerning redistribution of the complete database in its original format. This product contains transformed GeoParquet.\n- Temporal scope: Static research release compiled from multiple shoreline sources; not a current inventory of lake conditions.\n\n- [License terms](https://creativecommons.org/licenses/by/4.0/)\n- [Original download](https://data.hydrosheds.org/file/hydrolakes/HydroLAKES_polys_v10_shp.zip)\n- [Research paper](https://doi.org/10.1038/ncomms13603)\n- [Folia converter/host](https://folia.sh)\n- [Producer source](https://gee-community-catalog.org/projects/hydrolakes)\n- [Producer: Lehner and Messager / HydroSHEDS](https://www.hydrosheds.org/products/hydrolakes)\n\n## Release files\n\n- [hydrolakes-polygons.parquet](releases/v1-local-r3/assets/hydrolakes-polygons.parquet) (asset)\n- [thumbnail.png](releases/v1-local-r3/display/thumbnail.png) (display_derivatives)\n- [data-license.json](releases/v1-local-r3/licenses/data-license.json) (data_license)\n- [source-license.json](releases/v1-local-r3/licenses/source-license.json) (source_license)\n- [hydrolakes-polygons-field-dictionary.json](releases/v1-local-r3/metadata/hydrolakes-polygons-field-dictionary.json) (field_dictionary)\n- [clean-rebuild-raw.json](releases/v1-local-r3/provenance/clean-rebuild-raw.json) (supporting_files)\n- [evidence-provenance.json](releases/v1-local-r3/provenance/evidence-provenance.json) (supporting_files)\n- [source-cache-eviction.json](releases/v1-local-r3/provenance/source-cache-eviction.json) (supporting_files)\n- [source-document.json](releases/v1-local-r3/provenance/source-document.json) (supporting_files)\n- [source-validation.json](releases/v1-local-r3/provenance/source-validation.json) (supporting_files)\n- [spatial-order-clean-rebuild.json](releases/v1-local-r3/provenance/spatial-order-clean-rebuild.json) (supporting_files)\n- [spatial-order-retained.json](releases/v1-local-r3/provenance/spatial-order-retained.json) (supporting_files)\n- [spatial-pruning-clean-rebuild.json](releases/v1-local-r3/provenance/spatial-pruning-clean-rebuild.json) (supporting_files)\n- [spatial-pruning-retained.json](releases/v1-local-r3/provenance/spatial-pruning-retained.json) (supporting_files)\n- [HydroLAKES_TechDoc_v10.pdf](releases/v1-local-r3/source/HydroLAKES_TechDoc_v10.pdf) (supporting_files)\n- [attribution.json](releases/v1-local-r3/source/attribution.json) (source_attribution)\n\n## Display package\n\nDisplay release: `display-v1`. The manifest is pinned at SHA-256 `f3dbb0d87553162a6b2a91172626eeecca9985fb8df54685ee64924ca826d841`.\nDisplay assets are separate immutable derivatives bound to this analytical release.\n- [Display manifest](display/display-v1/manifest.json)\n- [Hydrolakes Polygons PMTiles](display/display-v1/assets/hydrolakes-polygons.pmtiles) (1122881121 bytes; SHA-256 `2fc61a8257322bed3c71f86e3be92ed4835023bbb23f80bc9b2bb5167cb19d46`)\n  - [Map style](display/display-v1/styles/hydrolakes-polygons.json)\n\n## Limitations\n\n- This release contains polygons; it does not include the separate HydroLAKES pour-point source layer.\n- Spatial ordering and added bounding boxes preserve original attributes and WKB; local display queries do not establish public-host performance.\n- Live GEE count and all 522 sampled IDs match. There are 508 null/empty lake-name differences, strict geometry failures and three narrow source spikes absent spatially from GEE. Source geometry is retained; no exhaustive GEE or independent scientific-accuracy claim.\n\nPublic hosting checks are bound in the canonical report. Scientific validation retains its documented scope.\n",
+  "_review": [
+    "providers: role [processor, host] for 'Folia' is an AI guess \u2014 README names Folia as converter/host and retains its attribution in conversion evidence; roles inferred from 'Folia converter/host'.. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-11-09T10:47:02+00:00",
+  "_source_format": "stac",
+  "store_format": null
 }
