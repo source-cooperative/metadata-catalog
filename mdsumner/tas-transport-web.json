@@ -1,16 +1,89 @@
 {
   "schema_version": 1,
-  "account_id": "mdsumner",
-  "product_id": "tas-transport-web",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "mdsumner/tas-transport-web",
   "title": "Tasmanian transport network, web-ready (LIST transport segments)",
-  "description": " A single statewide copy of the LIST transport segments for Tasmania, prepared for use directly in web browsers. It is derived from the mirror at mdsumner/thelist-opendata.\r\n  - One row per TRANSEG_ID. Segments that LIST clips at LGA boundaries are rejoined into one, and lga lists every LGA a segment came from.\r\n  - Columns: TRANSEG_ID, PRI_NAME, SEC_NAME, COMP_LEN, TRANS_TYPE, TRAN_CLASS, lga, node0, node1, snapshot.\r\n  - Geometry is in EPSG:4326. It was converted from GDA94 / MGA zone 55 by the null shift (EPSG:1150, about 1 m accuracy).\r\n  - node0 and node1 are integer endpoint ids, found by exact coordinate matching in the source coordinates, so connectivity checks are plain integer equality. The ids are stable only within a snapshot.\r\n  - GeoParquet 1.1, Hilbert-sorted, with a bbox covering column, plus a PMTiles copy for drawing the whole network.\r\n  - Each snapshot sits in its own folder (<snapshot>/), named by the date of the newest source release, and is never overwritten. latest.json points to the newest snapshot, and each snapshot's snapshot.json lists the source URL, etag and mtime for every LGA.\r\n \r\nData: (c) State of Tasmania, Creative Commons Attribution 3.0 Australia. Code that built this: https://github.com/hypertidy/thelist-opendata (MIT, R/10_transport_web.R).\r\n",
-  "keywords": [],
-  "created_at": "2026-11-07T06:39:42.423Z",
-  "updated_at": "2026-11-07T06:39:42.423Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
+  "description": "A statewide GeoParquet and PMTiles copy of the LIST transport segments for Tasmania, with one row per segment (TRANSEG_ID). Segments clipped at local government area boundaries are rejoined, and each carries start and end node ids for connectivity analysis.",
+  "keywords": [
+    "geoparquet",
+    "pmtiles",
+    "administrative-boundaries",
+    "topography"
+  ],
+  "providers": [
+    {
+      "name": "State of Tasmania (Land Tasmania, theLIST)",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "mdsumner (hypertidy/thelist-opendata)",
+      "roles": [
+        "processor",
+        "host"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/mdsumner/tas-transport-web"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          143.8349747,
+          -43.6571292,
+          148.3584028,
+          -39.4587486
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/mdsumner/tas-transport-web/",
+      "type": "application/octet-stream",
+      "title": "Dataset files (1 x .pmtiles)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/mdsumner/tas-transport-web/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/mdsumner/tas-transport-web",
+      "title": "Source Cooperative product page"
+    }
+  ],
   "data_mode": null,
+  "ext_bytes": {
+    "pmtiles": 136609372,
+    "parquet": 66891745,
+    "json": 10380,
+    "md": 3547
+  },
+  "product_id": "tas-transport-web",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "connection_id": "aws-opendata-us-west-2",
@@ -18,26 +91,31 @@
       "prefix": "mdsumner/tas-transport-web/"
     }
   },
-  "object_count": 5,
-  "objects_updated_at": "2026-11-07T06:58:02+00:00",
-  "total_bytes": 203515044,
+  "updated_at": "2026-11-07T06:39:42.423Z",
   "exts": {
     "json": 2,
     "parquet": 1,
     "pmtiles": 1,
     "md": 1
   },
-  "ext_bytes": {
-    "pmtiles": 136609372,
-    "parquet": 66891745,
-    "json": 10380,
-    "md": 3547
-  },
-  "store_format": null,
-  "_state": "seed",
+  "account_id": "mdsumner",
+  "featured": 0,
+  "created_at": "2026-11-07T06:39:42.423Z",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "cataloged_at": "2026-11-09T10:39:48+00:00"
+  "objects_updated_at": "2026-11-07T06:58:02+00:00",
+  "disabled": false,
+  "total_bytes": 203515044,
+  "visibility": "public",
+  "object_count": 5,
+  "readme": "## README.md\n# Tasmanian transport network, web-ready (LIST transport segments)\n\nA single statewide copy of the LIST transport segments for Tasmania, prepared\nfor use directly in web browsers. It is derived from the mirror at\nhttps://source.coop/mdsumner/thelist-opendata.\n\nData: (c) State of Tasmania, Creative Commons Attribution 3.0 Australia.\nCode that built this: https://github.com/hypertidy/thelist-opendata (MIT,\n`R/10_transport_web.R`).\n\n## Attribution\n\n    \"LIST Transport Segments\" from theLIST \u00a9 State of Tasmania\n\nLand Tasmania does not endorse this product or any use of it.\n\n## What is here\n\n    latest.json                                  {\"snapshot\": \"<date>\", \"path\": \"<date>/\"}\n    <snapshot>/list_transport_segments.parquet   GeoParquet 1.1, EPSG:4326\n    <snapshot>/list_transport_segments.pmtiles   vector tiles, zoom 6-15\n    <snapshot>/snapshot.json                     source url, etag, mtime per LGA\n\n`<snapshot>` is the date of the newest source zip (the LIST release the layer\nreflects). Snapshot folders are never overwritten; a new LIST release gets a\nnew folder and `latest.json` moves. Groupings or other records keyed on\n`TRANSEG_ID` should store the snapshot they were made against.\n\n## Columns\n\n    TRANSEG_ID   LIST segment id, one row each\n    PRI_NAME     primary name\n    SEC_NAME     secondary name\n    COMP_LEN     LIST's computed length (m)\n    TRANS_TYPE   transport type\n    TRAN_CLASS   transport class\n    lga          source LGA(s); \";\"-separated when the segment crosses a boundary\n    node0        integer id of the start node\n    node1        integer id of the end node\n    snapshot     as above\n    geometry     MULTILINESTRING, EPSG:4326\n    geometry_bbox  GeoParquet 1.1 bbox covering\n\n## How it was made\n\n- Read from the mirror's per-LGA GeoParquet (GDA94 / MGA zone 55).\n- LIST clips a segment that crosses an LGA boundary into each LGA's file, each\n  piece keeping the same TRANSEG_ID. The pieces are rejoined with a directed\n  line merge (exactly shared cut vertex; no vertex moves, nothing reversed).\n  For the 2025-07-10 snapshot: 1320 segments rejoined from 2646 pieces.\n- `node0` / `node1` come from exact coordinate identity of segment endpoints in\n  the source coordinates (wkpool `merge_coincident`, tolerance 0), so\n  connectivity is integer equality. LIST_TRANSPORT_NODES carries no link to\n  segments, so its TRANODE_ID is not used. Node ids are stable only within a\n  snapshot. For multi-part segments, node0 is the start of the first part and\n  node1 the end of the last.\n- Reprojected with PROJ: inverse MGA55 to GDA94 geographic, labelled WGS 84\n  (the EPSG:1150 null shift, about 1 m).\n- Rows Hilbert-sorted (`gdal vector sort`), ZSTD, 65536-row groups.\n\n## Known quirks (2025-07-10)\n\n- 54 segments are still multi-part, 39 of them rejoined pieces that do not\n  meet exactly.\n- 839 of 284,831 segments differ from `COMP_LEN` by more than 1% in geometry\n  length; not investigated.\n- Whether LIST keeps TRANSEG_ID stable across releases is not yet known; it can\n  be checked when the next release arrives.\n\n## Reading it\n\nDuckDB:\n\n    INSTALL spatial; LOAD spatial;\n    SELECT TRANSEG_ID, PRI_NAME, node0, node1\n    FROM 'https://data.source.coop/mdsumner/tas-transport-web/2025-07-10/list_transport_segments.parquet'\n    WHERE geometry_bbox.xmin > 147.30 AND geometry_bbox.xmax < 147.34\n      AND geometry_bbox.ymin > -42.90 AND geometry_bbox.ymax < -42.87;\n\nGDAL:\n\n    ogrinfo -so /vsicurl/https://data.source.coop/mdsumner/tas-transport-web/2025-07-10/list_transport_segments.parquet\n",
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
+    "providers: role [processor, host] for 'mdsumner (hypertidy/thelist-opendata)' is an AI guess \u2014 Assumed the processor role because the README says this copy was derived from the mdsumner mirror, and the host role because the data sits under the mdsumner account on Source Cooperative.. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-11-09T10:46:41+00:00",
+  "store_format": null
 }
