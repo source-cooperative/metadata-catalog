@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "account_id": "mdsumner",
+  "product_id": "tas-transport-web",
+  "title": "Tasmanian transport network, web-ready (LIST transport segments)",
+  "description": " A single statewide copy of the LIST transport segments for Tasmania, prepared for use directly in web browsers. It is derived from the mirror at mdsumner/thelist-opendata.\r\n  - One row per TRANSEG_ID. Segments that LIST clips at LGA boundaries are rejoined into one, and lga lists every LGA a segment came from.\r\n  - Columns: TRANSEG_ID, PRI_NAME, SEC_NAME, COMP_LEN, TRANS_TYPE, TRAN_CLASS, lga, node0, node1, snapshot.\r\n  - Geometry is in EPSG:4326. It was converted from GDA94 / MGA zone 55 by the null shift (EPSG:1150, about 1 m accuracy).\r\n  - node0 and node1 are integer endpoint ids, found by exact coordinate matching in the source coordinates, so connectivity checks are plain integer equality. The ids are stable only within a snapshot.\r\n  - GeoParquet 1.1, Hilbert-sorted, with a bbox covering column, plus a PMTiles copy for drawing the whole network.\r\n  - Each snapshot sits in its own folder (<snapshot>/), named by the date of the newest source release, and is never overwritten. latest.json points to the newest snapshot, and each snapshot's snapshot.json lists the source URL, etag and mtime for every LGA.\r\n \r\nData: (c) State of Tasmania, Creative Commons Attribution 3.0 Australia. Code that built this: https://github.com/hypertidy/thelist-opendata (MIT, R/10_transport_web.R).\r\n",
+  "keywords": [],
+  "created_at": "2026-11-07T06:39:42.423Z",
+  "updated_at": "2026-11-07T06:39:42.423Z",
+  "visibility": "public",
+  "disabled": false,
+  "featured": 0,
+  "data_mode": null,
+  "mirrors": {
+    "aws-opendata-us-west-2": {
+      "connection_id": "aws-opendata-us-west-2",
+      "is_primary": true,
+      "prefix": "mdsumner/tas-transport-web/"
+    }
+  },
+  "object_count": 5,
+  "objects_updated_at": "2026-11-07T06:58:02+00:00",
+  "total_bytes": 203515044,
+  "exts": {
+    "json": 2,
+    "parquet": 1,
+    "pmtiles": 1,
+    "md": 1
+  },
+  "ext_bytes": {
+    "pmtiles": 136609372,
+    "parquet": 66891745,
+    "json": 10380,
+    "md": 3547
+  },
+  "store_format": null,
+  "_state": "seed",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "cataloged_at": "2026-11-09T10:39:48+00:00"
+}
