@@ -1,16 +1,98 @@
 {
   "schema_version": 1,
-  "account_id": "tge-labs",
-  "product_id": "worldtensor",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "tge-labs/worldtensor",
   "title": "WorldTensor",
-  "description": "",
-  "keywords": [],
-  "created_at": "2026-11-06T21:56:21.258Z",
-  "updated_at": "2026-11-06T21:56:21.258Z",
-  "visibility": "public",
-  "disabled": false,
+  "description": "WorldTensor (GeoZarr) is a cloud-native GeoZarr version of the WorldTensor release, providing 757 harmonized Earth-system variables on a common 0.25\u00b0 global grid, mostly annual from 1900 to 2025. Variables span climate, land use, ocean, cryosphere, hydrology, vegetation, emissions, air quality, energy, hazards, human systems, and static soil and terrain layers.",
+  "license": "CC-BY-4.0",
+  "keywords": [
+    "zarr",
+    "climate",
+    "global-coverage",
+    "time-series",
+    "earth-observation",
+    "foundation-model",
+    "hydrology",
+    "cryosphere",
+    "oceanography",
+    "machine-learning"
+  ],
+  "providers": [
+    {
+      "name": "Carlos Rodriguez-Pardo",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Massimo Tavoni",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Taylor Geospatial",
+      "roles": [
+        "processor",
+        "host"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/tge-labs/worldtensor"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -180.0,
+          -90.0,
+          180.0,
+          90.0
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "1900-01-01T00:00:00Z",
+          "2025-01-01T00:00:00Z"
+        ]
+      ]
+    }
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/tge-labs/worldtensor/",
+      "type": "application/vnd+zarr",
+      "title": "Dataset files (1 x .zarr)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/tge-labs/worldtensor/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/tge-labs/worldtensor",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "rel": "cite-as",
+      "href": "https://doi.org/10.5281/zenodo.19047618"
+    }
+  ],
   "featured": 0,
-  "data_mode": null,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "connection_id": "aws-opendata-us-west-2",
@@ -18,24 +100,37 @@
       "prefix": "tge-labs/worldtensor/"
     }
   },
-  "object_count": 506681,
-  "objects_updated_at": "2026-11-07T01:49:17+00:00",
-  "total_bytes": 105710500571,
+  "account_id": "tge-labs",
   "exts": {
     "": 484934,
     "json": 21746,
     "md": 1
   },
+  "disabled": false,
+  "objects_updated_at": "2026-11-07T01:49:17+00:00",
+  "data_mode": null,
+  "product_id": "worldtensor",
+  "updated_at": "2026-11-06T21:56:21.258Z",
   "ext_bytes": {
     "": 105658882024,
     "json": 51614994,
     "md": 3553
   },
-  "store_format": "zarr",
-  "_state": "seed",
+  "object_count": 506681,
+  "visibility": "public",
+  "total_bytes": 105710500571,
+  "created_at": "2026-11-06T21:56:21.258Z",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "cataloged_at": "2026-11-09T10:40:27+00:00"
+  "readme": "## README.md\n# WorldTensor (GeoZarr)\n\n757 harmonized Earth-system variables on a common 0.25\u00b0 global grid, mostly annual from 1900 to 2025. They cover climate, land use, ocean, cryosphere, hydrology, vegetation, emissions, air quality, energy, hazards, human systems and static soil and terrain layers. This is a cloud-native GeoZarr version of the [WorldTensor](https://arxiv.org/abs/2607.03298) release, built so it can be read straight from object storage.\n\n**[Explore it in the browser \u2192](https://research.taylorgeospatial.org/worldtensor-geozarr/)** \u00b7 [Code and pipeline](https://github.com/taylor-geospatial/worldtensor-geozarr) \u00b7 [Paper](https://arxiv.org/abs/2607.03298) \u00b7 [Original release (Zenodo)](https://zenodo.org/records/19047618)\n\n![WorldTensor viewer: 2-meter temperature with a pixel time series](https://raw.githubusercontent.com/taylor-geospatial/worldtensor-geozarr/main/docs/assets/hero.png)\n\n## Access\n\n```\nhttps://data.source.coop/tge-labs/worldtensor/worldtensor.zarr\ns3://tge-labs/worldtensor/worldtensor.zarr   (endpoint https://data.source.coop)\n```\n\n```python\nimport xarray as xr\n\nds = xr.open_zarr(\"https://data.source.coop/tge-labs/worldtensor/worldtensor.zarr/climate/t2m_mean\")\nds.t2m_mean.sel(time=\"2025\", lat=48.85, lon=2.35, method=\"nearest\")  # Paris, K\n```\n\nEach variable is its own self-contained group, `<domain>/<variable>`, for example `climate/tp_sum`, `ocean/chl_max` or `static/soil_properties/bdod_0-5cm_mean`. Each group has its own consolidated metadata, so opening one takes a single request. `catalog.json` at the store root lists every variable with its units, years, array shapes and a default color range.\n\n## Layout\n\n| array | shape / chunks | use |\n|---|---|---|\n| `<var>` | (years \u00d7) 721 \u00d7 1440, chunks of 1 year \u00d7 361 \u00d7 360 | full resolution |\n| `2x/<var>` | 1 year \u00d7 360 \u00d7 720 per chunk | global maps and sharp playback |\n| `4x/<var>`, `8x/<var>` | all years in one chunk | animation and time sliders |\n| `ts/<var>` | all years \u00d7 16 \u00d7 16 chunks in one shard | a pixel's full history (about 40 KB per read) |\n\n- **Encoding:** Zarr v3, float32, lossless Blosc zstd level 9 with byte shuffle, NaN as nodata.\n- **Grid:** EPSG:4326 cell centers, latitude ascending \u221290 \u2192 90, longitude 0 \u2192 359.75.\n- **Overviews:** built by 2\u00d7 averaging; the odd 90\u00b0N row is dropped so every level is exactly affine.\n- **GeoZarr:** CF-1.8 grid mapping (WKT and GDAL `GeoTransform`) plus the zarr-conventions v0.1 `multiscales`, `proj:` and `spatial:` attributes. Every level validates against the official schemas and round-trips through rioxarray, and deck.gl-zarr opens it from its own metadata.\n\nValues, units and variable semantics are unchanged from the source. In WorldTensor, a `_sum` suffix means a temporal aggregate per cell.\n\n## Citation\n\n```bibtex\n@article{rodriguezpardo2026worldtensor,\n  title   = {A harmonised dataset for Earth system foundation models},\n  author  = {Rodriguez-Pardo, Carlos and Tavoni, Massimo},\n  journal = {arXiv preprint arXiv:2607.03298},\n  year    = {2026}\n}\n\n@dataset{rodriguezpardo2026worldtensor_data,\n  title     = {Data for WorldTensor: A Harmonized Dataset for Earth System Foundation Models},\n  author    = {Rodriguez-Pardo, Carlos and Tavoni, Massimo},\n  year      = {2026},\n  publisher = {Zenodo},\n  doi       = {10.5281/zenodo.19047618}\n}\n```\n\n## License\n\n[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), inherited from the [original release](https://zenodo.org/records/19047618). This GeoZarr version was produced by [Taylor Geospatial](https://taylorgeospatial.org).\n",
+  "_review": [
+    "providers: role [processor, host] for 'Taylor Geospatial' is an AI guess \u2014 README says Taylor Geospatial produced the GeoZarr version; assumed processor and host roles for this conversion and hosting.. Verify before flipping to _state: reviewed.",
+    "extent.temporal: None (probe sample) widened to ['1900-01-01T00:00:00Z', '2025-01-01T00:00:00Z'] using README-stated coverage ['1900', '2025']."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-11-09T10:50:25+00:00",
+  "_source_format": "unknown",
+  "store_format": "zarr"
 }
