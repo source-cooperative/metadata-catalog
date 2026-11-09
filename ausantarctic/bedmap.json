@@ -1,16 +1,89 @@
 {
   "schema_version": 1,
-  "account_id": "ausantarctic",
-  "product_id": "bedmap",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "ausantarctic/bedmap",
   "title": "Bedmap: Antarctic ice thickness, bed and surface elevation",
-  "description": "Cloud-optimized copies of the Bedmap gridded products for Antarctica, with virtual multidimensional indexes (GDAL VRT, Kerchunk, Icechunk, STAC). Currently holds Bedmap3: 500 m grids in EPSG:3031 of ice thickness, bed and surface elevation, uncertainty and masks. Repackaged from the UK Polar Data Centre release (doi:10.5285/2d0e4791-8e20-46a3-80e4-f5f6716025d2), CC BY 4.0.\r\n\r\n",
-  "keywords": [],
-  "created_at": "2026-11-03T00:40:21.547Z",
-  "updated_at": "2026-11-03T00:40:21.547Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": null,
+  "description": "Cloud-optimized copies of the Bedmap3 gridded products for Antarctica at 500 m resolution in EPSG:3031, covering ice thickness, bed and surface elevation, uncertainty, and surface-type mask. Repackaged from the UK Polar Data Centre release as Cloud Optimized GeoTIFFs with virtual multidimensional indexes (GDAL VRT, Kerchunk, Icechunk, STAC).",
+  "license": "CC-BY-4.0",
+  "keywords": [
+    "cryosphere",
+    "cloud-optimized-geotiff",
+    "digital-elevation-model",
+    "topography",
+    "icechunk",
+    "zarr",
+    "time-series"
+  ],
+  "providers": [
+    {
+      "name": "UK Polar Data Centre (NERC EDS)",
+      "roles": [
+        "producer",
+        "licensor",
+        "host"
+      ]
+    },
+    {
+      "name": "Australian Antarctic Division",
+      "roles": [
+        "processor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/ausantarctic/bedmap"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -180.0,
+          -90.0,
+          180.0,
+          90.0
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/ausantarctic/bedmap/",
+      "type": "application/octet-stream",
+      "title": "Dataset files (1 x .icechunk)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/ausantarctic/bedmap/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/ausantarctic/bedmap",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "rel": "cite-as",
+      "href": "https://doi.org/10.5285/2d0e4791-8e20-46a3-80e4-f5f6716025d2"
+    }
+  ],
   "mirrors": {
     "aws-opendata-us-west-2": {
       "connection_id": "aws-opendata-us-west-2",
@@ -18,9 +91,14 @@
       "prefix": "ausantarctic/bedmap/"
     }
   },
-  "object_count": 207,
-  "objects_updated_at": "2026-11-03T23:42:12+00:00",
-  "total_bytes": 399949861,
+  "disabled": false,
+  "account_id": "ausantarctic",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "product_id": "bedmap",
+  "updated_at": "2026-11-03T00:40:21.547Z",
   "exts": {
     "": 84,
     "parq": 54,
@@ -37,6 +115,9 @@
     "zmetadata": 1,
     "tsv": 1
   },
+  "data_mode": null,
+  "visibility": "public",
+  "object_count": 207,
   "ext_bytes": {
     "tif": 393619372,
     "parq": 4585638,
@@ -53,11 +134,17 @@
     "knpjrdsypmt5ttrphgx0": 843,
     "tsv": 293
   },
-  "store_format": "icechunk",
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "cataloged_at": "2026-11-09T10:38:25+00:00"
+  "objects_updated_at": "2026-11-03T23:42:12+00:00",
+  "featured": 0,
+  "created_at": "2026-11-03T00:40:21.547Z",
+  "total_bytes": 399949861,
+  "readme": "## README.md\n# Bedmap\n\nCloud-optimized copies of the Bedmap gridded products for Antarctica, with\nvirtual multidimensional indexes over them. Each version has its own prefix.\nThis is a repackaged copy. The authoritative release is the UK Polar Data\nCentre record cited below.\n\n## Bedmap3\n\nStatic grids of 13,334 x 13,334 cells at 500 m in EPSG:3031, Int16, nodata\n-9999, one Cloud Optimized GeoTIFF per array.\n\n| Array | Unit | Content |\n|---|---|---|\n| `bed_topography` | metres | bed elevation |\n| `bed_uncertainty` | metres | uncertainty of bed elevation |\n| `ice_thickness` | metres | ice thickness |\n| `mask` | | 1 grounded ice, 2 transiently grounded ice shelf, 3 floating ice shelf, 4 rock |\n| `surface_topography` | metres | surface elevation |\n| `thickness_survey_count` | count | survey points used for ice thickness |\n| `thickness_uncertainty` | metres | uncertainty of ice thickness |\n\nLayout:\n\n```\nbedmap3/cog/<array>.tif          COGs\nbedmap3/cog/provenance.json      checksums and source record\nvirtual/catalog.json             STAC catalog\nvirtual/bedmap3/mdim.vrt         GDAL multidimensional VRT\nvirtual/bedmap3/kerchunk/        Kerchunk Parquet\nvirtual/bedmap3/icechunk/        Icechunk repository\nvirtual/bedmap3/flat/            flat reference tables\nvirtual/bedmap3/stac/            STAC collection, its one item, stac-geoparquet\nvirtual/bedmap3/thumbnail.png    overview of bed_topography\nvirtual/bedmap3/store.sqlite     byterefs/0.1 store\n```\n\nEvery virtual form references the COGs by absolute URL.\n\n## Provenance\n\nThe source is `bedmap3.nc` from the UK Polar Data Centre, SHA-256\n`776bfbef4d4c06ceea0851619915d2c397eef9547d35cb551d5d1b11dd064ff3`. The COGs\nare written from it with values, type and nodata unchanged, and are compared\npixel by pixel with the netCDF. The same record also distributes GeoTIFFs,\nwhose seven grids are pixel-identical to the netCDF arrays. The EPSG:3031\ndefinition, the tiling, ZSTD compression and overviews are the only additions;\nthe array names are those of the netCDF. `bm3_streamlines_pt.zip` is not\nincluded.\n\n## Citation\n\nUse of these data requires citation of the dataset and the paper, under\n[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/):\n\nPritchard, H., Fretwell, P., Fremand, A., et al. (2024). BEDMAP3 - Ice\nthickness, bed and surface elevation for Antarctica - gridding products\n(Version 1.0) [Data set]. NERC EDS UK Polar Data Centre.\n<https://doi.org/10.5285/2d0e4791-8e20-46a3-80e4-f5f6716025d2>\n\nPritchard, H.D., Fretwell, P.T., Fremand, A.C., et al. Bedmap3 updated ice\nbed, surface and thickness gridded datasets for Antarctica. Sci Data 12, 414\n(2025). <https://doi.org/10.1038/s41597-025-04672-y>\n\n## Previews\n\n![Bedmap3 ice thickness, bed and surface elevation for Antarctica](https://data.source.coop/ausantarctic/bedmap/virtual/bedmap3/thumbnail.png)\n\n*Bedmap3 ice thickness, bed and surface elevation for Antarctica*\n\n## Links\n\n- Code: [mdsumner/raad.virtualize](https://github.com/mdsumner/raad.virtualize)\n- Site (how the stores are built and read, worked examples): https://mdsumner.github.io/raad.virtualize/\n- Each dataset on the site's Published page, with the URL of every form:\n  - [`bedmap3`](https://mdsumner.github.io/raad.virtualize/published.html#bedmap3): Bedmap3 ice thickness, bed and surface elevation for Antarctica\n",
+  "_review": [
+    "providers: role [producer, licensor, host] for 'UK Polar Data Centre (NERC EDS)' is an AI guess \u2014 README cites it as the authoritative release and publisher; producer/licensor roles assumed from the citation (authors are BAS researchers).. Verify before flipping to _state: reviewed.",
+    "providers: role [processor] for 'Australian Antarctic Division' is an AI guess \u2014 Repackaging is under the ausantarctic account; assumed to be the processor of the COGs and virtual indexes.. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-11-09T10:46:53+00:00",
+  "_source_format": "stac",
+  "store_format": "icechunk"
 }
