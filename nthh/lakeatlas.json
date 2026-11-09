@@ -1,40 +1,114 @@
 {
   "schema_version": 1,
-  "account_id": "nthh",
-  "product_id": "lakeatlas",
-  "title": "LakeATLAS v1.0 \u2014 global lake attributes and pour points",
-  "description": "LakeATLAS lake polygons and pour points with hydro-environmental attributes in separate spatially ordered GeoParquet files, with a versioned field-semantics supplement. Separately versioned PMTiles provide map display for both layers and source-ID attribute lookup.",
-  "keywords": [],
-  "created_at": "2026-11-06T23:43:47.646Z",
-  "updated_at": "2026-11-07T22:02:57.617Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": null,
-  "mirrors": {
-    "aws-opendata-us-west-2": {
-      "connection_id": "aws-opendata-us-west-2",
-      "is_primary": true,
-      "prefix": "nthh/lakeatlas/"
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "nthh/lakeatlas",
+  "title": "HydroATLAS LakeATLAS v1.0 \u2014 global hydro-environmental lake attributes",
+  "description": "LakeATLAS v1.0 provides global lake polygons and separate pour-point layers carrying hydro-environmental attributes from HydroATLAS, as spatially ordered GeoParquet files. A versioned field-semantics supplement and separately versioned PMTiles for map display accompany the analytical release.",
+  "keywords": [
+    "hydrology",
+    "geoparquet",
+    "pmtiles",
+    "global-coverage",
+    "land-cover",
+    "climate",
+    "topography"
+  ],
+  "providers": [
+    {
+      "name": "HydroSHEDS / HydroATLAS authors (Lehner, Messager, Korver, Linke)",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Folia",
+      "roles": [
+        "processor",
+        "host"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/nthh/lakeatlas"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -180.0,
+          -55.865139,
+          180.0,
+          83.575951
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
     }
   },
-  "object_count": 101,
-  "objects_updated_at": "2026-11-07T02:41:20+00:00",
-  "total_bytes": 3087523605,
-  "exts": {
-    "json": 48,
-    "py": 20,
-    "md": 13,
-    "txt": 5,
-    "pmtiles": 2,
-    "yaml": 2,
-    "lock": 2,
-    "toml": 2,
-    "parquet": 2,
-    "": 2,
-    "pdf": 2,
-    "png": 1
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/nthh/lakeatlas/",
+      "type": "application/octet-stream",
+      "title": "Dataset files (2 x .pmtiles)",
+      "roles": [
+        "data"
+      ]
+    }
   },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/nthh/lakeatlas/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/nthh/lakeatlas",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "href": "README.md",
+      "rel": "describedby",
+      "type": "text/markdown"
+    },
+    {
+      "href": "AGENTS.md",
+      "rel": "agents",
+      "type": "text/markdown"
+    },
+    {
+      "href": "display/thumbnail.png",
+      "rel": "thumbnail",
+      "type": "image/png"
+    },
+    {
+      "href": "https://doi.org/10.6084/m9.figshare.19312001.v1",
+      "rel": "via",
+      "title": "LakeATLAS v1.0 producer data and documentation",
+      "type": "text/html"
+    },
+    {
+      "href": "https://creativecommons.org/licenses/by/4.0/",
+      "rel": "license",
+      "type": "text/html"
+    },
+    {
+      "rel": "cite-as",
+      "href": "https://doi.org/10.1038/s41597-022-01425-z"
+    }
+  ],
   "ext_bytes": {
     "pmtiles": 1599214526,
     "parquet": 1427772917,
@@ -49,11 +123,50 @@
     "png": 4138,
     "toml": 582
   },
-  "store_format": null,
-  "_state": "seed",
+  "total_bytes": 3087523605,
+  "objects_updated_at": "2026-11-07T02:41:20+00:00",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "cataloged_at": "2026-11-09T10:39:59+00:00"
+  "exts": {
+    "json": 48,
+    "py": 20,
+    "md": 13,
+    "txt": 5,
+    "pmtiles": 2,
+    "yaml": 2,
+    "lock": 2,
+    "toml": 2,
+    "parquet": 2,
+    "": 2,
+    "pdf": 2,
+    "png": 1
+  },
+  "disabled": false,
+  "data_mode": null,
+  "created_at": "2026-11-06T23:43:47.646Z",
+  "featured": 0,
+  "object_count": 101,
+  "mirrors": {
+    "aws-opendata-us-west-2": {
+      "connection_id": "aws-opendata-us-west-2",
+      "is_primary": true,
+      "prefix": "nthh/lakeatlas/"
+    }
+  },
+  "product_id": "lakeatlas",
+  "updated_at": "2026-11-07T22:02:57.617Z",
+  "account_id": "nthh",
+  "visibility": "public",
+  "readme": "## README.md\n# LakeATLAS v1.0 \u2014 global lake attributes and pour points\n\nLakeATLAS lake polygons and pour points with hydro-environmental attributes in separate spatially ordered GeoParquet files, with a versioned field-semantics supplement. Separately versioned PMTiles provide map display for both layers and source-ID attribute lookup.\n\n**Validated hosted release:** `lakeatlas-v1.0-r2`. The canonical record binds the public Source Cooperative package and its completed hosting checks.\n\n## Scope and formats\n\nTwo analytic GeoParquet assets from the pinned LakeATLAS v1.0 producer File Geodatabase: the complete polygon layer and separate pour-point layer. The deterministic spatially ordered representations preserve producer OBJECTID, Hylak_id and all decoded source fields, nulls, and WKB; WGS84 bbox fields support spatial filtering. No geometries are repaired or simplified. Attribute years vary by source and do not represent a 2026 observation.\n\nFormats: `application/json`, `application/pdf`, `application/vnd.apache.parquet`, `application/vnd.pmtiles`, `image/png`, `text/markdown`.\n\n## Producer, source, and license\n\n- Producer attribution: HydroSHEDS / HydroATLAS authors; Lehner, Messager, Korver and Linke (2022), DOI 10.1038/s41597-022-01425-z. Original conversion evidence retains Folia attribution.\n- License: Mixed field-level terms: the producer catalog identifies CC BY 4.0 and ODbL 1.0 attributes. Retain the catalog, source attribution and original-source notices; do not describe the entire attribute table as uniformly CC BY 4.0.\n- Temporal scope: Observation and model-input dates vary by contributing attribute; use the producer catalog and field supplement for interpretation.\n\n- [License terms](https://creativecommons.org/licenses/by/4.0/)\n- [Research paper](https://doi.org/10.1038/s41597-022-01425-z)\n- [Dataset release](https://doi.org/10.6084/m9.figshare.19312001.v1)\n- [Folia converter/host](https://folia.sh)\n- [Producer technical documentation](https://ndownloader.figshare.com/files/35959532)\n- [Producer attribute catalogue](https://ndownloader.figshare.com/files/35959535)\n- [Original download](https://ndownloader.figshare.com/files/35959544)\n- [Producer: HydroSHEDS / HydroATLAS authors](https://www.hydrosheds.org/products/hydroatlas)\n\n## Release files\n\n- [lakeatlas-polygons.parquet](releases/lakeatlas-v1.0-r2/assets/lakeatlas-polygons.parquet) (asset)\n- [lakeatlas-pour-points.parquet](releases/lakeatlas-v1.0-r2/assets/lakeatlas-pour-points.parquet) (asset)\n- [thumbnail.png](releases/lakeatlas-v1.0-r2/display/thumbnail.png) (display_derivatives)\n- [data-license.json](releases/lakeatlas-v1.0-r2/licenses/data-license.json) (data_license)\n- [source-license.json](releases/lakeatlas-v1.0-r2/licenses/source-license.json) (source_license)\n- [lakeatlas-polygons-field-dictionary.json](releases/lakeatlas-v1.0-r2/metadata/lakeatlas-polygons-field-dictionary.json) (field_dictionary)\n- [lakeatlas-pour-points-field-dictionary.json](releases/lakeatlas-v1.0-r2/metadata/lakeatlas-pour-points-field-dictionary.json) (field_dictionary)\n- [clean-rebuild.json](releases/lakeatlas-v1.0-r2/provenance/clean-rebuild.json) (supporting_files)\n- [evidence-provenance.json](releases/lakeatlas-v1.0-r2/provenance/evidence-provenance.json) (supporting_files)\n- [rebuild-environment.json](releases/lakeatlas-v1.0-r2/provenance/rebuild-environment.json) (supporting_files)\n- [source-fidelity.json](releases/lakeatlas-v1.0-r2/provenance/source-fidelity.json) (supporting_files)\n- [source-inspection.json](releases/lakeatlas-v1.0-r2/provenance/source-inspection.json) (supporting_files)\n- [spatial-order-polygons-clean.json](releases/lakeatlas-v1.0-r2/provenance/spatial-order-polygons-clean.json) (supporting_files)\n- [spatial-order-polygons-primary.json](releases/lakeatlas-v1.0-r2/provenance/spatial-order-polygons-primary.json) (supporting_files)\n- [spatial-order-pour-points-clean.json](releases/lakeatlas-v1.0-r2/provenance/spatial-order-pour-points-clean.json) (supporting_files)\n- [spatial-order-pour-points-primary.json](releases/lakeatlas-v1.0-r2/provenance/spatial-order-pour-points-primary.json) (supporting_files)\n- [spatial-pruning-polygons-clean.json](releases/lakeatlas-v1.0-r2/provenance/spatial-pruning-polygons-clean.json) (supporting_files)\n- [spatial-pruning-polygons-primary.json](releases/lakeatlas-v1.0-r2/provenance/spatial-pruning-polygons-primary.json) (supporting_files)\n- [spatial-pruning-pour-points-clean.json](releases/lakeatlas-v1.0-r2/provenance/spatial-pruning-pour-points-clean.json) (supporting_files)\n- [spatial-pruning-pour-points-primary.json](releases/lakeatlas-v1.0-r2/provenance/spatial-pruning-pour-points-primary.json) (supporting_files)\n- [ATTRIBUTION.md](releases/lakeatlas-v1.0-r2/source/ATTRIBUTION.md) (supporting_files)\n- [HydroATLAS_TechDoc_v10_1.pdf](releases/lakeatlas-v1.0-r2/source/HydroATLAS_TechDoc_v10_1.pdf) (supporting_files)\n- [LakeATLAS_Catalog_v10.pdf](releases/lakeatlas-v1.0-r2/source/LakeATLAS_Catalog_v10.pdf) (supporting_files)\n- [attribution.json](releases/lakeatlas-v1.0-r2/source/attribution.json) (source_attribution)\n- [field-semantics.json](metadata/field-semantics-v1/field-semantics.json) (supplement)\n- [README.md](metadata/field-semantics-v1/README.md) (supplement)\n- [build_semantics.py](metadata/field-semantics-v1/build_semantics.py) (supplement)\n\n## Display package\n\nDisplay release: `display-v1`. The manifest is pinned at SHA-256 `ed70989525111682a294b6aadf1118a1ebfaefff863d645c6c805c5e8eafb70f`.\nDisplay assets are separate immutable derivatives bound to this analytical release.\n- [Display manifest](display/display-v1/manifest.json)\n- [Lakeatlas Polygons PMTiles](display/display-v1/assets/lakeatlas-polygons.pmtiles) (1190009288 bytes; SHA-256 `394594baa10516b5bdea3841cdbbd7f8603412475059f846f5704386a72f71be`)\n  - [Map style](display/display-v1/styles/lakeatlas-polygons.json)\n- [Lakeatlas Pour Points PMTiles](display/display-v1/assets/lakeatlas-pour-points.pmtiles) (409205238 bytes; SHA-256 `68c28ecb4585378e0e729a5c72902214e935fa7645a6bef68372f0ec61bc4ffb`)\n  - [Map style](display/display-v1/styles/lakeatlas-pour-points.json)\n\n## Limitations\n\n- Polygons and pour points are distinct producer layers, each retained separately.\n- Attribute codes, scaling, spatial extent and aggregation rules must be interpreted using the versioned field-semantics supplement and producer documentation.\n- The metadata supplement is separate from the unchanged immutable r2 analytical package.\n- Live GEE counts and 522 sampled IDs per layer match. Both layers have numeric differences including integral GEE GDP values; the polygon layer also has three narrow source spikes absent spatially from GEE. Strict parity fails. No exhaustive GEE or independent scientific-accuracy claim.\n\nPublic hosting checks are bound in the canonical report. Scientific validation retains its documented scope.\n",
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
+    "providers: role [producer, licensor] for 'HydroSHEDS / HydroATLAS authors (Lehner, Messager, Korver, Linke)' is an AI guess \u2014 Named as producer in the README; licensor role assumed because the producer catalog sets the CC BY 4.0 and ODbL 1.0 terms.. Verify before flipping to _state: reviewed.",
+    "providers: role [processor, host] for 'Folia' is an AI guess \u2014 README credits Folia as converter/host; processor and host roles inferred from the 'Folia converter/host' link and the retained conversion attribution.. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-11-09T10:47:22+00:00",
+  "_source_format": "stac",
+  "store_format": null
 }
