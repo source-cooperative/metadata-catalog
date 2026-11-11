@@ -2,12 +2,9 @@
   "schema_version": 1,
   "type": "Collection",
   "stac_version": "1.1.0",
-  "stac_extensions": [
-    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
-  ],
   "id": "cboettig/land-cover",
   "title": "Land Cover Datasets",
-  "description": "Global 100 m land cover classification for 2019 from the Copernicus Global Land Service (CGLS-LC100 v3.0.1, Collection 3), using 23 FAO Land Cover Classification System classes with ~80% overall accuracy. Provided as a Cloud-Optimized GeoTIFF and as an H3 resolution-9 hex GeoParquet layer aggregated by mode.",
+  "description": "Global land cover and canopy height rasters at 100 m (CGLS-LC100 2019 land cover classification) and 10 m (ETH 2020 canopy top height with uncertainty), provided as Cloud-Optimized GeoTIFFs/VRTs and as H3 resolution-9 hex GeoParquet layers. Land cover uses 23 FAO LCCS classes with ~80% overall accuracy; canopy height is a deep learning model trained on GEDI lidar and Sentinel-2 imagery.",
   "license": "CC-BY-4.0",
   "keywords": [
     "land-cover",
@@ -39,330 +36,62 @@
     "spatial": {
       "bbox": [
         [
-          null,
-          null,
-          null,
-          null
+          -180.0,
+          -60.0,
+          180.0,
+          80.0
+        ],
+        [
+          -75.0,
+          -60.0,
+          36.0,
+          3.0
+        ],
+        [
+          -129.2773199,
+          21.8050362,
+          -63.1184616,
+          52.9217197
         ]
       ]
     },
     "temporal": {
       "interval": [
         [
-          "2019-01-01T00:00:00Z",
-          "2019-01-01T00:00:00Z"
+          null,
+          null
         ]
       ]
     }
   },
-  "summaries": {
-    "item_count": 1754971118
-  },
   "assets": {
-    "cgls-lc100-2019/hex-fractions": {
-      "href": "https://data.source.coop/cboettig/land-cover/cgls-lc100-2019/hex-fractions/h0=576495936675512319/",
-      "type": "application/x-parquet",
-      "title": "cgls-lc100-2019/hex-fractions",
+    "canopy-height-2020": {
+      "href": "https://data.source.coop/cboettig/land-cover/canopy-height-2020/",
+      "type": "image/tiff; application=geotiff",
+      "title": "canopy-height-2020/ (5302 \u00d7 .tif)",
       "roles": [
         "data"
       ],
-      "table:columns": [
-        {
-          "name": "lc_class",
-          "type": "INTEGER"
-        },
-        {
-          "name": "frac",
-          "type": "DOUBLE"
-        },
-        {
-          "name": "h9",
-          "type": "UBIGINT",
-          "description": "[spatial_index] H3 resolution-9 cell index"
-        },
-        {
-          "name": "h0",
-          "type": "UBIGINT"
-        },
-        {
-          "name": "h5",
-          "type": "UBIGINT"
-        },
-        {
-          "name": "h6",
-          "type": "UBIGINT"
-        },
-        {
-          "name": "h7",
-          "type": "UBIGINT"
-        },
-        {
-          "name": "h8",
-          "type": "UBIGINT"
-        }
-      ],
-      "description": "10 files sampled for this table"
+      "bbox": [
+        -75.0,
+        -60.0,
+        36.0,
+        3.0
+      ]
     },
-    "cgls-lc100-2019/hex": {
-      "href": "https://data.source.coop/cboettig/land-cover/cgls-lc100-2019/hex/h0=580331033233195007/",
-      "type": "application/x-parquet",
-      "title": "cgls-lc100-2019/hex",
+    "nlcd": {
+      "href": "https://data.source.coop/cboettig/land-cover/nlcd/",
+      "type": "image/tiff; application=geotiff",
+      "title": "nlcd/ (20 \u00d7 .tif)",
       "roles": [
         "data"
       ],
-      "table:columns": [
-        {
-          "name": "lc_class",
-          "type": "DOUBLE"
-        },
-        {
-          "name": "h9",
-          "type": "UBIGINT",
-          "description": "[spatial_index] H3 resolution-9 cell index (primary cell identifier)"
-        },
-        {
-          "name": "h0",
-          "type": "UBIGINT",
-          "description": "[spatial_index] H3 resolution-0 parent index used for hive partitioning"
-        },
-        {
-          "name": "h5",
-          "type": "UBIGINT",
-          "description": "[spatial_index] H3 resolution-5 parent index"
-        },
-        {
-          "name": "h6",
-          "type": "UBIGINT",
-          "description": "[spatial_index] H3 resolution-6 parent index"
-        },
-        {
-          "name": "h7",
-          "type": "UBIGINT",
-          "description": "[spatial_index] H3 resolution-7 parent index"
-        },
-        {
-          "name": "h8",
-          "type": "UBIGINT",
-          "description": "[spatial_index] H3 resolution-8 parent index"
-        }
-      ],
-      "description": "10 files sampled for this table"
-    },
-    "forest-to-grass-shrub/binary/hex": {
-      "href": "https://data.source.coop/cboettig/land-cover/forest-to-grass-shrub/binary/hex/h0=576812596024311807/",
-      "type": "application/x-parquet",
-      "title": "forest-to-grass-shrub/binary/hex",
-      "roles": [
-        "data"
-      ],
-      "table:columns": [
-        {
-          "name": "forest_to_grass",
-          "type": "DOUBLE"
-        },
-        {
-          "name": "h10",
-          "type": "UBIGINT",
-          "description": "[spatial_index] H3 resolution-10 cell index"
-        },
-        {
-          "name": "h0",
-          "type": "UBIGINT"
-        },
-        {
-          "name": "h8",
-          "type": "UBIGINT"
-        },
-        {
-          "name": "h9",
-          "type": "UBIGINT"
-        }
-      ],
-      "description": "4 files sampled for this table"
-    },
-    "forest-to-grass-shrub/change-year/hex": {
-      "href": "https://data.source.coop/cboettig/land-cover/forest-to-grass-shrub/change-year/hex/h0=576812596024311807/",
-      "type": "application/x-parquet",
-      "title": "forest-to-grass-shrub/change-year/hex",
-      "roles": [
-        "data"
-      ],
-      "table:columns": [
-        {
-          "name": "change_year",
-          "type": "DOUBLE"
-        },
-        {
-          "name": "h10",
-          "type": "UBIGINT"
-        },
-        {
-          "name": "h0",
-          "type": "UBIGINT"
-        },
-        {
-          "name": "h8",
-          "type": "UBIGINT"
-        },
-        {
-          "name": "h9",
-          "type": "UBIGINT"
-        }
-      ],
-      "description": "4 files sampled for this table"
-    },
-    "forest-to-grass-shrub/converted-pixels/hex": {
-      "href": "https://data.source.coop/cboettig/land-cover/forest-to-grass-shrub/converted-pixels/hex/h0=576812596024311807/",
-      "type": "application/x-parquet",
-      "title": "forest-to-grass-shrub/converted-pixels/hex",
-      "roles": [
-        "data"
-      ],
-      "table:columns": [
-        {
-          "name": "converted_pixels",
-          "type": "DOUBLE"
-        },
-        {
-          "name": "h10",
-          "type": "UBIGINT"
-        },
-        {
-          "name": "h0",
-          "type": "UBIGINT"
-        },
-        {
-          "name": "h8",
-          "type": "UBIGINT"
-        },
-        {
-          "name": "h9",
-          "type": "UBIGINT"
-        }
-      ],
-      "description": "4 files sampled for this table"
-    },
-    "forest-to-grass-shrub/max-run-years/hex": {
-      "href": "https://data.source.coop/cboettig/land-cover/forest-to-grass-shrub/max-run-years/hex/h0=576812596024311807/",
-      "type": "application/x-parquet",
-      "title": "forest-to-grass-shrub/max-run-years/hex",
-      "roles": [
-        "data"
-      ],
-      "table:columns": [
-        {
-          "name": "max_run_years",
-          "type": "DOUBLE"
-        },
-        {
-          "name": "h10",
-          "type": "UBIGINT"
-        },
-        {
-          "name": "h0",
-          "type": "UBIGINT"
-        },
-        {
-          "name": "h8",
-          "type": "UBIGINT"
-        },
-        {
-          "name": "h9",
-          "type": "UBIGINT"
-        }
-      ],
-      "description": "4 files sampled for this table"
-    },
-    "nlcd/hex-fractions": {
-      "href": "https://data.source.coop/cboettig/land-cover/nlcd/hex-fractions/year=1985/h0=576742227280134143/",
-      "type": "application/x-parquet",
-      "title": "nlcd/hex-fractions",
-      "roles": [
-        "data"
-      ],
-      "table:columns": [
-        {
-          "name": "nlcd",
-          "type": "INTEGER"
-        },
-        {
-          "name": "frac",
-          "type": "DOUBLE"
-        },
-        {
-          "name": "h10",
-          "type": "UBIGINT"
-        },
-        {
-          "name": "h0",
-          "type": "UBIGINT"
-        },
-        {
-          "name": "h5",
-          "type": "UBIGINT"
-        },
-        {
-          "name": "h6",
-          "type": "UBIGINT"
-        },
-        {
-          "name": "h7",
-          "type": "UBIGINT"
-        },
-        {
-          "name": "h8",
-          "type": "UBIGINT"
-        },
-        {
-          "name": "h9",
-          "type": "UBIGINT"
-        }
-      ],
-      "description": "10 files sampled for this table"
-    },
-    "nlcd/hex": {
-      "href": "https://data.source.coop/cboettig/land-cover/nlcd/hex/year=2024/h0=577199624117288959/",
-      "type": "application/x-parquet",
-      "title": "nlcd/hex",
-      "roles": [
-        "data"
-      ],
-      "table:columns": [
-        {
-          "name": "nlcd",
-          "type": "DOUBLE"
-        },
-        {
-          "name": "h10",
-          "type": "UBIGINT",
-          "description": "[spatial_index] H3 resolution-10 cell index"
-        },
-        {
-          "name": "h0",
-          "type": "UBIGINT"
-        },
-        {
-          "name": "h5",
-          "type": "UBIGINT"
-        },
-        {
-          "name": "h6",
-          "type": "UBIGINT"
-        },
-        {
-          "name": "h7",
-          "type": "UBIGINT"
-        },
-        {
-          "name": "h8",
-          "type": "UBIGINT"
-        },
-        {
-          "name": "h9",
-          "type": "UBIGINT"
-        }
-      ],
-      "description": "10 files sampled for this table"
+      "bbox": [
+        -129.2773199,
+        21.8050362,
+        -63.1184616,
+        52.9217197
+      ]
     }
   },
   "links": [
@@ -377,29 +106,33 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "updated_at": "2026-06-17T03:28:33.405Z",
-  "objects_updated_at": "2026-11-02T02:49:38+00:00",
-  "ext_bytes": {
-    "parquet": 190795597383,
-    "tif": 33192116454,
-    "json": 165496,
-    "md": 12000
-  },
   "data_mode": "open",
-  "featured": 0,
+  "visibility": "public",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "account_id": "cboettig",
-  "visibility": "public",
-  "exts": {
-    "parquet": 589,
-    "tif": 24,
-    "json": 4,
-    "md": 3
+  "objects_updated_at": "2026-11-02T02:49:38+00:00",
+  "ext_bytes": {
+    "tif": 726096339276,
+    "parquet": 212767379370,
+    "vrt": 2527777,
+    "json": 175290,
+    "md": 14530
   },
+  "account_id": "cboettig",
   "created_at": "2026-06-17T03:28:33.405Z",
+  "exts": {
+    "tif": 5326,
+    "parquet": 781,
+    "json": 5,
+    "md": 3,
+    "vrt": 2
+  },
+  "updated_at": "2026-06-17T03:28:33.405Z",
+  "disabled": false,
+  "featured": 0,
+  "object_count": 6117,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -412,17 +145,10 @@
       "prefix": "cboettig/land-cover/"
     }
   },
+  "total_bytes": 938866436243,
   "product_id": "land-cover",
-  "total_bytes": 223987891333,
-  "object_count": 620,
-  "disabled": false,
-  "readme": "## README.md\n# Copernicus Global Land Cover 100 m v3.0.1 (CGLS-LC100, 2019)\n\nGlobal land cover classification at 100 m resolution for 2019, from the\n[Copernicus Global Land Service Land Cover product v3.0.1 (Collection 3)](https://land.copernicus.eu/global/products/lc).\nUses the FAO Land Cover Classification System (LCCS); overall accuracy ~80%.\n\nLicense: **CC-BY-4.0**. Source: <https://zenodo.org/records/3939050>.\n\n## Assets\n\n| Asset | Format | Path |\n|---|---|---|\n| `cgls-lc100-2019-cog` | Cloud-Optimized GeoTIFF (EPSG:4326, uint8) | `https://s3-west.nrp-nautilus.io/public-land-cover/cgls-lc100-2019-cog.tif` |\n| `cgls-lc100-2019-hex` | H3 hex GeoParquet (resolution 9, hive-partitioned by `h0`) | `https://s3-west.nrp-nautilus.io/public-land-cover/cgls-lc100-2019/hex/h0=*/data_0.parquet` |\n\nThe hex layer aggregates the source raster to **H3 resolution 9** (~174 m edge,\n~10 source pixels per cell) by **mode** (most frequent class per cell). One row per\n`h9` cell. `lc_class` is **categorical** \u2014 only the 23 canonical LCCS codes appear.\nRe-hexed on the antimeridian/polar-fixed pipeline (boettiger-lab/datasets #88, #92,\n#93); the prior resolution-8 build inflated and dropped cells at the \u00b1180\u00b0 seam\n(boettiger-lab/data-workflows #186).\n\n## Querying the hex layer (DuckDB)\n\n```sql\nINSTALL httpfs; LOAD httpfs;\n-- Global class histogram (cell counts)\nSELECT lc_class, COUNT(*) AS cells\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-land-cover/cgls-lc100-2019/hex/h0=*/data_0.parquet')\nGROUP BY lc_class ORDER BY cells DESC;\n```\n\n`lc_class` is a class code \u2014 **never `SUM` or `AVG` it.** To estimate the area of a\nclass, count distinct cells and multiply by the H3 resolution-9 cell area:\n\n```sql\n-- Approx area (km\u00b2) of forest classes (111\u2013126), res-9 cell \u2248 0.105 km\u00b2\nSELECT COUNT(DISTINCT h9) * 0.105 AS forest_km2\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-land-cover/cgls-lc100-2019/hex/h0=*/data_0.parquet')\nWHERE lc_class BETWEEN 111 AND 126;\n```\n\nParent indexes `h8`, `h7`, `h6`, `h5` are present for multi-scale joins; partition on\n`h0` to prune reads.\n\n## Displaying the COG (MapLibre GL JS via TiTiler)\n\nThe raster has no PMTiles layer; render the COG through a TiTiler XYZ endpoint:\n\n```js\nmap.addSource('cgls-lc100', {\n  type: 'raster',\n  tiles: ['https://titiler.../cog/tiles/{z}/{x}/{y}.png?url=' +\n    encodeURIComponent('https://s3-west.nrp-nautilus.io/public-land-cover/cgls-lc100-2019-cog.tif') +\n    '&colormap_name=...'],   // use the categorical class palette (see classification:classes in STAC)\n  tileSize: 256\n});\nmap.addLayer({ id: 'cgls-lc100', type: 'raster', source: 'cgls-lc100' });\n```\n\n## Land cover classes (FAO LCCS)\n\n| Code | Class | | Code | Class |\n|---|---|---|---|---|\n| 0 | No input data | | 113 | Closed forest, deciduous needle leaf |\n| 20 | Shrubs | | 114 | Closed forest, deciduous broad leaf |\n| 30 | Herbaceous vegetation | | 115 | Closed forest, mixed |\n| 40 | Cultivated / managed | | 116 | Closed forest, unknown |\n| 50 | Urban / built-up | | 121 | Open forest, evergreen needle leaf |\n| 60 | Bare / sparse vegetation | | 122 | Open forest, evergreen broad leaf |\n| 70 | Snow and ice | | 123 | Open forest, deciduous needle leaf |\n| 80 | Permanent water bodies | | 124 | Open forest, deciduous broad leaf |\n| 90 | Herbaceous wetland | | 125 | Open forest, mixed |\n| 100 | Moss and lichen | | 126 | Open forest, unknown |\n| 111 | Closed forest, evergreen needle leaf | | 200 | Open sea |\n\nValue 0 (\"No input data\") is a retained fill class; the COG GDAL NoData sentinel is 255.\n\n## Citation\n\nBuchhorn, M., Lesiv, M., Tsendbazar, N-E., Herold, M., Bertels, L., Smets, B. (2020).\nCopernicus Global Land Cover Layers \u2014 Collection 2. *Remote Sensing*, 12(6), 1044.\ndoi:10.3390/rs12061044\n",
-  "_review": [
-    "extent.temporal: None (probe sample) widened to ['2019-01-01T00:00:00Z', '2019-01-01T00:00:00Z'] using README-stated coverage ['2019', '2019'].",
-    "extent.spatial.bbox: omitted; spatial reference is categorical via [cgls-lc100-2019/hex.h9 (spatial_index), cgls-lc100-2019/hex.h8 (spatial_index), cgls-lc100-2019/hex.h7 (spatial_index), cgls-lc100-2019/hex.h6 (spatial_index), cgls-lc100-2019/hex.h5 (spatial_index), cgls-lc100-2019/hex.h0 (spatial_index), cgls-lc100-2019/hex-fractions.h9 (spatial_index), forest-to-grass-shrub/binary/hex.h10 (spatial_index), nlcd/hex.h10 (spatial_index)]. Add bbox once the placename \u2192 bbox gazetteer covers it.",
-    "summaries.item_count: parts overlap, so this is max(part), not the sum \u2014 cgls-lc100-2019/ 813637591, forest-to-grass-shrub/ 56092940, nlcd/ 1754971118. Sum them only once the parts are known to be disjoint."
-  ],
+  "readme": "## README.md\n# Copernicus Global Land Cover 100 m v3.0.1 (CGLS-LC100, 2019)\n\nGlobal land cover classification at 100 m resolution for 2019, from the\n[Copernicus Global Land Service Land Cover product v3.0.1 (Collection 3)](https://land.copernicus.eu/global/products/lc).\nUses the FAO Land Cover Classification System (LCCS); overall accuracy ~80%.\n\nLicense: **CC-BY-4.0**. Source: <https://zenodo.org/records/3939050>.\n\n## Assets\n\n| Asset | Format | Path |\n|---|---|---|\n| `cgls-lc100-2019-cog` | Cloud-Optimized GeoTIFF (EPSG:4326, uint8) | `https://s3-west.nrp-nautilus.io/public-land-cover/cgls-lc100-2019-cog.tif` |\n| `cgls-lc100-2019-hex` | H3 hex GeoParquet (resolution 9, hive-partitioned by `h0`) | `https://s3-west.nrp-nautilus.io/public-land-cover/cgls-lc100-2019/hex/h0=*/data_0.parquet` |\n\nThe hex layer aggregates the source raster to **H3 resolution 9** (~174 m edge,\n~10 source pixels per cell) by **mode** (most frequent class per cell). One row per\n`h9` cell. `lc_class` is **categorical** \u2014 only the 23 canonical LCCS codes appear.\nRe-hexed on the antimeridian/polar-fixed pipeline (boettiger-lab/datasets #88, #92,\n#93); the prior resolution-8 build inflated and dropped cells at the \u00b1180\u00b0 seam\n(boettiger-lab/data-workflows #186).\n\n## Querying the hex layer (DuckDB)\n\n```sql\nINSTALL httpfs; LOAD httpfs;\n-- Global class histogram (cell counts)\nSELECT lc_class, COUNT(*) AS cells\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-land-cover/cgls-lc100-2019/hex/h0=*/data_0.parquet')\nGROUP BY lc_class ORDER BY cells DESC;\n```\n\n`lc_class` is a class code \u2014 **never `SUM` or `AVG` it.** To estimate the area of a\nclass, count distinct cells and multiply by the H3 resolution-9 cell area:\n\n```sql\n-- Approx area (km\u00b2) of forest classes (111\u2013126), res-9 cell \u2248 0.105 km\u00b2\nSELECT COUNT(DISTINCT h9) * 0.105 AS forest_km2\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-land-cover/cgls-lc100-2019/hex/h0=*/data_0.parquet')\nWHERE lc_class BETWEEN 111 AND 126;\n```\n\nParent indexes `h8`, `h7`, `h6`, `h5` are present for multi-scale joins; partition on\n`h0` to prune reads.\n\n## Displaying the COG (MapLibre GL JS via TiTiler)\n\nThe raster has no PMTiles layer; render the COG through a TiTiler XYZ endpoint:\n\n```js\nmap.addSource('cgls-lc100', {\n  type: 'raster',\n  tiles: ['https://titiler.../cog/tiles/{z}/{x}/{y}.png?url=' +\n    encodeURIComponent('https://s3-west.nrp-nautilus.io/public-land-cover/cgls-lc100-2019-cog.tif') +\n    '&colormap_name=...'],   // use the categorical class palette (see classification:classes in STAC)\n  tileSize: 256\n});\nmap.addLayer({ id: 'cgls-lc100', type: 'raster', source: 'cgls-lc100' });\n```\n\n## Land cover classes (FAO LCCS)\n\n| Code | Class | | Code | Class |\n|---|---|---|---|---|\n| 0 | No input data | | 113 | Closed forest, deciduous needle leaf |\n| 20 | Shrubs | | 114 | Closed forest, deciduous broad leaf |\n| 30 | Herbaceous vegetation | | 115 | Closed forest, mixed |\n| 40 | Cultivated / managed | | 116 | Closed forest, unknown |\n| 50 | Urban / built-up | | 121 | Open forest, evergreen needle leaf |\n| 60 | Bare / sparse vegetation | | 122 | Open forest, evergreen broad leaf |\n| 70 | Snow and ice | | 123 | Open forest, deciduous needle leaf |\n| 80 | Permanent water bodies | | 124 | Open forest, deciduous broad leaf |\n| 90 | Herbaceous wetland | | 125 | Open forest, mixed |\n| 100 | Moss and lichen | | 126 | Open forest, unknown |\n| 111 | Closed forest, evergreen needle leaf | | 200 | Open sea |\n\nValue 0 (\"No input data\") is a retained fill class; the COG GDAL NoData sentinel is 255.\n\n## Citation\n\nBuchhorn, M., Lesiv, M., Tsendbazar, N-E., Herold, M., Bertels, L., Smets, B. (2020).\nCopernicus Global Land Cover Layers \u2014 Collection 2. *Remote Sensing*, 12(6), 1044.\ndoi:10.3390/rs12061044\n\n## Global canopy height 2020, 10 m (`canopy-height-2020`)\n\nCanopy top height for 2020 at 10 m, 60 S to 84 N, from Lang et al. (2023, ETH Zurich): a deep learning model trained on GEDI lidar and applied to Sentinel-2 imagery. It comes with the model's predictive standard deviation, a per-pixel uncertainty. Built-up areas, snow, ice and permanent water are masked (255).\n\n| Asset | URL |\n|---|---|\n| Height, 10 m (VRT over 2,651 COG tiles) | `https://s3-west.nrp-nautilus.io/public-land-cover/canopy-height-2020/height.vrt` |\n| Standard deviation, 10 m (VRT) | `https://s3-west.nrp-nautilus.io/public-land-cover/canopy-height-2020/sd.vrt` |\n| H3 hex, mean height (resolution 9) | `https://s3-west.nrp-nautilus.io/public-land-cover/canopy-height-2020/height/hex/h0=*/data_0.parquet` |\n| H3 hex, mean standard deviation (resolution 9) | `https://s3-west.nrp-nautilus.io/public-land-cover/canopy-height-2020/sd/hex/h0=*/data_0.parquet` |\n| STAC | `https://s3-west.nrp-nautilus.io/public-land-cover/canopy-height-2020/stac-collection.json` |\n\nThe VRTs index the producers' own 3-degree cloud-optimized GeoTIFF tiles (in `height/tiles/` and `sd/tiles/`) with relative paths, so GDAL opens them over https or S3. Heights are whole metres; values above about 80 m are artefacts (a handful of cells, mostly at high latitude). The standard deviation hex is the average of the per-pixel standard deviations, which is an upper bound on the uncertainty of a cell's mean height, not that uncertainty itself.\n\n### DuckDB\n\n```sql\n-- mean canopy height per resolution 8 cell, tallest first: the plain average of its resolution 9\n-- cells with data (a partly masked cell counts as much as a fully covered one)\nSELECT h8, AVG(canopy_height_m) AS height_m\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-land-cover/canopy-height-2020/height/hex/h0=*/data_0.parquet')\nGROUP BY h8 ORDER BY height_m DESC LIMIT 10;\n```\n\n### MapLibre GL JS\n\n```js\nmap.addSource(\"canopy-height\", {\n  type: \"raster\",\n  tiles: [\"https://titiler.nrp-nautilus.io/cog/tiles/WebMercatorQuad/{z}/{x}/{y}.png?url=https://s3-west.nrp-nautilus.io/public-land-cover/canopy-height-2020/height.vrt&rescale=0,50&colormap_name=viridis\"],\n  tileSize: 256,\n});\nmap.addLayer({ id: \"canopy-height\", type: \"raster\", source: \"canopy-height\" });\n```\n\n### Source and licence\n\nLang, N., Jetz, W., Schindler, K., & Wegner, J. D. (2023). A high-resolution canopy height model of the Earth. *Nature Ecology & Evolution*, https://doi.org/10.1038/s41559-023-02206-6. Data: ETH Global Canopy Height 2020, version 1, https://doi.org/10.3929/ethz-b-000609802, downloaded 2026-10-29 from the producers' share (https://langnico.github.io/globalcanopyheight/); tiles are published unchanged, with sizes and sha256 in `s3://public-land-cover/raw/canopy-height-2020/manifest/`. **CC BY 4.0**.\n",
   "_state": "drafted",
-  "cataloged_at": "2026-10-30T09:25:29+00:00",
+  "cataloged_at": "2026-11-11T10:41:41+00:00",
   "store_format": null
 }
