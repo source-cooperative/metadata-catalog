@@ -4,15 +4,16 @@
   "stac_version": "1.1.0",
   "id": "ausantarctic/gebco",
   "title": "General Bathymetric Chart of the Oceans",
-  "description": "GEBCO (General Bathymetric Chart of the Oceans) is a global terrain model providing elevation and bathymetry data in metres on a 15 arc-second interval grid, covering both ocean and land. The dataset includes a Type Identifier (TID) Grid indicating source data types, and incorporates under-ice topography for Greenland and Antarctica. Data are distributed as Cloud Optimised GeoTIFFs for annual releases.",
+  "description": "GEBCO (General Bathymetric Chart of the Oceans) is a global terrain model providing elevation and bathymetry in metres on a 15 arc-second grid, covering both ocean and land. It includes a Type Identifier (TID) grid describing source data types and a version with under-ice topography for Greenland and Antarctica, distributed as annual Cloud Optimised GeoTIFF releases.",
   "keywords": [
     "bathymetry",
     "oceanography",
     "elevation",
-    "ocean",
     "topography",
-    "seafloor",
-    "global-coverage"
+    "digital-elevation-model",
+    "cloud-optimized-geotiff",
+    "global-coverage",
+    "remote-sensing"
   ],
   "providers": [
     {
@@ -57,10 +58,26 @@
     }
   },
   "assets": {
-    "data": {
-      "href": "https://data.source.coop/ausantarctic/gebco/",
-      "type": "image/tiff; application=geotiff",
-      "title": "Dataset files (3 x .tif)",
+    "virtual/gebco-2024/icechunk": {
+      "href": "https://data.source.coop/ausantarctic/gebco/virtual/gebco-2024/icechunk/",
+      "type": "application/octet-stream",
+      "title": "virtual/gebco-2024/icechunk/ (1 \u00d7 .icechunk)",
+      "roles": [
+        "data"
+      ]
+    },
+    "virtual/gebco-2025/icechunk": {
+      "href": "https://data.source.coop/ausantarctic/gebco/virtual/gebco-2025/icechunk/",
+      "type": "application/octet-stream",
+      "title": "virtual/gebco-2025/icechunk/ (1 \u00d7 .icechunk)",
+      "roles": [
+        "data"
+      ]
+    },
+    "virtual/gebco-2026/icechunk": {
+      "href": "https://data.source.coop/ausantarctic/gebco/virtual/gebco-2026/icechunk/",
+      "type": "application/octet-stream",
+      "title": "virtual/gebco-2026/icechunk/ (1 \u00d7 .icechunk)",
       "roles": [
         "data"
       ]
@@ -78,15 +95,8 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "featured": 0,
-  "exts": {
-    "tif": 3,
-    "json": 3,
-    "md": 1
-  },
-  "account_id": "ausantarctic",
-  "visibility": "public",
-  "disabled": false,
+  "updated_at": "2026-05-07T01:12:52.396Z",
+  "object_count": 288,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -99,27 +109,58 @@
       "prefix": "ausantarctic/gebco/"
     }
   },
+  "featured": 0,
+  "created_at": "2026-05-07T00:05:10.795Z",
+  "data_mode": "open",
+  "visibility": "public",
+  "exts": {
+    "": 140,
+    "parq": 75,
+    "parquet": 31,
+    "json": 15,
+    "vrt": 6,
+    "tif": 3,
+    "zmetadata": 3,
+    "ndjson": 3,
+    "sqlite": 3,
+    "png": 3,
+    "md": 2,
+    "naxva9p74kg8fmmacfy0": 1,
+    "tsv": 1,
+    "hstz0fpkbqmptd5d55f0": 1,
+    "jzjrvxg7vg6nch58tn5g": 1
+  },
+  "disabled": false,
+  "total_bytes": 11165096840,
+  "ext_bytes": {
+    "tif": 11148620291,
+    "parq": 9736356,
+    "sqlite": 3178496,
+    "": 2118483,
+    "parquet": 656016,
+    "png": 597181,
+    "vrt": 83868,
+    "json": 74400,
+    "zmetadata": 21618,
+    "md": 4474,
+    "ndjson": 2748,
+    "hstz0fpkbqmptd5d55f0": 846,
+    "jzjrvxg7vg6nch58tn5g": 843,
+    "naxva9p74kg8fmmacfy0": 841,
+    "tsv": 379
+  },
+  "product_id": "gebco",
+  "account_id": "ausantarctic",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "object_count": 7,
-  "data_mode": "open",
-  "created_at": "2026-05-07T00:05:10.795Z",
-  "updated_at": "2026-05-07T01:12:52.396Z",
-  "product_id": "gebco",
-  "total_bytes": 11148631573,
+  "objects_updated_at": "2026-11-04T11:43:23+00:00",
   "readme": "## README.md\n# General Bathymetric Chart of the Oceans Data\n\nData originall accessed from the\n[GEBCO website](https://www.gebco.net/data_and_products/gridded_bathymetry_data/).\n\nGEBCO's gridded bathymetric data set, is a global terrain model for ocean and land, providing elevation data, in meters, on a 15 arc-second interval grid. It is accompanied by a Type Identifier (TID) Grid that gives information on the types of source data that the GEBCO_2024 Grid is based on.\n\nThis release includes a version of the grid with under-ice topography/bathymetry information for Greenland and Antarctica.\n\nFind out information about [terms of use and attribution here](https://www.gebco.net/data_and_products/gridded_bathymetry_data/#a1).\n\nDocumentation on [data preparation is accessible here](https://github.com/AustralianAntarcticDivision/gebco).\n\n## Access data\n\n### Stream data\n\nThe cloud optimised geotiff can be used directly in QGIS or\nother applications using this URL:\n`https://data.source.coop/ausantarctic/gebco/GEBCO_<year>.tif`.\n\n### Example to load as Xarray\n\n```python\nfrom odc.stac import load\nfrom pystac import Item\n\n# Bounding box around Tasmania\nbbox = [140.0, -45.0, 150.0, -35.0]\n\n# Get the item as a PySTAC Item\nitem = Item.from_file(\n    \"https://data.source.coop/ausantarctic/gebco/GEBCO_2024.stac-item.json\"\n)\n\n# Load using odc.stac.load\ndata = load(\n    [item],\n    bbox=bbox,\n    chunks={\"latitude\": 1024, \"longitude\": 1024},\n)\n\n# Plot an interactive map\ndata.elevation.odc.explore(vmin=-3000, vmax=3000, cmap=\"terrain\")\n```\n\n### Downloading\n\nWhile the idea of cloud native data formats is to not download, you can\ndownload this data using the following URLs:\n\n* 2024: `https://data.source.coop/ausantarctic/gebco/GEBCO_2024.tif`\n* 2025: `https://data.source.coop/ausantarctic/gebco/GEBCO_2025.tif`\n* 2026: `https://data.source.coop/ausantarctic/gebco/GEBCO_2026.tif`\n",
   "_review": [
-    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
-    "providers: role [processor] for 'Australian Antarctic Division' is an AI guess \u2014 Hosts the data preparation pipeline repo (github.com/AustralianAntarcticDivision/gebco); assumed processor role based on that.. Verify before flipping to _state: reviewed."
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-06-04T01:04:19+00:00",
-  "ext_bytes": {
-    "tif": 11148620291,
-    "json": 9407,
-    "md": 1875
-  },
-  "objects_updated_at": "2026-11-04T11:43:23+00:00"
+  "cataloged_at": "2026-11-14T10:18:38+00:00",
+  "store_format": "icechunk"
 }
