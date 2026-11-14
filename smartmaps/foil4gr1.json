@@ -7,10 +7,10 @@
   "description": "Daily, cloud-aware snow-cover records for Hokkaido, Japan, derived from Sentinel-2 L2A imagery on a 112 m XYZ-tile cell grid. Includes per-pass cloud-optimized GeoTIFF observations, per-municipality class counts and state summaries in Parquet, and raster PMTiles for a dashboard.",
   "license": "CC-BY-4.0",
   "keywords": [
-    "remote-sensing",
+    "cryosphere",
     "sentinel-2",
     "satellite-imagery",
-    "cryosphere",
+    "remote-sensing",
     "time-series",
     "pmtiles",
     "cloud-optimized-geotiff",
@@ -56,7 +56,7 @@
     "data": {
       "href": "https://data.source.coop/smartmaps/foil4gr1/",
       "type": "application/octet-stream",
-      "title": "Dataset files (1631 x .pmtiles)",
+      "title": "Dataset files (1655 x .pmtiles)",
       "roles": [
         "data"
       ]
@@ -74,25 +74,6 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "total_bytes": 26896140895,
-  "object_count": 3535,
-  "featured": 0,
-  "visibility": "public",
-  "updated_at": "2025-08-21T16:39:55.567Z",
-  "exts": {
-    "pmtiles": 1631,
-    "parquet": 947,
-    "tif": 942,
-    "json": 14,
-    "md": 1
-  },
-  "disabled": false,
-  "objects_updated_at": "2026-11-08T00:15:27+00:00",
-  "product_id": "foil4gr1",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -105,18 +86,37 @@
       "prefix": "smartmaps/foil4gr1/"
     }
   },
-  "account_id": "smartmaps",
-  "created_at": "2024-07-01T13:08:25.209513+00:00",
+  "product_id": "foil4gr1",
   "ext_bytes": {
-    "pmtiles": 26153209569,
-    "tif": 722334547,
-    "parquet": 15822631,
-    "json": 4772321,
+    "pmtiles": 26164130166,
+    "tif": 730149684,
+    "parquet": 15961392,
+    "json": 4833377,
     "md": 1827
   },
+  "created_at": "2024-07-01T13:08:25.209513+00:00",
+  "disabled": false,
+  "featured": 0,
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "objects_updated_at": "2026-11-08T00:15:27+00:00",
+  "exts": {
+    "pmtiles": 1645,
+    "parquet": 955,
+    "tif": 950,
+    "json": 14,
+    "md": 1
+  },
   "data_mode": "open",
+  "updated_at": "2025-08-21T16:39:55.567Z",
+  "total_bytes": 26915076446,
+  "account_id": "smartmaps",
+  "visibility": "public",
+  "object_count": 3565,
   "readme": "## snow-hokkaido__README.md\n# snow-hokkaido data\n\nDaily, cloud-aware snow-cover records for Hokkaido, built from Sentinel-2 L2A on a z18 XYZ-tile cell grid\n(112 m cells). Code, documentation and the dashboard: https://github.com/dwg7/snow-hokkaido\n\n## Layout\n\n- `obs/season=YYYY/<JST date>/<datatake_id>.tif`  obs-lite, one COG per pass: band 1 class (0 not scanned, 1 cloud,\n  2 shadow, 3 green = clear and no snow, 4 snow), band 2 clear_pct. EPSG:3857, z18 cells, 7168 x 4608 cells\n  (z9 tiles x 454..467, y 183..191). Not every pass covers all of Hokkaido: uncovered cells are 0.\n- `events/`  per municipality and pass: counts of cells by class (Parquet)\n- `derived/state/`  per municipality and date: last-known state counts (Parquet)\n- `derived/daily/`  per municipality and observed day: counts of that day's observation (one observation per cell per day; same columns as events)\n- `pixel/season=YYYY/latest.tif`  latest cell ledger (6 bands, uint16); a cache that can be rebuilt from `obs`\n- `view/`  raster PMTiles for the dashboard (z4-z10; a z10 pixel is a cell) and `dates.json`\n\nMunicipality boundary geometry is not included. Rebuild the cell-to-municipality map yourself (`just fetch-n03`,\n`just cellmap` in the repository).\n\n## License and attribution\n\nCC BY 4.0. Please credit:\n\n- Contains modified Copernicus Sentinel data 2026 (Sentinel-2 L2A, via Earth Search by Element 84).\n- Municipality codes and aggregation use \u300c\u56fd\u571f\u6570\u5024\u60c5\u5831(\u884c\u653f\u533a\u57df\u30c7\u30fc\u30bf)\u300d(\u56fd\u571f\u4ea4\u901a\u7701)\n  (https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-N03-2026.html) as the basis; the data were processed\n  (assignment to cells, aggregation). This is not a product made by the national government.\n- Snow classes are provisional (algorithm version in each file's tags); see the repository's `docs/stage1-checks.md`\n  for what was and was not verified.\n",
   "_state": "drafted",
-  "cataloged_at": "2026-11-05T09:27:11+00:00",
+  "cataloged_at": "2026-11-14T10:18:25+00:00",
   "store_format": null
 }
