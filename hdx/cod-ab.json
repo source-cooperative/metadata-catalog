@@ -7,7 +7,7 @@
   ],
   "id": "hdx/cod-ab",
   "title": "COD-AB Administrative Boundaries",
-  "description": "COD-AB (Common Operational Dataset for Administrative Boundaries) is a global, country-by-country collection of administrative boundary layers (admin0-admin4 polygons, boundary lines, and settlement/place points) with P-codes, multilingual names, and centroids, maintained by UN OCHA for humanitarian coordination. It is distributed as versioned per-country GeoParquet and PMTiles alongside merged global layers by admin level.",
+  "description": "COD-AB (Common Operational Dataset for Administrative Boundaries) is a global, country-by-country collection of administrative boundary layers (admin0\u2013admin4 polygons, boundary lines, and settlement/place points) with P-codes, multilingual names, and centroids. Maintained by UN OCHA for humanitarian coordination, it is distributed as versioned per-country GeoParquet and PMTiles alongside merged global layers by admin level.",
   "license": "CC-BY-3.0-IGO",
   "keywords": [
     "administrative-boundaries",
@@ -3166,8 +3166,7 @@
       "table:columns": [
         {
           "name": "geometry",
-          "type": "GEOMETRY('OGC:CRS84')",
-          "description": "[geometry] Country boundary polygon (CRS84)"
+          "type": "GEOMETRY('OGC:CRS84')"
         },
         {
           "name": "objectid",
@@ -3244,12 +3243,12 @@
         {
           "name": "center_lat",
           "type": "DOUBLE",
-          "description": "[latlon] Centroid latitude (paired with center_lon)"
+          "description": "[latlon] Latitude of the polygon centroid (paired with center_lon)"
         },
         {
           "name": "center_lon",
           "type": "DOUBLE",
-          "description": "[latlon] Centroid longitude (paired with center_lat)"
+          "description": "[latlon] Longitude of the polygon centroid (paired with center_lat)"
         },
         {
           "name": "SHAPE__Length",
@@ -3587,12 +3586,12 @@
         {
           "name": "x_coord",
           "type": "DOUBLE",
-          "description": "[latlon] Longitude of admin capital point (paired with y_coord)"
+          "description": "[latlon] Longitude of the admin capital point (paired with y_coord)"
         },
         {
           "name": "y_coord",
           "type": "DOUBLE",
-          "description": "[latlon] Latitude of admin capital point (paired with x_coord)"
+          "description": "[latlon] Latitude of the admin capital point (paired with x_coord)"
         },
         {
           "name": "adm3_name",
@@ -3774,8 +3773,7 @@
       "table:columns": [
         {
           "name": "geometry",
-          "type": "GEOMETRY('OGC:CRS84')",
-          "description": "[geometry] Settlement/place point geometry"
+          "type": "GEOMETRY('OGC:CRS84')"
         },
         {
           "name": "objectid",
@@ -3803,13 +3801,11 @@
         },
         {
           "name": "x_coord",
-          "type": "DOUBLE",
-          "description": "[latlon] Longitude of settlement/place point (paired with y_coord)"
+          "type": "DOUBLE"
         },
         {
           "name": "y_coord",
-          "type": "DOUBLE",
-          "description": "[latlon] Latitude of settlement/place point (paired with x_coord)"
+          "type": "DOUBLE"
         },
         {
           "name": "adm4_name",
@@ -5684,7 +5680,8 @@
         },
         {
           "name": "adm0_name",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[placename] Country name"
         },
         {
           "name": "adm0_name1",
@@ -5705,7 +5702,7 @@
         {
           "name": "adm1_name",
           "type": "VARCHAR",
-          "description": "[placename] Admin level 1 place name"
+          "description": "[placename] Admin level 1 (province/state) name"
         },
         {
           "name": "adm1_name1",
@@ -5758,7 +5755,7 @@
         {
           "name": "geometry",
           "type": "GEOMETRY('OGC:CRS84')",
-          "description": "[geometry] Admin level 1 boundary polygons (CRS84)"
+          "description": "[geometry] Admin level 1 boundary polygons in CRS84"
         }
       ],
       "table:row_count": 1916
@@ -5823,7 +5820,7 @@
         {
           "name": "adm2_name",
           "type": "VARCHAR",
-          "description": "[placename] Admin level 2 place name"
+          "description": "[placename] Admin level 2 (district/county) name"
         },
         {
           "name": "adm2_name1",
@@ -5876,7 +5873,7 @@
         {
           "name": "geometry",
           "type": "GEOMETRY('OGC:CRS84')",
-          "description": "[geometry] Admin level 2 boundary polygons (CRS84)"
+          "description": "[geometry] Admin level 2 boundary polygons in CRS84"
         }
       ],
       "table:row_count": 20209
@@ -5961,7 +5958,7 @@
         {
           "name": "adm3_name",
           "type": "VARCHAR",
-          "description": "[placename] Admin level 3 place name"
+          "description": "[placename] Admin level 3 name"
         },
         {
           "name": "adm3_name1",
@@ -6014,7 +6011,7 @@
         {
           "name": "geometry",
           "type": "GEOMETRY('OGC:CRS84')",
-          "description": "[geometry] Admin level 3 boundary polygons (CRS84)"
+          "description": "[geometry] Admin level 3 boundary polygons in CRS84"
         }
       ],
       "table:row_count": 66531
@@ -6066,7 +6063,7 @@
         {
           "name": "geometry",
           "type": "GEOMETRY('OGC:CRS84')",
-          "description": "[geometry] Admin level 4 boundary polygons (CRS84)"
+          "description": "[geometry] Admin level 4 boundary polygons in CRS84"
         },
         {
           "name": "adm0_name",
@@ -6086,8 +6083,7 @@
         },
         {
           "name": "adm4_name",
-          "type": "VARCHAR",
-          "description": "[placename] Admin level 4 place name"
+          "type": "VARCHAR"
         },
         {
           "name": "adm0_name1",
@@ -6167,8 +6163,7 @@
         },
         {
           "name": "adm4_pcode",
-          "type": "VARCHAR",
-          "description": "[admin_code] Admin level 4 P-code"
+          "type": "VARCHAR"
         },
         {
           "name": "adm_lvl",
@@ -6431,8 +6426,7 @@
         },
         {
           "name": "geometry",
-          "type": "GEOMETRY",
-          "description": "[geometry] Admin level 2 boundary polygons"
+          "type": "GEOMETRY"
         }
       ],
       "table:row_count": 19890
@@ -6603,8 +6597,7 @@
         },
         {
           "name": "geometry",
-          "type": "GEOMETRY",
-          "description": "[geometry] Admin level 3 boundary polygons"
+          "type": "GEOMETRY"
         }
       ],
       "table:row_count": 58486
@@ -6803,8 +6796,7 @@
         },
         {
           "name": "geometry",
-          "type": "GEOMETRY",
-          "description": "[geometry] Admin level 4 boundary polygons"
+          "type": "GEOMETRY"
         }
       ],
       "table:row_count": 217271
@@ -6904,23 +6896,29 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "exts": {
-    "json": 10740,
-    "md": 8714,
-    "parquet": 3190,
-    "pmtiles": 3187,
-    "jpg": 3187
-  },
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "featured": 0,
-  "objects_updated_at": "2026-11-05T09:13:15+00:00",
-  "visibility": "public",
-  "disabled": false,
   "account_id": "hdx",
   "created_at": "2026-06-22T15:31:11.638Z",
+  "objects_updated_at": "2026-11-05T09:13:15+00:00",
+  "object_count": 29031,
+  "ext_bytes": {
+    "parquet": 15814027469,
+    "pmtiles": 10291037009,
+    "jpg": 47599379,
+    "json": 32000744,
+    "md": 9485143
+  },
+  "featured": 0,
+  "disabled": false,
+  "visibility": "public",
+  "total_bytes": 26194149744,
+  "exts": {
+    "json": 10743,
+    "md": 8714,
+    "pmtiles": 3194,
+    "parquet": 3190,
+    "jpg": 3190
+  },
+  "product_id": "cod-ab",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -6933,23 +6931,17 @@
       "prefix": "hdx/cod-ab/"
     }
   },
-  "ext_bytes": {
-    "parquet": 15777871221,
-    "pmtiles": 10307018250,
-    "jpg": 39289510,
-    "json": 27317349,
-    "md": 9484416
-  },
-  "data_mode": "open",
-  "object_count": 29018,
-  "total_bytes": 26160980746,
-  "product_id": "cod-ab",
   "updated_at": "2026-06-22T15:38:42.401Z",
+  "data_mode": "open",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
   "readme": "## extended__README.md\n# COD-AB Administrative Boundaries\n\nA Portolan-managed STAC catalog\n\n---\n\n*Generated by [Portolan](https://github.com/portolan-sdi/portolan-cli) from STAC metadata and .portolan/metadata.yaml*\n\n\n## extended__afg__README.md\n# Afg\n\nCatalog: afg\n\n---\n\n*Generated by [Portolan](https://github.com/portolan-sdi/portolan-cli) from STAC metadata and .portolan/metadata.yaml*\n\n\n## extended__ago__README.md\n# Ago\n\nCatalog: ago\n\n---\n\n*Generated by [Portolan](https://github.com/portolan-sdi/portolan-cli) from STAC metadata and .portolan/metadata.yaml*\n\n\n## extended__are__README.md\n# Are\n\nCatalog: are\n\n---\n\n*Generated by [Portolan](https://github.com/portolan-sdi/portolan-cli) from STAC metadata and .portolan/metadata.yaml*\n\n\n## extended__arm__README.md\n# Arm\n\nCatalog: arm\n\n---\n\n*Generated by [Portolan](https://github.com/portolan-sdi/portolan-cli) from STAC metadata and .portolan/metadata.yaml*\n\n\n## extended__aze__README.md\n# Aze\n\nCatalog: aze\n\n---\n\n*Generated by [Portolan](https://github.com/portolan-sdi/portolan-cli) from STAC metadata and .portolan/metadata.yaml*\n\n\n## extended__bdi__README.md\n# Bdi\n\nCatalog: bdi\n\n---\n\n*Generated by [Portolan](https://github.com/portolan-sdi/portolan-cli) from STAC metadata and .portolan/metadata.yaml*\n\n\n## extended__ben__README.md\n# Ben\n\nCatalog: ben\n\n---\n\n*Generated by [Portolan](https://github.com/portolan-sdi/portolan-cli) from STAC metadata and .portolan/metadata.yaml*\n\n\n## extended__bfa__README.md\n# Bfa\n\nCatalog: bfa\n\n---\n\n*Generated by [Portolan](https://github.com/portolan-sdi/portolan-cli) from STAC metadata and .portolan/metadata.yaml*\n\n\n## extended__bgd__README.md\n# Bgd\n\nCatalog: bgd\n\n---\n\n*Generated by [Portolan](https://github.com/portolan-sdi/portolan-cli) from STAC metadata and .portolan/metadata.yaml*\n\n\n## extended__bgr__README.md\n# Bgr\n\nCatalog: bgr\n\n---\n\n*Generated by [Portolan](https://github.com/portolan-sdi/portolan-cli) from STAC metadata and .portolan/metadata.yaml*\n\n\n## extended__blr__README.md\n# Blr\n\nCatalog: blr\n\n---\n\n*Generated by [Portolan](https://github.com/portolan-sdi/portolan-cli) from STAC metadata and .portolan/metadata.yaml*\n\n\n## extended__blz__README.md\n# Blz\n\nCatalog: blz\n\n---\n\n*Generated by [Portolan](https://github.com/portolan-sdi/portolan-cli) from STAC metadata and .portolan/metadata.yaml*\n\n\n## extended__bol__README.md\n# Bol\n\nCatalog: bol\n\n---\n\n*Generated by [Portolan](https://github.com/portolan-sdi/portolan-cli) from STAC metadata and .portolan/metadata.yaml*\n\n\n## extended__btn__README.md\n# Btn\n\nCatalog: btn\n\n---\n\n*Generated by [Portolan](https://github.com/portolan-sdi/portolan-cli) from STAC metadata and .portolan/metadata.yaml*\n\n\n## extended__caf__README.md\n# Caf\n\nCatalog: caf\n\n---\n\n*Generated by [Portolan](https://github.com/portolan-sdi/portolan-cli) from STAC metadata and .portolan/metadata.yaml*\n\n\n## extended__chl__README.md\n# Chl\n\nCatalog: chl\n\n---\n\n*Generated by [Portolan](https://github.com/portolan-sdi/portolan-cli) from STAC metadata and .portolan/metadata.yaml*\n\n\n## extended__civ__README.md\n# Civ\n\nCatalog: civ\n\n---\n\n*Generated by [Portolan](https://github.com/portolan-sdi/portolan-cli) from STAC metadata and .portolan/metadata.yaml*\n\n\n## extended__cmr__README.md\n# Cmr\n\nCatalog: cmr\n\n---\n\n*Generated by [Portolan](https://github.com/portolan-sdi/portolan-cli) from STAC metadata and .portolan/metadata.yaml*\n\n\n## extended__cod__README.md\n# Cod\n\nCatalog: cod\n\n---\n\n*Generated by [Portolan](https://github.com/portolan-sdi/portolan-cli) from STAC metadata and .portolan/metadata.yaml*\n\n\n## extended__cog__README.md\n# Cog\n\nCatalog: cog\n\n---\n\n*Generated by [Portolan](https://github.com/portolan-sdi/portolan-cli) from STAC metadata and .portolan/metadata.yaml*\n\n\n## global__README.md\n# COD-AB Administrative Boundaries\n\n![administrative boundaries](https://img.shields.io/badge/administrative_boundaries-blue) ![COD-AB](https://img.shields.io/badge/COD--AB-blue) ![humanitarian](https://img.shields.io/badge/humanitarian-blue) ![OCHA](https://img.shields.io/badge/OCHA-blue) ![HDX](https://img.shields.io/badge/HDX-blue) ![GeoParquet](https://img.shields.io/badge/GeoParquet-blue) ![cloud-native](https://img.shields.io/badge/cloud--native-blue)\n\nA Portolan-managed STAC catalog\n\n## Collections\n\n### [Admin1](global/admin1/)\n\nAdmin1\n\n### [Admin2](global/admin2/)\n\nAdmin2\n\n### [Admin3](global/admin3/)\n\nAdmin3\n\n### [Admin4](global/admin4/)\n\nAdmin4\n\n## Coverage\n\n**Spatial Extent**\n\n- West: -118.3651, South: -55.9795, East: 170.2383, North: 56.1725\n\n## Source\n\n[https://gis.unocha.org/server/rest/services/Hosted](https://gis.unocha.org/server/rest/services/Hosted)\n\n## Attribution\n\nUN OCHA Information Systems Section (ISS)\n\n## License\n\nCC-BY-3.0-IGO\n\n## Contact\n\nHDX Data Systems Team <hdx@un.org>\n\n---\n\n*Generated by [Portolan](https://github.com/portolan-sdi/portolan-cli) from STAC metadata and .portolan/metadata.yaml*\n\n\n## matched__README.md\n# COD-AB Administrative Boundaries\n\nA Portolan-managed STAC catalog\n\n---\n\n*Generated by [Portolan](https://github.com/portolan-sdi/portolan-cli) from STAC metadata and .portolan/metadata.yaml*\n\n\n## next__README.md\n# COD-AB Administrative Boundaries\n\n![administrative boundaries](https://img.shields.io/badge/administrative_boundaries-blue) ![COD-AB](https://img.shields.io/badge/COD--AB-blue) ![humanitarian](https://img.shields.io/badge/humanitarian-blue) ![OCHA](https://img.shields.io/badge/OCHA-blue) ![HDX](https://img.shields.io/badge/HDX-blue) ![GeoParquet](https://img.shields.io/badge/GeoParquet-blue) ![cloud-native](https://img.shields.io/badge/cloud--native-blue)\n\nA Portolan-managed STAC catalog\n\n## Collections\n\n### [Admin1](next/admin1/)\n\nAdmin1\n\n### [Admin2](next/admin2/)\n\nAdmin2\n\n### [Admin3](next/admin3/)\n\nAdmin3\n\n### [Admin4](next/admin4/)\n\nAdmin4\n\n## Coverage\n\n**Spatial Extent**\n\n- West: -118.3651, South: -55.9795, East: 170.2383, North: 56.1725\n\n## Source\n\n[https://gis.unocha.org/server/rest/services/Hosted](https://gis.unocha.org/server/rest/services/Hosted)\n\n## Attribution\n\nUN OCHA Information Systems Section (ISS)\n\n## License\n\nCC-BY-3.0-IGO\n\n## Contact\n\nHDX Data Systems Team <hdx@un.org>\n\n---\n\n*Generated by [Portolan](https://github.com/portolan-sdi/portolan-cli) from STAC metadata and .portolan/metadata.yaml*\n\n\n## original__README.md\n# COD-AB Administrative Boundaries\n\nA Portolan-managed STAC catalog\n\n---\n\n*Generated by [Portolan](https://github.com/portolan-sdi/portolan-cli) from STAC metadata and .portolan/metadata.yaml*\n",
   "_review": [
     "summaries.item_count: parts overlap, so this is max(part), not the sum \u2014 extended/ 7498, matched/ 8544, original/ 22624. Sum them only once the parts are known to be disjoint."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-11-05T09:31:26+00:00",
+  "cataloged_at": "2026-11-14T10:17:44+00:00",
   "store_format": null
 }
