@@ -1,25 +1,19 @@
 # Source Cooperative catalog — status
 
-_Updated 2026-11-14 10:19 UTC by the nightly pipeline._
+_Updated 2026-11-15 09:12 UTC by the nightly pipeline._
 
-**453 datasets cataloged**  ·  **4 queued for next run**  ·  last run handled **10**
+**453 datasets cataloged**  ·  **0 queued for next run**  ·  last run handled **4**
 
 ## Last run
 
-<details><summary>✅ drafted — 10 datasets</summary>
+<details><summary>✅ drafted — 4 datasets</summary>
 
-| repo                                                                                 |
-| ------------------------------------------------------------------------------------ |
-| [ausantarctic/gebco](https://source.coop/ausantarctic/gebco)                         |
-| [bkr/aoml](https://source.coop/bkr/aoml)                                             |
-| [ftw/harmonized-field-data](https://source.coop/ftw/harmonized-field-data)           |
-| [hdx/cod-ab](https://source.coop/hdx/cod-ab)                                         |
-| [ismip/ismip7-ais-forcing](https://source.coop/ismip/ismip7-ais-forcing)             |
-| [ismip/ismip7-gris-forcing](https://source.coop/ismip/ismip7-gris-forcing)           |
-| [nlebovits/phl-housing-demo](https://source.coop/nlebovits/phl-housing-demo)         |
-| [portolan-mirrors/firms-catalog](https://source.coop/portolan-mirrors/firms-catalog) |
-| [smartmaps/foil4gr1](https://source.coop/smartmaps/foil4gr1)                         |
-| [tge-labs/s2-stac-geoparquet](https://source.coop/tge-labs/s2-stac-geoparquet)       |
+| repo                                                                           |
+| ------------------------------------------------------------------------------ |
+| [dynamical/asos-parquet](https://source.coop/dynamical/asos-parquet)           |
+| [giswqs/opengeos](https://source.coop/giswqs/opengeos)                         |
+| [redcastle-resources/treemap](https://source.coop/redcastle-resources/treemap) |
+| [source/metadata-catalog](https://source.coop/source/metadata-catalog)         |
 
 </details>
 
@@ -28,23 +22,23 @@ _Updated 2026-11-14 10:19 UTC by the nightly pipeline._
 
 | run                                                                                                    | outcome | drafted | redraft | resets | failed | queued | cataloged |
 | ------------------------------------------------------------------------------------------------------ | ------- | ------: | ------: | -----: | -----: | -----: | --------: |
+| [2026-11-15](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/43697586957) | ✅       |         |       4 |        |        |      0 |       453 |
 | [2026-11-14](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/43578974621) | ✅       |         |      10 |        |        |      0 |       453 |
 | [2026-11-13](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/43400119725) | ✅       |         |      10 |        |        |      4 |       453 |
 | [2026-11-12](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/43190474411) | ✅       |         |      10 |        |        |     14 |       453 |
 | [2026-11-11](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/42993490272) | ✅       |         |      10 |        |        |     24 |       453 |
 | [2026-11-10](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/42788398734) | ❌       |         |       2 |        |        |     43 |       453 |
 | [2026-11-09](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/42593918058) | ✅       |      10 |         |        |        |     37 |       453 |
-| [2026-11-08](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/42465803623) | ✅       |         |         |        |        |      0 |       443 |
 
 ## Persistent failures
 
-**2 datasets failing**  ·  2 open issues  ·  oldest **52d**  ·  **1** ≥30d  ·  [all open issues](https://github.com/source-cooperative/metadata-catalog/issues?q=is%3Aissue+is%3Aopen+label%3Aprobe-failure)
+**2 datasets failing**  ·  2 open issues  ·  oldest **53d**  ·  **1** ≥30d  ·  [all open issues](https://github.com/source-cooperative/metadata-catalog/issues?q=is%3Aissue+is%3Aopen+label%3Aprobe-failure)
 
 <details><summary>the 2 open issues, oldest first</summary>
 
 | repo                                                                         | age (d) |                                                                     issue |
 | ---------------------------------------------------------------------------- | ------: | ------------------------------------------------------------------------: |
-| [alukach/firesmoke](https://source.coop/alukach/firesmoke)                   |      52 | [#166](https://github.com/source-cooperative/metadata-catalog/issues/166) |
+| [alukach/firesmoke](https://source.coop/alukach/firesmoke)                   |      53 | [#166](https://github.com/source-cooperative/metadata-catalog/issues/166) |
 | [portolan/portolan-pipeline](https://source.coop/portolan/portolan-pipeline) |       9 | [#169](https://github.com/source-cooperative/metadata-catalog/issues/169) |
 
 </details>
@@ -1011,16 +1005,12 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 
 </details>
 
-<details><summary>stale (catalog bytes ≠ S3; fixed by <code>make process-all</code>) — 6 datasets (29.6 TB)</summary>
+<details><summary>stale (catalog bytes ≠ S3; fixed by <code>make process-all</code>) — 2 datasets (29.5 TB)</summary>
 
-| repo                                                                           | updated    |        catalog → S3 |
-| ------------------------------------------------------------------------------ | ---------- | ------------------: |
-| [dynamical/asos-parquet](https://source.coop/dynamical/asos-parquet)           | 2026-11-08 |   20.4 GB → 20.4 GB |
-| [alukach/firesmoke](https://source.coop/alukach/firesmoke)                     | 2026-11-07 |     1.2 GB → 1.5 GB |
-| [source/metadata-catalog](https://source.coop/source/metadata-catalog)         | 2026-11-07 | 812.2 KB → 825.3 KB |
-| [giswqs/opengeos](https://source.coop/giswqs/opengeos)                         | 2026-11-06 |   21.3 GB → 21.3 GB |
-| [redcastle-resources/treemap](https://source.coop/redcastle-resources/treemap) | 2026-11-02 |   73.0 GB → 73.0 GB |
-| [mapterhorn/mapterhorn](https://source.coop/mapterhorn/mapterhorn)             | 2026-10-28 |   30.4 TB → 29.5 TB |
+| repo                                                               | updated    |      catalog → S3 |
+| ------------------------------------------------------------------ | ---------- | ----------------: |
+| [alukach/firesmoke](https://source.coop/alukach/firesmoke)         | 2026-11-07 |   1.2 GB → 1.5 GB |
+| [mapterhorn/mapterhorn](https://source.coop/mapterhorn/mapterhorn) | 2026-10-28 | 30.4 TB → 29.5 TB |
 
 </details>
 
