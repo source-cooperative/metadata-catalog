@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "portolan-mirrors/gem-15-catalog",
+  "title": "GEM-15: Google Elevation Models at 15 m",
+  "description": "GEM-15 is Google Research's experimental near-global surface and terrain elevation model at 15 m resolution, covering 84\u00b0N\u201361\u00b0S, with a 5-band Digital Surface Model and a co-registered bare-earth Digital Terrain Model derived from sub-meter optical stereo imagery. This Portolan catalog mirrors the metadata, a STAC-GeoParquet cell index, and terrarium-encoded PMTiles for 3D mapping, while the source COGs remain in Google's public bucket.",
+  "license": "CC-BY-4.0",
+  "keywords": [
+    "digital-elevation-model",
+    "elevation",
+    "pmtiles",
+    "topography",
+    "global-coverage",
+    "remote-sensing",
+    "geoparquet"
+  ],
+  "providers": [
+    {
+      "name": "Google Research",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Portolan Mirrors",
+      "roles": [
+        "host",
+        "processor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/portolan-mirrors/gem-15-catalog"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -180.0,
+          -85.0511287,
+          180.0,
+          85.0511287
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/portolan-mirrors/gem-15-catalog/",
+      "type": "application/octet-stream",
+      "title": "Dataset files (7 x .pmtiles)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/portolan-mirrors/gem-15-catalog/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/portolan-mirrors/gem-15-catalog",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "rel": "describedby",
+      "href": "./README.md",
+      "type": "text/markdown",
+      "title": "Catalog README"
+    },
+    {
+      "rel": "agents",
+      "href": "./AGENTS.md",
+      "type": "text/markdown",
+      "title": "Catalog agent guide"
+    },
+    {
+      "rel": "vcs",
+      "href": "https://github.com/portolan-mirrors/gem-15-catalog",
+      "title": "Source repository"
+    },
+    {
+      "rel": "issues",
+      "href": "https://github.com/portolan-mirrors/gem-15-catalog/issues",
+      "title": "Issue tracker"
+    },
+    {
+      "rel": "cite-as",
+      "href": "https://doi.org/10.31223/X55N75"
+    }
+  ],
+  "product_id": "gem-15-catalog",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "visibility": "public",
+  "total_bytes": 195393087,
+  "data_mode": null,
+  "object_count": 1,
+  "disabled": false,
+  "ext_bytes": {
+    "pmtiles": 195393087
+  },
+  "account_id": "portolan-mirrors",
+  "featured": 0,
+  "created_at": "2026-11-13T17:49:46.303Z",
+  "objects_updated_at": "2026-11-14T14:57:54+00:00",
+  "mirrors": {
+    "aws-opendata-us-west-2": {
+      "connection_id": "aws-opendata-us-west-2",
+      "is_primary": true,
+      "prefix": "portolan-mirrors/gem-15-catalog/"
+    }
+  },
+  "exts": {
+    "pmtiles": 1
+  },
+  "updated_at": "2026-11-13T17:49:46.303Z",
+  "readme": "## README.md\n# GEM-15: Google Elevation Models at 15 m\n\nGEM-15, Google Research's experimental near-global surface and terrain elevation\nmodels, mirrored on Source Cooperative as a Portolan catalog.\n\nAgents and automated clients should read [AGENTS.md](AGENTS.md) instead of this\npage.\n\n## What is here\n\n| Collection | Items | Grid | Coverage | What it is |\n|---|---|---|---|---|\n| [`gem-15`](gem-15/README.md) | 13,485 one-degree cells | 15 m | 84\u00b0N\u201361\u00b0S | A 5-band Digital Surface Model and a co-registered 1-band bare-earth Digital Terrain Model, from sub-meter optical stereo imagery |\n| [`mapterhorn-gem15`](mapterhorn-gem15/README.md) | none | 512 px terrarium tiles | 3 test areas | An experiment: GEM-15 run through the Mapterhorn terrain pipeline on an unmerged fork, as six small PMTiles archives over Catalonia, Cusco and the High Atlas, a surface and a bare-earth model for each |\n\nThe second collection is a measurement rather than a product. It answers\n[mapterhorn#368](https://github.com/mapterhorn/mapterhorn/issues/368) and is\nneither a Mapterhorn release nor endorsed by that project. Its\n[README](mapterhorn-gem15/README.md) gives the result, which is about how the\npipeline picks a maximum zoom.\n\nThe 26,970 Cloud-Optimized GeoTIFFs behind the `gem-15` items, about 12.3 TB,\nstay in Google's public bucket and are referenced there. What this catalog publishes is\nthe metadata, an index of every cell as STAC-GeoParquet, a global overview image,\nterrarium-encoded terrain tiles for MapLibre, three MapLibre styles, and the\ndocumentation. The collection's [README](gem-15/README.md) covers bands,\naccuracy and limitations; its [agent guide](gem-15/AGENTS.md) covers access\npatterns and the traps.\n\nBrowse the catalog in the\n[data browser](https://source.coop/portolan-mirrors/gem-15-catalog).\n\n## License\n\n[CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/). The Earth Engine terms\nof use require this exact attribution:\n\n> This dataset is produced by Google\n\n## Provenance\n\nThis catalog is a mirror, not the official publication. Google Research produced\nGEM-15 and publishes it as an\n[Earth Engine ImageCollection](https://developers.google.com/earth-engine/datasets/catalog/projects_climate-and-sustainability_assets_gem-15_v1),\nas an\n[explorer app](https://climate-and-sustainability.projects.earthengine.app/view/gem-15),\nand as COGs with a STAC catalog at\n[`gs://climate-and-sustainability/gem-15`](https://storage.googleapis.com/climate-and-sustainability/gem-15/stac/gem-15/collection.json),\nunder a permanent no-deletion retention policy. The method and validation are in\nthe preprint, Batchu et al. (2026),\n[doi:10.31223/X55N75](https://doi.org/10.31223/X55N75).\n\nPortolan Mirrors hosts this copy. It syncs when Google releases a new GEM-15\nversion, not on a clock, because the source is a versioned release rather than a\nfeed. The metadata and the pipeline that builds the derived files live in the\n[catalog repository](https://github.com/portolan-mirrors/gem-15-catalog), with an\n[issue tracker](https://github.com/portolan-mirrors/gem-15-catalog/issues) for\nproblems with the mirror.\n\n## Access\n\nFind the cells covering a point, with one HTTP range request, in DuckDB:\n\n```sql\nINSTALL httpfs; LOAD httpfs;\nSELECT \"gem:cell_id\" AS cell, \"proj:code\" AS utm_zone, assets.dsm.href\nFROM read_parquet('https://data.source.coop/portolan-mirrors/gem-15-catalog/gem-15/items.parquet')\nWHERE bbox.xmin <= 2.165 AND bbox.xmax > 2.165\n  AND bbox.ymin <= 41.395 AND bbox.ymax > 41.395;\n```\n\nThen read that cell's five-band DSM straight from Google's bucket, no download:\n\n```sh\ngdalinfo /vsicurl/https://storage.googleapis.com/climate-and-sustainability/gem-15/p40_p0/w2s41/dsm/zall/mosaic.tif\n```\n",
+  "_review": [
+    "providers: role [host, processor] for 'Portolan Mirrors' is an AI guess \u2014 Described as hosting the mirror and building derived files (index, tiles); assumed host and processor roles.. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-11-16T11:34:31+00:00",
+  "_source_format": "stac",
+  "store_format": null
+}
