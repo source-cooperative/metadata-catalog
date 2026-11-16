@@ -1,33 +1,96 @@
 {
   "schema_version": 1,
-  "account_id": "cboettig",
-  "product_id": "commodities",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "cboettig/commodities",
   "title": "commodities",
-  "description": "",
-  "keywords": [],
-  "created_at": "2026-11-09T05:29:30.939Z",
-  "updated_at": "2026-11-09T05:29:30.939Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": null,
-  "mirrors": {
-    "aws-opendata-us-west-2": {
-      "connection_id": "aws-opendata-us-west-2",
-      "is_primary": true,
-      "prefix": "cboettig/commodities/"
+  "description": "Probability layers estimating where tropical agricultural commodities, starting with cocoa in Peru for 2024, are likely grown. Derived from the Forest Data Partnership 2025b model, which applies machine learning to AlphaEarth Foundations satellite embeddings, and published as a 10 m Cloud-Optimized GeoTIFF plus an H3 res-9 parquet. Values are modeled probabilities in [0, 1], not observed ground truth.",
+  "license": "CC-BY-4.0",
+  "keywords": [
+    "remote-sensing",
+    "land-use",
+    "agriculture",
+    "machine-learning",
+    "satellite-imagery",
+    "cloud-optimized-geotiff",
+    "h3",
+    "embeddings"
+  ],
+  "providers": [
+    {
+      "name": "Forest Data Partnership",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Google",
+      "roles": [
+        "producer",
+        "processor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/cboettig/commodities"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -81.3278064,
+          -18.3546474,
+          -68.6773713,
+          -0.0133849
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2024-01-01T00:00:00Z",
+          "2024-01-01T00:00:00Z"
+        ]
+      ]
     }
   },
-  "object_count": 9,
-  "objects_updated_at": "2026-11-12T07:21:40+00:00",
-  "total_bytes": 64764620601,
-  "exts": {
-    "parquet": 4,
-    "json": 2,
-    "tif": 1,
-    "md": 1,
-    "png": 1
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/cboettig/commodities/",
+      "type": "image/tiff; application=geotiff",
+      "title": "Dataset files (1 x .tif)",
+      "roles": [
+        "data"
+      ]
+    }
   },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/cboettig/commodities/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/cboettig/commodities",
+      "title": "Source Cooperative product page"
+    }
+  ],
+  "featured": 0,
+  "visibility": "public",
+  "disabled": false,
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "objects_updated_at": "2026-11-12T07:21:40+00:00",
+  "updated_at": "2026-11-09T05:29:30.939Z",
+  "created_at": "2026-11-09T05:29:30.939Z",
   "ext_bytes": {
     "tif": 64666078575,
     "parquet": 98512327,
@@ -35,11 +98,31 @@
     "png": 10295,
     "md": 7285
   },
-  "store_format": null,
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
+  "account_id": "cboettig",
+  "total_bytes": 64764620601,
+  "product_id": "commodities",
+  "mirrors": {
+    "aws-opendata-us-west-2": {
+      "connection_id": "aws-opendata-us-west-2",
+      "is_primary": true,
+      "prefix": "cboettig/commodities/"
+    }
   },
-  "cataloged_at": "2026-11-16T11:31:29+00:00"
+  "data_mode": null,
+  "object_count": 9,
+  "exts": {
+    "parquet": 4,
+    "json": 2,
+    "tif": 1,
+    "md": 1,
+    "png": 1
+  },
+  "readme": "## README.md\n# Agricultural Commodity Probability Layers (`public-commodities`)\n\nSpatially explicit probability layers for tropical agricultural commodities linked to\ndeforestation risk \u2014 *where a given commodity is likely to be grown*, at high spatial\nresolution. Intended for commodity-driven deforestation analysis, supply-chain due\ndiligence, and conservation prioritization.\n\n**Base URL**: `https://s3-west.nrp-nautilus.io/public-commodities/`\n**STAC**: [`stac-collection.json`](https://s3-west.nrp-nautilus.io/public-commodities/stac-collection.json)\n\n> \u26a0\ufe0f **These layers are model output, not observed ground truth.** Values are\n> probabilities in `[0, 1]` \u2014 never areas, yields, or production volumes \u2014 and they\n> must **never be summed**. Read the caveats before drawing conclusions about any\n> individual location.\n\n---\n\n## Datasets\n\n| Collection | Commodity | Extent | Year | Resolution |\n|---|---|---|---|---|\n| [`fdap-2025b-cocoa-peru-2024`](https://s3-west.nrp-nautilus.io/public-commodities/fdap-2025b/cocoa-peru-2024/stac-collection.json) | Cocoa | Peru | 2024 | 10 m / H3 res 9 |\n\n---\n\n## Cocoa Probability, Peru 2024 (FDAP model 2025b)\n\nPer-pixel probability that a 10 m pixel contains cocoa trees.\n\n### Source & attribution\n\n- **Producer**: Forest Data Partnership (FDAP) \u2014 produced by Google\n- **Upstream asset**: Earth Engine `projects/forestdatapartnership/assets/cocoa/model_2025b`,\n  band `probability` ([catalog page](https://developers.google.com/earth-engine/datasets/catalog/projects_forestdatapartnership_assets_cocoa_model_2025b))\n- **Model**: machine learning over AlphaEarth Foundations satellite embeddings; the\n  upstream collection is pan-tropical (\u221224\u00b0 to +24\u00b0 latitude), yearly, 2020\u20132024\n- **License**: **CC-BY-4.0**\n- **Required attribution**: *\"Produced by Google for the Forest Data Partnership\"*\n- **Citation**: Forest Data Partnership. 2026. *Community models 2025b.*\n  <https://github.com/google/forest-data-partnership/tree/main/models/model_2025b/README.md>\n\n> Note the version distinction: FDAP **2025a** is CC-BY-**NC**-4.0 (non-commercial,\n> with separate commercial terms). This dataset is **2025b**, which is plain\n> CC-BY-4.0. Do not carry the 2025a NC clause over to this layer, or vice versa.\n\n### How this extract was made\n\nThe upstream yearly image was filtered to 2024, `.mosaic()`-ed, and clipped to the\nFAO GAUL 2015 level-0 boundary for Peru (`FAO/GAUL_SIMPLIFIED_500m/2015/level0`,\n`ADM0_NAME = 'Peru'`), then exported at **native 10 m** in EPSG:4326 and republished\nas a COG plus H3 hexagonal parquet. No resampling or rescaling was applied.\n\n### Assets\n\n| Asset | Format | Path |\n|---|---|---|\n| `cocoa-peru-2024-cog` | Cloud-Optimized GeoTIFF, Float32, EPSG:4326 | [`fdap-2025b/cocoa-peru-2024-cog.tif`](https://s3-west.nrp-nautilus.io/public-commodities/fdap-2025b/cocoa-peru-2024-cog.tif) |\n| `cocoa-peru-2024-hex` | H3 parquet, res 9, hive-partitioned by `h0` | `fdap-2025b/cocoa-peru-2024/hex/h0=*/data_0.parquet` |\n\n**COG**: 140,824 \u00d7 204,174 px at 0.000089831528412\u00b0 (~10 m), DEFLATE, 5 overview\nlevels, 64.67 GB. Band 1 = `probability`.\n\n**Hex**: 10,768,450 rows across 4 `h0` partitions (Peru spans 4 H3 base cells).\nColumns: `probability` (double), `h9`, `h8`, `h0` (uint64). Native resolution **9**,\nwith `h8` \u2014 the catalog's universal join key \u2014 and `h0` as parent columns.\n\nReduced with the **`mean`** reducer: each cell holds the *area-weighted mean* of the\nsource pixel probabilities, which is the correct reduction for an intensity. Only\ncells containing at least one valid pixel are written, so coverage is sparse and\nfollows the Peru boundary rather than filling the base cells.\n\n### \u26a0\ufe0f NoData\n\nOutside-Peru pixels are Float32 **NaN**, and **the COG carries no tagged nodata value\nin its header**. Any tool reading this raster must treat NaN as nodata explicitly\nrather than relying on the header. (The hex build passes `--nodata nan` for exactly\nthis reason; without it, the masked area leaks in as valid data.)\n\n### \u26a0\ufe0f Interpretation caveats\n\nFrom the FDAP model documentation \u2014 these matter:\n\n- Accuracy figures computed from *generated* evaluation data are **overestimates**\n  relative to independent validation data.\n- The cocoa model **over-predicts in ecotones** (transition zones between vegetation\n  types).\n- The training set is **largely opportunistic** and does not comprehensively\n  represent every class in every region.\n- Values are **not stable between years** \u2014 do not difference this 2024 layer against\n  another year to infer change.\n\nCocoa is sparse in Peru: mean probability across all cells is only **~0.0042**, with a\nmaximum of **0.9988**. A linear 0\u20131 color ramp will therefore look almost entirely\nempty; rescale to a narrow low range, or threshold, to see structure.\n\nTreat the layer as a **screening and prioritization aid**, not as ground truth for any\nindividual parcel.\n\n---\n\n## Querying the hex layer (DuckDB)\n\n```sql\nINSTALL httpfs; LOAD httpfs;\n\n-- Overall distribution (note: AVG/MAX, never SUM \u2014 probability is not extensive)\nSELECT COUNT(*)      AS cells,\n       AVG(probability) AS mean_p,\n       MAX(probability) AS max_p\nFROM read_parquet(\n  'https://s3-west.nrp-nautilus.io/public-commodities/fdap-2025b/cocoa-peru-2024/hex/h0=*/data_0.parquet',\n  hive_partitioning = true\n);\n```\n\n```sql\n-- Likely cocoa areas, rolled up to the h8 join resolution\nSELECT h8, AVG(probability) AS mean_p, COUNT(*) AS h9_cells\nFROM read_parquet(\n  'https://s3-west.nrp-nautilus.io/public-commodities/fdap-2025b/cocoa-peru-2024/hex/h0=*/data_0.parquet',\n  hive_partitioning = true\n)\nGROUP BY h8\nHAVING AVG(probability) > 0.25\nORDER BY mean_p DESC\nLIMIT 50;\n```\n\n```sql\n-- Read a single base cell only (partition pruning keeps this cheap)\nSELECT COUNT(*), MAX(probability)\nFROM read_parquet(\n  'https://s3-west.nrp-nautilus.io/public-commodities/fdap-2025b/cocoa-peru-2024/hex/h0=*/data_0.parquet',\n  hive_partitioning = true\n)\nWHERE h0 = 578994027093819391;\n```\n\n**Aggregation rule**: `probability` is a unitless intensity. Use `AVG`, `MIN`, `MAX`.\nRolling up to a coarser resolution means `GROUP BY h8` with `AVG` \u2014 **never** `SUM`.\n\nTo join against another catalog dataset, join on `h8` (both sides physically carry\nit), not on the finest column.\n\n## Displaying the COG (MapLibre GL JS + titiler)\n\nThe raster is served as web tiles by the catalog's titiler instance. There is no\nPMTiles / vector-tile asset for this dataset \u2014 it is a raster, so there is no\n`source-layer` to set.\n\n```js\nconst COG = 'https://s3-west.nrp-nautilus.io/public-commodities/fdap-2025b/cocoa-peru-2024-cog.tif';\n\nconst map = new maplibregl.Map({\n  container: 'map',\n  style: 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json',\n  center: [-75, -9],   // Peru\n  zoom: 5\n});\n\nmap.on('load', () => {\n  map.addSource('cocoa', {\n    type: 'raster',\n    tiles: [\n      'https://titiler.nrp-nautilus.io/cog/tiles/WebMercatorQuad/{z}/{x}/{y}.png' +\n      `?url=${encodeURIComponent(COG)}` +\n      '&colormap_name=greens' +\n      '&rescale=0,0.3'      // NOT 0,1 \u2014 cocoa is sparse; 0-1 renders nearly blank\n    ],\n    tileSize: 256\n  });\n  map.addLayer({\n    id: 'cocoa-layer',\n    type: 'raster',\n    source: 'cocoa',\n    paint: { 'raster-opacity': 0.8 }\n  });\n});\n```\n",
+  "_review": [
+    "providers: role [producer, processor] for 'Google' is an AI guess \u2014 README says the layer was 'produced by Google for the Forest Data Partnership'; processor role is assumed.. Verify before flipping to _state: reviewed.",
+    "extent.temporal: None (probe sample) widened to ['2024-01-01T00:00:00Z', '2024-01-01T00:00:00Z'] using README-stated coverage ['2024', '2024']."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-11-16T11:37:31+00:00",
+  "store_format": null
 }
