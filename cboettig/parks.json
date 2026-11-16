@@ -1,26 +1,373 @@
 {
   "schema_version": 1,
-  "account_id": "cboettig",
-  "product_id": "parks",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
+  "id": "cboettig/parks",
   "title": "parks",
-  "description": "",
-  "keywords": [],
-  "created_at": "2026-11-09T05:33:31.745Z",
-  "updated_at": "2026-11-09T05:33:31.745Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": null,
-  "mirrors": {
-    "aws-opendata-us-west-2": {
-      "connection_id": "aws-opendata-us-west-2",
-      "is_primary": true,
-      "prefix": "cboettig/parks/"
+  "description": "Cloud-native layers derived from the California Park Access Tool 2020 (SCORP 2020), showing park provision and access across California. Includes census-tract park acres per 1,000 residents, block-group areas lacking park access, and a dissolved half-mile park coverage polygon, published as GeoParquet, PMTiles and H3 hex.",
+  "license": "CC-BY-4.0",
+  "keywords": [
+    "parks",
+    "recreation",
+    "land-use",
+    "demographics",
+    "geoparquet",
+    "pmtiles",
+    "h3",
+    "census"
+  ],
+  "providers": [
+    {
+      "name": "GreenInfo Network",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "California Department of Parks and Recreation, Office of Grants and Local Services (OGALS)",
+      "roles": [
+        "licensor"
+      ]
+    },
+    {
+      "name": "Parks for All Californians",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/cboettig/parks"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -124.4312633,
+          32.5274091,
+          -114.1227201,
+          42.0167651
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
     }
   },
-  "object_count": 23,
-  "objects_updated_at": "2026-11-12T12:09:06+00:00",
+  "summaries": {
+    "item_count": 35225378
+  },
+  "assets": {
+    "park-access-2020": {
+      "href": "https://data.source.coop/cboettig/parks/park-access-2020/",
+      "type": "application/x-parquet",
+      "title": "park-access-2020",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "_cng_fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OGC_FID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "Id",
+          "type": "INTEGER"
+        },
+        {
+          "name": "Status",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geom",
+          "type": "GEOMETRY('OGC:CRS84')",
+          "description": "[geometry] Polygon geometry of census tracts, block groups, or the dissolved half-mile coverage area"
+        },
+        {
+          "name": "STATEFP",
+          "type": "VARCHAR",
+          "description": "[admin_code] State FIPS code"
+        },
+        {
+          "name": "COUNTYFP",
+          "type": "VARCHAR",
+          "description": "[admin_code] County FIPS code"
+        },
+        {
+          "name": "GEOID",
+          "type": "VARCHAR",
+          "description": "[admin_code] Census GEOID for tract or block group"
+        },
+        {
+          "name": "TotPop",
+          "type": "BIGINT|DOUBLE"
+        },
+        {
+          "name": "SqMiles",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "PopDenSqMi",
+          "type": "BIGINT"
+        },
+        {
+          "name": "DenStat",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ALAND",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "AWATER",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Shape_Leng",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Shape_Area",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Park_Acres",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "PPK_tract",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Filters",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PPKStatus",
+          "type": "VARCHAR"
+        }
+      ],
+      "description": "3 files sampled for this table"
+    },
+    "park-access-2020/half-mile-access/hex": {
+      "href": "https://data.source.coop/cboettig/parks/park-access-2020/half-mile-access/hex/h0=577199624117288959/",
+      "type": "application/x-parquet",
+      "title": "park-access-2020/half-mile-access/hex",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "_cng_fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OGC_FID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "Id",
+          "type": "INTEGER"
+        },
+        {
+          "name": "Status",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "h8",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution 8 cell"
+        },
+        {
+          "name": "h0",
+          "type": "UBIGINT"
+        }
+      ],
+      "description": "2 files sampled for this table"
+    },
+    "park-access-2020/no-park-access/hex": {
+      "href": "https://data.source.coop/cboettig/parks/park-access-2020/no-park-access/hex/h0=577199624117288959/",
+      "type": "application/x-parquet",
+      "title": "park-access-2020/no-park-access/hex",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "_cng_fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OGC_FID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "STATEFP",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "COUNTYFP",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "GEOID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "TotPop",
+          "type": "BIGINT"
+        },
+        {
+          "name": "SqMiles",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "PopDenSqMi",
+          "type": "BIGINT"
+        },
+        {
+          "name": "DenStat",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "h10",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution 10 cell"
+        },
+        {
+          "name": "h0",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h8",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution 8 cell"
+        },
+        {
+          "name": "h9",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution 9 cell"
+        }
+      ],
+      "description": "2 files sampled for this table"
+    },
+    "park-access-2020/tract-acres-per-thousand/hex": {
+      "href": "https://data.source.coop/cboettig/parks/park-access-2020/tract-acres-per-thousand/hex/h0=577199624117288959/",
+      "type": "application/x-parquet",
+      "title": "park-access-2020/tract-acres-per-thousand/hex",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "_cng_fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OGC_FID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "COUNTYFP",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "GEOID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ALAND",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "AWATER",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "TotPop",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Shape_Leng",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Shape_Area",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Park_Acres",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "PPK_tract",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Filters",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PPKStatus",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "h10",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution 10 cell"
+        },
+        {
+          "name": "h0",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h8",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution 8 cell"
+        },
+        {
+          "name": "h9",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution 9 cell"
+        }
+      ],
+      "description": "2 files sampled for this table"
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/cboettig/parks/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/cboettig/parks",
+      "title": "Source Cooperative product page"
+    }
+  ],
+  "data_mode": null,
+  "featured": 0,
+  "updated_at": "2026-11-09T05:33:31.745Z",
   "total_bytes": 504336822,
+  "account_id": "cboettig",
+  "visibility": "public",
   "exts": {
     "parquet": 9,
     "json": 7,
@@ -28,6 +375,21 @@
     "pmtiles": 3,
     "md": 1
   },
+  "product_id": "parks",
+  "objects_updated_at": "2026-11-12T12:09:06+00:00",
+  "object_count": 23,
+  "mirrors": {
+    "aws-opendata-us-west-2": {
+      "connection_id": "aws-opendata-us-west-2",
+      "is_primary": true,
+      "prefix": "cboettig/parks/"
+    }
+  },
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "disabled": false,
   "ext_bytes": {
     "parquet": 444974365,
     "pmtiles": 59070744,
@@ -35,11 +397,13 @@
     "json": 35039,
     "md": 4002
   },
-  "store_format": null,
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "cataloged_at": "2026-11-16T11:31:40+00:00"
+  "created_at": "2026-11-09T05:33:31.745Z",
+  "readme": "## README.md\n# California Park Access Tool 2020 (SCORP 2020)\n\nCloud-native layers derived from the **[Park Access Tool](https://www.parksforcalifornia.org/parkaccess/)**\n(Parks for All Californians), produced by **GreenInfo Network** for the **California Department of Parks and\nRecreation, Office of Grants and Local Services (OGALS)** to inform California's Statewide Comprehensive\nOutdoor Recreation Plan (SCORP). This is the **2020** version (updated every five years).\n\nBucket: `s3://public-parks/` \u00b7 Public URL base: `https://s3-west.nrp-nautilus.io/public-parks/`\n\n## Layers\n\n| Layer | Path prefix | Geometry | Native H3 | What it measures |\n|---|---|---|---|---|\n| Park acres per 1,000 residents | `park-access-2020/tract-acres-per-thousand` | 8,036 census-tract polygons | 10 (9,8,0) | `PPK_tract` = park acres / 1,000 residents, classed vs. the 3-acre standard (`PPKStatus`) |\n| Areas without park access | `park-access-2020/no-park-access` | 11,566 block-group polygons | 10 (9,8,0) | Areas >\u00bd mile from a park, by population-density class (`DenStat`) |\n| Areas within a half mile of a park | `park-access-2020/half-mile-access` | 1 dissolved coverage polygon | 8 (0) | \u00bd-mile Euclidean buffer of parks \u2014 boolean \"served\" coverage |\n\nEach layer publishes **GeoParquet** (`<layer>.parquet`), **PMTiles** (`<layer>.pmtiles`), and **H3 hex**\n(`<layer>/hex/h0=*/data_0.parquet`).\n\n## Sources & methodology\n\n- **Parks:** California Protected Areas Database (**CPAD 2019b**, 11/2019), adjusted by California State Parks.\n- **Population:** American Community Survey **2014\u20132018** 5-year estimates (`B01001_001E`); block/block-group\n  population from **Census 2010 (P1)** used to disaggregate block groups to blocks so large, sparsely-populated\n  rural block groups are not over-distributed.\n- Full methodology: <https://www.parksforcalifornia.org/methods/>\n\n## License\n\n**CC-BY-4.0.** The parks input (CPAD) is published under Creative Commons Attribution by GreenInfo Network; the\nCensus/ACS inputs are US-federal public domain. **Attribute:** GreenInfo Network and the California Department\nof Parks and Recreation (OGALS), Parks for All Californians.\n\n## Usage\n\n### MapLibre GL JS (PMTiles)\n\nThe MapLibre `source-layer` is the **last path segment** of the dataset (e.g. `tract-acres-per-thousand`).\n\n```js\nimport { Protocol } from \"pmtiles\";\nmaplibregl.addProtocol(\"pmtiles\", new Protocol().tile);\n\nmap.addSource(\"ppk\", {\n  type: \"vector\",\n  url: \"pmtiles://https://s3-west.nrp-nautilus.io/public-parks/park-access-2020/tract-acres-per-thousand.pmtiles\",\n});\nmap.addLayer({\n  id: \"ppk-fill\",\n  type: \"fill\",\n  source: \"ppk\",\n  \"source-layer\": \"tract-acres-per-thousand\",\n  paint: {\n    \"fill-color\": [\n      \"match\", [\"get\", \"PPKStatus\"],\n      \"Less than 1\", \"#d73027\",\n      \"Between 1 and 3\", \"#fee08b\",\n      \"Greater than 3\", \"#1a9850\",\n      \"#cccccc\"\n    ],\n    \"fill-opacity\": 0.7\n  }\n});\n```\n\n### DuckDB (GeoParquet / hex)\n\n```sql\nINSTALL spatial; LOAD spatial;\nINSTALL httpfs; LOAD httpfs;\n\n-- Statewide population living where park provision is below the 3-acre standard\nSELECT PPKStatus, SUM(TotPop) AS residents\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-parks/park-access-2020/tract-acres-per-thousand.parquet')\nGROUP BY PPKStatus;\n\n-- Hex: join to other catalog layers on h8. Per-feature totals (TotPop, Park_Acres,\n-- ALAND, SqMiles, ...) are REPEATED across the cells a feature covers \u2014 dedup by\n-- _cng_fid before summing:\nSELECT SUM(Park_Acres) AS park_acres\nFROM (\n  SELECT DISTINCT _cng_fid, Park_Acres\n  FROM read_parquet('https://s3-west.nrp-nautilus.io/public-parks/park-access-2020/tract-acres-per-thousand/hex/h0=*/data_0.parquet')\n);\n```\n\n## Notes\n\n- `PPK_tract` is undefined where population is 0 \u2014 those tracts carry `Filters = 'No Population'`.\n- The `half-mile-access` hex is a **boolean coverage**: every h8 cell present is within \u00bd mile of a park.\n- Companion nationwide dataset (TPL ParkServe) is tracked separately and hosted under `public-tpl`.\n",
+  "_review": [
+    "providers: role [licensor] for 'California Department of Parks and Recreation, Office of Grants and Local Services (OGALS)' is an AI guess \u2014 README says the tool was produced for OGALS and requires attribution to it; licensor role is assumed.. Verify before flipping to _state: reviewed.",
+    "providers: role [producer] for 'Parks for All Californians' is an AI guess \u2014 Named as the Park Access Tool's publisher and in the attribution line; producer role is assumed.. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-11-16T11:36:47+00:00",
+  "store_format": null
 }
