@@ -1,33 +1,130 @@
 {
   "schema_version": 1,
-  "account_id": "cboettig",
-  "product_id": "usgs-sagebrush",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
+  "id": "cboettig/usgs-sagebrush",
   "title": "usgs-sagebrush",
-  "description": "",
-  "keywords": [],
-  "created_at": "2026-11-09T05:34:23.047Z",
-  "updated_at": "2026-11-09T05:34:23.047Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": null,
-  "mirrors": {
-    "aws-opendata-us-west-2": {
-      "connection_id": "aws-opendata-us-west-2",
-      "is_primary": true,
-      "prefix": "cboettig/usgs-sagebrush/"
+  "description": "Sagebrush ecological integrity classes (Core Sagebrush Area, Growth Opportunity Area, Other Rangeland Area) at 30 m for the western United States sagebrush biome, from the USGS Sagebrush Conservation Design. Provided as cloud-optimized GeoTIFFs for five observed periods (1998\u20132020) plus a 2030\u20132060 RCP8.5 climate projection, along with H3 resolution-10 hex Parquet summaries of the dominant class per cell.",
+  "keywords": [
+    "conservation",
+    "land-cover",
+    "h3",
+    "cloud-optimized-geotiff",
+    "geoparquet",
+    "remote-sensing",
+    "climate"
+  ],
+  "providers": [
+    {
+      "name": "U.S. Geological Survey",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Doherty, Theobald, Holdrege, Wiechman & Bradford",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Boettiger Lab",
+      "roles": [
+        "processor",
+        "host"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/cboettig/usgs-sagebrush"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "1998-01-01T00:00:00Z",
+          "2060-01-01T00:00:00Z"
+        ]
+      ]
     }
   },
-  "object_count": 34,
+  "summaries": {
+    "item_count": 496879815
+  },
+  "assets": {
+    "0": {
+      "href": "https://data.source.coop/cboettig/usgs-sagebrush/sagebrush-conservation-design/hex/period=1998-2001/h0=576812596024311807/",
+      "type": "application/x-parquet",
+      "title": "0",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "sei_class",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "h10",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h8",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h9",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "period",
+          "type": "VARCHAR"
+        }
+      ],
+      "description": "24 files sampled for this table"
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/cboettig/usgs-sagebrush/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/cboettig/usgs-sagebrush",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "rel": "cite-as",
+      "href": "https://doi.org/10.5066/P94Y5CDV"
+    }
+  ],
+  "visibility": "public",
   "objects_updated_at": "2026-11-12T12:16:08+00:00",
   "total_bytes": 2771857014,
-  "exts": {
-    "parquet": 24,
-    "tif": 6,
-    "json": 2,
-    "png": 1,
-    "md": 1
-  },
+  "featured": 0,
+  "created_at": "2026-11-09T05:34:23.047Z",
+  "data_mode": null,
+  "account_id": "cboettig",
   "ext_bytes": {
     "parquet": 2028487011,
     "tif": 743308898,
@@ -35,11 +132,37 @@
     "json": 26037,
     "md": 3028
   },
-  "store_format": null,
-  "_state": "seed",
+  "exts": {
+    "parquet": 24,
+    "tif": 6,
+    "json": 2,
+    "png": 1,
+    "md": 1
+  },
+  "mirrors": {
+    "aws-opendata-us-west-2": {
+      "connection_id": "aws-opendata-us-west-2",
+      "is_primary": true,
+      "prefix": "cboettig/usgs-sagebrush/"
+    }
+  },
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "cataloged_at": "2026-11-16T11:31:46+00:00"
+  "object_count": 34,
+  "updated_at": "2026-11-09T05:34:23.047Z",
+  "product_id": "usgs-sagebrush",
+  "disabled": false,
+  "readme": "## README.md\n# USGS Sagebrush Conservation Design (sagebrush biome)\n\nSagebrush ecological integrity classes for the whole sagebrush biome of the western United\nStates, at 30 m, from the USGS Sagebrush Conservation Design (Doherty, Theobald, Holdrege,\nWiechman & Bradford 2022, <https://doi.org/10.5066/P94Y5CDV>):\n\n| code | class |\n|---|---|\n| 1 | Core Sagebrush Area |\n| 2 | Growth Opportunity Area |\n| 3 | Other Rangeland Area |\n\nCode 0 in the GeoTIFFs marks land outside the analysis and is the no-data value.\n\nSix periods: 1998\u20132001, 2003\u20132006, 2008\u20132011, 2013\u20132016, 2017\u20132020, and a projection of the\n2017\u20132020 classes to 2030\u20132060 under RCP8.5 climate change alone (`2030-2060-rcp85`, a scenario,\nnot an observation).\n\nSTAC: <https://s3-west.nrp-nautilus.io/public-usgs-sagebrush/sagebrush-conservation-design/stac-collection.json>\n\n## Files\n\n- `sagebrush-conservation-design/sagebrush-conservation-design-<period>-cog.tif`: cloud-optimized\n  GeoTIFF per period, WGS84, nearest-neighbour from the source CONUS Albers grid.\n- `sagebrush-conservation-design/hex/period=<period>/h0=<cell>/data_0.parquet`: dominant class\n  (`sei_class`) per H3 resolution 10 cell, with parent columns `h9`, `h8`, `h0`; `period` comes\n  from the hive partition.\n\n## DuckDB\n\n```sql\nINSTALL h3 FROM community; LOAD h3;\nSELECT period, sei_class, SUM(h3_cell_area(h10, 'km^2')) AS km2\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-usgs-sagebrush/sagebrush-conservation-design/hex/period=*/h0=*/data_0.parquet',\n                  hive_partitioning = true)\nGROUP BY ALL ORDER BY ALL;\n```\n\nThe hex keeps only the dominant class per cell, so class areas from it are approximate (cells on\nthe edge of the analysis area lean toward Other Rangeland Areas). The STAC description carries the\nexact source pixel counts per class.\n\n## MapLibre GL JS (raster tiles via TiTiler)\n\nThe COGs are rasters, so there is no vector `source-layer`; render them through a TiTiler\nendpoint with a categorical colormap:\n\n```js\nconst cog = 'https://s3-west.nrp-nautilus.io/public-usgs-sagebrush/sagebrush-conservation-design/sagebrush-conservation-design-2017-2020-cog.tif';\nconst cmap = encodeURIComponent(JSON.stringify({1: '#1A9850', 2: '#FDAE61', 3: '#BDBDBD'}));\nmap.addSource('sagebrush', {\n  type: 'raster', tileSize: 256,\n  tiles: [`https://titiler.xyz/cog/tiles/WebMercatorQuad/{z}/{x}/{y}.png?url=${encodeURIComponent(cog)}&nodata=0&colormap=${cmap}`]\n});\nmap.addLayer({ id: 'sagebrush', type: 'raster', source: 'sagebrush' });\n```\n\n## License\n\nU.S. Government work, public domain (<https://www.usa.gov/government-works>). Please cite the\ndata release: Doherty, K., Theobald, D.M., Holdrege, M.C., Wiechman, L.A., and Bradford, J.B.,\n2022, Biome-wide sagebrush core habitat and growth areas estimated from a threat-based\nconservation design: U.S. Geological Survey data release, https://doi.org/10.5066/P94Y5CDV.\n\nProcessing recipe: <https://github.com/boettiger-lab/data-workflows/tree/main/catalog/usgs-sagebrush/k8s/sagebrush-conservation-design>\n",
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
+    "providers: role [producer] for 'Doherty, Theobald, Holdrege, Wiechman & Bradford' is an AI guess \u2014 Cited as authors of the USGS data release; assumed to be the original data producers.. Verify before flipping to _state: reviewed.",
+    "providers: role [processor, host] for 'Boettiger Lab' is an AI guess \u2014 The processing recipe and S3 endpoint (nrp-nautilus) belong to boettiger-lab/data-workflows; assumed to have converted COGs and H3 hex Parquet.. Verify before flipping to _state: reviewed.",
+    "extent.temporal: None (probe sample) widened to ['1998-01-01T00:00:00Z', '2060-01-01T00:00:00Z'] using README-stated coverage ['1998', '2060'].",
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [sagebrush-conservation-design/hex/period=*/h0=*/data_0.parquet.h10 (spatial_index), sagebrush-conservation-design/hex/period=*/h0=*/data_0.parquet.h9 (spatial_index), sagebrush-conservation-design/hex/period=*/h0=*/data_0.parquet.h8 (spatial_index)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-11-16T11:39:17+00:00",
+  "store_format": null
 }
