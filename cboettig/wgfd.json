@@ -1,33 +1,423 @@
 {
   "schema_version": 1,
-  "account_id": "cboettig",
-  "product_id": "wgfd",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
+  "id": "cboettig/wgfd",
   "title": "wgfd",
-  "description": "",
-  "keywords": [],
-  "created_at": "2026-11-09T05:34:48.689Z",
-  "updated_at": "2026-11-09T05:34:48.689Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": null,
-  "mirrors": {
-    "aws-opendata-us-west-2": {
-      "connection_id": "aws-opendata-us-west-2",
-      "is_primary": true,
-      "prefix": "cboettig/wgfd/"
+  "description": "Wyoming Game & Fish Department (WGFD) crucial big-game range polygons for elk, mule deer and pronghorn across Wyoming, published as GeoParquet, PMTiles and H3 hex tables. Crucial range is the subset of seasonal range that WGFD identifies as a determining factor in a population's ability to sustain itself.",
+  "keywords": [
+    "wildlife",
+    "biodiversity",
+    "conservation",
+    "h3",
+    "geoparquet",
+    "pmtiles",
+    "ecology",
+    "land-use"
+  ],
+  "providers": [
+    {
+      "name": "Wyoming Game & Fish Department",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/cboettig/wgfd"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -111.0500195,
+          40.9946573,
+          -104.0521794,
+          45.0068022
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
     }
   },
-  "object_count": 50,
-  "objects_updated_at": "2026-11-12T12:18:29+00:00",
-  "total_bytes": 482166142,
-  "exts": {
-    "json": 18,
-    "parquet": 17,
-    "pmtiles": 7,
-    "png": 7,
-    "md": 1
+  "summaries": {
+    "item_count": 51276746
   },
+  "assets": {
+    ".": {
+      "href": "https://data.source.coop/cboettig/wgfd/",
+      "type": "application/x-parquet",
+      "title": ".",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "_cng_fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OGC_FID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OBJECTID",
+          "type": "INTEGER"
+        },
+        {
+          "name": "RANGE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Acres",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "SQMiles",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "geom",
+          "type": "GEOMETRY('EPSG:4326')|GEOMETRY('OGC:CRS84')",
+          "description": "[geometry] Polygon geometry of crucial range in EPSG:4326"
+        },
+        {
+          "name": "ID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "NAME",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Shape_Leng",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Shape_Area",
+          "type": "DOUBLE"
+        }
+      ],
+      "description": "7 files sampled for this table"
+    },
+    "elk-crucial/hex": {
+      "href": "https://data.source.coop/cboettig/wgfd/elk-crucial/hex/h0=577164439745200127/",
+      "type": "application/x-parquet",
+      "title": "elk-crucial/hex",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "_cng_fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OGC_FID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OBJECTID",
+          "type": "INTEGER"
+        },
+        {
+          "name": "RANGE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Acres",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "SQMiles",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "h10",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution 10 cell identifier"
+        },
+        {
+          "name": "h0",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution 0 parent cell"
+        },
+        {
+          "name": "h8",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution 8 parent cell, shared join resolution"
+        },
+        {
+          "name": "h9",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution 9 parent cell"
+        }
+      ],
+      "description": "2 files sampled for this table"
+    },
+    "elk-seasonal/hex": {
+      "href": "https://data.source.coop/cboettig/wgfd/elk-seasonal/hex/h0=577164439745200127/",
+      "type": "application/x-parquet",
+      "title": "elk-seasonal/hex",
+      "roles": [
+        "data"
+      ],
+      "description": "2 files sampled for this table"
+    },
+    "mule-deer-crucial/hex": {
+      "href": "https://data.source.coop/cboettig/wgfd/mule-deer-crucial/hex/h0=577164439745200127/data_0.parquet",
+      "type": "application/x-parquet",
+      "title": "data_0.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "_cng_fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OGC_FID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OBJECTID",
+          "type": "INTEGER"
+        },
+        {
+          "name": "RANGE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Acres",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "SQMiles",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "h10",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution 10 cell identifier"
+        },
+        {
+          "name": "h0",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h8",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution 8 parent cell, shared join resolution"
+        },
+        {
+          "name": "h9",
+          "type": "UBIGINT"
+        }
+      ],
+      "table:row_count": 1673523
+    },
+    "mule-deer-seasonal/hex": {
+      "href": "https://data.source.coop/cboettig/wgfd/mule-deer-seasonal/hex/h0=577164439745200127/",
+      "type": "application/x-parquet",
+      "title": "mule-deer-seasonal/hex",
+      "roles": [
+        "data"
+      ],
+      "description": "2 files sampled for this table"
+    },
+    "pronghorn-crucial/hex": {
+      "href": "https://data.source.coop/cboettig/wgfd/pronghorn-crucial/hex/h0=577164439745200127/data_0.parquet",
+      "type": "application/x-parquet",
+      "title": "data_0.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "_cng_fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OGC_FID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OBJECTID",
+          "type": "INTEGER"
+        },
+        {
+          "name": "RANGE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Acres",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "SQMiles",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "h10",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution 10 cell identifier"
+        },
+        {
+          "name": "h0",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h8",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution 8 parent cell, shared join resolution"
+        },
+        {
+          "name": "h9",
+          "type": "UBIGINT"
+        }
+      ],
+      "table:row_count": 1542094
+    },
+    "pronghorn-seasonal/hex": {
+      "href": "https://data.source.coop/cboettig/wgfd/pronghorn-seasonal/hex/h0=577164439745200127/data_0.parquet",
+      "type": "application/x-parquet",
+      "title": "data_0.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:row_count": 14724247
+    },
+    "sage-grouse-priority/hex": {
+      "href": "https://data.source.coop/cboettig/wgfd/sage-grouse-priority/hex/h0=577164439745200127/data_0.parquet",
+      "type": "application/x-parquet",
+      "title": "data_0.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "_cng_fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OGC_FID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "ID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "NAME",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Acres",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Shape_Leng",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Shape_Area",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "h10",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h0",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h8",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h9",
+          "type": "UBIGINT"
+        }
+      ],
+      "table:row_count": 4007027
+    }
+  },
+  "table:columns": [
+    {
+      "name": "_cng_fid",
+      "type": "BIGINT"
+    },
+    {
+      "name": "OGC_FID",
+      "type": "BIGINT"
+    },
+    {
+      "name": "OBJECTID",
+      "type": "INTEGER"
+    },
+    {
+      "name": "RANGE",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "Acres",
+      "type": "DOUBLE"
+    },
+    {
+      "name": "SQMiles",
+      "type": "DOUBLE"
+    },
+    {
+      "name": "h10",
+      "type": "UBIGINT"
+    },
+    {
+      "name": "h0",
+      "type": "UBIGINT"
+    },
+    {
+      "name": "h8",
+      "type": "UBIGINT"
+    },
+    {
+      "name": "h9",
+      "type": "UBIGINT"
+    }
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/cboettig/wgfd/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/cboettig/wgfd",
+      "title": "Source Cooperative product page"
+    }
+  ],
+  "data_mode": null,
+  "total_bytes": 482166142,
+  "object_count": 50,
+  "created_at": "2026-11-09T05:34:48.689Z",
+  "product_id": "wgfd",
+  "objects_updated_at": "2026-11-12T12:18:29+00:00",
   "ext_bytes": {
     "parquet": 454707764,
     "pmtiles": 26950946,
@@ -35,11 +425,35 @@
     "json": 87591,
     "md": 3642
   },
-  "store_format": null,
-  "_state": "seed",
+  "mirrors": {
+    "aws-opendata-us-west-2": {
+      "connection_id": "aws-opendata-us-west-2",
+      "is_primary": true,
+      "prefix": "cboettig/wgfd/"
+    }
+  },
+  "exts": {
+    "json": 18,
+    "parquet": 17,
+    "pmtiles": 7,
+    "png": 7,
+    "md": 1
+  },
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "cataloged_at": "2026-11-16T11:31:48+00:00"
+  "featured": 0,
+  "visibility": "public",
+  "updated_at": "2026-11-09T05:34:48.689Z",
+  "account_id": "cboettig",
+  "disabled": false,
+  "readme": "## README.md\n# public-wgfd \u2014 Wyoming Game & Fish Department\n\nWildlife habitat data published by the Wyoming Game & Fish Department (WGFD). The department maps\nbig-game seasonal ranges across Wyoming, its area of jurisdiction, so these datasets cover the state\nin full \u2014 they are not regional excerpts of a national product.\n\nDatasets are grouped by the agency that produces them, which is how they are found and cited\nupstream.\n\nSTAC: <https://s3-west.nrp-nautilus.io/public-wgfd/stac-collection.json>\n\n## Collections\n\n| dataset | polygons | acres | H3 |\n|---|---:|---:|---|\n| [`elk-crucial`](https://s3-west.nrp-nautilus.io/public-wgfd/elk-crucial/stac-collection.json) | 150 | 4,442,987 | native 10, parents 9/8/0 |\n| [`mule-deer-crucial`](https://s3-west.nrp-nautilus.io/public-wgfd/mule-deer-crucial/stac-collection.json) | 145 | 6,431,769 | native 10, parents 9/8/0 |\n| [`pronghorn-crucial`](https://s3-west.nrp-nautilus.io/public-wgfd/pronghorn-crucial/stac-collection.json) | 105 | 5,972,722 | native 10, parents 9/8/0 |\n\nEach has three assets: a flat GeoParquet, PMTiles for web maps, and an H3 hex table at\nresolution 10 carrying resolution 9, 8 and 0 identifiers.\n\n**Crucial range** is the subset of seasonal range that WGFD identifies as a determining factor in a\npopulation's ability to sustain itself. The department publishes it separately from full seasonal\nrange, which is why every `RANGE` code here begins with `CRU`.\n\n`RANGE` values present: `CRUWYL` (crucial winter/yearlong), `CRUWIN` (crucial winter),\n`CRUSWR` (crucial severe winter relief).\n\n## DuckDB\n\n```sql\nINSTALL spatial; LOAD spatial;\n\n-- acreage by range type\nSELECT \"RANGE\", COUNT(*) AS polygons, ROUND(SUM(\"Acres\")) AS acres\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-wgfd/elk-crucial.parquet')\nGROUP BY 1 ORDER BY acres DESC;\n```\n\nThe hex table has one row per polygon-and-cell pair, so `Acres` and `SQMiles` repeat across every\ncell a polygon covers. Reduce to one row per polygon before totalling them:\n\n```sql\n-- correct: dedup to one row per polygon first\nSELECT ROUND(SUM(\"Acres\")) AS acres\nFROM (SELECT DISTINCT _cng_fid, \"Acres\"\n      FROM read_parquet('https://s3-west.nrp-nautilus.io/public-wgfd/elk-crucial/hex/h0=*/data_0.parquet'));\n```\n\nJoining to another dataset in this catalog goes through `h8`, the shared resolution:\n\n```sql\nSELECT COUNT(DISTINCT e.h8) AS shared_cells\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-wgfd/elk-crucial/hex/h0=*/data_0.parquet') e\nJOIN read_parquet('https://s3-west.nrp-nautilus.io/public-wgfd/mule-deer-crucial/hex/h0=*/data_0.parquet') m\n  USING (h8);\n```\n\n## MapLibre GL JS\n\nThe `source-layer` is the dataset name \u2014 `elk-crucial`, `mule-deer-crucial`, `pronghorn-crucial`.\n\n```js\nmap.addSource('elk', {\n  type: 'vector',\n  url: 'pmtiles://https://s3-west.nrp-nautilus.io/public-wgfd/elk-crucial.pmtiles'\n});\n\nmap.addLayer({\n  id: 'elk-crucial-fill',\n  type: 'fill',\n  source: 'elk',\n  'source-layer': 'elk-crucial',   // = the dataset name\n  paint: {\n    'fill-color': [\n      'match', ['get', 'RANGE'],\n      'CRUWYL', '#2d6a4f',\n      'CRUWIN', '#40916c',\n      'CRUSWR', '#95d5b2',\n      '#cccccc'\n    ],\n    'fill-opacity': 0.6\n  }\n});\n```\n\n## Provenance\n\nWGFD distributes through an ArcGIS Hub endpoint with no stable versioned download URL, so the\nretained source under `raw/` is the reproducible anchor. Each collection's `sci:citation` records the\naccess date, the staged object, and its SHA-256.\n\n## License\n\nWGFD geospatial terms: <https://wgfd.wyo.gov/geospatial-data>. Recorded as `other` because no SPDX\nidentifier applies to those terms \u2014 read them before redistributing.\n",
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
+    "providers: role [producer, licensor] for 'Wyoming Game & Fish Department' is an AI guess \u2014 README says WGFD publishes and maps the data and links its terms; licensor role is inferred from the terms link.. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-11-16T11:36:14+00:00",
+  "store_format": null
 }
