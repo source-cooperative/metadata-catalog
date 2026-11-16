@@ -1,34 +1,374 @@
 {
   "schema_version": 1,
-  "account_id": "portolan-mirrors",
-  "product_id": "geoboundaries-catalog",
-  "title": "geoBoundaries Portolan Catalog",
-  "description": "A Portolan Mirror of [geoBoundaries](https://www.geoboundaries.org/), an open (cc-by) database of political administrative boundaries.",
-  "keywords": [],
-  "created_at": "2026-11-12T13:57:14.248Z",
-  "updated_at": "2026-11-12T13:57:14.248Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": null,
-  "mirrors": {
-    "aws-opendata-us-west-2": {
-      "connection_id": "aws-opendata-us-west-2",
-      "is_primary": true,
-      "prefix": "portolan-mirrors/geoboundaries-catalog/"
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
+  "id": "portolan-mirrors/geoboundaries-catalog",
+  "title": "geoBoundaries CGAZ Global Administrative Boundaries",
+  "description": "A global composite of administrative boundaries (ADM0 country outlines, ADM1 states/provinces, ADM2 counties/districts) from geoBoundaries' Comprehensive Global Administrative Zones (CGAZ), republished as repaired, cloud-optimized GeoParquet and PMTiles with simplified display geometry and a name search index. Covers 218 countries and disputed areas, with about 52,000 named units.",
+  "license": "CC-BY-4.0",
+  "keywords": [
+    "administrative-boundaries",
+    "geoparquet",
+    "pmtiles",
+    "global-coverage",
+    "cloud-optimized-geotiff-placeholder"
+  ],
+  "providers": [
+    {
+      "name": "geoBoundaries, William & Mary geoLab",
+      "description": "The geoBoundaries Global Database of Political Administrative Boundaries, built by the community and William & Mary geoLab. CGAZ composites country submissions against US Department of State international boundaries.",
+      "roles": [
+        "producer",
+        "licensor"
+      ],
+      "url": "https://www.geoboundaries.org/"
+    },
+    {
+      "name": "Portolan Mirrors",
+      "description": "Republishes the CGAZ release as cloud-native GeoParquet and PMTiles. Adds no boundaries and changes no geometry.",
+      "roles": [
+        "processor",
+        "host"
+      ],
+      "url": "https://github.com/portolan-mirrors/geoboundaries-catalog"
+    },
+    {
+      "name": "geoBoundaries (William & Mary geoLab)",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Portolan Mirrors",
+      "roles": [
+        "processor",
+        "host"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/portolan-mirrors/geoboundaries-catalog"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -180.01,
+          -90.01,
+          180.01,
+          83.6433912
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
     }
   },
-  "object_count": 48,
-  "objects_updated_at": "2026-11-12T19:40:48+00:00",
-  "total_bytes": 495389783,
-  "exts": {
-    "json": 21,
-    "md": 11,
-    "parquet": 7,
-    "png": 4,
-    "pmtiles": 4,
-    "txt": 1
+  "summaries": {
+    "item_count": 157980
   },
+  "assets": {
+    "adm0": {
+      "href": "https://data.source.coop/portolan-mirrors/geoboundaries-catalog/adm0/",
+      "type": "application/x-parquet",
+      "title": "adm0",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "shapeName",
+          "type": "VARCHAR",
+          "description": "[placename] Country or disputed area name"
+        },
+        {
+          "name": "shapeGroup",
+          "type": "VARCHAR",
+          "description": "[admin_code] geoBoundaries country code (not ISO for disputed areas)"
+        },
+        {
+          "name": "shapeType",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "adm1_units",
+          "type": "INTEGER"
+        },
+        {
+          "name": "adm2_units",
+          "type": "INTEGER"
+        },
+        {
+          "name": "area_km2",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "perimeter_km",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "compactness",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')",
+          "description": "[geometry] Country outline polygons"
+        }
+      ],
+      "description": "2 files sampled for this table"
+    },
+    "adm1": {
+      "href": "https://data.source.coop/portolan-mirrors/geoboundaries-catalog/adm1/",
+      "type": "application/x-parquet",
+      "title": "adm1",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "shapeName",
+          "type": "VARCHAR",
+          "description": "[placename] First-level administrative unit name"
+        },
+        {
+          "name": "shapeID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "shapeGroup",
+          "type": "VARCHAR",
+          "description": "[admin_code] Country code"
+        },
+        {
+          "name": "shapeType",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "country_units",
+          "type": "INTEGER"
+        },
+        {
+          "name": "area_km2",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "perimeter_km",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "compactness",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')",
+          "description": "[geometry] ADM1 boundary polygons"
+        }
+      ],
+      "description": "2 files sampled for this table"
+    },
+    "adm2": {
+      "href": "https://data.source.coop/portolan-mirrors/geoboundaries-catalog/adm2/",
+      "type": "application/x-parquet",
+      "title": "adm2",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "shapeName",
+          "type": "VARCHAR",
+          "description": "[placename] Second-level administrative unit name"
+        },
+        {
+          "name": "shapeID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "shapeGroup",
+          "type": "VARCHAR",
+          "description": "[admin_code] Country code"
+        },
+        {
+          "name": "shapeType",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "country_units",
+          "type": "INTEGER"
+        },
+        {
+          "name": "area_km2",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "perimeter_km",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "compactness",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')",
+          "description": "[geometry] ADM2 boundary polygons"
+        }
+      ],
+      "description": "2 files sampled for this table"
+    },
+    "names": {
+      "href": "https://data.source.coop/portolan-mirrors/geoboundaries-catalog/names/cgaz_names.parquet",
+      "type": "application/x-parquet",
+      "title": "cgaz_names.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "name",
+          "type": "VARCHAR",
+          "description": "[placename] Name of administrative unit"
+        },
+        {
+          "name": "name_norm",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "level",
+          "type": "TINYINT"
+        },
+        {
+          "name": "shape_type",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "country",
+          "type": "VARCHAR",
+          "description": "[admin_code] Country code"
+        },
+        {
+          "name": "country_name",
+          "type": "VARCHAR",
+          "description": "[placename] Country name"
+        },
+        {
+          "name": "shape_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "area_km2",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "name_dupes",
+          "type": "INTEGER"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin FLOAT, ymin FLOAT, xmax FLOAT, ymax FLOAT)",
+          "description": "[latlon] Bounding box extent of the unit"
+        },
+        {
+          "name": "geometry_ref",
+          "type": "STRUCT(file VARCHAR, row_group INTEGER, \"row\" BIGINT)"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')",
+          "description": "[geometry] Unit boundary geometry"
+        }
+      ],
+      "table:row_count": 52398
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/portolan-mirrors/geoboundaries-catalog/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/portolan-mirrors/geoboundaries-catalog",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "rel": "describedby",
+      "href": "./README.md",
+      "type": "text/markdown",
+      "title": "Catalog README"
+    },
+    {
+      "rel": "agents",
+      "href": "./AGENTS.md",
+      "type": "text/markdown",
+      "title": "Catalog agent guide"
+    },
+    {
+      "rel": "vcs",
+      "href": "https://github.com/portolan-mirrors/geoboundaries-catalog",
+      "title": "Source repository"
+    },
+    {
+      "rel": "issues",
+      "href": "https://github.com/portolan-mirrors/geoboundaries-catalog/issues",
+      "title": "Issue tracker"
+    },
+    {
+      "rel": "via",
+      "href": "https://www.geoboundaries.org/globalDownloads.html",
+      "type": "text/html",
+      "title": "geoBoundaries CGAZ downloads (upstream source)"
+    },
+    {
+      "rel": "cite-as",
+      "href": "https://doi.org/10.1371/journal.pone.0231866",
+      "type": "text/html",
+      "title": "Runfola et al. (2020), geoBoundaries: A global database of political administrative boundaries, PLoS ONE 15(4): e0231866"
+    },
+    {
+      "rel": "license",
+      "href": "https://creativecommons.org/licenses/by/4.0/",
+      "type": "text/html",
+      "title": "Creative Commons Attribution 4.0 International"
+    },
+    {
+      "rel": "cite-as",
+      "href": "https://doi.org/10.1371/journal.pone.0231866"
+    }
+  ],
+  "visibility": "public",
+  "updated_at": "2026-11-12T13:57:14.248Z",
+  "created_at": "2026-11-12T13:57:14.248Z",
+  "objects_updated_at": "2026-11-12T19:40:48+00:00",
+  "data_mode": null,
   "ext_bytes": {
     "parquet": 356091176,
     "pmtiles": 137560977,
@@ -37,11 +377,37 @@
     "json": 81795,
     "txt": 6449
   },
-  "store_format": null,
-  "_state": "seed",
+  "disabled": false,
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "cataloged_at": "2026-11-16T11:33:22+00:00"
+  "featured": 0,
+  "account_id": "portolan-mirrors",
+  "total_bytes": 495389783,
+  "object_count": 48,
+  "product_id": "geoboundaries-catalog",
+  "mirrors": {
+    "aws-opendata-us-west-2": {
+      "connection_id": "aws-opendata-us-west-2",
+      "is_primary": true,
+      "prefix": "portolan-mirrors/geoboundaries-catalog/"
+    }
+  },
+  "exts": {
+    "json": 21,
+    "md": 11,
+    "parquet": 7,
+    "png": 4,
+    "pmtiles": 4,
+    "txt": 1
+  },
+  "readme": "## README.md\n# geoBoundaries CGAZ Global Administrative Boundaries\n\nEvery administrative boundary in the geoBoundaries **Comprehensive Global\nAdministrative Zones** composite, republished as cloud-native GeoParquet and\nPMTiles you can query and draw without downloading anything.\n\n[geoBoundaries](https://www.geoboundaries.org/), built by the community and\n[William & Mary geoLab](https://geolab.wm.edu/), produces the data and remains\nthe authoritative source.\n\n> **This is not a byte-for-byte mirror.** It repairs faults in the upstream\n> release \u2014 38 double-encoded names, 1,275 invalid geometries, a missing CRS \u2014\n> and adds products geoBoundaries does not publish: a name search index and\n> simplified display geometry. Every deviation, with how to reproduce it and\n> how to get the vanilla behaviour instead, is in\n> **[changes-from-upstream.md](changes-from-upstream.md)**.\n\n## What is here\n\nFour collections.\n\n| collection | rows | full | display | what it is |\n|---|---|---|---|---|\n| `adm0` | 218 | 104 MB | 7.5 MB | Country outlines, plus 20 disputed areas |\n| `adm1` | 3,224 | 81 MB | 13 MB | States, provinces, regions, governorates |\n| `adm2` | 49,349 | 104 MB | 42 MB | Counties, districts, municipalities, communes |\n| `names` | 52,398 | 3.9 MB | \u2014 | A name search index across all three levels |\n\nThe three boundary levels cover the globe seamlessly: every one of the 218\ncountry codes appears at every level, because where a country has no\nfirst- or second-level data CGAZ carries its coarser polygon up instead. The\n`shapeType` column says which you are actually looking at.\n\nEach boundary collection is GeoParquet 1.1 with bbox covering metadata, sorted\nalong a Hilbert curve, and cut into small row groups \u2014 218, 202 and 193 of\nthem, holding 1, 16 and 256 rows \u2014 so a client fetches one unit's geometry in\na single range request of 250 to 325 KB instead of pulling the whole file. At\nADM0 that is one row group per country.\n\n`names` is the piece built for autocomplete: one row per named unit, sorted by\na folded form of the name, 3.9 MB in total. Load it whole in about a quarter of\na second, or resolve a typed prefix from one or two 109 KiB row groups by range\nrequest. It carries the `shapeID` that joins back to the geometry, the extent\nto fly a map to, a `geometry_ref` pointer straight at the row group holding the\ngeometry, and a count of how many other units share the same name.\n\nA PMTiles archive accompanies every collection, for drawing many units at once.\n\n**Every** boundary collection carries a **display** file: the same rows in the\nsame order in the same row groups, with simplified geometry, for drawing one\nunit's outline without fetching the full-resolution row group. One country's\noutline is about 10 KB there against 250 KB in the full file, one ADM1 unit\n37 KB against 220 KB, one ADM2 unit 151 KB against 325 KB. Canada is 528,021\ncoordinates at full resolution and 68,973 in the display file.\n\nADM2 gained its display file on 2026-11-12, reversing an earlier decision that\nwas right about the wrong quantity. ADM2 geometry is already simplified\nupstream \u2014 its median unit is 82 coordinates \u2014 so *decoding* one was never\nslow. But a browser does not decode one unit from an isolated byte range:\nhyparquet has no sub-chunk read, so fetching one ADM2 feature pulls that row\ngroup's entire geometry column chunk, and against the live catalog that was a\nmedian of 1.35 MB and 2.1 seconds, worst case 3.5 MB and 4.3 seconds. The cost\nwas bytes per row group, and it is the tail that fills a row group \u2014 the 99th\npercentile at 2,837 coordinates and the 14 units above 20,000 \u2014 not the median\n82.\n\n**The display geometry is buffered outward** by the distance it was simplified\nby, so it contains the true boundary rather than cutting inside it. That makes\nit safe to use as a spatial filter for downloading some *other* dataset: you\nover-fetch a little rather than silently dropping features along the edge.\nEvery feature at every level retains at least 99% of its original area \u2014 worst\ncases 99.95% at ADM0, 99.87% at ADM1 and 99.15% at ADM2. The cost is that\nneighbouring units overlap in the margin, so it is a display and filter shape,\nnot a cartographic boundary. Do not measure area from it.\n\nPer-country geoBoundaries releases (`gbOpen`, `gbHumanitarian`,\n`gbAuthoritative`) are **not** mirrored here. Those are full-resolution and\nrepresent each country as it represents itself; CGAZ is a different product.\n\n## The upstream data vs our optimized files \u2014 why both exist and when to use which\n\nEvery collection here links the **upstream GeoPackage** it was built from, as\na `source-gpkg` asset pointing at\n`github.com/wmgeolab/geoBoundaries/raw/main/releaseData/CGAZ/`, with the size\nand SHA-256 of the exact bytes this build consumed. The `names` collection\nlinks all three, because it is derived from all three levels. Nothing here\nasks you to take this mirror's word for its own contents.\n\n**Use the upstream GeoPackages when** you want the authoritative bytes, a\nwhole level at once for analysis in QGIS or GDAL or DuckDB, a format this\ncatalog does not publish, or a second opinion on anything this catalog claims.\nThey are the product of record: geoBoundaries publishes them, cites them, and\nis who you should credit.\n\n**Use the files here when** a browser is doing the reading. That is the only\nthing they are better at, and they are much better at it:\n\n| | upstream CGAZ GeoPackage | this catalog |\n|---|---|---|\n| format | GeoPackage (SQLite) | GeoParquet 1.1, zstd, with bbox covering |\n| one unit's geometry | read the whole file | one range request, 10\u2013325 KB |\n| find a place by name | scan the layer | sorted name index, 3.9 MB or one 109 KiB row group |\n| row groups | n/a | 1, 16 and 256 rows, sized by what one select costs |\n| footer read | n/a | exact `footer_bytes` in `names/index.json`, one request |\n| simplified outlines | none | a display file per level, buffered outward |\n| tiles | none | PMTiles per collection |\n| CRS | declared `srs_id = 0` | EPSG:4326 assigned |\n| names | 38 rows double-encoded | repaired |\n| geometry | 843 invalid polygons | repaired with `ST_MakeValid` |\n\nA GeoPackage is a SQLite database. It has no HTTP range story at all: a\nbrowser cannot ask it for one country without downloading all 155 MB, and\nthere is no column-chunk layout to ask with. That \u2014 not reachability, and not\nanything wrong with the upstream files \u2014 is why these exist.\n\nThe repairs in the last three rows are the one place this catalog is *not* a\nfaithful mirror, and they are why you should read\n[changes-from-upstream.md](changes-from-upstream.md) before you treat anything\nhere as vanilla geoBoundaries. Each one is recorded there with how to\nreproduce it and how to get the upstream behaviour back.\n\n## License\n\n**CC-BY-4.0.** geoBoundaries states:\n\n> the geoBoundaries Global Database of Political Administrative Boundaries\n> Database is an online, open license (CC BY 4.0) resource of information on\n> administrative boundaries (i.e., state, county) for every country in the\n> world. [...] All boundaries are available to view or download in common file\n> formats; the only requirement for use is acknowledgement.\n\n\u2014 [geoboundaries.org](https://www.geoboundaries.org/), which also links the\n[CC BY 4.0 license text](https://creativecommons.org/licenses/by/4.0/).\n\n**Attribution is required.** geoBoundaries asks for it in three forms, and this\nis their wording:\n\n- In written work: cite the PLoS ONE paper.\n\n  > Runfola, D. et al. (2020) geoBoundaries: A global database of political\n  > administrative boundaries. PLoS ONE 15(4): e0231866.\n  > [https://doi.org/10.1371/journal.pone.0231866](https://doi.org/10.1371/journal.pone.0231866)\n\n- On the web: \"we ask that you put the name 'geoBoundaries' with a link back to\n  this website, [www.geoboundaries.org](https://www.geoboundaries.org/),\n  somewhere prominent on the page that uses the boundaries.\"\n- In other products: \"we ask that you put the name 'geoBoundaries' somewhere\n  prominent in the product, for example in the credits or as a link in the help\n  menu.\"\n\nOne inconsistency is worth recording: the\n[geoBoundaries repository README](https://github.com/wmgeolab/geoBoundaries)\ndescribes the project as \"open license (CC BY 4.0 / ODbL)\", where the website\nsays CC BY 4.0 throughout. The website is treated as authoritative here, and\nCGAZ is built from `gbOpen`, which geoBoundaries describes as \"CC-BY 4.0\ncompliant\". Individual source boundaries carry their own upstream licenses,\nwhich the geoBoundaries API reports per boundary; CGAZ does not carry that\nfield, so per-unit license provenance is not recoverable from these files.\n\n## Provenance\n\nBuilt from the three CGAZ GeoPackages in the geoBoundaries core repository:\n\n- [geoBoundariesCGAZ_ADM0.gpkg](https://github.com/wmgeolab/geoBoundaries/raw/main/releaseData/CGAZ/geoBoundariesCGAZ_ADM0.gpkg) (162 MB)\n- [geoBoundariesCGAZ_ADM1.gpkg](https://github.com/wmgeolab/geoBoundaries/raw/main/releaseData/CGAZ/geoBoundariesCGAZ_ADM1.gpkg) (144 MB)\n- [geoBoundariesCGAZ_ADM2.gpkg](https://github.com/wmgeolab/geoBoundaries/raw/main/releaseData/CGAZ/geoBoundariesCGAZ_ADM2.gpkg) (241 MB)\n\ndownloaded 2026-11-12. CGAZ is served from the default branch through git-lfs,\nso a URL does not pin a version. The release mirrored here is commit\n[`4004e96`](https://github.com/wmgeolab/geoBoundaries/commit/4004e96433a2bdc54cac2b88d7d2e694c89cb818)\nof 2024-04-20, the last commit that changed any file under\n`releaseData/CGAZ`. The newest tagged geoBoundaries release, v6.0.0, is older\nthan that.\n\ngeoBoundaries describes CGAZ as:\n\n> A global composite of the SSC ADM0, ADM1 and ADM2, clipped to international\n> boundaries (US Department of State), with gaps filled between borders.\n\n\u2014 [geoBoundaries README](https://github.com/wmgeolab/geoBoundaries), and on the\n[download page](https://www.geoboundaries.org/globalDownloads.html):\n\"extensive simplification is performed [...] disputed areas are removed and\nreplaced with polygons following US Department of State definitions.\"\n\nNothing is filtered, reclassified or reprojected here. Every row and every\nattribute geoBoundaries publishes is carried, except one column that is NULL in\nevery row of every file. The additions are measured: geodesic area and\nperimeter, a shape-compactness ratio, unit counts per country, and a bbox\ncovering struct. Each collection's `.portolan/metadata.yaml` in the\n[repository](https://github.com/portolan-mirrors/geoboundaries-catalog) records the\ncomplete transform list and the known issues.\n\nThe pipeline is five scripts, each runnable on its own:\n[fetch_sources.py](https://github.com/portolan-mirrors/geoboundaries-catalog/blob/main/tools/fetch_sources.py),\n[build_boundaries.py](https://github.com/portolan-mirrors/geoboundaries-catalog/blob/main/tools/build_boundaries.py),\n[build_names.py](https://github.com/portolan-mirrors/geoboundaries-catalog/blob/main/tools/build_names.py),\n[build_pmtiles.py](https://github.com/portolan-mirrors/geoboundaries-catalog/blob/main/tools/build_pmtiles.py)\nand\n[make_styles.py](https://github.com/portolan-mirrors/geoboundaries-catalog/blob/main/tools/make_styles.py).\n\n## Using it from a browser\n\nThis catalog is shaped for a static client with no server \u2014 the search half of\na geocoder, running entirely on range requests. End to end:\n\n0. **Fetch [`names/index.json`](names/index.json) first.** It is a few\n   kilobytes and it carries every number the rest of this list needs: the URL,\n   size, row count, row group count and `row_group_rows` of every file, and\n   two exact metadata sizes per file. `footer_bytes` is the whole trailing\n   span, thrift footer plus page index, so one range request of exactly that\n   many bytes from the end of a file leaves you holding all its metadata.\n   `footer_metadata_bytes` is the thrift footer alone, which is the minimum a\n   reader needs to locate row groups, and it is what a hyparquet client should\n   ask for \u2014 hyparquet has no sub-chunk read, so it never touches the page\n   index. Pass one of them as `initialFetchSize`. Without it hyparquet\n   speculates a 512 KiB tail on the first read of every file, which measured\n   against this catalog is 524,288 bytes fetched where ADM0 needs 90,369.\n1. **Load the name index** when the search box takes focus. `names` is 3.9 MB\n   and reads in about 120 ms for the columns a search needs. Below about 5 MB\n   that is the right call; above it, the file is sorted so a typed prefix maps\n   to one or two 109 KiB row groups you can range-request instead.\n2. **Match the prefix** on `name_norm`, which is case-folded and\n   accent-stripped, so `zurich` finds `Z\u00fcrich`. Rank on `area_km2`,\n   disambiguate with `name_dupes` and `country_name`.\n3. **Take `shape_id`, `level` and `geometry_ref`** from the hit. `geometry_ref`\n   names the file, the row group and the row \u2014 so there is no search to do,\n   only a read. It is advisory: verify the `shapeID` (or `shapeGroup` at level\n   0) of the row you decode before you trust its geometry.\n4. **Draw the outline from the display file** at once \u2014 one range request of\n   10 KB at ADM0, 37 KB at ADM1, 151 KB at ADM2 \u2014 or move the camera from the\n   index's own `bbox` while it arrives.\n5. **Fetch full resolution in the background** when the user is going to\n   export, clip or measure \u2014 one range request of 250 to 325 KB.\n6. **Use the boundary to filter another dataset.** This is what the outward\n   buffer is for.\n\nThe runnable version of all of that, with the measured numbers and the join\nrecipe, is in [AGENTS.md](AGENTS.md) and\n[names/AGENTS.md](names/AGENTS.md).\n\n## A sibling catalog\n\n[cn-gazetteer-overture](https://github.com/portolan-mirrors/cn-gazetteer-overture)\nis an **experimental** sibling built to the same shape from Overture Maps\ndivisions. It goes below the second administrative level to cities and\nlocalities, and carries names in many languages where geoBoundaries carries\none. A widget can be pointed at either index.\n\n**The deciding factor is the license.** This catalog is CC BY 4.0: attribution\nonly, usable in a closed product as long as you credit geoBoundaries. Overture\ndivisions carry ODbL, which is share-alike \u2014 a derived database has to be\nreleased under the same terms. Choose this one when attribution is the only\nobligation you want; choose Overture when you need the coverage and can live\nwith share-alike.\n\n## Future work\n\nA global **ADM3/ADM4** composite is under evaluation. CGAZ stops at ADM2, but\ngeoBoundaries' per-country `gbOpen` releases go deeper for some countries; a\ncoverage survey is in progress. It would not be CGAZ, because there is no\nupstream composite at those levels, so the clipping and gap-filling would have\nto happen here. Nothing is promised.\n\n## Read this before querying\n\nFour things will give you wrong answers if you skip them, all covered in\n[AGENTS.md](AGENTS.md):\n\n- `shapeType` is not the level of the file you opened.\n- `shapeGroup` is a geoBoundaries code, not an ISO code, for the 20 disputed\n  areas.\n- The ADM0 file has no `shapeID` column at all.\n- Nothing in CGAZ links a second-level unit to the first-level unit containing\n  it.\n\n## Access\n\n```sql\nINSTALL httpfs; LOAD httpfs;\n\n-- The ten countries the composite divides most finely\nSELECT shapeName, shapeGroup, adm1_units, adm2_units\nFROM 'https://data.source.coop/portolan-mirrors/geoboundaries-catalog/adm0/cgaz_adm0.parquet'\nWHERE shapeType = 'ADM0'\nORDER BY adm2_units DESC\nLIMIT 10;\n```\n\n```sql\n-- Autocomplete, from the 3.9 MB index\nSELECT name, country_name, level, name_dupes\nFROM 'https://data.source.coop/portolan-mirrors/geoboundaries-catalog/names/cgaz_names.parquet'\nWHERE name_norm LIKE 'zurich%'\nORDER BY level;\n```\n",
+  "_review": [
+    "providers: role [processor, host] for 'Portolan Mirrors' is an AI guess \u2014 Assumed to be the processor and host because the README describes repairs, display geometry and a name index added in the mirror repository.. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-11-16T11:38:06+00:00",
+  "_source_format": "stac",
+  "store_format": null
 }
