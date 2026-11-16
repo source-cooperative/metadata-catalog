@@ -1,16 +1,192 @@
 {
   "schema_version": 1,
-  "account_id": "cboettig",
-  "product_id": "caladapt",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
+  "id": "cboettig/caladapt",
   "title": "caladapt",
-  "description": "",
-  "keywords": [],
-  "created_at": "2026-11-09T05:28:49.843Z",
-  "updated_at": "2026-11-09T05:28:49.843Z",
+  "description": "H3-indexed tables of projected extreme heat (days per year above temperature thresholds and annual maximum temperature) derived from Cal-Adapt LOCA2-Hybrid downscaled CMIP6 climate projections for California, Nevada and neighbouring areas. Covers a 1985\u20132014 historical baseline and SSP3-7.0 future periods (2040\u20132069, 2070\u20132099), summarized as mean, min and max across three climate models.",
+  "license": "CC-BY-4.0",
+  "keywords": [
+    "climate",
+    "h3",
+    "geoparquet",
+    "time-series",
+    "weather"
+  ],
+  "providers": [
+    {
+      "name": "UC San Diego Scripps Institution of Oceanography",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Cal-Adapt",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/cboettig/caladapt"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "1985-01-01T00:00:00Z",
+          "2099-01-01T00:00:00Z"
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 23409735
+  },
+  "assets": {
+    "loca2-hybrid/tasmax-annual-max/hex": {
+      "href": "https://data.source.coop/cboettig/caladapt/loca2-hybrid/tasmax-annual-max/hex/h0=577199624117288959/",
+      "type": "application/x-parquet",
+      "title": "loca2-hybrid/tasmax-annual-max/hex",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "h7",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 cell index at resolution 7"
+        },
+        {
+          "name": "scenario",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "period",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "tmax_mean_annual_max_c",
+          "type": "FLOAT"
+        },
+        {
+          "name": "tmax_max_c",
+          "type": "FLOAT"
+        },
+        {
+          "name": "n_models",
+          "type": "UTINYINT"
+        },
+        {
+          "name": "h6",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 parent cell index at resolution 6"
+        }
+      ],
+      "description": "2 files sampled for this table"
+    },
+    "loca2-hybrid/tasmax-exceedance/hex": {
+      "href": "https://data.source.coop/cboettig/caladapt/loca2-hybrid/tasmax-exceedance/hex/h0=577199624117288959/",
+      "type": "application/x-parquet",
+      "title": "loca2-hybrid/tasmax-exceedance/hex",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "h7",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 cell index at resolution 7"
+        },
+        {
+          "name": "scenario",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "period",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "threshold_c",
+          "type": "FLOAT"
+        },
+        {
+          "name": "days_mean",
+          "type": "FLOAT"
+        },
+        {
+          "name": "days_min",
+          "type": "FLOAT"
+        },
+        {
+          "name": "days_max",
+          "type": "FLOAT"
+        },
+        {
+          "name": "n_models",
+          "type": "UTINYINT"
+        },
+        {
+          "name": "h6",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 parent cell index at resolution 6"
+        }
+      ],
+      "description": "2 files sampled for this table"
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/cboettig/caladapt/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/cboettig/caladapt",
+      "title": "Source Cooperative product page"
+    }
+  ],
   "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": null,
+  "exts": {
+    "npz": 9,
+    "parquet": 4,
+    "json": 3,
+    "md": 1
+  },
+  "object_count": 17,
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "updated_at": "2026-11-09T05:28:49.843Z",
+  "total_bytes": 192936843,
+  "objects_updated_at": "2026-11-12T07:18:38+00:00",
+  "ext_bytes": {
+    "parquet": 131880040,
+    "npz": 61035145,
+    "json": 20182,
+    "md": 1476
+  },
   "mirrors": {
     "aws-opendata-us-west-2": {
       "connection_id": "aws-opendata-us-west-2",
@@ -18,26 +194,19 @@
       "prefix": "cboettig/caladapt/"
     }
   },
-  "object_count": 17,
-  "objects_updated_at": "2026-11-12T07:18:38+00:00",
-  "total_bytes": 192936843,
-  "exts": {
-    "npz": 9,
-    "parquet": 4,
-    "json": 3,
-    "md": 1
-  },
-  "ext_bytes": {
-    "parquet": 131880040,
-    "npz": 61035145,
-    "json": 20182,
-    "md": 1476
-  },
-  "store_format": null,
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "cataloged_at": "2026-11-16T11:31:25+00:00"
+  "disabled": false,
+  "account_id": "cboettig",
+  "created_at": "2026-11-09T05:28:49.843Z",
+  "data_mode": null,
+  "featured": 0,
+  "product_id": "caladapt",
+  "readme": "## README.md\n# Cal-Adapt Climate Projections\n\nH3 tables derived from the Cal-Adapt Data Catalog's LOCA2-Hybrid downscaled CMIP6 projections\n(UC San Diego Scripps Institution of Oceanography, California's Fifth Climate Change Assessment).\nLicence CC BY 4.0; credit UC San Diego Scripps and Cal-Adapt.\n\n| Collection | Contents |\n|---|---|\n| `loca2-hybrid/tasmax-exceedance` | Days per year with daily maximum temperature at or above each threshold, 20\u201360 \u00b0C in 0.5 \u00b0C steps |\n| `loca2-hybrid/tasmax-annual-max` | Hottest day of the year (30-year average) and hottest single day |\n\nBoth are at H3 resolution 7 (parents 6 and 0), for a 1985\u20132014 historical baseline and SSP3-7.0\n2040\u20132069 and 2070\u20132099, as the mean, min and max across three models (ACCESS-CM2, GFDL-ESM4,\nMPI-ESM1-2-HR). Coverage is the full LOCA2 domain: California, Nevada and neighbouring margins.\nFull documentation is in each `stac-collection.json`.\n\n## DuckDB\n\n```sql\nINSTALL h3 FROM community; LOAD h3;\n\n-- days per year at or above 40 \u00b0C near Sacramento, by scenario and period\nSELECT scenario, period, days_mean, days_min, days_max\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-caladapt/loca2-hybrid/tasmax-exceedance/hex/h0=*/data_0.parquet',\n                  hive_partitioning = true)\nWHERE h7 = h3_latlng_to_cell(38.58, -121.49, 7) AND threshold_c = 40.0\nORDER BY scenario, period;\n```\n\nA threshold with no row means 0 days. To join resolution-8 data, use\n`h3_cell_to_parent(h8, 7) = h7`.\n",
+  "_review": [
+    "providers: role [producer, licensor] for 'Cal-Adapt' is an AI guess \u2014 README asks for credit to Cal-Adapt; assumed to be a co-producer and licensor of the source data.. Verify before flipping to _state: reviewed.",
+    "extent.temporal: None (probe sample) widened to ['1985-01-01T00:00:00Z', '2099-01-01T00:00:00Z'] using README-stated coverage ['1985', '2099'].",
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [loca2-hybrid/tasmax-annual-max/hex.h7 (spatial_index), loca2-hybrid/tasmax-annual-max/hex.h6 (spatial_index), loca2-hybrid/tasmax-exceedance/hex.h7 (spatial_index), loca2-hybrid/tasmax-exceedance/hex.h6 (spatial_index)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-11-16T11:35:02+00:00",
+  "store_format": null
 }
