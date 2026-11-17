@@ -1,32 +1,96 @@
 {
   "schema_version": 1,
-  "account_id": "cboettig",
-  "product_id": "usgs",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "cboettig/usgs",
   "title": "usgs",
-  "description": "",
-  "keywords": [],
-  "created_at": "2026-11-09T05:32:52.118Z",
+  "description": "Cloud-native mirrors of U.S. Geological Survey datasets, including the Mineral Resources Data System (266,593 point locations of mineral deposits, mines and processing plants across the United States) and USGS assessments of undiscovered technically recoverable oil, gas and natural gas liquids as Assessment Unit polygons, including the Paradox Basin 2011 assessment. Provided as GeoParquet, PMTiles and H3 hex Parquet.",
+  "keywords": [
+    "geoparquet",
+    "pmtiles",
+    "h3",
+    "land-use",
+    "points-of-interest"
+  ],
+  "providers": [
+    {
+      "name": "U.S. Geological Survey",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/cboettig/usgs"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -178.80231,
+          17.68818,
+          178.55962,
+          71.439231
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/cboettig/usgs/",
+      "type": "application/octet-stream",
+      "title": "Dataset files (17 x .pmtiles)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/cboettig/usgs/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/cboettig/usgs",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "rel": "cite-as",
+      "href": "https://doi.org/10.5066/P9PAEXLB"
+    }
+  ],
   "updated_at": "2026-11-09T05:32:52.119Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
+  "object_count": 139,
   "data_mode": null,
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "visibility": "public",
+  "account_id": "cboettig",
+  "objects_updated_at": "2026-11-12T12:15:53+00:00",
+  "featured": 0,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "connection_id": "aws-opendata-us-west-2",
       "is_primary": true,
       "prefix": "cboettig/usgs/"
     }
-  },
-  "object_count": 139,
-  "objects_updated_at": "2026-11-12T12:15:53+00:00",
-  "total_bytes": 192727865,
-  "exts": {
-    "parquet": 56,
-    "json": 45,
-    "pmtiles": 17,
-    "png": 17,
-    "md": 4
   },
   "ext_bytes": {
     "pmtiles": 119591610,
@@ -35,11 +99,22 @@
     "json": 303178,
     "md": 25065
   },
-  "store_format": null,
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
+  "total_bytes": 192727865,
+  "product_id": "usgs",
+  "created_at": "2026-11-09T05:32:52.118Z",
+  "disabled": false,
+  "exts": {
+    "parquet": 56,
+    "json": 45,
+    "pmtiles": 17,
+    "png": 17,
+    "md": 4
   },
-  "cataloged_at": "2026-11-16T11:31:45+00:00"
+  "readme": "## README.md\n# USGS Datasets (`public-usgs`)\n\nCloud-native mirrors of U.S. Geological Survey datasets (GeoParquet, PMTiles, H3 hex).\n\n## USGS Mineral Resources Data System (MRDS) \u2014 US mineral deposits\n\nPoint locations of metallic, non-metallic, and energy mineral deposits, occurrences,\nmines, and processing plants across the United States (CONUS, Alaska, Hawaii, and US\nterritories): **266,593 points**, native H3 resolution **10**.\n\nBuilt from the full MRDS tabular CSV release (MRDS no longer ships Shapefile/GDB/KML),\nrestricted to `country = 'United States'` with valid coordinates, and reduced to a\ncurated attribute set. Each point maps to exactly one H3 cell (parents 9, 8, 0);\n`_cng_fid` is the universal per-feature id.\n\n> **Vintage:** MRDS was last systematically maintained ~2011 and is no longer actively\n> updated \u2014 treat it as a historical compilation. Per-record quality varies; see the\n> `score` column (USGS/Schweitzer 2019 grade, A best \u2192 E least complete). USGS **USMIN**\n> is a fresher companion for selected commodities.\n\n**License:** public domain (U.S. Government work).\n\n### Assets\n\n| Asset key | Format | Path |\n|---|---|---|\n| `mrds-parquet` | GeoParquet | `mrds.parquet` |\n| `mrds-pmtiles` | PMTiles | `mrds.pmtiles` |\n| `mrds-hex` | H3 hex Parquet | `mrds/hex/h0=*/data_0.parquet` |\n\n### MapLibre GL JS\n\nThe PMTiles **`source-layer` is `mrds`** (not the source file name).\n\n```js\nimport { Protocol } from \"pmtiles\";\nconst protocol = new Protocol();\nmaplibregl.addProtocol(\"pmtiles\", protocol.tile);\n\nmap.addSource(\"mrds\", {\n  type: \"vector\",\n  url: \"pmtiles://https://s3-west.nrp-nautilus.io/public-usgs/mrds.pmtiles\"\n});\n\nmap.addLayer({\n  id: \"mrds-points\",\n  type: \"circle\",\n  source: \"mrds\",\n  \"source-layer\": \"mrds\",           // <-- last segment of the dataset name\n  paint: {\n    \"circle-radius\": 3,\n    \"circle-color\": [\n      \"match\", [\"get\", \"com_type\"],\n      \"M\", \"#d7301f\",                // metallic\n      \"N\", \"#2b8cbe\",                // non-metallic\n      \"B\", \"#756bb1\",                // both\n      \"E\", \"#31a354\",                // energy\n      \"#999999\"                      // other / null\n    ],\n    \"circle-opacity\": 0.8\n  }\n});\n```\n\n### DuckDB\n\n```sql\nINSTALL spatial; LOAD spatial;\n\n-- Flat GeoParquet: all sites with attributes + geometry\nSELECT site_name, state, commod1, dev_stat, ST_AsText(geom) AS geom\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-usgs/mrds.parquet')\nWHERE state = 'Colorado' AND com_type = 'M'\nLIMIT 10;\n\n-- Count sites (points map 1:1 to cells, so _cng_fid is unique per hex row)\nSELECT COUNT(DISTINCT _cng_fid) AS n_sites\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-usgs/mrds/hex/h0=*/data_0.parquet');\n\n-- Hex join key: h8 is the catalog's universal join resolution\nSELECT h8, COUNT(*) AS n_sites\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-usgs/mrds/hex/h0=*/data_0.parquet')\nGROUP BY h8 ORDER BY n_sites DESC LIMIT 10;\n```\n\n### Column notes\n\n- `_cng_fid` \u2014 universal per-feature id; join key between flat and hex, dedup key for `COUNT(DISTINCT)`.\n- `com_type` \u2014 M=Metallic, N=Non-metallic, B=Both, E=Energy.\n- `region` \u2014 NA=North America (CONUS+Alaska), CR=Caribbean (PR, USVI), OC=Oceania (Hawaii/Pacific).\n- `prod_size` \u2014 S/M/L=Small/Medium/Large produced, Y/N=production occurred or not, U=Unknown.\n- `dev_stat` \u2014 Occurrence, Prospect, Producer, Past Producer, Plant, Unknown.\n- `score` \u2014 record-quality grade A (most complete) \u2192 E (least complete); not a correctness measure.\n\nFull per-column definitions are in each asset's `table:columns` in\n[`mrds/stac-collection.json`](https://s3-west.nrp-nautilus.io/public-usgs/mrds/stac-collection.json).\n\n**Source:** USGS Mineral Resources Data System \u2014 <https://mrdata.usgs.gov/mrds/>\n\n---\n\n## USGS Undiscovered Oil and Gas Assessment Units \u2014 United States\n\nUSGS estimates of undiscovered, technically recoverable oil, gas and natural gas liquids for\nthe onshore and state-water United States, as Assessment Unit (AU) polygons with a probability\ndistribution (F95, F50, F5, mean) per unit: **240 assessment units**, native H3 resolution **8**.\n\nUSGS publishes the national assessment one province or formation release at a time and there is\nno national compilation upstream, so this layer was merged from the **57 United States releases**\nin the [National and Global Oil and Gas Assessment Project ScienceBase community](https://www.sciencebase.gov/catalog/item/59cab03de4b017cf314094df),\naccessed **2026-09-21**. It carries **no version number**: the edition record is the release\nmanifest, and each row names its own release in `sciencebase_id` and `release_pubdate`.\nCoverage is the releases in that community, not every assessed US province: the Paradox Basin\n(province 5021) is the separate `paradox-basin-assessment-units` collection.\n\n> **Three things to know before aggregating.** Assessment units **overlap** (conventional and\n> continuous units and different Total Petroleum Systems cover the same ground), so a spatial\n> join returns several units per location; on the hex asset, dedup by `ASSESSCODE` before any\n> `SUM`. Only the **mean** is additive across units \u2014 `F95`, `F50` and\n> `F5` are fractiles of one unit's distribution. And **null is never zero**: only 66 of the 240\n> units carry volume estimates, because the remaining releases publish boundaries and assessment\n> input forms without a results table.\n\n```sql\n-- total mean undiscovered gas: most units split it into AG_ and NAGAS_; a few report only GAS_\nSELECT SUM(COALESCE(GAS_MN_BCF, COALESCE(AG_MN_BCF, 0) + COALESCE(NAGAS_MN_BCF, 0))) AS gas_bcf\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-usgs/noga-assessment-units.parquet');\n```\n\nFull documentation:\n[`noga-assessment-units/README.md`](https://s3-west.nrp-nautilus.io/public-usgs/noga-assessment-units/README.md)\nand\n[`noga-assessment-units/stac-collection.json`](https://s3-west.nrp-nautilus.io/public-usgs/noga-assessment-units/stac-collection.json).\n\n**Source:** USGS assessments of undiscovered oil and gas \u2014\n<https://www.usgs.gov/centers/central-energy-resources-science-center/science/united-states-assessments-undiscovered-oil>\n\n---\n\n## USGS Paradox Basin Undiscovered Oil and Gas Assessment Units (2011)\n\nThe USGS 2011 assessment of undiscovered, technically recoverable oil, gas and natural gas\nliquids in the Paradox Basin Province (5021; Utah, Colorado, New Mexico, Arizona): **10\nassessment units** with F95, F50, F5, mean and standard deviation volumes per unit, native H3\nresolution **8**. Mean totals are 560 million barrels of oil, 12,699 billion cubic feet of gas and\n491 million barrels of NGL, matching USGS Fact Sheet 2012-3031. Province 5021 is not part of the\nnational `noga-assessment-units` layer above.\n\n> Units **overlap**, only the **mean** is additive across units, and the source stores **0**\n> (never null) for quantities that do not apply to a unit's type and for the one unit that was not\n> quantitatively assessed.\n\nFull documentation:\n[`paradox-basin-assessment-units/README.md`](https://s3-west.nrp-nautilus.io/public-usgs/paradox-basin-assessment-units/README.md)\nand\n[`paradox-basin-assessment-units/stac-collection.json`](https://s3-west.nrp-nautilus.io/public-usgs/paradox-basin-assessment-units/stac-collection.json).\n\n**Source:** USGS Paradox Basin Oil and Gas Assessments \u2014\n<https://www.usgs.gov/centers/central-energy-resources-science-center/science/paradox-basin-oil-and-gas-assessments>\n(data release <https://doi.org/10.5066/P9PAEXLB>, accessed 2026-09-24)\n",
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-11-17T09:23:45+00:00",
+  "store_format": null
 }
