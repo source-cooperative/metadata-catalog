@@ -1,16 +1,1230 @@
 {
   "schema_version": 1,
-  "account_id": "portolan-mirrors",
-  "product_id": "whosonfirst-catalog",
-  "title": "Who's On First Gazetteer Portolan Catalog",
-  "description": "A portolan catalog for the Who's On First Gazetteer",
-  "keywords": [],
-  "created_at": "2026-11-13T07:03:17.567Z",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
+  "id": "portolan-mirrors/whosonfirst-catalog",
+  "title": "Who's On First: a Cloud-Native Gazetteer",
+  "description": "Who's On First is an open gazetteer of named administrative places (countries, regions, counties, localadmins, localities, neighbourhoods), each with a stable ID, placetype, parent, multilingual names and geometry provenance. This catalog repackages geocode.earth's GeoParquet distribution into per-level, name-sorted GeoParquet files, display-simplified companions, PMTiles, and a multilingual name index for place-name and boundary lookup.",
+  "keywords": [
+    "gazetteer",
+    "place-names",
+    "administrative-boundaries",
+    "who's-on-first",
+    "wof",
+    "geocode.earth",
+    "multilingual",
+    "localities",
+    "neighbourhoods",
+    "geoparquet",
+    "pmtiles",
+    "global-coverage"
+  ],
+  "providers": [
+    {
+      "name": "Who's On First",
+      "description": "Produces the gazetteer. A community project, originally from Mapzen, that assembles place records from over 300 open data sources with a stable numeric identifier, a placetype hierarchy and names in hundreds of languages, and publishes the per-record geometry provenance that makes its licensing checkable.",
+      "roles": [
+        "producer",
+        "licensor"
+      ],
+      "url": "https://whosonfirst.org/"
+    },
+    {
+      "name": "geocode.earth",
+      "description": "Builds and hosts the distributions. Who's On First lives as 260 GitHub repositories of GeoJSON; geocode.earth compiles them into combined GeoParquet, SQLite, SpatiaLite, GeoJSON-bundle and PMTiles files and serves them over HTTPS with range requests and permissive CORS, which is what makes this a metadata-first catalog rather than a copy. whosonfirst.org's own download page points here. (The Portolan `host` role names the organization serving *this catalog's* files, so it sits on Portolan Mirrors; geocode.earth hosts the upstream assets linked from every collection.)",
+      "roles": [
+        "processor"
+      ],
+      "url": "https://geocode.earth/data/whosonfirst/combined/"
+    },
+    {
+      "name": "Portolan Mirrors",
+      "description": "Describes geocode.earth's distribution as a Portolan catalog and adds the three things a browser client cannot get from it: one GeoParquet per administrative level with small row groups, a display-simplified companion for the polygon-heavy levels, and a name index sorted for prefix search. Links to the upstream files rather than copying them wherever they already do the job. Adds no places and changes no attribute value.",
+      "roles": [
+        "processor",
+        "host"
+      ],
+      "url": "https://github.com/portolan-mirrors/whosonfirst-catalog"
+    },
+    {
+      "name": "Who's On First",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "geocode.earth",
+      "roles": [
+        "processor",
+        "host"
+      ]
+    },
+    {
+      "name": "GeoNames",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Portolan Mirrors",
+      "roles": [
+        "processor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/portolan-mirrors/whosonfirst-catalog"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -180.03,
+          -90.03,
+          180.03,
+          83.6839503
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 15381394
+  },
+  "assets": {
+    "country": {
+      "href": "https://data.source.coop/portolan-mirrors/whosonfirst-catalog/country/",
+      "type": "application/x-parquet",
+      "title": "country",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "wof_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "parent_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "placetype",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "level",
+          "type": "TINYINT"
+        },
+        {
+          "name": "country",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "country_iso2",
+          "type": "VARCHAR",
+          "description": "[admin_code] ISO 3166-1 alpha-2 country code"
+        },
+        {
+          "name": "placetype_local",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "repo",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "lat",
+          "type": "DOUBLE",
+          "description": "[latlon] Representative point latitude (with lon)"
+        },
+        {
+          "name": "lon",
+          "type": "DOUBLE",
+          "description": "[latlon] Representative point longitude (with lat)"
+        },
+        {
+          "name": "min_zoom",
+          "type": "FLOAT"
+        },
+        {
+          "name": "max_zoom",
+          "type": "FLOAT"
+        },
+        {
+          "name": "min_label",
+          "type": "FLOAT"
+        },
+        {
+          "name": "max_label",
+          "type": "FLOAT"
+        },
+        {
+          "name": "population",
+          "type": "BIGINT"
+        },
+        {
+          "name": "is_funky",
+          "type": "TINYINT"
+        },
+        {
+          "name": "modified",
+          "type": "DATE"
+        },
+        {
+          "name": "country_wof_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "region_wof_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "county_wof_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "iso_code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "hasc_id",
+          "type": "VARCHAR",
+          "description": "[admin_code] HASC administrative code"
+        },
+        {
+          "name": "geonames_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "wikidata_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "concordance_keys",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "concordance_ids",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geom_src",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "area_km2",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "perimeter_km",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "vertices",
+          "type": "INTEGER"
+        },
+        {
+          "name": "geometry_repaired",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "geometry_flattened",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')",
+          "description": "[geometry] Country boundary geometry (CRS84)"
+        },
+        {
+          "name": "simplify_tolerance_deg",
+          "type": "FLOAT"
+        }
+      ],
+      "description": "2 files sampled for this table"
+    },
+    "county": {
+      "href": "https://data.source.coop/portolan-mirrors/whosonfirst-catalog/county/",
+      "type": "application/x-parquet",
+      "title": "county",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "wof_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "parent_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "placetype",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "level",
+          "type": "TINYINT"
+        },
+        {
+          "name": "country",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "country_iso2",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "placetype_local",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "repo",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "lat",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "lon",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "min_zoom",
+          "type": "FLOAT"
+        },
+        {
+          "name": "max_zoom",
+          "type": "FLOAT"
+        },
+        {
+          "name": "min_label",
+          "type": "FLOAT"
+        },
+        {
+          "name": "max_label",
+          "type": "FLOAT"
+        },
+        {
+          "name": "population",
+          "type": "BIGINT"
+        },
+        {
+          "name": "is_funky",
+          "type": "TINYINT"
+        },
+        {
+          "name": "modified",
+          "type": "DATE"
+        },
+        {
+          "name": "country_wof_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "region_wof_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "county_wof_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "iso_code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "hasc_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geonames_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "wikidata_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "concordance_keys",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "concordance_ids",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geom_src",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "area_km2",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "perimeter_km",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "vertices",
+          "type": "INTEGER"
+        },
+        {
+          "name": "geometry_repaired",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "geometry_flattened",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')",
+          "description": "[geometry] County boundary geometry"
+        },
+        {
+          "name": "simplify_tolerance_deg",
+          "type": "FLOAT"
+        }
+      ],
+      "description": "2 files sampled for this table"
+    },
+    "localadmin": {
+      "href": "https://data.source.coop/portolan-mirrors/whosonfirst-catalog/localadmin/",
+      "type": "application/x-parquet",
+      "title": "localadmin",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "wof_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "parent_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "placetype",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "level",
+          "type": "TINYINT"
+        },
+        {
+          "name": "country",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "country_iso2",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "placetype_local",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "repo",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "lat",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "lon",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "min_zoom",
+          "type": "FLOAT"
+        },
+        {
+          "name": "max_zoom",
+          "type": "FLOAT"
+        },
+        {
+          "name": "min_label",
+          "type": "FLOAT"
+        },
+        {
+          "name": "max_label",
+          "type": "FLOAT"
+        },
+        {
+          "name": "population",
+          "type": "BIGINT"
+        },
+        {
+          "name": "is_funky",
+          "type": "TINYINT"
+        },
+        {
+          "name": "modified",
+          "type": "DATE"
+        },
+        {
+          "name": "country_wof_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "region_wof_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "county_wof_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "iso_code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "hasc_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geonames_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "wikidata_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "concordance_keys",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "concordance_ids",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geom_src",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "area_km2",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "perimeter_km",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "vertices",
+          "type": "INTEGER"
+        },
+        {
+          "name": "geometry_repaired",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "geometry_flattened",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')",
+          "description": "[geometry] Local administrative unit geometry"
+        },
+        {
+          "name": "simplify_tolerance_deg",
+          "type": "FLOAT"
+        }
+      ],
+      "description": "2 files sampled for this table"
+    },
+    "locality": {
+      "href": "https://data.source.coop/portolan-mirrors/whosonfirst-catalog/locality/wof_locality.parquet",
+      "type": "application/x-parquet",
+      "title": "wof_locality.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "wof_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "parent_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "placetype",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "level",
+          "type": "TINYINT"
+        },
+        {
+          "name": "country",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "country_iso2",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "placetype_local",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "repo",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "lat",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "lon",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "min_zoom",
+          "type": "FLOAT"
+        },
+        {
+          "name": "max_zoom",
+          "type": "FLOAT"
+        },
+        {
+          "name": "min_label",
+          "type": "FLOAT"
+        },
+        {
+          "name": "max_label",
+          "type": "FLOAT"
+        },
+        {
+          "name": "population",
+          "type": "BIGINT"
+        },
+        {
+          "name": "is_funky",
+          "type": "TINYINT"
+        },
+        {
+          "name": "modified",
+          "type": "DATE"
+        },
+        {
+          "name": "country_wof_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "region_wof_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "county_wof_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "iso_code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "hasc_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geonames_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "wikidata_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "concordance_keys",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "concordance_ids",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geom_src",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "area_km2",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "perimeter_km",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "vertices",
+          "type": "INTEGER"
+        },
+        {
+          "name": "geometry_repaired",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "geometry_flattened",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')",
+          "description": "[geometry] Locality boundary or point geometry"
+        }
+      ],
+      "table:row_count": 4796292
+    },
+    "names": {
+      "href": "https://data.source.coop/portolan-mirrors/whosonfirst-catalog/names/",
+      "type": "application/x-parquet",
+      "title": "names",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "name",
+          "type": "VARCHAR",
+          "description": "[placename] Place name in one of 25 languages"
+        },
+        {
+          "name": "name_norm",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "level",
+          "type": "TINYINT"
+        },
+        {
+          "name": "placetype",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "country",
+          "type": "VARCHAR",
+          "description": "[placename] Country of the place"
+        },
+        {
+          "name": "country_iso2",
+          "type": "VARCHAR",
+          "description": "[admin_code] ISO 3166-1 alpha-2 country code"
+        },
+        {
+          "name": "feature_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "source",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name_lang",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name_lang_count",
+          "type": "SMALLINT"
+        },
+        {
+          "name": "alt_of",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "parent_name",
+          "type": "VARCHAR",
+          "description": "[placename] Name of the parent place"
+        },
+        {
+          "name": "parent_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "population",
+          "type": "BIGINT"
+        },
+        {
+          "name": "min_zoom",
+          "type": "FLOAT"
+        },
+        {
+          "name": "name_dupes",
+          "type": "INTEGER"
+        },
+        {
+          "name": "is_point",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin FLOAT, ymin FLOAT, xmax FLOAT, ymax FLOAT)",
+          "description": "[geometry] Bounding box of the place"
+        },
+        {
+          "name": "geometry_ref",
+          "type": "STRUCT(file VARCHAR, row_group INTEGER, \"row\" BIGINT)",
+          "description": "[geometry] Pointer (file, row group, row) to geometry in the level's boundary file"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')",
+          "description": "[geometry] Place geometry (point or polygon)"
+        }
+      ],
+      "description": "2 files sampled for this table"
+    },
+    "neighbourhood": {
+      "href": "https://data.source.coop/portolan-mirrors/whosonfirst-catalog/neighbourhood/wof_neighbourhood.parquet",
+      "type": "application/x-parquet",
+      "title": "wof_neighbourhood.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "wof_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "parent_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "placetype",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "level",
+          "type": "TINYINT"
+        },
+        {
+          "name": "country",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "country_iso2",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "placetype_local",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "repo",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "lat",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "lon",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "min_zoom",
+          "type": "FLOAT"
+        },
+        {
+          "name": "max_zoom",
+          "type": "FLOAT"
+        },
+        {
+          "name": "min_label",
+          "type": "FLOAT"
+        },
+        {
+          "name": "max_label",
+          "type": "FLOAT"
+        },
+        {
+          "name": "population",
+          "type": "BIGINT"
+        },
+        {
+          "name": "is_funky",
+          "type": "TINYINT"
+        },
+        {
+          "name": "modified",
+          "type": "DATE"
+        },
+        {
+          "name": "country_wof_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "region_wof_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "county_wof_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "iso_code",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "hasc_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geonames_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "wikidata_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "concordance_keys",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "concordance_ids",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geom_src",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "area_km2",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "perimeter_km",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "vertices",
+          "type": "INTEGER"
+        },
+        {
+          "name": "geometry_repaired",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "geometry_flattened",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')",
+          "description": "[geometry] Neighbourhood boundary or point geometry"
+        }
+      ],
+      "table:row_count": 397416
+    },
+    "region": {
+      "href": "https://data.source.coop/portolan-mirrors/whosonfirst-catalog/region/",
+      "type": "application/x-parquet",
+      "title": "region",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "wof_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "parent_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "placetype",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "level",
+          "type": "TINYINT"
+        },
+        {
+          "name": "country",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "country_iso2",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "placetype_local",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "repo",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "lat",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "lon",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "min_zoom",
+          "type": "FLOAT"
+        },
+        {
+          "name": "max_zoom",
+          "type": "FLOAT"
+        },
+        {
+          "name": "min_label",
+          "type": "FLOAT"
+        },
+        {
+          "name": "max_label",
+          "type": "FLOAT"
+        },
+        {
+          "name": "population",
+          "type": "BIGINT"
+        },
+        {
+          "name": "is_funky",
+          "type": "TINYINT"
+        },
+        {
+          "name": "modified",
+          "type": "DATE"
+        },
+        {
+          "name": "country_wof_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "region_wof_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "county_wof_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "iso_code",
+          "type": "VARCHAR",
+          "description": "[admin_code] ISO subdivision code"
+        },
+        {
+          "name": "hasc_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geonames_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "wikidata_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "concordance_keys",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "concordance_ids",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geom_src",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "area_km2",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "perimeter_km",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "vertices",
+          "type": "INTEGER"
+        },
+        {
+          "name": "geometry_repaired",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "geometry_flattened",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')",
+          "description": "[geometry] Region boundary geometry"
+        },
+        {
+          "name": "simplify_tolerance_deg",
+          "type": "FLOAT"
+        }
+      ],
+      "description": "2 files sampled for this table"
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/portolan-mirrors/whosonfirst-catalog/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/portolan-mirrors/whosonfirst-catalog",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "rel": "describedby",
+      "href": "./README.md",
+      "type": "text/markdown",
+      "title": "Catalog README"
+    },
+    {
+      "rel": "agents",
+      "href": "./AGENTS.md",
+      "type": "text/markdown",
+      "title": "Catalog agent guide"
+    },
+    {
+      "rel": "vcs",
+      "href": "https://github.com/portolan-mirrors/whosonfirst-catalog",
+      "title": "Source repository"
+    },
+    {
+      "rel": "issues",
+      "href": "https://github.com/portolan-mirrors/whosonfirst-catalog/issues",
+      "title": "Issue tracker"
+    },
+    {
+      "rel": "via",
+      "href": "https://geocode.earth/data/whosonfirst/combined/",
+      "type": "text/html",
+      "title": "geocode.earth combined Who's On First downloads (upstream source)"
+    },
+    {
+      "rel": "cite-as",
+      "href": "https://whosonfirst.org/",
+      "type": "text/html",
+      "title": "Who's On First"
+    },
+    {
+      "rel": "license",
+      "href": "https://whosonfirst.org/docs/licenses/",
+      "type": "text/html",
+      "title": "Who's On First data licenses, source by source"
+    },
+    {
+      "rel": "license",
+      "href": "https://github.com/whosonfirst-data/whosonfirst-data/blob/master/LICENSE.md",
+      "type": "text/html",
+      "title": "Who's On First LICENSE.md"
+    },
+    {
+      "rel": "describedby",
+      "href": "https://github.com/whosonfirst/whosonfirst-placetypes",
+      "type": "text/html",
+      "title": "Who's On First placetypes, the project's own definitions"
+    },
+    {
+      "rel": "related",
+      "href": "https://source.coop/portolan-mirrors/geoboundaries-catalog",
+      "type": "text/html",
+      "title": "geoBoundaries CGAZ, a CC-BY-4.0 sibling gazetteer catalog"
+    },
+    {
+      "rel": "related",
+      "href": "https://source.coop/portolan-mirrors/cn-gazetteer-overture",
+      "type": "text/html",
+      "title": "Overture divisions, an ODbL sibling gazetteer catalog"
+    }
+  ],
   "updated_at": "2026-11-13T07:03:17.567Z",
-  "visibility": "public",
+  "account_id": "portolan-mirrors",
   "disabled": false,
-  "featured": 0,
+  "product_id": "whosonfirst-catalog",
+  "objects_updated_at": "2026-11-13T14:29:30+00:00",
+  "created_at": "2026-11-13T07:03:17.567Z",
   "data_mode": null,
+  "object_count": 97,
+  "total_bytes": 5570588929,
+  "featured": 0,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "connection_id": "aws-opendata-us-west-2",
@@ -18,9 +1232,6 @@
       "prefix": "portolan-mirrors/whosonfirst-catalog/"
     }
   },
-  "object_count": 97,
-  "objects_updated_at": "2026-11-13T14:29:30+00:00",
-  "total_bytes": 5570588929,
   "exts": {
     "json": 52,
     "md": 18,
@@ -28,6 +1239,10 @@
     "png": 7,
     "pmtiles": 7,
     "txt": 1
+  },
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
   },
   "ext_bytes": {
     "parquet": 4343783914,
@@ -37,11 +1252,16 @@
     "md": 190730,
     "txt": 9009
   },
-  "store_format": null,
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "cataloged_at": "2026-11-16T11:33:25+00:00"
+  "visibility": "public",
+  "readme": "## README.md\n# Who's On First: a Cloud-Native Gazetteer\n\n[Who's On First](https://whosonfirst.org/) is an open gazetteer. It holds\nnamed administrative places \u2014 countries, regions, counties, local\nadministrative units, towns, boroughs, neighbourhoods \u2014 each with a stable\nnumeric identifier, a placetype, a parent, names in many languages, and a\nrecord of which source its geometry came from.\n\nThis catalog describes it as\n[geocode.earth](https://geocode.earth/data/whosonfirst/combined/) distributes\nit, and adds the few files a browser needs to search it.\n\n**It is place-name and boundary lookup, not address geocoding.** Who's On\nFirst's administrative distribution holds no street and no house number.\n\n## What is here\n\n| collection | level | places | holds |\n|---|---|---|---|\n| [`country`](country/) | 0 | 353 | `country`, `dependency`, `disputed` |\n| [`region`](region/) | 1 | 4,362 | `macroregion`, `region` |\n| [`county`](county/) | 2 | 42,115 | `macrocounty`, `county` |\n| [`localadmin`](localadmin/) | 3 | 164,756 | `localadmin` |\n| [`locality`](locality/) | 4 | 4,796,292 | `locality`, `borough` |\n| [`neighbourhood`](neighbourhood/) | 5 | 397,416 | `macrohood`, `neighbourhood`, `microhood` |\n| [`names`](names/) | all | 9,478,779 rows | the gazetteer name index |\n\n5,405,294 places in all, which is 99.66% of the 5,423,663 rows geocode.earth's\ncombined administrative distribution carries. The other 18,369 are placetypes\nthat are not land administration \u2014 `campus`, `postalregion`, `marinearea`,\n`marketarea`, `timezone`, `ocean` \u2014 plus `continent` and `empire`, which sit\nabove the country rung and so have no place on a 0-based ladder.\n[changes-from-upstream.md](changes-from-upstream.md) lists every one with its\ncount and its reason.\n\n**Who's On First has no administrative level number.** It has placetypes,\narranged in a hierarchy of its own. The `level` column in every file here is\nthis catalog's mapping of those placetypes onto the 0-to-5 ladder a name\nsearch needs, and it is defined in exactly one place in the\n[source repository](https://github.com/portolan-mirrors/whosonfirst-catalog).\nA level is a *tier*: a tier can hold a unit and its own subdivision, because\nWOF inserts `macroregion` above `region` and `microhood` below\n`neighbourhood` without adding a rung anyone else recognizes.\n\n## Why this catalog links to geocode.earth instead of copying it\n\ngeocode.earth's combined GeoParquet is already cloud-native: GeoParquet 1.1\nwith a `covering` bbox, spatially clustered, served over HTTPS with range\nrequests and `Access-Control-Allow-Origin: *`. A planet-wide aggregate over it\ntakes seconds from a laptop. Copying it would produce a staler duplicate of a\nfile that already works.\n\nSo every collection here carries geocode.earth's own files as assets \u2014 the\nGeoParquet, the PMTiles, the SQLite, the SpatiaLite, the GeoJSON bundle, and\ntheir inventory \u2014 at their original URLs, with the size and sha256 their\ninventory records.\n\nWhat this catalog builds is only what a measurement says those files cannot\ndo. Three measurements, all reproducible from the\n[source repository](https://github.com/portolan-mirrors/whosonfirst-catalog):\n\n**Fetching one place's geometry from the upstream GeoParquet costs tens of\nmegabytes.** It has 83 row groups of 65,536 rows, no declared sort, and 89% of\nits bytes in the `geometry` column, so one row group's geometry chunk is a\nmedian of 38 MiB and as much as 285 MiB. Every Parquet reader is\nrow-group-granular, so that is the cost of decoding a single row. Filtering to\none placetype prunes nothing either, because `placetype` statistics span most\nof the alphabet in most row groups.\n\n**The upstream PMTiles archive cannot be opened at low zoom.** It is 2.0 GiB\nover zoom 0 to 9 with one layer per placetype, built with\n`tippecanoe -zg --no-tile-size-limit`. Its whole-world tile is 15,671,392\nbytes and its mid zooms reach 26 MB. It also reports dropping 4,412,845\nfeatures by rate at zoom 0 to fit what it does carry, so the low zooms are\nboth heavy and incomplete.\n\n**Nothing upstream answers \"what places are called something like *this*\".**\nThat is what a gazetteer is for, and it needs a file sorted by name.\n\nSo this catalog adds, per level: one GeoParquet sorted by `(country, wof_id)`\nin exactly-full row groups under a megabyte each; a display-simplified\ncompanion for the four levels whose geometry is heavy enough to need one; and\nvector tiles capped at 400 KB per tile. Plus one gazetteer index.\n\n## Which file to read\n\n| you want | read |\n|---|---|\n| To find a place by name | `names/wof_names.parquet`, after `names/index.json` |\n| To draw one outline, now | `{level}/wof_{level}_display.parquet` (levels 0\u20133) |\n| To draw many at once | `{level}/{level}.pmtiles` |\n| To clip, measure, export or analyse one place | `{level}/wof_{level}.parquet` |\n| To scan the planet, or all 21 placetypes at once | [geocode.earth's combined GeoParquet](https://data.geocode.earth/wof/dist/parquet/whosonfirst-data-admin-latest.parquet) |\n| The full hierarchy, every language, or the temporal fields | [geocode.earth's SQLite distribution](https://data.geocode.earth/wof/dist/sqlite/whosonfirst-data-admin-latest.db.bz2) |\n\nThe last row matters more than it looks. geocode.earth's GeoParquet build is a\nflattened projection of Who's On First, and three things do not survive it:\nthe full `wof:hierarchy`, the full `wof:concordances`, and every temporal and\ndeprecation field (`mz:is_current`, `edtf:cessation`, `edtf:deprecated`,\n`wof:superseded_by`). **So nothing in this catalog can tell you whether a\nplace still exists.** If that matters, the SQLite distribution is where to\nlook, and it is an asset of every collection here.\n\nNames are the same story in miniature. WOF carries names in hundreds of\nlanguages \u2014 one San Francisco record has 214 `name:*` properties \u2014 and the\nGeoParquet build carries 25 of them. The index here is as multilingual as the\nGeoParquet allows, and no more.\n\n## Vintage\n\nThere are no versioned URLs upstream. Every file is named `-latest` and\noverwritten in place, so the vintage comes from geocode.earth's inventory, not\nfrom a URL.\n\n| distribution | built |\n|---|---|\n| GeoParquet, which this catalog is built from | 2025-04-07 |\n| PMTiles | 2025-10-14 |\n| SQLite, SpatiaLite, GeoJSON bundle | 2025-10-14 |\n\n**The GeoParquet build is about six months behind the others, from a different\nWOF tree.** A count taken from this catalog and a count taken from the SQLite\ndistribution are two vintages, not a discrepancy. The HTTP `Last-Modified`\nheader on every upstream object reads 2025-10-30 because the bucket was\nre-copied then; it is not a vintage signal.\n\n## License\n\n`other`, with links, because no single SPDX identifier is true of Who's On\nFirst.\n\nWOF's own LICENSE.md says that \"the format and structure that allows Who's On\nFirst to operate is made available under a Creative Commons Zero\ndesignation\" \u2014 the schema, not the records \u2014 and that the dataset \"is both an\noriginal work and a modification of existing open data. Some of those open\ndata projects do require attribution.\"\n\nMeasured on this distribution's own `geom_src` column, joined to\n[whosonfirst-sources](https://github.com/whosonfirst/whosonfirst-sources):\n\n| share | records | license of the geometry source |\n|---|---|---|\n| 70.88% | 3,844,289 | CC BY \u2014 GeoNames |\n| 16.44% | 891,696 | CC-BY \u2014 Karmashapes, Mesoshapes |\n| 7.27% | 394,250 | CC BY 2.0 \u2014 Quattroshapes, Open Data France |\n| 2.58% | 139,913 | CC0 \u2014 Who's On First, Metazen, US Census |\n| 0.97% | 52,730 | unmatched or empty `geom_src` |\n| 0.0003% | 14 | CC BY-SA 3.0 \u2014 Wikipedia |\n\nAttribution-requiring, not share-alike. No ODbL source contributes geometry at\nall: `whosonfirst-sources` marks OpenStreetMap as `usage_geometry: 0`, used\nonly to mint concordance identifiers.\n\n**What you have to do:** pass on the link, which is the one thing WOF\nrequires.\n\n> Data from Who's On First.\n> [License](https://whosonfirst.org/docs/licenses/).\n\nTwo additions this catalog recommends and WOF does not require by name: credit\nGeoNames under CC BY 4.0, because it is 71% of the geometry, and credit\ngeocode.earth, because they build the distribution.\n\nAnd one thing no blanket license can do: **check the record.** `geom_src` is\non every row of every boundary file. Join it to\n`whosonfirst-sources/data/sources-spec-latest.json` and a specific place's\nlicense is a fact rather than an average.\n\n## How a browser gazetteer consumes this catalog\n\nEnd to end, with no server.\n\n1. **Fetch [`names/index.json`](names/index.json)** \u2014 a few kilobytes. It\n   carries the index's exact size, row group count, checksum and footer size,\n   every boundary file's URL and row count, the `catalog_version` all of them\n   are pinned to, and the attribution to display.\n2. **Range-request the index.** It is sorted by `name_norm`, a folded form of\n   the name, so a typed prefix lives in a contiguous run of row groups that a\n   client finds by binary search over the footer's statistics. Measured over\n   all 200,734 two-character prefixes that occur: a prefix touches a\n   median of one row group and at most 24.\n3. **Rank the hits.** `name_dupes` says how many places in the world share the\n   folded name, `population` and `min_zoom` rank them, `parent_name`\n   disambiguates them, and `bbox` moves the camera with no further fetch.\n4. **Check `is_point` before drawing an outline.** 84% of localities and\n   neighbourhoods are points, because most of them come from GeoNames, which\n   is a point gazetteer.\n5. **Resolve the geometry.** `geometry_ref` is a `{file, row_group, row}`\n   pointer into the level's boundary file and its display companion \u2014 one\n   range read. Verify the `wof_id` of the row you land on before trusting it;\n   it is advisory by design.\n6. **Use the display polygon as a spatial filter** for downloading some\n   *other* dataset. It is buffered outward on purpose, so it contains the true\n   boundary and a filter built from it over-fetches slightly rather than\n   silently dropping features along the edge.\n\n## Start here\n\n- [Catalog agent guide](AGENTS.md) \u2014 the join keys and the traps.\n- [What changed from the upstream distribution](changes-from-upstream.md).\n- Per-collection guides: [`country`](country/AGENTS.md),\n  [`region`](region/AGENTS.md), [`county`](county/AGENTS.md),\n  [`localadmin`](localadmin/AGENTS.md), [`locality`](locality/AGENTS.md),\n  [`neighbourhood`](neighbourhood/AGENTS.md), [`names`](names/AGENTS.md).\n\n```sql\nINSTALL spatial; LOAD spatial; INSTALL httpfs; LOAD httpfs;\n\n-- Every place called Kyoto, in any language this index carries.\nSELECT name, name_lang, level, placetype, country, parent_name\nFROM 'https://data.source.coop/portolan-mirrors/whosonfirst-catalog/names/wof_names.parquet'\nWHERE name_norm = 'kyoto'\nORDER BY level, population DESC NULLS LAST;\n```\n\n## Two sibling catalogs\n\nThree gazetteer catalogs are built to the same index contract, so one client\ncan be pointed at any of them. **Choose by license and by coverage.**\n\n| catalog | license | reaches | names |\n|---|---|---|---|\n| this one | mixed, attribution, **no share-alike** | neighbourhood | 25 languages |\n| [geoBoundaries CGAZ](https://source.coop/portolan-mirrors/geoboundaries-catalog) | CC-BY-4.0 | second-level | one |\n| [Overture divisions](https://source.coop/portolan-mirrors/cn-gazetteer-overture) | ODbL, **share-alike** | locality | hundreds |\n\nThis one reaches further down than geoBoundaries and carries no share-alike\nobligation, unlike Overture. Overture carries far more languages and a\nconflated, actively maintained geometry set; Who's On First carries more\nplacetypes and publishes per-record geometry provenance, which is what makes\nits licensing checkable rather than assumed.\n",
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
+    "providers: role [processor, host] for 'geocode.earth' is an AI guess \u2014 README says geocode.earth builds and distributes the upstream GeoParquet/PMTiles/SQLite files; licensor role not claimed.. Verify before flipping to _state: reviewed.",
+    "providers: role [producer] for 'GeoNames' is an AI guess \u2014 Source of ~71% of geometry under CC BY; assumed to be an upstream data producer.. Verify before flipping to _state: reviewed.",
+    "providers: role [processor] for 'Portolan Mirrors' is an AI guess \u2014 Builds the per-level sorted GeoParquet, display files, tiles and name index in the linked source repository; role inferred from the portolan-mirrors namespace.. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-11-17T09:26:13+00:00",
+  "_source_format": "stac",
+  "store_format": null
 }
