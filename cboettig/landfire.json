@@ -1,16 +1,82 @@
 {
   "schema_version": 1,
-  "account_id": "cboettig",
-  "product_id": "landfire",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "cboettig/landfire",
   "title": "landfire",
-  "description": "",
-  "keywords": [],
-  "created_at": "2026-11-09T05:31:47.721Z",
-  "updated_at": "2026-11-09T05:31:47.721Z",
-  "visibility": "public",
+  "description": "The LANDFIRE 2024 Update (version 2.5.0) for the conterminous United States at 30 m resolution, mapping vegetation, fuel and fire-regime conditions. Published collections include Vegetation Condition Class and Existing Vegetation Type as Cloud-Optimized GeoTIFFs and H3 resolution-10 hex parquet tables (dominant class).",
+  "license": "CC0-1.0",
+  "keywords": [
+    "remote-sensing",
+    "land-cover",
+    "wildfire",
+    "emergency-management",
+    "h3",
+    "cloud-optimized-geotiff",
+    "geoparquet",
+    "land-use"
+  ],
+  "providers": [
+    {
+      "name": "LANDFIRE (U.S. Geological Survey and USDA Forest Service)",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/cboettig/landfire"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -128.3872854,
+          22.428339,
+          -64.054043,
+          52.48156
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
+    }
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/cboettig/landfire/",
+      "type": "image/tiff; application=geotiff",
+      "title": "Dataset files (27 x .tif)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/cboettig/landfire/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/cboettig/landfire",
+      "title": "Source Cooperative product page"
+    }
+  ],
+  "product_id": "landfire",
+  "object_count": 134,
   "disabled": false,
-  "featured": 0,
-  "data_mode": null,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "connection_id": "aws-opendata-us-west-2",
@@ -18,7 +84,19 @@
       "prefix": "cboettig/landfire/"
     }
   },
-  "object_count": 134,
+  "data_mode": null,
+  "updated_at": "2026-11-09T05:31:47.721Z",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "ext_bytes": {
+    "tif": 146053581324,
+    "parquet": 18533918499,
+    "png": 989733,
+    "json": 815221,
+    "md": 6846
+  },
   "objects_updated_at": "2026-11-12T12:06:52+00:00",
   "total_bytes": 164589311623,
   "exts": {
@@ -28,18 +106,15 @@
     "png": 13,
     "md": 1
   },
-  "ext_bytes": {
-    "tif": 146053581324,
-    "parquet": 18533918499,
-    "png": 989733,
-    "json": 815221,
-    "md": 6846
-  },
-  "store_format": null,
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "cataloged_at": "2026-11-16T11:31:36+00:00"
+  "created_at": "2026-11-09T05:31:47.721Z",
+  "visibility": "public",
+  "featured": 0,
+  "account_id": "cboettig",
+  "readme": "## README.md\n# LANDFIRE 2024 Update (LF 2024, version 2.5.0) \u2014 CONUS, 30 m\n\n[LANDFIRE](https://landfire.gov) is a shared program of the U.S. Geological Survey and the USDA\nForest Service that maps vegetation, fuel and fire-regime conditions across the United States at\n30 m resolution. This bucket holds the **LANDFIRE 2024 Update (version 2.5.0)** for the\nconterminous United States.\n\nLicense: **public domain** (a work of the U.S. federal government).\nSource: <https://landfire.gov/data/FullExtentDownloads>, accessed **2026-08-25**.\n\n**LANDFIRE 2024 is the most recent release that carries Vegetation Condition Class** \u2014 the 2025\nrelease (2.6.0) ships EVC, EVT and FBFM40 but not VCC, SClass or VDep.\n\n> \u26a0\ufe0f **Vintage.** Wildfire Hazard Potential 2023, published elsewhere in this catalog, is built\n> from LANDFIRE **2020 (2.2.0)** fuels \u2014 three updates older than the data here. The two are not\n> the same vintage; do not combine them as though they were.\n\n## Collections\n\n| Collection | Layer | Codes in CONUS | Status |\n|---|---|---|---|\n| `landfire-2024-vcc` | Vegetation Condition Class \u2014 departure from reference condition | 11 | **published** |\n| `landfire-2024-evt` | Existing Vegetation Type | 830 | **published** |\n| `landfire-2024-evc` | Existing Vegetation Cover | 265 | not yet published |\n| `landfire-2024-fbfm40` | 40 Scott & Burgan fire behavior fuel models | 44 | not yet published |\n\n> **What is not here yet.** Only the dominant-class (`hex`) tables are published, for VCC and EVT.\n> The per-class fractional-coverage (`hex-fractions`) tables \u2014 the ones area accounting needs \u2014 are\n> not published for any layer, and EVC and FBFM40 are not published at all. Use cell counts from\n> the `hex` tables for distributions, and treat any area figure derived from them as approximate:\n> each cell contributes its dominant class only.\n\nEach published collection has these assets:\n\n| Asset | Format | Path |\n|---|---|---|\n| `<layer>-cog` | Cloud-Optimized GeoTIFF (EPSG:4326, Int16) | `\u2026/landfire-2024-<layer>/landfire-2024-<layer>-cog.tif` |\n| `<layer>-hex` | H3 hex parquet, resolution 10, **dominant class** | `\u2026/landfire-2024-<layer>/hex/h0=*/data_0.parquet` |\n\nBase URL: `https://s3-west.nrp-nautilus.io/public-landfire/`\n\nH3 native resolution **10** (~15,000 m\u00b2, roughly 16 source pixels per cell), with parents\n**9, 8, 0**. `h8` is the catalog's universal join key; `h0` is the hive partition key.\n\n## Which hex table to use\n\n`hex` keeps only the class covering the largest share of each cell, so the mix inside a cell is\nlost. It answers \"what is this place mostly\".\n\n`hex-fractions` is long format \u2014 one row per (cell, class), with `frac` giving that class's share\nof the cell. **It is the table for any question about how much area a class holds.** Fractions\nwithin a cell sum to 1 or less; the shortfall is the part of the cell with no valid source pixel.\n\n```sql\nINSTALL httpfs; LOAD httpfs;\n-- Share of CONUS in each Vegetation Condition Class, area-weighted\nSELECT vcc, SUM(frac) / SUM(SUM(frac)) OVER () AS share\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-landfire/landfire-2024-vcc/hex-fractions/h0=*/data_0.parquet')\nWHERE vcc BETWEEN 1 AND 6          -- exclude water, snow, developed, barren, agriculture\nGROUP BY vcc ORDER BY vcc;\n```\n\nFor ground area rather than a share, weight `frac` by each cell's area \u2014 see the catalog h3-guide\nfor the area method rather than a nominal per-resolution constant.\n\n## Codes that are not a condition\n\nEvery layer carries codes for land that is not rated. Exclude them from the denominator of any\n\"share of land that is X\" statistic:\n\n| Layer | Codes to exclude |\n|---|---|\n| VCC | `111` water, `112` snow/ice, `120` developed, `132` barren/sparse, `180` agriculture |\n| EVC | `11`\u2013`32` water/snow/developed/barren/quarries, `61`\u2013`82` agriculture, `100` sparse |\n| FBFM40 | `91`, `92`, `93`, `98`, `99` \u2014 the non-burnable models NB1, NB2, NB3, NB8, NB9 |\n| EVT | roll up with `EVT_LF` / `EVT_PHYS` in the shipped legend |\n\n**Fill codes are already excluded from the hex tables.** Every layer carries `-9999` and `32767`\nas fill, and VCC additionally carries `-1111`. These were measured from the full source rasters,\nnot read from the product metadata, which understates them. They survive as pixel values in the\nCOGs (where `-9999` is the declared NoData) and are documented in each COG's\n`classification:classes`.\n\n## Reading EVC \u2014 the codes are not percentages\n\nEVC combines lifeform with percent cover in a single code:\n\n| Value range | Meaning |\n|---|---|\n| `11`\u2013`32` | water, snow/ice, developed, barren, quarries |\n| `61`\u2013`82` | agriculture |\n| `100` | sparse vegetation \u2014 carries no percentage |\n| `110`\u2013`199` | **tree** cover = value \u2212 100 % |\n| `210`\u2013`299` | **shrub** cover = value \u2212 200 % |\n| `310`\u2013`399` | **herb** cover = value \u2212 300 % |\n\n```sql\n-- correct: decode, then average within one lifeform\nSELECT AVG(evc - 100) AS mean_tree_cover_pct\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-landfire/landfire-2024-evc/hex/h0=*/data_0.parquet')\nWHERE evc BETWEEN 110 AND 199;\n-- wrong: AVG(evc) averages across lifeforms \u2014 the mean of a 15% tree code (115) and a\n-- 15% shrub code (215) is 165, which decodes as \"tree cover 65%\"\n```\n\n## Displaying a COG (MapLibre GL JS via TiTiler)\n\nThese are rasters \u2014 there is no PMTiles layer and no vector `source-layer`. Render the COG through\na TiTiler XYZ endpoint, using the published class palette (`classification:classes` in the STAC\ngives every code an RGB `color_hint`):\n\n```js\nmap.addSource('landfire-vcc', {\n  type: 'raster',\n  tiles: ['https://titiler.../cog/tiles/{z}/{x}/{y}.png?url=' +\n    encodeURIComponent('https://s3-west.nrp-nautilus.io/public-landfire/landfire-2024-vcc/landfire-2024-vcc-cog.tif') +\n    '&colormap=' + encodeURIComponent(JSON.stringify(vccColormap))],   // from classification:classes\n  tileSize: 256\n});\nmap.addLayer({ id: 'landfire-vcc', type: 'raster', source: 'landfire-vcc' });\n```\n\n## Vegetation Condition Class codes\n\n| Code | Class | Departure |\n|---|---|---|\n| 1 | Condition Class I.A | Very low \u2014 0\u201316% |\n| 2 | Condition Class I.B | Low \u2014 17\u201333% |\n| 3 | Condition Class II.A | Moderate to low \u2014 34\u201350% |\n| 4 | Condition Class II.B | Moderate to high \u2014 51\u201366% |\n| 5 | Condition Class III.A | High \u2014 67\u201383% |\n| 6 | Condition Class III.B | Very high \u2014 84\u2013100% |\n| 111 | Water | not rated |\n| 112 | Snow / ice | not rated |\n| 120 | Developed | not rated |\n| 132 | Barren or sparsely vegetated | not rated |\n| 180 | Agriculture | not rated |\n\n## Citation\n\n> LANDFIRE, 2026, [layer] Layer, LANDFIRE 2024 (2.5.0), U.S. Department of the Interior,\n> Geological Survey, and U.S. Department of Agriculture, Forest Service. Accessed 25 August 2026\n> at https://landfire.gov/data/FullExtentDownloads.\n",
+  "_review": [
+    "license: README states 'public domain (a work of the U.S. federal government)' without naming an SPDX identifier; CC0-1.0 is the closest standard equivalent."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-11-17T09:31:28+00:00",
+  "store_format": null
 }
