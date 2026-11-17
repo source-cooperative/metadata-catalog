@@ -1,26 +1,1908 @@
 {
   "schema_version": 1,
-  "account_id": "cboettig",
-  "product_id": "blm",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
+  "id": "cboettig/blm",
   "title": "blm",
-  "description": "",
-  "keywords": [],
-  "created_at": "2026-11-09T05:28:30.745Z",
-  "updated_at": "2026-11-09T05:28:30.745Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": null,
-  "mirrors": {
-    "aws-opendata-us-west-2": {
-      "connection_id": "aws-opendata-us-west-2",
-      "is_primary": true,
-      "prefix": "cboettig/blm/"
+  "description": "A collection of Bureau of Land Management (BLM) National MLRS/EGIS case-record layers covering federal onshore land tenure and mineral activity: oil and gas leases and agreements, coal, geothermal, oil shale, non-energy leasables, mineral materials, mining claims, locatable operations, rights-of-way, land-use leases and permits, and land acquisitions. It also includes grazing allotments, Utah special tar sand areas and the Utah federal mineral estate. Each layer is published as GeoParquet, PMTiles and H3 hex.",
+  "license": "LicenseRef-US-Government-Work-Public-Domain",
+  "keywords": [
+    "land-use",
+    "land-parcels",
+    "public-lands",
+    "mineral-leasing",
+    "oil-and-gas",
+    "mining",
+    "h3",
+    "geoparquet"
+  ],
+  "providers": [
+    {
+      "name": "Bureau of Land Management (BLM)",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Boettiger Lab (data-workflows)",
+      "roles": [
+        "processor",
+        "host"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/cboettig/blm"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -166.8015631,
+          25.8372496,
+          -73.6767668,
+          71.2684312
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "1855-01-01T00:00:00Z",
+          "2033-12-31T23:59:59Z"
+        ],
+        [
+          "1855-01-01T00:00:00Z",
+          "2025-12-31T23:59:59Z"
+        ],
+        [
+          "1909-01-01T00:00:00Z",
+          "2025-12-31T23:59:59Z"
+        ],
+        [
+          "1974-01-01T00:00:00Z",
+          "2026-12-31T23:59:59Z"
+        ],
+        [
+          "1981-01-01T00:00:00Z",
+          "2026-12-31T23:59:59Z"
+        ],
+        [
+          "1925-01-01T00:00:00Z",
+          "2026-12-31T23:59:59Z"
+        ],
+        [
+          "1889-01-01T00:00:00Z",
+          "2033-12-31T23:59:59Z"
+        ],
+        [
+          "1954-01-01T00:00:00Z",
+          "2028-12-31T23:59:59Z"
+        ],
+        [
+          "1929-01-01T00:00:00Z",
+          "2025-12-31T23:59:59Z"
+        ],
+        [
+          "1930-01-01T00:00:00Z",
+          "2026-12-31T23:59:59Z"
+        ],
+        [
+          "1924-01-01T00:00:00Z",
+          "2026-12-31T23:59:59Z"
+        ],
+        [
+          "1932-01-01T00:00:00Z",
+          "2026-12-31T23:59:59Z"
+        ]
+      ]
     }
   },
-  "object_count": 217,
-  "objects_updated_at": "2026-11-12T07:17:53+00:00",
-  "total_bytes": 28663818380,
+  "summaries": {
+    "item_count": 1657520419
+  },
+  "assets": {
+    "acquisitions/hex": {
+      "href": "https://data.source.coop/cboettig/blm/acquisitions/hex/h0=576707042908045311/",
+      "type": "application/x-parquet",
+      "title": "acquisitions/hex",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "_cng_fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OGC_FID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "CSE_NR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "LEG_CSE_NR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "CSE_NAME",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "CSE_TYPE_NR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "BLM_PROD",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "CSE_DISP",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "CSE_DISP_ACTION",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "REC_TYPE_CSE_GRP",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "CMMDTY",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "RCRD_ACRS",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "ADMIN_STATE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "GEO_STATE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PAT_NR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "SEG_MIN",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "SEG_SUR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "SUPP_USE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "CUST_NM_SEC",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PCT_INT_SEC",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "INT_REL_SEC",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "SRC",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "CSE_DISP_DT",
+          "type": "DATE"
+        },
+        {
+          "name": "Created",
+          "type": "DATE"
+        },
+        {
+          "name": "Modified",
+          "type": "DATE"
+        },
+        {
+          "name": "disp_year",
+          "type": "INTEGER"
+        },
+        {
+          "name": "h10",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h0",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h8",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h9",
+          "type": "UBIGINT"
+        }
+      ],
+      "description": "6 files sampled for this table",
+      "item_count": 678604046
+    },
+    "coal-cases/hex": {
+      "href": "https://data.source.coop/cboettig/blm/coal-cases/hex/h0=576707042908045311/",
+      "type": "application/x-parquet",
+      "title": "coal-cases/hex",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "_cng_fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OGC_FID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "CSE_NR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "LEG_CSE_NR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "CSE_NAME",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "CSE_TYPE_NR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "BLM_PROD",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "CSE_DISP",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "CMMDTY",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "RCRD_ACRS",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "ADMIN_STATE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "GEO_STATE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PRDCNG",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "SRC",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "EFF_DT",
+          "type": "DATE"
+        },
+        {
+          "name": "EXP_DT",
+          "type": "DATE"
+        },
+        {
+          "name": "SALE_DT",
+          "type": "DATE"
+        },
+        {
+          "name": "Created",
+          "type": "DATE"
+        },
+        {
+          "name": "Modified",
+          "type": "DATE"
+        },
+        {
+          "name": "CSE_DISP_DT",
+          "type": "DATE"
+        },
+        {
+          "name": "CUST_NM_SEC",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PCT_INT_SEC",
+          "type": "INTEGER"
+        },
+        {
+          "name": "INT_REL_SEC",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "eff_year",
+          "type": "INTEGER"
+        },
+        {
+          "name": "disp_year",
+          "type": "INTEGER"
+        },
+        {
+          "name": "case_year",
+          "type": "INTEGER"
+        },
+        {
+          "name": "case_year_src",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "h10",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h0",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h8",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h9",
+          "type": "UBIGINT"
+        }
+      ],
+      "description": "6 files sampled for this table",
+      "item_count": 8484520
+    },
+    "geothermal-leases/hex": {
+      "href": "https://data.source.coop/cboettig/blm/geothermal-leases/hex/h0=576812596024311807/",
+      "type": "application/x-parquet",
+      "title": "geothermal-leases/hex",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "_cng_fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OGC_FID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "CSE_NR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "LEG_CSE_NR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "CSE_NAME",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "CSE_TYPE_NR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "BLM_PROD",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "CSE_DISP",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "CMMDTY",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "RCRD_ACRS",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "ADMIN_STATE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "GEO_STATE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PRDCNG",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "SRC",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "EFF_DT",
+          "type": "DATE"
+        },
+        {
+          "name": "EXP_DT",
+          "type": "DATE"
+        },
+        {
+          "name": "SALE_DT",
+          "type": "DATE"
+        },
+        {
+          "name": "Created",
+          "type": "DATE"
+        },
+        {
+          "name": "Modified",
+          "type": "DATE"
+        },
+        {
+          "name": "FRMTN",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "eff_year",
+          "type": "INTEGER"
+        },
+        {
+          "name": "disp_year",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "case_year",
+          "type": "INTEGER"
+        },
+        {
+          "name": "case_year_src",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "h10",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h0",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h8",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h9",
+          "type": "UBIGINT"
+        }
+      ],
+      "description": "7 files sampled for this table",
+      "item_count": 4848902
+    },
+    "locatable-operations/hex": {
+      "href": "https://data.source.coop/cboettig/blm/locatable-operations/hex/h0=576707042908045311/",
+      "type": "application/x-parquet",
+      "title": "locatable-operations/hex",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "_cng_fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OGC_FID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "CSE_NR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "CSE_NAME",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "BLM_PROD",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "CSE_DISP",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "CMMDTY",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "RCRD_ACRS",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "ADMIN_STATE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "GEO_STATE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PRDCNG",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "EFF_DT",
+          "type": "DATE"
+        },
+        {
+          "name": "EXP_DT",
+          "type": "DATE"
+        },
+        {
+          "name": "SALE_DT",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "CSE_DISP_DT",
+          "type": "DATE"
+        },
+        {
+          "name": "Created",
+          "type": "DATE"
+        },
+        {
+          "name": "Modified",
+          "type": "DATE"
+        },
+        {
+          "name": "op_level",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "op_year",
+          "type": "INTEGER"
+        },
+        {
+          "name": "h10",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h0",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h8",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h9",
+          "type": "UBIGINT"
+        }
+      ],
+      "description": "5 files sampled for this table",
+      "item_count": 1025479
+    },
+    "lua-leases-permits-easements/hex": {
+      "href": "https://data.source.coop/cboettig/blm/lua-leases-permits-easements/hex/h0=576707042908045311/",
+      "type": "application/x-parquet",
+      "title": "lua-leases-permits-easements/hex",
+      "roles": [
+        "data"
+      ],
+      "description": "6 files sampled for this table",
+      "item_count": 49558689
+    },
+    "lua-row/hex": {
+      "href": "https://data.source.coop/cboettig/blm/lua-row/hex/h0=576707042908045311/",
+      "type": "application/x-parquet",
+      "title": "lua-row/hex",
+      "roles": [
+        "data"
+      ],
+      "description": "6 files sampled for this table",
+      "item_count": 35102348
+    },
+    "mineral-materials/hex": {
+      "href": "https://data.source.coop/cboettig/blm/mineral-materials/hex/h0=576707042908045311/",
+      "type": "application/x-parquet",
+      "title": "mineral-materials/hex",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "_cng_fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OGC_FID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "CSE_NR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "LEG_CSE_NR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "CSE_NAME",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "CSE_TYPE_NR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "BLM_PROD",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "CSE_DISP",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "CMMDTY",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "RCRD_ACRS",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "ADMIN_STATE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "GEO_STATE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PRDCNG",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "SRC",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "EFF_DT",
+          "type": "DATE"
+        },
+        {
+          "name": "EXP_DT",
+          "type": "DATE"
+        },
+        {
+          "name": "SALE_DT",
+          "type": "DATE"
+        },
+        {
+          "name": "Created",
+          "type": "DATE"
+        },
+        {
+          "name": "Modified",
+          "type": "DATE"
+        },
+        {
+          "name": "CSE_DISP_DT",
+          "type": "DATE"
+        },
+        {
+          "name": "CUST_NM_SEC",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PCT_INT_SEC",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "INT_REL_SEC",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "eff_year",
+          "type": "INTEGER"
+        },
+        {
+          "name": "disp_year",
+          "type": "INTEGER"
+        },
+        {
+          "name": "case_year",
+          "type": "INTEGER"
+        },
+        {
+          "name": "case_year_src",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "h10",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h0",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h8",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h9",
+          "type": "UBIGINT"
+        }
+      ],
+      "description": "6 files sampled for this table",
+      "item_count": 5513707
+    },
+    "mining-claims/hex": {
+      "href": "https://data.source.coop/cboettig/blm/mining-claims/hex/h0=576707042908045311/",
+      "type": "application/x-parquet",
+      "title": "mining-claims/hex",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "_cng_fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OGC_FID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "CSE_NR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "CSE_NAME",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "BLM_PROD",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "CSE_DISP",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "RCRD_ACRS",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Created",
+          "type": "DATE"
+        },
+        {
+          "name": "Modified",
+          "type": "DATE"
+        },
+        {
+          "name": "status",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "admin_state",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "h10",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h0",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h8",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h9",
+          "type": "UBIGINT"
+        }
+      ],
+      "description": "7 files sampled for this table",
+      "item_count": 42815025
+    },
+    "non-energy-leasables/hex": {
+      "href": "https://data.source.coop/cboettig/blm/non-energy-leasables/hex/h0=576707042908045311/",
+      "type": "application/x-parquet",
+      "title": "non-energy-leasables/hex",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "_cng_fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OGC_FID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "CSE_NR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "LEG_CSE_NR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "CSE_NAME",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "CSE_TYPE_NR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "BLM_PROD",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "CSE_DISP",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "CMMDTY",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "RCRD_ACRS",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "ADMIN_STATE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "GEO_STATE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PRDCNG",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "SRC",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "EFF_DT",
+          "type": "DATE"
+        },
+        {
+          "name": "EXP_DT",
+          "type": "DATE"
+        },
+        {
+          "name": "SALE_DT",
+          "type": "DATE"
+        },
+        {
+          "name": "Created",
+          "type": "DATE"
+        },
+        {
+          "name": "Modified",
+          "type": "DATE"
+        },
+        {
+          "name": "CSE_DISP_DT",
+          "type": "DATE"
+        },
+        {
+          "name": "CUST_NM_SEC",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PCT_INT_SEC",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "INT_REL_SEC",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "eff_year",
+          "type": "INTEGER"
+        },
+        {
+          "name": "disp_year",
+          "type": "INTEGER"
+        },
+        {
+          "name": "case_year",
+          "type": "INTEGER"
+        },
+        {
+          "name": "case_year_src",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "h10",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h0",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h8",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h9",
+          "type": "UBIGINT"
+        }
+      ],
+      "description": "6 files sampled for this table",
+      "item_count": 79460081
+    },
+    "oil-gas-agreements/hex": {
+      "href": "https://data.source.coop/cboettig/blm/oil-gas-agreements/hex/h0=576707042908045311/",
+      "type": "application/x-parquet",
+      "title": "oil-gas-agreements/hex",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "_cng_fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OGC_FID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "CSE_NR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "LEG_CSE_NR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "CSE_NAME",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "CSE_TYPE_NR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "BLM_PROD",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "CSE_DISP",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "CMMDTY",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "RCRD_ACRS",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "ADMIN_STATE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "GEO_STATE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PRDCNG",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "SRC",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "EFF_DT",
+          "type": "DATE"
+        },
+        {
+          "name": "EXP_DT",
+          "type": "DATE"
+        },
+        {
+          "name": "SALE_DT",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Created",
+          "type": "DATE"
+        },
+        {
+          "name": "Modified",
+          "type": "DATE"
+        },
+        {
+          "name": "FRMTN",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "eff_year",
+          "type": "INTEGER"
+        },
+        {
+          "name": "disp_year",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "case_year",
+          "type": "INTEGER"
+        },
+        {
+          "name": "case_year_src",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "h10",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h0",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h8",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h9",
+          "type": "UBIGINT"
+        }
+      ],
+      "description": "7 files sampled for this table",
+      "item_count": 87938670
+    },
+    "oil-gas-leases/hex": {
+      "href": "https://data.source.coop/cboettig/blm/oil-gas-leases/hex/h0=576707042908045311/",
+      "type": "application/x-parquet",
+      "title": "oil-gas-leases/hex",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "_cng_fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OGC_FID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OBJECTID",
+          "type": "INTEGER"
+        },
+        {
+          "name": "CSE_NAME",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "BLM_PROD",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "CSE_TYPE_NR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "CSE_NR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "LEG_CSE_NR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "SF_ID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "CSE_DISP",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "SRC",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "RCRD_ACRS",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "CMMDTY",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FRMTN",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "EFF_DT",
+          "type": "DATE"
+        },
+        {
+          "name": "PRDCNG",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "SALE_DT",
+          "type": "DATE"
+        },
+        {
+          "name": "Created",
+          "type": "BIGINT"
+        },
+        {
+          "name": "Modified",
+          "type": "BIGINT"
+        },
+        {
+          "name": "ADMIN_STATE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "GEO_STATE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "EXP_DT",
+          "type": "DATE"
+        },
+        {
+          "name": "lease_year",
+          "type": "INTEGER"
+        },
+        {
+          "name": "h10",
+          "type": "UBIGINT",
+          "description": "[spatial_index] Native H3 resolution 10 cell for the parcel"
+        },
+        {
+          "name": "h0",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h8",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution 8 cell, the catalog's universal join key"
+        },
+        {
+          "name": "h9",
+          "type": "UBIGINT"
+        }
+      ],
+      "description": "6 files sampled for this table",
+      "item_count": 1657520419
+    },
+    "oil-gas-participating-areas/hex": {
+      "href": "https://data.source.coop/cboettig/blm/oil-gas-participating-areas/hex/h0=576707042908045311/",
+      "type": "application/x-parquet",
+      "title": "oil-gas-participating-areas/hex",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "_cng_fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OGC_FID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "CSE_NR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "LEG_CSE_NR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "CSE_NAME",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "CSE_TYPE_NR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "BLM_PROD",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "CSE_DISP",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "CMMDTY",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "RCRD_ACRS",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "ADMIN_STATE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "GEO_STATE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PRDCNG",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "SRC",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "EFF_DT",
+          "type": "DATE"
+        },
+        {
+          "name": "EXP_DT",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "SALE_DT",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Created",
+          "type": "DATE"
+        },
+        {
+          "name": "Modified",
+          "type": "DATE"
+        },
+        {
+          "name": "FRMTN",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "eff_year",
+          "type": "INTEGER"
+        },
+        {
+          "name": "disp_year",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "case_year",
+          "type": "INTEGER"
+        },
+        {
+          "name": "case_year_src",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "h10",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h0",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h8",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h9",
+          "type": "UBIGINT"
+        }
+      ],
+      "description": "7 files sampled for this table",
+      "item_count": 2599200
+    },
+    "surface-management-agency": {
+      "href": "https://data.source.coop/cboettig/blm/surface-management-agency/_hex_plan.parquet",
+      "type": "application/x-parquet",
+      "title": "_hex_plan.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "chunk_id",
+          "type": "INTEGER"
+        },
+        {
+          "name": "row_offset",
+          "type": "BIGINT"
+        },
+        {
+          "name": "row_count",
+          "type": "BIGINT"
+        },
+        {
+          "name": "est_cells",
+          "type": "DOUBLE"
+        }
+      ],
+      "table:row_count": 473,
+      "item_count": 6380264
+    },
+    "surface-management-agency/hex": {
+      "href": "https://data.source.coop/cboettig/blm/surface-management-agency/hex/h0=576707042908045311/",
+      "type": "application/x-parquet",
+      "title": "surface-management-agency/hex",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "_cng_fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OBJECTID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "SMA_ID",
+          "type": "SMALLINT"
+        },
+        {
+          "name": "HOLD_ID",
+          "type": "SMALLINT"
+        },
+        {
+          "name": "ADMIN_ST",
+          "type": "VARCHAR",
+          "description": "[admin_code] Administering state code"
+        },
+        {
+          "name": "FAU_ID",
+          "type": "SMALLINT"
+        },
+        {
+          "name": "ADMIN_UNIT_NAME",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADMIN_UNIT_TYPE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADMIN_DEPT_CODE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ADMIN_AGENCY_CODE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "HOLD_DEPT_CODE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "HOLD_AGENCY_CODE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "SHAPE_Length",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "SHAPE_Area",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "h8",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution 8 cell"
+        },
+        {
+          "name": "h0",
+          "type": "UBIGINT"
+        }
+      ],
+      "description": "5 files sampled for this table"
+    },
+    ".": {
+      "href": "https://data.source.coop/cboettig/blm/",
+      "type": "application/x-parquet",
+      "title": ".",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "_cng_fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OGC_FID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "CSE_NR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "LEG_CSE_NR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "CSE_NAME",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "CSE_TYPE_NR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "BLM_PROD",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "CSE_DISP",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "CSE_DISP_ACTION",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "REC_TYPE_CSE_GRP",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "CMMDTY",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "RCRD_ACRS",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "ADMIN_STATE",
+          "type": "VARCHAR",
+          "description": "[admin_code] Two-letter code of the administering BLM state office, not the land's location"
+        },
+        {
+          "name": "GEO_STATE",
+          "type": "VARCHAR",
+          "description": "[admin_code] State where the land is located"
+        },
+        {
+          "name": "PAT_NR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "SEG_MIN",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "SEG_SUR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "SUPP_USE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "CUST_NM_SEC",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PCT_INT_SEC",
+          "type": "DOUBLE|INTEGER"
+        },
+        {
+          "name": "INT_REL_SEC",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "SRC",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "CSE_DISP_DT",
+          "type": "DATE"
+        },
+        {
+          "name": "Created",
+          "type": "DATE"
+        },
+        {
+          "name": "Modified",
+          "type": "DATE"
+        },
+        {
+          "name": "disp_year",
+          "type": "INTEGER|VARCHAR"
+        },
+        {
+          "name": "geom",
+          "type": "GEOMETRY('EPSG:4326')",
+          "description": "[geometry] Polygon geometry in EPSG:4326, geocoded from PLSS Legal Land Descriptions (null for some records)"
+        },
+        {
+          "name": "PRDCNG",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "EFF_DT",
+          "type": "DATE"
+        },
+        {
+          "name": "EXP_DT",
+          "type": "DATE"
+        },
+        {
+          "name": "SALE_DT",
+          "type": "DATE"
+        },
+        {
+          "name": "eff_year",
+          "type": "INTEGER"
+        },
+        {
+          "name": "case_year",
+          "type": "INTEGER"
+        },
+        {
+          "name": "case_year_src",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FRMTN",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "GlobalID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Serial_NR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Patent_NR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "County",
+          "type": "VARCHAR",
+          "description": "[placename] Utah county name for the federal mineral estate parcels"
+        },
+        {
+          "name": "Admin",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "GCDBDIVID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Section_",
+          "type": "INTEGER"
+        },
+        {
+          "name": "GIS_Acres",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "ALL_MIN",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Oil_Gas",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Coal",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Oil_Shale",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Gilsonite",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Potash_Pot",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Sodium",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Phosphate",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Geo_Steam",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Unknown_",
+          "type": "VARCHAR"
+        }
+      ],
+      "description": "4 files sampled for this table"
+    },
+    "utah-federal-mineral-estate/hex": {
+      "href": "https://data.source.coop/cboettig/blm/utah-federal-mineral-estate/hex/h0=577164439745200127/",
+      "type": "application/x-parquet",
+      "title": "utah-federal-mineral-estate/hex",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "_cng_fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OGC_FID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "GlobalID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Serial_NR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Patent_NR",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "County",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Admin",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "GCDBDIVID",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Section_",
+          "type": "INTEGER"
+        },
+        {
+          "name": "GIS_Acres",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "ALL_MIN",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Oil_Gas",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Coal",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Oil_Shale",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Gilsonite",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Potash_Pot",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Sodium",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Phosphate",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Geo_Steam",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Unknown_",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "h9",
+          "type": "UBIGINT",
+          "description": "[spatial_index] Native H3 resolution 9 cell for the parcel"
+        },
+        {
+          "name": "h0",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h8",
+          "type": "UBIGINT"
+        }
+      ],
+      "description": "2 files sampled for this table"
+    }
+  },
+  "table:columns": [
+    {
+      "name": "_cng_fid",
+      "type": "BIGINT"
+    },
+    {
+      "name": "OGC_FID",
+      "type": "BIGINT"
+    },
+    {
+      "name": "CSE_NR",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "LEG_CSE_NR",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "CSE_NAME",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "CSE_TYPE_NR",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "BLM_PROD",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "CSE_DISP",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "CMMDTY",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "RCRD_ACRS",
+      "type": "DOUBLE"
+    },
+    {
+      "name": "ADMIN_STATE",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "GEO_STATE",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "CSE_JURIS_CD",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "CSE_JURIS_DESC",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "CSE_WIDTH",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "CSE_LGTH",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "CUST_NM_SEC",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "PCT_INT_SEC",
+      "type": "DOUBLE"
+    },
+    {
+      "name": "INT_REL_SEC",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "SRC",
+      "type": "VARCHAR"
+    },
+    {
+      "name": "CSE_DISP_DT",
+      "type": "DATE"
+    },
+    {
+      "name": "Created",
+      "type": "DATE"
+    },
+    {
+      "name": "Modified",
+      "type": "DATE"
+    },
+    {
+      "name": "disp_year",
+      "type": "INTEGER"
+    },
+    {
+      "name": "h10",
+      "type": "UBIGINT"
+    },
+    {
+      "name": "h0",
+      "type": "UBIGINT"
+    },
+    {
+      "name": "h8",
+      "type": "UBIGINT"
+    },
+    {
+      "name": "h9",
+      "type": "UBIGINT"
+    }
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/cboettig/blm/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/cboettig/blm",
+      "title": "Source Cooperative product page"
+    }
+  ],
   "exts": {
     "parquet": 132,
     "json": 35,
@@ -28,6 +1910,23 @@
     "pmtiles": 17,
     "md": 16
   },
+  "created_at": "2026-11-09T05:28:30.745Z",
+  "product_id": "blm",
+  "object_count": 217,
+  "visibility": "public",
+  "mirrors": {
+    "aws-opendata-us-west-2": {
+      "connection_id": "aws-opendata-us-west-2",
+      "is_primary": true,
+      "prefix": "cboettig/blm/"
+    }
+  },
+  "disabled": false,
+  "account_id": "cboettig",
+  "data_mode": null,
+  "updated_at": "2026-11-09T05:28:30.745Z",
+  "featured": 0,
+  "total_bytes": 28663818380,
   "ext_bytes": {
     "parquet": 26804803937,
     "pmtiles": 1858011195,
@@ -35,11 +1934,18 @@
     "json": 403912,
     "md": 87224
   },
-  "store_format": null,
-  "_state": "seed",
+  "objects_updated_at": "2026-11-12T07:17:53+00:00",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "cataloged_at": "2026-11-16T11:31:24+00:00"
+  "readme": "## acquisitions__README.md\n# BLM National MLRS Acquisitions with H3 Indexing\n\nLands and interests in land **acquired by** the Bureau of Land Management, nationwide, from its National MLRS / EGIS program. 97,529 polygon case records converted to cloud-native formats (GeoParquet, PMTiles, H3 hex) with parcel-level H3 indexing at resolution 10.\n\nThis is the land-*tenure* half of the non-mineral MLRS records \u2014 how BLM-administered land came to be held. It covers purchases, donations and transfers under authorities such as the Taylor Grazing Act, Bankhead-Jones, the Migratory Bird Conservation Act, FLPMA and Wild & Scenic Rivers, plus acquired access and conservation easements and acquired mineral or water interests. Together with [`lua-row`](../lua-row/) (right-of-way corridors) and [`lua-leases-permits-easements`](../lua-leases-permits-easements/) (leases, permits and easements) they complete the surface-use and land-tenure picture around the mineral case records ([`oil-gas-leases`](../oil-gas-leases/), [`mining-claims`](../mining-claims/), [`locatable-operations`](../locatable-operations/)).\n\n> \u26a0\ufe0f **`disp_year` is null on 69% of records.** Only 30,438 of 97,529 carry a disposition date. Any time series here covers a dated minority \u2014 see Caveats before building one.\n\n- **Source:** BLM National MLRS / EGIS \u2014 [`BLM_Natl_MLRS_Acquisitions/FeatureServer/1`](https://gis.blm.gov/nlsdb/rest/services/HUB/BLM_Natl_MLRS_Acquisitions/FeatureServer/1)\n- **Program:** [BLM Mineral & Land Records System (MLRS)](https://www.blm.gov/services/land-records/mlrs)\n- **License:** public domain (U.S. Government work \u2014 [usa.gov/government-works](https://www.usa.gov/government-works))\n- **Extent:** national \u2014 97,529 polygon case records (96,777 geocoded, 752 with no geometry)\n- **H3:** native resolution 10, parents 9, 8, 0\n- **Issue:** [data-workflows #488](https://github.com/boettiger-lab/data-workflows/issues/488)\n\n## Assets\n\n| Asset | URL |\n|---|---|\n| GeoParquet | `https://s3-west.nrp-nautilus.io/public-blm/acquisitions.parquet` |\n| PMTiles | `https://s3-west.nrp-nautilus.io/public-blm/acquisitions.pmtiles` |\n| H3 hex (res 10) | `https://s3-west.nrp-nautilus.io/public-blm/acquisitions/hex/h0=*/data_0.parquet` |\n| STAC | `https://s3-west.nrp-nautilus.io/public-blm/acquisitions/stac-collection.json` |\n\n## Web map (MapLibre GL JS)\n\nThe PMTiles **`source-layer` is `acquisitions`**. This is the layer id MapLibre needs; without it\nthe layer renders blank.\n\n```html\n<script src=\"https://unpkg.com/maplibre-gl@4/dist/maplibre-gl.js\"></script>\n<script src=\"https://unpkg.com/pmtiles@3/dist/pmtiles.js\"></script>\n<div id=\"map\" style=\"height:600px\"></div>\n<script>\n  const protocol = new pmtiles.Protocol();\n  maplibregl.addProtocol(\"pmtiles\", protocol.tile);\n\n  const map = new maplibregl.Map({\n    container: \"map\",\n    style: \"https://basemaps.cartocdn.com/gl/positron-gl-style/style.json\",\n    center: [-110.5, 39.5],\n    zoom: 5,\n  });\n\n  map.on(\"load\", () => {\n    map.addSource(\"acquisitions\", {\n      type: \"vector\",\n      url: \"pmtiles://https://s3-west.nrp-nautilus.io/public-blm/acquisitions.pmtiles\",\n    });\n\n    map.addLayer({\n      id: \"acquisitions-fill\",\n      type: \"fill\",\n      source: \"acquisitions\",\n      \"source-layer\": \"acquisitions\",          // <-- REQUIRED: last segment of the dataset name\n      paint: {\n        \"fill-color\": [\n          \"match\", [\"get\", \"CSE_DISP\"],\n          \"Authorized\", \"#2E7D32\",\n          \"Interim\", \"#8D6E63\",\n          \"Status Record\", \"#90A4AE\",\n          \"#9e9e9e\"\n        ],\n        \"fill-opacity\": 0.6,\n        \"fill-outline-color\": \"#37474f\",\n      },\n    });\n  });\n</script>\n```\n\nThe `CSE_DISP` match expression colours parcels by status. Note that 'Status Record' \u2014 historical entries carried over from the pre-MLRS systems \u2014 is the bulk of the layer, so a status-coloured map is dominated by it; filter to 'Authorized' for currently-effective acquisitions. **Do not build a year slider on `disp_year` without handling nulls**: 69% of records have no disposition date and will vanish from any numeric comparison.\n\n## SQL (DuckDB)\n\n```sql\nINSTALL spatial; LOAD spatial;\nINSTALL httpfs;  LOAD httpfs;\n\n-- flat GeoParquet: one row per case record\nSELECT CSE_NR, BLM_PROD, CSE_DISP, disp_year, RCRD_ACRS, ADMIN_STATE, GEO_STATE\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-blm/acquisitions.parquet')\nWHERE ADMIN_STATE = 'UT' AND CSE_DISP = 'Authorized'\nORDER BY disp_year DESC NULLS LAST\nLIMIT 20;\n```\n\n```sql\n-- H3 hex: one row per (case, cell). A per-feature total needs a dedup before aggregating.\n-- \u2705 correct \u2014 total authorized acreage administered by the Utah state office\nSELECT SUM(RCRD_ACRS) AS acres\nFROM (\n  SELECT DISTINCT _cng_fid, RCRD_ACRS\n  FROM read_parquet('https://s3-west.nrp-nautilus.io/public-blm/acquisitions/hex/h0=*/data_0.parquet')\n  WHERE ADMIN_STATE = 'UT'\n);\n\n-- \u274c wrong \u2014 SUM(RCRD_ACRS) straight off the hex multiplies each case by its cell count\n```\n\n```sql\n-- case density per res-8 cell (h8 is the catalog's universal join key, so this joins\n-- directly against any other res-8 or finer catalog layer)\nSELECT h8, COUNT(DISTINCT _cng_fid) AS n_cases\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-blm/acquisitions/hex/h0=*/data_0.parquet')\nGROUP BY h8\nORDER BY n_cases DESC\nLIMIT 10;\n```\n\n## Caveats\n\n- **`disp_year` is null on 69% of records (67,091 of 97,529).** Only 30,438 carry a disposition date, mostly outside the 'Status Record' disposition. Any time series covers a dated minority \u2014 say so, or exclude the column.\n- **`PAT_NR` is not a date and no patent year is derivable from it.** Values are General Land Office patent volume/serial strings (`'3 1206'`, `'2 1292C'`), and only 150 of 97,529 records carry one at all.\n- **752 of 97,529 records have no geometry** (PLSS geocoding of the Legal Land Description failed). Present in the GeoParquet with a null `geom`, absent from PMTiles and H3 hex.\n- **`RCRD_ACRS` is case-file acreage, not measured polygon area, and is null on 66,921 of 97,529 records.** On the hex it is repeated per cell \u2014 dedup by `_cng_fid` before summing; the raw hex sum overstates the total by ~33,900x.\n- **`REC_TYPE_CSE_GRP` ships inconsistent hyphenation** of the same group (`'Land Tenure - Acquisitions'` vs `'Land Tenure-Acquisitions'`, likewise for `Status`). Values are retained verbatim \u2014 normalize before matching or grouping.\n- **`SUPP_USE` is pipe-delimited and multi-valued** (`'CULTURAL SITES|FEE|RIPARIAN'`), with tokens sometimes repeating inside one value. Split on `|`; equality tests will miss most matches.\n- **`ADMIN_STATE` is the administering office, not the location** (`ES` = Eastern States, which administers BLM land east of the Mississippi). Use `GEO_STATE` for where the land is \u2014 this layer reaches 34 states, well beyond the 12 admin offices.\n- **`QLTY` was dropped at ingest** \u2014 despite its \"Data Quality\" alias it is a multi-kilobyte dump of the LLD geocoder's debug log. `SRC` is the useful provenance field.\n\n\n## coal-cases__README.md\n# BLM National Coal Cases\n\nFederal coal leases, licenses, exploration licenses and logical mining units, nationwide, from the Bureau of Land Management's National MLRS / EGIS program \u2014 3,857 polygon cases converted to cloud-native formats (GeoParquet, PMTiles, H3 hex) with parcel-level H3 indexing at resolution 10. Coal is a *leasable* mineral under the Mineral Leasing Act of 1920: the government leases the right to mine rather than allowing it to be claimed. This layer is the federal coal estate's case record \u2014 every lease, preference-right lease, exploration license, logical mining unit and prospecting permit BLM administers, with its disposition and acreage. It is the layer to use for questions about coal near the Kaiparowits Plateau and the Grand Staircase-Escalante boundary changes. 971 of 3,857 cases (25.2%) have no geometry \u2014 the PLSS geocoder could not place their Legal Land Description. Those rows are retained here in the GeoParquet with a NULL geom but are ABSENT from the PMTiles and the H3 hex, so any area, extent or overlap computed from those two assets omits them. Every case carries a uniform numeric `case_year` (100% populated) for time filtering, with `case_year_src` recording whether that year is the case's effective date or its disposition date. Part of the BLM National MLRS set alongside oil & gas leases, mining claims and locatable-mineral operations.\n\n- **Source:** BLM National MLRS / EGIS \u2014 `BLM_Natl_MLRS_Coal_Cases/FeatureServer/1`\n- **Extent:** national \u00b7 **Features:** 3,857 polygons \u00b7 **License:** public domain (US federal work)\n- **H3:** native resolution 10, parents 9, 8, 0 (joins the rest of the catalog at `h8`)\n- **Tracked in:** [data-workflows #486](https://github.com/boettiger-lab/data-workflows/issues/486)\n\n> **971 of 3,857 cases (25.2%) have no geometry.** BLM geocodes these polygons from the Legal Land Description via the PLSS; where that fails the case is kept in the GeoParquet with a NULL `geom` but does not appear in the PMTiles or the H3 hex. Any acreage or overlap computed from those two assets omits them.\n\n## Web map (MapLibre GL JS)\n\nThe PMTiles `source-layer` is **`coal-cases`** \u2014 the last segment of the dataset name. Using\nanything else renders a blank layer with no error.\n\n```js\nmap.addSource('coal-cases', {\n  type: 'vector',\n  url: 'pmtiles://https://s3-west.nrp-nautilus.io/public-blm/coal-cases.pmtiles'\n});\nmap.addLayer({\n  id: 'coal-cases-fill',\n  type: 'fill',\n  source: 'coal-cases',\n  'source-layer': 'coal-cases',          // <-- must be exactly this\n  paint: {\n    'fill-color': ['match', ['get', 'CSE_DISP'],\n      'Authorized', '#E65100', 'Pending', '#FBC02D',\n      'Interim', '#8D6E63', 'Closed', '#BDBDBD', '#888888'],\n    'fill-opacity': 0.4\n  }\n});\n```\n\n## SQL (DuckDB)\n\n```sql\nINSTALL spatial; LOAD spatial;\nINSTALL httpfs;  LOAD httpfs;\n\n-- active cases by state\nSELECT ADMIN_STATE, COUNT(*) AS cases, ROUND(SUM(RCRD_ACRS)) AS acres\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-blm/coal-cases.parquet')\nWHERE CSE_DISP = 'Authorized'\nGROUP BY 1 ORDER BY acres DESC;\n```\n\n### Time filtering\n\n`case_year` is the uniform numeric year column (100% populated here, range\n1908\u20132026). `case_year_src` says where it came from \u2014\n`'effective'` (1,263 cases) or `'disposition'` (2,588). They mean\ndifferent things: an effective year is when a case *started*, a disposition year is\nusually when it *closed*. For \"cases active in year X\" use `case_year_src = 'effective'`\ntogether with `CSE_DISP`.\n\n```sql\nSELECT case_year, COUNT(*) AS n\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-blm/coal-cases.parquet')\nWHERE case_year IS NOT NULL AND case_year_src = 'effective'\nGROUP BY 1 ORDER BY 1;\n```\n\n### H3 hex\n\nOne row per (case, H3 cell) at resolution 10. **Case attributes repeat on every cell**, so\ndedup before summing a per-case total:\n\n```sql\n-- correct: acreage of authorized cases, deduped\nSELECT SUM(RCRD_ACRS) FROM (\n  SELECT DISTINCT _cng_fid, RCRD_ACRS\n  FROM read_parquet('https://s3-west.nrp-nautilus.io/public-blm/coal-cases/hex/h0=*/data_0.parquet')\n  WHERE CSE_DISP = 'Authorized');\n```\n\nJoin to any other catalog dataset at `h8`.\n\n\n## geothermal-leases__README.md\n# BLM National Geothermal Leases\n\nFederal geothermal leases and utilization sites, nationwide, from the Bureau of Land Management's National MLRS / EGIS program \u2014 7,394 polygon cases converted to cloud-native formats (GeoParquet, PMTiles, H3 hex) with parcel-level H3 indexing at resolution 10. Geothermal is a leasable energy mineral under the Geothermal Steam Act of 1970. Competitive and noncompetitive leases (pre- and post-2005 terms), converted mining-claimant leases, direct-use leases and utilization sites. Carries FRMTN (the producing formation) and a production status. 195 of 7,394 cases (2.6%) have no geometry \u2014 the PLSS geocoder could not place their Legal Land Description. Those rows are retained here in the GeoParquet with a NULL geom but are ABSENT from the PMTiles and the H3 hex, so any area, extent or overlap computed from those two assets omits them. Every case carries a uniform numeric `case_year` (58% populated) for time filtering, with `case_year_src` recording whether that year is the case's effective date or its disposition date. Part of the BLM National MLRS set alongside oil & gas leases, mining claims and locatable-mineral operations.\n\n- **Source:** BLM National MLRS / EGIS \u2014 `BLM_Natl_MLRS_Geothermal_Leases/FeatureServer/0`\n- **Extent:** national \u00b7 **Features:** 7,394 polygons \u00b7 **License:** public domain (US federal work)\n- **H3:** native resolution 10, parents 9, 8, 0 (joins the rest of the catalog at `h8`)\n- **Tracked in:** [data-workflows #486](https://github.com/boettiger-lab/data-workflows/issues/486)\n\n> **195 of 7,394 cases (2.6%) have no geometry.** BLM geocodes these polygons from the Legal Land Description via the PLSS; where that fails the case is kept in the GeoParquet with a NULL `geom` but does not appear in the PMTiles or the H3 hex. Any acreage or overlap computed from those two assets omits them.\n\n## Web map (MapLibre GL JS)\n\nThe PMTiles `source-layer` is **`geothermal-leases`** \u2014 the last segment of the dataset name. Using\nanything else renders a blank layer with no error.\n\n```js\nmap.addSource('geothermal-leases', {\n  type: 'vector',\n  url: 'pmtiles://https://s3-west.nrp-nautilus.io/public-blm/geothermal-leases.pmtiles'\n});\nmap.addLayer({\n  id: 'geothermal-leases-fill',\n  type: 'fill',\n  source: 'geothermal-leases',\n  'source-layer': 'geothermal-leases',          // <-- must be exactly this\n  paint: {\n    'fill-color': ['match', ['get', 'CSE_DISP'],\n      'Authorized', '#E65100', 'Pending', '#FBC02D',\n      'Interim', '#8D6E63', 'Closed', '#BDBDBD', '#888888'],\n    'fill-opacity': 0.4\n  }\n});\n```\n\n## SQL (DuckDB)\n\n```sql\nINSTALL spatial; LOAD spatial;\nINSTALL httpfs;  LOAD httpfs;\n\n-- active cases by state\nSELECT ADMIN_STATE, COUNT(*) AS cases, ROUND(SUM(RCRD_ACRS)) AS acres\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-blm/geothermal-leases.parquet')\nWHERE CSE_DISP = 'Authorized'\nGROUP BY 1 ORDER BY acres DESC;\n```\n\n### Time filtering\n\n`case_year` is the uniform numeric year column (58% populated here, range\n1974\u20132026). `case_year_src` says where it came from \u2014\n`'effective'` (4,299 cases) or `'disposition'` (0). They mean\ndifferent things: an effective year is when a case *started*, a disposition year is\nusually when it *closed*. For \"cases active in year X\" use `case_year_src = 'effective'`\ntogether with `CSE_DISP`.\n\n```sql\nSELECT case_year, COUNT(*) AS n\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-blm/geothermal-leases.parquet')\nWHERE case_year IS NOT NULL AND case_year_src = 'effective'\nGROUP BY 1 ORDER BY 1;\n```\n\n### H3 hex\n\nOne row per (case, H3 cell) at resolution 10. **Case attributes repeat on every cell**, so\ndedup before summing a per-case total:\n\n```sql\n-- correct: acreage of authorized cases, deduped\nSELECT SUM(RCRD_ACRS) FROM (\n  SELECT DISTINCT _cng_fid, RCRD_ACRS\n  FROM read_parquet('https://s3-west.nrp-nautilus.io/public-blm/geothermal-leases/hex/h0=*/data_0.parquet')\n  WHERE CSE_DISP = 'Authorized');\n```\n\nJoin to any other catalog dataset at `h8`.\n\n\n## grazing-allotments__README.md\n# BLM National Grazing Allotments\n\nWhere the Bureau of Land Management authorises livestock grazing on public rangeland. 21,252\nboundary polygons representing 20,966 allotments across the ten western state offices, converted\nto GeoParquet, PMTiles and H3 hex.\n\nAn allotment is a **management unit, not a parcel of federal land**. A boundary drawn here can\nenclose private, state and other federal land alongside the BLM land inside it, so the area of an\nallotment is not the area of public land being grazed. Answering how much federal land an\nallotment covers means intersecting these boundaries with a surface-ownership layer such as\nPAD-US.\n\nThe publisher describes this layer as *supplemental to the Rangeland Administration System (RAS),\nwhich is authoritative for BLM grazing allotments (except Alaska)*, and as *a subset of the\nofficial national dataset, containing features and attributes intended for public release*. What\nis public here is geometry and administrative identifiers.\n\n## What is not in this layer\n\nAnimal unit months, permittees and seasons of use are **not** published in this feature class.\nThey live in RAS as tabular reports at [reports.blm.gov](https://reports.blm.gov), joined to these\nboundaries on `ST_ALLOT`, the RAS allotment key. `ST_ALLOT` is usually `ADMIN_ST` followed by\n`ALLOT_NO`, but 29 polygons disagree with those two columns, so join on `ST_ALLOT` itself.\n\n## Coverage\n\nThe ten western state offices: Arizona, California, Colorado, Idaho, Montana, New Mexico, Nevada,\nOregon, Utah and Wyoming. Despite RAS carving out Alaska, no Alaskan allotment appears in this\nlayer. Bounding box 124.5W to 98.9W, 31.3N to 49.0N.\n\n| `ADMIN_ST` | office | polygons | allotments | acres |\n|---|---|---|---|---|\n| `MT` | Montana | 5,277 | 5,223 | 26,549,430 |\n| `WY` | Wyoming | 3,560 | 3,556 | 32,364,576 |\n| `CO` | Colorado | 2,399 | 2,299 | 10,315,186 |\n| `NM` | New Mexico | 2,250 | 2,240 | 26,619,704 |\n| `ID` | Idaho | 2,072 | 2,072 | 15,051,372 |\n| `OR` | Oregon | 1,922 | 1,921 | 18,883,780 |\n| `UT` | Utah | 1,414 | 1,401 | 27,463,072 |\n| `AZ` | Arizona | 869 | 819 | 19,769,331 |\n| `NV` | Nevada | 759 | 757 | 48,073,478 |\n| `CA` | California | 728 | 677 | 7,880,610 |\n| (null) | | 2 | 2 | 1,786 |\n\nThe polygons column counts every row. Allotments and acres exclude the 34 placeholder polygons,\nas the first query below does.\n\n### `ADMIN_ST` is the administering office, not the state the land is in\n\nState offices administer across state lines. 1,084 allotments have their centre in a different\nstate than `ADMIN_ST` names:\n\n| administered by | land lies in | allotments |\n|---|---|---|\n| `MT` | South Dakota | 510 |\n| `OR` | Washington | 369 |\n| `MT` | North Dakota | 82 |\n| `CA` | Nevada | 31 |\n| `WY` | Nebraska | 18 |\n| | 17 other pairs | 74 |\n\nSouth Dakota, North Dakota, Washington and Nebraska have no state office of their own here, so\nfiltering `ADMIN_ST = 'SD'` returns nothing while 510 allotments sit in South Dakota. **Selecting\nallotments by the state they are in needs an intersection with a state boundary layer, not a\nfilter on `ADMIN_ST`.**\n\n## One allotment can be several polygons\n\n137 `ST_ALLOT` keys span 389 polygons, each polygon carrying its own `GIS_ACRES`. 35 of those keys carry more than one `ALLOT_NAME`: mostly spelling variants such as\nWheatley A and Wheately A, but some look like distinct allotments sharing a key, such as Zuni Ranch\nand Concho Ranch on `AZ06170`. On the\nGeoParquet the acreage of an allotment is the **sum** over its polygons; deduplicating would\nundercount. On the hex the opposite holds, because every attribute is repeated per cell.\n\n## Assets\n\n| Asset | URL |\n|---|---|\n| GeoParquet | `https://s3-west.nrp-nautilus.io/public-blm/grazing-allotments.parquet` |\n| PMTiles | `https://s3-west.nrp-nautilus.io/public-blm/grazing-allotments.pmtiles` |\n| H3 hex | `https://s3-west.nrp-nautilus.io/public-blm/grazing-allotments/hex/h0=*/data_0.parquet` |\n| STAC | `https://s3-west.nrp-nautilus.io/public-blm/grazing-allotments/stac-collection.json` |\n\n## DuckDB\n\n```sql\nINSTALL spatial; LOAD spatial;\nINSTALL httpfs;  LOAD httpfs;\n\n-- allotments and acreage by administering state office\nSELECT ADMIN_ST, COUNT(DISTINCT ST_ALLOT) AS allotments, ROUND(SUM(GIS_ACRES)) AS acres\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-blm/grazing-allotments.parquet')\nWHERE ST_ALLOT <> '' AND ST_ALLOT NOT LIKE '%00000' AND ST_ALLOT <> 'MTUNK'  -- drop placeholders\nGROUP BY ADMIN_ST\nORDER BY acres DESC;\n\n-- acreage of each allotment, summing the polygons it is stored as\nSELECT ST_ALLOT, ALLOT_NAME, COUNT(*) AS polygons, SUM(GIS_ACRES) AS acres\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-blm/grazing-allotments.parquet')\nWHERE ST_ALLOT <> '' AND ST_ALLOT NOT LIKE '%00000' AND ST_ALLOT <> 'MTUNK'  -- drop placeholders\nGROUP BY ST_ALLOT, ALLOT_NAME\nORDER BY acres DESC\nLIMIT 10;\n\n-- the 1,401 allotments administered by the Utah state office, as 1,414 polygons\nSELECT ALLOT_NO, ALLOT_NAME, ADM_UNIT_CD, ROUND(GIS_ACRES) AS acres\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-blm/grazing-allotments.parquet')\nWHERE ADMIN_ST = 'UT'\nORDER BY acres DESC;\n```\n\n### H3 hex\n\nOne row per polygon and H3 cell pair at native resolution 8 (about 0.74 km\u00b2 per cell), with `h0`\nas the hive partition key. 1,215,430 rows over 1,212,096 distinct resolution 8 cells, covering all\n21,252 polygons. Resolution 8 suits the grain: the median allotment is about 12 km\u00b2, and nothing\nfiner is supportable from boundaries drawn at this scale. `h8` is the catalog's universal join\nkey, so these allotments join directly to any other resolution 8 hex dataset.\n\nEvery attribute is repeated on every cell the polygon covers, so `GIS_ACRES` must be deduplicated\nby `_cng_fid` before it is summed, and allotment counts use `COUNT(DISTINCT ST_ALLOT)`:\n\n```sql\n-- correct: one acreage value per polygon\nSELECT SUM(GIS_ACRES) FROM (\n  SELECT DISTINCT _cng_fid, GIS_ACRES\n  FROM read_parquet('s3://public-blm/grazing-allotments/hex/h0=*/data_0.parquet')\n  WHERE ADMIN_ST = 'UT');\n-- wrong: SUM(GIS_ACRES) over hex rows multiplies each polygon by its cell count\n```\n\n```sql\n-- allotment land overlapping another resolution 8 dataset, joined on h8\nSELECT COUNT(DISTINCT a.h8) AS shared_cells\nFROM read_parquet('s3://public-blm/grazing-allotments/hex/h0=*/data_0.parquet') a\nJOIN read_parquet('s3://<other-bucket>/<other-dataset>/hex/h0=*/data_0.parquet') b\n  USING (h8);\n```\n\n## MapLibre GL JS\n\nThe PMTiles `source-layer` is **`grazing-allotments`**.\n\n```js\nimport * as pmtiles from 'pmtiles';\nconst protocol = new pmtiles.Protocol();\nmaplibregl.addProtocol('pmtiles', protocol.tile);\n\nconst map = new maplibregl.Map({\n  container: 'map',\n  style: 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json',\n  center: [-110.0, 42.0],\n  zoom: 5\n});\n\nmap.on('load', () => {\n  map.addSource('allotments', {\n    type: 'vector',\n    url: 'pmtiles://https://s3-west.nrp-nautilus.io/public-blm/grazing-allotments.pmtiles'\n  });\n\n  map.addLayer({\n    id: 'allotments-fill',\n    type: 'fill',\n    source: 'allotments',\n    'source-layer': 'grazing-allotments',   // = last segment of the dataset name\n    paint: { 'fill-color': '#8c6d3f', 'fill-opacity': 0.35 }\n  });\n\n  map.addLayer({\n    id: 'allotments-line',\n    type: 'line',\n    source: 'allotments',\n    'source-layer': 'grazing-allotments',\n    paint: { 'line-color': '#732600', 'line-width': 0.6 }\n  });\n});\n```\n\n## Known quirks, published as the source records them\n\n- `ACTIVE_DT` is mostly a placeholder, not a per-allotment date. 11,892 polygons have no usable\n  value (the source carries the impossible years 0999 and 9999 there, published here as null),\n  4,648 carry 1934-06-28 (the Taylor Grazing Act), 3,493 carry 1899-12-30 and 237 carry\n  1946-01-01. Only about 1,000 polygons carry a date that plausibly describes the allotment.\n- `ALLOT_NO` is unique only within a state office, and `ADMIN_ST` plus `ALLOT_NO` does not always\n  reproduce `ST_ALLOT`. Use `ST_ALLOT` to identify an allotment. `ALLOT_NO` is usually five digits,\n  with exceptions: `UNK` and `Unk`, `142`, `1601`, twelve `MCG01`-style codes, and one empty value.\n- 34 polygons carry a placeholder `ST_ALLOT` instead of an allotment key: empty, `XX00000`,\n  `AZ00000`, `CO00000`, `MT00000`, `NM00000`, `OR00000` or `MTUNK`. Exclude them before counting or\n  totalling allotments.\n- 19 polygons carry `ALLOT_NO = '00000'` and names like `Private or State`, `Unalloted` or `None`.\n  These mark land inside an allotment boundary that is not itself allotted.\n- `GIS_ACRES` is 0 on six polygons and below 1 acre on eleven.\n- 37 features are geometry collections in which a degenerate line accompanies the polygon. All\n  geometries are valid; the rest are polygons (17,389) and multipolygons (3,826).\n- `OGC_FID` is an artifact of the format conversion and carries no meaning from the source. Use\n  `_cng_fid` (one per polygon) or `GlobalID` (the stable upstream identifier).\n- `SHAPE_Length` and `SHAPE_Area` from the service were dropped: they are decimal-degree values,\n  not real measurements. The real area is `GIS_ACRES`.\n\n## Provenance and license\n\nPublic domain. The layer's own metadata records the use constraint as *\"None, these data are\nconsidered public domain\"*. The service's copyright text, *\"Compiled by the Bureau of Land\nManagement (BLM), Headquarters (HQ)\"*, is an attribution string, not a restriction. Credit: BLM\nadministering state offices.\n\nThe source is a live ArcGIS map service with no published version or release date, so the access\ndate is the only edition marker. This snapshot was read on **2026-09-22** from layer 12\n(*Grazing Allotment Polygons*) of the\n[BLM National Grazing Allotment MapServer](https://gis.blm.gov/arcgis/rest/services/range/BLM_Natl_Grazing_Allotment/MapServer/12),\nwhose landing page is\n[BLM Natl Grazing Allotment Polygons](https://gbp-blm-egis.hub.arcgis.com/datasets/BLM-EGIS::blm-natl-grazing-allotment-polygons).\nThe service's own edit stamps in this snapshot run from 2026-08-13 to 2026-09-21.\n\nThe raw GeoJSON scraped from the service is kept at\n`s3://public-blm/raw/grazing-allotments.geojson` (140,547,548 bytes, sha256\n`cd7638821289a3c290e09adc429b9660d7fb7324b4373880290b72412790d5b0`). Because the service is\noverwritten in place, that stored copy and its checksum are what makes this edition resolvable\nlater.\n\nThe service publishes in EPSG:3857 over a source in EPSG:4269 (NAD83); the scrape requested\nEPSG:4326 directly, at the source's own coordinate tolerance, so the published data is WGS84 with\nno further reprojection.\n\n\n## locatable-operations__README.md\n# BLM National MLRS Locatable-Mineral Operations\n\nFederal **locatable-mineral (hard-rock) surface-management operations** \u2014 Notices and Plans\nof Operations under the General Mining Law of 1872 \u2014 nationwide, from the Bureau of Land\nManagement's National MLRS / EGIS program. **2,399** polygon features across 11 western BLM\nstates, converted to cloud-native formats (GeoParquet, PMTiles, H3 hex) with parcel-level H3\nindexing at **resolution 10**.\n\nThe two MLRS operation-level service layers are unioned into one collection: **1,264 Notices**\n(\u2264 5-acre disturbance, notice-level) + **1,135 Plans of Operations** (larger disturbance,\nplan-level). The derived **`op_level`** column (`Notice` / `Plan of Operations`) makes the two\nlevels filterable. Each feature carries its case serial number (`CSE_NR`), operation subtype\n(`BLM_PROD`), disposition (`CSE_DISP`), commodity worked (`CMMDTY`), recorded acreage\n(`RCRD_ACRS`), and administering state (`ADMIN_STATE`).\n\nThese are the **activity** companion to the [mining-claims](https://s3-west.nrp-nautilus.io/public-blm/mining-claims/stac-collection.json)\nlayer (the staked *rights*): a claim is the right; a Notice or Plan of Operations is BLM's\nauthorization of the actual surface-disturbing work on it.\n\n> **\u26a0\ufe0f Partial temporal coverage.** A numeric **`op_year`** (year of the effective date\n> `EFF_DT`) is derived for time filtering, but only **868 of 2,399** features (~36%) carry an\n> `EFF_DT` at the source \u2014 the rest are undated (Plans of Operations especially: only ~19%\n> dated). Treat null `op_year` as *undated*, not year-zero, and don't imply a full time series.\n\n- **Sources** (ArcGIS FeatureServers, layer 0):\n  [Locatable Notices](https://gis.blm.gov/nlsdb/rest/services/HUB/BLM_Natl_MLRS_Locatable_Notices/FeatureServer/0)\n  \u00b7 [Locatable Plans of Operations](https://gis.blm.gov/nlsdb/rest/services/HUB/BLM_Natl_MLRS_Locatable_Plans_Of_Operations/FeatureServer/0)\n- **License:** Public domain (U.S. Government work).\n- **CRS:** EPSG:4326 (reprojected from the source NAD83 / WKID 4269).\n\n## Assets\n\n| Asset | URL |\n|---|---|\n| GeoParquet | `https://s3-west.nrp-nautilus.io/public-blm/locatable-operations.parquet` |\n| PMTiles | `https://s3-west.nrp-nautilus.io/public-blm/locatable-operations.pmtiles` |\n| H3 hex (res 10) | `https://s3-west.nrp-nautilus.io/public-blm/locatable-operations/hex/h0=*/data_0.parquet` |\n\n## Web map (MapLibre GL JS)\n\nThe PMTiles **`source-layer` is `locatable-operations`** (required \u2014 the layer renders blank\nif this is wrong):\n\n```js\nimport { Protocol } from \"pmtiles\";\nconst protocol = new Protocol();\nmaplibregl.addProtocol(\"pmtiles\", protocol.tile);\n\nmap.addSource(\"ops\", {\n  type: \"vector\",\n  url: \"pmtiles://https://s3-west.nrp-nautilus.io/public-blm/locatable-operations.pmtiles\",\n});\n\n// Color by operation level\nmap.addLayer({\n  id: \"ops-fill\",\n  type: \"fill\",\n  source: \"ops\",\n  \"source-layer\": \"locatable-operations\",\n  paint: {\n    \"fill-color\": [\n      \"match\", [\"get\", \"op_level\"],\n      \"Notice\",             \"#f1a340\",\n      \"Plan of Operations\", \"#998ec3\",\n      /* other */ \"#bdbdbd\",\n    ],\n    \"fill-opacity\": 0.6,\n  },\n});\n\n// Show only authorized (active) operations\nmap.setFilter(\"ops-fill\", [\"==\", [\"get\", \"CSE_DISP\"], \"Authorized\"]);\n```\n\n## Query (DuckDB)\n\n```sql\nINSTALL spatial; LOAD spatial; INSTALL httpfs; LOAD httpfs;\n\n-- Authorized operations by administering state and level\nSELECT ADMIN_STATE, op_level, COUNT(*) AS n_ops\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-blm/locatable-operations.parquet')\nWHERE CSE_DISP = 'Authorized'\nGROUP BY ADMIN_STATE, op_level\nORDER BY n_ops DESC;\n```\n\n### H3 hex for spatial overlap\n\nOne row per (operation, H3 cell) pair at native resolution 10, with rollup columns `h9`, `h8`,\nand `h0` (the partition key). `h8` is the catalog's universal join key \u2014 these operations, the\nmining claims, and the oil & gas leases layers all carry `h8`, so they join directly.\n\n```sql\n-- Operations whose cells fall inside another dataset's cells (join on h8)\nSELECT DISTINCT o.CSE_NR, o.op_level, o.CMMDTY, o.CSE_DISP\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-blm/locatable-operations/hex/h0=*/data_0.parquet') o\nWHERE o.h8 IN (SELECT h8 FROM read_parquet('.../some-boundary/hex/h0=*/data_0.parquet'));\n```\n\n> **\u26a0\ufe0f Acreage on the hex table:** `RCRD_ACRS` is a **per-feature total repeated on every hex\n> cell** the operation covers. Never `SUM(RCRD_ACRS)` on the hex table \u2014 dedup by the feature\n> id first (`SELECT DISTINCT _cng_fid, RCRD_ACRS \u2026`). On the flat GeoParquet each row is one\n> operation, so `SUM(RCRD_ACRS)` there is correct.\n\n## Notes & caveats\n\n- **Partial temporal coverage.** See the boxed note above \u2014 `op_year` (from `EFF_DT`) is\n  present on only ~36% of features; `CSE_DISP_DT`, `Created`, `Modified` are also parsed to ISO\n  where present. `SALE_DT` is null for these operation layers (retained for schema parity).\n- **Operation level (`op_level`):** Notice (1,264), Plan of Operations (1,135).\n- **Operation subtype (`BLM_PROD`):** Notices are all `SURFACE MANAGEMENT-NOTICE`; Plans split\n  into mining / exploration / ancillary / wilderness-review subtypes. **Source casing/spelling\n  variants are preserved verbatim** (e.g. `Surface Management Plan - Mining` and `SURFACE\n  MANAGEMENT PLAN MINING` are the same subtype) \u2014 normalize before grouping if needed.\n- **Disposition (`CSE_DISP`):** Authorized (1,603), Pending (796). The source operation layers\n  carry no Closed disposition.\n- **Commodity (`CMMDTY`):** free text, ~90 distinct source values (e.g. GOLD, SILVER, COPPER,\n  SAND & GRAVEL) \u2014 not a controlled vocabulary.\n- **State:** Nevada dominates (~793 operations). `ADMIN_STATE` (11 states) and `GEO_STATE`\n  (adds WA, SD) differ slightly.\n- **`RCRD_ACRS`** is the source-recorded case acreage (per-feature total).\n- **Null geometry:** 161 features have no geometry in the source (the Legal Land Description\n  could not be geocoded to the PLSS). They appear in the GeoParquet (null `geom`) but are\n  absent from the PMTiles and H3 hex (2,238 features are hexed).\n- Geometries are geocoded from Legal Land Descriptions via the PLSS by BLM Cadastral Survey\n  and reprojected to EPSG:4326.\n\n\n## lua-leases-permits-easements__README.md\n# BLM National MLRS Land-Use Authorizations: Leases, Permits & Easements with H3 Indexing\n\nLand-use authorizations \u2014 **leases, permits and easements** \u2014 on BLM-administered land, nationwide, from the Bureau of Land Management's National MLRS / EGIS program. 39,598 polygon case records converted to cloud-native formats (GeoParquet, PMTiles, H3 hex) with parcel-level H3 indexing at resolution 10.\n\nThese are the *non-extractive* side of public-lands management: the airport leases, advertising and historic-site permits, FLPMA Sec. 302 easements and similar authorizations that let a third party occupy or use a defined piece of BLM land. Together with [`lua-row`](../lua-row/) (right-of-way corridors) and [`acquisitions`](../acquisitions/) (lands and interests BLM has acquired) they complete the surface-use and land-tenure picture around the mineral case records ([`oil-gas-leases`](../oil-gas-leases/), [`mining-claims`](../mining-claims/), [`locatable-operations`](../locatable-operations/)).\n\n- **Source:** BLM National MLRS / EGIS \u2014 [`BLM_Natl_MLRS_LUA_Leases_Permits_Esmts/FeatureServer/0`](https://gis.blm.gov/nlsdb/rest/services/HUB/BLM_Natl_MLRS_LUA_Leases_Permits_Esmts/FeatureServer/0)\n- **Program:** [BLM Mineral & Land Records System (MLRS)](https://www.blm.gov/services/land-records/mlrs)\n- **License:** public domain (U.S. Government work \u2014 [usa.gov/government-works](https://www.usa.gov/government-works))\n- **Extent:** national \u2014 39,598 polygon case records (37,477 geocoded, 2,121 with no geometry)\n- **H3:** native resolution 10, parents 9, 8, 0\n- **Issue:** [data-workflows #488](https://github.com/boettiger-lab/data-workflows/issues/488)\n\n## Assets\n\n| Asset | URL |\n|---|---|\n| GeoParquet | `https://s3-west.nrp-nautilus.io/public-blm/lua-leases-permits-easements.parquet` |\n| PMTiles | `https://s3-west.nrp-nautilus.io/public-blm/lua-leases-permits-easements.pmtiles` |\n| H3 hex (res 10) | `https://s3-west.nrp-nautilus.io/public-blm/lua-leases-permits-easements/hex/h0=*/data_0.parquet` |\n| STAC | `https://s3-west.nrp-nautilus.io/public-blm/lua-leases-permits-easements/stac-collection.json` |\n\n## Web map (MapLibre GL JS)\n\nThe PMTiles **`source-layer` is `lua-leases-permits-easements`**. This is the layer id MapLibre needs; without it\nthe layer renders blank.\n\n```html\n<script src=\"https://unpkg.com/maplibre-gl@4/dist/maplibre-gl.js\"></script>\n<script src=\"https://unpkg.com/pmtiles@3/dist/pmtiles.js\"></script>\n<div id=\"map\" style=\"height:600px\"></div>\n<script>\n  const protocol = new pmtiles.Protocol();\n  maplibregl.addProtocol(\"pmtiles\", protocol.tile);\n\n  const map = new maplibregl.Map({\n    container: \"map\",\n    style: \"https://basemaps.cartocdn.com/gl/positron-gl-style/style.json\",\n    center: [-110.5, 39.5],\n    zoom: 5,\n  });\n\n  map.on(\"load\", () => {\n    map.addSource(\"lua-leases-permits-easements\", {\n      type: \"vector\",\n      url: \"pmtiles://https://s3-west.nrp-nautilus.io/public-blm/lua-leases-permits-easements.pmtiles\",\n    });\n\n    map.addLayer({\n      id: \"lua-leases-permits-easements-fill\",\n      type: \"fill\",\n      source: \"lua-leases-permits-easements\",\n      \"source-layer\": \"lua-leases-permits-easements\",          // <-- REQUIRED: last segment of the dataset name\n      paint: {\n        \"fill-color\": [\n          \"match\", [\"get\", \"CSE_DISP\"],\n          \"Authorized\", \"#2e7d32\",\n          \"Pending\", \"#f9a825\",\n          \"Interim\", \"#6a1b9a\",\n          \"Closed\", \"#90a4ae\",\n          \"#9e9e9e\"\n        ],\n        \"fill-opacity\": 0.6,\n        \"fill-outline-color\": \"#37474f\",\n      },\n    });\n  });\n</script>\n```\n\nThe `CSE_DISP` match expression above colours cases by status. To show only currently-effective authorizations, add `filter: [\"==\", [\"get\", \"CSE_DISP\"], \"Authorized\"]` to the layer. For a year-slider, filter on `disp_year` \u2014 but note 68 records have no disposition date (`disp_year` is null and they will drop out of any numeric comparison), and a few upstream years are implausibly far in the future, so clamp the slider domain rather than deriving it from the data's maximum.\n\n## SQL (DuckDB)\n\n```sql\nINSTALL spatial; LOAD spatial;\nINSTALL httpfs;  LOAD httpfs;\n\n-- flat GeoParquet: one row per case record\nSELECT CSE_NR, BLM_PROD, CSE_DISP, disp_year, RCRD_ACRS, ADMIN_STATE, GEO_STATE\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-blm/lua-leases-permits-easements.parquet')\nWHERE ADMIN_STATE = 'UT' AND CSE_DISP = 'Authorized'\nORDER BY disp_year DESC NULLS LAST\nLIMIT 20;\n```\n\n```sql\n-- H3 hex: one row per (case, cell). A per-feature total needs a dedup before aggregating.\n-- \u2705 correct \u2014 total authorized acreage administered by the Utah state office\nSELECT SUM(RCRD_ACRS) AS acres\nFROM (\n  SELECT DISTINCT _cng_fid, RCRD_ACRS\n  FROM read_parquet('https://s3-west.nrp-nautilus.io/public-blm/lua-leases-permits-easements/hex/h0=*/data_0.parquet')\n  WHERE ADMIN_STATE = 'UT'\n);\n\n-- \u274c wrong \u2014 SUM(RCRD_ACRS) straight off the hex multiplies each case by its cell count\n```\n\n```sql\n-- case density per res-8 cell (h8 is the catalog's universal join key, so this joins\n-- directly against any other res-8 or finer catalog layer)\nSELECT h8, COUNT(DISTINCT _cng_fid) AS n_cases\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-blm/lua-leases-permits-easements/hex/h0=*/data_0.parquet')\nGROUP BY h8\nORDER BY n_cases DESC\nLIMIT 10;\n```\n\n## Caveats\n\n- **2,121 of 39,598 records have no geometry.** MLRS polygons are geocoded from each case's Legal Land Description via the PLSS; where that fails the record still exists. Those rows are present in the GeoParquet with a null `geom` and absent from the PMTiles and H3 hex. A count off the hex is therefore a count of *geocoded* cases (37,477), not of all cases.\n- **`RCRD_ACRS` is case-file acreage, not measured polygon area,** and on the hex it is repeated per cell. Dedup by `_cng_fid` before summing; the raw hex sum overstates total acreage by ~184,000x. It is also null on 1,062 records.\n- **`CSE_DISP_DT` is the only case date.** These land-use services expose no effective, expiration or sale date, so `disp_year` is a *disposition* year. A few upstream values are implausible (3 records after 2026, max 2117); they are retained verbatim, so clamp any slider domain.\n- **`CSE_WIDTH` / `CSE_LGTH` are free text with no stated units** and are populated on only 209 and 220 records respectively. Cast with care.\n- **`BLM_PROD` mixes casing conventions** for the same concept (upper-case legacy labels alongside title-case MLRS labels), so match case-insensitively.\n- **`ADMIN_STATE` is the administering office, not the location.** `ES` is the Eastern States office, which administers BLM land east of the Mississippi \u2014 use `GEO_STATE` for where the land actually is.\n- **`QLTY` was deliberately dropped at ingest.** Despite its \"Data Quality\" alias it is a multi-kilobyte free-text dump of the LLD geocoder's debug log, not a quality code. `SRC` is retained instead and is the useful geocoding-provenance field.\n\n\n## lua-row__README.md\n# BLM National MLRS Land-Use Authorizations: Rights-of-Way (ROW) with H3 Indexing\n\nRight-of-way (ROW) authorizations across BLM-administered land, nationwide, from the Bureau of Land Management's National MLRS / EGIS program. **196,751 polygon case records \u2014 the largest of the MLRS HUB layers** \u2014 converted to cloud-native formats (GeoParquet, PMTiles, H3 hex) with parcel-level H3 indexing at resolution 10.\n\nA ROW grant lets a third party run a road, pipeline, transmission or fibre line, canal or similar linear facility across public land, recorded as a width x length corridor \u2014 so these polygons are typically long and thin. Together with [`lua-leases-permits-easements`](../lua-leases-permits-easements/) (leases, permits and easements) and [`acquisitions`](../acquisitions/) (lands and interests BLM has acquired) they complete the surface-use and land-tenure picture around the mineral case records ([`oil-gas-leases`](../oil-gas-leases/), [`mining-claims`](../mining-claims/), [`locatable-operations`](../locatable-operations/)).\n\n- **Source:** BLM National MLRS / EGIS \u2014 [`BLM_Natl_MLRS_LUA_ROW/FeatureServer/0`](https://gis.blm.gov/nlsdb/rest/services/HUB/BLM_Natl_MLRS_LUA_ROW/FeatureServer/0)\n- **Program:** [BLM Mineral & Land Records System (MLRS)](https://www.blm.gov/services/land-records/mlrs)\n- **License:** public domain (U.S. Government work \u2014 [usa.gov/government-works](https://www.usa.gov/government-works))\n- **Extent:** national \u2014 196,751 polygon case records (191,959 geocoded, 4,792 with no geometry)\n- **H3:** native resolution 10, parents 9, 8, 0\n- **Issue:** [data-workflows #488](https://github.com/boettiger-lab/data-workflows/issues/488)\n\n## Assets\n\n| Asset | URL |\n|---|---|\n| GeoParquet | `https://s3-west.nrp-nautilus.io/public-blm/lua-row.parquet` |\n| PMTiles | `https://s3-west.nrp-nautilus.io/public-blm/lua-row.pmtiles` |\n| H3 hex (res 10) | `https://s3-west.nrp-nautilus.io/public-blm/lua-row/hex/h0=*/data_0.parquet` |\n| STAC | `https://s3-west.nrp-nautilus.io/public-blm/lua-row/stac-collection.json` |\n\n## Web map (MapLibre GL JS)\n\nThe PMTiles **`source-layer` is `lua-row`**. This is the layer id MapLibre needs; without it\nthe layer renders blank.\n\n```html\n<script src=\"https://unpkg.com/maplibre-gl@4/dist/maplibre-gl.js\"></script>\n<script src=\"https://unpkg.com/pmtiles@3/dist/pmtiles.js\"></script>\n<div id=\"map\" style=\"height:600px\"></div>\n<script>\n  const protocol = new pmtiles.Protocol();\n  maplibregl.addProtocol(\"pmtiles\", protocol.tile);\n\n  const map = new maplibregl.Map({\n    container: \"map\",\n    style: \"https://basemaps.cartocdn.com/gl/positron-gl-style/style.json\",\n    center: [-110.5, 39.5],\n    zoom: 5,\n  });\n\n  map.on(\"load\", () => {\n    map.addSource(\"lua-row\", {\n      type: \"vector\",\n      url: \"pmtiles://https://s3-west.nrp-nautilus.io/public-blm/lua-row.pmtiles\",\n    });\n\n    map.addLayer({\n      id: \"lua-row-fill\",\n      type: \"fill\",\n      source: \"lua-row\",\n      \"source-layer\": \"lua-row\",          // <-- REQUIRED: last segment of the dataset name\n      paint: {\n        \"fill-color\": [\n          \"match\", [\"get\", \"CSE_DISP\"],\n          \"Authorized\", \"#1565C0\",\n          \"Pending\", \"#F9A825\",\n          \"Interim\", \"#6A1B9A\",\n          \"Closed\", \"#B0BEC5\",\n          \"#9e9e9e\"\n        ],\n        \"fill-opacity\": 0.6,\n        \"fill-outline-color\": \"#37474f\",\n      },\n    });\n  });\n</script>\n```\n\nThe `CSE_DISP` match expression colours corridors by status; add `filter: [\"==\", [\"get\", \"CSE_DISP\"], \"Authorized\"]` for currently-effective grants only. ROW footprints are long, thin polygons \u2014 often narrower than a pixel below ~z12 \u2014 so the tiles were built with `--drop-rate=1` and a 1 MB per-tile budget to keep corridors present at low zoom (they survive to z0). Add a thin `outline_style` line layer if you need them visible when zoomed out; a fill alone can be sub-pixel.\n\n## SQL (DuckDB)\n\n```sql\nINSTALL spatial; LOAD spatial;\nINSTALL httpfs;  LOAD httpfs;\n\n-- flat GeoParquet: one row per case record\nSELECT CSE_NR, BLM_PROD, CSE_DISP, disp_year, RCRD_ACRS, ADMIN_STATE, GEO_STATE\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-blm/lua-row.parquet')\nWHERE ADMIN_STATE = 'UT' AND CSE_DISP = 'Authorized'\nORDER BY disp_year DESC NULLS LAST\nLIMIT 20;\n```\n\n```sql\n-- H3 hex: one row per (case, cell). A per-feature total needs a dedup before aggregating.\n-- \u2705 correct \u2014 total authorized acreage administered by the Utah state office\nSELECT SUM(RCRD_ACRS) AS acres\nFROM (\n  SELECT DISTINCT _cng_fid, RCRD_ACRS\n  FROM read_parquet('https://s3-west.nrp-nautilus.io/public-blm/lua-row/hex/h0=*/data_0.parquet')\n  WHERE ADMIN_STATE = 'UT'\n);\n\n-- \u274c wrong \u2014 SUM(RCRD_ACRS) straight off the hex multiplies each case by its cell count\n```\n\n```sql\n-- case density per res-8 cell (h8 is the catalog's universal join key, so this joins\n-- directly against any other res-8 or finer catalog layer)\nSELECT h8, COUNT(DISTINCT _cng_fid) AS n_cases\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-blm/lua-row/hex/h0=*/data_0.parquet')\nGROUP BY h8\nORDER BY n_cases DESC\nLIMIT 10;\n```\n\n## Caveats\n\n- **4,792 of 196,751 records have no geometry.** MLRS polygons are geocoded from each case's Legal Land Description via the PLSS; where that fails the record still exists. Those rows are in the GeoParquet with a null `geom` and absent from the PMTiles and H3 hex, so a count off the hex counts *geocoded* corridors (191,959), not all of them.\n- **`RCRD_ACRS` is case-file acreage, not measured polygon area,** and on the hex it is repeated per cell. Dedup by `_cng_fid` before summing \u2014 the raw hex sum overstates total acreage by ~20,900x.\n- **153 case serials appear on more than one row** (196,598 distinct `CSE_NR` across 196,751 rows). Count authorizations with `COUNT(DISTINCT CSE_NR)`, rows/polygons with `_cng_fid`.\n- **`CSE_DISP_DT` is the only case date** \u2014 there is no effective, expiration or sale date \u2014 so `disp_year` is a *disposition* year. 469 records predate 1900 (plausible for historic railroad/canal ROWs) and 39 postdate 2026 up to 3023 (source errors). Clamp slider domains.\n- **`CSE_WIDTH` / `CSE_LGTH` are free text with no stated units.** They are well populated here (130,789 and 132,548 of 196,751) because a ROW is authorized as a width x length corridor, but they mix integer and decimal forms \u2014 cast with care and do not assume feet.\n- **This layer crosses the antimeridian.** One Alaska ROW (`AKAK106269603`) lies at +173.2 lon; every other feature is in the western hemisphere. The STAC bbox therefore uses the GeoJSON antimeridian convention (`xmin` > `xmax`). A naive min/max over longitudes will produce a bbox spanning Eurasia.\n- **`ADMIN_STATE` is the administering office, not the location** (`ES` = Eastern States). Use `GEO_STATE` for where the corridor lies.\n- **`QLTY` was dropped at ingest** \u2014 despite its \"Data Quality\" alias it is a multi-kilobyte dump of the LLD geocoder's debug log. `SRC` is the useful provenance field.\n\n\n## mineral-materials__README.md\n# BLM National Mineral Materials (Salable)\n\nFederal sales and free-use permits for salable mineral materials, nationwide, from the Bureau of Land Management's National MLRS / EGIS program \u2014 35,670 polygon cases converted to cloud-native formats (GeoParquet, PMTiles, H3 hex) with parcel-level H3 indexing at resolution 10. The *salable* class \u2014 common-variety sand, gravel, stone, clay and fill, governed by the Materials Act of 1947. Unlike leasable and locatable minerals these are sold outright or permitted for free use, often to counties and other government subdivisions for road material. Includes community pits, common use areas and BLM quarries. The largest of the seven. 1,393 of 35,670 cases (3.9%) have no geometry \u2014 the PLSS geocoder could not place their Legal Land Description. Those rows are retained here in the GeoParquet with a NULL geom but are ABSENT from the PMTiles and the H3 hex, so any area, extent or overlap computed from those two assets omits them. Every case carries a uniform numeric `case_year` (99% populated) for time filtering, with `case_year_src` recording whether that year is the case's effective date or its disposition date. Part of the BLM National MLRS set alongside oil & gas leases, mining claims and locatable-mineral operations.\n\n- **Source:** BLM National MLRS / EGIS \u2014 `BLM_Natl_MLRS_Mineral_Materials/FeatureServer/0`\n- **Extent:** national \u00b7 **Features:** 35,670 polygons \u00b7 **License:** public domain (US federal work)\n- **H3:** native resolution 10, parents 9, 8, 0 (joins the rest of the catalog at `h8`)\n- **Tracked in:** [data-workflows #486](https://github.com/boettiger-lab/data-workflows/issues/486)\n\n> **1,393 of 35,670 cases (3.9%) have no geometry.** BLM geocodes these polygons from the Legal Land Description via the PLSS; where that fails the case is kept in the GeoParquet with a NULL `geom` but does not appear in the PMTiles or the H3 hex. Any acreage or overlap computed from those two assets omits them.\n\n## Web map (MapLibre GL JS)\n\nThe PMTiles `source-layer` is **`mineral-materials`** \u2014 the last segment of the dataset name. Using\nanything else renders a blank layer with no error.\n\n```js\nmap.addSource('mineral-materials', {\n  type: 'vector',\n  url: 'pmtiles://https://s3-west.nrp-nautilus.io/public-blm/mineral-materials.pmtiles'\n});\nmap.addLayer({\n  id: 'mineral-materials-fill',\n  type: 'fill',\n  source: 'mineral-materials',\n  'source-layer': 'mineral-materials',          // <-- must be exactly this\n  paint: {\n    'fill-color': ['match', ['get', 'CSE_DISP'],\n      'Authorized', '#E65100', 'Pending', '#FBC02D',\n      'Interim', '#8D6E63', 'Closed', '#BDBDBD', '#888888'],\n    'fill-opacity': 0.4\n  }\n});\n```\n\n## SQL (DuckDB)\n\n```sql\nINSTALL spatial; LOAD spatial;\nINSTALL httpfs;  LOAD httpfs;\n\n-- active cases by state\nSELECT ADMIN_STATE, COUNT(*) AS cases, ROUND(SUM(RCRD_ACRS)) AS acres\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-blm/mineral-materials.parquet')\nWHERE CSE_DISP = 'Authorized'\nGROUP BY 1 ORDER BY acres DESC;\n```\n\n### Time filtering\n\n`case_year` is the uniform numeric year column (99% populated here, range\n1921\u20132030). `case_year_src` says where it came from \u2014\n`'effective'` (2,112 cases) or `'disposition'` (33,378). They mean\ndifferent things: an effective year is when a case *started*, a disposition year is\nusually when it *closed*. For \"cases active in year X\" use `case_year_src = 'effective'`\ntogether with `CSE_DISP`.\n\n```sql\nSELECT case_year, COUNT(*) AS n\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-blm/mineral-materials.parquet')\nWHERE case_year IS NOT NULL AND case_year_src = 'effective'\nGROUP BY 1 ORDER BY 1;\n```\n\n### H3 hex\n\nOne row per (case, H3 cell) at resolution 10. **Case attributes repeat on every cell**, so\ndedup before summing a per-case total:\n\n```sql\n-- correct: acreage of authorized cases, deduped\nSELECT SUM(RCRD_ACRS) FROM (\n  SELECT DISTINCT _cng_fid, RCRD_ACRS\n  FROM read_parquet('https://s3-west.nrp-nautilus.io/public-blm/mineral-materials/hex/h0=*/data_0.parquet')\n  WHERE CSE_DISP = 'Authorized');\n```\n\nJoin to any other catalog dataset at `h8`.\n\n\n## mining-claims__README.md\n# BLM National Mining Claims\n\nFederal hard-rock **mining claims** (lode, placer, mill site, tunnel site), nationwide,\nfrom the Bureau of Land Management's National MLRS / EGIS program. **655,792** polygon\nfeatures across all BLM states, converted to cloud-native formats (GeoParquet, PMTiles,\nH3 hex) with parcel-level H3 indexing at **resolution 10**.\n\nBoth MLRS disposition service layers are unioned into one collection: **575,287** not-closed\n(active-side) + **80,505** closed features. The derived **`status`** column (`not_closed` /\n`closed`) and the finer **`CSE_DISP`** disposition make active-vs-closed filterable. Each\nclaim carries its case serial number (`CSE_NR`), claim type (`BLM_PROD`), disposition\n(`CSE_DISP`), recorded acreage (`RCRD_ACRS`), and administering state (`admin_state`).\n\n> **\u26a0\ufe0f No claim-staking date.** Unlike the companion [oil & gas leases](https://s3-west.nrp-nautilus.io/public-blm/oil-gas-leases/stac-collection.json)\n> layer, this MLRS service exposes **no** location / recordation / adjudication date. The\n> only dates (`Created`, `Modified`) are MLRS **record-management** dates \u2014 every value falls\n> in 2021\u20132026 (the MLRS digital-migration window), *not* when claims were staked. There is\n> therefore **no `claim_year` / year-slider** column (it would misrepresent staking history).\n\n- **Sources** (ArcGIS FeatureServers, layer 0):\n  [Mining Claims \u2014 Not Closed](https://gis.blm.gov/nlsdb/rest/services/HUB/BLM_Natl_MLRS_Mining_Claims_Not_Closed/FeatureServer/0)\n  \u00b7 [Mining Claims \u2014 Closed](https://gis.blm.gov/nlsdb/rest/services/HUB/BLM_Natl_MLRS_Mining_Claims_Closed/FeatureServer/0)\n- **License:** Public domain (U.S. Government work).\n- **CRS:** EPSG:4326 (reprojected from the source NAD83 / WKID 4269).\n\n## Assets\n\n| Asset | URL |\n|---|---|\n| GeoParquet | `https://s3-west.nrp-nautilus.io/public-blm/mining-claims.parquet` |\n| PMTiles | `https://s3-west.nrp-nautilus.io/public-blm/mining-claims.pmtiles` |\n| H3 hex (res 10) | `https://s3-west.nrp-nautilus.io/public-blm/mining-claims/hex/h0=*/data_0.parquet` |\n\n## Web map (MapLibre GL JS)\n\nThe PMTiles **`source-layer` is `mining-claims`** (required \u2014 the layer renders blank if\nthis is wrong):\n\n```js\nimport { Protocol } from \"pmtiles\";\nconst protocol = new Protocol();\nmaplibregl.addProtocol(\"pmtiles\", protocol.tile);\n\nmap.addSource(\"claims\", {\n  type: \"vector\",\n  url: \"pmtiles://https://s3-west.nrp-nautilus.io/public-blm/mining-claims.pmtiles\",\n});\n\n// Color by claim type\nmap.addLayer({\n  id: \"claims-fill\",\n  type: \"fill\",\n  source: \"claims\",\n  \"source-layer\": \"mining-claims\",\n  paint: {\n    \"fill-color\": [\n      \"match\", [\"get\", \"BLM_PROD\"],\n      \"LODE CLAIM\",   \"#1b7837\",\n      \"PLACER CLAIM\", \"#f1a340\",\n      \"MILL SITE\",    \"#998ec3\",\n      \"TUNNEL SITE\",  \"#d73027\",\n      /* National Park variants / other */ \"#bdbdbd\",\n    ],\n    \"fill-opacity\": 0.6,\n  },\n});\n\n// Show only active (not-closed) claims\nmap.setFilter(\"claims-fill\", [\"==\", [\"get\", \"status\"], \"not_closed\"]);\n```\n\n## Query (DuckDB)\n\n```sql\nINSTALL spatial; LOAD spatial; INSTALL httpfs; LOAD httpfs;\n\n-- Active (not-closed) claim counts by administering state and claim type\nSELECT admin_state, BLM_PROD, COUNT(*) AS n_claims\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-blm/mining-claims.parquet')\nWHERE status = 'not_closed'\nGROUP BY admin_state, BLM_PROD\nORDER BY n_claims DESC;\n```\n\n### H3 hex for spatial overlap\n\nThe hex table has one row per (claim, H3 cell) pair at native resolution 10, with rollup\ncolumns `h9`, `h8`, and `h0` (the partition key). `h8` is the catalog's universal join key \u2014\nmining claims and the oil & gas leases layer both carry `h8`, so they join directly.\n\n```sql\n-- Active mining claims whose cells fall inside another dataset's cells (join on h8)\nSELECT DISTINCT c.CSE_NR, c.BLM_PROD, c.CSE_DISP\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-blm/mining-claims/hex/h0=*/data_0.parquet') c\nWHERE c.status = 'not_closed'\n  AND c.h8 IN (SELECT h8 FROM read_parquet('.../some-boundary/hex/h0=*/data_0.parquet'));\n```\n\n> **\u26a0\ufe0f Acreage on the hex table:** `RCRD_ACRS` is a **per-claim total repeated on every hex\n> cell** the claim covers. Never `SUM(RCRD_ACRS)` on the hex table \u2014 dedup by the feature id\n> first (`SELECT DISTINCT _cng_fid, RCRD_ACRS \u2026`). For area from the H3 footprint itself, sum\n> `h3_cell_area()` over distinct cells. On the flat GeoParquet each row is one claim, so\n> `SUM(RCRD_ACRS)` there is correct.\n\n## Notes & caveats\n\n- **No temporal / year data.** See the boxed note above \u2014 `Created`/`Modified` are MLRS\n  record-entry dates (2021\u20132026), not claim-staking dates; there is no `claim_year`.\n- **Claim type (`BLM_PROD`):** LODE CLAIM (535,849), PLACER CLAIM (103,170), MILL SITE\n  (16,093), LODE CLAIM - NATIONAL PARK (293), PLACER CLAIM - NATIONAL PARK (265), TUNNEL SITE\n  (122).\n- **Disposition (`CSE_DISP`):** Active (415,743), Filed (152,440), Closed (80,505), Under\n  Review (5,998), Submitted (1,097), plus a handful On Appeal / Appeal - Stay Granted /\n  Pending. For a plain active-vs-closed split use `status` (not_closed 575,287 / closed\n  80,505).\n- **`admin_state`** is derived from the two-letter `CSE_NR` serial prefix (NV, AZ, UT, WY, ID,\n  AK, MT, CA, NM, CO, OR, ES = Eastern States office). Nevada dominates (~296k claims).\n- **`RCRD_ACRS`** is the source-recorded case acreage (median ~21 acres). A small number of\n  records carry anomalously large placeholder values (up to ~1.8\u00d710\u2078 acres, concentrated in\n  NM/CO) \u2014 filter outliers before area accounting.\n- **Null geometry:** 44,881 claims have no geometry in the source (the Legal Land Description\n  could not be geocoded to the PLSS). They appear in the GeoParquet (null `geom`) but are\n  absent from the PMTiles and H3 hex (610,911 features are hexed).\n- Geometries are geocoded from Legal Land Descriptions via the PLSS by BLM Cadastral Survey\n  and reprojected to EPSG:4326.\n\n\n## non-energy-leasables__README.md\n# BLM National Non-Energy Leasable Minerals\n\nFederal leases for non-energy leasable minerals, nationwide, from the Bureau of Land Management's National MLRS / EGIS program \u2014 7,106 polygon cases converted to cloud-native formats (GeoParquet, PMTiles, H3 hex) with parcel-level H3 indexing at resolution 10. The non-fuel leasable estate: phosphate, sodium, potassium, sulfur, gilsonite, asphalt, and hardrock minerals on acquired lands (which are leased rather than claimed). Over 100 distinct commodities. Utah's gilsonite and potash cases and the Western phosphate field are here. 212 of 7,106 cases (3.0%) have no geometry \u2014 the PLSS geocoder could not place their Legal Land Description. Those rows are retained here in the GeoParquet with a NULL geom but are ABSENT from the PMTiles and the H3 hex, so any area, extent or overlap computed from those two assets omits them. NOTE \u2014 upstream row duplication: 7,106 rows cover only 7,004 distinct CSE_NR. To count or sum by CASE rather than by row, dedup on CSE_NR (_cng_fid is unique per row and will not collapse this). Every case carries a uniform numeric `case_year` (99% populated) for time filtering, with `case_year_src` recording whether that year is the case's effective date or its disposition date. Part of the BLM National MLRS set alongside oil & gas leases, mining claims and locatable-mineral operations.\n\n- **Source:** BLM National MLRS / EGIS \u2014 `BLM_Natl_MLRS_Non_Energy_Leasables/FeatureServer/0`\n- **Extent:** national \u00b7 **Features:** 7,106 polygons \u00b7 **License:** public domain (US federal work)\n- **H3:** native resolution 10, parents 9, 8, 0 (joins the rest of the catalog at `h8`)\n- **Tracked in:** [data-workflows #486](https://github.com/boettiger-lab/data-workflows/issues/486)\n\n> **212 of 7,106 cases (3.0%) have no geometry.** BLM geocodes these polygons from the Legal Land Description via the PLSS; where that fails the case is kept in the GeoParquet with a NULL `geom` but does not appear in the PMTiles or the H3 hex. Any acreage or overlap computed from those two assets omits them.\n\n> **Upstream row duplication:** 7,106 rows cover only 7,004 distinct `CSE_NR`. Dedup on `CSE_NR` to count or sum by case; `_cng_fid` is unique per row and will not collapse it.\n\n## Web map (MapLibre GL JS)\n\nThe PMTiles `source-layer` is **`non-energy-leasables`** \u2014 the last segment of the dataset name. Using\nanything else renders a blank layer with no error.\n\n```js\nmap.addSource('non-energy-leasables', {\n  type: 'vector',\n  url: 'pmtiles://https://s3-west.nrp-nautilus.io/public-blm/non-energy-leasables.pmtiles'\n});\nmap.addLayer({\n  id: 'non-energy-leasables-fill',\n  type: 'fill',\n  source: 'non-energy-leasables',\n  'source-layer': 'non-energy-leasables',          // <-- must be exactly this\n  paint: {\n    'fill-color': ['match', ['get', 'CSE_DISP'],\n      'Authorized', '#E65100', 'Pending', '#FBC02D',\n      'Interim', '#8D6E63', 'Closed', '#BDBDBD', '#888888'],\n    'fill-opacity': 0.4\n  }\n});\n```\n\n## SQL (DuckDB)\n\n```sql\nINSTALL spatial; LOAD spatial;\nINSTALL httpfs;  LOAD httpfs;\n\n-- active cases by state\nSELECT ADMIN_STATE, COUNT(*) AS cases, ROUND(SUM(RCRD_ACRS)) AS acres\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-blm/non-energy-leasables.parquet')\nWHERE CSE_DISP = 'Authorized'\nGROUP BY 1 ORDER BY acres DESC;\n```\n\n### Time filtering\n\n`case_year` is the uniform numeric year column (99% populated here, range\n1924\u20132026). `case_year_src` says where it came from \u2014\n`'effective'` (2,170 cases) or `'disposition'` (4,880). They mean\ndifferent things: an effective year is when a case *started*, a disposition year is\nusually when it *closed*. For \"cases active in year X\" use `case_year_src = 'effective'`\ntogether with `CSE_DISP`.\n\n```sql\nSELECT case_year, COUNT(*) AS n\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-blm/non-energy-leasables.parquet')\nWHERE case_year IS NOT NULL AND case_year_src = 'effective'\nGROUP BY 1 ORDER BY 1;\n```\n\n### H3 hex\n\nOne row per (case, H3 cell) at resolution 10. **Case attributes repeat on every cell**, so\ndedup before summing a per-case total:\n\n```sql\n-- correct: acreage of authorized cases, deduped\nSELECT SUM(RCRD_ACRS) FROM (\n  SELECT DISTINCT _cng_fid, RCRD_ACRS\n  FROM read_parquet('https://s3-west.nrp-nautilus.io/public-blm/non-energy-leasables/hex/h0=*/data_0.parquet')\n  WHERE CSE_DISP = 'Authorized');\n```\n\nJoin to any other catalog dataset at `h8`.\n\n\n## oil-gas-agreements__README.md\n# BLM National Oil & Gas Agreements\n\nFederal oil & gas unit and communitization agreements, nationwide, from the Bureau of Land Management's National MLRS / EGIS program \u2014 32,787 polygon cases converted to cloud-native formats (GeoParquet, PMTiles, H3 hex) with parcel-level H3 indexing at resolution 10. The administrative units that organize oil & gas development across lease boundaries: exploratory and secondary unit agreements, communitization agreements, development contracts, gas storage agreements and compensatory royalty agreements, including the Indian and NPR-A variants. These are the *agreements* that sit above the individual leases in #451, and are the companion to the participating areas in oil-gas-participating-areas. 443 of 32,787 cases (1.4%) have no geometry \u2014 the PLSS geocoder could not place their Legal Land Description. Those rows are retained here in the GeoParquet with a NULL geom but are ABSENT from the PMTiles and the H3 hex, so any area, extent or overlap computed from those two assets omits them. Every case carries a uniform numeric `case_year` (93% populated) for time filtering, with `case_year_src` recording whether that year is the case's effective date or its disposition date. Part of the BLM National MLRS set alongside oil & gas leases, mining claims and locatable-mineral operations.\n\n- **Source:** BLM National MLRS / EGIS \u2014 `BLM_Natl_MLRS_Oil_and_Gas_Agreements/FeatureServer/0`\n- **Extent:** national \u00b7 **Features:** 32,787 polygons \u00b7 **License:** public domain (US federal work)\n- **H3:** native resolution 10, parents 9, 8, 0 (joins the rest of the catalog at `h8`)\n- **Tracked in:** [data-workflows #486](https://github.com/boettiger-lab/data-workflows/issues/486)\n\n> **443 of 32,787 cases (1.4%) have no geometry.** BLM geocodes these polygons from the Legal Land Description via the PLSS; where that fails the case is kept in the GeoParquet with a NULL `geom` but does not appear in the PMTiles or the H3 hex. Any acreage or overlap computed from those two assets omits them.\n\n## Web map (MapLibre GL JS)\n\nThe PMTiles `source-layer` is **`oil-gas-agreements`** \u2014 the last segment of the dataset name. Using\nanything else renders a blank layer with no error.\n\n```js\nmap.addSource('oil-gas-agreements', {\n  type: 'vector',\n  url: 'pmtiles://https://s3-west.nrp-nautilus.io/public-blm/oil-gas-agreements.pmtiles'\n});\nmap.addLayer({\n  id: 'oil-gas-agreements-fill',\n  type: 'fill',\n  source: 'oil-gas-agreements',\n  'source-layer': 'oil-gas-agreements',          // <-- must be exactly this\n  paint: {\n    'fill-color': ['match', ['get', 'CSE_DISP'],\n      'Authorized', '#E65100', 'Pending', '#FBC02D',\n      'Interim', '#8D6E63', 'Closed', '#BDBDBD', '#888888'],\n    'fill-opacity': 0.4\n  }\n});\n```\n\n## SQL (DuckDB)\n\n```sql\nINSTALL spatial; LOAD spatial;\nINSTALL httpfs;  LOAD httpfs;\n\n-- active cases by state\nSELECT ADMIN_STATE, COUNT(*) AS cases, ROUND(SUM(RCRD_ACRS)) AS acres\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-blm/oil-gas-agreements.parquet')\nWHERE CSE_DISP = 'Authorized'\nGROUP BY 1 ORDER BY acres DESC;\n```\n\n### Time filtering\n\n`case_year` is the uniform numeric year column (93% populated here, range\n1930\u20132026). `case_year_src` says where it came from \u2014\n`'effective'` (30,335 cases) or `'disposition'` (0). They mean\ndifferent things: an effective year is when a case *started*, a disposition year is\nusually when it *closed*. For \"cases active in year X\" use `case_year_src = 'effective'`\ntogether with `CSE_DISP`.\n\n```sql\nSELECT case_year, COUNT(*) AS n\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-blm/oil-gas-agreements.parquet')\nWHERE case_year IS NOT NULL AND case_year_src = 'effective'\nGROUP BY 1 ORDER BY 1;\n```\n\n### H3 hex\n\nOne row per (case, H3 cell) at resolution 10. **Case attributes repeat on every cell**, so\ndedup before summing a per-case total:\n\n```sql\n-- correct: acreage of authorized cases, deduped\nSELECT SUM(RCRD_ACRS) FROM (\n  SELECT DISTINCT _cng_fid, RCRD_ACRS\n  FROM read_parquet('https://s3-west.nrp-nautilus.io/public-blm/oil-gas-agreements/hex/h0=*/data_0.parquet')\n  WHERE CSE_DISP = 'Authorized');\n```\n\nJoin to any other catalog dataset at `h8`.\n\n\n## oil-gas-leases__README.md\n# BLM National Oil & Gas Leases\n\nFederal onshore oil & gas **lease parcels**, nationwide, from the Bureau of Land\nManagement's National MLRS / EGIS program. **466,415** polygon features covering all BLM\nstates, converted to cloud-native formats (GeoParquet, PMTiles, H3 hex) with parcel-level\nH3 indexing at **resolution 10**.\n\nEach lease parcel carries its case serial number, status (Authorized / Pending / Interim /\nClosed), production status, commodity, record acreage, administering/geographic state, and\neffective / expiration / sale dates. A derived numeric **`lease_year`** (year of the\neffective date) supports animated year-slider visualization and time-series overlap\nanalysis (e.g. acres of active leases inside a given boundary by year).\n\n- **Source:** [BLM National MLRS \u2014 Oil & Gas Leases](https://gis.blm.gov/nlsdb/rest/services/HUB/BLM_Natl_MLRS_Oil_and_Gas_Leases/FeatureServer/0) (ArcGIS FeatureServer, layer 0)\n- **License:** Public domain (U.S. Government work).\n- **CRS:** EPSG:4326 (reprojected from the source NAD83 / WKID 4269).\n\n## Assets\n\n| Asset | URL |\n|---|---|\n| GeoParquet | `https://s3-west.nrp-nautilus.io/public-blm/oil-gas-leases.parquet` |\n| PMTiles | `https://s3-west.nrp-nautilus.io/public-blm/oil-gas-leases.pmtiles` |\n| H3 hex (res 10) | `https://s3-west.nrp-nautilus.io/public-blm/oil-gas-leases/hex/h0=*/data_0.parquet` |\n\n## Web map (MapLibre GL JS)\n\nThe PMTiles **`source-layer` is `oil-gas-leases`** (this is required \u2014 the layer will render\nblank if it is wrong):\n\n```js\nimport { Protocol } from \"pmtiles\";\nconst protocol = new Protocol();\nmaplibregl.addProtocol(\"pmtiles\", protocol.tile);\n\nmap.addSource(\"leases\", {\n  type: \"vector\",\n  url: \"pmtiles://https://s3-west.nrp-nautilus.io/public-blm/oil-gas-leases.pmtiles\",\n});\n\n// Color active vs. closed leases\nmap.addLayer({\n  id: \"leases-fill\",\n  type: \"fill\",\n  source: \"leases\",\n  \"source-layer\": \"oil-gas-leases\",\n  paint: {\n    \"fill-color\": [\n      \"match\", [\"get\", \"CSE_DISP\"],\n      \"Authorized\", \"#1b7837\",\n      \"Pending\",    \"#f1a340\",\n      \"Interim\",    \"#998ec3\",\n      /* Closed / other */ \"#bdbdbd\",\n    ],\n    \"fill-opacity\": 0.6,\n  },\n});\n```\n\nFilter to a single leasing year for a slider:\n\n```js\nmap.setFilter(\"leases-fill\", [\"==\", [\"get\", \"lease_year\"], year]);\n```\n\n## Query (DuckDB)\n\n```sql\nINSTALL spatial; LOAD spatial; INSTALL httpfs; LOAD httpfs;\n\n-- Currently authorized (active) lease acreage by administering state\nSELECT ADMIN_STATE,\n       COUNT(*)          AS n_leases,\n       ROUND(SUM(RCRD_ACRS)) AS acres\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-blm/oil-gas-leases.parquet')\nWHERE CSE_DISP = 'Authorized'\nGROUP BY ADMIN_STATE\nORDER BY acres DESC;\n```\n\n### H3 hex for spatial overlap\n\nThe hex table has one row per (lease, H3 cell) pair at native resolution 10, with rollup\ncolumns `h9`, `h8`, and `h0` (the partition key). `h8` is the catalog's universal join key.\n\n```sql\n-- Res-10 lease cells that fall inside another dataset's cells (join on h8/h10)\nSELECT l.CSE_NR, l.CSE_DISP, l.lease_year\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-blm/oil-gas-leases/hex/h0=*/data_0.parquet') l\nWHERE l.h8 IN (SELECT h8 FROM read_parquet('.../some-boundary/hex/h0=*/data_0.parquet'));\n```\n\n> **\u26a0\ufe0f Acreage on the hex table:** `RCRD_ACRS` is a **per-lease total repeated on every hex\n> cell** the lease covers. Never `SUM(RCRD_ACRS)` on the hex table \u2014 dedup by the feature id\n> first (`SELECT DISTINCT _cng_fid, RCRD_ACRS \u2026`). For area from the H3 footprint itself, sum\n> `h3_cell_area()` over distinct cells. On the flat GeoParquet each row is one lease, so\n> `SUM(RCRD_ACRS)` there is correct.\n\n## Notes & caveats\n\n- **`lease_year`** is the integer year of `EFF_DT`; it is **null** for the 126,506 leases\n  with no effective date recorded. A small number of records carry future/erroneous effective\n  and expiration dates (`EFF_DT` up to 2040; `EXP_DT` uses `3999-01-01` as a\n  no-expiration/perpetual sentinel) \u2014 filter these when building a year range.\n- **Status (`CSE_DISP`):** `Closed` (432,520), `Authorized` (32,461), `Interim` (886),\n  `Pending` (548). \"Active\" leases are `Authorized`.\n- **Null geometry:** 8,482 lease records have no geometry in the source. They appear in the\n  GeoParquet (with a null `geom`) but are absent from the PMTiles and H3 hex \u2014 457,933 of the\n  466,415 features are hexed.\n- Authorized acreage \u2248 **21.9 M acres**; acreage held by production \u2248 **12.3 M acres**,\n  consistent with published [BLM oil & gas statistics](https://www.blm.gov/programs/energy-and-minerals/oil-and-gas/oil-and-gas-statistics).\n- Geometries were reprojected to EPSG:4326; a subset of source parcels have coarse/oversized\n  polygon geometry relative to their recorded acreage (use `RCRD_ACRS` for area accounting,\n  not the polygon area).\n\n\n## oil-gas-participating-areas__README.md\n# BLM National Oil & Gas Participating Areas\n\nParticipating areas within federal oil & gas unit agreements, nationwide, from the Bureau of Land Management's National MLRS / EGIS program \u2014 2,562 polygon cases converted to cloud-native formats (GeoParquet, PMTiles, H3 hex) with parcel-level H3 indexing at resolution 10. A participating area is the portion of a unit agreement determined to be productive from a particular formation \u2014 the sub-area whose tracts actually share in production. Each carries its FRMTN (formation), so one unit may have several participating areas stacked on different reservoirs. 17 of 2,562 cases (0.7%) have no geometry \u2014 the PLSS geocoder could not place their Legal Land Description. Those rows are retained here in the GeoParquet with a NULL geom but are ABSENT from the PMTiles and the H3 hex, so any area, extent or overlap computed from those two assets omits them. Every case carries a uniform numeric `case_year` (98% populated) for time filtering, with `case_year_src` recording whether that year is the case's effective date or its disposition date. Part of the BLM National MLRS set alongside oil & gas leases, mining claims and locatable-mineral operations.\n\n- **Source:** BLM National MLRS / EGIS \u2014 `BLM_Natl_MLRS_Oil_and_Gas_Participating_Areas/FeatureServer/0`\n- **Extent:** national \u00b7 **Features:** 2,562 polygons \u00b7 **License:** public domain (US federal work)\n- **H3:** native resolution 10, parents 9, 8, 0 (joins the rest of the catalog at `h8`)\n- **Tracked in:** [data-workflows #486](https://github.com/boettiger-lab/data-workflows/issues/486)\n\n> **17 of 2,562 cases (0.7%) have no geometry.** BLM geocodes these polygons from the Legal Land Description via the PLSS; where that fails the case is kept in the GeoParquet with a NULL `geom` but does not appear in the PMTiles or the H3 hex. Any acreage or overlap computed from those two assets omits them.\n\n## Web map (MapLibre GL JS)\n\nThe PMTiles `source-layer` is **`oil-gas-participating-areas`** \u2014 the last segment of the dataset name. Using\nanything else renders a blank layer with no error.\n\n```js\nmap.addSource('oil-gas-participating-areas', {\n  type: 'vector',\n  url: 'pmtiles://https://s3-west.nrp-nautilus.io/public-blm/oil-gas-participating-areas.pmtiles'\n});\nmap.addLayer({\n  id: 'oil-gas-participating-areas-fill',\n  type: 'fill',\n  source: 'oil-gas-participating-areas',\n  'source-layer': 'oil-gas-participating-areas',          // <-- must be exactly this\n  paint: {\n    'fill-color': ['match', ['get', 'CSE_DISP'],\n      'Authorized', '#E65100', 'Pending', '#FBC02D',\n      'Interim', '#8D6E63', 'Closed', '#BDBDBD', '#888888'],\n    'fill-opacity': 0.4\n  }\n});\n```\n\n## SQL (DuckDB)\n\n```sql\nINSTALL spatial; LOAD spatial;\nINSTALL httpfs;  LOAD httpfs;\n\n-- active cases by state\nSELECT ADMIN_STATE, COUNT(*) AS cases, ROUND(SUM(RCRD_ACRS)) AS acres\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-blm/oil-gas-participating-areas.parquet')\nWHERE CSE_DISP = 'Authorized'\nGROUP BY 1 ORDER BY acres DESC;\n```\n\n### Time filtering\n\n`case_year` is the uniform numeric year column (98% populated here, range\n1932\u20132026). `case_year_src` says where it came from \u2014\n`'effective'` (2,521 cases) or `'disposition'` (0). They mean\ndifferent things: an effective year is when a case *started*, a disposition year is\nusually when it *closed*. For \"cases active in year X\" use `case_year_src = 'effective'`\ntogether with `CSE_DISP`.\n\n```sql\nSELECT case_year, COUNT(*) AS n\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-blm/oil-gas-participating-areas.parquet')\nWHERE case_year IS NOT NULL AND case_year_src = 'effective'\nGROUP BY 1 ORDER BY 1;\n```\n\n### H3 hex\n\nOne row per (case, H3 cell) at resolution 10. **Case attributes repeat on every cell**, so\ndedup before summing a per-case total:\n\n```sql\n-- correct: acreage of authorized cases, deduped\nSELECT SUM(RCRD_ACRS) FROM (\n  SELECT DISTINCT _cng_fid, RCRD_ACRS\n  FROM read_parquet('https://s3-west.nrp-nautilus.io/public-blm/oil-gas-participating-areas/hex/h0=*/data_0.parquet')\n  WHERE CSE_DISP = 'Authorized');\n```\n\nJoin to any other catalog dataset at `h8`.\n\n\n## oil-shale-leases__README.md\n# BLM National Oil Shale Leases\n\nFederal oil shale RD&D leases, preference-right leases and exploration licenses, nationwide, from the Bureau of Land Management's National MLRS / EGIS program \u2014 42 polygon cases converted to cloud-native formats (GeoParquet, PMTiles, H3 hex) with parcel-level H3 indexing at resolution 10. The smallest MLRS mineral layer \u2014 42 cases, concentrated in the Green River Formation of Colorado, Utah and Wyoming. Mostly research, development and demonstration (RD&D) leases issued under the Energy Policy Act of 2005. Every case is geocoded (no null geometries). Every case carries a uniform numeric `case_year` (98% populated) for time filtering, with `case_year_src` recording whether that year is the case's effective date or its disposition date. Part of the BLM National MLRS set alongside oil & gas leases, mining claims and locatable-mineral operations.\n\n- **Source:** BLM National MLRS / EGIS \u2014 `BLM_Natl_MLRS_Oil_Shale_Leases/FeatureServer/0`\n- **Extent:** national \u00b7 **Features:** 42 polygons \u00b7 **License:** public domain (US federal work)\n- **H3:** native resolution 10, parents 9, 8, 0 (joins the rest of the catalog at `h8`)\n- **Tracked in:** [data-workflows #486](https://github.com/boettiger-lab/data-workflows/issues/486)\n\n## Web map (MapLibre GL JS)\n\nThe PMTiles `source-layer` is **`oil-shale-leases`** \u2014 the last segment of the dataset name. Using\nanything else renders a blank layer with no error.\n\n```js\nmap.addSource('oil-shale-leases', {\n  type: 'vector',\n  url: 'pmtiles://https://s3-west.nrp-nautilus.io/public-blm/oil-shale-leases.pmtiles'\n});\nmap.addLayer({\n  id: 'oil-shale-leases-fill',\n  type: 'fill',\n  source: 'oil-shale-leases',\n  'source-layer': 'oil-shale-leases',          // <-- must be exactly this\n  paint: {\n    'fill-color': ['match', ['get', 'CSE_DISP'],\n      'Authorized', '#E65100', 'Pending', '#FBC02D',\n      'Interim', '#8D6E63', 'Closed', '#BDBDBD', '#888888'],\n    'fill-opacity': 0.4\n  }\n});\n```\n\n## SQL (DuckDB)\n\n```sql\nINSTALL spatial; LOAD spatial;\nINSTALL httpfs;  LOAD httpfs;\n\n-- active cases by state\nSELECT ADMIN_STATE, COUNT(*) AS cases, ROUND(SUM(RCRD_ACRS)) AS acres\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-blm/oil-shale-leases.parquet')\nWHERE CSE_DISP = 'Authorized'\nGROUP BY 1 ORDER BY acres DESC;\n```\n\n### Time filtering\n\n`case_year` is the uniform numeric year column (98% populated here, range\n1974\u20132024). `case_year_src` says where it came from \u2014\n`'effective'` (10 cases) or `'disposition'` (31). They mean\ndifferent things: an effective year is when a case *started*, a disposition year is\nusually when it *closed*. For \"cases active in year X\" use `case_year_src = 'effective'`\ntogether with `CSE_DISP`.\n\n```sql\nSELECT case_year, COUNT(*) AS n\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-blm/oil-shale-leases.parquet')\nWHERE case_year IS NOT NULL AND case_year_src = 'effective'\nGROUP BY 1 ORDER BY 1;\n```\n\n### H3 hex\n\nOne row per (case, H3 cell) at resolution 10. **Case attributes repeat on every cell**, so\ndedup before summing a per-case total:\n\n```sql\n-- correct: acreage of authorized cases, deduped\nSELECT SUM(RCRD_ACRS) FROM (\n  SELECT DISTINCT _cng_fid, RCRD_ACRS\n  FROM read_parquet('https://s3-west.nrp-nautilus.io/public-blm/oil-shale-leases/hex/h0=*/data_0.parquet')\n  WHERE CSE_DISP = 'Authorized');\n```\n\nJoin to any other catalog dataset at `h8`.\n\n\n## special-tar-sand-areas__README.md\n# BLM Special Tar Sand Areas (Utah)\n\nBoundaries of Utah's eleven Special Tar Sand Areas, designated by Department of the Interior orders of November 20, 1980 (45 FR 76800) and January 21, 1981 (46 FR 6077) as containing substantial deposits of tar sand. Within them, federal oil and gas and tar sand rights can be leased together under the Combined Hydrocarbon Leasing Act of 1981.\n\nThe areas are P.R. Spring, Tar Sand Triangle, Asphalt Ridge, Sunnyside, Circle Cliffs, Hill Creek, San Rafael, Raven Ridge, Argyle Canyon, Pariette and White Canyon, about 1,026,000 acres in total. The data holds **37 polygon parts**, not 11 rows, because seven areas are made of several polygons. Group by `NAME` or `ID` for one row per area.\n\nThese are designated boundaries, not mapped deposits: they show where the leasing framework applies, not where tar sand is present.\n\n## Files\n\n| Asset | URL |\n|---|---|\n| GeoParquet | `https://s3-west.nrp-nautilus.io/public-blm/special-tar-sand-areas.parquet` |\n| PMTiles | `https://s3-west.nrp-nautilus.io/public-blm/special-tar-sand-areas.pmtiles` |\n| H3 hex (resolution 8, partitioned by h0) | `https://s3-west.nrp-nautilus.io/public-blm/special-tar-sand-areas/hex/h0=*/data_0.parquet` |\n\n## Columns\n\n| Column | Description |\n|---|---|\n| `_cng_fid` | Unique row id, one per polygon part |\n| `ID` | Area number 1 to 11 |\n| `NAME` | Area name |\n| `area_ac` | Area of the polygon part in acres |\n| `h8`, `h0` | H3 cells (hex asset only) |\n\nOn the hex asset each part's attributes repeat on every cell, so deduplicate by `_cng_fid` before summing `area_ac`.\n\n## DuckDB\n\n```sql\nINSTALL spatial; LOAD spatial;\nSELECT NAME, COUNT(*) AS parts, SUM(area_ac) AS acres\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-blm/special-tar-sand-areas.parquet')\nGROUP BY NAME ORDER BY acres DESC;\n```\n\n## MapLibre GL JS\n\nThe PMTiles `source-layer` is **`special-tar-sand-areas`**.\n\n```js\nimport { Protocol } from \"pmtiles\";\nmaplibregl.addProtocol(\"pmtiles\", new Protocol().tile);\n\nmap.addSource(\"stsa\", {\n  type: \"vector\",\n  url: \"pmtiles://https://s3-west.nrp-nautilus.io/public-blm/special-tar-sand-areas.pmtiles\",\n});\nmap.addLayer({\n  id: \"stsa-fill\", type: \"fill\", source: \"stsa\",\n  \"source-layer\": \"special-tar-sand-areas\",\n  paint: { \"fill-color\": \"#6b3e26\", \"fill-opacity\": 0.4 },\n});\nmap.addLayer({\n  id: \"stsa-line\", type: \"line\", source: \"stsa\",\n  \"source-layer\": \"special-tar-sand-areas\",\n  paint: { \"line-color\": \"#3b1f10\", \"line-width\": 1 },\n});\n```\n\n## Provenance and licence\n\nSource: Bureau of Land Management, 2007, layer `strata_unit_area_tarsand` in the 2012 Oil Shale and Tar Sands Programmatic Environmental Impact Statement geospatial data package (Argonne National Laboratory). The original site (ostseis.anl.gov) is offline. The package was retrieved on 2026-09-24 from the Internet Archive capture of 2013-02-16 and is kept unmodified at `s3://public-blm/raw/2012_OSTS_PEIS_Geospatial_Data.zip` (2,048,223 bytes, sha256 `be1be303e5377c373299d3ca38dfe5e9dded13a7ecfa90f2dfb5abf6fd2dfb7a`).\n\nLicence: public domain, as a US federal government work (https://www.usa.gov/government-works).\n\n\n## utah-federal-mineral-estate__README.md\n# BLM Utah Federal Mineral Estate\n\nThe federal mineral estate in Utah: which parcels carry federally owned minerals, and which\ncommodity classes those minerals fall into. 101,585 polygon parcels published by the Bureau of\nLand Management Utah State Office, converted to GeoParquet, PMTiles and H3 hex.\n\nThis is *ownership of the mineral estate*, which is different from the *rights granted* on it that\nthe BLM mineral case and lease collections record. Utah is heavily split estate, so owning or\nmanaging the surface does not imply owning the minerals underneath: 12,183 of these parcels carry\nfederally owned minerals under surface administered by someone other than the federal government\nor the BLM.\n\nThe grain is the survey subdivision, not a lease or a case. Each parcel is a Public Land Survey\nSystem aliquot part identified by `GCDBDIVID`, commonly about 40 acres.\n\n## Commodity flags\n\nCommodity membership is carried as ten independent flag columns rather than as ten separate\nlayers. The source service publishes one feature class through eleven definition-query views, and\na parcel can appear in several of them, so the per-commodity view counts total 106,444 against\n101,585 parcels. 3,247 parcels carry more than one commodity flag and 158 carry none.\n\nEach flag is `X` for Federal Minerals or `I` for Indian Minerals, as defined by the publisher's\nown field documentation, and null when the parcel is not flagged for that commodity.\n\n| column | commodity | parcels | codes present |\n|---|---|---|---|\n| `ALL_MIN` | all subsurface minerals | 91,342 | `X`, `I` |\n| `Oil_Gas` | oil and gas | 5,838 | `X`, `I` |\n| `Coal` | coal | 4,041 | `X`, `I` |\n| `Oil_Shale` | oil shale | 2,282 | `X`, `I` |\n| `Potash_Pot` | potash / potassium | 781 | `X` |\n| `Sodium` | sodium | 707 | `X` |\n| `Phosphate` | phosphate | 652 | `X`, `I` |\n| `Geo_Steam` | geothermal steam | 313 | `X` |\n| `Unknown_` | reservation unknown | 314 | `X` |\n| `Gilsonite` | gilsonite | 174 | `X` |\n\nSelecting one flag reproduces the publisher's corresponding layer exactly.\n\n## Assets\n\n| Asset | URL |\n|---|---|\n| GeoParquet | `https://s3-west.nrp-nautilus.io/public-blm/utah-federal-mineral-estate.parquet` |\n| PMTiles | `https://s3-west.nrp-nautilus.io/public-blm/utah-federal-mineral-estate.pmtiles` |\n| H3 hex | `https://s3-west.nrp-nautilus.io/public-blm/utah-federal-mineral-estate/hex/h0=*/data_0.parquet` |\n| STAC | `https://s3-west.nrp-nautilus.io/public-blm/utah-federal-mineral-estate/stac-collection.json` |\n\n## DuckDB\n\n```sql\nINSTALL spatial; LOAD spatial;\nINSTALL httpfs;  LOAD httpfs;\n\n-- the 4,041 parcels in the publisher's Coal layer\nSELECT County, COUNT(*) AS parcels, ROUND(SUM(GIS_Acres)) AS acres\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-blm/utah-federal-mineral-estate.parquet')\nWHERE Coal IS NOT NULL\nGROUP BY County\nORDER BY acres DESC;\n\n-- parcels carrying more than one commodity flag\nSELECT COUNT(*) FROM read_parquet(\n  'https://s3-west.nrp-nautilus.io/public-blm/utah-federal-mineral-estate.parquet')\nWHERE (CASE WHEN ALL_MIN    IS NULL THEN 0 ELSE 1 END\n     + CASE WHEN Oil_Gas    IS NULL THEN 0 ELSE 1 END\n     + CASE WHEN Coal       IS NULL THEN 0 ELSE 1 END\n     + CASE WHEN Oil_Shale  IS NULL THEN 0 ELSE 1 END\n     + CASE WHEN Gilsonite  IS NULL THEN 0 ELSE 1 END\n     + CASE WHEN Potash_Pot IS NULL THEN 0 ELSE 1 END\n     + CASE WHEN Sodium     IS NULL THEN 0 ELSE 1 END\n     + CASE WHEN Phosphate  IS NULL THEN 0 ELSE 1 END\n     + CASE WHEN Geo_Steam  IS NULL THEN 0 ELSE 1 END\n     + CASE WHEN Unknown_   IS NULL THEN 0 ELSE 1 END) > 1;\n```\n\n### H3 hex\n\nOne row per parcel and H3 cell pair at native resolution 9, with rollup columns `h8` (the\ncatalog's universal join key) and `h0` (the hive partition key). 1,375,094 rows covering 101,584\nparcels; the one parcel with no geometry in the source cannot be hexed.\n\nEvery parcel attribute is repeated on every cell the parcel covers, so `GIS_Acres` must be\ndeduplicated by `_cng_fid` before it is summed, and parcel counts use `COUNT(DISTINCT _cng_fid)`:\n\n```sql\n-- correct: one acreage value per parcel\nSELECT SUM(GIS_Acres) FROM (\n  SELECT DISTINCT _cng_fid, GIS_Acres\n  FROM read_parquet('s3://public-blm/utah-federal-mineral-estate/hex/h0=*/data_0.parquet')\n  WHERE Coal IS NOT NULL);\n-- wrong: SUM(GIS_Acres) over hex rows multiplies each parcel by its cell count\n```\n\n## MapLibre GL JS\n\nThe PMTiles `source-layer` is **`utah-federal-mineral-estate`**.\n\n```js\nimport * as pmtiles from 'pmtiles';\nconst protocol = new pmtiles.Protocol();\nmaplibregl.addProtocol('pmtiles', protocol.tile);\n\nconst map = new maplibregl.Map({\n  container: 'map',\n  style: 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json',\n  center: [-111.5, 39.3],\n  zoom: 6\n});\n\nmap.on('load', () => {\n  map.addSource('mineral-estate', {\n    type: 'vector',\n    url: 'pmtiles://https://s3-west.nrp-nautilus.io/public-blm/utah-federal-mineral-estate.pmtiles'\n  });\n\n  map.addLayer({\n    id: 'coal',\n    type: 'fill',\n    source: 'mineral-estate',\n    'source-layer': 'utah-federal-mineral-estate',   // = last segment of the dataset name\n    filter: ['has', 'Coal'],\n    paint: { 'fill-color': '#4a3728', 'fill-opacity': 0.6 }\n  });\n});\n```\n\n## Known quirks, published as the source records them\n\n- `Section_` valid PLSS sections run 1 to 36 (100,908 parcels). The codes 97, 98 and 99 (251\n  parcels) and 0 (3 parcels) are placeholders for land outside the regular section grid.\n- `County` holds all 29 Utah counties plus `Tribal`, one mixed-case spelling (`Box Elder`\n  alongside `BOX ELDER`), and one leaked survey identifier (`UT260040S0040W0SN190`, 1 parcel).\n- `Admin` spells the federal value both `Federal` (88,954) and `FEDERAL` (20).\n- One parcel has no geometry in the source. It is in the GeoParquet with a null geometry and\n  absent from the PMTiles and the hex.\n- `OGC_FID` is an artifact of the format conversion and carries no meaning from the source. Use\n  `_cng_fid` or `GlobalID`.\n\n## Provenance and license\n\nPublic domain. The layer's own metadata states: *\"Access Constraints: None, these data are\nconsidered public domain.\"* Credit: Bureau of Land Management (BLM), Utah State Office.\n\nThe source is a live ArcGIS service with no published version or release date, so the access date\nis the only edition marker. This snapshot was read on **2026-09-22** from the\n[BLM Utah Federal Minerals FeatureServer](https://gis.blm.gov/utarcgis/rest/services/Lands/BLM_Utah_Federal_Minerals_Map_Service/FeatureServer),\nlayer 11 (*All Polygons in Dataset*). The publisher's metadata states the content is current as of\n2026-03-01.\n\nThe raw GeoJSON scraped from the service is kept at\n`s3://public-blm/raw/utah-federal-mineral-estate.geojson` (117,231,722 bytes, sha256\n`1636cf7c7bec6d9d796193cea6614e6cfedcfe377f1a8f00ec2191f795f7ec5a`). Because the service is\noverwritten in place, that stored copy and its checksum are what makes this edition resolvable\nlater.\n\nSource CRS was EPSG:26912 (NAD83 / UTM zone 12N), reprojected to EPSG:4326.\n",
+  "_review": [
+    "license: Public domain as a US federal government work (usa.gov/government-works). This is not a standard SPDX identifier.",
+    "providers: role [processor, host] for 'Boettiger Lab (data-workflows)' is an AI guess \u2014 Assumed from the data-workflows issue links and the nrp-nautilus.io hosting. The README does not name this group as the converter.. Verify before flipping to _state: reviewed.",
+    "summaries.item_count: parts overlap, so this is max(part), not the sum \u2014 acquisitions/hex/ 678604046, coal-cases/hex/ 8484520, geothermal-leases/hex/ 4848902, locatable-operations/hex/ 1025479, lua-leases-permits-easements/hex/ 49558689, lua-row/hex/ 35102348, mineral-materials/hex/ 5513707, mining-claims/hex/ 42815025, non-energy-leasables/hex/ 79460081, oil-gas-agreements/hex/ 87938670, oil-gas-leases/hex/ 1657520419, oil-gas-participating-areas/hex/ 2599200, surface-management-agency/ 6380264. Sum them only once the parts are known to be disjoint."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-11-17T09:29:17+00:00",
+  "store_format": null
 }
