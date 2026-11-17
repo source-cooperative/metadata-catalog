@@ -1,16 +1,92 @@
 {
   "schema_version": 1,
-  "account_id": "opengeos",
-  "product_id": "data",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "opengeos/data",
   "title": "Data",
-  "description": "Data for Open Geospatial Solutions projects, such as the worldviews RustGIS downloads (rustgis/).",
-  "keywords": [],
-  "created_at": "2026-11-10T22:56:54.810Z",
-  "updated_at": "2026-11-10T22:56:54.810Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": null,
+  "description": "Public-domain geospatial teaching datasets for the NGIS 2026 'Cloud-Native GIS with GeoLibre' workshop, including US Census cartographic boundaries (Nevada counties, US states and counties), USGS earthquake events for Nevada, and a Reno-Tahoe DEM, in formats such as GeoJSON, FlatGeobuf, GeoParquet, PMTiles and Cloud-Optimized GeoTIFF.",
+  "keywords": [
+    "administrative-boundaries",
+    "geoparquet",
+    "pmtiles",
+    "cloud-optimized-geotiff",
+    "digital-elevation-model",
+    "elevation",
+    "census",
+    "demographics",
+    "earthquakes",
+    "teaching-datasets"
+  ],
+  "providers": [
+    {
+      "name": "US Census Bureau",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "USGS",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "GeoLibre",
+      "roles": [
+        "processor",
+        "host"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/opengeos/data"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -179.5,
+          -89.5,
+          179.5,
+          89.5
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "1981-12-01T00:00:00",
+          "2023-01-01T00:00:00"
+        ]
+      ]
+    }
+  },
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/opengeos/data/",
+      "type": "application/vnd+zarr",
+      "title": "Dataset files (1 x .zarr)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/opengeos/data/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/opengeos/data",
+      "title": "Source Cooperative product page"
+    }
+  ],
   "mirrors": {
     "aws-opendata-us-west-2": {
       "connection_id": "aws-opendata-us-west-2",
@@ -18,9 +94,7 @@
       "prefix": "opengeos/data/"
     }
   },
-  "object_count": 616,
-  "objects_updated_at": "2026-11-14T12:36:46+00:00",
-  "total_bytes": 268813370,
+  "updated_at": "2026-11-10T22:56:54.810Z",
   "exts": {
     "0": 494,
     "geojson": 34,
@@ -39,6 +113,18 @@
     "csv": 1,
     "fgb": 1
   },
+  "data_mode": null,
+  "objects_updated_at": "2026-11-14T12:36:46+00:00",
+  "product_id": "data",
+  "account_id": "opengeos",
+  "total_bytes": 268813370,
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "created_at": "2026-11-10T22:56:54.810Z",
+  "visibility": "public",
+  "disabled": false,
   "ext_bytes": {
     "geojson.gz": 106354877,
     "0": 66966939,
@@ -57,11 +143,14 @@
     "zarray": 1221,
     "zgroup": 22
   },
-  "store_format": "zarr",
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "cataloged_at": "2026-11-16T11:33:14+00:00"
+  "object_count": 616,
+  "featured": 0,
+  "readme": "## workshops__ngis-2026__README.md\n# NGIS 2026 GeoLibre workshop data\n\nDatasets for the full-day workshop \"Cloud-Native GIS with GeoLibre\" (NGIS 2026\npreconference, Reno, November 17, 2026). Teaching materials:\n<https://geolibre.app/workshops/ngis-2026/>.\n\nServed at `https://assets.geolibre.app/data/workshops/ngis-2026/<file>`.\n\n| File | Format | Features / size | Source |\n| --- | --- | --- | --- |\n| `nv_counties.geojson` | GeoJSON | 17 Nevada counties | US Census Bureau, 2023 cartographic boundary (1:500k) |\n| `us_states.geojson` | GeoJSON (simplified) | 56 states and territories | US Census Bureau, 2023 cartographic boundary (1:500k) |\n| `us_counties.fgb` | FlatGeobuf | 3,235 counties | US Census Bureau, 2023 cartographic boundary (1:500k) |\n| `us_counties.parquet` | GeoParquet 1.1 (bbox-sorted, covering bbox, 256-row groups, ZSTD) | 3,235 counties | same as above |\n| `us_counties.pmtiles` | PMTiles vector tiles, z0-10, layer `counties` | 3,235 counties | same as above |\n| `nv_earthquakes.csv` | CSV (longitude/latitude) | 8,031 events, M2.5+, 2016-2025 | USGS ANSS ComCat (FDSN event service) |\n| `nv_earthquakes.parquet` | GeoParquet points | 8,031 events | same as above |\n| `reno_tahoe_dem.tif` | Cloud-Optimized GeoTIFF, Float32, ~1 arc-second (~30 m), meters | 2520 x 3240, 13 MB | USGS 3DEP 1/3 arc-second DEM tile n40w120, resampled (average) |\n| `reno_sites.geojson` | GeoJSON points | 8 Reno-Tahoe landmarks | Hand-digitized, approximate coordinates (workshop use only) |\n\nThe earthquake query covered latitude 35 to 42.1 and longitude -120.1 to -114\n(Nevada and its edges), magnitude 2.5 and above, January 1, 2016 to\nJanuary 1, 2026, events of type `earthquake` only. The DEM covers longitude\n-120.25 to -119.55 and latitude 38.85 to 39.75 (Reno, Carson City, Lake Tahoe).\n\nUS Census Bureau and USGS data are US Government works in the public domain.\n",
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
+    "providers: role [processor, host] for 'GeoLibre' is an AI guess \u2014 Assumed GeoLibre prepared the workshop files and serves them at assets.geolibre.app; the README does not name the processor explicitly.. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-11-17T09:29:28+00:00",
+  "store_format": "zarr"
 }
