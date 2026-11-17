@@ -1,34 +1,501 @@
 {
   "schema_version": 1,
-  "account_id": "cboettig",
-  "product_id": "mesic",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
+  "id": "cboettig/mesic",
   "title": "mesic",
-  "description": "",
-  "keywords": [],
-  "created_at": "2026-11-09T05:32:02.834Z",
-  "updated_at": "2026-11-09T05:32:02.834Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": null,
-  "mirrors": {
-    "aws-opendata-us-west-2": {
-      "connection_id": "aws-opendata-us-west-2",
-      "is_primary": true,
-      "prefix": "cboettig/mesic/"
+  "description": "Mesic ground (wet meadows, springs and riparian floodplains) mapped across the 14-state U.S. sagebrush biome from the Mesic Analysis Platform. Includes 30 m persistence and presence rasters, H3-indexed hex tables, HUC12 watershed metrics, and individual valley-bottom segments with floodplain, tree cover, slope and stream class attributes.",
+  "license": "MIT",
+  "keywords": [
+    "remote-sensing",
+    "land-cover",
+    "hydrology",
+    "conservation",
+    "h3",
+    "cloud-optimized-geotiff",
+    "pmtiles",
+    "geoparquet",
+    "time-series"
+  ],
+  "providers": [
+    {
+      "name": "University of Montana Numerical Terradynamic Simulation Group",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Working Lands for Wildlife",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "BLM Montana/Dakotas",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Intermountain West Joint Venture",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "NRCS",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/cboettig/mesic"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -122.1921118,
+          34.1180594,
+          -102.1665929,
+          49.1146667
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
     }
   },
-  "object_count": 42,
-  "objects_updated_at": "2026-11-12T12:07:10+00:00",
-  "total_bytes": 18965290560,
-  "exts": {
-    "parquet": 21,
-    "json": 10,
-    "png": 5,
-    "tif": 3,
-    "pmtiles": 2,
-    "md": 1
+  "summaries": {
+    "item_count": 195959226
   },
+  "assets": {
+    ".": {
+      "href": "https://data.source.coop/cboettig/mesic/",
+      "type": "application/x-parquet",
+      "title": ".",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "_cng_fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "prV_Prv",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "prV_W5kG",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "prV_Pcl0",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "area_vb_ac",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "prV_W5kC",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "area_vb_m2",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "prV_PclH",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "prHuc_vb",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "mgmt_code",
+          "type": "INTEGER"
+        },
+        {
+          "name": "prV_Irr",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "prV_For",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "prV_PclM",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "prV_PclL",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "prV_Pub",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "huc12",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geom",
+          "type": "GEOMETRY('OGC:CRS84')",
+          "description": "[geometry] Polygon geometry (CRS84) of watershed or valley-bottom segment"
+        },
+        {
+          "name": "Veg_Pct",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "DstCore_Km",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "FldPln_Pct",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Strm_Type",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Area_m2",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Slope_Deg",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Tree_Pct",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Area_ac",
+          "type": "DOUBLE"
+        }
+      ],
+      "description": "2 files sampled for this table"
+    },
+    "mesic-huc12-2026-09/hex": {
+      "href": "https://data.source.coop/cboettig/mesic/mesic-huc12-2026-09/hex/h0=576812596024311807/",
+      "type": "application/x-parquet",
+      "title": "mesic-huc12-2026-09/hex",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "_cng_fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "prV_Prv",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "prV_W5kG",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "prV_Pcl0",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "area_vb_ac",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "prV_W5kC",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "area_vb_m2",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "prV_PclH",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "prHuc_vb",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "mgmt_code",
+          "type": "INTEGER"
+        },
+        {
+          "name": "prV_Irr",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "prV_For",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "prV_PclM",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "prV_PclL",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "prV_Pub",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR",
+          "description": "[placename] Watershed name"
+        },
+        {
+          "name": "huc12",
+          "type": "VARCHAR",
+          "description": "[admin_code] USGS HUC12 subwatershed code derived by matching boundaries to the Watershed Boundary Dataset"
+        },
+        {
+          "name": "h8",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution 8 cell index"
+        },
+        {
+          "name": "h0",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution 0 parent cell index"
+        }
+      ],
+      "description": "4 files sampled for this table"
+    },
+    "mesic-persistence-masked-2026-09/hex": {
+      "href": "https://data.source.coop/cboettig/mesic/mesic-persistence-masked-2026-09/hex/h0=576812596024311807/",
+      "type": "application/x-parquet",
+      "title": "mesic-persistence-masked-2026-09/hex",
+      "roles": [
+        "data"
+      ],
+      "description": "4 files sampled for this table"
+    },
+    "mesic-persistence-unmasked-2026-09/hex": {
+      "href": "https://data.source.coop/cboettig/mesic/mesic-persistence-unmasked-2026-09/hex/h0=576812596024311807/",
+      "type": "application/x-parquet",
+      "title": "mesic-persistence-unmasked-2026-09/hex",
+      "roles": [
+        "data"
+      ],
+      "description": "4 files sampled for this table"
+    },
+    "mesic-presence-2026-09/hex": {
+      "href": "https://data.source.coop/cboettig/mesic/mesic-presence-2026-09/hex/h0=576812596024311807/",
+      "type": "application/x-parquet",
+      "title": "mesic-presence-2026-09/hex",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "mesic_fraction",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "h8",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution 8 cell index"
+        }
+      ],
+      "description": "5 files sampled for this table"
+    },
+    "staging": {
+      "href": "https://data.source.coop/cboettig/mesic/staging/",
+      "type": "application/x-parquet",
+      "title": "staging",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "_cng_fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "prV_Prv",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "prV_W5kG",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "prV_Pcl0",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "area_vb_ac",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "prV_W5kC",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "area_vb_m2",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "prV_PclH",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "prHuc_vb",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "mgmt_code",
+          "type": "INTEGER"
+        },
+        {
+          "name": "prV_Irr",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "prV_For",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "prV_PclM",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "prV_PclL",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "prV_Pub",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR",
+          "description": "[placename] Watershed name"
+        },
+        {
+          "name": "geom",
+          "type": "GEOMETRY('OGC:CRS84')",
+          "description": "[geometry] Polygon geometry (CRS84) of watershed or valley-bottom segment"
+        },
+        {
+          "name": "Veg_Pct",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "DstCore_Km",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "FldPln_Pct",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Strm_Type",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Area_m2",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Slope_Deg",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Tree_Pct",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Area_ac",
+          "type": "DOUBLE"
+        }
+      ],
+      "description": "2 files sampled for this table"
+    }
+  },
+  "table:columns": [
+    {
+      "name": "persistence",
+      "type": "DOUBLE"
+    },
+    {
+      "name": "h10",
+      "type": "UBIGINT",
+      "description": "[spatial_index] H3 resolution 10 cell index"
+    },
+    {
+      "name": "h8",
+      "type": "UBIGINT",
+      "description": "[spatial_index] H3 resolution 8 parent cell index"
+    },
+    {
+      "name": "h9",
+      "type": "UBIGINT",
+      "description": "[spatial_index] H3 resolution 9 parent cell index"
+    }
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/cboettig/mesic/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/cboettig/mesic",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "rel": "cite-as",
+      "href": "https://doi.org/10.64898/2025.12.29.696625"
+    }
+  ],
+  "updated_at": "2026-11-09T05:32:02.834Z",
+  "created_at": "2026-11-09T05:32:02.834Z",
+  "data_mode": null,
+  "objects_updated_at": "2026-11-12T12:07:10+00:00",
   "ext_bytes": {
     "parquet": 12985620683,
     "pmtiles": 3965812639,
@@ -37,11 +504,40 @@
     "json": 73385,
     "md": 9597
   },
-  "store_format": null,
-  "_state": "seed",
+  "disabled": false,
+  "total_bytes": 18965290560,
+  "mirrors": {
+    "aws-opendata-us-west-2": {
+      "connection_id": "aws-opendata-us-west-2",
+      "is_primary": true,
+      "prefix": "cboettig/mesic/"
+    }
+  },
+  "account_id": "cboettig",
+  "exts": {
+    "parquet": 21,
+    "json": 10,
+    "png": 5,
+    "tif": 3,
+    "pmtiles": 2,
+    "md": 1
+  },
+  "visibility": "public",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "cataloged_at": "2026-11-16T11:31:37+00:00"
+  "object_count": 42,
+  "product_id": "mesic",
+  "featured": 0,
+  "readme": "## README.md\n# Mesic Analysis Platform \u2014 sagebrush biome\n\nMesic ground (wet meadows, springs and riparian floodplains) across the 14-state sagebrush biome,\nfrom the Mesic Analysis Platform produced by Working Lands for Wildlife and the University of\nMontana Numerical Terradynamic Simulation Group, with BLM Montana/Dakotas, the Intermountain West\nJoint Venture and NRCS.\n\nMesic ground is a small share of the sagebrush landscape but carries a disproportionate amount of\nits summer forage, brood-rearing habitat and late-season green vegetation, and it is not resolved\nby coarse land-cover or fuels products.\n\n## Source & attribution\n\n**Source**: https://rangeland.ntsg.umt.edu/data/mesic/ (the `README` at that root is the authority)\n**Method paper**: Mueller, K.R., Morford, S.L., Maestas, J.D., Kimball, J.S., Olsen, A.C., Wood, D.J.A., & Naugle, D.E. (in review). *Beyond Uplands: Integrating Riparian Areas into Sagebrush Conservation Design for a More Resilient West.* bioRxiv https://doi.org/10.64898/2025.12.29.696625\n**License**: MIT, \u00a9 2025 University of Montana \u2014 redistribution permitted with attribution\n**Accessed**: 2026-09-17T17:05:34Z (rasters, HUC12); 2026-10-13T20:37:11Z (valley bottoms)\n\nUpstream replaces these files in place and publishes no edition label or immutable archive. The\nstaged copies under `raw/`, with their recorded sizes and sha256 checksums in `raw/PROVENANCE.txt` and `raw/PROVENANCE-valley-bottoms.txt`,\nare the citable artifact. The `2026-09` in each dataset id is our build label, recording when\nupstream last replaced the files; it is **not** an upstream release number.\n\n## Footprint\n\nThe sagebrush biome across 14 states (AZ, CA, CO, ID, MT, NE, NV, NM, ND, OR, SD, UT, WA, WY).\nNothing here is clipped to a single state, and **Alaska lies wholly outside coverage**. A national\nstatistic computed from these layers has a 14-state denominator, not a country-wide one.\n\n## Datasets\n\n**Base URL**: `https://s3-west.nrp-nautilus.io/public-mesic/`\n\n| Dataset | What it answers | H3 |\n|---|---|---|\n| `mesic-persistence-unmasked-2026-09` | How persistently mesic is the mesic ground, with no land-cover masking | native 10, parents 9, 8, 0 |\n| `mesic-persistence-masked-2026-09` | Same, after upstream land-cover masking | native 10, parents 9, 8, 0 |\n| `mesic-presence-2026-09` | How *much* mesic ground is present (the only route to a defensible area) | native 8, parent 0 |\n| `mesic-huc12-2026-09` | Valley-bottom and mesic metrics per HUC12 subwatershed | native 8, parent 0 |\n| `mesic-valley-bottoms-2026-09` | Individual valley-bottom segments with persistence, floodplain, tree cover, slope and stream class | none (GeoParquet + PMTiles) |\n\n### Which persistence raster to use\n\n| product | masking | use it for |\n|---|---|---|\n| `unmasked` | none \u2014 every pixel mesic in \u22651 year, any land cover | **forested / IRA analysis**, irrigated land, alpine |\n| `masked` | valley bottoms keep all productive pixels except development and open water; **uplands** drop pixels over 10% tree cover | reliable mesic mapping outside forested uplands |\n\nNoData means different things in the two: in `unmasked` it is \"never mesic\"; in `masked` it is\n\"never mesic **or** removed by the mask\". Note `masked` is not the retired `Herbaceous` product,\nwhich removed every \u226510%-tree pixel everywhere.\n\n### Units: 1\u201342 years, not 0\u2013100 percent\n\n`Persistence` is a **count of the 42 analysed years** (1984\u20132025, excluding 2012), not a percentage.\nThe upstream README contradicts itself; the data settles it. Published unscaled \u2014 divide by 42 for\na percent.\n\n## \u26d4 Do not compute mesic area by counting COG pixels\n\nThe rasters are EPSG:4326 with a pixel size in **degrees**, so a pixel covers ~900 \u00d7 cos(latitude)\nm\u00b2, not 900 m\u00b2. Counting valid pixels \u00d7 900 m\u00b2 overstates mesic extent by ~37% across this\nfootprint.\n\n| method | mesic area |\n|---|---:|\n| `mesic-presence-2026-09` hex, fraction \u00d7 true H3 cell area | **987,608 km\u00b2** |\n| naive COG pixel count \u00d7 900 m\u00b2 | 1,356,638 km\u00b2 |\n\nUse the presence hex. H3 cells carry true spherical area; a geographic-CRS pixel does not.\n\n## HUC12: 18,853 watersheds, and `huc12` is derived by us\n\nThe source GeoPackage holds **20,032 rows, of which 1,179 are exact duplicates** (identical geometry\n*and* identical attributes). Those repeats are removed here. A total taken from the source file\ndirectly is inflated by about 6%.\n\nIt also ships **no HUC code** \u2014 only an ambiguous `name`. The `huc12` column is **derived by us** by\nmatching each boundary to the USGS Watershed Boundary Dataset by geometric overlap, with an exact\nname match used only to place a boundary that overlap alone could not. Every assigned code is\nunique. Three watersheds read empty because their boundary spans several WBD watersheds and\nmatches none by name. This is what lets the table join to `usgs-wbd-hu12` on `huc12` and on `h8`.\n\n## Valley bottoms: 23,062,045 segments, no hex\n\nThe source GeoPackage holds **24,690,182 rows, of which 1,628,137 repeat a segment already\npresent**, some up to 10 times. Those repeats are removed here. A total of `Area_m2` taken from the\nsource file directly is inflated by about 29%.\n\nMost segments are smaller than one H3 resolution 10 cell, so this layer has no hex index. Use the\npersistence and presence collections for cell-level work.\n\nTwo upstream columns need care, and are published unchanged:\n\n- **`DstCore_Km`**: about 8.3 million segments read 1,000 to 1,262 km. Those values rise steadily\n  from north to south across the whole biome, so they do not measure distance to core. Filter\n  `DstCore_Km < 1000`.\n- **`FldPln_Pct`**: not capped at 100. About 2.5 million segments read above 100, almost all 101\n  to 110. Cap it with `LEAST(FldPln_Pct, 100)` before averaging.\n\n## Access\n\n### DuckDB\n\n```sql\nINSTALL spatial; LOAD spatial; INSTALL httpfs; LOAD httpfs;\n\n-- Mesic area of a region, from the presence layer\nSELECT SUM(mesic_fraction * h3_cell_area(h8, 'km^2')) AS mesic_km2\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-mesic/mesic-presence-2026-09/hex/h0=*/data_0.parquet');\n\n-- Watershed metrics: reduce to one row per watershed BEFORE totalling\nSELECT SUM(area_vb_m2) / 1e6 AS valley_bottom_km2 FROM (\n  SELECT DISTINCT _cng_fid, area_vb_m2\n  FROM read_parquet('https://s3-west.nrp-nautilus.io/public-mesic/mesic-huc12-2026-09/hex/h0=*/data_0.parquet')\n);\n\n-- Join persistence to the watershed table on h8\nSELECT w.huc12, AVG(p.persistence) AS mean_years\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-mesic/mesic-huc12-2026-09/hex/h0=*/data_0.parquet') w\nJOIN read_parquet('https://s3-west.nrp-nautilus.io/public-mesic/mesic-persistence-unmasked-2026-09/hex/h0=*/data_0.parquet') p\n  USING (h8)\nGROUP BY w.huc12;\n```\n\nThe flat GeoParquet is at `mesic-huc12-2026-09.parquet`.\n\n```sql\n-- Valley-bottom area by stream class, with a capped, area-weighted floodplain share\nSELECT Strm_Type,\n       SUM(Area_m2) / 1e6 AS valley_bottom_km2,\n       SUM(LEAST(FldPln_Pct, 100) * Area_m2) / SUM(Area_m2) AS floodplain_pct\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-mesic/mesic-valley-bottoms-2026-09.parquet')\nGROUP BY Strm_Type;\n```\n\n### MapLibre GL JS\n\nThe PMTiles **`source-layer` is `mesic-huc12-2026-09`**.\n\n```js\nmap.addSource('mesic-huc12', {\n  type: 'vector',\n  url: 'pmtiles://https://s3-west.nrp-nautilus.io/public-mesic/mesic-huc12-2026-09.pmtiles'\n});\n\nmap.addLayer({\n  id: 'mesic-huc12-fill',\n  type: 'fill',\n  source: 'mesic-huc12',\n  'source-layer': 'mesic-huc12-2026-09',\n  paint: {\n    'fill-color': [\n      'interpolate', ['linear'], ['get', 'prHuc_vb'],\n      0, '#F5F0E6', 0.1, '#A6BDDB', 0.3, '#2C7FB8', 0.6, '#253494'\n    ],\n    'fill-opacity': 0.8\n  }\n});\n```\n\n`mgmt_code`: 0 = Other/None, 1 = Protect & Maintain, 2 = Restore & Enhance, 3 = Strategic Management.\n\nThe valley-bottom PMTiles **`source-layer` is `mesic-valley-bottoms-2026-09`**.\n\n```js\nmap.addSource('mesic-valley-bottoms', {\n  type: 'vector',\n  url: 'pmtiles://https://s3-west.nrp-nautilus.io/public-mesic/mesic-valley-bottoms-2026-09.pmtiles'\n});\n\nmap.addLayer({\n  id: 'mesic-valley-bottoms-fill',\n  type: 'fill',\n  source: 'mesic-valley-bottoms',\n  'source-layer': 'mesic-valley-bottoms-2026-09',\n  paint: {\n    'fill-color': [\n      'interpolate', ['linear'], ['get', 'Veg_Pct'],\n      0, '#F5F0E6', 25, '#A1D99B', 50, '#41AB5D', 100, '#005A32'\n    ],\n    'fill-opacity': 0.8\n  }\n});\n```\n\n### Rasters\n\nThe three COGs are at `mesic-persistence-unmasked-2026-09-cog.tif`,\n`mesic-persistence-masked-2026-09-cog.tif` and `mesic-presence-2026-09-cog.tif`, all EPSG:4326,\n30 m, and readable by titiler or any GDAL client.\n\n## Caveats\n\n- **Never SUM on the hex.** Persistence is a per-pixel average year count; on the HUC12 hex every\n  attribute is a per-watershed value repeated on each covered cell. Reduce to one row per watershed\n  on `huc12` (or `_cng_fid`) first.\n- **`mean` persistence is not mesic area.** A cell holding one 42-year pixel and a cell holding 500\n  both read 42. Use `mesic-presence-2026-09` for area.\n- **Presence is a full grid** \u2014 a `0` is \"no mesic pixels\", not \"no data\". Clip to the biome\n  footprint before computing totals.\n- **Upstream filtering on the vector product:** valley-bottom segments over 25% persistent open\n  water or with mean bare ground \u226585% are excluded, so \"valley bottom area\" is not all valley\n  bottom.\n- `prV_Pub` / `prV_Prv` derive from **PAD-US 2025** \u2014 check against `pad-us-4.1` rather than\n  assuming agreement.\n\nFull STAC metadata: `stac-collection.json` at the bucket root and under each dataset prefix.\n",
+  "_review": [
+    "providers: role [producer] for 'Working Lands for Wildlife' is an AI guess \u2014 README credits the platform as produced by Working Lands for Wildlife with UM NTSG; specific role assumed to be producer.. Verify before flipping to _state: reviewed.",
+    "providers: role [producer] for 'BLM Montana/Dakotas' is an AI guess \u2014 Named as a collaborator on the platform; assumed to be a contributing producer.. Verify before flipping to _state: reviewed.",
+    "providers: role [producer] for 'Intermountain West Joint Venture' is an AI guess \u2014 Named as a collaborator on the platform; assumed to be a contributing producer.. Verify before flipping to _state: reviewed.",
+    "providers: role [producer] for 'NRCS' is an AI guess \u2014 Named as a collaborator on the platform; assumed to be a contributing producer.. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-11-17T09:25:37+00:00",
+  "store_format": null
 }
