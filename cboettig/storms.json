@@ -1,33 +1,84 @@
 {
   "schema_version": 1,
-  "account_id": "cboettig",
-  "product_id": "storms",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "cboettig/storms",
   "title": "storms",
-  "description": "",
-  "keywords": [],
-  "created_at": "2026-11-09T05:33:19.256Z",
-  "updated_at": "2026-11-09T05:33:19.256Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": null,
-  "mirrors": {
-    "aws-opendata-us-west-2": {
-      "connection_id": "aws-opendata-us-west-2",
-      "is_primary": true,
-      "prefix": "cboettig/storms/"
+  "description": "Global tropical-cyclone best-track data from NOAA NCEI's International Best Track Archive for Climate Stewardship (IBTrACS) v04r01, merging agency best-track records from all ocean basins into one global record. Published as storm fixes (points) and track segments (lines) in GeoParquet, PMTiles and H3 hex formats, joinable on storm ID (SID).",
+  "keywords": [
+    "weather",
+    "meteorology",
+    "climate",
+    "geoparquet",
+    "pmtiles",
+    "h3",
+    "global-coverage",
+    "time-series"
+  ],
+  "providers": [
+    {
+      "name": "NOAA National Centers for Environmental Information (NCEI)",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/cboettig/storms"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -180.0,
+          -68.5,
+          180.0,
+          83.0
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "1842-01-01T00:00:00Z",
+          null
+        ]
+      ]
     }
   },
-  "object_count": 200,
-  "objects_updated_at": "2026-11-12T12:13:51+00:00",
-  "total_bytes": 2123791108,
-  "exts": {
-    "parquet": 190,
-    "json": 5,
-    "png": 2,
-    "pmtiles": 2,
-    "md": 1
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/cboettig/storms/",
+      "type": "application/octet-stream",
+      "title": "Dataset files (5 x .pmtiles)",
+      "roles": [
+        "data"
+      ]
+    }
   },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/cboettig/storms/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/cboettig/storms",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "rel": "cite-as",
+      "href": "https://doi.org/10.25921/82ty-9e16"
+    }
+  ],
+  "disabled": false,
+  "objects_updated_at": "2026-11-12T12:13:51+00:00",
   "ext_bytes": {
     "pmtiles": 1874713839,
     "parquet": 248941743,
@@ -35,11 +86,39 @@
     "json": 56094,
     "md": 5002
   },
-  "store_format": null,
-  "_state": "seed",
+  "account_id": "cboettig",
+  "updated_at": "2026-11-09T05:33:19.256Z",
+  "visibility": "public",
+  "featured": 0,
+  "product_id": "storms",
+  "created_at": "2026-11-09T05:33:19.256Z",
+  "exts": {
+    "parquet": 190,
+    "json": 5,
+    "png": 2,
+    "pmtiles": 2,
+    "md": 1
+  },
+  "mirrors": {
+    "aws-opendata-us-west-2": {
+      "connection_id": "aws-opendata-us-west-2",
+      "is_primary": true,
+      "prefix": "cboettig/storms/"
+    }
+  },
+  "data_mode": null,
+  "total_bytes": 2123791108,
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "cataloged_at": "2026-11-16T11:31:43+00:00"
+  "object_count": 200,
+  "readme": "## README.md\n# Historic Tropical Cyclone Tracks \u2014 NOAA IBTrACS v04r01\n\nGlobal tropical-cyclone best-track data from NOAA NCEI's **International Best Track\nArchive for Climate Stewardship (IBTrACS)**, version **v04r01** \u2014 the World Data Center\nmerge of every Regional Specialized Meteorological Center / agency best-track dataset into\none global record. Seasons **1842\u2013present**, all seven ocean basins. This is the\nanalysis-ready, continuously-updated source behind popular \"historic hurricane tracks\"\nvisualizations (e.g. NASA Earth Observatory).\n\nTwo representations of the same storms, joinable on **`SID`** (the IBTrACS storm id):\n\n| Layer | Geometry | Features | Use |\n|---|---|---|---|\n| **Storm Fixes** (`points`) | Point | 725,141 fixes / 13,558 storms | analytical layer; one point per 6-hourly observation with intensity |\n| **Track Segments** (`lines`) | LineString | 711,583 segments / 13,478 storms | intensity-styled track maps; one line per consecutive fix pair |\n\nEach layer is published as **GeoParquet** (analysis), **PMTiles** (web maps), and **H3\nhex** (resolution 8, spatial joins). Points were hexed one-cell-per-point; lines were hexed\nby buffering each segment by the H3 cell circumradius before polyfill.\n\n- **License:** public domain (NOAA / WMO Resolution 40, full and open access).\n- **Source:** https://www.ncei.noaa.gov/products/international-best-track-archive\n- **Citation:** Gahtan, J., K. R. Knapp, C. J. Schreck, H. J. Diamond, J. P. Kossin, and\n  M. C. Kruk, 2024: *International Best Track Archive for Climate Stewardship (IBTrACS)\n  Project, Version 4r01*. NOAA National Centers for Environmental Information.\n  doi:[10.25921/82ty-9e16](https://doi.org/10.25921/82ty-9e16).\n\n## Key attributes\n\n`SID` (storm id \u2014 the per-storm dedup key), `SEASON`, `NAME`, `BASIN`, `ISO_TIME`,\n`NATURE`, `LAT`/`LON`, `WMO_WIND`/`WMO_PRES` (WMO-agency intensity), `USA_WIND`/`USA_PRES`\n(US-agency, 1-minute), and **`USA_SSHS`** (Saffir\u2013Simpson category, \u22125\u20265 \u2014 the primary\ncolumn for intensity styling). Wind/pressure are **instantaneous per-fix** values \u2014 never\nsum them; for lifetime peak intensity use `MAX(USA_WIND)` grouped by `SID`. See the STAC\ncollections for full column definitions.\n\n## MapLibre GL JS (PMTiles)\n\nThe MapLibre `source-layer` is the **last path segment of the dataset** \u2014 `points` or\n`lines` (not the shapefile layer name).\n\n```js\nimport { Protocol } from \"pmtiles\";\nmaplibregl.addProtocol(\"pmtiles\", new Protocol().tile);\n\nconst map = new maplibregl.Map({\n  container: \"map\",\n  style: \"https://demotiles.maplibre.org/style.json\",\n  center: [-60, 25], zoom: 3,\n});\n\nmap.on(\"load\", () => {\n  // Track segments, coloured by Saffir\u2013Simpson category (USA_SSHS)\n  map.addSource(\"ibtracs-lines\", {\n    type: \"vector\",\n    url: \"pmtiles://https://s3-west.nrp-nautilus.io/public-storms/ibtracs-v04r01/lines.pmtiles\",\n  });\n  map.addLayer({\n    id: \"tracks\",\n    type: \"line\",\n    source: \"ibtracs-lines\",\n    \"source-layer\": \"lines\",          // <-- last segment of --dataset\n    paint: {\n      \"line-width\": 1.2,\n      \"line-color\": [\n        \"interpolate\", [\"linear\"], [\"get\", \"USA_SSHS\"],\n        -1, \"#9ecae1\",   0, \"#ffffb2\",   1, \"#fed976\",\n         2, \"#feb24c\",   3, \"#fd8d3c\",   4, \"#f03b20\",  5, \"#bd0026\"\n      ],\n    },\n  });\n\n  // Storm fixes as points\n  map.addSource(\"ibtracs-points\", {\n    type: \"vector\",\n    url: \"pmtiles://https://s3-west.nrp-nautilus.io/public-storms/ibtracs-v04r01/points.pmtiles\",\n  });\n  map.addLayer({\n    id: \"fixes\", type: \"circle\", source: \"ibtracs-points\",\n    \"source-layer\": \"points\",         // <-- last segment of --dataset\n    paint: { \"circle-radius\": 2, \"circle-color\": \"#333\" },\n  });\n});\n```\n\n## DuckDB\n\n```sql\nINSTALL spatial; LOAD spatial;\n\n-- Lifetime peak intensity for the 20 strongest storms since 2000\nSELECT SID, any_value(NAME) AS name, any_value(SEASON) AS season,\n       MAX(USA_WIND) AS peak_wind_kt, MAX(USA_SSHS) AS peak_category\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-storms/ibtracs-v04r01/points.parquet')\nWHERE SEASON >= 2000\nGROUP BY SID\nORDER BY peak_wind_kt DESC\nLIMIT 20;\n\n-- Count distinct storms (NOT rows \u2014 many fixes share one SID)\nSELECT BASIN, COUNT(DISTINCT SID) AS n_storms\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-storms/ibtracs-v04r01/points.parquet')\nGROUP BY BASIN ORDER BY n_storms DESC;\n```\n\n### H3 hex (spatial joins at resolution 8)\n\n```sql\n-- Storms passing through each H3 res-8 cell (dedup by SID; join to other h8 datasets)\nSELECT h8, COUNT(DISTINCT SID) AS n_storms\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-storms/ibtracs-v04r01/points/hex/h0=*/data_0.parquet')\nGROUP BY h8;\n```\n\nWind/pressure/category on the hex are repeated per (observation, cell) and are\ninstantaneous \u2014 **never `SUM`** them; dedup by `SID` for per-storm statistics, `_cng_fid`\nfor per-observation. The `LON` attribute occasionally retains an agency's native 0\u2013360\nconvention (values up to ~267); prefer the geometry for mapping.\n",
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
+    "extent.temporal: None (probe sample) widened to ['1842-01-01T00:00:00Z', None] using README-stated coverage ['1842', None]."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-11-17T09:26:24+00:00",
+  "store_format": null
 }
