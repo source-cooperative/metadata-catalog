@@ -1,15 +1,128 @@
 {
   "schema_version": 1,
-  "account_id": "cboettig",
-  "product_id": "coastwatch",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "cboettig/coastwatch",
   "title": "coastwatch",
-  "description": "",
-  "keywords": [],
+  "description": "Monthly global ocean colour products from NASA's Aqua MODIS sensor (chlorophyll-a concentration and Kd490 diffuse attenuation coefficient) on a 4 km grid, redistributed by NOAA CoastWatch ERDDAP. Published as H3 resolution-6 hexagon Parquet tables and one Cloud-Optimized GeoTIFF per month.",
+  "keywords": [
+    "oceanography",
+    "remote-sensing",
+    "satellite-imagery",
+    "h3",
+    "cloud-optimized-geotiff",
+    "time-series",
+    "global-coverage",
+    "earth-observation"
+  ],
+  "providers": [
+    {
+      "name": "NASA Goddard Space Flight Center, Ocean Biology Processing Group",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "NOAA CoastWatch ERDDAP",
+      "roles": [
+        "host",
+        "processor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/cboettig/coastwatch"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -180.0000051,
+          -90.0000051,
+          180.0000051,
+          89.9999975
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2003-01-01T00:00:00Z",
+          "2022-05-01T00:00:00Z"
+        ]
+      ]
+    }
+  },
+  "assets": {
+    "erdMH1chlamday/cog": {
+      "href": "https://data.source.coop/cboettig/coastwatch/erdMH1chlamday/cog/",
+      "type": "image/tiff; application=geotiff",
+      "title": "erdMH1chlamday/cog/ (230 \u00d7 .tif)",
+      "roles": [
+        "data"
+      ],
+      "bbox": [
+        -180.0000051,
+        -90.0000051,
+        180.0000051,
+        89.9999975
+      ]
+    },
+    "erdMH1kd490mday/cog": {
+      "href": "https://data.source.coop/cboettig/coastwatch/erdMH1kd490mday/cog/",
+      "type": "image/tiff; application=geotiff",
+      "title": "erdMH1kd490mday/cog/ (232 \u00d7 .tif)",
+      "roles": [
+        "data"
+      ],
+      "bbox": [
+        -180.0000051,
+        -90.0000051,
+        180.0000051,
+        89.9999975
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/cboettig/coastwatch/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/cboettig/coastwatch",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "rel": "cite-as",
+      "href": "https://doi.org/10.5067/AQUA/MODIS/L3M/CHL/2018"
+    }
+  ],
   "created_at": "2026-11-09T05:30:43.825Z",
-  "updated_at": "2026-11-09T05:30:43.825Z",
-  "visibility": "public",
+  "object_count": 712,
   "disabled": false,
-  "featured": 0,
+  "visibility": "public",
+  "account_id": "cboettig",
+  "exts": {
+    "tif": 462,
+    "parquet": 244,
+    "json": 3,
+    "png": 2,
+    "md": 1
+  },
+  "updated_at": "2026-11-09T05:30:43.825Z",
+  "product_id": "coastwatch",
+  "total_bytes": 44874303029,
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
   "data_mode": null,
   "mirrors": {
     "aws-opendata-us-west-2": {
@@ -18,16 +131,7 @@
       "prefix": "cboettig/coastwatch/"
     }
   },
-  "object_count": 712,
-  "objects_updated_at": "2026-11-12T07:21:34+00:00",
-  "total_bytes": 44874303029,
-  "exts": {
-    "tif": 462,
-    "parquet": 244,
-    "json": 3,
-    "png": 2,
-    "md": 1
-  },
+  "featured": 0,
   "ext_bytes": {
     "tif": 28771894812,
     "parquet": 16102211593,
@@ -35,11 +139,13 @@
     "json": 19182,
     "md": 3167
   },
-  "store_format": null,
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "cataloged_at": "2026-11-16T11:31:28+00:00"
+  "objects_updated_at": "2026-11-12T07:21:34+00:00",
+  "readme": "## README.md\n# NOAA CoastWatch satellite ocean colour\n\nMonthly chlorophyll-a and Kd490 water clarity from NASA's Aqua MODIS sensor, as served by [NOAA CoastWatch ERDDAP](https://coastwatch.pfeg.noaa.gov/erddap/), on a global 4 km grid from January 2003. Each product is published as an H3 hexagon table at resolution 6 and as one Cloud-Optimized GeoTIFF per month.\n\nSTAC: `https://s3-west.nrp-nautilus.io/public-coastwatch/stac-collection.json`\n\n| dataset | variable | units | months | cell value |\n|---|---|---|---|---|\n| `erdMH1chlamday` | `chlorophyll` | mg m-3 | 2003-01 to 2022-03 (230) | mean of the 4 km pixels |\n| `erdMH1kd490mday` | `k490` | m-1 | 2003-01 to 2022-05 (232) | mean of the 4 km pixels |\n\n```\n<dataset>/hex/h0=<cell>/data_0.parquet          # columns: h6, h0, time, <variable>\n<dataset>/cog/<dataset>-YYYYMM.tif              # WGS84, Float32, missing pixels are NaN\nraw/<dataset>/nc/<dataset>-YYYYMM.nc.gz         # the netCDF as delivered by ERDDAP, gzipped\nraw/<dataset>/nc/<dataset>-YYYYMM.nc.gz.json    # request URL, access time, size and SHA-256 before gzipping\nraw/<dataset>/zarr/<dataset>-YYYYMM.zarr/       # the same array as Zarr, read by the hex build\n```\n\n`time` is the 16th of the month, as upstream stamps its monthly composites. Cells with no valid retrieval in a month (cloud, sun glint, sea ice, land) have no row. There is no `h8` column, because a 4 km pixel is coarser than an H3 resolution 8 cell; join resolution 8 data with `h3_cell_to_parent(h8, 6)`. The values are concentrations and coefficients, so summarise a region with an area-weighted mean and never a sum.\n\n## DuckDB\n\n```sql\nINSTALL h3 FROM community; LOAD h3;\nSELECT time, avg(chlorophyll) AS mean_of_cells, count(*) AS cells\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-coastwatch/erdMH1chlamday/hex/h0=*/*.parquet')\nWHERE time BETWEEN DATE '2015-01-01' AND DATE '2015-12-31'\n  AND h0 = h3_cell_to_parent(h3_latlng_to_cell(21.3, -157.8, 6), 0)\nGROUP BY time ORDER BY time;\n```\n\nThe unweighted `avg` above is a quick look only; weight by cell area for a regional statistic.\n\n## MapLibre GL JS\n\nThe COGs are rasters, not vector tiles, so they have no `source-layer`. Serve one through a COG tiler such as titiler:\n\n```js\nmap.addSource('chl', {\n  type: 'raster',\n  tiles: ['https://<titiler>/cog/tiles/WebMercatorQuad/{z}/{x}/{y}.png?url=' +\n          encodeURIComponent('https://s3-west.nrp-nautilus.io/public-coastwatch/erdMH1chlamday/cog/erdMH1chlamday-202203.tif') +\n          '&rescale=0.01,10&colormap_name=viridis'],\n  tileSize: 256\n});\nmap.addLayer({ id: 'chl', type: 'raster', source: 'chl' });\n```\n\n## Source and licence\n\nNASA Goddard Space Flight Center, Ocean Biology Processing Group, MODIS Aqua Level 3 standard mapped images (chlorophyll-a doi:10.5067/AQUA/MODIS/L3M/CHL/2018, Kd490 doi:10.5067/AQUA/MODIS/L3M/KD490/2018), redistributed by NOAA CoastWatch ERDDAP, which reports processing version 2018.1QL. Every month was requested from ERDDAP on 2026-11-03. NASA's [Earth science data policy](https://science.nasa.gov/earth-science/earth-science-data/data-information-policy/) places the data in the public domain, free to use and redistribute.\n",
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
+    "extent.temporal: None (probe sample) widened to ['2003-01-01T00:00:00Z', '2022-05-01T00:00:00Z'] using README-stated coverage ['2003-01', '2022-05']."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-11-18T09:35:38+00:00",
+  "store_format": null
 }
