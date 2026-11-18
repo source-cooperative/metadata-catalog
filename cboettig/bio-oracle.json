@@ -1,25 +1,217 @@
 {
   "schema_version": 1,
-  "account_id": "cboettig",
-  "product_id": "bio-oracle",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
+  "id": "cboettig/bio-oracle",
   "title": "bio-oraqcle",
-  "description": "",
-  "keywords": [],
-  "created_at": "2026-11-09T05:28:14.035Z",
-  "updated_at": "2026-11-09T05:28:14.035Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": null,
-  "mirrors": {
-    "aws-opendata-us-west-2": {
-      "connection_id": "aws-opendata-us-west-2",
-      "is_primary": true,
-      "prefix": "cboettig/bio-oracle/"
+  "description": "Global marine environmental raster layers from Bio-ORACLE v3.0 (2010-decade baseline, depth-mean realm plus benthic terrain), converted to cloud-optimized GeoTIFF and aggregated to H3 resolution 6 hexagonal cells. Includes 18 datasets covering temperature, salinity, currents, nutrients, oxygen, pH, bathymetry and seafloor terrain indices.",
+  "keywords": [
+    "oceanography",
+    "global-coverage",
+    "h3",
+    "cloud-optimized-geotiff",
+    "climate",
+    "biodiversity",
+    "topography",
+    "geoparquet"
+  ],
+  "providers": [
+    {
+      "name": "Bio-ORACLE",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Ghent University / Flanders Marine Institute (VLIZ) / University of Algarve (CCMAR) researchers",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/cboettig/bio-oracle"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
     }
   },
-  "object_count": 2162,
-  "objects_updated_at": "2026-11-12T07:16:41+00:00",
+  "summaries": {
+    "item_count": 1338928
+  },
+  "assets": {
+    "depthmean/dfe-mean/hex": {
+      "href": "https://data.source.coop/cboettig/bio-oracle/depthmean/dfe-mean/hex/h0=576495936675512319/",
+      "type": "application/x-parquet",
+      "title": "depthmean/dfe-mean/hex",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "dfe_mean",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "h6",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution 6 cell index"
+        },
+        {
+          "name": "h0",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution 0 partition key"
+        },
+        {
+          "name": "h5",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution 5 parent cell index"
+        }
+      ],
+      "description": "10 files sampled for this table"
+    },
+    "depthmean/thetao-mean/hex": {
+      "href": "https://data.source.coop/cboettig/bio-oracle/depthmean/thetao-mean/hex/h0=580436586349461503/",
+      "type": "application/x-parquet",
+      "title": "depthmean/thetao-mean/hex",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "thetao_mean",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "h6",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution 6 cell index"
+        },
+        {
+          "name": "h0",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution 0 partition key"
+        },
+        {
+          "name": "h5",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution 5 parent cell index"
+        }
+      ],
+      "description": "10 files sampled for this table"
+    },
+    "terrain/aspect-cos/hex": {
+      "href": "https://data.source.coop/cboettig/bio-oracle/terrain/aspect-cos/hex/h0=576495936675512319/",
+      "type": "application/x-parquet",
+      "title": "terrain/aspect-cos/hex",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "aspect_cos",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "h6",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution 6 cell index"
+        },
+        {
+          "name": "h0",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution 0 partition key"
+        },
+        {
+          "name": "h5",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution 5 parent cell index"
+        }
+      ],
+      "description": "10 files sampled for this table"
+    },
+    "terrain/tri/hex": {
+      "href": "https://data.source.coop/cboettig/bio-oracle/terrain/tri/hex/h0=580436586349461503/",
+      "type": "application/x-parquet",
+      "title": "terrain/tri/hex",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "terrain_ruggedness_index",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "h6",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution 6 cell index"
+        },
+        {
+          "name": "h0",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution 0 partition key"
+        },
+        {
+          "name": "h5",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution 5 parent cell index"
+        }
+      ],
+      "description": "10 files sampled for this table"
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/cboettig/bio-oracle/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/cboettig/bio-oracle",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "rel": "cite-as",
+      "href": "https://doi.org/10.1111/geb.13813"
+    }
+  ],
+  "ext_bytes": {
+    "parquet": 1593264916,
+    "tif": 1106033496,
+    "png": 2308933,
+    "json": 177921,
+    "md": 6612
+  },
+  "data_mode": null,
+  "visibility": "public",
+  "account_id": "cboettig",
+  "created_at": "2026-11-09T05:28:14.035Z",
   "total_bytes": 2701791878,
   "exts": {
     "parquet": 2106,
@@ -28,18 +220,31 @@
     "tif": 18,
     "md": 1
   },
-  "ext_bytes": {
-    "parquet": 1593264916,
-    "tif": 1106033496,
-    "png": 2308933,
-    "json": 177921,
-    "md": 6612
+  "product_id": "bio-oracle",
+  "updated_at": "2026-11-09T05:28:14.035Z",
+  "disabled": false,
+  "object_count": 2162,
+  "objects_updated_at": "2026-11-12T07:16:41+00:00",
+  "mirrors": {
+    "aws-opendata-us-west-2": {
+      "connection_id": "aws-opendata-us-west-2",
+      "is_primary": true,
+      "prefix": "cboettig/bio-oracle/"
+    }
   },
-  "store_format": null,
-  "_state": "seed",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "cataloged_at": "2026-11-16T11:31:23+00:00"
+  "featured": 0,
+  "readme": "## README.md\n# Bio-ORACLE v3.0 \u2014 Global Marine Environmental Layers\n\nGlobal marine environmental rasters from [Bio-ORACLE](https://bio-oracle.org/) version 3.0,\nconverted to cloud-optimized GeoTIFF and aggregated to H3 hexagonal cells at **resolution 6**.\n\nThis bucket holds the **2010-decade baseline, depth-mean realm**: 16 requested layers, published\nas 18 datasets (current direction and aspect are each split into a sine and a cosine component,\nsee [Circular layers](#circular-layers-current-direction-and-aspect)).\n\n## Citation\n\nBoth papers must be cited:\n\n> Assis, J., Fernandez Bejarano, S.J., Salazar, V.W., Schepers, L., Gouvea, L., Fragkopoulou, E.,\n> Leclercq, F., Vanhoorne, B., Tyberghein, L., Serrao, E.A., Verbruggen, H., De Clerck, O. (2024)\n> Bio-ORACLE v3.0. Pushing marine data layers to the CMIP6 Earth system models of climate change\n> research. *Global Ecology and Biogeography*. https://doi.org/10.1111/geb.13813\n\n> Tyberghein, L., Verbruggen, H., Pauly, K., Troupin, C., Mineur, F., De Clerck, O. (2012)\n> Bio-ORACLE: A global environmental dataset for marine species distribution modelling.\n> *Global Ecology and Biogeography*, 21, 272-281. https://doi.org/10.1111/j.1466-8238.2011.00656.x\n\n**License:** Bio-ORACLE is released under the GNU General Public License\n([source](https://bio-oracle.org/downloads-to-email.php)). No version is stated upstream, so the\nSTAC `license` field is `other` with a link to the provider's terms rather than a guessed SPDX id.\n\n## Layers\n\nWater-column layers are the **depth-mean** realm (averaged over the water column), baseline\nexperiment, decade 2010. Terrain layers are **benthic** and static.\n\n| Dataset | Column | Quantity | Units |\n|---|---|---|---|\n| `depthmean/thetao-mean` | `thetao_mean` | Sea water temperature | degrees C |\n| `depthmean/so-mean` | `so_mean` | Salinity | PSU |\n| `depthmean/sws-mean` | `sws_mean` | Current velocity | m/s |\n| `depthmean/swd-mean-sin` | `swd_sin` | Current direction, sine component | dimensionless |\n| `depthmean/swd-mean-cos` | `swd_cos` | Current direction, cosine component | dimensionless |\n| `depthmean/no3-mean` | `no3_mean` | Nitrate | mmol/m3 |\n| `depthmean/po4-mean` | `po4_mean` | Phosphate | mmol/m3 |\n| `depthmean/si-mean` | `si_mean` | Silicate | mmol/m3 |\n| `depthmean/o2-mean` | `o2_mean` | Dissolved oxygen | mmol/m3 |\n| `depthmean/dfe-mean` | `dfe_mean` | Dissolved iron | mmol/m3 |\n| `depthmean/phyc-mean` | `phyc_mean` | Primary productivity (phytoplankton carbon) | mmol/m3 |\n| `depthmean/ph-mean` | `ph_mean` | pH | pH units |\n| `terrain/bathymetry-mean` | `bathymetry_mean` | Mean depth, negative below sea level | m |\n| `terrain/slope` | `slope` | Sea floor slope | degrees |\n| `terrain/aspect-sin` | `aspect_sin` | Aspect, sine component | dimensionless |\n| `terrain/aspect-cos` | `aspect_cos` | Aspect, cosine component | dimensionless |\n| `terrain/tpi` | `topographic_position_index` | Topographic position index | m |\n| `terrain/tri` | `terrain_ruggedness_index` | Terrain ruggedness index | m |\n\nEach dataset publishes two assets:\n\n```\npublic-bio-oracle/<prefix>/<name>/<name>-cog.tif              # WGS84 float32 COG, 7200 x 3600\npublic-bio-oracle/<prefix>/<name>/hex/h0=*/data_0.parquet     # H3 res 6, hive-partitioned\n```\n\n## Query with DuckDB\n\n```sql\nINSTALL httpfs; LOAD httpfs;\nINSTALL h3 FROM community; LOAD h3;\n\n-- Temperature and oxygen for every ocean cell, joined on h6\nSELECT t.h6, t.thetao_mean, o.o2_mean\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-bio-oracle/depthmean/thetao-mean/hex/h0=*/data_0.parquet') t\nJOIN read_parquet('https://s3-west.nrp-nautilus.io/public-bio-oracle/depthmean/o2-mean/hex/h0=*/data_0.parquet') o\n  USING (h6)\nLIMIT 10;\n```\n\nBuild a full SDM covariate table by joining the layers you need on `h6`. Every dataset shares the\nsame cell set, so the joins are exact.\n\n## H3 resolution: this data has no `h8` column\n\n**This is deliberate, not a defect.** The source grid is 0.05 degrees (~5.5 km), so one pixel\ncovers ~31 km2. An h6 cell is 36.1 km2, which matches the pixel. An h8 cell is 0.74 km2, which\nwould replicate each measured value across ~42 identical cells and publish apparent detail the\nsource does not have.\n\nTo join against an h8-native dataset (GBIF or OBIS occurrences, carbon, GHS-POP), roll **that**\ndataset up to h6:\n\n```sql\nSELECT h3_cell_to_parent(h8, 6) AS h6, COUNT(*) AS occurrences\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-gbif/.../hex/h0=*/data_0.parquet')\nGROUP BY 1\n```\n\nColumns present: `h6` (native), `h5`, `h0` (partition key).\n\n## Aggregation\n\nEvery value is an **area-weighted mean** of the source pixels inside the cell. The columns are\nalready averages, so combining cells means averaging again, weighted by cell area, never adding.\nThere is no meaningful catalog-wide `SUM` of any column here.\n\nThese are raster reductions rather than feature conversions, so there is no `_cng_fid` column;\nevery row is one distinct cell and no de-duplication is needed.\n\n## Circular layers: current direction and aspect\n\n`swd` (current direction) and `aspect` are compass bearings in 0-360 degrees. **A bearing cannot\nbe averaged arithmetically** \u2014 two north-facing cells at 1 and 359 degrees would average to 180\ndegrees, due south. Each is therefore stored as its sine and its cosine, averaged independently,\nand recombined on read:\n\n```sql\nSELECT s.h6,\n       (degrees(atan2(s.swd_sin, c.swd_cos)) + 360) % 360 AS current_bearing_degrees,\n       sqrt(s.swd_sin * s.swd_sin + c.swd_cos * c.swd_cos) AS directional_consistency\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-bio-oracle/depthmean/swd-mean-sin/hex/h0=*/data_0.parquet') s\nJOIN read_parquet('https://s3-west.nrp-nautilus.io/public-bio-oracle/depthmean/swd-mean-cos/hex/h0=*/data_0.parquet') c\n  USING (h6)\n```\n\n`directional_consistency` is 1 where a single source pixel contributed and falls below 1 where\npixels within the cell pointed in different directions.\n\nThe same applies to `terrain/aspect-sin` and `terrain/aspect-cos`.\n\n## No-data\n\nThe COGs use **NaN** as no-data rather than a numeric sentinel. `bathymetry_mean` reaches about\n-10700 m, so the conventional -9999 would fall inside the physically valid range of that layer and\ncould be read back as a real depth. The hex has no NULL values: land and no-data pixels simply\nproduce no cell.\n\n## Provenance\n\nSource NetCDF files, as delivered by the Bio-ORACLE download service, are retained under\n`public-bio-oracle/raw/`. Conversion to COG and the sine/cosine decomposition are done by\n`catalog/bio-oracle/scripts/netcdf_to_cog.py` in the `data-workflows` repo.\n",
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
+    "providers: role [producer] for 'Ghent University / Flanders Marine Institute (VLIZ) / University of Algarve (CCMAR) researchers' is an AI guess \u2014 Inferred from the authors of the cited Bio-ORACLE papers; the README does not name institutions.. Verify before flipping to _state: reviewed.",
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [depthmean/dfe-mean/hex.h6 (spatial_index), depthmean/dfe-mean/hex.h5 (spatial_index), depthmean/dfe-mean/hex.h0 (spatial_index), depthmean/thetao-mean/hex.h6 (spatial_index), depthmean/thetao-mean/hex.h5 (spatial_index), depthmean/thetao-mean/hex.h0 (spatial_index), terrain/aspect-cos/hex.h6 (spatial_index), terrain/aspect-cos/hex.h5 (spatial_index), terrain/aspect-cos/hex.h0 (spatial_index), terrain/tri/hex.h6 (spatial_index), terrain/tri/hex.h5 (spatial_index), terrain/tri/hex.h0 (spatial_index)]. Add bbox once the placename \u2192 bbox gazetteer covers it.",
+    "summaries.item_count: parts overlap, so this is max(part), not the sum \u2014 depthmean/ 1338928, terrain/ 1338928. Sum them only once the parts are known to be disjoint."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-11-18T09:33:43+00:00",
+  "store_format": null
 }
