@@ -1,26 +1,1746 @@
 {
   "schema_version": 1,
-  "account_id": "cboettig",
-  "product_id": "coastal",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
+  "id": "cboettig/coastal",
   "title": "coastal",
-  "description": "",
-  "keywords": [],
-  "created_at": "2026-11-09T05:29:09.669Z",
-  "updated_at": "2026-11-09T05:29:09.669Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": null,
-  "mirrors": {
-    "aws-opendata-us-west-2": {
-      "connection_id": "aws-opendata-us-west-2",
-      "is_primary": true,
-      "prefix": "cboettig/coastal/"
+  "description": "Global coastal datasets: USGS Ecological Coastal Units (4M shoreline segments with ten physical/ecological variables), a MEOW-labelled coastal band, tidal marsh and tidal flat maps, coastal and mangrove typologies, and IPCC AR6 sea-level projections. Mostly vector GeoParquet/PMTiles plus H3 resolution-8 hex tables and some COG rasters.",
+  "keywords": [
+    "coastal",
+    "oceanography",
+    "hydrography",
+    "hydrology",
+    "global-coverage",
+    "geoparquet",
+    "pmtiles",
+    "h3",
+    "cloud-optimized-geotiff",
+    "climate"
+  ],
+  "providers": [
+    {
+      "name": "U.S. Geological Survey",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Esri",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Marine Biodiversity Observation Network",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "The Nature Conservancy / WWF (MEOW)",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Worthington et al.",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "University of Queensland (Murray et al.)",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "D\u00fcrr et al.",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "IPCC AR6 Sea Level Projections (Garner et al.; NASA Sea Level Change Team)",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Nautilus / National Research Platform",
+      "roles": [
+        "host"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/cboettig/coastal"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -180.0,
+          -90.0,
+          180.0,
+          90.0
+        ],
+        [
+          -180.0,
+          -90.0,
+          179.2200012,
+          90.0
+        ],
+        [
+          -180.0,
+          -55.5,
+          180.0,
+          83.5
+        ],
+        [
+          -180.0,
+          -38.8582222,
+          180.0,
+          32.3682222
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
     }
   },
-  "object_count": 1459,
+  "summaries": {
+    "item_count": 2243377730
+  },
+  "assets": {
+    "ar6-sea-level-projections/coastal-band/hex": {
+      "href": "https://data.source.coop/cboettig/coastal/ar6-sea-level-projections/coastal-band/hex/h0=576495936675512319/",
+      "type": "application/x-parquet",
+      "title": "ar6-sea-level-projections/coastal-band/hex",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "h8",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution 8 cell"
+        },
+        {
+          "name": "scenario",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "confidence",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "year",
+          "type": "SMALLINT"
+        },
+        {
+          "name": "p5",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p17",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p50",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p83",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p95",
+          "type": "FLOAT"
+        },
+        {
+          "name": "location_id",
+          "type": "INTEGER"
+        },
+        {
+          "name": "h0",
+          "type": "UBIGINT"
+        }
+      ],
+      "description": "10 files sampled for this table"
+    },
+    "ar6-sea-level-projections": {
+      "href": "https://data.source.coop/cboettig/coastal/ar6-sea-level-projections/",
+      "type": "application/x-parquet",
+      "title": "ar6-sea-level-projections",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "_cng_fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "location_id",
+          "type": "INTEGER"
+        },
+        {
+          "name": "location_name",
+          "type": "VARCHAR",
+          "description": "[placename] Tide gauge or grid node name"
+        },
+        {
+          "name": "scenario",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "confidence",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "component",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "measure",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "year",
+          "type": "SMALLINT"
+        },
+        {
+          "name": "p0",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p0_1",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p0_5",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p1",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p2",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p3",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p4",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p5",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p6",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p7",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p8",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p9",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p10",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p11",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p12",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p13",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p14",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p15",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p16",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p16_7",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p17",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p18",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p19",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p20",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p21",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p22",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p23",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p24",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p25",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p26",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p27",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p28",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p29",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p30",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p31",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p32",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p33",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p34",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p35",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p36",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p37",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p38",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p39",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p40",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p41",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p42",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p43",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p44",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p45",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p46",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p47",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p48",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p49",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p50",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p51",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p52",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p53",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p54",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p55",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p56",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p57",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p58",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p59",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p60",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p61",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p62",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p63",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p64",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p65",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p66",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p67",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p68",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p69",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p70",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p71",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p72",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p73",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p74",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p75",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p76",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p77",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p78",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p79",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p80",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p81",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p82",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p83",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p83_3",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p84",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p85",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p86",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p87",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p88",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p89",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p90",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p91",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p92",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p93",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p94",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p95",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p96",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p97",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p98",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p99",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p99_5",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p99_9",
+          "type": "FLOAT"
+        },
+        {
+          "name": "p100",
+          "type": "FLOAT"
+        },
+        {
+          "name": "lon",
+          "type": "DOUBLE",
+          "description": "[latlon] Longitude of tide gauge or grid node"
+        },
+        {
+          "name": "lat",
+          "type": "DOUBLE",
+          "description": "[latlon] Latitude of tide gauge or grid node"
+        },
+        {
+          "name": "geom",
+          "type": "GEOMETRY('OGC:CRS84')",
+          "description": "[geometry] Point geometry of projection location"
+        }
+      ],
+      "description": "2 files sampled for this table",
+      "bbox": [
+        -180.0,
+        -90.0,
+        179.2200012,
+        90.0
+      ],
+      "item_count": 2243377730
+    },
+    "coastal-typology-durr-2011": {
+      "href": "https://data.source.coop/cboettig/coastal/coastal-typology-durr-2011/catchments.parquet",
+      "type": "application/x-parquet",
+      "title": "catchments.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "_cng_fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "AREA",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "PERIMETER",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "C_BASIN_",
+          "type": "BIGINT"
+        },
+        {
+          "name": "C_BASIN_ID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "BASINID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "RECORDNAME",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "BASINORDER",
+          "type": "INTEGER"
+        },
+        {
+          "name": "COLOR",
+          "type": "BIGINT"
+        },
+        {
+          "name": "SYMBOLFLD",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "BASINLENGT",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "BASINAREA",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "SUBCONTINE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ESRI",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "HYDRO",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "UP6",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "SEANAME",
+          "type": "VARCHAR",
+          "description": "[placename] Name of receiving sea"
+        },
+        {
+          "name": "OCEANNAME",
+          "type": "VARCHAR",
+          "description": "[placename] Name of receiving ocean"
+        },
+        {
+          "name": "SEABASINNA",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "SEACODE",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OCEANCODE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ARCTICCODE",
+          "type": "INTEGER"
+        },
+        {
+          "name": "SUBCONTINE_2",
+          "type": "BIGINT"
+        },
+        {
+          "name": "SEABASINCO",
+          "type": "BIGINT"
+        },
+        {
+          "name": "DBITEMS",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FIN_TYP",
+          "type": "INTEGER"
+        },
+        {
+          "name": "MERGED_BAS",
+          "type": "INTEGER"
+        },
+        {
+          "name": "DATA_VOL",
+          "type": "INTEGER"
+        },
+        {
+          "name": "OCEAN_CODE",
+          "type": "INTEGER"
+        },
+        {
+          "name": "CONTINENT_",
+          "type": "INTEGER"
+        },
+        {
+          "name": "geom",
+          "type": "GEOMETRY('EPSG:4326')",
+          "description": "[geometry] Coastline segment or catchment geometry"
+        }
+      ],
+      "table:row_count": 7057,
+      "bbox": [
+        -180.0,
+        -55.5,
+        180.0,
+        83.5
+      ],
+      "item_count": 7429677
+    },
+    "coastal-typology-durr-2011/catchments": {
+      "href": "https://data.source.coop/cboettig/coastal/coastal-typology-durr-2011/catchments/_hex_plan.parquet",
+      "type": "application/x-parquet",
+      "title": "_hex_plan.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:row_count": 44
+    },
+    "coastal-typology-durr-2011/catchments/hex": {
+      "href": "https://data.source.coop/cboettig/coastal/coastal-typology-durr-2011/catchments/hex/h0=576495936675512319/",
+      "type": "application/x-parquet",
+      "title": "coastal-typology-durr-2011/catchments/hex",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "_cng_fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "AREA",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "PERIMETER",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "C_BASIN_",
+          "type": "BIGINT"
+        },
+        {
+          "name": "C_BASIN_ID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "BASINID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "RECORDNAME",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "BASINORDER",
+          "type": "INTEGER"
+        },
+        {
+          "name": "COLOR",
+          "type": "BIGINT"
+        },
+        {
+          "name": "SYMBOLFLD",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "BASINLENGT",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "BASINAREA",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "SUBCONTINE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ESRI",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "HYDRO",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "UP6",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "SEANAME",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "OCEANNAME",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "SEABASINNA",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "SEACODE",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OCEANCODE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ARCTICCODE",
+          "type": "INTEGER"
+        },
+        {
+          "name": "SUBCONTINE_2",
+          "type": "BIGINT"
+        },
+        {
+          "name": "SEABASINCO",
+          "type": "BIGINT"
+        },
+        {
+          "name": "DBITEMS",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "FIN_TYP",
+          "type": "INTEGER"
+        },
+        {
+          "name": "MERGED_BAS",
+          "type": "INTEGER"
+        },
+        {
+          "name": "DATA_VOL",
+          "type": "INTEGER"
+        },
+        {
+          "name": "OCEAN_CODE",
+          "type": "INTEGER"
+        },
+        {
+          "name": "CONTINENT_",
+          "type": "INTEGER"
+        },
+        {
+          "name": "h8",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution 8 cell"
+        },
+        {
+          "name": "h0",
+          "type": "UBIGINT"
+        }
+      ],
+      "description": "4 files sampled for this table"
+    },
+    "coastal-typology-durr-2011/coastline/hex": {
+      "href": "https://data.source.coop/cboettig/coastal/coastal-typology-durr-2011/coastline/hex/h0=580084742628573183/",
+      "type": "application/x-parquet",
+      "title": "coastal-typology-durr-2011/coastline/hex",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "_cng_fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "FNODE_",
+          "type": "BIGINT"
+        },
+        {
+          "name": "TNODE_",
+          "type": "BIGINT"
+        },
+        {
+          "name": "LPOLY_",
+          "type": "BIGINT"
+        },
+        {
+          "name": "RPOLY_",
+          "type": "BIGINT"
+        },
+        {
+          "name": "LENGTH",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "C_FINT_LEN",
+          "type": "BIGINT"
+        },
+        {
+          "name": "C_FINT_LEN_2",
+          "type": "BIGINT"
+        },
+        {
+          "name": "C_FINTYPCO",
+          "type": "BIGINT"
+        },
+        {
+          "name": "C_FINTYPCO_2",
+          "type": "BIGINT"
+        },
+        {
+          "name": "C_FINT_",
+          "type": "BIGINT"
+        },
+        {
+          "name": "C_FINT_ID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "C_FIN_TYP_",
+          "type": "BIGINT"
+        },
+        {
+          "name": "AREA",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "PERIMETER",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "C_FIN_TYP__2",
+          "type": "BIGINT"
+        },
+        {
+          "name": "FIN_TYP",
+          "type": "BIGINT"
+        },
+        {
+          "name": "C_AR_30M_S",
+          "type": "BIGINT"
+        },
+        {
+          "name": "C_AR_30M_S_2",
+          "type": "BIGINT"
+        },
+        {
+          "name": "GRID_CODE",
+          "type": "BIGINT"
+        },
+        {
+          "name": "h8",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution 8 cell"
+        },
+        {
+          "name": "h0",
+          "type": "UBIGINT"
+        }
+      ],
+      "description": "6 files sampled for this table"
+    },
+    "ecu/hex": {
+      "href": "https://data.source.coop/cboettig/coastal/ecu/hex/h0=576495936675512319/",
+      "type": "application/x-parquet",
+      "title": "ecu/hex",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "_cng_fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OBJECTID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "MasterKey",
+          "type": "INTEGER"
+        },
+        {
+          "name": "RandomSort",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "MEAN_SIG_WAVEHEIGHT",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "TIDAL_RANGE",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "CHLOROPHYLL",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "TURBIDITY",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "TEMP_MOISTURE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "EMU_PHYSICAL",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "REGIONAL_SINUOSITY",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "GHM",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "MAX_SLOPE",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "OUTFLOW_DENSITY",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "ERODIBILITY",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Cluster",
+          "type": "INTEGER"
+        },
+        {
+          "name": "LENGTH_GEO",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "chl_label",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "river_label",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "sinuosity_label",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "slope_label",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "tidal_label",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "turbid_label",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "wave_label",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "CSU_Descriptor",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "CSU_ID",
+          "type": "INTEGER"
+        },
+        {
+          "name": "OUTFLOW_DENSITY_RESCALED",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Shape_Length",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "h8",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution 8 cell"
+        },
+        {
+          "name": "h0",
+          "type": "UBIGINT"
+        }
+      ],
+      "description": "12 files sampled for this table",
+      "item_count": 2118095
+    },
+    "mangrove-typology-v3": {
+      "href": "https://data.source.coop/cboettig/coastal/mangrove-typology-v3/1996.parquet",
+      "type": "application/x-parquet",
+      "title": "1996.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "_cng_fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OGC_FID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "Type",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "Class",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geom",
+          "type": "GEOMETRY('EPSG:4326')",
+          "description": "[geometry] Mangrove geomorphic unit polygons"
+        }
+      ],
+      "table:row_count": 3980,
+      "bbox": [
+        -180.0,
+        -38.8582222,
+        180.0,
+        32.3682222
+      ],
+      "item_count": 31185
+    },
+    "mangrove-typology-v3/1996": {
+      "href": "https://data.source.coop/cboettig/coastal/mangrove-typology-v3/1996/_hex_plan.parquet",
+      "type": "application/x-parquet",
+      "title": "_hex_plan.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:row_count": 4
+    },
+    "mangrove-typology-v3/1996/hex": {
+      "href": "https://data.source.coop/cboettig/coastal/mangrove-typology-v3/1996/hex/h0=577234808489377791/",
+      "type": "application/x-parquet",
+      "title": "mangrove-typology-v3/1996/hex",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "_cng_fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OGC_FID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "Type",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "Class",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "h8",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution 8 cell"
+        },
+        {
+          "name": "h0",
+          "type": "UBIGINT"
+        }
+      ],
+      "description": "4 files sampled for this table"
+    },
+    "mangrove-typology-v3/composite/hex": {
+      "href": "https://data.source.coop/cboettig/coastal/mangrove-typology-v3/composite/hex/h0=579451423930974207/",
+      "type": "application/x-parquet",
+      "title": "mangrove-typology-v3/composite/hex",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "_cng_fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OGC_FID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "Type",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "ID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "Class",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "h8",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution 8 cell"
+        },
+        {
+          "name": "h0",
+          "type": "UBIGINT"
+        }
+      ],
+      "description": "6 files sampled for this table"
+    },
+    "meow-coastal-band/hex": {
+      "href": "https://data.source.coop/cboettig/coastal/meow-coastal-band/hex/h0=576495936675512319/",
+      "type": "application/x-parquet",
+      "title": "meow-coastal-band/hex",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "h8",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution 8 cell"
+        },
+        {
+          "name": "ECO_CODE",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "ECOREGION",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "PROVINCE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "REALM",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "on_boundary",
+          "type": "BOOLEAN"
+        },
+        {
+          "name": "label_source",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "side",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "land_frac",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "k",
+          "type": "USMALLINT"
+        },
+        {
+          "name": "dist_km",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "depth_m",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "elevation_m",
+          "type": "DOUBLE"
+        }
+      ],
+      "description": "12 files sampled for this table",
+      "item_count": 8004403
+    },
+    "tidal-flats-v1-1/datamask/hex": {
+      "href": "https://data.source.coop/cboettig/coastal/tidal-flats-v1-1/datamask/hex/h0=576636674163867647/",
+      "type": "application/x-parquet",
+      "title": "tidal-flats-v1-1/datamask/hex",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "mapped_km2",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "mapped_fraction",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "h8",
+          "type": "UBIGINT"
+        },
+        {
+          "name": "h0",
+          "type": "UBIGINT"
+        }
+      ],
+      "description": "6 files sampled for this table"
+    },
+    "tidal-flats-v1-1/hex": {
+      "href": "https://data.source.coop/cboettig/coastal/tidal-flats-v1-1/hex/h0=579908820768129023/",
+      "type": "application/x-parquet",
+      "title": "tidal-flats-v1-1/hex",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "epoch",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "tidal_flat_km2",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "tidal_flat_fraction",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "h8",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution 8 cell"
+        },
+        {
+          "name": "h0",
+          "type": "UBIGINT"
+        }
+      ],
+      "description": "6 files sampled for this table"
+    },
+    "tidal-flats-v1-2/hex": {
+      "href": "https://data.source.coop/cboettig/coastal/tidal-flats-v1-2/hex/h0=576636674163867647/",
+      "type": "application/x-parquet",
+      "title": "tidal-flats-v1-2/hex",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "epoch",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "tidal_flat_km2",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "tidal_flat_fraction",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "h8",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution 8 cell"
+        },
+        {
+          "name": "h0",
+          "type": "UBIGINT"
+        }
+      ],
+      "description": "12 files sampled for this table",
+      "item_count": 662533
+    },
+    "tidal-marsh-2020/hex": {
+      "href": "https://data.source.coop/cboettig/coastal/tidal-marsh-2020/hex/h0=576636674163867647/",
+      "type": "application/x-parquet",
+      "title": "tidal-marsh-2020/hex",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "tidal_marsh_km2",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "tidal_marsh_fraction",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "h8",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution 8 cell"
+        },
+        {
+          "name": "h0",
+          "type": "UBIGINT"
+        }
+      ],
+      "description": "12 files sampled for this table",
+      "item_count": 68313
+    },
+    ".": {
+      "href": "https://data.source.coop/cboettig/coastal/",
+      "type": "application/x-parquet",
+      "title": ".",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "_cng_fid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "OBJECTID",
+          "type": "BIGINT"
+        },
+        {
+          "name": "MasterKey",
+          "type": "INTEGER"
+        },
+        {
+          "name": "RandomSort",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "MEAN_SIG_WAVEHEIGHT",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "TIDAL_RANGE",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "CHLOROPHYLL",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "TURBIDITY",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "TEMP_MOISTURE",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "EMU_PHYSICAL",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "REGIONAL_SINUOSITY",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "GHM",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "MAX_SLOPE",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "OUTFLOW_DENSITY",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "ERODIBILITY",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Cluster",
+          "type": "INTEGER"
+        },
+        {
+          "name": "LENGTH_GEO",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "chl_label",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "river_label",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "sinuosity_label",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "slope_label",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "tidal_label",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "turbid_label",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "wave_label",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "CSU_Descriptor",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "CSU_ID",
+          "type": "INTEGER"
+        },
+        {
+          "name": "OUTFLOW_DENSITY_RESCALED",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Shape_Length",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Shape",
+          "type": "GEOMETRY('EPSG:4326')",
+          "description": "[geometry] Coastline segment geometry for Ecological Coastal Units"
+        },
+        {
+          "name": "ECO_CODE",
+          "type": "DOUBLE",
+          "description": "[admin_code] MEOW ecoregion code"
+        },
+        {
+          "name": "ECOREGION",
+          "type": "VARCHAR",
+          "description": "[placename] MEOW marine ecoregion name"
+        },
+        {
+          "name": "PROVINCE",
+          "type": "VARCHAR",
+          "description": "[placename] MEOW marine province name"
+        },
+        {
+          "name": "REALM",
+          "type": "VARCHAR",
+          "description": "[placename] MEOW marine realm name"
+        },
+        {
+          "name": "side",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "dist_min_km",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "dist_max_km",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "area_km2",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "geom",
+          "type": "GEOMETRY('OGC:CRS84')",
+          "description": "[geometry] Multipolygon geometry of MEOW coastal band classes"
+        }
+      ],
+      "description": "2 files sampled for this table"
+    }
+  },
+  "table:columns": [
+    {
+      "name": "chunk_id",
+      "type": "INTEGER"
+    },
+    {
+      "name": "row_offset",
+      "type": "BIGINT"
+    },
+    {
+      "name": "row_count",
+      "type": "BIGINT"
+    },
+    {
+      "name": "est_cells",
+      "type": "DOUBLE"
+    }
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/cboettig/coastal/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/cboettig/coastal",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "rel": "cite-as",
+      "href": "https://doi.org/10.5066/P9HWHSPU"
+    }
+  ],
+  "disabled": false,
   "objects_updated_at": "2026-11-12T07:20:43+00:00",
-  "total_bytes": 74089752131,
   "exts": {
     "parquet": 1379,
     "json": 41,
@@ -28,6 +1748,11 @@
     "tif": 14,
     "png": 7,
     "md": 2
+  },
+  "created_at": "2026-11-09T05:29:09.669Z",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
   },
   "ext_bytes": {
     "parquet": 54535510017,
@@ -37,11 +1762,29 @@
     "png": 202642,
     "md": 24529
   },
-  "store_format": null,
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
+  "account_id": "cboettig",
+  "visibility": "public",
+  "mirrors": {
+    "aws-opendata-us-west-2": {
+      "connection_id": "aws-opendata-us-west-2",
+      "is_primary": true,
+      "prefix": "cboettig/coastal/"
+    }
   },
-  "cataloged_at": "2026-11-16T11:31:27+00:00"
+  "updated_at": "2026-11-09T05:29:09.669Z",
+  "featured": 0,
+  "total_bytes": 74089752131,
+  "product_id": "coastal",
+  "object_count": 1459,
+  "data_mode": null,
+  "readme": "## README.md\n# public-coastal \u2014 Coastal Datasets\n\nGlobal datasets describing the coastline and the coastal zone.\n\n## Ecological Coastal Units (`ecu`)\n\nThe world's ocean coastline divided into 4,005,842 segments of 1 km or shorter (median about 480 m). Each segment is described by ten variables covering the adjacent water, the adjacent land and the shoreline itself. Produced by the U.S. Geological Survey with Esri and the Marine Biodiversity Observation Network.\n\n- The segments follow a 30 m global shoreline traced from **2014** Landsat imagery. That makes this a snapshot of the 2014 coastline: useful for describing coastal settings, not for measuring recent shoreline change.\n- Each segment has measured values (wave height, tidal range, chlorophyll, turbidity, sinuosity, slope, river outflow, erodibility, climate regime, marine physical environment) and a class label for each.\n- The ten class labels together define a **coastal segment unit** (`CSU_ID`, 80,997 distinct), following the Coastal and Marine Ecological Classification Standard (CMECS). Units are grouped into 16 global coastline groups (`Cluster`), which the source numbers but does not name.\n- `REGIONAL_SINUOSITY = 0` (591,757 segments) means no value was computed; exclude it before averaging.\n\n| Asset | URL |\n|---|---|\n| GeoParquet | `https://s3-west.nrp-nautilus.io/public-coastal/ecu.parquet` |\n| PMTiles | `https://s3-west.nrp-nautilus.io/public-coastal/ecu.pmtiles` (source layer **`ecu`**) |\n| H3 hex (resolution 8) | `https://s3-west.nrp-nautilus.io/public-coastal/ecu/hex/h0=*/data_0.parquet` |\n| STAC | `https://s3-west.nrp-nautilus.io/public-coastal/ecu/stac-collection.json` |\n\nThe H3 hex table has one row per (segment, cell) pair, so deduplicate on `_cng_fid` before summing `LENGTH_GEO`.\n\n### DuckDB\n\n```sql\nINSTALL spatial; LOAD spatial;\n-- coastline length by tidal class, in km\nSELECT tidal_label, SUM(LENGTH_GEO) / 1000 AS coast_km, COUNT(*) AS segments\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-coastal/ecu.parquet')\nGROUP BY tidal_label\nORDER BY coast_km DESC;\n```\n\n### MapLibre GL JS\n\nThe PMTiles `source-layer` is **`ecu`**.\n\n```js\nimport { Protocol } from \"pmtiles\";\nmaplibregl.addProtocol(\"pmtiles\", new Protocol().tile);\n\nmap.addSource(\"ecu\", {\n  type: \"vector\",\n  url: \"pmtiles://https://s3-west.nrp-nautilus.io/public-coastal/ecu.pmtiles\",\n});\nmap.addLayer({\n  id: \"ecu-tidal\",\n  type: \"line\",\n  source: \"ecu\",\n  \"source-layer\": \"ecu\",\n  paint: {\n    \"line-width\": 2,\n    \"line-color\": [\n      \"match\", [\"get\", \"tidal_label\"],\n      \"atidal\", \"#d4e6f1\", \"microtidal\", \"#a9cce3\", \"minimally tidal\", \"#7fb3d5\",\n      \"moderately tidal\", \"#5499c7\", \"macrotidal\", \"#2471a3\", \"megatidal\", \"#1a5276\",\n      \"#999999\",\n    ],\n  },\n});\n```\n\n### Source and licence\n\nSayre, R., 2023, *Global Ecological Classification of Coastal Segment Units*, U.S. Geological Survey data release, https://doi.org/10.5066/P9HWHSPU. Method: Sayre et al. 2021, *Oceanography* 34(2), https://doi.org/10.5670/oceanog.2021.219.\n\nPublic domain (U.S. Government work). Retrieved from ScienceBase on 2026-09-28; the original package is kept at `s3://public-coastal/raw/USGSEsriGlobalCoastalSegmentsv1.mpk` (2,075,928,715 bytes, MD5 `ad4f54e071c343ccbd574f4cff0adf36`).\n\n## MEOW Coastal Band (`meow-coastal-band`)\n\nA coastal strip labelled with Marine Ecoregions of the World (MEOW) ecoregion, province and realm: everything within 50 km of the coastline on the sea side and 20 km on the land side. MEOW ecoregion polygons reach far inland and about 200 nautical miles out to sea, so this band is the coastal part of each ecoregion. It comes in two forms:\n\n- **H3 hex table** \u2014 one row per H3 resolution 8 cell, with distance to the coast (`dist_km`), sea or land (`side`), depth or elevation. Use it for joins with other H3 layers and for choosing any strip width.\n- **Polygons** (GeoParquet and PMTiles) \u2014 the same cells merged into one multipolygon per ecoregion, side and distance class: sea 0\u20135, 5\u201310, 10\u201320 and 20\u201350 km; land 0\u20135, 5\u201310 and 10\u201320 km. There are 1,462 features, each with `ECO_CODE`, `ECOREGION`, `PROVINCE`, `REALM`, `side`, `dist_min_km`, `dist_max_km` and `area_km2`. Each class includes its upper edge, so keeping features with `dist_max_km <= 10` gives exactly the cells with `dist_km <= 10`.\n\n| Asset | URL |\n|---|---|\n| H3 hex (resolution 8) | `https://s3-west.nrp-nautilus.io/public-coastal/meow-coastal-band/hex/h0=*/data_0.parquet` |\n| GeoParquet | `https://s3-west.nrp-nautilus.io/public-coastal/meow-coastal-band.parquet` |\n| PMTiles | `https://s3-west.nrp-nautilus.io/public-coastal/meow-coastal-band.pmtiles` (source layer **`meow-coastal-band`**, zoom 0\u201310) |\n| STAC | `https://s3-west.nrp-nautilus.io/public-coastal/meow-coastal-band/stac-collection.json` |\n\n### DuckDB\n\n```sql\n-- sea area within 10 km of the coast, per realm, in km2\nSELECT REALM, SUM(area_km2) AS sea_km2\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-coastal/meow-coastal-band.parquet')\nWHERE side = 'sea' AND dist_max_km <= 10\nGROUP BY REALM ORDER BY sea_km2 DESC;\n```\n\n### MapLibre GL JS\n\nThe PMTiles `source-layer` is **`meow-coastal-band`**.\n\n```js\nimport { Protocol } from \"pmtiles\";\nmaplibregl.addProtocol(\"pmtiles\", new Protocol().tile);\n\nmap.addSource(\"meow-band\", {\n  type: \"vector\",\n  url: \"pmtiles://https://s3-west.nrp-nautilus.io/public-coastal/meow-coastal-band.pmtiles\",\n});\nmap.addLayer({\n  id: \"meow-band-sea-10km\",\n  type: \"fill\",\n  source: \"meow-band\",\n  \"source-layer\": \"meow-coastal-band\",\n  filter: [\"all\", [\"==\", [\"get\", \"side\"], \"sea\"], [\"<=\", [\"get\", \"dist_max_km\"], 10]],\n  paint: {\n    \"fill-color\": [\"match\", [\"get\", \"dist_max_km\"], 5, \"#08519c\", 10, \"#6baed6\", \"#c6dbef\"],\n    \"fill-opacity\": 0.8,\n  },\n});\n```\n\n### Source and licence\n\nDerived from MEOW (Spalding et al. 2007; The Nature Conservancy / WWF, CC-BY-NC-3.0), so it carries MEOW's NonCommercial terms. The coastline is the USGS Ecological Coastal Units shoreline (above); land and sea come from the Copernicus GLO-90 Water Body Mask, depth from GEBCO 2025 and elevation from Copernicus DEM GLO-90 (produced using Copernicus WorldDEM-90 \u00a9 DLR e.V. 2010-2014 and \u00a9 Airbus Defence and Space GmbH 2014-2018 provided under COPERNICUS by the European Union and ESA).\n\n## Global tidal marshes 2020 (`tidal-marsh-2020`)\n\nTidal marshes, the vegetated coastal wetlands flooded by the tides, mapped for 2020 at 10 m between 60 degrees north and 60 degrees south (Worthington et al. 2024, version 2.6).\n\n- Global total in this collection: **52,876 km2**, against the producers' published 52,880 km2 (95% confidence interval 32,030 to 59,780).\n- Raster values: 1 = tidal marsh, 0 = mapped but not tidal marsh, 255 = outside the producers' tiles.\n- The H3 table has one row per resolution 8 cell holding any tidal marsh, with `tidal_marsh_km2` and `tidal_marsh_fraction`; a missing cell means zero.\n\n| Asset | URL |\n|---|---|\n| COG (10 m) | `https://s3-west.nrp-nautilus.io/public-coastal/tidal-marsh-2020/tidal-marsh-2020-cog.tif` |\n| H3 hex (resolution 8) | `https://s3-west.nrp-nautilus.io/public-coastal/tidal-marsh-2020/hex/h0=*/data_0.parquet` |\n| STAC | `https://s3-west.nrp-nautilus.io/public-coastal/tidal-marsh-2020/stac-collection.json` |\n\n### DuckDB\n\n```sql\n-- tidal marsh area, in km2, per MEOW coastal ecoregion\nSELECT b.ECOREGION, SUM(t.tidal_marsh_km2) AS marsh_km2\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-coastal/tidal-marsh-2020/hex/h0=*/data_0.parquet') t\nJOIN read_parquet('https://s3-west.nrp-nautilus.io/public-coastal/meow-coastal-band/hex/h0=*/data_0.parquet') b USING (h8, h0)\nGROUP BY b.ECOREGION ORDER BY marsh_km2 DESC;\n```\n\n### MapLibre GL JS\n\nThe rasters render through the NRP titiler service; the colormap draws value 1 and leaves 0 and 255 transparent.\n\n```js\nmap.addSource(\"tidal-marsh-2020\", {\n  type: \"raster\",\n  tiles: [\"https://titiler.nrp-nautilus.io/cog/tiles/WebMercatorQuad/{z}/{x}/{y}.png?url=https://s3-west.nrp-nautilus.io/public-coastal/tidal-marsh-2020/tidal-marsh-2020-cog.tif&colormap=%7B%220%22%3A%5B0%2C0%2C0%2C0%5D%2C%221%22%3A%5B44%2C127%2C184%2C255%5D%2C%22255%22%3A%5B0%2C0%2C0%2C0%5D%7D\"],\n  tileSize: 256,\n});\nmap.addLayer({ id: \"tidal-marsh-2020\", type: \"raster\", source: \"tidal-marsh-2020\" });\n```\n\n### Source and licence\n\nWorthington, T. A., Spalding, M., Landis, E., Maxwell, T. L., Navarro, A., Smart, L. S., & Murray, N. J. (2024). The distribution of global tidal marshes from Earth observation data. *Global Ecology and Biogeography*, 33(8), e13852, https://doi.org/10.1111/geb.13852. Data: Zenodo record 8420753, version 2.6, downloaded 2026-10-25; the original archive is kept at `s3://public-coastal/raw/tidal-marsh-2020/tidal_marsh_v2_6.zip`.\n\nCreative Commons Attribution 4.0.\n\n## Global tidal flats (`tidal-flats-v1-2`, `tidal-flats-v1-1`)\n\nTidal flats, the mud, sand and rock flats exposed at low tide, mapped at 30 m for three-year periods between 60 degrees north and 60 degrees south (Murray et al.). Two collections, because the producers' two versions use different mapped areas and should not be joined into one series:\n\n- **`tidal-flats-v1-2`**: version 1.2, seven periods from 1999-2001 to 2017-2019.\n- **`tidal-flats-v1-1`**: version 1.1, the five periods from 1984-1986 to 1996-1998 that version 1.2 does not cover, plus the version 1.1 mapped-area layer (`datamask`).\n\nRaster values: 1 = tidal flat, 0 = not tidal flat or outside the mapped area. The H3 tables have one row per (period, resolution 8 cell) holding any tidal flat, with `epoch`, `tidal_flat_km2` and `tidal_flat_fraction`. Totals differ noticeably between periods (the two latest version 1.2 periods are about 30% above 1999-2013); these differences are in the producers' maps, which they caution are not a consistent time series everywhere.\n\n| Asset | URL |\n|---|---|\n| COG per period (30 m) | `https://s3-west.nrp-nautilus.io/public-coastal/tidal-flats-v1-2/tidal-flats-<period>-cog.tif`, `https://s3-west.nrp-nautilus.io/public-coastal/tidal-flats-v1-1/tidal-flats-<period>-cog.tif` |\n| H3 hex (resolution 8) | `https://s3-west.nrp-nautilus.io/public-coastal/tidal-flats-v1-2/hex/h0=*/data_0.parquet`, `https://s3-west.nrp-nautilus.io/public-coastal/tidal-flats-v1-1/hex/h0=*/data_0.parquet` |\n| Mapped area, version 1.1 | `https://s3-west.nrp-nautilus.io/public-coastal/tidal-flats-v1-1/datamask-cog.tif`, `https://s3-west.nrp-nautilus.io/public-coastal/tidal-flats-v1-1/datamask/hex/h0=*/data_0.parquet` |\n| STAC | `https://s3-west.nrp-nautilus.io/public-coastal/tidal-flats-v1-2/stac-collection.json`, `https://s3-west.nrp-nautilus.io/public-coastal/tidal-flats-v1-1/stac-collection.json` |\n\n### DuckDB\n\n```sql\n-- tidal flat area per period, in km2\nSELECT epoch, SUM(tidal_flat_km2) AS km2\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-coastal/tidal-flats-v1-2/hex/h0=*/data_0.parquet')\nGROUP BY epoch ORDER BY epoch;\n```\n\n### MapLibre GL JS\n\nThe rasters render through the NRP titiler service; the colormap draws value 1 and leaves 0 and 255 transparent.\n\n```js\nmap.addSource(\"tidal-flats-2017-2019\", {\n  type: \"raster\",\n  tiles: [\"https://titiler.nrp-nautilus.io/cog/tiles/WebMercatorQuad/{z}/{x}/{y}.png?url=https://s3-west.nrp-nautilus.io/public-coastal/tidal-flats-v1-2/tidal-flats-2017-2019-cog.tif&colormap=%7B%220%22%3A%5B0%2C0%2C0%2C0%5D%2C%221%22%3A%5B194%2C163%2C90%2C255%5D%2C%22255%22%3A%5B0%2C0%2C0%2C0%5D%7D\"],\n  tileSize: 256,\n});\nmap.addLayer({ id: \"tidal-flats-2017-2019\", type: \"raster\", source: \"tidal-flats-2017-2019\" });\n```\n\n### Source and licence\n\nMurray, N. J. et al. (2019). The global distribution and trajectory of tidal flats. *Nature*, 565, 222-225, https://doi.org/10.1038/s41586-018-0805-8 (version 1.1). Murray, N. J. et al. (2022). High-resolution global maps of tidal flat ecosystems from 1984 to 2019. *Scientific Data*, 9, 542, https://doi.org/10.1038/s41597-022-01635-5 (version 1.2). Data from the producers' archive `gs://uq-intertidal`, downloaded 2026-10-25; the original zips are kept under `s3://public-coastal/raw/tidal-flats/`.\n\nCreative Commons Attribution 4.0.\n\n## Global coastal typology (`coastal-typology-durr-2011`)\n\nA global classification of the coast into geomorphic types that describe how a stretch of coast filters what rivers carry to the sea (D\u00fcrr et al. 2011). Two layers share the class column `FIN_TYP`:\n\n- **`coastline`**: 9,604 line segments drawn along the edges of a 0.5-degree grid. Segments can lie up to about 25 km from the true shoreline.\n- **`catchments`**: 7,057 polygons of the land draining to each stretch of coast, built from the STN-30 version 6 river basins. A basin can span several polygons, so total `BASINAREA` over distinct `BASINID`.\n\n`FIN_TYP` values: 0 endorheic or glaciated, 1 small deltas, 2 tidal systems, 3 lagoons, 4 fjords and fj\u00e4rds, 5 large rivers (Va), 51 large rivers with tidal deltas (Vb, catchments only), 6 karst, 7 arheic, -9999 no data (catchments only). On the coastline layer, code 5 covers both large-river subtypes.\n\n| Asset | URL |\n|---|---|\n| GeoParquet | `https://s3-west.nrp-nautilus.io/public-coastal/coastal-typology-durr-2011/coastline.parquet`, `.../catchments.parquet` |\n| PMTiles | `https://s3-west.nrp-nautilus.io/public-coastal/coastal-typology-durr-2011/coastline.pmtiles` (source layer **`coastline`**), `.../catchments.pmtiles` (source layer **`catchments`**) |\n| H3 hex (resolution 8) | `https://s3-west.nrp-nautilus.io/public-coastal/coastal-typology-durr-2011/coastline/hex/h0=*/data_0.parquet`, `.../catchments/hex/h0=*/data_0.parquet` |\n| STAC | `https://s3-west.nrp-nautilus.io/public-coastal/coastal-typology-durr-2011/stac-collection.json` |\n\nThe H3 hex tables have one row per (feature, cell) pair, so deduplicate on `_cng_fid` before counting features.\n\n### DuckDB\n\n```sql\n-- coastline segments of each type\nSELECT FIN_TYP, COUNT(*) AS segments\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-coastal/coastal-typology-durr-2011/coastline.parquet')\nGROUP BY FIN_TYP\nORDER BY FIN_TYP;\n```\n\n### MapLibre GL JS\n\nThe PMTiles `source-layer` is **`catchments`** (or **`coastline`** for the line layer).\n\n```js\nimport { Protocol } from \"pmtiles\";\nmaplibregl.addProtocol(\"pmtiles\", new Protocol().tile);\n\nmap.addSource(\"coastal-typology\", {\n  type: \"vector\",\n  url: \"pmtiles://https://s3-west.nrp-nautilus.io/public-coastal/coastal-typology-durr-2011/catchments.pmtiles\",\n});\nmap.addLayer({\n  id: \"coastal-typology-catchments\",\n  type: \"fill\",\n  source: \"coastal-typology\",\n  \"source-layer\": \"catchments\",\n  paint: {\n    \"fill-opacity\": 0.7,\n    \"fill-color\": [\n      \"match\", [\"get\", \"FIN_TYP\"],\n      0, \"#c7dccb\", 1, \"#8c5a3c\", 2, \"#e31a1c\", 3, \"#33cc33\", 4, \"#1f3fbf\",\n      5, \"#ffff33\", 51, \"#e0a000\", 6, \"#ff33ff\", 7, \"#808080\",\n      \"#ffffff\",\n    ],\n  },\n});\n```\n\n### Source and licence\n\nD\u00fcrr, H. H., Laruelle, G. G., van Kempen, C. M., Slomp, C. P., Meybeck, M., and Middelkoop, H. (2011). Worldwide Typology of Nearshore Coastal Systems: Defining the Estuarine Filter of River Inputs to the Oceans. *Estuaries and Coasts* 34(3), 441-458. https://doi.org/10.1007/s12237-011-9381-y. Data downloaded from http://geotypes.net on 2026-11-03. The authors allow use under conditions similar to CC BY (http://geotypes.net/disclaimer.html): cite the article, state any modifications, and do not imply their endorsement.\n\n## Global mangrove typology version 3 (`mangrove-typology-v3`)\n\nA global classification of the world's mangroves by the coastal setting they grow in (Worthington et al.). Mangrove patches are grouped into 3,983 geomorphic units, each classed as `Delta`, `Estuary`, `Lagoon` or `OpenCoast` in the `Class` column. The typology is matched to the Global Mangrove Watch version 3.12 extent.\n\nThere are twelve layers with the same units and classes: `composite` (every year's extent combined) and one layer per mapped year (`1996`, `2007`, `2008`, `2009`, `2010`, `2015`, `2016`, `2017`, `2018`, `2019`, `2020`). A unit keeps its `Type` (for example `Delta_30028`) and `ID` in every layer, so use either to match units across years. `OGC_FID` differs between layers. In the 1996 layer two units, `Lagoon_8338` and `Lagoon_8440`, are each split across two rows, so count units over distinct `Type`.\n\n| Asset | URL |\n|---|---|\n| GeoParquet | `https://s3-west.nrp-nautilus.io/public-coastal/mangrove-typology-v3/<layer>.parquet` |\n| PMTiles | `https://s3-west.nrp-nautilus.io/public-coastal/mangrove-typology-v3/<layer>.pmtiles` (source layer = the layer name, for example **`2020`**) |\n| H3 hex (resolution 8) | `https://s3-west.nrp-nautilus.io/public-coastal/mangrove-typology-v3/<layer>/hex/h0=*/data_0.parquet` |\n| STAC | `https://s3-west.nrp-nautilus.io/public-coastal/mangrove-typology-v3/stac-collection.json` |\n\nThe H3 hex tables have one row per (unit, cell) pair. A cell belongs to a unit when its centre lies inside the unit's mangroves, or, for a patch too small to hold a cell centre, when it holds a point inside the patch. Use the hexagons to locate units and the polygons for mangrove area.\n\n### DuckDB\n\n```sql\n-- units of each class in 2020\nSELECT Class, COUNT(DISTINCT Type) AS units\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-coastal/mangrove-typology-v3/2020.parquet')\nGROUP BY Class\nORDER BY Class;\n```\n\n### MapLibre GL JS\n\nThe PMTiles `source-layer` is the layer name, for example **`2020`** or **`composite`**.\n\n```js\nimport { Protocol } from \"pmtiles\";\nmaplibregl.addProtocol(\"pmtiles\", new Protocol().tile);\n\nmap.addSource(\"mangrove-typology\", {\n  type: \"vector\",\n  url: \"pmtiles://https://s3-west.nrp-nautilus.io/public-coastal/mangrove-typology-v3/2020.pmtiles\",\n});\nmap.addLayer({\n  id: \"mangrove-typology-2020\",\n  type: \"fill\",\n  source: \"mangrove-typology\",\n  \"source-layer\": \"2020\",\n  paint: {\n    \"fill-opacity\": 0.8,\n    \"fill-color\": [\n      \"match\", [\"get\", \"Class\"],\n      \"Delta\", \"#8c5a3c\", \"Estuary\", \"#1f78b4\", \"Lagoon\", \"#33a02c\", \"OpenCoast\", \"#ff7f00\",\n      \"#cccccc\",\n    ],\n  },\n});\n```\n\n### Source and licence\n\nWorthington, T. A., et al. (2023). A global biophysical typology of mangroves version 3. Zenodo, https://doi.org/10.5281/zenodo.8340259, licensed CC-BY-4.0. Method: Worthington, T. A., et al. (2020). A global biophysical typology of mangroves and its relevance for ecosystem structure and deforestation. *Scientific Reports* 10, 14652, https://doi.org/10.1038/s41598-020-71194-5. Data downloaded from Zenodo on 2026-11-03.\n\n\n## IPCC AR6 sea-level projections (`ar6-sea-level-projections`)\n\nProjections of relative sea-level change from the IPCC Sixth Assessment Report (Working Group I, chapter 9), version 20210809, at 1,030 tide gauges and 65,160 nodes of a 1-degree global grid. Change is in millimetres since the 1995-2014 baseline and rates in millimetres per year, from 2020 to 2150 under five SSP emissions scenarios and five warming levels, and to 2300 for the low-confidence projections. Each projection carries 107 quantiles (`p0` to `p100`; `p0_1` is the 0.1st percentile, `p99_5` the 99.5th) for the total and for each contributing process.\n\n- **`regional-confidence`**: relative sea level including vertical land motion, as a coastal location experiences it.\n- **`regional-confidence-novlm`**: the same without vertical land motion and other background processes.\n- **`coastal-band/hex`**: every H3 resolution-8 cell of the MEOW coastal band (`meow-coastal-band`), with the with-VLM total change of the nearest grid node that has a projection in every year of each scenario (p5, p17, p50, p83, p95). This is a nearest-node assignment, not an interpolation; `location_id` names the node. The node is usually within 40 km of the cell (99% within about 70 km). In the 5 \u00b0C warming level (`tlim5.0win0.25`), upstream has projections at only 2 of the 83 Black Sea grid nodes, so most of the Black Sea coast takes values from nodes outside the sea, up to 982 km away.\n\nThe tables have one row per location, scenario, confidence level, component, measure and year, so filter on all of them to get one projection. A missing projection is null in every quantile column.\n\n| Asset | URL |\n|---|---|\n| GeoParquet (points) | `https://s3-west.nrp-nautilus.io/public-coastal/ar6-sea-level-projections/regional-confidence.parquet`, `.../regional-confidence-novlm.parquet` |\n| H3 hex (resolution 8) | `https://s3-west.nrp-nautilus.io/public-coastal/ar6-sea-level-projections/coastal-band/hex/h0=*/data_0.parquet` |\n| STAC | `https://s3-west.nrp-nautilus.io/public-coastal/ar6-sea-level-projections/stac-collection.json` |\n\nThere is no PMTiles layer: the tables are point projections with many rows per location. For a map, draw the hex for one scenario, confidence level and year.\n\n### DuckDB\n\n```sql\n-- likely range of sea-level rise in 2100 under SSP2-4.5 at a tide gauge\nSELECT location_name, p17, p50, p83\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-coastal/ar6-sea-level-projections/regional-confidence.parquet')\nWHERE location_name = 'SAN_FRANCISCO' AND component = 'total' AND measure = 'values'\n  AND scenario = 'ssp245' AND confidence = 'medium' AND year = 2100;\n```\n\n### MapLibre GL JS\n\nThere are no vector tiles for this dataset. To map it, query the hex for one scenario, confidence level and year and draw the cells, for example with deck.gl's `H3HexagonLayer`:\n\n```js\n// rows: [{h8: \"<cell id as hex string>\", p50: <mm>}, ...] from\n//   SELECT h3_h3_to_string(h8) AS h8, p50 FROM read_parquet('.../coastal-band/hex/h0=*/data_0.parquet')\n//   WHERE scenario = 'ssp245' AND confidence = 'medium' AND year = 2100\nnew deck.H3HexagonLayer({\n  id: \"ar6-slr-2100\",\n  data: rows,\n  getHexagon: d => d.h8,\n  getFillColor: d => [Math.min(255, d.p50 / 4), 60, 160],\n  extruded: false,\n});\n```\n\n### Source and licence\n\nGarner, G. G., et al. (2021). IPCC AR6 Sea Level Projections. Version 20210809. Dataset accessed 2026-11-03 at https://doi.org/10.5281/zenodo.5914709, licensed CC-BY-4.0. Upstream requires users to cite Fox-Kemper, B., et al. (2021), Ocean, Cryosphere and Sea Level Change, in *Climate Change 2021: The Physical Science Basis*, pp. 1211-1362, https://doi.org/10.1017/9781009157896.011; Kopp, R. E., et al. (2023), The Framework for Assessing Changes To Sea-Level (FACTS) v1.0, *Geoscientific Model Development* 16, 7461-7489, https://doi.org/10.5194/gmd-16-7461-2023; and the data set. Works citing the projections should include this acknowledgement: \"We thank the projection authors for developing and making the sea-level rise projections available, multiple funding agencies for supporting the development of the projections, and the NASA Sea Level Change Team for developing and hosting the IPCC AR6 Sea Level Projection Tool.\"\n",
+  "_review": [
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
+    "providers: role [producer] for 'University of Queensland (Murray et al.)' is an AI guess \u2014 Murray et al. are the cited authors; the affiliation is inferred from the gs://uq-intertidal archive name.. Verify before flipping to _state: reviewed.",
+    "providers: role [host] for 'Nautilus / National Research Platform' is an AI guess \u2014 Assets are served from s3-west.nrp-nautilus.io; assumed to be the hosting platform.. Verify before flipping to _state: reviewed.",
+    "summaries.item_count: parts overlap, so this is max(part), not the sum \u2014 ar6-sea-level-projections/ 2243377730, coastal-typology-durr-2011/ 7429677, ecu/hex/ 2118095, mangrove-typology-v3/ 31185, meow-coastal-band/hex/ 8004403, tidal-flats-v1-1/ 1513086, tidal-flats-v1-2/hex/ 662533, tidal-marsh-2020/hex/ 68313. Sum them only once the parts are known to be disjoint."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-11-18T09:46:38+00:00",
+  "store_format": null
 }
