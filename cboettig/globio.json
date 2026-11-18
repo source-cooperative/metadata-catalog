@@ -1,26 +1,82 @@
 {
   "schema_version": 1,
-  "account_id": "cboettig",
-  "product_id": "globio",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "cboettig/globio",
   "title": "globio",
-  "description": "",
-  "keywords": [],
-  "created_at": "2026-11-09T05:30:05.008Z",
-  "updated_at": "2026-11-09T05:30:05.009Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 0,
-  "data_mode": null,
-  "mirrors": {
-    "aws-opendata-us-west-2": {
-      "connection_id": "aws-opendata-us-west-2",
-      "is_primary": true,
-      "prefix": "cboettig/globio/"
+  "description": "Global 10 arc-second (~300 m) maps of terrestrial Mean Species Abundance (MSA), a dimensionless 0\u20131 indicator of local biodiversity intactness, from PBL's GLOBIO 4 model. Covers a 2015 baseline and three 2050 SSP/RCP scenarios for overall, plant, and warm-blooded vertebrate MSA, provided as COGs and H3 res-8 hex parquet.",
+  "license": "CC-BY-4.0",
+  "keywords": [
+    "biodiversity",
+    "global-coverage",
+    "cloud-optimized-geotiff",
+    "h3",
+    "land-use",
+    "climate",
+    "conservation"
+  ],
+  "providers": [
+    {
+      "name": "PBL Netherlands Environmental Assessment Agency",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/cboettig/globio"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -180.0,
+          -90.0,
+          180.0,
+          90.0
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          null,
+          null
+        ]
+      ]
     }
   },
-  "object_count": 1298,
-  "objects_updated_at": "2026-11-12T07:25:43+00:00",
-  "total_bytes": 52750681986,
+  "assets": {
+    "data": {
+      "href": "https://data.source.coop/cboettig/globio/",
+      "type": "image/tiff; application=geotiff",
+      "title": "Dataset files (12 x .tif)",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/cboettig/globio/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/cboettig/globio",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "rel": "cite-as",
+      "href": "https://doi.org/10.1111/gcb.14848"
+    }
+  ],
   "exts": {
     "parquet": 1260,
     "json": 13,
@@ -28,6 +84,26 @@
     "tif": 12,
     "md": 1
   },
+  "visibility": "public",
+  "data_mode": null,
+  "product_id": "globio",
+  "object_count": 1298,
+  "objects_updated_at": "2026-11-12T07:25:43+00:00",
+  "updated_at": "2026-11-09T05:30:05.009Z",
+  "featured": 0,
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "created_at": "2026-11-09T05:30:05.008Z",
+  "mirrors": {
+    "aws-opendata-us-west-2": {
+      "connection_id": "aws-opendata-us-west-2",
+      "is_primary": true,
+      "prefix": "cboettig/globio/"
+    }
+  },
+  "total_bytes": 52750681986,
   "ext_bytes": {
     "tif": 38369060515,
     "parquet": 14380418966,
@@ -35,11 +111,10 @@
     "json": 66881,
     "md": 3141
   },
-  "store_format": null,
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "cataloged_at": "2026-11-16T11:31:32+00:00"
+  "disabled": false,
+  "account_id": "cboettig",
+  "readme": "## README.md\n# GLOBIO 4 \u2014 Terrestrial Mean Species Abundance (MSA)\n\nGlobal maps of **local terrestrial biodiversity intactness**, expressed as the **Mean Species\nAbundance (MSA)** indicator, from **GLOBIO 4** (Schipper et al. 2020). MSA is the mean, over\nspecies, of each species' present-day abundance relative to its abundance in an undisturbed\nreference situation (truncated at 1): **MSA = 1** \u2192 fully intact assemblage; **MSA \u2192 0** \u2192\nhighly degraded. Values are dimensionless in **[0, 1]**.\n\n- **Source:** PBL Netherlands Environmental Assessment Agency \u2014 GLOBIO 4.\n  Schipper, A.M., Hilbers, J.P., Meijer, J.R., et al. (2020) *Projecting terrestrial biodiversity\n  intactness with GLOBIO 4.* Global Change Biology 26:760\u2013771. https://doi.org/10.1111/gcb.14848\n- **License:** CC-BY-4.0.\n- **Native grid:** 10 arc-seconds (~300 m at the equator), EPSG:4326, Float32, NoData = `-999`.\n\n## Layers\n\nFour time/scenario slices \u00d7 three taxonomic layers:\n\n| Slice | Meaning | Year |\n|---|---|---|\n| `2015` | present-day baseline | 2015 |\n| `ssp1rcp26-2050` | Sustainability (SSP1 \u00d7 RCP2.6) | 2050 |\n| `ssp3rcp60-2050` | Regional rivalry (SSP3 \u00d7 RCP6.0) | 2050 |\n| `ssp5rcp85-2050` | Fossil-fuelled development (SSP5 \u00d7 RCP8.5) | 2050 |\n\n| Layer | Meaning |\n|---|---|\n| `overall` | Overall MSA (mean of plants, birds, mammals) |\n| `plants` | MSA for plants |\n| `wbvert` | MSA for warm-blooded vertebrates (birds + mammals) |\n\nEach `globio-msa-<slice>-<layer>` dataset provides a **COG** (`\u2026-cog.tif`) for visualization and an\n**H3 hex** parquet (`\u2026/hex/h0=*/data_0.parquet`, native resolution **8**, also carrying `h0`) for\nspatial joins and aggregation. Hex cells hold the **area-weighted mean** MSA of the pixels they\ncover (`mean` reducer \u2014 MSA is a bounded index, never summed).\n\n## Visualize the COG (titiler / MapLibre)\n\n```js\n// Continuous 0\u20131 colormap; nodata -999 is transparent\nconst cog = \"https://s3-west.nrp-nautilus.io/public-globio/globio-msa-2015-overall-cog.tif\";\nmap.addSource(\"msa\", {\n  type: \"raster\",\n  tiles: [`https://titiler.../cog/tiles/{z}/{x}/{y}?url=${encodeURIComponent(cog)}` +\n          `&rescale=0,1&colormap_name=rdylgn`],\n  tileSize: 256,\n});\nmap.addLayer({ id: \"msa\", type: \"raster\", source: \"msa\" });\n```\n\n## Query the hex (DuckDB)\n\n```sql\nINSTALL httpfs; LOAD httpfs; INSTALL h3 FROM community; LOAD h3;\n\n-- Mean intactness per H3 res-8 cell, 2015 baseline\nSELECT h8, msa\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-globio/globio-msa-2015-overall/hex/h0=*/data_0.parquet')\nLIMIT 10;\n\n-- 2015 \u2192 SSP5\u00d7RCP8.5 change per cell (join on the shared h8 key)\nSELECT b.h8, b.msa AS msa_2015, s.msa AS msa_ssp5, s.msa - b.msa AS delta\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-globio/globio-msa-2015-overall/hex/h0=*/data_0.parquet') b\nJOIN read_parquet('https://s3-west.nrp-nautilus.io/public-globio/globio-msa-ssp5rcp85-2050-overall/hex/h0=*/data_0.parquet') s\n  USING (h8);\n```\n\nMSA is a per-area intensity: to summarize over a region, take an **area-weighted mean** (H3 cells\nare ~equal-area per resolution, so a plain `AVG(msa)` is a good approximation), **never** `SUM`.\n",
+  "_state": "drafted",
+  "cataloged_at": "2026-11-18T09:36:20+00:00",
+  "store_format": null
 }
