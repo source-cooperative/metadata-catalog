@@ -1,51 +1,45 @@
 # Source Cooperative catalog — status
 
-_Updated 2026-11-18 10:00 UTC by the nightly pipeline._
+_Updated 2026-11-19 15:27 UTC by the nightly pipeline._
 
-**483 datasets cataloged**  ·  **84 queued for next run**  ·  last run handled **10**
+**484 datasets cataloged**  ·  **82 queued for next run**  ·  last run handled **2**
 
 ## Last run
 
-<details><summary>✅ drafted — 10 datasets</summary>
+<details><summary>✅ drafted — 2 datasets</summary>
 
-| repo                                                                       |
-| -------------------------------------------------------------------------- |
-| [cboettig/bio-oracle](https://source.coop/cboettig/bio-oracle)             |
-| [cboettig/coastal](https://source.coop/cboettig/coastal)                   |
-| [cboettig/coastwatch](https://source.coop/cboettig/coastwatch)             |
-| [cboettig/coral-reef-watch](https://source.coop/cboettig/coral-reef-watch) |
-| [cboettig/globio](https://source.coop/cboettig/globio)                     |
-| [cboettig/hawaii](https://source.coop/cboettig/hawaii)                     |
-| [cboettig/invasives](https://source.coop/cboettig/invasives)               |
-| [cboettig/nci-frontiers](https://source.coop/cboettig/nci-frontiers)       |
-| [cboettig/usfs](https://source.coop/cboettig/usfs)                         |
-| [opengeos/geolibre](https://source.coop/opengeos/geolibre)                 |
+| repo                                                                   |
+| ---------------------------------------------------------------------- |
+| [geoai-ucph/gvsm](https://source.coop/geoai-ucph/gvsm)                 |
+| [ocean-icechunks/pacioos](https://source.coop/ocean-icechunks/pacioos) |
 
 </details>
 
+
+> ⚠️ **Last run cancelled** (2026-11-19) — [run log](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/44496471981). Figures below are from the last *successful* run.
 
 ## Recent runs
 
 | run                                                                                                    | outcome | drafted | redraft | resets | failed | queued | cataloged |
 | ------------------------------------------------------------------------------------------------------ | ------- | ------: | ------: | -----: | -----: | -----: | --------: |
+| [2026-11-19](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/44496471981) | ❌       |       1 |       1 |        |        |     80 |       484 |
 | [2026-11-18](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/44275382462) | ✅       |      10 |         |        |        |     74 |       483 |
 | [2026-11-17](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/44054881796) | ✅       |      10 |         |        |        |     84 |       473 |
 | [2026-11-16](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/43847837542) | ✅       |      10 |         |        |        |     94 |       463 |
 | [2026-11-15](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/43697586957) | ✅       |         |       4 |        |        |      0 |       453 |
 | [2026-11-14](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/43578974621) | ✅       |         |      10 |        |        |      0 |       453 |
 | [2026-11-13](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/43400119725) | ✅       |         |      10 |        |        |      4 |       453 |
-| [2026-11-12](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/43190474411) | ✅       |         |      10 |        |        |     14 |       453 |
 
 ## Persistent failures
 
-**2 datasets failing**  ·  2 open issues  ·  oldest **56d**  ·  **1** ≥30d  ·  [all open issues](https://github.com/source-cooperative/metadata-catalog/issues?q=is%3Aissue+is%3Aopen+label%3Aprobe-failure)
+**2 datasets failing**  ·  2 open issues  ·  oldest **57d**  ·  **1** ≥30d  ·  [all open issues](https://github.com/source-cooperative/metadata-catalog/issues?q=is%3Aissue+is%3Aopen+label%3Aprobe-failure)
 
 <details><summary>the 2 open issues, oldest first</summary>
 
 | repo                                                                         | age (d) |                                                                     issue |
 | ---------------------------------------------------------------------------- | ------: | ------------------------------------------------------------------------: |
-| [alukach/firesmoke](https://source.coop/alukach/firesmoke)                   |      56 | [#166](https://github.com/source-cooperative/metadata-catalog/issues/166) |
-| [portolan/portolan-pipeline](https://source.coop/portolan/portolan-pipeline) |      13 | [#169](https://github.com/source-cooperative/metadata-catalog/issues/169) |
+| [alukach/firesmoke](https://source.coop/alukach/firesmoke)                   |      57 | [#166](https://github.com/source-cooperative/metadata-catalog/issues/166) |
+| [portolan/portolan-pipeline](https://source.coop/portolan/portolan-pipeline) |      14 | [#169](https://github.com/source-cooperative/metadata-catalog/issues/169) |
 
 </details>
 
@@ -146,10 +140,9 @@ _Each bucket links to its datasets under [Datasets per category](#datasets-per-c
 
 | group                       | agg count | agg bytes | count |    bytes |
 | --------------------------- | --------: | --------: | ----: | -------: |
-| [CATALOGED](#cataloged)     |       430 |    5.4 PB |       |          |
-|   drafted                   |           |           |   430 |   5.4 PB |
-| [BACKLOG](#backlog)         |         2 |    3.8 TB |       |          |
-|   not-yet-cataloged         |           |           |     1 |   3.8 TB |
+| [CATALOGED](#cataloged)     |       431 |    5.4 PB |       |          |
+|   drafted                   |           |           |   431 |   5.4 PB |
+| [BACKLOG](#backlog)         |         1 |     3.0 B |       |          |
 |   in s3, not yet seeded     |           |           |     1 |    3.0 B |
 | [SKIPPED](#skipped)         |       257 |    5.8 PB |       |          |
 |   unlisted                  |           |           |   199 |   5.8 PB |
@@ -166,7 +159,7 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 
 ### CATALOGED
 
-<details><summary>drafted — 430 datasets (5.4 PB)</summary>
+<details><summary>drafted — 431 datasets (5.4 PB)</summary>
 
 | repo                                                                                                                                                 |    bytes |
 | ---------------------------------------------------------------------------------------------------------------------------------------------------- | -------: |
@@ -214,6 +207,7 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 | [bkr/gmgi](https://source.coop/bkr/gmgi)                                                                                                             |   4.1 TB |
 | [ftw/benchmark-data](https://source.coop/ftw/benchmark-data)                                                                                         |   4.0 TB |
 | [bkr/imerg](https://source.coop/bkr/imerg)                                                                                                           |   4.0 TB |
+| [ocean-icechunks/pacioos](https://source.coop/ocean-icechunks/pacioos)                                                                               |   3.8 TB |
 | [bkr/gfs](https://source.coop/bkr/gfs)                                                                                                               |   3.8 TB |
 | [vida/google-microsoft-open-buildings](https://source.coop/vida/google-microsoft-open-buildings)                                                     |   3.6 TB |
 | [ismip/ismip7-ais-forcing](https://source.coop/ismip/ismip7-ais-forcing)                                                                             |   3.1 TB |
@@ -604,14 +598,6 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 </details>
 
 ### BACKLOG
-
-<details><summary>not-yet-cataloged — 1 dataset (3.8 TB)</summary>
-
-| repo                                                                   |  bytes |
-| ---------------------------------------------------------------------- | -----: |
-| [ocean-icechunks/pacioos](https://source.coop/ocean-icechunks/pacioos) | 3.8 TB |
-
-</details>
 
 <details><summary>in s3, not yet seeded — 1 dataset (3.0 B)</summary>
 
@@ -1041,7 +1027,7 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 
 </details>
 
-<details><summary>stale (catalog bytes ≠ S3; fixed by <code>make process-all</code>) — 86 datasets (3.6 PB)</summary>
+<details><summary>stale (catalog bytes ≠ S3; fixed by <code>make process-all</code>) — 84 datasets (2.8 PB)</summary>
 
 | repo                                                                                                                           | updated    |        catalog → S3 |
 | ------------------------------------------------------------------------------------------------------------------------------ | ---------- | ------------------: |
@@ -1052,7 +1038,6 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 | [dynamical/ecmwf-ifs-grib](https://source.coop/dynamical/ecmwf-ifs-grib)                                                       | 2026-11-15 | 296.6 TB → 309.9 TB |
 | [bkr/polar](https://source.coop/bkr/polar)                                                                                     | 2026-11-15 | 101.4 TB → 127.1 TB |
 | [bkr/dmi](https://source.coop/bkr/dmi)                                                                                         | 2026-11-15 |   70.2 TB → 85.5 TB |
-| [bkr/geo](https://source.coop/bkr/geo)                                                                                         | 2026-11-15 | 480.1 TB → 517.6 TB |
 | [dynamical/noaa-gefs-analysis](https://source.coop/dynamical/noaa-gefs-analysis)                                               | 2026-11-15 |     1.1 TB → 1.1 TB |
 | [dynamical/noaa-mrms-conus-analysis-hourly](https://source.coop/dynamical/noaa-mrms-conus-analysis-hourly)                     | 2026-11-15 | 259.2 GB → 259.7 GB |
 | [dynamical/noaa-gfs-analysis](https://source.coop/dynamical/noaa-gfs-analysis)                                                 | 2026-11-15 | 684.3 GB → 686.6 GB |
@@ -1061,7 +1046,6 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 | [bkr/mrms](https://source.coop/bkr/mrms)                                                                                       | 2026-11-15 |     7.7 TB → 7.7 TB |
 | [bkr/gmgi](https://source.coop/bkr/gmgi)                                                                                       | 2026-11-15 |     4.1 TB → 4.1 TB |
 | [dynamical/asos-parquet](https://source.coop/dynamical/asos-parquet)                                                           | 2026-11-15 |   20.4 GB → 20.4 GB |
-| [geoai-ucph/gvsm](https://source.coop/geoai-ucph/gvsm)                                                                         | 2026-11-15 | 137.4 TB → 282.2 TB |
 | [dynamical/noaa-hrrr-forecast-48-hour](https://source.coop/dynamical/noaa-hrrr-forecast-48-hour)                               | 2026-11-15 |   13.3 TB → 13.3 TB |
 | [ausantarctic/ghrsst-mur-v2](https://source.coop/ausantarctic/ghrsst-mur-v2)                                                   | 2026-11-15 |     4.3 TB → 4.3 TB |
 | [dynamical/ecmwf-aifs-single-forecast](https://source.coop/dynamical/ecmwf-aifs-single-forecast)                               | 2026-11-14 |     2.2 TB → 2.2 TB |
