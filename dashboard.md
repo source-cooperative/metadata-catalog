@@ -1,45 +1,67 @@
 # Source Cooperative catalog — status
 
-_Updated 2026-11-19 15:27 UTC by the nightly pipeline._
+_Updated 2026-11-20 12:20 UTC by the nightly pipeline._
 
-**484 datasets cataloged**  ·  **82 queued for next run**  ·  last run handled **2**
+**484 datasets cataloged**  ·  **71 queued for next run**  ·  last run handled **10**
 
 ## Last run
 
-<details><summary>✅ drafted — 2 datasets</summary>
+<details><summary>✅ drafted — 8 datasets</summary>
 
-| repo                                                                   |
-| ---------------------------------------------------------------------- |
-| [geoai-ucph/gvsm](https://source.coop/geoai-ucph/gvsm)                 |
-| [ocean-icechunks/pacioos](https://source.coop/ocean-icechunks/pacioos) |
+| repo                                                                                           |
+| ---------------------------------------------------------------------------------------------- |
+| [agentmorris/lila-wildlife](https://source.coop/agentmorris/lila-wildlife)                     |
+| [bkr/dmi](https://source.coop/bkr/dmi)                                                         |
+| [bkr/icon](https://source.coop/bkr/icon)                                                       |
+| [bkr/ifs](https://source.coop/bkr/ifs)                                                         |
+| [bkr/metoffice](https://source.coop/bkr/metoffice)                                             |
+| [bkr/polar](https://source.coop/bkr/polar)                                                     |
+| [dynamical/ecmwf-ifs-grib](https://source.coop/dynamical/ecmwf-ifs-grib)                       |
+| [dynamical/noaa-gefs-forecast-35-day](https://source.coop/dynamical/noaa-gefs-forecast-35-day) |
+
+</details>
+
+<details><summary>⚠️ probe failed (issue filed) — 1 dataset</summary>
+
+| repo                                                         | why             |
+| ------------------------------------------------------------ | --------------- |
+| [ftw/benchmark-data](https://source.coop/ftw/benchmark-data) | all_failed .tif |
+
+</details>
+
+<details><summary>❌ step failed — 1 dataset</summary>
+
+| repo                                                                   | why                                              |
+| ---------------------------------------------------------------------- | ------------------------------------------------ |
+| [dynamical/dwd-icon-grib](https://source.coop/dynamical/dwd-icon-grib) | error step=compose — backed off until 2026-11-21 |
 
 </details>
 
 
-> ⚠️ **Last run cancelled** (2026-11-19) — [run log](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/44496471981). Figures below are from the last *successful* run.
+See [open probe-failure issues](https://github.com/source-cooperative/metadata-catalog/issues?q=is%3Aissue+is%3Aopen+label%3Aprobe-failure).
 
 ## Recent runs
 
 | run                                                                                                    | outcome | drafted | redraft | resets | failed | queued | cataloged |
 | ------------------------------------------------------------------------------------------------------ | ------- | ------: | ------: | -----: | -----: | -----: | --------: |
+| [2026-11-20](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/44710124510) | ✅       |         |       8 |        |      1 |     61 |       484 |
 | [2026-11-19](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/44496471981) | ❌       |       1 |       1 |        |        |     80 |       484 |
 | [2026-11-18](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/44275382462) | ✅       |      10 |         |        |        |     74 |       483 |
 | [2026-11-17](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/44054881796) | ✅       |      10 |         |        |        |     84 |       473 |
 | [2026-11-16](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/43847837542) | ✅       |      10 |         |        |        |     94 |       463 |
 | [2026-11-15](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/43697586957) | ✅       |         |       4 |        |        |      0 |       453 |
 | [2026-11-14](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/43578974621) | ✅       |         |      10 |        |        |      0 |       453 |
-| [2026-11-13](https://github.com/source-cooperative/metadata-catalog-pipeline/actions/runs/43400119725) | ✅       |         |      10 |        |        |      4 |       453 |
 
 ## Persistent failures
 
-**2 datasets failing**  ·  2 open issues  ·  oldest **57d**  ·  **1** ≥30d  ·  [all open issues](https://github.com/source-cooperative/metadata-catalog/issues?q=is%3Aissue+is%3Aopen+label%3Aprobe-failure)
+**2 datasets failing**  ·  2 open issues  ·  oldest **58d**  ·  **1** ≥30d  ·  [all open issues](https://github.com/source-cooperative/metadata-catalog/issues?q=is%3Aissue+is%3Aopen+label%3Aprobe-failure)
 
 <details><summary>the 2 open issues, oldest first</summary>
 
 | repo                                                                         | age (d) |                                                                     issue |
 | ---------------------------------------------------------------------------- | ------: | ------------------------------------------------------------------------: |
-| [alukach/firesmoke](https://source.coop/alukach/firesmoke)                   |      57 | [#166](https://github.com/source-cooperative/metadata-catalog/issues/166) |
-| [portolan/portolan-pipeline](https://source.coop/portolan/portolan-pipeline) |      14 | [#169](https://github.com/source-cooperative/metadata-catalog/issues/169) |
+| [alukach/firesmoke](https://source.coop/alukach/firesmoke)                   |      58 | [#166](https://github.com/source-cooperative/metadata-catalog/issues/166) |
+| [portolan/portolan-pipeline](https://source.coop/portolan/portolan-pipeline) |      15 | [#169](https://github.com/source-cooperative/metadata-catalog/issues/169) |
 
 </details>
 
@@ -1027,22 +1049,15 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 
 </details>
 
-<details><summary>stale (catalog bytes ≠ S3; fixed by <code>make process-all</code>) — 84 datasets (2.8 PB)</summary>
+<details><summary>stale (catalog bytes ≠ S3; fixed by <code>make process-all</code>) — 74 datasets (1.1 PB)</summary>
 
 | repo                                                                                                                           | updated    |        catalog → S3 |
 | ------------------------------------------------------------------------------------------------------------------------------ | ---------- | ------------------: |
-| [bkr/ifs](https://source.coop/bkr/ifs)                                                                                         | 2026-11-15 | 121.2 TB → 130.4 TB |
 | [bkr/precipradar](https://source.coop/bkr/precipradar)                                                                         | 2026-11-15 |     7.7 TB → 7.7 TB |
-| [bkr/icon](https://source.coop/bkr/icon)                                                                                       | 2026-11-15 | 563.9 TB → 597.7 TB |
-| [dynamical/dwd-icon-grib](https://source.coop/dynamical/dwd-icon-grib)                                                         | 2026-11-15 |   71.6 TB → 73.9 TB |
-| [dynamical/ecmwf-ifs-grib](https://source.coop/dynamical/ecmwf-ifs-grib)                                                       | 2026-11-15 | 296.6 TB → 309.9 TB |
-| [bkr/polar](https://source.coop/bkr/polar)                                                                                     | 2026-11-15 | 101.4 TB → 127.1 TB |
-| [bkr/dmi](https://source.coop/bkr/dmi)                                                                                         | 2026-11-15 |   70.2 TB → 85.5 TB |
 | [dynamical/noaa-gefs-analysis](https://source.coop/dynamical/noaa-gefs-analysis)                                               | 2026-11-15 |     1.1 TB → 1.1 TB |
 | [dynamical/noaa-mrms-conus-analysis-hourly](https://source.coop/dynamical/noaa-mrms-conus-analysis-hourly)                     | 2026-11-15 | 259.2 GB → 259.7 GB |
 | [dynamical/noaa-gfs-analysis](https://source.coop/dynamical/noaa-gfs-analysis)                                                 | 2026-11-15 | 684.3 GB → 686.6 GB |
 | [bkr/geos](https://source.coop/bkr/geos)                                                                                       | 2026-11-15 |   39.1 TB → 39.3 TB |
-| [bkr/metoffice](https://source.coop/bkr/metoffice)                                                                             | 2026-11-15 |   80.2 TB → 82.7 TB |
 | [bkr/mrms](https://source.coop/bkr/mrms)                                                                                       | 2026-11-15 |     7.7 TB → 7.7 TB |
 | [bkr/gmgi](https://source.coop/bkr/gmgi)                                                                                       | 2026-11-15 |     4.1 TB → 4.1 TB |
 | [dynamical/asos-parquet](https://source.coop/dynamical/asos-parquet)                                                           | 2026-11-15 |   20.4 GB → 20.4 GB |
@@ -1051,7 +1066,6 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 | [dynamical/ecmwf-aifs-single-forecast](https://source.coop/dynamical/ecmwf-aifs-single-forecast)                               | 2026-11-14 |     2.2 TB → 2.2 TB |
 | [dynamical/noaa-gfs-forecast](https://source.coop/dynamical/noaa-gfs-forecast)                                                 | 2026-11-14 |   30.0 TB → 30.1 TB |
 | [portolan-mirrors/firms-catalog](https://source.coop/portolan-mirrors/firms-catalog)                                           | 2026-11-14 |   27.2 GB → 27.2 GB |
-| [ftw/benchmark-data](https://source.coop/ftw/benchmark-data)                                                                   | 2026-11-14 |     2.1 TB → 4.0 TB |
 | [alukach/firesmoke](https://source.coop/alukach/firesmoke)                                                                     | 2026-11-14 |     1.2 GB → 1.5 GB |
 | [root-geospatial/flight-tracks](https://source.coop/root-geospatial/flight-tracks)                                             | 2026-11-14 |     1.7 TB → 1.7 TB |
 | [walkthru-earth/indices](https://source.coop/walkthru-earth/indices)                                                           | 2026-11-14 | 815.2 GB → 830.0 GB |
@@ -1059,7 +1073,6 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 | [bkr/aoml](https://source.coop/bkr/aoml)                                                                                       | 2026-11-14 | 358.8 GB → 359.1 GB |
 | [source/metadata-catalog](https://source.coop/source/metadata-catalog)                                                         | 2026-11-14 | 825.3 KB → 850.8 KB |
 | [dynamical/ecmwf-ifs-ens-forecast-15-day-0-25-degree](https://source.coop/dynamical/ecmwf-ifs-ens-forecast-15-day-0-25-degree) | 2026-11-14 |   52.9 TB → 53.3 TB |
-| [dynamical/noaa-gefs-forecast-35-day](https://source.coop/dynamical/noaa-gefs-forecast-35-day)                                 | 2026-11-14 | 217.8 TB → 218.4 TB |
 | [tge-labs/s2-stac-geoparquet](https://source.coop/tge-labs/s2-stac-geoparquet)                                                 | 2026-11-14 |   62.8 GB → 63.0 GB |
 | [nlebovits/phl-housing-demo](https://source.coop/nlebovits/phl-housing-demo)                                                   | 2026-11-13 |     1.2 GB → 1.4 GB |
 | [ftw/harmonized-field-data](https://source.coop/ftw/harmonized-field-data)                                                     | 2026-11-13 | 368.0 GB → 368.1 GB |
@@ -1111,7 +1124,6 @@ _Each entry expands to the datasets counted in it (collapsed by default)._
 | [rseg/sentinel1-lfmc](https://source.coop/rseg/sentinel1-lfmc)                                                                 | 2026-11-11 | 170.9 GB → 171.4 GB |
 | [giswqs/opengeos](https://source.coop/giswqs/opengeos)                                                                         | 2026-11-10 |   21.3 GB → 25.0 GB |
 | [planet/disasterdata](https://source.coop/planet/disasterdata)                                                                 | 2026-11-10 | 316.6 GB → 326.4 GB |
-| [agentmorris/lila-wildlife](https://source.coop/agentmorris/lila-wildlife)                                                     | 2026-11-09 |   48.1 TB → 49.9 TB |
 | [ftw/ftw-grid](https://source.coop/ftw/ftw-grid)                                                                               | 2026-11-09 |   17.8 GB → 33.0 GB |
 | [tge-labs/worldtensor](https://source.coop/tge-labs/worldtensor)                                                               | 2026-11-08 | 105.7 GB → 105.7 GB |
 | [mapterhorn/mapterhorn](https://source.coop/mapterhorn/mapterhorn)                                                             | 2026-10-28 |   30.4 TB → 29.5 TB |
