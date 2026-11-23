@@ -1,26 +1,161 @@
 {
   "schema_version": 1,
-  "account_id": "ftw",
-  "product_id": "global-data",
-  "title": "Global Fields of The World (FTW)",
-  "description": "Sponsored by Taylor Geospatial, the Global Fields of The World (FTW) dataset provides global-scale estimates of agricultural fields for 2024\u20132025. The dataset includes both model inputs (Sentinel-2\u2013derived median composites in COG and Zarr v3 formats) and outputs (in Zarr, GeoParquet and PMTiles).",
-  "keywords": [],
-  "created_at": "2026-02-04T19:13:13.656Z",
-  "updated_at": "2026-04-23T15:33:49.465Z",
-  "visibility": "public",
-  "disabled": false,
-  "featured": 1,
-  "data_mode": null,
-  "mirrors": {
-    "aws-opendata-us-west-2": {
-      "connection_id": "aws-opendata-us-west-2",
-      "is_primary": true,
-      "prefix": "tge-labs/ftw-global-data/"
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "id": "ftw/global-data",
+  "title": "Fields of the World",
+  "description": "Root catalog for the Fields of the World (FTW) project, linking to four published catalogs: global field boundary predictions (1st and 2nd Edition, 10 m resolution from Sentinel-2), machine-learning benchmark chips, and harmonized government and research field boundary datasets in the fiboa schema. The root itself holds only metadata; the global predictions in this product cover 2024\u20132025.",
+  "license": "CC-BY-4.0",
+  "keywords": [
+    "agriculture",
+    "field-boundaries",
+    "parcels",
+    "crops",
+    "land-use",
+    "machine-learning",
+    "benchmark",
+    "fiboa",
+    "sentinel-2",
+    "satellite-imagery",
+    "global-coverage",
+    "remote-sensing",
+    "crop-classification"
+  ],
+  "providers": [
+    {
+      "name": "Fields of the World",
+      "description": "The collaboration that harmonizes, builds and publishes the datasets this catalog links to. Each collection names the organization that produced its own data.",
+      "roles": [
+        "producer",
+        "processor"
+      ],
+      "url": "https://fieldsofthe.world"
+    },
+    {
+      "name": "Source Cooperative",
+      "description": "Hosts the published catalogs and their data under the ftw organization.",
+      "roles": [
+        "host"
+      ],
+      "url": "https://source.coop/ftw"
+    },
+    {
+      "name": "Taylor Geospatial",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Microsoft AI for Good Research Lab",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "Fields of the World",
+      "roles": [
+        "processor",
+        "licensor"
+      ]
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -180.0,
+          -56.9317131,
+          180.0000539,
+          83.748345
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2024-01-01T00:00:00",
+          "2025-01-01T00:00:00"
+        ]
+      ]
     }
   },
-  "object_count": 714561,
-  "objects_updated_at": "2026-11-20T17:41:19+00:00",
-  "total_bytes": 369002960362025,
+  "assets": {
+    "features/zarr/alpha/global.zarr": {
+      "href": "https://data.source.coop/ftw/global-data/features/zarr/alpha/global.zarr/",
+      "type": "application/vnd+zarr",
+      "title": "features/zarr/alpha/global.zarr/ (1 \u00d7 .zarr)",
+      "roles": [
+        "data"
+      ],
+      "bbox": [
+        -180.0,
+        -56.9317131,
+        180.0000539,
+        83.748345
+      ]
+    },
+    "predictions/zarr/alpha/global.zarr": {
+      "href": "https://data.source.coop/ftw/global-data/predictions/zarr/alpha/global.zarr/",
+      "type": "application/vnd+zarr",
+      "title": "predictions/zarr/alpha/global.zarr/ (1 \u00d7 .zarr)",
+      "roles": [
+        "data"
+      ],
+      "bbox": [
+        -180.0,
+        -56.9317131,
+        180.0000539,
+        83.748345
+      ]
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/ftw/global-data/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/ftw/global-data",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "rel": "describedby",
+      "href": "./README.md",
+      "type": "text/markdown",
+      "title": "Catalog README"
+    },
+    {
+      "rel": "agents",
+      "href": "./AGENTS.md",
+      "type": "text/markdown",
+      "title": "Catalog agent guide"
+    },
+    {
+      "rel": "llms",
+      "href": "./llms.txt",
+      "type": "text/markdown",
+      "title": "Agent/LLM usage guide"
+    },
+    {
+      "rel": "icon",
+      "href": "./_assets/ftw-logo.svg",
+      "type": "image/svg+xml",
+      "title": "Fields of the World"
+    },
+    {
+      "rel": "vcs",
+      "href": "https://github.com/fieldsoftheworld/ftw-data-catalog",
+      "title": "Source repository"
+    },
+    {
+      "rel": "issues",
+      "href": "https://github.com/fieldsoftheworld/ftw-data-catalog/issues",
+      "title": "Issue tracker"
+    }
+  ],
+  "disabled": false,
   "exts": {
     "": 564993,
     "tif": 90928,
@@ -35,6 +170,28 @@
     "jpg": 2,
     "html": 1
   },
+  "updated_at": "2026-04-23T15:33:49.465Z",
+  "objects_updated_at": "2026-11-20T17:41:19+00:00",
+  "mirrors": {
+    "aws-opendata-us-west-2": {
+      "connection_id": "aws-opendata-us-west-2",
+      "is_primary": true,
+      "prefix": "tge-labs/ftw-global-data/"
+    }
+  },
+  "created_at": "2026-02-04T19:13:13.656Z",
+  "product_id": "global-data",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true,
+    "alias_prefix": "tge-labs/ftw-global-data/"
+  },
+  "featured": 1,
+  "data_mode": null,
+  "account_id": "ftw",
+  "visibility": "public",
+  "object_count": 714561,
+  "total_bytes": 369002960362025,
   "ext_bytes": {
     "": 211220501375442,
     "tif": 153280930036498,
@@ -49,12 +206,13 @@
     "yaml": 27509,
     "svg": 26993
   },
-  "store_format": "zarr",
-  "_state": "seed",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true,
-    "alias_prefix": "tge-labs/ftw-global-data/"
-  },
-  "cataloged_at": "2026-11-23T11:04:56+00:00"
+  "readme": "## README.md\n# Fields of the World\n\nThe entry point to every [Fields of the World](https://fieldsofthe.world)\n(FTW) dataset.\n\nFields of the World is an open collaboration on agricultural field boundaries.\nIt harmonizes the field boundary data that governments and research\ninstitutions already publish, cuts machine-learning benchmark data from it,\nand publishes global field boundary predictions made with field boundary\ndelineation models.\n\nThis catalog holds no data and no collections of its own. It is metadata: a\nroot that links to four published catalogs. Three are maintained in their own\nrepository and published as their own [Source Cooperative](https://source.coop)\nproduct; the fourth \u2014 the 1st Edition of the global predictions \u2014 is kept as\na sub-catalog of this same repository and product, because that is where it\nhas always been published.\n\n- Catalog root: <https://data.source.coop/ftw/global-data/catalog.json>\n- Browse it: [Portolan data browser](https://browser.portolan-sdi.org/#/external/data.source.coop/ftw/global-data/catalog.json)\n- For agents: [AGENTS.md](https://data.source.coop/ftw/global-data/AGENTS.md)\n- Catalog source and corrections: <https://github.com/fieldsoftheworld/ftw-data-catalog>\n\n## What is here\n\n| Catalog | What it holds |\n|---|---|\n| [Fields of the World \u2014 Global Data (1st Edition)](./first-edition/catalog.json) | The original global field boundary predictions and prediction-quality layers at 10 m resolution. Superseded by the 2nd Edition below; kept published and citable at its existing URLs. |\n| [Fields of the World \u2014 Global Data](https://data.source.coop/ftw/global-data-2e/catalog.json) | The 2nd Edition of the global field boundary predictions and prediction-quality layers at 10 m resolution, as per-year vector and raster collections. The current release. |\n| [Fields of the World Benchmark Data](https://data.source.coop/ftw/benchmark-data/catalog.json) | Training and evaluation chips for field boundary delineation models: Sentinel-2 imagery paired with instance and semantic label masks, in train, validation and test splits. One collection per country or region. |\n| [Harmonized Field Boundary Data](https://data.source.coop/ftw/harmonized-field-data/catalog.json) | The source field boundary datasets, converted to one schema: boundaries published by government bodies from their agricultural subsidy registers (IACS/LPIS), cadastres, statistics and mapping programmes, and by research institutions, harmonized into the [fiboa](https://fiboa.org/) schema with [fiboa-cli](https://github.com/fiboa/cli) and republished as cloud-native GeoParquet and PMTiles. |\n\n### Fields of the World \u2014 Global Data (1st Edition and 2nd Edition)\n\nModel predictions of field boundaries, worldwide, from Sentinel-2 mosaics.\nThe 1st Edition is the original release, kept exactly where it was already\npublished \u2014 reachable from this root as [`./first-edition/catalog.json`](./first-edition/catalog.json),\nand still linked with a `rel: \"latest-version\"` to the 2nd Edition catalog\nbelow it in its own metadata. The 2nd Edition holds per-year vector\ncollections of predicted field boundaries and per-year raster collections of\nfield and boundary probability, and is the catalog to start from for current\nwork.\n\nThese are predictions of remote-sensing field units. They are not cadastral\nor legal parcels, and they are not a land-tenure product. Read each edition's\nand each year collection's own provenance, processing recipe and asset\ninventory, because the recipe changed between editions and between years\nwithin the 2nd Edition.\n\nThe 1st Edition's metadata is maintained in this repository\n(<https://github.com/fieldsoftheworld/ftw-data-catalog>), at\n[`catalog/first-edition/`](./first-edition/). **The eventual plan is to move\nthat 1st Edition content into the 2nd Edition's own repository,\n[ftw-global-data-catalog](https://github.com/fieldsoftheworld/ftw-global-data-catalog),\nso a reader has one repository for the whole Global Data history; that has\nnot happened yet, and this README will be updated when it does.** The 2nd\nEdition's own metadata and processing pipeline already live there.\n\n### Fields of the World Benchmark Data\n\nTraining and evaluation data for field boundary delineation models. Each\ncollection is one country or region, cut from a collection of the harmonized\nfield boundary data below, with Sentinel-2 image chips paired with instance\nand semantic label masks and split into train, validation and test.\nCollections are grouped by the harmonized source collection they were cut\nfrom.\n\nMetadata and the build recipes:\n<https://github.com/fieldsoftheworld/benchmark-data-catalog>.\n\n### Harmonized Field Boundary Data\n\nOne collection per source dataset, partitioned by the year the boundaries\nrepresent, so every edition of one dataset can be queried at once and the\nnewest edition of every dataset can be queried together. Each collection\nrecords how its boundaries came to exist \u2014 `declared` by farmers in a subsidy\napplication or the register built on those declarations, `mapped` by an\nauthority from imagery or survey, or `inferred` from imagery by a model \u2014 so a\nreader can keep to one kind.\n\nMetadata and the publication tooling:\n<https://github.com/fieldsoftheworld/harmonized-field-data-catalog>.\nThis catalog supersedes <https://source.coop/fiboa/data>.\n\n## License\n\nThis root catalog carries metadata only, published under\n[CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/).\n\n**The license of the data is declared per collection, and that declaration is\nauthoritative.** The four child catalogs do not share one license:\n\n- Global Data collections (both editions) are published under\n  [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/).\n- Benchmark Data collections carry a license per collection, inherited from\n  the harmonized source they were cut from.\n- Harmonized Field Boundary Data collections carry the license of their source\n  data provider, which differs by provider \u2014 CC0-1.0, CC-BY-4.0 and others.\n\nCheck the `license` field of the collection you intend to use, and attribute\nthe providers it names.\n\n## Provenance\n\nThis is the official publication of the Fields of the World datasets, not a\nmirror. The harmonized collections are conversions of data published by the\nresponsible public bodies and research institutions, and each one links back\nto its source with a `via` link and names that body in its `providers`.\n\nResponsibility is declared per collection through STAC `providers`, and that\ndeclaration is authoritative. The producers differ: the Global Data\npredictions name [Taylor Geospatial](https://taylorgeospatial.org/) and the\n[Microsoft AI for Good Research Lab](https://www.microsoft.com/en-us/research/group/ai-for-good-research-lab/);\nharmonized and benchmark collections name the government body or research\ninstitution that produced the source boundaries, with Fields of the World as\n`processor`. Hosting is [Source Cooperative](https://source.coop/ftw).\n\n## Access\n\nNothing in this root catalog is a data file, so there is nothing here to\nquery. Start from a child catalog. To walk this tree:\n\n```bash\ncurl -s https://data.source.coop/ftw/global-data/catalog.json | python3 -c '\nimport json, sys\nfor link in json.load(sys.stdin)[\"links\"]:\n    if link[\"rel\"] == \"child\":\n        print(link[\"title\"], \"->\", link[\"href\"])'\n```\n\nOutput, run 2026-11-20 against the catalog in this repository:\n\n```\nFields of the World \u2014 Global Data (1st Edition) -> ./first-edition/catalog.json\nFields of the World \u2014 Global Data -> https://data.source.coop/ftw/global-data-2e/catalog.json\nFields of the World Benchmark Data -> https://data.source.coop/ftw/benchmark-data/catalog.json\nHarmonized Field Boundary Data -> https://data.source.coop/ftw/harmonized-field-data/catalog.json\n```\n\nEach child catalog's own `AGENTS.md` carries the queries for its data. See\n[AGENTS.md](https://data.source.coop/ftw/global-data/AGENTS.md) in this\ncatalog for where those are.\n\n## Corrections\n\nA wrong license, a broken link, or a dataset that should be listed here: open\nan issue or a pull request at\n<https://github.com/fieldsoftheworld/ftw-data-catalog>. A correction to a\ndataset itself belongs in that dataset's own repository, linked above.\n",
+  "_review": [
+    "license: The root catalog metadata and the Global Data collections are CC-BY-4.0. Benchmark and harmonized collections carry per-collection licenses inherited from their source providers.",
+    "providers: role [processor, licensor] for 'Fields of the World' is an AI guess \u2014 README names Fields of the World as processor for harmonized and benchmark collections; licensor role assumed from it publishing the catalog under CC-BY-4.0.. Verify before flipping to _state: reviewed."
+  ],
+  "_state": "drafted",
+  "cataloged_at": "2026-11-23T11:34:13+00:00",
+  "_source_format": "stac",
+  "store_format": null
 }
