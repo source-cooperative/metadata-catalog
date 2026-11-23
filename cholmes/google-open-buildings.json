@@ -1,22 +1,165 @@
 {
   "schema_version": 1,
-  "account_id": "cholmes",
-  "product_id": "google-open-buildings",
-  "title": "Google Open Buildings",
-  "description": "Google's Open Buildings is an open access dataset containing the geometry of buildings across most of Africa, South Asia and South-East Asia. This version of the dataset is transformed to be partitioned by admin 1 boundaries and available in cloud-native geospatial formats (PMTiles, GeoParquet). Note that https://source.coop/repositories/vida/google-microsoft-osm-open-buildings/description is likely a better source for this data.\n\nThere is no commitment to keep this dataset up to date with the latest releases. The code used to do the processing can be found at https://github.com/opengeos/open-buildings",
+  "type": "Collection",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/table/v1.2.0/schema.json"
+  ],
+  "id": "cholmes/google-open-buildings",
+  "title": "Google Open Buildings (Cloud-Native Geo distribution)",
+  "description": "A copy of Google's Open Buildings dataset (building footprint polygons with confidence scores and Plus Codes) covering Africa, South Asia, South-East Asia, and Latin America and the Caribbean, repackaged into cloud-native geospatial formats (GeoParquet, FlatGeobuf, PMTiles). Multi-polygons were split into single polygons and country_iso and quadkey attributes were added.",
+  "license": "CC-BY-4.0",
   "keywords": [
-    "building footprints",
+    "building-footprints",
     "vector",
     "geoparquet",
     "pmtiles",
-    "segmentation"
+    "segmentation",
+    "machine-learning",
+    "remote-sensing",
+    "satellite-imagery",
+    "land-use"
   ],
-  "created_at": "2024-06-26T16:59:35+00:00",
-  "updated_at": "2025-08-21T16:39:55.567Z",
-  "visibility": "public",
+  "providers": [
+    {
+      "description": "Google Research derived the data from high-resolution satellite imagery",
+      "name": "Google",
+      "roles": [
+        "producer",
+        "licensor"
+      ],
+      "url": "https://sites.research.google/open-buildings/"
+    },
+    {
+      "description": "Processed from gzipped CSV's to GeoParquet and PMTiles",
+      "name": "Chris Holmes",
+      "roles": [
+        "processor"
+      ],
+      "url": "https://twitter.com/opencholmes"
+    },
+    {
+      "description": "Provided cloud storage",
+      "name": "Source Cooperative",
+      "roles": [
+        "host"
+      ]
+    },
+    {
+      "name": "Google Research",
+      "roles": [
+        "producer",
+        "licensor"
+      ]
+    },
+    {
+      "name": "Chris Holmes",
+      "roles": [
+        "processor"
+      ]
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -118.32803344726562,
+          -55.97568130493164,
+          141.01951599121094,
+          37.53124237060547
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2023-05-30T00:00:00Z",
+          "2023-05-30T00:00:00Z"
+        ]
+      ]
+    }
+  },
+  "summaries": {
+    "item_count": 68074332
+  },
+  "assets": {
+    "fgb-s2": {
+      "href": "https://data.source.coop/cholmes/google-open-buildings/fgb-s2/",
+      "type": "application/flatgeobuf",
+      "title": "fgb-s2",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "area_in_meters",
+          "type": "Real"
+        },
+        {
+          "name": "confidence",
+          "type": "Real"
+        },
+        {
+          "name": "full_plus_code",
+          "type": "String",
+          "description": "[spatial_index] Plus Code (Open Location Code) for the centre of each building"
+        }
+      ],
+      "description": "5 files sampled for this table"
+    },
+    "fgb-s2/split buildings": {
+      "href": "https://data.source.coop/cholmes/google-open-buildings/fgb-s2/split buildings/",
+      "type": "application/flatgeobuf",
+      "title": "fgb-s2/split buildings",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "area_in_meters",
+          "type": "Real"
+        },
+        {
+          "name": "confidence",
+          "type": "Real"
+        },
+        {
+          "name": "full_plus_code",
+          "type": "String"
+        }
+      ],
+      "description": "5 files sampled for this table"
+    }
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://source.coop/cholmes/google-open-buildings/collection.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "via",
+      "href": "https://source.coop/cholmes/google-open-buildings",
+      "title": "Source Cooperative product page"
+    },
+    {
+      "href": "https://data.source.coop/cholmes/google-open-buildings/google-open-buildings.pmtiles",
+      "rel": "pmtiles",
+      "title": "PMTiles",
+      "type": "application/vnd.pmtiles",
+      "pmtiles:layers": [
+        "buildings"
+      ]
+    },
+    {
+      "rel": "cite-as",
+      "href": "https://doi.org/10.48550/arXiv.2107.12283"
+    }
+  ],
   "disabled": false,
-  "featured": 0,
-  "data_mode": null,
+  "product_id": "google-open-buildings",
+  "total_bytes": 1169382315065,
+  "updated_at": "2025-08-21T16:39:55.567Z",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "connection_id": "aws-opendata-us-west-2",
@@ -24,31 +167,41 @@
       "prefix": "google-research-open-buildings/"
     }
   },
-  "object_count": 2294,
-  "objects_updated_at": "2023-09-28T00:43:42+00:00",
-  "total_bytes": 1038802029492,
   "exts": {
     "parquet": 1916,
     "fgb": 370,
-    "": 5,
+    "": 6,
+    "pmtiles": 2,
     "ds_store": 1,
-    "wal": 1,
-    "pmtiles": 1
+    "md": 1,
+    "json": 1,
+    "wal": 1
   },
-  "ext_bytes": {
-    "fgb": 486978321120,
-    "parquet": 447354719447,
-    "pmtiles": 104468982777,
-    "ds_store": 6148,
-    "": 0,
-    "wal": 0
-  },
-  "store_format": null,
-  "_state": "seed",
+  "data_mode": null,
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true,
     "alias_prefix": "google-research-open-buildings/"
   },
-  "cataloged_at": "2026-11-23T11:04:40+00:00"
+  "objects_updated_at": "2023-10-13T19:55:08+00:00",
+  "account_id": "cholmes",
+  "object_count": 2298,
+  "visibility": "public",
+  "created_at": "2024-06-26T16:59:35+00:00",
+  "ext_bytes": {
+    "fgb": 486978321120,
+    "parquet": 447354719447,
+    "pmtiles": 235049258122,
+    "md": 7696,
+    "ds_store": 6148,
+    "json": 2532,
+    "": 0,
+    "wal": 0
+  },
+  "featured": 0,
+  "readme": "## README.md\n# Google Open Buildings (Cloud-Native Geo distribution)\n\nThis dataset is a copy of the [Google Open Buildings](https://sites.research.google/open-buildings/), offering the data in more GIS-friendly and [cloud-native geospatial](https://cloudnativegeo.org) formats. The original dataset is distributed as gzipped csv files, and is available for download on [sites.research.google.com/open-buildings/](https://sites.research.google/open-buildings/#download).\n\nMost of the following information about the data is copied from that site; it is the canonical source data and remains the source of truth. This dataset just makes the data more accessible through more formats. The description of the original dataset is as follows:\n\n> The dataset contains 1.8 billion building detections, across an inference area of 58M km2 within Africa, South Asia, South-East Asia, Latin America and the Caribbean.\n\n> The current dataset is in its 3rd version (v3). V1 covered Africa, in v2 we expanded to South and South-East Asia and in the current version v3 detections from Latin America and the Caribbean are also included.\n\n> For each building in this dataset we include the polygon describing its footprint on the ground, a confidence score indicating how sure we are that this is a building, and a Plus Code corresponding to the centre of the building. There is no information about the type of building, its street address, or any details other than its geometry.\n\n> More explanation is in the [FAQ](https://sites.research.google/open-buildings/#faq).\n\n## Modifications to the original dataset.\n\nA small percentage of the original data was actually multi-polygons, though the intent seemed to be to represent every building as it's own feature. So while processing the dataset into more accessible formats any multi-polygon encountered was split into polygons, and a new `area_in_meters` attribute was calculated. The `confidence` attribute remained the same for both polygons.\n\nThe latitude and longitude columns were removed from the original dataset, since those can easily be calculated from the polygons or the `full_plus_code` attribute. \n\nIn further processing, two new attributes were added, one from joining the Overture Maps country dataset, adding `country_iso` for the country the buildings are in, and `quadkey` for the level 12 quadkey the building is in. The dataset was then partitioned by country_iso, and if the data was over ~2 gigabytes it was split up further by quadkey.\n\n## Access the dataset\n\nA [PMTiles](https://github.com/protomaps/PMTiles) version of the dataset is available for visualization at [google-open-buildings.pmtiles](https://data.source.coop/cholmes/google-open-buildings/google-open-buildings.pmtiles). You can see it at the [PMTiles Viewer](https://protomaps.github.io/PMTiles/?url=https://data.source.coop/cholmes/google-open-buildings/google-open-buildings.pmtiles) (the visualization is not great, working on a better one).\n\nThe [geoparquet s2 folder](https://beta.source.coop/cholmes/google-open-buildings/geoparquet-s2-more-columns) contains versions of the data that reflect the [original gzipped CSV files](https://sites.research.google/open-buildings/#download), each\nrepresenting an [S2 cell](https://s2geometry.io/). These just have the first set of modifications (splitting multi-polygons and removing lat / long columns), plus adding `country_iso` and `quadkey` coluns.\n\nThe [geoparquet-by-country](https://beta.source.coop/cholmes/google-open-buildings/geoparquet-by-country) directory includes the additional `country_sio` and `quadkey` partitioning, using a 'hive partition'\n\nFor instructions on how to get full countries as GeoParquet or other formats see this [tutorial on DuckDB and GeoParquet with Google Open Buildings](https://gist.github.com/cholmes/f78c225f971c6d935e4340ce9895b4b2).\n\nTODO: get STAC going, put stac browser here here, hopefully it'll view pmtiles too.\n\n## Download Dataset\n\nYou can use the [browse links](https://beta.source.coop/cholmes/google-open-buildings/browse) to navigate through the repository and download the data you'd like.\n\nYou can also access the S3 bucket directly with S3 tools (aws cli, boto3, etc), its S3 URI is `s3://us-west-2.opendata.source.coop/google-research-open-buildings/`\n\n## Dataset Licenses\n\nThe data is shared under the [Creative Commons Attribution (CC BY-4.0) license](https://creativecommons.org/licenses/by/4.0/) and\nthe [Open Data Commons Open Database License (ODbL) v1.0 license](https://opendatacommons.org/licenses/odbl/1-0/). As the user, you\ncan pick which of the two licenses you prefer and use the data under the terms of that license.\n\n## Links\n\nTODO:\n\n* [STAC Browser]\n* [Documentation]\n* Tutorial, comprised of the following files:\n\n## Authors\n\n* Wojciech Sirko\n* Sergii Kashubin\n* Marvin Ritter\n* Abigail Annkah\n* Yasser Salah Eddine Bouchareb\n* Yann Dauphin\n* Daniel Keysers\n* Maxim Neumann\n* Moustapha Cisse\n* John Quinn\n\n### Additional Processing\n\n* Chris Holmes\n\n## Citation & DOI\n\nThe paper explaining the dataset is at https://arxiv.org/abs/2107.12283), and the DOI is: https://doi.org/10.48550/arXiv.2107.12283\n\n## V2 notes\n\nThe data processing for v2 of the google buildings was a bit different - original text here:\n\nIn further processing, two new attributes were added, both from joining the [geoBoundaries](https://www.geoboundaries.org/) dataset, a great attribution-only dataset for admin level 0, 1 and 2 boundaries. The first is `country`, which uses the ISO country code, and the second is `admin_1`, which is the level 1 administrative boundary - usually a state or province. For the most part these just used the shapeName and shapeGroup fields from a `ST_Within` spatial join, but Angola had empty shapeName so adm1_name was used instead. There were an additional 5 million buildings that were not within. Usually because the boundaries did not quite capture the coastline (though occasionally it looked like the segmentation was capturing ships instead of buildings). For those the nearest boundary was used, using the `<->` operator in PostGIS to find the closest one. This uses the centroid of the polygons so likely used the wrong boundary in some cases, but that should be relatively rare.\n\nNote there is also now an `id` field. This was inadvertant and has no meaning, it was just to help processing in PostGIS. The intent was to remove it during final processing but that was forgotten.\n\n\n\nThe [v2/geoparquet-admin-1](https://beta.source.coop/cholmes/google-open-buildings/v2/geoparquet-admin1) directory includes the additional `country` and `admin_1` processing, and then uses those as the mechanism to split up the files. This leads to a bit better 'balance' between the files, with the largest file (IDN-East_Java) coming in at 2.12 gigabytes, compared to 4.9 gigabytes for the largest S2 one (2e7_buildings). These have been partitioned by the `country` attribute and split into one file per `admin_1`, so each folder contains all the level 1 admin boundaries for the country. This is done as a parquet 'partition' with each folder named something like `country=EGY` to enable partition aware tools to take advantage of the scheme and only read the necessary files. Thusfar only limited testing has been done with these, and the individual files aren't named like most examples, but it seems to work. \n\nNote that these seem to have a bit too many features, there were some extras in processing. We'll work to clean those up soon.\n\nFor instructions on how to get full countries as GeoParquet or other formats see this [tutorial on DuckDB and GeoParquet with Google Open Buildings](https://gist.github.com/cholmes/f78c225f971c6d935e4340ce9895b4b2).",
+  "_state": "drafted",
+  "cataloged_at": "2026-11-23T11:32:27+00:00",
+  "_source_format": "unknown",
+  "store_format": null
 }
