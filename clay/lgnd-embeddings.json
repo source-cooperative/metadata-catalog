@@ -7,7 +7,7 @@
   ],
   "id": "clay/lgnd-embeddings",
   "title": "LGND Embeddings",
-  "description": "Clay foundation model embeddings of global Sentinel-2 L2A satellite imagery, created and maintained by lgnd.ai. Each embedding is a 256- or 1024-dimensional vector representation of a fixed-size Major TOM grid cell chip, covering approximately 15.2 billion embeddings globally from January 2017 to April 2026. Intended for similarity search, change detection, and downstream geospatial machine learning tasks.",
+  "description": "Clay foundation model embeddings of global Sentinel-2 L2A satellite imagery, created by lgnd.ai. Each embedding is a 256- or 1024-dimensional vector representing a fixed-size Major TOM grid cell chip, with about 15.2 billion embeddings covering January 2017 to April 2026. Includes a monthly-aggregated embedding set and a STAC GeoParquet catalog of the source imagery.",
   "license": "CC-BY-4.0",
   "keywords": [
     "embeddings",
@@ -16,7 +16,7 @@
     "sentinel-2",
     "satellite-imagery",
     "earth-observation",
-    "remote-sensing",
+    "global-coverage",
     "geoparquet"
   ],
   "providers": [
@@ -45,10 +45,22 @@
     "spatial": {
       "bbox": [
         [
-          null,
-          null,
-          null,
-          null
+          -179.9951337,
+          -82.8526684,
+          180.0,
+          82.8187753
+        ],
+        [
+          -165.0,
+          -82.8310444,
+          179.9660569,
+          77.4910577
+        ],
+        [
+          -72.0894132,
+          -72.9773235,
+          178.3951897,
+          72.9658256
         ]
       ]
     },
@@ -57,16 +69,24 @@
         [
           "2017-01-01T00:00:00Z",
           "2026-04-20T15:01:15.888000Z"
+        ],
+        [
+          "2018-01-10T15:27:39.434000Z",
+          "2025-06-29T00:17:18.974000Z"
+        ],
+        [
+          "2018-03-08T21:05:47.218000",
+          "2022-07-09T17:33:09.190000"
         ]
       ]
     }
   },
   "summaries": {
-    "item_count": 2796509
+    "item_count": 347707
   },
   "assets": {
     "monthly-aggregated": {
-      "href": "https://data.source.coop/clay/lgnd-embeddings/monthly-aggregated/model_version=v1.5/collection=sentinel-2-l2a/chip_size=1280m/dims=256/geohash=27/year=2023/month=07/",
+      "href": "https://data.source.coop/clay/lgnd-embeddings/monthly-aggregated/model_version=v1.5/collection=sentinel-2-l2a/chip_size=1280m/dims=256/geohash=03/year=2018/month=01/",
       "type": "application/x-parquet",
       "title": "monthly-aggregated",
       "roles": [
@@ -79,7 +99,8 @@
         },
         {
           "name": "cell_id",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[spatial_index] Major TOM grid cell identifier"
         },
         {
           "name": "rasters_id",
@@ -104,40 +125,91 @@
         {
           "name": "bbox",
           "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)",
-          "description": "[geometry] Bounding box struct (xmin, ymin, xmax, ymax) of the chip grid cell"
+          "description": "[geometry] Bounding box struct (xmin, ymin, xmax, ymax) of the chip"
         },
         {
           "name": "geometry",
-          "type": "GEOMETRY('OGC:CRS84')",
-          "description": "[geometry] OGC:CRS84 polygon geometry of the chip grid cell"
-        },
-        {
-          "name": "chip_size",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "dims",
-          "type": "BIGINT"
-        },
-        {
-          "name": "geohash",
-          "type": "BIGINT|VARCHAR",
-          "description": "[spatial_index] Geohash spatial index encoding the chip location"
-        },
-        {
-          "name": "model_version",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "month",
-          "type": "BIGINT|VARCHAR"
-        },
-        {
-          "name": "year",
-          "type": "BIGINT"
+          "type": "GEOMETRY('EPSG:4326')|GEOMETRY('OGC:CRS84')",
+          "description": "[geometry] Chip footprint geometry in EPSG:4326/CRS84"
         }
       ],
-      "description": "12 files sampled for this table"
+      "description": "20 files sampled for this table",
+      "bbox": [
+        -165.0,
+        -82.8310444,
+        179.9660569,
+        77.4910577
+      ],
+      "item_count": 347707
+    },
+    "scene-level/sentinel-2-l2a": {
+      "href": "https://data.source.coop/clay/lgnd-embeddings/scene-level/sentinel-2-l2a/model_version=v1.5/chip_size=1280m/dims=1024/mgrs=01CCV/year=2018/month=03/",
+      "type": "application/x-parquet",
+      "title": "scene-level/sentinel-2-l2a",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "chips_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "cell_id",
+          "type": "VARCHAR",
+          "description": "[spatial_index] Major TOM grid cell identifier"
+        },
+        {
+          "name": "rasters_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "size",
+          "type": "BIGINT"
+        },
+        {
+          "name": "model_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "digest",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "embedding",
+          "type": "FLOAT[]"
+        },
+        {
+          "name": "collection",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "datetime",
+          "type": "TIMESTAMP_NS"
+        },
+        {
+          "name": "stac_item_id",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "geom",
+          "type": "GEOMETRY",
+          "description": "[geometry] Chip footprint geometry"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)",
+          "description": "[geometry] Bounding box struct (xmin, ymin, xmax, ymax) of the chip"
+        }
+      ],
+      "description": "20 files sampled for this table",
+      "bbox": [
+        -72.0894132,
+        -72.9773235,
+        178.3951897,
+        72.9658256
+      ],
+      "item_count": 44788
     },
     "rasters": {
       "href": "https://data.source.coop/clay/lgnd-embeddings/rasters/collection=sentinel-2-l2a/stac.parquet",
@@ -170,7 +242,7 @@
         {
           "name": "bbox",
           "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)",
-          "description": "[geometry] Bounding box struct (xmin, ymin, xmax, ymax) of the Sentinel-2 scene footprint"
+          "description": "[geometry] Bounding box struct (xmin, ymin, xmax, ymax) of the scene"
         },
         {
           "name": "links",
@@ -195,7 +267,7 @@
         {
           "name": "geometry",
           "type": "GEOMETRY('OGC:CRS84')",
-          "description": "[geometry] OGC:CRS84 polygon geometry of the Sentinel-2 scene footprint"
+          "description": "[geometry] Scene footprint geometry in CRS84"
         }
       ],
       "table:row_count": 2796493
@@ -213,7 +285,6 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "account_id": "clay",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -226,37 +297,37 @@
       "prefix": "clay/lgnd-embeddings/"
     }
   },
+  "updated_at": "2026-06-02T01:26:29.559Z",
+  "objects_updated_at": "2026-11-22T06:49:20+00:00",
+  "exts": {
+    "parquet": 766000,
+    "md": 3,
+    "png": 1
+  },
+  "account_id": "clay",
+  "object_count": 766004,
+  "total_bytes": 22046312900517,
+  "ext_bytes": {
+    "parquet": 22046312106918,
+    "png": 786777,
+    "md": 6822
+  },
+  "featured": 0,
+  "disabled": false,
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "disabled": false,
-  "data_mode": "open",
-  "exts": {
-    "parquet": 53538,
-    "md": 3,
-    "png": 1
-  },
-  "visibility": "public",
-  "total_bytes": 9643248308015,
-  "featured": 0,
-  "updated_at": "2026-06-02T01:26:29.559Z",
   "created_at": "2026-06-01T23:41:30.740Z",
-  "object_count": 53542,
+  "visibility": "public",
   "product_id": "lgnd-embeddings",
+  "data_mode": "open",
   "readme": "## README.md\n<div align=\"center\">\n  <img src=\"https://data.source.coop/clay/lgnd-embeddings/docs/lgnd_clay_logo_v2.png\" alt=\"lgnd_clay_logo\" width=\"50%\" />\n</div>\n\nThis repository contains [Clay](https://clay.earth/) foundation model embeddings created and maintained by [lgnd.ai](https://lgnd.ai/). Each embedding is a multi-dimensional vector representation of a satellite image chip (a fixed-size [Major TOM](https://huggingface.co/Major-TOM) grid cell), useful for similarity search, change detection, and downstream geospatial ML tasks.\n\nThe data is broken into several top-level datasets, click into each for more details:\n- **scene-level (COMING SOON)** - one embedding per chip per scene acquisition, the full-resolution dataset.\n- **[monthly-aggregated](https://source.coop/clay/lgnd-embeddings/monthly-aggregated)** - deduplicated to one embedding per chip per month, derived from the scene-level dataset.\n- **[rasters](https://source.coop/clay/lgnd-embeddings/rasters)** - STAC GeoParquet catalog of the source imagery: scene footprints, acquisition times, and COG asset URLs.\n\n## Coverage\n\n| Collection | Coverage | Temporal Range | Scenes | Embeddings | Source Imagery |\n|---|---|---|---|---|---|\n| `sentinel-2-l2a` | Global | Jan 2017 - April 2026 | ~2.8M | ~15.2B | ~2.2 PB |\n\n## Available Configurations\n\n| Model Version | Collection | Chip Size | Embedding Dims |\n|---|---|---|---|\n| `v1.5` | `sentinel-2-l2a` | `1280m` | `256` |\n| `v1.5` | `sentinel-2-l2a` | `2560m` | `1024` |\n\n\n## License\n\nAll products are licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).\n",
   "_review": [
-    "providers: role [processor] for 'Clay' is an AI guess \u2014 Clay provides the foundation model used to generate the embeddings; listed as processor because they supply the model architecture rather than directly producing or hosting the dataset.. Verify before flipping to _state: reviewed.",
     "extent.temporal: ['2017-01-01T01:40:44.459000Z', '2026-04-20T15:01:15.888000Z'] (probe sample) widened to ['2017-01-01T00:00:00Z', '2026-04-20T15:01:15.888000Z'] using README-stated coverage ['2017-01', '2026-04'].",
-    "extent.spatial.bbox: omitted; spatial reference is categorical via [monthly-aggregated.geometry (geometry), monthly-aggregated.bbox (geometry), monthly-aggregated.geohash (spatial_index), rasters.geometry (geometry), rasters.bbox (geometry)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
+    "summaries.item_count: parts overlap, so this is max(part), not the sum \u2014 monthly-aggregated/ 347707, scene-level/sentinel-2-l2a/ 44788. Sum them only once the parts are known to be disjoint."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-06-30T09:59:15+00:00",
-  "store_format": null,
-  "ext_bytes": {
-    "parquet": 9643247514416,
-    "png": 786777,
-    "md": 6822
-  },
-  "objects_updated_at": "2026-11-22T06:49:20+00:00"
+  "cataloged_at": "2026-11-24T14:26:20+00:00",
+  "store_format": null
 }
