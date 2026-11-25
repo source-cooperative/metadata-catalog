@@ -7,7 +7,7 @@
   ],
   "id": "walkthru-earth/indices",
   "title": "Walkthru-Indices",
-  "description": "Open H3-hexagon-gridded Parquet indices from walkthru.earth that unify terrain, building density/height/volume, SSP2 population projections (2025\u20132100), AI weather forecasts, and counts of addresses, places, transportation and infrastructure on a shared global H3 grid. All layers share a common h3_index so they can be joined spatially with a single SQL query.",
+  "description": "Open H3-hexagon-gridded Parquet indices from walkthru.earth that unify terrain, building density/height/volume, SSP2 population projections (2025\u20132100), AI weather forecasts, and counts of addresses, places, transportation and infrastructure on a shared global H3 grid, so layers can be joined on a common h3_index.",
   "license": "CC-BY-4.0",
   "keywords": [
     "h3",
@@ -69,8 +69,8 @@
     "temporal": {
       "interval": [
         [
-          "2026-08-16T00:00:00Z",
-          "2026-11-13T12:00:00Z"
+          "2026-08-23T12:00:00Z",
+          "2026-11-21T00:00:00Z"
         ]
       ]
     }
@@ -90,17 +90,17 @@
         {
           "name": "country",
           "type": "VARCHAR",
-          "description": "[admin_code] Country of address records"
+          "description": "[placename] Country of address group"
         },
         {
           "name": "region",
           "type": "VARCHAR",
-          "description": "[placename] Region of address records"
+          "description": "[placename] Region of address group"
         },
         {
           "name": "city",
           "type": "VARCHAR",
-          "description": "[placename] City of address records"
+          "description": "[placename] City of address group"
         },
         {
           "name": "tiles",
@@ -158,7 +158,7 @@
         {
           "name": "country",
           "type": "VARCHAR",
-          "description": "[admin_code] Country code"
+          "description": "[placename] Country name"
         }
       ],
       "description": "5 files sampled for this table"
@@ -186,7 +186,7 @@
         {
           "name": "primary_city",
           "type": "VARCHAR",
-          "description": "[placename] Primary city of street"
+          "description": "[placename] Primary city for the street"
         },
         {
           "name": "centroid_lon_e6",
@@ -210,12 +210,12 @@
         {
           "name": "country",
           "type": "VARCHAR",
-          "description": "[admin_code] Country code"
+          "description": "[placename] Country of address bucket"
         },
         {
           "name": "h3_res4",
           "type": "VARCHAR",
-          "description": "[spatial_index] H3 resolution-4 cell"
+          "description": "[spatial_index] H3 resolution-4 cell of the address bucket"
         },
         {
           "name": "bucket",
@@ -260,7 +260,7 @@
         {
           "name": "primary_region",
           "type": "VARCHAR",
-          "description": "[placename] Primary region of addresses"
+          "description": "[placename] Primary region of the bucket"
         }
       ],
       "table:row_count": 23981
@@ -276,7 +276,7 @@
         {
           "name": "h3_index",
           "type": "UBIGINT",
-          "description": "[spatial_index] H3 cell ID"
+          "description": "[spatial_index] H3 cell ID (UBIGINT) for infrastructure, land-use and water counts"
         },
         {
           "name": "infra_count",
@@ -457,7 +457,7 @@
         {
           "name": "quadkey",
           "type": "VARCHAR",
-          "description": "[spatial_index] Quadkey tile"
+          "description": "[spatial_index] Quadkey of the tile containing the building"
         },
         {
           "name": "source",
@@ -477,13 +477,12 @@
         },
         {
           "name": "region",
-          "type": "VARCHAR",
-          "description": "[placename] Region of building"
+          "type": "VARCHAR"
         },
         {
           "name": "geometry",
           "type": "GEOMETRY('EPSG:4326')",
-          "description": "[geometry] Building polygon geometry"
+          "description": "[geometry] Building polygon geometry (EPSG:4326)"
         }
       ],
       "description": "6 files sampled for this table"
@@ -499,7 +498,7 @@
         {
           "name": "h3_index",
           "type": "BIGINT",
-          "description": "[spatial_index] H3 cell ID"
+          "description": "[spatial_index] H3 cell ID (BIGINT) for the building index"
         },
         {
           "name": "building_count",
@@ -555,7 +554,7 @@
         {
           "name": "h3_index",
           "type": "UBIGINT",
-          "description": "[spatial_index] H3 cell ID"
+          "description": "[spatial_index] H3 cell ID (UBIGINT) for building-type counts"
         },
         {
           "name": "building_count",
@@ -736,7 +735,7 @@
         {
           "name": "h3_index",
           "type": "UBIGINT",
-          "description": "[spatial_index] H3 cell ID"
+          "description": "[spatial_index] H3 cell ID (UBIGINT) for place counts"
         },
         {
           "name": "place_count",
@@ -878,17 +877,17 @@
         {
           "name": "geometry",
           "type": "GEOMETRY('EPSG:4326')",
-          "description": "[geometry] H3 cell polygon geometry"
+          "description": "[geometry] Native GEOMETRY (EPSG:4326) of the H3 cell"
         },
         {
           "name": "lat",
           "type": "FLOAT",
-          "description": "[latlon] Cell centroid latitude"
+          "description": "[latlon] Cell latitude"
         },
         {
           "name": "lon",
           "type": "FLOAT",
-          "description": "[latlon] Cell centroid longitude"
+          "description": "[latlon] Cell longitude"
         },
         {
           "name": "area_km2",
@@ -972,7 +971,7 @@
         {
           "name": "h3_index",
           "type": "BIGINT",
-          "description": "[spatial_index] H3 cell ID (BIGINT)"
+          "description": "[spatial_index] H3 cell ID (BIGINT) for population projections"
         },
         {
           "name": "pop_2025",
@@ -1052,7 +1051,7 @@
         {
           "name": "h3_index",
           "type": "UBIGINT",
-          "description": "[spatial_index] H3 cell ID"
+          "description": "[spatial_index] H3 cell ID (UBIGINT) for transportation segment counts"
         },
         {
           "name": "segment_count",
@@ -1193,7 +1192,7 @@
         {
           "name": "geometry",
           "type": "GEOMETRY('EPSG:4326')",
-          "description": "[geometry] Forecast grid geometry"
+          "description": "[geometry] Geometry of the forecast item footprint"
         },
         {
           "name": "bbox",
@@ -1230,7 +1229,7 @@
         {
           "name": "h3_index",
           "type": "BIGINT",
-          "description": "[spatial_index] H3 cell ID"
+          "description": "[spatial_index] H3 cell ID (BIGINT) for weather forecast values"
         },
         {
           "name": "timestamp",
@@ -1332,7 +1331,7 @@
         180.0,
         90.0
       ],
-      "item_count": 98822400
+      "item_count": 98822403
     }
   },
   "links": [
@@ -1347,20 +1346,10 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "disabled": false,
-  "featured": 0,
-  "data_mode": "open",
-  "exts": {
-    "parquet": 294464,
-    "md": 4,
-    "json": 3,
-    "": 2,
-    "txt": 1
-  },
-  "total_bytes": 830019044945,
+  "objects_updated_at": "2026-11-21T20:08:06+00:00",
+  "created_at": "2026-03-01T08:47:38.976Z",
   "updated_at": "2026-03-03T20:52:49.694Z",
   "visibility": "public",
-  "account_id": "walkthru-earth",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -1373,26 +1362,36 @@
       "prefix": "walkthru-earth/indices/"
     }
   },
-  "object_count": 294474,
-  "objects_updated_at": "2026-11-21T20:08:06+00:00",
   "ext_bytes": {
-    "parquet": 830019003989,
+    "parquet": 858144801437,
     "md": 35539,
     "json": 5376,
     "txt": 41,
     "": 0
   },
-  "created_at": "2026-03-01T08:47:38.976Z",
+  "total_bytes": 858144842393,
+  "exts": {
+    "parquet": 318711,
+    "md": 4,
+    "json": 3,
+    "": 2,
+    "txt": 1
+  },
+  "featured": 0,
+  "disabled": false,
+  "product_id": "indices",
+  "object_count": 318721,
+  "account_id": "walkthru-earth",
+  "data_mode": "open",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "product_id": "indices",
   "readme": "## README.md\n# walkthru-earth / indices\n\nOpen planetary indices that turn raw scientific data into a single, H3-hexagonal grid anyone can query with one SQL statement. Every index shares the same cell ID (`h3_index`), so joining terrain + buildings + population + weather is a one-line `JOIN ON h3_index`.\n\n**Why?** Cities shape how people feel \u2014 but the data to prove it is scattered across dozens of agencies, formats, and projections. We unify it into one queryable, open layer so researchers, planners, and communities can finally see the full picture. Read more: [walkthru.earth/hormones-cities](https://walkthru.earth/hormones-cities)\n\n```mermaid\nflowchart LR\n    subgraph Raw[\"Raw sources\"]\n        DEM_RAW[\"GEDTM-30m\\n(30 m GeoTIFF)\"]\n        GBA_RAW[\"Global Building Atlas\\n(2.75 B polygons)\"]\n        WP_RAW[\"WorldPop SSP\\n(1 km rasters)\"]\n        NOAA_RAW[\"NOAA AI-NWP\\n(0.25\u00b0 NetCDF)\"]\n    end\n\n    subgraph H3[\"H3 conversion\"]\n        direction TB\n        DT[\"dem-terrain\\nelev \u00b7 slope \u00b7 aspect \u00b7 TRI \u00b7 TPI\"]\n        BI[\"walkthru-building-index\\ndensity \u00b7 height \u00b7 volume\"]\n        PI[\"walkthru-pop-index\\n2025 \u2192 2100 projections\"]\n        WI[\"walkthru-weather-index\\ntemp \u00b7 wind \u00b7 precip \u00b7 pressure\"]\n    end\n\n    DEM_RAW --> DT\n    GBA_RAW --> BI\n    WP_RAW --> PI\n    NOAA_RAW --> WI\n    DT -. topo corrections .-> WI\n\n    subgraph S3[\"s3://\u2026/walkthru-earth/\"]\n        T[dem-terrain/v2/h3/]\n        B[indices/building/v2/h3/]\n        P[indices/population/v2/]\n        W[indices/weather/]\n    end\n\n    DT --> T\n    BI --> B\n    PI --> P\n    WI --> W\n\n    T -. JOIN h3_index .-> Q((Query))\n    B -. JOIN .-> Q\n    P -. JOIN .-> Q\n    W -. JOIN .-> Q\n```\n\n## Indices\n\n| Index | What | H3 Res | Update | Size |\n|-------|------|--------|--------|------|\n| **[dem-terrain](https://source.coop/walkthru-earth/dem-terrain)** | Elevation, slope, aspect, TRI, TPI from GEDTM-30m | 1\u201310 | One-time | ~287 GB, 10.5 B cells |\n| **[walkthru-building-index](https://source.coop/walkthru-earth/indices)** | Density, height, footprint, volume from 2.75 B buildings | 3\u20138 | One-time | ~2.6 GB, 53 M cells |\n| **[walkthru-pop-index](https://source.coop/walkthru-earth/indices)** | SSP2 projections 2025\u20132100 (16 timesteps) from WorldPop | 1\u20138 | One-time | ~4.5 GB, 44 M cells |\n| **[walkthru-weather-index](https://source.coop/walkthru-earth/indices)** | Temperature, wind, precip, pressure + topo corrections | 0\u20135 | Every 12 h | ~3.6 GB / forecast |\n\nAll datasets: [Apache Parquet](https://parquet.apache.org/), ZSTD compression, sorted by `h3_index`.\n- **v2 (recommended):** `h3_index` is BIGINT (int64) \u2014 no `geometry`, `lat`, `lon`, or `area_km2` columns (all derivable from the H3 index via DuckDB's h3 extension). Sorted by int64 for better compression and fast range-based spatial queries.\n- **v1 (legacy):** `h3_index` is VARCHAR (hex string) with native Parquet 2.11+ GEOMETRY and `lat`/`lon`/`area_km2` columns.\n\n## Quick start\n\n```sql\n-- DuckDB: join buildings + population in one query (v2 \u2014 BIGINT h3_index, no geometry)\nINSTALL httpfs;  LOAD httpfs;\nINSTALL h3 FROM community; LOAD h3;\nSET s3_region = 'us-west-2';\n\nSELECT b.h3_index,\n       h3_h3_to_string(b.h3_index) AS h3_hex,          -- hex string for deck.gl\n       h3_cell_to_lat(b.h3_index)  AS lat,              -- derive lat on the fly\n       h3_cell_to_lng(b.h3_index)  AS lon,              -- derive lon on the fly\n       b.building_count, b.building_density,\n       p.pop_2025, p.pop_2050,\n       (b.building_count::FLOAT / NULLIF(p.pop_2025, 0))::DECIMAL(6,3) AS bldg_per_person\nFROM read_parquet('s3://us-west-2.opendata.source.coop/walkthru-earth/indices/building/v2/h3/h3_res=5/data.parquet') b\nJOIN read_parquet('s3://us-west-2.opendata.source.coop/walkthru-earth/indices/population/v2/scenario=SSP2/h3_res=5/data.parquet') p\n  ON b.h3_index = p.h3_index                            -- BIGINT join \u2014 fast\nWHERE p.pop_2025 > 10000\nORDER BY bldg_per_person DESC\nLIMIT 10;\n```\n\n## S3 layout\n\n```\ns3://us-west-2.opendata.source.coop/walkthru-earth/\n\u251c\u2500\u2500 dem-terrain/\n\u2502   \u251c\u2500\u2500 v1/h3/h3_res={1-10}/data.parquet          \u2190 legacy (VARCHAR h3, has geometry/lat/lon)\n\u2502   \u2514\u2500\u2500 v2/h3/h3_res={1-10}/data.parquet          \u2190 recommended (BIGINT h3, lean schema)\n\u2514\u2500\u2500 indices/\n    \u251c\u2500\u2500 building/\n    \u2502   \u251c\u2500\u2500 v1/h3/h3_res={3-8}/data.parquet        \u2190 legacy\n    \u2502   \u251c\u2500\u2500 v2/h3/h3_res={3-8}/data.parquet        \u2190 recommended\n    \u2502   \u2514\u2500\u2500 globalbuildingatlas/zoomlevel={2-14}/data*.parquet\n    \u251c\u2500\u2500 population/\n    \u2502   \u251c\u2500\u2500 v1/scenario=SSP2/h3_res={1-8}/data.parquet  \u2190 legacy\n    \u2502   \u2514\u2500\u2500 v2/scenario=SSP2/h3_res={1-8}/data.parquet  \u2190 recommended\n    \u2514\u2500\u2500 weather/\n        \u2514\u2500\u2500 model=GraphCast_GFS/date=YYYY-MM-DD/hour={0,12}/h3_res={0-5}/data.parquet\n```\n\n## License\n\n[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) by [walkthru.earth](https://walkthru.earth/links)\n",
   "_review": [
-    "summaries.item_count: parts overlap, so this is max(part), not the sum \u2014 addresses-index/ 2645250, base-index/v1/h3/ 265154643, building/ 58545321, buildings-index/v1/h3/ 559095892, places-index/v1/h3/ 46858967, population/ 61886646, transportation-index/v1/h3/ 279240455, weather/ 98822400. Sum them only once the parts are known to be disjoint."
+    "summaries.item_count: parts overlap, so this is max(part), not the sum \u2014 addresses-index/ 2645250, base-index/v1/h3/ 265154643, building/ 58545321, buildings-index/v1/h3/ 559095892, places-index/v1/h3/ 46858967, population/ 61886646, transportation-index/v1/h3/ 279240455, weather/ 98822403. Sum them only once the parts are known to be disjoint."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-11-21T09:32:18+00:00",
+  "cataloged_at": "2026-11-25T10:14:29+00:00",
   "store_format": null
 }
