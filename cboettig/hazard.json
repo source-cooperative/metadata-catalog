@@ -7,18 +7,17 @@
   ],
   "id": "cboettig/hazard",
   "title": "Climate-related hazards (e.g. flooding & sea level rise currently)",
-  "description": "A meta-collection of U.S. national climate- and flood-hazard geospatial layers hosted on NRP S3, combining NOAA sea level rise inundation projections (5 ft scenario) and the FEMA National Flood Hazard Layer flood zones, distributed as GeoParquet, PMTiles, and H3 hex aggregations.",
+  "description": "A meta-collection of U.S. national climate- and flood-hazard layers hosted on NRP S3, combining NOAA Sea Level Rise inundation projections (5 ft scenario) and the FEMA National Flood Hazard Layer flood zones. Also references a California habitat climate-exposure dataset (Thorne et al. 2016) whose redistribution terms are unconfirmed. Distributed as GeoParquet, PMTiles, H3 hex aggregations and COG.",
   "keywords": [
     "flood-hazard",
     "emergency-management",
     "sea-level-rise",
     "climate",
-    "geoparquet",
-    "pmtiles",
-    "h3",
     "noaa",
     "meteorology",
-    "coastal-inundation"
+    "geoparquet",
+    "pmtiles",
+    "h3"
   ],
   "providers": [
     {
@@ -67,50 +66,6 @@
     "item_count": 404690439
   },
   "assets": {
-    "_stoi-repro": {
-      "href": "https://data.source.coop/cboettig/hazard/_stoi-repro/",
-      "type": "application/x-parquet",
-      "title": "_stoi-repro",
-      "roles": [
-        "data"
-      ],
-      "table:columns": [
-        {
-          "name": "_cng_fid",
-          "type": "BIGINT"
-        },
-        {
-          "name": "wkb",
-          "type": "BLOB",
-          "description": "[geometry] WKB-encoded geometry"
-        },
-        {
-          "name": "fid",
-          "type": "BIGINT"
-        },
-        {
-          "name": "FLD_ZONE",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "SFHA_TF",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "geom",
-          "type": "GEOMETRY('EPSG:4326')|GEOMETRY('OGC:CRS84')",
-          "description": "[geometry] Feature geometry (EPSG:4326/CRS84)"
-        }
-      ],
-      "description": "10 files sampled for this table",
-      "bbox": [
-        -166.1671298,
-        27.822072,
-        -71.7872423,
-        66.6105821
-      ],
-      "item_count": 1230000
-    },
     "flood-hazard/hex": {
       "href": "https://data.source.coop/cboettig/hazard/flood-hazard/hex/h0=576707042908045311/",
       "type": "application/x-parquet",
@@ -186,22 +141,22 @@
         {
           "name": "h10",
           "type": "UBIGINT",
-          "description": "[spatial_index] H3 cell at resolution 10"
+          "description": "[spatial_index] H3 cell index at resolution 10"
         },
         {
           "name": "h0",
           "type": "BIGINT",
-          "description": "[spatial_index] H3 cell at resolution 0 (partition key)"
+          "description": "[spatial_index] H3 resolution 0 cell, used as partition key"
         },
         {
           "name": "h8",
           "type": "UBIGINT",
-          "description": "[spatial_index] H3 cell at resolution 8"
+          "description": "[spatial_index] H3 cell index at resolution 8"
         },
         {
           "name": "h9",
           "type": "UBIGINT",
-          "description": "[spatial_index] H3 cell at resolution 9"
+          "description": "[spatial_index] H3 cell index at resolution 9"
         },
         {
           "name": "_cng_fid",
@@ -230,12 +185,12 @@
         {
           "name": "state",
           "type": "VARCHAR",
-          "description": "[placename] State name"
+          "description": "[placename] U.S. state of the inundation feature"
         },
         {
           "name": "region",
           "type": "VARCHAR",
-          "description": "[placename] Region name"
+          "description": "[placename] Region name for the inundation feature"
         },
         {
           "name": "slr_ft",
@@ -244,22 +199,22 @@
         {
           "name": "h10",
           "type": "UBIGINT",
-          "description": "[spatial_index] H3 cell at resolution 10"
+          "description": "[spatial_index] H3 cell index at resolution 10"
         },
         {
           "name": "h0",
           "type": "BIGINT|UBIGINT",
-          "description": "[spatial_index] H3 cell at resolution 0 (partition key)"
+          "description": "[spatial_index] H3 resolution 0 cell, used as partition key"
         },
         {
           "name": "h8",
           "type": "UBIGINT",
-          "description": "[spatial_index] H3 cell at resolution 8"
+          "description": "[spatial_index] H3 cell index at resolution 8"
         },
         {
           "name": "h9",
           "type": "UBIGINT",
-          "description": "[spatial_index] H3 cell at resolution 9"
+          "description": "[spatial_index] H3 cell index at resolution 9"
         }
       ],
       "description": "10 files sampled for this table",
@@ -344,17 +299,17 @@
         {
           "name": "geom",
           "type": "GEOMETRY('OGC:CRS84')",
-          "description": "[geometry] Feature geometry (OGC:CRS84) for flood hazard zones and sea level rise inundation polygons"
+          "description": "[geometry] Feature geometry in OGC:CRS84"
         },
         {
           "name": "state",
           "type": "VARCHAR",
-          "description": "[placename] State name for sea level rise features"
+          "description": "[placename] U.S. state of the inundation feature"
         },
         {
           "name": "region",
           "type": "VARCHAR",
-          "description": "[placename] Region name for sea level rise features"
+          "description": "[placename] Region name for the inundation feature"
         },
         {
           "name": "slr_ft",
@@ -363,7 +318,7 @@
         {
           "name": "Shape",
           "type": "GEOMETRY('OGC:CRS84')",
-          "description": "[geometry] Secondary geometry column (OGC:CRS84)"
+          "description": "[geometry] Feature geometry in OGC:CRS84"
         }
       ],
       "description": "2 files sampled for this table"
@@ -375,6 +330,31 @@
       "roles": [
         "data"
       ],
+      "table:columns": [
+        {
+          "name": "exposure",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "non_analog_frac",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "h9",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 cell index at resolution 9"
+        },
+        {
+          "name": "h0",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution 0 cell, used as partition key"
+        },
+        {
+          "name": "h8",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 cell index at resolution 8"
+        }
+      ],
       "description": "2 files sampled for this table"
     },
     "mid-century-habitat-climate-exposure/miroc/hex": {
@@ -384,30 +364,30 @@
       "roles": [
         "data"
       ],
+      "table:columns": [
+        {
+          "name": "exposure",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "h9",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 cell index at resolution 9"
+        },
+        {
+          "name": "h0",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution 0 cell, used as partition key"
+        },
+        {
+          "name": "h8",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 cell index at resolution 8"
+        }
+      ],
       "description": "2 files sampled for this table"
     }
   },
-  "table:columns": [
-    {
-      "name": "exposure",
-      "type": "DOUBLE"
-    },
-    {
-      "name": "h9",
-      "type": "UBIGINT",
-      "description": "[spatial_index] H3 cell at resolution 9"
-    },
-    {
-      "name": "h0",
-      "type": "UBIGINT",
-      "description": "[spatial_index] H3 cell at resolution 0 (partition key)"
-    },
-    {
-      "name": "h8",
-      "type": "UBIGINT",
-      "description": "[spatial_index] H3 cell at resolution 8"
-    }
-  ],
   "links": [
     {
       "rel": "self",
@@ -420,35 +400,36 @@
       "title": "Source Cooperative product page"
     }
   ],
+  "account_id": "cboettig",
   "ext_bytes": {
-    "parquet": 38715958585,
-    "pmtiles": 5351390730,
+    "parquet": 7928078292,
+    "pmtiles": 1878717600,
     "tif": 113484618,
-    "json": 50740,
+    "png": 237144,
+    "json": 47825,
     "md": 18011
   },
+  "product_id": "hazard",
   "created_at": "2026-07-25T14:36:25.794Z",
   "visibility": "public",
-  "object_count": 59,
   "data_mode": null,
-  "exts": {
-    "parquet": 40,
-    "json": 7,
-    "md": 6,
-    "pmtiles": 4,
-    "tif": 2
-  },
-  "total_bytes": 44180902684,
-  "product_id": "hazard",
   "objects_updated_at": "2026-11-15T08:34:21+00:00",
-  "featured": 0,
-  "account_id": "cboettig",
-  "disabled": false,
-  "updated_at": "2026-07-25T14:36:25.794Z",
+  "exts": {
+    "parquet": 30,
+    "json": 9,
+    "md": 6,
+    "png": 3,
+    "tif": 2,
+    "pmtiles": 2
+  },
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
+  "object_count": 52,
+  "featured": 0,
+  "updated_at": "2026-07-25T14:36:25.794Z",
+  "total_bytes": 9920583490,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -457,12 +438,13 @@
       "prefix": "cboettig/hazard/"
     }
   },
+  "disabled": false,
   "readme": "## README.md\n# Climate & Flood Hazard Layers (`public-hazard`)\n\nNational climate- and flood-hazard datasets for the United States, processed to\ncloud-native formats (GeoParquet, PMTiles, H3 hex, COG) and hosted on NRP S3.\n\nThis is a **meta-collection**: each member below is an independent dataset with its\nown source, license, and STAC sub-collection (and its own `README.md`). The\nbucket-level license is therefore `various` \u2014 **see each member for its actual\nlicense.**\n\n## Members\n\n| Dataset | Source | License | Formats |\n|---|---|---|---|\n| [`sea-level-rise`](https://s3-west.nrp-nautilus.io/public-hazard/sea-level-rise/stac-collection.json) | NOAA Office for Coastal Management \u2014 Sea Level Rise inundation (national, 5 ft scenario) | **public-domain** (U.S. Government work) | GeoParquet, PMTiles, H3 hex |\n| [`flood-hazard`](https://s3-west.nrp-nautilus.io/public-hazard/flood-hazard/stac-collection.json) | FEMA National Flood Hazard Layer (NFHL) \u2014 flood hazard zones (national) | **public-domain** (U.S. Government work) | GeoParquet, PMTiles, H3 hex |\n| [`mid-century-habitat-climate-exposure`](https://s3-west.nrp-nautilus.io/public-hazard/mid-century-habitat-climate-exposure/stac-collection.json) | Thorne et al. (2016), CDFW-commissioned (SWAP 2015) | **other** \u2014 redistribution terms not published with the source and require confirmation | COG, H3 hex |\n\n> **Redistribution note.** `sea-level-rise` and `flood-hazard` are U.S. federal works\n> (public domain). `mid-century-habitat-climate-exposure` ships **no explicit license**;\n> its terms are unconfirmed, so it is **excluded** from the source.coop mirror of this\n> bucket until CDFW/Thorne terms are confirmed. Do not assert a license for it.\n\n## STAC\n\nCatalog entry: <https://s3-west.nrp-nautilus.io/public-hazard/stac-collection.json>\n\n## Usage\n\n### MapLibre GL JS (PMTiles)\n\nThe `source-layer` is the last path segment of the dataset name \u2014 `flood-hazard` for\nthe FEMA layer, `sea-level-rise` for the NOAA layer.\n\n```js\n// requires the pmtiles protocol: https://github.com/protomaps/PMTiles\nconst protocol = new pmtiles.Protocol();\nmaplibregl.addProtocol(\"pmtiles\", protocol.tile);\n\nmap.addSource(\"flood-hazard\", {\n  type: \"vector\",\n  url: \"pmtiles://https://s3-west.nrp-nautilus.io/public-hazard/flood-hazard.pmtiles\",\n});\nmap.addLayer({\n  id: \"flood-hazard-fill\",\n  type: \"fill\",\n  source: \"flood-hazard\",\n  \"source-layer\": \"flood-hazard\",   // = last segment of the dataset name\n  paint: { \"fill-color\": \"#3182bd\", \"fill-opacity\": 0.4 },\n});\n```\n\n### DuckDB (GeoParquet)\n\n```sql\nINSTALL spatial; LOAD spatial;\nINSTALL httpfs; LOAD httpfs;\n\n-- NOAA sea-level-rise inundation (national, 5 ft)\nSELECT COUNT(*)\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-hazard/sea-level-rise.parquet');\n\n-- FEMA flood hazard zones\nSELECT COUNT(*)\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-hazard/flood-hazard.parquet');\n```\n\n### H3 hex (spatial joins / aggregation)\n\n```sql\nSELECT h8, COUNT(*) AS n\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-hazard/sea-level-rise/hex/h0=*/data_0.parquet')\nGROUP BY h8;\n```\n\nFor per-feature attributes that are repeated across the hex cells a feature covers,\ndedup on the feature id before summing; for area, derive it from the H3 footprint (see\nthe catalog h3-guide) rather than summing a per-feature area column.\n",
   "_review": [
     "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
-    "summaries.item_count: parts overlap, so this is max(part), not the sum \u2014 _stoi-repro/ 1230000, flood-hazard/hex/ 404690439, sea-level-rise/hex/ 15722962. Sum them only once the parts are known to be disjoint."
+    "summaries.item_count: parts overlap, so this is max(part), not the sum \u2014 flood-hazard/hex/ 404690439, sea-level-rise/hex/ 15722962. Sum them only once the parts are known to be disjoint."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-11-07T09:09:29+00:00",
+  "cataloged_at": "2026-11-25T10:10:39+00:00",
   "store_format": null
 }
