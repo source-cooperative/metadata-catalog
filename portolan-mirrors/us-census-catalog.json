@@ -4,14 +4,16 @@
   "stac_version": "1.1.0",
   "id": "portolan-mirrors/us-census-catalog",
   "title": "US Census Demographics \u2014 Cloud-Native Mirror",
-  "description": "A cloud-native mirror of nationwide U.S. Census Bureau statistics as GeoParquet and PMTiles with STAC metadata, covering geographies from states down to 8.17 million census blocks. Includes curated American Community Survey 2020\u20132024 5-year indicators with margins of error, 2020 Decennial Census P.L. 94-171 block counts, and 2020 DHC age, sex and household counts.",
+  "description": "A cloud-native mirror of nationwide U.S. Census Bureau statistics as GeoParquet and PMTiles with STAC metadata, covering census geographies from states down to 8.17 million 2020 census blocks. Includes curated American Community Survey 2020\u20132024 5-year indicators with margins of error, 2020 Decennial Census P.L. 94-171 block counts, and 2020 DHC age, sex and household counts.",
   "license": "CC0-1.0",
   "keywords": [
     "census",
     "demographics",
     "geoparquet",
     "pmtiles",
-    "administrative-boundaries"
+    "administrative-boundaries",
+    "american-community-survey",
+    "stac"
   ],
   "providers": [
     {
@@ -67,8 +69,8 @@
     "temporal": {
       "interval": [
         [
-          "2020-04-01T00:00:00Z",
-          "2020-04-01T00:00:00Z"
+          null,
+          null
         ]
       ]
     }
@@ -183,53 +185,10 @@
       "rel": "via",
       "href": "https://source.coop/portolan-mirrors/us-census-catalog",
       "title": "Source Cooperative product page"
-    },
-    {
-      "rel": "describedby",
-      "href": "./README.md",
-      "type": "text/markdown",
-      "title": "Human-readable documentation"
-    },
-    {
-      "rel": "agents",
-      "href": "./AGENTS.md",
-      "type": "text/markdown",
-      "title": "Catalog agent guide"
-    },
-    {
-      "rel": "vcs",
-      "href": "https://github.com/portolan-mirrors/us-census-catalog",
-      "title": "Source repository"
-    },
-    {
-      "rel": "alternate",
-      "href": "https://browser.portolan-sdi.org/?catalog=https://data.source.coop/portolan-mirrors/us-census-catalog/catalog.json#/external/data.source.coop/portolan-mirrors/us-census-catalog/catalog.json",
-      "type": "text/html",
-      "title": "Open in the Portolan Browser (interactive map)"
-    },
-    {
-      "rel": "issues",
-      "href": "https://github.com/portolan-mirrors/us-census-catalog/issues",
-      "title": "Issue tracker"
-    },
-    {
-      "rel": "via",
-      "href": "https://data.census.gov/",
-      "title": "U.S. Census Bureau data portal (authoritative source)"
-    },
-    {
-      "rel": "license",
-      "href": "https://www.census.gov/about/policies/open-gov/open-data.html",
-      "title": "U.S. Census Bureau open data policy (public domain, U.S. Government work)"
     }
   ],
-  "product_id": "us-census-catalog",
-  "created_at": "2026-11-12T20:36:01.325Z",
-  "featured": 0,
-  "object_count": 283,
   "data_mode": null,
-  "account_id": "portolan-mirrors",
-  "updated_at": "2026-11-12T20:36:01.325Z",
+  "product_id": "us-census-catalog",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "connection_id": "aws-opendata-us-west-2",
@@ -237,37 +196,39 @@
       "prefix": "portolan-mirrors/us-census-catalog/"
     }
   },
-  "visibility": "public",
-  "exts": {
-    "json": 149,
-    "parquet": 67,
-    "md": 36,
-    "pmtiles": 15,
-    "png": 15,
-    "txt": 1
-  },
+  "disabled": false,
   "ext_bytes": {
-    "pmtiles": 11709719792,
-    "parquet": 6029090515,
-    "json": 1285639,
-    "png": 1016352,
-    "md": 977226,
-    "txt": 3298
+    "pmtiles": 18116630307,
+    "parquet": 7703014147,
+    "json": 4840405,
+    "png": 4553272,
+    "md": 3147191,
+    "jpg": 16950,
+    "txt": 5371
   },
-  "total_bytes": 17742092822,
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "disabled": false,
+  "account_id": "portolan-mirrors",
+  "featured": 0,
+  "object_count": 780,
+  "exts": {
+    "json": 403,
+    "parquet": 133,
+    "md": 126,
+    "png": 59,
+    "pmtiles": 52,
+    "jpg": 6,
+    "txt": 1
+  },
+  "created_at": "2026-11-12T20:36:01.325Z",
+  "visibility": "public",
+  "updated_at": "2026-11-12T20:36:01.325Z",
   "objects_updated_at": "2026-11-21T10:12:18+00:00",
-  "readme": "## README.md\n# US Census Demographics \u2014 Cloud-Native Mirror\n\n**[\ud83d\uddfa\ufe0f Open in the data browser](https://browser.portolan-sdi.org/?catalog=https://data.source.coop/portolan-mirrors/us-census-catalog/catalog.json#/external/data.source.coop/portolan-mirrors/us-census-catalog/catalog.json)** \u00b7 [Source repository](https://github.com/portolan-mirrors/us-census-catalog) \u00b7 [Agent guide](https://source.coop/portolan-mirrors/us-census-catalog/AGENTS.md) \u00b7 [STAC root](https://data.source.coop/portolan-mirrors/us-census-catalog/catalog.json)\n\n![census](https://img.shields.io/badge/census-blue) ![ACS](https://img.shields.io/badge/ACS-blue) ![American Community Survey](https://img.shields.io/badge/American_Community_Survey-blue) ![decennial census](https://img.shields.io/badge/decennial_census-blue) ![demographics](https://img.shields.io/badge/demographics-blue) ![United States](https://img.shields.io/badge/United_States-blue) ![GeoParquet](https://img.shields.io/badge/GeoParquet-blue) ![PMTiles](https://img.shields.io/badge/PMTiles-blue) ![STAC](https://img.shields.io/badge/STAC-blue) ![cloud-native](https://img.shields.io/badge/cloud--native-blue)\n\nNationwide United States census statistics as cloud-native GeoParquet and\nPMTiles with STAC metadata, at every census geography from states down to\nthe 242,298 block groups and 8,174,955 blocks of the 2020 Census, plus the\n33,791 ZIP Code Tabulation Areas, 32,612 places and 441 congressional\ndistricts of the 119th Congress. Thirty-nine collections carry curated\n[American Community Survey](https://www.census.gov/programs-surveys/acs.html)\n2020\u20132024 5-year indicators \u2014 income, poverty, age, race and ethnicity,\neducation, housing cost and tenure, vehicles, commuting, internet access,\nhealth insurance, disability, nativity \u2014 every estimate with its margin of\nerror at the 90% confidence level and the headline statistics with a\ncoefficient of variation. Every geography is a sub-catalog of themed\ncollections (income, people, housing, connectivity, wellbeing), and the\nfive coarse-or-sparse geographies \u2014 counties, states, ZCTAs, places,\ncongressional districts \u2014 add a sixth collection carrying all 135 columns\nin one wide table. One further collection carries 2020 Decennial Census\nP.L. 94-171 counts at block level, hive-partitioned by state. Six more,\nbeside the block-group and tract ACS collections, carry curated 2020\nCensus Demographic and Housing Characteristics (DHC) counts \u2014 age & sex,\nhousehold type and tenure \u2014 100% counts with no margin of error and no\nsampling error, protected instead by the Census Bureau's differential-\nprivacy disclosure avoidance system.\n[data.census.gov](https://data.census.gov/) is authoritative; this is a mirror, and\nevery collection links the exact upstream census.gov files it was built\nfrom.\n\n## Collections\n\n### [2020 Census Counts \u2014 Blocks](https://source.coop/portolan-mirrors/us-census-catalog/blocks)\n\n2020 Decennial Census counts for all **8,174,955** census blocks in the 50 states, the District of Columbia and Puerto Rico \u2014 the smallest geography the Census Bureau publishes anything for. From t...\n\n## Coverage\n\n**Spatial Extent**\n\n- West: -179.2311, South: 17.8315, East: -65.1685, North: 71.4398\n\n**Temporal Extent**\n\n- 2020-04-01 to 2020-04-01\n\n## Source\n\n[https://data.census.gov/](https://data.census.gov/)\n\n## Processing Notes\n\nBuilt from the Census Bureau's own published files over plain HTTPS, with no\nAPI key: the ACS 2020\u20132024 5-year table-based Summary File, the 2024\ncartographic boundary files, the 2020 P.L. 94-171 redistricting archives,\nand TIGER/Line 2024 TABBLOCK20 blocks. Extracted 2026-11-12.\n\nStatistics follow the Census Bureau's own methods: margins of error at the\n90% confidence level on every ACS estimate, quadrature for sums and the\nproportion/ratio formulas for percentages, jam values converted to NULL,\ncoefficients of variation on headline columns, and every ACS table line\nnumber pinned against the release's table shells so a vintage bump that\nmoves a line fails the build instead of publishing a mislabeled column.\n\nEach collection's own processing notes name its upstream files, its\nderivations and its known issues. Not an official Census Bureau product.\n\n\n## Attribution\n\nU.S. Census Bureau\n\n## License\n\n[CC0-1.0](https://www.census.gov/about/policies/open-gov/open-data.html)\n\n## Contact\n\nChris Holmes <cholmes@9eo.org>\n\n---\n\n*Generated by [Portolan](https://github.com/portolan-sdi/portolan-cli) from STAC metadata and .portolan/metadata.yaml*\n",
-  "_review": [
-    "providers: role [processor] for 'Portolan' is an AI guess \u2014 README says it was generated by Portolan from STAC metadata and the dataset is a mirror under portolan-mirrors; assumed Portolan built the cloud-native conversion.. Verify before flipping to _state: reviewed.",
-    "extent.temporal: None (probe sample) widened to ['2020-04-01T00:00:00Z', '2020-04-01T00:00:00Z'] using README-stated coverage ['2020-04-01', '2020-04-01']."
-  ],
+  "total_bytes": 25832207643,
+  "readme": "## README.md\n# US Census Demographics \u2014 Cloud-Native Mirror\n\n**[\ud83d\uddfa\ufe0f Open in the data browser](https://browser.portolan-sdi.org/?catalog=https://data.source.coop/portolan-mirrors/us-census-catalog/catalog.json#/external/data.source.coop/portolan-mirrors/us-census-catalog/catalog.json)** \u00b7 [\ud83e\udded Census Atlas](https://portolan-mirrors.github.io/us-census-catalog/) \u00b7 [Source repository](https://github.com/portolan-mirrors/us-census-catalog) \u00b7 [Agent guide](https://source.coop/portolan-mirrors/us-census-catalog/AGENTS.md) \u00b7 [STAC root](https://data.source.coop/portolan-mirrors/us-census-catalog/catalog.json)\n\n![census](https://img.shields.io/badge/census-blue) ![ACS](https://img.shields.io/badge/ACS-blue) ![American Community Survey](https://img.shields.io/badge/American_Community_Survey-blue) ![decennial census](https://img.shields.io/badge/decennial_census-blue) ![demographics](https://img.shields.io/badge/demographics-blue) ![United States](https://img.shields.io/badge/United_States-blue) ![GeoParquet](https://img.shields.io/badge/GeoParquet-blue) ![PMTiles](https://img.shields.io/badge/PMTiles-blue) ![STAC](https://img.shields.io/badge/STAC-blue) ![cloud-native](https://img.shields.io/badge/cloud--native-blue)\n\nNationwide United States census statistics as cloud-native GeoParquet and\nPMTiles with STAC metadata, at every census geography from states down to\nthe 242,298 block groups and 8,174,955 blocks of the 2020 Census, plus the\n33,791 ZIP Code Tabulation Areas, 32,612 places and 441 congressional\ndistricts of the 119th Congress. Thirty-nine collections carry curated\n[American Community Survey](https://www.census.gov/programs-surveys/acs.html)\n2020\u20132024 5-year indicators \u2014 income, poverty, age, race and ethnicity,\neducation, housing cost and tenure, vehicles, commuting, internet access,\nhealth insurance, disability, nativity \u2014 every estimate with its margin of\nerror at the 90% confidence level and the headline statistics with a\ncoefficient of variation. Every geography is a sub-catalog of themed\ncollections (income, people, housing, connectivity, wellbeing), and the\nfive coarse-or-sparse geographies \u2014 counties, states, ZCTAs, places,\ncongressional districts \u2014 add a sixth collection carrying all 135 columns\nin one wide table. One further collection carries 2020 Decennial Census\nP.L. 94-171 counts at block level, hive-partitioned by state. Six more,\nbeside the block-group and tract ACS collections, carry curated 2020\nCensus Demographic and Housing Characteristics (DHC) counts \u2014 age & sex,\nhousehold type and tenure \u2014 100% counts with no margin of error and no\nsampling error, protected instead by the Census Bureau's differential-\nprivacy disclosure avoidance system.\nExplore it all interactively \u2014 change maps, 2015\u20132019 / 2020\u20132024\ncomparison and place search \u2014 in the [Census Atlas](https://portolan-mirrors.github.io/us-census-catalog/), the\ncatalog's own map explorer.\n[data.census.gov](https://data.census.gov/) is authoritative; this is a mirror, and\nevery collection links the exact upstream census.gov files it was built\nfrom.\n\n## Collections\n\n### [2020 Census Counts \u2014 Blocks](https://source.coop/portolan-mirrors/us-census-catalog/blocks)\n\n2020 Decennial Census counts for all **8,174,955** census blocks in the 50 states, the District of Columbia and Puerto Rico \u2014 the smallest geography the Census Bureau publishes anything for. From t...\n\n## Coverage\n\n**Spatial Extent**\n\n- West: -179.2311, South: 17.8315, East: -65.1685, North: 71.4398\n\n**Temporal Extent**\n\n- 2020-04-01 to 2020-04-01\n\n## Source\n\n[https://data.census.gov/](https://data.census.gov/)\n\n## Processing Notes\n\nBuilt from the Census Bureau's own published files over plain HTTPS, with no\nAPI key: the ACS 2020\u20132024 5-year table-based Summary File, the 2024\ncartographic boundary files, the 2020 P.L. 94-171 redistricting archives,\nand TIGER/Line 2024 TABBLOCK20 blocks. Extracted 2026-11-12.\n\nStatistics follow the Census Bureau's own methods: margins of error at the\n90% confidence level on every ACS estimate, quadrature for sums and the\nproportion/ratio formulas for percentages, jam values converted to NULL,\ncoefficients of variation on headline columns, and every ACS table line\nnumber pinned against the release's table shells so a vintage bump that\nmoves a line fails the build instead of publishing a mislabeled column.\n\nEach collection's own processing notes name its upstream files, its\nderivations and its known issues. Not an official Census Bureau product.\n\n\n## Attribution\n\nU.S. Census Bureau\n\n## License\n\n[CC0-1.0](https://www.census.gov/about/policies/open-gov/open-data.html)\n\n## Contact\n\nChris Holmes <cholmes@9eo.org>\n\n---\n\n*Generated by [Portolan](https://github.com/portolan-sdi/portolan-cli) from STAC metadata and .portolan/metadata.yaml*\n",
   "_state": "drafted",
-  "cataloged_at": "2026-11-17T09:30:47+00:00",
-  "_source_format": "stac",
+  "cataloged_at": "2026-11-26T09:50:27+00:00",
   "store_format": null
 }
