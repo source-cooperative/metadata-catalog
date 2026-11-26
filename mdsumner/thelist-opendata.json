@@ -7,13 +7,13 @@
   ],
   "id": "mdsumner/thelist-opendata",
   "title": "LIST open data, Tasmania - cloud-native mirror",
-  "description": "A cloud-native mirror of Land Tasmania's LIST open data bulk downloads, converted to GeoParquet and Cloud Optimized GeoTIFF. It covers about 1700 Tasmanian state spatial datasets (parcels, land use, built infrastructure, soil and enterprise-suitability grids and more), split by local government area or statewide, with a manifest describing every source file.",
+  "description": "Cloud-native GeoParquet and Cloud Optimized GeoTIFF mirror of Land Tasmania's LIST open data bulk downloads, covering about 1700 Tasmanian state spatial datasets such as parcels, land use, built infrastructure, and soil and enterprise-suitability grids. Datasets are split by local government area or statewide, with a manifest describing every source file and conversion.",
   "license": "CC-BY-3.0-AU",
   "keywords": [
-    "geoparquet",
-    "cloud-optimized-geotiff",
     "land-parcels",
     "land-use",
+    "geoparquet",
+    "cloud-optimized-geotiff",
     "administrative-boundaries",
     "agriculture",
     "topography",
@@ -116,7 +116,7 @@
         {
           "name": "geometry",
           "type": "GEOMETRY('EPSG:28355')",
-          "description": "[geometry] Geometry in EPSG:28355 (GDA94 / MGA zone 55)"
+          "description": "[geometry] Vector geometry in EPSG:28355 (GDA94 / MGA zone 55)"
         },
         {
           "name": "geometry_bbox",
@@ -148,7 +148,7 @@
         {
           "name": "geometry",
           "type": "GEOMETRY('EPSG:28355')",
-          "description": "[geometry] Geometry in EPSG:28355 (GDA94 / MGA zone 55)"
+          "description": "[geometry] Vector geometry in EPSG:28355 (GDA94 / MGA zone 55)"
         },
         {
           "name": "geometry_bbox",
@@ -180,11 +180,12 @@
         {
           "name": "EASTING",
           "type": "DOUBLE",
-          "description": "[admin_code] Projected easting coordinate, which is a locator and not an admin code. Pairs with NORTHING."
+          "description": "[latlon] Easting coordinate (projected, MGA zone 55) of the site; pairs with NORTHING"
         },
         {
           "name": "NORTHING",
-          "type": "DOUBLE"
+          "type": "DOUBLE",
+          "description": "[latlon] Northing coordinate (projected, MGA zone 55) of the site; pairs with EASTING"
         },
         {
           "name": "ASS_CLASSI",
@@ -205,7 +206,7 @@
         {
           "name": "geometry",
           "type": "GEOMETRY('EPSG:28355')",
-          "description": "[geometry] Point geometry in EPSG:28355 (GDA94 / MGA zone 55)"
+          "description": "[geometry] Point geometry in EPSG:28355"
         },
         {
           "name": "geometry_bbox",
@@ -273,7 +274,7 @@
         {
           "name": "geometry",
           "type": "GEOMETRY('EPSG:28355')",
-          "description": "[geometry] Line geometry in EPSG:28355 (GDA94 / MGA zone 55)"
+          "description": "[geometry] Line geometry in EPSG:28355"
         },
         {
           "name": "geometry_bbox",
@@ -337,7 +338,7 @@
         {
           "name": "geometry",
           "type": "GEOMETRY('EPSG:28355')",
-          "description": "[geometry] Point geometry in EPSG:28355 (GDA94 / MGA zone 55)"
+          "description": "[geometry] Point geometry in EPSG:28355"
         },
         {
           "name": "geometry_bbox",
@@ -555,16 +556,25 @@
     }
   ],
   "visibility": "public",
-  "featured": 0,
-  "ext_bytes": {
-    "parquet": 12935871730,
-    "tif": 7841034687,
-    "csv": 33965488,
-    "vrt": 310303,
-    "md": 6409
-  },
+  "updated_at": "2026-10-13T22:52:27.456Z",
+  "product_id": "thelist-opendata",
   "data_mode": null,
+  "featured": 0,
   "account_id": "mdsumner",
+  "object_count": 1856,
+  "total_bytes": 30579478075,
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
+  },
+  "disabled": false,
+  "exts": {
+    "parquet": 1606,
+    "tif": 167,
+    "pmtiles": 76,
+    "csv": 6,
+    "md": 1
+  },
   "mirrors": {
     "aws-opendata-us-west-2": {
       "connection_id": "aws-opendata-us-west-2",
@@ -572,29 +582,17 @@
       "prefix": "mdsumner/thelist-opendata/"
     }
   },
-  "exts": {
-    "parquet": 1580,
-    "tif": 163,
-    "vrt": 44,
-    "csv": 6,
-    "md": 1
+  "ext_bytes": {
+    "parquet": 16358115470,
+    "tif": 8209901493,
+    "pmtiles": 5977479943,
+    "csv": 33973537,
+    "md": 7632
   },
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
-  },
-  "created_at": "2026-10-13T22:52:27.456Z",
-  "updated_at": "2026-10-13T22:52:27.456Z",
   "objects_updated_at": "2026-11-21T07:31:25+00:00",
-  "product_id": "thelist-opendata",
-  "total_bytes": 20811188617,
-  "disabled": false,
-  "object_count": 1794,
-  "readme": "## README.md\n# LIST open data, Tasmania - cloud-native mirror\n\nGeoParquet and Cloud Optimized GeoTIFF copies of the Land Tasmania LIST open\ndata bulk downloads (https://listdata.thelist.tas.gov.au/opendata/data/),\nwith a manifest describing every source file and the etag each output was\nbuilt from. The original zips are not mirrored; fetch them from the source.\n\nData: (c) State of Tasmania, Creative Commons Attribution 3.0 Australia.\nCode that built this: https://github.com/hypertidy/thelist-opendata (MIT).\n\n## Attribution\n\nLand Tasmania asks for this form, and it applies to everything here whether you\nuse the GeoParquet, the COGs or the source zips:\n\n    \"<dataset name>\" from theLIST \u00a9 State of Tasmania\n\nfor example `\"LIST Parcels\" from theLIST \u00a9 State of Tasmania`. Land Tasmania\ndoes not endorse this mirror or any use of it. Some datasets are published\nthrough the LIST on behalf of other custodians (TasWater, TasNetworks, EPA\nTasmania, Natural Resources and Environment Tasmania and others); the\n`readme.txt` inside each source zip names the custodian and any additional\nconditions, and the `.shp.xml` beside it is the ESRI metadata record.\n\n## What is here\n\nThe source is a plain directory of about 1700 zips, nearly all holding one\nlayer three ways (FileGDB, shapefile, MapInfo TAB). Most products are split by\nthe 29 local government areas (LGAs); some are statewide; a few are both.\nThis mirror converts each layer once, from the FileGDB where there is one.\n\n    manifest/      the catalogue: every source file (index.csv, files.csv),\n                   every zip member (contents.csv), every layer with geometry\n                   type, feature count, CRS and extent (layers.csv), a roll-up\n                   per product (products.csv), and the conversion log keyed by\n                   source etag (converted.csv)\n    geoparquet/<product>/<region>/<layer>.parquet\n                   one GeoParquet per vector layer; region is an LGA or statewide\n    geoparquet/<product>/<layer>_union.vrt\n                   an OGR VRT unioning the LGA files of a split product into one\n                   statewide layer (with an lga field); open it directly or\n                   read the per-LGA files as a partitioned dataset\n    parquet/<product>/<region>/<table>.parquet\n                   attribute-only tables, including the class tables of the\n                   NCH raster products\n    cog/<product>/<region>/<name>.tif\n                   rasters as COG (ZSTD, 512 px blocks, overviews)\n\nSizes as of the first release: 13 GB GeoParquet, 7 GB COG (the source zips,\nnot mirrored, total 183 GB).\n\n## Reading it\n\nEverything is readable in place. The GeoParquet is GeoParquet 1.1 with a\ncovering bbox column and rows sorted by bbox, so spatial predicates prune row\ngroups.\n\nDuckDB, one LGA-split product as a single table:\n\n    INSTALL spatial; LOAD spatial;\n    SELECT count(*) FROM read_parquet(\n      's3://us-west-2.opendata.source.coop/mdsumner/thelist-opendata/geoparquet/list_parcels/*/*.parquet',\n      hive_partitioning = false);\n\nGDAL / ogr:\n\n    gdal vector info /vsis3/us-west-2.opendata.source.coop/mdsumner/thelist-opendata/geoparquet/list_parcels/hobart/list_parcels_hobart.parquet\n    gdal raster info /vsis3/us-west-2.opendata.source.coop/mdsumner/thelist-opendata/cog/nch_soil_drainage/statewide/nch_soil_drainage.tif\n\nR:\n\n    library(gdalraster)\n    ds <- new(GDALVector, \"/vsicurl/https://data.source.coop/mdsumner/thelist-opendata/geoparquet/list_parcels/hobart/list_parcels_hobart.parquet\")\n\nPython:\n\n    import geopandas\n    geopandas.read_parquet(\"https://data.source.coop/mdsumner/thelist-opendata/geoparquet/list_parcels/hobart/list_parcels_hobart.parquet\")\n\nSet `AWS_NO_SIGN_REQUEST=YES` for anonymous S3 access with GDAL.\n\n## What conversion did and did not do\n\n- Field names and types are the FileGDB's (Int16, DateTime and so on), not the\n  shapefile's truncated names. Where a zip has no usable FileGDB the shapefile\n  was used; `converted.csv` records which.\n- Geometries are promoted to MULTI types. FileGDB curves (CurvePolygon,\n  MultiSurface) are linearised, since GeoParquet has no curve types. M\n  ordinates are dropped (one layer); Z is kept.\n- The CRS is the source CRS, EPSG:28355 (GDA94 / MGA zone 55) nearly\n  everywhere. Where the source carried an unidentified ESRI WKT naming MGA55,\n  EPSG:28355 was assigned; nothing was reprojected.\n- Coded-value field domains (code -> description lookups) are not carried into\n  Parquet. The lookups are in the FileGDBs in the source zips.\n- Raster FileGDBs (the NCH soil and enterprise-suitability grids) come through\n  without their colour tables, but their attribute tables are in `parquet/`.\n  Byte class grids have nearest-neighbour overviews.\n- The LGA boundary that every per-LGA zip ships (`municipality_<lga>`) is\n  converted once, under `geoparquet/municipality/`.\n- Features that straddle LGA boundaries appear in both LGAs' files. In\n  LIST_TRANSPORT_SEGMENTS they are clipped at the boundary, each piece keeping\n  the same TRANSEG_ID. The `_union.vrt` is a union, not a dissolve;\n  deduplicating is left to the reader (for LIST products `LIST_GUID` or `UFI`\n  are the stable keys).\n- Nothing was cleaned, clipped, simplified or edited.\n\n## Known issues in the source, as found\n\n- A dozen zips carry an empty FileGDB (system tables only) beside a full\n  shapefile; the shapefile was used.\n- LIST_LAND_USE_2013_BRS_GLAMORGAN_SPRING_BAY: the FileGDB has 0 features, the\n  shapefile 9900.\n- NCH_ES_WHEAT_STATEWIDE.zip contains a barley scenario FileGDB.\n- About 40 of 2700 FileGDB/shapefile pairs differ by a few features.\n\nDetails and the exact files are in `manifest/layers.csv` and in the code\nrepository's README.\n\n## Derived products\n\nThings built from this mirror live in separate products, so this one stays a\nstraight conversion:\n\n- https://source.coop/mdsumner/tas-transport-web - LIST_TRANSPORT_SEGMENTS as\n  one statewide, browser-ready layer: EPSG:4326, clipped pieces rejoined to one\n  row per TRANSEG_ID, integer endpoint nodes, Hilbert-sorted GeoParquet plus\n  PMTiles, in dated snapshots.\n\n## Provenance and updates\n\nEvery file traces to a source URL, its size, mtime and HTTP etag at the time of\nconversion (`manifest/index.csv`, `manifest/converted.csv`). A re-run of the\npipeline against the live listing redoes only what changed upstream. First\nrelease: crawled 2026-09-10, converted 2026-09-17.\n",
-  "_review": [
-    "license: Creative Commons Attribution 3.0 Australia. Land Tasmania also requests the attribution form '\"<dataset name>\" from theLIST \u00a9 State of Tasmania'. Some datasets are published on behalf of other custodians, whose conditions are in each source zip's readme.txt."
-  ],
+  "created_at": "2026-10-13T22:52:27.456Z",
+  "readme": "## README.md\n# LIST open data, Tasmania - cloud-native mirror\n\nGeoParquet and Cloud Optimized GeoTIFF copies of the Land Tasmania LIST open\ndata bulk downloads (https://listdata.thelist.tas.gov.au/opendata/data/),\nwith a manifest describing every source file and the etag each output was\nbuilt from. The original zips are not mirrored; fetch them from the source.\n\n**Browse the datasets: https://hypertidy.github.io/thelist-opendata/**\nEvery statewide dataset with its columns, extent and source zips, and\ncopy-ready snippets to read it in place with DuckDB, GDAL, R, Python or QGIS.\n\nData: (c) State of Tasmania, Creative Commons Attribution 3.0 Australia.\nCode that built this: https://github.com/hypertidy/thelist-opendata (MIT).\n\n## Attribution\n\nLand Tasmania asks for this form, and it applies to everything here whether you\nuse the GeoParquet, the COGs or the source zips:\n\n    \"<dataset name>\" from theLIST \u00a9 State of Tasmania\n\nfor example `\"LIST Parcels\" from theLIST \u00a9 State of Tasmania`. Land Tasmania\ndoes not endorse this mirror or any use of it. Some datasets are published\nthrough the LIST on behalf of other custodians (TasWater, TasNetworks, EPA\nTasmania, Natural Resources and Environment Tasmania and others); the\n`readme.txt` inside each source zip names the custodian and any additional\nconditions, and the `.shp.xml` beside it is the ESRI metadata record.\n\n## What is here\n\nThe source is a plain directory of about 1700 zips, nearly all holding one\nlayer three ways (FileGDB, shapefile, MapInfo TAB). Most products are split by\nthe 29 local government areas (LGAs); some are statewide; a few are both.\nThis mirror converts each layer once, from the FileGDB where there is one.\n\n    manifest/      the catalogue: every source file (index.csv, files.csv),\n                   every zip member (contents.csv), every layer with geometry\n                   type, feature count, CRS and extent (layers.csv), a roll-up\n                   per product (products.csv), and the conversion log keyed by\n                   source etag (converted.csv)\n    geoparquet/<product>/<region>/<layer>.parquet\n                   one GeoParquet per vector layer; region is an LGA or statewide\n    geoparquet/<product>/statewide/<layer>_statewide.parquet\n                   every product has one: LIST's own statewide file where LIST\n                   ships one, otherwise built here from the 29 LGA files, with\n                   features clipped at LGA boundaries rejoined (see below)\n    parquet/<product>/<region>/<table>.parquet\n                   attribute-only tables, including the class tables of the\n                   NCH raster products\n    cog/<product>/<region>/<name>.tif\n                   rasters as COG (ZSTD, 512 px blocks, overviews); the LGA-split\n                   DEM 25 m is also mosaicked to cog/list_dem_25m/statewide/\n\nSizes as of the first release: 13 GB GeoParquet, 7 GB COG (the source zips,\nnot mirrored, total 183 GB).\n\n## Reading it\n\nEverything is readable in place. The GeoParquet is GeoParquet 1.1 with a\ncovering bbox column and rows sorted by bbox, so spatial predicates prune row\ngroups.\n\nDuckDB, statewide parcels:\n\n    INSTALL httpfs; LOAD httpfs; INSTALL spatial; LOAD spatial;\n    SELECT count(*) FROM read_parquet(\n      'https://data.source.coop/mdsumner/thelist-opendata/geoparquet/list_parcels/statewide/list_parcels_statewide.parquet');\n\nFor `s3://us-west-2.opendata.source.coop/...` paths in DuckDB, first\n`SET s3_region = 'us-west-2'; SET s3_url_style = 'path';` (the dots in the\nbucket name break virtual-host style TLS).\n\nGDAL / ogr:\n\n    gdal vector info /vsis3/us-west-2.opendata.source.coop/mdsumner/thelist-opendata/geoparquet/list_parcels/hobart/list_parcels_hobart.parquet\n    gdal raster info /vsis3/us-west-2.opendata.source.coop/mdsumner/thelist-opendata/cog/nch_soil_drainage/statewide/nch_soil_drainage.tif\n\nR:\n\n    library(gdalraster)\n    ds <- new(GDALVector, \"/vsicurl/https://data.source.coop/mdsumner/thelist-opendata/geoparquet/list_parcels/hobart/list_parcels_hobart.parquet\")\n\nPython:\n\n    import geopandas\n    geopandas.read_parquet(\"https://data.source.coop/mdsumner/thelist-opendata/geoparquet/list_parcels/hobart/list_parcels_hobart.parquet\")\n\nSet `AWS_NO_SIGN_REQUEST=YES` for anonymous S3 access with GDAL.\n\n## What conversion did and did not do\n\n- Field names and types are the FileGDB's (Int16, DateTime and so on), not the\n  shapefile's truncated names. Where a zip has no usable FileGDB the shapefile\n  was used; `converted.csv` records which.\n- Geometries are promoted to MULTI types. FileGDB curves (CurvePolygon,\n  MultiSurface) are linearised, since GeoParquet has no curve types. M\n  ordinates are dropped (one layer); Z is kept.\n- The CRS is the source CRS, EPSG:28355 (GDA94 / MGA zone 55) nearly\n  everywhere. Where the source carried an unidentified ESRI WKT naming MGA55,\n  EPSG:28355 was assigned; nothing was reprojected.\n- Coded-value field domains (code -> description lookups) are not carried into\n  Parquet. The lookups are in the FileGDBs in the source zips.\n- Raster FileGDBs (the NCH soil and enterprise-suitability grids) come through\n  without their colour tables, but their attribute tables are in `parquet/`.\n  Byte class grids have nearest-neighbour overviews.\n- The LGA boundary that every per-LGA zip ships (`municipality_<lga>`) is\n  converted once, under `geoparquet/municipality/`.\n- In LGA-split products a feature that crosses an LGA boundary is clipped\n  into each LGA's file, every piece keeping the feature's `LIST_GUID` and\n  attributes; a feature lying along a boundary (boundary segments, some\n  hydlines) ships whole in both. The per-LGA files are as LIST ships them.\n- The built statewide files put the pieces back: one row per `LIST_GUID` (or\n  the layer's own id: `ID`, `RS_ID`, `WL_ID`), attributes as in the pieces,\n  polygons unioned, lines merged end to end in their own direction, repeated\n  copies kept once. `SHAPE_Length` and `SHAPE_Area` are recomputed for\n  rejoined rows; `COMP_LEN` / `COMP_AREA` are LIST's. A column `lga` names the\n  source LGA, or every source LGA separated by `;`. A piece that fell outside\n  every LGA (the middle of a bridge over the Derwent or Tamar, a parcel's part\n  in open water) is not in any LGA file, so it is not in the statewide file\n  either. TASVEG 4.0 and its fire attributes have no feature id: their\n  statewide files are the LGA files stacked, still cut at LGA boundaries.\n- Apart from that rejoin, nothing was cleaned, clipped, simplified or edited.\n\n## Known issues in the source, as found\n\n- A dozen zips carry an empty FileGDB (system tables only) beside a full\n  shapefile; the shapefile was used.\n- LIST_LAND_USE_2013_BRS_GLAMORGAN_SPRING_BAY: the FileGDB has 0 features, the\n  shapefile 9900.\n- NCH_ES_WHEAT_STATEWIDE.zip contains a barley scenario FileGDB.\n- About 40 of 2700 FileGDB/shapefile pairs differ by a few features.\n\nDetails and the exact files are in `manifest/layers.csv` and in the code\nrepository's README.\n\n## Related products\n\nBuilt from this mirror for a particular use:\n\n- https://source.coop/mdsumner/tas-transport-web - LIST_TRANSPORT_SEGMENTS as\n  one statewide, browser-ready layer: EPSG:4326, clipped pieces rejoined to one\n  row per TRANSEG_ID, integer endpoint nodes, Hilbert-sorted GeoParquet plus\n  PMTiles, in dated snapshots.\n\n## Provenance and updates\n\nEvery file traces to a source URL, its size, mtime and HTTP etag at the time of\nconversion (`manifest/index.csv`, `manifest/converted.csv`). A re-run of the\npipeline against the live listing redoes only what changed upstream. First\nrelease: crawled 2026-09-10, converted 2026-09-17.\n",
   "_state": "drafted",
-  "cataloged_at": "2026-11-13T09:42:52+00:00",
+  "cataloged_at": "2026-11-26T09:49:43+00:00",
   "store_format": null
 }
