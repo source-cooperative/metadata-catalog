@@ -7,7 +7,7 @@
   ],
   "id": "nlebovits/phl-housing-demo",
   "title": "Philadelphia Housing and Land Use",
-  "description": "A collection of ten City of Philadelphia datasets covering property parcels, land use, building footprints, zoning base districts and overlays, a zoning code lookup table, vacant property indicators, affordable housing production, and council districts. Mirrored from the city's ArcGIS services via OpenDataPhilly as GeoParquet with PMTiles.",
+  "description": "Ten City of Philadelphia datasets mirrored from OpenDataPhilly's ArcGIS services as GeoParquet with PMTiles, covering property parcels, land use, building footprints, zoning base districts and overlays, a zoning code lookup table, vacant property indicators, affordable housing production, and council districts.",
   "keywords": [
     "land-parcels",
     "land-use",
@@ -55,6 +55,36 @@
           39.8595893,
           -74.9554859,
           40.1379348
+        ],
+        [
+          -75.2777568,
+          39.870555,
+          -74.9557606,
+          40.1378736
+        ],
+        [
+          -75.2794333,
+          39.8723704,
+          -74.9572975,
+          40.1377814
+        ],
+        [
+          -75.2739215,
+          39.8912307,
+          -74.9589406,
+          40.1329328
+        ],
+        [
+          -75.2668844,
+          39.8851872,
+          -74.9693469,
+          40.1350371
+        ],
+        [
+          -75.2802327,
+          39.8708223,
+          -74.9558064,
+          40.1378578
         ]
       ]
     },
@@ -68,190 +98,9 @@
     }
   },
   "summaries": {
-    "item_count": 5447065
+    "item_count": 3040466
   },
   "assets": {
-    "affordable_housing": {
-      "href": "https://data.source.coop/nlebovits/phl-housing-demo/affordable_housing/affordable_housing.parquet",
-      "type": "application/x-parquet",
-      "title": "affordable_housing.parquet",
-      "roles": [
-        "data"
-      ],
-      "table:columns": [
-        {
-          "name": "objectid",
-          "type": "BIGINT"
-        },
-        {
-          "name": "fiscal_year_complete",
-          "type": "INTEGER"
-        },
-        {
-          "name": "project_name",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "developer_name",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "address",
-          "type": "VARCHAR",
-          "description": "[placename] Street address of the project"
-        },
-        {
-          "name": "project_type",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "total_units",
-          "type": "INTEGER"
-        },
-        {
-          "name": "accessible_units",
-          "type": "INTEGER"
-        },
-        {
-          "name": "sensory_units",
-          "type": "INTEGER"
-        },
-        {
-          "name": "visitable_units",
-          "type": "INTEGER"
-        },
-        {
-          "name": "development_type",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "status",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "bbox",
-          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
-        },
-        {
-          "name": "geometry",
-          "type": "GEOMETRY('OGC:CRS84')",
-          "description": "[geometry] Project location geometry in CRS84"
-        }
-      ],
-      "table:row_count": 501
-    },
-    "affordable_housing/versions": {
-      "href": "https://data.source.coop/nlebovits/phl-housing-demo/affordable_housing/versions/2026-08-26.parquet",
-      "type": "application/x-parquet",
-      "title": "2026-08-26.parquet",
-      "roles": [
-        "data"
-      ],
-      "table:columns": [
-        {
-          "name": "objectid",
-          "type": "BIGINT"
-        },
-        {
-          "name": "fiscal_year_complete",
-          "type": "INTEGER"
-        },
-        {
-          "name": "project_name",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "developer_name",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "address",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "project_type",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "total_units",
-          "type": "INTEGER"
-        },
-        {
-          "name": "accessible_units",
-          "type": "INTEGER"
-        },
-        {
-          "name": "sensory_units",
-          "type": "INTEGER"
-        },
-        {
-          "name": "visitable_units",
-          "type": "INTEGER"
-        },
-        {
-          "name": "development_type",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "status",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "bbox",
-          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
-        },
-        {
-          "name": "geometry",
-          "type": "GEOMETRY('OGC:CRS84')"
-        }
-      ],
-      "table:row_count": 501
-    },
-    "council_districts_2024": {
-      "href": "https://data.source.coop/nlebovits/phl-housing-demo/council_districts_2024/council_districts_2024.parquet",
-      "type": "application/x-parquet",
-      "title": "council_districts_2024.parquet",
-      "roles": [
-        "data"
-      ],
-      "table:columns": [
-        {
-          "name": "objectid",
-          "type": "BIGINT"
-        },
-        {
-          "name": "district",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "shape_leng",
-          "type": "DOUBLE"
-        },
-        {
-          "name": "district_num",
-          "type": "SMALLINT",
-          "description": "[admin_code] Council district number"
-        },
-        {
-          "name": "Shape__Area",
-          "type": "DOUBLE"
-        },
-        {
-          "name": "Shape__Length",
-          "type": "DOUBLE"
-        },
-        {
-          "name": "bbox",
-          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
-        },
-        {
-          "name": "geometry",
-          "type": "GEOMETRY('OGC:CRS84')",
-          "description": "[geometry] Council district polygons in CRS84"
-        }
-      ],
-      "table:row_count": 10
-    },
     "dor_parcel": {
       "href": "https://data.source.coop/nlebovits/phl-housing-demo/dor_parcel/dor_parcel.parquet",
       "type": "application/x-parquet",
@@ -306,7 +155,8 @@
         },
         {
           "name": "stnam",
-          "type": "VARCHAR"
+          "type": "VARCHAR",
+          "description": "[placename] Street name of the parcel address"
         },
         {
           "name": "stdessuf",
@@ -358,8 +208,7 @@
         },
         {
           "name": "addr_std",
-          "type": "VARCHAR",
-          "description": "[placename] Standardized street address of the parcel"
+          "type": "VARCHAR"
         },
         {
           "name": "comments",
@@ -428,10 +277,17 @@
         {
           "name": "geometry",
           "type": "GEOMETRY('OGC:CRS84')",
-          "description": "[geometry] Property parcel polygons in CRS84"
+          "description": "[geometry] Parcel boundary polygons in CRS84"
         }
       ],
-      "table:row_count": 608124
+      "table:row_count": 608176,
+      "bbox": [
+        -75.2777568,
+        39.870555,
+        -74.9557606,
+        40.1378736
+      ],
+      "item_count": 3040466
     },
     "dor_parcel/versions": {
       "href": "https://data.source.coop/nlebovits/phl-housing-demo/dor_parcel/versions/",
@@ -610,71 +466,7 @@
           "type": "GEOMETRY('OGC:CRS84')"
         }
       ],
-      "description": "3 files sampled for this table"
-    },
-    "land_use": {
-      "href": "https://data.source.coop/nlebovits/phl-housing-demo/land_use/land_use.parquet",
-      "type": "application/x-parquet",
-      "title": "land_use.parquet",
-      "roles": [
-        "data"
-      ],
-      "table:columns": [
-        {
-          "name": "objectid",
-          "type": "BIGINT"
-        },
-        {
-          "name": "c_dig1",
-          "type": "SMALLINT"
-        },
-        {
-          "name": "c_dig1desc",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "c_dig2",
-          "type": "SMALLINT"
-        },
-        {
-          "name": "c_dig2desc",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "c_dig3",
-          "type": "SMALLINT"
-        },
-        {
-          "name": "c_dig3desc",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "year",
-          "type": "SMALLINT"
-        },
-        {
-          "name": "vacbldg",
-          "type": "VARCHAR"
-        },
-        {
-          "name": "Shape__Area",
-          "type": "DOUBLE"
-        },
-        {
-          "name": "Shape__Length",
-          "type": "DOUBLE"
-        },
-        {
-          "name": "bbox",
-          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
-        },
-        {
-          "name": "geometry",
-          "type": "GEOMETRY('OGC:CRS84')",
-          "description": "[geometry] Land use polygons in CRS84"
-        }
-      ],
-      "table:row_count": 559077
+      "description": "4 files sampled for this table"
     },
     "li_building_footprints": {
       "href": "https://data.source.coop/nlebovits/phl-housing-demo/li_building_footprints/li_building_footprints.parquet",
@@ -698,8 +490,7 @@
         },
         {
           "name": "address",
-          "type": "VARCHAR",
-          "description": "[placename] Street address of the building"
+          "type": "VARCHAR"
         },
         {
           "name": "building_name",
@@ -751,7 +542,14 @@
           "description": "[geometry] Building footprint polygons in CRS84"
         }
       ],
-      "table:row_count": 546083
+      "table:row_count": 546304,
+      "bbox": [
+        -75.2794333,
+        39.8723704,
+        -74.9572975,
+        40.1377814
+      ],
+      "item_count": 2730595
     },
     "li_building_footprints/versions": {
       "href": "https://data.source.coop/nlebovits/phl-housing-demo/li_building_footprints/versions/",
@@ -826,7 +624,7 @@
           "type": "GEOMETRY('OGC:CRS84')"
         }
       ],
-      "description": "3 files sampled for this table"
+      "description": "4 files sampled for this table"
     },
     "vacant_indicators_bldg": {
       "href": "https://data.source.coop/nlebovits/phl-housing-demo/vacant_indicators_bldg/vacant_indicators_bldg.parquet",
@@ -842,8 +640,7 @@
         },
         {
           "name": "address",
-          "type": "VARCHAR",
-          "description": "[placename] Street address of the parcel"
+          "type": "VARCHAR"
         },
         {
           "name": "owner1",
@@ -902,10 +699,17 @@
         {
           "name": "geometry",
           "type": "GEOMETRY('OGC:CRS84')",
-          "description": "[geometry] Parcel geometry for likely vacant buildings in CRS84"
+          "description": "[geometry] Parcel polygons flagged as likely vacant buildings"
         }
       ],
-      "table:row_count": 9561
+      "table:row_count": 9554,
+      "bbox": [
+        -75.2739215,
+        39.8912307,
+        -74.9589406,
+        40.1329328
+      ],
+      "item_count": 47318
     },
     "vacant_indicators_bldg/versions": {
       "href": "https://data.source.coop/nlebovits/phl-housing-demo/vacant_indicators_bldg/versions/",
@@ -980,7 +784,7 @@
           "type": "GEOMETRY('OGC:CRS84')"
         }
       ],
-      "description": "3 files sampled for this table"
+      "description": "4 files sampled for this table"
     },
     "vacant_indicators_land": {
       "href": "https://data.source.coop/nlebovits/phl-housing-demo/vacant_indicators_land/vacant_indicators_land.parquet",
@@ -996,8 +800,7 @@
         },
         {
           "name": "address",
-          "type": "VARCHAR",
-          "description": "[placename] Street address of the parcel"
+          "type": "VARCHAR"
         },
         {
           "name": "owner1",
@@ -1056,10 +859,17 @@
         {
           "name": "geometry",
           "type": "GEOMETRY('OGC:CRS84')",
-          "description": "[geometry] Parcel geometry for likely vacant land in CRS84"
+          "description": "[geometry] Parcel polygons flagged as likely vacant land"
         }
       ],
-      "table:row_count": 28725
+      "table:row_count": 28707,
+      "bbox": [
+        -75.2668844,
+        39.8851872,
+        -74.9693469,
+        40.1350371
+      ],
+      "item_count": 143681
     },
     "vacant_indicators_land/versions": {
       "href": "https://data.source.coop/nlebovits/phl-housing-demo/vacant_indicators_land/versions/",
@@ -1134,7 +944,7 @@
           "type": "GEOMETRY('OGC:CRS84')"
         }
       ],
-      "description": "3 files sampled for this table"
+      "description": "4 files sampled for this table"
     },
     "zoning_basedistricts/versions": {
       "href": "https://data.source.coop/nlebovits/phl-housing-demo/zoning_basedistricts/versions/",
@@ -1209,7 +1019,7 @@
           "type": "GEOMETRY('OGC:CRS84')"
         }
       ],
-      "description": "3 files sampled for this table"
+      "description": "4 files sampled for this table"
     },
     "zoning_basedistricts": {
       "href": "https://data.source.coop/nlebovits/phl-housing-demo/zoning_basedistricts/zoning_basedistricts.parquet",
@@ -1282,10 +1092,336 @@
         {
           "name": "geometry",
           "type": "GEOMETRY('OGC:CRS84')",
-          "description": "[geometry] Zoning base district polygons in CRS84"
+          "description": "[geometry] Zoning base district polygons"
         }
       ],
-      "table:row_count": 29210
+      "table:row_count": 29211,
+      "bbox": [
+        -75.2802327,
+        39.8708223,
+        -74.9558064,
+        40.1378578
+      ],
+      "item_count": 146042
+    },
+    "affordable_housing": {
+      "href": "https://data.source.coop/nlebovits/phl-housing-demo/affordable_housing/affordable_housing.parquet",
+      "type": "application/x-parquet",
+      "title": "affordable_housing.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "objectid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "fiscal_year_complete",
+          "type": "INTEGER"
+        },
+        {
+          "name": "project_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "developer_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "address",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "project_type",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "total_units",
+          "type": "INTEGER"
+        },
+        {
+          "name": "accessible_units",
+          "type": "INTEGER"
+        },
+        {
+          "name": "sensory_units",
+          "type": "INTEGER"
+        },
+        {
+          "name": "visitable_units",
+          "type": "INTEGER"
+        },
+        {
+          "name": "development_type",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "status",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')",
+          "description": "[geometry] Project location geometry in CRS84"
+        }
+      ],
+      "table:row_count": 501
+    },
+    "affordable_housing/versions": {
+      "href": "https://data.source.coop/nlebovits/phl-housing-demo/affordable_housing/versions/2026-08-26.parquet",
+      "type": "application/x-parquet",
+      "title": "2026-08-26.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "objectid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "fiscal_year_complete",
+          "type": "INTEGER"
+        },
+        {
+          "name": "project_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "developer_name",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "address",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "project_type",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "total_units",
+          "type": "INTEGER"
+        },
+        {
+          "name": "accessible_units",
+          "type": "INTEGER"
+        },
+        {
+          "name": "sensory_units",
+          "type": "INTEGER"
+        },
+        {
+          "name": "visitable_units",
+          "type": "INTEGER"
+        },
+        {
+          "name": "development_type",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "status",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        }
+      ],
+      "table:row_count": 501
+    },
+    "council_districts_2024": {
+      "href": "https://data.source.coop/nlebovits/phl-housing-demo/council_districts_2024/council_districts_2024.parquet",
+      "type": "application/x-parquet",
+      "title": "council_districts_2024.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "objectid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "district",
+          "type": "VARCHAR",
+          "description": "[placename] Council district name"
+        },
+        {
+          "name": "shape_leng",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "district_num",
+          "type": "SMALLINT"
+        },
+        {
+          "name": "Shape__Area",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Shape__Length",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')",
+          "description": "[geometry] Council district polygons"
+        }
+      ],
+      "table:row_count": 10
+    },
+    "land_use": {
+      "href": "https://data.source.coop/nlebovits/phl-housing-demo/land_use/land_use.parquet",
+      "type": "application/x-parquet",
+      "title": "land_use.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "objectid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "c_dig1",
+          "type": "SMALLINT"
+        },
+        {
+          "name": "c_dig1desc",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "c_dig2",
+          "type": "SMALLINT"
+        },
+        {
+          "name": "c_dig2desc",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "c_dig3",
+          "type": "SMALLINT"
+        },
+        {
+          "name": "c_dig3desc",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "year",
+          "type": "SMALLINT"
+        },
+        {
+          "name": "vacbldg",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "address",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "pin",
+          "type": "INTEGER"
+        },
+        {
+          "name": "type",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Shape__Area",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Shape__Length",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')",
+          "description": "[geometry] Land use parcel polygons"
+        }
+      ],
+      "table:row_count": 608310
+    },
+    "land_use/versions": {
+      "href": "https://data.source.coop/nlebovits/phl-housing-demo/land_use/versions/2026-08-26.parquet",
+      "type": "application/x-parquet",
+      "title": "2026-08-26.parquet",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "objectid",
+          "type": "BIGINT"
+        },
+        {
+          "name": "c_dig1",
+          "type": "SMALLINT"
+        },
+        {
+          "name": "c_dig1desc",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "c_dig2",
+          "type": "SMALLINT"
+        },
+        {
+          "name": "c_dig2desc",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "c_dig3",
+          "type": "SMALLINT"
+        },
+        {
+          "name": "c_dig3desc",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "year",
+          "type": "SMALLINT"
+        },
+        {
+          "name": "vacbldg",
+          "type": "VARCHAR"
+        },
+        {
+          "name": "Shape__Area",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "Shape__Length",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "bbox",
+          "type": "STRUCT(xmin DOUBLE, ymin DOUBLE, xmax DOUBLE, ymax DOUBLE)"
+        },
+        {
+          "name": "geometry",
+          "type": "GEOMETRY('OGC:CRS84')"
+        }
+      ],
+      "table:row_count": 559077
     },
     "zoning_descriptions": {
       "href": "https://data.source.coop/nlebovits/phl-housing-demo/zoning_descriptions/zoning_descriptions.parquet",
@@ -1456,7 +1592,7 @@
         {
           "name": "geometry",
           "type": "GEOMETRY('OGC:CRS84')",
-          "description": "[geometry] Zoning overlay polygons in CRS84"
+          "description": "[geometry] Zoning overlay district polygons"
         }
       ],
       "table:row_count": 198
@@ -1474,16 +1610,28 @@
       "title": "Source Cooperative product page"
     }
   ],
-  "featured": 0,
   "disabled": false,
-  "account_id": "nlebovits",
-  "_source": {
-    "source_coop_api": true,
-    "s3_inventory": true
+  "updated_at": "2026-08-26T12:02:19.686Z",
+  "visibility": "public",
+  "total_bytes": 1562336209,
+  "exts": {
+    "parquet": 34,
+    "json": 28,
+    "md": 22,
+    "jpg": 9,
+    "pmtiles": 9
   },
-  "total_bytes": 1166427058,
-  "object_count": 91,
+  "ext_bytes": {
+    "parquet": 1080958022,
+    "pmtiles": 479192207,
+    "jpg": 1984583,
+    "json": 104730,
+    "md": 96667
+  },
+  "featured": 0,
   "product_id": "phl-housing-demo",
+  "created_at": "2026-08-26T12:01:43.439Z",
+  "data_mode": null,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "connection_id": "aws-opendata-us-west-2",
@@ -1491,30 +1639,19 @@
       "is_primary": true
     }
   },
-  "created_at": "2026-08-26T12:01:43.439Z",
-  "data_mode": null,
-  "ext_bytes": {
-    "parquet": 685188457,
-    "pmtiles": 479060492,
-    "jpg": 1984583,
-    "json": 96859,
-    "md": 96667
+  "object_count": 102,
+  "account_id": "nlebovits",
+  "_source": {
+    "source_coop_api": true,
+    "s3_inventory": true
   },
-  "visibility": "public",
   "objects_updated_at": "2026-11-21T15:09:46+00:00",
-  "updated_at": "2026-08-26T12:02:19.686Z",
-  "exts": {
-    "json": 28,
-    "parquet": 23,
-    "md": 22,
-    "jpg": 9,
-    "pmtiles": 9
-  },
   "readme": "## README.md\n# Philadelphia Housing and Land Use\n\n![philadelphia](https://img.shields.io/badge/philadelphia-blue) ![pennsylvania](https://img.shields.io/badge/pennsylvania-blue) ![housing](https://img.shields.io/badge/housing-blue) ![zoning](https://img.shields.io/badge/zoning-blue) ![land use](https://img.shields.io/badge/land_use-blue) ![parcels](https://img.shields.io/badge/parcels-blue) ![vacancy](https://img.shields.io/badge/vacancy-blue) ![affordable housing](https://img.shields.io/badge/affordable_housing-blue) ![building footprints](https://img.shields.io/badge/building_footprints-blue) ![urban planning](https://img.shields.io/badge/urban_planning-blue)\n\nTen collections describing property, zoning, vacancy, and affordable housing in Philadelphia, mirrored from the City of Philadelphia's ArcGIS services via [OpenDataPhilly](https://opendataphilly.org/). Together they answer what exists on a parcel, what the zoning code permits there, whether the city believes it is empty, and what publicly funded housing has been built.\n\nProperty parcels, land use, and building footprints cover the whole city. Zoning base districts and overlays record what the code allows, and a lookup table decodes every zoning code. The city's vacancy model flags likely-vacant lots and likely-vacant buildings. Affordable housing production lists DHCD-funded projects completed since 1994 and the units each one delivered. The council districts give each location its political representation.\n\nEach collection ships as GeoParquet in CRS84 (longitude, latitude), with PMTiles for rendering and two to three verified map styles. Start at the catalog [AGENTS.md](AGENTS.md) for join keys, worked queries, and the data quirks that cause most wrong answers.\n\n## Collections\n\n<details>\n<summary>\ud83d\udcc1 10 collections (click to expand)</summary>\n\n### [Affordable Housing Production](affordable_housing/)\n\nAffordable housing projects funded by the Division of Housing and Community Development and completed since 1994. DHCD funds developers to build and maintain affordable units across the city.\n\n### [City Council Districts (2024)](council_districts_2024/)\n\nThe ten Philadelphia City Council districts as redrawn after the 2020 census. Each district elects one council member, and the city also seats seven at-large members who represent no district.\n\n### [Property Parcels](dor_parcel/)\n\nBoundaries of every real estate property parcel in Philadelphia, drawn from legally recorded deed documents. The Department of Records maintains the layer and republishes it weekly.\n\n### [Land Use](land_use/)\n\nLand use assigned to each parcel in Philadelphia, maintained by the City Planning Commission. Land use records the activity on the ground, such as residential, commercial, or industrial, rather than what zoning permits.\n\n### [Building Footprints](li_building_footprints/)\n\nOutlines of buildings and related structures across Philadelphia, captured photogrammetrically from aerial imagery. The layer covers residential, commercial, and industrial buildings, along with isolated garages, mobile homes, sheds, greenhouses, silos, and buildings under construction that have walls.\n\n### [Vacant Property Indicators \u2014 Buildings](vacant_indicators_bldg/)\n\nParcels across Philadelphia that the city's Vacant Property Indicators model flags as holding a likely vacant building. It is the structural counterpart to [vacant_indicators_land](../vacant_indicators_land), built by the same inter-agency model.\n\n### [Vacant Property Indicators \u2014 Land](vacant_indicators_land/)\n\nParcels across Philadelphia that the city's Vacant Property Indicators model flags as likely vacant land. The model was built by the Office of Innovation and Technology with Licenses and Inspections, the Office of Property Assessment, the Philadelphia Land Bank, and the Philadelphia Water Department.\n\n### [Zoning Base Districts](zoning_basedistricts/)\n\nBoundaries of Philadelphia's zoning base districts under the zoning code enacted in December 2011 and effective 22 August 2012. A base district sets what may be built on a parcel and how it may be used.\n\n### [Zoning Code Descriptions](zoning_descriptions/)\n\nZoning Descriptions\n\n### [Zoning Overlays](zoning_overlays/)\n\nBoundaries of Philadelphia's zoning overlay districts, enacted 15 December 2011 and effective 22 August 2012. An overlay adds rules on top of the base district beneath it, so a parcel can sit under several at once.\n\n</details>\n\n## Coverage\n\nThe collections cover the City of Philadelphia. Each `collection.json` gives its exact bounding box.\n\n## Source\n\n[https://opendataphilly.org/](https://opendataphilly.org/)\n\n## Processing Notes\n\nThe scheduled refresh extracts every collection from City of Philadelphia ArcGIS FeatureServer endpoints with `portolan extract arcgis`, one service per collection. Every layer is served from the city's ArcGIS Online organization fLeGjb7u4uXqeF9q. Each extract checks its feature count against the service's returnCountOnly response, and a version that does not match is not published.\nThe services serve EPSG:3857 (Web Mercator). The GeoParquet is reprojected to CRS84 (longitude, latitude) for all collections, so `ST_Area(geometry)` returns square degrees; reproject to EPSG:2272 to measure. The `Shape__Area` and `Shape__Length` columns keep the publisher's Web Mercator metres.\nColumn meanings come from three sources. ArcGIS field aliases supplied attested names such as `basereg` = \"Base Registry Number\". The [PASDA metadata record](https://www.pasda.psu.edu/uci/FullMetadataDisplay.aspx?file=PhiladelphiaBuildings2017.xml) supplied the building footprint FCODE key, which states \"1810 = Building 1830 = Tank\". The city data team's [post on the OpenDataPhilly forum](https://groups.google.com/g/opendataphilly/c/anMKnNH3pqc) supplied the vacancy rank semantics. Land use category labels were derived from the data; see AGENTS.md for the query.\n`zoning_descriptions` is a non-spatial lookup table. `portolan extract arcgis` reports \"0/0 layers\" for services that advertise a table rather than a layer, so the refresh fetches that parquet with a paged query against the same FeatureServer query endpoint. See [portolan-cli#812](https://github.com/portolan-sdi/portolan-cli/issues/812).\nEach extract reorders every spatial collection with `gpio sort hilbert` to give its row groups spatial locality.\n\n## Updates and versions\n\nA scheduled job checks every source daily. It re-extracts a collection only when the city edited its rows, and it records a new version only when the rows changed. Each refresh repeats the processing above and sorts every spatial collection with `gpio sort hilbert`. The current data is always at `<collection>/<collection>.parquet`. Each earlier version stays at `<collection>/versions/<version>.parquet` and never changes. Each `collection.json` lists every version with its dates and checksum. The first version of every collection is the 2026-08-26 extract.\n\nThe publisher states an update cadence for three collections on OpenDataPhilly. A version is recorded at most once per interval below.\n\n| Collection | Stated cadence | Minimum days between versions |\n|---|---|---|\n| dor_parcel | Weekly | 7 |\n| li_building_footprints | Weekly | 7 |\n| council_districts_2024 | As needed | 1 |\n| All others | Not stated | 7 |\n\nEach collection carries `updated` (the newest version), `phl:source_updated` (when the city last edited those rows), and `phl:update_frequency`.\n\n\n## Citation\n\nCity of Philadelphia (2026). Philadelphia Housing and Land Use. Retrieved from OpenDataPhilly. Mirrored on Source Cooperative at https://source.coop/nlebovits/phl-housing-demo.\n\n\n## Attribution\n\nCity of Philadelphia\n\n## License\n\n[other](https://metadata.phila.gov/#help/help-faqs/what-are-the-terms-of-use/)\n\n## Contact\n\nNissim Lebovits <nissim.lebovits@radiant.earth>\n\n---\n\n*Generated by [Portolan](https://github.com/portolan-sdi/portolan-cli) from STAC metadata and .portolan/metadata.yaml*\n",
   "_review": [
-    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed."
+    "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
+    "summaries.item_count: parts overlap, so this is max(part), not the sum \u2014 dor_parcel/ 3040466, li_building_footprints/ 2730595, vacant_indicators_bldg/ 47318, vacant_indicators_land/ 143681, zoning_basedistricts/ 146042. Sum them only once the parts are known to be disjoint."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-11-14T10:10:20+00:00",
+  "cataloged_at": "2026-11-28T10:11:16+00:00",
   "store_format": null
 }
