@@ -7,17 +7,18 @@
   ],
   "id": "cboettig/coral-reef-watch",
   "title": "coral-reef-watch",
-  "description": "Satellite-derived sea surface temperature, anomaly, and coral bleaching heat stress products (NOAA Coral Reef Watch v3.1) on a global 5 km grid. Provided as H3 resolution-6 hexagon Parquet tables and Cloud-Optimized GeoTIFFs at daily (last 13 months), monthly (1985 onward), and annual (1985 onward) time scales.",
+  "description": "Satellite-derived sea surface temperature, anomaly and coral bleaching heat stress products from NOAA Coral Reef Watch v3.1 on a global 5 km grid. Published as H3 resolution-6 hexagon Parquet tables and Cloud-Optimized GeoTIFFs at daily (last 13 months), monthly (1985 onward) and annual (1985 onward) time scales.",
   "keywords": [
-    "sea-surface-temperature",
     "oceanography",
-    "coral-reef",
-    "coral-bleaching",
     "remote-sensing",
     "satellite-imagery",
     "h3",
     "cloud-optimized-geotiff",
-    "time-series"
+    "time-series",
+    "climate",
+    "sea-surface-temperature",
+    "coral-reef",
+    "coral-bleaching"
   ],
   "providers": [
     {
@@ -79,7 +80,7 @@
         {
           "name": "h6",
           "type": "UBIGINT",
-          "description": "[spatial_index] H3 resolution-6 cell of the 5 km grid"
+          "description": "[spatial_index] H3 resolution-6 cell of the hexagon"
         },
         {
           "name": "h0",
@@ -106,7 +107,7 @@
       "type": "application/x-parquet",
       "title": "crw-5km-daily/baa-max-7d/hex/_manifest",
       "roles": [
-        "data"
+        "metadata"
       ],
       "table:columns": [
         {
@@ -115,13 +116,11 @@
         },
         {
           "name": "chunk_cell",
-          "type": "UBIGINT",
-          "description": "[spatial_index] H3 cell identifying the processing chunk"
+          "type": "UBIGINT"
         },
         {
           "name": "h0",
-          "type": "UBIGINT",
-          "description": "[spatial_index] H3 resolution-0 cell"
+          "type": "UBIGINT"
         },
         {
           "name": "wrote_data",
@@ -141,7 +140,7 @@
         {
           "name": "h6",
           "type": "UBIGINT",
-          "description": "[spatial_index] H3 resolution-6 cell of the 5 km grid"
+          "description": "[spatial_index] H3 resolution-6 cell of the hexagon"
         },
         {
           "name": "h0",
@@ -179,7 +178,7 @@
         {
           "name": "h6",
           "type": "UBIGINT",
-          "description": "[spatial_index] H3 resolution-6 cell of the 5 km grid"
+          "description": "[spatial_index] H3 resolution-6 cell of the hexagon"
         },
         {
           "name": "h0",
@@ -206,7 +205,7 @@
     {
       "name": "h6",
       "type": "UBIGINT",
-      "description": "[spatial_index] H3 resolution-6 cell of the 5 km grid"
+      "description": "[spatial_index] H3 resolution-6 cell of the hexagon"
     },
     {
       "name": "h0",
@@ -236,34 +235,20 @@
       "rel": "via",
       "href": "https://source.coop/cboettig/coral-reef-watch",
       "title": "Source Cooperative product page"
-    },
-    {
-      "rel": "cite-as",
-      "href": "https://doi.org/10.3390/rs12233856"
     }
   ],
-  "exts": {
-    "parquet": 21717,
-    "tif": 12208,
-    "json": 47,
-    "png": 26,
-    "md": 1
-  },
-  "object_count": 33999,
-  "data_mode": null,
-  "total_bytes": 238490871938,
-  "created_at": "2026-11-09T05:29:47.099Z",
-  "updated_at": "2026-11-09T05:29:47.099Z",
   "ext_bytes": {
-    "parquet": 162987196787,
-    "tif": 75499832932,
-    "json": 2082178,
+    "parquet": 163262942544,
+    "tif": 75631849385,
+    "json": 2081772,
     "png": 1752038,
     "md": 8003
   },
+  "featured": 0,
+  "updated_at": "2026-11-09T05:29:47.099Z",
+  "object_count": 36138,
+  "visibility": "public",
   "disabled": false,
-  "product_id": "coral-reef-watch",
-  "objects_updated_at": "2026-11-15T08:29:44+00:00",
   "mirrors": {
     "aws-opendata-us-west-2": {
       "connection_id": "aws-opendata-us-west-2",
@@ -271,21 +256,31 @@
       "prefix": "cboettig/coral-reef-watch/"
     }
   },
-  "featured": 0,
+  "account_id": "cboettig",
+  "total_bytes": 238898633742,
+  "product_id": "coral-reef-watch",
+  "data_mode": null,
+  "objects_updated_at": "2026-11-15T08:29:44+00:00",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "account_id": "cboettig",
-  "visibility": "public",
+  "exts": {
+    "parquet": 23838,
+    "tif": 12226,
+    "json": 47,
+    "png": 26,
+    "md": 1
+  },
+  "created_at": "2026-11-09T05:29:47.099Z",
   "readme": "## README.md\n# NOAA Coral Reef Watch\n\nSatellite sea surface temperature and coral bleaching heat stress from [NOAA Coral Reef Watch](https://coralreefwatch.noaa.gov/product/5km/index.php), version 3.1, on a global 5 km grid. Daily products cover the last 13 months; monthly and annual composites go back to 1985. Each product is published as an H3 hexagon table (resolution 6) and as Cloud-Optimized GeoTIFFs.\n\nSTAC: `https://s3-west.nrp-nautilus.io/public-coral-reef-watch/stac-collection.json`\n\n## Daily products for the last 13 months (`crw-5km-daily`)\n\nUpdated every day at 18:00 UTC. NOAA posts day D on D+1 at around 14:00 UTC. Days older than 13 months are removed; the full daily archive back to 1985 stays available upstream.\n\n| product | variable | units | cell value |\n|---|---|---|---|\n| `sst` | `analysed_sst` | \u00b0C | mean of the 5 km pixels |\n| `ssta` | `sea_surface_temperature_anomaly` | \u00b0C | mean |\n| `hs` | `hotspot` | \u00b0C | mean |\n| `dhw` | `degree_heating_week` | \u00b0C-weeks | mean |\n| `baa` | `bleaching_alert_area` | level 0\u20134 | most severe pixel |\n| `baa-max-7d` | `bleaching_alert_area` | level 0\u20134 | most severe pixel |\n\nBleaching Alert Area levels: 0 No Stress, 1 Bleaching Watch, 2 Bleaching Warning, 3 Bleaching Alert Level 1, 4 Bleaching Alert Level 2.\n\n```\ncrw-5km-daily/<product>/hex/h0=<cell>/data_0.parquet              # columns: h6, h0, time, <variable>\ncrw-5km-daily/<product>/hex/h0=<cell>/part-tYYYYMMDD-0.parquet    # current month, one file a day\ncrw-5km-daily/<product>/cog/<product>-YYYYMMDD.tif\ncrw-5km-daily/ne-pacific-blob/data_0.parquet\nraw/daily/<product>/<upstream file>.nc   (+ .json: source URL, access time, size, SHA-256)\n```\n\nEach `h0` cell has one file holding every day of the window in date order. The current month's days sit beside it as one small file a day, and are folded in once the month closes. Read the table with the glob `hex/h0=*/*.parquet` and filter on `time`: because rows are stored in date order, a filter on a few days reads only those parts of each file. There is no `h8` column: the 5 km pixel is coarser than an H3 resolution 8 cell. Join resolution 8 data with `h3_cell_to_parent(h8, 6)`.\n\n### Northeast Pacific warm anomaly summary\n\n`crw-5km-daily/ne-pacific-blob` holds one row per day for the box 20\u201360\u00b0N, 180\u2013110\u00b0W: the area with an SST anomaly of at least 2 \u00b0C, the area-weighted centre of that area, the area with data, and the strongest anomaly and where it is.\n\n## Monthly composites from 1985 (`crw-5km-monthly`)\n\nUpstream's own monthly composites, from January 1985 to last month. Each month is checked on the 2nd and 5th of the next month at 19:00 UTC, and nothing is removed. `time` is the last day of the month.\n\n| product | variable | units | cell value |\n|---|---|---|---|\n| `sst-min`, `sst-mean`, `sst-max` | `sea_surface_temperature` | \u00b0C | min, mean or max of the 5 km pixels, matching the composite |\n| `ssta-min`, `ssta-mean`, `ssta-max` | `sea_surface_temperature_anomaly` | \u00b0C | min, mean or max |\n| `hs-max` | `hotspot` | \u00b0C | max |\n| `dhw-max` | `degree_heating_week` | \u00b0C-weeks | max |\n| `baa-max` | `bleaching_alert_area` | level 0\u20134 | most severe pixel |\n| `baa5-max` | `bleaching_alert_area` | level 0\u20137 | most severe pixel |\n\n`dhw-max`, `baa-max` and `baa5-max` start in April 1985, once twelve weeks of HotSpot have accumulated. `baa5-max` uses upstream's five-level scale: levels 0\u20134 as above, then 5\u20137 for Bleaching Alert Levels 3\u20135.\n\nThe min and max products also carry `extreme_date`, the day in the month the extreme was first reached; their COGs have a companion `-date.tif` holding it as a `yyyymmdd` number. Where a cell holds more than one 5 km pixel, `extreme_date` is the latest (max) or earliest (min) of the pixels' dates, so it can come from a different pixel than the value.\n\n```\ncrw-5km-monthly/<product>/hex/h0=<cell>/data_0.parquet             # columns: h6, h0, time, <variable>[, extreme_date]\ncrw-5km-monthly/<product>/hex/h0=<cell>/part-tYYYYMM-0.parquet     # current year, one file a month\ncrw-5km-monthly/<product>/cog/<product>-YYYYMM.tif\ncrw-5km-monthly/<product>/cog/<product>-YYYYMM-date.tif            # min and max products\nraw/monthly/<product>/<upstream file>.nc   (+ .json)\n```\n\nClosed years are in one file per `h0` cell in date order, and the current year's months sit beside it until January. Read with `hex/h0=*/*.parquet` and filter on `time`, as for the daily table.\n\n## Annual composites from 1985 (`crw-5km-annual`)\n\nUpstream's own annual composites, the same ten products as the monthly tier, from 1985 to the last full year. Each new year is added on 2 or 5 January, and nothing is removed. `time` is the last day of the year, and `extreme_date` (min and max products) is the day in the year the extreme was first reached.\n\n`dhw-max`, `baa-max` and `baa5-max` have no full-year composite for 1985, so their 1985 row is upstream's composite for 25 March to 31 December 1985.\n\n```\ncrw-5km-annual/<product>/hex/h0=<cell>/data_0.parquet             # columns: h6, h0, time, <variable>[, extreme_date]\ncrw-5km-annual/<product>/cog/<product>-YYYY.tif\ncrw-5km-annual/<product>/cog/<product>-YYYY-date.tif              # min and max products\nraw/annual/<product>/<upstream file>.nc   (+ .json)\n```\n\n## Caveats\n\n- The SST anomaly is measured against a fixed 1985\u20131990 plus 1993 daily climatology. It is not a percentile-based marine heatwave definition, and it is less reliable at high latitudes because of persistent cloud.\n- HotSpot, Degree Heating Week and Bleaching Alert Area compare temperature with the warmest-month climatology and coral bleaching thresholds. Away from coral reefs they mean the water is warmer than its usual warmest month, not that corals are at risk.\n- Upstream marks some pixels at sea-ice edges as out of range. They are treated as missing, so those cells are absent.\n\n## DuckDB\n\n```sql\nINSTALL httpfs; LOAD httpfs; INSTALL h3 FROM community; LOAD h3;\nSET s3_endpoint = 's3-west.nrp-nautilus.io'; SET s3_url_style = 'path';\n\n-- northeast Pacific warm area through time\nSELECT date, area_km2_ssta_ge_2, centroid_lat, centroid_lng, max_ssta\nFROM read_parquet('s3://public-coral-reef-watch/crw-5km-daily/ne-pacific-blob/data_0.parquet')\nORDER BY date;\n\n-- the hottest month of each year since 1985 south of Hawai\u02bbi, and the day it peaked\nSELECT year(time) AS yr, arg_max(time, sea_surface_temperature) AS month,\n       max(sea_surface_temperature) AS sst, arg_max(extreme_date, sea_surface_temperature) AS peak_day\nFROM read_parquet('s3://public-coral-reef-watch/crw-5km-monthly/sst-max/hex/h0=*/*.parquet')\nWHERE h0 = h3_cell_to_parent(h3_latlng_to_cell(20.0, -157.0, 6), 0)\n  AND h6 = h3_latlng_to_cell(20.0, -157.0, 6)\nGROUP BY yr ORDER BY yr;\n\n-- Degree Heating Week on one day, near Hawai\u02bbi\nSELECT h6, degree_heating_week\nFROM read_parquet('s3://public-coral-reef-watch/crw-5km-daily/dhw/hex/h0=*/*.parquet')\nWHERE time = DATE '2026-10-24'\n  AND h0 = h3_cell_to_parent(h3_latlng_to_cell(20.8, -156.3, 6), 0);\n```\n\n## MapLibre GL JS\n\nThere is no PMTiles layer, so there is no `source-layer`. Draw a day's COG as a raster through TiTiler:\n\n```js\nconst day = '20261024';\nconst cog = `https://s3-west.nrp-nautilus.io/public-coral-reef-watch/crw-5km-daily/ssta/cog/ssta-${day}.tif`;\nmap.addSource('ssta', {\n  type: 'raster',\n  tiles: [`https://titiler.nrp-nautilus.io/cog/tiles/WebMercatorQuad/{z}/{x}/{y}.png?url=${encodeURIComponent(cog)}&rescale=-5,5&colormap_name=rdbu_r`],\n  tileSize: 256,\n});\nmap.addLayer({ id: 'ssta', type: 'raster', source: 'ssta' });\n```\n\nFor the hexagons, query the cells you need and turn them into polygons with `h3_cell_to_boundary_wkt()`, then add the result as a GeoJSON source.\n\n## Licence and citation\n\nUS Government work, public domain. NOAA Coral Reef Watch asks to be credited; see its [citation recommendations](https://coralreefwatch.noaa.gov/satellite/docs/recommendations_crw_citation.php). Methods: Skirving et al. (2020), *Remote Sensing* 12, 3856, doi:10.3390/rs12233856.\n",
   "_review": [
     "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
     "extent.temporal: None (probe sample) widened to ['1985-01-01T00:00:00Z', '2026-11-01T00:00:00Z'] using README-stated coverage ['1985-01', '2026-11'].",
-    "extent.spatial.bbox: omitted; spatial reference is categorical via [crw-5km-annual/baa-max/hex.h6 (spatial_index), crw-5km-annual/baa-max/hex.h0 (spatial_index), crw-5km-annual/ssta-min/hex.h6 (spatial_index), crw-5km-annual/ssta-min/hex.h0 (spatial_index), crw-5km-daily/baa-max-7d/hex/_manifest.chunk_cell (spatial_index), crw-5km-daily/baa-max-7d/hex/_manifest.h0 (spatial_index), crw-5km-daily/ssta/hex.h6 (spatial_index), crw-5km-daily/ssta/hex.h0 (spatial_index), crw-5km-monthly/baa-max/hex.h6 (spatial_index), crw-5km-monthly/baa-max/hex.h0 (spatial_index), crw-5km-monthly/ssta-min/hex.h6 (spatial_index), crw-5km-monthly/ssta-min/hex.h0 (spatial_index)]. Add bbox once the placename \u2192 bbox gazetteer covers it.",
-    "summaries.item_count: parts overlap, so this is max(part), not the sum \u2014 crw-5km-annual/ 26073456, crw-5km-daily/ 347, crw-5km-monthly/ 13263136. Sum them only once the parts are known to be disjoint."
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [crw-5km-annual/baa-max/hex.h6 (spatial_index), crw-5km-annual/baa-max/hex.h0 (spatial_index), crw-5km-annual/ssta-min/hex.h6 (spatial_index), crw-5km-annual/ssta-min/hex.h0 (spatial_index), crw-5km-daily/ssta/hex.h6 (spatial_index), crw-5km-daily/ssta/hex.h0 (spatial_index), crw-5km-monthly/baa-max/hex.h6 (spatial_index), crw-5km-monthly/baa-max/hex.h0 (spatial_index), crw-5km-monthly/ssta-min/hex.h6 (spatial_index), crw-5km-monthly/ssta-min/hex.h0 (spatial_index)]. Add bbox once the placename \u2192 bbox gazetteer covers it.",
+    "summaries.item_count: parts overlap, so this is max(part), not the sum \u2014 crw-5km-annual/ 26073456, crw-5km-daily/ 1818, crw-5km-monthly/ 13263136. Sum them only once the parts are known to be disjoint."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-11-18T10:00:05+00:00",
+  "cataloged_at": "2026-11-28T10:10:02+00:00",
   "store_format": null
 }
