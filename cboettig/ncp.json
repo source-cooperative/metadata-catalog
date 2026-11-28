@@ -7,15 +7,15 @@
   ],
   "id": "cboettig/ncp",
   "title": "Nature's Contributions to People (NCP) - Biodiversity Indicators",
-  "description": "Global indicators of Nature's Contributions to People (NCP) derived from Chaplin-Kramer et al. (2019), scoring locations by how many NCP categories they rank highly for. Two layers are provided: NCP weighted by biodiversity and natural habitat (0\u201320) and NCP alone (0\u201319). Data are distributed as cloud-optimized GeoTIFFs in WGS84 and as H3 resolution-7 hex grids with area-weighted mean values.",
+  "description": "Global indicators of Nature's Contributions to People (NCP) from Chaplin-Kramer et al. (2023), scoring locations by how many NCP categories they rank highly for. Provides two integer-score layers (NCP weighted by biodiversity and natural habitat, 0\u201320; NCP alone, 0\u201319) as WGS84 cloud-optimized GeoTIFFs and H3 resolution-7 hex grids with area-weighted mean values.",
   "keywords": [
     "biodiversity",
     "conservation",
     "global-coverage",
     "h3",
     "ecology",
-    "remote-sensing",
-    "cloud-optimized-geotiff"
+    "cloud-optimized-geotiff",
+    "geoparquet"
   ],
   "providers": [
     {
@@ -53,7 +53,7 @@
     }
   },
   "summaries": {
-    "item_count": 1344698
+    "item_count": 43077140
   },
   "assets": {
     "hex/ncp_biod_nathab": {
@@ -71,28 +71,28 @@
         {
           "name": "h7",
           "type": "UBIGINT",
-          "description": "[spatial_index] H3 resolution-7 hex cell identifier (primary spatial key)"
+          "description": "[spatial_index] H3 resolution-7 cell ID (one row per cell)"
         },
         {
           "name": "h0",
-          "type": "BIGINT",
-          "description": "[spatial_index] H3 resolution-0 partition key used for file partitioning"
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution-0 parent cell (partition key)"
         },
         {
           "name": "h5",
           "type": "UBIGINT",
-          "description": "[spatial_index] H3 resolution-5 parent cell identifier"
+          "description": "[spatial_index] H3 resolution-5 parent cell"
         },
         {
           "name": "h6",
           "type": "UBIGINT",
-          "description": "[spatial_index] H3 resolution-6 parent cell identifier"
+          "description": "[spatial_index] H3 resolution-6 parent cell"
         }
       ],
-      "description": "5 files sampled for this table"
+      "description": "10 files sampled for this table"
     },
     "hex/ncp_only": {
-      "href": "https://data.source.coop/cboettig/ncp/hex/ncp_only/h0=580014373884395519/",
+      "href": "https://data.source.coop/cboettig/ncp/hex/ncp_only/h0=579732898907684863/",
       "type": "application/x-parquet",
       "title": "hex/ncp_only",
       "roles": [
@@ -106,25 +106,145 @@
         {
           "name": "h7",
           "type": "UBIGINT",
-          "description": "[spatial_index] H3 resolution-7 hex cell identifier (primary spatial key)"
+          "description": "[spatial_index] H3 resolution-7 cell ID (one row per cell)"
         },
         {
           "name": "h0",
-          "type": "BIGINT",
-          "description": "[spatial_index] H3 resolution-0 partition key used for file partitioning"
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution-0 parent cell (partition key)"
         },
         {
           "name": "h5",
           "type": "UBIGINT",
-          "description": "[spatial_index] H3 resolution-5 parent cell identifier"
+          "description": "[spatial_index] H3 resolution-5 parent cell"
         },
         {
           "name": "h6",
           "type": "UBIGINT",
-          "description": "[spatial_index] H3 resolution-6 parent cell identifier"
+          "description": "[spatial_index] H3 resolution-6 parent cell"
         }
       ],
-      "description": "5 files sampled for this table"
+      "description": "10 files sampled for this table"
+    },
+    "invest-peru-2019/carbon-biomass/hex": {
+      "href": "https://data.source.coop/cboettig/ncp/invest-peru-2019/carbon-biomass/hex/h0=578290339652042751/",
+      "type": "application/x-parquet",
+      "title": "invest-peru-2019/carbon-biomass/hex",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "biomass_carbon",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "h9",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution-9 cell ID"
+        },
+        {
+          "name": "h0",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution-0 parent cell (partition key)"
+        },
+        {
+          "name": "h8",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution-8 parent cell"
+        }
+      ],
+      "description": "4 files sampled for this table"
+    },
+    "invest-peru-2019/carbon-total/hex": {
+      "href": "https://data.source.coop/cboettig/ncp/invest-peru-2019/carbon-total/hex/h0=578290339652042751/",
+      "type": "application/x-parquet",
+      "title": "invest-peru-2019/carbon-total/hex",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "total_carbon",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "h9",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution-9 cell ID"
+        },
+        {
+          "name": "h0",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution-0 parent cell (partition key)"
+        },
+        {
+          "name": "h8",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution-8 parent cell"
+        }
+      ],
+      "description": "4 files sampled for this table"
+    },
+    "invest-peru-2019/habitat-degradation/hex": {
+      "href": "https://data.source.coop/cboettig/ncp/invest-peru-2019/habitat-degradation/hex/h0=578290339652042751/",
+      "type": "application/x-parquet",
+      "title": "invest-peru-2019/habitat-degradation/hex",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "habitat_degradation",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "h9",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution-9 cell ID"
+        },
+        {
+          "name": "h0",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution-0 parent cell (partition key)"
+        },
+        {
+          "name": "h8",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution-8 parent cell"
+        }
+      ],
+      "description": "4 files sampled for this table"
+    },
+    "invest-peru-2019/habitat-quality/hex": {
+      "href": "https://data.source.coop/cboettig/ncp/invest-peru-2019/habitat-quality/hex/h0=578290339652042751/",
+      "type": "application/x-parquet",
+      "title": "invest-peru-2019/habitat-quality/hex",
+      "roles": [
+        "data"
+      ],
+      "table:columns": [
+        {
+          "name": "habitat_quality",
+          "type": "DOUBLE"
+        },
+        {
+          "name": "h9",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution-9 cell ID"
+        },
+        {
+          "name": "h0",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution-0 parent cell (partition key)"
+        },
+        {
+          "name": "h8",
+          "type": "UBIGINT",
+          "description": "[spatial_index] H3 resolution-8 parent cell"
+        }
+      ],
+      "description": "4 files sampled for this table"
     }
   },
   "links": [
@@ -137,23 +257,17 @@
       "rel": "via",
       "href": "https://source.coop/cboettig/ncp",
       "title": "Source Cooperative product page"
-    },
-    {
-      "rel": "cite-as",
-      "href": "https://doi.org/10.1126/science.aaw3372"
     }
   ],
-  "total_bytes": 420615981,
-  "created_at": "2026-06-17T03:29:01.831Z",
-  "account_id": "cboettig",
-  "object_count": 179,
-  "disabled": false,
-  "exts": {
-    "parquet": 171,
-    "tif": 6,
-    "md": 1,
-    "json": 1
+  "ext_bytes": {
+    "parquet": 499783149,
+    "tif": 453732037,
+    "png": 387769,
+    "json": 42568,
+    "md": 14768,
+    "csv": 8485
   },
+  "total_bytes": 953968776,
   "mirrors": {
     "aws-opendata-us-west-2": {
       "storage_type": "s3",
@@ -166,29 +280,35 @@
       "prefix": "cboettig/ncp/"
     }
   },
+  "product_id": "ncp",
   "data_mode": "open",
+  "updated_at": "2026-06-17T03:29:01.831Z",
+  "featured": 0,
+  "account_id": "cboettig",
+  "created_at": "2026-06-17T03:29:01.831Z",
+  "object_count": 211,
+  "disabled": false,
+  "visibility": "public",
   "_source": {
     "source_coop_api": true,
     "s3_inventory": true
   },
-  "visibility": "public",
-  "product_id": "ncp",
-  "updated_at": "2026-06-17T03:29:01.831Z",
-  "featured": 0,
-  "readme": "## README.md\n# Nature's Contributions to People (NCP) \u2014 biodiversity & natural habitat\n\nGlobal NCP indicators from Chaplin-Kramer et al. (2019) \u2014 integer scores counting the\nNature's Contributions to People a location ranks highly for. Two layers:\n- **`ncp_biod_nathab`** \u2014 NCP weighted by biodiversity & natural habitat (0\u201320)\n- **`ncp_only`** \u2014 NCP alone (0\u201319)\n\nSource rasters are 2 km **World Eckert IV** (equal-area); reprojected to **WGS84** for\nthe COG assets and aggregated to **H3 resolution 7** by area-weighted **mean**.\n\n## Assets\n\n| Asset | Format | Path |\n|---|---|---|\n| `ncp-biod-nathab-cog` / `ncp-only-cog` | COG (WGS84) | `\u2026/public-ncp/NCP_{biod_nathab,only}_4326_cog.tif` |\n| `ncp-biod-nathab-hex` / `ncp-only-hex` | H3 hex (res 7, mean) | `\u2026/public-ncp/hex/{ncp_biod_nathab,ncp_only}/h0=*/data_0.parquet` |\n\nEach hex layer is one row per `h7` cell (parents `h6/h5`, partitioned by `h0`), gap-free.\nThe value column (`ncp_biod_nathab` / `ncp_only`) is the area-weighted **mean** indicator \u2014\nan intensity: aggregate with `AVG`/`MIN`/`MAX`, **never `SUM`**.\n\n## Querying (DuckDB)\n\n```sql\nINSTALL httpfs; LOAD httpfs;\n-- Mean NCP-biodiversity score within an AOI given as h7 cells\nSELECT AVG(n.ncp_biod_nathab) AS mean_ncp\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-ncp/hex/ncp_biod_nathab/h0=*/data_0.parquet') n\nSEMI JOIN aoi_h7 m ON n.h7 = m.h7;\n```\n\nQuery `h7` directly \u2014 no `GROUP BY`/`AVG` collapse needed (one row per cell). This\nreplaces the prior res-8 point-binned build, which left coverage gaps and ~1 row per\nsource pixel.\n\n## Citation\n\nChaplin-Kramer, R., et al. (2019). Global modeling of nature's contributions to people.\n*Science*, 366(6462), 255\u2013258. doi:10.1126/science.aaw3372\n",
+  "exts": {
+    "parquet": 187,
+    "tif": 10,
+    "json": 4,
+    "png": 4,
+    "csv": 3,
+    "md": 3
+  },
+  "objects_updated_at": "2026-11-15T08:40:59+00:00",
+  "readme": "## README.md\n# Nature's Contributions to People (NCP) \u2014 biodiversity & natural habitat\n\nGlobal NCP indicators from Chaplin-Kramer et al. (2023) \u2014 integer scores counting the\nNature's Contributions to People a location ranks highly for. Two layers:\n- **`ncp_biod_nathab`** \u2014 NCP weighted by biodiversity & natural habitat (0\u201320)\n- **`ncp_only`** \u2014 NCP alone (0\u201319)\n\nSource rasters are 2 km **World Eckert IV** (equal-area); reprojected to **WGS84** for\nthe COG assets and aggregated to **H3 resolution 7** by area-weighted **mean**.\n\n## Assets\n\n| Asset | Format | Path |\n|---|---|---|\n| `ncp-biod-nathab-cog` / `ncp-only-cog` | COG (WGS84) | `\u2026/public-ncp/NCP_{biod_nathab,only}_4326_cog.tif` |\n| `ncp-biod-nathab-hex` / `ncp-only-hex` | H3 hex (res 7, mean) | `\u2026/public-ncp/hex/{ncp_biod_nathab,ncp_only}/h0=*/data_0.parquet` |\n\nEach hex layer is one row per `h7` cell (parents `h6/h5`, partitioned by `h0`), gap-free.\nThe value column (`ncp_biod_nathab` / `ncp_only`) is the area-weighted **mean** indicator \u2014\nan intensity: aggregate with `AVG`/`MIN`/`MAX`, **never `SUM`**.\n\n## Querying (DuckDB)\n\n```sql\nINSTALL httpfs; LOAD httpfs;\n-- Mean NCP-biodiversity score within an AOI given as h7 cells\nSELECT AVG(n.ncp_biod_nathab) AS mean_ncp\nFROM read_parquet('https://s3-west.nrp-nautilus.io/public-ncp/hex/ncp_biod_nathab/h0=*/data_0.parquet') n\nSEMI JOIN aoi_h7 m ON n.h7 = m.h7;\n```\n\nQuery `h7` directly \u2014 no `GROUP BY`/`AVG` collapse needed (one row per cell). This\nreplaces the prior res-8 point-binned build, which left coverage gaps and ~1 row per\nsource pixel.\n\n## Citation\n\nNeugarten, R. A., et al. (2022). Mapping the planet's critical areas for biodiversity and\npeople (Version 3.0) [Dataset]. Zenodo. doi:10.5281/zenodo.7853188\n\nChaplin-Kramer, R., et al. (2023). Mapping the planet's critical natural assets.\n*Nature Ecology & Evolution*, 7(1), 51\u201361. doi:10.1038/s41559-022-01934-5\n",
   "_review": [
     "license: AI returned 'unknown' (README does not state a license). Verify with publisher before flipping to _state: reviewed.",
-    "providers: role [producer] for 'Chaplin-Kramer, R., et al.' is an AI guess \u2014 Lead authors of the source Science paper; assumed producer as the researchers who generated the original NCP indicator model.. Verify before flipping to _state: reviewed.",
-    "extent.spatial.bbox: omitted; spatial reference is categorical via [hex/ncp_biod_nathab.h7 (spatial_index), hex/ncp_biod_nathab.h6 (spatial_index), hex/ncp_biod_nathab.h5 (spatial_index), hex/ncp_biod_nathab.h0 (spatial_index), hex/ncp_only.h7 (spatial_index), hex/ncp_only.h6 (spatial_index), hex/ncp_only.h5 (spatial_index), hex/ncp_only.h0 (spatial_index)]. Add bbox once the placename \u2192 bbox gazetteer covers it."
+    "extent.spatial.bbox: omitted; spatial reference is categorical via [hex/ncp_biod_nathab.h7 (spatial_index), hex/ncp_biod_nathab.h6 (spatial_index), hex/ncp_biod_nathab.h5 (spatial_index), hex/ncp_biod_nathab.h0 (spatial_index), hex/ncp_only.h7 (spatial_index), hex/ncp_only.h6 (spatial_index), hex/ncp_only.h5 (spatial_index), hex/ncp_only.h0 (spatial_index), invest-peru-2019/carbon-biomass/hex.h9 (spatial_index), invest-peru-2019/carbon-biomass/hex.h8 (spatial_index), invest-peru-2019/carbon-biomass/hex.h0 (spatial_index), invest-peru-2019/carbon-total/hex.h9 (spatial_index), invest-peru-2019/carbon-total/hex.h8 (spatial_index), invest-peru-2019/carbon-total/hex.h0 (spatial_index), invest-peru-2019/habitat-degradation/hex.h9 (spatial_index), invest-peru-2019/habitat-degradation/hex.h8 (spatial_index), invest-peru-2019/habitat-degradation/hex.h0 (spatial_index), invest-peru-2019/habitat-quality/hex.h9 (spatial_index), invest-peru-2019/habitat-quality/hex.h8 (spatial_index), invest-peru-2019/habitat-quality/hex.h0 (spatial_index)]. Add bbox once the placename \u2192 bbox gazetteer covers it.",
+    "summaries.item_count: parts overlap, so this is max(part), not the sum \u2014 hex/ 5715591, invest-peru-2019/ 43077140. Sum them only once the parts are known to be disjoint."
   ],
   "_state": "drafted",
-  "cataloged_at": "2026-06-27T09:26:53+00:00",
-  "store_format": null,
-  "ext_bytes": {
-    "parquet": 259325172,
-    "tif": 161281572,
-    "json": 7499,
-    "md": 1738
-  },
-  "objects_updated_at": "2026-11-15T08:40:59+00:00"
+  "cataloged_at": "2026-11-28T10:07:46+00:00",
+  "store_format": null
 }
